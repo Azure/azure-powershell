@@ -31,17 +31,15 @@ Deletes the specified vendor.
 
 ### Example 1: Remove-AzConnectedNetworkVendor via vendor name
 ```powershell
-PS C:\> Remove-AzConnectedNetworkVendor -Name MyVendor
-
+Remove-AzConnectedNetworkVendor -Name MyVendor
 ```
 
 Deleting the vendor with name MyVendor
 
 ### Example 2: Remove-AzConnectedNetworkVendor via InputObject
 ```powershell
-PS C:\> $vendor = Get-AzConnectedNetworkVendor -Name MyVendor1
-PS C:\> Remove-AzConnectedNetworkVendor -InputObject $vendor
-
+$vendor = Get-AzConnectedNetworkVendor -Name MyVendor1
+Remove-AzConnectedNetworkVendor -InputObject $vendor
 ```
 
 Deleting the vendor with name MyVendor1
@@ -205,7 +203,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedNetworkIdentity>`: Identity Parameter
   - `[DeviceName <String>]`: The name of the device resource.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.

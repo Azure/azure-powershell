@@ -19,6 +19,51 @@
 -->
 
 ## Upcoming Release
+* [Breaking Change] Upgraded API version for ActivityLogAlert from 2017-04-01 to 2020-10-01, affected cmdlets:
+  * `Get-AzActivityLogAlert`
+  * `Remove-AzActivityLogAlert`
+  * `Set-AzActivityLogAlert` replaced by `New-AzActivityLogAlert`
+  * `Disable-AzActivityLogAlert` replaced by `Update-AzActivityLogAlert`
+  * `Enable-AzActivityLogAlert` replaced by `Update-AzActivityLogAlert`
+  * `New-AzActionGroup` replaced by `New-AzActivityLogAlertActionGroupObject`
+* [Breaking Change] Upgraded API version for DiagnosticSetting from 2017-05-01-preview to 2021-05-01-preview
+  * `Get-AzDiagnosticSettingCategory`
+  * `Get-AzDiagnosticSetting`
+  * `New-AzDiagnosticSetting`
+  * `Remove-AzDiagnosticSetting`
+  * `Set-AzDiagnosticSetting` replaced by `New-AzDiagnosticSetting`
+  * `New-AzDiagnosticDetailSetting` replaced by `New-AzDiagnosticSettingLogSettingsObject` and `New-AzDiagnosticSettingMetricSettingsObject`
+  * `Get-AzSubscriptionDiagnosticSettingCategory` replaced by `Get-AzEventCategory`
+* [Breaking Change] Upgraded API version for Autoscale from 2015-04-01 to 2022-10-01
+  * `Get-AzAutoscaleSetting` 
+  * `Remove-AzAutoscaleSetting`
+  * `Add-AzAutoscaleSetting` replaced by `New-AzAutoscaleSetting`
+  * `New-AzAutoscaleNotification` replaced by `New-AzAutoscaleNotificationObject`
+  * `New-AzAutoscaleProfile` replaced by `New-AzAutoscaleProfileObject`
+  * `New-AzAutoscaleRule` replaced by `New-AzAutoscaleScaleRuleObject`
+  * `New-AzAutoscaleWebhook` replaced by `New-AzAutoscaleWebhookNotificationObject`
+* [Breaking Change] Upgraded API version for ScheduledQueryRule from 2018-04-16 to 2021-08-01
+  * `Get-AzScheduledQueryRule`
+  * `New-AzScheduledQueryRuleAlertingAction`
+  * `New-AzScheduledQueryRuleAznActionGroup`
+  * `New-AzScheduledQueryRule`
+  * `New-AzScheduledQueryRuleLogMetricTrigger`
+  * `New-AzScheduledQueryRuleSchedule`
+  * `New-AzScheduledQueryRuleSource`
+  * `New-AzScheduledQueryRuleTriggerCondition`
+  * `Remove-AzScheduledQueryRule`
+  * `Set-AzScheduledQueryRule`
+  * `Update-AzScheduledQueryRule`
+
+## Version 3.1.0
+* Added breaking change warning messages for 
+    - `ActivityLogAlert`
+    - `DiagnosticSetting`
+    - `ScheduledQueryRule`
+    - `Autoscale`
+
+## Version 3.0.2
+* Added optional parameter `Location` for Adding/Update action group cmdlet
 
 ## Version 3.0.1
 * Fixed an issue where users could not correctly ignore warning messages after setting environment variables [#17013]

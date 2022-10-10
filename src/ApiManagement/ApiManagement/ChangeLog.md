@@ -18,12 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking Change]: Changed the type of parameter `Sku` from Enum to String in `Add-AzApiManagementRegion`, `New-AzApiManagement` and `Update-AzApiManagementRegion`.
+
+## Version 3.0.1
+* Supported GraphQL Specification Format
+
+## Version 3.0.0
 
 * [Breaking change] Replaced parameter `Sample` by `Examples` in `New-AzApiManagementOperation` and `Set-AzApiManagementOperation`
 * Updated APIM .Net SDK version to 8.0.0 / Api Version 2021-08-01
 
 ## Version 2.3.2
-Added warning message for upcoming breaking change.
+* Added warning message for upcoming breaking change.
 
 ## Version 2.3.1
 * Fixed a bug in `Get-AzApiManagementTenantGitAccess` cmdlet.

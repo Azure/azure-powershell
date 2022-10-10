@@ -16,7 +16,7 @@ Creates a virtual machine.
 ### SimpleParameterSet (Default)
 ```
 New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <String>] [[-Zone] <String[]>]
- -Name <String> -Credential <PSCredential> [-NetworkInterfaceDeleteOption <String>]
+ [-PublicIpSku <String>] -Name <String> -Credential <PSCredential> [-NetworkInterfaceDeleteOption <String>]
  [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
  [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-Image <String>]
@@ -25,9 +25,9 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
- [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>]
- [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -35,32 +35,40 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
 New-AzVM [-ResourceGroupName] <String> [-Location] <String> [-EdgeZone <String>] [-VM] <PSVirtualMachine>
  [[-Zone] <String[]>] [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
  [-OSDiskDeleteOption <String>] [-DataDiskDeleteOption <String>] [-SshKeyName <String>] [-GenerateSshKey]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DisableIntegrityMonitoring]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DiskFileParameterSet
 ```
-New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <String>] -Name <String>
- [-NetworkInterfaceDeleteOption <String>] [-VirtualNetworkName <String>] [-AddressPrefix <String>]
- [-SubnetName <String>] [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>]
- [-DomainNameLabel <String>] [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>]
- -DiskFile <String> [-Linux] [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity]
- [-UserAssignedIdentity <String>] [-AsJob] [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>]
- [-DataDiskDeleteOption <String>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>]
- [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
+New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <String>] [-PublicIpSku <String>]
+ -Name <String> [-NetworkInterfaceDeleteOption <String>] [-VirtualNetworkName <String>]
+ [-AddressPrefix <String>] [-SubnetName <String>] [-SubnetAddressPrefix <String>]
+ [-PublicIpAddressName <String>] [-DomainNameLabel <String>] [-AllocationMethod <String>]
+ [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] -DiskFile <String> [-Linux] [-Size <String>]
+ [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-AsJob]
+ [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>] [-DataDiskDeleteOption <String>]
+ [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
+ [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
- [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
+ [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzVM** cmdlet creates a virtual machine in Azure.
-This cmdlet takes a virtual machine object as input.
-Use the New-AzVMConfig cmdlet to create a virtual machine object.
-The **New-AzVM** cmdlet will create a new storage account for boot diagnostics if one does not already exist. 
-Other cmdlets can be used to configure the virtual machine, such as Set-AzVMOperatingSystem, Set-AzVMSourceImage, Add-AzVMNetworkInterface, and Set-AzVMOSDisk.
-The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.
+This cmdlet takes a virtual machine object as input. The **New-AzVM** cmdlet will create a new storage account for boot diagnostics if one does not already exist. <br> <br>
+Use the **[New-AzVMConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmconfig)** cmdlet to create a virtual machine object. <br> 
+Then use the following cmdlets to set different properties of the virtual machine object:
+- **[Add-AzVMNetworkInterface](https://learn.microsoft.com/en-us/powershell/module/az.compute/add-azvmnetworkinterface)** to set the network profile.<br>
+- **[Set-AzVMOperatingSystem](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmoperatingsystem)** to set the OS profile. <br>
+- **[Set-AzVMSourceImage](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmsourceimage)** to set the source image.<br>
+- **[Set-AzVMOSDisk](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmosdisk)** to set the OS disk(storage profile).<br>
+- **[Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku)** can also be used to find out available virtual machine sizes for your subscription and region.<br>
+<br>
+The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.<br>
+<br>
+See [Quickstart: Create a Windows virtual machine in Azure with PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-powershell) for tutorial. <br>
 
 ## EXAMPLES
 
@@ -149,7 +157,7 @@ You can confirm your login status by using the **Get-AzSubscription** cmdlet.
 ### Example 3: Create a VM from a marketplace image without a Public IP
 ```powershell
 $VMLocalAdminUser = "LocalAdminUser"
-$VMLocalAdminSecurePassword = ConvertTo-SecureString <password> -AsPlainText -Force
+$VMLocalAdminSecurePassword = ConvertTo-SecureString "password" -AsPlainText -Force
 $LocationName = "westus"
 $ResourceGroupName = "MyResourceGroup"
 $ComputerName = "MyVM"
@@ -171,7 +179,7 @@ $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdmi
 $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
-$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2012-R2-Datacenter' -Version latest
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2022-datacenter-azure-edition-core' -Version latest
 
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
@@ -206,7 +214,7 @@ $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -UserData;
 The UserData value must always be Base64 encoded. 
 
 ### Example 5: Creating a new VM with an existing subnet in another resource group
-```
+```powershell
 $UserName = "User"
 $Password = ConvertTo-SecureString "############" -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($UserName, $Password)
@@ -218,28 +226,96 @@ $NIC = New-AzNetworkInterface -Name NICname -ResourceGroupName ResourceGroup2 -L
 $VirtualMachine = New-AzVMConfig -VMName VirtualMachineName -VMSize Standard_D4s_v3
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName computerName -Credential $psCred -ProvisionVMAgent -EnableAutoUpdate
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
-$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2012-R2-Datacenter' -Version latest
-New-AzVm -ResourceGroupName ResourceGroup1 -Location SouthCentralUS -VM $VirtualMachine
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2022-datacenter-azure-edition-core' -Version latest
+New-AzVM -ResourceGroupName ResourceGroup1 -Location SouthCentralUS -VM $VirtualMachine
 ```
 
 This example deploys a Windows VM from the marketplace in one resource group with an existing subnet in another resource group.
 
 ### Example 6: Creating a new VM as part of a VMSS with a PlatformFaultDomain value.
-```
-$resourceGroupName= <Resource Group Name>
-$domainNameLabel = <Domain Name Label Name>
-$vmname = "<Virtual Machine Name>
+```powershell
+$resourceGroupName= "Resource Group Name"
+$domainNameLabel = "Domain Name Label Name"
+$vmname = "Virtual Machine Name"
 $platformFaultDomainVMDefaultSet = 2
-$securePassword = <Password> | ConvertTo-SecureString -AsPlainText -Force
-$user = <Username>
+$securePassword = "Password" | ConvertTo-SecureString -AsPlainText -Force
+$user = "Username"
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
-$vmssName = <Vmss Name>;
+$vmssName = "Vmss Name";
 
 $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain;
 $vmss = New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $vmssConfig;
 
 $vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id
 ```
+
+This example Creates a new VM as part of a VMSS with a PlatformFaultDomain value.
+
+### Example 7: Creating a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
+```
+$rgname = <RESOURCE GROUP NAME>;
+$loc = <AZURE REGION>;
+New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+# VM Profile & Hardware
+$vmname = 'vm' + $rgname;
+$domainNameLabel = "d1" + $rgname;
+$vnetname = "myVnet";
+$vnetAddress = "10.0.0.0/16";
+$subnetname = "slb" + $rgname;
+$subnetAddress = "10.0.2.0/24";
+$OSDiskName = $vmname + "-osdisk";
+$NICName = $vmname+ "-nic";
+$NSGName = $vmname + "-NSG";
+$OSDiskSizeinGB = 128;
+$VMSize = "Standard_DS2_v2";
+$PublisherName = "MicrosoftWindowsServer";
+$Offer = "WindowsServer";
+$SKU = "2019-DATACENTER-GENSECOND";
+$securityType = "TrustedLaunch";
+$secureboot = $true;
+$vtpm = $true;
+
+# Default extension and identity values.
+$extDefaultName = "GuestAttestation";
+$vmGADefaultIDentity = "SystemAssigned";
+
+# Credential
+$password = <PASSWORD>;
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+$user = <USER NAME>;
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+# Network resources
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+$vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+$nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+# VM creation
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize;
+Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred;
+Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest;
+Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+$vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType;
+$vmConfig = Set-AzVMUefi -VM $vmConfig -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
+New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig;
+
+# Verify values
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
+$vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
+# Check the default extension has been installed, and the Identity.Type defaulted to SystemAssigned.
+# $vmExt.Name
+# $vm.Identity.Type
+
+# Use the DisableIntegrityMonitoring parameter
+Remove-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
+New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig -DisableIntegrityMonitoring;
+# This VM does not have the Guest Attestation extension installed on it, and the Identity is not set to SystemAssigned by default.
+```
+
+This example Creates a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
 
 ## PARAMETERS
 
@@ -320,8 +396,17 @@ Accept wildcard characters: False
 ```
 
 ### -Credential
-The administrator credentials for the VM.
-
+The administrator credentials for the VM. <br><br>
+**Username** <br>
+**Restriction:** <br>
+Windows: Cannot contain special characters \/""[]:|<>+=;,?*@& or end in \".\" <br>
+Linux: Username must only contain letters, numbers, hyphens, and underscores and may not start with a hyphen or number. <br>
+**Disallowed values:** \"administrator\", \"admin\", \"user\", \"user1\", \"test\", \"user2\", \"test1\", \"user3\", \"admin1\", \"1\", \"123\", \"a\", \"actuser\", \"adm\", \"admin2\", \"aspnet\", \"backup\", \"console\", \"david\", \"guest\", \"john\", \"owner\", \"root\", \"server\", \"sql\", \"support\", \"support_388945a0\", \"sys\", \"test2\", \"test3\", \"user4\", \"user5\". <br>
+**Minimum-length:** 1  character <br>
+**Max-length:** 20 characters for Windows, 64 characters for Linux <br><br>
+**Password** <br>
+Must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character. <br>
+The value must be between 12 and 123 characters long.
 ```yaml
 Type: System.Management.Automation.PSCredential
 Parameter Sets: SimpleParameterSet
@@ -391,6 +476,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableIntegrityMonitoring
+This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -547,7 +647,7 @@ Accept wildcard characters: False
 ```
 
 ### -Image
-The friendly image name upon which the VM will be built.  These include: Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Win2008R2SP1, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
+The friendly image name upon which the VM will be built.  These include: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Win2008R2SP1, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
 
 ```yaml
 Type: System.String
@@ -557,6 +657,21 @@ Aliases: ImageName
 Required: False
 Position: Named
 Default value: Win2016Datacenter
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageReferenceId
+Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -762,6 +877,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicIpSku
+Specifies public IP sku name
+
+Accpeted Values are "Basic" and "Standard"
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of a resource group.
 
@@ -804,23 +936,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImageReferenceId
-Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
-
-```yaml
-Type: System.String
-Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Size
-The Virtual Machine Size.  The Default Value is: Standard_D2s_v3.
+The Virtual Machine Size. [Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region.<br>
+The Default Value is: Standard_D2s_v3.
 
 ```yaml
 Type: System.String

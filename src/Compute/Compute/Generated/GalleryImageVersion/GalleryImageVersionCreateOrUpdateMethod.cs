@@ -147,6 +147,34 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 target.Encryption = new EncryptionImages(osDiskImageEncryption, dataDiskImageEncryption);
                             }
 
+                            if (t["CVMEncryptionType"] != null)
+                            {  
+                                if (target.Encryption == null)
+                                {
+                                    target.Encryption = new EncryptionImages();
+                                }
+                                target.Encryption.OsDiskImage = new OSDiskImageEncryption();
+                                target.Encryption.OsDiskImage.SecurityProfile = new OSDiskImageSecurityProfile();
+                                target.Encryption.OsDiskImage.SecurityProfile.ConfidentialVMEncryptionType = (string)t["CVMEncryptionType"];
+                            }
+
+                            if (t["CVMDiskEncryptionSetID"] != null)
+                            {
+                                if (target.Encryption == null)
+                                {
+                                    target.Encryption = new EncryptionImages();
+                                }
+                                if (target.Encryption.OsDiskImage == null)
+                                {
+                                    target.Encryption.OsDiskImage = new OSDiskImageEncryption();
+                                }
+                                if (target.Encryption.OsDiskImage.SecurityProfile == null)
+                                {
+                                    target.Encryption.OsDiskImage.SecurityProfile = new OSDiskImageSecurityProfile();
+                                }
+                                target.Encryption.OsDiskImage.SecurityProfile.SecureVMDiskEncryptionSetId = (string)t["CVMDiskEncryptionSetID"];
+                            }
+
                             galleryImageVersion.PublishingProfile.TargetRegions.Add(target);
                         }
                     }

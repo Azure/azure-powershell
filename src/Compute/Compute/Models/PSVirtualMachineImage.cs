@@ -81,5 +81,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         }
 
         public AutomaticOSUpgradeProperties AutomaticOSUpgradeProperties { get; set; }
+
+        public string Architecture { get; set; }
     }
 }

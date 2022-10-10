@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         partial void AfterFromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json);
 
         /// <summary>
-        /// <c>AfterToJson</c> will be called after the json erialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject"
+        /// <c>AfterToJson</c> will be called after the json serialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject"
         /// /> before it is returned. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="container">The JSON container that the serialization result will be placed in.</param>
@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// <summary>
         /// <c>BeforeFromJson</c> will be called before the json deserialization has commenced, allowing complete customization of
         /// the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name= "returnNow" />
+        /// output parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="json">The JsonNode that should be deserialized into this object.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// <summary>
         /// <c>BeforeToJson</c> will be called before the json serialization has commenced, allowing complete customization of the
         /// object before it is serialized.
-        /// If you wish to disable the default serialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default serialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="container">The JSON container that the serialization result will be placed in.</param>
@@ -60,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphUser(json, new global::System.Collections.Generic.HashSet<string>(){ @"id",@"deletedDateTime",@"displayName",@"@odata.type",@"@odata.id",@"accountEnabled",@"ageGroup",@"approximateLastSignInDateTime",@"businessPhones",@"city",@"companyName",@"consentProvidedForMinor",@"country",@"createdDateTime",@"creationType",@"complianceExpirationDateTime",@"department",@"deviceVersion",@"employeeHireDate",@"employeeId",@"employeeType",@"externalUserState",@"externalUserStateChangeDateTime",@"faxNumber",@"givenName",@"identities",@"imAddresses",@"isResourceAccount",@"jobTitle",@"lastPasswordChangeDateTime",@"legalAgeGroupClassification",@"mail",@"mailNickname",@"mobilePhone",@"officeLocation",@"otherMails",@"onPremisesImmutableId",@"onPremisesLastSyncDateTime",@"onPremisesSyncEnabled",@"operatingSystem",@"operatingSystemVersion",@"passwordPolicies",@"passwordProfile",@"postalCode",@"preferredLanguage",@"proxyAddresses",@"physicalIds",@"showInAddressList",@"signInSessionsValidFromDateTime",@"state",@"streetAddress",@"surname",@"trustType",@"usageLocation",@"userPrincipalName",@"userType" }) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphUser(json, new global::System.Collections.Generic.HashSet<string>(){ @"id",@"deletedDateTime",@"displayName",@"@odata.type",@"@odata.id",@"accountEnabled",@"ageGroup",@"approximateLastSignInDateTime",@"businessPhones",@"city",@"companyName",@"consentProvidedForMinor",@"country",@"createdDateTime",@"creationType",@"complianceExpirationDateTime",@"department",@"deviceVersion",@"employeeHireDate",@"employeeId",@"employeeOrgData",@"employeeType",@"externalUserState",@"externalUserStateChangeDateTime",@"faxNumber",@"givenName",@"identities",@"imAddresses",@"isResourceAccount",@"jobTitle",@"lastPasswordChangeDateTime",@"legalAgeGroupClassification",@"manager",@"mail",@"mailNickname",@"mobilePhone",@"officeLocation",@"otherMails",@"onPremisesImmutableId",@"onPremisesLastSyncDateTime",@"onPremisesSyncEnabled",@"operatingSystem",@"operatingSystemVersion",@"passwordPolicies",@"passwordProfile",@"postalCode",@"preferredLanguage",@"proxyAddresses",@"physicalIds",@"showInAddressList",@"signInSessionsValidFromDateTime",@"state",@"streetAddress",@"surname",@"trustType",@"usageLocation",@"userPrincipalName",@"userType" }) : null;
         }
 
         /// <summary>
@@ -93,6 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {_deviceVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNumber>("deviceVersion"), out var __jsonDeviceVersion) ? (int?)__jsonDeviceVersion : DeviceVersion;}
             {_employeeHireDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("employeeHireDate"), out var __jsonEmployeeHireDate) ? global::System.DateTime.TryParse((string)__jsonEmployeeHireDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonEmployeeHireDateValue) ? __jsonEmployeeHireDateValue : EmployeeHireDate : EmployeeHireDate;}
             {_employeeId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("employeeId"), out var __jsonEmployeeId) ? (string)__jsonEmployeeId : (string)EmployeeId;}
+            {_employeeOrgData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject>("employeeOrgData"), out var __jsonEmployeeOrgData) ? Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphEmployeeOrgData.FromJson(__jsonEmployeeOrgData) : EmployeeOrgData;}
             {_employeeType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("employeeType"), out var __jsonEmployeeType) ? (string)__jsonEmployeeType : (string)EmployeeType;}
             {_externalUserState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("externalUserState"), out var __jsonExternalUserState) ? (string)__jsonExternalUserState : (string)ExternalUserState;}
             {_externalUserStateChangeDateTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("externalUserStateChangeDateTime"), out var __jsonExternalUserStateChangeDateTime) ? global::System.DateTime.TryParse((string)__jsonExternalUserStateChangeDateTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonExternalUserStateChangeDateTimeValue) ? __jsonExternalUserStateChangeDateTimeValue : ExternalUserStateChangeDateTime : ExternalUserStateChangeDateTime;}
@@ -104,6 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {_jobTitle = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("jobTitle"), out var __jsonJobTitle) ? (string)__jsonJobTitle : (string)JobTitle;}
             {_lastPasswordChangeDateTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("lastPasswordChangeDateTime"), out var __jsonLastPasswordChangeDateTime) ? global::System.DateTime.TryParse((string)__jsonLastPasswordChangeDateTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastPasswordChangeDateTimeValue) ? __jsonLastPasswordChangeDateTimeValue : LastPasswordChangeDateTime : LastPasswordChangeDateTime;}
             {_legalAgeGroupClassification = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("legalAgeGroupClassification"), out var __jsonLegalAgeGroupClassification) ? (string)__jsonLegalAgeGroupClassification : (string)LegalAgeGroupClassification;}
+            {_manager = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject>("manager"), out var __jsonManager) ? Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphDirectoryObject.FromJson(__jsonManager) : Manager;}
             {_mail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("mail"), out var __jsonMail) ? (string)__jsonMail : (string)Mail;}
             {_mailNickname = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("mailNickname"), out var __jsonMailNickname) ? (string)__jsonMailNickname : (string)MailNickname;}
             {_mobilePhone = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("mobilePhone"), out var __jsonMobilePhone) ? (string)__jsonMobilePhone : (string)MobilePhone;}
@@ -185,6 +189,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             AddIf( null != this._deviceVersion ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNumber((int)this._deviceVersion) : null, "deviceVersion" ,container.Add );
             AddIf( null != this._employeeHireDate ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._employeeHireDate?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "employeeHireDate" ,container.Add );
             AddIf( null != (((object)this._employeeId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._employeeId.ToString()) : null, "employeeId" ,container.Add );
+            AddIf( null != this._employeeOrgData ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) this._employeeOrgData.ToJson(null,serializationMode) : null, "employeeOrgData" ,container.Add );
             AddIf( null != (((object)this._employeeType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._employeeType.ToString()) : null, "employeeType" ,container.Add );
             AddIf( null != (((object)this._externalUserState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._externalUserState.ToString()) : null, "externalUserState" ,container.Add );
             AddIf( null != this._externalUserStateChangeDateTime ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._externalUserStateChangeDateTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "externalUserStateChangeDateTime" ,container.Add );
@@ -221,6 +226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {
                 AddIf( null != (((object)this._legalAgeGroupClassification)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._legalAgeGroupClassification.ToString()) : null, "legalAgeGroupClassification" ,container.Add );
             }
+            AddIf( null != this._manager ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) this._manager.ToJson(null,serializationMode) : null, "manager" ,container.Add );
             AddIf( null != (((object)this._mail)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._mail.ToString()) : null, "mail" ,container.Add );
             AddIf( null != (((object)this._mailNickname)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._mailNickname.ToString()) : null, "mailNickname" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeReadOnly))

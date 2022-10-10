@@ -24,10 +24,14 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCache;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-
+using Microsoft.Azure.Commands.Common.Authentication.Config;
 using Newtonsoft.Json;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+
 
 using TraceLevel = System.Diagnostics.TraceLevel;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -37,14 +41,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public static class AzureSessionInitializer
     {
         private const string ContextAutosaveSettingFileName = ContextAutosaveSettings.AutoSaveSettingsFile;
+
         private const string DataCollectionFileName = AzurePSDataCollectionProfile.DefaultFileName;
 
         /// <summary>
         /// Initialize the azure session if it is not already initialized
         /// </summary>
-        public static void InitializeAzureSession()
+        public static void InitializeAzureSession(Action<string> writeWarning = null)
         {
-            AzureSession.Initialize(() => CreateInstance());
+            AzureSession.Initialize(() => CreateInstance(null, writeWarning));
         }
 
         /// <summary>
@@ -136,7 +141,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     new AdalTokenMigrator(adalData, getContextContainer).MigrateFromAdalToMsal();
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 writeWarning(Resources.FailedToMigrateAdal2Msal.FormatInvariant(e.Message));
             }
@@ -171,7 +176,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     result.ContextDirectory = migrated ? profileDirectory : settings.ContextDirectory ?? result.ContextDirectory;
                     result.Mode = settings.Mode;
                     result.ContextFile = settings.ContextFile ?? result.ContextFile;
-                    if (migrated)
+                    result.Settings = settings.Settings;
+                    bool updateSettings = false;
+                    if (!settings.Settings.ContainsKey("InstallationId"))
+                    {
+                        result.Settings.Add("InstallationId", GetAzureCLIInstallationId(store) ?? Guid.NewGuid().ToString());
+                        updateSettings = true;
+                    }
+                    if (migrated || updateSettings)
                     {
                         string autoSavePath = Path.Combine(profileDirectory, settingsFile);
                         store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
@@ -186,6 +198,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     }
                     string autoSavePath = Path.Combine(profileDirectory, settingsFile);
                     result.Mode = ContextSaveMode.CurrentUser;
+                    result.Settings.Add("InstallationId", GetAzureCLIInstallationId(store) ?? Guid.NewGuid().ToString());
                     store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
                 }
             }
@@ -200,19 +213,35 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return result;
         }
 
+        private static String GetAzureCLIInstallationId(IDataStore store){
+            if (store.FileExists(AzCLIProfileInfo.AzCLIProfileFile))
+            {
+                try
+                {
+                    AzCLIProfileInfo azInfo = JsonConvert.DeserializeObject<AzCLIProfileInfo>(store.ReadFileAsText(AzCLIProfileInfo.AzCLIProfileFile));
+                    if (!string.IsNullOrEmpty(azInfo?.installationId))
+                    {
+                        return azInfo.installationId;
+                    }
+                }
+                catch (Exception)
+                {
+                    TracingAdapter.Information($"[AzureSessionInitializer]: Cannot read Azure CLI profile from {AzCLIProfileInfo.AzCLIProfileFile}");
+                }
+            }
+            return null;
+        }
         static void InitializeDataCollection(IAzureSession session)
         {
             session.RegisterComponent(DataCollectionController.RegistryKey, () => DataCollectionController.Create(session));
         }
 
-        static IAzureSession CreateInstance(IDataStore dataStore = null)
+        static IAzureSession CreateInstance(IDataStore dataStore = null, Action<string> writeWarning = null)
         {
             string profilePath = Path.Combine(
-#if NETSTANDARD
                     Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
                     Resources.AzureDirectoryName);
             string oldProfilePath = Path.Combine(
-#endif
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                     Resources.OldAzureDirectoryName);
             dataStore = dataStore ?? new DiskDataStore();
@@ -232,22 +261,61 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             };
 
             var migrated =
-#if !NETSTANDARD
-                false;
-#else
                 MigrateSettings(dataStore, oldProfilePath, profilePath);
-#endif
             var autoSave = InitializeSessionSettings(dataStore, cachePath, profilePath, ContextAutosaveSettings.AutoSaveSettingsFile, migrated);
             session.ARMContextSaveMode = autoSave.Mode;
             session.ARMProfileDirectory = autoSave.ContextDirectory;
             session.ARMProfileFile = autoSave.ContextFile;
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = autoSave.CacheFile;
-
+            autoSave.Settings.TryGetValue("InstallationId", out string installationId);
+            session.ExtendedProperties.Add("InstallationId", installationId);
+            InitializeConfigs(session, profilePath, writeWarning);
             InitializeDataCollection(session);
             session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());
             session.TokenCache = session.TokenCache ?? new AzureTokenCache();
             return session;
+        }
+
+        private static void InitializeConfigs(AzureSession session, string profilePath, Action<string> writeWarning)
+        {
+            if (writeWarning == null) { writeWarning = (string s) => { }; };
+            var fallbackList = new List<string>()
+            {
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".Azure", "PSConfig.json"),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), ".Azure", "PSConfig.json")
+            };
+            ConfigInitializer configInitializer = new ConfigInitializer(fallbackList);
+
+            using (var mutex = new Mutex(false, @"Global\AzurePowerShellConfigInit"))
+            {
+                if (mutex.WaitOne(1000))
+                {
+                    // regular initialization
+                    try
+                    {
+                        configInitializer.MigrateConfigs(profilePath);
+                        configInitializer.Initialize(session);
+                        return; // done, return.
+                    }
+                    catch (Exception ex)
+                    {
+                        writeWarning($"[AzureSessionInitializer] Failed to initialize the configs, reason: {ex.Message}.");
+                    }
+                    finally
+                    {
+                        mutex.ReleaseMutex();
+                    }
+                }
+                else
+                {
+                    writeWarning($"[AzureSessionInitializer] Timed out when initializing the configs.");
+                }
+
+                // initialize in safe mode and do not try to migrate configs
+                writeWarning($"[AzureSessionInitializer] Config manager will be re-initialized in safe mode. All configs will have only default values.");
+                configInitializer.SafeInitialize(session);
+            }
         }
 
         public class AdalSession : AzureSession

@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.Eventhub
         public const string SystemAssignedUserAssigned = "SystemAssigned, UserAssigned";
         public const string None = "None";
 
+        public const int maxApplicationGroups = 100;
+
         #region Namespace
         public PSNamespaceAttributes GetNamespace(string resourceGroupName, string namespaceName)
         {
@@ -61,349 +63,70 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public IEnumerable<PSNamespaceAttributes> ListNamespacesByResourceGroup(string resourceGroupName)
         {
-            var response = Client.Namespaces.ListByResourceGroup(resourceGroupName);
-            var resourceList = response.Select(resource => new PSNamespaceAttributes(resource));
-            return resourceList;
+            var listOfNamespaces = new List<PSNamespaceAttributes>();
+
+            string nextPageLink = null;
+
+            do
+            {
+                var pageOfNamespaces = new List<PSNamespaceAttributes>();
+
+                if (!String.IsNullOrEmpty(nextPageLink))
+                {
+                    var result = Client.Namespaces.ListByResourceGroupNext(nextPageLink);
+                    nextPageLink = result.NextPageLink;
+                    pageOfNamespaces = result.Select(resource => new PSNamespaceAttributes(resource)).ToList();
+                }
+                else
+                {
+                    var result = Client.Namespaces.ListByResourceGroup(resourceGroupName);
+                    nextPageLink = result.NextPageLink;
+                    pageOfNamespaces = result.Select(resource => new PSNamespaceAttributes(resource)).ToList();
+                }
+
+                listOfNamespaces.AddRange(pageOfNamespaces);
+
+            } while (!String.IsNullOrEmpty(nextPageLink));
+
+            return listOfNamespaces;
         }
 
         public IEnumerable<PSNamespaceAttributes> ListNamespacesBySubscription()
         {
-            var response = Client.Namespaces.List();
-            var resourceList = response.Select(resource => new PSNamespaceAttributes(resource));
-            return resourceList;
+            var listOfNamespaces = new List<PSNamespaceAttributes>();
+
+            string nextPageLink = null;
+
+            do
+            {
+                var pageOfNamespaces = new List<PSNamespaceAttributes>();
+
+                if (!String.IsNullOrEmpty(nextPageLink))
+                {
+                    var result = Client.Namespaces.ListNext(nextPageLink);
+                    nextPageLink = result.NextPageLink;
+                    pageOfNamespaces = result.Select(resource => new PSNamespaceAttributes(resource)).ToList();
+                }
+                else
+                {
+                    var result = Client.Namespaces.List();
+                    nextPageLink = result.NextPageLink;
+                    pageOfNamespaces = result.Select(resource => new PSNamespaceAttributes(resource)).ToList();
+                }
+
+                listOfNamespaces.AddRange(pageOfNamespaces);
+
+            } while (!String.IsNullOrEmpty(nextPageLink));
+
+            return listOfNamespaces;
         }
 
-        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool isAutoInflateEnabled, int? maximumThroughputUnits, bool isKafkaEnabled, string clusterARMId, bool isZoneRedundant, bool isDisableLocalAuth, bool isIdentity
-            , string identityType, string[] identityId, PSEncryptionConfigAttributes[] encryptionConfigs)
+        public PSNamespaceAttributes SendNamespaceCreateOrUpdateRequest(string resourceGroupName, string namespaceName, EHNamespace namespacePayload)
         {
-            EHNamespace parameter = new EHNamespace();
-            parameter.Location = location;
-
-            if (tags != null)
-            {
-                parameter.Tags = new Dictionary<string, string>(tags);
-            }
-
-            if (skuName != null)
-            {
-                parameter.Sku = new Sku
-                {
-                    Name = skuName,
-                    Tier = skuName
-                };
-            }
-
-            if (clusterARMId != null)
-            {
-                parameter.ClusterArmId = clusterARMId;
-            }
-
-            if (skuCapacity.HasValue)
-            {
-                parameter.Sku.Capacity = skuCapacity;
-            }
-
-            if (isAutoInflateEnabled)
-                parameter.IsAutoInflateEnabled = isAutoInflateEnabled;
-
-            if (maximumThroughputUnits.HasValue)
-                parameter.MaximumThroughputUnits = maximumThroughputUnits;
-
-            if (isKafkaEnabled)
-                parameter.KafkaEnabled = isKafkaEnabled;
-
-            if (isZoneRedundant)
-                parameter.ZoneRedundant = isZoneRedundant;
-
-            if (isDisableLocalAuth)
-                parameter.DisableLocalAuth = isDisableLocalAuth;
-
-            if (isIdentity)
-                parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned};
-
-            if (identityType != null)
-            {
-                parameter.Identity = new Identity();
-                parameter.Identity.Type = FindIdentity(identityType);
-            }
-
-            if (identityId != null)
-            {
-
-                Dictionary<string, UserAssignedIdentity> UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
-
-                UserAssignedIdentities = identityId.Where(id => id != null).ToDictionary(id => id, id => new UserAssignedIdentity());
-
-                if (parameter.Identity == null)
-                {
-                    parameter.Identity = new Identity() { UserAssignedIdentities = UserAssignedIdentities };
-                }
-                else
-                {
-                    parameter.Identity.UserAssignedIdentities = UserAssignedIdentities;
-                }
-                if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
-                {
-                    throw new Exception("Please change -IdentityType to 'UserAssigned' or 'SystemAssigned, UserAssigned' if you want to add User Assigned Identities");
-                }
-            }
-
-            if (encryptionConfigs != null)
-            {
-                if (parameter.Encryption == null)
-                {
-                    parameter.Encryption = new Encryption() { KeySource = KeySource.MicrosoftKeyVault };
-                }
-
-                parameter.Encryption.KeyVaultProperties = new List<KeyVaultProperties>();
-
-                parameter.Encryption.KeyVaultProperties = encryptionConfigs.Where(x => x != null)
-                                                                     .Select(x => {
-                                                                         KeyVaultProperties kvp = new KeyVaultProperties();
-
-                                                                         if (x.KeyName == null || x.KeyVaultUri == null)
-                                                                             throw new Exception("KeyName and KeyVaultUri cannot be null");
-
-                                                                         kvp.KeyName = x.KeyName;
-
-                                                                         kvp.KeyVaultUri = x.KeyVaultUri;
-
-                                                                         kvp.KeyVersion = x?.KeyVersion;
-
-                                                                         if (x.UserAssignedIdentity != null)
-                                                                             kvp.Identity = new UserAssignedIdentityProperties(x.UserAssignedIdentity);
-
-                                                                         return kvp;
-                                                                     })
-                                                                     .ToList();
-            }
-
-            var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
+            EHNamespace response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, namespacePayload);
             return new PSNamespaceAttributes(response);
         }
 
-        // Update Namespace                                                     (ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, ZoneRedundant.IsPresent, Identity.IsPresent, IdentityUserDefined, KeySource, KeyProperties));                    
-        public PSNamespaceAttributes BeginUpdateNamespace(string resourceGroupName,
-            string namespaceName,
-            string location,
-            string skuName,
-            int? skuCapacity,
-            Dictionary<string, string> tags,
-            bool isAutoInflateEnabled,
-            int? maximumThroughputUnits,
-            bool isKafkaEnabled, bool isIdentity, string identityUserDefined, string keySource, List<string []> KeyProperties, bool isDisableLocalAuth, 
-            string[] identityId, string identityType, PSEncryptionConfigAttributes[] encryptionConfigs)
-        {          
-
-            EHNamespace parameter = Client.Namespaces.Get(resourceGroupName, namespaceName);
-
-            if (parameter.Identity != null && parameter.Encryption != null && KeyProperties != null)
-            {
-                parameter.Encryption = new Encryption();
-                parameter.Encryption.KeyVaultProperties = new List<KeyVaultProperties>();
-            }
-
-            if(location != null)
-            {
-                parameter.Location = location;
-            }
-
-            if (tags != null)
-            {
-
-                parameter.Tags = new Dictionary<string, string>(tags);
-            }
-
-            if (skuName != null)
-            {
-                parameter.Sku = new Sku
-                {
-                    Name = skuName,
-                    Tier = skuName
-                };
-            }
-
-            if (skuCapacity.HasValue)
-            {
-                parameter.Sku.Capacity = skuCapacity;
-            }
-
-            if (isAutoInflateEnabled)
-                parameter.IsAutoInflateEnabled = isAutoInflateEnabled;
-
-            if (maximumThroughputUnits.HasValue)
-                parameter.MaximumThroughputUnits = maximumThroughputUnits;
-
-            if (isKafkaEnabled)
-                parameter.KafkaEnabled = isKafkaEnabled;
-
-            if (isIdentity) { 
-                if(parameter.Identity == null)
-                {
-                    parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned };
-                }
-                else
-                {
-                    if(parameter.Identity.Type == ManagedServiceIdentityType.None)
-                    {
-                        parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssigned };
-                    }
-                    if (parameter.Identity.Type == ManagedServiceIdentityType.UserAssigned)
-                    {
-                        parameter.Identity = new Identity() { Type = ManagedServiceIdentityType.SystemAssignedUserAssigned };
-                    }
-                }
-            }
-
-            if (isDisableLocalAuth)
-                parameter.DisableLocalAuth = isDisableLocalAuth;
-
-
-            //IdentityUserDefined, KeySource, KeyProperties
-            if (!String.IsNullOrEmpty(identityUserDefined) && identityUserDefined.ToLower() == "none")
-            {
-                parameter.Identity = new Identity() { Type = null};
-            }
-
-            if (!String.IsNullOrEmpty(keySource))
-            {
-                if (parameter.Encryption == null)
-                {
-                    parameter.Encryption = new Encryption()
-                    {
-                        KeySource = KeySource.MicrosoftKeyVault
-                    };
-                }
-                else
-                {
-                    parameter.Encryption.KeySource = KeySource.MicrosoftKeyVault;
-                }
-            }
-
-            if (KeyProperties != null)
-            {
-                parameter.Encryption.KeyVaultProperties = new List<KeyVaultProperties>();
-
-                if (KeyProperties.Count > 2)
-                {
-                    if (KeyProperties[0].Length == 1)
-                    {
-                        KeyVaultProperties item = new KeyVaultProperties();
-
-                        switch (KeyProperties.Count)
-                        {
-                            case 2:
-                                {
-                                    item.KeyName = KeyProperties[0].ToString();
-                                    item.KeyVaultUri = KeyProperties[0].ToString();
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    item.KeyName = KeyProperties[0].GetValue(0).ToString();
-                                    item.KeyVaultUri = KeyProperties[1].GetValue(0).ToString();
-                                    item.KeyVersion = KeyProperties[2].GetValue(0).ToString();
-                                    break;
-                                }
-                        }
-                        parameter.Encryption.KeyVaultProperties.Add(item);
-                    }
-                    else
-                    {
-                        foreach (string[] item in KeyProperties)
-                        {
-                            KeyVaultProperties singleItem = new KeyVaultProperties();
-                            switch (item.Length)
-                            {
-                                case 2:
-                                    {
-                                        singleItem.KeyName = item[0];
-                                        singleItem.KeyVaultUri = item[1];
-                                        break;
-                                    }
-                                case 3:
-                                    {
-                                        singleItem.KeyName = item[0];
-                                        singleItem.KeyVaultUri = item[1];
-                                        singleItem.KeyVersion = item[2];
-                                        break;
-                                    }
-                            }
-
-                            parameter.Encryption.KeyVaultProperties.Add(singleItem);
-                        }
-                    }
-                }                
-            }
-            if (identityType != null)
-            {
-                if(parameter.Identity == null)
-                {
-                    parameter.Identity = new Identity();
-                }
-
-                parameter.Identity.Type = FindIdentity(identityType);
-
-                if(parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
-                {
-                    parameter.Identity.UserAssignedIdentities = null;
-                }
-            }
-
-            if (identityId != null)
-            {
-                Dictionary<string, UserAssignedIdentity> UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
-
-                UserAssignedIdentities = identityId.Where(id => id != null).ToDictionary(id => id, id => new UserAssignedIdentity());
-
-                if (parameter.Identity == null)
-                {
-                    parameter.Identity = new Identity() { UserAssignedIdentities = UserAssignedIdentities };
-                }
-                else
-                {
-                    parameter.Identity.UserAssignedIdentities = UserAssignedIdentities;
-                }
-                if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
-                {
-                    throw new Exception("Please change -IdentityType to UserAssigned or 'SystemAssigned, UserAssigned' if you want to add User Assigned Identities");
-                }
-            }
-
-            if (encryptionConfigs != null)
-            {
-                if (parameter.Encryption == null)
-                {
-                    parameter.Encryption = new Encryption() { KeySource = KeySource.MicrosoftKeyVault };
-                }
-
-                parameter.Encryption.KeyVaultProperties = new List<KeyVaultProperties>();
-
-                parameter.Encryption.KeyVaultProperties = encryptionConfigs.Where(x => x != null)
-                                                                     .Select(x =>
-                                                                     {
-                                                                         KeyVaultProperties kvp = new KeyVaultProperties();
-
-                                                                         if (x.KeyName == null || x.KeyVaultUri == null)
-                                                                             throw new Exception("KeyName and KeyVaultUri cannot be null");
-
-                                                                         kvp.KeyName = x.KeyName;
-
-                                                                         kvp.KeyVaultUri = x.KeyVaultUri;
-
-                                                                         kvp.KeyVersion = x?.KeyVersion;
-
-                                                                         if (x.UserAssignedIdentity != null)
-                                                                             kvp.Identity = new UserAssignedIdentityProperties(x.UserAssignedIdentity);
-
-                                                                         return kvp;
-                                                                     })
-                                                                     .ToList();
-            }
-
-            var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
-            return new PSNamespaceAttributes(response);
-        }
 
         public ManagedServiceIdentityType FindIdentity(string identityType)
         {
@@ -421,6 +144,51 @@ namespace Microsoft.Azure.Commands.Eventhub
                 Type = ManagedServiceIdentityType.None;
 
             return Type;
+        }
+
+        public Dictionary<string, UserAssignedIdentity> MapIdentityId(string[] IdentityId)
+        {
+            Dictionary<string, UserAssignedIdentity> UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
+
+            UserAssignedIdentities = IdentityId.Where(id => id != null).ToDictionary(id => id, id => new UserAssignedIdentity());
+
+            return UserAssignedIdentities;
+        }
+
+        public List<KeyVaultProperties> MapEncryptionConfig(PSEncryptionConfigAttributes[] EncryptionConfig)
+        {
+
+            return EncryptionConfig?.Where(x => x != null)
+                                   .Select(x =>
+                                   {
+                                        KeyVaultProperties kvp = new KeyVaultProperties();
+
+                                        if (x.KeyName == null || x.KeyVaultUri == null)
+                                            throw new Exception("KeyName and KeyVaultUri cannot be null");
+
+                                        kvp.KeyName = x.KeyName;
+
+                                        kvp.KeyVaultUri = x.KeyVaultUri;
+
+                                        kvp.KeyVersion = x?.KeyVersion;
+
+                                        if (x.UserAssignedIdentity != null)
+                                            kvp.Identity = new UserAssignedIdentityProperties(x.UserAssignedIdentity);
+
+                                        return kvp;
+                                   })
+                                   .ToList();
+
+        }
+
+        public void InvalidArgumentException(string message)
+        {
+            throw new PSArgumentException(message);
+        }
+
+        public EHNamespace GetEventHubNamespace(string resourceGroupName, string namespaceName)
+        {
+            return Client.Namespaces.Get(resourceGroupName, namespaceName);
         }
 
 
@@ -469,7 +237,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSListKeysAttributes(listKeys);
         }
 
-        public PSListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys, string keyValue=null)
+        public PSListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys, string keyValue = null)
         {
             AccessKeys regenerateKeyslistKeys;
             RegenerateAccessKeyParameters regenParam = new RegenerateAccessKeyParameters();
@@ -487,343 +255,6 @@ namespace Microsoft.Azure.Commands.Eventhub
         }
 
         #endregion
-
-        #region EventHub
-        public PSEventHubAttributes GetEventHub(string resourceGroupName, string namespaceName, string eventHubName)
-        {
-            var response = Client.EventHubs.Get(resourceGroupName, namespaceName, eventHubName);
-            return new PSEventHubAttributes(response);
-        }
-
-        public IEnumerable<PSEventHubAttributes> ListAllEventHubs(string resourceGroupName, string namespaceName, int? maxCount = null)
-        {
-
-            IEnumerable<PSEventHubAttributes> resourceList = Enumerable.Empty<PSEventHubAttributes>();
-            int? skip = 0;
-            switch (ReturnmaxCountvalueForSwtich(maxCount))
-            {
-
-                case 0:
-                    var response = Client.EventHubs.ListByNamespace(resourceGroupName, namespaceName, skip: 0, top: maxCount);
-                    resourceList = response.Select(resource => new PSEventHubAttributes(resource));
-                    break;
-                case 1:
-                    while (maxCount > 0)
-                    {
-                        var response1 = Client.EventHubs.ListByNamespace(resourceGroupName, namespaceName, skip: skip, top: maxCount);
-                        resourceList = resourceList.Concat<PSEventHubAttributes>(response1.Select(resource => new PSEventHubAttributes(resource)));
-                        skip += maxCount > 100 ? 100 : maxCount;
-                        maxCount = maxCount - 100;
-                    }
-                    break;
-                default:
-                    var response2 = Client.EventHubs.ListByNamespace(resourceGroupName, namespaceName);
-                    resourceList = response2.Select(resource => new PSEventHubAttributes(resource));
-                    break;
-
-            }
-            return resourceList;
-        }
-
-        public PSEventHubAttributes CreateOrUpdateEventHub(string resourceGroupName, string namespaceName, string eventHubName, PSEventHubAttributes parameter)
-        {
-            var Parameter1 = new Management.EventHub.Models.Eventhub();
-
-            if (parameter.MessageRetentionInDays.HasValue)
-                Parameter1.MessageRetentionInDays = parameter.MessageRetentionInDays;
-
-            if (parameter.PartitionCount.HasValue)
-                Parameter1.PartitionCount = parameter.PartitionCount;
-
-            if (parameter.Status.HasValue)
-                Parameter1.Status = parameter.Status;
-
-            if (parameter.CaptureDescription != null)
-            {
-                Parameter1.CaptureDescription = new CaptureDescription();
-                Parameter1.CaptureDescription.Destination = new Destination();
-                Parameter1.CaptureDescription.Enabled = parameter.CaptureDescription.Enabled;
-                Parameter1.CaptureDescription.SkipEmptyArchives = parameter.CaptureDescription.SkipEmptyArchives;
-                Parameter1.CaptureDescription.Encoding = (Management.EventHub.Models.EncodingCaptureDescription?)parameter.CaptureDescription.Encoding;
-                Parameter1.CaptureDescription.IntervalInSeconds = parameter.CaptureDescription.IntervalInSeconds;
-                Parameter1.CaptureDescription.SizeLimitInBytes = parameter.CaptureDescription.SizeLimitInBytes;
-                Parameter1.CaptureDescription.Destination.Name = parameter.CaptureDescription.Destination.Name;
-                Parameter1.CaptureDescription.Destination.BlobContainer = parameter.CaptureDescription.Destination.BlobContainer;
-                Parameter1.CaptureDescription.Destination.ArchiveNameFormat = parameter.CaptureDescription.Destination.ArchiveNameFormat;
-                Parameter1.CaptureDescription.Destination.StorageAccountResourceId = parameter.CaptureDescription.Destination.StorageAccountResourceId;
-            }
-
-            var response = Client.EventHubs.CreateOrUpdate(resourceGroupName, namespaceName, eventHubName, Parameter1);
-            return new PSEventHubAttributes(response);
-        }
-
-        public PSEventHubClusterAttributes CreateOrUpdateEventHubCluster(string resourceGroupName, string clusterName, PSEventHubClusterAttributes parameter)
-        {
-            var parameterCluster = new Management.EventHub.Models.Cluster();
-
-            parameterCluster.Location = parameter.Location;
-            parameterCluster.Sku = new ClusterSku();
-            parameterCluster.Sku.Capacity = parameter.Sku.Capacity;
-            parameterCluster.Tags = parameter.Tags;
-
-            Management.EventHub.Models.Cluster response = Client.Clusters.CreateOrUpdate(resourceGroupName, clusterName, parameterCluster);
-            return new PSEventHubClusterAttributes(response);
-        }
-
-        public PSEventHubClusterAttributes UpdateEventHubCluster(string resourceGroupName, string clusterName, PSEventHubClusterAttributes parameter)
-        {
-            var parameterCluster = new Management.EventHub.Models.Cluster();
-
-            parameterCluster.Location = parameter.Location;
-            parameterCluster.Sku = new ClusterSku();
-            parameterCluster.Sku.Capacity = parameter.Sku.Capacity;
-            parameterCluster.Tags = parameter.Tags;
-
-            Management.EventHub.Models.Cluster response = Client.Clusters.Update(resourceGroupName, clusterName, parameterCluster);
-            return new PSEventHubClusterAttributes(response);
-        }
-
-
-        public PSEventHubClusterAttributes GetEventHubCluster(string resourceGroupName, string clusterName)
-        {
-            Management.EventHub.Models.Cluster response = Client.Clusters.Get(resourceGroupName, clusterName);
-            return new PSEventHubClusterAttributes(response);
-        }
-
-        public IEnumerable<PSEventHubsAvailableCluster> GetEventHubAvailableClusters()
-        {
-            var regionListResponse = Client.Clusters.ListAvailableClusterRegion();
-            IEnumerable<PSEventHubsAvailableCluster> response = regionListResponse.Value.Select(resource => new PSEventHubsAvailableCluster(resource));
-            return response;
-        }
-
-        public IEnumerable<PSEventHubClusterAttributes> ListEventHubCluster(string resourceGroupName)
-        {
-            var listResponse = Client.Clusters.ListByResourceGroup(resourceGroupName);
-            var resourceList = listResponse.Select(resource => new PSEventHubClusterAttributes(resource));
-            return resourceList;
-        }
-
-        public bool DeleteEventHubCluster(string resourceGroupName, string clusterName)
-        {
-            Client.Clusters.Delete(resourceGroupName, clusterName);
-            return true;
-        }
-
-
-        public bool DeleteEventHub(string resourceGroupName, string namespaceName, string eventHubName)
-        {
-            Client.EventHubs.Delete(resourceGroupName, namespaceName, eventHubName);
-            return true;
-        }
-
-        public PSSharedAccessAuthorizationRuleAttributes GetEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName)
-        {
-            var response = Client.EventHubs.GetAuthorizationRule(resourceGroupName, namespaceName, eventHubName, authRuleName);
-            return new PSSharedAccessAuthorizationRuleAttributes(response);
-        }
-
-        public IEnumerable<PSSharedAccessAuthorizationRuleAttributes> ListEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName)
-        {
-            var response = Client.EventHubs.ListAuthorizationRules(resourceGroupName, namespaceName, eventHubName);
-            var resourceList = response.Select(resource => new PSSharedAccessAuthorizationRuleAttributes(resource));
-            return resourceList;
-        }
-                
-        public PSSharedAccessAuthorizationRuleAttributes CreateOrUpdateEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, PSSharedAccessAuthorizationRuleAttributes parameters)
-        {
-            var parameter1 = new AuthorizationRule()
-            {
-                Rights = parameters.Rights.ToList()
-            };
-
-            var response = Client.EventHubs.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, eventHubName, authorizationRuleName, parameter1.Rights);
-            return new PSSharedAccessAuthorizationRuleAttributes(response);
-        }
-
-        public bool DeleteEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName)
-        {
-            if (string.Equals(PSAuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
-            {
-                return false;
-            }
-
-            Client.EventHubs.DeleteAuthorizationRule(resourceGroupName, namespaceName, eventHubName, authRuleName);
-            return true;
-        }
-
-        public PSListKeysAttributes GetEventHubListKeys(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName)
-        {
-            var listKeys = Client.EventHubs.ListKeys(resourceGroupName, namespaceName, eventHubName, authRuleName);
-            return new PSListKeysAttributes(listKeys);
-        }
-
-        public PSListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName, string regenerateKeys, string keyValue = null)
-        {
-
-            AccessKeys regenerateKeyslistKeys;
-            RegenerateAccessKeyParameters regenParam = new RegenerateAccessKeyParameters();
-
-            if (regenerateKeys == "PrimaryKey")
-                regenParam.KeyType = KeyType.PrimaryKey;
-            else
-                regenParam.KeyType = KeyType.SecondaryKey;
-
-            regenParam.Key = keyValue;
-
-            regenerateKeyslistKeys = Client.EventHubs.RegenerateKeys(resourceGroupName, namespaceName, eventHubName, authRuleName, regenParam.KeyType, regenParam.Key);
-
-            return new PSListKeysAttributes(regenerateKeyslistKeys);
-
-        }
-
-        #endregion
-
-        #region DRConfiguration
-        public PSEventHubDRConfigurationAttributes GetEventHubDRConfiguration(string resourceGroupName, string namespaceName, string alias)
-        {
-            var response = Client.DisasterRecoveryConfigs.Get(resourceGroupName, namespaceName, alias);
-            return new PSEventHubDRConfigurationAttributes(response);
-        }
-
-        public IEnumerable<PSEventHubDRConfigurationAttributes> ListAllEventHubDRConfiguration(string resourceGroupName, string namespaceName)
-        {
-            var response = Client.DisasterRecoveryConfigs.List(resourceGroupName, namespaceName);
-            var resourceList = response.Select(resource => new PSEventHubDRConfigurationAttributes(resource));
-            return resourceList;
-        }
-
-        public PSEventHubDRConfigurationAttributes CreateEventHubDRConfiguration(string resourceGroupName, string namespaceName, string alias, PSEventHubDRConfigurationAttributes parameter)
-        {
-            var Parameter1 = new Management.EventHub.Models.ArmDisasterRecovery();
-
-            if (!string.IsNullOrEmpty(parameter.PartnerNamespace))
-                Parameter1.PartnerNamespace = parameter.PartnerNamespace;
-
-            if (!string.IsNullOrEmpty(parameter.AlternateName))
-                Parameter1.AlternateName = parameter.AlternateName;
-
-            var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias,Parameter1.PartnerNamespace, Parameter1.AlternateName);
-
-            return new PSEventHubDRConfigurationAttributes(response);
-        }
-
-        public bool DeleteEventHubDRConfiguration(string resourceGroupName, string namespaceName, string alias)
-        {
-            Client.DisasterRecoveryConfigs.Delete(resourceGroupName, namespaceName, alias);
-            return true;
-        }
-
-        public void SetEventHubDRConfigurationBreakPairing(string resourceGroupName, string namespaceName, string alias)
-        {
-            Client.DisasterRecoveryConfigs.BreakPairing(resourceGroupName, namespaceName, alias);
-        }
-
-        public void SetEventHubDRConfigurationFailOver(string resourceGroupName, string namespaceName, string alias)
-        {
-            Client.DisasterRecoveryConfigs.FailOver(resourceGroupName, namespaceName, alias);
-        }
-
-        public PSListKeysAttributes GetAliasListKeys(string resourceGroupName, string namespaceName, string aliasName, string authRuleName)
-        {
-            var listKeys = Client.DisasterRecoveryConfigs.ListKeys(resourceGroupName, namespaceName, aliasName, authRuleName);
-            return new PSListKeysAttributes(listKeys);
-        }
-
-        public PSSharedAccessAuthorizationRuleAttributes GetAliasAuthorizationRules(string resourceGroupName, string namespaceName, string aliasName, string authRuleName)
-        {
-            var response = Client.DisasterRecoveryConfigs.GetAuthorizationRule(resourceGroupName, namespaceName, aliasName, authRuleName);
-            return new PSSharedAccessAuthorizationRuleAttributes(response);
-        }
-
-        public IEnumerable<PSSharedAccessAuthorizationRuleAttributes> ListAliasAuthorizationRules(string resourceGroupName, string namespaceName, string aliasName)
-        {
-            var response = Client.DisasterRecoveryConfigs.ListAuthorizationRules(resourceGroupName, namespaceName, aliasName);
-            var resourceList = response.Select(resource => new PSSharedAccessAuthorizationRuleAttributes(resource));
-            return resourceList;
-        }
-
-
-        #endregion
-
-        #region ConsumerGroup
-        public PSConsumerGroupAttributes CreateOrUpdateConsumerGroup(string resourceGroupName, string namespaceName, string eventHubName, string consumerGroupName, PSConsumerGroupAttributes parameter)
-        {
-            var Parameter1 = new ConsumerGroup()
-            {
-                UserMetadata = parameter.UserMetadata
-            };
-            var response = Client.ConsumerGroups.CreateOrUpdate(resourceGroupName, namespaceName, eventHubName, consumerGroupName, Parameter1.UserMetadata);
-            return new PSConsumerGroupAttributes(response);
-        }
-
-        public PSConsumerGroupAttributes GetConsumerGroup(string resourceGroupName, string namespaceName, string eventHubName, string consumerGroupName)
-        {
-            var response = Client.ConsumerGroups.Get(resourceGroupName, namespaceName, eventHubName, consumerGroupName);
-            return new PSConsumerGroupAttributes(response);
-        }
-
-        public IEnumerable<PSConsumerGroupAttributes> ListAllConsumerGroup(string resourceGroupName, string namespaceName, string eventHubName, int? maxCount = null)
-        {
-
-            IEnumerable<PSConsumerGroupAttributes> resourceList = Enumerable.Empty<PSConsumerGroupAttributes>();
-            int? skip = 0;
-            switch (ReturnmaxCountvalueForSwtich(maxCount))
-            {
-
-                case 0:
-                    var response = Client.ConsumerGroups.ListByEventHub(resourceGroupName, namespaceName, eventHubName, skip: 0, top: maxCount);
-                    resourceList = response.Select(resource => new PSConsumerGroupAttributes(resource));
-                    break;
-                case 1:
-                    while (maxCount > 0)
-                    {
-                        var response1 = Client.ConsumerGroups.ListByEventHub(resourceGroupName, namespaceName, eventHubName, skip: skip, top: maxCount);
-                        resourceList = resourceList.Concat<PSConsumerGroupAttributes>(response1.Select(resource => new PSConsumerGroupAttributes(resource)));
-                        skip += maxCount > 100 ? 100 : maxCount;
-                        maxCount = maxCount - 100;
-                    }
-                    break;
-                default:
-                    var response2 = Client.ConsumerGroups.ListByEventHub(resourceGroupName, namespaceName, eventHubName);
-                    resourceList = response2.Select(resource => new PSConsumerGroupAttributes(resource));
-                    break;
-
-            }
-            return resourceList;
-        }
-
-        public void DeletConsumerGroup(string resourceGroupName, string namespaceName, string eventHubName, string consumerGroupName)
-        {
-            try
-            {
-                Client.ConsumerGroups.Delete(resourceGroupName, namespaceName, eventHubName, consumerGroupName);
-            }
-            catch (Exception ex)
-            {
-                string test = ex.Message;
-            }
-
-        }
-
-
-        #endregion ConsumerGroup
-
-        #region CheckNameAvailability
-        public PSCheckNameAvailabilityResultAttributes GetCheckNameAvailability(string namespaceName)
-        {
-            var response = Client.Namespaces.CheckNameAvailability(namespaceName);
-            return new PSCheckNameAvailabilityResultAttributes(response);
-        }
-
-        public PSCheckNameAvailabilityResultAttributes GetAliasCheckNameAvailability(string resourceGroup, string namespaceName, string aliasName)
-        {
-            var response = Client.DisasterRecoveryConfigs.CheckNameAvailability(resourceGroup,namespaceName, aliasName);
-            return new PSCheckNameAvailabilityResultAttributes(response);
-        }
-
-        #endregion
-
 
         #region NetworkRuleSet
         public PSNetworkRuleSetAttributes GetNetworkRuleSet(string resourceGroupName, string namespaceName)
@@ -862,127 +293,12 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSNetworkRuleSetAttributes(response);
         }
 
-        public PSNetworkRuleSetAttributes UpdateNetworkRuleSet(string resourceGroupName, string namespaceName, string publicNetworkAccess, bool? trustedServiceAccessEnabled, string defaultAction, PSNWRuleSetIpRulesAttributes[] iPRule, PSNWRuleSetVirtualNetworkRulesAttributes[] virtualNetworkRule)
-        {
-            NetworkRuleSet networkRuleSet = Client.Namespaces.GetNetworkRuleSet(resourceGroupName, namespaceName);
-
-            if (networkRuleSet == null)
-            {
-                networkRuleSet = new NetworkRuleSet();
-            }
-
-            if (defaultAction != null)
-            {
-                networkRuleSet.DefaultAction = defaultAction;
-            }
-
-            if (publicNetworkAccess != null)
-            {
-                networkRuleSet.PublicNetworkAccess = publicNetworkAccess;
-            }
-
-            if (trustedServiceAccessEnabled == true)
-            {
-                networkRuleSet.TrustedServiceAccessEnabled = trustedServiceAccessEnabled;
-            }
-
-            if (iPRule != null)
-            {
-                networkRuleSet.IpRules = new List<NWRuleSetIpRules>();
-
-                foreach (PSNWRuleSetIpRulesAttributes psiprules in iPRule)
-                {
-                    networkRuleSet.IpRules.Add(new NWRuleSetIpRules { Action = psiprules.Action, IpMask = psiprules.IpMask });
-                }
-            }
-
-            if (virtualNetworkRule != null)
-            {
-                networkRuleSet.VirtualNetworkRules = new List<NWRuleSetVirtualNetworkRules>();
-
-                foreach (PSNWRuleSetVirtualNetworkRulesAttributes psvisrtualnetworkrules in virtualNetworkRule)
-                {
-                    networkRuleSet.VirtualNetworkRules.Add(new NWRuleSetVirtualNetworkRules { Subnet = new Subnet { Id = psvisrtualnetworkrules.Subnet.Id }, IgnoreMissingVnetServiceEndpoint = psvisrtualnetworkrules.IgnoreMissingVnetServiceEndpoint });
-                }
-            }
-
-            var response = Client.Namespaces.CreateOrUpdateNetworkRuleSet(resourceGroupName, namespaceName, networkRuleSet);
-            return new PSNetworkRuleSetAttributes(response);
-
-        }
-
         #endregion
 
-        #region SchemaRegistry
-        public IEnumerable<PSEventHubsSchemaRegistryAttributes> ListSchemaGroupByNamespace(string resourceGroupName, string namespaceName)
+        public PSListKeysAttributes GetEventHubListKeys(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName)
         {
-            var schemaGroups = Client.SchemaRegistry.ListByNamespace(resourceGroupName: resourceGroupName, namespaceName: namespaceName);
-            var resourceList = schemaGroups.Select(resource => new PSEventHubsSchemaRegistryAttributes(resource));
-            return resourceList;
-        }
-
-        public PSEventHubsSchemaRegistryAttributes GetSchemaGroup(string resourceGroupName, string namespaceName, string schemaGroupName)
-        {
-            var schemaGroup = Client.SchemaRegistry.Get(resourceGroupName: resourceGroupName, namespaceName: namespaceName, schemaGroupName: schemaGroupName);
-            return new PSEventHubsSchemaRegistryAttributes(schemaGroup);
-        }
-
-        public PSEventHubsSchemaRegistryAttributes BeginCreateNamespaceSchemaGroup(string resourceGroupName, string namespaceName, string schemaGroupName
-            , string schemaCompatibility, string schemaType, Hashtable groupProperties)
-        {
-            SchemaGroup schemaGroup = new SchemaGroup(schemaCompatibility: schemaCompatibility, schemaType: schemaType);
-            if (groupProperties != null)
-            {
-                schemaGroup.GroupProperties = TagsConversionHelper.CreateTagDictionary(groupProperties, validate: true); ;
-            }
-            var response = Client.SchemaRegistry.CreateOrUpdate(resourceGroupName: resourceGroupName, namespaceName: namespaceName, schemaGroupName: schemaGroupName, parameters: schemaGroup);
-            return new PSEventHubsSchemaRegistryAttributes(response);
-        }
-
-        public PSEventHubsSchemaRegistryAttributes BeginUpdateNamespaceSchemaGroup(string resourceGroupName, string namespaceName, string schemaGroupName
-            , string schemaCompatibility, string schemaType, IDictionary<string, string> groupProperties)
-        {
-            SchemaGroup parameters = Client.SchemaRegistry.Get(resourceGroupName: resourceGroupName, namespaceName: namespaceName, schemaGroupName: schemaGroupName);
-
-            if (groupProperties != null)
-            {
-                parameters.GroupProperties = groupProperties;
-            }
-
-            if (schemaCompatibility != null)
-            {
-                parameters.SchemaCompatibility = schemaCompatibility;
-            }
-
-            if (schemaType != null)
-            {
-                parameters.SchemaType = schemaType;
-            }
-
-            var response = Client.SchemaRegistry.CreateOrUpdate(resourceGroupName: resourceGroupName, namespaceName: namespaceName, schemaGroupName: schemaGroupName, parameters: parameters);
-            return new PSEventHubsSchemaRegistryAttributes(response);
-        }
-
-        public bool DeleteNamespaceSchemaGroup(string resourceGroupName, string namespaceName, string schemaGroupName)
-        {
-            Client.SchemaRegistry.Delete(resourceGroupName: resourceGroupName, namespaceName: namespaceName, schemaGroupName: schemaGroupName);
-            return true;
-        }
-
-
-        #endregion
-
-
-        public static int ReturnmaxCountvalueForSwtich(int? maxcount)
-        {
-            int returnvalue = -1;
-
-            if (maxcount != null && maxcount <= 100)
-                returnvalue = 0;
-            if (maxcount != null && maxcount > 100)
-                returnvalue = 1;
-
-            return returnvalue;
+            var listKeys = Client.EventHubs.ListKeys(resourceGroupName, namespaceName, eventHubName, authRuleName);
+            return new PSListKeysAttributes(listKeys);
         }
 
         public static ErrorRecord WriteErrorforBadrequest(ErrorResponseException ex)
@@ -1014,13 +330,14 @@ namespace Microsoft.Azure.Commands.Eventhub
                 Exception emptyEx = new Exception("VirtualNetwork already exists");
                 return new ErrorRecord(emptyEx, "VirtualNetwork already exists", ErrorCategory.OpenError, emptyEx);
             }
-            else {
+            else
+            {
                 Exception emptyEx = new Exception("VirtualNetwork dosen't exists");
                 return new ErrorRecord(emptyEx, "VirtualNetwork dosen't exists", ErrorCategory.OpenError, emptyEx);
-            }            
+            }
         }
 
-        public static ErrorRecord WriteErrorIPRuleExists(string caller = "Add" )
+        public static ErrorRecord WriteErrorIPRuleExists(string caller = "Add")
         {
             if (caller.Equals("Add"))
             {

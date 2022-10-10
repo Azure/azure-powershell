@@ -20,7 +20,8 @@ Set-AzFirewallPolicy -Name <String> -ResourceGroupName <String> [-AsJob] [-Threa
  -Location <String> [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
  [-TransportSecurityName <String>] [-TransportSecurityKeyVaultSecretId <String>] [-SkuTier <String>]
  [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
@@ -31,7 +32,8 @@ Set-AzFirewallPolicy [-Name <String>] -InputObject <PSAzureFirewallPolicy> [-AsJ
  [-Location <String>] [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
  [-TransportSecurityName <String>] [-TransportSecurityKeyVaultSecretId <String>] [-SkuTier <String>]
  [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -42,7 +44,8 @@ Set-AzFirewallPolicy [-AsJob] -ResourceId <String> [-ThreatIntelMode <String>]
  -Location <String> [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
  [-TransportSecurityName <String>] [-TransportSecurityKeyVaultSecretId <String>] [-SkuTier <String>]
  [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +74,48 @@ Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location w
 ```
 
 This example sets the firewall policy with the new threat intel whitelist
+
+### Example 4
+```powershell
+$exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 100 -HttpsPort 101 -EnablePacFile  -PacFilePort 130 -PacFile "sampleurlfortesting.blob.core.windowsnet/nothing"
+Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location westcentralus -ExplicitProxy $exProxy
+```
+```output
+		BasePolicy	                : null	
+		DnsSettings  	            : null	
+		Etag	                    : null	
+		ExplicitProxy	
+			EnableExplicitProxy	    : true	
+			EnablePacFile	        : true	
+			HttpPort	            : 100	
+			HttpsPort	            : 101	
+			PacFile                 : "sampleurlfortesting.blob.core.windowsnet/nothing"
+			PacFilePort	            : 130	
+		Id	                        : null	
+		Identity	                : null	
+		IntrusionDetection	        : null	
+		Location	                : "westcentralus"	
+		Name	                    : "firewallPolicy1"	
+		PrivateRange	            : null
+		PrivateRangeText	        : "[]"
+		ProvisioningState	        : null	
+		ResourceGroupName	        : "TestRg"	
+		ResourceGuid	            : null	
+		RuleCollectionGroups	    : null	
+		Sku	
+			Tier	                : "Standard"	
+		Snat	
+			AutoLearnPrivateRanges	: null	
+			PrivateRanges	        : null	
+		SqlSetting	                : null	
+		Tag	                        : null	
+		TagsTable	                : null	
+		ThreatIntelMode	            : "Alert"	
+		ThreatIntelWhitelist	    : null	
+		TransportSecurity	        : null	
+		Type	                    : null	
+```
+This example sets the firewall policy with the explicit proxy settings
 
 ## PARAMETERS
 
@@ -124,6 +169,21 @@ The DNS Setting
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyDnsSettings
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExplicitProxy
+The Explicit Proxy Settings
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyExplicitProxy
 Parameter Sets: (All)
 Aliases:
 
@@ -297,7 +357,7 @@ Firewall policy sku tier
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard, Premium
+Accepted values: Standard, Premium, Basic
 
 Required: False
 Position: Named
@@ -461,3 +521,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzFirewallPolicyExplicitProxy](./New-AzFirewallPolicyExplicitProxy.md)

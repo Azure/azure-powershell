@@ -19,8 +19,41 @@
 -->
 
 ## Upcoming Release
+* Supported tenant domain as input while using `Connect-AzAccount` with parameter `Tenant`. [#19471]
+* Upgraded Azure.Core to 1.25.0 and Azure.Identity to 1.6.1
+* Upgraded Microsoft.ApplicationInsights to 2.13.1
+* Changed target framework of AuthenticationAssemblyLoadContext to netcoreapp3.1.
+* Used the ArgumentCompleter attribute to replace the dynamic parameters of `Get-AzContext`. [#18041]
+* Removed built-in environment of Azure Germany
+* Fixed issue that module cannot be imported when required file is locked [#19624]
+
+## Version 2.10.1
+* Deduplicated subscriptions belonging to multiple tenants while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19427]
+
+## Version 2.10.0
+* Supported returning all subscriptions with specified name while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19295]
+* Fixed null reference exception when cmdlet uses AzureRestOperation [#18104]
+* Updated survey message and settings
+
+## Version 2.9.1
+* Implemented `SupportsShouldProcess` for `Invoke-AzRestMethod`
+* Supported giving suggestions if an Azure PowerShell command cannot be found, for example when there is a typo in command name.
+
+## Version 2.9.0
+* Supported exporting and importing configurations by `Export-AzConfig` and `Import-AzConfig`.
+* Fixed an issue that Az.Accounts may fail to be imported in parallel PowerShell processes. [#18321] 
+* Fixed incorrect access token [#18105]
+* Upgraded version of Microsoft.Identity.Client for .NET Framework. [#18495]
+* Fixed an issue that Az.Accounts failed to be imported if multiple environment variables, which only differ by case, are set. [#18304]
+
+## Version 2.8.0
+* Added a preview feature allowing user to control the following configurations by using `Get-AzConfig`, `Update-AzConfig` and `Clear-AzConfig`:
+    - `DefaultSubscriptionForLogin`: Subscription name or GUID. Sets the default context for Azure PowerShell when logging in without specifying a subscription.
+    - `DisplayBreakingChangeWarning`: Controls if warning messages for breaking changes are displayed or suppressed.
+    - `EnableDataCollection`: When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience.
 * Upgraded System.Reflection.DispatchProxy on Windows PowerShell [#17856]
 * Supported specifying scope in `-ResourceUrl` of `Get-AzAccessToken` [#14085]
+* Upgraded Azure.Identity to 1.6.0 and Azure.Core to 1.24.0
 
 ## Version 2.7.6
 * Upgraded Microsoft.Rest.ClientRuntime to 2.3.24
@@ -216,7 +249,7 @@
 * Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix
 
 ## Version 1.6.6
-* Add client-side telemetry info for Az 4.0 preview
+* Add client-side telemetry info for Az 4.0 `preview`
 
 ## Version 1.6.5
 * Update references in .psd1 to use relative path

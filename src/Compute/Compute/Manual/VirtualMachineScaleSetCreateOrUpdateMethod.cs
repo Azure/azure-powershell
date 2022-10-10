@@ -539,10 +539,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     throw new Exception("UpgradePolicy is not currently supported for a VMSS with OrchestrationMode set to Flexible.");
                 }
-                else if (_cmdlet.SinglePlacementGroup == true)
-                {
-                    throw new Exception("The value provided for singlePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.");
-                }
             }
         }
 
@@ -633,9 +629,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                            ResourceIdentityType.SystemAssigned :
                            (SystemAssignedIdentity.IsPresent ? ResourceIdentityType.SystemAssignedUserAssigned : ResourceIdentityType.UserAssigned),
                     UserAssignedIdentities = isUserAssignedEnabled 
-                                             ? new Dictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>()
+                                             ? new Dictionary<string, UserAssignedIdentitiesValue>()
                                              {
-                                                 { UserAssignedIdentity, new VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue()}
+                                                 { UserAssignedIdentity, new UserAssignedIdentitiesValue()}
                                              }
                                              : null,
                 }

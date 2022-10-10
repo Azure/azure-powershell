@@ -115,6 +115,20 @@ namespace Microsoft.Azure.Commands.Synapse
         [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large)]
         public string NodeSize { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, 
+            HelpMessage = HelpMessages.EnableDynamicExecutorAllocation)]
+        public bool? EnableDynamicExecutorAllocation { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+           HelpMessage = HelpMessages.MinExecutorCount)]
+        [ValidateNotNullOrEmpty]
+        public int MinExecutorCount { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+            HelpMessage = HelpMessages.MaxExecutorCount)]
+        [ValidateNotNullOrEmpty]
+        public int MaxExecutorCount { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
             HelpMessage = HelpMessages.SparkVersion)]
         [ValidateNotNullOrEmpty]
@@ -198,6 +212,7 @@ namespace Microsoft.Azure.Commands.Synapse
             existingSparkPool.NodeSize = this.IsParameterBound(c => c.NodeSize) ? this.NodeSize : existingSparkPool.NodeSize;
             existingSparkPool.LibraryRequirements = this.IsParameterBound(c => c.LibraryRequirementsFilePath) ? CreateLibraryRequirements() : existingSparkPool.LibraryRequirements;
             existingSparkPool.SparkConfigProperties = this.IsParameterBound(c => c.SparkConfigFilePath) ? CreateSparkConfigProperties() : existingSparkPool.SparkConfigProperties;
+            existingSparkPool.SparkVersion = this.IsParameterBound(c => c.SparkVersion) ? this.SparkVersion : existingSparkPool.SparkVersion;
 
             if (this.IsParameterBound(c => c.EnableAutoScale)
                 || this.IsParameterBound(c => c.AutoScaleMinNodeCount)
@@ -220,6 +235,16 @@ namespace Microsoft.Azure.Commands.Synapse
                     DelayInMinutes = this.IsParameterBound(c => c.AutoPauseDelayInMinute)
                         ? this.AutoPauseDelayInMinute
                         : existingSparkPool.AutoPause?.DelayInMinutes ?? int.Parse(SynapseConstants.DefaultAutoPauseDelayInMinute)
+                };
+            }
+
+            if(this.IsParameterBound(c => c.EnableDynamicExecutorAllocation))
+            {
+                existingSparkPool.DynamicExecutorAllocation = new DynamicExecutorAllocation
+                {
+                    Enabled = this.EnableDynamicExecutorAllocation != null ? this.EnableDynamicExecutorAllocation : existingSparkPool.DynamicExecutorAllocation?.Enabled ?? false,
+                    MinExecutors = this.IsParameterBound(c => c.MinExecutorCount) ? this.MinExecutorCount : existingSparkPool.DynamicExecutorAllocation?.MinExecutors ?? int.Parse(SynapseConstants.DefaultMinExecutorCount),
+                    MaxExecutors = this.IsParameterBound(c => c.MaxExecutorCount) ? this.MaxExecutorCount : existingSparkPool.DynamicExecutorAllocation?.MaxExecutors ?? int.Parse(SynapseConstants.DefaultMaxExecutorCount)
                 };
             }
 

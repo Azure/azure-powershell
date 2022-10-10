@@ -17,21 +17,17 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 {
-    public class ManagedCassandraOperationsTests
+    public class ManagedCassandraOperationsTests : CosmosDBTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public ManagedCassandraOperationsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ManagedCassandraOperationsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Cannot assign network contributor role to virtual networks. Test Fails.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedCassandraClusterCreateUpdateGetCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ManagedCassandraCreateUpdateGetCmdlets");
+            TestRunner.RunTestScript("Test-ManagedCassandraCreateUpdateGetCmdlets");
         }
     }
 }

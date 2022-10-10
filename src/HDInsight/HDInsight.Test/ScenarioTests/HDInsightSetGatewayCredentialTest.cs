@@ -12,28 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.HDInsight.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Commands.HDInsight.Test.ScenarioTests
 {
-    public class HDInsightSetGatewayCredentialTest
+    public class HDInsightSetGatewayCredentialTest : HDInsightTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public HDInsightSetGatewayCredentialTest(ITestOutputHelper output)
+        public HDInsightSetGatewayCredentialTest(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGatewayCredential()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetGatewayCredential");
+            TestRunner.RunTestScript("Test-SetGatewayCredential");
         }
     }
 }

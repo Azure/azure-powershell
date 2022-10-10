@@ -82,6 +82,9 @@ Values:
 This command creates a predefined tag named Department with a value of Finance.
 
 ### Example 3: Add a value to a predefined tag
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 New-AzTag -Name "Department" -Value "Finance"
 
@@ -105,6 +108,9 @@ These commands create a predefined tag named Department with two values.
 If the tag name exists, **New-AzTag** adds the value to the existing tag instead of creating a new one.
 
 ### Example 4: Use a predefined tag
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 New-AzTag -Name "CostCenter" -Value "0001"
 

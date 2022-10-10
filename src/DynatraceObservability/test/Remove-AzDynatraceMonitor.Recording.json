@@ -1,0 +1,508 @@
+{
+  "Remove-AzDynatraceMonitor+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdassm?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdassm?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "607a9e46-c9ad-4ea0-8fda-61797056b380" ],
+        "CommandName": [ "Remove-AzDynatraceMonitor" ],
+        "FullCommandName": [ "Remove-AzDynatraceMonitor_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"9e026af6-0000-0300-0000-630227eb0000\"" ],
+        "Location": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "fcd16bf5-f61a-4799-97a3-32f87c69fba8" ],
+        "x-ms-correlation-request-id": [ "5f30ecb5-1243-4f52-b9d3-dfc28c157a4d" ],
+        "x-ms-client-request-id": [ "6213c1f3-04c0-4923-943d-562e9fc241dd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01" ],
+        "x-ms-request-id": [ "ce1bfd8c-f4f8-4c54-88b6-786014e3a84f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124115Z:5f30ecb5-1243-4f52-b9d3-dfc28c157a4d" ],
+        "Date": [ "Sun, 21 Aug 2022 12:41:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitor+[NoContext]+Delete+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "607a9e46-c9ad-4ea0-8fda-61797056b380" ],
+        "CommandName": [ "Remove-AzDynatraceMonitor" ],
+        "FullCommandName": [ "Remove-AzDynatraceMonitor_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.DynatraceObservability/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2103f1ba-0000-0300-0000-630227eb0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-request-id": [ "eaf94302-9244-4fc1-b0a2-e83c496902d3" ],
+        "x-ms-correlation-request-id": [ "fc6e56c7-b6c6-4706-a123-7b6a9e91342c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124145Z:fc6e56c7-b6c6-4706-a123-7b6a9e91342c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 21 Aug 2022 12:41:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "519" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786\",\"name\":\"ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdassm\",\"status\":\"Deleting\",\"startTime\":\"2022-08-21T12:41:14.7759675Z\",\"error\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitor+[NoContext]+Delete+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "607a9e46-c9ad-4ea0-8fda-61797056b380" ],
+        "CommandName": [ "Remove-AzDynatraceMonitor" ],
+        "FullCommandName": [ "Remove-AzDynatraceMonitor_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.DynatraceObservability/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"21037cc2-0000-0300-0000-630228230000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
+        "x-ms-request-id": [ "59543cd6-9af6-4c98-aa18-5d60e6409608" ],
+        "x-ms-correlation-request-id": [ "1254aa6f-31dd-455e-87b4-005312aa531c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124216Z:1254aa6f-31dd-455e-87b4-005312aa531c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 21 Aug 2022 12:42:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "579" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786\",\"name\":\"ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdassm\",\"status\":\"Succeeded\",\"startTime\":\"2022-08-21T12:41:14.7759675Z\",\"endTime\":\"2022-08-21T12:42:11.6872196Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitor+[NoContext]+Delete+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "607a9e46-c9ad-4ea0-8fda-61797056b380" ],
+        "CommandName": [ "Remove-AzDynatraceMonitor" ],
+        "FullCommandName": [ "Remove-AzDynatraceMonitor_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.DynatraceObservability/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"21037cc2-0000-0300-0000-630228230000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11997" ],
+        "x-ms-request-id": [ "3bcb1729-38b6-4b64-ab05-75bf7d891a6e" ],
+        "x-ms-correlation-request-id": [ "e1012fcf-15f5-4dc2-909a-1506ea1c7536" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124216Z:e1012fcf-15f5-4dc2-909a-1506ea1c7536" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 21 Aug 2022 12:42:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "579" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786\",\"name\":\"ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdassm\",\"status\":\"Succeeded\",\"startTime\":\"2022-08-21T12:41:14.7759675Z\",\"endTime\":\"2022-08-21T12:42:11.6872196Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01",
+      "Content": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"dynatraceEnvironmentProperties\": {\r\n      \"singleSignOnProperties\": {\r\n        \"aadDomains\": [ \"mpliftrlogz20210811outlook.onmicrosoft.com\" ]\r\n      }\r\n    },\r\n    \"userInfo\": {\r\n      \"firstName\": \"Lucas\",\r\n      \"lastName\": \"Yao\",\r\n      \"emailAddress\": \"v-diya@microsoft.com\"\r\n    },\r\n    \"planData\": {\r\n      \"usageType\": \"COMMITTED\",\r\n      \"billingCycle\": \"Monthly\",\r\n      \"planDetails\": \"azureportalintegration_privatepreview@TIDhjdtn7tfnxcy\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "522" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"9e027cf7-0000-0300-0000-630228370000\"" ],
+        "Location": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "ec9f6051-b1bd-4a9b-a783-1b396f3df707" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-correlation-request-id": [ "5a74d05a-14ce-496c-8a4e-14fa3ca5a74e" ],
+        "x-ms-client-request-id": [ "fe535199-34ea-46aa-8c70-fc9dc56d2fce" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01" ],
+        "x-ms-request-id": [ "43449c44-c8af-441d-bf1f-c7b8b5a18dfa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124232Z:5a74d05a-14ce-496c-8a4e-14fa3ca5a74e" ],
+        "Date": [ "Sun, 21 Aug 2022 12:42:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1114" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam\",\"name\":\"dyobwdceam\",\"type\":\"dynatrace.observability/monitors\",\"location\":\"eastus2euap\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-21T12:42:24.2253029Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-21T12:42:24.2253029Z\"},\"properties\":{\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"dynatraceEnvironmentProperties\":{\"userId\":null,\"accountInfo\":null,\"environmentInfo\":null,\"singleSignOnProperties\":{\"singleSignOnState\":\"Initial\",\"enterpriseAppId\":null,\"singleSignOnUrl\":null,\"aadDomains\":[\"mpliftrlogz20210811outlook.onmicrosoft.com\"],\"provisioningState\":\"Accepted\"}},\"userInfo\":null,\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"Monthly\",\"planDetails\":\"azureportalintegration_privatepreview@TIDhjdtn7tfnxcy\",\"effectiveDate\":\"0001-01-01T00:00:00\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0,\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "31a4dee7-4317-4780-957a-6a24e6f1ae05" ],
+        "CommandName": [ "New-AzDynatraceMonitor" ],
+        "FullCommandName": [ "New-AzDynatraceMonitor_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.DynatraceObservability/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2103fbc5-0000-0300-0000-630228360000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11996" ],
+        "x-ms-request-id": [ "779766fb-2d4c-4e3a-9352-b959adf926c8" ],
+        "x-ms-correlation-request-id": [ "6f6e8987-eafe-442b-8612-0221ebb78d51" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124303Z:6f6e8987-eafe-442b-8612-0221ebb78d51" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 21 Aug 2022 12:43:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "508" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020\",\"name\":\"43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam\",\"status\":\"Accepted\",\"startTime\":\"2022-08-21T12:42:30.9447778Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "31a4dee7-4317-4780-957a-6a24e6f1ae05" ],
+        "CommandName": [ "New-AzDynatraceMonitor" ],
+        "FullCommandName": [ "New-AzDynatraceMonitor_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.DynatraceObservability/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"21030bce-0000-0300-0000-630228620000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11995" ],
+        "x-ms-request-id": [ "f516ea75-4b8c-4ac2-bb04-3e508d3b7079" ],
+        "x-ms-correlation-request-id": [ "b520cb0f-1614-4409-a4b3-740d05a91823" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124333Z:b520cb0f-1614-4409-a4b3-740d05a91823" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 21 Aug 2022 12:43:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "579" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020\",\"name\":\"43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam\",\"status\":\"Succeeded\",\"startTime\":\"2022-08-21T12:42:30.9447778Z\",\"endTime\":\"2022-08-21T12:43:14.4673416Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "31a4dee7-4317-4780-957a-6a24e6f1ae05" ],
+        "CommandName": [ "New-AzDynatraceMonitor" ],
+        "FullCommandName": [ "New-AzDynatraceMonitor_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.DynatraceObservability/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"9e0257f8-0000-0300-0000-630228620000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "b4ebf8a2-b001-481d-8b50-5772be44dfbc" ],
+        "x-ms-correlation-request-id": [ "a4534ce6-b7ce-47d5-9d8f-c0f932632d82" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124335Z:a4534ce6-b7ce-47d5-9d8f-c0f932632d82" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 21 Aug 2022 12:43:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1413" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam\",\"name\":\"dyobwdceam\",\"type\":\"dynatrace.observability/monitors\",\"location\":\"eastus2euap\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-21T12:42:24.2253029Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-21T12:42:24.2253029Z\"},\"properties\":{\"monitoringStatus\":\"Enabled\",\"marketplaceSubscriptionStatus\":\"Active\",\"dynatraceEnvironmentProperties\":{\"userId\":\"1db33da7-af65-4503-9812-6f0070e2130d\",\"accountInfo\":{\"accountId\":\"edc5b5bf-b9dc-4024-8d43-5005aacab5ff\",\"regionId\":\"eastus\"},\"environmentInfo\":{\"environmentId\":\"xef56942\",\"logsIngestionEndpoint\":\"https://xef56942.sprint.dynatracelabs.com/api/v2/logs/ingest\",\"landingURL\":\"https://xef56942.sprint.dynatracelabs.com/\"},\"singleSignOnProperties\":{\"singleSignOnState\":\"Initial\",\"aadDomains\":[\"mpliftrlogz20210811outlook.onmicrosoft.com\"],\"provisioningState\":\"Accepted\"}},\"userInfo\":{\"firstName\":\"Lucas\",\"lastName\":\"Yao\",\"emailAddress\":\"v-diya@microsoft.com\"},\"planData\":{\"usageType\":\"COMMITTED\",\"billingCycle\":\"Monthly\",\"planDetails\":\"azureportalintegration_privatepreview@TIDhjdtn7tfnxcy\",\"effectiveDate\":\"0001-01-01T00:00:00Z\"},\"liftrResourceCategory\":\"MonitorLogs\",\"liftrResourcePreference\":0,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "7fd7cc2e-b23d-4d62-8ca6-d4ec541f1929" ],
+        "CommandName": [ "Remove-AzDynatraceMonitor" ],
+        "FullCommandName": [ "Remove-AzDynatraceMonitor_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"9e027af8-0000-0300-0000-630228790000\"" ],
+        "Location": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "ecb3a97b-8009-4055-8245-f0e6541c86ad" ],
+        "x-ms-correlation-request-id": [ "fe69cc0b-36f5-407e-919e-5b5fbb81a6bc" ],
+        "x-ms-client-request-id": [ "c25110a8-d931-478c-85d1-080caf6b8991" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01" ],
+        "x-ms-request-id": [ "d2573879-2ccf-41e8-ac78-55428a6f6b9a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124337Z:fe69cc0b-36f5-407e-919e-5b5fbb81a6bc" ],
+        "Date": [ "Sun, 21 Aug 2022 12:43:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "7fd7cc2e-b23d-4d62-8ca6-d4ec541f1929" ],
+        "CommandName": [ "Remove-AzDynatraceMonitor" ],
+        "FullCommandName": [ "Remove-AzDynatraceMonitor_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.DynatraceObservability/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2103b7d1-0000-0300-0000-630228790000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11994" ],
+        "x-ms-request-id": [ "317a0a04-110b-4fea-8764-7429654b800f" ],
+        "x-ms-correlation-request-id": [ "7bb8928a-9c86-4e11-a1e5-eba420265566" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124407Z:7bb8928a-9c86-4e11-a1e5-eba420265566" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 21 Aug 2022 12:44:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "519" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020\",\"name\":\"d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam\",\"status\":\"Deleting\",\"startTime\":\"2022-08-21T12:43:37.0025337Z\",\"error\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "7fd7cc2e-b23d-4d62-8ca6-d4ec541f1929" ],
+        "CommandName": [ "Remove-AzDynatraceMonitor" ],
+        "FullCommandName": [ "Remove-AzDynatraceMonitor_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.DynatraceObservability/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2103afda-0000-0300-0000-630228b00000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11993" ],
+        "x-ms-request-id": [ "9eacc5de-1b99-438a-9362-71202e77c1d9" ],
+        "x-ms-correlation-request-id": [ "bfb7f86e-0ee3-4cfa-afac-dd8939666061" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124438Z:bfb7f86e-0ee3-4cfa-afac-dd8939666061" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 21 Aug 2022 12:44:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "579" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020\",\"name\":\"d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam\",\"status\":\"Succeeded\",\"startTime\":\"2022-08-21T12:43:37.0025337Z\",\"endTime\":\"2022-08-21T12:44:32.4059844Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "7fd7cc2e-b23d-4d62-8ca6-d4ec541f1929" ],
+        "CommandName": [ "Remove-AzDynatraceMonitor" ],
+        "FullCommandName": [ "Remove-AzDynatraceMonitor_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.DynatraceObservability/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2103afda-0000-0300-0000-630228b00000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11992" ],
+        "x-ms-request-id": [ "61802ab2-e3ae-48de-80aa-aa370e671b57" ],
+        "x-ms-correlation-request-id": [ "ef067dd2-9eb8-4fc8-ae5b-2db0a1c5d32b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124438Z:ef067dd2-9eb8-4fc8-ae5b-2db0a1c5d32b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 21 Aug 2022 12:44:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "579" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020\",\"name\":\"d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam\",\"status\":\"Succeeded\",\"startTime\":\"2022-08-21T12:43:37.0025337Z\",\"endTime\":\"2022-08-21T12:44:32.4059844Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -136,8 +136,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// remove the azure blob 
         /// </summary>
-        /// <param name="blob">Cloudblob object</param>
-        /// <param name="isValidBlob">whether the Cloudblob parameter is validated</param>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
+        /// <param name="blob">CloudBlob object</param>
+        /// <param name="isValidBlob">whether the CloudBlob parameter is validated</param>
         /// <returns>true if the blob is removed successfully, false if user cancel the remove operation</returns>
         internal async Task RemoveAzureBlob(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, bool isValidBlob)
         {
@@ -212,8 +214,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// remove the azure blob with Track2 SDK
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="blob">BlobBaseClient object</param>
-        /// <param name="isValidBlob">whether the Cloudblob parameter is validated</param>
+        /// <param name="isValidBlob">whether the CloudBlob parameter is validated</param>
         /// <returns>true if the blob is removed successfully, false if user cancel the remove operation</returns>
         internal async Task RemoveAzureBlobTrack2(long taskId, IStorageBlobManagement localChannel, BlobBaseClient blob, bool isValidBlob)
         {
@@ -225,11 +229,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             Track2Models.DeleteSnapshotsOption deleteSnapshotsOption = Track2Models.DeleteSnapshotsOption.None;
             bool retryDeleteSnapshot = false;
 
-            if (Util.GetSnapshotTimeFromBlobUri(blob.Uri) != null)
+            if (Util.GetSnapshotTimeFromUri(blob.Uri) != null)
             {
                 if (deleteSnapshot)
                 {
-                    throw new ArgumentException(String.Format(Resources.CannotDeleteSnapshotForSnapshot, blob.Name, Util.GetSnapshotTimeFromBlobUri(blob.Uri)));
+                    throw new ArgumentException(String.Format(Resources.CannotDeleteSnapshotForSnapshot, blob.Name, Util.GetSnapshotTimeFromUri(blob.Uri)));
                 }
             }
             else if (!string.IsNullOrEmpty(Util.GetVersionIdFromBlobUri(blob.Uri)))
@@ -326,6 +330,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// remove azure blob
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="container">CloudBlobContainer object</param>
         /// <param name="blobName">blob name</param>
         /// <returns>true if the blob is removed successfully, false if user cancel the remove operation</returns>
@@ -377,7 +383,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
                 BlobContainerClient track2container = AzureStorageContainer.GetTrack2BlobContainerClient(container, localChannel.StorageContext, ClientOptions);
                 BlobBaseClient blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, null,
-                    this.SnapshotTime is null? null : this.SnapshotTime.Value.ToString("o"), ClientOptions);
+                    this.SnapshotTime is null? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"), ClientOptions);
                 // Skip check blob existance, as Server will report error is necessary
 
                 await RemoveAzureBlobTrack2(taskId, localChannel, blobClient, true).ConfigureAwait(false);
@@ -387,6 +393,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// remove azure blob
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="containerName">container name</param>
         /// <param name="blobName">blob name</param>
         /// <returns>true if the blob is removed successfully, false if user cancel the remove operation</returns>

@@ -32,14 +32,14 @@ Run a triggered web job for a deployment slot.
 
 ### Example 1: Run a triggered web job for a deployment slot
 ```powershell
-PS C:\> Start-AzWebAppSlotTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slottriggeredjob-03
+Start-AzWebAppSlotTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slottriggeredjob-03
 ```
 
 This command runs a triggered web job for a deployment slot.
 
 ### Example 2: Run a triggered web job for a deployment slot by pipeline
 ```powershell
-PS C:\> Get-AzWebAppSlotTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slottriggeredjob-03 | Start-AzWebAppSlotTriggeredWebJob
+Get-AzWebAppSlotTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slottriggeredjob-03 | Start-AzWebAppSlotTriggeredWebJob
 ```
 
 This command runs a triggered web job for a deployment slot by pipeline.
@@ -221,7 +221,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+INPUTOBJECT `<IWebsitesIdentity>`: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.

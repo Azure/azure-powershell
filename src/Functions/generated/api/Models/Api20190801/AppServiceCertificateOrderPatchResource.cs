@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Reasons why App Service Certificate is not renewable at the current moment.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string[] AppServiceCertificateNotRenewableReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceCertificateOrderPatchResourcePropertiesInternal)Property).AppServiceCertificateNotRenewableReason; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ResourceNotRenewableReason[] AppServiceCertificateNotRenewableReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceCertificateOrderPatchResourcePropertiesInternal)Property).AppServiceCertificateNotRenewableReason; }
 
         /// <summary>
         /// <code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>.
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         public global::System.DateTime? LastCertificateIssuanceTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceCertificateOrderPatchResourcePropertiesInternal)Property).LastCertificateIssuanceTime; }
 
         /// <summary>Internal Acessors for AppServiceCertificateNotRenewableReason</summary>
-        string[] Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceCertificateOrderPatchResourceInternal.AppServiceCertificateNotRenewableReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceCertificateOrderPatchResourcePropertiesInternal)Property).AppServiceCertificateNotRenewableReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceCertificateOrderPatchResourcePropertiesInternal)Property).AppServiceCertificateNotRenewableReason = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ResourceNotRenewableReason[] Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceCertificateOrderPatchResourceInternal.AppServiceCertificateNotRenewableReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceCertificateOrderPatchResourcePropertiesInternal)Property).AppServiceCertificateNotRenewableReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceCertificateOrderPatchResourcePropertiesInternal)Property).AppServiceCertificateNotRenewableReason = value; }
 
         /// <summary>Internal Acessors for DomainVerificationToken</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceCertificateOrderPatchResourceInternal.DomainVerificationToken { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceCertificateOrderPatchResourcePropertiesInternal)Property).DomainVerificationToken; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServiceCertificateOrderPatchResourcePropertiesInternal)Property).DomainVerificationToken = value; }
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> instance that will receive validation
         /// events.</param>
         /// <returns>
-        /// A < see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener eventListener)
         {
@@ -374,8 +374,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         ReadOnly = true,
         Description = @"Reasons why App Service Certificate is not renewable at the current moment.",
         SerializedName = @"appServiceCertificateNotRenewableReasons",
-        PossibleTypes = new [] { typeof(string) })]
-        string[] AppServiceCertificateNotRenewableReason { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ResourceNotRenewableReason) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ResourceNotRenewableReason[] AppServiceCertificateNotRenewableReason { get;  }
         /// <summary>
         /// <code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>.
         /// </summary>
@@ -721,7 +721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal
     {
         /// <summary>Reasons why App Service Certificate is not renewable at the current moment.</summary>
-        string[] AppServiceCertificateNotRenewableReason { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ResourceNotRenewableReason[] AppServiceCertificateNotRenewableReason { get; set; }
         /// <summary>
         /// <code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>.
         /// </summary>

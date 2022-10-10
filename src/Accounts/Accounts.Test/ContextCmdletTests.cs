@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile;
-using Microsoft.Azure.Commands.Profile.Models;
 // TODO: Remove IfDef
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Profile.Models.Core;
@@ -29,12 +27,13 @@ using Xunit;
 using Xunit.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
-using Microsoft.Azure.Commands.ScenarioTest.Extensions;
 using Microsoft.Azure.Commands.Profile.Context;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.ScenarioTest.Mocks;
+using Microsoft.Azure.Commands.TestFx.Mocks;
+using Microsoft.Azure.Commands.TestFx;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -784,7 +783,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 Assert.Equal(Guid.Empty.ToString(), subscription.Id);
                 Assert.NotNull(context.Environment);
                 Assert.Equal("testCloud", context.Environment.Name);
-                Assert.Equal(5, profile.EnvironmentTable.Count);
+                Assert.Equal(4, profile.EnvironmentTable.Count);
             }
             finally
             {
@@ -844,12 +843,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 .WithTenant(new AzureTenant { Id = Guid.NewGuid().ToString(), Directory = "contoso.cn" })
                 .WithSubscription(new AzureSubscription { Id = Guid.NewGuid().ToString(), Name = "Contoso Subscription 2" });
             profile.TryAddContext(context2, out contextName2);
-            string contextName3;
-            var context3 = (new AzureContext { Environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureGermanCloud] })
-                .WithAccount(new AzureAccount { Id = "user3@contoso.de" })
-                .WithTenant(new AzureTenant { Id = Guid.NewGuid().ToString(), Directory = "contoso.de" })
-                .WithSubscription(new AzureSubscription { Id = Guid.NewGuid().ToString(), Name = "Contoso Subscription 3" });
-            profile.TryAddContext(context3, out contextName3);
             profile.TrySetDefaultContext(context1);
             return profile;
         }

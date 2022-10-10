@@ -1,7 +1,7 @@
 ---
-external help file: Az.StackHCI-help.xml
+external help file:
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/remove-AzStackHCIVMAttestation
+online version: https://docs.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmattestation
 schema: 2.0.0
 ---
 
@@ -14,17 +14,17 @@ Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestati
 
 ### VMName (Default)
 ```
-Remove-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### VMObject
-```
-Remove-AzStackHCIVMAttestation [-VM] <Object[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RemoveAll
 ```
-Remove-AzStackHCIVMAttestation [-RemoveAll] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMAttestation -RemoveAll [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### VMObject
+```
+Remove-AzStackHCIVMAttestation [-VM] <Object[]> [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,19 +32,24 @@ Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestati
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1: 
 ```powershell
 Remove-AzStackHCIVMAttestation -RemoveAll
 ```
 
-Removing all guests on current node
-
-### EXAMPLE 2
-```powershell
-Invoke-Command -ScriptBlock {Remove-AzStackHCIVMAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
+```output
+Name        AttestationHost       Status
+----        ---------------       ------
+183hcinode1 HCINODE2        Disconnected
+bhat2       HCINODE2        Disconnected
+ppnt3n1     HCINODE2        Disconnected
+ppt3n0      HCINODE2        Disconnected
+ppt5pn0     HCINODE2        Disconnected
+ppt6pn0     HCINODE2        Disconnected
+ppt7pn0     HCINODE2        Disconnected
 ```
 
-Invoking from the management node/WAC
+Removing all guests on current node
 
 ## PARAMETERS
 
@@ -58,7 +63,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -73,7 +78,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -87,7 +92,7 @@ Parameter Sets: VMObject
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -102,7 +107,7 @@ Parameter Sets: VMName
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -144,12 +149,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.Object[]
+
+### System.String[]
+
 ## OUTPUTS
 
-### PSCustomObject. Returns following Properties in PSCustomObject
-### Name:            Name of the VM.
-### AttestationHost: Host that VM is currently connected.
-### Status:          Connection status.
+### System.Management.Automation.PSObject
+
 ## NOTES
 
+ALIASES
+
 ## RELATED LINKS
+

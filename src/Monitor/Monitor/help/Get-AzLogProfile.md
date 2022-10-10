@@ -21,6 +21,7 @@ Get-AzLogProfile [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<C
 The **Get-AzLogProfile** cmdlet gets a log profile.
 
 ## EXAMPLES
+
 ### Example 1: Gets a log profile
 ```powershell
 Get-AzLogProfile
@@ -51,6 +52,7 @@ Etag             :
 ```
 
 This command gets a log profile.
+
 ## PARAMETERS
 
 ### -DefaultProfile

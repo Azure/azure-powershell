@@ -44,8 +44,10 @@ Check if a service instance name is available.
 
 ### Example 1: Check if a service instance name is available.
 ```powershell
-PS C:\> Test-AzHealthcareServiceNameAvailability -Name azpsdicom -Type Microsoft.HealthcareApis/services
+Test-AzHealthcareServiceNameAvailability -Name azpsdicom -Type Microsoft.HealthcareApis/services
+```
 
+```output
 Message NameAvailable Reason
 ------- ------------- ------
         True
@@ -200,11 +202,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CHECKNAMEAVAILABILITYINPUT <ICheckNameAvailabilityParameters>: Input values.
+CHECKNAMEAVAILABILITYINPUT `<ICheckNameAvailabilityParameters>`: Input values.
   - `Name <String>`: The name of the service instance to check.
   - `Type <String>`: The fully qualified resource type which includes provider namespace.
 
-INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
+INPUTOBJECT `<IHealthcareApisIdentity>`: Identity Parameter
   - `[DicomServiceName <String>]`: The name of DICOM Service resource.
   - `[FhirDestinationName <String>]`: The name of IoT Connector FHIR destination resource.
   - `[FhirServiceName <String>]`: The name of FHIR Service resource.

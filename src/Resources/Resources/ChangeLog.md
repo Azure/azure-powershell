@@ -19,6 +19,39 @@
 -->
 
 ## Upcoming Release
+* Removed unused reference to resource identifier in role assignment create cmdlet
+* Exposed parameter `-Count` for `Get-AzADApplication`, `Get-AzADServicePrincipal`, `Get-AzADGroup` [#19476] 
+
+## Version 6.2.0
+* Fixed bug `-Password` overwrite `-PasswordProfile` in `New-AzADUser` [#19265]
+* Exposed `EmployeeOrgData` `Manager` for `Get-AzADUSer` [#18205]
+* Exposed parameter `-Count` for `Get-AzADUser` [#16874] 
+
+## Version 6.1.0
+* Removed the warning messages for MSGraph migration [#18856]
+* [Breaking Change] Renamed cmdlet from `{}-AzADAppFederatedIdentityCredential` to `{}-AzADAppFederatedCredential`
+* [Breaking Change] Renamed `-Id` to `-FederatedCredentialId` for
+    - `Get-AzADAppFederatedCredential`
+    - `Remove-AzADAppFederatedCredential`
+    - `Update-AzADAppFederatedCredential`
+* Upgraded API version from Beta to 1.0
+
+## Version 6.0.1
+* Added feedback when deleting role assignments even if passthru is not used
+* Fixed relative path failure in -AsJob scenario [#18084]
+* Fixed logic of `createtime` and `ChangedTime` in `Get-AzResource --ExpandProperties`. [#18206]
+* Fixed role assignment latency for `New-AzADServicePrincipal` [#16777]
+
+## Version 6.0.0
+* Added cmdlet for Application federated identity credential
+    - `Get-AzADAppFederatedIdentityCredential` 
+    - `New-AzADAppFederatedIdentityCredential` 
+    - `Remove-AzADAppFederatedIdentityCredential`
+    - `Update-AzADAppFederatedIdentityCredential`
+* Upgraded and revised `Get-AzLocation` cmdlet:
+    - Upgraded `subscriptionClient` for `Get-AzLocation`. Changed its apiVersion from 2016-01-01 to 2021-01-01.[#18002]
+    - Added all attributes of location info for `Get-AzLocation`, including `pairedRegion` and so on. [#18045][#17536]
+    - Support ExtendedLocations by `Get-AzLocation` [#18046]
 * Added the following cmdlets to remain in parity with 2021-04-01 API version:
     - `New-AzHierarchySetting`
     - `Get-AzHierarchySetting`
@@ -30,6 +63,7 @@
     - `Get-AzTenantBackfillStatus` 
     - `Get-AzManagementGroupNameAvailability`
     - `Get-AzEntity` 
+* [Breaking Change] Renamed property `isSyncedFromOnPremis` to `isSyncedFromOnPremise` to align with API spec
 
 ## Version 5.6.0
 * Fixed redundant quotes in list pagination [#17667]

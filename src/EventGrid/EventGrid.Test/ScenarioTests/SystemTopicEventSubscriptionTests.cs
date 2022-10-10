@@ -8,22 +8,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
 {
-    public class SystemTopicEventSubscriptionTests : RMTestBase
+    public class SystemTopicEventSubscriptionTests : EventGridTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public SystemTopicEventSubscriptionTests(ITestOutputHelper output)
+        public SystemTopicEventSubscriptionTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /* this test passes in local in both playback and record but fails in pipeline
@@ -31,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SystemTopicEventSubscriptionTests_CRUDTest()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "SystemTopicEventSubscriptionTests");
+            TestRunner.RunTestScript("SystemTopicEventSubscriptionTests");
         }*/
     }
 }

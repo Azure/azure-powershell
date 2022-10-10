@@ -7,6 +7,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
+
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
@@ -237,12 +239,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             throw new NotImplementedException();
         }
 
-        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags)
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
         {
-            throw new NotImplementedException();
+            return VaultClient.ImportCertificate(vaultName, certName, Encoding.ASCII.GetBytes(certificate), certPassword, tags, contentType);
         }
 
-        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags)
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
+        {
+            return VaultClient.ImportCertificate(vaultName, certName, certificate, certPassword, tags, contentType);
+        }
+
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
         {
             throw new NotImplementedException();
         }
@@ -250,6 +257,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)
         {
             throw new NotImplementedException();
+        }
+
+        public PSKeyVaultCertificate MergeCertificate(string vaultName, string name, byte[] certBytes, Dictionary<string, string> tags)
+        {
+            return VaultClient.MergeCertificate(vaultName, name, certBytes, tags);
         }
 
         public void PurgeCertificate(string vaultName, string certName)
@@ -489,6 +501,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         /// <summary>
         /// Remove a custom role definition from an HSM.
         /// </summary>
+        /// <param name="hsmName"></param>
+        /// <param name="scope"></param>
         /// <param name="name">Name of the role. A GUID.</param>
         public void RemoveHsmRoleDefinition(string hsmName, string scope, string name)
         {

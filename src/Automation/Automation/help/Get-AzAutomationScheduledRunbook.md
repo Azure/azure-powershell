@@ -71,6 +71,14 @@ Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGro
 
 This command gets all scheduled runbooks for the schedule Schedule01 in the Azure Automation account named Contoso17.
 
+### Example 4: Get Parameters given to a particular Scheduled Runbook
+
+```powershell
+Get-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -JobScheduleId "2b1d7738-093d-4ff7-b87b-e4b2321319e5"
+```
+
+This is currently not supported for jobs created with complex parameters (for example - array) through Azure portal.
+
 ## PARAMETERS
 
 ### -AutomationAccountName
@@ -164,7 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

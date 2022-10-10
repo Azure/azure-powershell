@@ -19,13 +19,133 @@
 --->
 
 ## Upcoming Release
-* Added `DisableIPsecProtection` to `Virtual Network Gateway`.
+* Added a new endpoint swtich `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`
+* Updated `New-AzVirtualNetworkGatewayConnection` to support bypassing the ExpressRoute gateway when accessing private-links
+* Updated `Update-AzCustomIpPrefix` to support no-internet advertise CustomIpPrefix
+* Updated `New-AzNetworkInterface` to support create/update nic with DisableTcpStateTracking property
+* Updated cmdlet to support specifying a VirtualRouterAsn on Virtual Hub
+  * `NewAzureRmVirtualHubCommand.cs`
+  * `UpdateAzureRmVirtualHubCommand.cs`
+* Updated cmdlet to support specifying an ASN on VPN Gateway
+  * `NewAzureRmVpnGatewayCommand.cs`
+  * `UpdateAzureRmVpnGatewayCommand.cs`
+* Updated `NewAzureRmRoutingConfigurationCommand.cs` to support bypassing NVA for spoke vNet traffic
+* Updated `Update-AzCustomIpPrefix` to support new parameters: asn, geo, expressrouteadvertise
+* Updated cmdlets to enable verification on client certificate revocation by using a new property VerifyClientRevocation in ApplicationGatewayClientAuthConfiguration
+  * `New-AzApplicationGatewayClientAuthConfiguration`
+  * `Set-AzApplicationGatewayClientAuthConfiguration`
+* Updated `New-AzCustomIpPrefix` to support IPv4 Parent/Child CustomIpPrefix creation.
+* Added Uppercase Transform in New-AzApplicationGatewayFirewallCondition
+* Added DdosProtectionMode parameter in New-AzPublicIpAddress
+* Added ProbeThreshold parameter to Load Balancer Probe
+  * `AddAzureRmLoadBalancerProbeConfigCommand.cs`
+  * `NewAzureRmLoadBalancerProbeConfigCommand.cs`
+  * `SetAzureRmLoadBalancerProbeConfigCommand.cs`
+* Updated `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride` to support specifying an action for a managed rule override in Application Gateway WAF Policy
+* Added breaking change enum values/notification for the following network manager cmdlets
+  * `DeployAzNetworkManagerCommit.cs`
+  * `NewAzNetworkManagerConnectivityConfigurationCommand.cs`
+  * `NewAzNetworkManagerConnectivityGroupItemCommand.cs`
+  * `NewAzNetworkManagerSecurityAdminRuleCommand.cs`
+  * `NewAzNetworkManagerSecurityAdminConfigurationCommand.cs`
+  * `NewAzNetworkManagerAddressPrefixItemCommand.cs`
+  * `NewAzNetworkManagerCommand.cs`
+* Added `EnableUDPLogOptimization` parameter to `New-AzFirewall`
+* Fixed a bug that does not return HubIPAddresses and PrivateIPAddress during a Get-AzFirewall command
+* Replaced `IdentifyTopFatFlow` parameter with 'EnableFatFlowLogging' parameter to `New-AzFirewall`
+* Fixed a bug not able to add MSSQL application rules to an AZURE FIREWALL POLICY
+* Onboard Project AzureML Registries to Private Link Common Cmdlets
+
+## Version 4.20.1
+* Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
+
+## Version 4.20.0
+* Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
+* Fixed required parameter `PrivateLinkResourceType` missing issue for the following cmdlets [#18655]
+    - `Get-AzPrivateEndpointConnection`
+    - `Set-AzPrivateEndpointConnection`
+    - `Remove-AzPrivateEndpointConnection`
+    - `Approve-AzPrivateEndpointConnection`
+    - `Deny-AzPrivateEndpointConnection`
+* Added breaking change attribute to notify that public ip address sku default behavior will be changed
+    - `New-AzPublicIpAddress`
+    - `New-AzLoadBalancer`
+* Onboard Azure Virtual Network Manager Cmdlets
+    - `New/Get/Remove/Set-AzNetworkManager` 
+    - `New/Get/Remove/Set-AzNetworkManagerGroup` 
+    - `New/Get/Remove/Set-AzNetworkManagerConnectivityConfiguration` 
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityAdminConfiguration` 
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityAdminRule` 
+    - `Get-AzNetworkManagerActiveConnectivityConfiguration` 
+    - `Get-AzNetworkManagerActiveSecurityAdminRule` 
+    - `Get-AzNetworkManagerEffectiveConnectivityConfiguration` 
+    - `Get-AzNetworkManagerEffectiveSecurityAdminRule` 
+    - `Deploy-AzNetworkManagerCommit` 
+    - `Get-AzNetworkManagerDeploymentStatus` 
+    - `New-AzNetworkManagerAddressPrefixItem` 
+    - `New-AzNetworkManagerScope` 
+    - `New-AzNetworkManagerSecurityGroupItem`
+    - `New-AzNetworkManagerHub` 
+    - `New-AzNetworkManagerConnectivityGroupItem`
+    - `New/Get/Remove-AzNetworkManagerStaticMember` 
+    - `New/Get/Remove/Set-AzNetworkManagerScopeConnection` 
+    - `New/Get/Remove/Set-AzNetworkManagerSubscriptionConnection` 
+    - `New/Get/Remove/Set-AzNetworkManagerManagementGroupConnection` 
+* Onboard AgFoodPlatform to Private Link Common Cmdlets
+* Onboard Project Oak Forest to Private Link Common Cmdlets
+
+## Version 4.19.0
+* Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.
+    - `New-AzFirewallPolicyExplicitProxy`
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
+* Added new cmdlets to create packet captures for Network Watcher:
+    - `New-AzNetworkWatcherPacketCaptureV2`
+    - `New-AzPacketCaptureScopeConfig`
+* Added support for CustomV2 ssl policies for Application Gateway.
+    - Added `CustomV2` to the validation set of `PolicyType`
+    - Added `TLSv1_3` to the validation set of `MinProtocolVersion`
+    - Removed validation for null or empty cipher suites list since there can be empty cipher suites list for min protocol version of tls1.3
+* Network Watcher Feature Change: Added new parameter i.e. AzureVMSS as source endpoint in ConnectionMonitor.
+    - `New-AzNetworkWatcherConnectionMonitorEndpointObject`
+* Added `IdentifyTopFatFlow` parameter to `AzureFirewall`
+    - `New-AzFirewall`
+* Enabled Azure Firewall forced tunneling by default (AzureFirewallManagementSubnet and ManagementPublicIpAddress are required) whenever basic sku firewall is created.
+    - `New-AzFirewall`
+* Fixed bug that causes an overflow due to incorrect SNAT private ranges IP validation.
+* Added new cmdlets to create/manage L4(TCP/TLS) objects for ApplicationGateway:
+	- `Get-AzApplicationGatewayListener`	
+	- `New-AzApplicationGatewayListener`	
+	- `Add-AzApplicationGatewayListener`	
+	- `Set-AzApplicationGatewayListener`	
+	- `Remove-AzApplicationGatewayListener`
+	- `Get-AzApplicationGatewayBackendSetting`
+	- `New-AzApplicationGatewayBackendSetting`
+	- `Add-AzApplicationGatewayBackendSetting`
+	- `Set-AzApplicationGatewayBackendSetting`
+	- `Remove-AzApplicationGatewayBackendSetting`
+	- `Get-AzApplicationGatewayRoutingRule`
+	- `New-AzApplicationGatewayRoutingRule`
+	- `Add-AzApplicationGatewayRoutingRule`
+	- `Set-AzApplicationGatewayRoutingRule`
+	- `Remove-AzApplicationGatewayRoutingRule`
+* Updated cmdlet to add TCP/TLS Listener , BackendSetting , RoutingRule support for  Application Gateway:
+	- `New-AzApplicationGateway`
+* Updated cmdlets to add TCP/TLS protocol support for Application gateway Health Probe configuration:
+	- `Set-AzApplicationGatewayProbeConfig`
+	- `Add-AzApplicationGatewayProbeConfig`
+	- `New-AzApplicationGatewayProbeConfig`
+* Updated cmdlets to add basic sku support on Azure Firewall and Azure Firewall Policy:
+    - `New-AzFirewall`
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
 * Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
     - `Add-AzExpressRoutePortAuthorization`
     - `Get-AzExpressRoutePortAuthorization`
     - `Remove-AzExpressRoutePortAuthorization`
 * Added option parameter `AuthorizationKey` to cmdlet `New-AzExpressRouteCircuit` to allow creating ExpressRoute Circuit on a ExpressRoutePort with a different owner.
-* Fix bug that can't display CustomIpPrefix in PublicIpPrefix.
+* Fixed bug that can't display CustomIpPrefix in PublicIpPrefix.
 * Updated cmdlets to add new property of `HubRoutingPreference` in VirtualHub and set property of `PreferredRoutingGateway` deprecated .
     - `New-AzVirtualHub`
     - `Update-AzVirtualHub`
@@ -36,14 +156,42 @@
 * Multipool feature change: Updated cmdlets to add new optional property: `P2SConnectionConfiguration` object for specifying multiple Connection configurations.
     - `Update-AzP2sVpnGateway`
     - `New-AzP2sVpnGateway`
-* Multipool feature change: Added new cmdlets to suppport CRUD of Configuration policy groups for VpnServerConfiguration.
+* Multipool feature change: Added new cmdlets to support CRUD of Configuration policy groups for VpnServerConfiguration.
     - `Get-AzVpnServerConfigurationPolicyGroup`
     - `New-AzVpnServerConfigurationPolicyGroup`
     - `Update-AzVpnServerConfigurationPolicyGroup`
     - `Remove-AzVpnServerConfigurationPolicyGroup`
+* Added new cmdlets for RoutingIntent child resource of VirtualHub.
+    -`Add-AzRoutingPolicy`
+    -`Get-AzRoutingPolicy`
+    -`New-AzRoutingPolicy`
+    -`Remove-AzRoutingPolicy`
+    -`Set-AzRoutingPolicy`
+    -`Get-AzRoutingIntent`
+    -`New-AzRoutingIntent`
+    -`Remove-AzRoutingIntent`
+    -`Set-AzRoutingIntent`
+* Updated cmdlets to add new option of `HubRoutingPreference` in RouteServer.
+    - `New-AzRouteServer`
+    - `Update-AzRouteServer`
+* Fixed bug that can't parse CustomIpPrefixParent parameter from swagger to powershell.
+* Added "Any" operator in New-AzApplicationGatewayFirewallCondition
+* Made properties `ApplicationSecurityGroups` and `IpConfigurations` for `PrivateEndpoint` updatable in the cmdlet `Set-AzPrivateEndpoint`
+* Onboarded Device Update for IoT Hub to Private Link Common Cmdlets
+
+## Version 4.18.0
+* [Breaking Change] Changed default value of `-PrivateEndpointNetworkPoliciesFlag` to `Disabled` in `Add-AzVirtualNetworkSubnetConfig` and `New-AzVirtualNetworkSubnetConfig`
+* Fixed bugs that cannot parse virtual network encryption paramemters when updating exsiting vnet.
+
+## Version 4.17.0
+* Supported `Microsoft.Network/privateLinkServices` in `Get-AzPrivateEndpointConnection` [#16984].
+* Provided friendly message if resource type is not supported for private endpoint connection features [#17091].
+* Added `DisableIPsecProtection` to `Virtual Network Gateway`.
 
 ## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
+* Updated `New-AzFirewallPolicyIntrusionDetection` cmdlet:
+    - Added parameter -PrivateRange
 
 ## Version 4.16.0
 * Added support for retrieving the state of packet capture even when the provisioning state of the packet capture was failure

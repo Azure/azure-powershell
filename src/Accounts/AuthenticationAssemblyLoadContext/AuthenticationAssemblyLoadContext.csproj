@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PsModuleName>Accounts</PsModuleName>
   </PropertyGroup>
@@ -6,7 +6,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext</AssemblyName>
     <RootNamespace>Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext</RootNamespace>
   </PropertyGroup>
@@ -22,4 +22,6 @@
     <AssemblyOriginatorKeyFile>$(RepoSrc)MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;SIGN</DefineConstants>
   </PropertyGroup>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

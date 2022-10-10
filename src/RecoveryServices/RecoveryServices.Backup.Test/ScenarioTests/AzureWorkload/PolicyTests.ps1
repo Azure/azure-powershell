@@ -12,15 +12,70 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$location = "southeastasia"
-$resourceGroupName = "pstestwlRG1bca8"
-$vaultName = "pstestwlRSV1bca8"
+# $location = "southeastasia"
+# $resourceGroupName = "pstestwlRG1bca8"
+# $vaultName = "pstestwlRSV1bca8"
+
 $newPolicyName = "testSqlPolicy"
+$location = "centraluseuap"
+$resourceGroupName = "iaasvm-pstest-rg"
+$vaultName = "iaasvm-pstest-vault"
+
+function Test-AzureVmWorkloadSmartTieringPolicy
+{
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaVault"
+	$tierRecommendedPolicy =  "hiagaSQLArchiveTierRecommended"
+	$tierAfterPolicy = "hiagaSQLArchiveTierAfter"	
+	$archiveDisabledPolicy = "hiagaSQLArchiveDisabled"
+	
+	try
+	{
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType MSSQL -BackupManagementType AzureWorkload
+		$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType MSSQL -BackupManagementType AzureWorkload
+
+		# error scenario - tier recommended not supported 
+		Assert-ThrowsContains { $pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierRecommendedPolicy -WorkloadType MSSQL  -BackupManagementType AzureWorkload -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierRecommended } `
+		"Tiering mode TierRecommended is not supported for BackupManagementType AzureWorkload";
+		
+		
+		# error scenario for tier after policy
+		Assert-ThrowsContains { $pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierAfterPolicy -WorkloadType MSSQL -BackupManagementType AzureWorkload -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 40 -TierAfterDurationType Days } `
+		"TierAfterDuration needs to be >= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be >= (TierAfter + 180) days";
+
+		# create tier after policy 
+		$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierAfterPolicy  -WorkloadType MSSQL  -BackupManagementType AzureWorkload -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 45 -TierAfterDurationType Days
+		
+		Assert-True { $pol.Name -eq $tierAfterPolicy }	
+		
+		# modify policy
+		$pol = Get-AzRecoveryServicesBackupProtectionPolicy  -VaultId $vault.ID | Where { $_.Name -match $tierAfterPolicy }
+		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol[0] -MoveToArchiveTier $false
+		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol[0] -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 45 -TierAfterDurationType Days
+
+		# create archive disabled policy 
+		$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $archiveDisabledPolicy -WorkloadType MSSQL -BackupManagementType AzureWorkload -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID -MoveToArchiveTier $false
+		Assert-True { $pol.Name -eq $archiveDisabledPolicy }	
+	}
+	finally
+	{
+		# Cleanup		
+		# Delete policy
+		$pol = Get-AzRecoveryServicesBackupProtectionPolicy  -VaultId $vault.ID | Where { $_.Name -match "Archive" }
+
+		foreach ($policy in $pol){
+		   Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $policy -Force
+		}
+	}
+}
 
 function Test-AzureVmWorkloadPolicy
 {
 	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		
+	
 	# Get default policy objects
 	$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType MSSQL
 	Assert-NotNull $schedulePolicy

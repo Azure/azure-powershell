@@ -18,17 +18,6 @@
 Lists entities from users or get entity from users by key
 .Description
 Lists entities from users or get entity from users by key
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/get-azaduser
 #>
@@ -79,6 +68,12 @@ function Get-AzADUser {
         [System.String[]]
         # Select properties to be returned
         ${Select},
+
+        [Parameter(ParameterSetName='List')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+        [System.Management.Automation.SwitchParameter]
+        # Include count of items
+        ${Count},
     
         [Parameter(ParameterSetName='List')]
         [Parameter(ParameterSetName='StartsWithParameterSet')]
@@ -103,7 +98,7 @@ function Get-AzADUser {
     
         [Parameter(ParameterSetName='List')]
         [System.String]
-        # Filter items by property values
+        # Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
         ${Filter},
     
         [Parameter(ParameterSetName='List')]

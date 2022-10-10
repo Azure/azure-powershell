@@ -37,7 +37,8 @@ https://docs.microsoft.com/azure/azure-monitor/service-limits#log-queries-and-la
 
 ### Example 1: Get search results using a query
 ```powershell
-$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10"
+$query = "union * | take 10"
+$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query $query
 $queryResults.Results
 ```
 
@@ -45,7 +46,8 @@ Once invoked, $queryResults.Results will contain all of the resulting rows from 
 
 ### Example 2: Convert $results.Result IEnumerable to an array
 ```powershell
-$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10"
+$query = "union * | take 10"
+$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query $query
 $resultsArray = [System.Linq.Enumerable]::ToArray($queryResults.Results)
 ```
 
@@ -53,7 +55,8 @@ Some queries can result in very large data sets being returned. Because of this,
 
 ### Example 3: Get search results using a query over a specific timeframe
 ```powershell
-$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10" -Timespan (New-TimeSpan -Hours 24)
+$query = "union * | take 10"
+$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query $query -Timespan (New-TimeSpan -Hours 24)
 $queryResults.Results
 ```
 
@@ -61,13 +64,13 @@ The results from this query will be limited to the past 24 hours.
 
 ### Example 4: Include render & statistics in query result
 ```powershell
-$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10" -IncludeRender -IncludeStatistics
+$query = "union * | take 10"
+$queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query $query -IncludeRender -IncludeStatistics
 $queryResults.Results
-...
+
 $queryResults.Render
-...
+
 $queryResults.Statistics
-...
 ```
 
 See [https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions](https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions) for details on the render and statistics info.

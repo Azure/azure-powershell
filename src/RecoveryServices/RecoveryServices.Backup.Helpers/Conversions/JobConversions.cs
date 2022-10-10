@@ -810,7 +810,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         detailedResponse.SubTasks.Add(new CmdletModel.AzureVmJobSubTask()
                         {
                             Name = vmJobTask.TaskId,
-                            Status = vmJobTask.Status
+                            Status = vmJobTask.Status, 
+                            Duration = (vmJobTask.StartTime != null && vmJobTask.EndTime != null) ? vmJobTask.Duration : null
                         });
                     }
                 }

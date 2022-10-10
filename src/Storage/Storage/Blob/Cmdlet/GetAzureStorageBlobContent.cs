@@ -141,6 +141,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Download blob to local file
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="blob">Source blob object</param>
         /// <param name="filePath">Destination file path</param>
         internal virtual async Task DownloadBlob(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, string filePath)
@@ -178,6 +180,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Download blob to local file
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="blob">Source blob object</param>
         /// <param name="filePath">Destination file path</param>
         internal virtual async Task DownloadBlob(long taskId, IStorageBlobManagement localChannel, BlobBaseClient blob, string filePath)
@@ -314,7 +318,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
 
             //skip download the snapshot except the CloudBlob pipeline or blob Uri
-            DateTimeOffset? snapshotTime = Util.GetSnapshotTimeFromBlobUri(blob.Uri);
+            DateTimeOffset? snapshotTime = Util.GetSnapshotTimeFromUri(blob.Uri);
             if (snapshotTime != null && ParameterSetName != BlobParameterSet && ParameterSetName != UriParameterSet)
             {
                 WriteWarning(String.Format(Resources.SkipDownloadSnapshot, blob.Name, snapshotTime));

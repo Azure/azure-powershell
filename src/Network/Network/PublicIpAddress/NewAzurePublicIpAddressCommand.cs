@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [GenericBreakingChange("Default behaviour of Zone will be changed", OldWay = "Sku = Standard means the Standard Public IP is zone-redundant.",
         NewWay = "Sku = Standard and Zone = {} means the Standard Public IP has no zones. If you want to create a zone-redundant Public IP address, please specify all the zones in the region. For example, Zone = ['1', '2', '3'].")]
+    [GenericBreakingChange("It is recommended to use parameter '-Sku Standard' to create new IP address. Please note that it will become the default behavior for IP address creation in the future.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpAddress", SupportsShouldProcess = true),OutputType(typeof(PSPublicIpAddress))]
     public class NewAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
@@ -128,6 +129,18 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The DdosProtectionMode to use for Public IP address")]
+        [ValidateSet(
+            MNM.DdosSettingsProtectionMode.VirtualNetworkInherited,
+            MNM.DdosSettingsProtectionMode.Enabled,
+            MNM.DdosSettingsProtectionMode.Disabled,
+            IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string DdosProtectionMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Reverse FQDN.")]
         public string ReverseFqdn { get; set; }
 
@@ -202,7 +215,13 @@ namespace Microsoft.Azure.Commands.Network
                 publicIp.Sku.Name = this.Sku;
             }
 
-            if (!string.IsNullOrEmpty(this.Tier))
+            if (!string.IsNullOrEmpty(this.DdosProtectionMode))
+            {
+                publicIp.DdosSettings = new PSDdosSettings();
+                publicIp.DdosSettings.ProtectionMode = this.DdosProtectionMode;
+            }
+
+                if (!string.IsNullOrEmpty(this.Tier))
             {
                 if(publicIp.Sku == null)
                 {

@@ -13,16 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
+using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
-using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
 {
@@ -49,8 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <summary>
         /// Constructs a managed database adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlManagedDatabaseAdapter(IAzureContext context)
         {
             Context = context;
@@ -192,7 +190,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 LastBackupName = parameters.LastBackupName,
                 CreateMode = CreateMode.RestoreExternalBackup,
                 StorageContainerUri = parameters.StorageContainerUri,
-                StorageContainerSasToken = parameters.StorageContainerSasToken
+                StorageContainerSasToken = parameters.StorageContainerSasToken,
+                StorageContainerIdentity = parameters.StorageContainerIdentity
             };
             var response = Communicator.StartLogReplay(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name, model);
             return CreateManagedDatabaseModelFromResponse(parameters.ResourceGroupName, parameters.ManagedInstanceName, response);
@@ -237,10 +236,25 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <param name="parameters">The parameters for log replay cancel action</param>
         public void StopManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
         {
-            Communicator.Remove(
-                parameters.ResourceGroupName,
-                parameters.ManagedInstanceName,
-                parameters.Name);
+            try
+            {
+                // Check if the database provided by the caller is indeed created by Log Replay migration
+                var dbRestoreDetails = Communicator.GetLogReplayStatus(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
+                if (dbRestoreDetails.ManagedDatabaseRestoreDetailsResultType.Equals("lrsrestore", StringComparison.OrdinalIgnoreCase))
+                {
+                    Communicator.Remove(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
+                }
+                else throw new PSArgumentException(string.Format(Properties.Resources.StopLogReplayErrorDatabaseOrigin, parameters.Name, parameters.ManagedInstanceName, parameters.ResourceGroupName), "InstanceDatabaseName");
+            } 
+            catch (CloudException ex)
+            {
+                // This err is returned when we call GetLogReplayStatus (ManagedDatabaseRestoreDetails API) for a DB that wasn't created with LRS - so we map it to a more friendly err in the context of Stop-LRS cmd
+                if (ex.Body.Code == "RestoreDetailsNotAvailableOrExpired")
+                {
+                    throw new PSArgumentException(string.Format(Properties.Resources.StopLogReplayErrorDatabaseOrigin, parameters.Name, parameters.ManagedInstanceName, parameters.ResourceGroupName), "InstanceDatabaseName");
+                }
+                throw ex;
+            }
         }
 
         /// <summary>
@@ -248,7 +262,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// </summary>
         /// <param name="resourceGroup">The resource group the managed instance is in</param>
         /// <param name="managedInstanceName">The name of the Azure Sql Database Managed Instance</param>
-        /// <param name="database">The service response</param>
+        /// <param name="managedDatabase">The service response</param>
         /// <returns>The converted model</returns>
         public static AzureSqlManagedDatabaseModel CreateManagedDatabaseModelFromResponse(string resourceGroup, string managedInstanceName, Management.Sql.Models.ManagedDatabase managedDatabase)
         {

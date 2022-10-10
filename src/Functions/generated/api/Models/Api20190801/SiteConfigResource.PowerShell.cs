@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// Creates a new instance of <see cref="SiteConfigResource" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="SiteConfigResource" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -214,6 +216,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             if (content.Contains("HttpLoggingEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResourceInternal)this).HttpLoggingEnabled = (bool?) content.GetValueForProperty("HttpLoggingEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResourceInternal)this).HttpLoggingEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AcrUseManagedIdentityCred"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResourceInternal)this).AcrUseManagedIdentityCred = (bool?) content.GetValueForProperty("AcrUseManagedIdentityCred",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResourceInternal)this).AcrUseManagedIdentityCred, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AcrUserManagedIdentityId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResourceInternal)this).AcrUserManagedIdentityId = (string) content.GetValueForProperty("AcrUserManagedIdentityId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResourceInternal)this).AcrUserManagedIdentityId, global::System.Convert.ToString);
             }
             if (content.Contains("LogsDirectorySizeLimit"))
             {
@@ -619,6 +629,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             if (content.Contains("HttpLoggingEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResourceInternal)this).HttpLoggingEnabled = (bool?) content.GetValueForProperty("HttpLoggingEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResourceInternal)this).HttpLoggingEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AcrUseManagedIdentityCred"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResourceInternal)this).AcrUseManagedIdentityCred = (bool?) content.GetValueForProperty("AcrUseManagedIdentityCred",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResourceInternal)this).AcrUseManagedIdentityCred, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("AcrUserManagedIdentityId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResourceInternal)this).AcrUserManagedIdentityId = (string) content.GetValueForProperty("AcrUserManagedIdentityId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResourceInternal)this).AcrUserManagedIdentityId, global::System.Convert.ToString);
             }
             if (content.Contains("LogsDirectorySizeLimit"))
             {

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
 online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhub
 schema: 2.0.0
@@ -8,42 +8,69 @@ schema: 2.0.0
 # Get-AzEventHub
 
 ## SYNOPSIS
-Gets the details of a single Event Hub, or gets a list of Event Hubs.
+Gets an Event Hubs description for the specified Event Hub.
 
 ## SYNTAX
 
-### EventhubPropertiesSet (Default)
+### List (Default)
 ```
-Get-AzEventHub [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>] [-MaxCount <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventHub -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Skip <Int32>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### NamespaceInputObjectSet
+### Get
 ```
-Get-AzEventHub [[-Name] <String>] [-NamespaceObject] <PSNamespaceAttributes>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzEventHub -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzEventHub cmdlet returns either the details of an Event Hub, or a list of all Event Hubs in the current namespace.
-If the Event Hub name is provided, the details of a single Event Hub are returned.
-If an Event Hub name is not provided, a list of all Event Hubs in the specified namespace is returned.
+Gets an Event Hubs description for the specified Event Hub.
 
 ## EXAMPLES
 
-### Example 1: specified EventHub
+### Example 1: Get an EventHub entity
 ```powershell
-Get-AzEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName
+Get-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myEventHub
 ```
 
-Returns the details of the Event Hub \`MyEventHubName\`.
-
-### Example 2: List of EventHub in specified Namespace
-```powershell
-Get-AzEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName
+```output
+ArchiveNameFormat            :
+BlobContainer                :
+CaptureEnabled               :
+CreatedAt                    : 9/13/2022 9:20:38 AM
+DataLakeAccountName          :
+DataLakeFolderPath           :
+DataLakeSubscriptionId       :
+DestinationName              :
+Encoding                     :
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub
+IntervalInSeconds            :
+Location                     : australiaeast
+MessageRetentionInDays       : 1
+Name                         : myEventHub
+PartitionCount               : 1
+PartitionId                  : {0}
+ResourceGroupName            : myResourceGroup
+SizeLimitInBytes             :
+SkipEmptyArchive             :
+Status                       : Active
+StorageAccountResourceId     :
 ```
 
-Returns a list of Event Hubs in the namespace \`MyNamespaceName\`.
+Gets details of eventhub entity `myEventHub` from namespace `myNamespace`.
+
+### Example 2: List All EventHubs in a namespace
+```powershell
+Get-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+```
+
+Lists all EventHub entities from namespace `myNamespace`.
 
 ## PARAMETERS
 
@@ -51,9 +78,9 @@ Returns a list of Event Hubs in the namespace \`MyNamespaceName\`.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -62,76 +89,109 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxCount
-Determine the maximum number of EventHubs to return.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: EventhubPropertiesSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-EventHub Name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: EventHubName
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Namespace
-Namespace Name
-
-```yaml
-Type: System.String
-Parameter Sets: EventhubPropertiesSet
-Aliases: NamespaceName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NamespaceObject
-Namespace object
-
-```yaml
-Type: Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes
-Parameter Sets: NamespaceInputObjectSet
-Aliases:
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource Group Name
+### -Name
+The Event Hub name
 
 ```yaml
 Type: System.String
-Parameter Sets: EventhubPropertiesSet
+Parameter Sets: Get
+Aliases: EventHubName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceName
+The Namespace name
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Name of the resource group within the azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Top
+May be used to limit the number of results to the most recent N usageDetails.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Skip
+Skip is only used if a previous operation returned a partial result.
+If a previous response contains a nextLink element, the value of the nextLink element will include a skip parameter that specifies a starting point to use for subsequent calls.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -142,12 +202,34 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IEventHubIdentity>`: Identity Parameter
+  - `[Alias <String>]`: The Disaster Recovery configuration name
+  - `[ApplicationGroupName <String>]`: The Application Group name 
+  - `[AuthorizationRuleName <String>]`: The authorization rule name.
+  - `[ClusterName <String>]`: The name of the Event Hubs Cluster.
+  - `[ConsumerGroupName <String>]`: The consumer group name
+  - `[EventHubName <String>]`: The Event Hub name
+  - `[Id <String>]`: Resource identity path
+  - `[NamespaceName <String>]`: The Namespace name
+  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
+  - `[ResourceAssociationName <String>]`: The ResourceAssociation Name
+  - `[ResourceGroupName <String>]`: Name of the resource group within the azure subscription.
+  - `[SchemaGroupName <String>]`: The Schema Group name 
+  - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS

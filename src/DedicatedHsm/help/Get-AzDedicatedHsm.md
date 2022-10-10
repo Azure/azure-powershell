@@ -208,7 +208,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDedicatedHsmIdentity>: Identity Parameter
+INPUTOBJECT `<IDedicatedHsmIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[Name <String>]`: Name of the dedicated Hsm
   - `[ResourceGroupName <String>]`: The name of the Resource Group to which the resource belongs.

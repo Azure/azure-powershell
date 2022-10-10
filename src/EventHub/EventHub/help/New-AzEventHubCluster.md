@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
 online version: https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubcluster
 schema: 2.0.0
@@ -8,62 +8,92 @@ schema: 2.0.0
 # New-AzEventHubCluster
 
 ## SYNOPSIS
-Creates a new dedicated eventhub cluster
+Creates or updates an instance of an Event Hubs Cluster.
 
 ## SYNTAX
 
-### ClusterPropertiesSet (Default)
 ```
-New-AzEventHubCluster [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [-Capacity <Int32>]
- [-Tag <Hashtable>] [[-ResourceId] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ClusterResourceIdParameterSet
-```
-New-AzEventHubCluster [-Name] <String> [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+New-AzEventHubCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Capacity <Int32>]
+ [-Location <String>] [-SupportsScaling] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzEventHubCluster cmdlet creates the dedicated eventhub cluster in the given resource group
+Creates or updates an instance of an Event Hubs Cluster.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a self-serve cluster
 ```powershell
-New-AzEventHubCluster -ResourceGroupName RSG-Cluster27651 -Name Eventhub-Cluster-5557 -Location southcentralus -Capacity 1
+New-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myEventHubsCluster -Location "eastasia" -SupportsScaling -Capacity 2
 ```
 
 ```output
-Id        : /subscriptions/SubId/resourceGroups/RSG-Cluster27651/providers/Microsoft.EventHub/clusters/Eventhub-Cluster-5557
-Name      : Eventhub-Cluster-5557
-Location  : southcentralus
-CreatedAt : 09/10/2020 22:09:57
-UpdatedAt : 09/11/2020 01:31:18
-MetricId  :
-Status    :
-Sku       : Microsoft.Azure.Commands.EventHub.Models.PSEventHubsClusterSkuAttributes
-Tags      : {[ClusterTag1, Tag1], [ClusterTag2, Tag2]}
-
+Capacity                     : 2
+CreatedAt                    : 2022-08-29T09:38:30.453Z
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/myEventHubsCluster
+Location                     : australiaeast
+MetricId                     : PROD-00-000
+Name                         : myEventHubsCluster
+ResourceGroupName            : myResourceGroup
+SkuName                      : Dedicated
+Status                       :
+SupportsScaling              : True
+Tag                          : {}
 ```
 
-Creates 'Eventhub-Cluster-5557' dedicated cluster in resourcegroup 'RSG-Cluster27651' with Location southcentralus and Capacity as 1
+Creates a self-serve dedicated cluster `myEventHubsCluster` with 2 capacity units.
+
+### Example 2: Create an EventHubs dedicated cluster of Capacity 1CU
+```powershell
+New-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myEventHubsCluster -Location "eastasia"
+```
+
+```output
+Capacity                     : 1
+CreatedAt                    : 2022-08-29T09:38:30.453Z
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/myEventHubsCluster
+Location                     : australiaeast
+MetricId                     : PROD-00-000
+Name                         : myEventHubsCluster
+ResourceGroupName            : myResourceGroup
+SkuName                      : Dedicated
+Status                       :
+SupportsScaling              :
+Tag                          : {}
+```
+
+Create a EventHubs dedicated cluster `myEventHubsCluster` in Australia East.
 
 ## PARAMETERS
 
-### -Capacity
-Cluster Capacity (CU), curerntrly, allowed value = 1
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: ClusterPropertiesSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Capacity
+The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 1
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -71,9 +101,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -83,22 +113,52 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Location of Cluster
+Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClusterPropertiesSet
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 2
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Cluster Name
+The name of the Event Hubs Cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ClusterName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
@@ -106,66 +166,55 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource Group Name
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClusterPropertiesSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Resource ID of Cluster
-
-```yaml
-Type: System.String
-Parameter Sets: ClusterPropertiesSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: System.String
-Parameter Sets: ClusterResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tag
-Hashtables which represents resource Tags for Clusters
+### -SupportsScaling
+A value that indicates whether Scaling is Supported.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: ClusterPropertiesSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -205,16 +254,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-
-### System.Collections.Hashtable
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.PSEventHubClusterAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS

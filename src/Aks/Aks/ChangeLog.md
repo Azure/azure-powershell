@@ -18,6 +18,29 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking Change] Removed the alias `Install-AzAksKubectl` of `Install-AzAksCliTool`.
+
+## Version 4.3.0
+* Added support of `FQDN` in `Import-AzAksCredential` [#17711]
+* Added hint when `Import-AzAksCredential` meets bad formatted kubernetes configuration file [#16741]
+* Added parameter `-NodeResourceGroup` for `New-AzAksCluster`. [#19014]
+* Added support for `Auto Upgrade` in `New-AzAksCluster` and `Set-AzAksCluster`.
+* Added support for `Http Proxy` in `New-AzAksCluster` and `Set-AzAksCluster`.
+* Added parameter `DisableLocalAccount` and `DiskEncryptionSetID` in `New-AzAksCluster` and `Set-AzAksCluster`.
+* Added logic for installing `kubelogin` in `Install-AzAksKubectl`.
+
+## Version 4.2.1
+* Removed the warning messages for MSGraph migration [#18856]
+
+## Version 4.2.0
+* Added parameter `CommandContextAttachmentZip` for `Invoke-AzAksRunCommand`. [#17454]
+* Added ManagedIdentity support for Aks[#15656].
+* Added property `PowerState` for the output of `Get-AzAksCluster`[#18271]
+* Updated the logic of `Set-AzAksCluster` for parameter `NodeImageOnly`.
+* Added parameter `NodeImageOnly` for `Update-AzAksNodePool`.
+* Added parameter `AvailabilityZone` for `New-AzAksCluster`. [#18658]
+
+## Version 4.1.0
 * Removed these aliases:
   * `Get-AzAks`
   * `New-AzAks`
