@@ -20,7 +20,7 @@ This operation will stop protection of a backup instance and data will be held f
 .Description
 This operation will stop protection of a backup instance and data will be held forever
 .Example
-PS C:\> Stop-AzDataProtectionBackupInstanceProtection -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
+Stop-AzDataProtectionBackupInstanceProtection -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity

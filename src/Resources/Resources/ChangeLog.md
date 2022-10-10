@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Removed unused reference to resource identifier in role assignment create cmdlet
+* Exposed parameter `-Count` for `Get-AzADApplication`, `Get-AzADServicePrincipal`, `Get-AzADGroup` [#19476] 
 
 ## Version 6.2.0
 * Fixed bug `-Password` overwrite `-PasswordProfile` in `New-AzADUser` [#19265]

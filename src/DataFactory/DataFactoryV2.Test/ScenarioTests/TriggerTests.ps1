@@ -120,9 +120,7 @@ function Test-TriggerRun
         
         Assert-AreEqual 'Started' $started.RuntimeState 
         
-        if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-            Start-Sleep -s 150
-        }
+        Start-TestSleep -Seconds 150
         
         $endDate = $startDate.AddYears(1)
         $triggerRuns = Get-AzDataFactoryV2TriggerRun -ResourceGroupName $rgname -DataFactoryName $dfname -TriggerName $triggername -TriggerRunStartedAfter $startDate -TriggerRunStartedBefore $endDate
@@ -184,9 +182,7 @@ function Test-BlobEventTriggerSubscriptions
 		Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
 		$status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
 		while ($status.Status -ne "Enabled"){
-			if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-				Start-Sleep -s 150
-			}
+			Start-TestSleep -Seconds 150
 			$status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
 		}
         
@@ -248,9 +244,7 @@ function Test-BlobEventTriggerSubscriptionsByInputObject
 		Add-AzDataFactoryV2TriggerSubscription $actual
 		$status = Get-AzDataFactoryV2TriggerSubscriptionStatus $actual
 		while ($status.Status -ne "Enabled"){
-			if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-				Start-Sleep -s 150
-			}
+			Start-TestSleep -Seconds 150
 			$status = Get-AzDataFactoryV2TriggerSubscriptionStatus $actual
 		}
         
@@ -312,9 +306,7 @@ function Test-BlobEventTriggerSubscriptionsByResourceId
 		Add-AzDataFactoryV2TriggerSubscription -ResourceId $expected.Id
 		$status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceId $expected.Id
 		while ($status.Status -ne "Enabled"){
-			if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-				Start-Sleep -s 150
-			}
+			Start-TestSleep -Seconds 150
 			$status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceId $expected.Id
 		}
         
@@ -375,9 +367,7 @@ function Test-TriggerInvokeAndStop
         
         Assert-AreEqual 'Started' $started.RuntimeState 
         
-        if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-            Start-Sleep -s 150
-        }
+        Start-TestSleep -Seconds 150
         
         $endDate = $startDate.AddYears(1)
         $triggerRuns = Get-AzDataFactoryV2TriggerRun -ResourceGroupName $rgname -DataFactoryName $dfname -TriggerName $triggername -TriggerRunStartedAfter $startDate -TriggerRunStartedBefore $endDate

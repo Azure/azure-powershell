@@ -211,7 +211,38 @@ directive:
   - where:
       subject: (.*)WebAppConfiguration(.*)
     hide: true
+  - where:
+      subject: SystemAssignedIdentity(.*)
+    hide: true
+  - where:
+      subject: WebAppBasicPublishingCredentialsPolicy
+    hide: true
+  - where:
+      subject: WebAppFunctionKey(.*)
+    hide: true
+  - where:
+      subject: WebAppScmAllowed
+    hide: true
+  - where:
+      subject: WebAppSettingKeyVaultReference
+    hide: true
+  - where:
+      subject: WebAppSyncStatus(.*)
+    hide: true
+  - where:
+      verb: Sync
+      subject: WebAppFunctionSlot(.*)
+    hide: true
+  - where:
+      verb: Move
+    hide: true
+  - where:
+      verb: Test
+    hide: true
 # Cmdlets to remove
+  - where:
+      subject: WebAppFtpAllowed
+    remove: true
   - where:
       subject: WebAppPremierAddOn(.*)
     remove: true

@@ -307,6 +307,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             Add,
             Remove
         }
+        public enum UserAssignedManagedIdentityActionType
+        {
+            Add,
+            Remove,
+            Set
+        }
+
+        public class PublicNetworkAccess
+        {
+            public const string Enabled = "Enabled";
+            public const string Disabled = "Disabled";
+        }
 
         public const string SparkConfiguration = nameof(SparkConfiguration);
     }

@@ -295,7 +295,7 @@ function Test-VolumeReplication
             $sourceVolume = Get-AzNetAppFilesVolume -ResourceGroupName $srcResourceGroup -AccountName $srcAccName -PoolName $srcPoolName -VolumeName $srcVolName
             $dpVolume = Get-AzNetAppFilesVolume -ResourceGroupName $destResourceGroup -AccountName $destAccName -PoolName $destPoolName -VolumeName $destVolName
 
-           Start-Sleep -Seconds 1.0
+           Start-TestSleep -Seconds 1
         }
         while (($sourceVolume.ProvisioningState -ne "Succeeded") -or ($dpVolume.ProvisioningState -ne "Succeeded"));
     }
@@ -317,7 +317,7 @@ function Test-VolumeReplication
                     throw 
                 }                
             }
-            Start-Sleep -Seconds 10.0
+            Start-TestSleep -Seconds 10
             $i++
         }
         until ($replicationStatus.MirrorState -eq $targetState -or $i -eq 40);
@@ -326,15 +326,6 @@ function Test-VolumeReplication
         Assert-AreEqual $targetState $replicationStatus.MirrorState
                 
         #while ($replicationStatus.MirrorState -ne $targetState)
-    }
-
-    function SleepDuringRecord
-    {
-        if ($env:AZURE_TEST_MODE -eq "Record")
-        {
-            Write-Output "Sleep in record mode"
-            Start-Sleep -Seconds 30.0
-        }
     }
 
     try
@@ -386,7 +377,7 @@ function Test-VolumeReplication
         #Assert-NotNull $destinationVolume.DataProtection
         WaitForSucceeded
         #Start-Sleep -Seconds 30.0
-        SleepDuringRecord
+        Start-TestSleep -Seconds 30
 
         # authorize the replication
         Approve-AnfReplication -ResourceGroupName $srcResourceGroup -AccountName $srcAccName -PoolName $srcPoolName -VolumeName $srcVolName -DataProtectionVolumeId $destinationVolume.Id
@@ -398,7 +389,7 @@ function Test-VolumeReplication
         Suspend-AnfReplication -ResourceGroupName $destResourceGroup -AccountName $destAccName -PoolName $destPoolName -VolumeName $destVolName
 
         WaitForRepliationStatus "Broken"
-        SleepDuringRecord
+        Start-TestSleep -Seconds 30
         #Start-Sleep -Seconds 30.0
         WaitForSucceeded
 
@@ -406,14 +397,14 @@ function Test-VolumeReplication
         Resume-AnfReplication -ResourceGroupName $destResourceGroup -AccountName $destAccName -PoolName $destPoolName -VolumeName $destVolName
 
         WaitForRepliationStatus "Mirrored"
-        SleepDuringRecord
+        Start-TestSleep -Seconds 30
         #Start-Sleep -Seconds 30.0
 
         # break the replication again
         Suspend-AnfReplication -ResourceGroupName $destResourceGroup -AccountName $destAccName -PoolName $destPoolName -VolumeName $destVolName -ForceBreak
 
         WaitForRepliationStatus "Broken"
-        SleepDuringRecord
+        Start-TestSleep -Seconds 30
         #Start-Sleep -Seconds 30.0
 
         # delete the data protection object

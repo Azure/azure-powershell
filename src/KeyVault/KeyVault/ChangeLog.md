@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the exception content swallowed issue when exception.Response is null [#19531]
 
 ## Version 4.7.0
 * Fixed parameter validation logic of `-UseDefaultCVMPolicy`
