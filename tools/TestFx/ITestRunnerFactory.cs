@@ -12,23 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.TestFx
 {
     public interface ITestRunnerFactory
     {
-        ITestRunner Build();
         ITestRunnerFactory WithProjectSubfolderForTests(string folderName);
-        ITestRunnerFactory WithCommonPsScripts(string[] psScriptList);
+
         ITestRunnerFactory WithNewPsScriptFilename(string psScriptName);
-        ITestRunnerFactory WithMockContextAction(Action mockContextAction);
-        ITestRunnerFactory WithExtraRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList);
+
+        ITestRunnerFactory WithCommonPsScripts(string[] psScriptList);
+
         ITestRunnerFactory WithNewRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList);
-        ITestRunnerFactory WithExtraUserAgentsToIgnore(Dictionary<string, string> userAgentsToIgnore);
+
+        ITestRunnerFactory WithExtraRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList);
+
+        ITestRunnerFactory WithInitAction(Action initAction);
+
+        ITestRunnerFactory WithMockContextAction(Action<MockContext> mockContextAction);
+
+        ITestRunnerFactory WithCleanupAction(Action cleanupAction);
+
         ITestRunnerFactory WithRecordMatcher(RecordMatcherDelegate recordMatcher);
-        ITestRunnerFactory WithNewRecordMatcherArguments(Dictionary<string, string> userAgentsToIgnore, Dictionary<string, string> resourceProviders);
+
+        ITestRunnerFactory WithNewRecordMatcherArguments(Dictionary<string, string> userAgentsToIgnore, Dictionary<string, string> resourceProviders, bool ignoreResourceClient = true);
+
+        ITestRunnerFactory WithManagementClients(params Func<MockContext, object>[] initializedManagementClients);
+
+        ITestRunner Build();
     }
 }

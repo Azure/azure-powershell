@@ -7,13 +7,22 @@ parameters:
 steps:
 - template: download-build-steps.yml
   parameters:
-    osName: ${{ parameters.osName }}
-
-- task: UseDotNet@2
-  displayName: 'Use .NET Core sdk'
+    artifactName: build-${{ parameters.testFramework }}
+- task: NodeTool@0
+  condition: eq(variables.IsGenerateBased, true)
+  displayName: Install Autorest
   inputs:
-    packageType: sdk
-    version: 2.1.x
+    versionSpec: '14.17.1'
+    command: custom
+    verbose: false
+    customCommand: install autorest@latest
+- task: PowerShell@2
+  condition: eq(variables.IsGenerateBased, true)
+  displayName: Setup environment for Autorest
+  inputs:
+    targetType: inline
+    script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
+    pwsh: true
 
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk'
@@ -27,6 +36,8 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
+  env:
+      OCTOKITPAT: $(OCTOKITPAT)
 
 - powershell: |
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
@@ -54,4 +65,4 @@ steps:
 
 - template: publish-artifacts-steps.yml
   parameters:
-    artifactName: test-${{ parameters.osName }}
+    artifactName: test-${{ parameters.testFramework }}-${{ parameters.osName }}

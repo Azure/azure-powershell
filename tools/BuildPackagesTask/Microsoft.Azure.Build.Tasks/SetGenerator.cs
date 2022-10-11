@@ -17,8 +17,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 {
     using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
-    using System.IO;
     using System.Linq;
 
     /// <summary>
@@ -32,36 +30,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         /// </summary>
         public const int MaxFilesPossible = 300;
 
-        /// <summary>
-        /// Static method used to generate a set of tests to be run based on
-        /// a Json file which maps files to test Dlls.
-        /// </summary>
-        /// <param name="files">This is a set of paths.</param>
-        /// <param name="mapFilePath">This is the filepath of the map that contains
-        /// the mapping between files and test DLLs.</param>
-        /// <returns>Set of tests to be run</returns>
-        public static IEnumerable<string> Generate(IEnumerable<string> filesChanged, string mapFilePath)
-        {
-            if (mapFilePath == null)
-            {
-                throw new ArgumentNullException("The mappings file path cannot be null.");
-            }
-
-            if (!File.Exists(mapFilePath))
-            {
-                throw new FileNotFoundException("The file path provided for the mappings could not be found.");
-            }
-
-            if (filesChanged == null)
-            {
-                throw new ArgumentNullException("The list of files changed cannot be null.");
-            }
-
-            var filesChangedSet = new HashSet<string>(filesChanged);
-            var mappingsDictionary = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(mapFilePath));
-
-            return SetGenerator.Generate(filesChangedSet, mappingsDictionary);
-        }
         /// <summary>
         /// Static method used to generate a set of tests to be run based on
         /// a set of paths
@@ -89,7 +57,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             }
 
             var outputSet = new HashSet<string>();
-            var filesProvidedCount = filesChangedSet.Count;
             var filesFoundCount = 0;
             var useFullMapping = false;
             if (filesChangedSet.Count >= MaxFilesPossible || filesChangedSet.Count == 0)
@@ -152,5 +119,34 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             return outputSet;
         }
+        /// <summary>
+        /// Generate set according to module names
+        /// </summary>
+        /// <param name="moduleNames"></param>
+        /// <param name="mappingsDictionary"></param>
+        /// <returns></returns>
+        public static HashSet<string> Generate(string[] moduleNames, Dictionary<string, string[]> mappingsDictionary)
+        {
+            var outputSet = new HashSet<string>();
+
+            foreach (var module in moduleNames)
+            {
+                var key = $"src/{module}/";
+                if (mappingsDictionary.ContainsKey(key))
+                {
+                    var lines = mappingsDictionary[key];
+                    foreach (var line in lines)
+                    {
+                        if (line.Contains($"/src/{module}/") || line.Contains($"\\src\\{module}\\") || line.Equals($"Az.{module}"))
+                        {
+                            outputSet.Add(line);
+                        }
+                    }
+                }
+            }
+
+            return outputSet;
+        }
+
     }
 }

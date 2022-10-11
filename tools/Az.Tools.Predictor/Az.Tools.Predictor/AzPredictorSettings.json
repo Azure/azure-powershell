@@ -1,0 +1,6 @@
+{
+  "maxAllowedCommandDuplicate": 1,
+  "serviceUri": "https://app.aladdin.microsoft.com/api/v2.0",
+  "setAsInternal": false,
+  "suggestionCount": 7
+}

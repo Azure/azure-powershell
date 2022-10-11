@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0"
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003" Target="Build">
+  
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Repo.props" />
+  <PropertyGroup>
+    <PowerShellCoreCommandPrefix>pwsh -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PowerShellCoreCommandPrefix>pwsh -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
+    <ModuleName>Az.Tools.Installer</ModuleName>
+    <ArtifactFolder>$(RepoArtifacts)Tools\</ArtifactFolder>
+  </PropertyGroup>
+    
+  <Target Name="Clean">
+    <Message Text="Clean artifacts folder" />
+    <RemoveDir Directories="$(ArtifactFolder)" />
+  </Target>
+
+  <Target Name="Build">
+    <Message Text="Build $(ModuleName)" />
+    <ItemGroup>
+        <PublishFiles Include="**" Exclude="*.proj"/>
+    </ItemGroup>
+    <Copy SourceFiles="@(PublishFiles)" DestinationFolder="$(ArtifactFolder)$(ModuleName)\%(RecursiveDir)" />
+  </Target>
+
+  <Target Name="GenerateHelp">
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\GenerateHelp -ArtifactFolder $(ArtifactFolder) -ModuleName $(ModuleName)" />
+  </Target>
+
+  <Target Name="Test" DependsOnTargets="Build">
+
+  </Target>
+
+  <Target Name="Package">
+    <Message Text="Package $(ModuleName)" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)\PublishToolsModule.ps1 -RepositoryLocation $(ArtifactFolder) -PublishLocation $(ArtifactFolder) -ModuleName $(ModuleName)&quot;" />
+  </Target>
+</Project>
