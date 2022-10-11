@@ -16,7 +16,6 @@ trigger:
       
 variables:
   GenerationBranchName: generation
-  AzureStackBranchName: Azs-tzl
   GithubToken: $(GITHUB_TOKEN)
 
 jobs:
@@ -27,8 +26,6 @@ jobs:
     matrix:
       Generation:
         BranchName: ${{ variables.GenerationBranchName }}
-      # AzureStack:
-      #   BranchName: ${{ variables.AzureStackBranchName }}
 
   steps:
   - task: PowerShell@2
