@@ -8,13 +8,13 @@ schema: 2.0.0
 # Get-AzDataProtectionBackupVault
 
 ## SYNOPSIS
-Returns resource collection belonging to a resource group.
+Returns a resource belonging to a resource group.
 
 ## SYNTAX
 
-### Get1 (Default)
+### list (Default)
 ```
-Get-AzDataProtectionBackupVault -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzDataProtectionBackupVault [-ResourceGroupName <String>] [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-Default
 ```
 
 ## DESCRIPTION
-Returns resource collection belonging to a resource group.
+Returns a resource belonging to a resource group.
 
 ## EXAMPLES
 
@@ -117,7 +117,7 @@ The name of the resource group where the backup vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, Get2
+Parameter Sets: Get2, list
 Aliases:
 
 Required: True
@@ -132,7 +132,7 @@ The subscription Id.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get1, Get2
+Parameter Sets: Get2, list
 Aliases:
 
 Required: False
@@ -167,6 +167,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupVaultResource
+
+### System.Management.Automation.PSObject
 
 ## NOTES
 
