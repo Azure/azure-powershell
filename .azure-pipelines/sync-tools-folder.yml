@@ -27,8 +27,8 @@ jobs:
     matrix:
       Generation:
         BranchName: ${{ variables.GenerationBranchName }}
-      AzureStack:
-        BranchName: ${{ variables.AzureStackBranchName }}
+      # AzureStack:
+      #   BranchName: ${{ variables.AzureStackBranchName }}
 
   steps:
   - task: PowerShell@2
