@@ -1,0 +1,34 @@
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubNamespace'))
+{
+  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+  if (-Not (Test-Path -Path $loadEnvPath)) {
+      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+  }
+  . ($loadEnvPath)
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzEventHubNamespace.Recording.json'
+  $currentPath = $PSScriptRoot
+  while(-not $mockingPath) {
+      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+      $currentPath = Split-Path -Path $currentPath -Parent
+  }
+  . ($mockingPath | Select-Object -First 1).FullName
+}
+
+Describe 'Get-AzEventHubNamespace' {
+    It 'List' {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'Get' -skip {
+        $eventHubNamespace = Get-AzEventHubNamespace -ResourceGroupName $env.resourceGroup -Name $env.namespace 
+        $eventHubNamespace.Name | Should -Be $env.eventHubNamespace
+    }
+
+    It 'List1' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+}
