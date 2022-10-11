@@ -20,11 +20,17 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.32.0
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
+* Added Confidential VM functionality to multiple cmdlets.
+  * Added new parameter `SecureVMDiskEncryptionSet` to cmdlet `Set-AzDiskSecurityProfile`.
+  * Added new parameters `SecureVMDiskEncryptionSet` and `SecurityEncryptionType` to cmdlet `Set-AzVMOSDisk`.
 * Improved cmdlet descriptions and parameter descriptions for VM/VMSS creation.
 * Added the 'BaseRegularPriorityCount' integer property to the following cmdlets: `New-AzVmssConfig` and `Update-AzVmssConfig`
 * Added the 'RegularPriorityPercentage' integer property to the following cmdlets: `New-AzVmssConfig` and `Update-AzVmssConfig`
 * Added Breaking Changes for Add-AzVMAdditionalUnattendContent and Get-AzGallery cmdlets
+* Added `-DiskControllerType` property to the following cmdlets: `New-AzVm`, `New-AzVmss`, `New-AzVmConfig`, `Set-AzVmssStorageProfile`
 
 ## Version 4.31.0
 * Added `-SecurityType`, `-EnableSecureBoot` and `-EnableVtpm` parameters to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.

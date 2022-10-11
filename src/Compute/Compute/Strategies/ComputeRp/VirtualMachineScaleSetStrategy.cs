@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string userData,
             string imageReferenceId,
             Dictionary<string, List<string>> auxAuthHeader,
+            string diskControllerType,
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
             string securityType = null
@@ -119,7 +120,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                     Id = imageReferenceId
                                 },
                                 DataDisks = DataDiskStrategy.CreateVmssDataDisks(
-                                    imageAndOsType?.DataDiskLuns, dataDisks)
+                                    imageAndOsType?.DataDiskLuns, dataDisks),
+                                DiskControllerType = diskControllerType
                             },
                             NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                             {
