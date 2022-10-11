@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-AsJob` optional parameter for `Remove-AzVMExtension` cmdlet.
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
 * Improved cmdlet descriptions and parameter descriptions for VM/VMSS creation.
 * Added the 'BaseRegularPriorityCount' integer property to the following cmdlets: `New-AzVmssConfig` and `Update-AzVmssConfig`
