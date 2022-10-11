@@ -32,6 +32,45 @@ The first command gets the virtual machine named ContosoVM07 by using **Get-AzVm
 The command stores it in the $VM variable.
 The second command sets the SecurityType enum to "TrustedLaunch". Trusted launch requires the creation of new virtual machines. You can't enable trusted launch on existing virtual machines that were initially created without it.
 
+### Example 2: Create a ConfidentialVM Virtual Machine and the Disk encrypted with the VMGuestStateOnly type.
+```powershell
+$vmSize = "Standard_DC2as_v5";         
+$DNSNameLabel = "cvm1" +$ResourceGroupName; 
+$SubnetAddressPrefix = "10.0.0.0/24";
+$VnetAddressPrefix = "10.0.0.0/16";
+
+# Credential setup.
+$password = "Password" |ConvertTo-SecureString -AsPlainText -Force; 
+$securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+$credential = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+$SecurityType = "ConfidentialVM";
+$vmDiskSecurityEncryptionType = "VMGuestStateOnly";
+$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize;
+
+# Create the Network resources and VM OS setup.
+$SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
+$Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $rgname -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet;
+$PIP = New-AzPublicIpAddress -Name $PublicIPAddressName -DomainNameLabel $DNSNameLabel -ResourceGroupName $rgname -Location $LocationName -AllocationMethod Dynamic;
+$NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $LocationName -SubnetId $Vnet.Subnets[0].Id -PublicIpAddressId $PIP.Id;
+$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate;
+$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id;
+$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'windowsserver' -Skus '2022-datacenter-smalldisk-g2' -Version 'latest';
+$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage";
+
+# Set the SecurityType and necessary values on the Uefi settings. 
+$VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $SecurityType;
+$VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
+
+# Set the Disk Encryption Type. 
+$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType $vmDiskSEcurityEncryptionType;
+
+$vm = New-AzVM -ResourceGroupName $rgname -Location $LocationName -VM $VirtualMachine;
+$vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+# Verify SecurityType value.
+# $vm.SecurityProfile.SecurityType == "ConfidentialVM";
+```
+
 ## PARAMETERS
 
 ### -DefaultProfile
