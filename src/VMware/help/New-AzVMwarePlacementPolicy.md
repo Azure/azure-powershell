@@ -28,6 +28,7 @@ Create or update a placement policy in a private cloud cluster
 $abc = New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType 'Affinity' -Type 'VmVm' -VMMember @{"test"="test"}
 New-AzVMwarePlacementPolicy -ClusterName cluster1 -Name policy1 -PrivateCloudName cloud1 -ResourceGroupName group1 -Property $abc
 ```
+
 ```output
 Name    ResourceGroupName
 ----    -----------------
@@ -41,6 +42,7 @@ Create or update a placement policy in a private cloud cluster
 $abc = New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType 'AntiAffinity' -HostMember @{"test"="test"}  -Type 'VmHost' -VMMember @{"test"="test"}
 New-AzVMwarePlacementPolicy -ClusterName cluster1 -Name policy1 -PrivateCloudName cloud1 -ResourceGroupName group1 -Property $abc
 ```
+
 ```output
 Name    ResourceGroupName
 ----    -----------------
@@ -237,7 +239,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PROPERTY `<IPlacementPolicyProperties>`: placement policy properties
+`PROPERTY <IPlacementPolicyProperties>`: placement policy properties
   - `Type <PlacementPolicyType>`: placement policy type
   - `[DisplayName <String>]`: Display name of the placement policy
   - `[State <PlacementPolicyState?>]`: Whether the placement policy is enabled or disabled

@@ -19,8 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 3.1.0
+* [Breaking Change] Changed the type of parameter `Sku` from Enum to String in `Add-AzApiManagementRegion`, `New-AzApiManagement` and `Update-AzApiManagementRegion`.
+
 ## Version 3.0.1
-* Added warning message for upcoming breaking change: changed the type of parameter Sku from Enum to String
 * Supported GraphQL Specification Format
 
 ## Version 3.0.0

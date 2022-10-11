@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.7.0
+* [Breaking Change] Added fix for Enable-AzRecoveryServicesBackupProtection cmdlet. Resolved the null refrence issue by making policy a mandatory parameter.
+* [Breaking Change] Removed status filter from Get-AzRecoveryServicesBackupContainer command
+* Added SubTasks Duration for IaasVM job
+
+## Version 5.6.1
 * Removed AFEC feature check for Archive smart tiering
 * Remove $vmName from non A2A scenarios
 * Fixed bug with Update-AzRecoveryServicesAsrProtectionContainerMapping

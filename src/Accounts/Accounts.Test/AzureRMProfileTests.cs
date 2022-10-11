@@ -151,6 +151,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SpecifyTenantDomainAndSubscriptionIdSucceed()
+        {
+            var tenants = new List<string> { DefaultTenant.ToString() };
+            var firstList = new List<string> { DefaultSubscription.ToString(), Guid.NewGuid().ToString() };
+            var secondList = new List<string> { Guid.NewGuid().ToString() };
+            var client = SetupTestEnvironment(tenants, firstList, secondList);
+
+            ((MockTokenAuthenticationFactory)AzureSession.Instance.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            new MockAccessToken
+            {
+                UserId = "aaa@contoso.com",
+                LoginType = LoginType.OrgId,
+                AccessToken = "bbb",
+                TenantId = DefaultTenant.ToString()
+            };
+
+            var azureRmProfile = client.Login(
+                Context.Account,
+                Context.Environment,
+                MockSubscriptionClientFactory.GetTenantDomainFromId(DefaultTenant.ToString()),
+                DefaultSubscription.ToString(),
+                null,
+                null,
+                false,
+                null);
+            Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionIdNotExist()
         {
             var tenants = new List<string> { DefaultTenant.ToString() };
@@ -1133,7 +1163,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             AzureSession.Instance.DataStore = dataStore;
             dataStore.WriteFile(path, contents);
             var profile = new AzureRmProfile(path);
-            Assert.Equal(5, profile.Environments.Count());
+            Assert.Equal(4, profile.Environments.Count());
             Assert.Equal("3c0ff8a7-e8bb-40e8-ae66-271343379af6", profile.DefaultContext.Tenant.Id.ToString());
             Assert.Equal("00000000-0000-0000-0000-000000000000", profile.DefaultContext.Subscription.Id.ToString());
             Assert.Equal("testCloud", profile.DefaultContext.Environment.Name);
