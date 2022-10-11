@@ -71,7 +71,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             int? vCPUsAvailable = null,
             int? vCPUsPerCore = null,
             string imageReferenceId = null,
-            Dictionary<string, List<string>> auxAuthHeader = null
+            Dictionary<string, List<string>> auxAuthHeader = null,
+            string diskControllerType = null
             )
 
             => Strategy.CreateResourceConfig(
@@ -115,7 +116,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 Id = imageReferenceId
                             },
                             DataDisks = DataDiskStrategy.CreateDataDisks(
-                                imageAndOsType?.DataDiskLuns, dataDisks, dataDiskDeleteOption)
+                                imageAndOsType?.DataDiskLuns, dataDisks, dataDiskDeleteOption),
+                            DiskControllerType = diskControllerType
                         },
                         AvailabilitySet = engine.GetReference(availabilitySet),
                         Zones = zones,

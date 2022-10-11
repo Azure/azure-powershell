@@ -43,7 +43,6 @@ param(
     [Parameter(ParameterSetName='InputObjectParameterSet',  HelpMessage="Days to disable.")]
     [Parameter(ParameterSetName='IdParameterSet',  HelpMessage="Days to disable.")]
     [Parameter(ParameterSetName='NameParameterSet',  HelpMessage="Days to disable.")]
-    [ValidateRange("Positive")]
     ${Day},
 
 
