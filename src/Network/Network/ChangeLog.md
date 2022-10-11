@@ -19,6 +19,15 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to add new property of `VirtualNetworkGatewayPolicyGroup` and `VpnClientConnectionConfiguration` in Azure Virtual Network Gateway
+    * `New-AzVirtualNetworkGateway`
+    * `Set-AzVirtualNetworkGateway`
+* Added new cmdlets to create 
+    * `New-AzVirtualNetworkGatewayPolicyGroup`
+    * `New-AzVirtualNetworkGatewayPolicyGroupMember`
+    * `New-AzVpnClientConnectionConfiguration`
+* Added message in breaking change attribute to notify that load balancer sku default behaviour will be changed
+    * `New-AzLoadBalancer`
 
 ## Version 4.21.0
 * Added a new endpoint switch `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`
@@ -56,15 +65,6 @@
 * Fixed a bug that does not return HubIPAddresses and PrivateIPAddress during a Get-AzFirewall command
 * Replaced `IdentifyTopFatFlow` parameter with 'EnableFatFlowLogging' parameter to `New-AzFirewall`
 * Fixed a bug not able to add MSSQL application rules to an AZURE FIREWALL POLICY
-* Updated cmdlets to add new property of `VirtualNetworkGatewayPolicyGroup` and `VpnClientConnectionConfiguration` in Azure Virtual Network Gateway
-    - `New-AzVirtualNetworkGateway`
-    - `Set-AzVirtualNetworkGateway`
-* Added new cmdlets to create 
-    - `New-AzVirtualNetworkGatewayPolicyGroup`
-    - `New-AzVirtualNetworkGatewayPolicyGroupMember`
-    - `New-AzVpnClientConnectionConfiguration`
-* Added message in breaking change attribute to notify that load balancer sku default behaviour will be changed
-    - `New-AzLoadBalancer`
 * Onboard Project AzureML Registries to Private Link Common Cmdlets
 
 ## Version 4.20.1
