@@ -1120,3 +1120,47 @@ function Test-NewDeploymentFromTemplateAndParameterFileContainingTagsOutput
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests symbolic name resource deployment
+#>
+function Test-SymbolicNameDeployment
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "East US 2"
+
+	try
+	{
+		# Test
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		# Validate
+		$deployment = Test-AzResourceGroupDeployment -ResourceGroupName $rgname -TemplateFile symbolicNameTemplate.json
+
+		# Deploy
+		$deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile symbolicNameTemplate.json
+		
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+		[hashtable]$actualTags = $getById.Tags
+		Assert-True { AreHashtableEqual $expectedTags $getById.Tags }
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

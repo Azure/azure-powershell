@@ -230,5 +230,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewDeploymentFromTemplateAndParameterFileContainingTagsOutput");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSymbolicNameDeployment()
+        {
+            TestRunner.RunTestScript("Test-SymbolicNameDeployment");
+        }
     }
 }
