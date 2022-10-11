@@ -58,6 +58,8 @@
     - `New/Get/Remove/Set-AzNetworkManagerManagementGroupConnection` 
 * Onboard AgFoodPlatform to Private Link Common Cmdlets
 * Onboard Project Oak Forest to Private Link Common Cmdlets
+* NewAzureVirtualNetworkGatewayCommand can now create a gateway of type localgateway
+    - `New-AzVirtualNetworkGateway`
 
 ## Version 4.19.0
 * Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.
