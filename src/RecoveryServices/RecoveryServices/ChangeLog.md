@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Remove $vmName from non A2A scenarios
+* Fixed bug with Update-AzRecoveryServicesAsrProtectionContainerMapping
+* Added new scenarios: EZ-to-AZ, EZ-to-AZ, EZ-to-EZ
 
 ## Version 5.7.0
 * [Breaking Change] Added fix for Enable-AzRecoveryServicesBackupProtection cmdlet. Resolved the null refrence issue by making policy a mandatory parameter.
@@ -26,9 +29,6 @@
 
 ## Version 5.6.1
 * Removed AFEC feature check for Archive smart tiering
-* Remove $vmName from non A2A scenarios
-* Fixed bug with Update-AzRecoveryServicesAsrProtectionContainerMapping
-* Added new scenarios: EZ-to-AZ, EZ-to-AZ, EZ-to-EZ
 
 ## Version 5.6.0
 * Added support for Archive smart tiering for AzureVM and MSSQL workloads.
