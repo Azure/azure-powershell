@@ -12,7 +12,7 @@
   RequiredAssemblies = './bin/Az.Aks.private.dll'
   FormatsToProcess = './Az.Aks.format.ps1xml'
   FunctionsToExport = 'Get-AzAksNodePoolUpgradeProfile', 'Get-AzAksUpgradeProfile', 'Get-AzAksVersion', 'Install-AzAksCliTool', 'Start-AzAksCluster', 'Stop-AzAksCluster', '*'
-  AliasesToExport = 'Get-AzAksClusterUpgradeProfile', 'Install-AzAksKubectl', '*'
+  AliasesToExport = 'Get-AzAksClusterUpgradeProfile', '*'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Aks'

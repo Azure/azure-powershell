@@ -307,12 +307,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IJob>: Specifies the job object of the replicating server.
+`INPUTOBJECT <IJob>`: Specifies the job object of the replicating server.
   - `[Location <String>]`: Resource Location
   - `[ActivityId <String>]`: The activity id.
   - `[AllowedAction <String[]>]`: The Allowed action the job.
   - `[CustomDetailAffectedObjectDetail <IJobDetailsAffectedObjectDetails>]`: The affected object properties like source server, source cloud, target server, target cloud etc. based on the workflow object details.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[CustomDetailInstanceType <String>]`: Gets the type of job details (see JobDetailsTypes enum for possible values).
   - `[EndTime <DateTime?>]`: The end time.
   - `[Error <IJobErrorDetails[]>]`: The errors.
     - `[CreationTime <DateTime?>]`: The creation time of job error.
