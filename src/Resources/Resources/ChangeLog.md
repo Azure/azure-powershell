@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.3.0
 * Removed unused reference to resource identifier in role assignment create cmdlet
 * Exposed parameter `-Count` for `Get-AzADApplication`, `Get-AzADServicePrincipal`, `Get-AzADGroup` [#19476] 
 

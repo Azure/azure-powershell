@@ -22,6 +22,7 @@ Container Apps                        | `Az.App`                                
 App Configuration                     | `Az.AppConfiguration`                   | [![AppConfiguration]][AppConfigurationGallery]
 Application Insights                  | `Az.ApplicationInsights`                | [![ApplicationInsights]][ApplicationInsightsGallery]
 Attestation                           | `Az.Attestation`                        | [![Attestation]][AttestationGallery]
+Automanage                            | `Az.Automanage`                         | [![Automanage]][AutomanageGallery]
 Automation                            | `Az.Automation`                         | [![Automation]][AutomationGallery]
 BareMetal                             | `Az.BareMetal`                          | [![BareMetal]][BareMetalGallery]
 Batch                                 | `Az.Batch`                              | [![Batch]][BatchGallery]
@@ -141,6 +142,7 @@ SignalR                               | `Az.SignalR`                            
 SpringCloud                           | `Az.SpringCloud`                        | [![SpringCloud]][SpringCloudGallery]
 SQL                                   | `Az.Sql`                                | [![Sql]][SqlGallery]
 SQL Server on Virtual Machines        | `Az.SqlVirtualMachine`                  | [![SqlVirtualMachine]][SqlVirtualMachineGallery]
+SSH                                   | `Az.Ssh`                                | [![Ssh]][SshGallery]
 Stack HCI                             | `Az.StackHCI`                           | [![StackHCI]][StackHCIGallery]
 Storage                               | `Az.Storage`                            | [![Storage]][StorageGallery]
 Storage Mover                         | `Az.StorageMover`                       | [![StorageMover]][StorageMoverGallery]
@@ -171,6 +173,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [AppConfiguration]:           https://img.shields.io/powershellgallery/v/Az.AppConfiguration.svg?style=flat-square&label=Az.AppConfiguration
 [ApplicationInsights]:        https://img.shields.io/powershellgallery/v/Az.ApplicationInsights.svg?style=flat-square&label=Az.ApplicationInsights
 [Attestation]:                https://img.shields.io/powershellgallery/v/Az.Attestation.svg?style=flat-square&label=Az.Attestation
+[Automanage]:                 https://img.shields.io/powershellgallery/v/Az.Automanage.svg?style=flat-square&label=Az.Automanage
 [Automation]:                 https://img.shields.io/powershellgallery/v/Az.Automation.svg?style=flat-square&label=Az.Automation
 [BareMetal]:                  https://img.shields.io/powershellgallery/v/Az.BareMetal.svg?style=flat-square&label=Az.BareMetal
 [Batch]:                      https://img.shields.io/powershellgallery/v/Az.Batch.svg?style=flat-square&label=Az.Batch
@@ -290,6 +293,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [SpringCloud]:                https://img.shields.io/powershellgallery/v/Az.SpringCloud.svg?style=flat-square&label=Az.SpringCloud
 [Sql]:                        https://img.shields.io/powershellgallery/v/Az.Sql.svg?style=flat-square&label=Az.Sql
 [SqlVirtualMachine]:          https://img.shields.io/powershellgallery/v/Az.SqlVirtualMachine.svg?style=flat-square&label=Az.SqlVirtualMachine
+[Ssh]:                        https://img.shields.io/powershellgallery/v/Az.Ssh.svg?style=flat-square&label=Az.Ssh
 [StackHCI]:                   https://img.shields.io/powershellgallery/v/Az.StackHCI.svg?style=flat-square&label=Az.StackHCI
 [Storage]:                    https://img.shields.io/powershellgallery/v/Az.Storage.svg?style=flat-square&label=Az.Storage
 [StorageMover]:               https://img.shields.io/powershellgallery/v/Az.StorageMover.svg?style=flat-square&label=Az.StorageMover
@@ -318,6 +322,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [AppConfigurationGallery]:           https://www.powershellgallery.com/packages/Az.AppConfiguration/
 [ApplicationInsightsGallery]:        https://www.powershellgallery.com/packages/Az.ApplicationInsights/
 [AttestationGallery]:                https://www.powershellgallery.com/packages/Az.Attestation/
+[AutomanageGallery]:                 https://www.powershellgallery.com/packages/Az.Automanage/
 [AutomationGallery]:                 https://www.powershellgallery.com/packages/Az.Automation/
 [BareMetalGallery]:                  https://www.powershellgallery.com/packages/Az.BareMetal/
 [BatchGallery]:                      https://www.powershellgallery.com/packages/Az.Batch/
@@ -437,6 +442,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [SpringCloudGallery]:                https://www.powershellgallery.com/packages/Az.SpringCloud/
 [SqlGallery]:                        https://www.powershellgallery.com/packages/Az.Sql/
 [SqlVirtualMachineGallery]:          https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/
+[SshGallery]:                        https://www.powershellgallery.com/packages/Az.Ssh/
 [StackHCIGallery]:                   https://www.powershellgallery.com/packages/Az.StackHCI/
 [StorageGallery]:                    https://www.powershellgallery.com/packages/Az.Storage/
 [StorageMoverGallery]:               https://www.powershellgallery.com/packages/Az.StorageMover/

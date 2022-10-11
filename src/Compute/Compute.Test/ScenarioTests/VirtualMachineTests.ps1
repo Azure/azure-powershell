@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -1884,7 +1884,7 @@ function Test-VirtualMachineWithVMAgentAutoUpdate
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
         $imgRef = Get-DefaultCRPWindowsImageOffline;
 
-        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
@@ -5991,5 +5991,510 @@ function Test-VMandVMSSTimeCreated
     {
         # Cleanup
         Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test confidential vm set-azvmosdisk SecureEncryptionType feature
+#>
+function Test-ConfidentialVMSetAzVmOsDisk
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "northeurope";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Set-AzVmOsDisk test, VMGuestStateOnly scenario. 
+        $vmname = 'vm' + $rgname;
+        $vmSize = "Standard_DC2as_v5";         
+        $domainNameLabel2 = "d2" + $rgname;
+        $computerName = "v2" + $rgname;
+        $identityType = "SystemAssigned";
+        $loc = 'northeurope';
+        $secureEncrypt = 'VMGuestStateOnly';
+        $vmSecurityType = "ConfidentialVM";
+        $user = "admin01";
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force; 
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $virtualMachine = New-AzVMConfig -VMName $VMName -VMSize $vmSize;
+        $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
+        $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'windowsserver' -Skus '2022-datacenter-smalldisk-g2' -Version "latest";
+
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2;
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+
+        $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $nicId;
+
+        $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType $secureEncrypt;
+        $VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType;
+        $VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $VirtualMachine;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $secureEncrypt $vm.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
+
+
+        # Set-AzVmOsDisk test, DiskWithVMGuestState scenario. 
+        $secureEncryptDisk = 'DiskWithVMGuestState';
+        $vmname = 'vm3' + $rgname;
+        $vmSize = "Standard_DC2as_v5";         
+        $domainNameLabel2 = "d3" + $rgname;
+        $computerName = "v3" + $rgname;
+        $identityType = "SystemAssigned";
+        $loc = 'northeurope';
+        $subnetPrefix = "subnet2";
+        $vnetPrefix = "vnet2";
+        $pubIpPrefix = "pubip2";
+        $nicPrefix = "nic2";
+        $secureEncryptGuestState = 'DiskWithVMGuestState';
+        $vmSecurityType = "ConfidentialVM";
+
+        $virtualMachine = New-AzVMConfig -VMName $VMName -VMSize $vmSize;
+        $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
+        $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'windowsserver' -Skus '2022-datacenter-smalldisk-g2' -Version "latest";
+
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ($subnetPrefix + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ($vnetPrefix + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ($vnetPrefix + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ($pubIpPrefix + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2;
+        $pubip = Get-AzPublicIpAddress -Name ($pubIpPrefix + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ($nicPrefix + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ($nicPrefix + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+
+        $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $nicId;
+
+        $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType $secureEncryptGuestState;
+        $VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType;
+        $VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $VirtualMachine;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-AreEqual $secureEncryptDisk $vm.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test confidential vm, set-azvmosdisk based on these wiki steps.
+New parameters are
+1) SecurityEncryptionType
+2) SecureVMDiskEncryptionSet
+https://dev.azure.com/msazure/AzureWiki/_wiki/wikis/AzureWiki.wiki/232000/How-to-Provision-a-CVM-with-customer-managed-key-(CMK)-using-Azure-CLI
+#>
+function Test-ManualConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
+{
+    # Setup
+    #$rgname = Get-ComputeTestResourceName;
+    $loc = "northeurope";
+    $rgname = "adsandwiki53";
+
+    try
+    {
+        <#
+        The below script runs assuming that these below steps were manually run beforehand.
+        This script uses Data Plane Operations, which our test framework does not support.
+        $rgname = "adsandwiki53";
+        $loc = 'northeurope';
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmname = 'v' + 'vmdesnop';
+        $vmSize = "Standard_DC2as_v5";         
+        $domainNameLabel2 = "d" + $rgname;
+        $computerName = "c" + "compnam";
+        $identityType = "SystemAssigned";
+        $subnetPrefix = "subnet2";
+        $vnetPrefix = "vnet2";
+        $pubIpPrefix = "pubip2";
+        $nicPrefix = "nic2";
+        $secureEncryptGuestState = 'DiskWithVMGuestState';
+        $vmSecurityType = "ConfidentialVM";
+        $user = "admin01";
+        #$password = Get-PasswordForVM;
+        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force; 
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $kvname = "kv" + $rgname;
+        $keyname = "k" + $rgname;
+        $desName= "des" + $rgname;
+
+        # New-AzKeyVault -Name $kvName -Location $loc -ResourceGroupName $rgName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
+        $KeyVault = $kvName;
+        $resourceGroup = $rgname;
+        $region = $loc;
+        New-AzKeyVault -Name $KeyVault -Location $loc -ResourceGroupName $rgName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
+
+        #  install-module -name "Az.Resources" -AllowClobber -Force
+        $cvmAgent = Get-AzADServicePrincipal -ApplicationId 'bf7b6499-ff71-4aa2-97a4-f372087be7f0';
+        Set-AzKeyVaultAccessPolicy -VaultName $kvName -ResourceGroupName $rgname -ObjectId $cvmAgent.id -PermissionsToKeys get,release;
+
+        # Add Key vault Key
+        $KeyName = $keyname;
+        $KeySize = 3072;
+
+        Add-AzKeyVaultKey -VaultName $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -Exportable -UseDefaultCVMPolicy;
+        
+        # Capture Keyvault and key details
+        $encryptionKeyVaultId = (Get-AzKeyVault -VaultName $kvName -ResourceGroupName $rgName).ResourceId;
+        $encryptionKeyURL = (Get-AzKeyVaultKey -VaultName $kvName -KeyName $keyName).Key.Kid;
+        #>
+
+        $vmname = 'v' + 'vmdesnop';
+        $vmSize = "Standard_DC2as_v5";         
+        $domainNameLabel2 = "d" + $rgname;
+        $computerName = "c" + "compnam";
+        $identityType = "SystemAssigned";
+        $subnetPrefix = "subnet2";
+        $vnetPrefix = "vnet2";
+        $pubIpPrefix = "pubip2";
+        $nicPrefix = "nic2";
+        $secureEncryptGuestState = 'DiskWithVMGuestState';
+        $vmSecurityType = "ConfidentialVM";
+        $user = "admin01";
+        $password = Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force; 
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $kvname = "kvadsandwiki53";
+        $keyname = "kadsandwiki53";
+        $desName= "desadsandwiki53";
+
+        $encryptionKeyVaultId = "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsandwiki53/providers/Microsoft.KeyVault/vaults/kvadsandwiki53";
+        $encryptionKeyURL = "https://kvadsandwiki53.vault.azure.net/keys/kadsandwiki53/c3d6f9e802ac4a90962cf43b9718cc94";
+        
+        # Create new DES Config and DES
+        $diskEncryptionType = "ConfidentialVmEncryptedWithCustomerKey";
+        $desConfig = New-AzDiskEncryptionSetConfig -Location $loc -SourceVaultId $encryptionKeyVaultId -KeyUrl $encryptionKeyURL -IdentityType SystemAssigned -EncryptionType $diskEncryptionType;
+        New-AzDiskEncryptionSet -ResourceGroupName $rgName -Name $desName -DiskEncryptionSet $desConfig;
+        
+        $diskencset = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $desName;
+        
+        # Assign DES Access Policy to key vault
+        $desIdentity = (Get-AzDiskEncryptionSet -Name $desName -ResourceGroupName $rgName).Identity.PrincipalId;
+        
+        Set-AzKeyVaultAccessPolicy -VaultName $kvName -ResourceGroupName $rgname -ObjectId $desIdentity -PermissionsToKeys wrapKey,unwrapKey,get -BypassObjectIdValidation;
+        
+        $virtualMachine = New-AzVMConfig -VMName $VMName -VMSize $vmSize;
+        $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
+        $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'windowsserver' -Skus '2022-datacenter-smalldisk-g2' -Version "latest";
+        
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ($subnetPrefix + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ($vnetPrefix + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ($vnetPrefix + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ($pubIpPrefix + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2;
+        $pubip = Get-AzPublicIpAddress -Name ($pubIpPrefix + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ($nicPrefix + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ($nicPrefix + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+
+        $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $nicId;
+
+        $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType $secureEncryptGuestState -SecureVMDiskEncryptionSet $diskencset.Id;
+        $VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType;
+        $VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $VirtualMachine;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-AreEqual $secureEncryptGuestState $vm.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
+        
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test conf vm set-azvmsecurityprofile SecurityType feature:
+New values are 
+ConfidentialVM
+#>
+function Test-ConfVMSetAzVMSecurityProfile
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $LocationName = "northeurope";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $LocationName -Force;
+
+        $ResourceGroupName = $rgname;
+        $vmSize = "Standard_DC2as_v5";         
+        $DNSNameLabel = "cvm1" +$ResourceGroupName; 
+        $NetworkName = "MyNet1";
+        $NICName = "MyNIC1";
+        $PublicIPAddressName = "MyPIP1";
+        $SubnetName = "MySubnet1";
+        $SubnetAddressPrefix = "10.0.0.0/24";
+        $VnetAddressPrefix = "10.0.0.0/16";
+
+        $user = "admin01";
+        $password = Get-PasswordForVM |ConvertTo-SecureString -AsPlainText -Force; 
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $credential = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $ComputerName = "CVM";
+        $VMName = "CVM";
+        $securityType = "ConfidentialVM";
+        $vmDiskSecurityEncryptionType = "VMGuestStateOnly";
+        $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize;
+
+        $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
+        $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $rgname -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet;
+        $PIP = New-AzPublicIpAddress -Name $PublicIPAddressName -DomainNameLabel $DNSNameLabel -ResourceGroupName $rgname -Location $LocationName -AllocationMethod Dynamic;
+        $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $LocationName -SubnetId $Vnet.Subnets[0].Id -PublicIpAddressId $PIP.Id;
+        $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate;
+        $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id;
+        $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'windowsserver' -Skus '2022-datacenter-smalldisk-g2' -Version "latest";
+        $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage";
+
+        $VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $securityType;
+        $VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
+
+        $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine  -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType $vmDiskSEcurityEncryptionType;
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Location $LocationName -VM $VirtualMachine;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $securityType $vm.SecurityProfile.SecurityType;
+
+
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test confidential vm Set-AzDiskSecurityProfile SecurityType feature with some manual setup.
+New values for SecurityType are are 
+	ConfidentialVM_DiskEncryptedWithCustomerKey
+#>
+function Test-ConfVMSetAzDiskSecurityProfile
+{
+    # Setup
+    $rgname = "adsanddes2";
+    $loc = "northeurope";
+
+    try
+    {
+        <#
+        $rgname = "adsanddes2";
+        $loc = "northeurope";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # VM Profile & Hardware
+        # Create New key vault
+        $kvname = "val" + $rgname;
+        $keyname = "key" + $rgname;
+        $desName= "des" + $rgname;
+        $KeySize = 3072; 
+
+        # Creating a VM using simple parameterset
+        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        New-AzKeyVault -Name $kvName -Location $loc -ResourceGroupName $rgName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
+
+        # Add Key vault Key
+        # Currently requires downloading a particular policy file.
+        #Add-AzKeyVaultKey -VaultName $kvName -Name $keyName -Size 3072 -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM;, this wasn't working for some reason, had to use cli.'
+        
+        #az keyvault key create --vault-name $kvname --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
+        Add-AzKeyVaultKey -VaultName $kvname -Name $keyname -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -Exportable -UseDefaultCVMPolicy;
+        
+
+        # Capture Keyvault and key details
+        $keyvaultId = (Get-AzKeyVault -VaultName $kvName -ResourceGroupName $rgName).ResourceId;
+        $keyUrl = (Get-AzKeyVaultKey -VaultName $kvName -KeyName $keyname).Key.Kid;
+        #>
+
+        $kvname = "val" + $rgname;
+        $keyname = "key" + $rgname;
+        $desName= "des" + $rgname;
+        $KeySize = 3072; 
+        $keyVaultId = "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsanddes2/providers/Microsoft.KeyVault/vaults/valadsanddes2";
+        $keyUrl = "https://valadsanddes2.vault.azure.net/keys/keyadsanddes2/929ebcca47fd4540a1ce06fbb35c821e";
+
+        # Create new DES Config and DES
+        $diskEncryptionType = "ConfidentialVmEncryptedWithCustomerKey";
+        $desConfig = New-AzDiskEncryptionSetConfig -Location $loc -SourceVaultId $keyvaultId -KeyUrl $keyUrl -IdentityType SystemAssigned -EncryptionType $diskEncryptionType;
+        New-AzDiskEncryptionSet -ResourceGroupName $rgName -Name $desName -DiskEncryptionSet $desConfig;
+        $diskencset = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $desName;
+
+        # Assign DES Access Policy to key vault
+        $desIdentity = (Get-AzDiskEncryptionSet -Name $desName -ResourceGroupName $rgName).Identity.PrincipalId;
+        Set-AzKeyVaultAccessPolicy -VaultName $kvName -ResourceGroupName $rgname -ObjectId $desIdentity -PermissionsToKeys wrapKey,unwrapKey,get -BypassObjectIdValidation;
+        
+        $diskSecurityType = "ConfidentialVM_DiskEncryptedWithCustomerKey";
+        $diskName = "diskname";
+        $diskconfig = New-AzDiskConfig -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id "/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/northeurope/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windows-cvm/Skus/2019-datacenter-cvm/Versions/latest";
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType $diskSecurityType -SecureVMDiskEncryptionSet $diskencset.id;
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskconfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskName;
+        Assert-AreEqual $disk.SecurityProfile.SecurityType $diskSecurityType;
+
+    }
+    finally 
+    {
+        # Cleanup
+        # Clean-ResourceGroup $rgname;
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test confidential vm Set-AzDiskSecurityProfile SecurityType feature. No Disk Encryption Set.
+New values are 
+    ConfidentialVM_DiskEncryptedWithPlatformKey
+    ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey
+#>
+function Test-ConfVMSetAzDiskSecurityProfileNoDES
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "northeurope";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        # Create New key vault
+        $kvname = "val" + $rgname;
+        $keyname = "key" + $rgname;
+        $desName= "des" + $rgname;
+
+        # Creating a VM using simple parameterset
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $securityTypeDSP = "ConfidentialVM_DiskEncryptedWithPlatformKey";
+
+        $diskName = "disk1";
+        $diskconfig = New-AzDiskConfig  -AccountType Premium_LRS -OsType Linux -CreateOption "FromImage" -Location $loc;
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id "/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/northeurope/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windows-cvm/Skus/2019-datacenter-cvm/Versions/latest";
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType $securityTypeDSP;
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskconfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskName;
+
+        Assert-AreEqual $disk.SecurityProfile.SecurityType $securityTypeDSP;
+
+        $securityTypeDSP2 = "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey";
+        $diskName = "disk2";
+        $diskconfig = New-AzDiskConfig  -AccountType Premium_LRS -OsType Linux -CreateOption "FromImage" -Location $loc;
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id "/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/northeurope/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windows-cvm/Skus/2019-datacenter-cvm/Versions/latest";
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType $securityTypeDSP2;
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskName -Disk $diskconfig;
+        $disk2 = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskName;
+
+        Assert-AreEqual $disk2.SecurityProfile.SecurityType $securityTypeDSP2;
+
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+
+<#
+.SYNOPSIS
+Manual test conf vm Set-AzDiskEncryptionSetConfig EncryptionType feature:
+New values are 
+ConfidentialVmEncryptedWithCustomerKey
+#>
+function Test-ConfVMSetAzDiskEncryptionSetConfig
+{
+    # Setup
+    $rgname = "adsanddescon1";
+    $loc = "northeurope";
+
+    try
+    {
+        <# Manual steps that need to be run prior to running this test.
+        $rgname = "adsanddescon1";
+        $loc = "northeurope";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # VM Profile & Hardware
+        # Create New key vault
+        $kvname = "kv" + $rgname;
+        $keyname = "k" + $rgname;
+        $desName= "des" + $rgname;
+
+        # Creating a VM using simple parameterset
+        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        New-AzKeyVault -Name $kvName -Location WestUS -ResourceGroupName $rgName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
+
+        # Add Key vault Key
+        # Currently requires downloading a particular policy file.
+        #Add-AzKeyVaultKey -VaultName $kvname -Name $keyname -Size 3072 -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM;
+        $KeySize = 3072;
+        Add-AzKeyVaultKey -VaultName $kvname -Name $keyname -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -Exportable -UseDefaultCVMPolicy;
+
+
+        # Capture Keyvault and key details
+        $keyvaultId = (Get-AzKeyVault -VaultName $kvName -ResourceGroupName $rgName).ResourceId;
+        $keyUrl = (Get-AzKeyVaultKey -VaultName $kvName -KeyName $keyName).Key.Kid;
+        #>
+        $kvname = "kv" + $rgname;
+        $keyname = "k" + $rgname;
+        $desName= "des" + $rgname;
+        $keyvaultId = "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsanddescon1/providers/Microsoft.KeyVault/vaults/kvadsanddescon1";
+        $keyUrl = "https://kvadsanddescon1.vault.azure.net/keys/kadsanddescon1/a07a0b98ac3c4139b627190699e0804e";
+        $encryptionType = "ConfidentialVmEncryptedWithCustomerKey";
+
+        # Create new DES Config and DES
+        $desConfig = New-AzDiskEncryptionSetConfig -Location $loc -SourceVaultId $keyvaultId -KeyUrl $keyUrl -IdentityType SystemAssigned -EncryptionType $encryptionType;
+        New-AzDiskEncryptionSet -ResourceGroupName $rgName -Name $desName -DiskEncryptionSet $desConfig;
+        $diskES = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $desName;
+        Assert-AreEqual $diskES.EncryptionType $encryptionType;
+    }
+    finally 
+    {
+        # Cleanup
+        # Clean-ResourceGroup $rgname;
     }
 }
