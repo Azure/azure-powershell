@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                         if (galleryImageVersion.StorageProfile.Source == null)
                         {
-                            galleryImageVersion.StorageProfile.Source = new GalleryArtifactVersionSource();
+                            galleryImageVersion.StorageProfile.Source = new GalleryArtifactVersionFullSource();
                         }
                         galleryImageVersion.StorageProfile.Source.Id = this.SourceImageId;
 
