@@ -18,16 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add remaining advanced filters
-  * StringNotContains
-  * StringNotBeginsWith
-  * StringNotEndsWith
-  * NumberInRange
-  * NumberNotInRange
-  * IsNullOrUndefined
-  * IsNotNull
-
-## Version 1.50
 * Updated to use the 2022-06-15 API version.
 * Added new features:
     - Partner topics
@@ -38,9 +28,6 @@
     - Partner registrations
     - Verified partners
     - Channels
-    - Topic event subscriptions
-    - Domain event subscriptions
-    - Domain topic event subscriptions
 
 ## Version 1.4.0
 * Updated to use the 2021-12-01 API version.
