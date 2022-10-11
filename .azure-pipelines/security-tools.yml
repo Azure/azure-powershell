@@ -42,7 +42,7 @@ jobs:
     displayName: Build
     inputs:
       targetType: inline
-      script: dotnet msbuilc build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
+      script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
     env:
         OCTOKITPAT: $(OCTOKITPAT)
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
