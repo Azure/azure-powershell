@@ -3707,3 +3707,46 @@ function Test-VirtualMachineScaleSetPriorityMixPolicy
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set Flex with EdgeZone
+#>
+function Test-VirtualMachineScaleSetInEdgeZoneParameterSets
+{
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "westus";
+    
+    try
+    {
+        $edgeZone = "microsoftlosangeles1";
+        $ScaleSetName = "scalesetinedgezone";
+         
+        New-AzResourceGroup -ResourceGroupName $rgname -Location $loc -Force;
+        
+        $VMLocalAdminUser = "LocalAdminUser";
+        $VMLocalAdminSecurePassword = ConvertTo-SecureString "Testing1234567" -AsPlainText -Force;
+
+        $cred = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+        
+        $subnetName = "sub" + $rgname;
+        $publicIPName = "pub" + $rgname;
+        $loadBalancerName = "lb" + $rgname;
+        $upgradePolicy = "Automatic";
+        $domainNameLabel = "d" + $rgname;
+        $virtualNetworkName = "vn" + $rgname;
+
+        New-AzVmss -ResourceGroupName $rgname -Location $loc -EdgeZone $EdgeZone -VMScaleSetName $ScaleSetName -VirtualNetworkName $virtualNetworkName `
+        -SubnetName $subnetName -PublicIpAddressName $publicIPName -LoadBalancerName $loadBalancerName -UpgradePolicyMode $upgradePolicy -Credential $cred `
+        -DomainNameLabel $domainNameLabel;
+
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $ScaleSetName;
+
+        Assert-AreEqual $vmss.ExtendedLocation.Name $edgeZone;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

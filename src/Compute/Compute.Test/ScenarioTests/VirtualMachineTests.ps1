@@ -5958,7 +5958,7 @@ function Test-VirtualMachineEdgeZoneParameterSets
         $VMLocalAdminUser = "LocalAdminUser";
         $VMLocalAdminSecurePassword = ConvertTo-SecureString "Testing1234567" -AsPlainText -Force;
         # Get-AzComputeResourceSku | where {$_.Locations.Contains("westus") -and $_.ResourceType.Contains("virtualMachines")}
-        $vmSize = "Standard_D4_v3";
+        $vmSize = "Standard_DS2_v2";#"Standard_D4_v3";
         # "Standard_B1ls"
         <#
         $ComputerName = "c" + $rgname;
