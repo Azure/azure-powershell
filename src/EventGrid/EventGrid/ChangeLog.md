@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.1
 * Add remaining advanced filters
   * StringNotContains
   * StringNotBeginsWith

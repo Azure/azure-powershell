@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.0.5
 * Enabled support to create Node 18 Preview and Java 17 Preview function apps (fixes issues #19184 and #18925)
 * Removed the logic that checks for AzureGermanCloud in the cloud endpoints (fixes issue #19667)
 * Hided generated unused cmdlets (fixes #16666)
