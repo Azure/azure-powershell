@@ -429,7 +429,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             WriteDebugMessage(string.Format(ProfileMessages.UnableToAqcuireToken, tenantId, e.ToString()));
                             continue;
                         }
-                        subscriptions.Add(SubscriptionAndTenantClient?.GetSubscriptionById(subscriptionId, accessToken, account, environment));
+                        var sub = SubscriptionAndTenantClient?.GetSubscriptionById(subscriptionId.ToString(), accessToken, account, environment);
+                        if (sub != null)
+                        {
+                            subscriptions.Add(sub);
+                        }
                         break;
                     }
                     catch (CloudException e)
