@@ -1,5 +1,4 @@
 {
-  // taken from https://github.com/Azure/bicep/blob/fa9b7af71102bfaf3084e306ba6522b2d222f068/src/Bicep.Core.Samples/Files/user_submitted/201/cdn-with-storage-account/main.symbolicnames.json
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "languageVersion": "1.9-experimental",
   "contentVersion": "1.0.0.0",
