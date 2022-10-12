@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for MigrationParameters.
 ```powershell
-{{ Add code here }}
+New-AzCdnMigrationParametersObject -ClassicResourceReferenceId /subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/zf-test-migration/providers/Microsoft.Network/Frontdoors/afd-copy-many-wafs
 ```
 
 ```output
-{{ Add output here }}
+ProfileName
+-----------
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for MigrationParameters.

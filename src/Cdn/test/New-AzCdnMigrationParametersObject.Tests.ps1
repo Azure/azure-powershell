@@ -16,6 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnMigrationParametersO
 
 Describe 'New-AzCdnMigrationParametersObject' {
     It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            # ignore
+        } | Should -Not -Throw
     }
 }

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 ```powershell
-{{ Add code here }}
+Invoke-AzCdnCanProfileMigrate -ResourceGroupName AFD -ClassicResourceReferenceId /subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/AFD/providers/Microsoft.Network/Frontdoors/afdruncanary2
 ```
 
 ```output
-{{ Add output here }}
+CanMigrate DefaultSku
+---------- ----------
+True       Standard_AzureFrontDoor
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.

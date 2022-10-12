@@ -16,6 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnMigrationWebApplicat
 
 Describe 'New-AzCdnMigrationWebApplicationFirewallMappingObject' {
     It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            # ignore
+        } | Should -Not -Throw
     }
 }
