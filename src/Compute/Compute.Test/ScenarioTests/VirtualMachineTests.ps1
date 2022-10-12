@@ -3136,7 +3136,7 @@ function Test-VirtualMachineGetStatusWithHealhtExtension
 .SYNOPSIS
 Test Virtual Machines's Status With Health Extension
 Description:
-This test creates a virtual machine and adds a vm health extension.It then removes the health Extension and tests Remove-AzVMExtension
+This test creates a virtual machine and adds a vm health extension. It then removes the health Extension and tests Remove-AzVMExtension
 #>
 function Test-VirtualMachineRemoveExtension
 {
