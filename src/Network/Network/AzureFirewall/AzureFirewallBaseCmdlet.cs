@@ -87,14 +87,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSAzureFirewall GetAzureFirewall(string resourceGroupName, string name)
         {
             var azureFirewall = this.AzureFirewallClient.Get(resourceGroupName, name);
-
             var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewall>(azureFirewall);
-            var learnedIPPrefixes = this.AzureFirewallClient.ListLearnedPrefixes(resourceGroupName, name);
-            if (learnedIPPrefixes != null)
-            {
-                var pslearnedIPPrefixes = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallIpPrefix>(learnedIPPrefixes);
-                psAzureFirewall.LearnedIPPrefixes = pslearnedIPPrefixes;
-            }
             psAzureFirewall.ResourceGroupName = resourceGroupName;
             psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewall.Tags);
 

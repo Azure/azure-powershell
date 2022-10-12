@@ -186,5 +186,12 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AzureFirewallCRUDRouteServerId");
         }
 
+        [Fact(Skip = "Skipped due to LearnedIpPrefixes feature not available in most regions")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestGetAzureFirewallLearnedIpPrefixes()
+        {
+            TestRunner.RunTestScript("Test-GetAzureFirewallLearnedIpPrefixes");
+        }
     }
 }
