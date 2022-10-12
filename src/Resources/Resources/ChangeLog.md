@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fix a `NullReferenceException` when deploying a JSON template using Bicep extensibility
 
 ## Version 6.3.0
 * Removed unused reference to resource identifier in role assignment create cmdlet
