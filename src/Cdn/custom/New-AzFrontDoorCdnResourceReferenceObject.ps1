@@ -21,12 +21,12 @@ Create an in-memory object for ResourceReference.
 Create an in-memory object for ResourceReference.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ResourceReference
 .Link
 https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnResourceReferenceObject
 #>
 function New-AzFrontDoorCdnResourceReferenceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ResourceReference')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,7 +36,7 @@ function New-AzFrontDoorCdnResourceReferenceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ResourceReference]::New()
 
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id

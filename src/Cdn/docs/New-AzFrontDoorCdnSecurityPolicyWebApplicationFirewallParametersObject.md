@@ -46,7 +46,7 @@ Waf associations.
 To construct, see NOTES section for ASSOCIATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicyWebApplicationFirewallAssociation[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ISecurityPolicyWebApplicationFirewallAssociation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +79,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.SecurityPolicyWebApplicationFirewallParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.SecurityPolicyWebApplicationFirewallParameters
 
 ## NOTES
 

@@ -207,7 +207,7 @@ If not specified, enabling ssl uses AzureFrontDoor managed certificate by defaul
 To construct, see NOTES section for TLSSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdDomainHttpsParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IAfdDomainHttpsParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -258,7 +258,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdDomain
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IAfdDomain
 
 ## NOTES
 

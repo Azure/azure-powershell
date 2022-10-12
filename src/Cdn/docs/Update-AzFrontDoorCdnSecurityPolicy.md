@@ -132,7 +132,7 @@ Accept wildcard characters: False
 object which contains security policy parameters
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicyPropertiesParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ISecurityPolicyPropertiesParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -228,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ISecurityPolicy
 
 ## NOTES
 
