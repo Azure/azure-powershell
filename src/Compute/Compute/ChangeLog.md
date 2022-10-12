@@ -20,7 +20,6 @@
 
 -->
 ## Upcoming Release
-* Added property `TimeCreated` to the Virtual Machine and Virtual Machine Scale Set models.
 * For `New-AzGalleryImageVersion`, update property mapping for `Encryption`. 
 
 ## Version 4.32.0
