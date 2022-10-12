@@ -73,7 +73,7 @@ $gateway = Set-AzExpressRouteGateway $gateway
 The above commands will retrieve the gateway object, configure it to allow traffic from non-Virtual WAN vnets and persist those changes.
 
 
-### Example 3: Configure this gateway to block traffic from non Virtual WAN networks.
+### Example 3: Configure this gateway to block traffic from non-Virtual WAN vnets.
 ```powershell
 $gateway=Get-AzExpressRouteGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
 $gateway.AllowNonVirtualWanTraffic = $false
