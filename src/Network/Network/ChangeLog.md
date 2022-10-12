@@ -20,6 +20,18 @@
 
 ## Upcoming Release
 * Added a new endpoint swtich `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`
+* Updated cmdlets to add new property of `VirtualNetworkGatewayPolicyGroup` and `VpnClientConnectionConfiguration` in Azure Virtual Network Gateway
+    * `New-AzVirtualNetworkGateway`
+    * `Set-AzVirtualNetworkGateway`
+* Added new cmdlets to create 
+    * `New-AzVirtualNetworkGatewayPolicyGroup`
+    * `New-AzVirtualNetworkGatewayPolicyGroupMember`
+    * `New-AzVpnClientConnectionConfiguration`
+* Added message in breaking change attribute to notify that load balancer sku default behaviour will be changed
+    * `New-AzLoadBalancer`
+
+## Version 4.21.0
+* Added a new endpoint switch `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`
 * Updated `New-AzVirtualNetworkGatewayConnection` to support bypassing the ExpressRoute gateway when accessing private-links
 * Updated `Update-AzCustomIpPrefix` to support no-internet advertise CustomIpPrefix
 * Updated `New-AzNetworkInterface` to support create/update nic with DisableTcpStateTracking property
