@@ -19,7 +19,7 @@ Updates an EventHub Entity
 Updates an EventHub Entity
 #>
 
-function Set-AzEventHubNamespaceName{
+function Set-AzEventHubNamespace{
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
@@ -84,25 +84,15 @@ function Set-AzEventHubNamespaceName{
         [System.Management.Automation.SwitchParameter]
         ${KafkaEnabled},
 
-        [Parameter(HelpMessage = "Location of the resource.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
-        ${Location},
-
         [Parameter(HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.Int64]
-        ${MaximumThroughputUnit},
+        ${MaximumThroughputUnits},#MaximumThroughputUnits
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.TlsVersion]
         ${MinimumTlsVersion},
-
-        [Parameter(HelpMessage = "List of private endpoint connections.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection[]]
-        ${PrivateEndpointConnection},
 
         [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
@@ -114,25 +104,10 @@ function Set-AzEventHubNamespaceName{
         [System.Int64]
         ${SkuCapacity},
 
-        [Parameter(HelpMessage = "Name of the Sku")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
-        ${SkuName},
-
-        [Parameter(HelpMessage = "The billing tier of this particular SKU.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SkuTier]
-        ${SkuTier},
-
         [Parameter(HelpMessage = "Tag of EventHub Namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.Collections.Hashtable]
         ${Tag},
-
-        [Parameter(HelpMessage = "ZeroRedundant")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.Management.Automation.SwitchParameter]
-        ${ZoneRedundant},
 
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -202,16 +177,11 @@ function Set-AzEventHubNamespaceName{
             $hasIdentityId = $PSBoundParameters.Remove('IdentityId')
             $hasEnableAutoInflate = $PSBoundParameters.Remove('EnableAutoInflate')
             $hasKafkaEnabled = $PSBoundParameters.Remove('KafkaEnabled')
-            $hasLocation = $PSBoundParameters.Remove('Location')
-            $hasMaximumThroughputUnit = $PSBoundParameters.Remove('MaximumThroughputUnit')
+            $hasMaximumThroughputUnit = $PSBoundParameters.Remove('MaximumThroughputUnits')
             $hasMinimumTlsVersion = $PSBoundParameters.Remove('MinimumTlsVersion')
-            $hasPrivateEndpointConnection = $PSBoundParameters.Remove('PrivateEndpointConnection')
             $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
             $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
-            $hasSkuName = $PSBoundParameters.Remove('SkuName')
-            $hasSkuTier = $PSBoundParameters.Remove('SkuTier')
             $hasTag = $PSBoundParameters.Remove('Tag')
-            $hasZoneRedundant = $PSBoundParameters.Remove('ZoneRedundant')
             $hasDefaultProfile = $PSBoundParameters.Remove('DefaultProfile')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
@@ -229,87 +199,53 @@ function Set-AzEventHubNamespaceName{
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
             }
-            $hasProperty = $false
 
             if ($hasAlternateName) {
                 $eventHubNamespace.AlternateName = $AlternateName
-                $hasProperty = $true
             }
 
             if ($hasClusterArmId) {
                 $eventHubNamespace.ClusterArmId = $ClusterArmId
-                $hasProperty = $true
             }
             if ($hasDisableLocalAuth) {
                 $eventHubNamespace.DisableLocalAuth = $DisableLocalAuth
-                $hasProperty = $true
             }
             if ($hasEncryption) {
                 $eventHubNamespace.Encryption = $Encryption
-                $hasProperty = $true
             }
             if ($hasIdentityType) {
                 $eventHubNamespace.IdentityType = $IdentityType
-                $hasProperty = $true
             }
             if ($hasIdentityId) {
                 $eventHubNamespace.IdentityId = $IdentityId
-                $hasProperty = $true
             }
             if ($hasEnableAutoInflate) {
                 $eventHubNamespace.EnableAutoInflate = $EnableAutoInflate
-                $hasProperty = $true
             }
             if ($hasKafkaEnabled) {
                 $eventHubNamespace.KafkaEnabled = $KafkaEnabled
-                $hasProperty = $true
             }
-            if ($hasLocation) {
-                $eventHubNamespace.Location = $Location
-                $hasProperty = $true
-            }
-            if ($hasMaximumThroughputUnit) {
-                $eventHubNamespace.MaximumThroughputUnit = $MaximumThroughputUnit
-                $hasProperty = $true
+            if ($hasMaximumThroughputUnits) {
+                $eventHubNamespace.MaximumThroughputUnits = $MaximumThroughputUnits
             }
             if ($hasMinimumTlsVersion) {
                 $eventHubNamespace.MinimumTlsVersion = $MinimumTlsVersion
-                $hasProperty = $true
-            }
-            if ($hasPrivateEndpointConnection) {
-                $eventHubNamespace.PrivateEndpointConnection = $PrivateEndpointConnection
-                $hasProperty = $true
             }
             if ($hasPublicNetworkAccess) {
                 $eventHubNamespace.PublicNetworkAccess = $PublicNetworkAccess
-                $hasProperty = $true
             }
             if ($hasSkuCapacity) {
                 $eventHubNamespace.SkuCapacity = $SkuCapacity
-                $hasProperty = $true
-            }
-            if ($hasSkuName) {
-                $eventHubNamespace.SkuName = $Skuname
-                $hasProperty = $true
-            }
-            if ($hasSkuTier) {
-                $eventHubNamespace.SkuTier= $SkuTier
-                $hasProperty = $true
             }
             if ($hasTag) {
                 $eventHubNamespace.Tag = $Tag
-                $hasProperty = $true
-            }
-            if ($hasZeroRedundant) {
-                $eventHubNamespace.ZeroRedundant = $ZeroRedundant
-                $hasProperty = $true
             }
             if ($hasDefaultProfile) {
                 $eventHubNamespace.DefaultProfile = $DefaultProfile
-                $hasProperty = $true
             }
-            if ($PSCmdlet.ShouldProcess("EventHub Consumer Group $($consumerGroup.Name)", "Create or update")) {
-                Az.EventHub.private\New-AzEventHubConsumerGroup_CreateViaIdentity -InputObject $eventHubNaespaceName -Parameter $eventHubNamespaeName @PSBoundParameters
+
+            if ($PSCmdlet.ShouldProcess("EventHubNamespace $($eventHubNamespace.Name)", "Create or update")) {
+                Az.EventHub.private\New-AzEventHubNamespace_CreateViaIdentity -InputObject $eventHubNamespace -Parameter $eventHubNamespace @PSBoundParameters
             }
 		}
 		catch{
