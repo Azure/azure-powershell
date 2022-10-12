@@ -67,6 +67,8 @@
 * Fixed a bug not able to add MSSQL application rules to an AZURE FIREWALL POLICY
 * Onboard Project AzureML Registries to Private Link Common Cmdlets
 
+* Add control knobs to virtual network gateways and ExpressRoute gateways as well to cmdlets operating on those.
+
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
 

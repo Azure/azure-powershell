@@ -62,6 +62,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool EnableBgpRouteTranslationForNat { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool AllowRemoteVnetTraffic { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool AllowVirtualWanTraffic { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {

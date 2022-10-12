@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string AllowNonVirtualWanTraffic { get; set; }
+
         [JsonIgnore]
         public string VirtualHubText
         {

@@ -62,6 +62,27 @@ ProvisioningState   : Succeeded
 The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure.
 An ExpressRoute gateway will be created thereafter in the Virtual Hub with 2 scale units which will then be modified to 3 scale units.
 
+
+### Example 2: Configure this gateway to accept traffic from non-Virtual WAN vnets.
+```powershell
+$gateway=Get-AzExpressRouteGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
+$gateway.AllowNonVirtualWanTraffic = $true
+$gateway = Set-AzExpressRouteGateway $gateway
+```
+
+The above commands will retrieve the gateway object, configure it to allow traffic from non-Virtual WAN vnets and persist those changes.
+
+
+### Example 3: Configure this gateway to block traffic from non Virtual WAN networks.
+```powershell
+$gateway=Get-AzExpressRouteGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
+$gateway.AllowNonVirtualWanTraffic = $false
+$gateway = Set-AzExpressRouteGateway $gateway
+```
+
+The above commands will retrieve the gateway object, configure it to block traffic from non-Virtual WAN vnets and persist those changes.
+
+
 ## PARAMETERS
 
 ### -AsJob
