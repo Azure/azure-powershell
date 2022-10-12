@@ -23,18 +23,12 @@ function Set-AzEventHubNamespaceName{
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
-	    [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub Entity.")]
-        [Alias('EventHubName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
-        # The name of EventHub Entity.
-        ${Name},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of EventHub namespace
-        ${NamespaceName},
+        ${Name},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
@@ -50,94 +44,84 @@ function Set-AzEventHubNamespaceName{
         # The ID of the target subscription.
         ${SubscriptionId},
 
-        [Parameter(HelpMessage = "The Alternate Name of Eventhub Namespace")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+        [Parameter(HelpMessage = "Alternate name specified when alias and namespace names are same")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
         ${AlternateName},
 
-        [Parameter(HelpMessage = "The ClusterArmId of Eventhub Namespace.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+        [Parameter(HelpMessage = "Cluster ARM ID of the Namespace.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
         ${ClusterArmId},
 
-        [Parameter(HelpMessage = "DisableLocalAuth")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
+        [Parameter(HelpMessage = "This property disables SAS authentication for the Event Hubs namespace.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
         ${DisableLocalAuth},
 
-        [Parameter(HelpMessage = "EncryptionKeySource")]
+        [Parameter(HelpMessage = "Enable Infrastructure Encryption (Double Encryption)")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
-        ${EncryptionKeySource},
+        [System.Management.Automation.SwitchParameter]
+        ${Encryption}, #EncryptionConfig
 
-        [Parameter(HelpMessage = "EncryptionKeyVaultProperty.")]
+        [Parameter(HelpMessage = "Type of managed service identity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
-        ${EncryptionKeyVaultProperty},
-
-        [Parameter(HelpMessage = "EncryptionRequireInfrastructureEncryption")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
-        ${EncryptionConfig}, #EncryptionConfig
-
-        [Parameter(HelpMessage = "IdentityType of EventHub Namespace.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType]
         ${IdentityType},
 
-        [Parameter(HelpMessage = "IdentityUserAssigneIdentity")]
+        [Parameter(HelpMessage = "Properties for User Assigned Identities")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.Collections.Hashtable]
         ${IdentityId},#IdentityId
 
-        [Parameter(HelpMessage = "IsAutoInflateEnabled")]
+        [Parameter(HelpMessage = "Value that indicates whether AutoInflate is enabled for eventhub namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
-        ${IsAutoInflateEnabled},
+        [System.Management.Automation.SwitchParameter]
+        ${EnableAutoInflate},
 
-        [Parameter(HelpMessage = "KafkaEnabled")]
+        [Parameter(HelpMessage = "Value that indicates whether Kafka is enabled for eventhub namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
+        [System.Management.Automation.SwitchParameter]
         ${KafkaEnabled},
 
-        [Parameter(HelpMessage = "Location of EventHub Namespace")]
+        [Parameter(HelpMessage = "Location of the resource.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         ${Location},
 
-        [Parameter(HelpMessage = "MaximumThroughputUnit of Eventhub Namespace.")]
+        [Parameter(HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.Int64]
         ${MaximumThroughputUnit},
 
-        [Parameter(HelpMessage = "MinimumTlsVersion of Eventhub Namespace.")]
+        [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.TlsVersion]
         ${MinimumTlsVersion},
 
-        [Parameter(HelpMessage = "PrivateEndpointConnectionName.")]
+        [Parameter(HelpMessage = "List of private endpoint connections.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection[]]
         ${PrivateEndpointConnection},
 
-        [Parameter(HelpMessage = "PublicNetworkAccess.")]
+        [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess]
         ${PublicNetworkAccess},
 
-        [Parameter(HelpMessage = "The SkuCapacity of EventHub Namespace.")]
+        [Parameter(HelpMessage = "The Event Hubs throughput units for Basic or Standard tiers, where value should be 0 to 20 throughput units. The Event Hubs premium units for Premium tier, where value should be 0 to 10 premium units.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.Int64]
         ${SkuCapacity},
 
-        [Parameter(HelpMessage = "The SkuName Of EventHub Namespace.")]
+        [Parameter(HelpMessage = "Name of the Sku")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         ${SkuName},
 
-        [Parameter(HelpMessage = "SkuTier.")]
+        [Parameter(HelpMessage = "The billing tier of this particular SKU.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SkuTier]
         ${SkuTier},
 
         [Parameter(HelpMessage = "Tag of EventHub Namespace.")]
@@ -147,7 +131,7 @@ function Set-AzEventHubNamespaceName{
 
         [Parameter(HelpMessage = "ZeroRedundant")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
-        [System.String]
+        [System.Management.Automation.SwitchParameter]
         ${ZoneRedundant},
 
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
@@ -213,12 +197,10 @@ function Set-AzEventHubNamespaceName{
             $hasAlternateName = $PSBoundParameters.Remove('AlternateName')
             $hasClusterArmId = $PSBoundParameters.Remove('ClusterArmId')
             $hasDisableLocalAuth = $PSBoundParameters.Remove('DisableLocalAuth')
-            $hasEncryptionKeySource = $PSBoundParameters.Remove('EncryptionKeySource')
-            $hasEncryptionKeyVaultProperty = $PSBoundParameters.Remove('EncryptionKeyVaultProperty')
-            $hasEncryptionConfig = $PSBoundParameters.Remove('EncryptionConfig')
+            $hasEncryption = $PSBoundParameters.Remove('Encryption')
             $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
             $hasIdentityId = $PSBoundParameters.Remove('IdentityId')
-            $hasIsAutoInflateEnabled = $PSBoundParameters.Remove('IsAutoInflateEnabled')
+            $hasEnableAutoInflate = $PSBoundParameters.Remove('EnableAutoInflate')
             $hasKafkaEnabled = $PSBoundParameters.Remove('KafkaEnabled')
             $hasLocation = $PSBoundParameters.Remove('Location')
             $hasMaximumThroughputUnit = $PSBoundParameters.Remove('MaximumThroughputUnit')
@@ -262,16 +244,8 @@ function Set-AzEventHubNamespaceName{
                 $eventHubNamespace.DisableLocalAuth = $DisableLocalAuth
                 $hasProperty = $true
             }
-            if ($hasEncryptionKeySource) {
-                $eventHubNamespace.EncryptionKeySource = $EncryptionKeySource
-                $hasProperty = $true
-            }
-            if ($hasEncryptionKeyVaultProperty) {
-                $eventHubNamespace.EncryptionKeyVaultProperty = $EncryptionKeyVaultProperty
-                $hasProperty = $true
-            }
-            if ($hasEncryptionConfig) {
-                $eventHubNamespace.EncryptionConfig = $EncryptionConfig
+            if ($hasEncryption) {
+                $eventHubNamespace.Encryption = $Encryption
                 $hasProperty = $true
             }
             if ($hasIdentityType) {
@@ -282,8 +256,8 @@ function Set-AzEventHubNamespaceName{
                 $eventHubNamespace.IdentityId = $IdentityId
                 $hasProperty = $true
             }
-            if ($hasIsAutoInflateEnabled) {
-                $eventHubNamespace.IsAutoInflateEnabled = $IsAutoInflateEnabled
+            if ($hasEnableAutoInflate) {
+                $eventHubNamespace.EnableAutoInflate = $EnableAutoInflate
                 $hasProperty = $true
             }
             if ($hasKafkaEnabled) {
