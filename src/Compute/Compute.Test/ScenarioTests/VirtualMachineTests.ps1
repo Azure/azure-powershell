@@ -3136,7 +3136,7 @@ function Test-VirtualMachineGetStatusWithHealhtExtension
 .SYNOPSIS
 Test Virtual Machines's Status With Health Extension
 Description:
-This test creates a virtual machine and adds a vm health extension. It then removes the health Extension and tests Remove-AzVMExtension
+This test creates a virtual machine and adds a vm health extension.It then removes the health Extension and tests Remove-AzVMExtension
 #>
 function Test-VirtualMachineRemoveExtension
 {
@@ -3164,13 +3164,17 @@ function Test-VirtualMachineRemoveExtension
 
         # Adding health extension on VM
         $publicConfig = @{"protocol" = "http"; "port" = 80; "requestPath" = "/healthEndpoint"};
-        $extensionName = "myHealthExtension";
-        $extensionType = "ApplicationHealthWindows";
-        $publisher = "Microsoft.ManagedServices";
-        Set-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Publisher $publisher -Settings $publicConfig -ExtensionType $extensionType -ExtensionName $extensionName -Loc $loc -TypeHandlerVersion "1.0";
+        $extensionName = "myHealthExtension"
+        $extensionType = "ApplicationHealthWindows"
+        $publisher = "Microsoft.ManagedServices"
+        Set-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Publisher $publisher -Settings $publicConfig -ExtensionType $extensionType -ExtensionName $extensionName -Loc $loc -TypeHandlerVersion "1.0"
 
         # Get VM
         $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname -Status;
+
+        # Check for VmHealth Property
+        Assert-NotNull $vm.VMHealth
+        Assert-NotNull $vm.VMHealth.Status
 
         #Check for VmHealth Extension after removal
         Remove-AzVMExtension -ResourceGroupName $rgname -Name $extensionName -VMName $vmname -Force;

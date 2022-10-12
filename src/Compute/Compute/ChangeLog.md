@@ -20,7 +20,6 @@
 
 -->
 ## Upcoming Release
-* Added `-AsJob` optional parameter to `Remove-AzVMExtension` cmdlet.
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
 * Improved cmdlet descriptions and parameter descriptions for VM/VMSS creation.
 * Added the 'BaseRegularPriorityCount' integer property to the following cmdlets: `New-AzVmssConfig` and `Update-AzVmssConfig`
@@ -28,6 +27,7 @@
 * Added Breaking Changes for Add-AzVMAdditionalUnattendContent and Get-AzGallery cmdlets
 
 ## Version 4.31.0
+* Added `-AsJob` optional parameter to `Remove-AzVMExtension` cmdlet.
 * Added Trusted Launch Generic Breaking Change warning for `New-AzVM`, `New-AzDisk` and `New-AzVMSS` cmdlets.
 * `Get-AzVMRunCommand` now shows all the properties of VMRunCommand in a list format.
 * Added new Parameter `-PublicIpSku` to the `NewAzVM` cmdlet with acceptable values : "Basic" and "Standard". 
