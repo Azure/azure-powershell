@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.10.2
 * Upgraded Azure.Core to 1.25.0 and Azure.Identity to 1.6.1
 * Upgraded Microsoft.Identity.Client to 4.46.2 and Microsoft.Identity.Client.Extensions.Msal to 2.23.0
 * Upgraded Microsoft.ApplicationInsights to 2.13.1

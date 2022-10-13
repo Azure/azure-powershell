@@ -192,6 +192,19 @@ namespace Microsoft.Azure.Commands.Compute
         [PSArgumentCompleter("Detach", "Delete")]
         public string DeleteOption { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the SecurityEncryptionType value on the managed disk of the VM. possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey")]
+        [PSArgumentCompleter("DiskWithVMGuestState", "VMGuestStateOnly")]
+        public string SecurityEncryptionType { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ARM Resource ID for Disk Encryption Set. Allows customer to provide ARM ID for Disk Encryption Set created with ConfidentialVmEncryptedWithCustomerKey encryption type. This will allow customer to use Customer Managed Key (CMK) encryption with Confidential VM. Parameter SecurityEncryptionType value should be DiskwithVMGuestState.")]
+        public string SecureVMDiskEncryptionSet { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
@@ -295,6 +308,53 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     this.VM.StorageProfile.OsDisk.DiffDiskSettings.Placement = this.DiffDiskPlacement;
                 }
+            }
+
+            // Disk Encryption set for Confidential VMs. 
+            if (this.IsParameterBound(c => c.SecureVMDiskEncryptionSet))
+            {
+                if (this.VM.StorageProfile == null)
+                {
+                    this.VM.StorageProfile = new StorageProfile();
+                }
+                if (this.VM.StorageProfile.OsDisk == null)
+                {
+                    this.VM.StorageProfile.OsDisk = new OSDisk();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk = new ManagedDiskParameters();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile = new VMDiskSecurityProfile();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet = new DiskEncryptionSetParameters();
+                }
+                this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet.Id = SecureVMDiskEncryptionSet;
+            }
+            // SecurityEncryptionType for Confidential VMs. 
+            if (this.IsParameterBound(c => c.SecurityEncryptionType))
+            {
+                if (this.VM.StorageProfile == null)
+                {
+                    this.VM.StorageProfile = new StorageProfile();
+                }
+                if (this.VM.StorageProfile.OsDisk == null)
+                {
+                    this.VM.StorageProfile.OsDisk = new OSDisk();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk = new ManagedDiskParameters();
+                }
+                if (this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile == null)
+                {
+                    this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile = new VMDiskSecurityProfile();
+                }
+                this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType = SecurityEncryptionType;
             }
 
             WriteObject(this.VM);
