@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBMongoDBRestorableCollection", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSRestorableMongodbCollectionGetResult))]
-    public class GetAzCosmosDBMongoDBRestorableCollection : AzureCosmosDBCmdletBase
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBGremlinRestorableGraph", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSRestorableGremlinGraphGetResult))]
+    public class GetAzCosmosDBGremlinRestorableGraph : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.LocationNameHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -36,15 +36,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string DatabaseRId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.RestorableMongoDBDatabaseObjectHelpMessage)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.RestorableGremlinDatabaseObjectHelpMessage)]
         [ValidateNotNull]
-        public PSRestorableSqlDatabaseGetResult InputObject { get; set; }
+        public PSRestorableGremlinDatabaseGetResult InputObject { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.RestorableMongoDBCollectionsFeedStartTimeHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.RestorableGremlinGraphsFeedStartTimeHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string StartTime { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.RestorableMongoDBCollectionsFeedEndTimeHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.RestorableGremlinGraphsFeedEndTimeHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string EndTime { get; set; }
 
@@ -52,17 +52,17 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
-                // id is in the format: /subscriptions/<subscriptionId>/providers/Microsoft.DocumentDB/locations/<location>/restorableDatabaseAccounts/<DatabaseAccountInstanceId>/restorableMongoDBDatabases/<Id>
+                // id is in the format: /subscriptions/<subscriptionId>/providers/Microsoft.DocumentDB/locations/<location>/restorableDatabaseAccounts/<DatabaseAccountInstanceId>/restorableGremlinDatabases/<Id>
                 string[] idComponents = InputObject.Id.Split('/');
                 Location = HttpUtility.UrlDecode(idComponents[6]);
                 DatabaseAccountInstanceId = idComponents[8];
                 DatabaseRId = InputObject.OwnerResourceId;
             }
 
-            IEnumerable restorableMongoDBCollections = CosmosDBManagementClient.RestorableMongodbCollections.ListWithHttpMessagesAsync(Location, DatabaseAccountInstanceId, DatabaseRId, StartTime, EndTime).GetAwaiter().GetResult().Body;
-            foreach (RestorableMongodbCollectionGetResult restorableMongoDBCollection in restorableMongoDBCollections)
+            IEnumerable restorableGremlinGraphs = CosmosDBManagementClient.RestorableGremlinGraphs.ListWithHttpMessagesAsync(Location, DatabaseAccountInstanceId, DatabaseRId, StartTime, EndTime).GetAwaiter().GetResult().Body;
+            foreach (RestorableGremlinGraphGetResult restorableGremlinGraph in restorableGremlinGraphs)
             {
-                WriteObject(new PSRestorableMongodbCollectionGetResult(restorableMongoDBCollection));
+                WriteObject(new PSRestorableGremlinGraphGetResult(restorableGremlinGraph));
             }
         }
     }

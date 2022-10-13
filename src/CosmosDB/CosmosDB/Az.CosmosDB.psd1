@@ -56,8 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.9.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.CosmosDB.dll', 
-               'Azure.Security.KeyVault.Keys.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.CosmosDB.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -184,7 +183,16 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzManagedCassandraDataCenter', 
                'Get-AzCosmosDbClientEncryptionKey', 
                'New-AzCosmosDbClientEncryptionKey', 
-               'Update-AzCosmosDbClientEncryptionKey'
+               'Update-AzCosmosDbClientEncryptionKey',
+			   'Get-AzCosmosDBGremlinGraphBackupInformation',
+               'Get-AzCosmosDBGremlinRestorableDatabase',
+               'Get-AzCosmosDBGremlinRestorableGraph',
+               'Get-AzCosmosDBGremlinRestorableResource',
+               'Get-AzCosmosDBTableRestorableTable',
+               'Get-AzCosmosDBTableRestorableResource',
+               'Get-AzCosmosDBTableBackupInformation',
+               'New-AzCosmosDBGremlinDatabaseToRestore',
+               'New-AzCosmosDBTableToRestore'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -219,8 +227,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added support for partition key and id paths to be part of client encryption policy.
-* Fixed bug related to Update-AzCosmosDBSqlContainer command on containers with Client Encryption Policy.'
+        ReleaseNotes = '* Exposed BackupPolicyMigrationState as a part of Get-AzCosmosDBAccount response.
+  - This shew the status of a backup policy migration state when an account was being converted from peroidic backup mode to continuous.'
 
         # Prerelease string of this module
         # Prerelease = ''

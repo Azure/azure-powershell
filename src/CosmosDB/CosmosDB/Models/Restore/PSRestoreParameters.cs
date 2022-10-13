@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
@@ -42,6 +43,25 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                     DatabasesToRestore[i] = new PSDatabaseToRestore(restoreParameters.DatabasesToRestore[i]);
                 }
             }
+
+            if (restoreParameters.GremlinDatabasesToRestore?.Count > 0)
+            {
+                GremlinDatabasesToRestore = new PSGremlinDatabaseToRestore[restoreParameters.GremlinDatabasesToRestore.Count];
+                for (int i = 0; i < restoreParameters.GremlinDatabasesToRestore.Count; i++)
+                {
+                    GremlinDatabasesToRestore[i] = new PSGremlinDatabaseToRestore(restoreParameters.GremlinDatabasesToRestore[i]);
+                }
+            }
+
+            if (restoreParameters.TablesToRestore?.Count > 0)
+            {
+                TablesToRestore = new PSTablesToRestore();
+                TablesToRestore.TableNames = new string[restoreParameters.TablesToRestore.Count];
+                for (int i = 0; i < restoreParameters.TablesToRestore.Count; i++)
+                {
+                    TablesToRestore.TableNames[i] = restoreParameters.TablesToRestore[i];
+                }
+            }
         }
 
         /// <summary>
@@ -61,6 +81,16 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// </summary>
         public PSDatabaseToRestore[] DatabasesToRestore { get; set; }
 
+        /// <summary>
+        /// Gets or sets array of specific gremlin databases to restore.
+        /// </summary>
+        public PSGremlinDatabaseToRestore[] GremlinDatabasesToRestore { get; set; }
+
+        /// <summary>
+        /// Gets or sets array of specific tables to restore.
+        /// </summary>
+        public PSTablesToRestore TablesToRestore { get; set; }
+
         public RestoreParameters ToSDKModel()
         {
             RestoreParameters restoreParameters = new RestoreParameters()
@@ -79,6 +109,22 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 }
 
                 restoreParameters.DatabasesToRestore = databasesToRestore;
+            }
+
+            if (GremlinDatabasesToRestore != null)
+            {
+                List<GremlinDatabaseRestoreResource> gremlinDatabasesToRestore = new List<GremlinDatabaseRestoreResource>();
+                foreach (PSGremlinDatabaseToRestore database in GremlinDatabasesToRestore)
+                {
+                    gremlinDatabasesToRestore.Add(database.ToSDKModel());
+                }
+
+                restoreParameters.GremlinDatabasesToRestore = gremlinDatabasesToRestore;
+            }
+
+            if (TablesToRestore != null && TablesToRestore.TableNames != null && TablesToRestore.TableNames.Count() != 0)
+            {
+                restoreParameters.TablesToRestore = TablesToRestore.TableNames;
             }
 
             return restoreParameters;

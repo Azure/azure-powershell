@@ -37,6 +37,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.DatabasesToRestoreHelpMessage)]
         public PSDatabaseToRestore[] DatabasesToRestore { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.GremlinDatabasesToRestoreHelpMessage)]
+        public PSGremlinDatabaseToRestore[] GremlinDatabasesToRestore { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.TablesToRestoreHelpMessage)]
+        public PSTablesToRestore TablesToRestore { get; set; }
+
         public PSRestoreParameters GetRestoreParameters(CosmosDBManagementClient cosmosDBManagementClient)
         {
             if (string.IsNullOrEmpty(SourceRestorableDatabaseAccountId) && !string.IsNullOrEmpty(SourceDatabaseAccountName))
@@ -69,7 +75,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 RestoreSource = SourceRestorableDatabaseAccountId,
                 RestoreTimestampInUtc = RestoreTimestampInUtc.DateTime,
-                DatabasesToRestore = DatabasesToRestore
+                DatabasesToRestore = DatabasesToRestore,
+                GremlinDatabasesToRestore = GremlinDatabasesToRestore,
+                TablesToRestore = TablesToRestore
             };
 
             return restoreParameters;

@@ -40,6 +40,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSRestorableSqlDatabaseGetResult InputObject { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.RestorableSqlContainersFeedStartTimeHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string StartTime { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.RestorableSqlContainersFeedEndTimeHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string EndTime { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
@@ -51,7 +59,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 DatabaseRId = InputObject.OwnerResourceId;
             }
 
-            IEnumerable restorableSqlContainers = CosmosDBManagementClient.RestorableSqlContainers.ListWithHttpMessagesAsync(Location, DatabaseAccountInstanceId, DatabaseRId).GetAwaiter().GetResult().Body;
+            IEnumerable restorableSqlContainers = CosmosDBManagementClient.RestorableSqlContainers.ListWithHttpMessagesAsync(Location, DatabaseAccountInstanceId, DatabaseRId, StartTime, EndTime).GetAwaiter().GetResult().Body;
             foreach (RestorableSqlContainerGetResult restorableSqlContainer in restorableSqlContainers)
             {
                 WriteObject(new PSRestorableSqlContainerGetResult(restorableSqlContainer));

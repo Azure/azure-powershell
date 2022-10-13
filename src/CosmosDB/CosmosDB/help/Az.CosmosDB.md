@@ -41,8 +41,20 @@ Gets the throughput of a CosmosDB Gremlin Database.
 ### [Get-AzCosmosDBGremlinGraph](Get-AzCosmosDBGremlinGraph.md)
 Gets the CosmosDB Gremlin Graph.
 
+### [Get-AzCosmosDBGremlinGraphBackupInformation](Get-AzCosmosDBGremlinGraphBackupInformation.md)
+Retrieves the latest restorable timestamp for a gremlin graph.
+
 ### [Get-AzCosmosDBGremlinGraphThroughput](Get-AzCosmosDBGremlinGraphThroughput.md)
 Gets the throughput of a CosmosDB Gremlin Graph.
+
+### [Get-AzCosmosDBGremlinRestorableDatabase](Get-AzCosmosDBGremlinRestorableDatabase.md)
+Gets the list of all the restorable Azure Cosmos DB Gremlin databases available under the restorable account.
+
+### [Get-AzCosmosDBGremlinRestorableGraph](Get-AzCosmosDBGremlinRestorableGraph.md)
+Lists all the restorable Azure Cosmos DB Gremlin graphs available for a specific database.
+
+### [Get-AzCosmosDBGremlinRestorableResource](Get-AzCosmosDBGremlinRestorableResource.md)
+Lists all the restorable Azure Cosmos DB Gremlin resources available for a specific database account at a given time and location.
 
 ### [Get-AzCosmosDBLocation](Get-AzCosmosDBLocation.md)
 List Azure Cosmos DB locations and their properties.
@@ -117,6 +129,15 @@ Gets the CosmosDB Sql User Defined Function.
 ### [Get-AzCosmosDBTable](Get-AzCosmosDBTable.md)
 Gets a CosmosDB Table.
 
+### [Get-AzCosmosDBTableBackupInformation](Get-AzCosmosDBTableBackupInformation.md)
+Retrieves the latest restorable timestamp for a table.
+
+### [Get-AzCosmosDBTableRestorableResource](Get-AzCosmosDBTableRestorableResource.md)
+Lists all the restorable Azure Cosmos DB Table resources available for a specific database account at a given time and location.
+
+### [Get-AzCosmosDBTableRestorableTable](Get-AzCosmosDBTableRestorableTable.md)
+Lists all the restorable Azure Cosmos DB Tables available for a specific database.
+
 ### [Get-AzCosmosDBTableThroughput](Get-AzCosmosDBTableThroughput.md)
 Gets the throughput of a CosmosDB Table.
 
@@ -188,6 +209,9 @@ Creates a new object of type PSConflictResolutionPolicy. It can be passed as a p
 
 ### [New-AzCosmosDBGremlinDatabase](New-AzCosmosDBGremlinDatabase.md)
 Creates a new CosmosDB Gremlin Database.
+
+### [New-AzCosmosDBGremlinDatabaseToRestore](New-AzCosmosDBGremlinDatabaseToRestore.md)
+Creates a new CosmosDB Gremlin Database to Restore object(PSGremlinDatabaseToRestore)
 
 ### [New-AzCosmosDBGremlinGraph](New-AzCosmosDBGremlinGraph.md)
 Creates a new CosmosDB Gremlin Graph.
@@ -272,6 +296,9 @@ Creates a new CosmosDB Sql UserDefinedFunction.
 
 ### [New-AzCosmosDBTable](New-AzCosmosDBTable.md)
 Creates a new CosmosDB Table.
+
+### [New-AzCosmosDBTableToRestore](New-AzCosmosDBTableToRestore.md)
+Creates a new CosmosDB Table to Restore object(PSTableToRestore)
 
 ### [New-AzCosmosDBVirtualNetworkRule](New-AzCosmosDBVirtualNetworkRule.md)
 Create a new CosmosDB VirtualNetworkRule Object(PSVirtualNetworkRule).

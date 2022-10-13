@@ -64,6 +64,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string RestoreSourceIdHelpMessage = "The restorable database account Id of the source account of the restore. Example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorabledatabaseaccounts/{instanceId}";
         public const string RestoreTimestampHelpMessage = "The timestamp to which the source account has to be restored to.";
         public const string DatabasesToRestoreHelpMessage = "The list of PSDatabaseToRestore objects which specify the subset of databases and collections to restore from the source account. (If not provided, all the databases will be restored)";
+        public const string GremlinDatabasesToRestoreHelpMessage = "The list of PSGremlinDatabaseToRestore objects which specify the subset of databases and graphs to restore from the source account. (If not provided, all the databases will be restored)";
+        public const string TablesToRestoreHelpMessage = "The list of PSTableToRestore objects which specify the subset of tables to restore from the source account. (If not provided, all the tables will be restored)";
         public const string RestoreDatabaseNameHelpMessage = "The name of the database to restore";
         public const string RestoreCollectionNamesHelpMessage = "The names of the collections to be restored. (If not provided, all the collections will be restored)";
         public const string RestoreSourceDatabaseAccountNameHelpMessage = "The name of the source database account of the restore.";
@@ -152,11 +154,17 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string MongoIndexHelpMessage = "Array of PSMongoIndex objects.";
         public const string MongoCollectionThroughputHelpMessage = "The throughput of Mongo collection (RU/s). Default value is 400.";
         public const string MongoDatabaseThroughputHelpMessage = "The throughput of Mongo database (RU/s). Default value is 400.";
+        public const string RestorableMongoDBCollectionsFeedStartTimeHelpMessage = "Restorable MongoDB collections event feed start time.";
+        public const string RestorableMongoDBCollectionsFeedEndTimeHelpMessage = "Restorable MongoDB collections event feed end time.";
 
         //Table cmdlets help messages
         public const string TableNameHelpMessage = "Name of the Table.";
         public const string TableThroughputHelpMessage = "The throughput of Table (RU/s). Default value is 400.";
         public const string TableObjectHelpMessage = "Table Object.";
+        public const string RestorableTableObjectHelpMessage = "CosmosDB Restorable Table object.";
+        public const string RestorableTablesFeedStartTimeHelpMessage = "Restorable Tables event feed start time.";
+        public const string RestorableTablesFeedEndTimeHelpMessage = "Restorable Tables event feed end time.";
+        public const string RestoreTableNamesHelpMessage = "The names of the tables to be restored. (If not provided, all the tables will be restored)";
 
         //Cassandra cmdlets help messages
         public const string KeyspaceNameHelpMessage = "Cassandra Keyspace Name.";
@@ -173,9 +181,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string CassandraSchemaColumnHelpMessage = "PSColumn object.";
         public const string CassandraSchemaPartitionKeyHelpMessage = "Array of strings containing Partition Keys.";
         public const string CassandraSchemaClusterKeyHelpMessage = "Array of PSClusterKey objects.";
-        public const string AnalyticalStorageTtlHelpMessage = "Analytical Storage TTL."; 
+        public const string AnalyticalStorageTtlHelpMessage = "Analytical Storage TTL.";
 
         //Gremlin cmdlets help messages
+        public const string GremlinDatabaseNameHelpMessage = "Gremlin Database name.";
         public const string GraphNameHelpMessage = "Gremlin Graph Name.";
         public const string GremlinDatabaseObjectHelpMessage = "Gremlin Database object.";
         public const string GremlinGraphObjectHelpMessage = "Gremlin Graph object.";
@@ -185,6 +194,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ConflictResolutionPolicyPathHelpMessage = "To be provided when the type is LastWriterWins.";
         public const string ConflictResolutionPolicyProcedureHelpMessage = "To be provided when the type is custom.";
         public const string UniqueKeysHelpMessage = "Array of objects of type PSUniqueKey.";
+        public const string RestorableGremlinDatabaseObjectHelpMessage = "CosmosDB Restorable Gremlin Database object.";
+        public const string RestorableGremlinGraphObjectHelpMessage = "CosmosDB Restorable Gremlin Graph object.";
+        public const string RestorableGremlinGraphsFeedStartTimeHelpMessage = "Restorable Gremlin graphs event feed start time.";
+        public const string RestorableGremlinGraphsFeedEndTimeHelpMessage = "Restorable Gremlin graphs event feed end time.";
+        public const string RestoreGremlinDatabaseNameHelpMessage = "The name of the gremlin database to restore";
+        public const string RestoreGraphNamesHelpMessage = "The names of the graphs to be restored. (If not provided, all the graphs will be restored)";
 
         // Throughput cmdlets for all APIs
         public const string ThroughputHelpMessage = "Throughput value in int.";
@@ -193,11 +208,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
 
         // Role cmdlets help messages
         public const string PrincipalIdHelpMessage = "Object ID (Guid) of the AAD principal to which the Role Assignment is being granted. This could be user, group, service principal, or managed identity.";
-        public const string ScopeHelpMessage  = "Resource path below which the Role Assignment shall grant access. Eg. '/', '/dbs/dbname','/dbs/dbname/colls/collname'.";
-        public const string RoleAssignmentHelpMessage  = "A Role Assignment attaches a Role Definition to an AAD principal at a specified resource scope for granting access.";
-        public const string RoleAssignmentIdHelpMessage  = "Unique ID (Guid) for the Role Assignment.";
-        public const string RoleDefinitionHelpMessage  = "A Role Definition is a collection of permissions.";
-        public const string RoleDefinitionIdHelpMessage  = "Unique ID (Guid) for the Role Definition.";
+        public const string ScopeHelpMessage = "Resource path below which the Role Assignment shall grant access. Eg. '/', '/dbs/dbname','/dbs/dbname/colls/collname'.";
+        public const string RoleAssignmentHelpMessage = "A Role Assignment attaches a Role Definition to an AAD principal at a specified resource scope for granting access.";
+        public const string RoleAssignmentIdHelpMessage = "Unique ID (Guid) for the Role Assignment.";
+        public const string RoleDefinitionHelpMessage = "A Role Definition is a collection of permissions.";
+        public const string RoleDefinitionIdHelpMessage = "Unique ID (Guid) for the Role Definition.";
         public const string TypeHelpMessage = "Type of the Role Definition, either CustomRole or BuiltInRole.";
         public const string RoleNameHelpMessage = "Unique display name for the Role Definition.";
         public const string DataActionsHelpMessage = "Set of data actions granted through the Role Definition. List of allowed actions can be found at: https://aka.ms/cosmos-native-rbac";
