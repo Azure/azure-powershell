@@ -1,0 +1,3 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Network","Set-AzExpressRouteGateway","2","3","Unbinded_Expression","5014","1","Set-AzExpressRouteGateway $gateway is not explicitly assigned to a parameter.","$gateway","Assign $gateway explicitly to the parameter."
+"Network","Set-AzExpressRouteGateway","3","3","Unbinded_Expression","5014","1","Set-AzExpressRouteGateway $gateway is not explicitly assigned to a parameter.","$gateway","Assign $gateway explicitly to the parameter."
