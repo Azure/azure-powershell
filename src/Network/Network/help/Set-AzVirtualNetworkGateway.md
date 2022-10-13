@@ -208,7 +208,7 @@ The first command gets a virtual network gateway named Gateway01 that belongs to
 The second command updates the virtual network gateway Gateway01 with the AAD authentication configurations params:aadTenantUri, aadAudienceId, aadIssuerUri for VpnClient.
 The third command removes the AAD authentication configuration from VpnClient of virtual network gateway.
 
-### Example 5: Add/Update IpConfigurationBgpPeeringAddresses to an existing virtual network gateway
+### Example 5.1: Add/Update IpConfigurationBgpPeeringAddresses to an existing virtual network gateway
 ```powershell
 $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
 $ipconfigurationId1 = '/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default'
@@ -264,6 +264,74 @@ BgpSettings            : {
                                "CustomBgpIpAddresses": [
                                  "169.254.21.55"
                                ],
+                               "TunnelIpAddresses": [
+                                 "13.78.146.151"
+                               ]
+                             }
+                           ]
+                         }
+```
+
+The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
+The second command assigns the value of virtual network gateway Gateway01 IpConfiguration Id into variable ipconfigurationId1.
+The third command assigns the address list into addresslist1.
+The fourth command created a PSIpConfigurationBgpPeeringAddress object.
+The fifth command set this new created PSIpConfigurationBgpPeeringAddress to IpConfigurationBgpPeeringAddresses and update the gateway.
+
+### Example 5.2: Update/Remove CustomAddress to an existing IpConfigurationBgpPeeringAddresses of virtual network gateway
+```powershell
+$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+$ipconfigurationId1 = '/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default'
+$addresslist1 = @()
+$gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -IpConfigurationBgpPeeringAddresses $gw1ipconfBgp1
+```
+
+```output
+Name                   : Gateway001
+ResourceGroupName      : ResourceGroup001
+Location               : westcentralus
+Id                     : /subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001
+Etag                   : W/"a08f13d3-6106-44e0-9127-e35e6f9793d5"
+ResourceGuid           : 30993429-a1ed-42ca-9862-9156b013626e
+ProvisioningState      : Succeeded
+Tags                   :
+IpConfigurations       : [
+                           {
+                             "PrivateIpAllocationMethod": "Dynamic",
+                             "Subnet": {
+                               "Id": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworks/newApipaNet/subnets/GatewaySubnet"
+                             },
+                             "PublicIpAddress": {
+                               "Id": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/publicIPAddresses/newapipaip"
+                             },
+                             "Name": "default",
+                             "Etag": "W/\"a08f13d3-6106-44e0-9127-e35e6f9793d5\"",
+                             "Id": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default"
+                           }
+                         ]
+GatewayType            : Vpn
+VpnType                : RouteBased
+EnableBgp              : False
+ActiveActive           : False
+GatewayDefaultSite     : null
+Sku                    : {
+                           "Capacity": 2,
+                           "Name": "VpnGw1",
+                           "Tier": "VpnGw1"
+                         }
+VpnClientConfiguration : null
+BgpSettings            : {
+                           "Asn": 65515,
+                           "BgpPeeringAddress": "10.1.255.30",
+                           "PeerWeight": 0,
+                           "BgpPeeringAddresses": [
+                             {
+                               "IpconfigurationId": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default",
+                               "DefaultBgpIpAddresses": [
+                                 "10.1.255.30"
+                               ],
+                               "CustomBgpIpAddresses": [],
                                "TunnelIpAddresses": [
                                  "13.78.146.151"
                                ]
