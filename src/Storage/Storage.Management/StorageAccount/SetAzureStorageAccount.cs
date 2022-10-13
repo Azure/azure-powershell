@@ -196,6 +196,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Set ClientId of the multi-tenant application to be used in conjunction with the user-assigned identity for cross-tenant customer-managed-keys server-side encryption on the storage account.")]
+        [ValidateNotNull]
+        public string KeyVaultFederatedClientId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Set the new Storage Account Identity type, the idenetity is for use with key management services like Azure KeyVault.")]
         [ValidateSet(AccountIdentityType.systemAssigned,
             AccountIdentityType.userAssigned,
@@ -642,17 +648,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                     }
 
-                    if (StorageEncryption || ParameterSetName == KeyvaultEncryptionParameterSet || this.KeyVaultUserAssignedIdentityId != null)
+                    if (StorageEncryption || ParameterSetName == KeyvaultEncryptionParameterSet || this.KeyVaultUserAssignedIdentityId != null || this.KeyVaultFederatedClientId != null)
                     {
                         if (ParameterSetName == KeyvaultEncryptionParameterSet)
                         {
                             keyvaultEncryption = true;
                         }
                         updateParameters.Encryption = ParseEncryption(StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
-                        if (this.KeyVaultUserAssignedIdentityId != null)
+                        if (this.KeyVaultUserAssignedIdentityId != null || this.KeyVaultFederatedClientId != null)
                         {
                             updateParameters.Encryption.EncryptionIdentity = new EncryptionIdentity();
                             updateParameters.Encryption.EncryptionIdentity.EncryptionUserAssignedIdentity = this.KeyVaultUserAssignedIdentityId;
+                            updateParameters.Encryption.EncryptionIdentity.EncryptionFederatedIdentityClientId = this.KeyVaultFederatedClientId;
                         }
                     }
                       
