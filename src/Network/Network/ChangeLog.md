@@ -19,7 +19,8 @@
 --->
 
 ## Upcoming Release
-* Updated NewAzIpConfigurationBgpPeeringAddressObjectCommand cmdlets to remove validate null or empty check for CustomAddress in Azure Virtual Network Gateway
+* Updated NewAzIpConfigurationBgpPeeringAddressObjectCommand to remove validate null or empty check for CustomAddress in Azure Virtual Network Gateway
+* Updated New-AzVirtualNetworkGateway to add validate null or empty check for CustomAddress in Azure Virtual Network Gateway
 * Updated cmdlets to add new property of `VirtualNetworkGatewayPolicyGroup` and `VpnClientConnectionConfiguration` in Azure Virtual Network Gateway
     * `New-AzVirtualNetworkGateway`
     * `Set-AzVirtualNetworkGateway`
