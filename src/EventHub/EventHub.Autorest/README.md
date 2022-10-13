@@ -152,8 +152,8 @@ directive:
       subject: NamespaceV2
   
   - where:
-      verb: new
-      subject: Namespace
+      verb: New
+      subject: NamespaceV2
       parameter-name: EncryptionRequireInfrastructureEncryption
     set:
       parameter-name: RequireInfrastructureEncryption
@@ -164,7 +164,7 @@ directive:
       property-name: RequireInfrastructureEncryption
   
   - where:
-      verb: new
+      verb: New
       subject: Namespace
       parameter-name: EncryptionKeyVaultProperty
     set:
@@ -176,7 +176,7 @@ directive:
       property-name: KeyVaultProperty
 
   - where:
-      verb: new
+      verb: New
       subject: Namespace
       parameter-name: IsAutoInflateEnabled
     set:
@@ -188,7 +188,7 @@ directive:
       property-name: EnableAutoInflate
 
   - where:
-      verb: new
+      verb: New
       subject: Namespace
       parameter-name: MaximumThroughputUnit
     set:
@@ -200,7 +200,7 @@ directive:
       property-name: MaximumThroughputUnits
 
   - where:
-      verb: new
+      verb: New
       subject: Namespace
       parameter-name: IdentityUserAssignedIdentity
     set:
