@@ -453,8 +453,8 @@ Test MongoDB RBAC cmdlets using Name paramter set
 #>
 function Test-MongoRBACCmdlets
 {
-  $AccountName = "mongo-db00044"
-  $rgName = "mongorbactest"
+  $AccountName = "mongo-db0004414"
+  $rgName = "mongorbactest-4414"
   #$rgName = "CosmosDBResourceGroup44"
   $DatabaseName = "dbName"
   $CollectionName = "collection1"
@@ -469,12 +469,12 @@ function Test-MongoRBACCmdlets
   $CollectionName2 = "collection2"
   $ThroughputValue = 500
   $UpdatedCollectionThroughputValue = 600
-  $location = "West US 2"
+  $location = "East US"
   $apiKind = "MongoDB"
   $serverVersion = "3.6" #3.2 or 3.6
   $consistencyLevel = "Session"
   $locations = @()
-  $locations += New-AzCosmosDBLocationObject -LocationName "West Us 2" -FailoverPriority 0 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
   $subscriptionId = $(getVariable "SubscriptionId")
   $RoleName1 = "mongoPSRole1"
   $RoleDefinitionId1 = $DatabaseName + "." + $RoleName1

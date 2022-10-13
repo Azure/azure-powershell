@@ -187,7 +187,8 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzCosmosDbClientEncryptionKey', 
                'New-AzCosmosDBMongoDBRoleDefinition', 
                'New-AzCosmosDBMongoDBPrivilegeResource', 
-               'New-AzCosmosDBMongoDBPrivilege', 'New-AzCosmosDBMongoDBRole', 
+               'New-AzCosmosDBMongoDBPrivilege', 
+               'New-AzCosmosDBMongoDBRole', 
                'Remove-AzCosmosDBMongoDBRoleDefinition', 
                'Update-AzCosmosDBMongoDBRoleDefinition', 
                'Get-AzCosmosDBMongoDBRoleDefinition', 
@@ -195,7 +196,16 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzCosmosDBMongoDBUserDefinition', 
                'Get-AzCosmosDBMongoDBUserDefinition', 
                'Remove-AzCosmosDBMongoDBUserDefinition', 'Get-AzCosmosDBService', 
-               'New-AzCosmosDBService', 'Remove-AzCosmosDBService'
+               'New-AzCosmosDBService', 'Remove-AzCosmosDBService', 
+               'Get-AzCosmosDBGremlinGraphBackupInformation', 
+               'Get-AzCosmosDBGremlinRestorableDatabase', 
+               'Get-AzCosmosDBGremlinRestorableGraph', 
+               'Get-AzCosmosDBGremlinRestorableResource', 
+               'Get-AzCosmosDBTableRestorableTable', 
+               'Get-AzCosmosDBTableRestorableResource', 
+               'Get-AzCosmosDBTableBackupInformation', 
+               'New-AzCosmosDBGremlinDatabaseToRestore', 
+               'New-AzCosmosDBTableToRestore' 
 
 # Variables to export from this module
 # VariablesToExport = @()
