@@ -10,6 +10,8 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.StackHCI.private.dll'
+  RequiredModules = @(@{ModuleName = 'PSReadLine'; ModuleVersion = '2.2.2'; },
+                    @{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.1';})
   FormatsToProcess = './Az.StackHCI.format.ps1xml'
   FunctionsToExport = 'Add-AzStackHCIVMAttestation', 'Disable-AzStackHCIAttestation', 'Disable-AzStackHCIRemoteSupport', 'Enable-AzStackHCIAttestation', 'Enable-AzStackHCIRemoteSupport', 'Get-AzStackHciArcSetting', 'Get-AzStackHciCluster', 'Get-AzStackHciExtension', 'Get-AzStackHCIRemoteSupportAccess', 'Get-AzStackHCIRemoteSupportSessionHistory', 'Get-AzStackHCIVMAttestation', 'Install-AzStackHCIRemoteSupport', 'New-AzStackHciArcSetting', 'New-AzStackHciCluster', 'New-AzStackHciExtension', 'Register-AzStackHCI', 'Remove-AzStackHciArcSetting', 'Remove-AzStackHciCluster', 'Remove-AzStackHciExtension', 'Remove-AzStackHCIRemoteSupport', 'Remove-AzStackHCIVMAttestation', 'Set-AzStackHCI', 'Test-AzStackHCIConnection', 'Unregister-AzStackHCI', 'Update-AzStackHciCluster', '*'
   AliasesToExport = '*'
