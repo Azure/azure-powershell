@@ -282,6 +282,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             string subscriptionA = Guid.NewGuid().ToString()
                 , subscriptionB = Guid.NewGuid().ToString()
                 , subscriptionC = Guid.NewGuid().ToString();
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory();
 
             Dictionary<string, string> subscriptionList = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
@@ -325,6 +326,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 , subscriptionB = Guid.NewGuid().ToString()
                 , subscriptionC = Guid.NewGuid().ToString()
                 , subscriptionD = Guid.NewGuid().ToString();
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory();
 
             var subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
@@ -368,6 +370,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 , subscriptionB = Guid.NewGuid().ToString()
                 , subscriptionC = Guid.NewGuid().ToString()
                 , subscriptionD = Guid.NewGuid().ToString();
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory();
 
             var tenantList = GetTenantsJson(tenantA, tenantB);
@@ -414,6 +417,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 , subscriptionB = Guid.NewGuid().ToString()
                 , subscriptionC = Guid.NewGuid().ToString()
                 , subscriptionD = Guid.NewGuid().ToString();
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory();
 
             Dictionary<string, string> subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
@@ -458,6 +462,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 , subscriptionB = Guid.NewGuid().ToString()
                 , subscriptionC = Guid.NewGuid().ToString()
                 , subscriptionD = Guid.NewGuid().ToString();
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory();
 
             Dictionary<string, string> subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
@@ -501,6 +506,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 , subscriptionB = Guid.NewGuid().ToString()
                 , subscriptionC = Guid.NewGuid().ToString()
                 , subscriptionD = Guid.NewGuid().ToString();
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory();
 
             Dictionary<string, string> subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
@@ -542,6 +548,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 , subscriptionB = Guid.NewGuid().ToString()
                 , subscriptionC = Guid.NewGuid().ToString()
                 , subscriptionD = Guid.NewGuid().ToString();
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory();
 
             Dictionary<string, string> subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
@@ -580,6 +587,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             string subscriptionA = Guid.NewGuid().ToString()
                 , subscriptionB = Guid.NewGuid().ToString()
                 , subscriptionC = Guid.NewGuid().ToString();
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory();
 
             Dictionary<string, string> subscriptionList = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
@@ -615,6 +623,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 , subscriptionB = Guid.NewGuid().ToString()
                 , subscriptionC = Guid.NewGuid().ToString()
                 , subscriptionD = Guid.NewGuid().ToString();
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory();
 
             var subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
@@ -632,26 +641,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 Body = MockSubscriptionClientFactory.CreateSubscripitonsFromJson(subscriptionListA[subscriptionA]).First()
             };
             MockSubscriptionClientFactory.SubGetQueueVerLatest.Enqueue(() => resultLatest);
-
-            //var SubGetQueueVerOld = new Queue<Func<AzureOperationResponse<SubscriptionOld>>>();
-            //SubGetQueueVerOld.Enqueue(() =>
-            //{
-            //    throw new CloudException("Subscription not in the tenant.");
-            //});
-            //var resultOld = new AzureOperationResponse<SubscriptionOld>()
-            //{
-            //    RequestId = Guid.NewGuid().ToString(),
-            //    Body = new SubscriptionOld(
-            //                        id: subscriptionA,
-            //                        subscriptionId: subscriptionA,
-            //                        tenantId: tenantA,
-            //                        displayName: MockSubscriptionClientFactory.GetSubscriptionNameFromId(subscriptionA),
-            //                        state: Microsoft.Azure.Internal.Subscriptions.Models.SubscriptionState.Enabled,
-            //                        subscriptionPolicies: null,
-            //                        authorizationSource: null)
-            //};
-            //SubGetQueueVerOld.Enqueue(() => resultOld);
-            //MockSubscriptionClientFactory.SetGetAsyncResponses(SubGetQueueVerOld);
 
             subscriptionClients.Clear();
             subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest(
@@ -682,6 +671,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 , subscriptionB = Guid.NewGuid().ToString()
                 , subscriptionC = Guid.NewGuid().ToString()
                 , subscriptionD = Guid.NewGuid().ToString();
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory();
 
             var tenantList = GetTenantsJson(tenantA, tenantB);
@@ -720,6 +710,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 , subscriptionB = Guid.NewGuid().ToString()
                 , subscriptionC = Guid.NewGuid().ToString()
                 , subscriptionD = Guid.NewGuid().ToString();
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory();
 
             Dictionary<string, string> subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
@@ -754,6 +745,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 , subscriptionB = Guid.NewGuid().ToString()
                 , subscriptionC = Guid.NewGuid().ToString()
                 , subscriptionD = Guid.NewGuid().ToString();
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory();
 
             Dictionary<string, string> subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
@@ -789,6 +781,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 , subscriptionB = Guid.NewGuid().ToString()
                 , subscriptionC = Guid.NewGuid().ToString()
                 , subscriptionD = Guid.NewGuid().ToString();
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory();
 
             Dictionary<string, string> subscriptionListB = GetSecondTenantSubscriptionsJson(tenantB, subscriptionA, subscriptionB, subscriptionC, subscriptionD, tenantA);
