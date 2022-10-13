@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-AsJob` optional parameter to `Remove-AzVMExtension` cmdlet.
 * For `New-AzGalleryImageVersion`, update property mapping for `Encryption`. 
 
 ## Version 4.32.0
