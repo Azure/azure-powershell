@@ -246,13 +246,13 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzManagedCassandraDataCenter', 
                'Get-AzCosmosDbClientEncryptionKey', 
                'New-AzCosmosDbClientEncryptionKey', 
-               'Update-AzCosmosDbClientEncryptionKey',
-               'Invoke-AzCosmosDbSqlContainerMerge',
-               'Invoke-AzCosmosDbMongoDbCollectionMerge',
-               'Get-AzCosmosDBSqlContainerPerPartitionThroughput',
-               'Update-AzCosmosDBSqlContainerPerPartitionThroughput',
-               'Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput',
-               'Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput',
+               'Update-AzCosmosDbClientEncryptionKey', 
+               'Invoke-AzCosmosDbSqlContainerMerge', 
+               'Invoke-AzCosmosDbMongoDbCollectionMerge', 
+               'Get-AzCosmosDBSqlContainerPerPartitionThroughput', 
+               'Update-AzCosmosDBSqlContainerPerPartitionThroughput', 
+               'Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput', 
+               'Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput', 
                'New-AzCosmosDBPhysicalPartitionThroughputObject'
 
 # Variables to export from this module
@@ -294,7 +294,7 @@ PrivateData = @{
 * Introduced Restore-AzCosmosDBTable to restore deleted table in the same account.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
