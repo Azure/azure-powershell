@@ -1036,17 +1036,14 @@ function Test-EdgeZoneToEdgeZoneRecoveryPlanReplication {
     $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
     Assert-NotNull($pe)
 
-    #Create Recovery Plan
-    $createRecoveryJob = New-AzRecoveryServicesAsrRecoveryPlan -EdgeZoneToEdgeZone -Name $RecoveryPlanName -PrimaryFabric $pf -ReplicationProtectedItem $pe -PrimaryEdgeZone $primaryExtendedLocation -RecoveryEdgeZone $recoveryExtendedLocation
-    WaitForJobCompletion -JobId $createRecoveryJob.Name
-
-    #Get Recovery Plan
-    $RecoveryPlan = Get-AzRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName 
-    Assert-NotNull($RecoveryPlan)
-
     #Failover
-    $failoverjob = Start-AzRecoveryServicesAsrUnPlannedFailoverJob -RecoveryPlan $RecoveryPlan -Direction PrimaryToRecovery -PerformSourceSideAction
+    $failoverjob = Start-AzRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $pe -Direction PrimaryToRecovery -PerformSourceSideAction
     WaitForJobCompletion -JobId $failoverjob.Name
+
+    $CommitFailoverJob = Start-AzRecoveryServicesAsrCommitFailoverJob -ReplicationProtectedItem $pe
+    (Get-AzRecoveryServicesAsrJob -Job $CommitFailoverJob).Tasks
+    WaitForJobCompletion -JobId $CommitFailoverJob.Name
+
     #Get recovery vm and verify
     $recvm = get-azVm -ResourceGroupName $recRgName -Name $vmName
     Assert-Null($recvm.Zones);
@@ -1054,10 +1051,6 @@ function Test-EdgeZoneToEdgeZoneRecoveryPlanReplication {
 
     $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name $vmName
     Assert-NotNull($pe)
-
-    #Get Recovery Plan
-    $RecoveryPlan = Get-AzRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName 
-    Assert-NotNull($RecoveryPlan)
 }
 
 <#
@@ -1159,17 +1152,14 @@ function Test-EdgeZoneToAvailabilityZoneRecoveryPlanReplication {
     $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
     Assert-NotNull($pe)
 
-    #Create Recovery Plan
-    $createRecoveryJob = New-AzRecoveryServicesAsrRecoveryPlan -AzureZoneToZone -Name $RecoveryPlanName -PrimaryFabric $pf -ReplicationProtectedItem $pe -RecoveryZone $recZone
-    WaitForJobCompletion -JobId $createRecoveryJob.Name
-
-    #Get Recovery Plan
-    $RecoveryPlan = Get-AzRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName 
-    Assert-NotNull($RecoveryPlan)
-
     #Failover
-    $failoverjob = Start-AzRecoveryServicesAsrUnPlannedFailoverJob -RecoveryPlan $RecoveryPlan -Direction PrimaryToRecovery -PerformSourceSideAction
+    $failoverjob = Start-AzRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $pe -Direction PrimaryToRecovery -PerformSourceSideAction
     WaitForJobCompletion -JobId $failoverjob.Name
+
+    $CommitFailoverJob = Start-AzRecoveryServicesAsrCommitFailoverJob -ReplicationProtectedItem $pe
+    (Get-AzRecoveryServicesAsrJob -Job $CommitFailoverJob).Tasks
+    WaitForJobCompletion -JobId $CommitFailoverJob.Name
+
     #Get recovery vm and verify
     $recvm = get-azVm -ResourceGroupName $recRgName -Name $vmName
     Assert-NotNull($recvm.Zones);
@@ -1177,10 +1167,6 @@ function Test-EdgeZoneToAvailabilityZoneRecoveryPlanReplication {
 
     $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name $vmName
     Assert-NotNull($pe)
-
-    #Get Recovery Plan
-    $RecoveryPlan = Get-AzRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName 
-    Assert-NotNull($RecoveryPlan)
 }
 
 
@@ -1275,6 +1261,7 @@ function Test-ZoneToZoneRecoveryPlanReplication {
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
     $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryAvailabilityZone $recZone -RecoveryAzureNetworkId $RecoveryAzureNetworkId -RecoveryAzureSubnetName "frontendSubnet"
+    Assert-NotNull($enableDRjob)
     WaitForJobCompletion -JobId $enableDRjob.Name
     WaitForIRCompletion -affectedObjectId $enableDRjob.TargetObjectId
 
@@ -1588,10 +1575,10 @@ function Test-CRGReplication {
     $recoveryContainerName = getRecoveryContainer
     $vaultRgLocation = getVaultRgLocation
     $vaultName = getVaultName
-    $vaultLocation = "centraluseuap"
+    $vaultLocation = "eastus2euap"
     $vaultRg = getVaultRg
     $primaryLocation = getPrimaryLocation
-    $recoveryLocation = "centraluseuap"
+    $recoveryLocation = "eastus2euap"
     $primaryFabricName = getPrimaryFabric
     $recoveryFabricName = getRecoveryFabric
     $RecoveryReplicaDiskAccountType = "Premium_LRS"

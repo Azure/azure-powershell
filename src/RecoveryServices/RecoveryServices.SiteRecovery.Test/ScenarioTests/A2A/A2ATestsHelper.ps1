@@ -57,7 +57,7 @@ function getPrimaryZoneLocation
 
 function getPrimaryExtendedLocation
 {
-    return "microsoftrrdclab1"
+    return "microsoftrrdclab4"
 }
 
 function getPrimaryExtendedLocationForAz
@@ -81,7 +81,7 @@ function getRecoveryLocation{
 
 function getRecoveryExtendedLocation
 {
-    return "microsoftrrdclab2"
+    return "microsoftrrdclab3"
 }
 
 function getPrimaryFabric{
@@ -344,7 +344,7 @@ function createRecoveryNetworkIdForEdgeZone{
 
 	$NetworkName = getRecoveryNetworkName
 	$NetworkLocation = if ($location) { $location } else { getPrimaryExtendedLocation }
-	$ResourceGroupName = getRecoveryResourceGroupName
+	$ResourceGroupName = if ($resourceGroup) { $resourceGroup } else { getRecoveryResourceGroupName }
     $EdgeZone = if ($edgeZone) { $edgeZone } else { getRecoveryExtendedLocation }
 	$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
     $virtualNetwork = New-AzVirtualNetwork `
