@@ -19,6 +19,15 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to add new property of `VirtualNetworkGatewayPolicyGroup` and `VpnClientConnectionConfiguration` in Azure Virtual Network Gateway
+    * `New-AzVirtualNetworkGateway`
+    * `Set-AzVirtualNetworkGateway`
+* Added new cmdlets to create 
+    * `New-AzVirtualNetworkGatewayPolicyGroup`
+    * `New-AzVirtualNetworkGatewayPolicyGroupMember`
+    * `New-AzVpnClientConnectionConfiguration`
+* Added message in breaking change attribute to notify that load balancer sku default behaviour will be changed
+    * `New-AzLoadBalancer`
 
 ## Version 4.21.0
 * Added a new endpoint switch `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`

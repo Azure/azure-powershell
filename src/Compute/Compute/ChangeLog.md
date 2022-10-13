@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Updated `Get-AzHost` cmdlet logic to return Host for `-ResourceId` parameterset.
+* For `New-AzGalleryImageVersion`, update property mapping for `Encryption`. 
 
 ## Version 4.32.0
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
