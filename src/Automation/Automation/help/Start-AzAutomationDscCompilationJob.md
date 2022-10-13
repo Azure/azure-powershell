@@ -44,7 +44,7 @@ Start-AzAutomationDscCompilationJob -ConfigurationName "Config01" -Parameters $P
 Similar to the first example, the first command creates a dictionary of parameters, and stores them in the $Params variable.
 The second command compiles the DSC configuration named Config01.
 The command includes the values in $Params for DSC configuration parameters.
-It does not override the earlier existing Node Configuration by creating a new Node Configuration with the name Config01[<2>].<NodeName>. 
+It does not override the earlier existing Node Configuration by creating a new Node Configuration with the name `Config01[<2>].<NodeName>`. 
 The version number is incremented based on the existing version number already present.
 
 ## PARAMETERS

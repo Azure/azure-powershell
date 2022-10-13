@@ -1,0 +1,192 @@
+{
+  "Disable-AzAdvisorRecommendation+[NoContext]+IdParameterSet+$PUT+https://management.azure.com/subscriptions%2F9e223dbe-3399-4e19-88eb-0975f02ac87f%2Fresourcegroups%2Fautomanagehcrprg%2Fproviders%2Fmicrosoft.compute%2Fvirtualmachines%2Farcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9/suppressions/HardcodedSuppressionName?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions%2F9e223dbe-3399-4e19-88eb-0975f02ac87f%2Fresourcegroups%2Fautomanagehcrprg%2Fproviders%2Fmicrosoft.compute%2Fvirtualmachines%2Farcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9/suppressions/HardcodedSuppressionName?api-version=2020-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"ttl\": \"03:00:00:00\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "54" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "147eda3b-c6bc-442b-803e-6a128bcc1208" ],
+        "x-ms-correlation-request-id": [ "147eda3b-c6bc-442b-803e-6a128bcc1208" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220927T092544Z:147eda3b-c6bc-442b-803e-6a128bcc1208" ],
+        "Date": [ "Tue, 27 Sep 2022 09:25:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "482" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"suppressionId\":\"a6844374-1c87-343d-6e7c-d2db4dad94cb\",\"ttl\":\"3.00:00:00\",\"expirationTimeStamp\":\"2022-09-30T09:25:44.0724341Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9/suppressions/HardcodedSuppressionName\",\"type\":\"Microsoft.Advisor/suppressions\",\"name\":\"HardcodedSuppressionName\"}",
+      "isContentBase64": false
+    }
+  },
+  "Disable-AzAdvisorRecommendation+[NoContext]+NameParameterSet+$GET+https://management.azure.com/subscriptions%2F9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions%2F9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9?api-version=2020-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "49c10292-6dd5-4971-ac65-06542645b2c2" ],
+        "CommandName": [ "Az.Advisor.internal\\Get-AzAdvisorRecommendation" ],
+        "FullCommandName": [ "Get-AzAdvisorRecommendation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Advisor/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "599" ],
+        "x-ms-request-id": [ "bd338694-d6a5-448b-9cd6-1c3c0c63c635" ],
+        "x-ms-correlation-request-id": [ "bd338694-d6a5-448b-9cd6-1c3c0c63c635" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220927T092545Z:bd338694-d6a5-448b-9cd6-1c3c0c63c635" ],
+        "Date": [ "Tue, 27 Sep 2022 09:25:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1266" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"category\":\"Security\",\"impact\":\"High\",\"impactedField\":\"Microsoft.Compute/virtualMachines\",\"impactedValue\":\"arcbox-k3s\",\"lastUpdated\":\"2022-09-26T14:26:03.680092Z\",\"recommendationTypeId\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"shortDescription\":{\"problem\":\"File integrity monitoring should be enabled on machines\",\"solution\":\"File integrity monitoring should be enabled on machines\"},\"suppressionIds\":[\"a6844374-1c87-343d-6e7c-d2db4dad94cb\"],\"extendedProperties\":{\"assessmentKey\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"score\":\"0\"},\"resourceMetadata\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s\",\"source\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AUTOMANAGEHCRPRG/providers/Microsoft.Compute/virtualMachines/ArcBox-K3s/providers/Microsoft.Security/assessments/9b7d740f-c271-4bfd-88fb-515680c33440\"}},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9\",\"type\":\"Microsoft.Advisor/recommendations\",\"name\":\"c50a2e0a-26e6-4c21-f796-3fd64569b4d9\"}",
+      "isContentBase64": false
+    }
+  },
+  "Disable-AzAdvisorRecommendation+[NoContext]+NameParameterSet+$PUT+https://management.azure.com/subscriptions%2F9e223dbe-3399-4e19-88eb-0975f02ac87f%2Fresourcegroups%2Fautomanagehcrprg%2Fproviders%2Fmicrosoft.compute%2Fvirtualmachines%2Farcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9/suppressions/HardcodedSuppressionName?api-version=2020-01-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions%2F9e223dbe-3399-4e19-88eb-0975f02ac87f%2Fresourcegroups%2Fautomanagehcrprg%2Fproviders%2Fmicrosoft.compute%2Fvirtualmachines%2Farcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9/suppressions/HardcodedSuppressionName?api-version=2020-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"ttl\": \"03:00:00:00\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "54" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "334fe27b-dc4c-460c-ae25-c0312bfeddfd" ],
+        "x-ms-correlation-request-id": [ "334fe27b-dc4c-460c-ae25-c0312bfeddfd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220927T092546Z:334fe27b-dc4c-460c-ae25-c0312bfeddfd" ],
+        "Date": [ "Tue, 27 Sep 2022 09:25:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "482" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"suppressionId\":\"a6844374-1c87-343d-6e7c-d2db4dad94cb\",\"ttl\":\"3.00:00:00\",\"expirationTimeStamp\":\"2022-09-30T09:25:46.1818113Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9/suppressions/HardcodedSuppressionName\",\"type\":\"Microsoft.Advisor/suppressions\",\"name\":\"HardcodedSuppressionName\"}",
+      "isContentBase64": false
+    }
+  },
+  "Disable-AzAdvisorRecommendation+[NoContext]+InputObjectParameterSet+$GET+https://management.azure.com/%2Fsubscriptions%2F9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/%2Fsubscriptions%2F9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9?api-version=2020-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "52eee240-27b3-4386-acaf-33044e759f21" ],
+        "CommandName": [ "." ],
+        "FullCommandName": [ "Get-AzAdvisorRecommendation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Advisor/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "598" ],
+        "x-ms-request-id": [ "5c220e46-fea3-4694-a5fc-bb22be25d84d" ],
+        "x-ms-correlation-request-id": [ "5c220e46-fea3-4694-a5fc-bb22be25d84d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220927T092546Z:5c220e46-fea3-4694-a5fc-bb22be25d84d" ],
+        "Date": [ "Tue, 27 Sep 2022 09:25:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1266" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"category\":\"Security\",\"impact\":\"High\",\"impactedField\":\"Microsoft.Compute/virtualMachines\",\"impactedValue\":\"arcbox-k3s\",\"lastUpdated\":\"2022-09-26T14:26:03.680092Z\",\"recommendationTypeId\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"shortDescription\":{\"problem\":\"File integrity monitoring should be enabled on machines\",\"solution\":\"File integrity monitoring should be enabled on machines\"},\"suppressionIds\":[\"a6844374-1c87-343d-6e7c-d2db4dad94cb\"],\"extendedProperties\":{\"assessmentKey\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"score\":\"0\"},\"resourceMetadata\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s\",\"source\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AUTOMANAGEHCRPRG/providers/Microsoft.Compute/virtualMachines/ArcBox-K3s/providers/Microsoft.Security/assessments/9b7d740f-c271-4bfd-88fb-515680c33440\"}},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9\",\"type\":\"Microsoft.Advisor/recommendations\",\"name\":\"c50a2e0a-26e6-4c21-f796-3fd64569b4d9\"}",
+      "isContentBase64": false
+    }
+  },
+  "Disable-AzAdvisorRecommendation+[NoContext]+InputObjectParameterSet+$PUT+https://management.azure.com/subscriptions%2F9e223dbe-3399-4e19-88eb-0975f02ac87f%2Fresourcegroups%2Fautomanagehcrprg%2Fproviders%2Fmicrosoft.compute%2Fvirtualmachines%2Farcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9/suppressions/HardcodedSuppressionName?api-version=2020-01-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions%2F9e223dbe-3399-4e19-88eb-0975f02ac87f%2Fresourcegroups%2Fautomanagehcrprg%2Fproviders%2Fmicrosoft.compute%2Fvirtualmachines%2Farcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9/suppressions/HardcodedSuppressionName?api-version=2020-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"ttl\": \"\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "43" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "78f3f219-3cd6-4391-9b1b-c76483166020" ],
+        "x-ms-correlation-request-id": [ "78f3f219-3cd6-4391-9b1b-c76483166020" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220927T092547Z:78f3f219-3cd6-4391-9b1b-c76483166020" ],
+        "Date": [ "Tue, 27 Sep 2022 09:25:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "421" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"suppressionId\":\"a6844374-1c87-343d-6e7c-d2db4dad94cb\",\"ttl\":\"-1\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9/suppressions/HardcodedSuppressionName\",\"type\":\"Microsoft.Advisor/suppressions\",\"name\":\"HardcodedSuppressionName\"}",
+      "isContentBase64": false
+    }
+  }
+}

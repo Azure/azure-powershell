@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public IDictionary<string, string> Tags { get; set; }
         public PSVirtualMachineScaleSetVMProfile VirtualMachineProfile { get; set; }
         public string OrchestrationMode { get; set; }
-
+        public PriorityMixPolicy PriorityMixPolicy { get; set; }
         //
         // Summary:
         //     Gets specifies the time at which the Virtual Machine Scale Set resource was created.&lt;br&gt;&lt;br&gt;Minimum

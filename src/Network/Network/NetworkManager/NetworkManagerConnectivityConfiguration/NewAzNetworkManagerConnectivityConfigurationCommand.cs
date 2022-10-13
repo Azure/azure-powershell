@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -64,6 +65,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Connectivity Topology. Valid values include 'HubAndSpoke' and 'Mesh'.")]
+        [ValidateSet("HubAndSpoke", "Mesh", IgnoreCase = true)]
         public string ConnectivityTopology { get; set; }
 
         [Parameter(

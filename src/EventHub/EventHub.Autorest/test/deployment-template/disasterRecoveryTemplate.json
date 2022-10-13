@@ -1,0 +1,108 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "namespace_name": {
+      "defaultValue": "AutomatedPSTesting",
+      "type": "String"
+    },
+    "secondarynamespace_name": {
+      "defaultValue": "testnamespace",
+      "type": "String"
+    }
+  },
+  "variables": {
+    "authRuleResourceName": "[concat(parameters('namespace_name'), '/', 'authRule1')]",
+    "rootAuthRuleResourceName": "[concat(parameters('namespace_name'), '/RootManageSharedAccessKey')]",
+    "defaultNetworkRuleResourceName": "[concat(parameters('namespace_name'), '/default')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.EventHub/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('namespace_name')]",
+      "location": "eastus",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard",
+        "capacity": 1
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": true,
+        "isAutoInflateEnabled": false,
+        "maximumThroughputUnits": 0,
+        "kafkaEnabled": true
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[variables('authRuleResourceName')]",
+      "location": "eastus",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Manage",
+          "Listen",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[variables('rootAuthRuleResourceName')]",
+      "location": "eastus",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Listen",
+          "Manage",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/networkRuleSets",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[variables('defaultNetworkRuleResourceName')]",
+      "location": "eastus",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "publicNetworkAccess": "Enabled",
+        "defaultAction": "Allow",
+        "virtualNetworkRules": [],
+        "ipRules": []
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('secondarynamespace_name')]",
+      "location": "Australia East",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard",
+        "capacity": 1
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": true,
+        "isAutoInflateEnabled": false,
+        "maximumThroughputUnits": 0,
+        "kafkaEnabled": true
+      }
+    }
+  ]
+}

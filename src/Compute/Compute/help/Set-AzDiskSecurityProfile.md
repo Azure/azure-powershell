@@ -13,8 +13,8 @@ Set SecurityProfile on managed disk
 ## SYNTAX
 
 ```
-Set-AzDiskSecurityProfile [-Disk] <PSDisk> -SecurityType <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzDiskSecurityProfile [-Disk] <PSDisk> -SecurityType <String> [-SecureVMDiskEncryptionSet <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +33,48 @@ New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskco
 ```
 
 Customers can set the SecurityType of managed Disks.
+
+### Example 2: Create a Disk with a Disk Encrption Set with the encryption type of ConfidentialVM_DiskEncryptedWithCustomerKey
+```powershell
+$Location = "northeurope";
+$KeyVaultName = "val" + $rgname;
+$KeyName = "key" + $rgname;
+$DesName= "des" + $rgname;
+$KeySize = 3072; 
+
+$SecurePassword = "Password" | ConvertTo-SecureString -AsPlainText -Force;  
+$User = "Username";
+$Cred = New-Object System.Management.Automation.PSCredential ($User, $SecurePassword);
+
+New-AzKeyVault -Name $KeyVaultName -Location $Location -ResourceGroupName $ResourceGroupName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
+
+# Add Key vault Key
+Add-AzKeyVaultKey -VaultName $KeyVaultName -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -Exportable -UseDefaultCVMPolicy;
+        
+# Capture Keyvault and key details
+$KeyVaultId = (Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName).ResourceId;
+$KeyUrl = (Get-AzKeyVaultKey -VaultName $KeyVaultName -KeyName $KeyName).Key.Kid;
+
+# Create new DES Config and DES
+$diskEncryptionType = "ConfidentialVmEncryptedWithCustomerKey";
+$desConfig = New-AzDiskEncryptionSetConfig -Location $Location -SourceVaultId $keyvaultId -KeyUrl $keyUrl -IdentityType SystemAssigned -EncryptionType $diskEncryptionType;
+New-AzDiskEncryptionSet -ResourceGroupName $ResourceGroupName -Name $DesName -DiskEncryptionSet $desConfig;
+$diskencset = Get-AzDiskEncryptionSet -ResourceGroupName $ResourceGroupName -Name $desName;
+
+# Assign DES Access Policy to key vault
+$desIdentity = (Get-AzDiskEncryptionSet -Name $DesName -ResourceGroupName $ResourceGroupName).Identity.PrincipalId;
+Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -ObjectId $desIdentity -PermissionsToKeys wrapKey,unwrapKey,get -BypassObjectIdValidation;
+        
+$diskSecurityType = "ConfidentialVM_DiskEncryptedWithCustomerKey";
+$diskName = "diskname";
+$diskconfig = New-AzDiskConfig -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $Location;
+$diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id "/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/northeurope/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windows-cvm/Skus/2019-datacenter-cvm/Versions/latest";
+$diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType $diskSecurityType -SecureVMDiskEncryptionSet $diskencset.id;
+New-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $diskName -Disk $diskconfig;
+$disk = Get-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $diskName;
+# Verify the SecurityType value.
+# $disk.Properties.SecurityProfile.SecurityType returns "ConfidentialVM";
+```
 
 ## PARAMETERS
 
@@ -63,6 +105,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -SecureVMDiskEncryptionSet
+ResourceId of the disk encryption set to use for enabling encryption at rest.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
