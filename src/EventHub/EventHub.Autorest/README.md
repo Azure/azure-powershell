@@ -145,15 +145,71 @@ directive:
       subject: PrivateLinkResource
     set:
       subject: PrivateLink
+# Renaming New-AzEventHubNamespace
+  - where:
+      subject: Namespace
+    set:
+      subject: NamespaceV2
+  
+  - where:
+      verb: new
+      subject: Namespace
+      parameter-name: EncryptionRequireInfrastructureEncryption
+    set:
+      parameter-name: RequireInfrastructureEncryption
+  - where:
+      model-name: EhNamespace
+      property-name: EncryptionRequireInfrastructureEncryption
+    set:
+      property-name: RequireInfrastructureEncryption
+  
+  - where:
+      verb: new
+      subject: Namespace
+      parameter-name: EncryptionKeyVaultProperty
+    set:
+      parameter-name: KeyVaultProperty
+  - where:
+      model-name: EhNamespace
+      property-name: EncryptionKeyVaultProperty
+    set:
+      property-name: KeyVaultProperty
 
   - where:
-      subject: EncryptionRequireInfrastructureEncryption
+      verb: new
+      subject: Namespace
+      parameter-name: IsAutoInflateEnabled
     set:
-      subject: EncryptionConfig
+      parameter-name: EnableAutoInflate
   - where:
-      subject: IdentityUserAssignedIdentity
+      model-name: EhNamespace
+      property-name: IsAutoInflateEnabled
     set:
-      subject: IdentityId
+      property-name: EnableAutoInflate
+
+  - where:
+      verb: new
+      subject: Namespace
+      parameter-name: MaximumThroughputUnit
+    set:
+      parameter-name: MaximumThroughputUnits
+  - where:
+      model-name: EhNamespace
+      property-name: MaximumThroughputUnit
+    set:
+      property-name: MaximumThroughputUnits
+
+  - where:
+      verb: new
+      subject: Namespace
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: IdentityId
+  - where:
+      model-name: EhNamespace
+      property-name: IdentityUserAssignedIdentity
+    set:
+      property-name: IdentityId
 
   - where:
       verb: Get
@@ -326,4 +382,4 @@ directive:
       suppress-format: true
 
   - model-cmdlet:
-    - Encryption
+    - KeyVaultProperty
