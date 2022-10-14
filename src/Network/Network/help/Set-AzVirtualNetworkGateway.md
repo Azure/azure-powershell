@@ -208,7 +208,7 @@ The first command gets a virtual network gateway named Gateway01 that belongs to
 The second command updates the virtual network gateway Gateway01 with the AAD authentication configurations params:aadTenantUri, aadAudienceId, aadIssuerUri for VpnClient.
 The third command removes the AAD authentication configuration from VpnClient of virtual network gateway.
 
-### Example 5.1: Add/Update IpConfigurationBgpPeeringAddresses to an existing virtual network gateway
+### Example 5: Add/Update IpConfigurationBgpPeeringAddresses to an existing virtual network gateway
 ```powershell
 $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
 $ipconfigurationId1 = '/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default'
@@ -278,7 +278,7 @@ The third command assigns the address list into addresslist1.
 The fourth command created a PSIpConfigurationBgpPeeringAddress object.
 The fifth command set this new created PSIpConfigurationBgpPeeringAddress to IpConfigurationBgpPeeringAddresses and update the gateway.
 
-### Example 5.2: Update/Remove CustomAddress to an existing IpConfigurationBgpPeeringAddresses of virtual network gateway
+### Example 6: Update/Remove CustomAddress to an existing IpConfigurationBgpPeeringAddresses of virtual network gateway
 ```powershell
 $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
 $ipconfigurationId1 = '/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default'
@@ -346,7 +346,7 @@ The third command assigns the address list into addresslist1.
 The fourth command created a PSIpConfigurationBgpPeeringAddress object.
 The fifth command set this new created PSIpConfigurationBgpPeeringAddress to IpConfigurationBgpPeeringAddresses and update the gateway.
 
-### Example 6: Add/Update NatRules to an existing virtual network gateway
+### Example 7: Add/Update NatRules to an existing virtual network gateway
 ```powershell
 $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
 $vngNatRules = $Gateway.NatRules
@@ -437,7 +437,7 @@ The third command assigns the value newly created PSVirtualNetworkGatewayNatRule
 The fourth command add this PSVirtualNetworkGatewayNatRule object into vngNatRules list.
 The fifth command set this new created PSVirtualNetworkGatewayNatRule to NatRules of gateway and update the gateway.
 
-### Example 7: Delete multiple expired VpnClientRootCertificates of an existing virtual network gateway
+### Example 8: Delete multiple expired VpnClientRootCertificates of an existing virtual network gateway
 ```powershell
 $Gateway=Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
 
