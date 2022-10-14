@@ -106,7 +106,7 @@ A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
 
 After the gateway has been created, it uses Set-AzVpnGateway to update BgpPeeringAddress.
 
-### Example 3
+### Example 3.1
 
 ```powershell
 $gw = Get-AzVpnGateway -ResourceGroupName "testRg" -Name "testgw"
@@ -117,7 +117,24 @@ $gw.BgpSettings.BgpPeeringAddresses
 Update-AzVpnGateway -InputObject $gw
 ```
 
-The above will update the Virtual WAN VPN Gateway to use the default BgpPeeringAddress.
+### Example 3.2
+
+```powershell
+New-AzResourceGroup -Location "West US" -Name "testRG"
+$virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+$virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+$vpnGateway = New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -VpnGatewayScaleUnit 2
+$ipconfigurationId1 = 'Instance0'
+$addresslist1 = @()
+$gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
+$ipconfigurationId2 = 'Instance1'
+$addresslist2 = @()
+$gw1ipconfBgp2 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId2 -CustomAddress $addresslist2
+$gw = Get-AzVpnGateway -ResourceGroupName testRg -Name testgw
+Update-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -BgpPeeringAddress @($gw1ipconfBgp1,$gw1ipconfBgp2)
+```
+
+The above 3.1/3.2 will update the Virtual WAN VPN Gateway to use the default BgpPeeringAddress.
 
 It uses Update-AzVpnGateway to update BgpPeeringAddress
 
