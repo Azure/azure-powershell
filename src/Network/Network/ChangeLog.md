@@ -28,7 +28,7 @@
     * `New-AzVpnClientConnectionConfiguration`
 * Added message in breaking change attribute to notify that load balancer sku default behaviour will be changed
     * `New-AzLoadBalancer`
-* Add control knobs to virtual network gateways and ExpressRoute gateways as well to cmdlets operating on those.
+* Added control knobs to virtual network gateways and ExpressRoute gateways as well to cmdlets operating on those.
 
 ## Version 4.21.0
 * Added a new endpoint switch `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`
