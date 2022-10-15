@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 3.2.0
 * [Breaking Change] Upgraded API version for ActivityLogAlert from 2017-04-01 to 2020-10-01, affected cmdlets:
   * `Get-AzActivityLogAlert`
   * `Remove-AzActivityLogAlert`

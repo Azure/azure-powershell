@@ -1,566 +1,74 @@
 {
   "ModuleName": "Az.MarketplaceOrdering",
-  "ModuleVersion": "1.1.0",
+  "ModuleVersion": "1.0.3",
   "Cmdlets": [
     {
       "VerbName": "Get",
       "NounName": "AzMarketplaceTerms",
       "Name": "Get-AzMarketplaceTerms",
-      "ClassName": "Get-AzMarketplaceTerms",
+      "ClassName": "Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements.GetAzureRmMarketplaceTerms",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 0,
-      "SupportsPaging": false,
-      "DefaultParameterSetName": "Get1",
-      "OutputTypes": [
-        {
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-            "Properties": {
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
-              "Accepted": "System.Nullable`1[System.Boolean]",
-              "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
-              "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
-              "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
-              "LicenseTextLink": "System.String",
-              "MarketplaceTermsLink": "System.String",
-              "Plan": "System.String",
-              "PrivacyPolicyLink": "System.String",
-              "Product": "System.String",
-              "Publisher": "System.String",
-              "Signature": "System.String",
-              "SystemDataCreatedBy": "System.String",
-              "SystemDataLastModifiedBy": "System.String"
-            }
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        }
-      ],
-      "Parameters": [
-        {
-          "Name": "Name",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Product",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Publisher",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "SubscriptionId",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String[]",
-            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "ElementType": "System.String"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "OfferType",
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "DefaultProfile",
-          "AliasList": [
-            "AzureRMContext",
-            "AzureCredential"
-          ],
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Break",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "HttpPipelineAppend",
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "HttpPipelinePrepend",
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Proxy",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.Uri",
-            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ProxyCredential",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ProxyUseDefaultCredentials",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        }
-      ],
-      "ParameterSets": [
-        {
-          "Name": "__AllParameterSets",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "Name",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Product",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Publisher",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "SubscriptionId",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String[]",
-                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "ElementType": "System.String"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRMContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "Get",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "OfferType",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Name",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Product",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Publisher",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "SubscriptionId",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String[]",
-                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "ElementType": "System.String"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRMContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "VerbName": "Invoke",
-      "NounName": "AzMarketplaceSignTerms",
-      "Name": "Invoke-AzMarketplaceSignTerms",
-      "ClassName": "Invoke-AzMarketplaceSignTerms",
-      "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "Sign",
+      "DefaultParameterSetName": "AgreementAcceptParameterSet",
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
+            "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
               "Accepted": "System.Nullable`1[System.Boolean]",
               "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
-              "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
-              "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
-              "LicenseTextLink": "System.String",
-              "MarketplaceTermsLink": "System.String",
-              "Plan": "System.String",
-              "PrivacyPolicyLink": "System.String",
-              "Product": "System.String",
               "Publisher": "System.String",
-              "Signature": "System.String",
-              "SystemDataCreatedBy": "System.String",
-              "SystemDataLastModifiedBy": "System.String"
-            }
+              "Product": "System.String",
+              "Plan": "System.String",
+              "LicenseTextLink": "System.String",
+              "PrivacyPolicyLink": "System.String",
+              "Signature": "System.String"
+            },
+            "Methods": [
+              {
+                "Name": "ToAgreementTerms",
+                "ReturnType": "Microsoft.Azure.Management.MarketplaceOrdering.Models.AgreementTerms"
+              },
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              },
+              {
+                "Name": "",
+                "Parameters": [
+                  {
+                    "Name": "agreementTerms",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -569,13 +77,13 @@
       ],
       "Parameters": [
         {
-          "Name": "Name",
+          "Name": "Publisher",
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
-          "ValidateNotNullOrEmpty": false
+          "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "Product",
@@ -584,126 +92,51 @@
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
-          "ValidateNotNullOrEmpty": false
+          "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "Publisher",
+          "Name": "Name",
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "SubscriptionId",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "InputObject",
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-            "Properties": {
-              "OfferType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]",
-              "Id": "System.String",
-              "OfferId": "System.String",
-              "PlanId": "System.String",
-              "PublisherId": "System.String",
-              "SubscriptionId": "System.String"
-            }
-          },
-          "ValidateNotNullOrEmpty": false
+          "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "DefaultProfile",
           "AliasList": [
-            "AzureRMContext",
+            "AzContext",
+            "AzureRmContext",
             "AzureCredential"
           ],
           "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Break",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "HttpPipelineAppend",
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "HttpPipelinePrepend",
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Proxy",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.Uri",
-            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ProxyCredential",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ProxyUseDefaultCredentials",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            }
           },
           "ValidateNotNullOrEmpty": false
         }
       ],
       "ParameterSets": [
         {
-          "Name": "Sign",
+          "Name": "AgreementAcceptParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "Name",
+                "Name": "Publisher",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateNotNullOrEmpty": false
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
               "Position": -2147483648,
@@ -718,7 +151,7 @@
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateNotNullOrEmpty": false
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
               "Position": -2147483648,
@@ -727,30 +160,15 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Publisher",
+                "Name": "Name",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateNotNullOrEmpty": false
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "SubscriptionId",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -759,247 +177,23 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
-                  "AzureRMContext",
+                  "AzContext",
+                  "AzureRmContext",
                   "AzureCredential"
                 ],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "SignViaIdentity",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "InputObject",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "OfferType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]",
-                    "Id": "System.String",
-                    "OfferId": "System.String",
-                    "PlanId": "System.String",
-                    "PublisherId": "System.String",
-                    "SubscriptionId": "System.String"
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   }
                 },
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": true,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRMContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
               "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
@@ -1014,105 +208,20 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
-                  "AzureRMContext",
+                  "AzContext",
+                  "AzureRmContext",
                   "AzureCredential"
                 ],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1129,34 +238,69 @@
       "VerbName": "Set",
       "NounName": "AzMarketplaceTerms",
       "Name": "Set-AzMarketplaceTerms",
-      "ClassName": "Set-AzMarketplaceTerms",
+      "ClassName": "Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements.SetAzureRmMarketplaceTerms",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "TermsAccept",
+      "DefaultParameterSetName": "AgreementAcceptParameterSet",
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
+            "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
               "Accepted": "System.Nullable`1[System.Boolean]",
               "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
-              "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
-              "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
-              "LicenseTextLink": "System.String",
-              "MarketplaceTermsLink": "System.String",
-              "Plan": "System.String",
-              "PrivacyPolicyLink": "System.String",
-              "Product": "System.String",
               "Publisher": "System.String",
-              "Signature": "System.String",
-              "SystemDataCreatedBy": "System.String",
-              "SystemDataLastModifiedBy": "System.String"
-            }
+              "Product": "System.String",
+              "Plan": "System.String",
+              "LicenseTextLink": "System.String",
+              "PrivacyPolicyLink": "System.String",
+              "Signature": "System.String"
+            },
+            "Methods": [
+              {
+                "Name": "ToAgreementTerms",
+                "ReturnType": "Microsoft.Azure.Management.MarketplaceOrdering.Models.AgreementTerms"
+              },
+              {
+                "Name": "GetType",
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": ""
+              },
+              {
+                "Name": "",
+                "Parameters": [
+                  {
+                    "Name": "agreementTerms",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -1165,13 +309,22 @@
       ],
       "Parameters": [
         {
+          "Name": "Publisher",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "Product",
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
-          "ValidateNotNullOrEmpty": false
+          "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "Name",
@@ -1180,25 +333,7 @@
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Publisher",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "SubscriptionId",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
+          "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "Accept",
@@ -1207,7 +342,7 @@
             "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
-          "ValidateNotNullOrEmpty": false
+          "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "Reject",
@@ -1216,1106 +351,80 @@
             "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
-          "ValidateNotNullOrEmpty": false
+          "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "Terms",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
+            "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
               "Accepted": "System.Nullable`1[System.Boolean]",
               "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
-              "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
-              "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
-              "LicenseTextLink": "System.String",
-              "MarketplaceTermsLink": "System.String",
-              "Plan": "System.String",
-              "PrivacyPolicyLink": "System.String",
-              "Product": "System.String",
               "Publisher": "System.String",
-              "Signature": "System.String",
-              "SystemDataCreatedBy": "System.String",
-              "SystemDataLastModifiedBy": "System.String"
-            }
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "DefaultProfile",
-          "AliasList": [
-            "AzureRMContext",
-            "AzureCredential"
-          ],
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Break",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "HttpPipelineAppend",
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "HttpPipelinePrepend",
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Proxy",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.Uri",
-            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ProxyCredential",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ProxyUseDefaultCredentials",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        }
-      ],
-      "ParameterSets": [
-        {
-          "Name": "TermsReject",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "Product",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Name",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Publisher",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "SubscriptionId",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Reject",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRMContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "TermsAccept",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "Product",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Name",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Publisher",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "SubscriptionId",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Accept",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRMContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "TermsAcceptViaIdentity",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "Accept",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Terms",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
-                    "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
-                    "Accepted": "System.Nullable`1[System.Boolean]",
-                    "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
-                    "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
-                    "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
-                    "LicenseTextLink": "System.String",
-                    "MarketplaceTermsLink": "System.String",
-                    "Plan": "System.String",
-                    "PrivacyPolicyLink": "System.String",
-                    "Product": "System.String",
-                    "Publisher": "System.String",
-                    "Signature": "System.String",
-                    "SystemDataCreatedBy": "System.String",
-                    "SystemDataLastModifiedBy": "System.String"
-                  }
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": true,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRMContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "TermsRejectViaIdentity",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "Reject",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Terms",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
-                    "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
-                    "Accepted": "System.Nullable`1[System.Boolean]",
-                    "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
-                    "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
-                    "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
-                    "LicenseTextLink": "System.String",
-                    "MarketplaceTermsLink": "System.String",
-                    "Plan": "System.String",
-                    "PrivacyPolicyLink": "System.String",
-                    "Product": "System.String",
-                    "Publisher": "System.String",
-                    "Signature": "System.String",
-                    "SystemDataCreatedBy": "System.String",
-                    "SystemDataLastModifiedBy": "System.String"
-                  }
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": true,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRMContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "__AllParameterSets",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRMContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "VerbName": "Stop",
-      "NounName": "AzMarketplaceTerms",
-      "Name": "Stop-AzMarketplaceTerms",
-      "ClassName": "Stop-AzMarketplaceTerms",
-      "SupportsShouldProcess": true,
-      "ConfirmImpact": 2,
-      "SupportsPaging": false,
-      "DefaultParameterSetName": "Cancel",
-      "OutputTypes": [
-        {
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-            "Properties": {
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
-              "Accepted": "System.Nullable`1[System.Boolean]",
-              "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
-              "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
-              "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
-              "LicenseTextLink": "System.String",
-              "MarketplaceTermsLink": "System.String",
-              "Plan": "System.String",
-              "PrivacyPolicyLink": "System.String",
               "Product": "System.String",
-              "Publisher": "System.String",
-              "Signature": "System.String",
-              "SystemDataCreatedBy": "System.String",
-              "SystemDataLastModifiedBy": "System.String"
+              "Plan": "System.String",
+              "LicenseTextLink": "System.String",
+              "PrivacyPolicyLink": "System.String",
+              "Signature": "System.String"
             }
           },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        }
-      ],
-      "Parameters": [
-        {
-          "Name": "Name",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Product",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Publisher",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "SubscriptionId",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
+          "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "InputObject",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
+            "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "OfferType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]",
-              "Id": "System.String",
-              "OfferId": "System.String",
-              "PlanId": "System.String",
-              "PublisherId": "System.String",
-              "SubscriptionId": "System.String"
+              "Accepted": "System.Nullable`1[System.Boolean]",
+              "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
+              "Publisher": "System.String",
+              "Product": "System.String",
+              "Plan": "System.String",
+              "LicenseTextLink": "System.String",
+              "PrivacyPolicyLink": "System.String",
+              "Signature": "System.String"
             }
           },
-          "ValidateNotNullOrEmpty": false
+          "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "DefaultProfile",
           "AliasList": [
-            "AzureRMContext",
+            "AzContext",
+            "AzureRmContext",
             "AzureCredential"
           ],
           "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Break",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "HttpPipelineAppend",
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "HttpPipelinePrepend",
-          "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "Proxy",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.Uri",
-            "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ProxyCredential",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "ProxyUseDefaultCredentials",
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            }
           },
           "ValidateNotNullOrEmpty": false
         }
       ],
       "ParameterSets": [
         {
-          "Name": "Cancel",
+          "Name": "AgreementAcceptParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "Name",
+                "Name": "Publisher",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateNotNullOrEmpty": false
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
               "Position": -2147483648,
@@ -2330,7 +439,7 @@
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateNotNullOrEmpty": false
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
               "Position": -2147483648,
@@ -2339,13 +448,13 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Publisher",
+                "Name": "Name",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
-                "ValidateNotNullOrEmpty": false
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
               "Position": -2147483648,
@@ -2354,13 +463,38 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "SubscriptionId",
+                "Name": "Accept",
                 "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
-                "ValidateNotNullOrEmpty": false
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Terms",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
+                  "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "Accepted": "System.Nullable`1[System.Boolean]",
+                    "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
+                    "Publisher": "System.String",
+                    "Product": "System.String",
+                    "Plan": "System.String",
+                    "LicenseTextLink": "System.String",
+                    "PrivacyPolicyLink": "System.String",
+                    "Signature": "System.String"
+                  }
+                },
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
               "Position": -2147483648,
@@ -2371,105 +505,20 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
-                  "AzureRMContext",
+                  "AzContext",
+                  "AzureRmContext",
                   "AzureCredential"
                 ],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2481,28 +530,161 @@
           ]
         },
         {
-          "Name": "CancelViaIdentity",
+          "Name": "AgreementRejectParameterSet",
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "InputObject",
+                "Name": "Publisher",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Product",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Reject",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Terms",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
+                  "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "OfferType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]",
-                    "Id": "System.String",
-                    "OfferId": "System.String",
-                    "PlanId": "System.String",
-                    "PublisherId": "System.String",
-                    "SubscriptionId": "System.String"
+                    "Accepted": "System.Nullable`1[System.Boolean]",
+                    "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
+                    "Publisher": "System.String",
+                    "Product": "System.String",
+                    "Plan": "System.String",
+                    "LicenseTextLink": "System.String",
+                    "PrivacyPolicyLink": "System.String",
+                    "Signature": "System.String"
+                  }
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   }
                 },
                 "ValidateNotNullOrEmpty": false
               },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "InputObjectAcceptParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Accept",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": true
+              },
               "Mandatory": true,
               "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
+                  "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "Accepted": "System.Nullable`1[System.Boolean]",
+                    "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
+                    "Publisher": "System.String",
+                    "Product": "System.String",
+                    "Plan": "System.String",
+                    "LicenseTextLink": "System.String",
+                    "PrivacyPolicyLink": "System.String",
+                    "Signature": "System.String"
+                  }
+                },
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
               "ValueFromPipeline": true,
               "ValueFromPipelineByPropertyName": false
             },
@@ -2510,13 +692,20 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
-                  "AzureRMContext",
+                  "AzContext",
+                  "AzureRmContext",
                   "AzureCredential"
                 ],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2524,91 +713,70 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
-            },
+            }
+          ]
+        },
+        {
+          "Name": "InputObjectRejectParameterSet",
+          "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "Break",
+                "Name": "Reject",
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
-                "ValidateNotNullOrEmpty": false
+                "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": false,
+              "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
+                "Name": "InputObject",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
+                  "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
+                  "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "Accepted": "System.Nullable`1[System.Boolean]",
+                    "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
+                    "Publisher": "System.String",
+                    "Product": "System.String",
+                    "Plan": "System.String",
+                    "LicenseTextLink": "System.String",
+                    "PrivacyPolicyLink": "System.String",
+                    "Signature": "System.String"
+                  }
                 },
-                "ValidateNotNullOrEmpty": false
+                "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": true,
               "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2626,105 +794,20 @@
               "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
-                  "AzureRMContext",
+                  "AzContext",
+                  "AzureRmContext",
                   "AzureCredential"
                 ],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  }
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2781,97 +864,6 @@
     "System.Char": {
       "Name": "System.Char"
     },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
-    "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "System.Management.Automation.CompletionResult"
-      ]
-    },
-    "System.Management.Automation.CompletionResult": {
-      "Namespace": "System.Management.Automation",
-      "Name": "System.Management.Automation.CompletionResult",
-      "AssemblyQualifiedName": "System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-    },
-    "System.Type": {
-      "Namespace": "System",
-      "Name": "System.Type",
-      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-    },
     "System.Nullable`1[System.Boolean]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.Boolean]",
@@ -2893,82 +885,31 @@
       "Name": "System.DateTime",
       "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.Management.MarketplaceOrdering.Models.AgreementTerms": {
+      "Namespace": "Microsoft.Azure.Management.MarketplaceOrdering.Models",
+      "Name": "Microsoft.Azure.Management.MarketplaceOrdering.Models.AgreementTerms",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MarketplaceOrdering.Models.AgreementTerms, Microsoft.Azure.Management.MarketplaceOrdering, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Target": "System.Object",
-        "Method": "System.Reflection.MethodInfo"
+        "Accepted": "System.Nullable`1[System.Boolean]",
+        "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
+        "Publisher": "System.String",
+        "Product": "System.String",
+        "Plan": "System.String",
+        "LicenseTextLink": "System.String",
+        "PrivacyPolicyLink": "System.String",
+        "Signature": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String"
       },
       "Methods": [
         {
-          "Name": "Invoke",
-          "Parameters": [
-            {
-              "Name": "request",
-              "Type": "System.Net.Http.HttpRequestMessage"
-            },
-            {
-              "Name": "callback",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.IEventListener"
-            },
-            {
-              "Name": "next",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.ISendAsync"
-            }
-          ],
-          "ReturnType": "System.Threading.Tasks.Task`1[System.Net.Http.HttpResponseMessage]"
+          "Name": "GetType",
+          "ReturnType": "System.Type"
         },
         {
-          "Name": "BeginInvoke",
-          "Parameters": [
-            {
-              "Name": "request",
-              "Type": "System.Net.Http.HttpRequestMessage"
-            },
-            {
-              "Name": "callback",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.IEventListener"
-            },
-            {
-              "Name": "next",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.ISendAsync"
-            },
-            {
-              "Name": "__callback",
-              "Type": "System.AsyncCallback"
-            },
-            {
-              "Name": "object",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.IAsyncResult"
-        },
-        {
-          "Name": "EndInvoke",
-          "Parameters": [
-            {
-              "Name": "result",
-              "Type": "System.IAsyncResult"
-            }
-          ],
-          "ReturnType": "System.Threading.Tasks.Task`1[System.Net.Http.HttpResponseMessage]"
-        },
-        {
-          "Name": "GetObjectData",
-          "Parameters": [
-            {
-              "Name": "info",
-              "Type": "System.Runtime.Serialization.SerializationInfo"
-            },
-            {
-              "Name": "context",
-              "Type": "System.Runtime.Serialization.StreamingContext"
-            }
-          ],
-          "ReturnType": "System.Void"
+          "Name": "ToString",
+          "ReturnType": "System.String"
         },
         {
           "Name": "Equals",
@@ -2981,167 +922,206 @@
           "ReturnType": "System.Boolean"
         },
         {
-          "Name": "GetInvocationList",
-          "ReturnType": "System.Delegate[]"
-        },
-        {
           "Name": "GetHashCode",
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "Clone",
-          "ReturnType": "System.Object"
-        },
-        {
-          "Name": "DynamicInvoke",
-          "Parameters": [
-            {
-              "Name": "args",
-              "Type": "System.Object[]"
-            }
-          ],
-          "ReturnType": "System.Object"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
         }
       ],
       "Constructors": [
         {
+          "Name": ""
+        },
+        {
           "Name": "",
           "Parameters": [
             {
-              "Name": "object",
+              "Name": "id",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
-              "Name": "method",
+              "Name": "name",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "type",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "publisher",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "product",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "plan",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "licenseTextLink",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "privacyPolicyLink",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "retrieveDatetime",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "signature",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "accepted",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
           ]
         }
       ]
     },
-    "System.Object": {
+    "System.Type": {
       "Namespace": "System",
-      "Name": "System.Object",
-      "AssemblyQualifiedName": "System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      "Name": "System.Type",
+      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
-    "System.Reflection.MethodInfo": {
-      "Namespace": "System.Reflection",
-      "Name": "System.Reflection.MethodInfo",
-      "AssemblyQualifiedName": "System.Reflection.MethodInfo, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+        "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+        "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+        "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+        "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+        "VersionProfile": "System.String"
+      }
     },
-    "System.Threading.Tasks.Task`1[System.Net.Http.HttpResponseMessage]": {
-      "Namespace": "System.Threading.Tasks",
-      "Name": "System.Threading.Tasks.Task`1[System.Net.Http.HttpResponseMessage]",
-      "AssemblyQualifiedName": "System.Threading.Tasks.Task`1[[System.Net.Http.HttpResponseMessage, System.Net.Http, Version=4.2.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "TenantMap": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Id": "System.String",
+        "Credential": "System.String",
+        "Type": "System.String"
+      }
+    },
+    "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
-        "System.Net.Http.HttpResponseMessage"
+        "System.String",
+        "System.String"
       ]
     },
-    "System.Net.Http.HttpResponseMessage": {
-      "Namespace": "System.Net.Http",
-      "Name": "System.Net.Http.HttpResponseMessage",
-      "AssemblyQualifiedName": "System.Net.Http.HttpResponseMessage, System.Net.Http, Version=4.2.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "OnPremise": "System.Boolean",
+        "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+        "Name": "System.String",
+        "AdTenant": "System.String",
+        "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+        "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "BatchEndpointResourceId": "System.String",
+        "DataLakeEndpointResourceId": "System.String",
+        "GraphEndpointResourceId": "System.String",
+        "AzureKeyVaultServiceEndpointResourceId": "System.String",
+        "AzureKeyVaultDnsSuffix": "System.String",
+        "TrafficManagerDnsSuffix": "System.String",
+        "SqlDatabaseDnsSuffix": "System.String",
+        "ActiveDirectoryServiceEndpointResourceId": "System.String",
+        "GraphUrl": "System.String",
+        "GalleryUrl": "System.String",
+        "ActiveDirectoryAuthority": "System.String",
+        "PublishSettingsFileUrl": "System.String",
+        "ManagementPortalUrl": "System.String",
+        "ResourceManagerUrl": "System.String",
+        "ServiceManagementUrl": "System.String",
+        "StorageEndpointSuffix": "System.String",
+        "ContainerRegistryEndpointSuffix": "System.String"
+      }
     },
-    "System.IAsyncResult": {
+    "System.Collections.Generic.IList`1[System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "System.String"
+      ]
+    },
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Id": "System.String",
+        "Name": "System.String",
+        "State": "System.String"
+      }
+    },
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Id": "System.String"
+      }
+    },
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "CacheData": "System.Byte[]"
+      },
+      "Methods": [
+        {
+          "Name": "Clear",
+          "ReturnType": "System.Void"
+        }
+      ]
+    },
+    "System.Byte[]": {
       "Namespace": "System",
-      "Name": "System.IAsyncResult",
-      "AssemblyQualifiedName": "System.IAsyncResult, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      "Name": "System.Byte[]",
+      "AssemblyQualifiedName": "System.Byte[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "ElementType": "System.Byte"
     },
     "System.Void": {
       "Namespace": "System",
       "Name": "System.Void",
       "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
-    "System.Delegate[]": {
-      "Namespace": "System",
-      "Name": "System.Delegate[]",
-      "AssemblyQualifiedName": "System.Delegate[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "ElementType": "System.Delegate"
-    },
-    "System.Delegate": {
-      "Namespace": "System",
-      "Name": "System.Delegate",
-      "AssemblyQualifiedName": "System.Delegate, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-    },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType"
+        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount"
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
+    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment"
+      ]
+    },
+    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription"
       ]
     }
   }

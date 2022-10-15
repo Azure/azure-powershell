@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 3.12.0
 * Added new fields to the `Get-AzSqlInstanceDatabaseLogReplay` cmdlet
 * Improved error handling in the `Stop-AzSqlInstanceDatabaseLogReplay` cmdlet
 * Added StorageContainerIdentity parameter in the `Start-AzSqlInstanceDatabaseLogReplay` cmdlet

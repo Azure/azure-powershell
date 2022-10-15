@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 3.1.0
 * [Breaking Change] Changed the type of parameter `Sku` from Enum to String in `Add-AzApiManagementRegion`, `New-AzApiManagement` and `Update-AzApiManagementRegion`.
 
 ## Version 3.0.1
