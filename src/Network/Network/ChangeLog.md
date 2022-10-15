@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 5.0.0
 * Added a new endpoint switch `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`
 * Updated `New-AzVirtualNetworkGatewayConnection` to support bypassing the ExpressRoute gateway when accessing private-links
 * Updated `Update-AzCustomIpPrefix` to support no-internet advertise CustomIpPrefix

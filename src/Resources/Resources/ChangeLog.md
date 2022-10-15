@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.3.1
 * Fixed NullReferenceException issue in `New-AzRoleAssignment` [#19793]
 
 ## Version 6.3.0
