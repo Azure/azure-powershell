@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed NullReferenceException issue in `New-AzRoleAssignment` [#19793]
 
 ## Version 6.3.0
 * Removed unused reference to resource identifier in role assignment create cmdlet
