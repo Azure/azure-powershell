@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.MarketplaceOrdering",
-  "ModuleVersion": "1.1.0",
+  "ModuleVersion": "2.0.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
@@ -83,7 +83,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -114,7 +114,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -124,7 +124,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -262,7 +262,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -278,7 +278,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -344,7 +344,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -454,7 +454,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -470,7 +470,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -543,7 +543,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
@@ -609,7 +609,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "OfferType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]",
               "Id": "System.String",
@@ -648,7 +648,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -658,7 +658,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -795,7 +795,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -811,7 +811,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -877,7 +877,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "OfferType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]",
                     "Id": "System.String",
@@ -934,7 +934,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -950,7 +950,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1050,7 +1050,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1066,7 +1066,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1139,7 +1139,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
@@ -1223,7 +1223,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
@@ -1271,7 +1271,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1281,7 +1281,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1433,7 +1433,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1449,7 +1449,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1624,7 +1624,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1640,7 +1640,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1721,7 +1721,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
                     "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
@@ -1787,7 +1787,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1803,7 +1803,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1884,7 +1884,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
                     "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
@@ -1950,7 +1950,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1966,7 +1966,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2066,7 +2066,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2082,7 +2082,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2155,7 +2155,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
@@ -2221,7 +2221,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "OfferType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]",
               "Id": "System.String",
@@ -2260,7 +2260,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2270,7 +2270,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2407,7 +2407,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2423,7 +2423,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2489,7 +2489,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "OfferType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]",
                     "Id": "System.String",
@@ -2546,7 +2546,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2562,7 +2562,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2662,7 +2662,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2678,7 +2678,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep[], Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2784,7 +2784,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType"
       ]
@@ -2792,7 +2792,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.CreatedByType, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -2896,7 +2896,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.SendAsyncStep, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -3074,7 +3074,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType"
       ]
@@ -3082,7 +3082,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType, Az.MarketplaceOrdering.private, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType, Az.MarketplaceOrdering.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",

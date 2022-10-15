@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Advisor",
-  "ModuleVersion": "1.2.0",
+  "ModuleVersion": "2.0.0",
   "Cmdlets": [
     {
       "VerbName": "Disable",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExposedMetadataProperty": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesExposedMetadataProperties",
               "ExtendedProperty": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesExtendedProperties",
@@ -83,7 +83,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ConfigurationName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName]",
               "Id": "System.String",
@@ -133,7 +133,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -143,7 +143,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -266,7 +266,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -282,7 +282,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -413,7 +413,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -429,7 +429,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -575,7 +575,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -591,7 +591,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -657,7 +657,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ConfigurationName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName]",
                     "Id": "System.String",
@@ -747,7 +747,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -763,7 +763,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -836,7 +836,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExposedMetadataProperty": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesExposedMetadataProperties",
               "ExtendedProperty": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesExtendedProperties",
@@ -903,7 +903,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ConfigurationName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName]",
               "Id": "System.String",
@@ -944,7 +944,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -954,7 +954,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1062,7 +1062,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1078,7 +1078,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1194,7 +1194,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1210,7 +1210,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1341,7 +1341,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1357,7 +1357,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1423,7 +1423,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ConfigurationName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName]",
                     "Id": "System.String",
@@ -1498,7 +1498,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1514,7 +1514,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1587,7 +1587,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Digest": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IDigestConfig[]",
               "LowCpuThreshold": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold]",
@@ -1646,7 +1646,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1656,7 +1656,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -1749,7 +1749,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1765,7 +1765,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1896,7 +1896,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1912,7 +1912,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -1985,7 +1985,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExposedMetadataProperty": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesExposedMetadataProperties",
               "ExtendedProperty": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesExtendedProperties",
@@ -2079,7 +2079,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ConfigurationName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName]",
               "Id": "System.String",
@@ -2129,7 +2129,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2139,7 +2139,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2262,7 +2262,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2278,7 +2278,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2424,7 +2424,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2440,7 +2440,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2571,7 +2571,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2587,7 +2587,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2717,7 +2717,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2733,7 +2733,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2799,7 +2799,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ConfigurationName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName]",
                     "Id": "System.String",
@@ -2858,7 +2858,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2874,7 +2874,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2974,7 +2974,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2990,7 +2990,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3063,7 +3063,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Digest": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IDigestConfig[]",
               "LowCpuThreshold": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold]",
@@ -3099,7 +3099,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ConfigurationName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName]",
               "Id": "System.String",
@@ -3127,7 +3127,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null"
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3158,7 +3158,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3168,7 +3168,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3290,7 +3290,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3306,7 +3306,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3387,7 +3387,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3451,7 +3451,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3467,7 +3467,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3533,7 +3533,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ConfigurationName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName]",
                     "Id": "System.String",
@@ -3558,7 +3558,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null"
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3622,7 +3622,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3638,7 +3638,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3753,7 +3753,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3769,7 +3769,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3875,43 +3875,43 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesExposedMetadataProperties": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesExposedMetadataProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesExposedMetadataProperties, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesExposedMetadataProperties, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesExtendedProperties": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesExtendedProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesExtendedProperties, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesExtendedProperties, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesMetadata": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesMetadata",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesMetadata, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesMetadata, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesRemediation": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesRemediation",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesRemediation, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IRecommendationPropertiesRemediation, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceMetadataAction": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceMetadataAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceMetadataAction, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceMetadataAction, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationPropertiesActionsItem[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationPropertiesActionsItem[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationPropertiesActionsItem[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationPropertiesActionsItem[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationPropertiesActionsItem"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationPropertiesActionsItem": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationPropertiesActionsItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationPropertiesActionsItem, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null"
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationPropertiesActionsItem, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
     },
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category"
       ]
@@ -3919,7 +3919,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -4002,7 +4002,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Impact]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Impact]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Impact, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Impact, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Impact"
       ]
@@ -4010,7 +4010,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Impact": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Impact",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Impact, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Impact, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -4075,7 +4075,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Risk]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Risk]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Risk, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Risk, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Risk"
       ]
@@ -4083,7 +4083,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Risk": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Risk",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Risk, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Risk, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -4167,7 +4167,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName"
       ]
@@ -4175,7 +4175,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -4240,7 +4240,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.SendAsyncStep, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -4418,13 +4418,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IDigestConfig[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IDigestConfig[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IDigestConfig[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IDigestConfig[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IDigestConfig"
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IDigestConfig": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IDigestConfig",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IDigestConfig, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IDigestConfig, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Category": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category[]",
         "State": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.DigestConfigState]",
@@ -4437,13 +4437,13 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category[], Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category[], Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.Category"
     },
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.DigestConfigState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.DigestConfigState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.DigestConfigState, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.DigestConfigState, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.DigestConfigState"
       ]
@@ -4451,7 +4451,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.DigestConfigState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.DigestConfigState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.DigestConfigState, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.DigestConfigState, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",
@@ -4524,7 +4524,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold"
       ]
@@ -4532,7 +4532,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold, Az.Advisor.private, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold, Az.Advisor.private, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "CompleteArgument",

@@ -242,7 +242,8 @@ namespace VersionController.Models
             {
                 string errorMsg = $"The GA version of {moduleName} in gallery ({maxGalleryGAVersion}) is greater or equal to the bumped version({bumpedVersion}).";
                 _logger.LogError(errorMsg);
-                throw new Exception(errorMsg);
+                // throw new Exception(errorMsg);
+                return maxGalleryGAVersion.ToString();
             }
             else if (HasGreaterPreviewVersion(bumpedVersion, galleryVersion))
             {
