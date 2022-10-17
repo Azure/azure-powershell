@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 0.5.0
+* Added support for automatic assignment of permissions for configure backup for DPP workloads - AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL using Set-AzDataProtectionMSIPermission cmdlet
+* Added support for adding custom tags for new backup instance using New-AzDataProtectionBackupInstance cmdlet
+
 ## Version 0.4.0
 * Added support for CRUD of resource guard resource.
 * Added support for protection related commands with swagger refresh

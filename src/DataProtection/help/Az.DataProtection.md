@@ -101,6 +101,9 @@ Searches for Backup instances in Azure Resource Graph and retrieves the expected
 ### [Search-AzDataProtectionJobInAzGraph](Search-AzDataProtectionJobInAzGraph.md)
 Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entries
 
+### [Set-AzDataProtectionMSIPermission](Set-AzDataProtectionMSIPermission.md)
+Grants required permissions to the backup vault to configure backup
+
 ### [Start-AzDataProtectionBackupInstanceRestore](Start-AzDataProtectionBackupInstanceRestore.md)
 Triggers restore for a BackupInstance
 
@@ -112,6 +115,12 @@ This operation will stop backups for backup instance
 
 ### [Sync-AzDataProtectionBackupInstance](Sync-AzDataProtectionBackupInstance.md)
 Sync backup instance again in case of failure\r\nThis action will retry last failed operation and will bring backup instance to valid state
+
+### [Test-AzDataProtectionBackupInstanceReadiness](Test-AzDataProtectionBackupInstanceReadiness.md)
+Validate whether adhoc backup will be successful or not
+
+### [Test-AzDataProtectionBackupInstanceRestore](Test-AzDataProtectionBackupInstanceRestore.md)
+Validates if Restore can be triggered for a DataSource
 
 ### [Update-AzDataProtectionBackupInstanceAssociatedPolicy](Update-AzDataProtectionBackupInstanceAssociatedPolicy.md)
 Updates associated policy for a given backup instance

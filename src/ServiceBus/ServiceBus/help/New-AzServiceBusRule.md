@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
+external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
 online version: https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusrule
 schema: 2.0.0
@@ -8,57 +8,179 @@ schema: 2.0.0
 # New-AzServiceBusRule
 
 ## SYNOPSIS
-Creates a new rule for a given Subscription of Topic. 
+Creates a new rule and updates an existing rule
 
 ## SYNTAX
 
-### RulePropertiesSet (Default)
 ```
-New-AzServiceBusRule [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
- [-Subscription] <String> [-Name] <String> [-SqlExpression] <String> [-DefaultProfile <IAzureContextContainer>]
+New-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ -SubscriptionName <String> -TopicName <String> [-SubscriptionId <String>] [-ActionRequiresPreprocessing]
+ [-ActionSqlExpression <String>] [-ContentType <String>] [-CorrelationFilterProperty <Hashtable>]
+ [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>] [-FilterType <FilterType>]
+ [-Label <String>] [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>] [-SessionId <String>]
+ [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RuleActionPropertiesSet
-```
-New-AzServiceBusRule [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
- [-Subscription] <String> [-Name] <String> [-SqlExpression] <String> -ActionSqlExpression <String>
- [-RequiresPreprocessing] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-The **New-AzServiceBusRule** cmdlet Creates a new rule for given subscription.
+Creates a new rule and updates an existing rule
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a Correlation Filter
 ```powershell
-New-AzServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -Name SBRule -SqlExpression "mysqlexpression='test'"
+New-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription -Name myCorrelationRule -FilterType CorrelationFilter -ContentType contenttype -CorrelationFilterProperty @{a='b';c='d'} -SessionId sessionid -CorrelationId correlationid -MessageId messageid -Label label -ReplyTo replyto -ReplyToSessionId replytosessionid
 ```
 
-The New-AzServiceBusRule cmdlet creates a new rule for the specified Subscription.
-
-### Example 2
-```powershell
-New-AzServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -Name SBRule -SqlExpression "mysqlexpression='test'" -ActionSqlExpression "SET myAction='test'" -RequiresPreprocessing
+```output
+ActionCompatibilityLevel               :
+ActionRequiresPreprocessing            :
+ActionSqlExpression                    :
+ContentType                            : contenttype
+CorrelationFilterProperty              : {
+                                           "c": "d",
+                                           "a": "b"
+                                         }
+CorrelationFilterRequiresPreprocessing :
+CorrelationId                          : correlationid
+FilterType                             : CorrelationFilter
+Id                                     : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace/topics/myTopic/subscriptions/mySubscription/rules/myCorrelationRule
+Label                                  : label
+Location                               : westus
+MessageId                              : messageid
+Name                                   : myCorrelationRule
+ReplyTo                                : replyto
+ReplyToSessionId                       : replytosessionid
+ResourceGroupName                      : myResourceGroup
+SessionId                              : sessionid
+SqlExpression                          :
+SqlFilterCompatibilityLevel            :
 ```
 
-The New-AzServiceBusRule cmdlet creates a new rule for the specified Subscription with ActionFilter.
+Create a correlation filter `myCorrelationRule` in ServiceBus subscription `mySubscription`.
+
+### Example 2: Create a Sql Filter
+```powershell
+New-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription -Name mySqlRule -FilterType SqlFilter -SqlExpression 3=2 -ActionSqlExpression "SET a=b"
+```
+
+```output
+ActionCompatibilityLevel               : 20
+ActionRequiresPreprocessing            :
+ActionSqlExpression                    : SET a=b
+ContentType                            :
+CorrelationFilterProperty              : {
+                                         }
+CorrelationFilterRequiresPreprocessing :
+CorrelationId                          :
+FilterType                             : SqlFilter
+Id                                     : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace/topics/myTopic/subscriptions/mySubscription/rules/mySqlRule
+Label                                  :
+Location                               : westus
+MessageId                              :
+Name                                   : mySqlRule
+ReplyTo                                :
+ReplyToSessionId                       :
+ResourceGroupName                      : myResourceGroup
+SessionId                              :
+SqlExpression                          : 3=2
+SqlFilterCompatibilityLevel            : 20
+SqlFilterRequiresPreprocessing         :
+```
+
+Create a sql filter `mySqlRule` in ServiceBus subscription `mySubscription`.
 
 ## PARAMETERS
 
+### -ActionRequiresPreprocessing
+Value that indicates whether the rule action requires preprocessing.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ActionSqlExpression
-Action SqlFilter Expression
+SQL expression.
+e.g.
+MyProperty='ABC'
 
 ```yaml
 Type: System.String
-Parameter Sets: RuleActionPropertiesSet
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContentType
+Content type of the message.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CorrelationFilterProperty
+dictionary object for custom filters
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CorrelationFilterRequiresPreprocessing
+Value that indicates whether the rule action requires preprocessing.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CorrelationId
+Identifier of the correlation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -66,9 +188,54 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FilterType
+Filter type that is evaluated against a BrokeredMessage.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.FilterType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Label
+Application specific label.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MessageId
+Identifier of the message.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -78,7 +245,22 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Rule Name
+The rule name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: RuleName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceName
+The namespace name
 
 ```yaml
 Type: System.String
@@ -86,33 +268,33 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Namespace
-Namespace Name
+### -ReplyTo
+Address of the queue to reply to.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: NamespaceName
+Aliases:
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RequiresPreprocessing
-Action Requires Preprocessing
+### -ReplyToSessionId
+Session identifier to reply to.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RuleActionPropertiesSet
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -123,22 +305,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ResourceGroup
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SqlExpression
-Sql Filter Expression
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
@@ -146,39 +313,117 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Subscription
-Subscription Name
+### -SessionId
+Session identifier.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: SubscriptionName
+Aliases:
 
-Required: True
-Position: 3
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Topic
-Topic Name
+### -SqlExpression
+The SQL expression.
+e.g.
+MyProperty='ABC'
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: TopicName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SqlFilterRequiresPreprocessing
+Value that indicates whether the rule action requires preprocessing.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionName
+The subscription name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -To
+Address to send to.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TopicName
+The topic name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -214,16 +459,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS

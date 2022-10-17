@@ -26,9 +26,11 @@ Get-AzADApplication -First 10
 .Example
 Get-AzADApplication -DisplayNameStartsWith $prefix
 .Example
-Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
+Get-AzADApplication -ObjectId $id -Select Tags -AppendSelected
 .Example
-Get-AzADapplication -OwnedApplication
+Get-AzADApplication -OwnedApplication
+.Example
+Get-AzADApplication -Filter "startsWith(DisplayName,'some-name')"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -62,7 +64,7 @@ param(
     [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.String]
-    # Filter items by property values
+    # Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
     ${Filter},
 
     [Parameter(ParameterSetName='EmptyParameterSet')]
@@ -104,6 +106,12 @@ param(
     [System.String]
     # application identifier uri
     ${IdentifierUri},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # Include count of items
+    ${Count},
 
     [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Header')]
@@ -211,6 +219,7 @@ begin {
             ApplicationIdParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
             ApplicationIdentifierUriParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
             OwnedApplicationParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
+            List = 'Az.MSGraph.custom\Get-AzADApplication';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
