@@ -170,7 +170,7 @@ directive:
   - where:
       verb: Get
       subject: BackupVault
-      variant: ^GetViaIdentity2$|^Get$|^GetViaIdentity1$|^Get1$
+      variant: ^GetViaIdentity2$|^GetViaIdentity1$
     hide: true
   - where:
       verb: Invoke
