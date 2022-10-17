@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 
+## Version 1.7.0
+* [Breaking Change] Updated models of Synapse Link for Azure Sql Database
+* Updated `New-AzSynapseWorkspace` and `Update-AzSynapseWorkspace` to support for user assigned managed identity (UAMI) by `-UserAssignedIdentityAction` and `-UserAssignedIdentityId`
+* Added EnablePublicNetworkAccess parameter to `New-AzureSynapseWorkspace` and `Update-AzSynapseWorkspace`
+
 ## Version 1.6.0
 * Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool dynamic executor allocation by `-EnableDynamicExecutorAllocation`
 

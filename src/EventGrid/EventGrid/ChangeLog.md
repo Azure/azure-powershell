@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.1
+* Add remaining advanced filters
+  * StringNotContains
+  * StringNotBeginsWith
+  * StringNotEndsWith
+  * NumberInRange
+  * NumberNotInRange
+  * IsNullOrUndefined
+  * IsNotNull
+
 ## Version 1.4.0
 * Updated to use the 2021-12-01 API version.
 * Added new features:
