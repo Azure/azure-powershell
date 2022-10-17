@@ -18,7 +18,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 
 ## Module Requirements
 - [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
-- [Az.Resources module](https://www.powershellgallery.com/packages/Az.Resources/), version 6.2.0
+
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
