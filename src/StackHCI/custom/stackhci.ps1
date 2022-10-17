@@ -331,10 +331,10 @@ Function Write-NodeEventLog{
         {
             $session = New-PSSession -ComputerName localhost
         }
-        $sourceExists = Invoke-Command -Session $session -ScriptBlock {[System.Diagnostics.EventLog]::SourceExists("$using:sourceName") }
+        $sourceExists = Invoke-Command -Session $session -ScriptBlock {Get-EventLog -LogName Application -Source $using:sourceName -Newest 1 -ErrorAction SilentlyContinue }
         if(-not $sourceExists)
         {
-            Invoke-Command -Session $session -ScriptBlock { New-EventLog -LogName Application -Source $using:sourceName }
+            Invoke-Command -Session $session -ScriptBlock { New-EventLog -LogName Application -Source $using:sourceName -ErrorAction SilentlyContinue}
         }    
         $levelStr = $Level.ToString()
         Invoke-Command -Session $session -ScriptBlock { Write-EventLog -LogName Application -Source $using:sourceName -EventId $using:EventID -EntryType $using:levelStr -Message $using:Message }
@@ -381,8 +381,8 @@ $registerArcScript = {
     {
         # Params for Enable-AzureStackHCIArcIntegration 
         $AgentInstaller_WebLink                  = 'https://aka.ms/AzureConnectedMachineAgent'
-        $AgentInstaller_Name                     = 'AzureConnectedMachineAgent.msi'
-        $AgentInstaller_LogFile                  = 'ConnectedMachineAgentInstallationLog.txt'
+        $AgentInstaller_Name                     =  $env:windir + '\Tasks\ArcForServers' + '\AzureConnectedMachineAgent.msi'
+        $AgentInstaller_LogFile                  =  $env:windir + '\Tasks\ArcForServers' +'\ConnectedMachineAgentInstallationLog.txt'
         $AgentExecutable_Path                    =  $Env:Programfiles + '\AzureConnectedMachineAgent\azcmagent.exe'
 
         $DebugPreference = 'Continue'
@@ -403,10 +403,10 @@ $registerArcScript = {
         $LogFileName = $LogFileDir + '\RegisterArc_' + $datestring + '.log'
     
         Start-Transcript -LiteralPath $LogFileName -Append | Out-Null
-        $sourceExists = [System.Diagnostics.EventLog]::SourceExists('HCI Registration')
+        $sourceExists = Get-EventLog -LogName Application -Source 'HCI Registration' -Newest 1 -ErrorAction SilentlyContinue
         if(-not $sourceExists)
         {
-            New-EventLog -LogName Application -Source 'HCI Registration'
+            New-EventLog -LogName Application -Source 'HCI Registration' -ErrorAction SilentlyContinue
         }
         Write-Information 'Triggering Arc For Servers registration cmdlet'
         $arcStatus = Get-AzureStackHCIArcIntegration
@@ -450,7 +450,7 @@ $registerArcScript = {
         Write-Error -Exception $_.Exception -Category OperationStopped
         # Get script line number, offset and Command that resulted in exception. Write-ErrorLog with the exception above does not write this info.
         $positionMessage = $_.InvocationInfo.PositionMessage
-        Write-EventLog -LogName Application -Source "HCI Registration" -EventId 9116 -EntryType "Warning" -Message "Failed Arc For Servers registration: $positionMessage"
+        Write-EventLog -LogName Application -Source 'HCI Registration' -EventId 9116 -EntryType 'Warning' -Message 'Failed Arc For Servers registration: '+$positionMessage
         Write-Error ('Exception occurred in RegisterArcScript : ' + $positionMessage) -Category OperationStopped
     }
     finally
