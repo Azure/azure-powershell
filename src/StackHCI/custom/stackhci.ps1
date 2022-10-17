@@ -200,6 +200,8 @@ $ClusterScheduledTaskReadyState = "Ready"
 
 $ArcSettingsDisableInProgressState = "DisableInProgress"
 
+$AzAccountsModuleVersion="2.10.2"
+$AzResourcesModuleVersion="6.2.0"
 
 Function Write-Log {
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
@@ -789,6 +791,36 @@ param(
     return "/Subscriptions/" + $SubscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.AzureStackHCI/clusters/" + $ResourceName
 }
 
+function Install-Dependent-Module{
+    param(
+    [string] $ModuleName,
+    [string] $ModuleVersion
+    )
+    try
+    {
+        Import-Module -Name $ModuleName -RequiredVersion $ModuleVersion -ErrorAction Stop
+        Write-VerboseLog ("Found required Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
+    }
+    catch
+    {
+        try
+        {
+            Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
+        }
+        catch
+        {
+            Install-PackageProvider NuGet -Force | Out-Null
+        }
+
+        Write-VerboseLog ("Installing Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
+
+        Install-Module -Name $ModuleName  -RequiredVersion $ModuleVersion  -Force -AllowClobber
+        Import-Module -Name $ModuleName -RequiredVersion $ModuleVersion
+        
+        Write-VerboseLog ("Successfully imported Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
+    }
+}
+
 function Azure-Login{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
@@ -805,24 +837,8 @@ param(
 
     Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -status $InstallAzResourcesMessage -percentcomplete 10
 
-    try
-    {
-        Import-Module -Name Az.Resources -ErrorAction Stop
-    }
-    catch
-    {
-        try
-        {
-            Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
-        }
-        catch
-        {
-            Install-PackageProvider NuGet -Force | Out-Null
-        }
-
-        Install-Module -Name Az.Resources -Force -AllowClobber
-        Import-Module -Name Az.Resources
-    }
+    Install-Dependent-Module -ModuleName "Az.Accounts" -ModuleVersion $AzAccountsModuleVersion
+    Install-Dependent-Module -ModuleName "Az.Resources" -ModuleVersion $AzResourcesModuleVersion
     Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -status $LoggingInToAzureMessage -percentcomplete 30
 
     if($EnvironmentName -eq $AzurePPE)
@@ -3423,23 +3439,8 @@ param(
         }
         else 
         {
-            try
-            {
-                Import-Module -Name Az.Resources -ErrorAction Stop
-            }
-            catch
-            {
-                try
-                {
-                    Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
-                }
-                catch
-                {
-                    Install-PackageProvider NuGet -Force | Out-Null
-                }
-                Install-Module -Name Az.Resources -Force -AllowClobber
-                Import-Module -Name Az.Resources
-            }    
+            Install-Dependent-Module -ModuleName "Az.Accounts" -ModuleVersion $AzAccountsModuleVersion
+            Install-Dependent-Module -ModuleName "Az.Resources" -ModuleVersion $AzResourcesModuleVersion
         }
 
         $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ApiVersion $RPAPIVersion -ErrorAction Stop
