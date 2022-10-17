@@ -15,72 +15,71 @@
 
 <#
 .Synopsis
-Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile. The change need to be committed after this.
+Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+The change need to be committed after this.
 .Description
-Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile. The change need to be committed after this.
+Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+The change need to be committed after this.
 .Example
 PS C:\> {{ Add code here }}
 {{ Add output here }}
 .Example
 PS C:\> {{ Add code here }}
 {{ Add output here }}
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrateResult
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/move-azcdnprofile
+https://docs.microsoft.com/powershell/module/az.cdn/enable-AzFrontDoorCdnProfilePrepareMigration
 #>
-function Move-AzCdnProfile {
+function Enable-AzFrontDoorCdnProfilePrepareMigration {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrateResult])]
     [CmdletBinding(DefaultParameterSetName='MigrateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # Name of the Resource group within the Azure subscription.
         ${ResourceGroupName},
 
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+        [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
-        # Name of the Resource group within the Azure subscription.
+        # Resource ID.
         ${ClassicResourceReferenceId},
 
-        [Parameter(ParameterSetName='MigrateExpanded', HelpMessage='The subscription ID that identifies an Azure subscription.')]
+        [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [System.String]
+        # Name of the new profile that need to be created.
+        ${ProfileName},
+
+        [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]
+        # Name of the pricing tier.
+        ${SkuName},
+
+        [Parameter(ParameterSetName='MigrateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [System.String]
+        # Waf mapping for the migrated profile
+        # To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
+        ${MigrationWebApplicationFirewallMapping},
+
+        [Parameter(ParameterSetName='Migrate', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrationParameters]
+        # Request body for Migrate operation.
+        # To construct, see NOTES section for MIGRATIONPARAMETER properties and create a hash table.
+        ${MigrationParameter},
+
+        [Parameter(HelpMessage='The subscription ID that identifies an Azure subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # Azure Subscription ID.
         ${SubscriptionId},
-
-        [Parameter()]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrationWebApplicationFirewallMapping[]]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${MigrationWebApplicationFirewallMapping},
-
-        [Parameter()]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [System.String]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${ProfileName},
-
-        [Parameter()]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${SkuName},
-
-        [Parameter(ParameterSetName='MigrateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -143,29 +142,6 @@ function Move-AzCdnProfile {
     )
 
     process {
-        $Name = $PSBoundParameters["ClassicResourceReferenceId"].split("/")[-1]
-        if ($PSCmdlet.ParameterSetName -eq 'MigrateExpanded') 
-        {
-            $cdnProfile = Get-AzCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name}
-        } 
-        elseif ($PSCmdlet.ParameterSetName -eq 'MigrateViaIdentityExpanded') 
-        {
-            $cdnProfile = Get-AzCdnProfile -InputObject $InputObject
-        }
-        else 
-        {
-            throw "Not supported ParameterSetName."
-        }
-
-        if($null -eq $cdnProfile)
-        {
-            throw "Provided cdnProfile does not exist."
-        }
-        elseif (ISFrontDoorCdnProfile($cdnProfile.SkuName))
-        {
-            throw "Provided cdnProfile does not support to migrate."
-        }
-
         if ($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping'))
         {
             if (!(Get-Module -ListAvailable -Name Az.FrontDoor))
@@ -177,22 +153,39 @@ function Move-AzCdnProfile {
                 Import-Module -Name Az.FrontDoor
             }
 
-            $MigratePolicy = $PSBoundParameters.MigrationWebApplicationFirewallMapping['Value']
-            if($MigratePolicy.count -gt 0)
+            $WafPolicies = $PSBoundParameters.MigrationWebApplicationFirewallMapping['Value']
+            if($MigratePolicies.count -gt 0)
             {
-                $AllMigratePolicy = Get-AzFrontDoorWafPolicy -ResourceGroupName ${ResourceGroupName}
-                
-                $MigrateFromId = $MigratePolicy['migratedFrom']
-                $MigrateToId = $MigratePolicy['migratedTo']
-            }
+                $AzFrontDoorWafPolicies = Get-AzFrontDoorWafPolicy -ResourceGroupName ${ResourceGroupName}
+                if ($AzFrontDoorWafPolicies == null)
+                {
+                    throw 'No waf policy associated with current profile. Please check your profile.'
+                }
 
-            if ($PSBoundParameters.ContainsKey('ProfileName'))
-            {
-                New-AzFrontDoorWafPolicy -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName}
-            }
-            else
-            {
-                New-AzFrontDoorWafPolicy -ResourceGroupName ${ResourceGroupName} -Name ${Name} + "-migrated"
+                foreach ($policy in $WafPolicies)
+                {
+                    $MigrateFromWafId = $policy.migratedFrom
+                    if ($AzFrontDoorWafPolicies -notcontains $MigrateFromWafId)
+                    {
+                        throw '$MigrateFromWafId dose not exist in the Profile. You are supposed to prvoide a Waf policy existed in the profile.'
+                    }
+                }
+                
+                foreach ($policy in $WafPolicies)
+                {
+                    $MigrateToWafId = $policy.migratedTo
+                    if ($AzFrontDoorWafPolicies -notcontains $MigrateToWafId)
+                    {
+                        if ($PSBoundParameters.ContainsKey('ProfileName'))
+                        {
+                            New-AzFrontDoorWafPolicy -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName}
+                        }
+                        else
+                        {
+                            New-AzFrontDoorWafPolicy -ResourceGroupName ${ResourceGroupName} -Name ${Name} + "-migrated"
+                        }
+                    }
+                }
             }
         }
         Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters

@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzCdnCommitProfileMigration'))
+if(($null -eq $TestName) -or ($TestName -contains 'Confirm-AzFrontDoorCdnProfileCanMigrate'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzCdnCommitProfileMigration.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Confirm-AzFrontDoorCdnProfileCanMigrate.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzCdnCommitProfileMigr
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Invoke-AzCdnCommitProfileMigration' -Tag 'LiveOnly' {
-    It 'Commit' {
+Describe 'Confirm-AzFrontDoorCdnProfileCanMigrate' {
+    It 'CanExpanded' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         {
             $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
@@ -32,18 +32,14 @@ Describe 'Invoke-AzCdnCommitProfileMigration' -Tag 'LiveOnly' {
                 $profileSku = "Standard_AzureFrontDoor";
                 New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
 
-                $migratedProfileName = "$frontDoorCdnProfileName-migrated"
+                $classicResourceReferenceId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Network/profiles/$frontDoorCdnProfileName"
 
-                $migrateLocation = Invoke-AzCdnCommitProfileMigration -ResourceGroupName $ResourceGroupName -ProfileName $migratedProfileName
-                $migrateLocation.Status | Should -BeTrue
+                $canMigrate = Invoke-AzCdnCanProfileMigrate -ResourceGroupName $ResourceGroupName -ClassicResourceReferenceId $classicResourceReferenceId
+                $canMigrate.CanMigrate | Should -BeTrue
             } Finally
             {
                 Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         }
-    }
-
-    It 'CommitViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -24,64 +24,33 @@ PS C:\> {{ Add code here }}
 .Example
 PS C:\> {{ Add code here }}
 {{ Add output here }}
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ICanMigrateParameters
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ICanMigrateResult
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/move-azcdnprofile
+https://docs.microsoft.com/powershell/module/az.cdn/confirm-azfrontdoorcdnprofilecanmigrate
 #>
-function Move-AzCdnProfile {
+function Confirm-AzFrontDoorCdnProfileCanMigrate {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ICanMigrateResult])]
-    [CmdletBinding(DefaultParameterSetName='CanExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='CanExpanded', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # Name of the Resource group within the Azure subscription.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='CanExpanded', HelpMessage='The subscription ID that identifies an Azure subscription.')]
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [System.String]
+        # Resource ID.
+        ${ClassicResourceReferenceId},
+
+        [Parameter(HelpMessage='The subscription ID that identifies an Azure subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # Azure Subscription ID.
         ${SubscriptionId},
-
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [System.String]
-        # Name of the Resource group within the Azure subscription.
-        ${ClassicResourceReferenceId},
-
-        [Parameter()]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrationWebApplicationFirewallMapping[]]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${MigrationWebApplicationFirewallMapping},
-
-        [Parameter()]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [System.String]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${ProfileName},
-
-        [Parameter()]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${SkuName},
-
-        [Parameter(ParameterSetName='MigrateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -90,12 +59,6 @@ function Move-AzCdnProfile {
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
@@ -116,12 +79,6 @@ function Move-AzCdnProfile {
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
@@ -144,52 +101,6 @@ function Move-AzCdnProfile {
     )
 
     process {
-        $Name = $PSBoundParameters["ClassicResourceReferenceId"].split("/")[-1]
-        if ($PSCmdlet.ParameterSetName -eq 'MigrateExpanded') 
-        {
-            $cdnProfile = Get-AzCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name}
-        } 
-        elseif ($PSCmdlet.ParameterSetName -eq 'MigrateViaIdentityExpanded') 
-        {
-            $cdnProfile = Get-AzCdnProfile -InputObject $InputObject
-        }
-        else 
-        {
-            throw "Not supported ParameterSetName."
-        }
-
-        if($null -eq $cdnProfile)
-        {
-            throw "Provided cdnProfile does not exist."
-        }
-        elseif (ISFrontDoorCdnProfile($cdnProfile.SkuName))
-        {
-            throw "Provided cdnProfile does not support to migrate."
-        }
-
-        if ($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping'))
-        {
-            if (!(Get-Module -ListAvailable -Name Az.FrontDoor))
-            {
-                throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
-            }
-            else 
-            {
-                Import-Module -Name Az.FrontDoor
-            }
-
-            $MigrateFromId = [string]::Join("/",$PSBoundParameters.MigrationWebApplicationFirewallMapping.split("/")[0..8])
-            $MigrateToId = [string]::Join("/",$PSBoundParameters.MigrationWebApplicationFirewallMapping.split("/")[0..8])
-
-            if ($PSBoundParameters.ContainsKey('ProfileName'))
-            {
-                New-AzFrontDoorWafPolicy -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName}
-            }
-            else
-            {
-                New-AzFrontDoorWafPolicy -ResourceGroupName ${ResourceGroupName} -Name ${Name} + "-migrated"
-            }
-        }
-        Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters
+        Az.Cdn.internal\Invoke-AzCdnCanProfileMigrate @PSBoundParameters
     }
 }

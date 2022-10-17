@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Move-AzCdnProfile'))
+if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzFrontDoorCdnProfileMigrationCommit'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Move-AzCdnProfile.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Enable-AzFrontDoorCdnProfileMigrationCommit.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Move-AzCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Move-AzCdnProfile' -Tag 'LiveOnly' {
-    It 'MigrateExpanded' {
+Describe 'Enable-AzFrontDoorCdnProfileMigrationCommit' {
+    It 'Commit' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         {
             $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
@@ -32,27 +32,14 @@ Describe 'Move-AzCdnProfile' -Tag 'LiveOnly' {
                 $profileSku = "Standard_AzureFrontDoor";
                 New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
 
-                $classicResourceReferenceId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Network/profiles/$frontDoorCdnProfileName"
                 $migratedProfileName = "$frontDoorCdnProfileName-migrated"
 
-                $migrateLocation = Move-AzCdnProfile -ResourceGroupName $ResourceGroupName -ClassicResourceReferenceId $classicResourceReferenceId -ProfileName $migratedProfileName -SkuName $profileSku 
-                $migrateLocation.Location | Should -BeNullOrEmpty
+                $migrateLocation = Invoke-AzCdnCommitProfileMigration -ResourceGroupName $ResourceGroupName -ProfileName $migratedProfileName
+                $migrateLocation.Status | Should -BeTrue
             } Finally
             {
                 Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
         }
-    }
-
-    It 'Migrate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'MigrateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'MigrateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

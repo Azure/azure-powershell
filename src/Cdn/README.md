@@ -147,7 +147,6 @@ directive:
 
   # Hide Cdn profile
   - where:
-      verb: ^(?:(?!Move).*)$
       subject: Profile
     hide: true
   - where:
@@ -158,6 +157,12 @@ directive:
     hide: true
   - where:
       subject: LogAnalytic(.*)
+    hide: true
+  - where:
+      subject: CanProfileMigrate
+    hide: true
+  - where:
+      subject: CommitProfileMigration
     hide: true
 
   # Rename

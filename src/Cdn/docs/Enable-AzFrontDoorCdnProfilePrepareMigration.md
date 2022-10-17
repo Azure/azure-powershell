@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/move-azcdnprofile
+online version: https://docs.microsoft.com/powershell/module/az.cdn/enable-AzFrontDoorCdnProfilePrepareMigration
 schema: 2.0.0
 ---
 
-# Move-AzCdnProfile
+# Enable-AzFrontDoorCdnProfilePrepareMigration
 
 ## SYNOPSIS
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
@@ -15,32 +15,17 @@ The change need to be committed after this.
 
 ### MigrateExpanded (Default)
 ```
-Move-AzCdnProfile -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ClassicResourceReferenceId <String>]
- [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>] [-ProfileName <String>]
- [-SkuName <SkuName>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Enable-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
+ -ProfileName <String> -SkuName <SkuName> [-SubscriptionId <String>]
+ [-MigrationWebApplicationFirewallMapping <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Migrate
 ```
-Move-AzCdnProfile -ResourceGroupName <String> -MigrationParameter <IMigrationParameters>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### MigrateViaIdentity
-```
-Move-AzCdnProfile -InputObject <ICdnIdentity> -MigrationParameter <IMigrationParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### MigrateViaIdentityExpanded
-```
-Move-AzCdnProfile -InputObject <ICdnIdentity> [-ClassicResourceReferenceId <String>]
- [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>] [-ProfileName <String>]
- [-SkuName <SkuName>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Enable-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String>
+ -MigrationParameter <IMigrationParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,17 +34,27 @@ The change need to be committed after this.
 
 ## EXAMPLES
 
-### Example 1: Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+### Example 1: {{ Add title here }}
 ```powershell
-Move-AzCdnProfile -ResourceGroupName AFD -ClassicResourceReferenceId /subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/AFD/providers/Microsoft.Network/Frontdoors/afdruncanary2 -ProfileName afdruncanary2-migrated -SkuName Standard_AzureFrontDoor 
+{{ Add code here }}
 ```
 
 ```output
-Location
---------
+{{ Add output here }}
 ```
 
-Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile. The change need to be committed after this.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -83,10 +78,10 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: MigrateExpanded, MigrateViaIdentityExpanded
+Parameter Sets: MigrateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -108,45 +103,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: MigrateViaIdentity, MigrateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -MigrationParameter
 Request body for Migrate operation.
 To construct, see NOTES section for MIGRATIONPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrationParameters
-Parameter Sets: Migrate, MigrateViaIdentity
+Parameter Sets: Migrate
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -MigrationWebApplicationFirewallMapping
 Waf mapping for the migrated profile
-To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrationWebApplicationFirewallMapping[]
-Parameter Sets: MigrateExpanded, MigrateViaIdentityExpanded
+Type: System.String
+Parameter Sets: MigrateExpanded
 Aliases:
 
 Required: False
@@ -176,10 +154,10 @@ Name of the new profile that need to be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: MigrateExpanded, MigrateViaIdentityExpanded
+Parameter Sets: MigrateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -191,7 +169,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Migrate, MigrateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -206,10 +184,10 @@ Name of the pricing tier.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName
-Parameter Sets: MigrateExpanded, MigrateViaIdentityExpanded
+Parameter Sets: MigrateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -217,11 +195,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Azure Subscription ID.
+The subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Migrate, MigrateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -267,10 +245,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrationParameters
-
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrateResult
@@ -284,21 +258,6 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
-  - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
-  - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
-  - `[Id <String>]`: Resource identity path
-  - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
-  - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
-  - `[RouteName <String>]`: Name of the routing rule.
-  - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.
-  - `[RuleSetName <String>]`: Name of the rule set under the profile which is unique globally.
-  - `[SecretName <String>]`: Name of the Secret under the profile.
-  - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
-
 `MIGRATIONPARAMETER <IMigrationParameters>`: Request body for Migrate operation.
   - `[ClassicResourceReferenceId <String>]`: Resource ID.
   - `[MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>]`: Waf mapping for the migrated profile
@@ -306,10 +265,6 @@ To create the parameters described below, construct a hash table containing the 
     - `[MigratedToId <String>]`: Resource ID.
   - `[ProfileName <String>]`: Name of the new profile that need to be created.
   - `[SkuName <SkuName?>]`: Name of the pricing tier.
-
-`MIGRATIONWEBAPPLICATIONFIREWALLMAPPING <IMigrationWebApplicationFirewallMapping[]>`: Waf mapping for the migrated profile
-  - `[MigratedFromId <String>]`: Resource ID.
-  - `[MigratedToId <String>]`: Resource ID.
 
 ## RELATED LINKS
 

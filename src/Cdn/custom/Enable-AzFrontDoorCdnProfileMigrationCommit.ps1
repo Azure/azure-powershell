@@ -15,72 +15,42 @@
 
 <#
 .Synopsis
-Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile. The change need to be committed after this.
+Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 .Description
-Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile. The change need to be committed after this.
+Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 .Example
 PS C:\> {{ Add code here }}
 {{ Add output here }}
 .Example
 PS C:\> {{ Add code here }}
 {{ Add output here }}
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrateResult
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/move-azcdnprofile
+https://docs.microsoft.com/powershell/module/az.cdn/enable-azfrontdoorcdnprofilemigrationcommit
 #>
-function Move-AzCdnProfile {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrateResult])]
-    [CmdletBinding(DefaultParameterSetName='MigrateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Enable-AzFrontDoorCdnProfileMigrationCommit {
+    [OutputType([System.Boolean])]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
-        # Name of the Resource group within the Azure subscription.
-        ${ResourceGroupName},
+        # Name of the CDN profile which is unique within the resource group.
+        ${ProfileName},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # Name of the Resource group within the Azure subscription.
-        ${ClassicResourceReferenceId},
+        ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='MigrateExpanded', HelpMessage='The subscription ID that identifies an Azure subscription.')]
+        [Parameter(HelpMessage='The subscription ID that identifies an Azure subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # Azure Subscription ID.
         ${SubscriptionId},
-
-        [Parameter()]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrationWebApplicationFirewallMapping[]]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${MigrationWebApplicationFirewallMapping},
-
-        [Parameter()]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [System.String]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${ProfileName},
-
-        [Parameter()]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${SkuName},
-
-        [Parameter(ParameterSetName='MigrateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -143,52 +113,6 @@ function Move-AzCdnProfile {
     )
 
     process {
-        $Name = $PSBoundParameters["ClassicResourceReferenceId"].split("/")[-1]
-        if ($PSCmdlet.ParameterSetName -eq 'MigrateExpanded') 
-        {
-            $cdnProfile = Get-AzCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name}
-        } 
-        elseif ($PSCmdlet.ParameterSetName -eq 'MigrateViaIdentityExpanded') 
-        {
-            $cdnProfile = Get-AzCdnProfile -InputObject $InputObject
-        }
-        else 
-        {
-            throw "Not supported ParameterSetName."
-        }
-
-        if($null -eq $cdnProfile)
-        {
-            throw "Provided cdnProfile does not exist."
-        }
-        elseif (ISFrontDoorCdnProfile($cdnProfile.SkuName))
-        {
-            throw "Provided cdnProfile does not support to migrate."
-        }
-
-        if ($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping'))
-        {
-            if (!(Get-Module -ListAvailable -Name Az.FrontDoor))
-            {
-                throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
-            }
-            else 
-            {
-                Import-Module -Name Az.FrontDoor
-            }
-
-            $MigrateFromId = [string]::Join("/",$PSBoundParameters.MigrationWebApplicationFirewallMapping.split("/")[0..8])
-            $MigrateToId = [string]::Join("/",$PSBoundParameters.MigrationWebApplicationFirewallMapping.split("/")[0..8])
-
-            if ($PSBoundParameters.ContainsKey('ProfileName'))
-            {
-                New-AzFrontDoorWafPolicy -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName}
-            }
-            else
-            {
-                New-AzFrontDoorWafPolicy -ResourceGroupName ${ResourceGroupName} -Name ${Name} + "-migrated"
-            }
-        }
-        Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters
+        Az.Cdn.internal\Invoke-AzCdnCommitProfileMigration @PSBoundParameters
     }
 }

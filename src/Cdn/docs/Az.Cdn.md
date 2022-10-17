@@ -17,11 +17,21 @@ Removes a content from CDN.
 ### [Clear-AzFrontDoorCdnEndpointContent](Clear-AzFrontDoorCdnEndpointContent.md)
 Removes a content from AzureFrontDoor.
 
+### [Confirm-AzFrontDoorCdnProfileCanMigrate](Confirm-AzFrontDoorCdnProfileCanMigrate.md)
+Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+
 ### [Disable-AzCdnCustomDomainCustomHttps](Disable-AzCdnCustomDomainCustomHttps.md)
 Disable https delivery of the custom domain.
 
 ### [Enable-AzCdnCustomDomainCustomHttps](Enable-AzCdnCustomDomainCustomHttps.md)
 Enable https delivery of the custom domain.
+
+### [Enable-AzFrontDoorCdnProfileMigrationCommit](Enable-AzFrontDoorCdnProfileMigrationCommit.md)
+Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+
+### [Enable-AzFrontDoorCdnProfilePrepareMigration](Enable-AzFrontDoorCdnProfilePrepareMigration.md)
+Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+The change need to be committed after this.
 
 ### [Get-AzCdnCustomDomain](Get-AzCdnCustomDomain.md)
 Gets an existing custom domain within an endpoint.
@@ -99,16 +109,6 @@ Gets an existing security policy within a profile.
 ### [Import-AzCdnEndpointContent](Import-AzCdnEndpointContent.md)
 Pre-loads a content to CDN.
 Available for Verizon Profiles.
-
-### [Invoke-AzCdnCanProfileMigrate](Invoke-AzCdnCanProfileMigrate.md)
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
-
-### [Invoke-AzCdnCommitProfileMigration](Invoke-AzCdnCommitProfileMigration.md)
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
-
-### [Move-AzCdnProfile](Move-AzCdnProfile.md)
-Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
-The change need to be committed after this.
 
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
