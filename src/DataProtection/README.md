@@ -170,8 +170,8 @@ directive:
   - where:
       verb: Get
       subject: BackupVault
-      variant: ^GetViaIdentity2$|^Get$|^GetViaIdentity1$
-    remove: true
+      variant: ^GetViaIdentity2$|^Get$|^GetViaIdentity1$|^Get1$
+    hide: true
   - where:
       verb: Invoke
       subject: FindRestorableTimeRange

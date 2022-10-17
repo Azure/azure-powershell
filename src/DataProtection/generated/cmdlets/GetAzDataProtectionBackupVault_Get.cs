@@ -8,16 +8,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Extensions;
     using System;
 
-    /// <summary>Returns resource collection belonging to a resource group.</summary>
+    /// <summary>Returns resource collection belonging to a subscription.</summary>
     /// <remarks>
-    /// [OpenAPI] GetInResourceGroup=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults"
+    /// [OpenAPI] GetInSubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/backupVaults"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.InternalExport]
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDataProtectionBackupVault_Get1")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDataProtectionBackupVault_Get")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupVaultResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description(@"Returns resource collection belonging to a resource group.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description(@"Returns resource collection belonging to a subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Generated]
-    public partial class GetAzDataProtectionBackupVault_Get1 : global::System.Management.Automation.PSCmdlet,
+    public partial class GetAzDataProtectionBackupVault_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -95,20 +95,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
-        private string _resourceGroupName;
-
-        /// <summary>The name of the resource group where the backup vault is present.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group where the backup vault is present.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the resource group where the backup vault is present.",
-        SerializedName = @"resourceGroupName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Path)]
-        public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
-
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
@@ -176,9 +162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="GetAzDataProtectionBackupVault_Get1" /> cmdlet class.
+        /// Intializes a new instance of the <see cref="GetAzDataProtectionBackupVault_Get" /> cmdlet class.
         /// </summary>
-        public GetAzDataProtectionBackupVault_Get1()
+        public GetAzDataProtectionBackupVault_Get()
         {
 
         }
@@ -296,13 +282,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.BackupVaultsGetInResourceGroup(ResourceGroupName, SubscriptionId, onOk, onDefault, this, Pipeline);
+                        await this.Client.BackupVaultsGetInSubscription(SubscriptionId, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,SubscriptionId=SubscriptionId})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -348,14 +334,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
