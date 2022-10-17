@@ -527,10 +527,49 @@ function Set-AzMigrateServerReplication {
             }
 
             if ($HasDiskToUpdate) {
+                $diskIdDiskTypeMap = @{}
+                $previousOsDiskId
+                $changeOsDiskId
+                $originalDisks = $ReplicationMigrationItem.ProviderSpecificDetail.ProtectedDisk
+
+                foreach($DiskObject in $originalDisks) {
+                    if ($DiskObject.IsOSDisk -and $DiskObject.IsOSDisk -eq "True") {
+                        $previousOsDiskId = $DiskObject.DiskId
+                        Break
+                    }
+                }
+
                 $diskNamePresentinRg = New-Object Collections.Generic.List[String]
                 $duplicateDiskName = New-Object System.Collections.Generic.HashSet[String]
                 $uniqueDiskUuids = [System.Collections.Generic.HashSet[String]]::new([StringComparer]::InvariantCultureIgnoreCase)
+                $osDiskCount = 0
                 foreach($DiskObject in $DiskToUpdate) {
+                    if ($DiskObject.IsOSDisk -eq "True") {
+                        $osDiskCount++
+                        $changeOsDiskId = $DiskObject.DiskId
+                        if ($osDiskCount -gt 1) {
+                            throw "Multiple disks have been selected as OS Disk."
+                        }
+                    }
+
+                    $matchingUserInputDisk = $null
+                    $originalDisks = $ReplicationMigrationItem.ProviderSpecificDetail.ProtectedDisk
+                    foreach ($orgDisk in $originalDisks) {
+                        if ($orgDisk.DiskId -eq $DiskObject.DiskId)
+                        {
+                            $matchingUserInputDisk = $orgDisk
+                            break
+                        }
+                    }
+
+                    if ($matchingUserInputDisk -ne $null -and [string]::IsNullOrEmpty($DiskObject.TargetDiskName)) {
+                        $DiskObject.TargetDiskName = $matchingUserInputDisk.TargetDiskName
+                    }
+
+                    if ($matchingUserInputDisk -ne $null -and [string]::IsNullOrEmpty($DiskObject.IsOSDisk)) {
+                        $DiskObject.IsOSDisk = $matchingUserInputDisk.IsOSDisk
+                    }
+
                     $diskId = $ProviderSpecificDetails.TargetResourceGroupId + "/providers/Microsoft.Compute/disks/" + $DiskObject.TargetDiskName
                     $diskNamePresent = Get-AzResource -ResourceId $diskId -ErrorVariable notPresent -ErrorAction SilentlyContinue
                     if ($diskNamePresent) {
@@ -550,7 +589,58 @@ function Set-AzMigrateServerReplication {
                 if ($diskNamePresentinRg) {
                     throw "Disks with name $($diskNamePresentinRg -join ', ')' already exists in the target resource group."
                 }
-                $ProviderSpecificDetails.VMDisK = $DiskToUpdate
+
+                foreach($DiskObject in $DiskToUpdate) {
+                    if ($DiskObject.IsOSDisk) {
+                        $diskIdDiskTypeMap.Add($DiskObject.DiskId, $DiskObject.IsOSDisk)
+                    }
+                }
+
+                if ($changeOsDiskId -ne $null -and $changeOsDiskId -ne $previousOsDiskId) {
+                    if ($diskIdDiskTypeMap.ContainsKey($previousOsDiskId)) {
+                        $rem = $diskIdDiskTypeMap.Remove($previousOsDiskId)
+                        foreach($DiskObject in $DiskToUpdate) {
+                            if ($DiskObject.DiskId -eq $previousOsDiskId) {
+                                $DiskObject.IsOsDisk = "False"
+                            }
+                        }
+                    }
+                    else {
+                        $updateDisk = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtUpdateDiskInput]::new()
+                        $updateDisk.DiskId = $previousOsDiskId
+                        $updateDisk.IsOSDisk = "False"
+                        $originalDisks = $ReplicationMigrationItem.ProviderSpecificDetail.ProtectedDisk
+                        foreach ($orgDisk in $originalDisks) {
+                           if ($orgDisk.DiskId -eq $previousOsDiskId) {
+                               $updateDisk.TargetDiskName = $orgDisk.TargetDiskName
+                               break
+                            }
+                        }
+                        $DiskToUpdate += $updateDisk
+                    }
+                    $diskIdDiskTypeMap.Add($previousOsDiskId, "False")
+                }
+
+                $osDiskCount = 0
+
+                foreach ($DiskObject in $originalDisks) {
+                   if ($diskIdDiskTypeMap.Contains($DiskObject.DiskId)) {
+                       if ($diskIdDiskTypeMap.($DiskObject.DiskId) -eq "True") {
+                           $osDiskCount++
+                       }
+                   }
+                   elseif ($DiskObject.IsOSDisk -eq "True") {
+                       $osDiskCount++
+                   }
+                }
+
+                if ($osDiskCount -eq 0) {
+                   throw "OS disk cannot be excluded from migration."
+                }
+                elseif ($osDiskCount -ne 1) {
+                   throw "Multiple disks have been selected as OS Disk."
+                }
+               $ProviderSpecificDetails.VMDisK = $DiskToUpdate
             }
 
             if ($HasTargetDiskName) {

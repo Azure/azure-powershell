@@ -13,7 +13,7 @@ Updates disk mapping
 ## SYNTAX
 
 ```
-Set-AzMigrateDiskMapping -DiskID <String> -DiskName <String> [<CommonParameters>]
+Set-AzMigrateDiskMapping -DiskID <String> [-DiskName <String>] [-IsOSDisk <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +59,22 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsOSDisk
+Specifies whether the disk contains the Operating System for the source server to be migrated.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
