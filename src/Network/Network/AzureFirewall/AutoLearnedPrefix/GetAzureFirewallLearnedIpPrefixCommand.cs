@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                throw new ArgumentException($"Firewall Name and ResourceGroupName should be provided to get learned IP prefixes.");
+                throw new ArgumentException($"Firewall Name and ResourceGroupName should be provided to get firewall learned IP prefixes.");
             }
         }
     }

@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlet to get firewall learned ip prefixes 
+    * `Get-AzFirewallLearnedIpPrefix`
 * Added new cmdlet `Get-AzNetworkSecurityPerimeterAssociableResourceType`
 * Updated `New-AzIpConfigurationBgpPeeringAddressObject` to remove validate null or empty check for CustomAddress in Azure Virtual Network Gateway
 * Updated `New-AzVirtualNetworkGateway` to add validate null or empty check for CustomAddress in Azure Virtual Network Gateway
