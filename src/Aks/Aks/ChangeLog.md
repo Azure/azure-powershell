@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.1
 * [Breaking Change] Removed the alias `Install-AzAksKubectl` of `Install-AzAksCliTool`.
 
 ## Version 4.3.0

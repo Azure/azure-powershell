@@ -90,6 +90,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         //[Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ContainerParameterSet)]
         public string DestBlob { get; set; }
 
+        [Parameter(HelpMessage = "Destination blob type", Mandatory = false, ParameterSetName = UriParameterSet)]
+        [Parameter(HelpMessage = "Destination blob type", Mandatory = false, ParameterSetName = ContainerNameParameterSet)]
+        [Parameter(HelpMessage = "Destination blob type", Mandatory = false, ParameterSetName = BlobParameterSet)]
+        //[Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ContainerParameterSet)]
+        [ValidateSet("Block", "Page", "Append", IgnoreCase = true)]
+        public string DestBlobType { get; set; }
+
         [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive. See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
         [PSArgumentCompleter("Hot", "Cool", "Archive")]
         [ValidateSet("Hot", "Cool", "Archive", IgnoreCase = true)]
@@ -280,7 +287,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 NameUtil.ValidateBlobName(destBlobName);
             }
-            BlobBaseClient destBlob = this.GetDestBlob(destChannel, destContainerName, destBlobName, Util.GetBlobType(srcBlobBaseClient));
+            BlobBaseClient destBlob = this.GetDestBlob(destChannel, destContainerName, destBlobName, null);
 
             this.CopyBlobSync(destChannel, srcBlobBaseClient, destBlob);
         }
@@ -288,10 +295,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private void CopyBlobSync(IStorageBlobManagement destChannel, BlobBaseClient srcCloudBlob, BlobBaseClient destCloudBlob)
         {
             Track2Models.BlobType srcBlobType = Util.GetBlobType(srcCloudBlob, true).Value;
-            if (srcBlobType != Track2Models.BlobType.Block)
-            {
-                throw new ArgumentException(string.Format("The cmdlet currently only support souce blob and destination blob are both block blob. The source blob type is {0}.", srcBlobType));
-            }
 
             if (srcCloudBlob is BlobClient)
             {
@@ -309,10 +312,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private void CopyBlobSync(IStorageBlobManagement destChannel, string srcUri, string destContainer, string destBlobName, AzureStorageContext context)
         {
             Track2Models.BlobType srcBlobType = Util.GetBlobType(new BlobBaseClient(new Uri(srcUri), ClientOptions), true).Value;
-            if (srcBlobType != Track2Models.BlobType.Block)
-            {
-                throw new ArgumentException(string.Format("The cmdlet currently only support souce blob and destination blob are both block blob. The source blob type is {0}.", srcBlobType));
-            }
 
             BlobBaseClient destBlob = this.GetDestBlob(destChannel, destContainer, destBlobName, srcBlobType);
             Func<long, Task> taskGenerator = (taskId) => CopyFromUri(taskId, destChannel, new Uri(srcUri), destBlob);
@@ -322,18 +321,55 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private async Task CopyFromUri(long taskId, IStorageBlobManagement destChannel, Uri srcUri, BlobBaseClient destBlob)
         {
             bool destExist = true;
-            Track2Models.BlobType? destBlobType = Util.GetBlobType(destBlob);
+            //Track2Models.BlobType? destBlobType = Util.GetBlobType(destBlob);
+            Track2Models.BlobType? srcBlobType = Util.GetBlobType(new BlobBaseClient(srcUri, ClientOptions), true).Value;
+            Track2Models.BlobType? destBlobType = Util.GetBlobType(new BlobBaseClient(srcUri, ClientOptions), true).Value;
             Track2Models.BlobProperties properties = null;
 
             try
             {
                 properties = (await destBlob.GetPropertiesAsync(this.BlobRequestConditions, cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false)).Value;
                 destBlobType = properties.BlobType;
+
+                // Throw an exception if the input dest blob type and the existing dest blob's type given don't match
+                if (!String.IsNullOrEmpty(this.DestBlobType) && !String.Equals(this.DestBlobType.ToLower(), destBlobType.ToString().ToLower()))
+                {
+                    throw new ArgumentException("Input dest blob type doesn't match with the actual dest blob type");
+                }
             }
             catch (global::Azure.RequestFailedException e) when (e.Status == 404)
             {
                 destExist = false;
             }
+
+            if (!String.IsNullOrEmpty(this.DestBlobType))
+            {
+                switch (this.DestBlobType.ToLower())
+                {
+                    case "block":
+                        destBlobType = Track2Models.BlobType.Block;
+                        break;
+                    case "page":
+                        destBlobType = Track2Models.BlobType.Page;
+                        break;
+                    case "append":
+                        destBlobType = Track2Models.BlobType.Append;
+                        break;
+                    default:
+                        throw new ArgumentException("The input dest blob type is invalid");
+                }   
+            } else
+            {
+                if (destExist)
+                { 
+                    OutputStream.WriteDebug(string.Format("DestBlobType is not specified. Will use the existing dest blob type by default: {0}", destBlobType.ToString()));
+                } 
+                else
+                { 
+                    OutputStream.WriteDebug(string.Format("DestBlobType is not specified. Will use the source blob type by default: {0}", srcBlobType.ToString()));
+                }
+            }
+
             if (destBlobType != null)
             {
                 ValidateBlobTier(Util.convertBlobType_Track2ToTrack1(destBlobType), null, standardBlobTier, rehydratePriority);
@@ -341,21 +377,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
             {
-                Track2Models.BlobCopyFromUriOptions options = new Track2Models.BlobCopyFromUriOptions();
 
-                // The Blob Type and Blob Tier must match, since already checked before
-                if (standardBlobTier != null || rehydratePriority != null)
-                {
-                    options.AccessTier = Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier);
-                    options.RehydratePriority = Util.ConvertRehydratePriority_Track1ToTrack2(rehydratePriority);
-                }
-                options.SourceConditions = this.BlobRequestConditions;
-
-                BlockBlobClient srcBlockblob = new BlockBlobClient(srcUri, ClientOptions);
-                Track2Models.BlobProperties srcProperties = srcBlockblob.GetProperties(cancellationToken: this.CmdletCancellationToken).Value;
+                BlobBaseClient srcBlobClient= new BlobBaseClient(srcUri, ClientOptions);
+                Track2Models.BlobProperties srcProperties = srcBlobClient.GetProperties(cancellationToken: this.CmdletCancellationToken).Value;
 
                 //Prepare progress handler
-                string activity = String.Format("Copy Blob {0} to {1}", srcBlockblob.Name, destBlob.Name);
+                string activity = String.Format("Copy Blob {0} to {1}", srcBlobClient.Name, destBlob.Name);
                 string status = "Prepare to Copy Blob";
                 ProgressRecord pr = new ProgressRecord(OutputStream.GetProgressId(taskId), activity, status);
                 IProgress<long> progressHandler = new Progress<long>((finishedBytes) =>
@@ -371,9 +398,137 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
                 switch (destBlobType)
                 {
-                    case Track2Models.BlobType.Block:
+                    case Track2Models.BlobType.Page:
+                        PageBlobClient destPageBlob = (PageBlobClient)Util.GetTrack2BlobClientWithType(destBlob, destChannel.StorageContext, Track2Models.BlobType.Page, ClientOptions);
 
-                        BlockBlobClient destBlockBlob = (BlockBlobClient)Util.GetTrack2BlobClientWithType(destBlob, Channel.StorageContext, Track2Models.BlobType.Block, ClientOptions);
+                        Track2Models.PageBlobCreateOptions pageBlobCreateOptions = new Track2Models.PageBlobCreateOptions();
+                        Track2Models.BlobHttpHeaders httpHeaders = new Track2Models.BlobHttpHeaders
+                        {
+                            ContentType = srcProperties.ContentType,
+                            ContentLanguage = srcProperties.ContentLanguage,
+                            ContentHash = srcProperties.ContentHash,
+                            ContentDisposition = srcProperties.ContentDisposition,
+                            ContentEncoding = srcProperties.ContentEncoding
+                        };
+                        pageBlobCreateOptions.HttpHeaders = httpHeaders;
+                        pageBlobCreateOptions.Metadata = srcProperties.Metadata;
+
+                        try
+                        {
+                            pageBlobCreateOptions.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
+                        }
+                        catch (global::Azure.RequestFailedException)
+                        {
+                            if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
+                            {
+                                return;
+                            }
+                        }
+
+                        destPageBlob.Create(srcProperties.ContentLength, pageBlobCreateOptions, this.CmdletCancellationToken);
+          
+                        Track2Models.PageBlobUploadPagesFromUriOptions pageBlobUploadPagesFromUriOptions = new Track2Models.PageBlobUploadPagesFromUriOptions();
+                        long pageCopyOffset = 0;
+                        progressHandler.Report(pageCopyOffset);
+                        long contentLenLeft = srcProperties.ContentLength;
+                        while (contentLenLeft > 0)
+                        {
+                            long contentSize = contentLenLeft < size4MB ? contentLenLeft : size4MB;
+                            destPageBlob.UploadPagesFromUri(srcUri, new global::Azure.HttpRange(pageCopyOffset, contentSize), new global::Azure.HttpRange(pageCopyOffset, contentSize), pageBlobUploadPagesFromUriOptions, this.CmdletCancellationToken);
+                            pageCopyOffset += contentSize;
+                            progressHandler.Report(pageCopyOffset);
+                            contentLenLeft -= contentSize;
+                        }
+                        break;
+
+                    case Track2Models.BlobType.Append:
+                        AppendBlobClient destAppendBlob = (AppendBlobClient)Util.GetTrack2BlobClientWithType(destBlob, destChannel.StorageContext, Track2Models.BlobType.Append, ClientOptions);
+
+                        Track2Models.AppendBlobCreateOptions appendBlobCreateOptions = new Track2Models.AppendBlobCreateOptions();
+                        Track2Models.BlobHttpHeaders appendBlobHttpHeaders = new Track2Models.BlobHttpHeaders
+                        {
+                            ContentType = srcProperties.ContentType,
+                            ContentLanguage = srcProperties.ContentLanguage,
+                            ContentEncoding = srcProperties.ContentEncoding,
+                            ContentDisposition = srcProperties.ContentDisposition,
+                            ContentHash = srcProperties.ContentHash
+                        };
+                        appendBlobCreateOptions.HttpHeaders = appendBlobHttpHeaders;
+                        appendBlobCreateOptions.Metadata = srcProperties.Metadata;
+
+                        try
+                        {
+                            appendBlobCreateOptions.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
+                        }
+                        catch (global::Azure.RequestFailedException)
+                        {
+                            if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
+                            {
+                                return;
+                            }
+                        }
+
+                        destAppendBlob.Create(appendBlobCreateOptions, this.CmdletCancellationToken);
+
+                        long appendCopyOffset = 0;
+                        progressHandler.Report(appendCopyOffset);
+                        long appendContentLenLeft = srcProperties.ContentLength;
+                        while (appendContentLenLeft > 0)
+                        {
+                            long appendContentSize = appendContentLenLeft < size4MB ? appendContentLenLeft : size4MB;
+
+                            Track2Models.AppendBlobAppendBlockFromUriOptions appendBlobAppendBlockFromUriOptions = new Track2Models.AppendBlobAppendBlockFromUriOptions
+                            {
+                                SourceRange = new global::Azure.HttpRange(appendCopyOffset, appendContentSize)
+                            };
+
+                            destAppendBlob.AppendBlockFromUri(srcUri, appendBlobAppendBlockFromUriOptions, this.CmdletCancellationToken);
+                            appendCopyOffset += appendContentSize;
+                            progressHandler.Report(appendContentSize);
+                            appendContentLenLeft -= appendContentSize;
+                        }
+                        break;
+
+                    default: // default: block
+                        // When the source and dest blobs are both Block blobs and the size of the source blob is not larger than 256MiB, use CopyBlobFromUrl 
+                        // Details can be found in https://learn.microsoft.com/en-us/rest/api/storageservices/copy-blob-from-url
+                        if (srcBlobType is Track2Models.BlobType.Block && srcProperties.ContentLength <= size256MB)
+                        {
+                            BlobBaseClient destBlobClient = Util.GetTrack2BlobClientWithType(destBlob, destChannel.StorageContext, Track2Models.BlobType.Block, ClientOptions);
+                            Track2Models.BlobCopyFromUriOptions options = new Track2Models.BlobCopyFromUriOptions();
+
+                            // The Blob Type and Blob Tier must match, since already checked before
+                            if (standardBlobTier != null || rehydratePriority != null)
+                            {
+                                options.AccessTier = Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier);
+                                options.RehydratePriority = Util.ConvertRehydratePriority_Track1ToTrack2(rehydratePriority);
+                            }
+                            options.SourceConditions = this.BlobRequestConditions;
+                            options.Metadata = srcProperties.Metadata;
+
+                            try
+                            {
+                                options.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
+                            }
+                            catch (global::Azure.RequestFailedException)
+                            {
+                                if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
+                                {
+                                    return;
+                                }
+                            }
+                            destBlobClient.SyncCopyFromUri(srcUri, options, this.CmdletCancellationToken);
+
+                            // Set rehydrate priority
+                            if (rehydratePriority != null)
+                            {
+                                destBlobClient.SetAccessTier(Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier) == null ? null : (Track2Models.AccessTier)Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier), 
+                                    rehydratePriority: Util.ConvertRehydratePriority_Track1ToTrack2(rehydratePriority), cancellationToken: this.CmdletCancellationToken);
+                            }
+                            break;
+                        }
+
+                        BlockBlobClient destBlockBlob = (BlockBlobClient)Util.GetTrack2BlobClientWithType(destBlob, destChannel.StorageContext, Track2Models.BlobType.Block, ClientOptions);
 
                         Track2Models.CommitBlockListOptions commitBlockListOptions = new Track2Models.CommitBlockListOptions();
                         commitBlockListOptions.HttpHeaders = new Track2Models.BlobHttpHeaders();
@@ -383,9 +538,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         commitBlockListOptions.HttpHeaders.ContentLanguage = srcProperties.ContentLanguage;
                         commitBlockListOptions.HttpHeaders.ContentDisposition = srcProperties.ContentDisposition;
                         commitBlockListOptions.Metadata = srcProperties.Metadata;
+                        if (standardBlobTier != null)
+                        {
+                            commitBlockListOptions.AccessTier = Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier);
+                        }
+
                         try
                         {
-                            commitBlockListOptions.Tags = srcBlockblob.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
+                            commitBlockListOptions.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
                         }
                         catch (global::Azure.RequestFailedException)
                         {
@@ -413,11 +573,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         }
                         destBlockBlob.CommitBlockList(blockIDs, commitBlockListOptions, this.CmdletCancellationToken);
 
+                        // Set rehydrate priority
+                        if (rehydratePriority != null)
+                        {
+                            destBlockBlob.SetAccessTier(Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier) == null ? null : (Track2Models.AccessTier)Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier),
+                            rehydratePriority: Util.ConvertRehydratePriority_Track1ToTrack2(rehydratePriority), cancellationToken: this.CmdletCancellationToken);
+                        }
                         break;
-                    case Track2Models.BlobType.Page:
-                    case Track2Models.BlobType.Append:
-                    default:
-                        throw new ArgumentException(string.Format("The cmdlet currently only support souce blob and destination blob are both block blob. The dest blob type is {0}.", destBlobType));
                 }
 
                 OutputStream.WriteObject(taskId, new AzureStorageBlob(destBlob, destChannel.StorageContext, null, options: ClientOptions));
@@ -430,7 +592,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             NameUtil.ValidateBlobName(destBlobName);
 
             BlobContainerClient container = AzureStorageContainer.GetTrack2BlobContainerClient(destChannel.GetContainerReference(destContainerName), destChannel.StorageContext, ClientOptions);
-            BlobBaseClient destBlob = Util.GetTrack2BlobClient(container, destBlobName, destChannel.StorageContext, null, null, null, ClientOptions, blobType is null ? global::Azure.Storage.Blobs.Models.BlobType.Block : blobType.Value);
+            BlobBaseClient destBlob = Util.GetTrack2BlobClient(container, destBlobName, destChannel.StorageContext, null, null, null, ClientOptions, blobType);
             return destBlob;
         }
     }
