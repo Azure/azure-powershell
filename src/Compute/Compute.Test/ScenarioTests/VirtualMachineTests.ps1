@@ -3175,12 +3175,8 @@ function Test-VirtualMachineRemoveExtension
 
        #Check for VmHealth Extension after removal
        Remove-AzVMExtension -ResourceGroupName $rgname -Name $extensionName -VMName $vmname -Force;
-       $vmr = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
-
-       Assert-Null $vmr.VMHealth;
-
-       # Remove
-       Remove-AzVM -Name $vmname -ResourceGroupName $rgname -Force;
+       Assert-ThrowsContains {
+            Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extensionName -Status; } `
     }
     finally
     {
