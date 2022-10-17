@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2ed40ab3-a6e8-4915-896c-e58e2dc36b3c"
+          "cbcfd6c3-aba7-45a1-8fbb-ccab958ba7a1"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,19 +27,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2ed40ab3-a6e8-4915-896c-e58e2dc36b3c"
+          "cbcfd6c3-aba7-45a1-8fbb-ccab958ba7a1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "9e4194df-5569-4abc-b5bc-34964c555da3"
+          "e9887e1e-ea14-4a2d-94fd-60a9a6417483"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20221007T110436Z:9e4194df-5569-4abc-b5bc-34964c555da3"
+          "JIOINDIAWEST:20221017T073623Z:e9887e1e-ea14-4a2d-94fd-60a9a6417483"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,10 +48,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 07 Oct 2022 11:04:35 GMT"
+          "Mon, 17 Oct 2022 07:36:22 GMT"
         ],
         "Content-Length": [
-          "570"
+          "563"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -60,7 +60,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/Azure\",\r\n  \"name\": \"Azure\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Modules\",\r\n  \"location\": \"centraluseuap\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": true,\r\n    \"version\": \"1.0.3\",\r\n    \"sizeInBytes\": 41626120,\r\n    \"activityCount\": 673,\r\n    \"creationTime\": \"2016-12-15T01:08:20.0266667+05:30\",\r\n    \"lastModifiedTime\": \"2022-10-07T00:00:24.8733333+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": null\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"isComposite\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/Azure\",\r\n  \"name\": \"Azure\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Modules\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": true,\r\n    \"version\": \"1.0.3\",\r\n    \"sizeInBytes\": 41626120,\r\n    \"activityCount\": 673,\r\n    \"creationTime\": \"2018-11-30T07:21:30.9066667+05:30\",\r\n    \"lastModifiedTime\": \"2022-10-13T12:06:51.2066667+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": null\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"isComposite\": false\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],

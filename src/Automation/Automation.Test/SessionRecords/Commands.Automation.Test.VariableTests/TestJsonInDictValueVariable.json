@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "16fb2ca7-c2b8-4bc9-85d5-fd5f329094ee"
+          "2266a9d5-0194-41f1-b82a-8ac8a9d8f462"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,22 +27,22 @@
           "no-cache"
         ],
         "ocp-automation-accountid": [
-          "218e46c5-178e-4c30-8c21-be9be00b6bc3"
+          "8581866a-2c7b-4878-8a64-979700a8f339"
         ],
         "x-ms-request-id": [
-          "16fb2ca7-c2b8-4bc9-85d5-fd5f329094ee"
+          "2266a9d5-0194-41f1-b82a-8ac8a9d8f462"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "7dc3fe60-fdcf-4c76-ba25-2e7b2d4d784f"
+          "acf685cc-9adc-40b7-bff8-8cd4731b9676"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20221007T111856Z:7dc3fe60-fdcf-4c76-ba25-2e7b2d4d784f"
+          "JIOINDIAWEST:20221017T072835Z:acf685cc-9adc-40b7-bff8-8cd4731b9676"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,10 +51,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 07 Oct 2022 11:18:56 GMT"
+          "Mon, 17 Oct 2022 07:28:35 GMT"
         ],
         "Content-Length": [
-          "1312"
+          "1301"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"fbs-aa-01\",\r\n  \"systemData\": {\r\n    \"createdAt\": \"2022-10-06T15:03:29.98+05:30\",\r\n    \"lastModifiedAt\": \"2022-10-06T15:03:29.98+05:30\"\r\n  },\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"centraluseuap\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"principalId\": \"acb803c6-bbbf-4089-a495-f412171778bb\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  },\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": true,\r\n    \"disableLocalAuth\": false,\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://218e46c5-178e-4c30-8c21-be9be00b6bc3.agentsvc.eap.azure-automation.net/accounts/218e46c5-178e-4c30-8c21-be9be00b6bc3\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"automationHybridServiceUrl\": \"https://218e46c5-178e-4c30-8c21-be9be00b6bc3.jrds.eap.azure-automation.net/automationAccounts/218e46c5-178e-4c30-8c21-be9be00b6bc3\",\r\n    \"RuntimeConfiguration\": {\r\n      \"powershell\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell7\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2022-10-06T15:03:29.98+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2022-10-06T15:03:29.98+05:30\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"fbs-aa-01\",\r\n  \"systemData\": {\r\n    \"createdAt\": \"2022-10-17T12:55:06.9+05:30\",\r\n    \"lastModifiedAt\": \"2022-10-17T12:55:06.9+05:30\"\r\n  },\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"principalId\": \"d9868d8c-0916-48d7-b460-bfd336c72fa9\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  },\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": true,\r\n    \"disableLocalAuth\": false,\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://8581866a-2c7b-4878-8a64-979700a8f339.agentsvc.eus.azure-automation.net/accounts/8581866a-2c7b-4878-8a64-979700a8f339\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"automationHybridServiceUrl\": \"https://8581866a-2c7b-4878-8a64-979700a8f339.jrds.eus.azure-automation.net/automationAccounts/8581866a-2c7b-4878-8a64-979700a8f339\",\r\n    \"RuntimeConfiguration\": {\r\n      \"powershell\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell7\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2022-10-17T12:55:06.9+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2022-10-17T12:55:06.9+05:30\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -72,7 +72,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9c7a9111-3517-4b9d-a7d5-dcd585191a50"
+          "95842742-afee-417b-86df-a1f3c3caf97d"
         ],
         "Accept-Language": [
           "en-US"
@@ -93,19 +93,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9c7a9111-3517-4b9d-a7d5-dcd585191a50"
+          "95842742-afee-417b-86df-a1f3c3caf97d"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "96c122b1-ff57-475c-ab85-bb05e0220d0e"
+          "2fe2b36e-5a5a-4c02-8e28-91898ae34055"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20221007T111857Z:96c122b1-ff57-475c-ab85-bb05e0220d0e"
+          "JIOINDIAWEST:20221017T072836Z:2fe2b36e-5a5a-4c02-8e28-91898ae34055"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,7 +114,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 07 Oct 2022 11:18:57 GMT"
+          "Mon, 17 Oct 2022 07:28:36 GMT"
         ],
         "Content-Length": [
           "51"
@@ -135,7 +135,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3d9f4bd8-6914-4613-88fd-0ed709aac6fc"
+          "49dd8c4b-ab0c-47be-a6c5-3f2a745fe587"
         ],
         "Accept-Language": [
           "en-US"
@@ -156,19 +156,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3d9f4bd8-6914-4613-88fd-0ed709aac6fc"
+          "49dd8c4b-ab0c-47be-a6c5-3f2a745fe587"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "3ae1e1b1-5b83-41b4-baaa-e38f04621228"
+          "a7102470-a1cd-44d6-a30d-f7f3143f8d27"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20221007T111901Z:3ae1e1b1-5b83-41b4-baaa-e38f04621228"
+          "JIOINDIAWEST:20221017T072838Z:a7102470-a1cd-44d6-a30d-f7f3143f8d27"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -177,10 +177,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 07 Oct 2022 11:19:01 GMT"
+          "Mon, 17 Oct 2022 07:28:37 GMT"
         ],
         "Content-Length": [
-          "483"
+          "493"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -189,7 +189,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/JsonInDictValue\",\r\n  \"name\": \"JsonInDictValue\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2022-10-07T16:48:59.83+05:30\",\r\n    \"lastModifiedTime\": \"2022-10-07T16:48:59.83+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":\\\"{\\\\\\\"subkey\\\\\\\" = \\\\\\\"sub-value\\\\\\\"}\\\"}\",\r\n    \"description\": \"JsonInDictValue\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/JsonInDictValue\",\r\n  \"name\": \"JsonInDictValue\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2022-10-17T12:58:37.3533333+05:30\",\r\n    \"lastModifiedTime\": \"2022-10-17T12:58:37.3533333+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":\\\"{\\\\\\\"subkey\\\\\\\" = \\\\\\\"sub-value\\\\\\\"}\\\"}\",\r\n    \"description\": \"JsonInDictValue\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -198,7 +198,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3d9f4bd8-6914-4613-88fd-0ed709aac6fc"
+          "49dd8c4b-ab0c-47be-a6c5-3f2a745fe587"
         ],
         "Accept-Language": [
           "en-US"
@@ -219,19 +219,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3d9f4bd8-6914-4613-88fd-0ed709aac6fc"
+          "49dd8c4b-ab0c-47be-a6c5-3f2a745fe587"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "ecf2c66c-6989-4bbe-a377-a5e762529bbc"
+          "0fefc77a-8216-4e3e-8f7c-39e20e94881f"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20221007T111904Z:ecf2c66c-6989-4bbe-a377-a5e762529bbc"
+          "JIOINDIAWEST:20221017T072840Z:0fefc77a-8216-4e3e-8f7c-39e20e94881f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -240,10 +240,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 07 Oct 2022 11:19:04 GMT"
+          "Mon, 17 Oct 2022 07:28:39 GMT"
         ],
         "Content-Length": [
-          "480"
+          "485"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -252,7 +252,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/JsonInDictValue\",\r\n  \"name\": \"JsonInDictValue\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2022-10-07T16:48:59.83+05:30\",\r\n    \"lastModifiedTime\": \"2022-10-07T16:49:03.7733333+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":\\\"{\\\\\\\"subkey\\\\\\\" = \\\\\\\"0\\\\\\\"}\\\"}\",\r\n    \"description\": \"JsonInDictValue\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/JsonInDictValue\",\r\n  \"name\": \"JsonInDictValue\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2022-10-17T12:58:37.3533333+05:30\",\r\n    \"lastModifiedTime\": \"2022-10-17T12:58:39.9133333+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":\\\"{\\\\\\\"subkey\\\\\\\" = \\\\\\\"0\\\\\\\"}\\\"}\",\r\n    \"description\": \"JsonInDictValue\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -261,7 +261,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "26fb7a0c-8bbd-4a55-bf5b-0e16f2240cf5"
+          "a6a6bf37-0235-472d-9a96-015a9aaa8ce1"
         ],
         "Accept-Language": [
           "en-US"
@@ -282,7 +282,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "26fb7a0c-8bbd-4a55-bf5b-0e16f2240cf5"
+          "a6a6bf37-0235-472d-9a96-015a9aaa8ce1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -291,10 +291,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "c331afd7-a159-4c72-9756-4e9ed273755c"
+          "18afee25-9cbd-4d89-a784-edd0ea43fb40"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20221007T111914Z:c331afd7-a159-4c72-9756-4e9ed273755c"
+          "WESTINDIA:20221017T072847Z:18afee25-9cbd-4d89-a784-edd0ea43fb40"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -303,7 +303,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 07 Oct 2022 11:19:13 GMT"
+          "Mon, 17 Oct 2022 07:28:47 GMT"
         ],
         "Content-Length": [
           "51"
@@ -324,7 +324,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9c7a9111-3517-4b9d-a7d5-dcd585191a50"
+          "95842742-afee-417b-86df-a1f3c3caf97d"
         ],
         "Accept-Language": [
           "en-US"
@@ -354,7 +354,7 @@
           "https://management.azure.com/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/JsonInDictValue?api-version=2022-08-08"
         ],
         "x-ms-request-id": [
-          "9c7a9111-3517-4b9d-a7d5-dcd585191a50"
+          "95842742-afee-417b-86df-a1f3c3caf97d"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -363,10 +363,10 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "7c5900c5-f868-497e-89d2-da16886f55a2"
+          "ec6a2450-8329-47e8-a71a-462706304ecd"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20221007T111859Z:7c5900c5-f868-497e-89d2-da16886f55a2"
+          "JIOINDIAWEST:20221017T072837Z:ec6a2450-8329-47e8-a71a-462706304ecd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -375,10 +375,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 07 Oct 2022 11:18:59 GMT"
+          "Mon, 17 Oct 2022 07:28:37 GMT"
         ],
         "Content-Length": [
-          "483"
+          "493"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -387,7 +387,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/JsonInDictValue\",\r\n  \"name\": \"JsonInDictValue\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2022-10-07T16:48:59.83+05:30\",\r\n    \"lastModifiedTime\": \"2022-10-07T16:48:59.83+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":\\\"{\\\\\\\"subkey\\\\\\\" = \\\\\\\"sub-value\\\\\\\"}\\\"}\",\r\n    \"description\": \"JsonInDictValue\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/JsonInDictValue\",\r\n  \"name\": \"JsonInDictValue\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2022-10-17T12:58:37.3533333+05:30\",\r\n    \"lastModifiedTime\": \"2022-10-17T12:58:37.3533333+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":\\\"{\\\\\\\"subkey\\\\\\\" = \\\\\\\"sub-value\\\\\\\"}\\\"}\",\r\n    \"description\": \"JsonInDictValue\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -396,7 +396,7 @@
       "RequestMethod": "PATCH",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3d9f4bd8-6914-4613-88fd-0ed709aac6fc"
+          "49dd8c4b-ab0c-47be-a6c5-3f2a745fe587"
         ],
         "Accept-Language": [
           "en-US"
@@ -423,19 +423,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3d9f4bd8-6914-4613-88fd-0ed709aac6fc"
+          "49dd8c4b-ab0c-47be-a6c5-3f2a745fe587"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "9b33b896-71d2-4dba-b026-47e590059f44"
+          "c259d921-463b-496d-8612-9f5498375109"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20221007T111903Z:9b33b896-71d2-4dba-b026-47e590059f44"
+          "JIOINDIAWEST:20221017T072840Z:c259d921-463b-496d-8612-9f5498375109"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -444,10 +444,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 07 Oct 2022 11:19:03 GMT"
+          "Mon, 17 Oct 2022 07:28:39 GMT"
         ],
         "Content-Length": [
-          "480"
+          "485"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -456,7 +456,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/JsonInDictValue\",\r\n  \"name\": \"JsonInDictValue\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2022-10-07T16:48:59.83+05:30\",\r\n    \"lastModifiedTime\": \"2022-10-07T16:49:03.7733333+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":\\\"{\\\\\\\"subkey\\\\\\\" = \\\\\\\"0\\\\\\\"}\\\"}\",\r\n    \"description\": \"JsonInDictValue\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/JsonInDictValue\",\r\n  \"name\": \"JsonInDictValue\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2022-10-17T12:58:37.3533333+05:30\",\r\n    \"lastModifiedTime\": \"2022-10-17T12:58:39.9133333+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"{\\\"key0\\\":\\\"{\\\\\\\"subkey\\\\\\\" = \\\\\\\"0\\\\\\\"}\\\"}\",\r\n    \"description\": \"JsonInDictValue\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -465,7 +465,7 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e29a9c9e-b1db-4f44-8820-c8952275f74e"
+          "75ce80ad-35b8-4b62-bc78-5d7a4a44ea35"
         ],
         "Accept-Language": [
           "en-US"
@@ -486,7 +486,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e29a9c9e-b1db-4f44-8820-c8952275f74e"
+          "75ce80ad-35b8-4b62-bc78-5d7a4a44ea35"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -495,10 +495,10 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "3402f225-ebd7-46d2-ab8f-bb451d5d8998"
+          "1b632896-ffb2-48fd-8923-4c347ae0b36e"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20221007T111912Z:3402f225-ebd7-46d2-ab8f-bb451d5d8998"
+          "WESTINDIA:20221017T072846Z:1b632896-ffb2-48fd-8923-4c347ae0b36e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -507,7 +507,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 07 Oct 2022 11:19:12 GMT"
+          "Mon, 17 Oct 2022 07:28:45 GMT"
         ],
         "Expires": [
           "-1"

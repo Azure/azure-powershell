@@ -67,6 +67,11 @@ namespace Microsoft.Azure.Management.Automation
 
 
         /// <summary>
+        /// Gets the ISourceControlOperations.
+        /// </summary>
+        ISourceControlOperations SourceControl { get; }
+
+        /// <summary>
         /// Gets the IAgentRegistrationInformationOperations.
         /// </summary>
         IAgentRegistrationInformationOperations AgentRegistrationInformation { get; }
@@ -150,11 +155,6 @@ namespace Microsoft.Azure.Management.Automation
         /// Gets the IConnectionTypeOperations.
         /// </summary>
         IConnectionTypeOperations ConnectionType { get; }
-
-        /// <summary>
-        /// Gets the ISourceControlOperations.
-        /// </summary>
-        ISourceControlOperations SourceControl { get; }
 
         /// <summary>
         /// Gets the ISourceControlSyncJobOperations.

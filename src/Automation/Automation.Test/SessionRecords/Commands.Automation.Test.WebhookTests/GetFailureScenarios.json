@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "776f94db-458d-410c-b1fb-52d0f0017157"
+          "2743ee8e-b638-47be-a5e4-d44e2f5ac4e9"
         ],
         "Accept-Language": [
           "en-US"
@@ -18,7 +18,7 @@
           "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ],
         "x-ms-activity-id": [
-          "cb2d8ade-8cd4-4a93-8ab8-72be2a446c27"
+          "df133bc6-cdce-4967-98b3-169ebddec18b"
         ]
       },
       "RequestBody": "",
@@ -33,13 +33,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "9aceebd6-8a9f-47b9-bb0c-985ac6ab813e"
+          "bb4a60cb-832e-43d3-934e-9a28ccee898e"
         ],
         "x-ms-correlation-request-id": [
-          "9aceebd6-8a9f-47b9-bb0c-985ac6ab813e"
+          "bb4a60cb-832e-43d3-934e-9a28ccee898e"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20221007T112319Z:9aceebd6-8a9f-47b9-bb0c-985ac6ab813e"
+          "WESTINDIA:20221017T070646Z:bb4a60cb-832e-43d3-934e-9a28ccee898e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,7 +48,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 07 Oct 2022 11:23:19 GMT"
+          "Mon, 17 Oct 2022 07:06:45 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,7 +69,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "07e1acdd-2ff2-4583-9c4b-4b3e984721bb"
+          "097b43e7-487b-4d7a-95c5-889ca88c1449"
         ],
         "Accept-Language": [
           "en-US"
@@ -81,7 +81,7 @@
           "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ],
         "x-ms-activity-id": [
-          "8e085c6f-44f1-4c87-90a6-2b65903cf5f1"
+          "19fac0b7-fbff-4f20-8734-9ffcedf2f425"
         ]
       },
       "RequestBody": "",
@@ -92,20 +92,17 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
         "x-ms-request-id": [
-          "8e085c6f-44f1-4c87-90a6-2b65903cf5f1"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "e8706cb2-174e-46fd-9b66-486602695edd"
         ],
         "x-ms-correlation-request-id": [
-          "5a3bb44b-389e-4798-b041-e5397e72efd4"
+          "e8706cb2-174e-46fd-9b66-486602695edd"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20221007T112321Z:5a3bb44b-389e-4798-b041-e5397e72efd4"
+          "WESTINDIA:20221017T070647Z:e8706cb2-174e-46fd-9b66-486602695edd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,19 +111,19 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 07 Oct 2022 11:23:21 GMT"
-        ],
-        "Content-Length": [
-          "18"
+          "Mon, 17 Oct 2022 07:06:46 GMT"
         ],
         "Content-Type": [
-          "text/plain; charset=utf-8"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "104"
         ]
       },
-      "ResponseBody": "Webhook not found.",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'to-delete-01' could not be found.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
@@ -135,7 +132,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d43c7f62-721b-4fad-9363-d0ac7fce04c7"
+          "38060377-63e9-4619-867a-b4e6e44d3047"
         ],
         "Accept-Language": [
           "en-US"
@@ -147,7 +144,7 @@
           "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ],
         "x-ms-activity-id": [
-          "5a73ca6a-ae76-4090-9dc3-9b8b27d46037"
+          "a785b3e2-efd7-4949-adad-086caa5a0b64"
         ]
       },
       "RequestBody": "",
@@ -158,20 +155,17 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
         "x-ms-request-id": [
-          "5a73ca6a-ae76-4090-9dc3-9b8b27d46037"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "af2107dc-c73e-49ce-bc7f-4205b3d41b5a"
         ],
         "x-ms-correlation-request-id": [
-          "8ed9dbbf-8750-4780-b36c-fac48e4b34e0"
+          "af2107dc-c73e-49ce-bc7f-4205b3d41b5a"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20221007T112325Z:8ed9dbbf-8750-4780-b36c-fac48e4b34e0"
+          "WESTINDIA:20221017T070647Z:af2107dc-c73e-49ce-bc7f-4205b3d41b5a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -180,20 +174,20 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 07 Oct 2022 11:23:24 GMT"
-        ],
-        "Content-Length": [
-          "12"
+          "Mon, 17 Oct 2022 07:06:47 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "104"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": []\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'to-delete-01' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
     }
   ],
   "Names": {},
