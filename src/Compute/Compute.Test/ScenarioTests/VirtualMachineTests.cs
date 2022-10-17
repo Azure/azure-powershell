@@ -240,6 +240,10 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void VirtualMachineRemoveExtension()
         {
             TestRunner.RunTestScript("Test-VirtualMachineRemoveExtension");
+
+        public void TestVirtualMachineGetHost()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineGetHost");
         }
 
         [Fact]
