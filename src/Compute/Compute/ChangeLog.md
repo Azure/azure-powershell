@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated `Get-AzHost` cmdlet logic to return Host for `-ResourceId` parameterset.
 * For `New-AzGalleryImageVersion`, update property mapping for `Encryption`. 
 
 ## Version 4.32.0
