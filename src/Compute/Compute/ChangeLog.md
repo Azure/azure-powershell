@@ -25,6 +25,7 @@
 * Improved printed output for `Get-AzComputeResourceSku`
 * Updated `Get-AzHost` cmdlet logic to return Host for `-ResourceId` parameterset.
 * For `New-AzGalleryImageVersion`, update property mapping for `Encryption`. 
+* `Get-AzVmssVmRunCommand` now shows all the properties of VmssVmRunCommand in a list format.
 
 ## Version 4.32.0
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.

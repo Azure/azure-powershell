@@ -80,7 +80,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Compute.dll',
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzGalleryApplication', 'Get-AzGalleryApplicationVersion', 
-               'Get-AzVmssVMRunCommand', 'New-AzGalleryApplication', 
+               'New-AzGalleryApplication', 
                'New-AzGalleryApplicationVersion', 'Remove-AzGalleryApplication', 
                'Remove-AzGalleryApplicationVersion', 'Remove-AzVMRunCommand', 
                'Remove-AzVmssVMRunCommand', 'Set-AzVMRunCommand', 
@@ -195,7 +195,7 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'Add-AzVmGalleryApplication', 'Add-AzVmssGalleryApplication', 
                'Remove-AzVmGalleryApplication', 'Remove-AzVmssGalleryApplication', 
                'Add-AzVmssRunCommand', 'Remove-AzVmssRunCommand', 
-               'Get-AzVMRunCommand'
+               'Get-AzVMRunCommand', 'Get-AzVmssVMRunCommand'
 
 # Variables to export from this module
 VariablesToExport = '*'
