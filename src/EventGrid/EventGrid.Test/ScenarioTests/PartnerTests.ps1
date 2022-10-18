@@ -40,13 +40,6 @@ function PartnerTests {
 
     $eventSubscriptionStorageDestinationResourceId = Get-EventSubscriptionStorageQueueEndpoint
 
-    $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
-
-    $storageAccountName = Get-StorageAccountName
-    $storageContainerName = Get-StorageBlobName
-
-    New-StorageBlob $resourceGroupName $storageAccountName $storageContainerName $location
-    $storageAccountResourceId = Get-StorageAccountResourceId $resourceGroupName $storageAccountName
     try
     {
         Write-Debug "Creating a new EventGrid PartnerRegistration: $partnerRegistrationName in resource group $resourceGroupName"
