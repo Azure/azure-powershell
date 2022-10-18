@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>KeyVault</PsModuleName>
@@ -13,11 +13,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="4.0.0-preview.1" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="24.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KeyVault.Sdk\KeyVault.Sdk.csproj" />
     <ProjectReference Include="..\KeyVault\KeyVault.csproj" />
   </ItemGroup>
 
