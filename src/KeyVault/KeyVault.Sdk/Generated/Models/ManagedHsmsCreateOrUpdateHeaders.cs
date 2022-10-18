@@ -14,26 +14,26 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     using System.Linq;
 
     /// <summary>
-    /// Defines headers for Delete operation.
+    /// Defines headers for CreateOrUpdate operation.
     /// </summary>
-    public partial class MHSMPrivateEndpointConnectionsDeleteHeaders
+    public partial class ManagedHsmsCreateOrUpdateHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// MHSMPrivateEndpointConnectionsDeleteHeaders class.
+        /// Initializes a new instance of the ManagedHsmsCreateOrUpdateHeaders
+        /// class.
         /// </summary>
-        public MHSMPrivateEndpointConnectionsDeleteHeaders()
+        public ManagedHsmsCreateOrUpdateHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// MHSMPrivateEndpointConnectionsDeleteHeaders class.
+        /// Initializes a new instance of the ManagedHsmsCreateOrUpdateHeaders
+        /// class.
         /// </summary>
         /// <param name="location">The URI to poll for completion
         /// status.</param>
-        public MHSMPrivateEndpointConnectionsDeleteHeaders(string location = default(string))
+        public ManagedHsmsCreateOrUpdateHeaders(string location = default(string))
         {
             Location = location;
             CustomInit();

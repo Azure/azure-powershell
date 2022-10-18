@@ -37,7 +37,9 @@ namespace Microsoft.Azure.Management.KeyVault
             /// The name of the key vault which contains the key to be created.
             /// </param>
             /// <param name='keyName'>
-            /// The name of the key to be created.
+            /// The name of the key to be created. The value you provide may be copied
+            /// globally for the purpose of running the service. The value provided should
+            /// not include personally identifiable or sensitive information.
             /// </param>
             /// <param name='parameters'>
             /// The parameters used to create the specified key.
@@ -63,7 +65,9 @@ namespace Microsoft.Azure.Management.KeyVault
             /// The name of the key vault which contains the key to be created.
             /// </param>
             /// <param name='keyName'>
-            /// The name of the key to be created.
+            /// The name of the key to be created. The value you provide may be copied
+            /// globally for the purpose of running the service. The value provided should
+            /// not include personally identifiable or sensitive information.
             /// </param>
             /// <param name='parameters'>
             /// The parameters used to create the specified key.

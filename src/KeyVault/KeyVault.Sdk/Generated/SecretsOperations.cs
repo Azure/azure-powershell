@@ -62,7 +62,9 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Name of the vault
         /// </param>
         /// <param name='secretName'>
-        /// Name of the secret
+        /// Name of the secret. The value you provide may be copied globally for the
+        /// purpose of running the service. The value provided should not include
+        /// personally identifiable or sensitive information.
         /// </param>
         /// <param name='parameters'>
         /// Parameters to create or update the secret

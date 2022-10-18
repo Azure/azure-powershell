@@ -125,9 +125,9 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='name'>
             /// The name of the managed HSM Pool to delete
             /// </param>
-            public static void Delete(this IManagedHsmsOperations operations, string resourceGroupName, string name)
+            public static ManagedHsmsDeleteHeaders Delete(this IManagedHsmsOperations operations, string resourceGroupName, string name)
             {
-                operations.DeleteAsync(resourceGroupName, name).GetAwaiter().GetResult();
+                return operations.DeleteAsync(resourceGroupName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -145,9 +145,12 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IManagedHsmsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagedHsmsDeleteHeaders> DeleteAsync(this IManagedHsmsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -350,9 +353,9 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='location'>
             /// The location of the soft-deleted managed HSM.
             /// </param>
-            public static void PurgeDeleted(this IManagedHsmsOperations operations, string name, string location)
+            public static ManagedHsmsPurgeDeletedHeaders PurgeDeleted(this IManagedHsmsOperations operations, string name, string location)
             {
-                operations.PurgeDeletedAsync(name, location).GetAwaiter().GetResult();
+                return operations.PurgeDeletedAsync(name, location).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -370,9 +373,46 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task PurgeDeletedAsync(this IManagedHsmsOperations operations, string name, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagedHsmsPurgeDeletedHeaders> PurgeDeletedAsync(this IManagedHsmsOperations operations, string name, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.PurgeDeletedWithHttpMessagesAsync(name, location, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.PurgeDeletedWithHttpMessagesAsync(name, location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Checks that the managed hsm name is valid and is not already in use.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='mhsmName'>
+            /// The name of the managed hsm.
+            /// </param>
+            public static CheckMhsmNameAvailabilityResult CheckMhsmNameAvailability(this IManagedHsmsOperations operations, CheckMhsmNameAvailabilityParameters mhsmName)
+            {
+                return operations.CheckMhsmNameAvailabilityAsync(mhsmName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Checks that the managed hsm name is valid and is not already in use.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='mhsmName'>
+            /// The name of the managed hsm.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CheckMhsmNameAvailabilityResult> CheckMhsmNameAvailabilityAsync(this IManagedHsmsOperations operations, CheckMhsmNameAvailabilityParameters mhsmName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CheckMhsmNameAvailabilityWithHttpMessagesAsync(mhsmName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>
@@ -479,9 +519,9 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='name'>
             /// The name of the managed HSM Pool to delete
             /// </param>
-            public static void BeginDelete(this IManagedHsmsOperations operations, string resourceGroupName, string name)
+            public static ManagedHsmsDeleteHeaders BeginDelete(this IManagedHsmsOperations operations, string resourceGroupName, string name)
             {
-                operations.BeginDeleteAsync(resourceGroupName, name).GetAwaiter().GetResult();
+                return operations.BeginDeleteAsync(resourceGroupName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -499,9 +539,12 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IManagedHsmsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagedHsmsDeleteHeaders> BeginDeleteAsync(this IManagedHsmsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -516,9 +559,9 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='location'>
             /// The location of the soft-deleted managed HSM.
             /// </param>
-            public static void BeginPurgeDeleted(this IManagedHsmsOperations operations, string name, string location)
+            public static ManagedHsmsPurgeDeletedHeaders BeginPurgeDeleted(this IManagedHsmsOperations operations, string name, string location)
             {
-                operations.BeginPurgeDeletedAsync(name, location).GetAwaiter().GetResult();
+                return operations.BeginPurgeDeletedAsync(name, location).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -536,9 +579,12 @@ namespace Microsoft.Azure.Management.KeyVault
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginPurgeDeletedAsync(this IManagedHsmsOperations operations, string name, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagedHsmsPurgeDeletedHeaders> BeginPurgeDeletedAsync(this IManagedHsmsOperations operations, string name, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginPurgeDeletedWithHttpMessagesAsync(name, location, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginPurgeDeletedWithHttpMessagesAsync(name, location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>

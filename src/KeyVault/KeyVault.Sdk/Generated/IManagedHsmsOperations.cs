@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ManagedHsm>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, ManagedHsm parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ManagedHsm,ManagedHsmsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, ManagedHsm parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update a managed HSM Pool in the specified subscription.
         /// </summary>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationHeaderResponse<ManagedHsmsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the specified managed HSM Pool.
         /// </summary>
@@ -242,7 +242,30 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> PurgeDeletedWithHttpMessagesAsync(string name, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationHeaderResponse<ManagedHsmsPurgeDeletedHeaders>> PurgeDeletedWithHttpMessagesAsync(string name, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Checks that the managed hsm name is valid and is not already in
+        /// use.
+        /// </summary>
+        /// <param name='mhsmName'>
+        /// The name of the managed hsm.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<CheckMhsmNameAvailabilityResult>> CheckMhsmNameAvailabilityWithHttpMessagesAsync(CheckMhsmNameAvailabilityParameters mhsmName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Create or update a managed HSM Pool in the specified subscription.
         /// </summary>
@@ -270,7 +293,7 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ManagedHsm>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, ManagedHsm parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ManagedHsm,ManagedHsmsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string name, ManagedHsm parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update a managed HSM Pool in the specified subscription.
         /// </summary>
@@ -320,7 +343,7 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationHeaderResponse<ManagedHsmsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string name, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Permanently deletes the specified managed HSM.
         /// </summary>
@@ -342,7 +365,7 @@ namespace Microsoft.Azure.Management.KeyVault
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginPurgeDeletedWithHttpMessagesAsync(string name, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationHeaderResponse<ManagedHsmsPurgeDeletedHeaders>> BeginPurgeDeletedWithHttpMessagesAsync(string name, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The List operation gets information about the managed HSM Pools
         /// associated with the subscription and within the specified resource
