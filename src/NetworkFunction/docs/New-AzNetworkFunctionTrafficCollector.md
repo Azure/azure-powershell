@@ -14,8 +14,8 @@ Creates or updates a Azure Traffic Collector resource
 
 ```
 New-AzNetworkFunctionTrafficCollector -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-CollectorPolicy <ICollectorPolicy[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,22 +48,6 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CollectorPolicy
-Collector Policies for Azure Traffic Collector.
-To construct, see NOTES section for COLLECTORPOLICY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ICollectorPolicy[]
 Parameter Sets: (All)
 Aliases:
 
@@ -217,34 +201,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IAzureTrafficCollector
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-COLLECTORPOLICY <ICollectorPolicy[]>: Collector Policies for Azure Traffic Collector.
-  - `[Location <String>]`: Resource location.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[EmissionPolicy <IEmissionPoliciesPropertiesFormat[]>]`: Emission policies.
-    - `[EmissionDestination <IEmissionPolicyDestination[]>]`: Emission policy destinations.
-      - `[DestinationType <DestinationType?>]`: Emission destination type.
-    - `[EmissionType <EmissionType?>]`: Emission format type.
-  - `[IngestionPolicyIngestionSource <IIngestionSourcesPropertiesFormat[]>]`: Ingestion Sources.
-    - `[ResourceId <String>]`: Resource ID.
-    - `[SourceType <SourceType?>]`: Ingestion source type.
-  - `[IngestionPolicyIngestionType <IngestionType?>]`: The ingestion type.
 
 ## RELATED LINKS
 
