@@ -24,6 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using System;
+    using System.Collections.Generic;
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
@@ -380,6 +381,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 BlobBaseClient srcBlobClient= new BlobBaseClient(srcUri, ClientOptions);
                 Track2Models.BlobProperties srcProperties = srcBlobClient.GetProperties(cancellationToken: this.CmdletCancellationToken).Value;
 
+                Track2Models.BlobHttpHeaders httpHeaders = new Track2Models.BlobHttpHeaders
+                {
+                    ContentType = srcProperties.ContentType,
+                    ContentLanguage = srcProperties.ContentLanguage,
+                    ContentHash = srcProperties.ContentHash,
+                    ContentDisposition = srcProperties.ContentDisposition,
+                    ContentEncoding = srcProperties.ContentEncoding
+                };
+
+                IDictionary<string, string> blobTags = null;
+
+                try
+                {
+                    blobTags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
+                }
+                catch (global::Azure.RequestFailedException)
+                {
+                    if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
+                    {
+                        return;
+                    }
+                }
+
                 //Prepare progress handler
                 string activity = String.Format("Copy Blob {0} to {1}", srcBlobClient.Name, destBlob.Name);
                 string status = "Prepare to Copy Blob";
@@ -401,28 +425,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         PageBlobClient destPageBlob = (PageBlobClient)Util.GetTrack2BlobClientWithType(destBlob, destChannel.StorageContext, Track2Models.BlobType.Page, ClientOptions);
 
                         Track2Models.PageBlobCreateOptions pageBlobCreateOptions = new Track2Models.PageBlobCreateOptions();
-                        Track2Models.BlobHttpHeaders httpHeaders = new Track2Models.BlobHttpHeaders
-                        {
-                            ContentType = srcProperties.ContentType,
-                            ContentLanguage = srcProperties.ContentLanguage,
-                            ContentHash = srcProperties.ContentHash,
-                            ContentDisposition = srcProperties.ContentDisposition,
-                            ContentEncoding = srcProperties.ContentEncoding
-                        };
                         pageBlobCreateOptions.HttpHeaders = httpHeaders;
                         pageBlobCreateOptions.Metadata = srcProperties.Metadata;
+                        pageBlobCreateOptions.Tags = blobTags ?? null;
 
-                        try
-                        {
-                            pageBlobCreateOptions.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
-                        }
-                        catch (global::Azure.RequestFailedException)
-                        {
-                            if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
-                            {
-                                return;
-                            }
-                        }
+                        //try
+                        //{
+                        //    pageBlobCreateOptions.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
+                        //}
+                        //catch (global::Azure.RequestFailedException)
+                        //{
+                        //    if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
+                        //    {
+                        //        return;
+                        //    }
+                        //}
 
                         destPageBlob.Create(srcProperties.ContentLength, pageBlobCreateOptions, this.CmdletCancellationToken);
           
@@ -444,28 +461,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         AppendBlobClient destAppendBlob = (AppendBlobClient)Util.GetTrack2BlobClientWithType(destBlob, destChannel.StorageContext, Track2Models.BlobType.Append, ClientOptions);
 
                         Track2Models.AppendBlobCreateOptions appendBlobCreateOptions = new Track2Models.AppendBlobCreateOptions();
-                        Track2Models.BlobHttpHeaders appendBlobHttpHeaders = new Track2Models.BlobHttpHeaders
-                        {
-                            ContentType = srcProperties.ContentType,
-                            ContentLanguage = srcProperties.ContentLanguage,
-                            ContentEncoding = srcProperties.ContentEncoding,
-                            ContentDisposition = srcProperties.ContentDisposition,
-                            ContentHash = srcProperties.ContentHash
-                        };
-                        appendBlobCreateOptions.HttpHeaders = appendBlobHttpHeaders;
+                        appendBlobCreateOptions.HttpHeaders = httpHeaders;
                         appendBlobCreateOptions.Metadata = srcProperties.Metadata;
+                        appendBlobCreateOptions.Tags = blobTags ?? null;
 
-                        try
-                        {
-                            appendBlobCreateOptions.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
-                        }
-                        catch (global::Azure.RequestFailedException)
-                        {
-                            if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
-                            {
-                                return;
-                            }
-                        }
+                        //try
+                        //{
+                        //    appendBlobCreateOptions.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
+                        //}
+                        //catch (global::Azure.RequestFailedException)
+                        //{
+                        //    if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
+                        //    {
+                        //        return;
+                        //    }
+                        //}
 
                         destAppendBlob.Create(appendBlobCreateOptions, this.CmdletCancellationToken);
 
@@ -504,18 +514,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                             }
                             options.SourceConditions = this.BlobRequestConditions;
                             options.Metadata = srcProperties.Metadata;
+                            options.Tags = blobTags ?? null;
 
-                            try
-                            {
-                                options.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
-                            }
-                            catch (global::Azure.RequestFailedException)
-                            {
-                                if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
-                                {
-                                    return;
-                                }
-                            }
+                            //try
+                            //{
+                            //    options.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
+                            //}
+                            //catch (global::Azure.RequestFailedException)
+                            //{
+                            //    if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
+                            //    {
+                            //        return;
+                            //    }
+                            //}
                             destBlobClient.SyncCopyFromUri(srcUri, options, this.CmdletCancellationToken);
 
                             // Set rehydrate priority
@@ -530,29 +541,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         BlockBlobClient destBlockBlob = (BlockBlobClient)Util.GetTrack2BlobClientWithType(destBlob, destChannel.StorageContext, Track2Models.BlobType.Block, ClientOptions);
 
                         Track2Models.CommitBlockListOptions commitBlockListOptions = new Track2Models.CommitBlockListOptions();
-                        commitBlockListOptions.HttpHeaders = new Track2Models.BlobHttpHeaders();
-                        commitBlockListOptions.HttpHeaders.ContentType = srcProperties.ContentType;
-                        commitBlockListOptions.HttpHeaders.ContentHash = srcProperties.ContentHash;
-                        commitBlockListOptions.HttpHeaders.ContentEncoding = srcProperties.ContentEncoding;
-                        commitBlockListOptions.HttpHeaders.ContentLanguage = srcProperties.ContentLanguage;
-                        commitBlockListOptions.HttpHeaders.ContentDisposition = srcProperties.ContentDisposition;
+                        commitBlockListOptions.HttpHeaders = httpHeaders;
                         commitBlockListOptions.Metadata = srcProperties.Metadata;
+                        commitBlockListOptions.Tags = blobTags ?? null;
+
                         if (standardBlobTier != null)
                         {
                             commitBlockListOptions.AccessTier = Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier);
                         }
 
-                        try
-                        {
-                            commitBlockListOptions.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
-                        }
-                        catch (global::Azure.RequestFailedException)
-                        {
-                            if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
-                            {
-                                return;
-                            }
-                        }
+                        //try
+                        //{
+                        //    commitBlockListOptions.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
+                        //}
+                        //catch (global::Azure.RequestFailedException)
+                        //{
+                        //    if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
+                        //    {
+                        //        return;
+                        //    }
+                        //}
 
                         long blockLength = GetBlockLength(srcProperties.ContentLength);
                         string[] blockIDs = GetBlockIDs(srcProperties.ContentLength, blockLength, destBlockBlob.Name);
