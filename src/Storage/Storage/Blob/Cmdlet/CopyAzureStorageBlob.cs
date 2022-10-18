@@ -429,18 +429,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         pageBlobCreateOptions.Metadata = srcProperties.Metadata;
                         pageBlobCreateOptions.Tags = blobTags ?? null;
 
-                        //try
-                        //{
-                        //    pageBlobCreateOptions.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
-                        //}
-                        //catch (global::Azure.RequestFailedException)
-                        //{
-                        //    if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
-                        //    {
-                        //        return;
-                        //    }
-                        //}
-
                         destPageBlob.Create(srcProperties.ContentLength, pageBlobCreateOptions, this.CmdletCancellationToken);
           
                         Track2Models.PageBlobUploadPagesFromUriOptions pageBlobUploadPagesFromUriOptions = new Track2Models.PageBlobUploadPagesFromUriOptions();
@@ -464,18 +452,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         appendBlobCreateOptions.HttpHeaders = httpHeaders;
                         appendBlobCreateOptions.Metadata = srcProperties.Metadata;
                         appendBlobCreateOptions.Tags = blobTags ?? null;
-
-                        //try
-                        //{
-                        //    appendBlobCreateOptions.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
-                        //}
-                        //catch (global::Azure.RequestFailedException)
-                        //{
-                        //    if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
-                        //    {
-                        //        return;
-                        //    }
-                        //}
 
                         destAppendBlob.Create(appendBlobCreateOptions, this.CmdletCancellationToken);
 
@@ -516,17 +492,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                             options.Metadata = srcProperties.Metadata;
                             options.Tags = blobTags ?? null;
 
-                            //try
-                            //{
-                            //    options.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
-                            //}
-                            //catch (global::Azure.RequestFailedException)
-                            //{
-                            //    if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
-                            //    {
-                            //        return;
-                            //    }
-                            //}
                             destBlobClient.SyncCopyFromUri(srcUri, options, this.CmdletCancellationToken);
 
                             // Set rehydrate priority
@@ -549,18 +514,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         {
                             commitBlockListOptions.AccessTier = Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier);
                         }
-
-                        //try
-                        //{
-                        //    commitBlockListOptions.Tags = srcBlobClient.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
-                        //}
-                        //catch (global::Azure.RequestFailedException)
-                        //{
-                        //    if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
-                        //    {
-                        //        return;
-                        //    }
-                        //}
 
                         long blockLength = GetBlockLength(srcProperties.ContentLength);
                         string[] blockIDs = GetBlockIDs(srcProperties.ContentLength, blockLength, destBlockBlob.Name);
