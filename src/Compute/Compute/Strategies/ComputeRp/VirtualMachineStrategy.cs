@@ -172,7 +172,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string userData = null,
             AdditionalCapabilities additionalCapabilities = null,
             int? vCPUsAvailable = null,
-            int? vCPUsPerCore = null
+            int? vCPUsPerCore = null,
+            Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -224,7 +225,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         CapacityReservationGroup = new SubResource(capacityReservationGroupId)
                     },
                     UserData = userData,
-                    PlatformFaultDomain = platformFaultDomain
+                    PlatformFaultDomain = platformFaultDomain,
+                    ExtendedLocation = extendedLocation
                 });
     }
 }
