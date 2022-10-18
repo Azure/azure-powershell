@@ -144,7 +144,7 @@ $cvmAgent = Get-AzADServicePrincipal -ApplicationId 'bf7b6499-ff71-4aa2-97a4-f37
 Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $ResourceGroupName -ObjectId $cvmAgent.id -PermissionsToKeys get,release;
 
 # Add Key vault Key
-$KeyName = $keyname;
+$KeyName = "keyname";
 $KeySize = 3072;
 
 Add-AzKeyVaultKey -VaultName $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -Exportable -UseDefaultCVMPolicy;
