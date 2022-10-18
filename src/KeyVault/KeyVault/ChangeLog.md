@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Replace management SDK with auto generated code and bump API version to 2022-07-01
+* Bumped API version to 2022-07-01
 
 ## Version 4.8.0
 * Fixed the exception content swallowed issue when exception.Response is null [#19531]
