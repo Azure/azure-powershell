@@ -8,7 +8,7 @@ schema: 2.0.0
 # Grant-AzEventGridPartnerConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Grants access to a partner for the specified partner configuration.
 
 ## SYNTAX
 
@@ -28,16 +28,17 @@ Grant-AzEventGridPartnerConfiguration [-InputObject] <PSPartnerConfiguration>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Grant-AzEventGridPartnerConfiguration cmdlet grants access to a partner for the specific partner configuration based on either the partner registration immutable ID or the partner name.
+At least one of the partner registration immutable ID and the partner name is required.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Grant-AzEventGridPartnerConfiguration -ResourceGroup MyResourceGroupName -PartnerRegistrationImmutableId 23e0092b-f336-4833-9ab3-9353a15650fc
 ```
 
-{{ Add example description here }}
+Grants access to a partner based on the partner ID for the partner configuration in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

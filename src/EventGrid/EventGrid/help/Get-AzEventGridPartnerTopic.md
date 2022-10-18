@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventGridPartnerTopic
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the details of an Event Grid partner topic, or gets a list of Event Grid partner topics.
 
 ## SYNTAX
 
@@ -30,16 +30,19 @@ Get-AzEventGridPartnerTopic -NextLink <String> [-DefaultProfile <IAzureContextCo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-AzEventGridPartnerTopic cmdlet either gets the details of a specified Event Grid partner topic, or a list of Event Grid partner topics.
+If the partner topic name is provided, the details of a single partner topic is returned.
+If the partner topic name is not provided but the resource group name is provided, a list of partner topics a the resource group scope is returned.
+If neither the partner topic name or the resource group name is provided, a list of partner topics in the current Azure subscription is returned.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzEventGridPartnerTopic -ResourceGroupName MyResourceGroupName -Name PartnerTopic1
 ```
 
-{{ Add example description here }}
+Gets the details of Event Grid partner topic \`PartnerTopic1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

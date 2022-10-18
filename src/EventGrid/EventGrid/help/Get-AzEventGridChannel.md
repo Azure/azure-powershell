@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventGridChannel
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the details of an Event Grid channel or gets a list of all Event Grid channels in a given partner namespace.
 
 ## SYNTAX
 
@@ -30,16 +30,27 @@ Get-AzEventGridChannel -NextLink <String> [-DefaultProfile <IAzureContextContain
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-AzEventGridChannel cmdlet gets either the detauls of a specified Event Grid channel, or a list of all Event Grid channels in the specified Event Grid partner namespace.
+If the channel name is provided, the details of a single Event Grid channel is returned.
+If the channel name is not provided, a list of domains is returned. The number of elements returned in this list is controlled by the Top parameter. If the Top value is not specified or $null, the list will contain all the domains items returned at once. Otherwise, Top will indicate the maximum number of elements to be returned in the list.
+If more channels are still available, the value in NextLink should be used in the next call to get the next page of channels.
+Finally, ODataQuery parameter is used to perform filtering for the search results. The filtering query follows OData syntax using the Name property only. The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzEventGridChannel -ResourceGroup MyResourceGroupName -PartnerNamespaceName PartnerNamespace1 -Name Channel1
 ```
 
-{{ Add example description here }}
+Gets the details of Event Grid channel \`Channel1\` in partner namespace \`PartnerNameSpace1\` in resource group \`MyResourceGroupName\`.
+
+### Example 2
+```powershell
+PS C:\> Get-AzEventGridChannel -ResourceGroup MyResourceGroupName -PartnerNamespaceName
+```
+
+Lists the details of Event Grid channels in partner namespace \`PartnerNameSpace1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

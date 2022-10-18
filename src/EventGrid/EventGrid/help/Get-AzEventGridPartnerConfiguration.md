@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventGridPartnerConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the details of an Event Grid partner configuration, or gets a lost of partner configurations in the current Azure subscription.
 
 ## SYNTAX
 
@@ -25,16 +25,25 @@ Get-AzEventGridPartnerConfiguration -NextLink <String> [-DefaultProfile <IAzureC
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+ The Get-AzEventGridPartnerConfiguration cmdlet gets the details of a partner configuration under a specified resource group, or a list of partner configurations in the current Azure subscriptions.
+ If the resource group name is provided, the details of a single Event Grid partner configuration is returned.
+ If the resource group name is not provided, a list of partner configurations is returned.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzEventGridPartnerConfiguration -ResourceGroup ResourceGroup1
 ```
 
-{{ Add example description here }}
+Gets the details of the partner configuration in resource group \`ResourceGroup1\`.
+
+### Example 2
+```powershell
+PS C:\> Get-AzEventGridPartnerConfiguration -Top 5
+```
+
+Lists the details of the first five partner configurations in the current Azure subscription.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridPartnerConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new Event Grid partner configuration.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ New-AzEventGridPartnerConfiguration [-ResourceGroupName] <String> [-Tag <Hashtab
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a new partner configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzEventGridPartnerConfiguration -ResourceGroupName MyResourceGroupName -MaxExpirationTimeInDays 14
 ```
 
-{{ Add example description here }}
+Creates a new partner configuration under the resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

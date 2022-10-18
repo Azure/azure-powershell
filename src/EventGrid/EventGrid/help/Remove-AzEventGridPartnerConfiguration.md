@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzEventGridPartnerConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes an Azure Event Grid Partner Configuration.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Remove-AzEventGridPartnerConfiguration [-InputObject] <PSPartnerConfiguration> [
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Removes an Azure Event Grid Partner Configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzEventGridPartnerConfiguration -ResourceGroupName MyResourceGroupName
 ```
 
-{{ Add example description here }}
+Removes the Event Grid partner configuration in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventGridVerifiedPartner
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the details of a specific Event Grid verified partner or gets the details of all verified partners in the current azure subscription.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Get-AzEventGridVerifiedPartner [-NextLink <String>] [-DefaultProfile <IAzureCont
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-AzEventGridVerifiedPartners will get the detail of a specific verified partner or gets the details of all verified partners in the current Azure subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzEventGridVerifiedPartner -Name VerifiedPartner1
 ```
 
-{{ Add example description here }}
+Gets the details of verified partner \`VerifiedPartner1\`.
 
 ## PARAMETERS
 

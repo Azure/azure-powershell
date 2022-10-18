@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzEventGridChannel
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes an Azure Event Grid Channel.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Remove-AzEventGridChannel [-InputObject] <PSChannel> [-Force] [-PassThru]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Removes an Azure Event Grid Channel.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzEventGridChannel -ResourceGroupName MyResourceGroupName -Name Channel1
 ```
 
-{{ Add example description here }}
+Removes the Event Grid Channel \`Channel1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

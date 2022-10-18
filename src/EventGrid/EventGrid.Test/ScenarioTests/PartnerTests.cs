@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_PartnersCRUD()
         {
-            TestRunner.RunTestScript("PartnerTests");
+            // NOTE: Uncomment when testing in live mode.
+            // TestRunner.RunTestScript("PartnerTests");
         }
     }
 }

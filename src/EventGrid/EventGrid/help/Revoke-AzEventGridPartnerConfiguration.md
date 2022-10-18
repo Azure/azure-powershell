@@ -8,7 +8,7 @@ schema: 2.0.0
 # Revoke-AzEventGridPartnerConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Revokes access to a partner in a partner configuration.
 
 ## SYNTAX
 
@@ -27,16 +27,16 @@ Revoke-AzEventGridPartnerConfiguration [-InputObject] <PSPartnerConfiguration>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Revoke-AzEventGridPartnerConfiguration revokes access to a partner in a partner configuration using either the partner registration immutable ID or the partner name. At least one of these two parameters is required.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Revoke-AzEventGridPartnerConfiguration -ResourceGroupName MyResourceGroupName -PartnerName Contoso.Finance
 ```
 
-{{ Add example description here }}
+Revokes access for partner name \`Contoso.Finance\` for the partner configuration in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

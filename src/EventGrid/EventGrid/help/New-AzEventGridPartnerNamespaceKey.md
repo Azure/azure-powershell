@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridPartnerNamespaceKey
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Regenerates the shared access key for an Azure Event Grid partner namespace.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ New-AzEventGridPartnerNamespaceKey [-Name] <String> -InputObject <PSPartnerNames
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Regenerates the shared access key for an Azure Event Grid partner namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzEventGridPartnerNamespaceKey -ResourceGroupName MyResourceGroupName -PartnerNamespaceName PartnerNamespace1 -Name key1
 ```
 
-{{ Add example description here }}
+Regenerate the key corresponding to key \`key1\` of Event Grid partner namespace \`PartnerNamespace1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

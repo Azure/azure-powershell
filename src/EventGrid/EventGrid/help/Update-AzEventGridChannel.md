@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridChannel
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the properties of an Event Grid channel.
 
 ## SYNTAX
 
@@ -27,16 +27,16 @@ Update-AzEventGridChannel [-InputObject] <PSChannel> [-EventTypeKind <String>] [
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates the properties of an Event Grid channel.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzEventGridChannel -ResourceGroupName MyResourceGroupName -PartnerNamespaceName PartnerNamespace1 -Name Channel1 -ExpirationTimeIfNotActivated (Get-Date).AddDays(8)
 ```
 
-{{ Add example description here }}
+Updates the Event Grid channel so partner topics will expire 8 days from the current time if not activated.
 
 ## PARAMETERS
 

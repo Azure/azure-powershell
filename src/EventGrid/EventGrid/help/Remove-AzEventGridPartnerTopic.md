@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzEventGridPartnerTopic
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes an Azure Event Grid Partner Topic.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Remove-AzEventGridPartnerTopic [-InputObject] <PSPartnerTopic> [-Force] [-PassTh
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Removes an Azure Event Grid Partner Topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzEventGridPartnerTopic -ResourceGroupName MyResourceGroupName -Name PartnerTopic1
 ```
 
-{{ Add example description here }}
+Removes the Event Grid Partner Topic \`PartnerTopic1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

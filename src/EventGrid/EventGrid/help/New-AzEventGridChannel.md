@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridChannel
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new Event Grid channel.
 
 ## SYNTAX
 
@@ -21,16 +21,17 @@ New-AzEventGridChannel [-ResourceGroupName] <String> [-PartnerNamespaceName] <St
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a new Event Grid channel based in the provided channel type.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzEventGridChannel -ResourceGroupName MyResourceGroupName -PartnerNamespaceName PartnerNamespace1 -Name Channel1 -ChannelType PartnerTopic -PartnerTopicSource PartnerTopicSource1 -PartnerTopicName PartnerTopic1
 ```
 
-{{ Add example description here }}
+Creates an Event Grid channel \`Channel\` under the partner namespace \`PartnerNamespace\` under the resource group \`MyResourceGroupName\`.
+The channel will be of type PartnerTopic and the partner topic \`PartnerTopic1\` will be created with the specified source.
 
 ## PARAMETERS
 

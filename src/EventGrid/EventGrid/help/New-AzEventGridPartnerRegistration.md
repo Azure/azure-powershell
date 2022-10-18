@@ -8,8 +8,7 @@ schema: 2.0.0
 # New-AzEventGridPartnerRegistration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
-
+Creates a new Event Grid partner registration.
 ## SYNTAX
 
 ```
@@ -18,16 +17,16 @@ New-AzEventGridPartnerRegistration [-ResourceGroupName] <String> [-Name] <String
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The New-AzEventGridPartnerRegistration cmdlet creates a new Event Grid partner registration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzEventGridPartnerRegistration -ResourceGroupName MyResourceGroupName -Name PartnerRegistration1
 ```
 
-{{ Add example description here }}
+Creates a new Event Grid partner registration \`PartnerRegistration1\` in the resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventGridPartnerNamespace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the details of an Event Grid partner namespace, or lists partner namespaces at the scope of the current Azure subscription or specified resource group.
 
 ## SYNTAX
 
@@ -37,16 +37,18 @@ Get-AzEventGridPartnerNamespace -NextLink <String> [-DefaultProfile <IAzureConte
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
-
+The Get-AzEventGridPartnerNamespace cmdlet gets either the details of a specified Event Grid partner namespace, or lists partner namespaces.
+If the partner namespace name is provided, the details of a single Event Grid partner namespace is returned.
+If the partner namespace name is not provided but the resource group name is provided, a list of partner namespaces at the resource group scope is returned.
+If neither the partner namespace name or the resource group name are provided, a list of partner namespaces at the current Azure subscription scope is returned.
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzEventGridPartnerNamespace -ResourceGroup MyResourceGroupName -Name PartnerNamespace1
 ```
 
-{{ Add example description here }}
+Gets the details of Event Grid partner namespace \`PartnerNamespace1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

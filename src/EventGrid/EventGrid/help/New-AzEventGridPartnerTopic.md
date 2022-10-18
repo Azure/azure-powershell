@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridPartnerTopic
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new Azure Event Grid Partner Topic.
 
 ## SYNTAX
 
@@ -29,16 +29,16 @@ New-AzEventGridPartnerTopic -ResourceGroupName <String> -Name <String> -Source <
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a new Azure Event Partner Topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzEventGridPartnerTopic -ResourceGroupName MyResourceGroupName -Name PartnerTopic1 -Source ContosoCorp.Accounts.User1 -Location westus2 -PartnerRegistrationImmutableId 23e0092b-f336-4833-9ab3-9353a15650fc
 ```
 
-{{ Add example description here }}
+Creates a new Event Grid partner topic \`PartnerTopic\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

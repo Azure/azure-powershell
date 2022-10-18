@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventGridPartnerRegistration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the details of an Event Grid partner registration, or gets a list of Event Grid partner registrations.
 
 ## SYNTAX
 
@@ -31,16 +31,19 @@ Get-AzEventGridPartnerRegistration [-NextLink <String>] [-DefaultProfile <IAzure
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-AzEventGridPartnerRegistration cmdlet either gets the details of a specified Event Grid partner registration, or a list of all partner registrations at either the specified resource group or current Azure subscription scope.
+If the partner registration name is provided, the details of a single partner registration is returned.
+If the partner registration name is not provided but the resource group name is provided, a list of partner registrations is returned.
+If neither the partner registration name or the resource group name is provided, a list of partner registrations in the current Azure subscription is returned.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzEventGridPartnerRegistration -ResourceGroupName MyResourceGroupName -Name PartnerRegistration1
 ```
 
-{{ Add example description here }}
+Gets the details of Event Grid partner registration \`PartnerRegistration1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

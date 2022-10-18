@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzEventGridPartnerTopicEventSubscription
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes an Azure Event Grid partner topic event subscription.
 
 ## SYNTAX
 
@@ -32,16 +32,16 @@ Remove-AzEventGridPartnerTopicEventSubscription [-ResourceId] <String> [-Force] 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Removes an Azure Event Grid event subscription for an Azure Event Grid partner topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzEventGridPartnerTopicEventSubscription -ResourceGroup MyResourceGroup -PartnerTopicName Topic1 -EventSubscriptionName EventSubscription1
 ```
 
-{{ Add example description here }}
+Removes the event subscription \`EventSubscription1\` to an Azure Event Grid partner topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

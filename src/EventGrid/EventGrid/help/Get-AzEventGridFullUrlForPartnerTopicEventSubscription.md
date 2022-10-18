@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventGridFullUrlForPartnerTopicEventSubscription
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the full URL for partner topic event subscription
 
 ## SYNTAX
 
@@ -25,16 +25,17 @@ Get-AzEventGridFullUrlForPartnerTopicEventSubscription [-ResourceId] <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get the full endpoint URL if it is a webhook based event subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzEventGridFullUrlForPartnerTopicEventSubscription -ResourceGroupName MyResourceGroupName -PartnerTopicName Topic1 -EventSubscriptionName EventSubscription1
 ```
 
-{{ Add example description here }}
+Gets the full  endpoint URL for event subscription \`EventSubscription1\` created for partner topic \`Topic1\` in resource group \`MyResourceGroupName\`.
+
 
 ## PARAMETERS
 

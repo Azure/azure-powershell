@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridPartnerConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the details of an Event Grid partner configuration.
 
 ## SYNTAX
 
@@ -27,16 +27,16 @@ Update-AzEventGridPartnerConfiguration [-InputObject] <PSPartnerConfiguration> [
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates the details of an Event Grid partner configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzEventGridPartnerConfiguration -ResourceGroupName MyResourceGroupName -MaxExpirationTimeInDays 8
 ```
 
-{{ Add example description here }}
+Updates the maximum expiration time in days property of the partner configuration in the resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

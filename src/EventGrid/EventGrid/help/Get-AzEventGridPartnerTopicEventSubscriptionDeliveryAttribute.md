@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the delivery attributes for partner topic event subscription
 
 ## SYNTAX
 
@@ -31,16 +31,17 @@ Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute [-ResourceId] <Str
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Gets the list of delivery attributes for partner topic event subscription
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute -ResourceGroupName MyResourceGroupName -PartnerTopicName Topic1 -EventSubscriptionName EventSubscription1
 ```
 
-{{ Add example description here }}
+Gets the list of delivery attributest for event subscription \`EventSubscription1\` created for partner topic \`Topic1\` in resource group \`MyResourceGroupName\`.
+
 
 ## PARAMETERS
 

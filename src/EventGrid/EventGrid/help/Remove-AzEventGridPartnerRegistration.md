@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzEventGridPartnerRegistration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes an Azure Event Grid Partner Registration.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Remove-AzEventGridPartnerRegistration [-InputObject] <PSPartnerRegistration> [-F
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Removes an Azure Event Grid Partner Registration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzEventGridPartnerRegistration -ResourceGroupName MyResourceGroupName -Name PartnerRegistration1
 ```
 
-{{ Add example description here }}
+Removes the Event Grid partner registration \`PartnerRegistration1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

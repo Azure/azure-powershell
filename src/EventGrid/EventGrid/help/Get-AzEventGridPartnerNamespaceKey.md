@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventGridPartnerNamespaceKey
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the details of an Event Grid partner namespace key.
 
 ## SYNTAX
 
@@ -25,16 +25,15 @@ Get-AzEventGridPartnerNamespaceKey -InputObject <PSPartnerNamespace> [-DefaultPr
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
-
+The Get-AzEventGridPartnerNamespaceKey cmdlet gets the details of an Event Grid partner namespace key.
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzEventGridPartnerNamespaceKey -ResourceGroup MyResourceGroupName -PartnerNamespaceName PartnerNamespace1
 ```
 
-{{ Add example description here }}
+Gets the details of the keys for Event Grid partner namespace \`PartnerNamespace1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

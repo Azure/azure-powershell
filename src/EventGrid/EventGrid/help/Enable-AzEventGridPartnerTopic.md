@@ -8,7 +8,7 @@ schema: 2.0.0
 # Enable-AzEventGridPartnerTopic
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Enables an Event Grid partner topic.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Enable-AzEventGridPartnerTopic [-InputObject] <PSPartnerTopic> [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Enable-AzEventGridPartnerTopic cmdlets enables a specific Event Grid partner topic.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
+Enables the Event Grid partner topic \`PartnerTopic1\` in resource group \`MyResourceGroupName\`. 
 
-{{ Add example description here }}
+```powershell
+PS C:\> Enable-AzEventGridPartnerTopic -ResourceGroup  MyResourceGroupName -Name PartnerTopic1
+```
 
 ## PARAMETERS
 

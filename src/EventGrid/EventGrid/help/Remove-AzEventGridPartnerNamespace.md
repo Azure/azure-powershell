@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzEventGridPartnerNamespace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes an Azure Event Grid Partner Namespace.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Remove-AzEventGridPartnerNamespace [-InputObject] <PSPartnerNamespace> [-Force] 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Removes an Azure Event Grid Partner Namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzEventGridPartnerNamespace -ResourceGroupName MyResourceGroupName -Name PartnerNamespace1
 ```
 
-{{ Add example description here }}
+Removes the Event Grid partner namespace \`PartnerNamespace1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

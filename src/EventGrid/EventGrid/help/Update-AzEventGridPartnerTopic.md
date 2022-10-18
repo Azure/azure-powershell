@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridPartnerTopic
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the properties of an Event Grid partner topic.
 
 ## SYNTAX
 
@@ -26,16 +26,34 @@ Update-AzEventGridPartnerTopic [-InputObject] <PSPartnerTopic> [-Tag <Hashtable>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates the properties of an Event Grid partner topic. Can be used to update the identity and tags of a partner topic.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Update-AzEventGridPartnerTopic -ResourceGroup MyResourceGroupName -Name Topic1 -Tag @{ Department="Finance"; Environment="Test" }
 ```
 
-{{ Add example description here }}
+Sets the properties of the Event Grid Partner topic \`Topic1\` in resource group \`MyResourceGroupName\` to replace the tags with the specified tags "Department" and "Environment".
+
+### Example 2
+```powershell
+Update-AzEventGridPartnerTopic -ResourceGroup MyResourceGroupName -Name Topic1 -IdentityType "SystemAssigned"
+```
+
+Sets the properties of the Event Grid Partner topic \`Topic1\` in resource group \`MyResourceGroupName\` to change identity type to \`SystemAssigned\`.
+
+### Example 3
+```powershell
+$id1 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
+$id2 = '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
+
+Update-AzEventGridPartnerTopic -ResourceGroup MyResourceGroupName -Name Topic1 -IdentityType "UserAssigned" -IdentityId $id1,$id2
+```
+
+Sets the properties of the Event Grid Partner topic \`Topic1\` in resource group \`MyResourceGroupName\` to change identity type to \`UserAssigned\` with given identity ids.
+
 
 ## PARAMETERS
 

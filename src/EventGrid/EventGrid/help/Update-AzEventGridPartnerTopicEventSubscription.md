@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridPartnerTopicEventSubscription
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update the properties of an Event Grid System partner event subscription.
 
 ## SYNTAX
 
@@ -38,16 +38,31 @@ Update-AzEventGridPartnerTopicEventSubscription [-ResourceId] <String> [-DeadLet
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Update the properties of an Event Grid partner topic event subscription. This can be used to update the filter, destination, or labels of an existing event subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Update-AzEventGridPartnerTopicEventSubscription -EventSubscriptionName ES1 -PartnerTopicName Topic1 -ResourceGroup MyResourceGroupName -Endpoint https://requestb.in/1kxxoui1
 ```
 
-{{ Add example description here }}
+Updates the endpoint of the event subscription \`ES1\` for system topic \`Topic1\` in resource group \`MyResourceGroupName\` to \`https://requestb.in/1kxxoui1\`
+
+### Example 2
+```powershell
+$labels = "Finance", "HR"
+Update-AzEventGridPartnerTopicEventSubscription -EventSubscriptionName ES1 -PartnerTopicName Topic1 -ResourceGroup MyResourceGroupName -Label $labels
+```
+
+Updates the properties of the event subscription \`ES1\` for system topic \`Topic1\` in \`MyResourceGroupName\` with the new labels $labels.
+
+### Example 3
+```powershell
+Update-AzEventGridPartnerTopicEventSubscription -EventSubscriptionName ES1 -PartnerTopicName Topic1 -ResourceGroup MyResourceGroupName -Endpoint https://requestb.in/1kxxoui1 -SubjectEndsWith "jpg"
+```
+
+Updates the properties of the event subscription \`ES1\` for system topic \`Topic1\` in \`MyResourceGroupName\` with new endpoint \`https://requestb.in/1kxxoui1\` and the new SubjectEndsWith filter as \`jpg\`
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridPartnerNamespace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new Event Grid partner namespace.
 
 ## SYNTAX
 
@@ -21,16 +21,16 @@ New-AzEventGridPartnerNamespace [-ResourceGroupName] <String> [-Name] <String> [
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a new Event Grid partner namespace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzEventGridPartnerNamespace -ResourceGroupName MyResourceGroupName -Name PartnerNamespace1 -Location westus2 -PartnerRegistrationFullyQualifiedId 23e0092b-f336-4833-9ab3-9353a15650fc
 ```
 
-{{ Add example description here }}
+Creates a new Event Grid partner namespace \`PartnerNamespace1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 
