@@ -1,4 +1,4 @@
-## 9.0.0 - October 2022
+## 9.0.1 - October 2022
 #### Az.Accounts
 * Upgraded Azure.Core to 1.25.0 and Azure.Identity to 1.6.1
 * Upgraded Microsoft.Identity.Client to 4.46.2 and Microsoft.Identity.Client.Extensions.Msal to 2.23.0
@@ -162,13 +162,12 @@
 * Onboard Project AzureML Registries to Private Link Common Cmdlets
 
 #### Az.RecoveryServices
-* [Breaking Change] Added fix for Enable-AzRecoveryServicesBackupProtection cmdlet. Resolved the null refrence issue by making policy a mandatory parameter.
+* [Breaking Change] Added fix for Enable-AzRecoveryServicesBackupProtection cmdlet. Resolved the null reference issue by making policy a mandatory parameter.
 * [Breaking Change] Removed status filter from Get-AzRecoveryServicesBackupContainer command
 * Added SubTasks Duration for IaasVM job
 
 #### Az.Resources
-* Removed unused reference to resource identifier in role assignment create cmdlet
-* Exposed parameter '-Count' for 'Get-AzADApplication', 'Get-AzADServicePrincipal', 'Get-AzADGroup' [#19476] 
+* Fixed NullReferenceException issue in 'New-AzRoleAssignment' [#19793]
 
 #### Az.SecurityInsights
 * Changed 'Az.SecurityInsights' to autorest-based module
