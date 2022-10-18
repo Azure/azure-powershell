@@ -30,7 +30,7 @@ The Get-AzEventGridPartnerNamespaceKey cmdlet gets the details of an Event Grid 
 
 ### Example 1
 ```powershell
-Get-AzEventGridPartnerNamespaceKey -ResourceGroup MyResourceGroupName -PartnerNamespaceName PartnerNamespace1
+Get-AzEventGridPartnerNamespaceKey -ResourceGroupName MyResourceGroupName -PartnerNamespaceName PartnerNamespace1
 ```
 
 Gets the details of the keys for Event Grid partner namespace \`PartnerNamespace1\` in resource group \`MyResourceGroupName\`.

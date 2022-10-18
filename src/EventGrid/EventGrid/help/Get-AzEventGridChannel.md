@@ -47,7 +47,7 @@ Gets the details of Event Grid channel \`Channel1\` in partner namespace \`Partn
 
 ### Example 2
 ```powershell
-Get-AzEventGridChannel -ResourceGroup MyResourceGroupName -PartnerNamespaceName
+Get-AzEventGridChannel -ResourceGroup MyResourceGroupName -PartnerNamespaceName PartnerNameSpace1
 ```
 
 Lists the details of Event Grid channels in partner namespace \`PartnerNameSpace1\` in resource group \`MyResourceGroupName\`.
