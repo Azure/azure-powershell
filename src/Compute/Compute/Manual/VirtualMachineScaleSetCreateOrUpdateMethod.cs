@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
            ParameterSetName = SimpleParameterSet,
-           HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. <br><br> Default: UefiSettings will not be enabled unless this property is set.",
+           HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. <br> Default: UefiSettings will not be enabled unless this property is set.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         [ValidateNotNullOrEmpty]
