@@ -321,7 +321,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private async Task CopyFromUri(long taskId, IStorageBlobManagement destChannel, Uri srcUri, BlobBaseClient destBlob)
         {
             bool destExist = true;
-            //Track2Models.BlobType? destBlobType = Util.GetBlobType(destBlob);
             Track2Models.BlobType? srcBlobType = Util.GetBlobType(new BlobBaseClient(srcUri, ClientOptions), true).Value;
             Track2Models.BlobType? destBlobType = Util.GetBlobType(new BlobBaseClient(srcUri, ClientOptions), true).Value;
             Track2Models.BlobProperties properties = null;
