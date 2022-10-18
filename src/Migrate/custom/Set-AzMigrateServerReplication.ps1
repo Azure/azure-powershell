@@ -528,8 +528,6 @@ function Set-AzMigrateServerReplication {
 
             if ($HasDiskToUpdate) {
                 $diskIdDiskTypeMap = @{}
-                $previousOsDiskId
-                $changeOsDiskId
                 $originalDisks = $ReplicationMigrationItem.ProviderSpecificDetail.ProtectedDisk
 
                 foreach($DiskObject in $originalDisks) {
