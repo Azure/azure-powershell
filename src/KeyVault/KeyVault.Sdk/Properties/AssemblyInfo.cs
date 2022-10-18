@@ -11,10 +11,7 @@ using System.Resources;
 
 [assembly: AssemblyVersion("4.8.0")]
 [assembly: AssemblyFileVersion("4.8.0")]
-[assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Azure .NET SDK")]
 [assembly: AssemblyCopyright("Copyright (c) Microsoft Corporation")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]

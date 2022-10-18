@@ -73,11 +73,6 @@ namespace Microsoft.Azure.Management.KeyVault
 
 
         /// <summary>
-        /// Gets the IKeysOperations.
-        /// </summary>
-        IKeysOperations Keys { get; }
-
-        /// <summary>
         /// Gets the IVaultsOperations.
         /// </summary>
         IVaultsOperations Vaults { get; }
@@ -111,11 +106,6 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
-
-        /// <summary>
-        /// Gets the ISecretsOperations.
-        /// </summary>
-        ISecretsOperations Secrets { get; }
 
     }
 }

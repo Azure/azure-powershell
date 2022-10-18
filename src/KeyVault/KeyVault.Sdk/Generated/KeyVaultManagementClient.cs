@@ -78,11 +78,6 @@ namespace Microsoft.Azure.Management.KeyVault
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IKeysOperations.
-        /// </summary>
-        public virtual IKeysOperations Keys { get; private set; }
-
-        /// <summary>
         /// Gets the IVaultsOperations.
         /// </summary>
         public virtual IVaultsOperations Vaults { get; private set; }
@@ -116,11 +111,6 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
-
-        /// <summary>
-        /// Gets the ISecretsOperations.
-        /// </summary>
-        public virtual ISecretsOperations Secrets { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the KeyVaultManagementClient class.
@@ -363,7 +353,6 @@ namespace Microsoft.Azure.Management.KeyVault
         /// </summary>
         private void Initialize()
         {
-            Keys = new KeysOperations(this);
             Vaults = new VaultsOperations(this);
             PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             PrivateLinkResources = new PrivateLinkResourcesOperations(this);
@@ -371,7 +360,6 @@ namespace Microsoft.Azure.Management.KeyVault
             MHSMPrivateEndpointConnections = new MHSMPrivateEndpointConnectionsOperations(this);
             MHSMPrivateLinkResources = new MHSMPrivateLinkResourcesOperations(this);
             Operations = new Operations(this);
-            Secrets = new SecretsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2022-07-01";
             AcceptLanguage = "en-US";
