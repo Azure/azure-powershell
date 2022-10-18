@@ -33,7 +33,7 @@ Gets a backup instance with name in a backup vault
 Gets a backup policy belonging to a backup vault
 
 ### [Get-AzDataProtectionBackupVault](Get-AzDataProtectionBackupVault.md)
-Returns resource collection belonging to a resource group.
+Returns resource collection belonging to a subscription.
 
 ### [Get-AzDataProtectionJob](Get-AzDataProtectionJob.md)
 Gets a job with id in a backup vault
