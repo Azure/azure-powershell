@@ -19,6 +19,10 @@ Describe 'Get-AzNetworkSecurityPerimeter' {
         { Get-AzNetworkSecurityPerimeter -ResourceGroupName $env.rgname } | Should -Not -Throw
     }
 
+    It 'List' {
+        { Get-AzNetworkSecurityPerimeter} | Should -Not -Throw
+    }
+
     It 'Get' {
         { Get-AzNetworkSecurityPerimeter -Name $env.tmpNsp1 -ResourceGroupName $env.rgname } | Should -Not -Throw
     }
