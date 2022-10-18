@@ -3177,6 +3177,7 @@ function Test-VirtualMachineRemoveExtension
        Remove-AzVMExtension -ResourceGroupName $rgname -Name $extensionName -VMName $vmname -Force;
        Assert-ThrowsContains {
             Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extensionName -Status; } `
+            "was not found";
     }
     finally
     {
