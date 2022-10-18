@@ -35,7 +35,7 @@ Creates a new Azure Event Partner Topic.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzEventGridPartnerTopic -ResourceGroupName MyResourceGroupName -Name PartnerTopic1 -Source ContosoCorp.Accounts.User1 -Location westus2 -PartnerRegistrationImmutableId 23e0092b-f336-4833-9ab3-9353a15650fc
+New-AzEventGridPartnerTopic -ResourceGroupName MyResourceGroupName -Name PartnerTopic1 -Source ContosoCorp.Accounts.User1 -Location westus2 -PartnerRegistrationImmutableId 23e0092b-f336-4833-9ab3-9353a15650fc
 ```
 
 Creates a new Event Grid partner topic \`PartnerTopic\` in resource group \`MyResourceGroupName\`.

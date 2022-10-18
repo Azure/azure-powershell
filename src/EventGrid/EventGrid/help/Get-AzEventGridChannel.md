@@ -40,14 +40,14 @@ Finally, ODataQuery parameter is used to perform filtering for the search result
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzEventGridChannel -ResourceGroup MyResourceGroupName -PartnerNamespaceName PartnerNamespace1 -Name Channel1
+Get-AzEventGridChannel -ResourceGroup MyResourceGroupName -PartnerNamespaceName PartnerNamespace1 -Name Channel1
 ```
 
 Gets the details of Event Grid channel \`Channel1\` in partner namespace \`PartnerNameSpace1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzEventGridChannel -ResourceGroup MyResourceGroupName -PartnerNamespaceName
+Get-AzEventGridChannel -ResourceGroup MyResourceGroupName -PartnerNamespaceName
 ```
 
 Lists the details of Event Grid channels in partner namespace \`PartnerNameSpace1\` in resource group \`MyResourceGroupName\`.

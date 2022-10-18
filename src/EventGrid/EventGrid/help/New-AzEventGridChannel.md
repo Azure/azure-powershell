@@ -27,7 +27,7 @@ Creates a new Event Grid channel based in the provided channel type.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzEventGridChannel -ResourceGroupName MyResourceGroupName -PartnerNamespaceName PartnerNamespace1 -Name Channel1 -ChannelType PartnerTopic -PartnerTopicSource PartnerTopicSource1 -PartnerTopicName PartnerTopic1
+New-AzEventGridChannel -ResourceGroupName MyResourceGroupName -PartnerNamespaceName PartnerNamespace1 -Name Channel1 -ChannelType PartnerTopic -PartnerTopicSource PartnerTopicSource1 -PartnerTopicName PartnerTopic1
 ```
 
 Creates an Event Grid channel \`Channel\` under the partner namespace \`PartnerNamespace\` under the resource group \`MyResourceGroupName\`.

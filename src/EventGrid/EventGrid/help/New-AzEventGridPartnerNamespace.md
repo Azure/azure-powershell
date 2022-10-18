@@ -27,7 +27,7 @@ Creates a new Event Grid partner namespace.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzEventGridPartnerNamespace -ResourceGroupName MyResourceGroupName -Name PartnerNamespace1 -Location westus2 -PartnerRegistrationFullyQualifiedId 23e0092b-f336-4833-9ab3-9353a15650fc
+New-AzEventGridPartnerNamespace -ResourceGroupName MyResourceGroupName -Name PartnerNamespace1 -Location westus2 -PartnerRegistrationFullyQualifiedId 23e0092b-f336-4833-9ab3-9353a15650fc
 ```
 
 Creates a new Event Grid partner namespace \`PartnerNamespace1\` in resource group \`MyResourceGroupName\`.

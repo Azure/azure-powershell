@@ -35,7 +35,7 @@ At least one of the partner registration immutable ID and the partner name is re
 
 ### Example 1
 ```powershell
-PS C:\> Grant-AzEventGridPartnerConfiguration -ResourceGroup MyResourceGroupName -PartnerRegistrationImmutableId 23e0092b-f336-4833-9ab3-9353a15650fc
+Grant-AzEventGridPartnerConfiguration -ResourceGroup MyResourceGroupName -PartnerRegistrationImmutableId 23e0092b-f336-4833-9ab3-9353a15650fc
 ```
 
 Grants access to a partner based on the partner ID for the partner configuration in resource group \`MyResourceGroupName\`.

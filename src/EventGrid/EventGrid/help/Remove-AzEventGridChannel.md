@@ -31,7 +31,7 @@ Removes an Azure Event Grid Channel.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzEventGridChannel -ResourceGroupName MyResourceGroupName -Name Channel1
+Remove-AzEventGridChannel -ResourceGroupName MyResourceGroupName -Name Channel1
 ```
 
 Removes the Event Grid Channel \`Channel1\` in resource group \`MyResourceGroupName\`.

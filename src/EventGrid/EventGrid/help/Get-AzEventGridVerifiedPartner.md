@@ -31,7 +31,7 @@ The Get-AzEventGridVerifiedPartners will get the detail of a specific verified p
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzEventGridVerifiedPartner -Name VerifiedPartner1
+Get-AzEventGridVerifiedPartner -Name VerifiedPartner1
 ```
 
 Gets the details of verified partner \`VerifiedPartner1\`.

@@ -61,8 +61,8 @@ Get a list of all the event subscriptions created for partner topic \`Topic1\` i
 ### Example 4
 ```powershell
 $odataFilter = "Name ne 'ABCD'"
-Get-AzEventGridPartnerTopicEventSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1 -Top 10 -ODataQuery $odataFilter
-Get-AzEventGridPartnerTopicEventSubscription -ResourceGroupName MyResourceGroupName -TopicName Topic1 $result.NextLink
+Get-AzEventGridPartnerTopicEventSubscription -ResourceGroupName MyResourceGroupName -PartnerTopicName Topic1 -Top 10 -ODataQuery $odataFilter
+Get-AzEventGridPartnerTopicEventSubscription -ResourceGroupName MyResourceGroupName -PartnerTopicName Topic1 $result.NextLink
 ```
 
 List the first 10 event subscriptions (if any) created for partner topic \`Topic1\` in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of event subscriptions, user is expected to re-call Get-AzEventGridPartnerTopicEventSubscription and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.

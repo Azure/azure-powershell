@@ -40,7 +40,7 @@ If neither the partner registration name or the resource group name is provided,
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzEventGridPartnerRegistration -ResourceGroupName MyResourceGroupName -Name PartnerRegistration1
+Get-AzEventGridPartnerRegistration -ResourceGroupName MyResourceGroupName -Name PartnerRegistration1
 ```
 
 Gets the details of Event Grid partner registration \`PartnerRegistration1\` in resource group \`MyResourceGroupName\`.

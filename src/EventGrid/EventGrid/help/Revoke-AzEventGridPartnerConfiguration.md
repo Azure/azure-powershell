@@ -33,7 +33,7 @@ The Revoke-AzEventGridPartnerConfiguration revokes access to a partner in a part
 
 ### Example 1
 ```powershell
-PS C:\> Revoke-AzEventGridPartnerConfiguration -ResourceGroupName MyResourceGroupName -PartnerName Contoso.Finance
+Revoke-AzEventGridPartnerConfiguration -ResourceGroupName MyResourceGroupName -PartnerName Contoso.Finance
 ```
 
 Revokes access for partner name \`Contoso.Finance\` for the partner configuration in resource group \`MyResourceGroupName\`.

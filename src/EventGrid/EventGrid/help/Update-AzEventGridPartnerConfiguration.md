@@ -33,7 +33,7 @@ Updates the details of an Event Grid partner configuration.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzEventGridPartnerConfiguration -ResourceGroupName MyResourceGroupName -MaxExpirationTimeInDays 8
+Update-AzEventGridPartnerConfiguration -ResourceGroupName MyResourceGroupName -MaxExpirationTimeInDays 8
 ```
 
 Updates the maximum expiration time in days property of the partner configuration in the resource group \`MyResourceGroupName\`.

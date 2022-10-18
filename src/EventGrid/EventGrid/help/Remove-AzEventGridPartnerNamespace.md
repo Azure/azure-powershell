@@ -31,7 +31,7 @@ Removes an Azure Event Grid Partner Namespace.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzEventGridPartnerNamespace -ResourceGroupName MyResourceGroupName -Name PartnerNamespace1
+Remove-AzEventGridPartnerNamespace -ResourceGroupName MyResourceGroupName -Name PartnerNamespace1
 ```
 
 Removes the Event Grid partner namespace \`PartnerNamespace1\` in resource group \`MyResourceGroupName\`.

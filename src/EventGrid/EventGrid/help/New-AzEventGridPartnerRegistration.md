@@ -23,7 +23,7 @@ The New-AzEventGridPartnerRegistration cmdlet creates a new Event Grid partner r
 
 ### Example 1
 ```powershell
-PS C:\> New-AzEventGridPartnerRegistration -ResourceGroupName MyResourceGroupName -Name PartnerRegistration1
+New-AzEventGridPartnerRegistration -ResourceGroupName MyResourceGroupName -Name PartnerRegistration1
 ```
 
 Creates a new Event Grid partner registration \`PartnerRegistration1\` in the resource group \`MyResourceGroupName\`.

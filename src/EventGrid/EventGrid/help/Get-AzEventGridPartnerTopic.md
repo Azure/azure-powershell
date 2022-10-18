@@ -39,7 +39,7 @@ If neither the partner topic name or the resource group name is provided, a list
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzEventGridPartnerTopic -ResourceGroupName MyResourceGroupName -Name PartnerTopic1
+Get-AzEventGridPartnerTopic -ResourceGroupName MyResourceGroupName -Name PartnerTopic1
 ```
 
 Gets the details of Event Grid partner topic \`PartnerTopic1\` in resource group \`MyResourceGroupName\`.

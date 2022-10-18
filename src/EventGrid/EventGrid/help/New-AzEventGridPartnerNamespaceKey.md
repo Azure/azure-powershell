@@ -31,7 +31,7 @@ Regenerates the shared access key for an Azure Event Grid partner namespace.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzEventGridPartnerNamespaceKey -ResourceGroupName MyResourceGroupName -PartnerNamespaceName PartnerNamespace1 -Name key1
+New-AzEventGridPartnerNamespaceKey -ResourceGroupName MyResourceGroupName -PartnerNamespaceName PartnerNamespace1 -Name key1
 ```
 
 Regenerate the key corresponding to key \`key1\` of Event Grid partner namespace \`PartnerNamespace1\` in resource group \`MyResourceGroupName\`.

@@ -33,7 +33,7 @@ The Enable-AzEventGridPartnerTopic cmdlets enables a specific Event Grid partner
 Enables the Event Grid partner topic \`PartnerTopic1\` in resource group \`MyResourceGroupName\`. 
 
 ```powershell
-PS C:\> Enable-AzEventGridPartnerTopic -ResourceGroup  MyResourceGroupName -Name PartnerTopic1
+Enable-AzEventGridPartnerTopic -ResourceGroup  MyResourceGroupName -Name PartnerTopic1
 ```
 
 ## PARAMETERS

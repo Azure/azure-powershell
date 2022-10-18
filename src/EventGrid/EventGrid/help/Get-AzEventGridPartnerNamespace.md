@@ -45,7 +45,7 @@ If neither the partner namespace name or the resource group name are provided, a
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzEventGridPartnerNamespace -ResourceGroup MyResourceGroupName -Name PartnerNamespace1
+Get-AzEventGridPartnerNamespace -ResourceGroup MyResourceGroupName -Name PartnerNamespace1
 ```
 
 Gets the details of Event Grid partner namespace \`PartnerNamespace1\` in resource group \`MyResourceGroupName\`.

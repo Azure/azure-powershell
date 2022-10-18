@@ -25,7 +25,7 @@ Creates a new partner configuration.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzEventGridPartnerConfiguration -ResourceGroupName MyResourceGroupName -MaxExpirationTimeInDays 14
+New-AzEventGridPartnerConfiguration -ResourceGroupName MyResourceGroupName -MaxExpirationTimeInDays 14
 ```
 
 Creates a new partner configuration under the resource group \`MyResourceGroupName\`.

@@ -33,7 +33,7 @@ Updates the properties of an Event Grid channel.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzEventGridChannel -ResourceGroupName MyResourceGroupName -PartnerNamespaceName PartnerNamespace1 -Name Channel1 -ExpirationTimeIfNotActivated (Get-Date).AddDays(8)
+Update-AzEventGridChannel -ResourceGroupName MyResourceGroupName -PartnerNamespaceName PartnerNamespace1 -Name Channel1 -ExpirationTimeIfNotActivatedUtc (Get-Date).AddDays(8)
 ```
 
 Updates the Event Grid channel so partner topics will expire 8 days from the current time if not activated.

@@ -31,7 +31,7 @@ Removes an Azure Event Grid Partner Registration.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzEventGridPartnerRegistration -ResourceGroupName MyResourceGroupName -Name PartnerRegistration1
+Remove-AzEventGridPartnerRegistration -ResourceGroupName MyResourceGroupName -Name PartnerRegistration1
 ```
 
 Removes the Event Grid partner registration \`PartnerRegistration1\` in resource group \`MyResourceGroupName\`.

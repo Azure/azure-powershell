@@ -33,14 +33,14 @@ Get-AzEventGridPartnerConfiguration -NextLink <String> [-DefaultProfile <IAzureC
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzEventGridPartnerConfiguration -ResourceGroup ResourceGroup1
+Get-AzEventGridPartnerConfiguration -ResourceGroup ResourceGroup1
 ```
 
 Gets the details of the partner configuration in resource group \`ResourceGroup1\`.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzEventGridPartnerConfiguration -Top 5
+Get-AzEventGridPartnerConfiguration -Top 5
 ```
 
 Lists the details of the first five partner configurations in the current Azure subscription.
