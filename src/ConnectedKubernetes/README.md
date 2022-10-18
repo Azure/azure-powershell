@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ConnectedKubernetes servic
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,11 +47,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 9a19506631005d0ff1e3f394c86a9ce10cf51910
+branch: ac6324d13863e8157f4b392ef0ceef1e86eea935
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/stable/2021-10-01/connectedClusters.json
+  - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2022-10-01-preview/connectedClusters.json
 
 title: ConnectedKubernetes
 module-version: 0.1.0
