@@ -18,8 +18,9 @@ Modifies a Storage account.
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity] [-UserAssignedIdentityId <String>]
- [-KeyVaultUserAssignedIdentityId <String>] [-IdentityType <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-UpgradeToStorageV2] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
+ [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
+ [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AllowBlobPublicAccess <Boolean>]
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
@@ -35,8 +36,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> [-KeyVersion <String>]
  -KeyVaultUri <String> [-AssignIdentity] [-UserAssignedIdentityId <String>]
- [-KeyVaultUserAssignedIdentityId <String>] [-IdentityType <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-UpgradeToStorageV2] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
+ [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
+ [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AllowBlobPublicAccess <Boolean>]
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
@@ -51,16 +53,16 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
- [-KeyVaultUserAssignedIdentityId <String>] [-IdentityType <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-UpgradeToStorageV2] [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>]
- [-PublishInternetEndpoint <Boolean>] [-EnableAzureActiveDirectoryKerberosForFile <Boolean>]
- [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryDomainGuid <String>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
- [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
- [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-EnableLargeFileShare]
+ [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
+ [-EnableAzureActiveDirectoryKerberosForFile <Boolean>] [-ActiveDirectoryDomainName <String>]
+ [-ActiveDirectoryDomainGuid <String>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
+ [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
+ [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
+ [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -68,19 +70,19 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
- [-KeyVaultUserAssignedIdentityId <String>] [-IdentityType <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-UpgradeToStorageV2] [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>]
- [-PublishInternetEndpoint <Boolean>] -EnableActiveDirectoryDomainServicesForFile <Boolean>
- [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryNetBiosDomainName <String>]
- [-ActiveDirectoryForestName <String>] [-ActiveDirectoryDomainGuid <String>]
- [-ActiveDirectoryDomainSid <String>] [-ActiveDirectoryAzureStorageSid <String>]
- [-ActiveDirectorySamAccountName <String>] [-ActiveDirectoryAccountType <String>]
- [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
- [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
- [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-EnableLargeFileShare]
+ [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
+ -EnableActiveDirectoryDomainServicesForFile <Boolean> [-ActiveDirectoryDomainName <String>]
+ [-ActiveDirectoryNetBiosDomainName <String>] [-ActiveDirectoryForestName <String>]
+ [-ActiveDirectoryDomainGuid <String>] [-ActiveDirectoryDomainSid <String>]
+ [-ActiveDirectoryAzureStorageSid <String>] [-ActiveDirectorySamAccountName <String>]
+ [-ActiveDirectoryAccountType <String>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
+ [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
+ [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
+ [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -421,6 +423,32 @@ True
 
 This command updates a Storage account by enable Sftp and localuser. 
 To run the command succssfully, the Storage account should already enable Hierarchical Namespace.
+
+### Example 21: Update a Storage account with Keyvault from another tenant (access Keyvault with FederatedClientId)
+<!-- Skip: Output cannot be splitted from code -->
+
+
+```powershell
+# create Storage account with Keyvault encryption (access Keyvault with FederatedClientId), then show properties
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  `
+                -KeyVaultUri $keyVault.VaultUri -KeyName $keyname -KeyVaultUserAssignedIdentityId $useridentityId -KeyVaultFederatedClientId $federatedClientId
+
+PS C:\> $account.Encryption.EncryptionIdentity
+
+EncryptionUserAssignedIdentity                                                                                                      EncryptionFederatedIdentityClientId                                                                                                                 
+------------------------------                                                                                                      ----------------------------------- 
+/subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserid ********-****-****-****-************
+
+PS C:\> $account.Encryption.KeyVaultProperties
+
+KeyName                       : wrappingKey
+KeyVersion                    : 
+KeyVaultUri                   : https://mykeyvault.vault.azure.net:443
+CurrentVersionedKeyIdentifier : https://mykeyvault.vault.azure.net/keys/wrappingKey/8e74036e0d534e58b3bd84b319e31d8f
+LastKeyRotationTimestamp      : 3/3/2022 2:07:34 AM
+```
+
+This command updates a storage account with Keyvault from another tenant (access Keyvault with FederatedClientId).
 
 ## PARAMETERS
 
@@ -913,6 +941,21 @@ If KeyName, KeyVersion, and KeyVaultUri are all set, KeySource will be set to Mi
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: KeyvaultEncryption
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultFederatedClientId
+Set ClientId of the multi-tenant application to be used in conjunction with the user-assigned identity for cross-tenant customer-managed-keys server-side encryption on the storage account.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False

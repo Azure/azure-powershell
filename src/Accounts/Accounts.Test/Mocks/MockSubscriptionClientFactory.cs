@@ -52,6 +52,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         {
         }
 
+        public static void Reset()
+        {
+            _getAsyncQueueVer2016?.Clear();
+            _listAsyncQueueVer2016?.Clear();
+            SubGetQueueVerLatest?.Clear();
+            SubListQueueVerLatest?.Clear();
+            TenantListQueueVerLatest?.Clear();
+
+        }
+
         public static string GetTenantDomainFromId(string id)
         {
             return id.Substring(3)+".com";

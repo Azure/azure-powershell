@@ -14,6 +14,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accoun
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHub", "..\EventHub\EventHub\EventHub.csproj", "{1E60D2AC-DEA7-403C-86DC-7B8C47F54668}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EventHub", "..\EventHub\EventHub.Autorest\Az.EventHub.csproj", "{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{3E016018-D65D-4336-9F64-17DA97783AD0}"
@@ -76,6 +78,10 @@ Global
 		{DBC8F259-6127-4E99-A9C9-E8110046BCC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBC8F259-6127-4E99-A9C9-E8110046BCC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBC8F259-6127-4E99-A9C9-E8110046BCC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

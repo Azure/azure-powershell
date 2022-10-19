@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Added `PublicNetworkAccess` to `Update-AzMySqlServer` [#19189]
+
 ## Version 1.0.0
 * General availability of Az.MySql
 

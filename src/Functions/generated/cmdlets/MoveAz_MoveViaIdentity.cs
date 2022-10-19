@@ -12,6 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     /// <remarks>
     /// [OpenAPI] Move=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/moveResources"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Move, @"Az_MoveViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Move resources between resource groups.")]

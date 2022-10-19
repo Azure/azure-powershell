@@ -29,9 +29,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "State of the Rule.")]
-        [ValidateSet("Disabled", IgnoreCase = true)]
+        [ValidateSet("Disabled", "Enabled", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string State { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Action of the Rule.")]
+        [ValidateSet("AnomalyScoring", "Allow", "Block", "Log", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string Action { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -43,7 +50,8 @@ namespace Microsoft.Azure.Commands.Network
             return new PSApplicationGatewayFirewallPolicyManagedRuleOverride()
             {
                 RuleId = this.RuleId,
-                State = string.IsNullOrEmpty(State) ? "Disabled" : this.State 
+                State = string.IsNullOrEmpty(State) ? "Disabled" : this.State,
+                Action = this.Action
             };
         }
     }

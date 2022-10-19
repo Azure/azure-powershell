@@ -26,6 +26,8 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
  [-AadAudienceId <String>] [-AadIssuerUri <String>] [-RemoveAadAuthentication] [-CustomRoute <String[]>]
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>]
+ [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -43,6 +45,8 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
  [-AadAudienceId <String>] [-AadIssuerUri <String>] [-RemoveAadAuthentication] [-CustomRoute <String[]>]
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>]
+ [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>]
  -Tag <Hashtable> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -367,7 +371,7 @@ The fifth command set this new created PSVirtualNetworkGatewayNatRule to NatRule
 
 ### Example 7: Delete multiple expired VpnClientRootCertificates of an existing virtual network gateway
 ```powershell
-$Gateway=Get-Azvirtualnetworkgateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+$Gateway=Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
 
 $rootCerts=$Gateway.VpnClientConfiguration.VpnClientRootCertificates
 
@@ -476,6 +480,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClientConnectionConfiguration
+P2S Client Connection Configuration that assiociate between address and policy group
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSClientConnectionConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkGatewayPolicyGroup
+P2S policy group added to this gateway
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayPolicyGroup[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

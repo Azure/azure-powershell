@@ -258,7 +258,7 @@ function Enable-Protection(
 		$resourceGroupName = $vm.ResourceGroupName
 	}
 
-	if ($container -eq $null)
+	if ($container -eq $null -or $container.Status -ne "Registered")
 	{
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
@@ -281,6 +281,25 @@ function Enable-Protection(
 		-Container $container `
 		-WorkloadType AzureVM `
 		-Name $vm.Name
+
+	if ($item -eq $null)
+	{
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name "DefaultPolicy";
+
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Name $vm.Name `
+			-ResourceGroupName $resourceGroupName | Out-Null
+
+		$item = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-Container $container `
+		-WorkloadType AzureVM `
+		-Name $vm.Name
+	}
 
 	return $item
 }
