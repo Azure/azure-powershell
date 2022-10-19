@@ -881,9 +881,9 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
             }
 
-            if (this.VM.SecurityProfile.SecurityType == "TrustedLaunch" || this.VM.SecurityProfile.SecurityType == "ConfidentialVM")
+            if (this.VM?.SecurityProfile?.SecurityType == "TrustedLaunch" || this.VM?.SecurityProfile?.SecurityType == "ConfidentialVM")
             {
-                if (this.VM.SecurityProfile.UefiSettings != null)
+                if (this.VM?.SecurityProfile?.UefiSettings != null)
                 {
                     this.VM.SecurityProfile.UefiSettings.SecureBootEnabled = this.VM.SecurityProfile.UefiSettings.SecureBootEnabled != null ? this.VM.SecurityProfile.UefiSettings.SecureBootEnabled : true;
                     this.VM.SecurityProfile.UefiSettings.VTpmEnabled = this.VM.SecurityProfile.UefiSettings.VTpmEnabled != null ? this.VM.SecurityProfile.UefiSettings.VTpmEnabled : true;
