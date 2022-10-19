@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability of `Az.DataProtection`
 
 ## Version 0.5.0
 * Added support for automatic assignment of permissions for configure backup for DPP workloads - AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL using Set-AzDataProtectionMSIPermission cmdlet
