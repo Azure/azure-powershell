@@ -17,6 +17,10 @@ Gets the specified network security perimeter by the name.
 ### [Get-AzNetworkSecurityPerimeterAccessRule](Get-AzNetworkSecurityPerimeterAccessRule.md)
 Gets the specified NSP access rule by name.
 
+### [Get-AzNetworkSecurityPerimeterAssociableResourceType](Get-AzNetworkSecurityPerimeterAssociableResourceType.md)
+Gets the list of resources that are onboarded with NSP.
+These resources can be associated with a network security perimeter
+
 ### [Get-AzNetworkSecurityPerimeterAssociation](Get-AzNetworkSecurityPerimeterAssociation.md)
 Gets the specified NSP association by name.
 

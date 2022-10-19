@@ -21,7 +21,30 @@ eastus2euap nsp5
 List NetworkSecurityPerimeter
 
 
-### Example 2: Gets a NetworkSecurityPerimeter by Name
+### Example 2: List NetworkSecurityPerimeter in a subscription
+
+```powershell
+
+ Get-AzNetworkSecurityPerimeter
+
+```
+
+```output
+
+Location    Name
+--------    ----
+eastus2euap nsp4
+eastus2euap nsp3
+eastus2euap nsp1
+eastus2euap nsp6
+eastus2euap nsp5
+
+
+```
+List NetworkSecurityPerimeter in a subscription
+
+
+### Example 3: Gets a NetworkSecurityPerimeter by Name
 
 ```powershell
 
@@ -40,7 +63,7 @@ eastus2euap nsp3
 Gets a NetworkSecurityPerimeter by Name
 
 
-### Example 3: Gets a NetworkSecurityPerimeter by identity (using pipe)
+### Example 4: Gets a NetworkSecurityPerimeter by identity (using pipe)
 
 ```powershell
 
