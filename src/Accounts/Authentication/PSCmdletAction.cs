@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private const string CsvHeaderParameters = "Parameters";
         private const string CsvHeaderSourceScript = "SourceScript";
         private const string CsvHeaderScriptLineNumber = "LineNumber";
-        private const string CsvHeaderDuration = "Duration";
         private const string CsvHeaderIsSuccess = "IsSuccess";
         private const string Delimiter = ",";
 
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private static readonly bool s_isWindowsPlatform;
 
-        private static readonly string s_statsOutputRootFolder;
+        private static readonly string s_testCoverageRootPath;
 
         private static readonly ReaderWriterLockSlim s_lock = new ReaderWriterLockSlim();
 
@@ -54,14 +53,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             if (s_isWindowsPlatform)
             {
-                var repoRootFolder = ProbeRepoDirectory();
-                if (!string.IsNullOrEmpty(repoRootFolder))
+                var repoRootPath = ProbeRepoDirectory();
+                if (!string.IsNullOrEmpty(repoRootPath))
                 {
-                    s_statsOutputRootFolder = Path.Combine(repoRootFolder, "artifacts", "TestCoverageAnalysis", "Raw");
-                    DirectoryInfo rawDir = new DirectoryInfo(s_statsOutputRootFolder);
+                    s_testCoverageRootPath = Path.Combine(repoRootPath, "artifacts", "TestCoverageAnalysis", "Raw");
+                    DirectoryInfo rawDir = new DirectoryInfo(s_testCoverageRootPath);
                     if (!rawDir.Exists)
                     {
-                        Directory.CreateDirectory(s_statsOutputRootFolder);
+                        Directory.CreateDirectory(s_testCoverageRootPath);
                     }
                 }
             }
@@ -87,29 +86,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                          .Append(CsvHeaderParameters).Append(Delimiter)
                          .Append(CsvHeaderSourceScript).Append(Delimiter)
                          .Append(CsvHeaderScriptLineNumber).Append(Delimiter)
-                         .Append(CsvHeaderDuration).Append(Delimiter)
                          .Append(CsvHeaderIsSuccess);
 
             return headerBuilder.ToString();
         }
 
-        private string GenerateCsvRecord(string commandName, string parameterSetName, string parameters, string sourceScript, int scriptLineNumber, TimeSpan duration, bool isSuccess)
+        private string GenerateCsvItem(string commandName, string parameterSetName, string parameters, string sourceScript, int scriptLineNumber, bool isSuccess)
         {
-            StringBuilder recordBuilder = new StringBuilder();
-            recordBuilder.Append(commandName).Append(Delimiter)
-                         .Append(parameterSetName).Append(Delimiter)
-                         .Append(parameters).Append(Delimiter)
-                         .Append(sourceScript).Append(Delimiter)
-                         .Append(scriptLineNumber).Append(Delimiter)
-                         .Append(duration.ToString("h'h 'm'm 's's'")).Append(Delimiter)
-                         .Append(isSuccess.ToString().ToLowerInvariant());
+            StringBuilder itemBuilder = new StringBuilder();
+            itemBuilder.Append(commandName).Append(Delimiter)
+                       .Append(parameterSetName).Append(Delimiter)
+                       .Append(parameters).Append(Delimiter)
+                       .Append(sourceScript).Append(Delimiter)
+                       .Append(scriptLineNumber).Append(Delimiter)
+                       .Append(isSuccess.ToString().ToLowerInvariant());
 
-            return recordBuilder.ToString();
+            return itemBuilder.ToString();
         }
 
-        public void LogTestCoverageRawData(string moduleName, string commandName, string parameterSetName, string parameters, string sourceScript, int scriptLineNumber, TimeSpan duration, bool isSuccess)
+        public void LogTestCoverageRawData(string moduleName, string commandName, string parameterSetName, string parameters, string sourceScript, int scriptLineNumber, bool isSuccess)
         {
-#if DEBUG || CMDLETACTION_STATS
+#if DEBUG || TESTCOVERAGE
             if (!s_isWindowsPlatform || string.IsNullOrEmpty(moduleName) || string.IsNullOrEmpty(commandName) || ExcludedSource.Contains(sourceScript))
                 return;
 
@@ -119,7 +116,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             if (string.Compare(testingModuleName, moduleName, true) != 0)
                 return;
 
-            var csvFilePath = Path.Combine(s_statsOutputRootFolder, $"{moduleName}.csv");
+            var csvFilePath = Path.Combine(s_testCoverageRootPath, $"{moduleName}.csv");
             StringBuilder csvData = new StringBuilder();
 
             s_lock.EnterWriteLock();
@@ -132,8 +129,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 }
 
                 csvData.AppendLine();
-                var csvRecord = GenerateCsvRecord(commandName, parameterSetName, parameters, Path.GetFileName(sourceScript), scriptLineNumber, duration, isSuccess);
-                csvData.Append(csvRecord);
+                var csvItem = GenerateCsvItem(commandName, parameterSetName, parameters, Path.GetFileName(sourceScript), scriptLineNumber, isSuccess);
+                csvData.Append(csvItem);
 
                 File.AppendAllText(csvFilePath, csvData.ToString());
             }

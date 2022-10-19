@@ -1,7 +1,7 @@
 $repoRootDirectory = $PSScriptRoot | Split-Path | Split-Path
 $artifactsDirectory = Join-Path -Path $repoRootDirectory -ChildPath "artifacts"
 $debugDirectory = Join-Path -Path $artifactsDirectory -ChildPath "Debug"
-$statsAnalysisRootDirectory = Join-Path -Path $artifactsDirectory -ChildPath "CmdletStatisticsAnalysis"
+$statsAnalysisRootDirectory = Join-Path -Path $artifactsDirectory -ChildPath "TestCoverageAnalysis"
 $statsAnalysisRawDirectory = Join-Path -Path $statsAnalysisRootDirectory -ChildPath "Raw"
 $statsAnalysisResultsDirectory = Join-Path -Path $statsAnalysisRootDirectory -ChildPath "Results"
 
@@ -53,7 +53,8 @@ $excludedModules = @(
     "Az.WindowsIotServices"
 )
 
-if (-not (Test-Path -LiteralPath $statsAnalysisResultsDirectory -PathType Container)) {
+if (-not (Test-Path -LiteralPath $statsAnalysisResultsDirectory -PathType Container))
+{
     New-Item -Path $statsAnalysisRootDirectory -Name "Results" -ItemType Directory
 }
 Get-ChildItem -LiteralPath $statsAnalysisResultsDirectory -Filter "*.txt" | Remove-Item -Force
@@ -72,14 +73,16 @@ $AzPSReportContent = [System.Text.StringBuilder]::new()
 $allModules = Get-ChildItem -LiteralPath $debugDirectory -Filter "Az.*" -Directory -Name
 foreach ($moduleName in $allModules)
 {
-    if ($moduleName -in $excludedModules) {
+    if ($moduleName -in $excludedModules)
+    {
         continue
     }
 
     Write-Host "Starting analyzing module $moduleName" -ForegroundColor Green
 
     $moduleCsvFullPath = Join-Path -Path $statsAnalysisRawDirectory -ChildPath "$moduleName.csv"
-    if (-not (Test-Path $moduleCsvFullPath)) {
+    if (-not (Test-Path $moduleCsvFullPath))
+    {
         [void]$AzPSReportContent.AppendLine("  Module name: $moduleName has no test raw data found!")
         [void]$AzPSReportContent.AppendLine()
         continue
@@ -91,7 +94,8 @@ foreach ($moduleName in $allModules)
     [void]$AzPSModuleReportContent.AppendLine("Test coverage report for module $moduleName :")
     [void]$AzPSModuleReportContent.AppendLine()
 
-    if ($moduleName -ne $accountModuleName) {
+    if ($moduleName -ne $accountModuleName)
+    {
         $moduleFullPath = Join-Path -Path $debugDirectory -ChildPath $moduleName | Join-Path -ChildPath "$moduleName.psd1"
         Import-Module $moduleFullPath
     }
@@ -116,7 +120,8 @@ foreach ($moduleName in $allModules)
 
         $cmdletParams = $cmdlet.Parameters
         $cmdletParams.Keys | ForEach-Object {
-            if ($_ -notin $psCommonParameters) {
+            if ($_ -notin $psCommonParameters)
+            {
                 $totalParametersCount += $cmdletParams[$_].ParameterSets.Count
             }
         }
