@@ -16,39 +16,33 @@
 
 <#
 .Synopsis
-Updates disk mapping
+Creates an object to update NIC properties of a test migrating server.
 .Description
-The Set-AzMigrateDiskMapping cmdlet updates a mapping of the source disk attached to the server to be migrated
+The New-AzMigrateTestNicMapping cmdlet creates a mapping of the source NIC attached to the server to be test migrated.
+This object is provided as an input to the Start-AzMigrateTestMigration cmdlet to update the NIC and its properties for a test migrating server.
 .Example
-Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1" -IsOSDisk "True"
+New-AzMigrateTestNicMapping -NicID a2399354-653a-464e-a567-d30ef5467a31 -TestNicSubnet subnet1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtUpdateDiskInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/set-azmigratediskmapping
+https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratetestnicmapping
 #>
-function Set-AzMigrateDiskMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtUpdateDiskInput])]
-[CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false)]
+function New-AzMigrateTestNicMapping {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput])]
+[CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the disk ID of the disk attached to the discovered server to be migrated.
-    ${DiskID},
+    # Specifies the ID of the NIC to be updated.
+    ${NicID},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the name of the managed disk to be created.
-    ${DiskName},
-
-    [Parameter()]
-    [ArgumentCompleter({ "true" , "false" })]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies whether the disk contains the Operating System for the source server to be migrated.
-    ${IsOSDisk}
+    # Specifies the Subnet name for the NIC in the destination Virtual Network to which the server needs to be test migrated.
+    ${TestNicSubnet}
 )
 
 begin {
@@ -77,7 +71,7 @@ begin {
         }
 
         $mapping = @{
-            VMwareCbt = 'Az.Migrate.custom\Set-AzMigrateDiskMapping';
+            VMwareCbt = 'Az.Migrate.custom\New-AzMigrateTestNicMapping';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
