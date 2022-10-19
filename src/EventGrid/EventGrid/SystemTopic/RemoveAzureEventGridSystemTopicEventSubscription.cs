@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 this.EventSubscriptionName,
                 () =>
                 {
-                    this.Client.DeleteSystemTopicEventSubscriptiion(this.ResourceGroupName, this.SystemTopicName, this.EventSubscriptionName);
+                    this.Client.DeleteSystemTopicEventSubscription(this.ResourceGroupName, this.SystemTopicName, this.EventSubscriptionName);
                     if (PassThru)
                     {
                         WriteObject(true);
