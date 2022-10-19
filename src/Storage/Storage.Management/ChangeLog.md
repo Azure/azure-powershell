@@ -26,7 +26,7 @@
 * Supported find blobs in a container with a blob tag filter sql expression
   * `Get-AzStorageBlobByTag`
 
-## Version 4.10.0
+## Version 5.0.0
 * Migrated following Azure File dataplane cmdlets from 'Microsoft.Azure.Storage.File 11.2.2' to 'Azure.Storage.Files.Shares 12.10.0'
   * `Get-AzStorageFile`
   * `Get-AzStorageFileCopyState`
