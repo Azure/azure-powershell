@@ -114,7 +114,7 @@ Emission policies.
 To construct, see NOTES section for EMISSIONPOLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IEmissionPoliciesPropertiesFormat[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IEmissionPoliciesPropertiesFormat[]
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +130,7 @@ Ingestion Sources.
 To construct, see NOTES section for INGESTIONPOLICYINGESTIONSOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IIngestionSourcesPropertiesFormat[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IIngestionSourcesPropertiesFormat[]
 Parameter Sets: (All)
 Aliases:
 
@@ -284,7 +284,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ICollectorPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy
 
 ## NOTES
 

@@ -1,41 +1,50 @@
 ---
 external help file:
 Module Name: Az.NetworkFunction
-online version: https://docs.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctioncollectorpolicy
+online version: https://docs.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctioncollectorpolicytag
 schema: 2.0.0
 ---
 
-# Update-AzNetworkFunctionCollectorPolicy
+# Update-AzNetworkFunctionCollectorPolicyTag
 
 ## SYNOPSIS
-Creates or updates a Collector Policy resource
+Updates the specified Collector Policy tags.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-Update-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName <String> -Name <String>
- -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-EmissionPolicy <IEmissionPoliciesPropertiesFormat[]>]
- [-IngestionPolicyIngestionSource <IIngestionSourcesPropertiesFormat[]>]
- [-IngestionPolicyIngestionType <IngestionType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzNetworkFunctionCollectorPolicyTag -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzNetworkFunctionCollectorPolicyTag -InputObject <INetworkFunctionIdentity> [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a Collector Policy resource
+Updates the specified Collector Policy tags.
 
 ## EXAMPLES
 
-### Example 1: Update a traffic collector policy
+### Example 1: Updates a traffic collector tag
 ```powershell
-Update-AzNetworkFunctionCollectorPolicy -collectorpolicyname cp1 -azuretrafficcollectorname atc -resourcegroupname rg1 -location eastus | Format-List
+Update-AzNetworkFunctionCollectorPolicyTag -collectorpolicyname cp1 -azuretrafficcollectorname atc -resourcegroupname rg1 | Format-List
 ```
 
 ```output
 Name              : cp1
-Etag              : cf0336a2-7454-4aa4-add9-1de3e2291143
+Etag              : 72090554-7e3b-43f2-80ad-99a9020dcb11
 Id                : /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.NetworkFunction/azureTrafficCollectors/atc/collectorPolicies/cp1
 Type              : Microsoft.NetworkFunction/azureTrafficCollectors/collectorPolicies
+Location          : West US
+Tags              : {
+                        "key1": "value1",
+                        "key2": "value2"
+                    }
 Properties        : {
                     "ingestionPolicy": {
                         "ingestionType": "IPFIX",
@@ -60,31 +69,31 @@ Properties        : {
                     }
 ```
 
-This cmdlet updates a traffic collector policy.
+This cmdlet updates a collector policy tag.
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AzureTrafficCollectorName
 Azure Traffic Collector name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CollectorPolicyName
+Collector Policy Name
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -109,95 +118,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EmissionPolicy
-Emission policies.
-To construct, see NOTES section for EMISSIONPOLICY properties and create a hash table.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IEmissionPoliciesPropertiesFormat[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IngestionPolicyIngestionSource
-Ingestion Sources.
-To construct, see NOTES section for INGESTIONPOLICYINGESTIONSOURCE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IIngestionSourcesPropertiesFormat[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IngestionPolicyIngestionType
-The ingestion type.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.IngestionType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Collector Policy Name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: CollectorPolicyName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -206,7 +139,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -221,7 +154,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -282,6 +215,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy
@@ -295,14 +230,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-EMISSIONPOLICY <IEmissionPoliciesPropertiesFormat[]>: Emission policies.
-  - `[EmissionDestination <IEmissionPolicyDestination[]>]`: Emission policy destinations.
-    - `[DestinationType <DestinationType?>]`: Emission destination type.
-  - `[EmissionType <EmissionType?>]`: Emission format type.
-
-INGESTIONPOLICYINGESTIONSOURCE <IIngestionSourcesPropertiesFormat[]>: Ingestion Sources.
-  - `[ResourceId <String>]`: Resource ID.
-  - `[SourceType <SourceType?>]`: Ingestion source type.
+INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
+  - `[AzureTrafficCollectorName <String>]`: Azure Traffic Collector name
+  - `[CollectorPolicyName <String>]`: Collector Policy Name
+  - `[Id <String>]`: Resource identity path
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[SubscriptionId <String>]`: Azure Subscription ID.
 
 ## RELATED LINKS
 
