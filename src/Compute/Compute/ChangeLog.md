@@ -26,6 +26,7 @@
 * Updated `Get-AzHost` cmdlet logic to return Host for `-ResourceId` parameterset.
 * For `New-AzGalleryImageVersion`, updated property mapping for `Encryption`. 
 * Added `-OSDiskSizeGB` optional parameter for `Set-AzVmssStorageProfile`.
+* Improved cmdlet description for `Set-AzVM` and added examples.
 
 ## Version 5.0.0
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
