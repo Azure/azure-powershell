@@ -24,7 +24,8 @@
 * Added Disk Delete Optional parameters `OsDisk Deletion Option` and `Delete Option` to the `Set-AzVmssStorageProfile` (OS Disk) and `Add-AzVmssDataDisk` (Data Disk)
 * Improved printed output for `Get-AzComputeResourceSku`
 * Updated `Get-AzHost` cmdlet logic to return Host for `-ResourceId` parameterset.
-* For `New-AzGalleryImageVersion`, update property mapping for `Encryption`. 
+* For `New-AzGalleryImageVersion`, updated property mapping for `Encryption`. 
+* Added `-OSDiskSizeGB` optional parameter for `Set-AzVmssStorageProfile`.
 
 ## Version 5.0.0
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
