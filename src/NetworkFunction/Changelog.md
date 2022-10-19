@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated api version to 2022-11-01
 
 ## Version 0.1.1
 * Made Collector policy a tracked resource (added location property to create and update cmdlet and made it mandatory)
