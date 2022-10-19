@@ -184,6 +184,9 @@ directive:
     set:
       verb: Find
       subject: RestorableTimeRange
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/findRestorableTimeRanges"].post
+    transform: $["description"] = "Finds the valid recovery point in time ranges for the restore."
   - where:
       verb: Test
       subject: BackupInstance
