@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnSqlPool()
         {
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnWorkspace()
         {
@@ -159,42 +159,42 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestNewSqlPoolAuditDiagnosticsAreCreatedOnNeed()
         {
             TestRunner.RunTestScript("Test-NewSqlPoolAuditDiagnosticsAreCreatedOnNeed");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestNewWorkspaceAuditDiagnosticsAreCreatedOnNeed()
         {
             TestRunner.RunTestScript("Test-NewWorkspaceAuditDiagnosticsAreCreatedOnNeed");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveAuditOnWorkspace()
         {
             TestRunner.RunTestScript("Test-RemoveAuditOnWorkspace");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveAuditOnSqlPool()
         {
             TestRunner.RunTestScript("Test-RemoveAuditOnSqlPool");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveSqlPoolAuditingSettingsMultipleDiagnosticSettings()
         {
             TestRunner.RunTestScript("Test-RemoveSqlPoolAuditingSettingsMultipleDiagnosticSettings");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveWorkspaceAuditingSettingsMultipleDiagnosticSettings()
         {
             TestRunner.RunTestScript("Test-RemoveWorkspaceAuditingSettingsMultipleDiagnosticSettings");

@@ -1,0 +1,84 @@
+{
+  "Get-AzElasticSanVolume+[NoContext]+List+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testelasticsan12jxnvboh/volumegroups/testvolgroup2jxnvboh/volumes?api-version=2021-11-20-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testelasticsan12jxnvboh/volumegroups/testvolgroup2jxnvboh/volumes?api-version=2021-11-20-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "0ac920e1-7837-49d7-a0ec-ce57bb9c483e" ],
+        "CommandName": [ "Get-AzElasticSanVolume" ],
+        "FullCommandName": [ "Get-AzElasticSanVolume_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.6", "Az.ElasticSan/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "dea084a5-c388-4e5e-bfd3-e286a11a8105" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-correlation-request-id": [ "985b44cd-bda2-4259-ada9-bcd239ff2108" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T102608Z:985b44cd-bda2-4259-ada9-bcd239ff2108" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 22 Sep 2022 10:26:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "952" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"creationData\":{\"createSource\":\"None\"},\"sizeGiB\":100,\"storageTarget\":{\"targetIqn\":\"iqn.2022-09.net.windows.core.blob.ElasticSan.es-zynfyiywn1h0:testvol2jxnvboh\",\"provisioningState\":\"Succeeded\",\"status\":\"Running\",\"targetPortalHostname\":\"es-zynfyiywn1h0.z38.blob.storage.azure.net\",\"targetPortalPort\":3260},\"volumeId\":\"c348f767-7641-4584-9be9-49d16e99f493\"},\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testelasticsan12jxnvboh/volumegroups/testvolgroup2jxnvboh/volumes/testvol2jxnvboh\",\"name\":\"testvol2jxnvboh\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"systemData\":{\"createdAt\":\"2022-09-22T10:23:53.0635565Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T10:23:53.0635565Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzElasticSanVolume+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testelasticsan12jxnvboh/volumegroups/testvolgroup2jxnvboh/volumes/testvol2jxnvboh?api-version=2021-11-20-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testelasticsan12jxnvboh/volumegroups/testvolgroup2jxnvboh/volumes/testvol2jxnvboh?api-version=2021-11-20-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "e67a8180-e56f-4b43-89f5-6f1287dffc88" ],
+        "CommandName": [ "Get-AzElasticSanVolume" ],
+        "FullCommandName": [ "Get-AzElasticSanVolume_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.6", "Az.ElasticSan/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "41898a41-80d8-4101-80fa-498e703fe946" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "x-ms-correlation-request-id": [ "a7ebdee9-02b9-4f26-82b5-d205f20ba55d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T102609Z:a7ebdee9-02b9-4f26-82b5-d205f20ba55d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 22 Sep 2022 10:26:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "940" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"creationData\":{\"createSource\":\"None\"},\"sizeGiB\":100,\"storageTarget\":{\"targetIqn\":\"iqn.2022-09.net.windows.core.blob.ElasticSan.es-zynfyiywn1h0:testvol2jxnvboh\",\"provisioningState\":\"Succeeded\",\"status\":\"Running\",\"targetPortalHostname\":\"es-zynfyiywn1h0.z38.blob.storage.azure.net\",\"targetPortalPort\":3260},\"volumeId\":\"c348f767-7641-4584-9be9-49d16e99f493\"},\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testelasticsan12jxnvboh/volumegroups/testvolgroup2jxnvboh/volumes/testvol2jxnvboh\",\"name\":\"testvol2jxnvboh\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"systemData\":{\"createdAt\":\"2022-09-22T10:23:53.0635565Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T10:23:53.0635565Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}}",
+      "isContentBase64": false
+    }
+  }
+}

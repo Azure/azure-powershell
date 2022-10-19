@@ -12,6 +12,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using global::Azure.Storage;
     using global::Azure.Storage.Blobs;
     using global::Azure.Storage.Blobs.Specialized;
+    using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Sas;
     using Microsoft.Azure.Storage.Auth;
     using Microsoft.Azure.Storage.Blob;
@@ -39,14 +40,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
 
             string sasToken = GetFileSASToken(file);
-
+            if (!sasToken.StartsWith("?"))
+            {
+                sasToken = "?" + sasToken;
+            }
+            
             if (string.IsNullOrEmpty(sasToken))
             {
                 return file.SnapshotQualifiedUri;
             }
             else
             {
-                return new Uri(string.Format(CultureInfo.InvariantCulture, "{0}{1}", file.SnapshotQualifiedUri.AbsoluteUri, sasToken));
+                return new Uri(SasTokenHelper.GetFullUriWithSASToken(file.SnapshotQualifiedUri.AbsoluteUri, sasToken));
             }
         }
 
@@ -66,6 +71,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
 
             return new CloudFile(file.SnapshotQualifiedUri, new StorageCredentials(sasToken));
+        }
+
+        internal static Uri GenerateUriWithCredentials(
+           this ShareFileClient file)
+        {
+            if (null == file)
+            {
+                throw new ArgumentNullException("file");
+            }
+
+            if (!file.CanGenerateSasUri)
+            {
+                return file.Uri;
+            }
+            else
+            {
+                TimeSpan sasLifeTime = TimeSpan.FromMinutes(CopySASLifeTimeInMinutes);
+                return file.GenerateSasUri(ShareFileSasPermissions.Read, DateTimeOffset.UtcNow.Add(sasLifeTime));
+            }
         }
 
         private static string GetFileSASToken(CloudFile file)

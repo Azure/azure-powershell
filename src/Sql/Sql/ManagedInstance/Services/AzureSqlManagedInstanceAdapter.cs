@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             {
                 if (_microsoftGraphClient == null)
                 {
-                    _microsoftGraphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(Context, AzureEnvironment.Endpoint.Graph);
+                    _microsoftGraphClient = AzureSession.Instance.ClientFactory.CreateArmClient<MicrosoftGraphClient>(Context, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl);
                     _microsoftGraphClient.TenantID = Context.Tenant.Id;
                 }
                 return _microsoftGraphClient;

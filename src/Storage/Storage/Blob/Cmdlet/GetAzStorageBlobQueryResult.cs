@@ -158,7 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         this.Blob, Channel.StorageContext,
                         this.VersionId,
                         null,
-                        this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToString("o"),
+                        this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"),
                         this.ClientOptions, Track2Models.BlobType.Block);
                     break;
                 case NameParameterSet:
@@ -169,7 +169,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         this.Blob, Channel.StorageContext,
                         this.VersionId,
                         null,
-                        this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToString("o"),
+                        this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"),
                         this.ClientOptions, Track2Models.BlobType.Block);
                     break;
             }

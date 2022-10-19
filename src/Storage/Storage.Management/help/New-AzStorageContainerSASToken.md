@@ -180,7 +180,7 @@ Accept wildcard characters: False
 
 ### -Permission
 Specifies permissions for a storage container.
-It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete). The permissions that are supported for container resource type are described [here](https://learn.microsoft.com/rest/api/storageservices/create-service-sas#permissions-for-a-directory-container-or-blob).
 
 ```yaml
 Type: System.String

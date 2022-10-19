@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
 online version: https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhub
 schema: 2.0.0
@@ -8,67 +8,95 @@ schema: 2.0.0
 # New-AzEventHub
 
 ## SYNOPSIS
-Creates a new Event Hub.
+Creates or updates a new Event Hub as a nested resource within a Namespace.
 
 ## SYNTAX
 
-### EventhubPropertiesSet (Default)
 ```
-New-AzEventHub [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [-MessageRetentionInDays <Int64>] [-PartitionCount <Int64>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### EventhubInputObjectSet
-```
-New-AzEventHub [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [-InputObject <PSEventHubAttributes>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DestinationName <String>]
+ [-Encoding <EncodingCaptureDescription>] [-IntervalInSeconds <Int32>] [-MessageRetentionInDays <Int64>]
+ [-PartitionCount <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>]
+ [-StorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzEventHub cmdlet creates a new Azure Event Hub.
-To create Eventhub with Capture description properties, please follow the below steps (Examples 2). 
+Creates or updates a new Event Hub as a nested resource within a Namespace.
 
 ## EXAMPLES
 
-### Example 1: - Create new EventHub
+### Example 1: Create an EventHub entity
 ```powershell
-New-AzEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Name MyEventHubName
+New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -MessageRetentionInDays 6 -PartitionCount 5
 ```
 
-Creates an Event Hub named \`MyEventHubName\` with a 3-day message retention period and two partitions, in the \`WestUS\` location, with resource group \`MyResourceGroupName\`.
-
-### Example 2: Update Eventhub with 'CaptureDescription'
-```powershell
-New-AzEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Name MyEventHubName -MessageRetentionInDays 3 -PartitionCount 2
-
-$CreatedEventHub = Get-AzEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName
-
-$createdEventHub.CaptureDescription = New-Object -TypeName Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes
-
-$createdEventHub.CaptureDescription.Enabled = $true
-$createdEventHub.CaptureDescription.IntervalInSeconds  = 120
-$createdEventHub.CaptureDescription.Encoding  = "Avro"
-$createdEventHub.CaptureDescription.SizeLimitInBytes = 10485763
-$createdEventHub.CaptureDescription.Destination.Name = "EventHubArchive.AzureBlockBlob"
-$createdEventHub.CaptureDescription.Destination.BlobContainer = "container"
-$createdEventHub.CaptureDescription.Destination.ArchiveNameFormat = "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
-$createdEventHub.CaptureDescription.Destination.StorageAccountResourceId = "/subscriptions/{SubscriptionId}/resourceGroups/MyResourceGroupName/providers/Microsoft.ClassicStorage/storageAccounts/arjunteststorage"
-Set-AzEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName -InputObject $createdEventHub
+```output
+ArchiveNameFormat            :
+BlobContainer                :
+CaptureEnabled               :
+CreatedAt                    : 9/1/2022 5:55:46 AM
+DataLakeAccountName          :
+DataLakeFolderPath           :
+DataLakeSubscriptionId       :
+DestinationName              :
+Encoding                     :
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub
+IntervalInSeconds            :
+Location                     : centralus
+MessageRetentionInDays       : 6
+Name                         : myFirstEventHub
+PartitionCount               : 5
+PartitionId                  : {0}
+ResourceGroupName            : myResourceGroup
+SizeLimitInBytes             :
+SkipEmptyArchive             :
+Status                       : Active
 ```
 
-Creates an Event Hub named \`MyEventHubName\` with a 3-day message retention period, 2 partitions and CaptureDescription properties in the \`WestUS\` location, with resource group \`MyResourceGroupName\`.
+Creates a new eventhub entity `myEventHub` on namespace `myNamespace`.
+
+### Example 2: Create EventHub with Capture Enabled
+```powershell
+New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
+```
+
+```output
+ArchiveNameFormat            : {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}
+BlobContainer                : container
+CaptureEnabled               : true
+CreatedAt                    : 9/1/2022 5:55:46 AM
+DataLakeAccountName          :
+DataLakeFolderPath           :
+DataLakeSubscriptionId       :
+DestinationName              :
+Encoding                     : Avro
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myFirstEventHub
+IntervalInSeconds            : 600
+Location                     : centralus
+MessageRetentionInDays       : 6
+Name                         : myFirstEventHub
+PartitionCount               : 5
+PartitionId                  : {0}
+ResourceGroupName            : myResourceGroup
+SizeLimitInBytes             : 11000000
+SkipEmptyArchive             : true
+Status                       : Active
+```
+
+Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with capture enabled.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -ArchiveNameFormat
+Blob naming convention for archive, e.g.
+{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}.
+Here all the parameters (Namespace,EventHub ..
+etc) are mandatory irrespective of order
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.String
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -77,38 +105,114 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-EventHub Input object
+### -BlobContainer
+Blob container Name
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes
-Parameter Sets: EventhubInputObjectSet
-Aliases: EventHubObj
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MessageRetentionInDays
-Eventhub Message Retention In Days
-
-```yaml
-Type: System.Nullable`1[System.Int64]
-Parameter Sets: EventhubPropertiesSet
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CaptureEnabled
+A value that indicates whether capture description is enabled.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationName
+Name for capture destination
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Encoding
+Enumerates the possible values for the encoding format of capture description.
+Note: 'AvroDeflate' will be deprecated in New API Version
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EncodingCaptureDescription
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IntervalInSeconds
+The time window allows you to set the frequency with which the capture to Azure Blobs will happen, value should between 60 to 900 seconds
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MessageRetentionInDays
+Number of days to retain the events for this Event Hub, value should be 1 to 7 days
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Eventhub Name
+The Event Hub name
 
 ```yaml
 Type: System.String
@@ -116,44 +220,44 @@ Parameter Sets: (All)
 Aliases: EventHubName
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Namespace
-Namespace Name
+### -NamespaceName
+The Namespace name
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: NamespaceName
+Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PartitionCount
-Eventhub PartitionCount
+Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.
 
 ```yaml
-Type: System.Nullable`1[System.Int64]
-Parameter Sets: EventhubPropertiesSet
+Type: System.Int64
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
@@ -161,9 +265,85 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SizeLimitInBytes
+The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipEmptyArchive
+A value that indicates whether to Skip Empty Archives
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Status
+Enumerates the possible values for the status of the Event Hub.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EntityStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountResourceId
+Resource id of the storage account to be used to create the blobs
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -199,20 +379,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes
-
-### System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS

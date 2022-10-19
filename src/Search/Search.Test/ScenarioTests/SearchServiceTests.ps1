@@ -924,7 +924,7 @@ function Test-ManageAzSearchSharedPrivateLinkResourceJob
 			if ($createState -ne "Completed")
 			{
 				Write-Verbose "Job still running waiting for 30 seconds before trying again"
-				Start-Sleep -Seconds 30
+				Start-TestSleep -Seconds 30
 			}
 			else
 			{
@@ -958,7 +958,7 @@ function Test-ManageAzSearchSharedPrivateLinkResourceJob
 			if ($deleteState -ne "Completed")
 			{
 				Write-Verbose "Job still running waiting for 30 seconds before trying again"
-				Start-Sleep -Seconds 30
+				Start-TestSleep -Seconds 30
 			}
 			else
 			{
