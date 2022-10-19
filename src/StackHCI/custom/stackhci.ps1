@@ -4917,8 +4917,8 @@ function Install-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
     
-    if(Get-AzStackHCIRemoteSupportServiceExists){
-        Write-Host "Install-AzStackHCIRemoteSupport is not available."
+    if(Get-AzureStackDeviceType){
+        Write-Verbose "Install-AzStackHCIRemoteSupport is not available." -Verbose
     }
     else{
         Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
@@ -4943,8 +4943,8 @@ function Remove-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
     
-    if(Get-AzStackHCIRemoteSupportServiceExists){
-        Write-Host "Remove-AzStackHCIRemoteSupport is not available."
+    if(Get-AzureStackDeviceType){
+        Write-Verbose "Remove-AzStackHCIRemoteSupport is not available." -Verbose
     }
     else{
         Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
@@ -5000,7 +5000,7 @@ function Enable-AzStackHCIRemoteSupport{
         $AgreeToRemoteSupportConsent
     )
 
-    if(Get-AzStackHCIRemoteSupportServiceExists){
+    if(Get-AzureStackDeviceType){
         Import-Module DiagnosticsInitializer -Verbose -Force
         Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
     }
@@ -5029,7 +5029,7 @@ function Disable-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
 
-    if(Get-AzStackHCIRemoteSupportServiceExists){
+    if(Get-AzureStackDeviceType){
         Import-Module DiagnosticsInitializer -Verbose -Force
         Disable-RemoteSupport
     }
@@ -5071,7 +5071,7 @@ function Get-AzStackHCIRemoteSupportAccess{
         $IncludeExpired
     )
 
-    if(Get-AzStackHCIRemoteSupportServiceExists){
+    if(Get-AzureStackDeviceType){
         Import-Module DiagnosticsInitializer -Verbose -Force
         Get-RemoteSupportAccess -IncludeExpired:$IncludeExpired
     }
@@ -5092,23 +5092,24 @@ function Get-AzStackHCIRemoteSupportAccess{
 
 .EXAMPLE
     The example below returns whether environment is HCI or not.
-    PS C:\> Get-AzStackHCIRemoteSupportServiceExists
+    PS C:\> Get-AzureStackDeviceType
 
 .NOTES
 #>
-function Get-AzStackHCIRemoteSupportServiceExists{
+function Get-AzureStackDeviceType{
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType([Boolean])]
     param()
 
     try{
         $obsService = Get-Service -Name "*Observability RemoteSupportAgent*" -ErrorAction SilentlyContinue
-        if($null -eq $obsService){
-            Write-Host "No service matching *Observability RemoteSupportAgent* found."
+        $deviceType = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\AzureStack").DeviceType
+        if($null -eq $obsService -or $deviceType -ne "AzureEdge"){
+            Write-Verbose "AzureStack device type is not AzureEdge." -Verbose
             return $false
         }
         else{
-            Write-Host "Service matching *Observability RemoteSupportAgent* found."
+            Write-Verbose "AzureStack device type is AzureEdge." -Verbose
             return $true
         }
     }
@@ -5160,7 +5161,7 @@ function Get-AzStackHCIRemoteSupportSessionHistory{
         $FromDate = (Get-Date).AddDays(-7)
     )
 
-    if(Get-AzStackHCIRemoteSupportServiceExists){
+    if(Get-AzureStackDeviceType){
         Import-Module DiagnosticsInitializer -Verbose -Force
         Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
     }
