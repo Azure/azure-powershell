@@ -14,14 +14,16 @@ Starts the test migration for the replicating server.
 
 ### ByIDVMwareCbt (Default)
 ```
-Start-AzMigrateTestMigration -TargetObjectID <String> -TestNetworkID <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Start-AzMigrateTestMigration -TargetObjectID <String> -TestNetworkID <String>
+ [-NicToUpdate <IVMwareCbtNicInput[]>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
-Start-AzMigrateTestMigration -InputObject <IMigrationItem> -TestNetworkID <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Start-AzMigrateTestMigration -InputObject <IMigrationItem> -TestNetworkID <String>
+ [-NicToUpdate <IVMwareCbtNicInput[]>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +65,8 @@ By machine id.
 ### Example 2: By input object
 ```powershell
 $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -SubscriptionId $env.srsSubscriptionId
-Start-AzMigrateTestMigration -InputObject $obj -TestNetworkId '/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork'
+$nic = New-AzMigrateTestNicMapping -NicID "a2399354-653a-464e-a567-d30ef5467a31" -TestNicSubnet "subnet1"
+Start-AzMigrateTestMigration -InputObject $obj -TestNetworkId '/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork' -NicToUpdate $nic
 ```
 
 ```output
@@ -120,6 +123,22 @@ Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NicToUpdate
+Updates the NIC for the Azure VM to be created.
+To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -194,6 +213,11 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource Location
   - `[ProviderSpecificDetail <IMigrationProviderSpecificSettings>]`: The migration provider custom settings.
     - `InstanceType <String>`: Gets the instance type.
+
+`NICTOUPDATE <IVMwareCbtNicInput[]>`: Updates the NIC for the Azure VM to be created.
+  - `IsPrimaryNic <String>`: A value indicating whether this is the primary NIC.
+  - `NicId <String>`: The NIC Id.
+  - `[TestSubnetName <String>]`: The test subnet name.
 
 ## RELATED LINKS
 

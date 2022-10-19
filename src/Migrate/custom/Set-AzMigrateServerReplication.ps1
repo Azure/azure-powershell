@@ -64,6 +64,12 @@ function Set-AzMigrateServerReplication {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
+        # Updates the Virtual Network id within the destination Azure subscription to which the server needs to be test migrated.
+        ${TestNetworkId},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
         # Updates the Resource Group id within the destination Azure subscription to which the server needs to be migrated.
         ${TargetResourceGroupID},
 
@@ -222,6 +228,7 @@ function Set-AzMigrateServerReplication {
         $HasTargetDiskName = $PSBoundParameters.ContainsKey('TargetDiskName')
         $HasTargetVmSize = $PSBoundParameters.ContainsKey('TargetVMSize')
         $HasTargetNetworkId = $PSBoundParameters.ContainsKey('TargetNetworkId')
+        $HasTestNetworkId = $PSBoundParameters.ContainsKey('TestNetworkId')
         $HasTargetResourceGroupID = $PSBoundParameters.ContainsKey('TargetResourceGroupID')
         $HasNicToUpdate = $PSBoundParameters.ContainsKey('NicToUpdate')
         $HasDiskToUpdate = $PSBoundParameters.ContainsKey('DiskToUpdate')
@@ -243,6 +250,7 @@ function Set-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('TargetDiskName')
         $null = $PSBoundParameters.Remove('TargetVMSize')
         $null = $PSBoundParameters.Remove('TargetNetworkId')
+        $null = $PSBoundParameters.Remove('TestNetworkId')
         $null = $PSBoundParameters.Remove('TargetResourceGroupID')
         $null = $PSBoundParameters.Remove('NicToUpdate')
         $null = $PSBoundParameters.Remove('DiskToUpdate')
@@ -476,6 +484,13 @@ function Set-AzMigrateServerReplication {
                 $ProviderSpecificDetails.TargetNetworkId = $ReplicationMigrationItem.ProviderSpecificDetail.TargetNetworkId
             }
 
+            if ($HasTestNetworkId) {
+                $ProviderSpecificDetails.TestNetworkId = $TestNetworkId
+            }
+            else {
+                $ProviderSpecificDetails.TestNetworkId = $ReplicationMigrationItem.ProviderSpecificDetail.VMNic[0].TestNetworkId
+            }
+
             if ($HasTargetResourceGroupID) {
                 $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupID
             }
@@ -594,7 +609,9 @@ function Set-AzMigrateServerReplication {
                 $updateNic.IsSelectedForMigration = $storedNic.IsSelectedForMigration
                 $updateNic.NicId = $storedNic.NicId
                 $updateNic.TargetStaticIPAddress = $storedNic.TargetIPAddress
+                $updateNic.TestStaticIPAddress = $storedNic.TestIPAddress
                 $updateNic.TargetSubnetName = $storedNic.TargetSubnetName
+                $updateNic.TestSubnetName = $storedNic.TestSubnetName
                 $updateNic.TargetNicName = $storedNic.TargetNicName
 
                 $matchingUserInputNic = $null
@@ -617,6 +634,9 @@ function Set-AzMigrateServerReplication {
                     }
                     if ($null -ne $matchingUserInputNic.TargetSubnetName) {
                         $updateNic.TargetSubnetName = $matchingUserInputNic.TargetSubnetName
+                    }
+                    if ($null -ne $matchingUserInputNic.TestSubnetName) {
+                        $updateNic.TestSubnetName = $matchingUserInputNic.TestSubnetName
                     }
                     if ($null -ne $matchingUserInputNic.TargetNicName) {
                         $nicId = $ProviderSpecificDetails.TargetResourceGroupId + "/providers/Microsoft.Network/networkInterfaces/" + $matchingUserInputNic.TargetNicName
@@ -642,6 +662,18 @@ function Set-AzMigrateServerReplication {
                                  throw "(InvalidPrivateIPAddressFormat) Static IP address value '$($matchingUserInputNic.TargetStaticIPAddress)' is invalid."
                              }
                              $updateNic.TargetStaticIPAddress = $matchingUserInputNic.TargetStaticIPAddress
+                        }
+                    }
+                    if ($null -ne $matchingUserInputNic.TestStaticIPAddress) {
+                        if ($matchingUserInputNic.TestStaticIPAddress -eq "auto") {
+                            $updateNic.TestStaticIPAddress = $null
+                        }
+                        else {
+                            $isValidIpAddress = [ipaddress]::TryParse($matchingUserInputNic.TestStaticIPAddress,[ref][ipaddress]::Loopback)
+                             if(!$isValidIpAddress) {
+                                 throw "(InvalidPrivateIPAddressFormat) Static IP address value '$($matchingUserInputNic.TestStaticIPAddress)' is invalid."
+                             }
+                             $updateNic.TestStaticIPAddress = $matchingUserInputNic.TestStaticIPAddress
                         }
                     }
                 }
