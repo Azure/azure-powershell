@@ -191,10 +191,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 AzurePSDataCollectionProfile.EnvironmentVariableName,
                 new[] { AppliesTo.Az }));
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
-                ConfigKeys.EnableCmdletStats,
+                ConfigKeys.EnableTestCoverage,
                 "N/A",
                 false,
-                "Azure_PS_Cmdlet_Stats",
+                "Azure_PS_TestCoverage",
                 new[] { AppliesTo.Az }));
 
             configManager.RegisterConfig(new EnableInterceptSurveyConfig());

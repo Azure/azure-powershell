@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 var repoRootFolder = ProbeRepoDirectory();
                 if (!string.IsNullOrEmpty(repoRootFolder))
                 {
-                    s_statsOutputRootFolder = Path.Combine(repoRootFolder, "artifacts", "CmdletStatisticsAnalysis", "Raw");
+                    s_statsOutputRootFolder = Path.Combine(repoRootFolder, "artifacts", "TestCoverageAnalysis", "Raw");
                     DirectoryInfo rawDir = new DirectoryInfo(s_statsOutputRootFolder);
                     if (!rawDir.Exists)
                     {
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return recordBuilder.ToString();
         }
 
-        public void LogCmdletStats(string moduleName, string commandName, string parameterSetName, string parameters, string sourceScript, int scriptLineNumber, TimeSpan duration, bool isSuccess)
+        public void LogTestCoverageRawData(string moduleName, string commandName, string parameterSetName, string parameters, string sourceScript, int scriptLineNumber, TimeSpan duration, bool isSuccess)
         {
 #if DEBUG || CMDLETACTION_STATS
             if (!s_isWindowsPlatform || string.IsNullOrEmpty(moduleName) || string.IsNullOrEmpty(commandName) || ExcludedSource.Contains(sourceScript))
