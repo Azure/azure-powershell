@@ -604,6 +604,8 @@ function Test-PrivateEndpointIpConfiguration
         Assert-AreEqual $ipcfg.GroupId $pe.IpConfigurations[0].GroupId
         Assert-AreEqual $ipcfg.MemberName $pe.IpConfigurations[0].MemberName
         Assert-AreEqual $ipcfg.PrivateIPAddress $pe.IpConfigurations[0].PrivateIPAddress
+
+        Assert-AreEqual 1, 0
     }
     finally
     {
@@ -699,6 +701,8 @@ function Test-PrivateEndpointCustomNetworkInterfaceName
         $pe = Get-AzPrivateEndpoint -Name $rname -ResourceGroupName $rgname
         Assert-NotNull $pe
         Assert-AreEqual "CustomNetworkInterfaceName" $pe.CustomNetworkInterfaceName
+
+        Get-AzPrivateEndpoint -NotExistedParameter "vidai-rg"
     }
     finally
     {
