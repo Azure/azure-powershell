@@ -3,9 +3,10 @@ C:\Users\weiwei\Desktop\PSH_Script\PSHTest\utils.ps1
 
 
 BeforeAll {
-    Import-Module C:\Users\weiwei\Desktop\PSH_Script\Assert.ps1
-    Import-Module C:\Users\weiwei\Desktop\PSH_Script\PSHTest\utils.ps1
-    $config = (Get-Content D:\code\azure-powershell\src\Storage\RegressionTests\config.json -Raw | ConvertFrom-Json).dataplane
+    $filePathConfig = (Get-Content D:\psh_scripts\config.json -Raw | ConvertFrom-Json).filePaths
+    Import-Module $filePathConfig.assert
+    Import-Module $filePathConfig.utils
+    $config = (Get-Content D:\psh_scripts\config.json -Raw | ConvertFrom-Json).dataplane
     $rootFolder = "C:\temp"
     cd $rootFolder
 
@@ -21,13 +22,17 @@ BeforeAll {
     $ctxoauth2 = New-AzStorageContext -StorageAccountName $storageAccountName2
 
     $ctx = New-AzStorageContext -StorageAccountName weirp1 -StorageAccountKey $config.credentials.storageAccountKey
+    $ctx2 = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName2).Context
+
+    # TODO: extract all the paths here to config file 
     $localSmallSrcFile = "C:\temp\testfile_1K_0"
-    $localBigSrcFile = "C:\Users\weiwei\source\repos\genreateFile\genreateFile\bin\Debug\testfile_300000K_0"
+    $localBigSrcFile = $config.files.localBigSrcFile
     $localSrcFile = "C:\temp\testfile_10240K_0" #The file need exist before test, and should be 512 bytes aligned
     $localDestFile = "C:\temp\test1.txt" # test will create the file
     $containerName = GetRandomContainerName
     # $containerName = "weitest"
- 
+
+    $blobCopySrcFile10M = "D:\storageRegressionTestFiles\test10mb"
 
     New-AzStorageContainer $containerName -Context $ctx
     New-AzStorageShare $containerName -Context $ctx
@@ -1138,6 +1143,96 @@ Describe "dataplane test" {
         $items.Count | should -be 7
 
         Remove-AzDatalakeGen2FileSystem -Name $filesystemName -Context $ctx -Force
+
+        $Error.Count | should -be 0
+    }
+
+    It "Cross type blob copy"  {
+        $Error.Clear()     
+        
+        $blobTypes = @("Block", "Page", "Append")
+
+        $containerSAS = New-AzStorageContainerSASToken -Name $containerName -Permission  rwdl -ExpiryTime (Get-Date).AddDays(100) -Context $ctx
+        $sasctx = New-AzStorageContext -StorageAccountName $ctx.StorageAccountName -SasToken $containerSAS
+
+        # Create the containers and upload the src blobs 
+        if ($false) { 
+            New-AzStorageContainer -Name $containerName -Context $ctx
+            New-AzStorageContainer -Name $containerName -Context $ctx2
+
+            foreach ($srcType in $blobTypes) {
+                $smallSrcBlob = Set-AzStorageBlobContent -File $blobCopySrcFile10M -Container $containerName -Blob "$($srctype)SmallSource" -Context $ctx -BlobType $srctype -Properties @{"ContentType" = "image/jpeg"} -Metadata @{"tag1" = "value1"; "tag2" = "value2"}
+                $largeSrcBlob = Set-AzStorageBlobContent -File $localBigSrcFile -Container $containerName -Blob "$($srctype)LargeSource" -Context $ctx -BlobType $srctype -Properties @{"ContentType" = "image/jpeg"} -Metadata @{"tag1" = "value1"; "tag2" = "value2"}
+            }
+        }
+        
+        # tests for 9 directions of blob type conversions 
+        foreach ($srcType in $blobTypes) {
+            foreach ($destType in $blobTypes) { 
+                # Small src file. Key ctx
+                $smallDestBlob = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob "$($srctype)SmallSource" -Context $ctx -DestContainer $containerName -DestBlob "$($srcType)TO$($destType)SmallDest" -DestContext $ctx2 -DestBlobType $destType -Force
+                $smallDestBlob.Name | Should -Be "$($srctype)TO$($desttype)SmallDest"
+                $smallDestBlob.BlobProperties.ContentType | Should -Be "image/jpeg"
+                $smallDestBlob.BlobProperties.ContentLength | Should -Be (Get-Item $blobCopySrcFile10M).Length
+                $smallDestBlob.BlobProperties.Metadata.Count | Should -Be 2 
+                $smallDestBlob.BlobBaseClient.AccountName | Should -Be $storageAccountName2
+
+                # compare content 
+                $smallDestBlob | Get-AzStorageBlobContent -Destination $localDestFile -Force 
+                CompareFileMD5 $localBigSrcFile $localDestFile
+                del $localDestFile
+                $smallDestBlob | Remove-AzStorageBlob
+
+                # Small src file. Sas ctx
+                $smallDestBlob2 = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob "$($srctype)SmallSource" -Context $sasctx -DestContainer $containerName -DestBlob "$($srcType)TO$($destType)SmallDest2"  -DestBlobType $destType -Force
+                $smallDestBlob2.Name | Should -Be "$($srctype)TO$($desttype)SmallDest2"
+                $smallDestBlob2.BlobProperties.ContentType | Should -Be "image/jpeg"
+                $smallDestBlob2.BlobProperties.ContentLength | Should -Be (Get-Item $blobCopySrcFile10M).Length
+                $smallDestBlob2.BlobProperties.Metadata | Should -Be 2 
+                $smallDestBlob2.BlobBaseClient.AccountName | Should -Be $storageAccountName
+                
+                $smallDestBlob2 | Get-AzStorageBlobContent -Destination $localDestFile -Force 
+                CompareFileMD5 $localBigSrcFile $localDestFile
+                del $localDestFile
+                $smallDestBlob2 | Remove-AzStorageBlob
+
+                # Small src file. oauth ctx 
+                $smallDestBlob3 = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob "$($srctype)SmallSource" -Context $ctxoauth1 -DestContainer $containerName -DestBlob "$($srcType)TO$($destType)SmallDest3" -DestContext $ctxoauth2  -DestBlobType $destType -Force
+                $smallDestBlob3.Name | Should -Be "$($srctype)TO$($desttype)SmallDest3"
+                $smallDestBlob3.BlobProperties.ContentType | Should -Be "image/jpeg"
+                $smallDestBlob3.BlobProperties.ContentLength | Should -Be (Get-Item $blobCopySrcFile10M).Length
+                $smallDestBlob3.BlobProperties.Metadata | Should -Be 2 
+                $smallDestBlob3.BlobBaseClient.AccountName | Should -Be $storageAccountName2
+
+                $smallDestBlob3 | Get-AzStorageBlobContent -Destination $localDestFile -Force 
+                CompareFileMD5 $localBigSrcFile $localDestFile
+                del $localDestFile
+                $smallDestBlob3 | Remove-AzStorageBlob
+
+                $largeDestBlob = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob "$($srcType)BigSource" -Context $ctx -DestContainer $containerName -DestBlob "$($srcType)TO$($destType)BigDest" -DestContext $ctxoauth1 -DestBlobType $destType -Force
+                $largeDestBlob.Name | Should -Be "$($srcType)TO$($destType)BigDest"
+                $largeDestBlob.BlobProperties.ContentType | Should -Be "image/jpeg"
+                $largeDestBlob.BlobProperties.ContentLength | Should -Be (Get-Item $blobCopySrcFile10M).Length
+                $largeDestBlob.BlobProperties.Metadata | Should -Be 2 
+                $largeDestBlob.BlobBaseClient.AccountName | Should -Be $storageAccountName
+
+                $largeDestBlob | Get-AzStorageBlobContent -Destination $localDestFile -Force 
+                CompareFileMD5 $localBigSrcFile $localDestFile
+                del $localDestFile
+                $largeDestBlob | Remove-AzStorageBlob
+            }
+        }
+
+        # Block to block with access tier and rehydrate priority set 
+        $blockToBlock1 = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob "BlockSmallSource" -Context $ctx -DestContainer $containerName -DestBlob "BlockToBlockWithAccessTier" -DestContext $ctx2 -DestBlobType $destType -StandardBlobTier "Cool" -RehydratePriority High -Force
+        $blockToBlock1.AccessTier | Should -Be "Cool"
+
+        # blob version 
+        $smallSrcBlob = Set-AzStorageBlobContent -File $blobCopySrcFile10M -Container $containerName -Blob "$($srctype)SmallSource" -Context $ctx -BlobType $srctype -Properties @{"ContentType" = "image/jpeg"} -Metadata @{"tag1" = "value1"; "tag2" = "value2"}
+        $blobs = Get-AzStorageBlob -Container $containerName -Context $ctx -IncludeVersion
+        $blobVersion = $blob[1]
+        $destBlob = $blobVersion | Copy-AzStorageBlob -DestBlob "blobVersionToBlock" -DestBlobType Block -DestContext $ctx2 -Force
+        $destBlob.Name | Should -Be "blobVersionToBlock"
 
         $Error.Count | should -be 0
     }

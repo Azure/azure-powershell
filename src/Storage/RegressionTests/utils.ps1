@@ -1,6 +1,5 @@
-﻿
-
-Import-Module C:\Users\weiwei\Desktop\PSH_Script\Assert.ps1
+﻿$filePathConfig = (Get-Content D:\psh_scripts\config.json -Raw | ConvertFrom-Json).filePaths
+Import-Module $filePathConfig.assert
 
 
 function Assert-AreEqual
