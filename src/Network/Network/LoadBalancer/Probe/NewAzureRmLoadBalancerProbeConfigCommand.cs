@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    [GenericBreakingChange("Please note that the parameter -ProbeThreshold is currently in preview and is not recommended for production workloads. For most scenarios, we recommend maintaining the default value of 1 by not specifying the value of the property.")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerProbeConfig", SupportsShouldProcess = true), OutputType(typeof(PSProbe))]
     public partial class NewAzureRmLoadBalancerProbeConfigCommand : NetworkBaseCmdlet
     {
