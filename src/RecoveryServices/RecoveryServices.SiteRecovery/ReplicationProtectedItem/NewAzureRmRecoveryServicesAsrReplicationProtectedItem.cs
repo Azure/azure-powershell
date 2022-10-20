@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -179,6 +179,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [Parameter(ParameterSetName = VMwareToAzureWithDiskType)]
         [Parameter(ParameterSetName = VMwareToAzureParameterSet)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
         [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput)]
         [ValidateNotNullOrEmpty]
