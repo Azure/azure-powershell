@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed a bug that does not update firewall policy application, network and nat rules' descriptions even though description is provided via description parameter
 * Added new cmdlet `Get-AzNetworkSecurityPerimeterAssociableResourceType`
 * Updated `New-AzIpConfigurationBgpPeeringAddressObject` to remove validate null or empty check for CustomAddress in Azure Virtual Network Gateway
 * Updated `New-AzVirtualNetworkGateway` to add validate null or empty check for CustomAddress in Azure Virtual Network Gateway
