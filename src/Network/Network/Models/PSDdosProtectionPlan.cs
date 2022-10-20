@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSResourceId> VirtualNetworks { get; set; }
 
-        public List<PSResourceId> PublicIpAddresses { get; set; }
+        public List<PSResourceId> PublicIPAddresses { get; set; }
 
         [JsonIgnore]
         public string VirtualNetworksText
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string PublicIpAddressesText
         {
-            get { return JsonConvert.SerializeObject(PublicIpAddresses, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(PublicIPAddresses, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

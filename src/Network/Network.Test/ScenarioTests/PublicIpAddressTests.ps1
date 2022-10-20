@@ -613,27 +613,27 @@ function Test-PublicIpAddressCRUD-DdosProtection
     $rgname = Get-ResourceGroupName
     $rname = Get-ResourceName
     $domainNameLabel = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $ddosProtectionPlanName = Get-ResourceName
 
-    $DNSNameLabel = "mydnsname"
+    $rglocation = "southcentralus"
+    $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
+    $location = "southcentralus"
+
     $NetworkName = "MyNet"
     $NICName = "MyNIC"
-    $PublicIPAddressName = "ddosTempPIP"
     $SubnetName = "MySubnet"
     $SubnetAddressPrefix = "10.0.0.0/24"
     $VnetAddressPrefix = "10.0.0.0/16"
-    $VMName = "MyVM"
-    $VMSize = "ExtraSmall"
-   
+    $VMLocalAdminUser = "LocalAdminUser"
+    $VMLocalAdminSecurePassword = ConvertTo-SecureString "12%jhdhd772" -AsPlainText -Force
+
     try 
      {
       # Create the resource group
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
-      # Create publicIpAddres
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Standard -DomainNameLabel $domainNameLabel -DdosProtectionMode "Enabled"
+      # Create publicIpAddress
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Standard -DdosProtectionMode "Enabled"
       $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual $expected.Name $actual.Name
@@ -656,18 +656,37 @@ function Test-PublicIpAddressCRUD-DdosProtection
       Assert-AreEqual "Succeeded" $list[0].ProvisioningState
       Assert-AreEqual "Enabled" $expected.DdosSettings.ProtectionMode
 
+      #create ddos protection plan
+      $ddpp = New-AzDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgname -Location $location
+
+      # attach plan to pip
+      #$actual.DdosSettings.DdosProtectionPlan = New-Object Microsoft.Azure.Commands.Network.Models.PSResourceId
+      #$actual.DdosSettings.DdosProtectionPlan.Id = $ddpp.Id 
+      #$pip = Set-AzPublicIpAddress -PublicIpAddress $actual
+
+      #$pip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+      #Assert-AreEqual $ddpp.Id $pip.DdosSettings.DdosProtectionPlan.Id
+
       # Create Backend for Pip
       $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
-      $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $rgname -Location $location -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
-      $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $location -SubnetId $Vnet.Subnets[0].Id -PublicIpAddressId $expected.Id
+      $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $rgname -Location $location -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet      
+
+      $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+      $VirtualMachine = New-AzVM -ResourceGroupName $rgname -Name MyVm -Credential $Credential
       
-      $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
-      $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
-      New-AzVM -ResourceGroupName $rgname -Location $location -VM $VirtualMachine -Verbose
+      $NIC = Get-AzNetworkInterface -Name MyVm -ResourceGroupName $rgname
+      $NIC | Set-AzNetworkInterfaceIpConfig -Name MyVm -PublicIPAddress $expected -Subnet $SingleSubnet
+      $NIC | Set-AzNetworkInterface
 
       # Get DDoS Protection Status
-      $result = Get-AzPublicIpAddressDdosProtectionStatus -PublicIpAddress $expected
-      Assert-AreEqual "true" $result.IsWorkloadProtected
+      $pip = Get-AzPublicIpAddressDdosProtectionStatus -PublicIpAddress $expected
+      Assert-AreEqual "true" $pip.IsWorkloadProtected
+
+      #$actual.DdosSettings.DdosProtectionPlan = $null
+      #$pip = Set-AzPublicIpAddress -PublicIpAddress $actual
+
+      $result = Get-AzVirtualNetworkDdosProtectionStatus -ResourceGroupName $rgname -VirtualNetworkName "MyVm"
+      Assert-AreEqual "true" $result[0].IsWorkloadProtected
 
       # delete
       $delete = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force

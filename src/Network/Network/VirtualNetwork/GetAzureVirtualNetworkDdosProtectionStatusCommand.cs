@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public List<PSPublicIpDdosProtectionStatusResult> ListDdosProtectionStatus(string resourceGroupName, string vnetName, string skipToken, int top)
         {
-            var vList = this.NetworkClient.NetworkManagementClient.VirtualNetworks.ListDdosProtectionStatus(resourceGroupName, vnetName, top, skipToken);
+            var vList = this.NetworkClient.NetworkManagementClient.VirtualNetworks.ListDdosProtectionStatus(resourceGroupName, vnetName);
             var vnetUsageList = new List<PSPublicIpDdosProtectionStatusResult>();
             foreach (var pip in vList)
             {
