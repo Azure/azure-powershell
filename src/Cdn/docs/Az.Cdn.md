@@ -106,6 +106,10 @@ Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profi
 ### [Invoke-AzCdnCommitProfileMigration](Invoke-AzCdnCommitProfileMigration.md)
 Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 
+### [Move-AzCdnProfile](Move-AzCdnProfile.md)
+Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+The change need to be committed after this.
+
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
 

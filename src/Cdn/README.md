@@ -148,6 +148,7 @@ directive:
 
   # Hide Cdn profile
   - where:
+      verb: ^(?:(?!Move).*)$
       subject: Profile
     hide: true
   - where:
