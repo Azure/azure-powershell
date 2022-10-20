@@ -233,9 +233,6 @@ Gets the properties of a VMSS virtual machine.
 ### [Get-AzVmssVMDiskEncryption](Get-AzVmssVMDiskEncryption.md)
 Shows the disk encryption status of VMs in a VM scale set.
 
-### [Get-AzVmssVMRunCommand](Get-AzVmssVMRunCommand.md)
-The operation to get the VMSS VM run command.
-
 ### [Get-AzVMUsage](Get-AzVMUsage.md)
 Gets the virtual machine core count usage for a location.
 
