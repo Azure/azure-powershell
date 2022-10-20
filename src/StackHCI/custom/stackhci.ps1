@@ -5073,7 +5073,7 @@ function Get-AzStackHCIRemoteSupportAccess{
 
     if(Get-AzureStackDeviceType){
         Import-Module DiagnosticsInitializer -Verbose -Force
-        Get-RemoteSupportAccess -Cluster:$Cluster -IncludeExpired:$IncludeExpired
+        Get-RemoteSupportAccess -IncludeExpired:$IncludeExpired
     }
     else{
         Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"

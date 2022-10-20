@@ -57,7 +57,7 @@ New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-MMAWorkspac
 ### AzureVMSS
 ```
 New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-AzureVMSS] -ResourceId <String>
- -IncludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>
+ [-IncludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>]
  [-ExcludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>] [-CoverageLevel <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -93,6 +93,7 @@ Scope     : {
                ]
              }
 ```
+
 ## PARAMETERS
 
 ### -Address
@@ -113,6 +114,21 @@ Accept wildcard characters: False
 ```yaml
 Type: System.String
 Parameter Sets: ExternalAddress, MMAWorkspaceMachine
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureArcVM
+AzureArc VM endpoint switch
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureArcVM
 Aliases:
 
 Required: True
@@ -143,6 +159,21 @@ Azure VM endpoint switch.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AzureVM
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureVMSS
+Azure Virtual Machine Scale sets.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureVMSS
 Aliases:
 
 Required: True
@@ -285,36 +316,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureVMSS
-Azure Virtual Machine Scale sets.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AzureVMSS
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureArcVM
-AzureArc VM endpoint switch
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AzureArcVM
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the connection monitor endpoint.
 
@@ -335,7 +336,7 @@ Resource ID of the connection monitor endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork
+Parameter Sets: AzureVM, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork, AzureVMSS, AzureArcVM
 Aliases:
 
 Required: True

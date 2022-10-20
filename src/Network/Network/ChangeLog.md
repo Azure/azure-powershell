@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlet `Get-AzNetworkSecurityPerimeterAssociableResourceType`
 * Updated `New-AzIpConfigurationBgpPeeringAddressObject` to remove validate null or empty check for CustomAddress in Azure Virtual Network Gateway
 * Updated `New-AzVirtualNetworkGateway` to add validate null or empty check for CustomAddress in Azure Virtual Network Gateway
 * Updated cmdlets to add new property of `VirtualNetworkGatewayPolicyGroup` and `VpnClientConnectionConfiguration` in Azure Virtual Network Gateway

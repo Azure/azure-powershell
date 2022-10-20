@@ -33,7 +33,6 @@ The first command gets an application gateway and stores it in the $AppGw variab
 The second command removes the TCP\TLS listener named Listener02 from the application gateway stored in $AppGw.
 The last command updates the application gateway.
 
-
 ## PARAMETERS
 
 ### -ApplicationGateway
