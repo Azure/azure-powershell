@@ -19,6 +19,17 @@ Get-AzFirewallLearnedIpPrefix -FirewallName <String>  -ResourceGroupName <String
 ## DESCRIPTION
 The **Get-AzFirewallLearnedIpPrefix** cmdlet gets a firewall auto learned ip prefixes.
 
+## EXAMPLES
+
+### Example 1: Retrieve a Firewall auto learned ip prefixes by its name
+
+```powershell
+Get-AzFirewallLearnedIpPrefix -ResourceGroupName rgName -FirewallName azFw
+```
+
+```output
+IpPrefixes :    [ "10.101.0.0/16", "10.102.0.0/16" ]
+```
 
 ## PARAMETERS
 
