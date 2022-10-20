@@ -31,6 +31,10 @@
     * `New-AzVpnClientConnectionConfiguration`
 * Added message in breaking change attribute to notify that load balancer sku default behaviour will be changed
     * `New-AzLoadBalancer`
+* Added breaking change attribute to notify customers to use default value of ProbeThreshold parameter for Load Balancer Probe
+  * `Add-AzLoadBalancerProbeConfig`
+  * `New-AzLoadBalancerProbeConfig`
+  * `Set-AzLoadBalancerProbeConfig`
 
 ## Version 5.0.0
 * Added a new endpoint switch `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`
@@ -75,6 +79,9 @@
 
 ## Version 4.20.0
 * Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
+* Added breaking change attribute to notify that public ip address sku default behaviour will be changed
+    - `New-AzPublicIpAddress`
+    - `New-AzLoadBalancer`
 * Fixed required parameter `PrivateLinkResourceType` missing issue for the following cmdlets [#18655]
     - `Get-AzPrivateEndpointConnection`
     - `Set-AzPrivateEndpointConnection`
