@@ -15,6 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzCostManagementReserv
 }
 
 Describe 'Invoke-AzCostManagementReservationDetailReport' {
+    # No authorization to execute
     It 'By' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

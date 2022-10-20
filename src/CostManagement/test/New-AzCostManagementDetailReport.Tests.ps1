@@ -15,6 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCostManagementDetailRep
 }
 
 Describe 'New-AzCostManagementDetailReport' {
+    # Currently this API does not support AIRS(Microsoft Internal) type subscriptions.
     It 'CreateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
