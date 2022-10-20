@@ -66,7 +66,7 @@ $ErrorActionPreference = “Stop”;
             else
             {
                 Write-Host "Sleeping 10 seconds to actiavate AzureDiskEncryption-VMSS feature . Retry count :  ($i)";
-                Start-Sleep -Seconds 10;
+                Start-TestSleep -Seconds 10
             }         
         }
         if(!$vmssDiskEncryptionFeature -or $vmssDiskEncryptionFeature.RegistrationState -ne 'Registered')

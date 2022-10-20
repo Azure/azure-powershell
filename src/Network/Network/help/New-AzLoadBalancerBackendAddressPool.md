@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspool
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspool
 schema: 2.0.0
 ---
 
@@ -12,22 +12,23 @@ Creates a backend address pool on a loadbalancer.
 
 ## SYNTAX
 
-### CreateByNameParameterSet
+### CreateByNameParameterSet (Default)
 ```
 New-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
- [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>] [-TunnelInterface <PSTunnelInterface[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TunnelInterface <PSTunnelInterface[]>] [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
 ```
 New-AzLoadBalancerBackendAddressPool -LoadBalancer <PSLoadBalancer> -Name <String>
- [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>] [-TunnelInterface <PSTunnelInterface[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TunnelInterface <PSTunnelInterface[]>] [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Creates a backend address pool on a loadbalancer. Allows for specifiying a array of PSLoadBalancerBackendAddress. 
+
 ## EXAMPLES
 
 ### Example 1
@@ -74,7 +75,7 @@ New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBala
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -89,7 +90,7 @@ Accept wildcard characters: False
 The load balancer resource.
 
 ```yaml
-Type: PSLoadBalancer
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 Parameter Sets: CreateByParentObjectParameterSet
 Aliases:
 
@@ -104,7 +105,7 @@ Accept wildcard characters: False
 The backend addresses.
 
 ```yaml
-Type: PSLoadBalancerBackendAddress[]
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancerBackendAddress[]
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +120,7 @@ Accept wildcard characters: False
 The name of the load balancer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateByNameParameterSet
 Aliases:
 
@@ -134,7 +135,7 @@ Accept wildcard characters: False
 The name of the backend pool.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +150,7 @@ Accept wildcard characters: False
 The resource group name of the load balancer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateByNameParameterSet
 Aliases:
 
@@ -160,11 +161,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TunnelInterface
+Gateway Load Balancer provider configurations.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSTunnelInterface[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -180,7 +196,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

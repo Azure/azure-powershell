@@ -47,20 +47,51 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string galleryName = this.Name;
                     Gallery gallery = new Gallery();
                     gallery.Location = this.Location;
-                    if (this.IsParameterBound(c => c.Permission)){
-                        gallery.SharingProfile = new SharingProfile();
-                        gallery.SharingProfile.Permissions = this.Permission;
-                    }
+                    CommunityGalleryInfo communityGalleryInfo = new CommunityGalleryInfo();
+
 
                     if (this.IsParameterBound(c => c.Description))
                     {
                         gallery.Description = this.Description;
                     }
 
+                    if (this.IsParameterBound(c => c.PublisherUri))
+                    {
+                        communityGalleryInfo.PublisherUri = this.PublisherUri;
+                    }
+
+                    if (this.IsParameterBound(c => c.PublisherContact))
+                    {
+                        communityGalleryInfo.PublisherContact = this.PublisherContact;
+                    }
+
+                    if (this.IsParameterBound(c => c.Eula))
+                    {
+                        communityGalleryInfo.Eula = this.Eula;
+                    }
+
+                    if (this.IsParameterBound(c => c.PublicNamePrefix))
+                    {
+                        communityGalleryInfo.PublicNamePrefix = this.PublicNamePrefix;
+                    }
+
+                    if (this.IsParameterBound(c => c.Permission))
+                    {
+                        gallery.SharingProfile = new SharingProfile();
+                        gallery.SharingProfile.Permissions = this.Permission;
+
+                        if (gallery.SharingProfile.Permissions.ToLower() == "community")
+                        {
+                            gallery.SharingProfile.CommunityGalleryInfo = communityGalleryInfo;
+                        }
+                    }
+
+
                     if (this.IsParameterBound(c => c.Tag))
                     {
                         gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
+
 
                     var result = GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
                     var psObject = new PSGallery();
@@ -110,9 +141,34 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "This property allows you to specify the permission of sharing gallery. Possible values are: 'Private' and 'Groups'.")]
-        [PSArgumentCompleter("Private","Groups")]
+            HelpMessage = "This property allows you to specify the permission of sharing gallery. Possible values are: 'Private', 'Groups' and 'Community'.")]
+        [PSArgumentCompleter("Private","Groups","Community")]
         public string Permission { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets the link to the publisher website. Visible to all users.")]
+        public string PublisherUri { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets community gallery publisher support email. The email address of the publisher. Visible to all users.")]
+        public string PublisherContact { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets end-user license agreement for community gallery image.")]
+        public string Eula { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets the prefix of the gallery name that will be displayed publicly. Visible to all users.")]
+        public string PublicNamePrefix { get; set; }
+
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Gallery", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -145,6 +201,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
 
                     Gallery gallery = new Gallery();
+                    CommunityGalleryInfo communityGalleryInfo = new CommunityGalleryInfo();
 
                     if (this.ParameterSetName == "ObjectParameter")
                     {
@@ -160,10 +217,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         gallery.Description = this.Description;
                     }
 
+                    if (this.IsParameterBound(c => c.PublisherUri))
+                    {
+                        communityGalleryInfo.PublisherUri = this.PublisherUri;
+                    }
+
+                    if (this.IsParameterBound(c => c.PublisherContact))
+                    {
+                        communityGalleryInfo.PublisherContact = this.PublisherContact;
+                    }
+
+                    if (this.IsParameterBound(c => c.Eula))
+                    {
+                        communityGalleryInfo.Eula = this.Eula;
+                    }
+
+                    if (this.IsParameterBound(c => c.PublicNamePrefix))
+                    {
+                        communityGalleryInfo.PublicNamePrefix = this.PublicNamePrefix;
+                    }
+
                     if (this.IsParameterBound(c => c.Tag))
                     {
                         gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
+
                     if (this.IsParameterBound(c => c.Permission))
                     {
                         if (gallery.SharingProfile == null)
@@ -171,6 +249,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             gallery.SharingProfile = new SharingProfile();
                         }
                         gallery.SharingProfile.Permissions = this.Permission;
+
+                        if (gallery.SharingProfile.Permissions.ToLower() == "community")
+                        {
+                            gallery.SharingProfile.CommunityGalleryInfo = communityGalleryInfo;
+                        }
+
                     }
 
 
@@ -182,7 +266,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             // if sub or tenant is present return error 
                             if (this.IsParameterBound(c => c.Subscription) || this.IsParameterBound(c => c.Tenant))
                             {
-                                throw new Exception("Parameter '-Reset' cannot be used with parameters '-Tenant' or '-Subscription'.");
+                                throw new Exception("Parameter '-Reset' cannot be used with parameters '-Tenant', '-Subscription' or 'Community'.");
                             }
                             else
                             {
@@ -253,6 +337,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             sharingUpdate.Groups.Add(sharingProfile);
                             sharingUpdate.OperationType = "Remove";
                         }
+                        if (this.IsParameterBound(c => c.Community))
+                        {
+                            if(this.Community.IsPresent)
+                                sharingUpdate.OperationType = "EnableCommunity";
+                        }
 
                     }
                     else if (this.IsParameterBound(c => c.Subscription) || this.IsParameterBound(c => c.Tenant) || this.Reset.IsPresent || this.IsParameterBound(c => c.RemoveSubscription) || this.IsParameterBound(c => c.RemoveTenant))
@@ -320,8 +409,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "This property allows you to specify the permission of the sharing gallery. Possible values are: 'Private' and 'Groups'.")]
-        [PSArgumentCompleter("Private", "Groups")]
+            HelpMessage = "This property allows you to specify the permission of the sharing gallery. Possible values are: 'Private', 'Groups' and 'Community'.")]
+        [PSArgumentCompleter("Private", "Groups", "Community")]
         public string Permission { get; set; }
 
         [Parameter(
@@ -357,7 +446,37 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Update sharing profile of the gallery to community.")]
+        public SwitchParameter Community { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resets the sharing permission of the gallery to 'Private'.")]
         public SwitchParameter Reset { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets the link to the publisher website. Visible to all users.")]
+        public string PublisherUri { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets community gallery publisher support email. The email address of the publisher. Visible to all users.")]
+        public string PublisherContact { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets end-user license agreement for community gallery image.")]
+        public string Eula { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets the prefix of the gallery name that will be displayed publicly. Visible to all users.")]
+        public string PublicNamePrefix { get; set; }
     }
 }

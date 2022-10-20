@@ -31,6 +31,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSPublicIpAddressDnsSettings DnsSettings { get; set; }
 
+        public PSDdosSettings DdosSettings { get; set; }
+
         public List<PSPublicIpTag> IpTags {get; set;}
 
         [Ps1Xml(Target = ViewControl.Table)]

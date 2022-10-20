@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewaybackendHttpSettingsName", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to backendSettingsCollection.
         /// </summary>
@@ -149,15 +149,6 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewayHttpListenerName", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to listeners.
-        /// </summary>
-        internal static string ApplicationGatewayListenerName {
-            get {
-                return ResourceManager.GetString("ApplicationGatewayListenerName", resourceCulture);
-            }
-        }
         
         /// <summary>
         ///   Looks up a localized string similar to gatewayIpConfigurations.
@@ -165,6 +156,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string ApplicationGatewayIPConfigurationName {
             get {
                 return ResourceManager.GetString("ApplicationGatewayIPConfigurationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to listeners.
+        /// </summary>
+        internal static string ApplicationGatewayListenerName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayListenerName", resourceCulture);
             }
         }
         
@@ -230,15 +230,6 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewayRequestRoutingRuleName", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to routingRules.
-        /// </summary>
-        internal static string ApplicationGatewayRoutingRuleName {
-            get {
-                return ResourceManager.GetString("ApplicationGatewayRoutingRuleName", resourceCulture);
-            }
-        }
         
         /// <summary>
         ///   Looks up a localized string similar to rewriteRuleSets.
@@ -246,6 +237,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string ApplicationGatewayRewriteRuleSetName {
             get {
                 return ResourceManager.GetString("ApplicationGatewayRewriteRuleSetName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to routingRules.
+        /// </summary>
+        internal static string ApplicationGatewayRoutingRuleName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayRoutingRuleName", resourceCulture);
             }
         }
         
@@ -637,6 +637,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A hub is required for HubAndSpoke connectivity topology..
+        /// </summary>
+        internal static string HubRequiredForHubAndSpokeTopology {
+            get {
+                return ResourceManager.GetString("HubRequiredForHubAndSpokeTopology", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The hub virtual network connection to modify could not be found..
         /// </summary>
         internal static string HubVnetConnectionNotFound {
@@ -903,6 +912,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string InvalidTrafficAnalyticsInterval {
             get {
                 return ResourceManager.GetString("InvalidTrafficAnalyticsInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permitted values for VnetLocalRouteOverrideCriteria are Equal and Contains..
+        /// </summary>
+        internal static string InvalidVnetLocalRouteOverrideCriteriaValue {
+            get {
+                return ResourceManager.GetString("InvalidVnetLocalRouteOverrideCriteriaValue", resourceCulture);
             }
         }
         
@@ -1627,7 +1645,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} doesn&apos;t register private endpoint connection..
+        ///   Looks up a localized string similar to {0} doesn&apos;t support private endpoint connection..
         /// </summary>
         internal static string UnsupportPrivateEndpointConnectionType {
             get {
@@ -1636,7 +1654,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} doesn&apos;t register private link resource..
+        ///   Looks up a localized string similar to {0} doesn&apos;t support private link resource..
         /// </summary>
         internal static string UnsupportPrivateLinkResourceType {
             get {

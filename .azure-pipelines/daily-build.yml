@@ -83,6 +83,7 @@ jobs:
       FolderPath: 'artifacts'
       Pattern: |
         Release/**/Microsoft*Azure*PowerShell*Cmdlets*.dll
+        Release/**/Microsoft.Azure.PowerShell.*.Sdk.dll
         Release/**/Az.*.private.dll
         Release/**/Microsoft.Azure.PowerShell.Authentication.dll
         Release/**/Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll

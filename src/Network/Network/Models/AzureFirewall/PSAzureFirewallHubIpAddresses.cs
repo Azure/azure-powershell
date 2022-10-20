@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAzureFirewallHubIpAddresses
     {
-        public PSAzureFirewallPublicIpAddress[] publicIPAddresses { get; set; }
+        public string PrivateIPAddress { get; set; }
 
         public PSAzureFirewallHubPublicIpAddresses PublicIPs { get; set; }
     }

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Returns resource collection belonging to a resource group.
+Returns resource collection belonging to a subscription.
 .Description
-Returns resource collection belonging to a resource group.
+Returns resource collection belonging to a subscription.
 .Example
 Get-AzDataProtectionBackupVault
 .Example
@@ -29,7 +29,7 @@ Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupNa
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupVaultResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,16 +52,10 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackupvault
 #>
 function Get-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupVaultResource])]
-[CmdletBinding(DefaultParameterSetName='Get1', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupVaultResource])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Get1', Mandatory)]
-    [Parameter(ParameterSetName='Get2', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
-    [System.String]
-    # The name of the resource group where the backup vault is present.
-    ${ResourceGroupName},
-
+    [Parameter(ParameterSetName='Get')]
     [Parameter(ParameterSetName='Get1')]
     [Parameter(ParameterSetName='Get2')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
@@ -69,6 +63,13 @@ param(
     [System.String[]]
     # The subscription Id.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Parameter(ParameterSetName='Get2', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
+    [System.String]
+    # The name of the resource group where the backup vault is present.
+    ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
@@ -157,11 +158,12 @@ begin {
         }
 
         $mapping = @{
+            Get = 'Az.DataProtection.private\Get-AzDataProtectionBackupVault_Get';
             Get1 = 'Az.DataProtection.private\Get-AzDataProtectionBackupVault_Get1';
             Get2 = 'Az.DataProtection.private\Get-AzDataProtectionBackupVault_Get2';
             GetViaIdentity = 'Az.DataProtection.private\Get-AzDataProtectionBackupVault_GetViaIdentity';
         }
-        if (('Get1', 'Get2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'Get1', 'Get2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]

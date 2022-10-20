@@ -759,4 +759,10 @@
   <data name="UnsupportPrivateLinkResourceType" xml:space="preserve">
     <value>{0} doesn't support private link resource.</value>
   </data>
+  <data name="HubRequiredForHubAndSpokeTopology" xml:space="preserve">
+    <value>A hub is required for HubAndSpoke connectivity topology.</value>
+  </data>
+  <data name="InvalidVnetLocalRouteOverrideCriteriaValue" xml:space="preserve">
+    <value>Permitted values for VnetLocalRouteOverrideCriteria are Equal and Contains.</value>
+  </data>
 </root>

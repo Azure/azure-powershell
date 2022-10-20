@@ -57,6 +57,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     case "SharedGalleryParameterSet":
                         SharedGalleryGet();
                         return;
+                    case "CommunityGalleryParameterSet":
+                        CommunityGalleryGet();
+                        return;
                     default:
                         resourceGroupName = this.ResourceGroupName;
                         galleryName = this.GalleryName;
@@ -139,6 +142,41 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public void CommunityGalleryGet()
+        {
+            if (this.IsParameterBound(c => c.Name))
+            {
+                CommunityGalleryImageVersion result = CommunityGalleryImageVersionsClient.Get(this.Location, this.GalleryPublicName, this.GalleryImageDefinitionName, this.Name);
+                var psObject = new PSCommunityGalleryImageVersion();
+                ComputeAutomationAutoMapperProfile.Mapper.Map<CommunityGalleryImageVersion, PSCommunityGalleryImageVersion>(result, psObject);
+                WriteObject(psObject);
+            }
+            else
+            {
+                Rest.Azure.IPage<CommunityGalleryImageVersion> result = new Microsoft.Azure.Management.Compute.Models.Page<CommunityGalleryImageVersion>();
+                
+                result = CommunityGalleryImageVersionsClient.List(this.Location, this.GalleryPublicName, this.GalleryImageDefinitionName);
+                var resultList = result.ToList();
+                var nextPageLink = result.NextPageLink;
+                while (!string.IsNullOrEmpty(nextPageLink))
+                {
+                    var pageResult = CommunityGalleryImageVersionsClient.ListNext(nextPageLink);
+                    foreach (var pageItem in pageResult)
+                    {
+                        resultList.Add(pageItem);
+                    }
+                    nextPageLink = pageResult.NextPageLink;
+                }
+                var psObject = new List<PSCommunityGalleryImageVersionList>();
+                foreach (var r in resultList)
+                {
+                    psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<CommunityGalleryImageVersion, PSCommunityGalleryImageVersionList>(r));
+                }
+                WriteObject(psObject);
+            }
+        }
+
+
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 0,
@@ -163,6 +201,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "SharedGalleryParameterSet",
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            ParameterSetName = "CommunityGalleryParameterSet",
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
         [Alias("GalleryImageName")]
         public string GalleryImageDefinitionName { get; set; }
 
@@ -173,6 +215,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
             ParameterSetName = "SharedGalleryParameterSet",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            ParameterSetName = "CommunityGalleryParameterSet",
             ValueFromPipelineByPropertyName = true)]
         [SupportsWildcards]
         public string Name { get; set; }
@@ -197,6 +242,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string GalleryUniqueName { get; set; }
 
         [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = "CommunityGalleryParameterSet",
+           HelpMessage = "The public name of the Shared Image Gallery.")]
+        public string GalleryPublicName { get; set; }
+
+        [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = "SharedGalleryParameterSet",
@@ -208,7 +260,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = "SharedGalleryParameterSet")]
-        [LocationCompleter("Microsoft.Compute/Galleries")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = "CommunityGalleryParameterSet")]
+        [LocationCompleter("Microsoft.Compute/Galleries", "Microsoft.Compute/CommunityGalleries")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
     }

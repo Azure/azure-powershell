@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewaybackendsetting
 schema: 2.0.0
 ---
 
 # Set-AzApplicationGatewayBackendSetting
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates back-end TCP\TLS settings for an application gateway.
 
 ## SYNTAX
 
@@ -20,16 +20,19 @@ Set-AzApplicationGatewayBackendSetting -ApplicationGateway <PSApplicationGateway
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Set-AzApplicationGatewayBackendSetting cmdlet updates the back-end TCP\TLS settings for an Azure application gateway.
+Back-end settings are applied to all back-end servers in a pool.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Update the back-end TCP\TLS settings for an application gateway
 ```powershell
-PS C:\> {{ Add example code here }}
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGw = Set-AzApplicationGatewayBackendSetting -ApplicationGateway $AppGw -Name "Setting02" -Port 88 -Protocol "Tcp"
 ```
 
-{{ Add example description here }}
+The first command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.
+The second command updates the Backend settings of the application gateway in the $AppGw variable to use port 88, the TCP protocol.
 
 ## PARAMETERS
 
@@ -37,7 +40,7 @@ PS C:\> {{ Add example code here }}
 The applicationGateway
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -52,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -67,7 +70,7 @@ Accept wildcard characters: False
 Sets host header to be sent to the backend servers.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +85,7 @@ Accept wildcard characters: False
 The name of the backend settings
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +100,7 @@ Accept wildcard characters: False
 Flag if host header should be picked from the host name of the backend server.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +115,7 @@ Accept wildcard characters: False
 Port
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +130,7 @@ Accept wildcard characters: False
 Application gateway Probe
 
 ```yaml
-Type: PSApplicationGatewayProbe
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayProbe
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +145,7 @@ Accept wildcard characters: False
 ID of the application gateway Probe
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +160,7 @@ Accept wildcard characters: False
 Protocol
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: TCP, TLS
@@ -174,7 +177,7 @@ Timeout.
 Default value 30 seconds.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -189,7 +192,7 @@ Accept wildcard characters: False
 Application gateway Trusted Root Certificates
 
 ```yaml
-Type: PSApplicationGatewayTrustedRootCertificate[]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedRootCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -214,3 +217,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzApplicationGatewayBackendSetting](./Add-AzApplicationGatewayBackendSetting.md)
+
+[Get-AzApplicationGatewayBackendSetting](./Get-AzApplicationGatewayBackendSetting.md)
+
+[New-AzApplicationGatewayBackendSetting](./New-AzApplicationGatewayBackendSetting.md)
+
+[Remove-AzApplicationGatewayBackendSetting](./Remove-AzApplicationGatewayBackendSetting.md)

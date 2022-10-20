@@ -335,6 +335,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmInputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmResourceIdCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InteractiveCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdCreateParameterSet)]
         public SwitchParameter Exportable { get; set; }
 
         [Parameter(Mandatory = false,
@@ -344,8 +350,14 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmInputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmResourceIdCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InteractiveCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdCreateParameterSet)]
         public SwitchParameter Immutable { get; set; }
-
+        
         [Parameter(Mandatory = false,
             ParameterSetName = HsmInteractiveCreateParameterSet,
             HelpMessage = "A path to a file containing JSON policy definition. The policy rules under which a key can be exported.")]
@@ -353,6 +365,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmInputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmResourceIdCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InteractiveCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdCreateParameterSet)]
         public string ReleasePolicyPath { get; set; }
 
         [Parameter(Mandatory = false,
@@ -362,6 +380,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmInputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmResourceIdCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InteractiveCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdCreateParameterSet)]
         public SwitchParameter UseDefaultCVMPolicy { get; set; }
         #endregion
 
@@ -458,11 +482,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                 if (Destination != HsmDestination) { throw new ArgumentException(Resources.KEKMustBeHSM); }
             }
 
-            if (this.IsParameterBound(c => c.Exportable) && !this.IsParameterBound(c => c.ReleasePolicyPath))
+            if (this.IsParameterBound(c => c.Exportable) && !this.IsParameterBound(c => c.ReleasePolicyPath) && !this.IsParameterBound(c => c.UseDefaultCVMPolicy))
             {
                 throw new AzPSArgumentException("Exportable keys must have release policy.", nameof(ReleasePolicyPath), ErrorKind.UserError);
             }
-            else if (this.IsParameterBound(c => c.ReleasePolicyPath) && !this.IsParameterBound(c => c.Exportable))
+            else if ((this.IsParameterBound(c => c.ReleasePolicyPath) || this.IsParameterBound(c => c.UseDefaultCVMPolicy))
+                && !this.IsParameterBound(c => c.Exportable))
             {
                 throw new AzPSArgumentException("Non-exportable keys must not have release policy.", nameof(ReleasePolicyPath), ErrorKind.UserError);
             }

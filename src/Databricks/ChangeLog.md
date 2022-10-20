@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.0
+* Upgraded API version to 2022-04-01-preview
+* Modified description of `EnableNoPublicIP` parameter in the `New-AzDatabricksWorkspace`. [#14381]
+
 ## Version 1.2.0
 * Upgraded API version to 2021-04-01-preview
 

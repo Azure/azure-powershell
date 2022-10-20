@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
@@ -22,9 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     /// <summary>
     /// Disables the Advanced Data Security of a specific server.
     /// </summary>
-    [GenericBreakingChange("Disable-AzSqlServerAdvancedThreatProtection alias will be removed in an upcoming breaking change release", "9.0.0")]
     [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAdvancedDataSecurity", SupportsShouldProcess = true), OutputType(typeof(ServerAdvancedDataSecurityPolicyModel))]
-    [Alias("Disable-AzSqlServerAdvancedThreatProtection")]
     public class DisableAzureSqlServerAdvancedDataSecurity : SqlServerAdvancedDataSecurityCmdletBase
     {
         /// <summary>
@@ -35,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         protected override ServerAdvancedDataSecurityPolicyModel PersistChanges(ServerAdvancedDataSecurityPolicyModel model)
         {
             model.IsEnabled = false;
-            ModelAdapter.SetServerAdvancedDataSecurity(model, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
+            ModelAdapter.SetServerAdvancedDataSecurity(model);
             return model;
         }
     }

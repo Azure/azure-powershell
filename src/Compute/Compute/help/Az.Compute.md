@@ -204,7 +204,7 @@ Gets the VMImage publishers.
 Gets VMImage SKUs.
 
 ### [Get-AzVMRunCommand](Get-AzVMRunCommand.md)
-Gets specific run command for a subscription in a location.
+Gets a specific Run Command or a list of Run Commands for a Virtual Machine
 
 ### [Get-AzVMRunCommandDocument](Get-AzVMRunCommandDocument.md)
 Get a run command document.

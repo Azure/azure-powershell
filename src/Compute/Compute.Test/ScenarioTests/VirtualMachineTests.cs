@@ -234,7 +234,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineGetStatusWithHealhtExtension");
         }
-        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineGetHost()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineGetHost");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGetStatusWithAssignedHost()
@@ -506,6 +513,55 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineGuestAttestation()
         {
             TestRunner.RunTestScript("Test-VirtualMachineGuestAttestation");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMandVMSSTimeCreated()
+        {
+            TestRunner.RunTestScript("Test-VMandVMSSTimeCreated");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConfidentialVMSetAzVmOsDisk()
+        {
+            TestRunner.RunTestScript("Test-ConfidentialVMSetAzVmOsDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConfVMSetAzVMSecurityProfile()
+        {
+            TestRunner.RunTestScript("Test-ConfVMSetAzVMSecurityProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConfVMSetAzDiskSecurityProfile()
+        {
+            TestRunner.RunTestScript("Test-ConfVMSetAzDiskSecurityProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConfVMSetAzDiskEncryptionSetConfig()
+        {
+            TestRunner.RunTestScript("Test-ConfVMSetAzDiskEncryptionSetConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConfVMSetAzDiskSecurityProfileNoDES()
+        {
+            TestRunner.RunTestScript("Test-ConfVMSetAzDiskSecurityProfileNoDES");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuestManual()
+        {
+            TestRunner.RunTestScript("Test-ManualConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest");
         }
     }
 }

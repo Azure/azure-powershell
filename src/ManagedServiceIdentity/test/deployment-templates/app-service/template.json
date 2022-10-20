@@ -9,6 +9,10 @@
         "servicePlan_id": {
             "defaultValue": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-appservice-test/providers/Microsoft.Web/serverfarms/lucasappserviceplan01",
             "type": "String"
+        },
+        "ua_identity_id": {
+            "defaultValue": "/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourcegroups/identity-myqak419/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity175pqk",
+            "type": "String"
         }
     },
     "variables": {},
@@ -20,7 +24,11 @@
             "location": "Central US",
             "kind": "app,linux",
             "identity": {
-                "type": "SystemAssigned"
+                "type": "SystemAssigned, UserAssigned",
+                "userAssignedIdentities":
+                {
+                    "[parameters('ua_identity_id')]": {}
+                }
             },
             "properties": {
                 "enabled": true,
