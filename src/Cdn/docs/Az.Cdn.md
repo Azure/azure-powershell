@@ -179,6 +179,12 @@ Create an in-memory object for HealthProbeParameters.
 ### [New-AzCdnManagedHttpsParametersObject](New-AzCdnManagedHttpsParametersObject.md)
 Create an in-memory object for CdnManagedHttpsParameters.
 
+### [New-AzCdnMigrationParametersObject](New-AzCdnMigrationParametersObject.md)
+Create an in-memory object for MigrationParameters.
+
+### [New-AzCdnMigrationWebApplicationFirewallMappingObject](New-AzCdnMigrationWebApplicationFirewallMappingObject.md)
+Create an in-memory object for MigrationWebApplicationFirewallMapping.
+
 ### [New-AzCdnOrigin](New-AzCdnOrigin.md)
 Creates a new origin within the specified endpoint.
 

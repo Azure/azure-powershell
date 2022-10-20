@@ -71,6 +71,8 @@ directive:
     - HealthProbeParameters
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
+    - MigrationWebApplicationFirewallMapping
+    - MigrationParameters
     - ResourceReference
     # origin group parameters
     - HealthProbeParameters
