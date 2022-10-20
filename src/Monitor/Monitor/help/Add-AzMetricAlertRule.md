@@ -332,8 +332,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzActivityLogAlert](./Set-AzActivityLogAlert.md)
-
 [Add-AzWebtestAlertRule](./Add-AzWebtestAlertRule.md)
 
 [Get-AzAlertHistory](./Get-AzAlertHistory.md)
