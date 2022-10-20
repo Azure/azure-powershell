@@ -92,7 +92,7 @@ If ($Build)
             "Detail" = $Detail
         }
     }
-    ConvertTo-Json -Depth 10 -InputObject $BuildResultArray | Out-File -FilePath "$RepoArtifacts/PipelineResult/build.json"
+    ConvertTo-Json -Depth 10 -InputObject $BuildResultArray | Out-File -FilePath "$RepoArtifacts/PipelineResult/Build.json"
 }
 
 If (-Not $PSBoundParameters.ContainsKey("ModuleList"))
