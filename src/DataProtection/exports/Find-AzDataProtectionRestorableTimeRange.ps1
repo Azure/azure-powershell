@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-
+Finds the valid recovery point in time ranges for the restore.
 .Description
-
+Finds the valid recovery point in time ranges for the restore.
 .Example
 $startTime = (Get-Date).AddDays(-30).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
 $endTime = (Get-Date).AddDays(0).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
