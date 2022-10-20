@@ -25,7 +25,7 @@ New-AzEventGridSystemTopic -ResourceGroupName <String> -Name <String> -Source <S
 ```
 
 ## DESCRIPTION
-Creates a new Azure Event System Grid Topic. Once the system topic is created, an azure service application can publish events to the system topic.
+Creates a new Azure Event Grid System Topic. Once the system topic is created, an azure service application can publish events to the system topic.
 
 ## EXAMPLES
 
