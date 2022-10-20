@@ -57,7 +57,7 @@ Describe 'Clear-AzFrontDoorCdnEndpointContent' -Tag 'LiveOnly' {
             Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
             New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
 
-            $afdPurgeParameters = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.AfdPurgeParameters]::new()
+            $afdPurgeParameters = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AfdPurgeParameters]::new()
             $afdPurgeParameters.ContentPath = @("/a")
 
             Clear-AzFrontDoorCdnEndpointContent -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
@@ -112,7 +112,7 @@ Describe 'Clear-AzFrontDoorCdnEndpointContent' -Tag 'LiveOnly' {
             Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
             New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
 
-            $afdPurgeParameters = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.AfdPurgeParameters]::new()
+            $afdPurgeParameters = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.AfdPurgeParameters]::new()
             $afdPurgeParameters.ContentPath = @("/a")
 
             Get-AzFrontdoorCdnEndpoint -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -EndpointName $endpointName `

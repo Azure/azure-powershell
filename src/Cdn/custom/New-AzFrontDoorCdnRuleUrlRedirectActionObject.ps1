@@ -21,12 +21,12 @@ Create an in-memory object for UrlRedirectAction.
 Create an in-memory object for UrlRedirectAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRedirectAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRedirectAction
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlRedirectActionObject
 #>
 function New-AzFrontDoorCdnRuleUrlRedirectActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRedirectAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRedirectAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -57,7 +57,7 @@ function New-AzFrontDoorCdnRuleUrlRedirectActionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRedirectAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRedirectAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterCustomFragment')) {
             $Object.ParameterCustomFragment = $ParameterCustomFragment

@@ -74,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.OriginGroupOverrideAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.OriginGroupOverrideAction
 
 ## NOTES
 
