@@ -1,4 +1,3 @@
-
 # ----------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,89 +15,42 @@
 
 <#
 .Synopsis
-Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
+Abort classic cdn migrate to AFDx. This will delete all the AFD Standard or Premium configurations.  
 .Description
-Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
+Abort classic cdn migrate to AFDx. This will delete all the AFD Standard or Premium configurations. 
 .Example
 PS C:\> {{ Add code here }}
-
 {{ Add output here }}
 .Example
 PS C:\> {{ Add code here }}
-
 {{ Add output here }}
-
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
+System.Boolean
 .Link
-https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnprofile
+https://docs.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofilemigrate
 #>
-function New-AzFrontDoorCdnProfile {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile])]
-    [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Start-AzFrontDoorCdnProfileMigrate {
+    [OutputType([System.Boolean])]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
-        [Alias('ProfileName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
-        # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-        ${Name},
-    
+        # Name of the new profile that created in AFDx.
+        ${ProfileName},
+
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # Name of the Resource group within the Azure subscription.
         ${ResourceGroupName},
-    
-        [Parameter()]
+
+        [Parameter(HelpMessage='The subscription ID that identifies an Azure subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # Azure Subscription ID.
         ${SubscriptionId},
-    
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [System.String]
-        # Resource location.
-        ${Location},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [System.Int32]
-        # Send and receive timeout on forwarding request to the origin.
-        # When timeout is reached, the request fails and returns.
-        ${OriginResponseTimeoutSecond},
-    
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]
-        # Name of the pricing tier.
-        ${SkuName},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ITrackedResourceTags]))]
-        [System.Collections.Hashtable]
-        # Resource tags.
-        ${Tag},
-
-        [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
-        # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        ${IdentityType},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
-        [System.Collections.Hashtable]
-        # The set of user assigned identities associated with the resource.
-        # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        # The dictionary values can be empty objects ({}) in requests.
-        ${IdentityUserAssignedIdentity},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -159,20 +111,8 @@ function New-AzFrontDoorCdnProfile {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
-    
+
     process {
-        if(ISFrontDoorCdnProfile($PSBoundParameters['SkuName']))
-        {
-            if($PSBoundParameters.ContainsKey('IdentityType'))
-            {
-                throw "Detailed realization pending..."
-            }
-            Az.Cdn.internal\New-AzCdnProfile @PSBoundParameters
-        }
-        else
-        {
-            throw "$($PSBoundParameters['SkuName']) is not a valid SKU. Please use a valid AzureFrontDoor SkuName.";
-        }
+        Remove-AzCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName}
     }
 }
-    

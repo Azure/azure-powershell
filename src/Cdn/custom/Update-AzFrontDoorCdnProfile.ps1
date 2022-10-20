@@ -99,6 +99,22 @@ function Update-AzFrontDoorCdnProfile {
         [System.Collections.Hashtable]
         # Profile tags
         ${Tag},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
+        # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        ${IdentityType},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
+        [System.Collections.Hashtable]
+        # The set of user assigned identities associated with the resource.
+        # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        # The dictionary values can be empty objects ({}) in requests.
+        ${IdentityUserAssignedIdentity},
     
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -172,10 +188,19 @@ function Update-AzFrontDoorCdnProfile {
         if($null -eq $frontDoorCdnProfile)
         {
             throw "Provided FrontDoorCdnProfile does not exist."
-        }else{
-            if(ISFrontDoorCdnProfile($frontDoorCdnProfile.SkuName)){
+        }
+        else
+        {
+            if(ISFrontDoorCdnProfile($frontDoorCdnProfile.SkuName))
+            {
+                if($PSBoundParameters.ContainsKey('IdentityType'))
+                {
+                    throw "Detailed realization pending..."
+                }
                 Az.Cdn.internal\Update-AzCdnProfile @PSBoundParameters
-            }else{
+            }
+            else
+            {
                 throw "Provided FrontDoorCdnProfile does not exist."
             }
         }
