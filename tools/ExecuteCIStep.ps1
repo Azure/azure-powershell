@@ -15,6 +15,15 @@
 
 Param(
     [Switch]
+    $Build,
+
+    [String]
+    $BuildAction='build',
+
+    [Switch]
+    $GenerateDocumentationFile,
+
+    [Switch]
     $Test,
 
     [Switch]
@@ -39,15 +48,45 @@ Param(
     $TestFramework='netcoreapp2.2',
 
     [String]
-    $TestOutputDirectory='artifacts\TestResults',
+    $TestOutputDirectory='artifacts/TestResults',
 
     [String]
-    $StaticAnalysisOutputDirectory='artifacts\StaticAnalysisResults',
+    $StaticAnalysisOutputDirectory='artifacts/StaticAnalysisResults',
 
     [String]
     $ModuleList
 )
 $ErrorActionPreference = 'Stop'
+
+If ($Build)
+{
+    $LogFile = "$RepoArtifacts/Build.Log"
+    If ($GenerateDocumentationFile)
+    {
+        dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -fl "/flp1:logFile=$LogFile;verbosity=quiet" --no-restore
+    }
+    Else
+    {
+        dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -p:GenerateDocumentationFile=false -fl "/flp1:logFile=$LogFile;verbosity=quiet" --no-restore
+    }
+    $LogContent = Get-Content $LogFile
+    $BuildResultArray = @()
+    ForEach ($Line In $LogContent)
+    {
+        $Position, $ErrorOrWarningType, $Detail = $Line.Split(": ")
+        $Detail = Join-String -Separator ": " -InputObject $Detail
+        $ModuleName = $Position.Replace("\", "/").Split("src/")[1].Split('/')[0]
+        $Type, $Code = $ErrorOrWarningType.Split(" ")
+        $BuildResultArray += @{
+            "Position" = $Position;
+            "Module" = $ModuleName;
+            "Type" = $Type;
+            "Code" = $Code;
+            "Detail" = $Detail
+        }
+    }
+    ConvertTo-Json -Depth 10 -InputObject $BuildResultArray | Out-File -FilePath "$RepoArtifacts/PipelineResult/build.json"
+}
 
 If (-Not $PSBoundParameters.ContainsKey("ModuleList"))
 {
