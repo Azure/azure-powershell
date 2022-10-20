@@ -13,6 +13,8 @@
 # is regenerated.
 # ----------------------------------------------------------------------------------
 
+# Usage: 1. This script can be called by build.proj used in CI pipeline
+#        2. Can be used to do static analysis in local env. Such as: .\tools\ExecuteCIStep.ps1 -StaticAnalysisSignature -ModuleList "Accounts;Compute"
 Param(
     [Switch]
     $Build,
