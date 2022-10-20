@@ -63,11 +63,11 @@ If ($Build)
     $LogFile = "$RepoArtifacts/Build.Log"
     If ($GenerateDocumentationFile)
     {
-        dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -fl "/flp1:logFile=$LogFile;verbosity=quiet" --no-restore
+        dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -fl "/flp1:logFile=$LogFile;verbosity=quiet"
     }
     Else
     {
-        dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -p:GenerateDocumentationFile=false -fl "/flp1:logFile=$LogFile;verbosity=quiet" --no-restore
+        dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -p:GenerateDocumentationFile=false -fl "/flp1:logFile=$LogFile;verbosity=quiet"
     }
     $LogContent = Get-Content $LogFile
     $BuildResultArray = @()
@@ -75,7 +75,14 @@ If ($Build)
     {
         $Position, $ErrorOrWarningType, $Detail = $Line.Split(": ")
         $Detail = Join-String -Separator ": " -InputObject $Detail
-        $ModuleName = $Position.Replace("\", "/").Split("src/")[1].Split('/')[0]
+        If ($Position.Contains("src"))
+        {
+            $ModuleName = $Position.Replace("\", "/").Split("src/")[1].Split('/')[0]
+        }
+        Else
+        {
+            $ModuleName = "dotnet"
+        }
         $Type, $Code = $ErrorOrWarningType.Split(" ")
         $BuildResultArray += @{
             "Position" = $Position;
