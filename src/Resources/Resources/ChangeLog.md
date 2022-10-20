@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Fixed parameter `Count` for
+    - Get-AzADApplication
+    - Get-AzADServicePrincipal
+    - Get-AzADUser
 * Polished preview warning message for:
     - Add-AzADGroupMember
     - Get-AzADGroupMember
