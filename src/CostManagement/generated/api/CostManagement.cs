@@ -85,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/alerts/(?<alertId>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/alerts/(?<alertId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/alerts/{alertId}'");
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/alerts/(?<alertId>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/alerts/(?<alertId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/alerts/{alertId}'");
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/(?<externalCloudProviderType>[^/]+)/(?<externalCloudProviderId>[^/]+)/alerts$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/(?<externalCloudProviderType>[^/]+)/(?<externalCloudProviderId>[^/]+)/alerts$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/alerts'");
@@ -603,7 +603,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/alerts$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/alerts$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/alerts'");
@@ -792,7 +792,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/(?<externalCloudProviderType>[^/]+)/(?<externalCloudProviderId>[^/]+)/dimensions$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/(?<externalCloudProviderType>[^/]+)/(?<externalCloudProviderId>[^/]+)/dimensions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/dimensions'");
@@ -1007,7 +1007,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/dimensions$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/dimensions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/dimensions'");
@@ -1212,7 +1212,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/exports/(?<exportName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/exports/(?<exportName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/exports/{exportName}'");
@@ -1400,7 +1400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/exports/(?<exportName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/exports/(?<exportName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/exports/{exportName}'");
@@ -1575,7 +1575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/exports/(?<exportName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/exports/(?<exportName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/run'");
@@ -1807,7 +1807,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/exports/(?<exportName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/exports/(?<exportName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/exports/{exportName}/runHistory'");
@@ -1936,7 +1936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/exports/(?<exportName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/exports/(?<exportName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/exports/{exportName}'");
@@ -2119,7 +2119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/exports$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/exports$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/exports'");
@@ -2301,7 +2301,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/(?<externalCloudProviderType>[^/]+)/(?<externalCloudProviderId>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/(?<externalCloudProviderType>[^/]+)/(?<externalCloudProviderId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/forecast'");
@@ -2493,7 +2493,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/forecast'");
@@ -2662,7 +2662,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/operations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.CostManagement/operations'");
@@ -2872,7 +2872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/(?<externalCloudProviderType>[^/]+)/(?<externalCloudProviderId>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/(?<externalCloudProviderType>[^/]+)/(?<externalCloudProviderId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/query'");
@@ -3004,7 +3004,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/query'");
@@ -3242,7 +3242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/views/(?<viewName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/views/(?<viewName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/views/{viewName}'");
@@ -3388,7 +3388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/views/(?<viewName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/views/(?<viewName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.CostManagement/views/{viewName}'");
@@ -3604,7 +3604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/views/(?<viewName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/views/(?<viewName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/views/{viewName}'");
@@ -3739,7 +3739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/views/(?<viewName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/views/(?<viewName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.CostManagement/views/{viewName}'");
@@ -3945,7 +3945,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/views/(?<viewName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/views/(?<viewName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/views/{viewName}'");
@@ -4072,7 +4072,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/views/(?<viewName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/views/(?<viewName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.CostManagement/views/{viewName}'");
@@ -4267,7 +4267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/views$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("(?<scope>.+)/providers/Microsoft.CostManagement/views$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.CostManagement/views'");
@@ -4390,7 +4390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/views$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.CostManagement/views$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.CostManagement/views'");

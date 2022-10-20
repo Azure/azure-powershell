@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// The operation to create or update a export. Update operation requires latest eTag to be set in the request. You may obtain
@@ -36,6 +37,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>An export resource.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.Export();
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CostManagement.ParameterCategory.Runtime)]
@@ -57,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         Description = @"Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples).",
         SerializedName = @"columns",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] ConfigurationColumn { get => ParametersBody.ConfigurationColumn ?? null /* arrayOf */; set => ParametersBody.ConfigurationColumn = value; }
+        public string[] ConfigurationColumn { get => _parametersBody.ConfigurationColumn ?? null /* arrayOf */; set => _parametersBody.ConfigurationColumn = value; }
 
         /// <summary>The granularity of rows in the export. Currently only 'Daily' is supported.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The granularity of rows in the export. Currently only 'Daily' is supported.")]
@@ -69,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         SerializedName = @"granularity",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType DataSetGranularity { get => ParametersBody.DataSetGranularity ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType)""); set => ParametersBody.DataSetGranularity = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType DataSetGranularity { get => _parametersBody.DataSetGranularity ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType)""); set => _parametersBody.DataSetGranularity = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -92,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         SerializedName = @"timeframe",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType DefinitionTimeframe { get => ParametersBody.DefinitionTimeframe ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType)""); set => ParametersBody.DefinitionTimeframe = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType DefinitionTimeframe { get => _parametersBody.DefinitionTimeframe ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType)""); set => _parametersBody.DefinitionTimeframe = value; }
 
         /// <summary>
         /// The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide
@@ -107,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType DefinitionType { get => ParametersBody.DefinitionType ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType)""); set => ParametersBody.DefinitionType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType DefinitionType { get => _parametersBody.DefinitionType ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType)""); set => _parametersBody.DefinitionType = value; }
 
         /// <summary>The name of the container where exports will be uploaded.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the container where exports will be uploaded.")]
@@ -118,7 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         Description = @"The name of the container where exports will be uploaded.",
         SerializedName = @"container",
         PossibleTypes = new [] { typeof(string) })]
-        public string DestinationContainer { get => ParametersBody.DestinationContainer ?? null; set => ParametersBody.DestinationContainer = value; }
+        public string DestinationContainer { get => _parametersBody.DestinationContainer ?? null; set => _parametersBody.DestinationContainer = value; }
 
         /// <summary>The resource id of the storage account where exports will be delivered.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource id of the storage account where exports will be delivered.")]
@@ -129,7 +133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         Description = @"The resource id of the storage account where exports will be delivered.",
         SerializedName = @"resourceId",
         PossibleTypes = new [] { typeof(string) })]
-        public string DestinationResourceId { get => ParametersBody.DestinationResourceId ?? null; set => ParametersBody.DestinationResourceId = value; }
+        public string DestinationResourceId { get => _parametersBody.DestinationResourceId ?? null; set => _parametersBody.DestinationResourceId = value; }
 
         /// <summary>The name of the directory where exports will be uploaded.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the directory where exports will be uploaded.")]
@@ -140,7 +144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         Description = @"The name of the directory where exports will be uploaded.",
         SerializedName = @"rootFolderPath",
         PossibleTypes = new [] { typeof(string) })]
-        public string DestinationRootFolderPath { get => ParametersBody.DestinationRootFolderPath ?? null; set => ParametersBody.DestinationRootFolderPath = value; }
+        public string DestinationRootFolderPath { get => _parametersBody.DestinationRootFolderPath ?? null; set => _parametersBody.DestinationRootFolderPath = value; }
 
         /// <summary>
         /// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating
@@ -154,7 +158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         Description = @"eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.",
         SerializedName = @"eTag",
         PossibleTypes = new [] { typeof(string) })]
-        public string ETag { get => ParametersBody.ETag ?? null; set => ParametersBody.ETag = value; }
+        public string ETag { get => _parametersBody.ETag ?? null; set => _parametersBody.ETag = value; }
 
         /// <summary>The format of the export being delivered. Currently only 'Csv' is supported.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The format of the export being delivered. Currently only 'Csv' is supported.")]
@@ -166,7 +170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         SerializedName = @"format",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType Format { get => ParametersBody.Format ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType)""); set => ParametersBody.Format = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType Format { get => _parametersBody.Format ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType)""); set => _parametersBody.Format = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -184,11 +188,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -205,12 +209,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         [global::System.Management.Automation.Alias("ExportName")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CostManagement.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
-
-        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.Export();
-
-        /// <summary>An export resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.HttpPipeline" /> that the remote call will use.
@@ -242,7 +240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         Description = @"The start date of recurrence.",
         SerializedName = @"from",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime RecurrencePeriodFrom { get => ParametersBody.RecurrencePeriodFrom ?? default(global::System.DateTime); set => ParametersBody.RecurrencePeriodFrom = value; }
+        public global::System.DateTime RecurrencePeriodFrom { get => _parametersBody.RecurrencePeriodFrom ?? default(global::System.DateTime); set => _parametersBody.RecurrencePeriodFrom = value; }
 
         /// <summary>The end date of recurrence.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The end date of recurrence.")]
@@ -253,7 +251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         Description = @"The end date of recurrence.",
         SerializedName = @"to",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime RecurrencePeriodTo { get => ParametersBody.RecurrencePeriodTo ?? default(global::System.DateTime); set => ParametersBody.RecurrencePeriodTo = value; }
+        public global::System.DateTime RecurrencePeriodTo { get => _parametersBody.RecurrencePeriodTo ?? default(global::System.DateTime); set => _parametersBody.RecurrencePeriodTo = value; }
 
         /// <summary>The schedule recurrence.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The schedule recurrence.")]
@@ -265,7 +263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         SerializedName = @"recurrence",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType ScheduleRecurrence { get => ParametersBody.ScheduleRecurrence ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType)""); set => ParametersBody.ScheduleRecurrence = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType ScheduleRecurrence { get => _parametersBody.ScheduleRecurrence ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType)""); set => _parametersBody.ScheduleRecurrence = value; }
 
         /// <summary>
         /// The status of the export's schedule. If 'Inactive', the export's schedule is paused.
@@ -279,7 +277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         SerializedName = @"status",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType ScheduleStatus { get => ParametersBody.ScheduleStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType)""); set => ParametersBody.ScheduleStatus = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType ScheduleStatus { get => _parametersBody.ScheduleStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType)""); set => _parametersBody.ScheduleStatus = value; }
 
         /// <summary>Backing field for <see cref="Scope" /> property.</summary>
         private string _scope;
@@ -307,7 +305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         Description = @"The start date for export data.",
         SerializedName = @"from",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime TimePeriodFrom { get => ParametersBody.TimePeriodFrom ?? default(global::System.DateTime); set => ParametersBody.TimePeriodFrom = value; }
+        public global::System.DateTime TimePeriodFrom { get => _parametersBody.TimePeriodFrom ?? default(global::System.DateTime); set => _parametersBody.TimePeriodFrom = value; }
 
         /// <summary>The end date for export data.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The end date for export data.")]
@@ -318,15 +316,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         Description = @"The end date for export data.",
         SerializedName = @"to",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime TimePeriodTo { get => ParametersBody.TimePeriodTo ?? default(global::System.DateTime); set => ParametersBody.TimePeriodTo = value; }
+        public global::System.DateTime TimePeriodTo { get => _parametersBody.TimePeriodTo ?? default(global::System.DateTime); set => _parametersBody.TimePeriodTo = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport">Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -337,8 +335,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -349,8 +347,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport">Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -361,6 +359,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -372,7 +375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -406,7 +409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.Debug:
@@ -475,7 +478,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -490,12 +492,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ExportsCreateOrUpdate(Scope, Name, ParametersBody, onOk, onCreated, onDefault, this, Pipeline);
+                    await this.Client.ExportsCreateOrUpdate(Scope, Name, _parametersBody, onOk, onCreated, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Scope=Scope,Name=Name,body=ParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Scope=Scope,Name=Name,body=_parametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -524,8 +526,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport">Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -550,8 +552,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -573,14 +575,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -590,8 +592,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport">Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

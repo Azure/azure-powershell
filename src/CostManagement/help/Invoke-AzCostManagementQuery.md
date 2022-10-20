@@ -310,7 +310,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DATASETFILTER `<IQueryFilter>`: Has filter expression to use in the query.
+`DATASETFILTER <IQueryFilter>`: Has filter expression to use in the query.
   - `[And <IQueryFilter[]>]`: The logical "AND" expression. Must have at least 2 items.
   - `[Dimensions <IQueryComparisonExpression>]`: Has comparison expression for a dimension
     - `Name <String>`: The name of the column to use in comparison.
@@ -319,7 +319,7 @@ DATASETFILTER `<IQueryFilter>`: Has filter expression to use in the query.
   - `[Or <IQueryFilter[]>]`: The logical "OR" expression. Must have at least 2 items.
   - `[Tag <IQueryComparisonExpression>]`: Has comparison expression for a tag
 
-DATASETGROUPING <IQueryGrouping[]>: Array of group by expression to use in the query.
+`DATASETGROUPING <IQueryGrouping[]>`: Array of group by expression to use in the query.
   - `Name <String>`: The name of the column to group.
   - `Type <QueryColumnType>`: Has type of the column to group.
 
