@@ -919,6 +919,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recover HSM?.
+        /// </summary>
+        internal static string RecoverHsm {
+            get {
+                return ResourceManager.GetString("RecoverHsm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recover key.
         /// </summary>
         internal static string RecoverKey {
