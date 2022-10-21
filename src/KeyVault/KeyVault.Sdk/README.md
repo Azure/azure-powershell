@@ -25,7 +25,8 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/fead0dec636e7554fb8401370418085136d4f052/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2022-07-01/common.json
   - https://github.com/Azure/azure-rest-api-specs/blob/fead0dec636e7554fb8401370418085136d4f052/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2022-07-01/keyvault.json
   - https://github.com/Azure/azure-rest-api-specs/blob/fead0dec636e7554fb8401370418085136d4f052/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2022-07-01/managedHsm.json
-  
+
+### there are 2 same "reason" property with same x-ms-enum.name="Reason" defined in both keyvault.json and managedHsm.json. Rename one of them to avoid autorest converting error.
 directive:
   - from: swagger-document
     where: $.definitions.CheckMhsmNameAvailabilityResult.properties.reason["x-ms-enum"]
