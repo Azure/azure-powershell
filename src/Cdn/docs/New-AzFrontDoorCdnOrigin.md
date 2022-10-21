@@ -200,7 +200,7 @@ Accept wildcard characters: False
 ### -OriginHostHeader
 The host header value sent to the origin with each request.
 If you leave this blank, the request hostname determines this value.
-Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default.
+Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default.
 This overrides the host header defined at Endpoint
 
 ```yaml
@@ -421,7 +421,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOrigin
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOrigin
 
 ## NOTES
 

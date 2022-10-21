@@ -35,8 +35,8 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/cdn.json
+  - https://github.com/ChenglongLiu/azure-rest-api-specs/blob/cdn-2022-11-01-preview/specification/cdn/resource-manager/Microsoft.Cdn/preview/2022-11-01-preview/afdx.json
+  - https://github.com/ChenglongLiu/azure-rest-api-specs/blob/cdn-2022-11-01-preview/specification/cdn/resource-manager/Microsoft.Cdn/preview/2022-11-01-preview/cdn.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -45,7 +45,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-branch: 1278b951080f769d400bb5d03090de8bc21dc355
+branch: 20781a6d160ce5049d3a481ccac07b891700b7a3
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -55,6 +55,9 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  - from: swagger-document
+    where: $.paths..operationId
+    transform: return $.replace(/^AFDProfiles_Upgrade$/g, "AFDProfileSku_Upgrade")
   - no-inline:
     # AFDX
     - SecurityPolicyPropertiesParameters
@@ -145,6 +148,7 @@ directive:
 
   # Hide Cdn profile
   - where:
+      verb: ^(?:(?!Move).*)$
       subject: Profile
     hide: true
   - where:

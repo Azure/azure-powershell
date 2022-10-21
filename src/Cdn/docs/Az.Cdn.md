@@ -61,7 +61,7 @@ Gets an existing AzureFrontDoor domain with the specified domain name under the 
 Gets an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
 ### [Get-AzFrontDoorCdnEndpointResourceUsage](Get-AzFrontDoorCdnEndpointResourceUsage.md)
-Checks the quota and actual usage of the given AzureFrontDoor endpoint under the given CDN profile.
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
 
 ### [Get-AzFrontDoorCdnOrigin](Get-AzFrontDoorCdnOrigin.md)
 Gets an existing origin within an origin group.
@@ -70,13 +70,13 @@ Gets an existing origin within an origin group.
 Gets an existing origin group within a profile.
 
 ### [Get-AzFrontDoorCdnOriginGroupResourceUsage](Get-AzFrontDoorCdnOriginGroupResourceUsage.md)
-Checks the quota and actual usage of the given AzureFrontDoor origin group under the given CDN profile.
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile..
 
 ### [Get-AzFrontDoorCdnProfile](Get-AzFrontDoorCdnProfile.md)
 
 
 ### [Get-AzFrontDoorCdnProfileResourceUsage](Get-AzFrontDoorCdnProfileResourceUsage.md)
-Checks the quota and actual usage of AzureFrontDoor endpoints under the given CDN profile.
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
 
 ### [Get-AzFrontDoorCdnRoute](Get-AzFrontDoorCdnRoute.md)
 Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
@@ -88,7 +88,7 @@ Gets an existing delivery rule within a rule set.
 Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
 
 ### [Get-AzFrontDoorCdnRuleSetResourceUsage](Get-AzFrontDoorCdnRuleSetResourceUsage.md)
-Checks the quota and actual usage of the given AzureFrontDoor rule set under the given CDN profile.
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile..
 
 ### [Get-AzFrontDoorCdnSecret](Get-AzFrontDoorCdnSecret.md)
 Gets an existing Secret within a profile.
@@ -99,6 +99,16 @@ Gets an existing security policy within a profile.
 ### [Import-AzCdnEndpointContent](Import-AzCdnEndpointContent.md)
 Pre-loads a content to CDN.
 Available for Verizon Profiles.
+
+### [Invoke-AzCdnCanProfileMigrate](Invoke-AzCdnCanProfileMigrate.md)
+Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+
+### [Invoke-AzCdnCommitProfileMigration](Invoke-AzCdnCommitProfileMigration.md)
+Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+
+### [Move-AzCdnProfile](Move-AzCdnProfile.md)
+Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+The change need to be committed after this.
 
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
@@ -400,14 +410,17 @@ Probe path is the path to a file hosted on the origin server to help accelerate 
 This path is relative to the origin path specified in the endpoint configuration.
 
 ### [Test-AzFrontDoorCdnEndpointCustomDomain](Test-AzFrontDoorCdnEndpointCustomDomain.md)
-Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.This api isn't work for apex domain.
+Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
 
 ### [Test-AzFrontDoorCdnEndpointNameAvailability](Test-AzFrontDoorCdnEndpointNameAvailability.md)
 Check the availability of a resource name.
 This is needed for resources where name is globally unique, such as a afdx endpoint.
 
 ### [Test-AzFrontDoorCdnProfileHostNameAvailability](Test-AzFrontDoorCdnProfileHostNameAvailability.md)
-Check the name availability of a host name.
+Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
+
+### [Test-AzFrontDoorCdnProfileSecret](Test-AzFrontDoorCdnProfileSecret.md)
+Validate a Secret in the profile.
 
 ### [Update-AzCdnEndpoint](Update-AzCdnEndpoint.md)
 Updates an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
@@ -446,6 +459,9 @@ Updates an existing origin group within a profile.
 
 ### [Update-AzFrontDoorCdnProfile](Update-AzFrontDoorCdnProfile.md)
 Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
+
+### [Update-AzFrontDoorCdnProfileSku](Update-AzFrontDoorCdnProfileSku.md)
+Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 
 ### [Update-AzFrontDoorCdnRoute](Update-AzFrontDoorCdnRoute.md)
 Updates an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.

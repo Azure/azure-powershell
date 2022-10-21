@@ -52,7 +52,7 @@ The list of Http status code ranges that are considered as server errors for ori
 To construct, see NOTES section for HTTPERRORRANGE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IHttpErrorRangeParameters[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IHttpErrorRangeParameters[]
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +100,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResponseBasedOriginErrorDetectionParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResponseBasedOriginErrorDetectionParameters
 
 ## NOTES
 
