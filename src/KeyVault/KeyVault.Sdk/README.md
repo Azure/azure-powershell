@@ -25,7 +25,6 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/fead0dec636e7554fb8401370418085136d4f052/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2022-07-01/common.json
   - https://github.com/Azure/azure-rest-api-specs/blob/fead0dec636e7554fb8401370418085136d4f052/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2022-07-01/keyvault.json
   - https://github.com/Azure/azure-rest-api-specs/blob/fead0dec636e7554fb8401370418085136d4f052/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2022-07-01/managedHsm.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/fead0dec636e7554fb8401370418085136d4f052/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2022-07-01/providers.json
   
 directive:
   - from: swagger-document

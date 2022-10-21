@@ -102,10 +102,5 @@ namespace Microsoft.Azure.Management.KeyVault
         /// </summary>
         IMHSMPrivateLinkResourcesOperations MHSMPrivateLinkResources { get; }
 
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
-
     }
 }

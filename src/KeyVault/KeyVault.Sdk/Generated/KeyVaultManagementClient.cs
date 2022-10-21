@@ -108,11 +108,6 @@ namespace Microsoft.Azure.Management.KeyVault
         public virtual IMHSMPrivateLinkResourcesOperations MHSMPrivateLinkResources { get; private set; }
 
         /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        public virtual IOperations Operations { get; private set; }
-
-        /// <summary>
         /// Initializes a new instance of the KeyVaultManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -359,7 +354,6 @@ namespace Microsoft.Azure.Management.KeyVault
             ManagedHsms = new ManagedHsmsOperations(this);
             MHSMPrivateEndpointConnections = new MHSMPrivateEndpointConnectionsOperations(this);
             MHSMPrivateLinkResources = new MHSMPrivateLinkResourcesOperations(this);
-            Operations = new Operations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2022-07-01";
             AcceptLanguage = "en-US";
