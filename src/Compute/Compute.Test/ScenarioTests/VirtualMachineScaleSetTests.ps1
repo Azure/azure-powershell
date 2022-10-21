@@ -3715,19 +3715,19 @@ Test Virtual Machine Scale Set Flex with EdgeZone
 function Test-VirtualMachineScaleSetInEdgeZoneParameterSets
 {
     $rgname = Get-ComputeTestResourceName;
-    $loc = "westus";
+    $loc = "eastus2";
     
     try
     {
-        $edgeZone = "microsoftlosangeles1";
-        $ScaleSetName = "scalesetinedgezone";
+        $edgeZone = "microsoftmiami1";
+        $ScaleSetName = "vmss" + $rgname;
          
         New-AzResourceGroup -ResourceGroupName $rgname -Location $loc -Force;
         
-        $VMLocalAdminUser = "LocalAdminUser";
-        $VMLocalAdminSecurePassword = ConvertTo-SecureString "Testing1234567" -AsPlainText -Force;
+        $user = "usertest";
+        $securePassword = ConvertTo-SecureString "Testing1234567" -AsPlainText -Force;
 
-        $cred = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         
         $subnetName = "sub" + $rgname;
         $publicIPName = "pub" + $rgname;
@@ -3735,12 +3735,18 @@ function Test-VirtualMachineScaleSetInEdgeZoneParameterSets
         $upgradePolicy = "Automatic";
         $domainNameLabel = "d" + $rgname;
         $virtualNetworkName = "vn" + $rgname;
+        $flexmode = "Flexible";
 
         New-AzVmss -ResourceGroupName $rgname -Location $loc -EdgeZone $EdgeZone -VMScaleSetName $ScaleSetName -VirtualNetworkName $virtualNetworkName `
         -SubnetName $subnetName -PublicIpAddressName $publicIPName -LoadBalancerName $loadBalancerName -UpgradePolicyMode $upgradePolicy -Credential $cred `
-        -DomainNameLabel $domainNameLabel;
+        -DomainNameLabel $domainNameLabel -OrchestrationMode $flexmode;
 
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $ScaleSetName;
+
+        # Create a VM in that VMSS.
+        $domainNameLabel2 = "d2" + $rgname;
+        $vmname = 'vm' + $rgname;
+        $vm = new-azvm -resourcegroupname $rgname -location $loc -name $vmname -credential $cred -domainnamelabel $domainNameLabel2 -vmssid $vmss.id;
 
         Assert-AreEqual $vmss.ExtendedLocation.Name $edgeZone;
     }

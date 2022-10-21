@@ -5936,28 +5936,26 @@ function Test-VMandVMSSTimeCreated
 
 <#
 .SYNOPSIS
-Test Virtual Machines
+Test Virtual Machine using edgezones in the Simple Parameter Set. 
 #>
-function Test-VirtualMachineEdgeZoneParameterSets
+function Test-VirtualMachineEdgeZoneSimpleParameterSet
 {
     $rgname = Get-ComputeTestResourceName;
     $loc = "eastus2";
     
-
     try
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         $vmname = "v" + $rgname;
-        #$rgname = "adsandvmbug";
         $edgezone = "microsoftmiami1";
 
-        $user = "usertest";
-        $password = "Testing1234567";
+        $user = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -edgezone $edgezone -debug -credential $cred;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -edgezone $edgezone -debug -credential $cred -Confirm:$false;
 
         $vm = Get-AzVm -ResourceGroupName $ResourceGroup -Name $VMName;
 
