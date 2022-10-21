@@ -83,7 +83,7 @@ pac81,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Logz,0.
 pac82,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.MachineLearning,1.1.3
 pac83,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.MachineLearningServices,0.1.0
 pac84,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Maintenance,1.2.0
-pac85,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ManagedServiceIdentity,1.0.0
+pac85,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ManagedServiceIdentity,1.1.0
 pac86,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ManagedServices,3.0.0
 pac87,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ManagementPartner,0.7.2
 pac88,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Maps,0.8.0
