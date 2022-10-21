@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.0.0
 * Changed `Az.SecurityInsights` to autorest-based module
 
 ## Version 1.1.0

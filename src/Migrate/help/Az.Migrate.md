@@ -68,6 +68,9 @@ The operation to create a protection container mapping.
 ### [New-AzMigrateServerReplication](New-AzMigrateServerReplication.md)
 Starts replication for the specified server.
 
+### [New-AzMigrateTestNicMapping](New-AzMigrateTestNicMapping.md)
+Creates an object to update NIC properties of a test migrating server.
+
 ### [Register-AzMigrateProjectTool](Register-AzMigrateProjectTool.md)
 Registers a tool with the migrate project.
 

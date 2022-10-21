@@ -124,7 +124,8 @@ namespace Microsoft.Azure.Commands.Network
                 DestinationIpGroups = this.DestinationIpGroup?.ToList(),
                 DestinationPorts = this.DestinationPort?.ToList(),
                 DestinationFqdns = this.DestinationFqdn?.ToList(),
-                RuleType = "NetworkRule"
+                RuleType = "NetworkRule",
+                Description = this.Description
             };
 
             WriteObject(networkRule);

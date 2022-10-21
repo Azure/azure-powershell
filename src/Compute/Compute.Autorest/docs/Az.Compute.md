@@ -17,9 +17,6 @@ Retrieves information about a gallery Application Definition.
 ### [Get-AzGalleryApplicationVersion](Get-AzGalleryApplicationVersion.md)
 Retrieves information about a gallery Application Version.
 
-### [Get-AzVmssVMRunCommand](Get-AzVmssVMRunCommand.md)
-The operation to get the VMSS VM run command.
-
 ### [New-AzGalleryApplication](New-AzGalleryApplication.md)
 Create or update a gallery Application Definition.
 

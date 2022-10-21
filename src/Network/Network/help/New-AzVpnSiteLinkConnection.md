@@ -240,9 +240,11 @@ The connection mode for this link connection.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: Default
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
