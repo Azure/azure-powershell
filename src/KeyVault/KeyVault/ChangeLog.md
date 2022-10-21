@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bumped API version to 2022-07-01
 
 ## Version 4.8.0
 * Fixed the exception content swallowed issue when exception.Response is null [#19531]
