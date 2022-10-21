@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported generate DataLakeGen2 Sas token with Encryption scope
+    -  `New-AzDataLakeGen2SasToken`
 * Supported blob type conversions in sync blob copy
     - `Copy-AzStorageBlob`
 * Supported create/upgrade storage account with Keyvault from another tenant and access Keyvault with FederatedClientId

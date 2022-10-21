@@ -27,6 +27,8 @@
 * For `New-AzGalleryImageVersion`, updated property mapping for `Encryption`. 
 * Added `-OSDiskSizeGB` optional parameter for `Set-AzVmssStorageProfile`.
 * Improved cmdlet description for `Set-AzVM` and added examples.
+* Updated property mapping for parameter `Encryption` of `New-AzGalleryImageVersion`
+* Updated list format to display all VmssVmRunCommand properties for `Get-AzVmssVmRunCommand`
 
 ## Version 5.0.0
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.

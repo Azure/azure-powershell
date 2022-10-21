@@ -19,6 +19,14 @@
 -->
 
 ## Upcoming Release
+* Fixed parameter `Count` for
+    - Get-AzADApplication
+    - Get-AzADServicePrincipal
+    - Get-AzADUser
+* Polished preview warning message for:
+    - Add-AzADGroupMember
+    - Get-AzADGroupMember
+    - Remove-AzADGroupMember
 * Fixed a `NullReferenceException` when deploying a JSON template using Bicep extensibility
 
 ## Version 6.3.1
