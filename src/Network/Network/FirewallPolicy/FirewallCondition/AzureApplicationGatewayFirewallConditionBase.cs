@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "List of transforms.")]
-        [ValidateSet("Lowercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls", "HtmlEntityDecode", IgnoreCase = true)]
+        [ValidateSet("Uppercase","Lowercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls", "HtmlEntityDecode", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string[] Transform { get; set; }
 

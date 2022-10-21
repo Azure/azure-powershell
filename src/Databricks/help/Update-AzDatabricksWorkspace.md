@@ -17,8 +17,9 @@ Updates a workspace.
 Update-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AmlWorkspaceId <String>] [-EncryptionKeyName <String>] [-EncryptionKeySource <KeySource>]
  [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>] [-KeyVaultKeyName <String>]
- [-KeyVaultKeyVersion <String>] [-KeyVaultUri <String>] [-PrepareEncryption] [-SkuTier <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-KeyVaultKeyVersion <String>] [-KeyVaultUri <String>] [-PrepareEncryption]
+ [-RequiredNsgRule <RequiredNsgRules>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -26,8 +27,8 @@ Update-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-Subscr
 Update-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-AmlWorkspaceId <String>]
  [-EncryptionKeyName <String>] [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>]
  [-EncryptionKeyVersion <String>] [-KeyVaultKeyName <String>] [-KeyVaultKeyVersion <String>]
- [-KeyVaultUri <String>] [-PrepareEncryption] [-SkuTier <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-KeyVaultUri <String>] [-PrepareEncryption] [-RequiredNsgRule <RequiredNsgRules>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,6 +81,13 @@ Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name works
 ```
 
 To disable encryption, simply set `-EncryptionKeySource` to `'Default'`.
+
+### Example 4: Update NsgRule of the Databricks workspace
+```powershell
+Update-AzDatabricksWorkspace -ResourceGroupName lucas-rg-test -Name databricks-t01 -RequiredNsgRule 'NoAzureDatabricksRules'
+```
+
+This command updates NsgRule of the Databricks workspace.
 
 ## PARAMETERS
 
@@ -296,6 +304,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequiredNsgRule
+Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint.
+Supported values are 'AllRules' and 'NoAzureDatabricksRules'.
+'NoAzureServiceRules' value is for internal use only.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -397,7 +422,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace
 
 ## NOTES
 
@@ -408,7 +433,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<IDatabricksIdentity>`: Identity parameter.
+`INPUTOBJECT <IDatabricksIdentity>`: Identity parameter.
+  - `[ConnectorName <String>]`: The name of the azure databricks accessConnector.
   - `[GroupId <String>]`: The name of the private link resource
   - `[Id <String>]`: Resource identity path
   - `[PeeringName <String>]`: The name of the workspace vNet peering.

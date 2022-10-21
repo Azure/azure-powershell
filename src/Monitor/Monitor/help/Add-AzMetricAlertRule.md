@@ -43,7 +43,7 @@ This command creates a metric alert rule for a website.
 
 ### Example 2: Disable a rule
 ```powershell
-Add-AzMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup Default-Web-EastUS -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -MetricName "Requests" -TimeAggregationOperator Total 
+Add-AzMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup Default-Web-EastUS -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -MetricName "Requests" -TimeAggregationOperator Total
 ```
 
 ```output
@@ -331,8 +331,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Set-AzActivityLogAlert](./Set-AzActivityLogAlert.md)
 
 [Add-AzWebtestAlertRule](./Add-AzWebtestAlertRule.md)
 

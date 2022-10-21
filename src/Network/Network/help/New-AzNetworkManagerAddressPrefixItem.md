@@ -24,24 +24,28 @@ The **New-AzNetworkManagerAddressPrefixItem** cmdlet creates a network manager a
 
 ### Example 1
 ```powershell
-New-AzNetworkManagerAddressPrefixItem -AddressPrefix "Internet" -AddressPrefixType "ServiceTag"   
+New-AzNetworkManagerAddressPrefixItem -AddressPrefix "Internet" -AddressPrefixType "ServiceTag"
 ```
+
 ```output
 AddressPrefix AddressPrefixType
 ------------- -----------------
 Internet      ServiceTag
 ```
+
 Creates a network manager service tag address prefix item.
 
 ### Example 2
 ```powershell
-New-AzNetworkManagerAddressPrefixItem -AddressPrefix "10.0.0.1" -AddressPrefixType "IPPrefix"   
+New-AzNetworkManagerAddressPrefixItem -AddressPrefix "10.0.0.1" -AddressPrefixType "IPPrefix"
 ```
+
 ```output
 AddressPrefix AddressPrefixType
 ------------- -----------------
 10.0.0.1      IPPrefix
 ```
+
 Creates a network manager IP address prefix item.
 
 ## PARAMETERS
@@ -50,7 +54,7 @@ Creates a network manager IP address prefix item.
 AddressPrefix
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -62,12 +66,13 @@ Accept wildcard characters: False
 ```
 
 ### -AddressPrefixType
-AddressPrefix Type. Valid values include 'IPPrefix' and 'ServiceTag'.
+AddressPrefix Type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: IPPrefix, ServiceTag
 
 Required: True
 Position: Named
@@ -80,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 

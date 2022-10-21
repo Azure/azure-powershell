@@ -40,9 +40,29 @@ function getPrimaryLocation
     return "EastUS"
 }
 
+function getLocationForEZScenario
+{
+    return "eastus2euap"
+}
+
+function getLocationForEZAzScenario
+{
+    return "EastUS2"
+}
+
 function getPrimaryZoneLocation
 {
     return "EastUS"
+}
+
+function getPrimaryExtendedLocation
+{
+    return "microsoftrrdclab4"
+}
+
+function getPrimaryExtendedLocationForAz
+{
+    return "microsoftmiami1"
 }
 
 function getPrimaryZone
@@ -57,6 +77,11 @@ function getRecoveryZone
 
 function getRecoveryLocation{
   return getVaultLocation
+}
+
+function getRecoveryExtendedLocation
+{
+    return "microsoftrrdclab3"
 }
 
 function getPrimaryFabric{
@@ -123,7 +148,7 @@ function getRecoveryNetworkName{
 }
 
 function getCacheStorageAccountName{
-     return "cache"+ $seed;
+     return "asrcacheps"+ $seed;
 }
 
 function getRecoveryCacheStorageAccountName{
@@ -170,13 +195,13 @@ function createAzureVm{
 		$PasswordString = $(Get-RandomSuffix 12)
 		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
         $VMLocalAdminSecurePassword = $Password
-		$VMLocation = getPrimaryLocation
-		$VMName = getAzureVmName
+        $VMLocation = if ($primaryLocation) { $primaryLocation } else { getPrimaryLocation }
+        $VMName = getAzureVmName
 		$domain = "domain"+ $seed
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
         $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain
-		return $vm.Id
+        return $vm.Id
 }
 
 function createAzureVmInProximityPlacementgroup{
@@ -216,25 +241,79 @@ function createAzureVmForCRG{
 function createAzureVmInAvailabilityZone{
     param([string]$primaryLocation)
     
-        $VMLocalAdminUser = "adminUser"
-		$PasswordString = $(Get-RandomSuffix 12)
+    $VMLocalAdminUser = "adminUser"
+    $PasswordString = $(Get-RandomSuffix 12)
 		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
-        $VMLocalAdminSecurePassword = $Password
-		$VMLocation = getPrimaryZoneLocation
+    $VMLocalAdminSecurePassword = $Password
+		$VMLocation = if ($primaryLocation) { $primaryLocation } else { getPrimaryZoneLocation }
 		$VMZone = getPrimaryZone
-		$VMName = getAzureVmName
+    $VMName = getAzureVmName
 		$domain = "domain"+ $seed
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
-        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
+    $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
         $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -Zone $VMZone
-		return $vm.Id
+    return $vm.Id
+}
+
+function createAzureVmInEdgeZone {
+    param(
+        [string]$primaryLocation,
+        [string]$primaryExtendedLocation
+    )
+
+    $VMLocalAdminUser = "adminUser"
+    $PasswordString = $(Get-RandomSuffix 12)
+    $Password = $PasswordString | ConvertTo-SecureString -Force -AsPlainText
+    $VMLocalAdminSecurePassword = $Password
+    $VMLocation = $primaryLocation
+    $VMExtendedLocation = $primaryExtendedLocation
+    $VMName = getAzureVmName
+    $ComputerName = $VMName
+    $primaryResourceGroupName = $VMName
+    $domain = "domain" + $seed
+    $password = $VMLocalAdminSecurePassword | ConvertTo-SecureString -AsPlainText -Force
+    $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
+
+    $VMSize = "Standard_D2S_V3"
+    $NetworkName = "MyVNet"
+    $NICName = "MyNIC"
+    $SubnetName = "MySubnet"
+    $SubnetAddressPrefix = "10.0.0.0/24"
+    $VnetAddressPrefix = "10.0.0.0/16"
+    $ipName = 'myStdPublicIP'
+
+    $ip = @{
+        Name = $ipName
+        ResourceGroupName = $primaryResourceGroupName
+        Location = $VMLocation
+        EdgeZone = $VMExtendedLocation
+        Sku = 'Standard'
+        AllocationMethod = 'Static'
+        IpAddressVersion = 'IPv4'
+    }
+    New-AzPublicIpAddress @ip
+
+    $pip = Get-AzPublicIpAddress -Name $ipName -ResourceGroupName $primaryResourceGroupName
+    $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
+    $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $primaryResourceGroupName -Location $VMLocation -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet -EdgeZone $VMExtendedLocation
+    $subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $vnet
+    $IpConfigVm = New-AzNetworkInterfaceIpConfig -Name "IpConfigVm" -Subnet $subnet -PublicIpAddress $pip -Primary
+    $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $primaryResourceGroupName -Location $VMLocation -EdgeZone $VMExtendedLocation -IpConfiguration $IpConfigVm
+
+    $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
+    $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
+    $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
+    $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version latest
+    $VirtualMachine | Set-AzVMBootDiagnostic -disable
+    $vm = New-AzVM -ResourceGroupName $primaryResourceGroupName -Location $VMLocation -VM $VirtualMachine -EdgeZone $VMExtendedLocation
+    return $vm.Id
 }
 
 function createRecoveryNetworkId{
     param([string] $location , [string] $resourceGroup)
 
 	$NetworkName = getRecoveryNetworkName
-	$NetworkLocation = getRecoveryLocation
+	$NetworkLocation = if ($location) { $location } else { getRecoveryLocation }
 	$ResourceGroupName = getRecoveryResourceGroupName
 	$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
     $virtualNetwork = New-AzVirtualNetwork `
@@ -249,7 +328,7 @@ function createRecoveryNetworkIdForZone{
     param([string] $location , [string] $resourceGroup)
 
 	$NetworkName = getRecoveryNetworkName
-	$NetworkLocation = getPrimaryZoneLocation
+	$NetworkLocation = if ($location) { $location } else { getPrimaryZoneLocation } 
 	$ResourceGroupName = getRecoveryResourceGroupName
 	$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
     $virtualNetwork = New-AzVirtualNetwork `
@@ -260,11 +339,27 @@ function createRecoveryNetworkIdForZone{
     return $virtualNetwork.Id
 }
 
+function createRecoveryNetworkIdForEdgeZone{
+    param([string] $location , [string] $resourceGroup , [string] $edgeZone)
+
+	$NetworkName = getRecoveryNetworkName
+	$NetworkLocation = if ($location) { $location } else { getPrimaryExtendedLocation }
+	$ResourceGroupName = if ($resourceGroup) { $resourceGroup } else { getRecoveryResourceGroupName }
+    $EdgeZone = if ($edgeZone) { $edgeZone } else { getRecoveryExtendedLocation }
+	$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+    $virtualNetwork = New-AzVirtualNetwork `
+          -ResourceGroupName $ResourceGroupName `
+          -Location $NetworkLocation `
+          -Name $NetworkName `
+          -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet -EdgeZone $edgeZone
+    return $virtualNetwork.Id
+}
+
 function createCacheStorageAccount{
     param([string] $location , [string] $resourceGroup)
 
 	$StorageAccountName = getCacheStorageAccountName
-	$cacheLocation = getPrimaryLocation
+	$cacheLocation = if ($location) { $location } else { getPrimaryLocation }
 	$storageRes = getAzureVmName
     $storageAccount = New-AzStorageAccount `
           -ResourceGroupName $storageRes `

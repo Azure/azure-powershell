@@ -24,7 +24,7 @@ Creates or updates a Collector Policy resource
 .Example
 {{ Add code here }}
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ICollectorPolicy
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
@@ -39,7 +39,7 @@ INGESTIONPOLICYINGESTIONSOURCE <IIngestionSourcesPropertiesFormat[]>: Ingestion 
 https://docs.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctioncollectorpolicy
 #>
 function Update-AzNetworkFunctionCollectorPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ICollectorPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -71,7 +71,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IEmissionPoliciesPropertiesFormat[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IEmissionPoliciesPropertiesFormat[]]
     # Emission policies.
     # To construct, see NOTES section for EMISSIONPOLICY properties and create a hash table.
     ${EmissionPolicy},
@@ -79,7 +79,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IIngestionSourcesPropertiesFormat[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IIngestionSourcesPropertiesFormat[]]
     # Ingestion Sources.
     # To construct, see NOTES section for INGESTIONPOLICYINGESTIONSOURCE properties and create a hash table.
     ${IngestionPolicyIngestionSource},
@@ -99,7 +99,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -166,7 +166,41 @@ param(
 
 process {
     try {
-        Az.NetworkFunction.internal\Set-AzNetworkFunctionCollectorPolicy @PSBoundParameters
+      # 1. GET
+      $hasEmissionPolicy = $PSBoundParameters.Remove('EmissionPolicy')
+      $hasIngestionPolicyIngestionSource = $PSBoundParameters.Remove('IngestionPolicyIngestionSource')
+      $hasIngestionPolicyIngestionType = $PSBoundParameters.Remove('IngestionPolicyIngestionType')
+      $hasTag = $PSBoundParameters.Remove('Tag')
+      $hasAsJob = $PSBoundParameters.Remove('AsJob')
+      $null = $PSBoundParameters.Remove('WhatIf')
+      $null = $PSBoundParameters.Remove('Confirm')
+      $null = $PSBoundParameters.Remove('Location')
+
+      $cp = Get-AzNetworkFunctionCollectorPolicy @PSBoundParameters
+
+      # 2. PUT
+      $null = $PSBoundParameters.Remove('AzureTrafficCollectorName')
+      $null = $PSBoundParameters.Remove('ResourceGroupName')
+      $null = $PSBoundParameters.Remove('Name')
+      $null = $PSBoundParameters.Remove('SubscriptionId')
+
+      if ($hasEmissionPolicy) {
+        $cp.EmissionPolicy = $EmissionPolicy
+      }
+      if ($hasIngestionPolicyIngestionSource) {
+        $cp.IngestionPolicyIngestionSource = $IngestionPolicyIngestionSource
+      }
+      if ($hasIngestionPolicyIngestionType) {
+        $cp.IngestionPolicyIngestionType = $IngestionPolicyIngestionType
+      }
+      if ($hasTag) {
+        $cp.Tag = $Tag
+      }
+      if ($hasAsJob) {
+        $PSBoundParameters.Add('AsJob', $true)
+      }
+      
+      Az.NetworkFunction.private\New-AzNetworkFunctionCollectorPolicy_CreateViaIdentity -InputObject $cp -Parameter $cp @PSBoundParameters
     } catch {
         throw
     }

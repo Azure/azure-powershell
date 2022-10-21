@@ -14,9 +14,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestMigrationState TestMigrationCleanupInProgress = @"TestMigrationCleanupInProgress";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestMigrationState TestMigrationCompletedWithInformation = @"TestMigrationCompletedWithInformation";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestMigrationState TestMigrationFailed = @"TestMigrationFailed";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestMigrationState TestMigrationInProgress = @"TestMigrationInProgress";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestMigrationState TestMigrationPartiallySucceeded = @"TestMigrationPartiallySucceeded";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestMigrationState TestMigrationSucceeded = @"TestMigrationSucceeded";
 

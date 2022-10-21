@@ -23,11 +23,11 @@ Updates the specified Azure Traffic Collector tags.
 Update-AzNetworkFunctionTrafficCollectorTag -azuretrafficcollectorname atc -resourcegroupname rg1 | Format-List
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ITagsObject
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ITagsObject
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IAzureTrafficCollector
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,7 +47,7 @@ PARAMETER <ITagsObject>: Tags object for patch operations.
 https://docs.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctiontrafficcollectortag
 #>
 function Update-AzNetworkFunctionTrafficCollectorTag {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IAzureTrafficCollector])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector])]
 [CmdletBinding(DefaultParameterSetName='UpdateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -78,7 +78,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ITagsObject]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ITagsObject]
     # Tags object for patch operations.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

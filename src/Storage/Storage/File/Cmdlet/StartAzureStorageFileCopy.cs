@@ -25,10 +25,12 @@ using System.Security.Permissions;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Azure.Storage.Files.Shares;
+using Azure;
+using Azure.Storage.Files.Shares.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [GenericBreakingChange("The returned file properties will be moved from CloudFile to FileProperties in a future release.")]
     [Cmdlet("Start", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopy", SupportsShouldProcess = true), OutputType(typeof(AzureStorageFile))]
     public class StartAzureStorageFileCopyCommand : StorageFileDataManagementCmdletBase
     {
@@ -226,6 +228,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         destChannel = new StorageFileManagement(this.GetCmdletStorageContext(DestContext));
                     }
                 }
+                else if (BlobFileParameterSet == this.ParameterSetName ||
+                    FileFileParameterSet == this.ParameterSetName ||
+                    UriFileParameterSet == this.ParameterSetName)
+                {
+                    destChannel = new StorageFileManagement(this.GetCmdletStorageContext(DestContext));
+                }
                 else
                 {
                     destChannel = base.CreateChannel();
@@ -241,6 +249,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            if(this.DestFile != null)
+            {
+                // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
+                if (this.DestContext == null)
+                {
+                    this.DestContext = GetStorageContextFromTrack1FileServiceClient(this.DestFile.ServiceClient, DefaultContext);
+                }
+            }
+
             blobChannel = this.GetBlobChannel();
             destChannel = GetDestinationChannel();
             IStorageFileManagement srcChannel = Channel;
@@ -300,13 +317,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 sourceBlobRelativeName = this.SrcBlobName;
             }
 
-            CloudFile destFile = GetDestFile();
+            ShareFileClient destFile = GetDestFile();
 
             Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
                 taskId,
                 destFile,
-                () => this.ConfirmOverwrite(blob.SnapshotQualifiedUri.ToString(), destFile.SnapshotQualifiedUri.ToString()),
-                () => destFile.StartCopyAsync(blob.GenerateUriWithCredentials(), null, null, this.RequestOptions, this.OperationContext));
+                () => this.ConfirmOverwrite(blob.SnapshotQualifiedUri.ToString(), Util.GetSnapshotQualifiedUri(destFile.Uri)),
+                () => destFile.StartCopyAsync(blob.GenerateUriWithCredentials(), cancellationToken: this.CmdletCancellationToken));
 
             this.RunTask(taskGenerator);
         }
@@ -320,6 +337,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 sourceFile = this.SrcFile;
                 filePath = this.SrcFile.GetFullPath();
+
+                // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
+                if (this.Context == null)
+                {
+                    this.Context = GetStorageContextFromTrack1FileServiceClient(this.SrcFile.ServiceClient, DefaultContext);
+                }
             }
             else
             {
@@ -340,76 +363,64 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 filePath = this.SrcFilePath;
             }
 
-            CloudFile destFile = this.GetDestFile();
+            ShareFileClient destFile = this.GetDestFile();
 
             Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
                 taskId,
                 destFile,
-                () => this.ConfirmOverwrite(sourceFile.SnapshotQualifiedUri.ToString(), destFile.SnapshotQualifiedUri.ToString()),
-                () => destFile.StartCopyAsync(sourceFile.GenerateCopySourceFile(), null, null, this.RequestOptions, this.OperationContext));
+                () => this.ConfirmOverwrite(sourceFile.SnapshotQualifiedUri.ToString(), Util.GetSnapshotQualifiedUri(destFile.Uri)),
+                () => destFile.StartCopyAsync(sourceFile.GenerateUriWithCredentials(), cancellationToken: this.CmdletCancellationToken));
 
             this.RunTask(taskGenerator);
         }
 
         private void StartCopyFromUri()
         {
-            CloudFile destFile = this.GetDestFile();
+            ShareFileClient destFile = this.GetDestFile();
 
             Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
                 taskId,
                 destFile,
-                () => this.ConfirmOverwrite(this.AbsoluteUri, destFile.SnapshotQualifiedUri.ToString()),
-                () => destFile.StartCopyAsync(new Uri(this.AbsoluteUri), null, null, this.RequestOptions, this.OperationContext));
+                () => this.ConfirmOverwrite(this.AbsoluteUri, Util.GetSnapshotQualifiedUri(destFile.Uri)),
+                () => destFile.StartCopyAsync(new Uri(this.AbsoluteUri), cancellationToken: this.CmdletCancellationToken));
 
             this.RunTask(taskGenerator);
         }
 
-        private CloudFile GetDestFile()
+        private ShareFileClient GetDestFile()
         {
-            var destChannal = this.GetDestinationChannel();
+            destChannel = this.GetDestinationChannel();
 
             if (null != this.DestFile)
             {
-                return this.DestFile;
+                return AzureStorageFile.GetTrack2FileClient(this.DestFile, ClientOptions);
             }
             else
             {
-                string destPath = this.DestFilePath;
-
                 NamingUtil.ValidateShareName(this.DestShareName, false);
-                CloudFileShare share = destChannal.GetShareReference(this.DestShareName);
-
-                string[] path = NamingUtil.ValidatePath(destPath, true);
-                return share.GetRootDirectoryReference().GetFileReferenceByPath(path);
+                ShareServiceClient fileserviceClient = Util.GetTrack2FileServiceClient(destChannel.StorageContext, ClientOptions);
+                return fileserviceClient.GetShareClient(this.DestShareName).GetRootDirectoryClient().GetFileClient(this.DestFilePath);
             }
         }
 
-        private async Task StartAsyncCopy(long taskId, CloudFile destFile, Func<bool> checkOverwrite, Func<Task<string>> startCopy)
+        private async Task StartAsyncCopy(long taskId, ShareFileClient destFile, Func<bool> checkOverwrite, Func<Task<Response<ShareFileCopyInfo>>> startCopy)
         {
             bool destExist = true;
             try
             {
-                await destFile.FetchAttributesAsync(null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
-
-                //Clean the Metadata of the destination file object, or the source metadata won't overwirte the dest file metadata. See https://docs.microsoft.com/en-us/rest/api/storageservices/copy-file
-                destFile.Metadata.Clear();
+                await destFile.GetPropertiesAsync(cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false);
             }
-            catch (StorageException ex)
+            catch (global::Azure.RequestFailedException ex) when (ex.Status == 404)
             {
-                if (!ex.IsNotFoundException())
-                {
-                    throw;
-                }
-
                 destExist = false;
             }
 
             if (!destExist || checkOverwrite())
             {
-                string copyId = await startCopy().ConfigureAwait(false);
+                ShareFileCopyInfo copyInfo = (await startCopy().ConfigureAwait(false)).Value;
 
-                this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destFile.GetFullPath(), destFile.Share.Name, copyId));
-                WriteCloudFileObject(taskId, this.Channel, destFile);
+                this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destFile.Path, destFile.ShareName, copyInfo.CopyId));
+                this.OutputStream.WriteObject(taskId, new AzureStorageFile(destFile, destChannel.StorageContext, clientOptions: ClientOptions));
             }
         }
     }

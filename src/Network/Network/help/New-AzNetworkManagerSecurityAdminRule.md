@@ -17,9 +17,8 @@ Creates a security admin rule.
 New-AzNetworkManagerSecurityAdminRule -Name <String> -RuleCollectionName <String>
  -SecurityAdminConfigurationName <String> -NetworkManagerName <String> -ResourceGroupName <String>
  [-Description <String>] -Protocol <String> -Direction <String> -Access <String>
- [-SourceAddressPrefix <Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem[]>]
- [-DestinationAddressPrefix <Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem[]>]
- [-SourcePortRange <String[]>]
+ [-SourceAddressPrefix <PSNetworkManagerAddressPrefixItem[]>]
+ [-DestinationAddressPrefix <PSNetworkManagerAddressPrefixItem[]>] [-SourcePortRange <String[]>]
  [-DestinationPortRange <String[]>] -Priority <Int32> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -37,15 +36,15 @@ The **New-AzNetworkManagerSecurityAdminRule** cmdlet creates a security admin ru
 
 ## EXAMPLES
 
-
 ### Example 1: Create Custom Security Admin Rule
 ```powershell
 $sourceAddressPrefix = New-AzNetworkManagerAddressPrefixItem -AddressPrefix "Internet" -AddressPrefixType "ServiceTag"
 $destinationAddressPrefix = New-AzNetworkManagerAddressPrefixItem -AddressPrefix "10.0.0.1" -AddressPrefixType "IPPrefix" 
 $sourcePortList = @("100")
 $destinationPortList = @("99")
-New-AzNetworkManagerSecurityAdminRule -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -ConfigName "psSecurityAdminConfig" -RuleCollectionName "psRuleCollection" -Name "psRule" -Description "TestDescription" -Protocol  "TCP" -Direction "Inbound" -Access "Allow" -Priority 100 -SourcePortRange $sourcePortList -DestinationPortRange $destinationPortList -SourceAddressPrefix $sourceAddressPrefix -DestinationAddressPrefix $destinationAddressPrefix 
+New-AzNetworkManagerSecurityAdminRule -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -ConfigName "psSecurityAdminConfig" -RuleCollectionName "psRuleCollection" -Name "psRule" -Description "TestDescription" -Protocol  "TCP" -Direction "Inbound" -Access "Allow" -Priority 100 -SourcePortRange $sourcePortList -DestinationPortRange $destinationPortList -SourceAddressPrefix $sourceAddressPrefix -DestinationAddressPrefix $destinationAddressPrefix
 ```
+
 ```output
 Protocol                  : Tcp
 Direction                 : Inbound
@@ -90,17 +89,19 @@ Name                      : psRule
 Etag                      :
 Id                        : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig/ruleCollections/psRuleCollection/rules/psRule
 ```
+
 Creates a security admin rule.
 
 ## PARAMETERS
 
 ### -Access
-Access of Rule. Valid values include 'Allow', 'Deny', and 'AlwaysAllow'.
+Access of Rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Custom
 Aliases:
+Accepted values: Allow, Deny, AlwaysAllow
 
 Required: True
 Position: Named
@@ -113,7 +114,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +129,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -143,7 +144,7 @@ Accept wildcard characters: False
 Description.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Custom
 Aliases:
 
@@ -173,7 +174,7 @@ Accept wildcard characters: False
 Destination Port Ranges.
 
 ```yaml
-Type: System.String[]	
+Type: System.String[]
 Parameter Sets: Custom
 Aliases:
 
@@ -185,12 +186,13 @@ Accept wildcard characters: False
 ```
 
 ### -Direction
-Direction of Rule. Valid values include 'Inbound' and 'Outbound'.
+Direction of Rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Custom
 Aliases:
+Accepted values: Inbound, Outbound
 
 Required: True
 Position: Named
@@ -203,7 +205,7 @@ Accept wildcard characters: False
 Default Flag Type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases:
 
@@ -218,7 +220,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -233,7 +235,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -248,7 +250,7 @@ Accept wildcard characters: True
 The network manager name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -263,7 +265,7 @@ Accept wildcard characters: True
 Priority of Rule.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: Custom
 Aliases:
 
@@ -275,12 +277,13 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Protocol of Rule. Valid values include 'Tcp', 'Udp', 'Icmp', 'Esp', 'Any', and 'Ah'.
+Protocol of Rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Custom
 Aliases:
+Accepted values: Tcp, Udp, Icmp, Esp, Any, Ah
 
 Required: True
 Position: Named
@@ -293,7 +296,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -308,7 +311,7 @@ Accept wildcard characters: False
 The network manager security admin rule collection name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -323,7 +326,7 @@ Accept wildcard characters: True
 The network manager security admin configuration name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ConfigName
 
@@ -353,7 +356,7 @@ Accept wildcard characters: False
 Source Port Ranges.
 
 ```yaml
-Type: System.String[]	
+Type: System.String[]
 Parameter Sets: Custom
 Aliases:
 
@@ -368,7 +371,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -384,7 +387,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

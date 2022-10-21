@@ -14,7 +14,8 @@ Modifies the client auth configuration of a ssl profile object.
 
 ```
 Set-AzApplicationGatewayClientAuthConfiguration -SslProfile <PSApplicationGatewaySslProfile>
- [-VerifyClientCertIssuerDN] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VerifyClientCertIssuerDN] [-VerifyClientRevocation <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +27,7 @@ The **Set-AzApplicationGatewayClientAuthConfiguration** cmdlet modifies the clie
 ```powershell
 $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 $profile  = Get-AzApplicationGatewaySslProfile -Name "SslProfile01" -ApplicationGateway $AppGw
-Set-AzApplicationGatewayClientAuthConfiguration -SslProfile $profile -VerifyClientCertIssuerDN
+Set-AzApplicationGatewayClientAuthConfiguration -SslProfile $profile -VerifyClientCertIssuerDN -VerifyClientRevocation OCSP
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the ssl profile named SslProfile01 for $AppGw and stores the settings in the $profile variable. The last command modifies the client auth configuration of the ssl profile object stored in $profile.
@@ -37,7 +38,7 @@ The first command gets the application gateway named ApplicationGateway01 in the
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -52,7 +53,7 @@ Accept wildcard characters: False
 The ssl profile
 
 ```yaml
-Type: PSApplicationGatewaySslProfile
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslProfile
 Parameter Sets: (All)
 Aliases:
 
@@ -64,12 +65,28 @@ Accept wildcard characters: False
 ```
 
 ### -VerifyClientCertIssuerDN
+Verify client certificate revocation status.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VerifyClientRevocation
 Verify client certificate issuer name.
 
 ```yaml
-Type: SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: None, OCSP
 
 Required: False
 Position: Named

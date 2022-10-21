@@ -14,8 +14,9 @@ Creates an Azure RouteServer.
 
 ```
 New-AzRouteServer -ResourceGroupName <String> -RouteServerName <String> -HostedSubnet <String>
- [-PublicIpAddress <PSPublicIpAddress>] -Location <String> [-Tag <Hashtable>] [-HubRoutingPreference <String>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublicIpAddress <PSPublicIpAddress>] -Location <String> [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-HubRoutingPreference <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,14 +24,16 @@ The **New-AzRouteServer** cmdlet creates an Azure RouteServer
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a new router server
 ```powershell
-$subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-$subnetId = (Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet).Id
-$publicIpAddress = New-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgName -AllocationMethod Static -Location $rglocation -Sku Standard -Tier Regional
+New-AzResourceGroup -Name myResourceGroup -Location eastus
 
-New-AzRouteServer -RouteServerName $routeServerName -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -HostedSubnet $subnetId -PublicIpAddress $publicIpAddress -HubRoutingPreference "AsPath"
+$subnet = New-AzVirtualNetworkSubnetConfig -Name RouteServerSubnet -AddressPrefix 10.0.0.0/24
+$vnet = New-AzVirtualNetwork -Name myVNet -ResourceGroupName myResourceGroup -Location eastus -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+$subnetId = (Get-AzVirtualNetworkSubnetConfig -Name RouteServerSubnet -VirtualNetwork $vnet).Id
+$publicIpAddress = New-AzPublicIpAddress -Name myRouteServerIP -ResourceGroupName myResourceGroup -AllocationMethod Static -Location eastus -Sku Standard -Tier Regional
+
+New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName myResourceGroup -Location eastus -HostedSubnet $subnetId -PublicIpAddress $publicIpAddress
 ```
 
 ## PARAMETERS
@@ -89,6 +92,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HubRoutingPreference
+Routing Preference to route traffic
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: ExpressRoute, VpnGateway, ASPath
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -167,21 +186,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -HubRoutingPreference
-Routing Preference to route traffic
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: ExpressRoute, VpnGateway, ASPath
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

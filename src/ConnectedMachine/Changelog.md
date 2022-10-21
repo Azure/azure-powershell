@@ -18,12 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue with Connect-AzConnectedMachine throwing errors when onboarding multiple machines at once
 
 ## Version 0.4.0
 * Updated the API version to stable 2022-03-10
 * Added cmdlet Update-AzConnectedMachine
 * Added ResourceGroup to the display table
 * Fixed the issue of extension settings not being able to serialize correctly
+* Fixed issue with Connect-AzConnectedMachine throwing errors when onboarding multiple machines at once
 
 ## Version 0.3.0
 * Upgraded API version to 2021-05-20

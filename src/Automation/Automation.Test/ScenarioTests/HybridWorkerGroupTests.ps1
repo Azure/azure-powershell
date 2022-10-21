@@ -26,13 +26,19 @@ function Test-E2EHybridWorkerGroup
         GroupType = "User"
     }
 
-    $group = Get-AzAutomationHybridWorkerGroup -ResourceGroupName $resourceGroupName `
+    New-AzAutomationHybridRunbookWorkerGroup  -ResourceGroupName $resourceGroupName `
+                                              -AutomationAccountName $automationAccountName  `
+                                              -Name $hybridWorkerGroupName  `
+                                              -ErrorAction SilentlyContinue
+
+    $group = Get-AzAutomationHybridRunbookWorkerGroup -ResourceGroupName $resourceGroupName `
                                                      -AutomationAccountName $automationAccountName  `
                                                      -Name $hybridWorkerGroupName 
 
     # Validate the hybrid worker group properties
-    $propertiesToValidate = @("ResourceGroupName", "AutomationAccountName", "Name", "GroupType")
+    $propertiesToValidate = @("GroupType")
 
+    Assert-AreEqual $group.name $expectedHybridWorkerGroup.Name
     foreach ($property in $propertiesToValidate)
     {
         Assert-AreEqual $group.$property $expectedHybridWorkerGroup.$property `
@@ -40,12 +46,12 @@ function Test-E2EHybridWorkerGroup
     }
 
 	# Remove the HybridWorkerGroup
-	Remove-AzAutomationHybridWorkerGroup -ResourceGroupName $resourceGroupName `
+	Remove-AzAutomationHybridRunbookWorkerGroup -ResourceGroupName $resourceGroupName `
                                               -AutomationAccountName $automationAccountName  `
                                               -Name $hybridWorkerGroupName
 	
 	# Make sure it was the hybrid worker group was deleted
-	$group = Get-AzAutomationHybridWorkerGroup -ResourceGroupName $resourceGroupName `
+	$group = Get-AzAutomationHybridRunbookWorkerGroup -ResourceGroupName $resourceGroupName `
                                               -AutomationAccountName $automationAccountName  `
                                               -Name $hybridWorkerGroupName `
                                               -ErrorAction SilentlyContinue

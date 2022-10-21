@@ -140,6 +140,10 @@
     "alias": "Networking"
   },
   {
+    "module": "Nginx",
+    "alias": "Nginx"
+  },
+  {
     "regex": "FrontDoor",
     "alias": "Front Door"
   },
@@ -462,7 +466,7 @@
     "alias": "Kusto"
   },
   {
-    "regex": "Advisor",
+    "module": "Advisor",
     "alias": "Advisor"
   },
   {
@@ -573,7 +577,7 @@
   },
   {
     "regex": "ImportExport",
-    "alias": "Import/Export"
+    "alias": "ImportExport"
   },
   {
     "regex": "Functions",
@@ -762,5 +766,21 @@
   {
     "module": "DynatraceObservability",
     "alias": "DynatraceObservability"
+  },
+  {
+    "module": "DeviceUpdate",
+    "alias": "DeviceUpdate"
+  },
+  {
+    "alias": "ElasticSan",
+    "module": "ElasticSan"
+  },
+  {
+    "alias": "SSH",
+    "module": "Ssh"
+  },
+  {
+    "alias": "Automanage",
+    "module": "Automanage"
   }
 ]

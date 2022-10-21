@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -110,7 +111,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
         [Alias("Actions")]
         [AllowEmptyCollection]
-        public ActivityLogAlertActionGroup[] ActionGroup { get; set; }
+        public Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[] ActionGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the ActionGroupId parameter

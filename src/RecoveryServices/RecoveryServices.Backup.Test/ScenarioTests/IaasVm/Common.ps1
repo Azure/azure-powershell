@@ -241,26 +241,13 @@ function Delete-VM(
 	Remove-AzVM -ResourceGroupName $rgName -Name $vmName -Force
 }
 
-<# 
-.SYNOPSIS
-Sleeps but only during recording.
-#>
- 
-function Start-TestSleep($milliseconds)
-{
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-    {
-        Start-Sleep -Milliseconds $milliseconds
-    }
-}
-
 function Enable-Protection(
 	$vault, 
 	$vm,
 	[string] $resourceGroupName = "")
 {
     # Sleep to give the service time to add the default policy to the vault
-    Start-TestSleep 5000
+    Start-TestSleep -Seconds 5
 	$container = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType AzureVM `
@@ -271,7 +258,7 @@ function Enable-Protection(
 		$resourceGroupName = $vm.ResourceGroupName
 	}
 
-	if ($container -eq $null)
+	if ($container -eq $null -or $container.Status -ne "Registered")
 	{
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
@@ -294,6 +281,25 @@ function Enable-Protection(
 		-Container $container `
 		-WorkloadType AzureVM `
 		-Name $vm.Name
+
+	if ($item -eq $null)
+	{
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name "DefaultPolicy";
+
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Name $vm.Name `
+			-ResourceGroupName $resourceGroupName | Out-Null
+
+		$item = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-Container $container `
+		-WorkloadType AzureVM `
+		-Name $vm.Name
+	}
 
 	return $item
 }

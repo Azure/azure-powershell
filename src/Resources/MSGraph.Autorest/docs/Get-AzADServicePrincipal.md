@@ -14,8 +14,8 @@ Lists entities from service principals or get entity from service principals by 
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzADServicePrincipal [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
- [-ConsistencyLevel <String>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
+Get-AzADServicePrincipal [-Count] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
+ [-Select <String[]>] [-ConsistencyLevel <String>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -95,6 +95,13 @@ Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
 
 Get service principal by pipeline input
 
+### Example 6: Get service principal with filter
+```powershell
+Get-AzADServicePrincipal -Filter "startsWith(DisplayName,'some-name')"
+```
+
+Get service principal with filter
+
 ## PARAMETERS
 
 ### -AppendSelected
@@ -159,6 +166,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Count
+Include count of items
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -205,7 +227,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filter
-Filter items by property values
+Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
 
 ```yaml
 Type: System.String

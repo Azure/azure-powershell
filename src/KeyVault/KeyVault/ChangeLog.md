@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bumped API version to 2022-07-01
+
+## Version 4.8.0
+* Fixed the exception content swallowed issue when exception.Response is null [#19531]
+* Added the existing parameters `Exportable`, `Immutable`, `UseDefaultCVMPolicy`, and `ReleasePolicyPath`
+  to the parameter sets `InteractiveCreate`, `InputObjectCreate`, and `ResourceIdCreate`.
+
+## Version 4.7.0
+* Fixed parameter validation logic of `-UseDefaultCVMPolicy`
 * Added parameter `ContentType` in `Import-AzKeyVaultCertificate` to support importing pem via certificate string
 * Allowed `DnsName` in `New-AzKeyVaultCertificatePolicy` to accept an empty list [#18954]
 

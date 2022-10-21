@@ -17,8 +17,8 @@ Creates an Event Hubs namespace.
 New-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-EnableKafka] [-ZoneRedundant]
  [[-ClusterARMId] <String>] [-DisableLocalAuth] [-IdentityType <String>] [-IdentityId <String[]>]
- [-EncryptionConfig <PSEncryptionConfigAttributes[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EncryptionConfig <PSEncryptionConfigAttributes[]>] [-MinimumTlsVersion <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AutoInflateParameterSet
@@ -27,14 +27,15 @@ New-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Locatio
  [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-EnableAutoInflate]
  [[-MaximumThroughputUnits] <Int32>] [-EnableKafka] [-ZoneRedundant] [[-ClusterARMId] <String>]
  [-DisableLocalAuth] [-IdentityType <String>] [-IdentityId <String[]>]
- [-EncryptionConfig <PSEncryptionConfigAttributes[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EncryptionConfig <PSEncryptionConfigAttributes[]>] [-MinimumTlsVersion <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The New-AzEventHubNamespace cmdlet creates a new namespace of type Event Hubs.
 
 ## EXAMPLES
+
 ### Example 1
 ```powershell
 New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation
@@ -168,7 +169,7 @@ Encryption.KeyVaultProperties :
 
 Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic location \`MyLocation\`, in resource group \`MyResourceGroupName\` with Kafka and  AutoInflate enabled.
 
-### Example 5: Creating Namespace with Manage Identity in a cluster 
+### Example 5: Creating Namespace with Manage Identity in a cluster
 ```powershell
 New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation -EnableAutoInflate -MaximumThroughputUnits 12 -EnableKafka -ZoneRedundant -IdentityType SystemAssigned
 ```
@@ -200,9 +201,7 @@ Encryption.KeyVaultProperties :
 
 ### Example 6: Creating Namespace with UserAssigned identity encryption enabled
 
-
 ```powershell
-
 # Create encryption config that will create an in memory config object
 $config1 = New-AzEventHubEncryptionConfig -KeyName key1 -KeyVaultUri https://myvaultname.vault.azure.net -UserAssignedIdentity '/subscriptions/{subscriptionId}/resourceGroups/{resourcegroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSIName'
 
@@ -405,7 +404,23 @@ Parameter Sets: AutoInflateParameterSet
 Aliases:
 
 Required: False
-Position: 7
+Position: 6
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MinimumTlsVersion
+The minimum TLS version for the namespace to support, e.g. '1.2'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: 1.0, 1.1, 1.2
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
