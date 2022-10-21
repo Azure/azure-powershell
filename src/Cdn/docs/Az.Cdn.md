@@ -100,16 +100,6 @@ Gets an existing security policy within a profile.
 Pre-loads a content to CDN.
 Available for Verizon Profiles.
 
-### [Invoke-AzCdnCanProfileMigrate](Invoke-AzCdnCanProfileMigrate.md)
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
-
-### [Invoke-AzCdnCommitProfileMigration](Invoke-AzCdnCommitProfileMigration.md)
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
-
-### [Move-AzCdnProfile](Move-AzCdnProfile.md)
-Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
-The change need to be committed after this.
-
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
 
@@ -178,6 +168,12 @@ Create an in-memory object for HealthProbeParameters.
 
 ### [New-AzCdnManagedHttpsParametersObject](New-AzCdnManagedHttpsParametersObject.md)
 Create an in-memory object for CdnManagedHttpsParameters.
+
+### [New-AzCdnMigrationParametersObject](New-AzCdnMigrationParametersObject.md)
+Create an in-memory object for MigrationParameters.
+
+### [New-AzCdnMigrationWebApplicationFirewallMappingObject](New-AzCdnMigrationWebApplicationFirewallMappingObject.md)
+Create an in-memory object for MigrationWebApplicationFirewallMapping.
 
 ### [New-AzCdnOrigin](New-AzCdnOrigin.md)
 Creates a new origin within the specified endpoint.
@@ -400,8 +396,19 @@ Deletes an existing security policy within profile.
 ### [Start-AzCdnEndpoint](Start-AzCdnEndpoint.md)
 Starts an existing CDN endpoint that is on a stopped state.
 
+### [Start-AzFrontDoorCdnProfileMigrate](Start-AzFrontDoorCdnProfileMigrate.md)
+Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+
+### [Start-AzFrontDoorCdnProfilePrepareMigration](Start-AzFrontDoorCdnProfilePrepareMigration.md)
+Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+The change need to be committed after this.
+
 ### [Stop-AzCdnEndpoint](Stop-AzCdnEndpoint.md)
 Stops an existing running CDN endpoint.
+
+### [Stop-AzFrontDoorCdnProfileMigrate](Stop-AzFrontDoorCdnProfileMigrate.md)
+Abort classic cdn migrate to AFDx.
+This will delete all the AFD Standard or Premium configurations.
 
 ### [Test-AzCdnEndpointCustomDomain](Test-AzCdnEndpointCustomDomain.md)
 Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
@@ -421,6 +428,9 @@ Validates the custom domain mapping to ensure it maps to the correct Azure Front
 ### [Test-AzFrontDoorCdnEndpointNameAvailability](Test-AzFrontDoorCdnEndpointNameAvailability.md)
 Check the availability of a resource name.
 This is needed for resources where name is globally unique, such as a afdx endpoint.
+
+### [Test-AzFrontDoorCdnProfileCanMigrateOrNot](Test-AzFrontDoorCdnProfileCanMigrateOrNot.md)
+Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 
 ### [Test-AzFrontDoorCdnProfileHostNameAvailability](Test-AzFrontDoorCdnProfileHostNameAvailability.md)
 Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.

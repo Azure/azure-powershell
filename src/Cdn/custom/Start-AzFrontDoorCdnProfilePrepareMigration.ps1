@@ -27,12 +27,12 @@ PS C:\> {{ Add code here }}
 PS C:\> {{ Add code here }}
 {{ Add output here }}
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult
 .Link
 https://docs.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofilepreparemigration
 #>
 function Start-AzFrontDoorCdnProfilePrepareMigration {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrateResult])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -69,7 +69,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IMigrationParameters]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrationParameters]
         # Request body for Migrate operation.
         # To construct, see NOTES section for MIGRATIONPARAMETER properties and create a hash table.
         ${MigrationParameter},
@@ -160,6 +160,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                     ParseWafResourceId -WafResourceId $policy.migratedTo.Id
                 }
 
+                # Get the waf policies of the endpoints in classic AFD
                 $AllEndpointsInfo = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName}
                 foreach($endpointInfo in $AllEndpointsInfo) {
 

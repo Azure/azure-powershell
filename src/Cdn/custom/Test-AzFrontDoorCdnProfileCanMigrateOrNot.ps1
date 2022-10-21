@@ -25,12 +25,12 @@ PS C:\> {{ Add code here }}
 PS C:\> {{ Add code here }}
 {{ Add output here }}
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ICanMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofilecanmigrate
+https://docs.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofilecanmigrateornot
 #>
-function Test-AzFrontDoorCdnProfileCanMigrate {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ICanMigrateResult])]
+function Test-AzFrontDoorCdnProfileCanMigrateOrNot {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]

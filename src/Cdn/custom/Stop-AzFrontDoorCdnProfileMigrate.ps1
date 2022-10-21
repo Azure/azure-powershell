@@ -27,9 +27,9 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofilemigrate
+https://docs.microsoft.com/powershell/module/az.cdn/stop-azfrontdoorcdnprofilemigrate
 #>
-function Start-AzFrontDoorCdnProfileMigrate {
+function Stop-AzFrontDoorCdnProfileMigrate {
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
@@ -113,6 +113,6 @@ function Start-AzFrontDoorCdnProfileMigrate {
     )
 
     process {
-        Remove-AzCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName}
+        Remove-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName}
     }
 }
