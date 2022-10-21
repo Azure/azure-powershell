@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Commands.Compute
                 _cmdlet.ConfigAsyncVisited = true;
 
                 // ExtendedLocation
-                CM.ExtendedLocation extLoc = null;//Microsoft.Azure.Management.Compute.Models.ExtendedLocation
+                CM.ExtendedLocation extLoc = null;
                 if (_cmdlet.EdgeZone != null)
                 {
                     extLoc  = new CM.ExtendedLocation { Name = _cmdlet.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
@@ -851,9 +851,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
             }
-
-
-
+            
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>
