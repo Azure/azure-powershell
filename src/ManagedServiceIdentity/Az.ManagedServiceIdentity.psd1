@@ -12,7 +12,7 @@
 RootModule = './Az.ManagedServiceIdentity.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.8.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = './bin/Az.ManagedServiceIdentity.private.dll'
@@ -114,7 +114,13 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Supported Create/Get/Update/Remove Federated Identity Credentials on a User Assigned Managed Identity
+  * ''Get-AzFederatedIdentityCredentials''
+  * ''New-AzFederatedIdentityCredentials''
+  * ''Remove-AzFederatedIdentityCredentials''
+  * ''Update-AzFederatedIdentityCredentials''
+* Supported List Associated Resources on a User Assigned Managed Identity
+  * ''Get-AzUserAssignedIdentityAssociatedResource'''
 
         # Prerelease string of this module
         # Prerelease = ''
