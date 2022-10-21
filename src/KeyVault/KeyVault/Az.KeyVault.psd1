@@ -58,7 +58,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.2'; })
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.KeyVault.dll', 
                'Microsoft.Azure.KeyVault.WebKey.dll', 
-               'Microsoft.Azure.Management.KeyVault.dll', 
+               'Microsoft.Azure.PowerShell.KeyVault.Management.Sdk.dll',
                'Azure.Security.KeyVault.Keys.dll', 
                'Azure.Security.KeyVault.Certificates.dll', 
                'Azure.Security.KeyVault.Administration.dll', 

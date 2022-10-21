@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
         public static void ValidateName(string name)
         {
-            var regex = @"^[0-9a-zA-Z_-]*$";
+            var regex = @"^[-\w\._\(\)]+(?<!\.)$";
 
             Match match = Regex.Match(name, regex, RegexOptions.CultureInvariant);
 

@@ -14,7 +14,7 @@ Lists entities from applications or get entity from applications by key
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzADApplication [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
+Get-AzADApplication [-Count] [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
  [-ConsistencyLevel <String>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -41,12 +41,6 @@ Get-AzADApplication -ObjectId <String> [-Select <String[]>] [-AppendSelected] [-
 ```
 Get-AzADApplication -DisplayName <String> [-Select <String[]>] [-AppendSelected] [-First <UInt64>]
  [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzADApplication [-Count] [-Select <String[]>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### OwnedApplicationParameterSet
@@ -161,7 +155,7 @@ Include count of items
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List
+Parameter Sets: EmptyParameterSet
 Aliases:
 
 Required: False
