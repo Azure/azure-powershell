@@ -4886,10 +4886,10 @@ function Install-DeployModule {
     )
 
     if(Get-Module | Where-Object { $_.Name -eq $ModuleName }){
-        Write-Host "$ModuleName is loaded already ..."
+        Write-InfoLog("$ModuleName is loaded already ...")
     }
     else{
-        Write-Host "$ModuleName is not loaded, downloading ..."
+        Write-InfoLog("$ModuleName is not loaded, downloading...")
 
         # Download Remote Support Deployment module from storage
         Invoke-DeploymentModuleDownload
@@ -4917,8 +4917,8 @@ function Install-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
     
-    if(Get-AzureStackDeviceType){
-        Write-Verbose "Install-AzStackHCIRemoteSupport is not available." -Verbose
+    if(Assert-IsObservabilityStackPresent){
+        Write-InfoLog("Install-AzStackHCIRemoteSupport is not available.")
     }
     else{
         Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
@@ -4943,8 +4943,8 @@ function Remove-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
     
-    if(Get-AzureStackDeviceType){
-        Write-Verbose "Remove-AzStackHCIRemoteSupport is not available." -Verbose
+    if(Assert-IsObservabilityStackPresent){
+        Write-InfoLog("Remove-AzStackHCIRemoteSupport is not available.")
     }
     else{
         Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
@@ -5000,7 +5000,7 @@ function Enable-AzStackHCIRemoteSupport{
         $AgreeToRemoteSupportConsent
     )
 
-    if(Get-AzureStackDeviceType){
+    if(Assert-IsObservabilityStackPresent){
         Import-Module DiagnosticsInitializer -Verbose -Force
         Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
     }
@@ -5029,7 +5029,7 @@ function Disable-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
 
-    if(Get-AzureStackDeviceType){
+    if(Assert-IsObservabilityStackPresent){
         Import-Module DiagnosticsInitializer -Verbose -Force
         Disable-RemoteSupport
     }
@@ -5071,7 +5071,7 @@ function Get-AzStackHCIRemoteSupportAccess{
         $IncludeExpired
     )
 
-    if(Get-AzureStackDeviceType){
+    if(Assert-IsObservabilityStackPresent){
         Import-Module DiagnosticsInitializer -Verbose -Force
         Get-RemoteSupportAccess -IncludeExpired:$IncludeExpired
     }
@@ -5092,28 +5092,29 @@ function Get-AzStackHCIRemoteSupportAccess{
 
 .EXAMPLE
     The example below returns whether environment is HCI or not.
-    PS C:\> Get-AzureStackDeviceType
+    PS C:\> Assert-IsObservabilityStackPresent
 
 .NOTES
 #>
-function Get-AzureStackDeviceType{
+function Assert-IsObservabilityStackPresent{
     [OutputType([Boolean])]
     param()
 
     try{
         $obsService = Get-Service -Name "*Observability RemoteSupportAgent*" -ErrorAction SilentlyContinue
-        $deviceType = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\AzureStack").DeviceType
-        if($null -eq $obsService -or $deviceType -ne "AzureEdge"){
-            Write-Verbose "AzureStack device type is not AzureEdge." -Verbose
-            return $false
+        $deviceType = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\AzureStack" -ErrorAction SilentlyContinue).DeviceType
+        if($obsService -or $deviceType -eq "AzureEdge"){
+            Write-InfoLog("AzureStack device type is AzureEdge.")
+            return $true
         }
         else{
-            Write-Verbose "AzureStack device type is AzureEdge." -Verbose
-            return $true
+            Write-InfoLog("AzureStack device type is not AzureEdge.")
+            return $false
         }
     }
     catch{
         Write-Error "Failed while getting Observability Remote Support service."
+        return $false
     }
 }
 
@@ -5160,7 +5161,7 @@ function Get-AzStackHCIRemoteSupportSessionHistory{
         $FromDate = (Get-Date).AddDays(-7)
     )
 
-    if(Get-AzureStackDeviceType){
+    if(Assert-IsObservabilityStackPresent){
         Import-Module DiagnosticsInitializer -Verbose -Force
         Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
     }
