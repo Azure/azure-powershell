@@ -6480,13 +6480,12 @@ function Test-ConfVMSetAzDiskEncryptionSetConfig
 
 <#
 .SYNOPSIS
-Test Virtual Machines
+Test New-AzVM with Edgezone using Simple Parameter set
 #>
 function Test-VirtualMachineEdgeZoneParameterSets
 {
     $rgname = Get-ComputeTestResourceName;
     $loc = "eastus2";
-
 
     try
     {
