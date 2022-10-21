@@ -105,10 +105,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             },
                             StorageProfile = new VirtualMachineScaleSetStorageProfile
                             {
-                                ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : new ImageReference
+                                ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
+                                {
+                                    CommunityGalleryImageId = imageReferenceId
+                                } : new ImageReference
                                 {
                                     Id = imageReferenceId
-                                },
+                                }),
                                 DataDisks = DataDiskStrategy.CreateVmssDataDisks(
                                     imageAndOsType?.DataDiskLuns, dataDisks)
                             },

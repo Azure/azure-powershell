@@ -61,6 +61,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     case "CommunityGalleryParameterSet":
                         CommunityGalleryGet();
                         return;
+                    case "ListCommunityGalleryParameterSet":
+                        ListCommunityGallery();
+                        return;
                     default:
                         resourceGroupName = this.ResourceGroupName;
                         galleryName = this.Name;
@@ -185,12 +188,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 request.Query = query;
                 QueryResponse response = rgClient.Resources(request);
                 Dictionary<string,string> output = new Dictionary<string, string>();
-
                 var data = JsonConvert.DeserializeObject<List<PSCommunityGallery>>(response.Data.ToString());
-                
                 WriteObject(data);
-
             }
+        }
+
+        public void ListCommunityGallery()
+        {             
+            ResourceGraphClient rgClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceGraphClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            QueryRequest request = new QueryRequest();
+            string query;
+            if (this.IsParameterBound(c => c.Location))
+            {
+                query = "communitygalleryresources | where type == 'microsoft.compute/locations/communitygalleries' | where location =='" + this.Location + "' | project name, type, id, location";
+            }
+            //find out if its ok to create client locally
+            else
+            {
+                query = "communitygalleryresources | where type == 'microsoft.compute/locations/communitygalleries' | project name, type, id, location";
+            }
+            request.Query = query;
+            QueryResponse response = rgClient.Resources(request);
+            Dictionary<string, string> output = new Dictionary<string, string>();
+            var data = JsonConvert.DeserializeObject<List<PSCommunityGallery>>(response.Data.ToString());
+            WriteObject(data);
         }
 
         [Parameter(
@@ -247,6 +268,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = "CommunityGalleryParameterSet")]
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = "ListCommunityGalleryParameterSet")]
         [LocationCompleter("Microsoft.Compute/Galleries", "Microsoft.Compute/CommunityGalleries")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -262,7 +287,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           ParameterSetName = "CommunityGalleryParameterSet",
+           ParameterSetName = "ListCommunityGalleryParameterSet",
            HelpMessage = "List community galleries.")]
         public SwitchParameter Community { get; set; }
 
