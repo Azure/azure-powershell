@@ -28,13 +28,13 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Alias("ResourceName")]
         [Parameter(
-    Mandatory = false,
-    ValueFromPipelineByPropertyName = true,
-    HelpMessage = "The firewall resource name.")]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The firewall resource name.")]
         [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string FirewallName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (ShouldGetByName(ResourceGroupName, FirewallName))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
-                var learnedIPPrefixes = this.AzureFirewallClient.ListLearnedPrefixes(this.ResourceGroupName, this.FirewallName);
+                var learnedIPPrefixes = this.AzureFirewallClient.ListLearnedPrefixes(this.ResourceGroupName, this.Name);
                 var pslearnedIPPrefixes = new PSAzureFirewallIpPrefix();
                 if (learnedIPPrefixes != null)
                 {
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                throw new ArgumentException($"Firewall Name and ResourceGroupName should be provided to get firewall learned IP prefixes.");
+                throw new ArgumentException($" Name and ResourceGroupName should be provided to get firewall learned IP prefixes.");
             }
         }
     }

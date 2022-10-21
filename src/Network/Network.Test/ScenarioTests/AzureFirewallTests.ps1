@@ -2085,7 +2085,7 @@ function Test-GetAzureFirewallLearnedIpPrefixes {
         $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location
 
         # Get Firewall Learned Prefixes
-        $learnedPrefixes = Get-AzFirewallLearnedIpPrefix -FirewallName $azureFirewallName -ResourceGroupName $rgname
+        $learnedPrefixes = Get-AzFirewallLearnedIpPrefix -Name $azureFirewallName -ResourceGroupName $rgname
 
         # Verify
          Assert-NotNull $learnedPrefixes

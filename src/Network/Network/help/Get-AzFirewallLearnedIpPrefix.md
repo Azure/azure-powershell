@@ -13,7 +13,7 @@ Gets firewall auto learned ip prefixes.
 ## SYNTAX
 
 ```
-Get-AzFirewallLearnedIpPrefix -FirewallName <String>  -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzFirewallLearnedIpPrefix -Name <String>  -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ The **Get-AzFirewallLearnedIpPrefix** cmdlet gets a firewall auto learned ip pre
 ### Example 1: Retrieve a Firewall auto learned ip prefixes by its name
 
 ```powershell
-Get-AzFirewallLearnedIpPrefix -ResourceGroupName rgName -FirewallName azFw
+Get-AzFirewallLearnedIpPrefix -ResourceGroupName rgName -Name azFw
 ```
 
 ```output
@@ -48,7 +48,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FirewallName
+### -Name
 Specifies the name of the Firewall that this cmdlet gets.
 
 ```yaml
