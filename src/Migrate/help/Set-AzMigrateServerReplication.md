@@ -18,7 +18,7 @@ Set-AzMigrateServerReplication -TargetObjectID <String> [-DiskToUpdate <IVMwareC
  [-NicToUpdate <IVMwareCbtNicInput[]>] [-SqlServerLicenseType <String>] [-SubscriptionId <String>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
  [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>] [-TargetNetworkId <String>]
- [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>]
+ [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
  [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
  [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
  [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
@@ -32,7 +32,7 @@ Set-AzMigrateServerReplication -InputObject <IMigrationItem> [-DiskToUpdate <IVM
  [-NicToUpdate <IVMwareCbtNicInput[]>] [-SqlServerLicenseType <String>] [-SubscriptionId <String>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
  [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>] [-TargetNetworkId <String>]
- [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>]
+ [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
  [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
  [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
  [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
@@ -330,6 +330,21 @@ Accept wildcard characters: False
 
 ### -TargetVMSize
 Updates the SKU of the Azure VM to be created.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestNetworkId
+Updates the Virtual Network id within the destination Azure subscription to which the server needs to be test migrated.
 
 ```yaml
 Type: System.String
