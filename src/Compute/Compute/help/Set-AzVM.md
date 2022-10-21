@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzVM
 
 ## SYNOPSIS
-This cmdlet can used to do the followings: reapply or redeploy a virtual machine, mark a virtual machine as generalized, simulate eviction to a spot virtual machine.
+This cmdlet can be used to do the followings: reapply or redeploy a virtual machine, mark a virtual machine as generalized, simulate eviction to a spot virtual machine.
 
 ## SYNTAX
 
