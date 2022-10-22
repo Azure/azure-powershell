@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* generate sdk for AlertsManagements and fix updateAlerteState command 
 ## Version 0.4.1
 * Added support for 24-hour clock in `Set-AzAlertProcessingRule` [#17762]
 
