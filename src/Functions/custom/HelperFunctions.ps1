@@ -422,6 +422,9 @@ function AddFunctionAppSettings
                                                                          @PSBoundParameters
         if ($null -eq $settings)
         {
+            Write-Warning -Message "Failed to retrieve function app settings. 1st attempt"
+            Write-Warning -Message "Setting session context to subscription id '$($App.SubscriptionId)'"
+
             $resetDefaultSubscription = $true
             $currentSubscription = (Get-AzContext).Subscription.Id
             $null = Select-AzSubscription $App.SubscriptionId
@@ -433,6 +436,7 @@ function AddFunctionAppSettings
             if ($null -eq $settings)
             {
                 # We are unable to get the app settings, return the app
+                Write-Warning -Message "Failed to retrieve function app settings. 2nd attempt."
                 return $App
             }
         }
@@ -441,6 +445,7 @@ function AddFunctionAppSettings
     {
         if ($resetDefaultSubscription)
         {
+            Write-Warning -Message "Resetting session context to subscription id '$currentSubscription'"
             $null = Select-AzSubscription $currentSubscription
         }
     }
@@ -1530,6 +1535,7 @@ function GetAzWebAppConfig
 
     $resetDefaultSubscription = $false
     $webAppConfig = $null
+    $currentSubscription = $null
     try
     {
         $webAppConfig = Az.Functions.internal\Get-AzWebAppConfiguration -ErrorAction SilentlyContinue `
@@ -1537,21 +1543,28 @@ function GetAzWebAppConfig
 
         if ($null -eq $webAppConfig)
         {
-            $resetDefaultSubscription = $true
+            Write-Warning -Message "Failed to retrieve function app site config. 1st attempt"
+            Write-Warning -Message "Setting session context to subscription id '$($SubscriptionId)'"
 
+            $resetDefaultSubscription = $true
             $currentSubscription = (Get-AzContext).Subscription.Id
-            $null = Select-AzSubscription $App.SubscriptionId
+            $null = Select-AzSubscription $SubscriptionId
 
             $webAppConfig = Az.Functions.internal\Get-AzWebAppConfiguration -ResourceGroupName $ResourceGroupName `
                                                                             -Name $Name `
                                                                             -ErrorAction SilentlyContinue `
                                                                             @PSBoundParameters
+            if ($null -eq $webAppConfig)
+            {
+                Write-Warning -Message "Failed to retrieve function app site config. 2nd attempt."
+            }
         }
     }
     finally
     {
         if ($resetDefaultSubscription)
         {
+            Write-Warning -Message "Resetting session context to subscription id '$currentSubscription'"
             $null = Select-AzSubscription $currentSubscription
         }
     }
