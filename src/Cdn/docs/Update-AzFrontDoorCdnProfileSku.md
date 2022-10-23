@@ -12,14 +12,7 @@ Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 
 ## SYNTAX
 
-### UpgradeViaIdentity (Default)
-```
-Update-AzFrontDoorCdnProfileSku -InputObject <ICdnIdentity>
- -ProfileUpgradeParameter <IProfileUpgradeParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Upgrade
+### Upgrade (Default)
 ```
 Update-AzFrontDoorCdnProfileSku -ProfileName <String> -ResourceGroupName <String>
  -ProfileUpgradeParameter <IProfileUpgradeParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
@@ -33,38 +26,24 @@ Update-AzFrontDoorCdnProfileSku -ProfileName <String> -ResourceGroupName <String
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpgradeViaIdentityExpanded
-```
-Update-AzFrontDoorCdnProfileSku -InputObject <ICdnIdentity> -WafMappingList <IProfileChangeSkuWafMapping[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 {{ Add code here }}
 ```
 
-```output
 {{ Add output here }}
-```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 {{ Add code here }}
 ```
 
-```output
 {{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -98,22 +77,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: UpgradeViaIdentity, UpgradeViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -134,7 +97,7 @@ Name of the Azure Front Door Standard or Azure Front Door Premium which is uniqu
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -150,7 +113,7 @@ To construct, see NOTES section for PROFILEUPGRADEPARAMETER properties and creat
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileUpgradeParameters
-Parameter Sets: Upgrade, UpgradeViaIdentity
+Parameter Sets: Upgrade
 Aliases:
 
 Required: True
@@ -165,7 +128,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -180,7 +143,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -196,7 +159,7 @@ To construct, see NOTES section for WAFMAPPINGLIST properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileChangeSkuWafMapping[]
-Parameter Sets: UpgradeExpanded, UpgradeViaIdentityExpanded
+Parameter Sets: UpgradeExpanded
 Aliases:
 
 Required: True
@@ -244,8 +207,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileUpgradeParameters
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
@@ -258,21 +219,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
-  - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
-  - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
-  - `[Id <String>]`: Resource identity path
-  - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
-  - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
-  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
-  - `[RouteName <String>]`: Name of the routing rule.
-  - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.
-  - `[RuleSetName <String>]`: Name of the rule set under the profile which is unique globally.
-  - `[SecretName <String>]`: Name of the Secret under the profile.
-  - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
 
 `PROFILEUPGRADEPARAMETER <IProfileUpgradeParameters>`: Parameters required for profile upgrade.
   - `WafMappingList <IProfileChangeSkuWafMapping[]>`: Web Application Firewall (WAF) and security policy mapping for the profile upgrade

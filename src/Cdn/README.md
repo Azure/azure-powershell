@@ -171,6 +171,10 @@ directive:
   - where:
       subject: CommitProfileMigration
     hide: true
+  - where:
+      verb: Update|Upgrade
+      subject: AFDProfileSku
+    hide: true
 
   # Rename
   - where:

@@ -24,13 +24,27 @@ This will delete all the AFD Standard or Premium configurations.
 
 ## EXAMPLES
 
-### Example 1: Abort classic cdn migrate to AFDx
+### Example 1: {{ Add title here }}
 ```powershell
-Stop-AzFrontDoorCdnProfileMigrate -ProfileName pichand-afd50-migrated -ResourceGroupName pichand-afd50-rg
+{{ Add code here }}
 ```
 
-Abort classic cdn migrate to AFDx.
+```output
+{{ Add output here }}
+```
 
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
