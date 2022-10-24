@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-AsJob` optional parameter to `Remove-AzVMExtension` cmdlet.
 * Added `-EdgeZone` optional parameter for `Get-AzComputeResourceSku` and `New-AzSnapshotUpdateConfig` cmdlets.
 * Added Disk Delete Optional parameters `OsDisk Deletion Option` and `Delete Option` to the `Set-AzVmssStorageProfile` (OS Disk) and `Add-AzVmssDataDisk` (Data Disk)
 * Improved printed output for `Get-AzComputeResourceSku`
