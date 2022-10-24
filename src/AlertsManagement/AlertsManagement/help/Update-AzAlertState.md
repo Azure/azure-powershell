@@ -14,13 +14,13 @@ Updates alert state
 
 ### ByAlertId (Default)
 ```
-Update-AzAlertState -AlertId <String> -State <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Update-AzAlertState -AlertId <String> -State <String> -Comment <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Update-AzAlertState -State <String> -InputObject <PSAlert> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Update-AzAlertState -State <String> -Comment <String> -InputObject <PSAlert> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -91,6 +91,20 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Comment
+Reason why to change alert state
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 Required: True
 Position: Named
 Default value: None
