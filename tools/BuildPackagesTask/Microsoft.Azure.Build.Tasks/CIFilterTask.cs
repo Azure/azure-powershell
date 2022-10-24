@@ -337,7 +337,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     }
                     if (csprojSet.Count != 0)
                     {
-                        foreach (string filename in Directory.GetFiles(@"src/Accounts", "*.csproj", SearchOption.AllDirectories).Where(x => !x.Contains("Test")))
+                        foreach (string filename in Directory.GetFiles(@"src\Accounts", "*.csproj", SearchOption.AllDirectories).Where(x => !x.Contains("Test")))
                         {
                             csprojSet.Add(filename);
                         }
@@ -353,7 +353,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     }
                     if (csprojSet.Count != 0)
                     {
-                        csprojSet.Add("tools/TestFx/TestFx.csproj");
+                        csprojSet.Add(@"tools\TestFx\TestFx.csproj");
                     }
                     influencedModuleInfo[phaseName] = csprojSet;
                 }
@@ -397,7 +397,24 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             
             FilterTaskResult.PhaseInfo = influencedModuleInfo;
 
+            influencedModuleInfo[string.Format("{0}-module", BUILD_PHASE)] = new HashSet<string>(influencedModuleInfo[BUILD_PHASE].Select(GetModuleNameFromPath).Where(x => x != null));
+            influencedModuleInfo[string.Format("{0}-module", TEST_PHASE)] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Select(GetModuleNameFromPath).Where(x => x != null));
+            if (!Directory.Exists(config.ArtifactPipelineInfoFolder))
+            {
+                Directory.CreateDirectory(config.ArtifactPipelineInfoFolder);
+            }
+            File.WriteAllText(Path.Combine(config.ArtifactPipelineInfoFolder, "CIPlan.json"), JsonConvert.SerializeObject(influencedModuleInfo, Formatting.Indented));
+
             return true;
+        }
+
+        private string GetModuleNameFromPath(string path)
+        {
+            if (path.IndexOf("src") == -1)
+            {
+                return null;
+            }
+            return path.Replace("\\", "/").Split("src/")[1].Split('/')[0];
         }
 
         /// <summary>

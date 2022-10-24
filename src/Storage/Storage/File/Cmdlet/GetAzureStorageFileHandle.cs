@@ -14,7 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using global::Azure;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Files.Shares.Models;
     using Microsoft.Azure.Storage.File;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using System.Collections.Generic;
     using System.Globalization;
@@ -87,22 +92,43 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-            CloudFileDirectory baseDirectory = null;
+            ShareDirectoryClient baseDirClient = null;
+            ShareFileClient targetFile = null;
             switch (this.ParameterSetName)
             {
                 case Constants.DirectoryParameterSetName:
-                    baseDirectory = this.Directory;
+                    baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Directory, ClientOptions);
+
+                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
+                    if (this.Context == null)
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Directory.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 case Constants.ShareNameParameterSetName:
-                    baseDirectory = this.BuildFileShareObjectFromName(this.ShareName).GetRootDirectoryReference();
+                    NamingUtil.ValidateShareName(this.ShareName, false);
+                    ShareServiceClient fileserviceClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, ClientOptions);
+                    baseDirClient = fileserviceClient.GetShareClient(this.ShareName).GetRootDirectoryClient();
                     break;
 
                 case Constants.ShareParameterSetName:
-                    baseDirectory = this.Share.GetRootDirectoryReference();
+                    baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Share.GetRootDirectoryReference(), ClientOptions);
+
+                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
+                    if (this.Context == null)
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
+                    }
                     break;
                 case Constants.FileParameterSetName:
-                    // Don't need to set baseDirectory when input is a CloudFile
+                    targetFile = AzureStorageFile.GetTrack2FileClient(this.File, ClientOptions);
+
+                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
+                    if (this.Context == null)
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.File.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 default:
@@ -111,23 +137,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             // When not input path/File, the list handle target must be a Dir
             bool foundAFolder = true;
-            CloudFileDirectory targetDir = baseDirectory;
-            CloudFile targetFile = null;
-            if (this.File != null)
+            ShareDirectoryClient targetDir = baseDirClient;
+            if (targetFile != null)
             {
-                targetFile = this.File;
                 foundAFolder = false;
             }
             else
             {
                 if (!string.IsNullOrEmpty(this.Path))
                 {
-                    string[] subfolders = NamingUtil.ValidatePath(this.Path);
-                    targetDir = baseDirectory.GetDirectoryReferenceByPath(subfolders);
+                    targetDir = baseDirClient.GetSubdirectoryClient(this.Path);
 
                     // Don't need check the path target to File or FileDir since: 
                     // 1. check File/FileDir exist will fail on File/FileDir with DeletePending status
-                    // 2. The File handle request send with CloudFileDirectory and CloudFile are same with same path, so need to differ it.
+                    // 2. The File handle request send with CloudFileDirectory and CloudFile are same with same path, so don't need to differ it.
                 }
             }
 
@@ -138,8 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
 
             //List handle
-            FileHandleResultSegment listResult;
-            FileContinuationToken continuationToken = null;
+            Pageable<ShareFileHandle> listResult;
             List<PSFileHandle> handleReturn = new List<PSFileHandle>();
             ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
             ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
@@ -147,29 +169,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             // Any items before this count should be return
             ulong lastCount = MyInvocation.BoundParameters.ContainsKey("First") ? skip + first : ulong.MaxValue;
             ulong currentCount = 0;
-            do
+            if (foundAFolder)
             {
-                if (foundAFolder)
-                {
-                    // list handle on fileDir
-                    listResult = targetDir.ListHandlesSegmented(continuationToken, null, Recursive, null, this.RequestOptions, this.OperationContext);
-                }
-                else
-                {
-                    // list handle on file
-                    listResult = targetFile.ListHandlesSegmented(continuationToken, null, null, this.RequestOptions, this.OperationContext);
-                }
+                // list handle on fileDir
+                listResult = targetDir.GetHandles(Recursive, this.CmdletCancellationToken);
+            }
+            else
+            {
+                // list handle on file
+                listResult = targetFile.GetHandles(this.CmdletCancellationToken);
+            }
 
-                List<FileHandle> handleList = new List<FileHandle>(listResult.Results);
+            IEnumerable<Page<ShareFileHandle>> handlePages = listResult.AsPages();
 
-                if (currentCount + (ulong)handleList.Count - 1 < skip)
+            foreach (var handlePage in handlePages)
+            {
+                if (currentCount + (ulong)handlePage.Values.Count - 1 < skip)
                 {
                     // skip the whole chunk if they are all in skip
-                    currentCount += (ulong)handleList.Count;
+                    currentCount += (ulong)handlePage.Values.Count;
                 }
                 else
                 {
-                    foreach (FileHandle handle in handleList)
+                    foreach (ShareFileHandle handle in handlePage.Values)
                     {
                         // not return "skip" count of items in the begin, and only return "first" count of items after that.
                         if (currentCount >= skip && currentCount < lastCount)
@@ -183,8 +205,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         }
                     }
                 }
-                continuationToken = listResult.ContinuationToken;
-            } while (continuationToken != null && continuationToken.NextMarker != null && currentCount < lastCount);
+            }
 
             WriteObject(handleReturn, true);
         }

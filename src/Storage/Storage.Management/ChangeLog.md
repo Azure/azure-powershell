@@ -18,11 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported generate DataLakeGen2 Sas token with Encryption scope
+    -  `New-AzDataLakeGen2SasToken`
+* Supported blob type conversions in sync blob copy
+    - `Copy-AzStorageBlob`
 * Supported create/upgrade storage account with Keyvault from another tenant and access Keyvault with FederatedClientId
-    -  `New-AzStorageAccount`
-    -  `Set-AzStorageAccount`
+  * `New-AzStorageAccount`
+  * `Set-AzStorageAccount`
+* Supported find blobs in a container with a blob tag filter sql expression
+  * `Get-AzStorageBlobByTag`
+* Migrated following Azure File dataplane cmdlets from 'Microsoft.Azure.Storage.File' to 'Azure.Storage.Files.Shares'
+  * `Get-AzStorageFileHandle`
+  * `Close-AzStorageFileHandle`
 
-## Version 4.10.0
+## Version 5.0.0
 * Migrated following Azure File dataplane cmdlets from 'Microsoft.Azure.Storage.File 11.2.2' to 'Azure.Storage.Files.Shares 12.10.0'
   * `Get-AzStorageFile`
   * `Get-AzStorageFileCopyState`
