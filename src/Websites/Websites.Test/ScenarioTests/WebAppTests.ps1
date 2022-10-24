@@ -1505,7 +1505,17 @@ function Test-PublishAzureWebAppFromWar
 		
 		# Create new web app
 		$webapp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Location $location -AppServicePlan $planName 
-		
+
+		#Configuring jdk and web container
+        # Set Java runtime to 1.8 | Tomcat. In order to deploy war, site should be configured to run with stack = TOMCAT 
+		# or JBOSSEAP (only availble on Linux). In this test case, it creates Windows app. 
+		$javaVersion="1.8"
+        $javaContainer="TOMCAT"
+        $javaContainerVersion="8.5"
+        $PropertiesObject = @{javaVersion = $javaVersion;javaContainer = $javaContainer;javaContainerVersion = $javaContainerVersion}
+        New-AzResource -PropertyObject $PropertiesObject -ResourceGroupName $rgname -ResourceType Microsoft.Web/sites/config -ResourceName "$appName/web" -ApiVersion 2018-02-01 -Force
+
+
 		$warPath = Join-Path $ResourcesPath "HelloJava.war"
 		$publishedApp = Publish-AzWebApp -ResourceGroupName $rgname -Name $appName -ArchivePath $warPath -Force
 
