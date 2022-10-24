@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "true".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("true", "true", global::System.Management.Automation.CompletionResultType.ParameterValue, "true");
+                yield return new global::System.Management.Automation.CompletionResult("'true'", "true", global::System.Management.Automation.CompletionResultType.ParameterValue, "true");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "false".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("false", "false", global::System.Management.Automation.CompletionResultType.ParameterValue, "false");
+                yield return new global::System.Management.Automation.CompletionResult("'false'", "false", global::System.Management.Automation.CompletionResultType.ParameterValue, "false");
             }
         }
     }
