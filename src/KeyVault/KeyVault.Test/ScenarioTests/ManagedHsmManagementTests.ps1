@@ -208,7 +208,7 @@ function Test-UndoManagedHsmRemoval{
 
             # Test: recover deleted managed Hsm
             Undo-AzKeyVaultManagedHsmRemoval -InputObject $deletedMhsm
-            $recoveredMhsm = Get-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation
+            $recoveredMhsm = Get-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName
             Assert-NotNull $recoveredMhsm
     }
     finally {
