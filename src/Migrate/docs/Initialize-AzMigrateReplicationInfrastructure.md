@@ -14,8 +14,8 @@ Initialises the infrastructure for the migrate project.
 
 ```
 Initialize-AzMigrateReplicationInfrastructure -ProjectName <String> -ResourceGroupName <String>
- -Scenario <String> -TargetRegion <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -Scenario <String> -TargetRegion <String> [-CacheStorageAccountId <String>] [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +35,21 @@ True
 Initialises the infrastructure for the migrate project.
 
 ## PARAMETERS
+
+### -CacheStorageAccountId
+Specifies the Storage Account Id to be used for private endpoint scenario.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
