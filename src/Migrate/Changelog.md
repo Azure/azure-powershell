@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter `CacheStorageAccountId` to `Initialize-AzMigrateReplicationInfrastructure`
 * Added support for OS Disk Swap and Test Migrate Subnet Selection
 
 ## Version 2.0.0
