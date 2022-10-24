@@ -22,6 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using global::Azure;
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Files.Shares.Models;
+    using Microsoft.Azure.Documents.Partitioning;
     using Microsoft.Azure.Storage.DataMovement;
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
@@ -246,10 +247,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                                 stream.SetLength(0);
                                 long contentLenLeft = fileToBeDownloaded.Properties.Length;
                                 long downloadOffset = 0;
+                                ShareFileDownloadOptions downloadOptions = new ShareFileDownloadOptions();
                                 while (contentLenLeft > 0)
                                 {
                                     long contentSize = contentLenLeft < size4MB ? contentLenLeft : size4MB;
-                                    ShareFileDownloadInfo download = fileClientToDownload.Download(new HttpRange(downloadOffset, contentSize), cancellationToken: this.CmdletCancellationToken);
+                                    downloadOptions.Range = new HttpRange(downloadOffset, contentSize);
+                                    ShareFileDownloadInfo download = fileClientToDownload.Download(downloadOptions, cancellationToken: this.CmdletCancellationToken);
                                     download.Content.CopyTo(stream);
                                     downloadOffset += contentSize;
                                     contentLenLeft -= contentSize;
