@@ -2982,6 +2982,8 @@ Initialises the infrastructure for the migrate project.
 The Initialize-AzMigrateReplicationInfrastructure cmdlet initialises the infrastructure for the migrate project.
 .Example
 Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName TestRG -ProjectName TestProject -TargetRegion centralus
+.Example
+Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName "TestRG" -ProjectName "TestPEProject" -TargetRegion "centraluseuap" -Scenario "agentlessVMware" -CacheStorageAccountId "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/singhabh-rg/providers/Microsoft.Storage/storageAccounts/singhabhstoragepe1"
 
 .Outputs
 System.Boolean
@@ -3019,6 +3021,12 @@ param(
     [System.String]
     # Specifies the target Azure region for server migrations.
     ${TargetRegion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Storage Account Id to be used for private endpoint scenario.
+    ${CacheStorageAccountId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
