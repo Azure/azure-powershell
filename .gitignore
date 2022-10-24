@@ -239,4 +239,3 @@ src/DataFactory/DataFactoryV2.Test/SessionRecords/Microsoft.Azure.Commands.DataF
 
 # GitHub codespaces
 .venv
-/src/Websites/testEnvironments.json

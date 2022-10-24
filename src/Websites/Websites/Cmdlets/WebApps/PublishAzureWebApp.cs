@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             if (ArchivePath.ToLower().EndsWith("war"))
             {
-                deployUrl = user.ScmUri + "/api/publish?type=war";
+                deployUrl = user.ScmUri + "/api/wardeploy?isAsync=true";
             }
             else if (ArchivePath.ToLower().EndsWith("zip") || ArchivePath.ToLower().EndsWith("jar"))
             {

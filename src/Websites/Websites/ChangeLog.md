@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed `Publish-AzWebApp` to use latest publish API when deploying war package [##19791]
+
 ## Version 2.11.4
 * Fixed `Import-AzWebAppKeyVaultCertificate` to use certificate naming convention same as Az-CLI
 
