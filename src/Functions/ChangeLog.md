@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added warning logs to detect Az context switching in Get-AzFunctionApp
 
 ## Version 4.0.5
 * Enabled support to create Node 18 Preview and Java 17 Preview function apps (fixes issues #19184 and #18925)

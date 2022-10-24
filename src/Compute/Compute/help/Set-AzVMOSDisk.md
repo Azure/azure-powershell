@@ -191,7 +191,7 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $loc -Vm $VirtualMachin
 $vm = Get-AzVm -ResourceGroupName $ResourceGroupName -Name $vmname;
 
 # Verify the SecurityEncryptionType value on the disk.
-# $vm.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType == 'DiskWithVMGuestState';              
+# $vm.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType == 'DiskWithVMGuestState';
 ```
 
 ## PARAMETERS

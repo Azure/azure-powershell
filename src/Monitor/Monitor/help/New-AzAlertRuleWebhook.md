@@ -106,7 +106,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Add-AzWebtestAlertRule](./Add-AzWebtestAlertRule.md)
 
 [New-AzAlertRuleEmail](./New-AzAlertRuleEmail.md)
-
-[New-AzAutoscaleWebhook](./New-AzAutoscaleWebhook.md)
-
-

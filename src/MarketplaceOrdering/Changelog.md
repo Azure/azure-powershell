@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 
-## Version 1.1.0
+## Version 2.0.0
 * Upgraded API version to 2021-01-01.
 
 ## Version 1.0.3

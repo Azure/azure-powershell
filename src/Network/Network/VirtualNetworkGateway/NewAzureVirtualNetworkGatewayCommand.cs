@@ -546,6 +546,11 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.BgpSettings = new PSBgpSettings();
                 }
 
+                if(this.IpConfigurationBgpPeeringAddresses.Any(address => address.CustomBgpIpAddresses == null || !address.CustomBgpIpAddresses.Any()))
+                {
+                    throw new ArgumentException("if IpConfigurationBgpPeeringAddresses are provided, CustomBgpIpAddresses must be a provided in create gateway");
+                }
+
                 vnetGateway.BgpSettings.BgpPeeringAddresses = new List<PSIpConfigurationBgpPeeringAddress>();
 
                 foreach (var address in this.IpConfigurationBgpPeeringAddresses)
