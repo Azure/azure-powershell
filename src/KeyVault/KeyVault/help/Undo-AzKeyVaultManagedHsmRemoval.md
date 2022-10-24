@@ -32,18 +32,31 @@ Recover a previously deleted HSM for which soft delete was enabled.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Recover a deleted HSM
 ```powershell
-Undo-AzKeyVaultManagedHsmRemoval -Name ps4214 -ResourceGroupName ps8075 -Location westus
+Undo-AzKeyVaultManagedHsmRemoval -Name test001 -ResourceGroupName test-rg -Location westus
 ```
 
 ```output
 Name   Resource Group Name Location SKU        ProvisioningState
 ----   ------------------- -------- ---        -----------------
-ps4214 ps8075              West US  StandardB1 Succeeded
+test001 test-rg              West US  StandardB1 Succeeded
 ```
 
-This command recovers a managed HSM called `ps4214` from deleted state.
+This command recovers a managed HSM called `test001` from deleted state.
+
+### Example 2: Recover a deleted HSM by piping
+```powershell
+Get-AzKeyVaultManagedHsm -Name test001 -Location westus -InRemovedState | Undo-AzKeyVaultManagedHsmRemoval
+```
+
+```output
+Name   Resource Group Name Location SKU        ProvisioningState
+----   ------------------- -------- ---        -----------------
+test001 test-rg              West US  StandardB1 Succeeded
+```
+
+This command recovers a managed HSM called `test001` from deleted state by piping.
 
 ## PARAMETERS
 
