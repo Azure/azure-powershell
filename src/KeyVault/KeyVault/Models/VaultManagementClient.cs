@@ -473,7 +473,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
             else
             {
-                // var deletedHsm = KeyVaultManagementClient.ManagedHsms.GetDeleted(parameters.Name, parameters.Location);
                 properties.CreateMode = CreateMode.Recover;
                 response = KeyVaultManagementClient.ManagedHsms.CreateOrUpdate(
                     resourceGroupName: parameters.ResourceGroupName,
