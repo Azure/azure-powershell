@@ -186,3 +186,32 @@ function Test-ManagedHsmPurgeProtection{
         Remove-AzResourceGroup -Name $rgName -Force
     }
 }
+
+function Test-UndoManagedHsmRemoval{
+    try{
+            $rgName = getAssetName
+            $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+            $hsmName = getAssetName
+            $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "West US"
+            # bez's object id
+            $administrator = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
+            New-AzResourceGroup -Name $rgName -Location $rgLocation
+
+            # Test: create a managed HSM
+            $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator
+
+            Remove-AzKeyVaultManagedHsm -InputObject $hsm -Force
+            
+            # Test: get deleted managed HSM
+            $deletedMhsm = Get-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation -InRemovedState
+            Assert-NotNull $deletedMhsm
+
+            # Test: recover deleted managed Hsm
+            Undo-AzKeyVaultManagedHsmRemoval -InputObject $deletedMhsm
+            $recoveredMhsm = Get-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation
+            Assert-NotNull $recoveredMhsm
+    }
+    finally {
+        Remove-AzResourceGroup -Name $rgName -Force
+    }
+}
