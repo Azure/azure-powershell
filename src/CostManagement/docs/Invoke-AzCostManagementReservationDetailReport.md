@@ -34,27 +34,12 @@ For more details on the roles see, https://docs.microsoft.com/en-us/azure/cost-m
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Generates the reservations details report for provided date range asynchronously based on billing account id
 ```powershell
-{{ Add code here }}
+Invoke-AzCostManagementReservationDetailReport -BillingAccountId "00000000-0000-0000-0000-0000000000" -StartDate "2022-10-01" -EndDate "2022-10-20"
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command generates the reservations details report for provided date range asynchronously based on billing account id.
 
 ## PARAMETERS
 
