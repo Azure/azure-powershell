@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Fixed bug with Update-AzRecoveryServicesAsrProtectionContainerMapping
 * Added new scenarios: EZ-to-AZ, EZ-to-AZ, EZ-to-EZ
+* Remove $vmName from non A2A scenarios as its not applicable
 
 ## Version 6.0.0
 * [Breaking Change] Added fix for Enable-AzRecoveryServicesBackupProtection cmdlet. Resolved the null reference issue by making policy a mandatory parameter.
