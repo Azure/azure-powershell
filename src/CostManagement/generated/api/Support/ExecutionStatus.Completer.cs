@@ -28,31 +28,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Queued".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Queued", "Queued", global::System.Management.Automation.CompletionResultType.ParameterValue, "Queued");
+                yield return new global::System.Management.Automation.CompletionResult("'Queued'", "Queued", global::System.Management.Automation.CompletionResultType.ParameterValue, "Queued");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InProgress", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
+                yield return new global::System.Management.Automation.CompletionResult("'InProgress'", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Completed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Completed", "Completed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Completed");
+                yield return new global::System.Management.Automation.CompletionResult("'Completed'", "Completed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Completed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failed", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
+                yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Timeout".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Timeout", "Timeout", global::System.Management.Automation.CompletionResultType.ParameterValue, "Timeout");
+                yield return new global::System.Management.Automation.CompletionResult("'Timeout'", "Timeout", global::System.Management.Automation.CompletionResultType.ParameterValue, "Timeout");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NewDataNotAvailable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NewDataNotAvailable", "NewDataNotAvailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "NewDataNotAvailable");
+                yield return new global::System.Management.Automation.CompletionResult("'NewDataNotAvailable'", "NewDataNotAvailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "NewDataNotAvailable");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DataNotAvailable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DataNotAvailable", "DataNotAvailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataNotAvailable");
+                yield return new global::System.Management.Automation.CompletionResult("'DataNotAvailable'", "DataNotAvailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "DataNotAvailable");
             }
         }
     }

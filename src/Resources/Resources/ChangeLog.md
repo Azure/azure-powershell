@@ -28,6 +28,7 @@
     - Get-AzADGroupMember
     - Remove-AzADGroupMember
 * Fixed a `NullReferenceException` when deploying a JSON template using Bicep extensibility
+* Added `-AsJob` to support running `Register-AzResourceProvider` as a Job
 
 ## Version 6.3.1
 * Fixed NullReferenceException issue in `New-AzRoleAssignment` [#19793]
