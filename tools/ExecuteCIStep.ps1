@@ -13,7 +13,18 @@
 # is regenerated.
 # ----------------------------------------------------------------------------------
 
+# Usage: 1. This script can be called by build.proj used in CI pipeline
+#        2. Can be used to do static analysis in local env. Such as: .\tools\ExecuteCIStep.ps1 -StaticAnalysisSignature -ModuleList "Accounts;Compute"
 Param(
+    [Switch]
+    $Build,
+
+    [String]
+    $BuildAction='build',
+
+    [Switch]
+    $GenerateDocumentationFile,
+
     [Switch]
     $Test,
 
@@ -39,15 +50,52 @@ Param(
     $TestFramework='netcoreapp2.2',
 
     [String]
-    $TestOutputDirectory='artifacts\TestResults',
+    $TestOutputDirectory='artifacts/TestResults',
 
     [String]
-    $StaticAnalysisOutputDirectory='artifacts\StaticAnalysisResults',
+    $StaticAnalysisOutputDirectory='artifacts/StaticAnalysisResults',
 
     [String]
     $ModuleList
 )
 $ErrorActionPreference = 'Stop'
+
+If ($Build)
+{
+    $LogFile = "$RepoArtifacts/Build.Log"
+    If ($GenerateDocumentationFile)
+    {
+        dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -fl "/flp1:logFile=$LogFile;verbosity=quiet"
+    }
+    Else
+    {
+        dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -p:GenerateDocumentationFile=false -fl "/flp1:logFile=$LogFile;verbosity=quiet"
+    }
+    $LogContent = Get-Content $LogFile
+    $BuildResultArray = @()
+    ForEach ($Line In $LogContent)
+    {
+        $Position, $ErrorOrWarningType, $Detail = $Line.Split(": ")
+        $Detail = Join-String -Separator ": " -InputObject $Detail
+        If ($Position.Contains("src"))
+        {
+            $ModuleName = $Position.Replace("\", "/").Split("src/")[1].Split('/')[0]
+        }
+        Else
+        {
+            $ModuleName = "dotnet"
+        }
+        $Type, $Code = $ErrorOrWarningType.Split(" ")
+        $BuildResultArray += @{
+            "Position" = $Position;
+            "Module" = $ModuleName;
+            "Type" = $Type;
+            "Code" = $Code;
+            "Detail" = $Detail
+        }
+    }
+    ConvertTo-Json -Depth 10 -InputObject $BuildResultArray | Out-File -FilePath "$RepoArtifacts/PipelineResult/Build.json"
+}
 
 If (-Not $PSBoundParameters.ContainsKey("ModuleList"))
 {
