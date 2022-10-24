@@ -15,7 +15,8 @@ Creates a Virtual Network Gateway
 
 ```
 New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
- [-IpConfigurations <PSVirtualNetworkGatewayIpConfiguration[]>] [-GatewayType <String>] [-VpnType <String>]
+ [-IpConfigurations <PSVirtualNetworkGatewayIpConfiguration[]>] [-GatewayType <String>]
+ [-ExtendedLocation <String>] [-VNetExtendedLocationResourceId <String>] [-VpnType <String>]
  [-EnableBgp <Boolean>] [-DisableIPsecProtection <Boolean>] [-EnableActiveActiveFeature]
  [-EnablePrivateIpAddress] [-GatewaySku <String>] [-GatewayDefaultSite <PSLocalNetworkGateway>]
  [-VpnClientAddressPool <String[]>] [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
@@ -26,9 +27,8 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-EnableBgpRouteTranslationForNat] [-Tag <Hashtable>] [-Force]
  [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>]
  [-AadTenantUri <String>] [-AadAudienceId <String>] [-AadIssuerUri <String>] [-CustomRoute <String[]>]
- [-VpnGatewayGeneration <String>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
- [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VpnGatewayGeneration <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -275,21 +275,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -CustomRoute
-Custom routes AddressPool specified by customer
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -339,7 +324,7 @@ Accept wildcard characters: False
 EnableBgp Flag
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -347,6 +332,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableBgpRouteTranslationForNat
+Flag to enable BgpRouteTranslationForNat on this VirtualNetworkGateway.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -608,11 +608,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VirtualNetworkGatewayPolicyGroup
-P2S policy group added to this gateway
+### -VNetExtendedLocationResourceId
+VNetExtendedLocationResourceId for Virtual network gateway.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayPolicyGroup[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -818,7 +818,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 
 ## NOTES
-
-## RELATED LINKS
 
 ## RELATED LINKS
