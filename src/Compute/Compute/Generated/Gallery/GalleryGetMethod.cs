@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string GalleryUniqueName { get; set; }
 
         [Parameter(
-           Mandatory = false,
+           Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = "CommunityGalleryParameterSet",
            HelpMessage = "The public name of the Shared Image Gallery.")]
