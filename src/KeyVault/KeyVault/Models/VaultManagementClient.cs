@@ -480,7 +480,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     parameters: new ManagedHsm
                     {
                         Location = parameters.Location,
-                        Tags = TagsConversionHelper.CreateTagDictionary(parameters.Tags, validate: true),
+                        // Can't update Tags
+                        // Tags = TagsConversionHelper.CreateTagDictionary(parameters.Tags, validate: true),
                         Properties = properties
                     });
             }

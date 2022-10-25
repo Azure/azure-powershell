@@ -81,9 +81,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable Tag { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
@@ -103,7 +100,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                     Name = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
-                    Tags = this.Tag,
                     CreateMode = CreateMode.Recover
                 });
 
