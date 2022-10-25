@@ -78,55 +78,55 @@ Install-AzAksCliTool
 
 ### `Get-AzApiManagement`
 
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagement' has changed from 'PsApiManagementSku' to 'System.String'.
 
 ### `Set-AzApiManagement`
 
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagement' has changed from 'PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagement' has changed from 'PsApiManagementSku' to 'System.String'.
 
 ### `Restore-AzApiManagement`
 
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagement' has changed from 'PsApiManagementSku' to 'System.String'.
 
 ### `Get-AzApiManagementSsoToken`
 
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagement' has changed from 'PsApiManagementSku' to 'System.String'.
 
 ### `Update-AzApiManagementRegion`
 
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
-- No longer supports the type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' for parameter 'Sku'.
+- The type of property 'Sku' of type 'PsApiManagement' has changed from 'PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagement' has changed from 'PsApiManagementSku' to 'System.String'.
+- No longer supports the type 'PsApiManagementSku' for parameter 'Sku'.
 
 ### `Backup-AzApiManagement`
 
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagement' has changed from 'PsApiManagementSku' to 'System.String'.
 
 ### `Add-AzApiManagementRegion`
 
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagement' has changed from 'PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagementRegion' has changed from 'PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagement' has changed from 'PsApiManagementSku' to 'System.String'.
 - No longer supports the type 'System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]' for parameter 'Sku'.
 
 ### `New-AzApiManagement`
 
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagement' has changed from 'PsApiManagementSku' to 'System.String'.
 - No longer supports the type 'System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]' for parameter 'Sku'.
 
 ### `New-AzApiManagementRegion`
 
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagementRegion' has changed from 'PsApiManagementSku' to 'System.String'.
 
 ### `Remove-AzApiManagementRegion`
 
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagement' has changed from 'PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagement' has changed from 'PsApiManagementSku' to 'System.String'.
 
 ### `Get-AzApiManagementNetworkStatus`
 
-- The type of property 'Sku' of type 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement' has changed from 'Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku' to 'System.String'.
+- The type of property 'Sku' of type 'PsApiManagement' has changed from 'PsApiManagementSku' to 'System.String'.
 
 ## Az.Attestation
 
@@ -483,8 +483,8 @@ Set-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-scienc
 
 ### `New-AzFirewall`
 
-- The property 'IdentifyTopFatFlow' of type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewall' has been removed.
-- The property 'publicIPAddresses' of type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewallHubIpAddresses' has been removed.
+- The property 'IdentifyTopFatFlow' of type 'PSAzureFirewall' has been removed.
+- The property 'publicIPAddresses' of type 'PSAzureFirewallHubIpAddresses' has been removed.
 - No longer supports the parameter 'IdentifyTopFatFlow' and no alias was found for the original parameter name.
 - The parameter set '__AllParameterSets' has been removed.
 - The parameter set 'OldIpConfigurationParameterValues' has been removed.
@@ -492,12 +492,11 @@ Set-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-scienc
 
 ### `New-AzFirewallHubIpAddress`
 
-- The property 'publicIPAddresses' of type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewallHubIpAddresses' has been removed.
+- The property 'publicIPAddresses' of type 'PSAzureFirewallHubIpAddresses' has been removed.
 
 ### `Set-AzFirewall`
 
-- The property 'IdentifyTopFatFlow' of type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewall' has been removed.
-- The property 'IdentifyTopFatFlow' of type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewall' has been removed.
+- The property 'IdentifyTopFatFlow' of type 'PSAzureFirewall' has been removed.
 
 ### `New-AzNetworkManagerAddressPrefixItem`
 
@@ -505,17 +504,17 @@ Set-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-scienc
 
 ### `New-AzNetworkManagerSecurityAdminConfiguration`
 
-- The element type for parameter 'ApplyOnNetworkIntentPolicyBasedService' has been changed from 'System.String' to 'Microsoft.Azure.Commands.Network.NewAzNetworkManagerSecurityAdminConfigurationCommand+NetworkIntentPolicyBasedServiceType'.
+- The element type for parameter 'ApplyOnNetworkIntentPolicyBasedService' has been changed from 'System.String' to 'Microsoft.Azure.Commands.Network.NewAzNetworkManagerSecurityAdminConfigurationCommand.NetworkIntentPolicyBasedServiceType'.
 
 ### `New-AzNetworkManager`
 
-- The element type for parameter 'NetworkManagerScopeAccess' has been changed from 'System.String' to 'Microsoft.Azure.Commands.Network.NewAzNetworkManagerCommand+NetworkManagerScopeAccessType'.
+- The element type for parameter 'NetworkManagerScopeAccess' has been changed from 'System.String' to 'Microsoft.Azure.Commands.Network.NewAzNetworkManagerCommand.NetworkManagerScopeAccessType'.
 
 ### `Get-AzFirewall`
 
-- The property 'publicIPAddresses' of type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewallHubIpAddresses' has been removed.
-- The property 'IdentifyTopFatFlow' of type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewall' has been removed.
-- The property 'IdentifyTopFatFlow' of type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewall' has been removed.
+- The property 'publicIPAddresses' of type 'PSAzureFirewallHubIpAddresses' has been removed.
+- The property 'IdentifyTopFatFlow' of type 'PSAzureFirewall' has been removed.
+- The property 'IdentifyTopFatFlow' of type 'PSAzureFirewall' has been removed.
 
 ### `New-AzNetworkManagerConnectivityConfiguration`
 
@@ -1052,36 +1051,36 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Get-AzSynapseLinkConnectionLinkTableStatus`
 
-- The type of property 'Properties' of type 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnection'.
+- The type of property 'Properties' of type 'PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'PSLinkConnection'.
 
 ### `Remove-AzSynapseLinkConnection`
 
-- The type of property 'Properties' of type 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnection'.
+- The type of property 'Properties' of type 'PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'PSLinkConnection'.
 
 ### `Update-AzSynapseLinkConnectionLandingZoneCredential`
 
-- The type of property 'Properties' of type 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnection'.
+- The type of property 'Properties' of type 'PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'PSLinkConnection'.
 
 ### `Get-AzSynapseLinkConnectionLinkTable`
 
-- The type of property 'Properties' of type 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnection'.
+- The type of property 'Properties' of type 'PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'PSLinkConnection'.
 
 ### `Stop-AzSynapseLinkConnection`
 
-- The type of property 'Properties' of type 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnection'.
+- The type of property 'Properties' of type 'PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'PSLinkConnection'.
 
 ### `Set-AzSynapseLinkConnection`
 
-- The type of property 'Properties' of type 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnection'.
+- The type of property 'Properties' of type 'PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'PSLinkConnection'.
 
 ### `Get-AzSynapseLinkConnection`
 
-- The type of property 'Properties' of type 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnection'.
+- The type of property 'Properties' of type 'PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'PSLinkConnection'.
 
 ### `Start-AzSynapseLinkConnection`
 
-- The type of property 'Properties' of type 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnection'.
+- The type of property 'Properties' of type 'PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'PSLinkConnection'.
 
 ### `Set-AzSynapseLinkConnectionLinkTable`
 
-- The type of property 'Properties' of type 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'Microsoft.Azure.Commands.Synapse.Models.PSLinkConnection'.
+- The type of property 'Properties' of type 'PSLinkConnectionResource' has changed from 'Azure.Analytics.Synapse.Artifacts.Models.LinkConnection' to 'PSLinkConnection'.
