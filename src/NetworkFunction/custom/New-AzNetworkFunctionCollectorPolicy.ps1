@@ -40,7 +40,7 @@ INGESTIONPOLICYINGESTIONSOURCE <IIngestionSourcesPropertiesFormat[]>: Ingestion 
   [ResourceId <String>]: Resource ID.
   [SourceType <SourceType?>]: Ingestion source type.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctioncollectorpolicy
+https://learn.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctioncollectorpolicy
 #>
 function New-AzNetworkFunctionCollectorPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ICollectorPolicy])]

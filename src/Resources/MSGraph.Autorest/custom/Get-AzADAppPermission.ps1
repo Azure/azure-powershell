@@ -18,7 +18,7 @@ Lists API permissions the application has requested.
 .Description
 Lists API permissions the application has requested.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadapppermission
+https://learn.microsoft.com/powershell/module/az.resources/get-azadapppermission
 #>
 
 function Get-AzADAppPermission {

@@ -50,7 +50,7 @@ INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the DigitalTwinsInstance.
   [SubscriptionId <String>]: The subscription identifier.
 .Link
-https://docs.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsendpoint
+https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsendpoint
 #>
 function New-AzDigitalTwinsEndpoint {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource])]

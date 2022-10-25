@@ -34,7 +34,7 @@ eastus   ps-connaks-t02 Microsoft.Kubernetes/connectedClusters
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
+https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
 #>
 function New-AzConnectedKubernetes {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster])]

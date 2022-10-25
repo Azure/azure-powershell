@@ -23,7 +23,7 @@ Create an in-memory object for AFDDomainHttpsParameters.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.AFDDomainHttpsParameters
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
 #>
 function New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.AFDDomainHttpsParameters')]

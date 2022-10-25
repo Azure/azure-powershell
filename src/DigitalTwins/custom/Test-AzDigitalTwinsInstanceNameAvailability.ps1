@@ -69,7 +69,7 @@ INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the DigitalTwinsInstance.
   [SubscriptionId <String>]: The subscription identifier.
 .Link
-https://docs.microsoft.com/powershell/module/az.digitaltwins/test-azdigitaltwinsinstancenameavailability
+https://learn.microsoft.com/powershell/module/az.digitaltwins/test-azdigitaltwinsinstancenameavailability
 #>
 function Test-AzDigitalTwinsInstanceNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ICheckNameResult])]

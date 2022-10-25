@@ -19,7 +19,7 @@ Updates disk mapping
 .Description
 The Set-AzMigrateDiskMapping cmdlet updates a mapping of the source disk attached to the server to be migrated
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/set-azmigratediskmapping
+https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratediskmapping
 #>
 function Set-AzMigrateDiskMapping {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtUpdateDiskInput])]

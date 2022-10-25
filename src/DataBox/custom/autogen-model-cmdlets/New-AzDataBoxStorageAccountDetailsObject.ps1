@@ -22,7 +22,7 @@
     .Outputs
     Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.StorageAccountDetails
     .Link
-    https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxStorageAccountDetailsObject
+    https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxStorageAccountDetailsObject
     #>
     function New-AzDataBoxStorageAccountDetailsObject {
         [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.StorageAccountDetails')]

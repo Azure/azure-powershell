@@ -19,7 +19,7 @@ Creates a new disk mapping
 .Description
 The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attached to the server to be migrated
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 #>
 function New-AzMigrateDiskMapping {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtDiskInput])]

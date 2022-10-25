@@ -19,7 +19,7 @@ Starts the migration for the replicating server.
 .Description
 Starts the migration for the replicating server.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/start-azmigrateservermigration
+https://learn.microsoft.com/powershell/module/az.migrate/start-azmigrateservermigration
 #>
 function Start-AzMigrateServerMigration {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob])]

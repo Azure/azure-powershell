@@ -22,7 +22,7 @@ Create a in-memory object for CheckNameRequest
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.CheckNameRequest
 .Link
-https://docs.microsoft.com/powershell/module/az.DigitalTwins/new-AzDigitalTwinsCheckNameRequestObject
+https://learn.microsoft.com/powershell/module/az.DigitalTwins/new-AzDigitalTwinsCheckNameRequestObject
 #>
 function New-AzDigitalTwinsCheckNameRequestObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.CheckNameRequest')]

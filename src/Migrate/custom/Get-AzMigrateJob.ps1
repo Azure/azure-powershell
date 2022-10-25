@@ -19,7 +19,7 @@ Retrieves the status of an Azure Migrate job.
 .Description
 The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratejob
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratejob
 #>
 function Get-AzMigrateJob {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob])]

@@ -20,7 +20,7 @@ Create or update linker resource in webapp.
 .Description
 Create or update linker resource in webapp.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/new-azservicelinkerforwebapp
+https://learn.microsoft.com/powershell/module/az.servicelinker/new-azservicelinkerforwebapp
 #>
 function New-AzServiceLinkerForWebApp {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]

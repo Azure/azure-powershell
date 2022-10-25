@@ -21,7 +21,7 @@ API to start the assigned vm for the user.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/start-azlabservicesuservm
+https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesuservm
 #>
 function Start-AzLabServicesUserVM_User {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]

@@ -19,7 +19,7 @@ Returns a BotService specified by the parameters.
 .Description
 Returns a BotService specified by the parameters.
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/new-azbotservice
+https://learn.microsoft.com/powershell/module/az.botservice/new-azbotservice
 #>
 function New-AzBotService {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]

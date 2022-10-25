@@ -27,7 +27,7 @@ Kind     Location Name                                               Type
 EventHub East US  testnewkustocluster/mykustodatabase/mykustodataconnection Microsoft.Kusto/Clusters/Databases/DataConnections
 
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustodataconnection
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodataconnection
 #>
 function New-AzKustoDataConnection {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection])]

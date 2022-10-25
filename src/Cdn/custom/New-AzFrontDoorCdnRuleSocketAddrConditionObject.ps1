@@ -23,7 +23,7 @@ Create an in-memory object for DeliveryRuleSocketAddrCondition.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleSocketAddrCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleSocketAddrConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleSocketAddrConditionObject
 #>
 function New-AzFrontDoorCdnRuleSocketAddrConditionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleSocketAddrCondition')]

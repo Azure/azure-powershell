@@ -42,7 +42,7 @@ REQUESTHEADER <IHeaderField[]>: List of headers and their values to add to the W
   [Name <String>]: The name of the header.
   [Value <String>]: The value of the header.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightswebtest
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightswebtest
 #>
 function New-AzApplicationInsightsWebTest {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IWebTest])]

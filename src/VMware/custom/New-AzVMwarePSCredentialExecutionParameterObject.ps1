@@ -22,7 +22,7 @@
     .Outputs
     Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PSCredentialExecutionParameter
     .Link
-    https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwarePSCredentialExecutionParameterObject
+    https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwarePSCredentialExecutionParameterObject
     #>
     function New-AzVMwarePSCredentialExecutionParameterObject {
         [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PSCredentialExecutionParameter')]

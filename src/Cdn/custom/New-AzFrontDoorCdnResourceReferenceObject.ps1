@@ -23,7 +23,7 @@ Create an in-memory object for ResourceReference.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnResourceReferenceObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnResourceReferenceObject
 #>
 function New-AzFrontDoorCdnResourceReferenceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference')]

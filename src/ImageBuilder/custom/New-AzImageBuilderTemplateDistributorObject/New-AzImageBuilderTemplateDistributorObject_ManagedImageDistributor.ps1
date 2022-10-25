@@ -23,7 +23,7 @@ Create an in-memory object for ImageTemplateDistributor.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateManagedImageDistributor
 .Link
-https://docs.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatedistributorobject
+https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatedistributorobject
 #>
 function New-AzImageBuilderTemplateDistributorObject_ManagedImageDistributor {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateManagedImageDistributor')]

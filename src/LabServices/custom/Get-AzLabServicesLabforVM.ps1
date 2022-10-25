@@ -21,7 +21,7 @@ API to return the lab for a specific VM.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabforvm
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabforvm
 #>
 function Get-AzLabServicesLabForVM {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]

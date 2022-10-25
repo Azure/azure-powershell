@@ -22,7 +22,7 @@
     .Outputs
     Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptStringExecutionParameter
     .Link
-    https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptStringExecutionParameterObject
+    https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptStringExecutionParameterObject
     #>
     function New-AzVMwareScriptStringExecutionParameterObject {
         [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptStringExecutionParameter')]

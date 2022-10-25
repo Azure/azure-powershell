@@ -21,7 +21,7 @@ API to redeploy a VM.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment
+https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment
 #>
 function Start-AzLabServicesVMRedeployment_ResourceId {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]

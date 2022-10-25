@@ -35,10 +35,10 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.appconfiguration/update-azappconfigurationstore
+https://learn.microsoft.com/powershell/module/az.appconfiguration/update-azappconfigurationstore
 .LINK
-[Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-4.4.0)
-[New-AzUserAssignedIdentity](https://docs.microsoft.com/powershell/module/az.managedserviceidentity/new-azuserassignedidentity?view=azps-4.4.0)
+[Set-AzKeyVaultAccessPolicy](https://learn.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-4.4.0)
+[New-AzUserAssignedIdentity](https://learn.microsoft.com/powershell/module/az.managedserviceidentity/new-azuserassignedidentity?view=azps-4.4.0)
 #>
 function Update-AzAppConfigurationStore {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore])]
