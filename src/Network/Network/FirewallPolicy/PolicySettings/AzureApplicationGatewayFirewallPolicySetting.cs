@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -46,6 +48,12 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public int MaxFileUploadInMb { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Custom Response Status Code")]
+        public int? CustomBlockResponseStatusCode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Custom Response Body")]
+        public string CustomBlockResponseBody { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -69,6 +77,21 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.MaxFileUploadInMb = 100;
             }
+
+            if (!this.MyInvocation.BoundParameters.ContainsKey("CustomBlockResponseStatusCode"))
+            {
+                this.CustomBlockResponseStatusCode = (int?)null;
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("CustomBlockResponseBody"))
+            {
+                this.CustomBlockResponseBody = System.Convert.ToBase64String(Encoding.UTF8.GetBytes(CustomBlockResponseBody));
+            } else
+            {
+                this.CustomBlockResponseBody = null;
+            }
+
+
         }
 
         protected PSApplicationGatewayFirewallPolicySettings NewObject()
@@ -79,7 +102,9 @@ namespace Microsoft.Azure.Commands.Network
                 State = this.State,
                 RequestBodyCheck = this.DisableRequestBodyCheck.IsPresent ? false : true,
                 MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb,
-                FileUploadLimitInMb = this.MaxFileUploadInMb
+                FileUploadLimitInMb = this.MaxFileUploadInMb,
+                CustomBlockResponseBody = this.CustomBlockResponseBody,
+                CustomBlockResponseStatusCode = this.CustomBlockResponseStatusCode,
             };
         }
     }
