@@ -26,6 +26,7 @@
 * Updated `Get-AzHost` cmdlet logic to return Host for `-ResourceId` parameterset.
 * Updated property mapping for parameter `Encryption` of `New-AzGalleryImageVersion`
 * Updated list format to display all VmssVmRunCommand properties for `Get-AzVmssVmRunCommand`
+* Added fixes for Community Gallery cmdlets
 
 ## Version 5.0.0
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.

@@ -31,8 +31,13 @@ Get-AzGallery [-GalleryUniqueName <String>] [-Scope <String>] -Location <String>
 
 ### CommunityGalleryParameterSet
 ```
-Get-AzGallery [-GalleryPublicName <String>] -Location <String> [-Community]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzGallery [-GalleryPublicName <String>] -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ListCommunityGalleryParameterSet
+```
+Get-AzGallery [-Location <String>] [-Community] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -189,7 +194,7 @@ List community galleries.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CommunityGalleryParameterSet
+Parameter Sets: ListCommunityGalleryParameterSet
 Aliases:
 
 Required: True
@@ -274,6 +279,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: System.String
+Parameter Sets: ListCommunityGalleryParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the gallery.
 
@@ -286,7 +303,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
@@ -301,7 +318,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceId
