@@ -150,18 +150,19 @@ function Update-AzFrontDoorCdnProfileSku {
     )
     
     process {
-        if ($PSCmdlet.ParameterSetName -eq 'Update' -or $PSCmdlet.ParameterSetName -eq 'UpdateExpanded') {
-            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName}
-        }else {
-            throw "Not supported ParameterSetName."
-        }
+        # if ($PSCmdlet.ParameterSetName -eq 'Update' -or $PSCmdlet.ParameterSetName -eq 'UpdateExpanded') {
+        #     $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName}
+        # }else {
+        #     throw "Not supported ParameterSetName."
+        # }
+        $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName}
 
         if ($null -eq $frontDoorCdnProfile)
         {
             throw "Provided FrontDoorCdnProfile does not exist."
         }
 
-        if($PSBoundParameters.ProfileUpgradeParameter -ne "@{}") {
+        if($PSBoundParameters.ProfileUpgradeParameter) {
             if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
                 throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
             }
@@ -170,17 +171,39 @@ function Update-AzFrontDoorCdnProfileSku {
             }
 
             $wafPolicies = $PSBoundParameters.ProfileUpgradeParameter
-            if($WafPolicies.count -gt 0) {
+
+            if($wafPolicies.count -ne 0) {
                 # Validate the format of the WafID
-                foreach ($policy in $wafPolicies) {
-                    $policyName = $policy.SecurityPolicyName
-                    ParseWafResourceId -WafResourceId $policy.ChangeToWafPolicyId
+                foreach ($wafMapping in $wafPolicies.WafMappingList) {
+                    $changeToWafPolciy = $wafMapping.ChangeToWafPolicyId
+                    ParseWafResourceId -WafResourceId $changeToWafPolciy
                 }
-                
-                foreach ($policy in $wafPolicies) {
-                    $changeToWafPolicy = $policy.ChangeToWafPolicyId
+
+                foreach ($wafMapping in $wafPolicies.wafMappingList) {
+                    $changeToWafPolicy = $wafMapping.ChangeToWafPolicyId
                     $changeToWafPolicyName = $changeToWafPolicy.split("/")[8]
-                    New-AzFrontDoorWafPolicy -ResourceGroupName ${ResourceGroupName} -Name $changeToWafPolicyName
+                    $changeToWafPolicyResourceGroup = $changeToWafPolicy.split("/")[4]
+
+                    # Validate whether the policy already exists in the subsrciption or not
+                    try {
+                        $existed = Get-AzFrontDoorWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName
+                    }
+                    catch {
+                        $policyName = $wafMapping.SecurityPolicyName
+                        Write-Debug("Current policy name: " + $policyName)
+                        # Get the waf policy name of the security.
+                        try{
+                            $policyNameProperty =  Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName afd -ProfileName skuupgradetest10 -Name $policyName
+                        }
+                        catch {
+                            throw 'Security policy name not exists in this profile...'
+                        }
+                        $currentWafName = $policyNameProperty.Parameter.WafPolicyId.split("/")[8]
+                        $currentWafResourceGroup = $policyNameProperty.Parameter.WafPolicyId.split("/")[4]
+                        Write-Debug("Current waf: " + $currentWafName + $currentWafResourceGroup)
+                        $wafPolicyProperty = Get-AzFrontDoorWafPolicy -ResourceGroupName $currentWafResourceGroup -Name $currentWafName
+                        CreatePremiumWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName -WafProperty $wafPolicyProperty
+                    }
                 }
             }
         }
@@ -188,7 +211,7 @@ function Update-AzFrontDoorCdnProfileSku {
     }
 }
 
-function ParseWafResourceId{
+function ParseWafResourceId {
     param (
         [string]$WafResourceId
     )
@@ -197,7 +220,19 @@ function ParseWafResourceId{
     if ($array.Length -ne 9){
         throw 'Format of WebApplicationFirewallMapping is not correct, please check the parameter.'
     }
-    if ($SplitInfo[1] -gt "subscriptions" -or $SplitInfo[3] -gt "resourceGroups" -or $SplitInfo[5] -gt "providers" -or $SplitInfo[6] -gt "Microsoft.Network" -or $SplitInfo[7] -gt "frontdoorWebApplicationFirewallPolicies") {
+    if ($array[1] -gt "subscriptions" -or $array[3] -gt "resourcegroups" -or $array[5] -gt "providers" -or $array[6] -gt "microsoftnetwork" -or $array[7] -gt "frontdoorwebapplicationfirewallpolicies") {
         throw 'Format of WebApplicationFirewallMapping is not correct, please check the parameter.'
     }
+}
+
+function CreatePremiumWafPolicy {
+    param (
+        [string]$ResourceGroupName,
+        [string]$Name,
+        [Microsoft.Azure.Commands.FrontDoor.Models.PSTrackedResource]$WafProperty
+    )
+
+    # Complete command
+    # New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku "Premium_AzureFrontDoor" -EnabledState $wafPolicyProperty.PolicyEnabledState -Mode $wafPolicyProperty.PolicyMode -Customrule $wafPolicyProperty.CustomRules -ManagedRule $wafPolicyProperty.ManagedRules -RedirectUrl $wafPolicyProperty.RedirectUrl -CustomBlockResponseStatusCode $wafPolicyProperty.CustomBlockResponseStatusCode -CustomBlockResponseBody $wafPolicyProperty.CustomBlockResponseBody -RequestBodyCheck $wafPolicyProperty.RequestBodyCheck 
+    New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku "Premium_AzureFrontDoor" -EnabledState $wafPolicyProperty.PolicyEnabledState -Mode $wafPolicyProperty.PolicyMode -Customrule $wafPolicyProperty.CustomRules -RequestBodyCheck $wafPolicyProperty.RequestBodyCheck 
 }

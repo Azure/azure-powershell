@@ -13,11 +13,19 @@ The change need to be committed after this.
 
 ## SYNTAX
 
+### MigrateExpanded (Default)
 ```
 Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
- -MigrationParameter <IMigrationParameters> -ProfileName <String> -SkuName <SkuName>
- [-SubscriptionId <String>] [-MigrationWebApplicationFirewallMapping <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ProfileName <String> -SkuName <SkuName> [-SubscriptionId <String>]
+ [-MigrationWebApplicationFirewallMapping <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### Migrate
+```
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String>
+ -MigrationParameter <IMigrationParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +78,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: MigrateExpanded
 Aliases:
 
 Required: True
@@ -101,7 +109,7 @@ To construct, see NOTES section for MIGRATIONPARAMETER properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrationParameters
-Parameter Sets: (All)
+Parameter Sets: Migrate
 Aliases:
 
 Required: True
@@ -116,7 +124,7 @@ Waf mapping for the migrated profile
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: MigrateExpanded
 Aliases:
 
 Required: False
@@ -146,7 +154,7 @@ Name of the new profile that need to be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: MigrateExpanded
 Aliases:
 
 Required: True
@@ -176,7 +184,7 @@ Name of the pricing tier.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName
-Parameter Sets: (All)
+Parameter Sets: MigrateExpanded
 Aliases:
 
 Required: True

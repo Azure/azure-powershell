@@ -31,19 +31,27 @@ Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
 {{ Add output here }}
+```
 
-### -------------------------- EXAMPLE 2 --------------------------
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
 {{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
