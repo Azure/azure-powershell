@@ -814,5 +814,11 @@ Please contact Microsoft for further assistance.</value>
   <data name="TierAfterDurationCheckFailedWithRetentionDuration" xml:space="preserve">
     <value>TierAfterDuration needs to be >= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be >= (TierAfter + 180) days as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
   </data>
+  <data name="UnsupportedCZRWithNonZonePinnedVMForCRRVault" xml:space="preserve">
+    <value>For triggering cross zonal restore for CRR enabled (RA-GRS) vaults, please ensure that the recovery point is zone pinned. Please remove TargetZone parameter or try a valid scenario.</value>
+  </data>
+  <data name="UnsupportedCZRForCRRVaultToPrimaryRegion" xml:space="preserve">
+    <value>For triggering cross zonal restore for CRR enabled (RA-GRS) vaults, please ensure that the restore is triggered for secondary region. Please remove TargetZone parameter or try a valid scenario.</value>
+  </data>	
 
 </root>
