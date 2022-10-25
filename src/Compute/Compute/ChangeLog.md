@@ -25,6 +25,8 @@
 * Added Disk Delete Optional parameters `OsDisk Deletion Option` and `Delete Option` to the `Set-AzVmssStorageProfile` (OS Disk) and `Add-AzVmssDataDisk` (Data Disk)
 * Improved printed output for `Get-AzComputeResourceSku`
 * Updated `Get-AzHost` cmdlet logic to return Host for `-ResourceId` parameterset.
+* Added `-OSDiskSizeGB` optional parameter for `Set-AzVmssStorageProfile`.
+* Improved cmdlet description for `Set-AzVM` and added examples.
 * Updated property mapping for parameter `Encryption` of `New-AzGalleryImageVersion`
 * Updated list format to display all VmssVmRunCommand properties for `Get-AzVmssVmRunCommand`
 
