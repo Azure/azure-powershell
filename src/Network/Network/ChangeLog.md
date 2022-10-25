@@ -34,6 +34,10 @@
     * `New-AzVpnClientConnectionConfiguration`
 * Added message in breaking change attribute to notify that load balancer sku default behaviour will be changed
     * `New-AzLoadBalancer`
+* Added cmdlet preview to notify customers to use defualt value or leave null for load balancer probe theshold property
+    * `New-AzLoadBalancerProbeConfig`
+    * `Set-AzLoadBalancerProbeConfig`
+    * `Add-AzLoadBalancerProbeConfig`
 
 ## Version 5.0.0
 * Added a new endpoint switch `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`
