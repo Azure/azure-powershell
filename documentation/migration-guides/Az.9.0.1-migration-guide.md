@@ -545,9 +545,9 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Update-AzSentinelAlertRuleAction`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse'.
+- No longer has output type 'PSSentinelActionResponse'.
 - No longer supports the parameter 'AlertRuleId' and no alias was found for the original parameter name.
-- No longer supports the type 'Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse' for parameter 'InputObject'.
+- No longer supports the type 'PSSentinelActionResponse' for parameter 'InputObject'.
 - No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
@@ -561,7 +561,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `New-AzSentinelIncidentComment`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments.PSSentinelIncidentComment'.
+- No longer has output type 'PSSentinelIncidentComment'.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
@@ -569,7 +569,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Get-AzSentinelBookmark`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark'.
+- No longer has output type 'PSSentinelBookmark'.
 - No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
@@ -579,7 +579,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Update-AzSentinelAlertRule`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule'.
+- No longer has output type 'PSSentinelAlertRule'.
 - No longer supports the parameter 'AlertRuleId' and no alias was found for the original parameter name.
 - No longer supports the type 'System.String' for parameter 'ProductFilter'.
 - No longer supports the type 'System.Collections.Generic.IList`1[System.String]' for parameter 'DisplayNamesExcludeFilter'.
@@ -592,7 +592,7 @@ The parameter set '__AllParameterSets' has been removed.
 - No longer supports the type 'System.Collections.Generic.IList`1[System.String]' for parameter 'Tactic'.
 - No longer supports the type 'Microsoft.Azure.Management.SecurityInsights.Models.TriggerOperator' for parameter 'TriggerOperator'.
 - No longer supports the type 'System.Nullable`1[System.Int32]' for parameter 'TriggerThreshold'.
-- No longer supports the type 'Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule' for parameter 'InputObject'.
+- No longer supports the type 'PSSentinelAlertRule' for parameter 'InputObject'.
 - No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
@@ -604,7 +604,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Get-AzSentinelIncidentComment`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments.PSSentinelIncidentComment'.
+- No longer has output type 'PSSentinelIncidentComment'.
 - No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
@@ -613,7 +613,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Get-AzSentinelAlertRuleAction`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse'.
+- No longer has output type 'PSSentinelActionResponse'.
 - No longer supports the parameter 'AlertRuleId' and no alias was found for the original parameter name.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
@@ -623,7 +623,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Remove-AzSentinelIncident`
 
-- No longer supports the type 'Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident' for parameter 'InputObject'.
+- No longer supports the type 'PSSentinelIncident' for parameter 'InputObject'.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
@@ -631,7 +631,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `New-AzSentinelBookmark`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark'.
+- No longer has output type 'PSSentinelBookmark'.
 - No longer supports the parameter 'IncidentInfo' and no alias was found for the original parameter name.
 - No longer supports the type 'System.Collections.Generic.IList`1[System.String]' for parameter 'Label'.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
@@ -642,9 +642,9 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Remove-AzSentinelAlertRule`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule'.
+- No longer has output type 'PSSentinelAlertRule'.
 - No longer supports the parameter 'AlertRuleId' and no alias was found for the original parameter name.
-- No longer supports the type 'Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule' for parameter 'InputObject'.
+- No longer supports the type 'PSSentinelAlertRule' for parameter 'InputObject'.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
@@ -652,9 +652,9 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Remove-AzSentinelAlertRuleAction`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse'.
+- No longer has output type 'PSSentinelActionResponse'.
 - No longer supports the parameter 'AlertRuleId' and no alias was found for the original parameter name.
-- No longer supports the type 'Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse' for parameter 'InputObject'.
+- No longer supports the type 'PSSentinelActionResponse' for parameter 'InputObject'.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
@@ -662,7 +662,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Get-AzSentinelAlertRule`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule'.
+- No longer has output type 'PSSentinelAlertRule'.
 - No longer supports the parameter 'AlertRuleId' and no alias was found for the original parameter name.
 - No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
@@ -673,9 +673,9 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Update-AzSentinelDataConnector`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector'.
+- No longer has output type 'PSSentinelDataConnector'.
 - No longer supports the parameter 'DataConnectorId' and no alias was found for the original parameter name.
-- No longer supports the type 'Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector' for parameter 'InputObject'.
+- No longer supports the type 'PSSentinelDataConnector' for parameter 'InputObject'.
 - No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
 - No longer supports the parameter 'AwsRoleArn' and no alias was found for the original parameter name.
 - No longer supports the parameter 'Logs' and no alias was found for the original parameter name.
@@ -691,8 +691,8 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Remove-AzSentinelBookmark`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark'.
-- No longer supports the type 'Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark' for parameter 'InputObject'.
+- No longer has output type 'PSSentinelBookmark'.
+- No longer supports the type 'PSSentinelBookmark' for parameter 'InputObject'.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
@@ -700,7 +700,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `New-AzSentinelIncident`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident'.
+- No longer has output type 'PSSentinelIncident'.
 - No longer supports the parameter 'Classificaton' and no alias was found for the original parameter name.
 - No longer supports the type 'System.String' for parameter 'ClassificationReason'.
 - No longer supports the type 'System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]' for parameter 'Label'.
@@ -715,7 +715,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `New-AzSentinelAlertRuleAction`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse'.
+- No longer has output type 'PSSentinelActionResponse'.
 - No longer supports the parameter 'AlertRuleId' and no alias was found for the original parameter name.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
@@ -725,7 +725,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Get-AzSentinelIncident`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident'.
+- No longer has output type 'PSSentinelIncident'.
 - No longer supports the parameter 'OrderBy' and no alias was found for the original parameter name.
 - No longer supports the parameter 'Max' and no alias was found for the original parameter name.
 - No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
@@ -738,8 +738,8 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Remove-AzSentinelDataConnector`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector'.
-- No longer supports the type 'Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector' for parameter 'InputObject'.
+- No longer has output type 'PSSentinelDataConnector'.
+- No longer supports the type 'PSSentinelDataConnector' for parameter 'InputObject'.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
@@ -747,7 +747,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `New-AzSentinelDataConnector`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector'.
+- No longer has output type 'PSSentinelDataConnector'.
 - No longer supports the parameter 'DataConnectorId' and no alias was found for the original parameter name.
 - No longer supports the parameter 'AzureActiveDirectory' and no alias was found for the original parameter name.
 - No longer supports the parameter 'AzureAdvancedThreatProtection' and no alias was found for the original parameter name.
@@ -776,7 +776,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `New-AzSentinelAlertRule`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule'.
+- No longer has output type 'PSSentinelAlertRule'.
 - No longer supports the parameter 'Scheduled' and no alias was found for the original parameter name.
 - No longer supports the parameter 'MicrosoftSecurityIncidentCreation' and no alias was found for the original parameter name.
 - No longer supports the parameter 'Fusion' and no alias was found for the original parameter name.
@@ -801,7 +801,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Get-AzSentinelAlertRuleTemplate`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.AlertRuleTemplates.PSSentinelAlertRuleTemplate'.
+- No longer has output type 'PSSentinelAlertRuleTemplate'.
 - No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
@@ -811,9 +811,9 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Update-AzSentinelIncident`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident'.
+- No longer has output type 'PSSentinelIncident'.
 - No longer supports the parameter 'IncidentID' and no alias was found for the original parameter name.
-- No longer supports the type 'Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident' for parameter 'InputObject'.
+- No longer supports the type 'PSSentinelIncident' for parameter 'InputObject'.
 - No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
 - No longer supports the type 'System.String' for parameter 'Classification'.
 - No longer supports the type 'System.String' for parameter 'ClassificationReason'.
@@ -831,7 +831,7 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Get-AzSentinelDataConnector`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector'.
+- No longer has output type 'PSSentinelDataConnector'.
 - No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
 - No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
 - No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
@@ -840,8 +840,8 @@ The parameter set '__AllParameterSets' has been removed.
 
 ### `Update-AzSentinelBookmark`
 
-- No longer has output type 'Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark'.
-- No longer supports the type 'Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark' for parameter 'InputObject'.
+- No longer has output type 'PSSentinelBookmark'.
+- No longer supports the type 'PSSentinelBookmark' for parameter 'InputObject'.
 - No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
 - No longer supports the parameter 'IncidentInfo' and no alias was found for the original parameter name.
 - No longer supports the type 'System.Collections.Generic.IList`1[System.String]' for parameter 'Label'.
