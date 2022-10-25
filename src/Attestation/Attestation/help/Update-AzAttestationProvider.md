@@ -1,7 +1,7 @@
 ---
 external help file: Az.Attestation-help.xml
 Module Name: Az.Attestation
-online version: https://docs.microsoft.com/powershell/module/az.attestation/update-azattestationprovider
+online version: https://learn.microsoft.com/powershell/module/az.attestation/update-azattestationprovider
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SecurityInsights
-online version: https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelbookmark
+online version: https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelbookmark
 schema: 2.0.0
 ---
 

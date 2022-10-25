@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupinstance
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupinstance
 schema: 2.0.0
 ---
 

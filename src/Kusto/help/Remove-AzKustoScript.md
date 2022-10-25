@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustoscript
+online version: https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustoscript
 schema: 2.0.0
 ---
 

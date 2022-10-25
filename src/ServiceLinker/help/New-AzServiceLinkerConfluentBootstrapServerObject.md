@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceLinker
-online version: https://docs.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerconfluentbootstrapserverobject
+online version: https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerconfluentbootstrapserverobject
 schema: 2.0.0
 ---
 

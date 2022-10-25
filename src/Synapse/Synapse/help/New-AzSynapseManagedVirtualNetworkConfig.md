@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsemanagedvirtualnetworkconfig
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsemanagedvirtualnetworkconfig
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceInitDefinitionObject
+online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceInitDefinitionObject
 schema: 2.0.0
 ---
 

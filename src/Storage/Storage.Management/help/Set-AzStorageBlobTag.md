@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstorageblobtag
+online version: https://learn.microsoft.com/powershell/module/az.storage/set-azstorageblobtag
 schema: 2.0.0
 ---
 

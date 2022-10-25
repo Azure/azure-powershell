@@ -1,7 +1,7 @@
 ---
 external help file: Az.ResourceGraph-help.xml
 Module Name: Az.ResourceGraph
-online version: https://docs.microsoft.com/powershell/module/az.resourcegraph/new-azresourcegraphquery
+online version: https://learn.microsoft.com/powershell/module/az.resourcegraph/new-azresourcegraphquery
 schema: 2.0.0
 ---
 

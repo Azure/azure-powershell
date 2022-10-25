@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/new-azmanagementgroup/
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azmanagementgroup/
 schema: 2.0.0
 ---
 

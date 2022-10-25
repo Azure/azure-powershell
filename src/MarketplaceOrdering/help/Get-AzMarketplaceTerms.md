@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MarketplaceOrdering
-online version: https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms
+online version: https://learn.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms
 schema: 2.0.0
 ---
 

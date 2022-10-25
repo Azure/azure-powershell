@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/get-azdatasharereceivedinvitation
+online version: https://learn.microsoft.com/powershell/module/az.datashare/get-azdatasharereceivedinvitation
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file: Az.NetworkSecurityPerimeter.psm1-help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeteraccessrule
+online version: https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeteraccessrule
 schema: 2.0.0
 ---
 

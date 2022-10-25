@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
-online version: https://docs.microsoft.com/powershell/module/az.operationalinsights/invoke-azoperationalinsightsquery
+online version: https://learn.microsoft.com/powershell/module/az.operationalinsights/invoke-azoperationalinsightsquery
 schema: 2.0.0
 ---
 

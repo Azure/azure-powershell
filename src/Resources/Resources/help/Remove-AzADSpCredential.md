@@ -1,7 +1,7 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadspcredential
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azadspcredential
 schema: 2.0.0
 ---
 

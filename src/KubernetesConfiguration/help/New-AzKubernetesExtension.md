@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesextension
+online version: https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesextension
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
+online version: https://learn.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubprivatelink
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubprivatelink
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/invoke-azaksruncommand
+online version: https://learn.microsoft.com/powershell/module/az.aks/invoke-azaksruncommand
 schema: 2.0.0
 ---
 

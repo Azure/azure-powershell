@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatabricksObject
+online version: https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatabricksObject
 schema: 2.0.0
 ---
 

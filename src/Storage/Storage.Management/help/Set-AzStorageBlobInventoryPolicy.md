@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstorageblobinventorypolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/set-azstorageblobinventorypolicy
 schema: 2.0.0
 ---
 

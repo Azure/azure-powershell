@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleUrlFileNameConditionObject
+online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleUrlFileNameConditionObject
 schema: 2.0.0
 ---
 

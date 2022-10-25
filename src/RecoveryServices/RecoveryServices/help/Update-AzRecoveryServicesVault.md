@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault
 schema: 2.0.0
 ---
 

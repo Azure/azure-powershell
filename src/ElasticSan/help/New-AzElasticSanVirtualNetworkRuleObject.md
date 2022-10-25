@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ElasticSan
-online version: https://docs.microsoft.com/powershell/module/az.ElasticSan/new-AzElasticSanVirtualNetworkRuleObject
+online version: https://learn.microsoft.com/powershell/module/az.ElasticSan/new-AzElasticSanVirtualNetworkRuleObject
 schema: 2.0.0
 ---
 

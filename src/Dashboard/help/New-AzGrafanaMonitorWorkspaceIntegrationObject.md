@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Dashboard
-online version: https://docs.microsoft.com/powershell/module/az.dashboard/new-azgrafanamonitorworkspaceintegrationobject
+online version: https://learn.microsoft.com/powershell/module/az.dashboard/new-azgrafanamonitorworkspaceintegrationobject
 schema: 2.0.0
 ---
 

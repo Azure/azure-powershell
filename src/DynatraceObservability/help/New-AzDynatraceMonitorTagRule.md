@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DynatraceObservability
-online version: https://docs.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitortagrule
+online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitortagrule
 schema: 2.0.0
 ---
 

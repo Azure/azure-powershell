@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudservicenetworkinterface
+online version: https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudservicenetworkinterface
 schema: 2.0.0
 ---
 

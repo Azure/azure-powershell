@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ElasticSan
-online version: https://docs.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolume
+online version: https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolume
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SecurityInsights
-online version: https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelentityquery
+online version: https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelentityquery
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubmanifest
+online version: https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubmanifest
 schema: 2.0.0
 ---
 

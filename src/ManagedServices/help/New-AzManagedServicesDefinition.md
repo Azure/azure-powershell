@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ManagedServices
-online version: https://docs.microsoft.com/powershell/module/az.managedservices/new-azmanagedservicesdefinition
+online version: https://learn.microsoft.com/powershell/module/az.managedservices/new-azmanagedservicesdefinition
 schema: 2.0.0
 ---
 

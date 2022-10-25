@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbrestorabledatabaseaccount
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbrestorabledatabaseaccount
 schema: 2.0.0
 ---
 

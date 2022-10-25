@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloudnsxtpassword
+online version: https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloudnsxtpassword
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://docs.microsoft.com/powershell/module/az.migrate/suspend-azmigrateserverreplication
+online version: https://learn.microsoft.com/powershell/module/az.migrate/suspend-azmigrateserverreplication
 schema: 2.0.0
 ---
 

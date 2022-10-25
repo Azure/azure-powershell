@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/powershell/module/az.springcloud/start-azspringcloudappdeploymentjfr
+online version: https://learn.microsoft.com/powershell/module/az.springcloud/start-azspringcloudappdeploymentjfr
 schema: 2.0.0
 ---
 

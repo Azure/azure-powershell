@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Advisor
-online version: https://docs.microsoft.com/powershell/module/az.advisor/Enable-AzAdvisorRecommendation
+online version: https://learn.microsoft.com/powershell/module/az.advisor/Enable-AzAdvisorRecommendation
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/update-azsmartgroupstate
+online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/update-azsmartgroupstate
 schema: 2.0.0
 ---
 

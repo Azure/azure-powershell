@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HealthcareApis
-online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareiotconnectorfhirdestination
+online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareiotconnectorfhirdestination
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2
+online version: https://learn.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2
 schema: 2.0.0
 ---
 
@@ -64,7 +64,7 @@ Location             : global
 Tags                 :
 ```
 
-This command creates a metric alert rule for a virtual machine. $condition is the output of [New-AzMetricAlertRuleV2Criteria](https://docs.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2criteria) cmdlet and $act is the output of [New-AzActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azactiongroup) cmdlet
+This command creates a metric alert rule for a virtual machine. $condition is the output of [New-AzMetricAlertRuleV2Criteria](https://learn.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2criteria) cmdlet and $act is the output of [New-AzActionGroup](https://learn.microsoft.com/powershell/module/az.monitor/new-azactiongroup) cmdlet
 
 ### Example 2: Add a metric alert rule for all virtual machines in a subscription
 ```powershell
@@ -118,7 +118,7 @@ Location             : global
 Tags                 :
 ```
 
-This command disables a metric alert rule. Here, we are piping output of [Get-AzMetricAlertRuleV2](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricalertrulev2) to [Add-AzMetricAlertRuleV2](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2) 
+This command disables a metric alert rule. Here, we are piping output of [Get-AzMetricAlertRuleV2](https://learn.microsoft.com/powershell/module/az.monitor/get-azmetricalertrulev2) to [Add-AzMetricAlertRuleV2](https://learn.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2) 
 
 ### Example 4: Add a metric alert rule with dimensions
 
@@ -150,7 +150,7 @@ Location             : global
 Tags                 :
 ```
 
-To create a more complex metric alert rule like the ones that involve selecting dimension values or have multiple criteria, you can use the helper cmdlets [New-AzMetricAlertRuleV2DimensionSelection](https://docs.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2dimensionselection) and [New-AzMetricAlertRuleV2Criteria](https://docs.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2criteria).
+To create a more complex metric alert rule like the ones that involve selecting dimension values or have multiple criteria, you can use the helper cmdlets [New-AzMetricAlertRuleV2DimensionSelection](https://learn.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2dimensionselection) and [New-AzMetricAlertRuleV2Criteria](https://learn.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2criteria).
 
 Above set of cmdlets will create a metric alert rule with dimensions.
 

@@ -1,7 +1,7 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipal
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipal
 schema: 2.0.0
 ---
 

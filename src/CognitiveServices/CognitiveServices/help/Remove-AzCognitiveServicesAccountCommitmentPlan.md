@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/remove-azcognitiveservicesaccountcommitmentplan
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/remove-azcognitiveservicesaccountcommitmentplan
 schema: 2.0.0
 ---
 

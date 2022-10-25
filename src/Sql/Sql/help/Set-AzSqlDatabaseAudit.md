@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: F7EF35E3-BC53-43D9-A71E-0B4316260A08
-online version: https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseAudit
+online version: https://learn.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseAudit
 schema: 2.0.0
 ---
 

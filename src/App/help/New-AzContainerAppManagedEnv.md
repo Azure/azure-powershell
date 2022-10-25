@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenv
+online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenv
 schema: 2.0.0
 ---
 
