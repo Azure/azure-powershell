@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareauthorization
+online version: https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareauthorization
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/start-azakscluster
+online version: https://learn.microsoft.com/powershell/module/az.aks/start-azakscluster
 schema: 2.0.0
 ---
 

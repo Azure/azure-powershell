@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightswebtest
+online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightswebtest
 schema: 2.0.0
 ---
 

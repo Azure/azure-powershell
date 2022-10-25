@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Maps
 Module Guid: dc0410d0-8396-4441-a4d3-fdaaa915369d
-Download Help Link: https://docs.microsoft.com/powershell/module/az.maps
+Download Help Link: https://learn.microsoft.com/powershell/module/az.maps
 Help Version: 1.0.0.0
 Locale: en-US
 ---

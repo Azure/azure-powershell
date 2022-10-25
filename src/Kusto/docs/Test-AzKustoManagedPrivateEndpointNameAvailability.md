@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/powershell/module/az.kusto/test-azkustomanagedprivateendpointnameavailability
+online version: https://learn.microsoft.com/powershell/module/az.kusto/test-azkustomanagedprivateendpointnameavailability
 schema: 2.0.0
 ---
 

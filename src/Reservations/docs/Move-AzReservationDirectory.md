@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/powershell/module/az.reservations/move-azreservationdirectory
+online version: https://learn.microsoft.com/powershell/module/az.reservations/move-azreservationdirectory
 schema: 2.0.0
 ---
 

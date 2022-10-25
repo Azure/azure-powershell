@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/enable-azstackhciattestation
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/enable-azstackhciattestation
 schema: 2.0.0
 ---
 

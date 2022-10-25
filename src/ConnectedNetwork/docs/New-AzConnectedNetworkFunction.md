@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkfunction
+online version: https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkfunction
 schema: 2.0.0
 ---
 

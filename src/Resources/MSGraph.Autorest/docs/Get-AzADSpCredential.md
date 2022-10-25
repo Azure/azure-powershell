@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadspcredential
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azadspcredential
 schema: 2.0.0
 ---
 

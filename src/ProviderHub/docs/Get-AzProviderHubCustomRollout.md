@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubcustomrollout
+online version: https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubcustomrollout
 schema: 2.0.0
 ---
 

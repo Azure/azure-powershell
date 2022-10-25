@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.GuestConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationassignmentreport
+online version: https://learn.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationassignmentreport
 schema: 2.0.0
 ---
 

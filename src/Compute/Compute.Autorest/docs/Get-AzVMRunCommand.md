@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmruncommand
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmruncommand
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ConnectedNetwork
 Module Guid: 86910398-1fa6-447a-8b10-54e0ac5a2a6a
-Download Help Link: https://docs.microsoft.com/powershell/module/az.connectednetwork
+Download Help Link: https://learn.microsoft.com/powershell/module/az.connectednetwork
 Help Version: 1.0.0.0
 Locale: en-US
 ---

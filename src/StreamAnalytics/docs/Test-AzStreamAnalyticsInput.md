@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
 schema: 2.0.0
 ---
 

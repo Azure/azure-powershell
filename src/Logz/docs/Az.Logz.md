@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Logz
 Module Guid: 66d504a5-3bf8-4570-92f4-620ec297b16a
-Download Help Link: https://docs.microsoft.com/powershell/module/az.logz
+Download Help Link: https://learn.microsoft.com/powershell/module/az.logz
 Help Version: 1.0.0.0
 Locale: en-US
 ---

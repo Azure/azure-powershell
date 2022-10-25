@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Quota
-online version: https://docs.microsoft.com/powershell/module/az.quota/get-azquotausage
+online version: https://learn.microsoft.com/powershell/module/az.quota/get-azquotausage
 schema: 2.0.0
 ---
 

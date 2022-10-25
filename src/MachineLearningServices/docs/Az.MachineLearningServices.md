@@ -1,7 +1,7 @@
 ---
 Module Name: Az.MachineLearningServices
 Module Guid: 56293047-9014-4c88-96b7-98b69c3b687d
-Download Help Link: https://docs.microsoft.com/powershell/module/az.machinelearningservices
+Download Help Link: https://learn.microsoft.com/powershell/module/az.machinelearningservices
 Help Version: 1.0.0.0
 Locale: en-US
 ---

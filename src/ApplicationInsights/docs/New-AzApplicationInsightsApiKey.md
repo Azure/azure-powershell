@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsapikey
+online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsapikey
 schema: 2.0.0
 ---
 

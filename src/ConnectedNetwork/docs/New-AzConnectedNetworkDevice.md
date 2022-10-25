@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkdevice
+online version: https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkdevice
 schema: 2.0.0
 ---
 

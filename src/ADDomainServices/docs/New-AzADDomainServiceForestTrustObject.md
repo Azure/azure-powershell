@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ADDomainServices
-online version: https://docs.microsoft.com/powershell/module/az.ADDomainService/new-AzADDomainServiceForestTrustObject
+online version: https://learn.microsoft.com/powershell/module/az.ADDomainService/new-AzADDomainServiceForestTrustObject
 schema: 2.0.0
 ---
 

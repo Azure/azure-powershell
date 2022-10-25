@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareaddon
+online version: https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareaddon
 schema: 2.0.0
 ---
 
