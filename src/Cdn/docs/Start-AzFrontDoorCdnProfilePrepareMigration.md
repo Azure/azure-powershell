@@ -17,8 +17,8 @@ The change need to be committed after this.
 ```
 Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
  -ProfileName <String> -SkuName <SkuName> [-SubscriptionId <String>]
- [-MigrationWebApplicationFirewallMapping <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Migrate
@@ -121,9 +121,10 @@ Accept wildcard characters: False
 
 ### -MigrationWebApplicationFirewallMapping
 Waf mapping for the migrated profile
+To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrationWebApplicationFirewallMapping[]
 Parameter Sets: MigrateExpanded
 Aliases:
 
@@ -265,6 +266,10 @@ To create the parameters described below, construct a hash table containing the 
     - `[MigratedFromId <String>]`: Resource ID.
     - `[MigratedToId <String>]`: Resource ID.
   - `[SkuName <SkuName?>]`: Name of the pricing tier.
+
+`MIGRATIONWEBAPPLICATIONFIREWALLMAPPING <IMigrationWebApplicationFirewallMapping[]>`: Waf mapping for the migrated profile
+  - `[MigratedFromId <String>]`: Resource ID.
+  - `[MigratedToId <String>]`: Resource ID.
 
 ## RELATED LINKS
 

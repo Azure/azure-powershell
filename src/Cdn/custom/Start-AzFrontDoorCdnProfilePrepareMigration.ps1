@@ -68,14 +68,16 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
 
         [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
         [ValidateNotNull()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName])]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]
         # Name of the pricing tier.
         ${SkuName},
 
         [Parameter(ParameterSetName='MigrateExpanded')]
+        [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrationWebApplicationFirewallMapping[]]
         # Waf mapping for the migrated profile
         # To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
         ${MigrationWebApplicationFirewallMapping},
@@ -155,87 +157,111 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
     )
 
     process {
-        # if($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping')) {
-        #     if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
-        #         throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
-        #     }
-        #     else {
-        #         Import-Module -Name Az.FrontDoor
-        #     }
+        if($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping')) {
+            if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
+                throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
+            }
+            else {
+                Import-Module -Name Az.FrontDoor
+            }
 
-        #     $wafPolicies = $PSBoundParameters.MigrationWebApplicationFirewallMapping['Value']
-        #     if($wafPolicies.count -gt 0) {
-        #         # 1. Validate whether there is any waf policy associated with the profile.
-        #         $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName ${ProfileName}
-        #         $hasWafpolicy = $false
-        #         $wafpoliciesProfile = @()
-        #         # $frontDoorInfos[0].WebApplicationFirewallPolicyLink
-        #         foreach ($info in $frontDoorInfos) {
-        #             if($info.WebApplicationFirewallPolicyLink) {
-        #                 $hasWafpolicy = $true
-        #                 $wafpoliciesProfile += $info.WebApplicationFirewallPolicyLink
-        #             }
-        #         }
+            $wafPolicies = $PSBoundParameters.MigrationWebApplicationFirewallMapping
 
-        #         if ($hasWafpolicy -eq $false) {
-        #             throw 'No waf policy associated with the profile. Please check your profile.'
-        #         }
+            if($wafPolicies.count -gt 0) {
+                # 1. Validate whether there is any waf policy associated with the profile.
+                $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
+                $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
+                $hasWafpolicy = $false
+                $allWafPolicies = @()
+                # $frontDoorInfos[0].WebApplicationFirewallPolicyLink
+                foreach ($info in $frontDoorInfos) {
+                    if($info.WebApplicationFirewallPolicyLink) {
+                        $hasWafpolicy = $true
+                        $allWafPolicies += $info.WebApplicationFirewallPolicyLink
+                    }
+                }
 
-        #         # 2. Validate the format of the waf policy and the migrateFrom.Id whether exists in the profile.
-        #         # /subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******
-        #         foreach ($policy in $wafPolicies) {
-        #             ParseWafResourceId -WafResourceId $policy.migratedFrom.Id
-        #             if ($wafpoliciesProfile -NotContains $policy.migratedFrom.Id)
-        #             {
-        #                 throw 'Waf policy: $policy.migratedFrom.Id, not exists in the profile.'
-        #             }
-        #             ParseWafResourceId -WafResourceId $policy.migratedTo.Id
-        #         }
+                if ($hasWafpolicy -eq $false) {
+                    throw 'No waf policy associated with the profile. Please check your profile.'
+                }
 
-        #         # Get the waf policies of the endpoints in classic AFD
-        #         $allEndpointsInfo = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName}
-        #         foreach($endpointInfo in $allEndpointsInfo) {
-        #             # 
-        #         }
-                
-        #         # Only get the waf policies of the resource group
-        #         # But we could select the policy of the subscription
-        #         $AzFrontDoorWafPolicies = Get-AzFrontDoorWafPolicy -ResourceGroupName
-                
-        #         foreach ($policy in $WafPolicies) {
-        #             $MigrateFromWafId = $policy.migratedFrom
-        #             if ($AzFrontDoorWafPolicies -notcontains $MigrateFromWafId) {
-        #                 throw '$MigrateFromWafId dose not exist in the Profile. You are supposed to prvoide a Waf policy existed in the profile.'
-        #             }
-        #         }
+                Write-Debug("Waf Policy parameter ok now and enter validation the format of waf Id.")
 
-        #         foreach ($policy in $WafPolicies) {
-        #             $MigrateToWafId = $policy.migratedTo
-        #             if ($AzFrontDoorWafPolicies -notcontains $MigrateToWafId) {
-        #                 if ($PSBoundParameters.ContainsKey('ProfileName')) {
-        #                     New-AzFrontDoorWafPolicy -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName}
-        #                 }
-        #                 else {
-        #                     New-AzFrontDoorWafPolicy -ResourceGroupName ${ResourceGroupName} -Name ${Name} + "-migrated"
-        #                 }
-        #             }
-        #         }
-        #     }
-        # }
+                # 2. Validate the format of the waf policy and the migrateFrom.Id whether exists in the profile.
+                # /subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******
+                foreach ($policy in $wafPolicies) {
+                    $migrateFromId = $policy.MigratedFromId
+                    Write-Debug("MigratedFromId, " + $migrateFromId)
+                   
+                    ParseWafPolicyResourceId -WafResourceId $migrateFromId
+                    Write-Debug("test1 Done")
+
+                    if ($allWafPolicies -NotContains $migrateFromId)
+                    {
+                        throw 'Waf policy: $policy.MigratedFromId, not exists in the profile. Waf policy provided should exist in the profile.'
+                    }
+                    ParseWafPolicyResourceId -WafResourceId $policy.MigratedToId
+                }
+
+                # 4. Validate whether MigratedToId policy already exists in the subsrciption or not; If not existed, then create a new waf policy.
+                # 5. Validate the Sku
+                foreach ($policy in $wafPolicies) {
+                    $migrateToWafId = $policy.MigratedToId
+                    $migrateToWafResourceGroup = $migrateToWafId.split("/")[4]
+                    $migrateToWafName = $migrateToWafId.split("/")[8]
+
+                    try {
+                        $existed = Get-AzFrontDoorWafPolicy -ResourceGroupName $migrateToWafResourceGroup -Name $migrateToWafName
+                        
+                        # Validate the Sku
+                        
+                    }
+                    catch {
+                        $migrateFromWafId = $policy.MigratedFromId
+                        $migrateFromWafResourceGroup = $migrateFromWafId.split("/")[4]
+                        $migrateFromWafName = $migrateFromWafId.split("/")[8]
+                        $migrateFromWafProperty = Get-AzFrontDoorWafPolicy -ResourceGroupName $migrateFromWafResourceGroup -Name $migrateFromWafName
+
+                        # Create a new waf policy. 
+                        CreatePremiumWafPolicy -ResourceGroupName $migrateToWafResourceGroup -Name $migrateToWafName -WafProperty $migrateFromWafProperty
+                    }
+                }
+            }
+        }
         Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters
     }
 }
 
-function ParseWafResourceId{
+# Parse the format of the waf reource id. 
+function ParseWafPolicyResourceId {
     param (
         [string]$WafResourceId
     )
-
+    Write-Debug("Validate the resource ID")
     $array = $WafResourceId.ToLower().split('/')
+    Write-Debug("array: " + $array)
     if ($array.Length -ne 9){
-        throw 'Format of WebApplicationFirewall: $WafResourceId is not correct, please check the parameter.'
+        throw 'On stage one: Format of WebApplicationFirewallMapping is not correct, please check the parameter.'
     }
-    if ($array[1] -gt "subscriptions" -or $array[3] -gt "resourceGroups" -or $array[5] -gt "providers" -or $array[6] -gt "Microsoft.Network" -or $array[7] -gt "frontdoorWebApplicationFirewallPolicies") {
-        throw 'Format of WebApplicationFirewall: $WafResourceId is not correct, please check the parameter.'
+    if ($array[1] -gt "subscriptions" -or $array[3] -gt "resourcegroups" -or $array[5] -gt "providers" -or $array[6] -gt "microsoft.network" -or $array[7] -gt "frontdoorwebapplicationfirewallpolicies") {
+        throw 'On stage two: Format of WebApplicationFirewallMapping is not correct, please check the parameter.'
     }
+}
+
+# Corresponding to "Copy to a new waf policy"
+function CreateWafPolicy {
+    param (
+        [string]$ResourceGroupName,
+        [string]$Name,
+        [Microsoft.Azure.Commands.FrontDoor.Models.PSTrackedResource]$WafProperty
+    )
+
+    $skuName = "Standard_AzureFrontDoor"
+    if (!$WafProperty.ManagedRules) {
+        $skuName = "Premium_AzureFrontDoor"
+    }
+
+    # Complete command
+    # New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku "Premium_AzureFrontDoor" -EnabledState $WafProperty.PolicyEnabledState -Mode $WafProperty.PolicyMode -Customrule $WafProperty.CustomRules -ManagedRule $WafProperty.ManagedRules -RedirectUrl $WafProperty.RedirectUrl -CustomBlockResponseStatusCode $WafProperty.CustomBlockResponseStatusCode -CustomBlockResponseBody $WafProperty.CustomBlockResponseBody -RequestBodyCheck $WafProperty.RequestBodyCheck 
+    New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku $skuName -EnabledState $WafProperty.PolicyEnabledState -Mode $WafProperty.PolicyMode -Customrule $WafProperty.CustomRules -RequestBodyCheck $WafProperty.RequestBodyCheck -CustomBlockResponseStatusCode $WafProperty.CustomBlockResponseStatusCode -ManagedRule $WafProperty.ManagedRules -RedirectUrl $WafProperty.RedirectUrl
 }

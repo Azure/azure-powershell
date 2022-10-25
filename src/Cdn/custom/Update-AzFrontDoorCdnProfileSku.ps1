@@ -173,7 +173,7 @@ function Update-AzFrontDoorCdnProfileSku {
             $wafPolicies = $PSBoundParameters.ProfileUpgradeParameter
 
             if($wafPolicies.count -ne 0) {
-                # Validate the format of the WafID
+                # 1. Validate the format of the waf ID
                 foreach ($wafMapping in $wafPolicies.WafMappingList) {
                     $changeToWafPolciy = $wafMapping.ChangeToWafPolicyId
                     ParseWafResourceId -WafResourceId $changeToWafPolciy
@@ -184,7 +184,7 @@ function Update-AzFrontDoorCdnProfileSku {
                     $changeToWafPolicyName = $changeToWafPolicy.split("/")[8]
                     $changeToWafPolicyResourceGroup = $changeToWafPolicy.split("/")[4]
 
-                    # Validate whether the policy already exists in the subsrciption or not
+                    # 2. Validate whether the policy already exists in the subsrciption or not
                     try {
                         $existed = Get-AzFrontDoorWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName
                     }
@@ -202,6 +202,8 @@ function Update-AzFrontDoorCdnProfileSku {
                         $currentWafResourceGroup = $policyNameProperty.Parameter.WafPolicyId.split("/")[4]
                         Write-Debug("Current waf: " + $currentWafName + $currentWafResourceGroup)
                         $wafPolicyProperty = Get-AzFrontDoorWafPolicy -ResourceGroupName $currentWafResourceGroup -Name $currentWafName
+
+                        # Create a new waf policy. 
                         CreatePremiumWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName -WafProperty $wafPolicyProperty
                     }
                 }
@@ -211,6 +213,7 @@ function Update-AzFrontDoorCdnProfileSku {
     }
 }
 
+# Parse the format of the waf reource id. 
 function ParseWafResourceId {
     param (
         [string]$WafResourceId
@@ -220,11 +223,12 @@ function ParseWafResourceId {
     if ($array.Length -ne 9){
         throw 'Format of WebApplicationFirewallMapping is not correct, please check the parameter.'
     }
-    if ($array[1] -gt "subscriptions" -or $array[3] -gt "resourcegroups" -or $array[5] -gt "providers" -or $array[6] -gt "microsoftnetwork" -or $array[7] -gt "frontdoorwebapplicationfirewallpolicies") {
+    if ($array[1] -gt "subscriptions" -or $array[3] -gt "resourcegroups" -or $array[5] -gt "providers" -or $array[6] -gt "microsoft.network" -or $array[7] -gt "frontdoorwebapplicationfirewallpolicies") {
         throw 'Format of WebApplicationFirewallMapping is not correct, please check the parameter.'
     }
 }
 
+# Corresponding to "Copy to a new waf policy"
 function CreatePremiumWafPolicy {
     param (
         [string]$ResourceGroupName,
@@ -234,5 +238,5 @@ function CreatePremiumWafPolicy {
 
     # Complete command
     # New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku "Premium_AzureFrontDoor" -EnabledState $wafPolicyProperty.PolicyEnabledState -Mode $wafPolicyProperty.PolicyMode -Customrule $wafPolicyProperty.CustomRules -ManagedRule $wafPolicyProperty.ManagedRules -RedirectUrl $wafPolicyProperty.RedirectUrl -CustomBlockResponseStatusCode $wafPolicyProperty.CustomBlockResponseStatusCode -CustomBlockResponseBody $wafPolicyProperty.CustomBlockResponseBody -RequestBodyCheck $wafPolicyProperty.RequestBodyCheck 
-    New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku "Premium_AzureFrontDoor" -EnabledState $wafPolicyProperty.PolicyEnabledState -Mode $wafPolicyProperty.PolicyMode -Customrule $wafPolicyProperty.CustomRules -RequestBodyCheck $wafPolicyProperty.RequestBodyCheck 
+    New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku "Premium_AzureFrontDoor" -EnabledState $WafProperty.PolicyEnabledState -Mode $WafProperty.PolicyMode -Customrule $WafProperty.CustomRules -RequestBodyCheck $WafProperty.RequestBodyCheck 
 }
