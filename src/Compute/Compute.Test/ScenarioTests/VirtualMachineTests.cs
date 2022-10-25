@@ -234,7 +234,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineGetStatusWithHealhtExtension");
         }
-        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineGetHost()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineGetHost");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGetStatusWithAssignedHost()

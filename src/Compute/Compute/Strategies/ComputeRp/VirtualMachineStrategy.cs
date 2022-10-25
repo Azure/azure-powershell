@@ -75,7 +75,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string diskControllerType = null,
             Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null
             )
-
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,

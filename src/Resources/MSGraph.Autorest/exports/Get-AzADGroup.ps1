@@ -37,7 +37,7 @@ function Get-AzADGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup])]
 [CmdletBinding(DefaultParameterSetName='EmptyParameterSet', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.Management.Automation.SwitchParameter]
     # Include count of items
@@ -202,7 +202,6 @@ begin {
             ObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADGroup';
             SearchStringParameterSet = 'Az.MSGraph.custom\Get-AzADGroup';
             DisplayNameParameterSet = 'Az.MSGraph.custom\Get-AzADGroup';
-            List = 'Az.MSGraph.custom\Get-AzADGroup';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

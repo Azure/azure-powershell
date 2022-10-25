@@ -25,10 +25,11 @@ The **Stop-AzApplicationGateway** cmdlet stops an application gateway.
 
 ### Example 1: Stop an application gateway
 ```powershell
+$AppGw = Get-AzApplicationGateway -Name Test -ResourceGroupName Appgwtest
 Stop-AzApplicationGateway -ApplicationGateway $AppGw
 ```
 
-This command stops the application gateway stored in the $AppGw variable.
+These commands set the $AppGw variable to an application gateway and then stops the application gateway.
 
 ## PARAMETERS
 
@@ -78,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

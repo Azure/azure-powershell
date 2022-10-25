@@ -19,6 +19,7 @@ New-AzO365PolicyProperty [-Allow] [-Optimize] [-Default] [-DefaultProfile <IAzur
 
 ## DESCRIPTION
 Create an office 365 breakout policy to be used with New-AzVpnSite and Update-AzVpnSite cmdlets.
+
 ## EXAMPLES
 
 ### Example 1

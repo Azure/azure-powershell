@@ -163,7 +163,6 @@ $job = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureToA
 ```
 
 Starts the replication protected item creation operation for the specified ASR protectable item and returns the ASR job used to track the operation (Azure to Azure scenario).
-
 ### Example 4
 ```powershell
 $disk1 = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -vhdUri  $diskUri1 -RecoveryAzureStorageAccountId $recoveryAzureStorageAccountId `
@@ -174,22 +173,17 @@ $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -
 -RecoveryCloudServiceId  $recoveryCloudServiceId -ProtectionContainerMapping $pcm -RecoveryResourceGroupId  $RecoveryResourceGroupId `
 -AzureToAzureDiskReplicationConfiguration $disk1,$disk2 -RecoveryAzureNetworkId $RecoveryAzureNetworkId -RecoveryAzureSubnetName $RecoveryAzureSubnetName
 ```
-
 Starts the replication protected item creation operation for the specified VmId and returns the ASR job used to track the operation (Azure to Azure scenario).
-
 ### Example 5
 ```powershell
 $disk1 = New-AzRecoveryServicesAsrInMageAzureV2DiskInput -DiskId $diskId -LogStorageAccountId $logStorageAccountId -DiskType $diskType
 $disk2 = New-AzRecoveryServicesAsrInMageAzureV2DiskInput -DiskId $diskId2 -LogStorageAccountId $logStorageAccountId -DiskType $diskType2
-
 $job = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -Account $fabric.FabricSpecificDetails.RunAsAccounts[0] -RecoveryResourceGroupId $RecoveryResourceGroupId `
 -RecoveryAzureNetworkId $RecoveryAzureNetworkId  -name $name -ProcessServer $fabric.FabricSpecificDetails.ProcessServers[0] -ProtectableItem $protectableItem  `
 -ProtectionContainerMapping $pcm -RecoveryAzureSubnetName $RecoveryAzureSubnetName -RecoveryVmName $RecoveryVmName `
 -LogStorageAccountId $LogStorageAccountId -InMageAzureV2DiskInput $disk1,$disk2
 ```
-
 Starts the replication protected item creation operation for the specified ASR protectable item including selective disks and returns the ASR job used to track the operation(vmWare to Azure scenario) with selected disks.
-
 ### Example 6
 ```powershell
 $job = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -Account $fabric.FabricSpecificDetails.RunAsAccounts[0] -RecoveryResourceGroupId $RecoveryResourceGroupId `
@@ -198,8 +192,6 @@ $job = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -Account
 -LogStorageAccountId $LogStorageAccountId -DiskType Standard_LRS
 ```
 Starts the replication protected item creation operation for the specified ASR protectable item with default disk type and returns the ASR job used to track the operation(vmWare to Azure scenario).
-
-
 ### Example 7
 ```powershell
 $disk1 = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -vhdUri  $diskUri1 -RecoveryAzureStorageAccountId $recoveryAzureStorageAccountId -LogStorageAccountId $logStorageAccountId  
@@ -209,9 +201,7 @@ $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -
 -AzureToAzureDiskReplicationConfiguration $disk1,$disk2 -DiskEncryptionVaultId  $DiskEncryptionVaultId -DiskEncryptionSecretUrl $DiskEncryptionSecertUrl `
  -KeyEncryptionVaultId $KeyEncryptionVaultId  -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl
 ```
-
 Starts the replication protected item creation operation for the specified VmId and returns the ASR job used to track the operation (Azure to Azure scenario).For the failover VM details passed in cmdlet for encryption will be used .
-
 ### Example 8
 ```powershell
 $job = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureToAzureDiskReplicationConfiguration disk1,disk2 -AzureVmId $vmId `
@@ -772,6 +762,21 @@ Accept wildcard characters: False
 
 ### -RecoveryCloudServiceId
 Specifies the resource ID of the recovery cloud service to failover this virtual machine to.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzure
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryExtendedLocation
+Specifies Recovery ExtendedLocation in case of EZ-to-EZ.
 
 ```yaml
 Type: System.String

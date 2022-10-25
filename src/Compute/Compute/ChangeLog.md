@@ -20,8 +20,14 @@
 
 -->
 ## Upcoming Release
+* Added `-EdgeZone` optional parameter for `Get-AzComputeResourceSku` and `New-AzSnapshotUpdateConfig` cmdlets.
+* Added Disk Delete Optional parameters `OsDisk Deletion Option` and `Delete Option` to the `Set-AzVmssStorageProfile` (OS Disk) and `Add-AzVmssDataDisk` (Data Disk)
+* Improved printed output for `Get-AzComputeResourceSku`
+* Updated `Get-AzHost` cmdlet logic to return Host for `-ResourceId` parameterset.
+* Updated property mapping for parameter `Encryption` of `New-AzGalleryImageVersion`
+* Updated list format to display all VmssVmRunCommand properties for `Get-AzVmssVmRunCommand`
 
-## Version 4.32.0
+## Version 5.0.0
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
 * Added Confidential VM functionality to multiple cmdlets.
   * Added new parameter `SecureVMDiskEncryptionSet` to cmdlet `Set-AzDiskSecurityProfile`.

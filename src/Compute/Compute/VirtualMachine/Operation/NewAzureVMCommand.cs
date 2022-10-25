@@ -851,8 +851,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
             }
-
-
+            
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>

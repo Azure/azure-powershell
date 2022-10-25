@@ -102,7 +102,7 @@ function Test-UpdateManagedHsmWithPublicNetworkAccess{
     $rgName = getAssetName
     $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "East US"
     $hsmName = getAssetName
-    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East US"
+    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "West US"
     # bez's object id
     $administrator = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
     New-AzResourceGroup -Name $rgName -Location $rgLocation
@@ -136,7 +136,7 @@ function Test-ManagedHsmSoftDelete{
             $rgName = getAssetName
             $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
             $hsmName = getAssetName
-            $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East US 2"
+            $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "West US"
             $administrator = "37f6731d-0484-43e3-b7e2-1f1bbc562109"
             New-AzResourceGroup -Name $rgName -Location $rgLocation
 

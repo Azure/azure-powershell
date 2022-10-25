@@ -13,7 +13,7 @@ Updates disk mapping
 ## SYNTAX
 
 ```
-Set-AzMigrateDiskMapping -DiskID <String> -DiskName <String> [<CommonParameters>]
+Set-AzMigrateDiskMapping -DiskID <String> [-DiskName <String>] [-IsOSDisk <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,13 +23,13 @@ The Set-AzMigrateDiskMapping cmdlet updates a mapping of the source disk attache
 
 ### Example 1: Make disks
 ```powershell
-Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1"
+Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1" -IsOSDisk "True"
 ```
 
 ```output
-DiskId                               TargetDiskName
-------                               --------------
-6000C294-1217-dec3-bc18-81f117220424 ContosoDisk_1
+DiskId                               IsOSDisk TargetDiskName
+------                               -------- --------------
+6000C294-1217-dec3-bc18-81f117220424 True     ContosoDisk_1
 ```
 
 Get disks object to provide input for Set-AzMigrateServerReplication
@@ -59,7 +59,22 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsOSDisk
+Specifies whether the disk contains the Operating System for the source server to be migrated.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -20,7 +20,7 @@ Updates disk mapping
 .Description
 The Set-AzMigrateDiskMapping cmdlet updates a mapping of the source disk attached to the server to be migrated
 .Example
-Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1"
+Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1" -IsOSDisk "True"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtUpdateDiskInput
@@ -37,11 +37,18 @@ param(
     # Specifies the disk ID of the disk attached to the discovered server to be migrated.
     ${DiskID},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the name of the managed disk to be created.
-    ${DiskName}
+    ${DiskName},
+
+    [Parameter()]
+    [ArgumentCompleter({ "true" , "false" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies whether the disk contains the Operating System for the source server to be migrated.
+    ${IsOSDisk}
 )
 
 begin {

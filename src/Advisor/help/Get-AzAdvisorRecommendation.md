@@ -123,7 +123,7 @@ Accept wildcard characters: False
 
 ### -Filter
 The filter to apply to the recommendations.
-Filter can be applied to properties ['ResourceId', 'ResourceGroup', 'RecommendationTypeGuid', '[Category](#category)'] with operators ['eq', 'and', 'or'].
+Filter can be applied to properties ['ResourceId', 'ResourceGroup', 'RecommendationTypeGuid', 'Category' with operators ['eq', 'and', 'or'].
 Example:
 - $filter=Category eq 'Cost' and ResourceGroup eq 'MyResourceGroup'
 

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>KeyVault</PsModuleName>
@@ -18,8 +18,11 @@
     <PackageReference Include="Portable.BouncyCastle" Version="1.8.8" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="4.0.0-preview.1" />
     <PackageReference Include="System.Security.Cryptography.Cng" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KeyVault.Sdk\KeyVault.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>

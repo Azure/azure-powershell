@@ -236,35 +236,34 @@
   <!-- Everything except Publish -->
   <Target Name="Full" DependsOnTargets="Clean;Build;OnPremChecks;CopyAboutTopics;GenerateHelp;StaticAnalysis;Test" />
 
-  <Target Name="StaticAnalysisBreakingChange" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
+  <Target Name="StaticAnalysisBreakingChange" Condition="'$(RunStaticAnalysis)' == 'true'">
     <Message Importance="high" Text="Running static analysis for breaking change..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
     
-    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers breaking-change -u -m '%(FilterTaskResult.breaking-change)'" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -StaticAnalysisBreakingChange -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -StaticAnalysisOutputDirectory $(StaticAnalysisOutputDirectory)&quot;" />
   </Target>
 
-  <Target Name="StaticAnalysisDependency" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
+  <Target Name="StaticAnalysisDependency" Condition="'$(RunStaticAnalysis)' == 'true'">
     <Message Importance="high" Text="Running static analysis for dependency..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
 
-    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers dependency -u -m '%(FilterTaskResult.breaking-change)'" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -StaticAnalysisDependency -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -StaticAnalysisOutputDirectory $(StaticAnalysisOutputDirectory)&quot;" />
   </Target>
   
-  <Target Name="StaticAnalysisSignature" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
+  <Target Name="StaticAnalysisSignature" Condition="'$(RunStaticAnalysis)' == 'true'">
     <Message Importance="high" Text="Running static analysis for signature..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
-    
-    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers signature -u -m '%(FilterTaskResult.signature)'" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -StaticAnalysisSignature -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -StaticAnalysisOutputDirectory $(StaticAnalysisOutputDirectory)&quot;" />
   </Target>
   
-  <Target Name="StaticAnalysisHelp" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
+  <Target Name="StaticAnalysisHelp" Condition="'$(RunStaticAnalysis)' == 'true'">
     <Message Importance="high" Text="Running static analysis for help..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
     
-    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers help -u -m '%(FilterTaskResult.help)'" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -StaticAnalysisHelp -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -StaticAnalysisOutputDirectory $(StaticAnalysisOutputDirectory)&quot;" />
   </Target>
 
-  <Target Name="StaticAnalysisExample" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build" AfterTargets="StaticAnalysisHelp">
+  <Target Name="StaticAnalysisExample" Condition="'$(RunStaticAnalysis)' == 'true'" AfterTargets="StaticAnalysisHelp">
     <Message Importance="high" Text="Running static analysis for PowerShell examples..." />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/StaticAnalysis/ExampleAnalyzer/Measure-MarkdownOrScript.ps1 -MarkdownPaths $(RepoArtifacts)/FilesChanged.txt -RulePaths $(RepoTools)/StaticAnalysis/ExampleAnalyzer/AnalyzeRules/*.psm1 &quot;"/>
   </Target>
@@ -318,12 +317,12 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/CleanArtifacts.ps1 -Docker $(DockerRoot) &quot;" />
   </Target>
 
-  <Target Name="Test" DependsOnTargets="FilterBuild" Condition="'$(IsGenerateBased)' == 'false'">
+  <Target Name="Test" Condition="'$(IsGenerateBased)' == 'false'">
     <Message Importance="high" Text="Running check in tests..." />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
-    <Exec Command="dotnet test $(RepoArtifacts)Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework $(TestFramework) --logger trx --results-directory &quot;$(TestOutputDirectory)&quot;" Condition="'$(TestCsprojList)' != ''" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -Test -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -TestFramework $(TestFramework) -TestOutputDirectory $(TestOutputDirectory)&quot;" />
     <Message Importance="high" Text="Finish running tests..." />
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>
