@@ -132,7 +132,7 @@ Install-AzAksCliTool
 
 ### `Get-AzAttestation`
 
-- Has been removed and no alias was found for the original cmdlet name.
+- Replaced by 'Get-AzAttestationProvider'.
 
 #### Before
 
@@ -150,7 +150,7 @@ Get-AzAttestationDefaultProvider
 
 ### `New-AzAttestation`
 
-- Has been removed and no alias was found for the original cmdlet name.
+- Replaced by 'New-AzAttestationProvider'.
 
 #### Before
 
@@ -166,7 +166,7 @@ New-AzAttestationProvider -Name testprovider2 -ResourceGroupName test-rg -Locati
 
 ### `Remove-AzAttestation`
 
-- Has been removed and no alias was found for the original cmdlet name.
+- Replaced by 'Remove-AzAttestationProvider'.
 
 #### Before
 
@@ -312,7 +312,7 @@ Get-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-scienc
 
 ### `Set-AzMarketplaceTerms`
 
-Remove Term parameter
+Remove parameter 'Term'
 
 #### Before
 
@@ -355,214 +355,129 @@ Set-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-scienc
 
 ## Az.Monitor
 
-### `Get-AzAutoscaleSetting`
+### `Get-AzActivityLogAlert`
 
-- No longer has output type 'Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting'.
-- No longer supports the alias 'ResourceGroup' for parameter 'ResourceGroupName'.
-- No longer supports the parameter 'DetailedOutput' and no alias was found for the original parameter name.
-- No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
-- The parameter set 'GetAutoscaleSetting' has been removed.
-
-### `Get-AzSubscriptionDiagnosticSettingCategory`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `Remove-AzAutoscaleSetting`
-
-- No longer has output type 'Microsoft.Azure.AzureOperationResponse'.
-- No longer supports the alias 'ResourceGroup' for parameter 'ResourceGroupName'.
-- No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
-- The parameter set 'RemoveAutoscaleSetting' has been removed.
-
-### `New-AzAutoscaleProfile`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `Remove-AzDiagnosticSetting`
-
-- No longer has output type 'Microsoft.Azure.AzureOperationResponse'.
-- No longer supports the alias 'TargetResourceId' for parameter 'ResourceId'.
-- No longer supports the parameter 'SubscriptionId' and no alias was found for the original parameter name.
-- No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
-- The parameter set '__AllParameterSets' has been removed.
-- The parameter set 'ResourceIdParameterSet' has been removed.
-- The parameter set 'SubscriptionIdParameterSet' has been removed.
-
-### `New-AzDiagnosticSetting`
-
-- No longer has output type 'Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings'.
-- No longer supports the parameter 'DedicatedLogAnalyticsDestinationType' and no alias was found for the original parameter name.
-- No longer supports the parameter 'Setting' and no alias was found for the original parameter name.
-- No longer supports the alias 'TargetResourceId' for parameter 'ResourceId'.
-- No longer supports the parameter 'SubscriptionId' and no alias was found for the original parameter name.
-- No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
-- The parameter set '__AllParameterSets' has been removed.
-- The parameter set 'ResourceIdParameterSet' has been removed.
-- The parameter set 'SubscriptionIdParameterSet' has been removed.
-
-### `New-AzScheduledQueryRule`
-
-- No longer has output type 'Microsoft.Azure.Commands.Insights.OutputClasses.PSScheduledQueryRuleResource'.
-- No longer supports the parameter 'Source' and no alias was found for the original parameter name.
-- No longer supports the parameter 'Schedule' and no alias was found for the original parameter name.
-- No longer supports the parameter 'Action' and no alias was found for the original parameter name.
-- No longer supports the type 'System.Boolean' for parameter 'Enabled'.
-- No longer supports the parameter 'AsJob' and no alias was found for the original parameter name.
-- No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
-- The parameter set '__AllParameterSets' has been removed.
-
-### `New-AzScheduledQueryRuleAznsActionGroup`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `Set-AzScheduledQueryRule`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `New-AzScheduledQueryRuleSource`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `New-AzScheduledQueryRuleLogMetricTrigger`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `Enable-AzActivityLogAlert`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `New-AzAutoscaleNotification`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `New-AzActionGroup`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `New-AzDiagnosticDetailSetting`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `New-AzAutoscaleRule`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `New-AzScheduledQueryRuleSchedule`
-
-- Has been removed and no alias was found for the original cmdlet name.
+- New API version with new set of input/output, please see cmdlet help for detail
 
 ### `Remove-AzActivityLogAlert`
 
-- No longer has output type 'Microsoft.Azure.AzureOperationResponse'.
-- No longer supports the type 'Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource' for parameter 'InputObject'.
-- No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-- No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
-- The parameter set 'RemoveByNameAndResourceGroup' has been removed.
-- The parameter set 'RemoveByResourceId' has been removed.
-
-### `New-AzAutoscaleWebhook`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `Remove-AzScheduledQueryRule`
-
-- No longer supports the type 'Microsoft.Azure.Commands.Insights.OutputClasses.PSScheduledQueryRuleResource' for parameter 'InputObject'.
-- No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-- No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
-- The parameter set 'ByResourceId' has been removed.
-
-### `Disable-AzActivityLogAlert`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `Set-AzDiagnosticSetting`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `Get-AzScheduledQueryRule`
-
-- No longer has output type 'Microsoft.Azure.Commands.Insights.OutputClasses.PSScheduledQueryRuleResource'.
-- No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-- No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
-- The parameter set 'BySubscriptionOrResourceGroup' has been removed.
-- The parameter set 'ByResourceId' has been removed.
-
-### `Add-AzAutoscaleSetting`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `Update-AzScheduledQueryRule`
-
-- No longer has output type 'Microsoft.Azure.Commands.Insights.OutputClasses.PSScheduledQueryRuleResource'.
-- No longer supports the type 'Microsoft.Azure.Commands.Insights.OutputClasses.PSScheduledQueryRuleResource' for parameter 'InputObject'.
-- No longer supports the parameter 'ResourceId' and no alias was found for the original parameter name.
-- No longer supports the type 'System.Boolean' for parameter 'Enabled'.
-- No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
-- The parameter set 'ByResourceId' has been removed.
-
-### `Get-AzDiagnosticSetting`
-
-- No longer has output type 'Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings'.
-- No longer supports the alias 'TargetResourceId' for parameter 'ResourceId'.
-- No longer supports the parameter 'SubscriptionId' and no alias was found for the original parameter name.
-- No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
-- The parameter set '__AllParameterSets' has been removed.
-- The parameter set 'ResourceIdParameterSet' has been removed.
-- The parameter set 'SubscriptionIdParameterSet' has been removed.
-
-### `Get-AzDiagnosticSettingCategory`
-
-- No longer has output type 'Microsoft.Azure.Commands.Insights.OutputClasses.PSDiagnosticSettingCategory'.
-- No longer supports the parameter 'TargetResourceId' and no alias was found for the original parameter name.
-- No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
-- The parameter set '__AllParameterSets' has been removed.
-
-### `New-AzScheduledQueryRuleAlertingAction`
-
-- Has been removed and no alias was found for the original cmdlet name.
-
-### `New-AzActivityLogAlertCondition`
-
-- Has been removed and no alias was found for the original cmdlet name.
+- New API version with new set of input/output, please see cmdlet help for detail
 
 ### `Set-AzActivityLogAlert`
 
-- Has been removed and no alias was found for the original cmdlet name.
+- Replaced by New-AzActivityLogAlert
 
-### `Get-AzActivityLogAlert`
+### `Disable-AzActivityLogAlert`
 
-- No longer has output type 'Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource'.
-- No longer supports the type 'Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzContext' for parameter 'DefaultProfile'.
-- No longer supports the alias 'AzureRmContext' for parameter 'DefaultProfile'.
-- The parameter set 'GetByNameAndResourceGroup' has been removed.
-- The parameter set 'GetByResourceGroup' has been removed.
+- Replaced by Update-AzActivityLogAlert
+
+### `Enable-AzActivityLogAlert`
+
+- Replaced by Update-AzActivityLogAlert
+
+### `New-AzActionGroup`
+
+- Replaced by New-AzActivityLogAlertActionGroupObject
+
+### `Get-AzDiagnosticSettingCategory`
+
+- New API version with new set of input/output, please see cmdlet help for detail
+
+### `Get-AzDiagnosticSetting`
+
+- New API version with new set of input/output, please see cmdlet help for detail
+
+### `New-AzDiagnosticSetting`
+
+- New API version with new set of input/output, please see cmdlet help for detail
+
+### `Remove-AzDiagnosticSetting`
+
+- New API version with new set of input/output, please see cmdlet help for detail
+
+### `Set-AzDiagnosticSetting`
+
+- Replaced by New-AzDiagnosticSetting
+
+### `New-AzDiagnosticDetailSetting`
+
+- Replaced by New-AzDiagnosticSettingLogSettingsObject and New-AzDiagnosticSettingMetricSettingsObject
+
+### `Get-AzSubscriptionDiagnosticSettingCategory`
+
+- Replaced by Get-AzEventCategory
+
+### `Get-AzAutoscaleSetting`
+
+- New API version with new set of input/output, please see cmdlet help for detail
+
+### `Remove-AzAutoscaleSetting`
+
+- New API version with new set of input/output, please see cmdlet help for detail
+
+### `Add-AzAutoscaleSetting`
+
+- Replaced by New-AzAutoscaleSetting
+
+### `New-AzAutoscaleNotification`
+
+- Replaced by New-AzAutoscaleNotificationObject
+
+### `New-AzAutoscaleProfile`
+
+- Replaced by New-AzAutoscaleProfileObject
+
+### `New-AzAutoscaleRule`
+
+- Replaced by New-AzAutoscaleScaleRuleObject
+
+### `New-AzAutoscaleWebhook`
+
+- Replaced by New-AzAutoscaleWebhookNotificationObject
+
+### `Get-AzScheduledQueryRule`
+
+- New API version with new set of input/output, please see cmdlet help for detail
+
+### `New-AzScheduledQueryRuleAlertingAction`
+
+- Removed due to new API version
+
+### `New-AzScheduledQueryRuleAznActionGroup`
+
+- Removed due to new API version
+
+### `New-AzScheduledQueryRule`
+
+- New API version with new set of input/output, please see cmdlet help for detail
+
+### `New-AzScheduledQueryRuleLogMetricTrigger`
+
+- Removed due to new API version
+
+### `New-AzScheduledQueryRuleSchedule`
+
+- Removed due to new API version
+
+### `New-AzScheduledQueryRuleSource`
+
+- Removed due to new API version
 
 ### `New-AzScheduledQueryRuleTriggerCondition`
 
-- Has been removed and no alias was found for the original cmdlet name.
+- Removed due to new API version
+
+### `Remove-AzScheduledQueryRule`
+
+- New API version with new set of input/output, please see cmdlet help for detail
+
+### `Set-AzScheduledQueryRule`
+
+- Removed and no replacement.
+
+### `Update-AzScheduledQueryRule`
+
+- New API version with new set of input/output, please see cmdlet help for detail
 
 ## Az.Network
 
