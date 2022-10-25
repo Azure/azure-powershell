@@ -28,59 +28,59 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CostThresholdExceeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CostThresholdExceeded", "CostThresholdExceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "CostThresholdExceeded");
+                yield return new global::System.Management.Automation.CompletionResult("'CostThresholdExceeded'", "CostThresholdExceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "CostThresholdExceeded");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UsageThresholdExceeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UsageThresholdExceeded", "UsageThresholdExceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "UsageThresholdExceeded");
+                yield return new global::System.Management.Automation.CompletionResult("'UsageThresholdExceeded'", "UsageThresholdExceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "UsageThresholdExceeded");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CreditThresholdApproaching".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CreditThresholdApproaching", "CreditThresholdApproaching", global::System.Management.Automation.CompletionResultType.ParameterValue, "CreditThresholdApproaching");
+                yield return new global::System.Management.Automation.CompletionResult("'CreditThresholdApproaching'", "CreditThresholdApproaching", global::System.Management.Automation.CompletionResultType.ParameterValue, "CreditThresholdApproaching");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CreditThresholdReached".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CreditThresholdReached", "CreditThresholdReached", global::System.Management.Automation.CompletionResultType.ParameterValue, "CreditThresholdReached");
+                yield return new global::System.Management.Automation.CompletionResult("'CreditThresholdReached'", "CreditThresholdReached", global::System.Management.Automation.CompletionResultType.ParameterValue, "CreditThresholdReached");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "QuotaThresholdApproaching".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("QuotaThresholdApproaching", "QuotaThresholdApproaching", global::System.Management.Automation.CompletionResultType.ParameterValue, "QuotaThresholdApproaching");
+                yield return new global::System.Management.Automation.CompletionResult("'QuotaThresholdApproaching'", "QuotaThresholdApproaching", global::System.Management.Automation.CompletionResultType.ParameterValue, "QuotaThresholdApproaching");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "QuotaThresholdReached".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("QuotaThresholdReached", "QuotaThresholdReached", global::System.Management.Automation.CompletionResultType.ParameterValue, "QuotaThresholdReached");
+                yield return new global::System.Management.Automation.CompletionResult("'QuotaThresholdReached'", "QuotaThresholdReached", global::System.Management.Automation.CompletionResultType.ParameterValue, "QuotaThresholdReached");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MultiCurrency".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MultiCurrency", "MultiCurrency", global::System.Management.Automation.CompletionResultType.ParameterValue, "MultiCurrency");
+                yield return new global::System.Management.Automation.CompletionResult("'MultiCurrency'", "MultiCurrency", global::System.Management.Automation.CompletionResultType.ParameterValue, "MultiCurrency");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ForecastCostThresholdExceeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ForecastCostThresholdExceeded", "ForecastCostThresholdExceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "ForecastCostThresholdExceeded");
+                yield return new global::System.Management.Automation.CompletionResult("'ForecastCostThresholdExceeded'", "ForecastCostThresholdExceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "ForecastCostThresholdExceeded");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ForecastUsageThresholdExceeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ForecastUsageThresholdExceeded", "ForecastUsageThresholdExceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "ForecastUsageThresholdExceeded");
+                yield return new global::System.Management.Automation.CompletionResult("'ForecastUsageThresholdExceeded'", "ForecastUsageThresholdExceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "ForecastUsageThresholdExceeded");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InvoiceDueDateApproaching".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InvoiceDueDateApproaching", "InvoiceDueDateApproaching", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvoiceDueDateApproaching");
+                yield return new global::System.Management.Automation.CompletionResult("'InvoiceDueDateApproaching'", "InvoiceDueDateApproaching", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvoiceDueDateApproaching");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InvoiceDueDateReached".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InvoiceDueDateReached", "InvoiceDueDateReached", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvoiceDueDateReached");
+                yield return new global::System.Management.Automation.CompletionResult("'InvoiceDueDateReached'", "InvoiceDueDateReached", global::System.Management.Automation.CompletionResultType.ParameterValue, "InvoiceDueDateReached");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CrossCloudNewDataAvailable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CrossCloudNewDataAvailable", "CrossCloudNewDataAvailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "CrossCloudNewDataAvailable");
+                yield return new global::System.Management.Automation.CompletionResult("'CrossCloudNewDataAvailable'", "CrossCloudNewDataAvailable", global::System.Management.Automation.CompletionResultType.ParameterValue, "CrossCloudNewDataAvailable");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CrossCloudCollectionError".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CrossCloudCollectionError", "CrossCloudCollectionError", global::System.Management.Automation.CompletionResultType.ParameterValue, "CrossCloudCollectionError");
+                yield return new global::System.Management.Automation.CompletionResult("'CrossCloudCollectionError'", "CrossCloudCollectionError", global::System.Management.Automation.CompletionResultType.ParameterValue, "CrossCloudCollectionError");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "GeneralThresholdError".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("GeneralThresholdError", "GeneralThresholdError", global::System.Management.Automation.CompletionResultType.ParameterValue, "GeneralThresholdError");
+                yield return new global::System.Management.Automation.CompletionResult("'GeneralThresholdError'", "GeneralThresholdError", global::System.Management.Automation.CompletionResultType.ParameterValue, "GeneralThresholdError");
             }
         }
     }

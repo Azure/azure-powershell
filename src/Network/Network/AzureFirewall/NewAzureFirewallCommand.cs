@@ -244,6 +244,11 @@ namespace Microsoft.Azure.Commands.Network
        )]
         public SwitchParameter EnableUDPLogOptimization { get; set; }
 
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "The Route Server Id for the firewall")]
+        public string RouteServerId { get; set; }
+
         public override void Execute()
         {
             // Old params provided - Get the virtual network, get the public IP address
@@ -336,7 +341,8 @@ namespace Microsoft.Azure.Commands.Network
                     AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
                     Sku = sku,
                     EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
-                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null)
+                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null),
+                    RouteServerId = this.RouteServerId
                 };
 
                 if (this.Zone != null)
