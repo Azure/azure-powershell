@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="parameters">vault creation parameters</param>
         /// <param name="graphClient">the active directory client</param>
         /// <returns></returns>
-        public PSManagedHsm CreateNewManagedHsm(VaultCreationOrUpdateParameters parameters, IMicrosoftGraphClient graphClient = null)
+        public PSManagedHsm CreateOrRecoverManagedHsm(VaultCreationOrUpdateParameters parameters, IMicrosoftGraphClient graphClient = null)
         {
             if (parameters == null)
                 throw new ArgumentNullException("parameters");
@@ -425,14 +425,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("parameters.ResourceGroupName");
             if (string.IsNullOrWhiteSpace(parameters.Location))
                 throw new ArgumentNullException("parameters.Location");
-            if (parameters.Administrator.Length == 0)
-                throw new ArgumentNullException("parameters.Administrator");
 
+            ManagedHsm response = null;
             var properties = new ManagedHsmProperties();
             var managedHsmSku = new ManagedHsmSku();
-
             if (parameters.CreateMode != CreateMode.Recover)
             {
+                if (parameters.Administrator?.Length == 0)
+                    throw new ArgumentNullException("parameters.Administrator");
                 if (string.IsNullOrWhiteSpace(parameters.SkuFamilyName))
                     throw new ArgumentNullException("parameters.SkuFamilyName");
                 if (parameters.TenantId == Guid.Empty)
@@ -460,22 +460,31 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     properties.NetworkAcls.DefaultAction = NetworkRuleAction.Deny.ToString();
                 }
 
+                response = KeyVaultManagementClient.ManagedHsms.CreateOrUpdate(
+                    resourceGroupName: parameters.ResourceGroupName,
+                    name: parameters.Name,
+                    parameters: new ManagedHsm
+                    {
+                        Location = parameters.Location,
+                        Sku = managedHsmSku,
+                        Tags = TagsConversionHelper.CreateTagDictionary(parameters.Tags, validate: true),
+                        Properties = properties
+                    });
             }
             else
             {
                 properties.CreateMode = CreateMode.Recover;
+                response = KeyVaultManagementClient.ManagedHsms.CreateOrUpdate(
+                    resourceGroupName: parameters.ResourceGroupName,
+                    name: parameters.Name,
+                    parameters: new ManagedHsm
+                    {
+                        Location = parameters.Location,
+                        Tags = TagsConversionHelper.CreateTagDictionary(parameters.Tags, validate: true),
+                        Properties = properties
+                    });
             }
 
-            var response = KeyVaultManagementClient.ManagedHsms.CreateOrUpdate(
-                resourceGroupName: parameters.ResourceGroupName,
-                name: parameters.Name,
-                parameters: new ManagedHsm
-                {
-                    Location = parameters.Location,
-                    Sku = managedHsmSku,
-                    Tags = TagsConversionHelper.CreateTagDictionary(parameters.Tags, validate: true),
-                    Properties = properties
-                });
 
             return new PSManagedHsm(response, graphClient);
         }

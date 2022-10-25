@@ -609,4 +609,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="FetchDefaultCVMPolicyFailed" xml:space="preserve">
     <value>Fetch default CVM Policy failed, {0}</value>
   </data>
+  <data name="RecoverHsm" xml:space="preserve">
+    <value>Recover HSM?</value>
+  </data>
 </root>
