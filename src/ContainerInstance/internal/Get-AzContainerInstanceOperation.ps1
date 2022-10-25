@@ -27,7 +27,7 @@ List the operations for Azure Container Instance service.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstanceoperation
+https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstanceoperation
 #>
 function Get-AzContainerInstanceOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IOperation])]

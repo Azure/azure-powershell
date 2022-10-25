@@ -29,7 +29,7 @@ endpoint=<example-primary-endpoint>  <example-primarykey>  endpoint=<example-sec
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.communication/get-azcommunicationservicekey
+https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationservicekey
 #>
 function Get-AzCommunicationServiceKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys])]
@@ -180,7 +180,7 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.communication/get-azcommunicationservice
+https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationservice
 #>
 function Get-AzCommunicationService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource])]
@@ -349,7 +349,7 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
 PARAMETER <IRegenerateKeyParameters>: Parameters describes the request to regenerate access keys
   [KeyType <KeyType?>]: The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive).
 .Link
-https://docs.microsoft.com/powershell/module/az.communication/new-azcommunicationservicekey
+https://learn.microsoft.com/powershell/module/az.communication/new-azcommunicationservicekey
 #>
 function New-AzCommunicationServiceKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys])]
@@ -510,7 +510,7 @@ Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
 .Link
-https://docs.microsoft.com/powershell/module/az.communication/new-azcommunicationservice
+https://learn.microsoft.com/powershell/module/az.communication/new-azcommunicationservice
 #>
 function New-AzCommunicationService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource])]
@@ -680,7 +680,7 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.communication/remove-azcommunicationservice
+https://learn.microsoft.com/powershell/module/az.communication/remove-azcommunicationservice
 #>
 function Remove-AzCommunicationService {
 [OutputType([System.Boolean])]
@@ -843,7 +843,7 @@ LINKNOTIFICATIONHUBPARAMETER <ILinkNotificationHubParameters>: Description of an
   ConnectionString <String>: Connection string for the notification hub
   ResourceId <String>: The resource ID of the notification hub
 .Link
-https://docs.microsoft.com/powershell/module/az.communication/set-azcommunicationservicenotificationhub
+https://learn.microsoft.com/powershell/module/az.communication/set-azcommunicationservicenotificationhub
 #>
 function Set-AzCommunicationServiceNotificationHub {
 [OutputType([System.String])]
@@ -999,7 +999,7 @@ Requested name is available for the requested type True         NameAvailable
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailability
 .Link
-https://docs.microsoft.com/powershell/module/az.communication/test-azcommunicationservicenameavailability
+https://learn.microsoft.com/powershell/module/az.communication/test-azcommunicationservicenameavailability
 #>
 function Test-AzCommunicationServiceNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailability])]
@@ -1138,7 +1138,7 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.communication/update-azcommunicationservice
+https://learn.microsoft.com/powershell/module/az.communication/update-azcommunicationservice
 #>
 function Update-AzCommunicationService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource])]

@@ -48,7 +48,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/stop-azmlworkspacejob
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/stop-azmlworkspacejob
 #>
 function Stop-AzMLWorkspaceJob {
 [OutputType([System.Boolean])]

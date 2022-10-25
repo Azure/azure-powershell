@@ -50,7 +50,7 @@ TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
   IPAddress <String>: DNS server IP address.
   [Port <Int32?>]: DNS server port.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingrulesetforwardingrule
+https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingrulesetforwardingrule
 #>
 function Update-AzDnsForwardingRulesetForwardingRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule])]

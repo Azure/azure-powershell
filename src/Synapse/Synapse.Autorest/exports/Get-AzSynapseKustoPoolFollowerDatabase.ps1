@@ -29,7 +29,7 @@ conf1                             testdatabase /subscriptions/00000000-0000-0000
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IFollowerDatabaseDefinition
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolfollowerdatabase
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolfollowerdatabase
 #>
 function Get-AzSynapseKustoPoolFollowerDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IFollowerDatabaseDefinition])]

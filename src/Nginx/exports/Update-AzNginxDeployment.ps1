@@ -41,7 +41,7 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/update-aznginxdeployment
+https://learn.microsoft.com/powershell/module/az.nginx/update-aznginxdeployment
 #>
 function Update-AzNginxDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment])]

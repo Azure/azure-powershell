@@ -31,7 +31,7 @@ logz-pwsh01 Enabled          westus2  logz-rg-test
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/new-azlogzmonitor
+https://learn.microsoft.com/powershell/module/az.logz/new-azlogzmonitor
 #>
 function New-AzLogzMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource])]

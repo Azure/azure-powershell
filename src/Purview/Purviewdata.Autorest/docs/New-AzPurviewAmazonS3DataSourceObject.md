@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3DataSourceObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3DataSourceObject
 schema: 2.0.0
 ---
 

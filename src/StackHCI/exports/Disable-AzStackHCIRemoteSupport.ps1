@@ -26,7 +26,7 @@ Disable-AzStackHCIRemoteSupport
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/disable-azstackhciremotesupport
+https://learn.microsoft.com/powershell/module/az.stackhci/disable-azstackhciremotesupport
 #>
 function Disable-AzStackHCIRemoteSupport {
 [OutputType([System.Boolean])]

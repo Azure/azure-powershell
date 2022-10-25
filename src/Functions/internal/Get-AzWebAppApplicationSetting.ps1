@@ -27,7 +27,7 @@ Gets the application settings of an app.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsetting
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsetting
 #>
 function Get-AzWebAppApplicationSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]

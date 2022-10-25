@@ -46,7 +46,7 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
 PARAMETER <IForceUnlinkParameters>: Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
   Id <String[]>: The resource IDs of the database resources to be unlinked.
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheforcedatabaseunlink
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheforcedatabaseunlink
 #>
 function Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink {
 [OutputType([System.Boolean])]

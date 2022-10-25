@@ -58,7 +58,7 @@ To create the parameters described below, construct a hash table containing the 
 BODY <IClassificationRule>: .
   Kind <ClassificationRuleType>: 
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewclassificationrule
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewclassificationrule
 #>
 function New-AzPurviewClassificationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule])]

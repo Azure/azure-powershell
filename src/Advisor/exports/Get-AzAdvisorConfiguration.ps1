@@ -27,7 +27,7 @@ Get-AzAdvisorConfiguration -ResourceGroupName lnxtest
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/get-azadvisorconfiguration
+https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorconfiguration
 #>
 function Get-AzAdvisorConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData])]

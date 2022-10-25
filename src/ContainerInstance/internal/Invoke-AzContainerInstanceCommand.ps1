@@ -25,7 +25,7 @@ Invoke-AzContainerInstanceCommand -ContainerGroupName test-cg -ContainerName tes
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerExecResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
+https://learn.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
 #>
 function Invoke-AzContainerInstanceCommand {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerExecResponse])]

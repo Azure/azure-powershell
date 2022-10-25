@@ -48,7 +48,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnruleset
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnruleset
 #>
 function Get-AzFrontDoorCdnRuleSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRuleSet])]

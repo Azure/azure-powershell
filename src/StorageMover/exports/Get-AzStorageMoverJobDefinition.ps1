@@ -44,7 +44,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverjobdefinition
+https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverjobdefinition
 #>
 function Get-AzStorageMoverJobDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IJobDefinition])]

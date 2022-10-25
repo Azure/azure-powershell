@@ -63,7 +63,7 @@ PARAMETER <IScript>: Class representing a database script.
   [Url <String>]: The url to the KQL script blob file. Must not be used together with scriptContent property
   [UrlSasToken <String>]: The SaS token that provide read access to the file which contain the script. Must be provided when using scriptUrl property.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/update-azkustoscript
+https://learn.microsoft.com/powershell/module/az.kusto/update-azkustoscript
 #>
 function Update-AzKustoScript {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript])]

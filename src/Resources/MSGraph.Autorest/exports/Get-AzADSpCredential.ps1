@@ -158,7 +158,7 @@ SERVICEPRINCIPALOBJECT <IMicrosoftGraphServicePrincipal>: The service principal 
     [DisplayName <String>]: The name displayed in directory
   [TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadspcredential
+https://learn.microsoft.com/powershell/module/az.resources/get-azadspcredential
 #>
 function Get-AzADSpCredential {
 [Alias('Get-AzADServicePrincipalCredential')]

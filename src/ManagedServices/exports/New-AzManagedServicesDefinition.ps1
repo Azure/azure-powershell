@@ -61,7 +61,7 @@ ELIGIBLEAUTHORIZATION <IEligibleAuthorization[]>: The collection of eligible aut
   [JustInTimeAccessPolicyMultiFactorAuthProvider <MultiFactorAuthProvider?>]: The multi-factor authorization provider to be used for just-in-time access requests.
   [PrincipalIdDisplayName <String>]: The display name of the Azure Active Directory principal.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/new-azmanagedservicesdefinition
+https://learn.microsoft.com/powershell/module/az.managedservices/new-azmanagedservicesdefinition
 #>
 function New-AzManagedServicesDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition])]

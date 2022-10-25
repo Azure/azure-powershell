@@ -47,7 +47,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/remove-azwebpubsub
+https://learn.microsoft.com/powershell/module/az.signalr/remove-azwebpubsub
 #>
 function Remove-AzWebPubSub {
 [OutputType([System.Boolean])]

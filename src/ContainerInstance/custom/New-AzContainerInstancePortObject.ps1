@@ -19,7 +19,7 @@ Create a in-memory object for ContainerPort
 .Description
 Create a in-memory object for ContainerPort
 .Link
-https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstancePortObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstancePortObject
 #>
 function New-AzContainerInstancePortObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ContainerPort')]

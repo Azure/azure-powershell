@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/get-azoperation
+https://learn.microsoft.com/powershell/module/az.signalr/get-azoperation
 #>
 function Get-AzOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperation])]
@@ -164,7 +164,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/new-azwebpubsubkey
+https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubkey
 #>
 function New-AzWebPubSubKey {
 [OutputType([System.Boolean])]
@@ -396,7 +396,7 @@ RESOURCELOGCATEGORY <IResourceLogCategory[]>: Gets or sets the list of category 
   [Enabled <String>]: Indicates whether or the resource log category is enabled.         Available values: true, false.         Case insensitive.
   [Name <String>]: Gets or sets the resource log category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/new-azwebpubsub
+https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsub
 #>
 function New-AzWebPubSub {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource])]

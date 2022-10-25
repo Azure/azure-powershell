@@ -27,7 +27,7 @@ Lists all of the available Azure attestation operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IOperationList
 .Link
-https://docs.microsoft.com/powershell/module/az.attestation/get-azattestationoperation
+https://learn.microsoft.com/powershell/module/az.attestation/get-azattestationoperation
 #>
 function Get-AzAttestationOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IOperationList])]
@@ -159,7 +159,7 @@ POLICYSIGNINGCERTIFICATEKEY <IJsonWebKey[]>: The value of the "keys" parameter i
   [X5C <String[]>]: The "x5c" (X.509 certificate chain) parameter contains a chain of one         or more PKIX certificates [RFC5280].  The certificate chain is         represented as a JSON array of certificate value strings.  Each         string in the array is a base64-encoded (Section 4 of [RFC4648] --         not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.         The PKIX certificate containing the key value MUST be the first         certificate.
   [Y <String>]: Y coordinate for the Elliptic Curve point
 .Link
-https://docs.microsoft.com/powershell/module/az.attestation/new-azattestationprovider
+https://learn.microsoft.com/powershell/module/az.attestation/new-azattestationprovider
 #>
 function New-AzAttestationProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider])]

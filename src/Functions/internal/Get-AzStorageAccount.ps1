@@ -29,7 +29,7 @@ Note that storage keys are not returned; use the ListKeys operation for this.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azstorageaccount
+https://learn.microsoft.com/powershell/module/az.functions/get-azstorageaccount
 #>
 function Get-AzStorageAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount])]

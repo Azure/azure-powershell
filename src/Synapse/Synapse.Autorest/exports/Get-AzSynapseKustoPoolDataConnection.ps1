@@ -53,7 +53,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopooldataconnection
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopooldataconnection
 #>
 function Get-AzSynapseKustoPoolDataConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection])]

@@ -110,7 +110,7 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
   [StreetAddress3 <String>]: Street Address line 3.
   [ZipExtendedCode <String>]: Extended Zip Code.
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxJobDetailsObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxJobDetailsObject
 #>
 function New-AzDataBoxJobDetailsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails])]

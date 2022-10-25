@@ -49,7 +49,7 @@ ENTITYMAPPING <EntityMapping>: 'Account', 'Host', 'IP', 'Malware', 'File', 'Proc
     [ColumnName <String>]: the column name to be mapped to the identifier
     [Identifier <String>]: the V3 identifier of the entity
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertrule
 #>
 function New-AzSentinelAlertRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule])]

@@ -27,7 +27,7 @@ New-AzStaticWebApp -ResourceGroupName 'azure-rg-test' -Name staticweb-pwsh01 -Lo
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebapp
+https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebapp
 #>
 function New-AzStaticWebApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource])]

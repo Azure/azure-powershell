@@ -27,7 +27,7 @@ New-AzDataMigrationLoginsMigration -ConfigFilePath "C:\Users\user\document\confi
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationloginsmigration
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationloginsmigration
 #>
 function New-AzDataMigrationLoginsMigration {
 [OutputType([System.Boolean])]

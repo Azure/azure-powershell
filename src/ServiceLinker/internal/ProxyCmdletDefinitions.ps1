@@ -27,7 +27,7 @@ list source configurations for a linker.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISourceConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfiguration
+https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfiguration
 #>
 function Get-AzServiceLinkerConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISourceConfiguration])]
@@ -148,7 +148,7 @@ Lists the available ServiceLinker REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkeroperation
+https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkeroperation
 #>
 function Get-AzServiceLinkerOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20.IOperation])]
@@ -268,7 +268,7 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
   [LinkerName <String>]: The name Linker resource.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinker
+https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinker
 #>
 function Get-AzServiceLinker {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]
@@ -410,7 +410,7 @@ AUTHINFO <IAuthInfoBase>: The authentication type.
 TARGETSERVICE <ITargetServiceBase>: The target service properties
   Type <TargetServiceType>: The target service type.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/new-azservicelinker
+https://learn.microsoft.com/powershell/module/az.servicelinker/new-azservicelinker
 #>
 function New-AzServiceLinker {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]
@@ -609,7 +609,7 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
   [LinkerName <String>]: The name Linker resource.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/remove-azservicelinker
+https://learn.microsoft.com/powershell/module/az.servicelinker/remove-azservicelinker
 #>
 function Remove-AzServiceLinker {
 [OutputType([System.Boolean])]
@@ -768,7 +768,7 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
   [LinkerName <String>]: The name Linker resource.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/test-azservicelinker
+https://learn.microsoft.com/powershell/module/az.servicelinker/test-azservicelinker
 #>
 function Test-AzServiceLinker {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.IValidateOperationResult])]
@@ -927,7 +927,7 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
 TARGETSERVICE <ITargetServiceBase>: The target service properties
   Type <TargetServiceType>: The target service type.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/update-azservicelinker
+https://learn.microsoft.com/powershell/module/az.servicelinker/update-azservicelinker
 #>
 function Update-AzServiceLinker {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]

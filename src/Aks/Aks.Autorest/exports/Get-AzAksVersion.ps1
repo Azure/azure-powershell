@@ -27,7 +27,7 @@ Get-AzAksVersion -location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult
 .Link
-https://docs.microsoft.com/powershell/module/az.aks/get-azaksversion
+https://learn.microsoft.com/powershell/module/az.aks/get-azaksversion
 #>
 function Get-AzAksVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult])]

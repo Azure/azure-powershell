@@ -67,7 +67,7 @@ Microsoft Apt Mirror  {{
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IOutboundEnvironmentEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpooloutboundnetworkdependencyendpoint
+https://learn.microsoft.com/powershell/module/az.diskpool/get-azdiskpooloutboundnetworkdependencyendpoint
 #>
 function Get-AzDiskPoolOutboundNetworkDependencyEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IOutboundEnvironmentEndpoint])]

@@ -37,7 +37,7 @@ PARAMETER <ICheckNameAvailabilityRequestBody>: The request body for a request to
   [Name <String>]: the name of the bot for which availability needs to be checked.
   [Type <String>]: the type of the bot for which availability needs to be checked
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/get-azbotchecknameavailability
+https://learn.microsoft.com/powershell/module/az.botservice/get-azbotchecknameavailability
 #>
 function Get-AzBotCheckNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ICheckNameAvailabilityResponseBody])]
@@ -166,7 +166,7 @@ Lists all the available BotService operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationEntity
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/get-azoperation
+https://learn.microsoft.com/powershell/module/az.botservice/get-azoperation
 #>
 function Get-AzOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationEntity])]
@@ -277,7 +277,7 @@ New-AzBotService -resourcegroupname youriBotTest -name youri-apptest14 -Applicat
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/new-azbotservice
+https://learn.microsoft.com/powershell/module/az.botservice/new-azbotservice
 #>
 function New-AzBotService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]

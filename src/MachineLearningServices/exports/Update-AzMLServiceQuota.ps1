@@ -54,7 +54,7 @@ VALUE <IQuotaBaseProperties[]>: The list for update quota.
   [Type <String>]: Specifies the resource type.
   [Unit <QuotaUnit?>]: An enum describing the unit of quota measurement.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/update-azmlservicequota
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/update-azmlservicequota
 #>
 function Update-AzMLServiceQuota {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IUpdateWorkspaceQuotasResult])]

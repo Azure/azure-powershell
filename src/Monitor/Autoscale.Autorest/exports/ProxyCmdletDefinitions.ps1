@@ -38,7 +38,7 @@ INPUTOBJECT <IAutoscaleIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/get-azautoscalepredictivemetric
+https://learn.microsoft.com/powershell/module/az.monitor/get-azautoscalepredictivemetric
 #>
 function Get-AzAutoscalePredictiveMetric {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IPredictiveResponse])]
@@ -258,7 +258,7 @@ INPUTOBJECT <IAutoscaleIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/get-azautoscalesetting
+https://learn.microsoft.com/powershell/module/az.monitor/get-azautoscalesetting
 #>
 function Get-AzAutoscaleSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource])]
@@ -486,7 +486,7 @@ PROFILE <IAutoscaleProfile[]>: the collection of automatic scaling profiles that
   [ScheduleMinute <Int32[]>]: A collection of minutes at which the profile takes effect at.
   [ScheduleTimeZone <String>]: the timezone for the hours of the profile. Some examples of valid time zones are: Dateline Standard Time, UTC-11, Hawaiian Standard Time, Alaskan Standard Time, Pacific Standard Time (Mexico), Pacific Standard Time, US Mountain Standard Time, Mountain Standard Time (Mexico), Mountain Standard Time, Central America Standard Time, Central Standard Time, Central Standard Time (Mexico), Canada Central Standard Time, SA Pacific Standard Time, Eastern Standard Time, US Eastern Standard Time, Venezuela Standard Time, Paraguay Standard Time, Atlantic Standard Time, Central Brazilian Standard Time, SA Western Standard Time, Pacific SA Standard Time, Newfoundland Standard Time, E. South America Standard Time, Argentina Standard Time, SA Eastern Standard Time, Greenland Standard Time, Montevideo Standard Time, Bahia Standard Time, UTC-02, Mid-Atlantic Standard Time, Azores Standard Time, Cape Verde Standard Time, Morocco Standard Time, UTC, GMT Standard Time, Greenwich Standard Time, W. Europe Standard Time, Central Europe Standard Time, Romance Standard Time, Central European Standard Time, W. Central Africa Standard Time, Namibia Standard Time, Jordan Standard Time, GTB Standard Time, Middle East Standard Time, Egypt Standard Time, Syria Standard Time, E. Europe Standard Time, South Africa Standard Time, FLE Standard Time, Turkey Standard Time, Israel Standard Time, Kaliningrad Standard Time, Libya Standard Time, Arabic Standard Time, Arab Standard Time, Belarus Standard Time, Russian Standard Time, E. Africa Standard Time, Iran Standard Time, Arabian Standard Time, Azerbaijan Standard Time, Russia Time Zone 3, Mauritius Standard Time, Georgian Standard Time, Caucasus Standard Time, Afghanistan Standard Time, West Asia Standard Time, Ekaterinburg Standard Time, Pakistan Standard Time, India Standard Time, Sri Lanka Standard Time, Nepal Standard Time, Central Asia Standard Time, Bangladesh Standard Time, N. Central Asia Standard Time, Myanmar Standard Time, SE Asia Standard Time, North Asia Standard Time, China Standard Time, North Asia East Standard Time, Singapore Standard Time, W. Australia Standard Time, Taipei Standard Time, Ulaanbaatar Standard Time, Tokyo Standard Time, Korea Standard Time, Yakutsk Standard Time, Cen. Australia Standard Time, AUS Central Standard Time, E. Australia Standard Time, AUS Eastern Standard Time, West Pacific Standard Time, Tasmania Standard Time, Magadan Standard Time, Vladivostok Standard Time, Russia Time Zone 10, Central Pacific Standard Time, Russia Time Zone 11, New Zealand Standard Time, UTC+12, Fiji Standard Time, Kamchatka Standard Time, Tonga Standard Time, Samoa Standard Time, Line Islands Standard Time
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/new-azautoscalesetting
+https://learn.microsoft.com/powershell/module/az.monitor/new-azautoscalesetting
 #>
 function New-AzAutoscaleSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource])]
@@ -734,7 +734,7 @@ INPUTOBJECT <IAutoscaleIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/remove-azautoscalesetting
+https://learn.microsoft.com/powershell/module/az.monitor/remove-azautoscalesetting
 #>
 function Remove-AzAutoscaleSetting {
 [OutputType([System.Boolean])]
@@ -921,7 +921,7 @@ WEBHOOK <IWebhookNotification[]>: the collection of webhook notifications.
     [(Any) <String>]: This indicates any property can be added to this object.
   [ServiceUri <String>]: the service address to receive the notification.
 .Link
-https://docs.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleNotificationObject
+https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleNotificationObject
 #>
 function New-AzAutoscaleNotificationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleNotification])]
@@ -1066,7 +1066,7 @@ RULE <IScaleRule[]>: the collection of rules that provide the triggers and param
   [MetricTriggerMetricResourceLocation <String>]: the location of the resource the rule monitors.
   [ScaleActionValue <String>]: the number of instances that are involved in the scaling action. This value must be 1 or greater. The default value is 1.
 .Link
-https://docs.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleProfileObject
+https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleProfileObject
 #>
 function New-AzAutoscaleProfileObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile])]
@@ -1267,7 +1267,7 @@ New-AzAutoscaleScaleRuleMetricDimensionObject -DimensionName VMName -Operator 'E
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension
 .Link
-https://docs.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleScaleRuleMetricDimensionObject
+https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleScaleRuleMetricDimensionObject
 #>
 function New-AzAutoscaleScaleRuleMetricDimensionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension])]
@@ -1392,7 +1392,7 @@ METRICTRIGGERDIMENSION <IScaleRuleMetricDimension[]>: List of dimension conditio
   Operator <ScaleRuleMetricDimensionOperationType>: the dimension operator. Only 'Equals' and 'NotEquals' are supported. 'Equals' being equal to any of the values. 'NotEquals' being not equal to all of the values
   Value <String[]>: list of dimension values. For example: ["App1","App2"].
 .Link
-https://docs.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleScaleRuleObject
+https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleScaleRuleObject
 #>
 function New-AzAutoscaleScaleRuleObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRule])]
@@ -1605,7 +1605,7 @@ To create the parameters described below, construct a hash table containing the 
 PROPERTY <IWebhookNotificationProperties>: a property bag of settings. This value can be empty.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleWebhookNotificationObject
+https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleWebhookNotificationObject
 #>
 function New-AzAutoscaleWebhookNotificationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotification])]

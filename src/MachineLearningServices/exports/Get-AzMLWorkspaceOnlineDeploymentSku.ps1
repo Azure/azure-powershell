@@ -25,7 +25,7 @@ Get-AzMLWorkspaceOnlineDeploymentSku -ResourceGroupName ml-rg-test -WorkspaceNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISkuResource
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlinedeploymentsku
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlinedeploymentsku
 #>
 function Get-AzMLWorkspaceOnlineDeploymentSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISkuResource])]

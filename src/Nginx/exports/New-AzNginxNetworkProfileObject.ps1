@@ -40,7 +40,7 @@ FRONTENDIPCONFIGURATION <INginxFrontendIPConfiguration>:
 NETWORKINTERFACECONFIGURATION <INginxNetworkInterfaceConfiguration>: 
   [SubnetId <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Nginx/new-AzNginxNetworkProfileObject
+https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxNetworkProfileObject
 #>
 function New-AzNginxNetworkProfileObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxNetworkProfile])]

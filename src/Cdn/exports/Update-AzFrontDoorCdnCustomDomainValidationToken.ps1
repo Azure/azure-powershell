@@ -46,7 +46,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdncustomdomainvalidationtoken
+https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdncustomdomainvalidationtoken
 #>
 function Update-AzFrontDoorCdnCustomDomainValidationToken {
 [OutputType([System.Boolean])]

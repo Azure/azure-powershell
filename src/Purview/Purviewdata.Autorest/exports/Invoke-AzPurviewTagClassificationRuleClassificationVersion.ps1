@@ -29,7 +29,7 @@ EndTime ScanResultId StartTime Status
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/invoke-azpurviewtagclassificationruleclassificationversion
+https://learn.microsoft.com/powershell/module/az.purview/invoke-azpurviewtagclassificationruleclassificationversion
 #>
 function Invoke-AzPurviewTagClassificationRuleClassificationVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse])]

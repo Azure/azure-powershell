@@ -25,7 +25,7 @@ New-AzStackHciArcSetting -ResourceGroupName "test-rg" -ClusterName "myCluster"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/new-azstackhciarcsetting
+https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhciarcsetting
 #>
 function New-AzStackHciArcSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting])]

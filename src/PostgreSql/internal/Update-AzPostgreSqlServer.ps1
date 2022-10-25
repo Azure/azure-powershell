@@ -69,7 +69,7 @@ PARAMETER <IServerUpdateParameters>: Parameters allowed to update for a server.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Version <ServerVersion?>]: The version of a server.
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/update-azpostgresqlserver
+https://learn.microsoft.com/powershell/module/az.postgresql/update-azpostgresqlserver
 #>
 function Update-AzPostgreSqlServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer])]

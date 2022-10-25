@@ -25,7 +25,7 @@ New-AzADAppFederatedCredential -ApplicationObjectId $appObjectId -Audience api:/
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadappfederatedcredential
+https://learn.microsoft.com/powershell/module/az.resources/new-azadappfederatedcredential
 #>
 function New-AzADAppFederatedCredential {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential])]

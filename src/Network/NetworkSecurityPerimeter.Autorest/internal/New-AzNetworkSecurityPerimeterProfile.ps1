@@ -55,7 +55,7 @@ PARAMETER <INspProfile>: The network security perimeter profile resource
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterprofile
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterprofile
 #>
 function New-AzNetworkSecurityPerimeterProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspProfile])]

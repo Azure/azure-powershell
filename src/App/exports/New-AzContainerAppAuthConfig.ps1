@@ -74,7 +74,7 @@ IDENTITYPROVIDER <IIdentityProviders>: The configuration settings of each of the
   [RegistrationOpenIdIssuer <String>]: The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.         When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.         This URI is a case-sensitive identifier for the token issuer.         More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
   [TwitterEnabled <Boolean?>]: <code>false</code> if the Twitter provider should not be enabled despite the set registration; otherwise, <code>true</code>.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/new-azcontainerappauthconfig
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappauthconfig
 #>
 function New-AzContainerAppAuthConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IAuthConfig])]

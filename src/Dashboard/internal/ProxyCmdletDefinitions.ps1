@@ -27,7 +27,7 @@ List all available API operations provided by Microsoft.Dashboard.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.dashboard/get-azgrafanaoperation
+https://learn.microsoft.com/powershell/module/az.dashboard/get-azgrafanaoperation
 #>
 function Get-AzGrafanaOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IOperation])]
@@ -143,7 +143,7 @@ To create the parameters described below, construct a hash table containing the 
 MONITORWORKSPACEINTEGRATION <IAzureMonitorWorkspaceIntegration[]>: The MonitorWorkspaceIntegration of Azure Managed Grafana.
   [AzureMonitorWorkspaceResourceId <String>]: The resource Id of the connected Azure Monitor Workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.dashboard/new-azgrafana
+https://learn.microsoft.com/powershell/module/az.dashboard/new-azgrafana
 #>
 function New-AzGrafana {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana])]

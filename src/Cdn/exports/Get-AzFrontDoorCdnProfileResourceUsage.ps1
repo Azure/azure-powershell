@@ -25,7 +25,7 @@ Get-AzFrontDoorCdnProfileResourceUsage -ResourceGroupName testps-rg-da16jm -Prof
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnprofileresourceusage
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnprofileresourceusage
 #>
 function Get-AzFrontDoorCdnProfileResourceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage])]

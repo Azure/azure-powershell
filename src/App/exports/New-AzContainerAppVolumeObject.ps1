@@ -25,7 +25,7 @@ New-AzContainerAppVolumeObject -Name "volumeName" -StorageName "azpssa"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Volume
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappvolumeobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappvolumeobject
 #>
 function New-AzContainerAppVolumeObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Volume])]

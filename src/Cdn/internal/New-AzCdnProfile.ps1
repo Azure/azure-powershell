@@ -25,7 +25,7 @@ New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Stand
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azcdnprofile
+https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnprofile
 #>
 function New-AzCdnProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile])]

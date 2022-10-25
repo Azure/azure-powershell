@@ -27,7 +27,7 @@ Lists available operations for the Microsoft.ManagedIdentity provider
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/get-azoperation
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azoperation
 #>
 function Get-AzOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IOperation])]

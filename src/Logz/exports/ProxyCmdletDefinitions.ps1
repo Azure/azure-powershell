@@ -50,7 +50,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitorssoconfiguration
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitorssoconfiguration
 #>
 function Get-AzLogzMonitorSSOConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnResource])]
@@ -212,7 +212,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitortagrule
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitortagrule
 #>
 function Get-AzLogzMonitorTagRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRules])]
@@ -353,7 +353,7 @@ None
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IUserRoleResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitoruserrole
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitoruserrole
 #>
 function Get-AzLogzMonitorUserRole {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IUserRoleResponse])]
@@ -489,7 +489,7 @@ AgentVersion Id
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitorvmhost
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitorvmhost
 #>
 function Get-AzLogzMonitorVMHost {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources])]
@@ -654,7 +654,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitor
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitor
 #>
 function Get-AzLogzMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource])]
@@ -819,7 +819,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzsubaccounttagrule
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzsubaccounttagrule
 #>
 function Get-AzLogzSubAccountTagRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRules])]
@@ -966,7 +966,7 @@ AgentVersion Id
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzsubaccountvmhost
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzsubaccountvmhost
 #>
 function Get-AzLogzSubAccountVMHost {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources])]
@@ -1130,7 +1130,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzsubaccount
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzsubaccount
 #>
 function Get-AzLogzSubAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource])]
@@ -1300,7 +1300,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/invoke-azlogzhostmonitor
+https://learn.microsoft.com/powershell/module/az.logz/invoke-azlogzhostmonitor
 #>
 function Invoke-AzLogzHostMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMExtensionPayload])]
@@ -1459,7 +1459,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/invoke-azlogzhostsubaccount
+https://learn.microsoft.com/powershell/module/az.logz/invoke-azlogzhostsubaccount
 #>
 function Invoke-AzLogzHostSubAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMExtensionPayload])]
@@ -1605,7 +1605,7 @@ default Succeeded         Disable           https://app.logz.io/        logz-rg-
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnResource
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/new-azlogzmonitorssoconfiguration
+https://learn.microsoft.com/powershell/module/az.logz/new-azlogzmonitorssoconfiguration
 #>
 function New-AzLogzMonitorSSOConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnResource])]
@@ -1778,7 +1778,7 @@ LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for cap
   [Name <String>]: The name (also known as the key) of the tag.
   [Value <String>]: The value of the tag.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/new-azlogzmonitortagrule
+https://learn.microsoft.com/powershell/module/az.logz/new-azlogzmonitortagrule
 #>
 function New-AzLogzMonitorTagRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRules])]
@@ -1943,7 +1943,7 @@ logz-pwsh01 Enabled          westus2  logz-rg-test
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/new-azlogzmonitor
+https://learn.microsoft.com/powershell/module/az.logz/new-azlogzmonitor
 #>
 function New-AzLogzMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource])]
@@ -2198,7 +2198,7 @@ LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for cap
   [Name <String>]: The name (also known as the key) of the tag.
   [Value <String>]: The value of the tag.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/new-azlogzsubaccounttagrule
+https://learn.microsoft.com/powershell/module/az.logz/new-azlogzsubaccounttagrule
 #>
 function New-AzLogzSubAccountTagRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRules])]
@@ -2369,7 +2369,7 @@ logz-pwshsub01 Enabled          westus2  logz-rg-test
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/new-azlogzsubaccount
+https://learn.microsoft.com/powershell/module/az.logz/new-azlogzsubaccount
 #>
 function New-AzLogzSubAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource])]
@@ -2636,7 +2636,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/remove-azlogzmonitortagrule
+https://learn.microsoft.com/powershell/module/az.logz/remove-azlogzmonitortagrule
 #>
 function Remove-AzLogzMonitorTagRule {
 [OutputType([System.Boolean])]
@@ -2800,7 +2800,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/remove-azlogzmonitor
+https://learn.microsoft.com/powershell/module/az.logz/remove-azlogzmonitor
 #>
 function Remove-AzLogzMonitor {
 [OutputType([System.Boolean])]
@@ -2972,7 +2972,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/remove-azlogzsubaccounttagrule
+https://learn.microsoft.com/powershell/module/az.logz/remove-azlogzsubaccounttagrule
 #>
 function Remove-AzLogzSubAccountTagRule {
 [OutputType([System.Boolean])]
@@ -3142,7 +3142,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/remove-azlogzsubaccount
+https://learn.microsoft.com/powershell/module/az.logz/remove-azlogzsubaccount
 #>
 function Remove-AzLogzSubAccount {
 [OutputType([System.Boolean])]
@@ -3314,7 +3314,7 @@ VMRESOURCE <IVMResources[]>: Request of a list vm host update operation.
   [AgentVersion <String>]: Version of the Logz agent installed on the VM.
   [Id <String>]: Request of a list vm host update operation.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/update-azlogzmonitorvmhost
+https://learn.microsoft.com/powershell/module/az.logz/update-azlogzmonitorvmhost
 #>
 function Update-AzLogzMonitorVMHost {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources])]
@@ -3480,7 +3480,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/update-azlogzmonitor
+https://learn.microsoft.com/powershell/module/az.logz/update-azlogzmonitor
 #>
 function Update-AzLogzMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource])]
@@ -3642,7 +3642,7 @@ VMRESOURCE <IVMResources[]>: Request of a list vm host update operation.
   [AgentVersion <String>]: Version of the Logz agent installed on the VM.
   [Id <String>]: Request of a list vm host update operation.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/update-azlogzsubaccountvmhost
+https://learn.microsoft.com/powershell/module/az.logz/update-azlogzsubaccountvmhost
 #>
 function Update-AzLogzSubAccountVMHost {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources])]
@@ -3814,7 +3814,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/update-azlogzsubaccount
+https://learn.microsoft.com/powershell/module/az.logz/update-azlogzsubaccount
 #>
 function Update-AzLogzSubAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource])]
@@ -3983,7 +3983,7 @@ Other                                      False
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoredResource
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitoredresource
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitoredresource
 #>
 function Get-AzLogzMonitoredResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoredResource])]
@@ -4121,7 +4121,7 @@ default Succeeded         logz-rg-test
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTag
 .Link
-https://docs.microsoft.com/powershell/module/az.Logz/new-AzLogzFilteringTagObject
+https://learn.microsoft.com/powershell/module/az.Logz/new-AzLogzFilteringTagObject
 #>
 function New-AzLogzFilteringTagObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTag])]
@@ -4202,7 +4202,7 @@ AgentVersion Id
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.VMResources
 .Link
-https://docs.microsoft.com/powershell/module/az.Logz/new-AzLogzVMResourcesObject
+https://learn.microsoft.com/powershell/module/az.Logz/new-AzLogzVMResourcesObject
 #>
 function New-AzLogzVMResourcesObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.VMResources])]

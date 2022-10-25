@@ -45,7 +45,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusrule
+https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusrule
 #>
 function Remove-AzServiceBusRule {
 [OutputType([System.Boolean])]

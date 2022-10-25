@@ -48,7 +48,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubnetworkruleset
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubnetworkruleset
 #>
 function Get-AzEventHubNetworkRuleSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INetworkRuleSet], [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INetworkRuleSetListResult])]

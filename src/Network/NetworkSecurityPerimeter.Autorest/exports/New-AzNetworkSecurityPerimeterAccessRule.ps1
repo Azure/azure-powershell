@@ -82,7 +82,7 @@ PERIMETER <IPerimeterBasedAccessRule[]>: Inbound rule specified by the perimeter
 SUBSCRIPTION <ISubscriptionId[]>: List of subscription ids
   [Id <String>]: Subscription id in the ARM id format.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeteraccessrule
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeteraccessrule
 #>
 function New-AzNetworkSecurityPerimeterAccessRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAccessRule])]

@@ -38,7 +38,7 @@ VpcEndpointServiceName   : com.amazonaws.ypce.wus.123456789
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonSqlDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonSqlDataSourceObject
 #>
 function New-AzPurviewAmazonSqlDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlDataSource])]

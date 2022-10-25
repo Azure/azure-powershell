@@ -37,7 +37,7 @@ Version                              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzurePostgreSqlScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzurePostgreSqlScanRulesetObject
 #>
 function New-AzPurviewAzurePostgreSqlScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlScanRuleset])]

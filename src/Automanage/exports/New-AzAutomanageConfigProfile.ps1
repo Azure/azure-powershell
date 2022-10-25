@@ -36,7 +36,7 @@ New-AzAutomanageConfigProfile -ResourceGroupName automangerg -Name confpro-pwsh0
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofile
+https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofile
 #>
 function New-AzAutomanageConfigProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile])]

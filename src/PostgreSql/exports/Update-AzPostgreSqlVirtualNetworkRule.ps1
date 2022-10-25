@@ -48,7 +48,7 @@ INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/update-azpostgresqlvirtualnetworkrule
+https://learn.microsoft.com/powershell/module/az.postgresql/update-azpostgresqlvirtualnetworkrule
 #>
 function Update-AzPostgreSqlVirtualNetworkRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IVirtualNetworkRule])]

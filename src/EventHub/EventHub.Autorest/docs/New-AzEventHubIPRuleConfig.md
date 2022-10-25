@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubipruleconfig
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubipruleconfig
 schema: 2.0.0
 ---
 

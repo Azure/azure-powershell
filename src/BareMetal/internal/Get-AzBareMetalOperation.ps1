@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.baremetal/get-azbaremetaloperation
+https://learn.microsoft.com/powershell/module/az.baremetal/get-azbaremetaloperation
 #>
 function Get-AzBareMetalOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IOperation])]

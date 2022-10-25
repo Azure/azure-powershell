@@ -50,7 +50,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/sync-azmlworkspacekey
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/sync-azmlworkspacekey
 #>
 function Sync-AzMLWorkspaceKey {
 [OutputType([System.Boolean])]

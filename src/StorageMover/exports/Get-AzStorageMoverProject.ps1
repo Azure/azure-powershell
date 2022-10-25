@@ -44,7 +44,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverproject
+https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverproject
 #>
 function Get-AzStorageMoverProject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IProject])]

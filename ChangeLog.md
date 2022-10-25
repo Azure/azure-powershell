@@ -1885,7 +1885,7 @@ This release migrates Microsoft.Azure.Graph SDK to MicrosoftGraph SDK.
 #### Az.Accounts
 * Corrected the URLs to Azure Portal in the results of 'Get-AzEnvironment' and 'Get-AzContext'. [#15429]
 * Made infrastructural changes to support overriding default subscription via a '-SubscriptionId <String>' parameter.
-    - [Az.Aks](https://docs.microsoft.com/powershell/module/az.aks/get-azakscluster) is the first module that supports it.
+    - [Az.Aks](https://learn.microsoft.com/powershell/module/az.aks/get-azakscluster) is the first module that supports it.
 
 #### Az.Aks
 * Made '-Subscription <String>' available in all Aks cmdlets. You can manage Aks resources in other subscriptions without switching the context.

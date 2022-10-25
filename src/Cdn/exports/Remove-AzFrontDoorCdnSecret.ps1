@@ -46,7 +46,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnsecret
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnsecret
 #>
 function Remove-AzFrontDoorCdnSecret {
 [OutputType([System.Boolean])]

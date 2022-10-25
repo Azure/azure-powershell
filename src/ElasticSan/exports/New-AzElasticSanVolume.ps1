@@ -55,7 +55,7 @@ PARAMETER <IVolume>: Response for Volume request.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolume
+https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolume
 #>
 function New-AzElasticSanVolume {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume])]

@@ -44,7 +44,7 @@ PARAMETER <ITagsObject>: Tags object for patch operations.
   [Tag <ITagsObjectTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctiontrafficcollectortag
+https://learn.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctiontrafficcollectortag
 #>
 function Update-AzNetworkFunctionTrafficCollectorTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector])]

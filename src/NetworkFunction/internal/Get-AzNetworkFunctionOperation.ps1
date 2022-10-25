@@ -27,7 +27,7 @@ Lists all of the available NetworkFunction Rest API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctionoperation
+https://learn.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctionoperation
 #>
 function Get-AzNetworkFunctionOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IOperation])]

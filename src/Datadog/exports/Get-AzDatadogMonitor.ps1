@@ -60,7 +60,7 @@ INPUTOBJECT <IDatadogIdentity>: Identity Parameter
   [RuleSetName <String>]: Rule set name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitor
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitor
 #>
 function Get-AzDatadogMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogMonitorResource])]

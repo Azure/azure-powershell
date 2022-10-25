@@ -27,7 +27,7 @@ These resources can be associated with a network security perimeter
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterAssociableResource
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeterassociableresourcetype
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeterassociableresourcetype
 #>
 function Get-AzNetworkSecurityPerimeterAssociableResourceType {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterAssociableResource])]

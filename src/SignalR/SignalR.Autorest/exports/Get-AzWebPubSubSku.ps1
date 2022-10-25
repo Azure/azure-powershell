@@ -49,7 +49,7 @@ Tier                 : Standard
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuList
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/get-azwebpubsubsku
+https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsubsku
 #>
 function Get-AzWebPubSubSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuList])]

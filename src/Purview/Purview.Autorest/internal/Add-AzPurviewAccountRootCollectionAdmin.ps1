@@ -42,7 +42,7 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The subscription identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/add-azpurviewaccountrootcollectionadmin
+https://learn.microsoft.com/powershell/module/az.purview/add-azpurviewaccountrootcollectionadmin
 #>
 function Add-AzPurviewAccountRootCollectionAdmin {
 [OutputType([System.Boolean])]

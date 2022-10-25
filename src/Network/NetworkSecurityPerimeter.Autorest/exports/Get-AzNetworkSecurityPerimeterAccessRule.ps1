@@ -52,7 +52,7 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeteraccessrule
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeteraccessrule
 #>
 function Get-AzNetworkSecurityPerimeterAccessRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAccessRule])]

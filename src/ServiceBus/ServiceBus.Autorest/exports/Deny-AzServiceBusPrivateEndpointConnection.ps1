@@ -48,7 +48,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/deny-azservicebusprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.servicebus/deny-azservicebusprivateendpointconnection
 #>
 function Deny-AzServiceBusPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection])]

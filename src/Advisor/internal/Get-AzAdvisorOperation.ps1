@@ -27,7 +27,7 @@ Lists all the available Advisor REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IOperationEntity
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/get-azadvisoroperation
+https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisoroperation
 #>
 function Get-AzAdvisorOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IOperationEntity])]

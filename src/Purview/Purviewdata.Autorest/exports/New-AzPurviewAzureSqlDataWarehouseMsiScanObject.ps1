@@ -41,7 +41,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseMsiScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseMsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseMsiScanObject
 #>
 function New-AzPurviewAzureSqlDataWarehouseMsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseMsiScan])]

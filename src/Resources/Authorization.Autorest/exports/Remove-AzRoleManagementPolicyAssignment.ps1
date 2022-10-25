@@ -44,7 +44,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azrolemanagementpolicyassignment
+https://learn.microsoft.com/powershell/module/az.resources/remove-azrolemanagementpolicyassignment
 #>
 function Remove-AzRoleManagementPolicyAssignment {
 [OutputType([System.Boolean])]

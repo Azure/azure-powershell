@@ -27,7 +27,7 @@ Timeline for an entity.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityTimelineResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentitytimeline
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentitytimeline
 #>
 function Get-AzSentinelEntityTimeline {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityTimelineResponse])]

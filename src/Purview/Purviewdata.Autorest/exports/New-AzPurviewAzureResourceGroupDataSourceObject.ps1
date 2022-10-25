@@ -37,7 +37,7 @@ SubscriptionId           : 6810b9ce-82d3-4562-9658-xxxxxxxxxx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupDataSourceObject
 #>
 function New-AzPurviewAzureResourceGroupDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupDataSource])]

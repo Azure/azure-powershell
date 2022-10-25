@@ -67,7 +67,7 @@ SETTING <ISettings>: The Setting.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelsetting
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelsetting
 #>
 function Update-AzSentinelSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISettings])]

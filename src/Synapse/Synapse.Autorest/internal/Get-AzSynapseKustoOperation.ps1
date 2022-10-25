@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustooperation
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustooperation
 #>
 function Get-AzSynapseKustoOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IOperation])]

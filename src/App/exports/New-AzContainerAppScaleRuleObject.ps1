@@ -47,7 +47,7 @@ HTTPAUTH <IScaleRuleAuth[]>: Authentication secrets for the custom scale rule.
 HTTPMETADATA <IHttpScaleRuleMetadata>: Metadata properties to describe http scale rule.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappscaleruleobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappscaleruleobject
 #>
 function New-AzContainerAppScaleRuleObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule])]

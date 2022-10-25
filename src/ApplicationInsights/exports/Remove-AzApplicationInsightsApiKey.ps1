@@ -44,7 +44,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightsapikey
+https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightsapikey
 #>
 function Remove-AzApplicationInsightsApiKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey])]

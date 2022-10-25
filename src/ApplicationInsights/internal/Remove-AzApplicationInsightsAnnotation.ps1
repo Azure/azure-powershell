@@ -46,7 +46,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightsannotation
+https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightsannotation
 #>
 function Remove-AzApplicationInsightsAnnotation {
 [OutputType([System.Boolean])]

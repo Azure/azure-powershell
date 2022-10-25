@@ -74,7 +74,7 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping details for the address
   [StreetAddress3 <String>]: Street Address line 3.
   [ZipExtendedCode <String>]: Extended Zip Code.
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/update-azedgeorderaddress
+https://learn.microsoft.com/powershell/module/az.edgeorder/update-azedgeorderaddress
 #>
 function Update-AzEdgeOrderAddress {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource])]

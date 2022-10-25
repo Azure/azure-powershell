@@ -25,7 +25,7 @@ Get-AzStaticWebAppBuildAppSetting -ResourceGroupName azure-rg-test -Name staticw
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuildappsetting
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuildappsetting
 #>
 function Get-AzStaticWebAppBuildAppSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary])]
@@ -158,7 +158,7 @@ Get-AzStaticWebAppBuildFunctionAppSetting -ResourceGroupName azure-rg-test -Name
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuildfunctionappsetting
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuildfunctionappsetting
 #>
 function Get-AzStaticWebAppBuildFunctionAppSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary])]
@@ -291,7 +291,7 @@ Get-AzStaticWebAppBuildFunction -ResourceGroupName lucas-rg-test -Name staticweb
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteFunctionOverviewArmResource
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuildfunction
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuildfunction
 #>
 function Get-AzStaticWebAppBuildFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteFunctionOverviewArmResource])]
@@ -450,7 +450,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuild
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuild
 #>
 function Get-AzStaticWebAppBuild {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteBuildArmResource])]
@@ -595,7 +595,7 @@ Get-AzStaticWebAppConfiguredRole -ResourceGroupName azure-rg-test -Name staticwe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringList
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappconfiguredrole
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappconfiguredrole
 #>
 function Get-AzStaticWebAppConfiguredRole {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringList])]
@@ -748,7 +748,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappcustomdomain
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappcustomdomain
 #>
 function Get-AzStaticWebAppCustomDomain {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteCustomDomainOverviewArmResource])]
@@ -893,7 +893,7 @@ Get-AzStaticWebAppFunctionAppSetting -ResourceGroupName azure-rg-test -Name stat
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappfunctionappsetting
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappfunctionappsetting
 #>
 function Get-AzStaticWebAppFunctionAppSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary])]
@@ -1021,7 +1021,7 @@ Get-AzStaticWebAppFunction -ResourceGroupName azure-rg-test -Name staticweb-port
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteFunctionOverviewArmResource
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappfunction
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappfunction
 #>
 function Get-AzStaticWebAppFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteFunctionOverviewArmResource])]
@@ -1148,7 +1148,7 @@ Get-AzStaticWebAppSecret -ResourceGroupName resourceGroup -Name staticweb-portal
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappsecret
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappsecret
 #>
 function Get-AzStaticWebAppSecret {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary])]
@@ -1275,7 +1275,7 @@ Get-AzStaticWebAppSetting -ResourceGroupName resourceGroup -Name staticweb00
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappsetting
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappsetting
 #>
 function Get-AzStaticWebAppSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary])]
@@ -1432,7 +1432,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappuserprovidedfunctionapp
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappuserprovidedfunctionapp
 #>
 function Get-AzStaticWebAppUserProvidedFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionAppArmResource])]
@@ -1593,7 +1593,7 @@ Get-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal04
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserArmResource
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappuser
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappuser
 #>
 function Get-AzStaticWebAppUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserArmResource])]
@@ -1754,7 +1754,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebapp
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebapp
 #>
 function Get-AzStaticWebApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource])]
@@ -1935,7 +1935,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azwebappcontinuouswebjob
+https://learn.microsoft.com/powershell/module/az.websites/get-azwebappcontinuouswebjob
 #>
 function Get-AzWebAppContinuousWebJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.IContinuousWebJob])]
@@ -2128,7 +2128,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azwebappslotcontinuouswebjob
+https://learn.microsoft.com/powershell/module/az.websites/get-azwebappslotcontinuouswebjob
 #>
 function Get-AzWebAppSlotContinuousWebJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.IContinuousWebJob])]
@@ -2327,7 +2327,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azwebappslottriggeredwebjobhistory
+https://learn.microsoft.com/powershell/module/az.websites/get-azwebappslottriggeredwebjobhistory
 #>
 function Get-AzWebAppSlotTriggeredWebJobHistory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.ITriggeredJobHistory])]
@@ -2534,7 +2534,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azwebappslottriggeredwebjob
+https://learn.microsoft.com/powershell/module/az.websites/get-azwebappslottriggeredwebjob
 #>
 function Get-AzWebAppSlotTriggeredWebJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.ITriggeredWebJob])]
@@ -2701,7 +2701,7 @@ appService-test01/slot01/slotcontinuousjob-04                 webjob-rg-test
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.IWebJob
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azwebappslotwebjob
+https://learn.microsoft.com/powershell/module/az.websites/get-azwebappslotwebjob
 #>
 function Get-AzWebAppSlotWebJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.IWebJob])]
@@ -2875,7 +2875,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azwebapptriggeredwebjobhistory
+https://learn.microsoft.com/powershell/module/az.websites/get-azwebapptriggeredwebjobhistory
 #>
 function Get-AzWebAppTriggeredWebJobHistory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.ITriggeredJobHistory])]
@@ -3074,7 +3074,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azwebapptriggeredwebjob
+https://learn.microsoft.com/powershell/module/az.websites/get-azwebapptriggeredwebjob
 #>
 function Get-AzWebAppTriggeredWebJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.ITriggeredWebJob])]
@@ -3233,7 +3233,7 @@ appService-test01/continuousjob-02
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.IWebJob
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azwebappwebjob
+https://learn.microsoft.com/powershell/module/az.websites/get-azwebappwebjob
 #>
 function Get-AzWebAppWebJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.IWebJob])]
@@ -3384,7 +3384,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebappbuildappsetting
+https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebappbuildappsetting
 #>
 function New-AzStaticWebAppBuildAppSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary])]
@@ -3562,7 +3562,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebappbuildfunctionappsetting
+https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebappbuildfunctionappsetting
 #>
 function New-AzStaticWebAppBuildFunctionAppSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary])]
@@ -3716,7 +3716,7 @@ New-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb0
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteCustomDomainOverviewArmResource
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebappcustomdomain
+https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebappcustomdomain
 #>
 function New-AzStaticWebAppCustomDomain {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteCustomDomainOverviewArmResource])]
@@ -3897,7 +3897,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebappfunctionappsetting
+https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebappfunctionappsetting
 #>
 function New-AzStaticWebAppFunctionAppSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary])]
@@ -4069,7 +4069,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebappsetting
+https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebappsetting
 #>
 function New-AzStaticWebAppSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary])]
@@ -4243,7 +4243,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebappuserroleinvitationlink
+https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebappuserroleinvitationlink
 #>
 function New-AzStaticWebAppUserRoleInvitationLink {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserInvitationResponseResource])]
@@ -4416,7 +4416,7 @@ Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName azure-rg-test 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionAppArmResource
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/register-azstaticwebappuserprovidedfunctionapp
+https://learn.microsoft.com/powershell/module/az.websites/register-azstaticwebappuserprovidedfunctionapp
 #>
 function Register-AzStaticWebAppUserProvidedFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionAppArmResource])]
@@ -4619,7 +4619,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/remove-azstaticwebappattachedrepository
+https://learn.microsoft.com/powershell/module/az.websites/remove-azstaticwebappattachedrepository
 #>
 function Remove-AzStaticWebAppAttachedRepository {
 [OutputType([System.Boolean])]
@@ -4798,7 +4798,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/remove-azstaticwebappbuild
+https://learn.microsoft.com/powershell/module/az.websites/remove-azstaticwebappbuild
 #>
 function Remove-AzStaticWebAppBuild {
 [OutputType([System.Boolean])]
@@ -4983,7 +4983,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/remove-azstaticwebappcustomdomain
+https://learn.microsoft.com/powershell/module/az.websites/remove-azstaticwebappcustomdomain
 #>
 function Remove-AzStaticWebAppCustomDomain {
 [OutputType([System.Boolean])]
@@ -5169,7 +5169,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/remove-azstaticwebappuser
+https://learn.microsoft.com/powershell/module/az.websites/remove-azstaticwebappuser
 #>
 function Remove-AzStaticWebAppUser {
 [OutputType([System.Boolean])]
@@ -5348,7 +5348,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/remove-azstaticwebapp
+https://learn.microsoft.com/powershell/module/az.websites/remove-azstaticwebapp
 #>
 function Remove-AzStaticWebApp {
 [OutputType([System.Boolean])]
@@ -5527,7 +5527,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/remove-azwebappcontinuouswebjob
+https://learn.microsoft.com/powershell/module/az.websites/remove-azwebappcontinuouswebjob
 #>
 function Remove-AzWebAppContinuousWebJob {
 [OutputType([System.Boolean])]
@@ -5700,7 +5700,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/remove-azwebappslotcontinuouswebjob
+https://learn.microsoft.com/powershell/module/az.websites/remove-azwebappslotcontinuouswebjob
 #>
 function Remove-AzWebAppSlotContinuousWebJob {
 [OutputType([System.Boolean])]
@@ -5880,7 +5880,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/remove-azwebappslottriggeredwebjob
+https://learn.microsoft.com/powershell/module/az.websites/remove-azwebappslottriggeredwebjob
 #>
 function Remove-AzWebAppSlotTriggeredWebJob {
 [OutputType([System.Boolean])]
@@ -6060,7 +6060,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/remove-azwebapptriggeredwebjob
+https://learn.microsoft.com/powershell/module/az.websites/remove-azwebapptriggeredwebjob
 #>
 function Remove-AzWebAppTriggeredWebJob {
 [OutputType([System.Boolean])]
@@ -6233,7 +6233,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/reset-azstaticwebappapikey
+https://learn.microsoft.com/powershell/module/az.websites/reset-azstaticwebappapikey
 #>
 function Reset-AzStaticWebAppApiKey {
 [OutputType([System.Boolean])]
@@ -6418,7 +6418,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/start-azwebappcontinuouswebjob
+https://learn.microsoft.com/powershell/module/az.websites/start-azwebappcontinuouswebjob
 #>
 function Start-AzWebAppContinuousWebJob {
 [OutputType([System.Boolean])]
@@ -6591,7 +6591,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/start-azwebappslotcontinuouswebjob
+https://learn.microsoft.com/powershell/module/az.websites/start-azwebappslotcontinuouswebjob
 #>
 function Start-AzWebAppSlotContinuousWebJob {
 [OutputType([System.Boolean])]
@@ -6771,7 +6771,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/start-azwebappslottriggeredwebjob
+https://learn.microsoft.com/powershell/module/az.websites/start-azwebappslottriggeredwebjob
 #>
 function Start-AzWebAppSlotTriggeredWebJob {
 [OutputType([System.Boolean])]
@@ -6951,7 +6951,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/start-azwebapptriggeredwebjob
+https://learn.microsoft.com/powershell/module/az.websites/start-azwebapptriggeredwebjob
 #>
 function Start-AzWebAppTriggeredWebJob {
 [OutputType([System.Boolean])]
@@ -7124,7 +7124,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/stop-azwebappcontinuouswebjob
+https://learn.microsoft.com/powershell/module/az.websites/stop-azwebappcontinuouswebjob
 #>
 function Stop-AzWebAppContinuousWebJob {
 [OutputType([System.Boolean])]
@@ -7297,7 +7297,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/stop-azwebappslotcontinuouswebjob
+https://learn.microsoft.com/powershell/module/az.websites/stop-azwebappslotcontinuouswebjob
 #>
 function Stop-AzWebAppSlotContinuousWebJob {
 [OutputType([System.Boolean])]
@@ -7477,7 +7477,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/test-azstaticwebappcustomdomain
+https://learn.microsoft.com/powershell/module/az.websites/test-azstaticwebappcustomdomain
 #>
 function Test-AzStaticWebAppCustomDomain {
 [OutputType([System.Boolean])]
@@ -7674,7 +7674,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/unregister-azstaticwebappbuilduserprovidedfunctionapp
+https://learn.microsoft.com/powershell/module/az.websites/unregister-azstaticwebappbuilduserprovidedfunctionapp
 #>
 function Unregister-AzStaticWebAppBuildUserProvidedFunctionApp {
 [OutputType([System.Boolean])]
@@ -7853,7 +7853,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/unregister-azstaticwebappuserprovidedfunctionapp
+https://learn.microsoft.com/powershell/module/az.websites/unregister-azstaticwebappuserprovidedfunctionapp
 #>
 function Unregister-AzStaticWebAppUserProvidedFunctionApp {
 [OutputType([System.Boolean])]
@@ -8024,7 +8024,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/update-azstaticwebappuser
+https://learn.microsoft.com/powershell/module/az.websites/update-azstaticwebappuser
 #>
 function Update-AzStaticWebAppUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserArmResource])]
@@ -8207,7 +8207,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/update-azstaticwebapp
+https://learn.microsoft.com/powershell/module/az.websites/update-azstaticwebapp
 #>
 function Update-AzStaticWebApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource])]
@@ -8463,7 +8463,7 @@ New-AzStaticWebApp -ResourceGroupName 'azure-rg-test' -Name staticweb-pwsh01 -Lo
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebapp
+https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebapp
 #>
 function New-AzStaticWebApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource])]

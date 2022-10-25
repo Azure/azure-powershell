@@ -19,7 +19,7 @@ Creates an object to update NIC properties of a replicating server.
 .Description
 The New-AzMigrateNicMapping cmdlet creates a mapping of the source NIC attached to the server to be migrated. This object is provided as an input to the Set-AzMigrateServerReplication cmdlet to update the NIC and its properties for a replicating server.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
 #>
 function New-AzMigrateNicMapping {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput])]

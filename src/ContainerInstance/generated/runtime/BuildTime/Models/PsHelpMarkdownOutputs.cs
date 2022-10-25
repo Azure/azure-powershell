@@ -133,7 +133,7 @@ Accept wildcard characters: {ParameterInfo.AcceptsWildcardCharacters}
     {
         public PsModuleHelpInfo ModuleInfo { get; }
 
-        private static string HelpLinkPrefix { get; } = @"https://docs.microsoft.com/powershell/module/";
+        private static string HelpLinkPrefix { get; } = @"https://learn.microsoft.com/powershell/module/";
 
         public ModulePageMetadataOutput(PsModuleHelpInfo moduleInfo)
         {

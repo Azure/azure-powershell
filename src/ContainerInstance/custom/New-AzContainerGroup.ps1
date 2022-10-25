@@ -20,7 +20,7 @@ Create or update container groups with specified configurations.
 .Description
 Create or update container groups with specified configurations.
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
+https://learn.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
 #>
 function New-AzContainerGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup])]

@@ -25,7 +25,7 @@ New-AzMLWorkspaceDataContainer -ResourceGroupName ml-rg-test -WorkspaceName mlwo
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDataContainer
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatacontainer
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatacontainer
 #>
 function New-AzMLWorkspaceDataContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDataContainer])]

@@ -25,7 +25,7 @@ New-AzContainerAppScaleRuleAuthObject -SecretRef "facebook-secret" -TriggerParam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRuleAuth
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappscaleruleauthobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappscaleruleauthobject
 #>
 function New-AzContainerAppScaleRuleAuthObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRuleAuth])]

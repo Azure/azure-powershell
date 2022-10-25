@@ -27,7 +27,7 @@ Lists available operations for the Microsoft.Kusto provider.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustooperation
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustooperation
 #>
 function Get-AzKustoOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IOperation])]

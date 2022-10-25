@@ -29,7 +29,7 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsights
+https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsights
 #>
 function Set-AzApplicationInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent])]

@@ -25,7 +25,7 @@ New-AzVMwareAuthorization -Name azps_test_authorization -PrivateCloudName azps_t
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IExpressRouteAuthorization
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareauthorization
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareauthorization
 #>
 function New-AzVMwareAuthorization {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IExpressRouteAuthorization])]

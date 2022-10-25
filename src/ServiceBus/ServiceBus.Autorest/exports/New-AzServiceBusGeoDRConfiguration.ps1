@@ -25,7 +25,7 @@ New-AzServiceBusGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGr
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusgeodrconfiguration
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusgeodrconfiguration
 #>
 function New-AzServiceBusGeoDRConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery])]

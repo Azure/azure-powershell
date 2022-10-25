@@ -77,7 +77,7 @@ TARGETGROUPOBJECT <MicrosoftGraphGroup>: The target group object, could be used 
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/add-azadgroupmember
+https://learn.microsoft.com/powershell/module/az.resources/add-azadgroupmember
 #>
 function Add-AzADGroupMember {
 [OutputType([System.Boolean])]

@@ -50,7 +50,7 @@ To create the parameters described below, construct a hash table containing the 
 BODY <IDataSource>: .
   Kind <DataSourceType>: 
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewdatasource
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewdatasource
 #>
 function New-AzPurviewDataSource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource])]

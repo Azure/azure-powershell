@@ -31,7 +31,7 @@ ApiVersion Name        ResourceType Tier
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpoolresourcesku
+https://learn.microsoft.com/powershell/module/az.diskpool/get-azdiskpoolresourcesku
 #>
 function Get-AzDiskPoolResourceSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuInfo])]

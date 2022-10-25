@@ -17,7 +17,7 @@ Removes an API permission.
 .Description
 Removes an API permission.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadapppermission
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadapppermission
 #>
 
 function Remove-AzADAppPermission {

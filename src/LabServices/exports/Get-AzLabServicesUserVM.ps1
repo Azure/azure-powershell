@@ -96,7 +96,7 @@ USER <User>:
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesuservm
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesuservm
 #>
 function Get-AzLabServicesUserVM {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]

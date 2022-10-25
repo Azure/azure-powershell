@@ -167,7 +167,7 @@ INPUTOBJECT <IMicrosoftGraphApplication>: The application object, could be used 
     [LogoutUrl <String>]: Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
     [RedirectUri <String[]>]: Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadapplication
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadapplication
 #>
 function Remove-AzADApplication {
 [OutputType([System.Boolean])]

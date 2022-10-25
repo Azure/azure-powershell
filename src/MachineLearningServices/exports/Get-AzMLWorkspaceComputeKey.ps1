@@ -25,7 +25,7 @@ Get-AzMLWorkspaceComputeKey -ResourceGroupName ml-rg-test -WorkspaceName mlworks
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeType
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecomputekey
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecomputekey
 #>
 function Get-AzMLWorkspaceComputeKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeType])]

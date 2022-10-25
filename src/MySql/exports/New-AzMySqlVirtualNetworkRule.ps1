@@ -26,7 +26,7 @@ New-AzMySqlVirtualNetworkRule -Name vnet -ResourceGroupName PowershellMySqlTest 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlvirtualnetworkrule
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlvirtualnetworkrule
 #>
 function New-AzMySqlVirtualNetworkRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule])]

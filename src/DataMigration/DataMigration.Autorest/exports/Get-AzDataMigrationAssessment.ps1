@@ -27,7 +27,7 @@ Get-AzDataMigrationAssessment -ConfigFilePath "C:\Users\user\document\config.jso
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationassessment
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationassessment
 #>
 function Get-AzDataMigrationAssessment {
 [OutputType([System.Boolean])]

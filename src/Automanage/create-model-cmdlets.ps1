@@ -158,7 +158,7 @@ Create an in-memory object for ${ObjectType}.
 .Outputs
 ${ObjectTypeWithNamespace}
 .Link
-https://docs.microsoft.com/powershell/module/az.${ModuleName}/new-Az${ModulePrefix}${ObjectType}Object
+https://learn.microsoft.com/powershell/module/az.${ModuleName}/new-Az${ModulePrefix}${ObjectType}Object
 #>
 function New-Az${ModulePrefix}${ObjectType}Object {
     [OutputType('${ObjectTypeWithNamespace}')]

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubconsumergroup
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubconsumergroup
 schema: 2.0.0
 ---
 

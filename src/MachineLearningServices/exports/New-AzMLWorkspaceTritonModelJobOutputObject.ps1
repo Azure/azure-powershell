@@ -25,7 +25,7 @@ New-AzMLWorkspaceTritonModelJobOutputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.TritonModelJobOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceTritonModelJobOutputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceTritonModelJobOutputObject
 #>
 function New-AzMLWorkspaceTritonModelJobOutputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.TritonModelJobOutput])]

@@ -27,7 +27,7 @@ Lists all of the available cost management REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/get-azcostmanagementoperation
+https://learn.microsoft.com/powershell/module/az.costmanagement/get-azcostmanagementoperation
 #>
 function Get-AzCostManagementOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IOperation])]

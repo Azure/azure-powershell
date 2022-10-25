@@ -32,7 +32,7 @@ AZPcJC8OCNCpqRsnj1NB3Ngl-qQncBP5IT21jts_2b0 2021-05-20T05:59:16.2028276Z 3l_cups
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/get-azmapsaccountkey
+https://learn.microsoft.com/powershell/module/az.maps/get-azmapsaccountkey
 #>
 function Get-AzMapsAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountKeys])]
@@ -205,7 +205,7 @@ INPUTOBJECT <IMapsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/get-azmapsaccount
+https://learn.microsoft.com/powershell/module/az.maps/get-azmapsaccount
 #>
 function Get-AzMapsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount])]
@@ -386,7 +386,7 @@ INPUTOBJECT <IMapsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/get-azmapscreator
+https://learn.microsoft.com/powershell/module/az.maps/get-azmapscreator
 #>
 function Get-AzMapsCreator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator])]
@@ -584,7 +584,7 @@ True         Microsoft.Maps/accounts/services/analytics/write
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IOperationDetail
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/get-azmapssubscriptionoperation
+https://learn.microsoft.com/powershell/module/az.maps/get-azmapssubscriptionoperation
 #>
 function Get-AzMapsSubscriptionOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IOperationDetail])]
@@ -734,7 +734,7 @@ INPUTOBJECT <IMapsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/new-azmapsaccountkey
+https://learn.microsoft.com/powershell/module/az.maps/new-azmapsaccountkey
 #>
 function New-AzMapsAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccountKeys])]
@@ -893,7 +893,7 @@ eastus   pwsh-mapsAccount01 Microsoft.Maps/accounts Gen1
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/new-azmapsaccount
+https://learn.microsoft.com/powershell/module/az.maps/new-azmapsaccount
 #>
 function New-AzMapsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount])]
@@ -1074,7 +1074,7 @@ eastus2  creator-01 Microsoft.Maps/accounts/creators
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/new-azmapscreator
+https://learn.microsoft.com/powershell/module/az.maps/new-azmapscreator
 #>
 function New-AzMapsCreator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator])]
@@ -1256,7 +1256,7 @@ INPUTOBJECT <IMapsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/remove-azmapsaccount
+https://learn.microsoft.com/powershell/module/az.maps/remove-azmapsaccount
 #>
 function Remove-AzMapsAccount {
 [OutputType([System.Boolean])]
@@ -1426,7 +1426,7 @@ INPUTOBJECT <IMapsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/remove-azmapscreator
+https://learn.microsoft.com/powershell/module/az.maps/remove-azmapscreator
 #>
 function Remove-AzMapsCreator {
 [OutputType([System.Boolean])]
@@ -1610,7 +1610,7 @@ INPUTOBJECT <IMapsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/update-azmapsaccount
+https://learn.microsoft.com/powershell/module/az.maps/update-azmapsaccount
 #>
 function Update-AzMapsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount])]
@@ -1813,7 +1813,7 @@ INPUTOBJECT <IMapsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/update-azmapscreator
+https://learn.microsoft.com/powershell/module/az.maps/update-azmapscreator
 #>
 function Update-AzMapsCreator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.ICreator])]

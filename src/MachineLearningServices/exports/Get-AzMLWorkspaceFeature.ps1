@@ -25,7 +25,7 @@ Get-AzMLWorkspaceFeature  -ResourceGroupName ml-rg-test -Name mlworkspace-portal
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IAmlUserFeature
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacefeature
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacefeature
 #>
 function Get-AzMLWorkspaceFeature {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IAmlUserFeature])]

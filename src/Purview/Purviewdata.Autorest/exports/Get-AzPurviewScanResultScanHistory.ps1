@@ -73,7 +73,7 @@ Target                      :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanResult
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewscanresultscanhistory
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewscanresultscanhistory
 #>
 function Get-AzPurviewScanResultScanHistory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanResult])]

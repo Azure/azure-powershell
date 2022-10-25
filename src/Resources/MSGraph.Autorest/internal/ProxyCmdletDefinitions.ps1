@@ -73,7 +73,7 @@ PASSWORDCREDENTIAL <IMicrosoftGraphPasswordCredential>: passwordCredential
   [KeyId <String>]: The unique identifier for the password.
   [StartDateTime <DateTime?>]: The date and time at which the password becomes valid. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/add-azadapplicationkey
+https://learn.microsoft.com/powershell/module/az.resources/add-azadapplicationkey
 #>
 function Add-AzADApplicationKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential])]
@@ -246,7 +246,7 @@ PASSWORDCREDENTIAL <IMicrosoftGraphPasswordCredential>: passwordCredential
   [KeyId <String>]: The unique identifier for the password.
   [StartDateTime <DateTime?>]: The date and time at which the password becomes valid. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/add-azadapplicationpassword
+https://learn.microsoft.com/powershell/module/az.resources/add-azadapplicationpassword
 #>
 function Add-AzADApplicationPassword {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
@@ -428,7 +428,7 @@ PASSWORDCREDENTIAL <IMicrosoftGraphPasswordCredential>: passwordCredential
   [KeyId <String>]: The unique identifier for the password.
   [StartDateTime <DateTime?>]: The date and time at which the password becomes valid. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/add-azadserviceprincipalkey
+https://learn.microsoft.com/powershell/module/az.resources/add-azadserviceprincipalkey
 #>
 function Add-AzADServicePrincipalKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential])]
@@ -601,7 +601,7 @@ PASSWORDCREDENTIAL <IMicrosoftGraphPasswordCredential>: passwordCredential
   [KeyId <String>]: The unique identifier for the password.
   [StartDateTime <DateTime?>]: The date and time at which the password becomes valid. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/add-azadserviceprincipalpassword
+https://learn.microsoft.com/powershell/module/az.resources/add-azadserviceprincipalpassword
 #>
 function Add-AzADServicePrincipalPassword {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
@@ -737,7 +737,7 @@ Get-AzADAppFederatedCredential -ApplicationObjectId $appObjectId -FederatedCrede
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadappfederatedcredential
+https://learn.microsoft.com/powershell/module/az.resources/get-azadappfederatedcredential
 #>
 function Get-AzADAppFederatedCredential {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential])]
@@ -920,7 +920,7 @@ Get-AzADApplication -Filter "startsWith(DisplayName,'some-name')"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadapplication
+https://learn.microsoft.com/powershell/module/az.resources/get-azadapplication
 #>
 function Get-AzADApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
@@ -1103,7 +1103,7 @@ Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadgroupmember
+https://learn.microsoft.com/powershell/module/az.resources/get-azadgroupmember
 #>
 function Get-AzADGroupMember {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject])]
@@ -1275,7 +1275,7 @@ Get-AzADGroup -Filter "startsWith(DisplayName,'some-name')"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadgroup
+https://learn.microsoft.com/powershell/module/az.resources/get-azadgroup
 #>
 function Get-AzADGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup])]
@@ -1460,7 +1460,7 @@ Get-AzADServicePrincipal -Filter "startsWith(DisplayName,'some-name')"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal
+https://learn.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal
 #>
 function Get-AzADServicePrincipal {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal])]
@@ -1641,7 +1641,7 @@ Supports $expand.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azaduserownedapplication
+https://learn.microsoft.com/powershell/module/az.resources/get-azaduserownedapplication
 #>
 function Get-AzADUserOwnedApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
@@ -1789,7 +1789,7 @@ Supports $expand.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azaduserownedobject
+https://learn.microsoft.com/powershell/module/az.resources/get-azaduserownedobject
 #>
 function Get-AzADUserOwnedObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject])]
@@ -1931,7 +1931,7 @@ Represents current signed-in user object.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadusersigned
+https://learn.microsoft.com/powershell/module/az.resources/get-azadusersigned
 #>
 function Get-AzADUserSigned {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]
@@ -2058,7 +2058,7 @@ Get-AzADUser -Filter "startsWith(DisplayName,'some-name')"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azaduser
+https://learn.microsoft.com/powershell/module/az.resources/get-azaduser
 #>
 function Get-AzADUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]
@@ -2231,7 +2231,7 @@ New-AzADAppFederatedCredential -ApplicationObjectId $appObjectId -Audience api:/
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadappfederatedcredential
+https://learn.microsoft.com/powershell/module/az.resources/new-azadappfederatedcredential
 #>
 function New-AzADAppFederatedCredential {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential])]
@@ -2535,7 +2535,7 @@ WEB <IMicrosoftGraphWebApplication>: webApplication
   [LogoutUrl <String>]: Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
   [RedirectUri <String[]>]: Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication
+https://learn.microsoft.com/powershell/module/az.resources/new-azadapplication
 #>
 function New-AzADApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
@@ -2919,7 +2919,7 @@ System.Collections.Hashtable
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadgroupgraphrefmember
+https://learn.microsoft.com/powershell/module/az.resources/new-azadgroupgraphrefmember
 #>
 function New-AzADGroupGraphRefMember {
 [OutputType([System.Boolean])]
@@ -3080,7 +3080,7 @@ PERMISSIONGRANT <IMicrosoftGraphResourceSpecificPermissionGrant[]>: The permissi
   [PermissionType <String>]: The type of permission. Possible values are: Application, Delegated. Read-only.
   [ResourceAppId <String>]: ID of the Azure AD app that is hosting the resource. Read-only.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadgroup
+https://learn.microsoft.com/powershell/module/az.resources/new-azadgroup
 #>
 function New-AzADGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup])]
@@ -3511,7 +3511,7 @@ TRANSITIVEMEMBEROF <IMicrosoftGraphDirectoryObject[]>: .
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal
+https://learn.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal
 #>
 function New-AzADServicePrincipal {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal])]
@@ -3980,7 +3980,7 @@ PASSWORDPROFILE <IMicrosoftGraphPasswordProfile>: passwordProfile
   [ForceChangePasswordNextSignInWithMfa <Boolean?>]: If true, at next sign-in, the user must perform a multi-factor authentication (MFA) before being forced to change their password. The behavior is identical to forceChangePasswordNextSignIn except that the user is required to first perform a multi-factor authentication before password change. After a password change, this property will be automatically reset to false. If not set, default is false.
   [Password <String>]: The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies property. By default, a strong password is required.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azaduser
+https://learn.microsoft.com/powershell/module/az.resources/new-azaduser
 #>
 function New-AzADUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]
@@ -4481,7 +4481,7 @@ BODY <IPathsHxlydaApplicationsApplicationIdMicrosoftGraphRemovekeyPostRequestbod
   [KeyId <String>]: 
   [Proof <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadapplicationkey
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadapplicationkey
 #>
 function Remove-AzADApplicationKey {
 [OutputType([System.Boolean])]
@@ -4638,7 +4638,7 @@ BODY <IPathsHv033BApplicationsApplicationIdMicrosoftGraphRemovepasswordPostReque
   [(Any) <Object>]: This indicates any property can be added to this object.
   [KeyId <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadapplicationpassword
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadapplicationpassword
 #>
 function Remove-AzADApplicationPassword {
 [OutputType([System.Boolean])]
@@ -4781,7 +4781,7 @@ Get-AzADApplication -ObjectId $id | Remove-AzADApplication
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadapplication
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadapplication
 #>
 function Remove-AzADApplication {
 [OutputType([System.Boolean])]
@@ -4915,7 +4915,7 @@ Supports $expand.
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadgrouprefmember
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadgrouprefmember
 #>
 function Remove-AzADGroupRefMember {
 [OutputType([System.Boolean])]
@@ -5044,7 +5044,7 @@ Get-AzADGroup -ObjectId $id | Remove-AzADGroup
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadgroup
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadgroup
 #>
 function Remove-AzADGroup {
 [OutputType([System.Boolean])]
@@ -5183,7 +5183,7 @@ BODY <IPaths1UhuhlbServiceprincipalsServiceprincipalIdMicrosoftGraphRemovekeyPos
   [KeyId <String>]: 
   [Proof <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipalkey
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipalkey
 #>
 function Remove-AzADServicePrincipalKey {
 [OutputType([System.Boolean])]
@@ -5340,7 +5340,7 @@ BODY <IPaths1Idoj4GServiceprincipalsServiceprincipalIdMicrosoftGraphRemovepasswo
   [(Any) <Object>]: This indicates any property can be added to this object.
   [KeyId <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipalpassword
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipalpassword
 #>
 function Remove-AzADServicePrincipalPassword {
 [OutputType([System.Boolean])]
@@ -5483,7 +5483,7 @@ Get-AzADServicePrincipal -ApplicationId $id | Remove-AzADServicePrincipal
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipal
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipal
 #>
 function Remove-AzADServicePrincipal {
 [OutputType([System.Boolean])]
@@ -5611,7 +5611,7 @@ Get-AzADUser -UserPrincipalName $id | Remove-AzADUser
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azaduser
+https://learn.microsoft.com/powershell/module/az.resources/remove-azaduser
 #>
 function Remove-AzADUser {
 [OutputType([System.Boolean])]
@@ -5879,7 +5879,7 @@ WEB <IMicrosoftGraphWebApplication>: webApplication
   [LogoutUrl <String>]: Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
   [RedirectUri <String[]>]: Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/update-azadapplication
+https://learn.microsoft.com/powershell/module/az.resources/update-azadapplication
 #>
 function Update-AzADApplication {
 [OutputType([System.Boolean])]
@@ -6402,7 +6402,7 @@ TRANSITIVEMEMBEROF <IMicrosoftGraphDirectoryObject[]>: .
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/update-azadserviceprincipal
+https://learn.microsoft.com/powershell/module/az.resources/update-azadserviceprincipal
 #>
 function Update-AzADServicePrincipal {
 [OutputType([System.Boolean])]
@@ -6878,7 +6878,7 @@ PASSWORDPROFILE <IMicrosoftGraphPasswordProfile>: passwordProfile
   [ForceChangePasswordNextSignInWithMfa <Boolean?>]: If true, at next sign-in, the user must perform a multi-factor authentication (MFA) before being forced to change their password. The behavior is identical to forceChangePasswordNextSignIn except that the user is required to first perform a multi-factor authentication before password change. After a password change, this property will be automatically reset to false. If not set, default is false.
   [Password <String>]: The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies property. By default, a strong password is required.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/update-azaduser
+https://learn.microsoft.com/powershell/module/az.resources/update-azaduser
 #>
 function Update-AzADUser {
 [OutputType([System.Boolean])]

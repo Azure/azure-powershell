@@ -27,7 +27,7 @@ Returns list of operations for Microsoft.DeviceUpdate resource provider.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/get-azdeviceupdateoperation
+https://learn.microsoft.com/powershell/module/az.deviceupdate/get-azdeviceupdateoperation
 #>
 function Get-AzDeviceUpdateOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.IOperation])]

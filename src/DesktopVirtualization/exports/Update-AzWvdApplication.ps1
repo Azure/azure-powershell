@@ -54,7 +54,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdapplication
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdapplication
 #>
 function Update-AzWvdApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplication])]

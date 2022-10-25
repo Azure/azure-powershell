@@ -52,7 +52,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 RULESET <IResourceReference[]>: rule sets referenced by this endpoint.
   [Id <String>]: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnroute
+https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnroute
 #>
 function Update-AzFrontDoorCdnRoute {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRoute])]

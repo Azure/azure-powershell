@@ -25,7 +25,7 @@ New-AzAutoscaleScaleRuleMetricDimensionObject -DimensionName VMName -Operator 'E
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension
 .Link
-https://docs.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleScaleRuleMetricDimensionObject
+https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleScaleRuleMetricDimensionObject
 #>
 function New-AzAutoscaleScaleRuleMetricDimensionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension])]

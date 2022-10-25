@@ -25,7 +25,7 @@ Get threat intelligence indicators metrics (Indicators counts by Type, Threat Ty
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceMetrics
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelthreatintelligenceindicatormetric
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelthreatintelligenceindicatormetric
 #>
 function Get-AzSentinelThreatIntelligenceIndicatorMetric {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceMetrics])]

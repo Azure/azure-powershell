@@ -41,7 +41,7 @@ IPCONFIGURATION <INetworkInterfaceIPConfiguration[]>: A list of IP configuration
   [IPVersion <IPVersion?>]: IP address version.
   [Subnet <String>]: The value of the subnet.
 .Link
-https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceObject
+https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceObject
 #>
 function New-AzConnectedNetworkInterfaceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface])]

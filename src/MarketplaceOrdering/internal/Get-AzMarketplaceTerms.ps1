@@ -27,7 +27,7 @@ Get-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-scienc
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms
+https://learn.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms
 #>
 function Get-AzMarketplaceTerms {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms])]

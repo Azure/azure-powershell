@@ -37,7 +37,7 @@ Get-AzADServicePrincipal -Filter "startsWith(DisplayName,'some-name')"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal
+https://learn.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal
 #>
 function Get-AzADServicePrincipal {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal])]

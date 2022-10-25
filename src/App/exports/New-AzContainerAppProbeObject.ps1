@@ -33,7 +33,7 @@ HTTPGETHTTPHEADER <IContainerAppProbeHttpGetHttpHeadersItem[]>: Custom headers t
   Name <String>: The header field name
   Value <String>: The header field value
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappprobeobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappprobeobject
 #>
 function New-AzContainerAppProbeObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbe])]

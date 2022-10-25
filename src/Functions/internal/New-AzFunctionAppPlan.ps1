@@ -134,7 +134,7 @@ SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager
   [Reason <String>]: Reason of the SKU capability.
   [Value <String>]: Value of the SKU capability.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azfunctionappplan
+https://learn.microsoft.com/powershell/module/az.functions/new-azfunctionappplan
 #>
 function New-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]

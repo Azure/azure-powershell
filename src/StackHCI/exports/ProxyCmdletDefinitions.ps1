@@ -39,7 +39,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciarcsetting
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciarcsetting
 #>
 function Get-AzStackHciArcSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting])]
@@ -236,7 +236,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhcicluster
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcicluster
 #>
 function Get-AzStackHciCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster])]
@@ -426,7 +426,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciextension
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciextension
 #>
 function Get-AzStackHciExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension])]
@@ -614,7 +614,7 @@ New-AzStackHciArcSetting -ResourceGroupName "test-rg" -ClusterName "myCluster"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/new-azstackhciarcsetting
+https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhciarcsetting
 #>
 function New-AzStackHciArcSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting])]
@@ -818,7 +818,7 @@ New-AzStackHciCluster -Name "myCluster2" -ResourceGroupName "test-rg" -AadTenant
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/new-azstackhcicluster
+https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcicluster
 #>
 function New-AzStackHciCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster])]
@@ -1041,7 +1041,7 @@ New-AzStackHciExtension -ArcSettingName "default" -ClusterName "myCluster" -Name
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/new-azstackhciextension
+https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhciextension
 #>
 function New-AzStackHciExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension])]
@@ -1285,7 +1285,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/remove-azstackhciarcsetting
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciarcsetting
 #>
 function Remove-AzStackHciArcSetting {
 [OutputType([System.Boolean])]
@@ -1494,7 +1494,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/remove-azstackhcicluster
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcicluster
 #>
 function Remove-AzStackHciCluster {
 [OutputType([System.Boolean])]
@@ -1699,7 +1699,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/remove-azstackhciextension
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciextension
 #>
 function Remove-AzStackHciExtension {
 [OutputType([System.Boolean])]
@@ -1914,7 +1914,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/update-azstackhcicluster
+https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcicluster
 #>
 function Update-AzStackHciCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster])]
@@ -2124,7 +2124,7 @@ System.String[]
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/add-azstackhcivmattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/add-azstackhcivmattestation
 #>
 function Add-AzStackHCIVMAttestation {
 [OutputType([System.Management.Automation.PSObject])]
@@ -2242,7 +2242,7 @@ Disable-AzStackHCIAttestation -RemoveVM
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/disable-azstackhciattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/disable-azstackhciattestation
 #>
 function Disable-AzStackHCIAttestation {
 [OutputType([System.Management.Automation.PSObject])]
@@ -2361,7 +2361,7 @@ Disable-AzStackHCIRemoteSupport
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/disable-azstackhciremotesupport
+https://learn.microsoft.com/powershell/module/az.stackhci/disable-azstackhciremotesupport
 #>
 function Disable-AzStackHCIRemoteSupport {
 [OutputType([System.Boolean])]
@@ -2453,7 +2453,7 @@ Enable-AzStackHCIAttestation -AddVM
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/enable-azstackhciattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/enable-azstackhciattestation
 #>
 function Enable-AzStackHCIAttestation {
 [OutputType([System.Management.Automation.PSObject])]
@@ -2573,7 +2573,7 @@ Enable-AzStackHCIRemoteSupport -AccessLevel DiagnosticsRepair -ExpireInMinutes 1
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/enable-azstackhciremotesupport
+https://learn.microsoft.com/powershell/module/az.stackhci/enable-azstackhciremotesupport
 #>
 function Enable-AzStackHCIRemoteSupport {
 [OutputType([System.Boolean])]
@@ -2692,7 +2692,7 @@ Get-AzStackHCIRemoteSupportAccess -Cluster -IncludeExpired
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportaccess
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportaccess
 #>
 function Get-AzStackHCIRemoteSupportAccess {
 [OutputType([System.Boolean])]
@@ -2800,7 +2800,7 @@ Get-AzStackHCIRemoteSupportSessionHistory
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportsessionhistory
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportsessionhistory
 #>
 function Get-AzStackHCIRemoteSupportSessionHistory {
 [OutputType([System.Boolean])]
@@ -2919,7 +2919,7 @@ Get-AzStackHCIVMAttestation -Local
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmattestation
 #>
 function Get-AzStackHCIVMAttestation {
 [OutputType([System.Management.Automation.PSObject])]
@@ -3017,7 +3017,7 @@ Install-AzStackHCIRemoteSupport
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/install-azstackhciremotesupport
+https://learn.microsoft.com/powershell/module/az.stackhci/install-azstackhciremotesupport
 #>
 function Install-AzStackHCIRemoteSupport {
 [OutputType([System.Boolean])]
@@ -3118,7 +3118,7 @@ Result: Success or Failed or Cancelled.
 ResourceId: Resource ID of the resource created in Azure.
 PortalResourceURL: Azure Portal Resource URL.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/register-azstackhci
+https://learn.microsoft.com/powershell/module/az.stackhci/register-azstackhci
 #>
 function Register-AzStackHCI {
 [CmdletBinding(PositionalBinding=$false)]
@@ -3339,7 +3339,7 @@ Remove-AzStackHCIRemoteSupport
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/remove-azstackhciremotesupport
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciremotesupport
 #>
 function Remove-AzStackHCIRemoteSupport {
 [OutputType([System.Boolean])]
@@ -3435,7 +3435,7 @@ System.String[]
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmattestation
 #>
 function Remove-AzStackHCIVMAttestation {
 [OutputType([System.Management.Automation.PSObject])]
@@ -3555,7 +3555,7 @@ Set-AzStackHCI -ComputerName ClusterNode1 -DiagnosticLevel Basic
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/set-azstackhci
+https://learn.microsoft.com/powershell/module/az.stackhci/set-azstackhci
 #>
 function Set-AzStackHCI {
 [OutputType([System.Management.Automation.PSObject])]
@@ -3733,7 +3733,7 @@ IsRequired: True or False
 Result: Succeeded or Failed
 FailedNodes: List of nodes on which the test failed.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/test-azstackhciconnection
+https://learn.microsoft.com/powershell/module/az.stackhci/test-azstackhciconnection
 #>
 function Test-AzStackHCIConnection {
 [CmdletBinding(PositionalBinding=$false)]
@@ -3861,7 +3861,7 @@ Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Re
 PSCustomObject. Returns following Properties in PSCustomObject
 Result: Success or Failed or Cancelled.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/unregister-azstackhci
+https://learn.microsoft.com/powershell/module/az.stackhci/unregister-azstackhci
 #>
 function Unregister-AzStackHCI {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

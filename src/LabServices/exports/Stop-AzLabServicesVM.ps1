@@ -42,7 +42,7 @@ VM <VirtualMachine>:
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/stop-azlabservicesvm
+https://learn.microsoft.com/powershell/module/az.labservices/stop-azlabservicesvm
 #>
 function Stop-AzLabServicesVM {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]

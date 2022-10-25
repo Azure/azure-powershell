@@ -47,7 +47,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdscalingplan
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdscalingplan
 #>
 function Get-AzWvdScalingPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IScalingPlan])]

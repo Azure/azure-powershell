@@ -63,7 +63,7 @@ VIRTUALNETWORKRULE <INwRuleSetVirtualNetworkRules[]>: List of VirtualNetwork Rul
   [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Value that indicates whether to ignore missing Vnet Service Endpoint
   [SubnetId <String>]: Resource ID of Virtual Network Subnet
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubnetworkruleset
+https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubnetworkruleset
 #>
 function Set-AzEventHubNetworkRuleSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INetworkRuleSet])]

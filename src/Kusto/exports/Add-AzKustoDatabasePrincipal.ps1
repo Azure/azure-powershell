@@ -55,7 +55,7 @@ VALUE <IDatabasePrincipal[]>: The list of Kusto database principals.
   [Email <String>]: Database principal email if exists.
   [Fqn <String>]: Database principal fully qualified name.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/add-azkustodatabaseprincipal
+https://learn.microsoft.com/powershell/module/az.kusto/add-azkustodatabaseprincipal
 #>
 function Add-AzKustoDatabasePrincipal {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipal])]

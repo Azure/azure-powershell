@@ -25,7 +25,7 @@ Get-AzStackHCIRemoteSupportSessionHistory
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportsessionhistory
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportsessionhistory
 #>
 function Get-AzStackHCIRemoteSupportSessionHistory {
 [OutputType([System.Boolean])]

@@ -56,7 +56,7 @@ PARAMETER <IDataConnection>: Class representing a data connection.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldataconnection
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldataconnection
 #>
 function New-AzSynapseKustoPoolDataConnection {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection])]

@@ -38,7 +38,7 @@ VpcEndpointServiceName   : com.amazonaws.ypce.wus.123456789
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonPostgreSqlDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonPostgreSqlDataSourceObject
 #>
 function New-AzPurviewAmazonPostgreSqlDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlDataSource])]

@@ -27,7 +27,7 @@ Create an in-memory object for UrlRewriteAction.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRewriteAction
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlRewriteActionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlRewriteActionObject
 #>
 function New-AzCdnUrlRewriteActionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRewriteAction])]

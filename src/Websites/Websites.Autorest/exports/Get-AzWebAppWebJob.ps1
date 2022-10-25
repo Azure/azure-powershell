@@ -32,7 +32,7 @@ appService-test01/continuousjob-02
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.IWebJob
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azwebappwebjob
+https://learn.microsoft.com/powershell/module/az.websites/get-azwebappwebjob
 #>
 function Get-AzWebAppWebJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.IWebJob])]

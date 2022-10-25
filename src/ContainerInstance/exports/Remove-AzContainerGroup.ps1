@@ -43,7 +43,7 @@ INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/remove-azcontainergroup
+https://learn.microsoft.com/powershell/module/az.containerinstance/remove-azcontainergroup
 #>
 function Remove-AzContainerGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup])]

@@ -37,7 +37,7 @@ LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for cap
   [Name <String>]: The name (also known as the key) of the tag.
   [Value <String>]: The value of the tag.
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/new-azelastictagrule
+https://learn.microsoft.com/powershell/module/az.elastic/new-azelastictagrule
 #>
 function New-AzElasticTagRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules])]

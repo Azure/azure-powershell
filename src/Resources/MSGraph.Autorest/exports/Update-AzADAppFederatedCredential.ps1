@@ -25,7 +25,7 @@ Update-AzADAppFederatedCredential -ApplicationObjectId $appObjectId -FederatedCr
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/update-azadappfederatedcredential
+https://learn.microsoft.com/powershell/module/az.resources/update-azadappfederatedcredential
 #>
 function Update-AzADAppFederatedCredential {
 [OutputType([System.Boolean])]

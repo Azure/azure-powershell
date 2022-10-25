@@ -26,7 +26,7 @@ New-AzRoleManagementPolicyAssignment -Scope $scope -Name "0a4d3ef7-147b-4777-a95
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azrolemanagementpolicyassignment
+https://learn.microsoft.com/powershell/module/az.resources/new-azrolemanagementpolicyassignment
 #>
 function New-AzRoleManagementPolicyAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment])]

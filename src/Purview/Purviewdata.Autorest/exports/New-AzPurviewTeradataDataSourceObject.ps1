@@ -36,7 +36,7 @@ Scan                     :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.TeradataDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewTeradataDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewTeradataDataSourceObject
 #>
 function New-AzPurviewTeradataDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.TeradataDataSource])]

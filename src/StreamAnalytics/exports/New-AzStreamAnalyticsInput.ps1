@@ -38,7 +38,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdenti
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput
 #>
 function New-AzStreamAnalyticsInput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput])]

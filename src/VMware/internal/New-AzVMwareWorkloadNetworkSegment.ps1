@@ -27,7 +27,7 @@ Create a segment by id in a private cloud workload network.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkSegment
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworksegment
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworksegment
 #>
 function New-AzVMwareWorkloadNetworkSegment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkSegment])]

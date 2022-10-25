@@ -26,7 +26,7 @@ $response
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerAttachResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/add-azcontainerinstanceoutput
+https://learn.microsoft.com/powershell/module/az.containerinstance/add-azcontainerinstanceoutput
 #>
 function Add-AzContainerInstanceOutput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerAttachResponse])]

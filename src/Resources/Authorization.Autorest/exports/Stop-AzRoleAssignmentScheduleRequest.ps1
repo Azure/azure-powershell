@@ -45,7 +45,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/stop-azroleassignmentschedulerequest
+https://learn.microsoft.com/powershell/module/az.resources/stop-azroleassignmentschedulerequest
 #>
 function Stop-AzRoleAssignmentScheduleRequest {
 [OutputType([System.Boolean])]

@@ -57,7 +57,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/add-azsentinelthreatintelligenceindicatortag
+https://learn.microsoft.com/powershell/module/az.securityinsights/add-azsentinelthreatintelligenceindicatortag
 #>
 function Add-AzSentinelThreatIntelligenceIndicatorTag {
 [OutputType([System.Boolean])]
@@ -246,7 +246,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/connect-azsentineldataconnector
+https://learn.microsoft.com/powershell/module/az.securityinsights/connect-azsentineldataconnector
 #>
 function Connect-AzSentinelDataConnector {
 [OutputType([System.Boolean])]
@@ -479,7 +479,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/disconnect-azsentineldataconnector
+https://learn.microsoft.com/powershell/module/az.securityinsights/disconnect-azsentineldataconnector
 #>
 function Disconnect-AzSentinelDataConnector {
 [OutputType([System.Boolean])]
@@ -632,7 +632,7 @@ Expand an bookmark
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmarkExpandResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/expand-azsentinelbookmark
+https://learn.microsoft.com/powershell/module/az.securityinsights/expand-azsentinelbookmark
 #>
 function Expand-AzSentinelBookmark {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmarkExpandResponse])]
@@ -789,7 +789,7 @@ Expands an entity.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityExpandResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/expand-azsentinelentity
+https://learn.microsoft.com/powershell/module/az.securityinsights/expand-azsentinelentity
 #>
 function Expand-AzSentinelEntity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityExpandResponse])]
@@ -976,7 +976,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelofficeconsent
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelofficeconsent
 #>
 function Get-AzSentinelOfficeConsent {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IOfficeConsent])]
@@ -1126,7 +1126,7 @@ Lists all operations available Azure Security Insights Resource Provider.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentineloperation
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentineloperation
 #>
 function Get-AzSentinelOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IOperation])]
@@ -1237,7 +1237,7 @@ Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.RepoType
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRepo
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelsourcecontrolrepository
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelsourcecontrolrepository
 #>
 function Get-AzSentinelSourceControlRepository {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRepo])]
@@ -1393,7 +1393,7 @@ ACTION <IActionRequest>: Action for alert rule.
   [LogicAppResourceId <String>]: Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
   [TriggerUri <String>]: Logic App Callback URL for this specific workflow.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertruleaction
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertruleaction
 #>
 function New-AzSentinelAlertRuleAction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse])]
@@ -1577,7 +1577,7 @@ ALERTRULE <IAlertRule>: Alert rule.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertrule
 #>
 function New-AzSentinelAlertRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAlertRule])]
@@ -1746,7 +1746,7 @@ DATACONNECTOR <IDataConnector>: Data connector
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
 #>
 function New-AzSentinelDataConnector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IDataConnector])]
@@ -1920,7 +1920,7 @@ ENTITYQUERY <ICustomEntityQuery>: Specific entity query that supports put reques
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelentityquery
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelentityquery
 #>
 function New-AzSentinelEntityQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQuery])]
@@ -2125,7 +2125,7 @@ METADATA <IMetadataModel>: Metadata resource definition.
   [SupportTier <SupportTier?>]: Type of support for content item
   [Version <String>]: Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices.  Can also be any string, but then we cannot guarantee any version checks
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelmetadata
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelmetadata
 #>
 function New-AzSentinelMetadata {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IMetadataModel])]
@@ -2522,7 +2522,7 @@ THREATINTELLIGENCEPROPERTY <IThreatIntelligenceIndicatorModelForRequestBody>: Th
   [ValidFrom <String>]: Valid from
   [ValidUntil <String>]: Valid until
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelthreatintelligenceindicator
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelthreatintelligenceindicator
 #>
 function New-AzSentinelThreatIntelligenceIndicator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceInformation])]
@@ -2882,7 +2882,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelmetadata
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelmetadata
 #>
 function Remove-AzSentinelMetadata {
 [OutputType([System.Boolean])]
@@ -3065,7 +3065,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelofficeconsent
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelofficeconsent
 #>
 function Remove-AzSentinelOfficeConsent {
 [OutputType([System.Boolean])]
@@ -3247,7 +3247,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelsetting
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelsetting
 #>
 function Remove-AzSentinelSetting {
 [OutputType([System.Boolean])]
@@ -3430,7 +3430,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelthreatintelligenceindicator
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelthreatintelligenceindicator
 #>
 function Remove-AzSentinelThreatIntelligenceIndicator {
 [OutputType([System.Boolean])]
@@ -3617,7 +3617,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/test-azsentineldataconnectorscheckrequirement
+https://learn.microsoft.com/powershell/module/az.securityinsights/test-azsentineldataconnectorscheckrequirement
 #>
 function Test-AzSentinelDataConnectorsCheckRequirement {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IDataConnectorRequirementsState])]
@@ -3819,7 +3819,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelalertruleaction
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelalertruleaction
 #>
 function Update-AzSentinelAlertRuleAction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse])]
@@ -4019,7 +4019,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelalertrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelalertrule
 #>
 function Update-AzSentinelAlertRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAlertRule])]
@@ -4249,7 +4249,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelautomationrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelautomationrule
 #>
 function Update-AzSentinelAutomationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule])]
@@ -4443,7 +4443,7 @@ RELATION <IRelation>: Represents a relation between two resources
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [RelatedResourceId <String>]: The resource ID of the related resource
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelbookmarkrelation
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelbookmarkrelation
 #>
 function Update-AzSentinelBookmarkRelation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation])]
@@ -4659,7 +4659,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelbookmark
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelbookmark
 #>
 function Update-AzSentinelBookmark {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark])]
@@ -4853,7 +4853,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentineldataconnector
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentineldataconnector
 #>
 function Update-AzSentinelDataConnector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IDataConnector])]
@@ -5062,7 +5062,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelentityquery
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelentityquery
 #>
 function Update-AzSentinelEntityQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQuery])]
@@ -5268,7 +5268,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincidentcomment
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincidentcomment
 #>
 function Update-AzSentinelIncidentComment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment])]
@@ -5469,7 +5469,7 @@ RELATION <IRelation>: Represents a relation between two resources
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [RelatedResourceId <String>]: The resource ID of the related resource
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincidentrelation
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincidentrelation
 #>
 function Update-AzSentinelIncidentRelation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation])]
@@ -5684,7 +5684,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincident
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincident
 #>
 function Update-AzSentinelIncident {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident])]
@@ -5918,7 +5918,7 @@ METADATAPATCH <IMetadataPatch>: Metadata patch request body.
   [SupportTier <SupportTier?>]: Type of support for content item
   [Version <String>]: Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices.  Can also be any string, but then we cannot guarantee any version checks
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelmetadata
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelmetadata
 #>
 function Update-AzSentinelMetadata {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IMetadataModel])]
@@ -6319,7 +6319,7 @@ SETTING <ISettings>: The Setting.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelsetting
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelsetting
 #>
 function Update-AzSentinelSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISettings])]
@@ -6542,7 +6542,7 @@ PARSEDPATTERN <IThreatIntelligenceParsedPattern[]>: Parsed patterns
     [Value <String>]: Value of parsed pattern
     [ValueType <String>]: Type of the value
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelthreatintelligenceindicatortag
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelthreatintelligenceindicatortag
 #>
 function Update-AzSentinelThreatIntelligenceIndicatorTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceInformation])]
@@ -6972,7 +6972,7 @@ THREATINTELLIGENCEPROPERTY <IThreatIntelligenceIndicatorModelForRequestBody>: Th
   [ValidFrom <String>]: Valid from
   [ValidUntil <String>]: Valid until
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelthreatintelligenceindicator
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelthreatintelligenceindicator
 #>
 function Update-AzSentinelThreatIntelligenceIndicator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceInformation])]

@@ -49,7 +49,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 PROPERTY <IEndpointBaseUpdateProperties>: The Endpoint resource, which contains information about file sources and targets.
   [Description <String>]: A description for the Endpoint.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverendpoint
 #>
 function Update-AzStorageMoverEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/new-azadappfederatedidentitycredential
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azadappfederatedidentitycredential
 schema: 2.0.0
 ---
 

@@ -29,7 +29,7 @@ System.String[]
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmattestation
 #>
 function Remove-AzStackHCIVMAttestation {
 [OutputType([System.Management.Automation.PSObject])]

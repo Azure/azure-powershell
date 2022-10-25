@@ -68,7 +68,7 @@ INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
   [RegistrationDefinitionId <String>]: The GUID of the registration definition.
   [Scope <String>]: The scope of the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesdefinition
+https://learn.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesdefinition
 #>
 function Get-AzManagedServicesDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition])]

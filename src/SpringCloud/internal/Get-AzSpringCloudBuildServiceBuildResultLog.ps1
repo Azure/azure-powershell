@@ -27,7 +27,7 @@ Get a KPack build result log download URL.
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildservicebuildresultlog
+https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildservicebuildresultlog
 #>
 function Get-AzSpringCloudBuildServiceBuildResultLog {
 [OutputType([System.String])]

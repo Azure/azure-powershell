@@ -38,7 +38,7 @@ BODY <IPathsHxlydaApplicationsApplicationIdMicrosoftGraphRemovekeyPostRequestbod
   [KeyId <String>]: 
   [Proof <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadapplicationkey
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadapplicationkey
 #>
 function Remove-AzADApplicationKey {
 [OutputType([System.Boolean])]

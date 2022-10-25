@@ -27,7 +27,7 @@ Lists all of the available CDN REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnoperation
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnoperation
 #>
 function Get-AzCdnOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOperation])]

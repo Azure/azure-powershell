@@ -55,7 +55,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>: The cluster's external tenants.
   [Value <String>]: GUID representing an external tenant.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster
+https://learn.microsoft.com/powershell/module/az.kusto/update-azkustocluster
 #>
 function Update-AzKustoCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster])]

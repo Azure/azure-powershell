@@ -29,7 +29,7 @@ The operation returns properties of each orchestrator including version, availab
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult
 .Link
-https://docs.microsoft.com/powershell/module/az.aks/get-azakscontainerserviceorchestrator
+https://learn.microsoft.com/powershell/module/az.aks/get-azakscontainerserviceorchestrator
 #>
 function Get-AzAksContainerServiceOrchestrator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult])]

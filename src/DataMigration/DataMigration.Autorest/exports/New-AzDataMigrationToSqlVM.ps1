@@ -28,7 +28,7 @@ New-AzDataMigrationToSqlVM -ResourceGroupName "MyResourceGroup" -SqlVirtualMachi
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqlvm
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqlvm
 #>
 function New-AzDataMigrationToSqlVM {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM])]

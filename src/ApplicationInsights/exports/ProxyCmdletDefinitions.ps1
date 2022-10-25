@@ -46,7 +46,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightsapikey
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightsapikey
 #>
 function Get-AzApplicationInsightsApiKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey])]
@@ -249,7 +249,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscontinuousexport
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscontinuousexport
 #>
 function Get-AzApplicationInsightsContinuousExport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration])]
@@ -450,7 +450,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightslinkedstorageaccount
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightslinkedstorageaccount
 #>
 function Get-AzApplicationInsightsLinkedStorageAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20200301Preview.IComponentLinkedStorageAccounts])]
@@ -655,7 +655,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightswebtest
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightswebtest
 #>
 function Get-AzApplicationInsightsWebTest {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IWebTest])]
@@ -841,7 +841,7 @@ Get-AzApplicationInsights -ResourceGroupName "rgName" -Name "componentName" | Ne
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20200301Preview.IComponentLinkedStorageAccounts
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightslinkedstorageaccount
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightslinkedstorageaccount
 #>
 function New-AzApplicationInsightsLinkedStorageAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20200301Preview.IComponentLinkedStorageAccounts])]
@@ -1029,7 +1029,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightsapikey
+https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightsapikey
 #>
 function Remove-AzApplicationInsightsApiKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey])]
@@ -1226,7 +1226,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightscontinuousexport
+https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightscontinuousexport
 #>
 function Remove-AzApplicationInsightsContinuousExport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration])]
@@ -1423,7 +1423,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightslinkedstorageaccount
+https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightslinkedstorageaccount
 #>
 function Remove-AzApplicationInsightsLinkedStorageAccount {
 [OutputType([System.Boolean])]
@@ -1621,7 +1621,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightswebtest
+https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightswebtest
 #>
 function Remove-AzApplicationInsightsWebTest {
 [OutputType([System.Boolean])]
@@ -1817,7 +1817,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsights
+https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsights
 #>
 function Remove-AzApplicationInsights {
 [OutputType([System.Boolean])]
@@ -2014,7 +2014,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightslinkedstorageaccount
+https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightslinkedstorageaccount
 #>
 function Update-AzApplicationInsightsLinkedStorageAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20200301Preview.IComponentLinkedStorageAccounts])]
@@ -2212,7 +2212,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightswebtesttag
+https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightswebtesttag
 #>
 function Update-AzApplicationInsightsWebTestTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IWebTest])]
@@ -2412,7 +2412,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights
 #>
 function Get-AzApplicationInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent], [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan])]
@@ -2604,7 +2604,7 @@ New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights
 #>
 function New-AzApplicationInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent])]
@@ -2892,7 +2892,7 @@ New-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -Des
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsapikey
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsapikey
 #>
 function New-AzApplicationInsightsApiKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey])]
@@ -3072,7 +3072,7 @@ New-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport
 #>
 function New-AzApplicationInsightsContinuousExport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration])]
@@ -3329,7 +3329,7 @@ REQUESTHEADER <IHeaderField[]>: List of headers and their values to add to the W
   [Name <String>]: The name of the header.
   [Value <String>]: The value of the header.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightswebtest
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightswebtest
 #>
 function New-AzApplicationInsightsWebTest {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IWebTest])]
@@ -3648,7 +3648,7 @@ New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.WebTestGeolocation
 .Link
-https://docs.microsoft.com/powershell/module/az.ApplicationInsights/new-AzApplicationInsightsWebTestGeolocationObject
+https://learn.microsoft.com/powershell/module/az.ApplicationInsights/new-AzApplicationInsightsWebTestGeolocationObject
 #>
 function New-AzApplicationInsightsWebTestGeolocationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.WebTestGeolocation])]
@@ -3746,7 +3746,7 @@ New-AzApplicationInsightsWebTestHeaderFieldObject -Name 'version' -Value '2.0.1'
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.HeaderField
 .Link
-https://docs.microsoft.com/powershell/module/az.ApplicationInsights/new-AzApplicationInsightsWebTestHeaderFieldObject
+https://learn.microsoft.com/powershell/module/az.ApplicationInsights/new-AzApplicationInsightsWebTestHeaderFieldObject
 #>
 function New-AzApplicationInsightsWebTestHeaderFieldObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.HeaderField])]
@@ -3854,7 +3854,7 @@ Set-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport
 #>
 function Set-AzApplicationInsightsContinuousExport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration])]
@@ -4074,7 +4074,7 @@ Set-AzApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "test" -D
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightsdailycap
+https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightsdailycap
 #>
 function Set-AzApplicationInsightsDailyCap {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures])]
@@ -4249,7 +4249,7 @@ Set-AzApplicationInsightsPricingPlan -ResourceGroupName "testgroup" -Name "test"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan
+https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan
 #>
 function Set-AzApplicationInsightsPricingPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures])]
@@ -4434,7 +4434,7 @@ Update-AzApplicationInsights -ResourceGroupName "rgName" -Name "aiName" -PublicN
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights
 #>
 function Update-AzApplicationInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent])]

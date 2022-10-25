@@ -33,7 +33,7 @@ Supports $expand.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azaduserownedapplication
+https://learn.microsoft.com/powershell/module/az.resources/get-azaduserownedapplication
 #>
 function Get-AzADUserOwnedApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]

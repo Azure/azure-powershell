@@ -41,7 +41,7 @@ PARAMETER <IPrivateEndpointConnection>: A private endpoint connection
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustoprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoprivateendpointconnection
 #>
 function New-AzKustoPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IPrivateEndpointConnection])]

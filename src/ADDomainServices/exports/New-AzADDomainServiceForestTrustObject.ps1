@@ -25,7 +25,7 @@ New-AzADDomainServiceForestTrustObject -FriendlyName FriendlyNameTest
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ForestTrust
 .Link
-https://docs.microsoft.com/powershell/module/az.ADDomainService/new-AzADDomainServiceForestTrustObject
+https://learn.microsoft.com/powershell/module/az.ADDomainService/new-AzADDomainServiceForestTrustObject
 #>
 function New-AzADDomainServiceForestTrustObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ForestTrust])]

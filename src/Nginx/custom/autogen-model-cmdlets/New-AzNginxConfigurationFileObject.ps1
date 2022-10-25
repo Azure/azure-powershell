@@ -23,7 +23,7 @@ Create an in-memory object for NginxConfigurationFile.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxConfigurationFile
 .Link
-https://docs.microsoft.com/powershell/module/az.Nginx/new-AzNginxConfigurationFileObject
+https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxConfigurationFileObject
 #>
 function New-AzNginxConfigurationFileObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxConfigurationFile')]

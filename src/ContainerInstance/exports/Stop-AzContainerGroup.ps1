@@ -43,7 +43,7 @@ INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.containerinstance/stop-azcontainergroup
+https://learn.microsoft.com/powershell/module/az.containerinstance/stop-azcontainergroup
 #>
 function Stop-AzContainerGroup {
 [OutputType([System.Boolean])]

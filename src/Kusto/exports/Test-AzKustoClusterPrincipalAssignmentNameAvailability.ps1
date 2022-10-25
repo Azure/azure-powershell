@@ -49,7 +49,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/test-azkustoclusterprincipalassignmentnameavailability
+https://learn.microsoft.com/powershell/module/az.kusto/test-azkustoclusterprincipalassignmentnameavailability
 #>
 function Test-AzKustoClusterPrincipalAssignmentNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICheckNameResult])]

@@ -20,7 +20,7 @@ Updates the alert rule.
 Updates the alert rule.
 
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/Update-azsentinelalertrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/Update-azsentinelalertrule
 #>
 function Update-AzSentinelAlertRule {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule])]

@@ -48,7 +48,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription identifier.
   [WorkspaceName <String>]: The name of workspace resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareoperationresult
+https://learn.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareoperationresult
 #>
 function Get-AzHealthcareOperationResult {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IOperationResultsDescription])]
@@ -188,7 +188,7 @@ Lists all of the available operations supported by Microsoft Healthcare resource
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IOperationDetail
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareoperation
+https://learn.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareoperation
 #>
 function Get-AzHealthcareOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IOperationDetail])]
@@ -318,7 +318,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription identifier.
   [WorkspaceName <String>]: The name of workspace resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareprivateendpointconnection
 #>
 function Get-AzHealthcarePrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IPrivateEndpointConnectionDescription])]
@@ -489,7 +489,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription identifier.
   [WorkspaceName <String>]: The name of workspace resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareprivatelinkresource
+https://learn.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareprivatelinkresource
 #>
 function Get-AzHealthcarePrivateLinkResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IPrivateLinkResourceDescription])]
@@ -659,7 +659,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription identifier.
   [WorkspaceName <String>]: The name of workspace resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareworkspaceprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareworkspaceprivateendpointconnection
 #>
 function Get-AzHealthcareWorkspacePrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IPrivateEndpointConnectionDescription])]
@@ -829,7 +829,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription identifier.
   [WorkspaceName <String>]: The name of workspace resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareworkspaceprivatelinkresource
+https://learn.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareworkspaceprivatelinkresource
 #>
 function Get-AzHealthcareWorkspacePrivateLinkResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IPrivateLinkResourceDescription])]
@@ -997,7 +997,7 @@ PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: The list of private en
   [PrivateLinkServiceConnectionStateDescription <String>]: The reason for approval/rejection of the connection.
   [PrivateLinkServiceConnectionStateStatus <PrivateEndpointServiceConnectionStatus?>]: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisservice
+https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisservice
 #>
 function New-AzHealthcareApisService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription])]
@@ -1282,7 +1282,7 @@ eastus2  azpshcws azps_test_group
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisworkspace
+https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisworkspace
 #>
 function New-AzHealthcareApisWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace])]
@@ -1454,7 +1454,7 @@ eastus2  azpshcws/azpsdicom azps_test_group
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IDicomService
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcaredicomservice
+https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcaredicomservice
 #>
 function New-AzHealthcareDicomService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IDicomService])]
@@ -1660,7 +1660,7 @@ ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Conta
   [ImageName <String>]: The artifact name.
   [LoginServer <String>]: The Azure Container Registry login server.
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcarefhirservice
+https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcarefhirservice
 #>
 function New-AzHealthcareFhirService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirService])]
@@ -1956,7 +1956,7 @@ eastus2  azpshcws/azpsiotconnector/azpsfhirdestination azps_test_group
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotFhirDestination
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareiotconnectorfhirdestination
+https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareiotconnectorfhirdestination
 #>
 function New-AzHealthcareIotConnectorFhirDestination {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotFhirDestination])]
@@ -2146,7 +2146,7 @@ eastus2  azpshcws/azpsiotconnector azps_test_group
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareiotconnector
+https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareiotconnector
 #>
 function New-AzHealthcareIotConnector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotConnector])]
@@ -2356,7 +2356,7 @@ Update the state of the specified private endpoint connection associated with th
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IPrivateEndpointConnectionDescription
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareprivateendpointconnection
 #>
 function New-AzHealthcarePrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IPrivateEndpointConnectionDescription])]
@@ -2525,7 +2525,7 @@ Update the state of the specified private endpoint connection associated with th
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IPrivateEndpointConnectionDescription
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareworkspaceprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareworkspaceprivateendpointconnection
 #>
 function New-AzHealthcareWorkspacePrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IPrivateEndpointConnectionDescription])]
@@ -2714,7 +2714,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription identifier.
   [WorkspaceName <String>]: The name of workspace resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareprivateendpointconnection
 #>
 function Remove-AzHealthcarePrivateEndpointConnection {
 [OutputType([System.Boolean])]
@@ -2899,7 +2899,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription identifier.
   [WorkspaceName <String>]: The name of workspace resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareworkspaceprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareworkspaceprivateendpointconnection
 #>
 function Remove-AzHealthcareWorkspacePrivateEndpointConnection {
 [OutputType([System.Boolean])]

@@ -20,7 +20,7 @@ Get requirements state for a data connector type.
 Get requirements state for a data connector type.
 
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/test-azsentineldataconnectorcheckrequirement
+https://learn.microsoft.com/powershell/module/az.securityinsights/test-azsentineldataconnectorcheckrequirement
 #>
 function Test-AzSentinelDataConnectorCheckRequirement {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnectorsCheckRequirements])]

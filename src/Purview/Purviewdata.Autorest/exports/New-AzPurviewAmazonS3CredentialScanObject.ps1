@@ -43,7 +43,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3CredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3CredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3CredentialScanObject
 #>
 function New-AzPurviewAmazonS3CredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3CredentialScan])]

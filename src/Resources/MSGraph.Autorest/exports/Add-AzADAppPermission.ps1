@@ -37,7 +37,7 @@ Add-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -ApiId 0000
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/add-azadapppermission
+https://learn.microsoft.com/powershell/module/az.resources/add-azadapppermission
 #>
 function Add-AzADAppPermission {
 [OutputType([System.Boolean])]

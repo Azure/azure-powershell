@@ -35,7 +35,7 @@ Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadgroupmember
+https://learn.microsoft.com/powershell/module/az.resources/get-azadgroupmember
 #>
 function Get-AzADGroupMember {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject])]

@@ -231,7 +231,7 @@ RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>:
   [TeradataScanRulesetName <String>]: 
   [TeradataScanRulesetType <ScanRulesetType?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSynapseWorkspaceMsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSynapseWorkspaceMsiScanObject
 #>
 function New-AzPurviewAzureSynapseWorkspaceMsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceMsiScan])]

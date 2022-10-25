@@ -47,7 +47,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusnamespaceauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnamespaceauthorizationrule
 #>
 function Get-AzServiceBusNamespaceAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]

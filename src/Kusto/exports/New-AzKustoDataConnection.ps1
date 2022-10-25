@@ -29,7 +29,7 @@ New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkusto
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustodataconnection
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodataconnection
 #>
 function New-AzKustoDataConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection])]

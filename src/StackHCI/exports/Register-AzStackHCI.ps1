@@ -34,7 +34,7 @@ Result: Success or Failed or Cancelled.
 ResourceId: Resource ID of the resource created in Azure.
 PortalResourceURL: Azure Portal Resource URL.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/register-azstackhci
+https://learn.microsoft.com/powershell/module/az.stackhci/register-azstackhci
 #>
 function Register-AzStackHCI {
 [CmdletBinding(PositionalBinding=$false)]

@@ -25,7 +25,7 @@ New-AzContainerGroupPortObject -Port 8000 -Protocol TCP
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Port
 .Link
-https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupPortObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupPortObject
 #>
 function New-AzContainerGroupPortObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Port])]

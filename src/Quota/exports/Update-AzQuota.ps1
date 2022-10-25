@@ -58,7 +58,7 @@ INPUTOBJECT <IQuotaIdentity>: Identity Parameter
   [ResourceName <String>]: Resource name for a given resource provider. For example:         - SKU name for Microsoft.Compute         - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices          For Microsoft.Network PublicIPAddresses.
   [Scope <String>]: The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.quota/update-azquota
+https://learn.microsoft.com/powershell/module/az.quota/update-azquota
 #>
 function Update-AzQuota {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase])]

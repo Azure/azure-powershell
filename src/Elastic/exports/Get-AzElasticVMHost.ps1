@@ -28,7 +28,7 @@ VMResourceId
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IVMResources
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticvmhost
+https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticvmhost
 #>
 function Get-AzElasticVMHost {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IVMResources])]

@@ -27,7 +27,7 @@ Create an Annotation of an Application Insights component.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IAnnotation
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsannotation
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsannotation
 #>
 function New-AzApplicationInsightsAnnotation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IAnnotation])]

@@ -25,7 +25,7 @@ Get-AzKustoDatabasePrincipal -ResourceGroupName testrg -ClusterName testnewkusto
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipal
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustodatabaseprincipal
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustodatabaseprincipal
 #>
 function Get-AzKustoDatabasePrincipal {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipal])]

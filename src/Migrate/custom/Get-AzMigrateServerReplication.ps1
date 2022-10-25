@@ -19,7 +19,7 @@ Retrieves the details of the replicating server.
 .Description
 The Get-AzMigrateServerReplication cmdlet retrieves the object for the replicating server.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateserverreplication
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateserverreplication
 #>
 function Get-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem])]

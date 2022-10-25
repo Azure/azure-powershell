@@ -47,7 +47,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustoattacheddatabaseconfiguration
+https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustoattacheddatabaseconfiguration
 #>
 function Remove-AzKustoAttachedDatabaseConfiguration {
 [OutputType([System.Boolean])]

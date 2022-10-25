@@ -42,7 +42,7 @@ RELATION <IRelation>: Represents a relation between two resources
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [RelatedResourceId <String>]: The resource ID of the related resource
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelbookmarkrelation
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelbookmarkrelation
 #>
 function New-AzSentinelBookmarkRelation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation])]

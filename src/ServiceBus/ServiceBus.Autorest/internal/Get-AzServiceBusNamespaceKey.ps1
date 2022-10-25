@@ -27,7 +27,7 @@ Gets the primary and secondary connection strings for the namespace.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusnamespacekey
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnamespacekey
 #>
 function Get-AzServiceBusNamespaceKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]

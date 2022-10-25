@@ -47,7 +47,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/remove-azcontainerapp
+https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerapp
 #>
 function Remove-AzContainerApp {
 [OutputType([System.Boolean])]

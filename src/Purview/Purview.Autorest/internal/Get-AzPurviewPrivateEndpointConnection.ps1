@@ -45,7 +45,7 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The subscription identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewprivateendpointconnection
 #>
 function Get-AzPurviewPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection])]

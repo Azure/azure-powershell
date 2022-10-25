@@ -107,7 +107,7 @@ METADATAPATCH <IMetadataPatch>: Metadata patch request body.
   [SupportTier <SupportTier?>]: Type of support for content item
   [Version <String>]: Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices.  Can also be any string, but then we cannot guarantee any version checks
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelmetadata
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelmetadata
 #>
 function Update-AzSentinelMetadata {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IMetadataModel])]

@@ -40,7 +40,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBiMsiScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIMsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIMsiScanObject
 #>
 function New-AzPurviewPowerBIMsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIMsiScan])]

@@ -25,7 +25,7 @@ New-AzCdnDeliveryRuleQueryStringConditionObject -Name QueryString -ParameterOper
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleQueryStringCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleQueryStringConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleQueryStringConditionObject
 #>
 function New-AzCdnDeliveryRuleQueryStringConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleQueryStringCondition])]

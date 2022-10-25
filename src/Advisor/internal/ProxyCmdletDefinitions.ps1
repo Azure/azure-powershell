@@ -27,7 +27,7 @@ Lists all the available Advisor REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IOperationEntity
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/get-azadvisoroperation
+https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisoroperation
 #>
 function Get-AzAdvisorOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IOperationEntity])]
@@ -156,7 +156,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
   [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/get-azadvisorrecommendationgeneratestatus
+https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorrecommendationgeneratestatus
 #>
 function Get-AzAdvisorRecommendationGenerateStatus {
 [OutputType([System.Boolean])]
@@ -311,7 +311,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
   [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/get-azadvisorrecommendationmetadata
+https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorrecommendationmetadata
 #>
 function Get-AzAdvisorRecommendationMetadata {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IMetadataEntity])]
@@ -453,7 +453,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
   [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/get-azadvisorrecommendation
+https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorrecommendation
 #>
 function Get-AzAdvisorRecommendation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
@@ -631,7 +631,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
   [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/get-azadvisorsuppression
+https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorsuppression
 #>
 function Get-AzAdvisorSuppression {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ISuppressionContract])]
@@ -826,7 +826,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
   [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/new-azadvisorconfiguration
+https://learn.microsoft.com/powershell/module/az.advisor/new-azadvisorconfiguration
 #>
 function New-AzAdvisorConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData])]
@@ -1025,7 +1025,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
   [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/new-azadvisorrecommendation
+https://learn.microsoft.com/powershell/module/az.advisor/new-azadvisorrecommendation
 #>
 function New-AzAdvisorRecommendation {
 [OutputType([System.Boolean])]
@@ -1162,7 +1162,7 @@ Use this API to create or update the snoozed or dismissed status of a recommenda
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ISuppressionContract
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/new-azadvisorsuppression
+https://learn.microsoft.com/powershell/module/az.advisor/new-azadvisorsuppression
 #>
 function New-AzAdvisorSuppression {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ISuppressionContract])]
@@ -1319,7 +1319,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
   [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/remove-azadvisorsuppression
+https://learn.microsoft.com/powershell/module/az.advisor/remove-azadvisorsuppression
 #>
 function Remove-AzAdvisorSuppression {
 [OutputType([System.Boolean])]

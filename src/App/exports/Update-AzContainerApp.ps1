@@ -118,7 +118,7 @@ TEMPLATEVOLUME <IVolume[]>: List of volume definitions for the Container App.
   [StorageName <String>]: Name of storage resource. No need to provide for EmptyDir.
   [StorageType <StorageType?>]: Storage type for the volume. If not provided, use EmptyDir.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/update-azcontainerapp
+https://learn.microsoft.com/powershell/module/az.app/update-azcontainerapp
 #>
 function Update-AzContainerApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp])]

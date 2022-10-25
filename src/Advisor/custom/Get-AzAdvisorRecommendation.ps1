@@ -19,7 +19,7 @@ Obtains details of a cached recommendation.
 .Description
 Obtains details of a cached recommendation.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/Get-AzAdvisorRecommendation
+https://learn.microsoft.com/powershell/module/az.advisor/Get-AzAdvisorRecommendation
 #>
 function Get-AzAdvisorRecommendation {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]

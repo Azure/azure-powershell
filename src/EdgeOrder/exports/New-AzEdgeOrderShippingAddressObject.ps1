@@ -38,7 +38,7 @@ ZipExtendedCode :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
 .Link
-https://docs.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderShippingAddressObject
+https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderShippingAddressObject
 #>
 function New-AzEdgeOrderShippingAddressObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress])]

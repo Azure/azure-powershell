@@ -294,7 +294,7 @@ INPUTOBJECT <IMicrosoftGraphServicePrincipal>: key: service principal object
     [DisplayName <String>]: The name displayed in directory
   [TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipal
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipal
 #>
 function Remove-AzADServicePrincipal {
 [OutputType([System.Boolean])]

@@ -98,7 +98,7 @@ REQUEST <IResourceNameAvailabilityRequest>: Resource name availability request c
   Type <CheckNameResourceTypes>: Resource type used for verification.
   [IsFqdn <Boolean?>]: Is fully qualified domain name.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/test-aznameavailability
+https://learn.microsoft.com/powershell/module/az.functions/test-aznameavailability
 #>
 function Test-AzNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceNameAvailability])]

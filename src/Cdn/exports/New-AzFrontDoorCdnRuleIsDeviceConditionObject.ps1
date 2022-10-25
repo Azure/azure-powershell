@@ -25,7 +25,7 @@ New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValu
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleIsDeviceCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleIsDeviceConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleIsDeviceConditionObject
 #>
 function New-AzFrontDoorCdnRuleIsDeviceConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleIsDeviceCondition])]

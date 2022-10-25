@@ -83,7 +83,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincident
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincident
 #>
 function Update-AzSentinelIncident {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident])]

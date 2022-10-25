@@ -23,7 +23,7 @@ Create an in-memory object for AzureResourceGroupMsiScan.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupMsiScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupMsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupMsiScanObject
 #>
 function New-AzPurviewAzureResourceGroupMsiScanObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupMsiScan')]

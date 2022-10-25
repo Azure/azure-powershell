@@ -36,7 +36,7 @@ Tenant                   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBiDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIDataSourceObject
 #>
 function New-AzPurviewPowerBIDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIDataSource])]

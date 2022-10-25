@@ -61,7 +61,7 @@ MASTER <IServer>: The source server object to create replica from.
   [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlreplica
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlreplica
 #>
 function New-AzMySqlReplica {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]

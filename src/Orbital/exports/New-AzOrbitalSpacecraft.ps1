@@ -38,7 +38,7 @@ LINK <ISpacecraftLink[]>: Immutable list of Spacecraft links.
   Name <String>: Link name.
   Polarization <Polarization>: Polarization. e.g. (RHCP, LHCP).
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraft
+https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraft
 #>
 function New-AzOrbitalSpacecraft {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft])]

@@ -27,7 +27,7 @@ Lists all the available BotService operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationEntity
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/get-azoperation
+https://learn.microsoft.com/powershell/module/az.botservice/get-azoperation
 #>
 function Get-AzOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationEntity])]

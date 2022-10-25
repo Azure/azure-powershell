@@ -25,7 +25,7 @@ New-AzVMwareCluster -Name azps_test_cluster -PrivateCloudName azps_test_cloud -R
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICluster
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwarecluster
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwarecluster
 #>
 function New-AzVMwareCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICluster])]

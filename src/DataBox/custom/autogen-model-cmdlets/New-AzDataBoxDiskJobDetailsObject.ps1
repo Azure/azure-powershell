@@ -23,7 +23,7 @@ Create an in-memory object for DataBoxDiskJobDetails.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxDiskJobDetails
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxDiskJobDetailsObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxDiskJobDetailsObject
 #>
 function New-AzDataBoxDiskJobDetailsObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxDiskJobDetails')]

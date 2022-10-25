@@ -28,7 +28,7 @@ Created  3
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.IClusterJob
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsclusterstreamingjob
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsclusterstreamingjob
 #>
 function Get-AzStreamAnalyticsClusterStreamingJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.IClusterJob])]
@@ -206,7 +206,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticscluster
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticscluster
 #>
 function Get-AzStreamAnalyticsCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.ICluster])]
@@ -392,7 +392,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsfunction
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsfunction
 #>
 function Get-AzStreamAnalyticsFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction])]
@@ -592,7 +592,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsinput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsinput
 #>
 function Get-AzStreamAnalyticsInput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput])]
@@ -800,7 +800,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsjob
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsjob
 #>
 function Get-AzStreamAnalyticsJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob])]
@@ -993,7 +993,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsoutput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsoutput
 #>
 function Get-AzStreamAnalyticsOutput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput])]
@@ -1164,7 +1164,7 @@ StreamingClusters Microsoft.StreamAnalytics/quotas
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ISubscriptionQuota
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsquota
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsquota
 #>
 function Get-AzStreamAnalyticsQuota {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ISubscriptionQuota])]
@@ -1324,7 +1324,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticstransformation
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticstransformation
 #>
 function Get-AzStreamAnalyticsTransformation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ITransformation])]
@@ -1481,7 +1481,7 @@ West Central US sac-ps-test01 Microsoft.StreamAnalytics/clusters
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.ICluster
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticscluster
+https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticscluster
 #>
 function New-AzStreamAnalyticsCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.ICluster])]
@@ -1680,7 +1680,7 @@ tranf-01 Microsoft.StreamAnalytics/streamingjobs/transformations ec0c7238-6bb2-4
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ITransformation
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation
+https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation
 #>
 function New-AzStreamAnalyticsTransformation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ITransformation])]
@@ -1876,7 +1876,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticscluster
+https://learn.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticscluster
 #>
 function Remove-AzStreamAnalyticsCluster {
 [OutputType([System.Boolean])]
@@ -2063,7 +2063,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticsfunction
+https://learn.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticsfunction
 #>
 function Remove-AzStreamAnalyticsFunction {
 [OutputType([System.Boolean])]
@@ -2244,7 +2244,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticsinput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticsinput
 #>
 function Remove-AzStreamAnalyticsInput {
 [OutputType([System.Boolean])]
@@ -2425,7 +2425,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticsjob
+https://learn.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticsjob
 #>
 function Remove-AzStreamAnalyticsJob {
 [OutputType([System.Boolean])]
@@ -2611,7 +2611,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticsoutput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticsoutput
 #>
 function Remove-AzStreamAnalyticsOutput {
 [OutputType([System.Boolean])]
@@ -2794,7 +2794,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob
+https://learn.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob
 #>
 function Start-AzStreamAnalyticsJob {
 [OutputType([System.Boolean])]
@@ -2996,7 +2996,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob
+https://learn.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob
 #>
 function Stop-AzStreamAnalyticsJob {
 [OutputType([System.Boolean])]
@@ -3193,7 +3193,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticscluster
+https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticscluster
 #>
 function Update-AzStreamAnalyticsCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.ICluster])]
@@ -3421,7 +3421,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticstransformation
+https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticstransformation
 #>
 function Update-AzStreamAnalyticsTransformation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ITransformation])]
@@ -3604,7 +3604,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdenti
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsdefaultfunctiondefinition
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsdefaultfunctiondefinition
 #>
 function Get-AzStreamAnalyticsDefaultFunctionDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction])]
@@ -3786,7 +3786,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdenti
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsfunction
+https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsfunction
 #>
 function New-AzStreamAnalyticsFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction])]
@@ -3967,7 +3967,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdenti
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput
 #>
 function New-AzStreamAnalyticsInput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput])]
@@ -4141,7 +4141,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdenti
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob
+https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob
 #>
 function New-AzStreamAnalyticsJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob])]
@@ -4384,7 +4384,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdenti
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput
 #>
 function New-AzStreamAnalyticsOutput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput])]
@@ -4560,7 +4560,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdenti
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsfunction
+https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsfunction
 #>
 function Test-AzStreamAnalyticsFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus])]
@@ -4719,7 +4719,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdenti
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
 #>
 function Test-AzStreamAnalyticsInput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus])]
@@ -4878,7 +4878,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdenti
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsoutput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsoutput
 #>
 function Test-AzStreamAnalyticsOutput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus])]
@@ -5061,7 +5061,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsfunction
+https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsfunction
 #>
 function Update-AzStreamAnalyticsFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction])]
@@ -5263,7 +5263,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsinput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsinput
 #>
 function Update-AzStreamAnalyticsInput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput])]
@@ -5458,7 +5458,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsjob
+https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsjob
 #>
 function Update-AzStreamAnalyticsJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob])]
@@ -5714,7 +5714,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsoutput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsoutput
 #>
 function Update-AzStreamAnalyticsOutput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput])]

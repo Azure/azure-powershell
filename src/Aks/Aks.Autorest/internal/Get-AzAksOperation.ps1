@@ -27,7 +27,7 @@ Gets a list of compute operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IOperationValue
 .Link
-https://docs.microsoft.com/powershell/module/az.aks/get-azaksoperation
+https://learn.microsoft.com/powershell/module/az.aks/get-azaksoperation
 #>
 function Get-AzAksOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IOperationValue])]

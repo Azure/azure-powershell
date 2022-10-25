@@ -29,7 +29,7 @@ confluent   Microsoft.Confluent/offertypes
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResource
 .Link
-https://docs.microsoft.com/powershell/module/az.confluent/get-azconfluentmarketplaceagreement
+https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentmarketplaceagreement
 #>
 function Get-AzConfluentMarketplaceAgreement {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResource])]
@@ -186,7 +186,7 @@ INPUTOBJECT <IConfluentIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Resource group name
   [SubscriptionId <String>]: Microsoft Azure subscription id
 .Link
-https://docs.microsoft.com/powershell/module/az.confluent/get-azconfluentorganization
+https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentorganization
 #>
 function Get-AzConfluentOrganization {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOrganizationResource])]
@@ -329,7 +329,7 @@ eastus   confluentorg-02-pwsh Microsoft.Confluent/organizations
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOrganizationResource
 .Link
-https://docs.microsoft.com/powershell/module/az.confluent/new-azconfluentorganization
+https://learn.microsoft.com/powershell/module/az.confluent/new-azconfluentorganization
 #>
 function New-AzConfluentOrganization {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOrganizationResource])]
@@ -550,7 +550,7 @@ INPUTOBJECT <IConfluentIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Resource group name
   [SubscriptionId <String>]: Microsoft Azure subscription id
 .Link
-https://docs.microsoft.com/powershell/module/az.confluent/update-azconfluentorganization
+https://learn.microsoft.com/powershell/module/az.confluent/update-azconfluentorganization
 #>
 function Update-AzConfluentOrganization {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOrganizationResource])]
@@ -713,7 +713,7 @@ INPUTOBJECT <IConfluentIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Resource group name
   [SubscriptionId <String>]: Microsoft Azure subscription id
 .Link
-https://docs.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
+https://learn.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
 #>
 function Remove-AzConfluentOrganization {
 [OutputType([System.Boolean])]

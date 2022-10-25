@@ -25,7 +25,7 @@ Initialize-AzBotServicePrepareDeploy -CodeDir D:\zips\MyEchoBot -ProjFileName My
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/initialize-azbotservicepreparedeploy
+https://learn.microsoft.com/powershell/module/az.botservice/initialize-azbotservicepreparedeploy
 #>
 function Initialize-AzBotServicePrepareDeploy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]

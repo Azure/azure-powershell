@@ -25,7 +25,7 @@ Get-AzStaticWebAppSetting -ResourceGroupName resourceGroup -Name staticweb00
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappsetting
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappsetting
 #>
 function Get-AzStaticWebAppSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary])]

@@ -17,7 +17,7 @@
 
 The config framework was introduced in Az 8, May 2022 to set up a standard of how configs are used by both developers and end users of Azure PowerShell.
 
-This document will go over two most common scenarios for developers. As for how to use the config framework in PowerShell please refer to [Update-AzConfig](https://docs.microsoft.com/powershell/module/az.accounts/update-azconfig).
+This document will go over two most common scenarios for developers. As for how to use the config framework in PowerShell please refer to [Update-AzConfig](https://learn.microsoft.com/powershell/module/az.accounts/update-azconfig).
 
 ## Guide: How to Add a New Config
 

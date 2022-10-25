@@ -34,7 +34,7 @@ BUILDPACKGROUP <IBuildpacksGroupProperties[]>: Builder buildpack groups.
     [Id <String>]: Id of the buildpack
   [Name <String>]: Buildpack group name
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildservicebuilder
+https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildservicebuilder
 #>
 function New-AzSpringCloudBuildServiceBuilder {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuilderResource])]

@@ -60,7 +60,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareaddon
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareaddon
 #>
 function Get-AzVMwareAddon {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon])]
@@ -211,7 +211,7 @@ Lists all of the available operations
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareoperation
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareoperation
 #>
 function Get-AzVMwareOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IOperation])]
@@ -353,7 +353,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwarescriptcmdlet
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarescriptcmdlet
 #>
 function Get-AzVMwareScriptCmdlet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptCmdlet])]
@@ -546,7 +546,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwarescriptexecutionlog
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarescriptexecutionlog
 #>
 function Get-AzVMwareScriptExecutionLog {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution])]
@@ -733,7 +733,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwarescriptexecution
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarescriptexecution
 #>
 function Get-AzVMwareScriptExecution {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution])]
@@ -917,7 +917,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwarescriptpackage
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarescriptpackage
 #>
 function Get-AzVMwareScriptPackage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptPackage])]
@@ -1101,7 +1101,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkdhcp
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkdhcp
 #>
 function Get-AzVMwareWorkloadNetworkDhcp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDhcp])]
@@ -1285,7 +1285,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkdnsservice
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkdnsservice
 #>
 function Get-AzVMwareWorkloadNetworkDnsService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsService])]
@@ -1469,7 +1469,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkdnszone
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkdnszone
 #>
 function Get-AzVMwareWorkloadNetworkDnsZone {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsZone])]
@@ -1653,7 +1653,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkgateway
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkgateway
 #>
 function Get-AzVMwareWorkloadNetworkGateway {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkGateway])]
@@ -1837,7 +1837,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkportmirroring
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkportmirroring
 #>
 function Get-AzVMwareWorkloadNetworkPortMirroring {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPortMirroring])]
@@ -2021,7 +2021,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkpublicip
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkpublicip
 #>
 function Get-AzVMwareWorkloadNetworkPublicIP {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPublicIP])]
@@ -2205,7 +2205,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworksegment
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworksegment
 #>
 function Get-AzVMwareWorkloadNetworkSegment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkSegment])]
@@ -2389,7 +2389,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkvmgroup
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkvmgroup
 #>
 function Get-AzVMwareWorkloadNetworkVMGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVMGroup])]
@@ -2573,7 +2573,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkvm
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkvm
 #>
 function Get-AzVMwareWorkloadNetworkVM {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVirtualMachine])]
@@ -2756,7 +2756,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/lock-azvmwarevirtualmachinemovement
+https://learn.microsoft.com/powershell/module/az.vmware/lock-azvmwarevirtualmachinemovement
 #>
 function Lock-AzVMwareVirtualMachineMovement {
 [OutputType([System.Boolean])]
@@ -2933,7 +2933,7 @@ To create the parameters described below, construct a hash table containing the 
 PROPERTY <IAddonProperties>: The properties of an addon resource
   AddonType <AddonType>: The type of private cloud addon
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareaddon
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareaddon
 #>
 function New-AzVMwareAddon {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon])]
@@ -3105,7 +3105,7 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
   [Ssl <SslEnum?>]: Protect LDAP communication using SSL certificate (LDAPS)
   [Username <String>]: The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloud
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloud
 #>
 function New-AzVMwarePrivateCloud {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud])]
@@ -3381,7 +3381,7 @@ PARAMETER <IScriptExecutionParameter[]>: Parameters the script will accept
   Name <String>: The parameter name
   Type <ScriptExecutionParameterType>: The type of execution parameter
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwarescriptexecution
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwarescriptexecution
 #>
 function New-AzVMwareScriptExecution {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution])]
@@ -3587,7 +3587,7 @@ Create dhcp by id in a private cloud workload network.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDhcp
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdhcp
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdhcp
 #>
 function New-AzVMwareWorkloadNetworkDhcp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDhcp])]
@@ -3757,7 +3757,7 @@ Create a DNS service by id in a private cloud workload network.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsService
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdnsservice
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdnsservice
 #>
 function New-AzVMwareWorkloadNetworkDnsService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsService])]
@@ -3946,7 +3946,7 @@ Create a DNS zone by id in a private cloud workload network.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsZone
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdnszone
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdnszone
 #>
 function New-AzVMwareWorkloadNetworkDnsZone {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsZone])]
@@ -4135,7 +4135,7 @@ Create a port mirroring profile by id in a private cloud workload network.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPortMirroring
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkportmirroring
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkportmirroring
 #>
 function New-AzVMwareWorkloadNetworkPortMirroring {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPortMirroring])]
@@ -4317,7 +4317,7 @@ Create a Public IP Block by id in a private cloud workload network.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPublicIP
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkpublicip
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkpublicip
 #>
 function New-AzVMwareWorkloadNetworkPublicIP {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPublicIP])]
@@ -4480,7 +4480,7 @@ Create a segment by id in a private cloud workload network.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkSegment
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworksegment
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworksegment
 #>
 function New-AzVMwareWorkloadNetworkSegment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkSegment])]
@@ -4662,7 +4662,7 @@ Create a vm group by id in a private cloud workload network.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVMGroup
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkvmgroup
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkvmgroup
 #>
 function New-AzVMwareWorkloadNetworkVMGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVMGroup])]
@@ -4867,7 +4867,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareaddon
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareaddon
 #>
 function Remove-AzVMwareAddon {
 [OutputType([System.Boolean])]
@@ -5067,7 +5067,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareprivatecloud
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareprivatecloud
 #>
 function Remove-AzVMwarePrivateCloud {
 [OutputType([System.Boolean])]
@@ -5259,7 +5259,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwarescriptexecution
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwarescriptexecution
 #>
 function Remove-AzVMwareScriptExecution {
 [OutputType([System.Boolean])]
@@ -5457,7 +5457,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkdhcp
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkdhcp
 #>
 function Remove-AzVMwareWorkloadNetworkDhcp {
 [OutputType([System.Boolean])]
@@ -5655,7 +5655,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkdnsservice
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkdnsservice
 #>
 function Remove-AzVMwareWorkloadNetworkDnsService {
 [OutputType([System.Boolean])]
@@ -5853,7 +5853,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkdnszone
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkdnszone
 #>
 function Remove-AzVMwareWorkloadNetworkDnsZone {
 [OutputType([System.Boolean])]
@@ -6051,7 +6051,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkportmirroring
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkportmirroring
 #>
 function Remove-AzVMwareWorkloadNetworkPortMirroring {
 [OutputType([System.Boolean])]
@@ -6249,7 +6249,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkpublicip
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkpublicip
 #>
 function Remove-AzVMwareWorkloadNetworkPublicIP {
 [OutputType([System.Boolean])]
@@ -6447,7 +6447,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworksegment
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworksegment
 #>
 function Remove-AzVMwareWorkloadNetworkSegment {
 [OutputType([System.Boolean])]
@@ -6645,7 +6645,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkvmgroup
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkvmgroup
 #>
 function Remove-AzVMwareWorkloadNetworkVMGroup {
 [OutputType([System.Boolean])]
@@ -6843,7 +6843,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkdhcp
+https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkdhcp
 #>
 function Update-AzVMwareWorkloadNetworkDhcp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDhcp])]
@@ -7054,7 +7054,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkdnsservice
+https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkdnsservice
 #>
 function Update-AzVMwareWorkloadNetworkDnsService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsService])]
@@ -7284,7 +7284,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkdnszone
+https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkdnszone
 #>
 function Update-AzVMwareWorkloadNetworkDnsZone {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsZone])]
@@ -7514,7 +7514,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkportmirroring
+https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkportmirroring
 #>
 function Update-AzVMwareWorkloadNetworkPortMirroring {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPortMirroring])]
@@ -7737,7 +7737,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworksegment
+https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworksegment
 #>
 function Update-AzVMwareWorkloadNetworkSegment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkSegment])]
@@ -7960,7 +7960,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkvmgroup
+https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkvmgroup
 #>
 function Update-AzVMwareWorkloadNetworkVMGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVMGroup])]

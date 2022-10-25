@@ -25,7 +25,7 @@ New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.SystemAssignedIdentityAuthInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkersystemassignedidentityauthinfoobject
+https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkersystemassignedidentityauthinfoobject
 #>
 function New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.SystemAssignedIdentityAuthInfo])]

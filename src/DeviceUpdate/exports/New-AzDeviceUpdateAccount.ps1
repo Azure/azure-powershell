@@ -41,7 +41,7 @@ PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: List of private endpoi
   [PrivateLinkServiceConnectionStateDescription <String>]: The reason for approval/rejection of the connection.
   [PrivateLinkServiceConnectionStateStatus <PrivateEndpointServiceConnectionStatus?>]: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateaccount
+https://learn.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateaccount
 #>
 function New-AzDeviceUpdateAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IAccount])]

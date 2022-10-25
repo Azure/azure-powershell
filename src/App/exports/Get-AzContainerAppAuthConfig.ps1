@@ -45,7 +45,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/get-azcontainerappauthconfig
+https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappauthconfig
 #>
 function Get-AzContainerAppAuthConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IAuthConfig])]

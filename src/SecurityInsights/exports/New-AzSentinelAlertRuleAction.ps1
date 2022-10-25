@@ -27,7 +27,7 @@ New-AzSentinelAlertRuleAction -ResourceGroupName "mySentinelResourceGroupName" -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertruleaction
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertruleaction
 #>
 function New-AzSentinelAlertRuleAction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse])]

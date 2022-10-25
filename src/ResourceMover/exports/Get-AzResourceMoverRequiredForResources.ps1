@@ -30,7 +30,7 @@ PS C:\> Get-AzResourceMoverRequiredForResources -MoveCollectionName "PS-centralu
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/get-azresourcemoverrequiredforresources
+https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemoverrequiredforresources
 #>
 function Get-AzResourceMoverRequiredForResources {
 [OutputType([System.String])]

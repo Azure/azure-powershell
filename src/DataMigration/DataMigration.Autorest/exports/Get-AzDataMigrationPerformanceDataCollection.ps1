@@ -29,7 +29,7 @@ Get-AzDataMigrationPerformanceDataCollection -ConfigFilePath "C:\Users\user\docu
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationperformancedatacollection
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationperformancedatacollection
 #>
 function Get-AzDataMigrationPerformanceDataCollection {
 [OutputType([System.Boolean])]

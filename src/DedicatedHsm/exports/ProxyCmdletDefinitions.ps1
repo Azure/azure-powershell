@@ -27,7 +27,7 @@ Get-AzDedicatedHsmOutboundNetworkDependencyEndpoint -Name dedicatedHsmName01 -Re
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IOutboundEnvironmentEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.dedicatedhsm/get-azdedicatedhsmoutboundnetworkdependencyendpoint
+https://learn.microsoft.com/powershell/module/az.dedicatedhsm/get-azdedicatedhsmoutboundnetworkdependencyendpoint
 #>
 function Get-AzDedicatedHsmOutboundNetworkDependencyEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IOutboundEnvironmentEndpoint])]
@@ -208,7 +208,7 @@ INPUTOBJECT <IDedicatedHsmIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the Resource Group to which the resource belongs.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.dedicatedhsm/get-azdedicatedhsm
+https://learn.microsoft.com/powershell/module/az.dedicatedhsm/get-azdedicatedhsm
 #>
 function Get-AzDedicatedHsm {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm])]
@@ -400,7 +400,7 @@ MANAGEMENTNETWORKINTERFACE <INetworkInterface[]>: Specifies the list of resource
 NETWORKINTERFACE <INetworkInterface[]>: Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.
   [PrivateIPAddress <String>]: Private Ip address of the interface
 .Link
-https://docs.microsoft.com/powershell/module/az.dedicatedhsm/new-azdedicatedhsm
+https://learn.microsoft.com/powershell/module/az.dedicatedhsm/new-azdedicatedhsm
 #>
 function New-AzDedicatedHsm {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm])]
@@ -650,7 +650,7 @@ INPUTOBJECT <IDedicatedHsmIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the Resource Group to which the resource belongs.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.dedicatedhsm/remove-azdedicatedhsm
+https://learn.microsoft.com/powershell/module/az.dedicatedhsm/remove-azdedicatedhsm
 #>
 function Remove-AzDedicatedHsm {
 [OutputType([System.Boolean])]
@@ -853,7 +853,7 @@ INPUTOBJECT <IDedicatedHsmIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the Resource Group to which the resource belongs.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.dedicatedhsm/update-azdedicatedhsm
+https://learn.microsoft.com/powershell/module/az.dedicatedhsm/update-azdedicatedhsm
 #>
 function Update-AzDedicatedHsm {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm])]

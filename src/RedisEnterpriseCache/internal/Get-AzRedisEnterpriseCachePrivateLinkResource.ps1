@@ -27,7 +27,7 @@ Gets the private link resources that need to be created for a RedisEnterprise cl
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateLinkResource
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheprivatelinkresource
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheprivatelinkresource
 #>
 function Get-AzRedisEnterpriseCachePrivateLinkResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateLinkResource])]

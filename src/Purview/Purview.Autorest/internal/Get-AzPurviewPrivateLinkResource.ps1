@@ -45,7 +45,7 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The subscription identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewprivatelinkresource
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewprivatelinkresource
 #>
 function Get-AzPurviewPrivateLinkResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateLinkResource])]

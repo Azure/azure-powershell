@@ -27,7 +27,7 @@ Lists all of the available Event Hub REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhuboperation
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhuboperation
 #>
 function Get-AzEventHubOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IOperation])]

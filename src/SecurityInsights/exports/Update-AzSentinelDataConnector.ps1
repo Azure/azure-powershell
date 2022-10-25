@@ -93,7 +93,7 @@ UICONFIGSAMPLEQUERY <SampleQueries[]>:
   [Description <String>]: The sample query description
   [Query <String>]: the sample query
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentineldataconnector
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentineldataconnector
 #>
 function Update-AzSentinelDataConnector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector])]

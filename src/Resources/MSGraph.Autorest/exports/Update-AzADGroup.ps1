@@ -53,7 +53,7 @@ PERMISSIONGRANT <IMicrosoftGraphResourceSpecificPermissionGrant[]>: The permissi
   [PermissionType <String>]: The type of permission. Possible values are: Application, Delegated. Read-only.
   [ResourceAppId <String>]: ID of the Azure AD app that is hosting the resource. Read-only.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/update-azadgroup
+https://learn.microsoft.com/powershell/module/az.resources/update-azadgroup
 #>
 function Update-AzADGroup {
 [OutputType([System.Boolean])]

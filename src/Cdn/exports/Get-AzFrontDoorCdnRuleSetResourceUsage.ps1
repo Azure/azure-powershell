@@ -25,7 +25,7 @@ Get-AzFrontDoorCdnRuleSetResourceUsage -ResourceGroupName testps-rg-da16jm -Prof
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnrulesetresourceusage
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnrulesetresourceusage
 #>
 function Get-AzFrontDoorCdnRuleSetResourceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage])]

@@ -35,7 +35,7 @@ MANAGEMENTNETWORKINTERFACE <INetworkInterface[]>: Specifies the list of resource
 NETWORKINTERFACE <INetworkInterface[]>: Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.
   [PrivateIPAddress <String>]: Private Ip address of the interface
 .Link
-https://docs.microsoft.com/powershell/module/az.dedicatedhsm/new-azdedicatedhsm
+https://learn.microsoft.com/powershell/module/az.dedicatedhsm/new-azdedicatedhsm
 #>
 function New-AzDedicatedHsm {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm])]

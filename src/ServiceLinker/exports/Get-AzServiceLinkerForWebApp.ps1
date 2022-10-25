@@ -44,7 +44,7 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
   [LinkerName <String>]: The name Linker resource.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerforwebapp
+https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerforwebapp
 #>
 function Get-AzServiceLinkerForWebApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]

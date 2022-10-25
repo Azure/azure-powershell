@@ -53,7 +53,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 MSIXIMAGEURI <IMsixImageUri>: Represents URI referring to MSIX Image
   [Uri <String>]: URI to Image
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/expand-azwvdmsiximage
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/expand-azwvdmsiximage
 #>
 function Expand-AzWvdMsixImage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IExpandMsixImage])]

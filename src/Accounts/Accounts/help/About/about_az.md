@@ -49,4 +49,4 @@ regularly (a minimum of twice a year).
     ```
 ## SEE ALSO
 Azure PowerShell documentation:
-https://docs.microsoft.com/powershell/azure
+https://learn.microsoft.com/powershell/azure

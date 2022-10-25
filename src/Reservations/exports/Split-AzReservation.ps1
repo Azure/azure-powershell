@@ -26,7 +26,7 @@ Split-AzReservation -ReservationOrderId "c615c897-aaaa-4123-8527-c42cc0da41e0" -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/split-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/split-azreservation
 #>
 function Split-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]

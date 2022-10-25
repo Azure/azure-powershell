@@ -55,7 +55,7 @@ PARAMETER <IServerRestartParameter>: Server restart parameters.
   [MaxFailoverSecond <Int32?>]: The maximum allowed failover time in seconds.
   [RestartWithFailover <EnableStatusEnum?>]: Whether or not failover to standby server when restarting a server with high availability enabled.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/restart-azmysqlflexibleserver
+https://learn.microsoft.com/powershell/module/az.mysql/restart-azmysqlflexibleserver
 #>
 function Restart-AzMySqlFlexibleServer {
 [OutputType([System.Boolean])]

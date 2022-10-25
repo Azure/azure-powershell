@@ -66,7 +66,7 @@ PROPERTY <IInputProperties>: The properties that are associated with an input. R
   [Serialization <ISerialization>]: Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
     Type <EventSerializationType>: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
 #>
 function Test-AzStreamAnalyticsInput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus])]

@@ -27,7 +27,7 @@ Gets the primary and secondary connection strings for the Namespace.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubnamespacekey
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubnamespacekey
 #>
 function Get-AzEventHubNamespaceKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys])]

@@ -35,7 +35,7 @@ PROPERTY <IEndpointBaseProperties>: The resource specific properties for the Sto
   EndpointType <EndpointType>: The Endpoint resource type.
   [Description <String>]: A description for the Endpoint.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverendpoint
 #>
 function New-AzStorageMoverEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]

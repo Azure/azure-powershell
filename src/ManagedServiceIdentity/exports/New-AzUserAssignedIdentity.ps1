@@ -25,7 +25,7 @@ New-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Lo
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IIdentity
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/new-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/new-azuserassignedidentity
 #>
 function New-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IIdentity])]

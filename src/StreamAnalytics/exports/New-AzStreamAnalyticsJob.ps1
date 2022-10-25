@@ -32,7 +32,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdenti
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob
+https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob
 #>
 function New-AzStreamAnalyticsJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob])]

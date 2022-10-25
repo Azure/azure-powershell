@@ -27,7 +27,7 @@ Create a DNS zone by id in a private cloud workload network.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsZone
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdnszone
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdnszone
 #>
 function New-AzVMwareWorkloadNetworkDnsZone {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsZone])]

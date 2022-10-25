@@ -48,7 +48,7 @@ INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlfirewallrule
+https://learn.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlfirewallrule
 #>
 function Remove-AzPostgreSqlFirewallRule {
 [OutputType([System.Boolean])]

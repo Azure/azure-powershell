@@ -48,7 +48,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/start-azstoragemoverjobdefinition
+https://learn.microsoft.com/powershell/module/az.storagemover/start-azstoragemoverjobdefinition
 #>
 function Start-AzStorageMoverJobDefinition {
 [OutputType([System.String])]

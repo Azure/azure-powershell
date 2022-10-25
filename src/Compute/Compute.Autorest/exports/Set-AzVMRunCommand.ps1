@@ -37,7 +37,7 @@ PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the scr
   Name <String>: The run command parameter name.
   Value <String>: The run command parameter value.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/set-azvmruncommand
+https://learn.microsoft.com/powershell/module/az.compute/set-azvmruncommand
 #>
 function Set-AzVMRunCommand {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand])]

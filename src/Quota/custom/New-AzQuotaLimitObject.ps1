@@ -23,7 +23,7 @@ Create an in-memory object for LimitObject.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject
 .Link
-https://docs.microsoft.com/powershell/module/az.Quota/New-AzQuotaLimitObject
+https://learn.microsoft.com/powershell/module/az.Quota/New-AzQuotaLimitObject
 #>
 function New-AzQuotaLimitObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject')]

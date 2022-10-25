@@ -32,7 +32,7 @@ Execute Insights for an entity.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityGetInsightsResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityinsight
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityinsight
 #>
 function Get-AzSentinelEntityInsight {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityGetInsightsResponse])]

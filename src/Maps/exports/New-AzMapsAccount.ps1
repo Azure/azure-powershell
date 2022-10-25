@@ -30,7 +30,7 @@ eastus   pwsh-mapsAccount01 Microsoft.Maps/accounts Gen1
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.maps/new-azmapsaccount
+https://learn.microsoft.com/powershell/module/az.maps/new-azmapsaccount
 #>
 function New-AzMapsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Maps.Models.Api20210201.IMapsAccount])]

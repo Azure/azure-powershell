@@ -61,7 +61,7 @@ INPUTOBJECT <IServer>: The source server object to restore from.
   [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/restore-azpostgresqlserver
+https://learn.microsoft.com/powershell/module/az.postgresql/restore-azpostgresqlserver
 #>
 function Restore-AzPostgreSqlServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer])]

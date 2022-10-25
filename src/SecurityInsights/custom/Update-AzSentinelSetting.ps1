@@ -20,7 +20,7 @@ Updates setting.
 Updates setting.
 
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelsetting
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelsetting
 #>
 function Update-AzSentinelSetting {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.Settings])]

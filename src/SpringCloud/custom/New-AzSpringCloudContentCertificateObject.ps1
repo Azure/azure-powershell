@@ -23,7 +23,7 @@ Create an in-memory object for ContentCertificateProperties.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ContentCertificateProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudContentCertificateObject
+https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudContentCertificateObject
 #>
 function New-AzSpringCloudContentCertificateObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ContentCertificateProperties')]

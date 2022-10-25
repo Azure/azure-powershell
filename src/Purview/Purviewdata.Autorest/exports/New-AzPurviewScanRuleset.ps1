@@ -50,7 +50,7 @@ BODY <IScanRuleset>: .
   Kind <DataSourceType>: 
   [Type <ScanRulesetType?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewscanruleset
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewscanruleset
 #>
 function New-AzPurviewScanRuleset {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset])]

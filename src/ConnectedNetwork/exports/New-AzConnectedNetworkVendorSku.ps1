@@ -73,7 +73,7 @@ NETWORKFUNCTIONROLECONFIGURATIONTYPE <INetworkFunctionRoleConfiguration[]>: An a
   [VhdUri <String>]: Specifies the virtual hard disk's uri.
   [VirtualMachineSize <VirtualMachineSizeTypes?>]: The size of the virtual machine.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorsku
+https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorsku
 #>
 function New-AzConnectedNetworkVendorSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorSku])]

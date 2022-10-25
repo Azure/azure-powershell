@@ -51,7 +51,7 @@ JOBDEFINITION <IJobDefinitionUpdateParameters>: The Job Definition resource.
   [CopyMode <CopyMode?>]: Strategy to use for copy.
   [Description <String>]: A description for the Job Definition.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverjobdefinition
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverjobdefinition
 #>
 function Update-AzStorageMoverJobDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IJobDefinition])]

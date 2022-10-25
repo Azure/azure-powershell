@@ -40,7 +40,7 @@ NETWORKPROFILE <INginxNetworkProfile>: .
   [NetworkInterfaceConfiguration <INginxNetworkInterfaceConfiguration>]: 
     [SubnetId <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/new-aznginxdeployment
+https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxdeployment
 #>
 function New-AzNginxDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment])]

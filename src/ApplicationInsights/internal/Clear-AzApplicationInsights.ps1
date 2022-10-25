@@ -68,7 +68,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/clear-azapplicationinsights
+https://learn.microsoft.com/powershell/module/az.applicationinsights/clear-azapplicationinsights
 #>
 function Clear-AzApplicationInsights {
 [OutputType([System.String])]

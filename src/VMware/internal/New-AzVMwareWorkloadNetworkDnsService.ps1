@@ -27,7 +27,7 @@ Create a DNS service by id in a private cloud workload network.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsService
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdnsservice
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdnsservice
 #>
 function New-AzVMwareWorkloadNetworkDnsService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsService])]

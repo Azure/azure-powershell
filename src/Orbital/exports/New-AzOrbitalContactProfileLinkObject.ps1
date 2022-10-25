@@ -44,7 +44,7 @@ CHANNEL <IContactProfileLinkChannel[]>: Contact Profile Link Channel.
   [EncodingConfiguration <String>]: Currently unused.
   [ModulationConfiguration <String>]: Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
 .Link
-https://docs.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkObject
+https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkObject
 #>
 function New-AzOrbitalContactProfileLinkObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink])]

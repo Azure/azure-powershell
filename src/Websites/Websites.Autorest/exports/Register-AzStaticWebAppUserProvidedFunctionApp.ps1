@@ -27,7 +27,7 @@ Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName azure-rg-test 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionAppArmResource
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/register-azstaticwebappuserprovidedfunctionapp
+https://learn.microsoft.com/powershell/module/az.websites/register-azstaticwebappuserprovidedfunctionapp
 #>
 function Register-AzStaticWebAppUserProvidedFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionAppArmResource])]

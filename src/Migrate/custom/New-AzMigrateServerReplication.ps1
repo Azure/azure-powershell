@@ -19,7 +19,7 @@ Starts replication for the specified server.
 .Description
 The New-AzMigrateServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]

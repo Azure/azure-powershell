@@ -44,7 +44,7 @@ abcOrder               westus   Cancelled     ImportToAzure   DataBox None      
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource
 .Link
-https://docs.microsoft.com/powershell/module/az.databox/get-azdataboxjob
+https://learn.microsoft.com/powershell/module/az.databox/get-azdataboxjob
 #>
 function Get-AzDataBoxJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource])]

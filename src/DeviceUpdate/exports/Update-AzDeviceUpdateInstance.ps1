@@ -43,7 +43,7 @@ INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/update-azdeviceupdateinstance
+https://learn.microsoft.com/powershell/module/az.deviceupdate/update-azdeviceupdateinstance
 #>
 function Update-AzDeviceUpdateInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance])]

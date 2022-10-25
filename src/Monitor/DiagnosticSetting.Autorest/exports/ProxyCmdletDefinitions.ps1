@@ -38,7 +38,7 @@ INPUTOBJECT <IDiagnosticSettingIdentity>: Identity Parameter
   [ResourceUri <String>]: The identifier of the resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsettingcategory
+https://learn.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsettingcategory
 #>
 function Get-AzDiagnosticSettingCategory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsCategoryResource])]
@@ -215,7 +215,7 @@ INPUTOBJECT <IDiagnosticSettingIdentity>: Identity Parameter
   [ResourceUri <String>]: The identifier of the resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting
+https://learn.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting
 #>
 function Get-AzDiagnosticSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource])]
@@ -378,7 +378,7 @@ Get-AzEventCategory
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ILocalizableString
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/get-azeventcategory
+https://learn.microsoft.com/powershell/module/az.monitor/get-azeventcategory
 #>
 function Get-AzEventCategory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ILocalizableString])]
@@ -531,7 +531,7 @@ INPUTOBJECT <IDiagnosticSettingIdentity>: Identity Parameter
   [ResourceUri <String>]: The identifier of the resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/get-azsubscriptiondiagnosticsetting
+https://learn.microsoft.com/powershell/module/az.monitor/get-azsubscriptiondiagnosticsetting
 #>
 function Get-AzSubscriptionDiagnosticSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource])]
@@ -726,7 +726,7 @@ METRIC <IMetricSettings[]>: The list of metric settings.
   [RetentionPolicyEnabled <Boolean?>]: a value indicating whether the retention policy is enabled.
   [TimeGrain <TimeSpan?>]: the timegrain of the metric in ISO8601 format.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/new-azdiagnosticsetting
+https://learn.microsoft.com/powershell/module/az.monitor/new-azdiagnosticsetting
 #>
 function New-AzDiagnosticSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource])]
@@ -952,7 +952,7 @@ LOG <ISubscriptionLogSettings[]>: The list of logs settings.
   [Category <String>]: Name of a Subscription Diagnostic Log category for a resource type this setting is applied to.
   [CategoryGroup <String>]: Name of a Subscription Diagnostic Log category group for a resource type this setting is applied to.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/new-azsubscriptiondiagnosticsetting
+https://learn.microsoft.com/powershell/module/az.monitor/new-azsubscriptiondiagnosticsetting
 #>
 function New-AzSubscriptionDiagnosticSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource])]
@@ -1167,7 +1167,7 @@ INPUTOBJECT <IDiagnosticSettingIdentity>: Identity Parameter
   [ResourceUri <String>]: The identifier of the resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/remove-azdiagnosticsetting
+https://learn.microsoft.com/powershell/module/az.monitor/remove-azdiagnosticsetting
 #>
 function Remove-AzDiagnosticSetting {
 [OutputType([System.Boolean])]
@@ -1344,7 +1344,7 @@ INPUTOBJECT <IDiagnosticSettingIdentity>: Identity Parameter
   [ResourceUri <String>]: The identifier of the resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/remove-azsubscriptiondiagnosticsetting
+https://learn.microsoft.com/powershell/module/az.monitor/remove-azsubscriptiondiagnosticsetting
 #>
 function Remove-AzSubscriptionDiagnosticSetting {
 [OutputType([System.Boolean])]
@@ -1513,7 +1513,7 @@ New-AzDiagnosticSettingLogSettingsObject -Enabled $true -Category ContainerEvent
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.LogSettings
 .Link
-https://docs.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingLogSettingsObject
+https://learn.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingLogSettingsObject
 #>
 function New-AzDiagnosticSettingLogSettingsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.LogSettings])]
@@ -1638,7 +1638,7 @@ New-AzDiagnosticSettingMetricSettingsObject -Enabled $true -Category AllMetrics 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.MetricSettings
 .Link
-https://docs.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingMetricSettingsObject
+https://learn.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingMetricSettingsObject
 #>
 function New-AzDiagnosticSettingMetricSettingsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.MetricSettings])]
@@ -1762,7 +1762,7 @@ New-AzDiagnosticSettingSubscriptionLogSettingsObject -Category Recommendation -E
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings
 .Link
-https://docs.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingSubscriptionLogSettingsObject
+https://learn.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingSubscriptionLogSettingsObject
 #>
 function New-AzDiagnosticSettingSubscriptionLogSettingsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings])]

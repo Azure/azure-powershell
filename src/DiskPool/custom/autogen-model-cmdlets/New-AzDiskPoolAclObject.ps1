@@ -23,7 +23,7 @@ Create a in-memory object for Acl
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Acl
 .Link
-https://docs.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolAclObject
+https://learn.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolAclObject
 #>
 function New-AzDiskPoolAclObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Acl')]

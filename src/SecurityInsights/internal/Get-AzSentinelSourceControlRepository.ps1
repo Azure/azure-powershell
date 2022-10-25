@@ -29,7 +29,7 @@ Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.RepoType
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRepo
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelsourcecontrolrepository
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelsourcecontrolrepository
 #>
 function Get-AzSentinelSourceControlRepository {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRepo])]

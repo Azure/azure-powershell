@@ -41,7 +41,7 @@ BODY <IAzureKeyVault>: .
   [BaseUrl <String>]: 
   [Description <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewkeyvaultconnection
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewkeyvaultconnection
 #>
 function New-AzPurviewKeyVaultConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault])]

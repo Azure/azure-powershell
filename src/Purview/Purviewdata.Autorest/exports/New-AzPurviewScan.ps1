@@ -51,7 +51,7 @@ To create the parameters described below, construct a hash table containing the 
 BODY <IScan>: .
   Kind <ScanAuthorizationType>: 
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewscan
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewscan
 #>
 function New-AzPurviewScan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan])]

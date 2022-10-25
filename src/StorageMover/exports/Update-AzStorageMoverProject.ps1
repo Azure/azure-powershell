@@ -49,7 +49,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 PROJECT <IProjectUpdateParameters>: The Project resource.
   [Description <String>]: A description for the Project.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverproject
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverproject
 #>
 function Update-AzStorageMoverProject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IProject])]

@@ -12,7 +12,7 @@ Adds member to group.
 .Description
 Adds member to group.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/add-azadgroupmember
+https://learn.microsoft.com/powershell/module/az.resources/add-azadgroupmember
 #>
 function Add-AzADGroupMember {
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]

@@ -27,7 +27,7 @@ Lists all of the available ServiceBus REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusoperation
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusoperation
 #>
 function Get-AzServiceBusOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IOperation])]

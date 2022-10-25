@@ -25,7 +25,7 @@ Get-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMi
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IAuthenticationKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationsqlserviceauthkey
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationsqlserviceauthkey
 #>
 function Get-AzDataMigrationSqlServiceAuthKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IAuthenticationKeys])]
@@ -196,7 +196,7 @@ $item.Node[0]
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IIntegrationRuntimeMonitoringData
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationsqlserviceintegrationruntimemetric
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationsqlserviceintegrationruntimemetric
 #>
 function Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IIntegrationRuntimeMonitoringData])]
@@ -364,7 +364,7 @@ Get-AzDataMigrationSqlServiceMigration -ResourceGroupName "MyResourceGroup" -Sql
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigration
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationsqlservicemigration
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationsqlservicemigration
 #>
 function Get-AzDataMigrationSqlServiceMigration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigration])]
@@ -552,7 +552,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
   [TargetDbName <String>]: The name of the target database.
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationsqlservice
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationsqlservice
 #>
 function Get-AzDataMigrationSqlService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService])]
@@ -753,7 +753,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
   [TargetDbName <String>]: The name of the target database.
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationtosqldb
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationtosqldb
 #>
 function Get-AzDataMigrationToSqlDb {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb])]
@@ -968,7 +968,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
   [TargetDbName <String>]: The name of the target database.
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationtosqlmanagedinstance
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationtosqlmanagedinstance
 #>
 function Get-AzDataMigrationToSqlManagedInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi])]
@@ -1183,7 +1183,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
   [TargetDbName <String>]: The name of the target database.
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationtosqlvm
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationtosqlvm
 #>
 function Get-AzDataMigrationToSqlVM {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM])]
@@ -1381,7 +1381,7 @@ Get-AzDataMigrationToSqlManagedInstance -InputObject $miMigration
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/invoke-azdatamigrationcutovertosqlmanagedinstance
+https://learn.microsoft.com/powershell/module/az.datamigration/invoke-azdatamigrationcutovertosqlmanagedinstance
 #>
 function Invoke-AzDataMigrationCutoverToSqlManagedInstance {
 [OutputType([System.Boolean])]
@@ -1575,7 +1575,7 @@ Get-AzDataMigrationToSqlVM -InputObject $vmMigration
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/invoke-azdatamigrationcutovertosqlvm
+https://learn.microsoft.com/powershell/module/az.datamigration/invoke-azdatamigrationcutovertosqlvm
 #>
 function Invoke-AzDataMigrationCutoverToSqlVM {
 [OutputType([System.Boolean])]
@@ -1767,7 +1767,7 @@ New-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMi
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IRegenAuthKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserviceauthkey
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserviceauthkey
 #>
 function New-AzDataMigrationSqlServiceAuthKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IRegenAuthKeys])]
@@ -1953,7 +1953,7 @@ New-AzDataMigrationSqlService -ResourceGroupName "MyResourceGroup" -SqlMigration
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlservice
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlservice
 #>
 function New-AzDataMigrationSqlService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService])]
@@ -2153,7 +2153,7 @@ New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqldb
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqldb
 #>
 function New-AzDataMigrationToSqlDb {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb])]
@@ -2451,7 +2451,7 @@ New-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -Ma
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqlmanagedinstance
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqlmanagedinstance
 #>
 function New-AzDataMigrationToSqlManagedInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi])]
@@ -2769,7 +2769,7 @@ New-AzDataMigrationToSqlVM -ResourceGroupName "MyResourceGroup" -SqlVirtualMachi
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqlvm
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqlvm
 #>
 function New-AzDataMigrationToSqlVM {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM])]
@@ -3101,7 +3101,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
   [TargetDbName <String>]: The name of the target database.
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservicenode
+https://learn.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservicenode
 #>
 function Remove-AzDataMigrationSqlServiceNode {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDeleteNode])]
@@ -3305,7 +3305,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
   [TargetDbName <String>]: The name of the target database.
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservice
+https://learn.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservice
 #>
 function Remove-AzDataMigrationSqlService {
 [OutputType([System.Boolean])]
@@ -3512,7 +3512,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
   [TargetDbName <String>]: The name of the target database.
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationtosqldb
+https://learn.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationtosqldb
 #>
 function Remove-AzDataMigrationToSqlDb {
 [OutputType([System.Boolean])]
@@ -3716,7 +3716,7 @@ Get-AzDataMigrationToSqlDb -InputObject $dbMigration
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqldb
+https://learn.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqldb
 #>
 function Stop-AzDataMigrationToSqlDb {
 [OutputType([System.Boolean])]
@@ -3910,7 +3910,7 @@ Get-AzDataMigrationToSqlManagedInstance -InputObject $miMigration
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqlmanagedinstance
+https://learn.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqlmanagedinstance
 #>
 function Stop-AzDataMigrationToSqlManagedInstance {
 [OutputType([System.Boolean])]
@@ -4104,7 +4104,7 @@ Get-AzDataMigrationToSqlVM -InputObject $vmMigration
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqlvm
+https://learn.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqlvm
 #>
 function Stop-AzDataMigrationToSqlVM {
 [OutputType([System.Boolean])]
@@ -4315,7 +4315,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
   [TargetDbName <String>]: The name of the target database.
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/update-azdatamigrationsqlservice
+https://learn.microsoft.com/powershell/module/az.datamigration/update-azdatamigrationsqlservice
 #>
 function Update-AzDataMigrationSqlService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService])]
@@ -4513,7 +4513,7 @@ Get-AzDataMigrationAssessment -ConfigFilePath "C:\Users\user\document\config.jso
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationassessment
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationassessment
 #>
 function Get-AzDataMigrationAssessment {
 [OutputType([System.Boolean])]
@@ -4639,7 +4639,7 @@ Get-AzDataMigrationPerformanceDataCollection -ConfigFilePath "C:\Users\user\docu
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationperformancedatacollection
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationperformancedatacollection
 #>
 function Get-AzDataMigrationPerformanceDataCollection {
 [OutputType([System.Boolean])]
@@ -4785,7 +4785,7 @@ Get-AzDataMigrationSkuRecommendation -ConfigFilePath "C:\Users\user\document\con
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationskurecommendation
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationskurecommendation
 #>
 function Get-AzDataMigrationSkuRecommendation {
 [OutputType([System.Boolean])]
@@ -4990,7 +4990,7 @@ New-AzDataMigrationLoginsMigration -ConfigFilePath "C:\Users\user\document\confi
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationloginsmigration
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationloginsmigration
 #>
 function New-AzDataMigrationLoginsMigration {
 [OutputType([System.Boolean])]
@@ -5143,7 +5143,7 @@ Register-AzDataMigrationIntegrationRuntime -AuthKey $authKeys.AuthKey1 -Integrat
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/register-azdatamigrationintegrationruntime
+https://learn.microsoft.com/powershell/module/az.datamigration/register-azdatamigrationintegrationruntime
 #>
 function Register-AzDataMigrationIntegrationRuntime {
 [OutputType([System.Boolean])]

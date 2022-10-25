@@ -27,7 +27,7 @@ Lists all the supported operations for the Azure Storage Mover REST API.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveroperation
+https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveroperation
 #>
 function Get-AzStorageMoverOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20.IOperation])]
@@ -144,7 +144,7 @@ PROPERTY <IEndpointBaseProperties>: The resource specific properties for the Sto
   EndpointType <EndpointType>: The Endpoint resource type.
   [Description <String>]: A description for the Endpoint.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverendpoint
 #>
 function New-AzStorageMoverEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]
@@ -307,7 +307,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoveragent
+https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoveragent
 #>
 function Remove-AzStorageMoverAgent {
 [OutputType([System.Boolean])]
@@ -487,7 +487,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/remove-azstoragemover
+https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemover
 #>
 function Remove-AzStorageMover {
 [OutputType([System.Boolean])]
@@ -668,7 +668,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 PROPERTY <IEndpointBaseUpdateProperties>: The Endpoint resource, which contains information about file sources and targets.
   [Description <String>]: A description for the Endpoint.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverendpoint
 #>
 function Update-AzStorageMoverEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]

@@ -30,7 +30,7 @@ eastus2  azpshcws/azpsiotconnector/azpsfhirdestination azps_test_group
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotFhirDestination
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareiotconnectorfhirdestination
+https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareiotconnectorfhirdestination
 #>
 function New-AzHealthcareIotConnectorFhirDestination {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotFhirDestination])]

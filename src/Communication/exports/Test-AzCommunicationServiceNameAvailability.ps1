@@ -35,7 +35,7 @@ Requested name is available for the requested type True         NameAvailable
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailability
 .Link
-https://docs.microsoft.com/powershell/module/az.communication/test-azcommunicationservicenameavailability
+https://learn.microsoft.com/powershell/module/az.communication/test-azcommunicationservicenameavailability
 #>
 function Test-AzCommunicationServiceNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailability])]

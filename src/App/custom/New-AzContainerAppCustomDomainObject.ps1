@@ -23,7 +23,7 @@ Create an in-memory object for CustomDomain.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappcustomdomainobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappcustomdomainobject
 #>
 function New-AzContainerAppCustomDomainObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain')]

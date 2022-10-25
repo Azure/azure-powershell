@@ -23,7 +23,7 @@ Create an in-memory object for DataBoxHeavyJobDetails.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxHeavyJobDetails
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxHeavyJobDetailsObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxHeavyJobDetailsObject
 #>
 function New-AzDataBoxHeavyJobDetailsObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxHeavyJobDetails')]

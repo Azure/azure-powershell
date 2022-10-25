@@ -32,7 +32,7 @@ To create the parameters described below, construct a hash table containing the 
 PROPERTY <IJobServiceProperties>: Additional properties to set on the endpoint.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceJobServiceObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceJobServiceObject
 #>
 function New-AzMLWorkspaceJobServiceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.JobService])]

@@ -50,7 +50,7 @@ JUSTINTIMEACCESSPOLICYMANAGEDBYTENANTAPPROVER <IEligibleApprover[]>: The list of
   PrincipalId <String>: The identifier of the Azure Active Directory principal.
   [PrincipalIdDisplayName <String>]: The display name of the Azure Active Directory principal.
 .Link
-https://docs.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleAuthorizationObject
+https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleAuthorizationObject
 #>
 function New-AzManagedServicesEligibleAuthorizationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleAuthorization])]

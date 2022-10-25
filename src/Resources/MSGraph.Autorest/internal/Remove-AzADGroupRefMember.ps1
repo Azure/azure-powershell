@@ -33,7 +33,7 @@ Supports $expand.
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadgrouprefmember
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadgrouprefmember
 #>
 function Remove-AzADGroupRefMember {
 [OutputType([System.Boolean])]

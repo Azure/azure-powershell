@@ -31,7 +31,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Including stable version and preview version of Azure PowerShell modules. This module is compatible with PowerShell and Windows PowerShell.
-For more information about the AzPreview module, please visit the following: https://docs.microsoft.com/powershell/azure/'
+For more information about the AzPreview module, please visit the following: https://learn.microsoft.com/powershell/azure/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

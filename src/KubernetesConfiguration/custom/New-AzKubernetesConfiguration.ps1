@@ -35,7 +35,7 @@ azpstestk8s02 Microsoft.KubernetesConfiguration/sourceControlConfigurations
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
 #>
 function New-AzKubernetesConfiguration {
     [Alias('New-AzK8sConfiguration')]

@@ -31,7 +31,7 @@ Name              : custom
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewfilter
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewfilter
 #>
 function Get-AzPurviewFilter {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter])]

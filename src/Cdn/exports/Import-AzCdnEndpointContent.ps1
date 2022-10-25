@@ -53,7 +53,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/import-azcdnendpointcontent
+https://learn.microsoft.com/powershell/module/az.cdn/import-azcdnendpointcontent
 #>
 function Import-AzCdnEndpointContent {
 [OutputType([System.Boolean])]

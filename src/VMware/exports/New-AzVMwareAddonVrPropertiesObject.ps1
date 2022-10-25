@@ -25,7 +25,7 @@ New-AzVMwareAddonVrPropertiesObject -VrsCount 2
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonVrProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonVrPropertiesObject
+https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonVrPropertiesObject
 #>
 function New-AzVMwareAddonVrPropertiesObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonVrProperties])]

@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewprivateendpointconnection
 #>
 function New-AzPurviewPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection])]

@@ -46,7 +46,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
 VALUE <ILanguageExtension[]>: The list of language extensions.
   [Name <LanguageExtensionName?>]: The language extension name.
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/add-azsynapsekustopoollanguageextension
+https://learn.microsoft.com/powershell/module/az.synapse/add-azsynapsekustopoollanguageextension
 #>
 function Add-AzSynapseKustoPoolLanguageExtension {
 [OutputType([System.Boolean])]
@@ -240,7 +240,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolattacheddatabaseconfiguration
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolattacheddatabaseconfiguration
 #>
 function Get-AzSynapseKustoPoolAttachedDatabaseConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfiguration])]
@@ -421,7 +421,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopooldatabaseprincipalassignment
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopooldatabaseprincipalassignment
 #>
 function Get-AzSynapseKustoPoolDatabasePrincipalAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabasePrincipalAssignment])]
@@ -607,7 +607,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopooldatabase
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopooldatabase
 #>
 function Get-AzSynapseKustoPoolDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabase])]
@@ -787,7 +787,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopooldataconnection
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopooldataconnection
 #>
 function Get-AzSynapseKustoPoolDataConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection])]
@@ -950,7 +950,7 @@ conf1                             testdatabase /subscriptions/00000000-0000-0000
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IFollowerDatabaseDefinition
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolfollowerdatabase
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolfollowerdatabase
 #>
 function Get-AzSynapseKustoPoolFollowerDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IFollowerDatabaseDefinition])]
@@ -1086,7 +1086,7 @@ PYTHON
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtension
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoollanguageextension
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoollanguageextension
 #>
 function Get-AzSynapseKustoPoolLanguageExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtension])]
@@ -1246,7 +1246,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolprincipalassignment
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolprincipalassignment
 #>
 function Get-AzSynapseKustoPoolPrincipalAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IClusterPrincipalAssignment])]
@@ -1419,7 +1419,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAzureResou
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ISkuDescription
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolsku
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolsku
 #>
 function Get-AzSynapseKustoPoolSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ISkuDescription], [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAzureResourceSku])]
@@ -1581,7 +1581,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopool
+https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopool
 #>
 function Get-AzSynapseKustoPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool])]
@@ -1745,7 +1745,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/invoke-azsynapsedetachkustopoolfollowerdatabase
+https://learn.microsoft.com/powershell/module/az.synapse/invoke-azsynapsedetachkustopoolfollowerdatabase
 #>
 function Invoke-AzSynapseDetachKustoPoolFollowerDatabase {
 [OutputType([System.Boolean])]
@@ -1919,7 +1919,7 @@ testws/testfollowerkustopool/followerconfiguration Microsoft.Synapse/workspaces/
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopoolattacheddatabaseconfiguration
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopoolattacheddatabaseconfiguration
 #>
 function New-AzSynapseKustoPoolAttachedDatabaseConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfiguration])]
@@ -2141,7 +2141,7 @@ testws/testkustopool/testdatabase/kustoprincipal Microsoft.Synapse/workspaces/ku
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabasePrincipalAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabaseprincipalassignment
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabaseprincipalassignment
 #>
 function New-AzSynapseKustoPoolDatabasePrincipalAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabasePrincipalAssignment])]
@@ -2328,7 +2328,7 @@ testws/testnewkustopool/kustoprincipal Microsoft.Synapse/workspaces/kustoPools/P
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IClusterPrincipalAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopoolprincipalassignment
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopoolprincipalassignment
 #>
 function New-AzSynapseKustoPoolPrincipalAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IClusterPrincipalAssignment])]
@@ -2523,7 +2523,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopoolattacheddatabaseconfiguration
+https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopoolattacheddatabaseconfiguration
 #>
 function Remove-AzSynapseKustoPoolAttachedDatabaseConfiguration {
 [OutputType([System.Boolean])]
@@ -2706,7 +2706,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopooldatabaseprincipalassignment
+https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopooldatabaseprincipalassignment
 #>
 function Remove-AzSynapseKustoPoolDatabasePrincipalAssignment {
 [OutputType([System.Boolean])]
@@ -2894,7 +2894,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopooldatabase
+https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopooldatabase
 #>
 function Remove-AzSynapseKustoPoolDatabase {
 [OutputType([System.Boolean])]
@@ -3077,7 +3077,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopooldataconnection
+https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopooldataconnection
 #>
 function Remove-AzSynapseKustoPoolDataConnection {
 [OutputType([System.Boolean])]
@@ -3269,7 +3269,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
 VALUE <ILanguageExtension[]>: The list of language extensions.
   [Name <LanguageExtensionName?>]: The language extension name.
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopoollanguageextension
+https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopoollanguageextension
 #>
 function Remove-AzSynapseKustoPoolLanguageExtension {
 [OutputType([System.Boolean])]
@@ -3453,7 +3453,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopoolprincipalassignment
+https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopoolprincipalassignment
 #>
 function Remove-AzSynapseKustoPoolPrincipalAssignment {
 [OutputType([System.Boolean])]
@@ -3635,7 +3635,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopool
+https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopool
 #>
 function Remove-AzSynapseKustoPool {
 [OutputType([System.Boolean])]
@@ -3812,7 +3812,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/start-azsynapsekustopool
+https://learn.microsoft.com/powershell/module/az.synapse/start-azsynapsekustopool
 #>
 function Start-AzSynapseKustoPool {
 [OutputType([System.Boolean])]
@@ -3989,7 +3989,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/stop-azsynapsekustopool
+https://learn.microsoft.com/powershell/module/az.synapse/stop-azsynapsekustopool
 #>
 function Stop-AzSynapseKustoPool {
 [OutputType([System.Boolean])]
@@ -4170,7 +4170,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/update-azsynapsekustopool
+https://learn.microsoft.com/powershell/module/az.synapse/update-azsynapsekustopool
 #>
 function Update-AzSynapseKustoPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool])]
@@ -4404,7 +4404,7 @@ East US 2 testws/testnewkustopool Microsoft.Synapse/workspaces/kustoPools
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopool
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopool
 #>
 function New-AzSynapseKustoPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool])]
@@ -4637,7 +4637,7 @@ ReadWrite East US 2 testws/testkustopool/mykustodatabase
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabase
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabase
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabase
 #>
 function New-AzSynapseKustoPoolDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabase])]
@@ -4831,7 +4831,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnec
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldataconnection
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldataconnection
 #>
 function New-AzSynapseKustoPoolDataConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection])]
@@ -5117,7 +5117,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/update-azsynapsekustopooldatabase
+https://learn.microsoft.com/powershell/module/az.synapse/update-azsynapsekustopooldatabase
 #>
 function Update-AzSynapseKustoPoolDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabase])]
@@ -5356,7 +5356,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/update-azsynapsekustopooldataconnection
+https://learn.microsoft.com/powershell/module/az.synapse/update-azsynapsekustopooldataconnection
 #>
 function Update-AzSynapseKustoPoolDataConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection])]

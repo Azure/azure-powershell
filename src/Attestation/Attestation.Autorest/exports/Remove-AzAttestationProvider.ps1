@@ -42,7 +42,7 @@ INPUTOBJECT <IAttestationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.attestation/remove-azattestationprovider
+https://learn.microsoft.com/powershell/module/az.attestation/remove-azattestationprovider
 #>
 function Remove-AzAttestationProvider {
 [OutputType([System.Boolean])]

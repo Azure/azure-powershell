@@ -47,7 +47,7 @@ RESPONSEBASEDORIGINERRORDETECTIONSETTING <IResponseBasedOriginErrorDetectionPara
   [ResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes?>]: Type of response errors for real user requests for which origin will be deemed unhealthy
   [ResponseBasedFailoverThresholdPercentage <Int32?>]: The percentage of failed requests in the sample where failover should trigger.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azcdnorigingroup
+https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnorigingroup
 #>
 function New-AzCdnOriginGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOriginGroup])]

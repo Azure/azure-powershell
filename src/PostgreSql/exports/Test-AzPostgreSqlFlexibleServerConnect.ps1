@@ -52,7 +52,7 @@ INPUTOBJECT <IPostgreSqlIdentity>: The server to connect.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/test-azpostgresqlflexibleserverconnect
+https://learn.microsoft.com/powershell/module/az.postgresql/test-azpostgresqlflexibleserverconnect
 #>
 function Test-AzPostgreSqlFlexibleServerConnect {
 [OutputType([System.String])]

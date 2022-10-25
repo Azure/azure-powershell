@@ -46,7 +46,7 @@ NETWORKINTERFACE <INetworkInterface[]>: The network interface configuration.
   [Name <String>]: The name of the network interface.
   [VMSwitchType <VMSwitchType?>]: The type of the VM switch.
 .Link
-https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionUserConfigurationObject
+https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionUserConfigurationObject
 #>
 function New-AzConnectedNetworkFunctionUserConfigurationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionUserConfiguration])]

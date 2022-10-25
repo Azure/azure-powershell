@@ -28,7 +28,7 @@ New-AzStackHciExtension -ArcSettingName "default" -ClusterName "myCluster" -Name
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/new-azstackhciextension
+https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhciextension
 #>
 function New-AzStackHciExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension])]

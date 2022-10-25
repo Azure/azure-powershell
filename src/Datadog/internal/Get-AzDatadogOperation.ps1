@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IOperationResult
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogoperation
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogoperation
 #>
 function Get-AzDatadogOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IOperationResult])]

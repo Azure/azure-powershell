@@ -34,7 +34,7 @@ To create the parameters described below, construct a hash table containing the 
 BODY <IExchangeRequest>: Exchange request
   [SessionId <String>]: SessionId that was returned by CalculateExchange API.
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/invoke-azreservationexchange
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationexchange
 #>
 function Invoke-AzReservationExchange {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IExchangeOperationResultResponse])]

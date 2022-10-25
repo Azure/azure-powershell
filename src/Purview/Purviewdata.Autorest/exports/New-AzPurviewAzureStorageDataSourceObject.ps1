@@ -40,7 +40,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageDataSourceObject
 #>
 function New-AzPurviewAzureStorageDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageDataSource])]

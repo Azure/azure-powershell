@@ -35,7 +35,7 @@ xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Microsoft.ManagedServices/registrationAssig
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/new-azmanagedservicesassignment
+https://learn.microsoft.com/powershell/module/az.managedservices/new-azmanagedservicesassignment
 #>
 function New-AzManagedServicesAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationAssignment])]

@@ -27,7 +27,7 @@ Lists the operations available from this provider.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IOperationDefinition
 .Link
-https://docs.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationoperation
+https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationoperation
 #>
 function Get-AzAppConfigurationOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IOperationDefinition])]

@@ -41,7 +41,7 @@ INPUTOBJECT <IAksIdentity>: Identity Parameter
   [RoleName <String>]: The name of the role for managed cluster accessProfile resource.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.aks/get-azaksnodepoolupgradeprofile
+https://learn.microsoft.com/powershell/module/az.aks/get-azaksnodepoolupgradeprofile
 #>
 function Get-AzAksNodePoolUpgradeProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20200901.IAgentPoolUpgradeProfile])]
@@ -234,7 +234,7 @@ INPUTOBJECT <IAksIdentity>: Identity Parameter
   [RoleName <String>]: The name of the role for managed cluster accessProfile resource.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.aks/get-azaksupgradeprofile
+https://learn.microsoft.com/powershell/module/az.aks/get-azaksupgradeprofile
 #>
 function Get-AzAksUpgradeProfile {
 [Alias('Get-AzAksClusterUpgradeProfile')]
@@ -424,7 +424,7 @@ INPUTOBJECT <IAksIdentity>: Identity Parameter
   [RoleName <String>]: The name of the role for managed cluster accessProfile resource.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.aks/start-azakscluster
+https://learn.microsoft.com/powershell/module/az.aks/start-azakscluster
 #>
 function Start-AzAksCluster {
 [OutputType([System.Boolean])]
@@ -631,7 +631,7 @@ INPUTOBJECT <IAksIdentity>: Identity Parameter
   [RoleName <String>]: The name of the role for managed cluster accessProfile resource.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.aks/stop-azakscluster
+https://learn.microsoft.com/powershell/module/az.aks/stop-azakscluster
 #>
 function Stop-AzAksCluster {
 [OutputType([System.Boolean])]
@@ -822,7 +822,7 @@ Get-AzAksVersion -location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult
 .Link
-https://docs.microsoft.com/powershell/module/az.aks/get-azaksversion
+https://learn.microsoft.com/powershell/module/az.aks/get-azaksversion
 #>
 function Get-AzAksVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult])]
@@ -980,7 +980,7 @@ Install-AzAksCliTool -KubectlInstallVersion "v1.25.0" -KubectlInstallDestination
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.aks/install-azaksclitool
+https://learn.microsoft.com/powershell/module/az.aks/install-azaksclitool
 #>
 function Install-AzAksCliTool {
 [OutputType([System.Boolean])]

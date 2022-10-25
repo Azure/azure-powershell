@@ -25,7 +25,7 @@ Get-AzSystemAssignedIdentity -Scope "/subscriptions/00000000-0000-0000-000000000
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.ISystemAssignedIdentity
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/get-azsystemassignedidentity
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azsystemassignedidentity
 #>
 function Get-AzSystemAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.ISystemAssignedIdentity])]

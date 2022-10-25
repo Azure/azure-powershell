@@ -68,7 +68,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/clear-azapplicationinsights
+https://learn.microsoft.com/powershell/module/az.applicationinsights/clear-azapplicationinsights
 #>
 function Clear-AzApplicationInsights {
 [OutputType([System.String])]
@@ -258,7 +258,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightsannotation
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightsannotation
 #>
 function Get-AzApplicationInsightsAnnotation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IAnnotation])]
@@ -441,7 +441,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponentavailablefeature
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponentavailablefeature
 #>
 function Get-AzApplicationInsightsComponentAvailableFeature {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentFeature])]
@@ -601,7 +601,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponentcurrentbillingfeature
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponentcurrentbillingfeature
 #>
 function Get-AzApplicationInsightsComponentCurrentBillingFeature {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures])]
@@ -761,7 +761,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponentfeaturecapability
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponentfeaturecapability
 #>
 function Get-AzApplicationInsightsComponentFeatureCapability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentFeatureCapabilities])]
@@ -921,7 +921,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponentpurgestatus
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponentpurgestatus
 #>
 function Get-AzApplicationInsightsComponentPurgeStatus {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PurgeState])]
@@ -1087,7 +1087,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponentquotastatus
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightscomponentquotastatus
 #>
 function Get-AzApplicationInsightsComponentQuotaStatus {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentQuotaStatus])]
@@ -1230,7 +1230,7 @@ Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IOpera
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightsoperation
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightsoperation
 #>
 function Get-AzApplicationInsightsOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IOperationAutoGenerated])]
@@ -1365,7 +1365,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights
 #>
 function Get-AzApplicationInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent])]
@@ -1511,7 +1511,7 @@ Create an Annotation of an Application Insights component.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IAnnotation
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsannotation
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsannotation
 #>
 function New-AzApplicationInsightsAnnotation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IAnnotation])]
@@ -1680,7 +1680,7 @@ New-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -Des
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsapikey
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsapikey
 #>
 function New-AzApplicationInsightsApiKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey])]
@@ -1835,7 +1835,7 @@ New-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport
 #>
 function New-AzApplicationInsightsContinuousExport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration])]
@@ -2072,7 +2072,7 @@ REQUESTHEADER <IHeaderField[]>: List of headers and their values to add to the W
   [Name <String>]: The name of the header.
   [Value <String>]: The value of the header.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightswebtest
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightswebtest
 #>
 function New-AzApplicationInsightsWebTest {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IWebTest])]
@@ -2360,7 +2360,7 @@ New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights
 #>
 function New-AzApplicationInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent])]
@@ -2632,7 +2632,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightsannotation
+https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightsannotation
 #>
 function Remove-AzApplicationInsightsAnnotation {
 [OutputType([System.Boolean])]
@@ -2786,7 +2786,7 @@ Update current billing features for an Application Insights component.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightscomponentcurrentbillingfeature
+https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightscomponentcurrentbillingfeature
 #>
 function Set-AzApplicationInsightsComponentCurrentBillingFeature {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures])]
@@ -2953,7 +2953,7 @@ Set-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightscontinuousexport
+https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightscontinuousexport
 #>
 function Set-AzApplicationInsightsContinuousExport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration])]
@@ -3152,7 +3152,7 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsights
+https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsights
 #>
 function Set-AzApplicationInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent])]
@@ -3426,7 +3426,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightscomponenttag
+https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightscomponenttag
 #>
 function Update-AzApplicationInsightsComponentTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent])]

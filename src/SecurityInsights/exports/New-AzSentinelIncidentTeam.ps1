@@ -38,7 +38,7 @@ TEAMPROPERTY <ITeamProperties>: Describes team properties
   [MemberId <String[]>]: List of member IDs to add to the team
   [TeamDescription <String>]: The description of the team
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincidentteam
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincidentteam
 #>
 function New-AzSentinelIncidentTeam {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ITeamInformation])]

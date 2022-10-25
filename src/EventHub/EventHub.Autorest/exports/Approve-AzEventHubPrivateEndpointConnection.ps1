@@ -49,7 +49,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/approve-azeventhubprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.eventhub/approve-azeventhubprivateendpointconnection
 #>
 function Approve-AzEventHubPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection])]

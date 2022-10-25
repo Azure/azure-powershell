@@ -52,7 +52,7 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeteraccessrule
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeteraccessrule
 #>
 function Get-AzNetworkSecurityPerimeterAccessRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAccessRule])]
@@ -257,7 +257,7 @@ These resources can be associated with a network security perimeter
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterAssociableResource
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeterassociableresourcetype
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeterassociableresourcetype
 #>
 function Get-AzNetworkSecurityPerimeterAssociableResourceType {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterAssociableResource])]
@@ -440,7 +440,7 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeterassociation
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeterassociation
 #>
 function Get-AzNetworkSecurityPerimeterAssociation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAssociation])]
@@ -662,7 +662,7 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeterprofile
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeterprofile
 #>
 function Get-AzNetworkSecurityPerimeterProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspProfile])]
@@ -888,7 +888,7 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeter
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeter
 #>
 function Get-AzNetworkSecurityPerimeter {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INetworkSecurityPerimeter])]
@@ -1136,7 +1136,7 @@ PERIMETER <IPerimeterBasedAccessRule[]>: Inbound rule specified by the perimeter
 SUBSCRIPTION <ISubscriptionId[]>: List of subscription ids
   [Id <String>]: Subscription id in the ARM id format.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeteraccessrule
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeteraccessrule
 #>
 function New-AzNetworkSecurityPerimeterAccessRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAccessRule])]
@@ -1430,7 +1430,7 @@ PARAMETER <INspAssociation>: The NSP resource association resource
   [PrivateLinkResourceId <String>]: Resource ID.
   [ProfileId <String>]: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterassociation
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterassociation
 #>
 function New-AzNetworkSecurityPerimeterAssociation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAssociation])]
@@ -1695,7 +1695,7 @@ PARAMETER <INspProfile>: The network security perimeter profile resource
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterprofile
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterprofile
 #>
 function New-AzNetworkSecurityPerimeterProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspProfile])]
@@ -1938,7 +1938,7 @@ PARAMETER <INetworkSecurityPerimeter>: The Network Security Perimeter resource
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeter
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeter
 #>
 function New-AzNetworkSecurityPerimeter {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INetworkSecurityPerimeter])]
@@ -2166,7 +2166,7 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/remove-aznetworksecurityperimeteraccessrule
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/remove-aznetworksecurityperimeteraccessrule
 #>
 function Remove-AzNetworkSecurityPerimeterAccessRule {
 [OutputType([System.Boolean])]
@@ -2380,7 +2380,7 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/remove-aznetworksecurityperimeterassociation
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/remove-aznetworksecurityperimeterassociation
 #>
 function Remove-AzNetworkSecurityPerimeterAssociation {
 [OutputType([System.Boolean])]
@@ -2599,7 +2599,7 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/remove-aznetworksecurityperimeterprofile
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/remove-aznetworksecurityperimeterprofile
 #>
 function Remove-AzNetworkSecurityPerimeterProfile {
 [OutputType([System.Boolean])]
@@ -2806,7 +2806,7 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/remove-aznetworksecurityperimeter
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/remove-aznetworksecurityperimeter
 #>
 function Remove-AzNetworkSecurityPerimeter {
 [OutputType([System.Boolean])]
@@ -3012,7 +3012,7 @@ PERIMETER <IPerimeterBasedAccessRule[]>: Inbound rule specified by the perimeter
 SUBSCRIPTION <ISubscriptionId[]>: Subscription ids
   [Id <String>]: Subscription id in the ARM id format.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/update-aznetworksecurityperimeteraccessrule
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/update-aznetworksecurityperimeteraccessrule
 #>
 function Update-AzNetworkSecurityPerimeterAccessRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAccessRule])]
@@ -3276,7 +3276,7 @@ INPUTOBJECT <INetworkSecurityPerimeterIdentity>: Identity parameter.
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/update-aznetworksecurityperimeterassociation
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/update-aznetworksecurityperimeterassociation
 #>
 function Update-AzNetworkSecurityPerimeterAssociation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAssociation])]

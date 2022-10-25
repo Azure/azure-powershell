@@ -25,7 +25,7 @@ Import-AzRedisEnterpriseCache -ClusterName "MyCache1" -ResourceGroupName "MyGrou
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/import-azredisenterprisecache
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/import-azredisenterprisecache
 #>
 function Import-AzRedisEnterpriseCache {
 [Alias('Import-AzRedisEnterpriseCacheDatabase')]

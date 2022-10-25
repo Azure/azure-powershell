@@ -27,7 +27,7 @@ Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName test-
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignmentReport
 .Link
-https://docs.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationassignmentreport
+https://learn.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationassignmentreport
 #>
 function Get-AzGuestConfigurationAssignmentReport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignmentReport])]
@@ -243,7 +243,7 @@ Get-AzGuestConfigurationAssignment -SubscriptionId xxxxx-xxxx-xxxxx-xxx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationassignment
+https://learn.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationassignment
 #>
 function Get-AzGuestConfigurationAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment])]
@@ -466,7 +466,7 @@ GUESTCONFIGURATIONPROTECTEDPARAMETER <IConfigurationParameter[]>: The protected 
 LATESTASSIGNMENTREPORTRESOURCE <IAssignmentReportResource[]>: The list of resources for which guest configuration assignment compliance is checked.
   [Reason <IAssignmentReportResourceComplianceReason[]>]: Compliance reason and reason code for a resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.guestconfiguration/new-azguestconfigurationassignment
+https://learn.microsoft.com/powershell/module/az.guestconfiguration/new-azguestconfigurationassignment
 #>
 function New-AzGuestConfigurationAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment])]
@@ -737,7 +737,7 @@ INPUTOBJECT <IGuestConfigurationIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VmssName <String>]: The name of the virtual machine scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.guestconfiguration/remove-azguestconfigurationassignment
+https://learn.microsoft.com/powershell/module/az.guestconfiguration/remove-azguestconfigurationassignment
 #>
 function Remove-AzGuestConfigurationAssignment {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment])]

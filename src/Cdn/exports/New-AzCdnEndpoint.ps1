@@ -85,7 +85,7 @@ URLSIGNINGKEY <IUrlSigningKey[]>: List of keys used to validate the signed URL h
   KeySourceParameterSubscriptionId <String>: Subscription Id of the user's Key Vault containing the secret
   KeySourceParameterVaultName <String>: The name of the user's Key Vault containing the secret
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azcdnendpoint
+https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnendpoint
 #>
 function New-AzCdnEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint])]

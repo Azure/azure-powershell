@@ -25,7 +25,7 @@ Get-AzServiceLinkerConfigurationForContainerApp -ContainerApp servicelinker-cont
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISourceConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforcontainerapp
+https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforcontainerapp
 #>
 function Get-AzServiceLinkerConfigurationForContainerApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISourceConfiguration])]

@@ -25,7 +25,7 @@ New-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlw
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlineendpoint
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlineendpoint
 #>
 function New-AzMLWorkspaceOnlineEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint])]

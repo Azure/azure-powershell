@@ -62,7 +62,7 @@ PARAMETER <IMachineUpdate>: Describes a hybrid machine Update.
   [WindowsConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes?>]: Specifies the assessment mode.
   [WindowsConfigurationPatchSettingsPatchMode <PatchModeTypes?>]: Specifies the patch mode.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachine
+https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachine
 #>
 function Update-AzConnectedMachine {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachine])]

@@ -41,7 +41,7 @@ INPUTOBJECT <IActivityLogAlertIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/get-azactivitylogalert
+https://learn.microsoft.com/powershell/module/az.monitor/get-azactivitylogalert
 #>
 function Get-AzActivityLogAlert {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource])]
@@ -232,7 +232,7 @@ INPUTOBJECT <IActivityLogAlertIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/remove-azactivitylogalert
+https://learn.microsoft.com/powershell/module/az.monitor/remove-azactivitylogalert
 #>
 function Remove-AzActivityLogAlert {
 [OutputType([System.Boolean])]
@@ -434,7 +434,7 @@ CONDITION <IAlertRuleAnyOfOrLeafCondition[]>: The list of Activity Log Alert rul
     [Equal <String>]: The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
     [Field <String>]: The name of the Activity Log event's field that this condition will examine.         The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/new-azactivitylogalert
+https://learn.microsoft.com/powershell/module/az.monitor/new-azactivitylogalert
 #>
 function New-AzActivityLogAlert {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource])]
@@ -658,7 +658,7 @@ To create the parameters described below, construct a hash table containing the 
 WEBHOOKPROPERTY <IActionGroupWebhookProperties>: the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertActionGroupObject
+https://learn.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertActionGroupObject
 #>
 function New-AzActivityLogAlertActionGroupObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ActionGroup])]
@@ -777,7 +777,7 @@ ANYOF <IAlertRuleLeafCondition[]>: An Activity Log Alert rule condition that is 
   [Equal <String>]: The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
   [Field <String>]: The name of the Activity Log event's field that this condition will examine.         The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
 .Link
-https://docs.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject
+https://learn.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject
 #>
 function New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition])]
@@ -895,7 +895,7 @@ New-AzActivityLogAlertAlertRuleLeafConditionObject -Field properties.incidentTyp
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleLeafCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertAlertRuleLeafConditionObject
+https://learn.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertAlertRuleLeafConditionObject
 #>
 function New-AzActivityLogAlertAlertRuleLeafConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleLeafCondition])]
@@ -1022,7 +1022,7 @@ INPUTOBJECT <IActivityLogAlertIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/update-azactivitylogalert
+https://learn.microsoft.com/powershell/module/az.monitor/update-azactivitylogalert
 #>
 function Update-AzActivityLogAlert {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource])]

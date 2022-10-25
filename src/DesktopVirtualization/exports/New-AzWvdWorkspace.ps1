@@ -37,7 +37,7 @@ New-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IWorkspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdworkspace
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdworkspace
 #>
 function New-AzWvdWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IWorkspace])]

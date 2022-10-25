@@ -45,7 +45,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/set-azservicebusgeodrconfigurationbreakpair
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusgeodrconfigurationbreakpair
 #>
 function Set-AzServiceBusGeoDRConfigurationBreakPair {
 [OutputType([System.Boolean])]

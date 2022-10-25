@@ -25,7 +25,7 @@ Get-AzEventHubClusterNamespace -ResourceGroupName myResourceGroup -ClusterName D
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceIdContainer
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubclusternamespace
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubclusternamespace
 #>
 function Get-AzEventHubClusterNamespace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceIdContainer])]

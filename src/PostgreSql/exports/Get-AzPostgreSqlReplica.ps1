@@ -25,7 +25,7 @@ Get-AzPostgreSqlReplica -ResourceGroupName PostgreSqlTestRG -ServerName PostgreS
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlreplica
+https://learn.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlreplica
 #>
 function Get-AzPostgreSqlReplica {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer])]

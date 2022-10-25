@@ -52,7 +52,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
 PARAMETER <IFailoverProperties>: Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
   [IsSafeFailover <Boolean?>]: Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/invoke-azservicebusfaildisasterrecoveryconfigover
+https://learn.microsoft.com/powershell/module/az.servicebus/invoke-azservicebusfaildisasterrecoveryconfigover
 #>
 function Invoke-AzServiceBusFailDisasterRecoveryConfigOver {
 [OutputType([System.Boolean])]

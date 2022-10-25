@@ -27,7 +27,7 @@ Get-AzAdvisorConfiguration -ResourceGroupName lnxtest
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/get-azadvisorconfiguration
+https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorconfiguration
 #>
 function Get-AzAdvisorConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData])]
@@ -201,7 +201,7 @@ INPUTOBJECT <IAdvisorIdentity>: The powershell object type PsAzureAdvisorResourc
   [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/Disable-AzAdvisorRecommendation
+https://learn.microsoft.com/powershell/module/az.advisor/Disable-AzAdvisorRecommendation
 #>
 function Disable-AzAdvisorRecommendation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
@@ -395,7 +395,7 @@ INPUTOBJECT <IAdvisorIdentity>: The powershell object type PsAzureAdvisorResourc
   [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/Enable-AzAdvisorRecommendation
+https://learn.microsoft.com/powershell/module/az.advisor/Enable-AzAdvisorRecommendation
 #>
 function Enable-AzAdvisorRecommendation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
@@ -585,7 +585,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
   [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/Get-AzAdvisorRecommendation
+https://learn.microsoft.com/powershell/module/az.advisor/Get-AzAdvisorRecommendation
 #>
 function Get-AzAdvisorRecommendation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
@@ -805,7 +805,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
   [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/Set-AzAdvisorConfiguration
+https://learn.microsoft.com/powershell/module/az.advisor/Set-AzAdvisorConfiguration
 #>
 function Set-AzAdvisorConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData])]

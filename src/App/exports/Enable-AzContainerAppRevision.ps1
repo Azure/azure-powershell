@@ -47,7 +47,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/enable-azcontainerapprevision
+https://learn.microsoft.com/powershell/module/az.app/enable-azcontainerapprevision
 #>
 function Enable-AzContainerAppRevision {
 [OutputType([System.Boolean])]

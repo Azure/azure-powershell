@@ -58,7 +58,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelentityquery
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelentityquery
 #>
 function Update-AzSentinelEntityQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.CustomEntityQuery])]

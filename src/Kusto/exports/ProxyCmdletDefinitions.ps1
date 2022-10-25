@@ -50,7 +50,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 VALUE <ILanguageExtension[]>: The list of language extensions.
   [Name <LanguageExtensionName?>]: The language extension name.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/add-azkustoclusterlanguageextension
+https://learn.microsoft.com/powershell/module/az.kusto/add-azkustoclusterlanguageextension
 #>
 function Add-AzKustoClusterLanguageExtension {
 [OutputType([System.Boolean])]
@@ -276,7 +276,7 @@ VALUE <IDatabasePrincipal[]>: The list of Kusto database principals.
   [Email <String>]: Database principal email if exists.
   [Fqn <String>]: Database principal fully qualified name.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/add-azkustodatabaseprincipal
+https://learn.microsoft.com/powershell/module/az.kusto/add-azkustodatabaseprincipal
 #>
 function Add-AzKustoDatabasePrincipal {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipal])]
@@ -484,7 +484,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoattacheddatabaseconfiguration
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoattacheddatabaseconfiguration
 #>
 function Get-AzKustoAttachedDatabaseConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAttachedDatabaseConfiguration])]
@@ -665,7 +665,7 @@ Get-AzKustoClusterFollowerDatabase  -ResourceGroupName testrg -ClusterName testn
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IFollowerDatabaseDefinition
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoclusterfollowerdatabase
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusterfollowerdatabase
 #>
 function Get-AzKustoClusterFollowerDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IFollowerDatabaseDefinition])]
@@ -827,7 +827,7 @@ Get-AzKustoClusterLanguageExtension -ResourceGroupName testrg -ClusterName testn
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ILanguageExtension
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoclusterlanguageextension
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusterlanguageextension
 #>
 function Get-AzKustoClusterLanguageExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ILanguageExtension])]
@@ -989,7 +989,7 @@ Get-AzKustoClusterOutboundNetworkDependencyEndpoint -ClusterName "mycluster" -Re
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IOutboundNetworkDependenciesEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoclusteroutboundnetworkdependencyendpoint
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusteroutboundnetworkdependencyendpoint
 #>
 function Get-AzKustoClusterOutboundNetworkDependencyEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IOutboundNetworkDependenciesEndpoint])]
@@ -1175,7 +1175,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoclusterprincipalassignment
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusterprincipalassignment
 #>
 function Get-AzKustoClusterPrincipalAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IClusterPrincipalAssignment])]
@@ -1359,7 +1359,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAzureResourceSku
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ISkuDescription
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoclustersku
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclustersku
 #>
 function Get-AzKustoClusterSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ISkuDescription], [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAzureResourceSku])]
@@ -1546,7 +1546,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustocluster
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustocluster
 #>
 function Get-AzKustoCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster])]
@@ -1746,7 +1746,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustodatabaseprincipalassignment
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustodatabaseprincipalassignment
 #>
 function Get-AzKustoDatabasePrincipalAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipalAssignment])]
@@ -1933,7 +1933,7 @@ Get-AzKustoDatabasePrincipal -ResourceGroupName testrg -ClusterName testnewkusto
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipal
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustodatabaseprincipal
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustodatabaseprincipal
 #>
 function Get-AzKustoDatabasePrincipal {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipal])]
@@ -2125,7 +2125,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustodatabase
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustodatabase
 #>
 function Get-AzKustoDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase])]
@@ -2330,7 +2330,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustodataconnection
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustodataconnection
 #>
 function Get-AzKustoDataConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection])]
@@ -2542,7 +2542,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustomanagedprivateendpoint
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustomanagedprivateendpoint
 #>
 function Get-AzKustoManagedPrivateEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint])]
@@ -2745,7 +2745,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustooperationsresultlocation
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustooperationsresultlocation
 #>
 function Get-AzKustoOperationsResultLocation {
 [OutputType([System.Boolean])]
@@ -2943,7 +2943,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustooperationsresult
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustooperationsresult
 #>
 function Get-AzKustoOperationsResult {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IOperationResult])]
@@ -3137,7 +3137,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoprivateendpointconnection
 #>
 function Get-AzKustoPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IPrivateEndpointConnection])]
@@ -3342,7 +3342,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoprivatelinkresource
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoprivatelinkresource
 #>
 function Get-AzKustoPrivateLinkResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IPrivateLinkResource])]
@@ -3547,7 +3547,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoscript
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoscript
 #>
 function Get-AzKustoScript {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript])]
@@ -3757,7 +3757,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/invoke-azkustodetachclusterfollowerdatabase
+https://learn.microsoft.com/powershell/module/az.kusto/invoke-azkustodetachclusterfollowerdatabase
 #>
 function Invoke-AzKustoDetachClusterFollowerDatabase {
 [OutputType([System.Boolean])]
@@ -3979,7 +3979,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/invoke-azkustodiagnoseclustervirtualnetwork
+https://learn.microsoft.com/powershell/module/az.kusto/invoke-azkustodiagnoseclustervirtualnetwork
 #>
 function Invoke-AzKustoDiagnoseClusterVirtualNetwork {
 [OutputType([System.String])]
@@ -4161,7 +4161,7 @@ New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAttachedDatabaseConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustoattacheddatabaseconfiguration
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoattacheddatabaseconfiguration
 #>
 function New-AzKustoAttachedDatabaseConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAttachedDatabaseConfiguration])]
@@ -4409,7 +4409,7 @@ New-AzKustoClusterPrincipalAssignment -ResourceGroupName testrg -ClusterName tes
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IClusterPrincipalAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustoclusterprincipalassignment
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoclusterprincipalassignment
 #>
 function New-AzKustoClusterPrincipalAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IClusterPrincipalAssignment])]
@@ -4626,7 +4626,7 @@ ACCEPTEDAUDIENCE <IAcceptedAudiences[]>: The cluster's accepted audiences.
 TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>: The cluster's external tenants.
   [Value <String>]: GUID representing an external tenant.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustocluster
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustocluster
 #>
 function New-AzKustoCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster])]
@@ -5035,7 +5035,7 @@ New-AzKustoDatabasePrincipalAssignment -ResourceGroupName testrg -ClusterName te
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipalAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustodatabaseprincipalassignment
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodatabaseprincipalassignment
 #>
 function New-AzKustoDatabasePrincipalAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipalAssignment])]
@@ -5267,7 +5267,7 @@ PARAMETER <IManagedPrivateEndpoint>: Class representing a managed private endpoi
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustomanagedprivateendpoint
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustomanagedprivateendpoint
 #>
 function New-AzKustoManagedPrivateEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint])]
@@ -5496,7 +5496,7 @@ PARAMETER <IPrivateEndpointConnection>: A private endpoint connection
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustoprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoprivateendpointconnection
 #>
 function New-AzKustoPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IPrivateEndpointConnection])]
@@ -5717,7 +5717,7 @@ PARAMETER <IScript>: Class representing a database script.
   [Url <String>]: The url to the KQL script blob file. Must not be used together with scriptContent property
   [UrlSasToken <String>]: The SaS token that provide read access to the file which contain the script. Must be provided when using scriptUrl property.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustoscript
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoscript
 #>
 function New-AzKustoScript {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript])]
@@ -5969,7 +5969,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustoattacheddatabaseconfiguration
+https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustoattacheddatabaseconfiguration
 #>
 function Remove-AzKustoAttachedDatabaseConfiguration {
 [OutputType([System.Boolean])]
@@ -6189,7 +6189,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 VALUE <ILanguageExtension[]>: The list of language extensions.
   [Name <LanguageExtensionName?>]: The language extension name.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustoclusterlanguageextension
+https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustoclusterlanguageextension
 #>
 function Remove-AzKustoClusterLanguageExtension {
 [OutputType([System.Boolean])]
@@ -6407,7 +6407,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustoclusterprincipalassignment
+https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustoclusterprincipalassignment
 #>
 function Remove-AzKustoClusterPrincipalAssignment {
 [OutputType([System.Boolean])]
@@ -6623,7 +6623,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustocluster
+https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustocluster
 #>
 function Remove-AzKustoCluster {
 [OutputType([System.Boolean])]
@@ -6834,7 +6834,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustodatabaseprincipalassignment
+https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustodatabaseprincipalassignment
 #>
 function Remove-AzKustoDatabasePrincipalAssignment {
 [OutputType([System.Boolean])]
@@ -7064,7 +7064,7 @@ VALUE <IDatabasePrincipal[]>: The list of Kusto database principals.
   [Email <String>]: Database principal email if exists.
   [Fqn <String>]: Database principal fully qualified name.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustodatabaseprincipal
+https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustodatabaseprincipal
 #>
 function Remove-AzKustoDatabasePrincipal {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipal])]
@@ -7270,7 +7270,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustodatabase
+https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustodatabase
 #>
 function Remove-AzKustoDatabase {
 [OutputType([System.Boolean])]
@@ -7487,7 +7487,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustodataconnection
+https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustodataconnection
 #>
 function Remove-AzKustoDataConnection {
 [OutputType([System.Boolean])]
@@ -7710,7 +7710,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustomanagedprivateendpoint
+https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustomanagedprivateendpoint
 #>
 function Remove-AzKustoManagedPrivateEndpoint {
 [OutputType([System.Boolean])]
@@ -7927,7 +7927,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustoprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustoprivateendpointconnection
 #>
 function Remove-AzKustoPrivateEndpointConnection {
 [OutputType([System.Boolean])]
@@ -8144,7 +8144,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/remove-azkustoscript
+https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustoscript
 #>
 function Remove-AzKustoScript {
 [OutputType([System.Boolean])]
@@ -8367,7 +8367,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/start-azkustocluster
+https://learn.microsoft.com/powershell/module/az.kusto/start-azkustocluster
 #>
 function Start-AzKustoCluster {
 [OutputType([System.Boolean])]
@@ -8578,7 +8578,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/stop-azkustocluster
+https://learn.microsoft.com/powershell/module/az.kusto/stop-azkustocluster
 #>
 function Stop-AzKustoCluster {
 [OutputType([System.Boolean])]
@@ -8789,7 +8789,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/test-azkustoattacheddatabaseconfigurationnameavailability
+https://learn.microsoft.com/powershell/module/az.kusto/test-azkustoattacheddatabaseconfigurationnameavailability
 #>
 function Test-AzKustoAttachedDatabaseConfigurationNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICheckNameResult])]
@@ -8989,7 +8989,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/test-azkustoclusternameavailability
+https://learn.microsoft.com/powershell/module/az.kusto/test-azkustoclusternameavailability
 #>
 function Test-AzKustoClusterNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICheckNameResult])]
@@ -9183,7 +9183,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/test-azkustoclusterprincipalassignmentnameavailability
+https://learn.microsoft.com/powershell/module/az.kusto/test-azkustoclusterprincipalassignmentnameavailability
 #>
 function Test-AzKustoClusterPrincipalAssignmentNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICheckNameResult])]
@@ -9383,7 +9383,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/test-azkustodatabasenameavailability
+https://learn.microsoft.com/powershell/module/az.kusto/test-azkustodatabasenameavailability
 #>
 function Test-AzKustoDatabaseNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICheckNameResult])]
@@ -9590,7 +9590,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/test-azkustodatabaseprincipalassignmentnameavailability
+https://learn.microsoft.com/powershell/module/az.kusto/test-azkustodatabaseprincipalassignmentnameavailability
 #>
 function Test-AzKustoDatabasePrincipalAssignmentNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICheckNameResult])]
@@ -9796,7 +9796,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/test-azkustodataconnectionnameavailability
+https://learn.microsoft.com/powershell/module/az.kusto/test-azkustodataconnectionnameavailability
 #>
 function Test-AzKustoDataConnectionNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICheckNameResult])]
@@ -10000,7 +10000,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/test-azkustomanagedprivateendpointnameavailability
+https://learn.microsoft.com/powershell/module/az.kusto/test-azkustomanagedprivateendpointnameavailability
 #>
 function Test-AzKustoManagedPrivateEndpointNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICheckNameResult])]
@@ -10200,7 +10200,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/test-azkustoscriptnameavailability
+https://learn.microsoft.com/powershell/module/az.kusto/test-azkustoscriptnameavailability
 #>
 function Test-AzKustoScriptNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICheckNameResult])]
@@ -10412,7 +10412,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>: The cluster's external tenants.
   [Value <String>]: GUID representing an external tenant.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster
+https://learn.microsoft.com/powershell/module/az.kusto/update-azkustocluster
 #>
 function Update-AzKustoCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster])]
@@ -10852,7 +10852,7 @@ PARAMETER <IManagedPrivateEndpoint>: Class representing a managed private endpoi
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/update-azkustomanagedprivateendpoint
+https://learn.microsoft.com/powershell/module/az.kusto/update-azkustomanagedprivateendpoint
 #>
 function Update-AzKustoManagedPrivateEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint])]
@@ -11122,7 +11122,7 @@ PARAMETER <IScript>: Class representing a database script.
   [Url <String>]: The url to the KQL script blob file. Must not be used together with scriptContent property
   [UrlSasToken <String>]: The SaS token that provide read access to the file which contain the script. Must be provided when using scriptUrl property.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/update-azkustoscript
+https://learn.microsoft.com/powershell/module/az.kusto/update-azkustoscript
 #>
 function Update-AzKustoScript {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript])]
@@ -11408,7 +11408,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/invoke-azkustodataconnectionvalidation
+https://learn.microsoft.com/powershell/module/az.kusto/invoke-azkustodataconnectionvalidation
 #>
 function Invoke-AzKustoDataConnectionValidation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnectionValidationResult])]
@@ -11706,7 +11706,7 @@ New-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustodatabase
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodatabase
 #>
 function New-AzKustoDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase])]
@@ -11916,7 +11916,7 @@ New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkusto
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustodataconnection
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodataconnection
 #>
 function New-AzKustoDataConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection])]
@@ -12235,7 +12235,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/update-azkustodatabase
+https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodatabase
 #>
 function Update-AzKustoDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase])]
@@ -12484,7 +12484,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/update-azkustodataconnection
+https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodataconnection
 #>
 function Update-AzKustoDataConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection])]

@@ -26,7 +26,7 @@ Merge-AzReservation -ReservationOrderId "79ebddac-4030-4296-ab93-1ad90f032058" -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/merge-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/merge-azreservation
 #>
 function Merge-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]

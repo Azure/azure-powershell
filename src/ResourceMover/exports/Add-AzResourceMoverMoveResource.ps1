@@ -144,7 +144,7 @@ RESOURCESETTING <IResourceSettings>: Gets or sets the resource settings.
   ResourceType <String>: The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   TargetResourceName <String>: Gets or sets the target Resource name.
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/add-azresourcemovermoveresource
+https://learn.microsoft.com/powershell/module/az.resourcemover/add-azresourcemovermoveresource
 #>
 function Add-AzResourceMoverMoveResource {
 [Alias('Update-AzResourceMoverMoveResource')]

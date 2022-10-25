@@ -30,7 +30,7 @@ Name              : KeyVaultConnection5
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewkeyvaultconnection
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewkeyvaultconnection
 #>
 function Remove-AzPurviewKeyVaultConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault])]

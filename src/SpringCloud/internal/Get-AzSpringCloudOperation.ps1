@@ -27,7 +27,7 @@ Lists all of the available REST API operations of the Microsoft.AppPlatform prov
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IOperationDetail
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudoperation
+https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudoperation
 #>
 function Get-AzSpringCloudOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IOperationDetail])]

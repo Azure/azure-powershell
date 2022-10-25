@@ -23,7 +23,7 @@ Create an in-memory object for ImageTemplateValidator.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplatePowerShellValidator
 .Link
-https://docs.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatevalidatorobject
+https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatevalidatorobject
 #>
 function New-AzImageBuilderTemplateValidatorObject_PowerShellValidator {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplatePowerShellValidator')]

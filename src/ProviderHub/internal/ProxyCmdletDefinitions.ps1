@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsDefinition
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhuboperation
+https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhuboperation
 #>
 function Get-AzProviderHubOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsDefinition])]
@@ -198,7 +198,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubresourcetyperegistration
+https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubresourcetyperegistration
 #>
 function Get-AzProviderHubResourceTypeRegistration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration])]
@@ -371,7 +371,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubskunestedresourcetypefirst
+https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubskunestedresourcetypefirst
 #>
 function Get-AzProviderHubSkuNestedResourceTypeFirst {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
@@ -553,7 +553,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubskunestedresourcetypesecond
+https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubskunestedresourcetypesecond
 #>
 function Get-AzProviderHubSkuNestedResourceTypeSecond {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
@@ -741,7 +741,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubskunestedresourcetypethird
+https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubskunestedresourcetypethird
 #>
 function Get-AzProviderHubSkuNestedResourceTypeThird {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
@@ -939,7 +939,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubsku
+https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubsku
 #>
 function Get-AzProviderHubSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
@@ -1149,7 +1149,7 @@ CONTENT <IOperationsDefinition[]>: .
   [Origin <String>]: 
   [Property <IAny>]: Any object
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhuboperation
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhuboperation
 #>
 function New-AzProviderHubOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsContent])]
@@ -1313,7 +1313,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubproviderregistrationoperation
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubproviderregistrationoperation
 #>
 function New-AzProviderHubProviderRegistrationOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IOperationsDefinition])]
@@ -1525,7 +1525,7 @@ THROTTLINGRULE <IThrottlingRule[]>: .
     [Interval <TimeSpan?>]: 
   [RequiredFeature <String[]>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubresourcetyperegistration
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubresourcetyperegistration
 #>
 function New-AzProviderHubResourceTypeRegistration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration])]
@@ -1966,7 +1966,7 @@ SKUSETTING <ISkuSetting[]>: .
   [Size <String>]: 
   [Tier <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubskunestedresourcetypefirst
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubskunestedresourcetypefirst
 #>
 function New-AzProviderHubSkuNestedResourceTypeFirst {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
@@ -2170,7 +2170,7 @@ SKUSETTING <ISkuSetting[]>: .
   [Size <String>]: 
   [Tier <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubskunestedresourcetypesecond
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubskunestedresourcetypesecond
 #>
 function New-AzProviderHubSkuNestedResourceTypeSecond {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
@@ -2380,7 +2380,7 @@ SKUSETTING <ISkuSetting[]>: .
   [Size <String>]: 
   [Tier <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubskunestedresourcetypethird
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubskunestedresourcetypethird
 #>
 function New-AzProviderHubSkuNestedResourceTypeThird {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
@@ -2600,7 +2600,7 @@ SKUSETTING <ISkuSetting[]>: .
   [Size <String>]: 
   [Tier <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubsku
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubsku
 #>
 function New-AzProviderHubSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
@@ -2783,7 +2783,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhuboperation
+https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhuboperation
 #>
 function Remove-AzProviderHubOperation {
 [OutputType([System.Boolean])]
@@ -2949,7 +2949,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubresourcetyperegistration
+https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubresourcetyperegistration
 #>
 function Remove-AzProviderHubResourceTypeRegistration {
 [OutputType([System.Boolean])]
@@ -3125,7 +3125,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubskunestedresourcetypefirst
+https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubskunestedresourcetypefirst
 #>
 function Remove-AzProviderHubSkuNestedResourceTypeFirst {
 [OutputType([System.Boolean])]
@@ -3313,7 +3313,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubskunestedresourcetypesecond
+https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubskunestedresourcetypesecond
 #>
 function Remove-AzProviderHubSkuNestedResourceTypeSecond {
 [OutputType([System.Boolean])]
@@ -3507,7 +3507,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubskunestedresourcetypethird
+https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubskunestedresourcetypethird
 #>
 function Remove-AzProviderHubSkuNestedResourceTypeThird {
 [OutputType([System.Boolean])]
@@ -3703,7 +3703,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubsku
+https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubsku
 #>
 function Remove-AzProviderHubSku {
 [OutputType([System.Boolean])]

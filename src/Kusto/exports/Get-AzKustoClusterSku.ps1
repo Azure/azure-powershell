@@ -29,7 +29,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAzureResourceSku
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ISkuDescription
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoclustersku
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclustersku
 #>
 function Get-AzKustoClusterSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ISkuDescription], [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAzureResourceSku])]

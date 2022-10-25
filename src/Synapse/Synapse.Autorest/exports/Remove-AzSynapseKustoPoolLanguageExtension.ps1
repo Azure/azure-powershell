@@ -46,7 +46,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
 VALUE <ILanguageExtension[]>: The list of language extensions.
   [Name <LanguageExtensionName?>]: The language extension name.
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopoollanguageextension
+https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopoollanguageextension
 #>
 function Remove-AzSynapseKustoPoolLanguageExtension {
 [OutputType([System.Boolean])]

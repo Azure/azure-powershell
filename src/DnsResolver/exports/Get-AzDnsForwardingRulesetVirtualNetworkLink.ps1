@@ -45,7 +45,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingrulesetvirtualnetworklink
+https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingrulesetvirtualnetworklink
 #>
 function Get-AzDnsForwardingRulesetVirtualNetworkLink {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink])]

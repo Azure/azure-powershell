@@ -27,7 +27,7 @@ Get-AzDataMigrationSkuRecommendation -ConfigFilePath "C:\Users\user\document\con
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationskurecommendation
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationskurecommendation
 #>
 function Get-AzDataMigrationSkuRecommendation {
 [OutputType([System.Boolean])]

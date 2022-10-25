@@ -27,7 +27,7 @@ Gets the primary and secondary connection strings for the topic.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebustopickey
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebustopickey
 #>
 function Get-AzServiceBusTopicKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]

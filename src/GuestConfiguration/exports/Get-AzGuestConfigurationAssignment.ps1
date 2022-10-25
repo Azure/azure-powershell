@@ -35,7 +35,7 @@ Get-AzGuestConfigurationAssignment -SubscriptionId xxxxx-xxxx-xxxxx-xxx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationassignment
+https://learn.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationassignment
 #>
 function Get-AzGuestConfigurationAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment])]

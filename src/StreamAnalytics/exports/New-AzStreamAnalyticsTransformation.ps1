@@ -28,7 +28,7 @@ tranf-01 Microsoft.StreamAnalytics/streamingjobs/transformations ec0c7238-6bb2-4
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ITransformation
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation
+https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation
 #>
 function New-AzStreamAnalyticsTransformation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ITransformation])]

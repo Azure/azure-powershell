@@ -149,7 +149,7 @@ SPECIFICATIONRESOURCETYPEREGISTRATION <IResourceTypeRegistration[]>: .
       [Interval <TimeSpan?>]: 
     [RequiredFeature <String[]>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubcustomrollout
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubcustomrollout
 #>
 function New-AzProviderHubCustomRollout {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICustomRollout])]

@@ -165,7 +165,7 @@ APPLICATIONOBJECT <MicrosoftGraphApplication>: application object
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadappfederatedidentitycredentials
+https://learn.microsoft.com/powershell/module/az.resources/get-azadappfederatedidentitycredentials
 #>
 function Get-AzADAppFederatedCredential {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential])]

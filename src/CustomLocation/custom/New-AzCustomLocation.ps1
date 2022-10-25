@@ -28,7 +28,7 @@ eastus   azps_test_cluster arc
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation
 .Link
-https://docs.microsoft.com/powershell/module/az.customlocation/new-azcustomlocation
+https://learn.microsoft.com/powershell/module/az.customlocation/new-azcustomlocation
 #>
 function New-AzCustomLocation {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation])]

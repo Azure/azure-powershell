@@ -85,7 +85,7 @@ Status         : Succeeded
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverprepare
+https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverprepare
 #>
 function Invoke-AzResourceMoverPrepare {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus])]

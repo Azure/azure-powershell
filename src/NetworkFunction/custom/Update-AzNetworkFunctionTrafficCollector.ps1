@@ -46,7 +46,7 @@ COLLECTORPOLICY <ICollectorPolicy[]>: Collector Policies for Azure Traffic Colle
     [SourceType <SourceType?>]: Ingestion source type.
   [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctiontrafficcollector
+https://learn.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctiontrafficcollector
 #>
 function Update-AzNetworkFunctionTrafficCollector {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector])]

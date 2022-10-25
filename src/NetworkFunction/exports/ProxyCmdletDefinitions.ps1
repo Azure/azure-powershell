@@ -38,7 +38,7 @@ INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctioncollectorpolicy
+https://learn.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctioncollectorpolicy
 #>
 function Get-AzNetworkFunctionCollectorPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]
@@ -235,7 +235,7 @@ INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctiontrafficcollector
+https://learn.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctiontrafficcollector
 #>
 function Get-AzNetworkFunctionTrafficCollector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector])]
@@ -423,7 +423,7 @@ INGESTIONPOLICYINGESTIONSOURCE <IIngestionSourcesPropertiesFormat[]>: Ingestion 
   [ResourceId <String>]: Resource ID.
   [SourceType <SourceType?>]: Ingestion source type.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctioncollectorpolicy
+https://learn.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctioncollectorpolicy
 #>
 function New-AzNetworkFunctionCollectorPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]
@@ -639,7 +639,7 @@ New-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroupname test -l
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctiontrafficcollector
+https://learn.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctiontrafficcollector
 #>
 function New-AzNetworkFunctionTrafficCollector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector])]
@@ -839,7 +839,7 @@ INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/remove-aznetworkfunctioncollectorpolicy
+https://learn.microsoft.com/powershell/module/az.networkfunction/remove-aznetworkfunctioncollectorpolicy
 #>
 function Remove-AzNetworkFunctionCollectorPolicy {
 [OutputType([System.Boolean])]
@@ -1046,7 +1046,7 @@ INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/remove-aznetworkfunctiontrafficcollector
+https://learn.microsoft.com/powershell/module/az.networkfunction/remove-aznetworkfunctiontrafficcollector
 #>
 function Remove-AzNetworkFunctionTrafficCollector {
 [OutputType([System.Boolean])]
@@ -1247,7 +1247,7 @@ INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctioncollectorpolicytag
+https://learn.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctioncollectorpolicytag
 #>
 function Update-AzNetworkFunctionCollectorPolicyTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]
@@ -1442,7 +1442,7 @@ INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctiontrafficcollectortag
+https://learn.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctiontrafficcollectortag
 #>
 function Update-AzNetworkFunctionTrafficCollectorTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector])]
@@ -1631,7 +1631,7 @@ INGESTIONPOLICYINGESTIONSOURCE <IIngestionSourcesPropertiesFormat[]>: Ingestion 
   [ResourceId <String>]: Resource ID.
   [SourceType <SourceType?>]: Ingestion source type.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctioncollectorpolicy
+https://learn.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctioncollectorpolicy
 #>
 function Update-AzNetworkFunctionCollectorPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]
@@ -1869,7 +1869,7 @@ COLLECTORPOLICY <ICollectorPolicy[]>: Collector Policies for Azure Traffic Colle
     [SourceType <SourceType?>]: Ingestion source type.
   [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctiontrafficcollector
+https://learn.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctiontrafficcollector
 #>
 function Update-AzNetworkFunctionTrafficCollector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector])]

@@ -25,7 +25,7 @@ New-AzNginxCertificate -DeploymentName nginx-test -Name cert-test -ResourceGroup
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/new-aznginxcertificate
+https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxcertificate
 #>
 function New-AzNginxCertificate {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate])]

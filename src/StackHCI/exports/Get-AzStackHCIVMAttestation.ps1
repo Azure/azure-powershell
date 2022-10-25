@@ -27,7 +27,7 @@ Get-AzStackHCIVMAttestation -Local
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmattestation
 #>
 function Get-AzStackHCIVMAttestation {
 [OutputType([System.Management.Automation.PSObject])]

@@ -40,7 +40,7 @@ PROPERTY <IServerAdministratorResource>: Represents a and external administrator
   [Sid <String>]: The server administrator Sid (Secure ID).
   [TenantId <String>]: The server Active Directory Administrator tenant id.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/set-azmysqlserveradministrator
+https://learn.microsoft.com/powershell/module/az.mysql/set-azmysqlserveradministrator
 #>
 function Set-AzMySqlServerAdministrator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource])]

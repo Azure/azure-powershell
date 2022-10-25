@@ -27,7 +27,7 @@ Create a port mirroring profile by id in a private cloud workload network.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPortMirroring
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkportmirroring
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkportmirroring
 #>
 function New-AzVMwareWorkloadNetworkPortMirroring {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPortMirroring])]

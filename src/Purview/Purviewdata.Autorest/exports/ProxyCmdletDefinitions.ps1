@@ -65,7 +65,7 @@ Version                : 2
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewclassificationruleversion
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewclassificationruleversion
 #>
 function Get-AzPurviewClassificationRuleVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule])]
@@ -243,7 +243,7 @@ Version                : 1
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewclassificationrule
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewclassificationrule
 #>
 function Get-AzPurviewClassificationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule])]
@@ -408,7 +408,7 @@ SubscriptionId           : 4348d67b-ffc5-465d-b5dd-xxxxxxxxx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewdatasource
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewdatasource
 #>
 function Get-AzPurviewDataSource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource])]
@@ -532,7 +532,7 @@ Name              : custom
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewfilter
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewfilter
 #>
 function Get-AzPurviewFilter {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter])]
@@ -671,7 +671,7 @@ Name              : KeyVaultConnection2
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewkeyvaultconnection
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewkeyvaultconnection
 #>
 function Get-AzPurviewKeyVaultConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault])]
@@ -836,7 +836,7 @@ Target                      :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanResult
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewscanresultscanhistory
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewscanresultscanhistory
 #>
 function Get-AzPurviewScanResultScanHistory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanResult])]
@@ -1003,7 +1003,7 @@ Version                              : 2
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewscanruleset
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewscanruleset
 #>
 function Get-AzPurviewScanRuleset {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset])]
@@ -1171,7 +1171,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewscan
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewscan
 #>
 function Get-AzPurviewScan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan])]
@@ -1303,7 +1303,7 @@ Version           : 4
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanrulesetlatest
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanrulesetlatest
 #>
 function Get-AzPurviewSystemScanRulesetLatest {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset])]
@@ -1452,7 +1452,7 @@ Version           : 1
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanrulesetversion
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanrulesetversion
 #>
 function Get-AzPurviewSystemScanRulesetVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset])]
@@ -1621,7 +1621,7 @@ Version           : 2
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanruleset
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanruleset
 #>
 function Get-AzPurviewSystemScanRuleset {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset])]
@@ -1769,7 +1769,7 @@ ScheduleWeekDay            :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewtrigger
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewtrigger
 #>
 function Get-AzPurviewTrigger {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger])]
@@ -1895,7 +1895,7 @@ EndTime ScanResultId StartTime Status
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/invoke-azpurviewtagclassificationruleclassificationversion
+https://learn.microsoft.com/powershell/module/az.purview/invoke-azpurviewtagclassificationruleclassificationversion
 #>
 function Invoke-AzPurviewTagClassificationRuleClassificationVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse])]
@@ -2057,7 +2057,7 @@ To create the parameters described below, construct a hash table containing the 
 BODY <IClassificationRule>: .
   Kind <ClassificationRuleType>: 
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewclassificationrule
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewclassificationrule
 #>
 function New-AzPurviewClassificationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule])]
@@ -2206,7 +2206,7 @@ To create the parameters described below, construct a hash table containing the 
 BODY <IDataSource>: .
   Kind <DataSourceType>: 
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewdatasource
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewdatasource
 #>
 function New-AzPurviewDataSource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource])]
@@ -2347,7 +2347,7 @@ BODY <IFilter>: .
   [ExcludeUriPrefix <String[]>]: 
   [IncludeUriPrefix <String[]>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewfilter
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewfilter
 #>
 function New-AzPurviewFilter {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter])]
@@ -2492,7 +2492,7 @@ BODY <IAzureKeyVault>: .
   [BaseUrl <String>]: 
   [Description <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewkeyvaultconnection
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewkeyvaultconnection
 #>
 function New-AzPurviewKeyVaultConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault])]
@@ -2640,7 +2640,7 @@ BODY <IScanRuleset>: .
   Kind <DataSourceType>: 
   [Type <ScanRulesetType?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewscanruleset
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewscanruleset
 #>
 function New-AzPurviewScanRuleset {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset])]
@@ -2790,7 +2790,7 @@ To create the parameters described below, construct a hash table containing the 
 BODY <IScan>: .
   Kind <ScanAuthorizationType>: 
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewscan
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewscan
 #>
 function New-AzPurviewScan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan])]
@@ -2970,7 +2970,7 @@ BODY <ITrigger>: .
     [Occurrence <Int32?>]: 
   [ScheduleWeekDay <DaysOfWeek[]>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewtrigger
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewtrigger
 #>
 function New-AzPurviewTrigger {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger])]
@@ -3119,7 +3119,7 @@ Version                : 1
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewclassificationrule
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewclassificationrule
 #>
 function Remove-AzPurviewClassificationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRule])]
@@ -3257,7 +3257,7 @@ SubscriptionId           : 4348d67b-ffc5-465d-b5dd-xxxxxxxxxx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewdatasource
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewdatasource
 #>
 function Remove-AzPurviewDataSource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource])]
@@ -3385,7 +3385,7 @@ Name              : KeyVaultConnection5
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewkeyvaultconnection
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewkeyvaultconnection
 #>
 function Remove-AzPurviewKeyVaultConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault])]
@@ -3521,7 +3521,7 @@ Version                              : 2
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewscanruleset
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewscanruleset
 #>
 function Remove-AzPurviewScanRuleset {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset])]
@@ -3660,7 +3660,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewscan
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewscan
 #>
 function Remove-AzPurviewScan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan])]
@@ -3811,7 +3811,7 @@ ScheduleWeekDay            :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewtrigger
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewtrigger
 #>
 function Remove-AzPurviewTrigger {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger])]
@@ -3943,7 +3943,7 @@ EndTime ScanResultId                         StartTime            Status
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/start-azpurviewscanresultscan
+https://learn.microsoft.com/powershell/module/az.purview/start-azpurviewscanresultscan
 #>
 function Start-AzPurviewScanResultScan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse])]
@@ -4082,7 +4082,7 @@ EndTime ScanResultId StartTime            Status
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/stop-azpurviewscanresultscan
+https://learn.microsoft.com/powershell/module/az.purview/stop-azpurviewscanresultscan
 #>
 function Stop-AzPurviewScanResultScan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IOperationResponse])]
@@ -4226,7 +4226,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1CredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen1CredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen1CredentialScanObject
 #>
 function New-AzPurviewAdlsGen1CredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1CredentialScan])]
@@ -4345,7 +4345,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1DataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen1DataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen1DataSourceObject
 #>
 function New-AzPurviewAdlsGen1DataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1DataSource])]
@@ -4456,7 +4456,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1MsiScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen1MsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen1MsiScanObject
 #>
 function New-AzPurviewAdlsGen1MsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1MsiScan])]
@@ -4574,7 +4574,7 @@ SCANNINGRULECUSTOMFILEEXTENSION <ICustomFileExtension[]>:
   [Enabled <Boolean?>]: 
   [FileExtension <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen1ScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen1ScanRulesetObject
 #>
 function New-AzPurviewAdlsGen1ScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1ScanRuleset])]
@@ -4685,7 +4685,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2CredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2CredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2CredentialScanObject
 #>
 function New-AzPurviewAdlsGen2CredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2CredentialScan])]
@@ -4804,7 +4804,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2DataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2DataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2DataSourceObject
 #>
 function New-AzPurviewAdlsGen2DataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2DataSource])]
@@ -4915,7 +4915,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2MsiScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2MsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2MsiScanObject
 #>
 function New-AzPurviewAdlsGen2MsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2MsiScan])]
@@ -5033,7 +5033,7 @@ SCANNINGRULECUSTOMFILEEXTENSION <ICustomFileExtension[]>:
   [Enabled <Boolean?>]: 
   [FileExtension <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2ScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2ScanRulesetObject
 #>
 function New-AzPurviewAdlsGen2ScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2ScanRuleset])]
@@ -5334,7 +5334,7 @@ RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>:
   [TeradataScanRulesetName <String>]: 
   [TeradataScanRulesetType <ScanRulesetType?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonAccountCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonAccountCredentialScanObject
 #>
 function New-AzPurviewAmazonAccountCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonAccountCredentialScan])]
@@ -5456,7 +5456,7 @@ Scan                     :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonAccountDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonAccountDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonAccountDataSourceObject
 #>
 function New-AzPurviewAmazonAccountDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonAccountDataSource])]
@@ -5558,7 +5558,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlCredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonPostgreSqlCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonPostgreSqlCredentialScanObject
 #>
 function New-AzPurviewAmazonPostgreSqlCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlCredentialScan])]
@@ -5695,7 +5695,7 @@ VpcEndpointServiceName   : com.amazonaws.ypce.wus.123456789
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonPostgreSqlDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonPostgreSqlDataSourceObject
 #>
 function New-AzPurviewAmazonPostgreSqlDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlDataSource])]
@@ -5794,7 +5794,7 @@ Version                              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonPostgreSqlScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonPostgreSqlScanRulesetObject
 #>
 function New-AzPurviewAmazonPostgreSqlScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlScanRuleset])]
@@ -5895,7 +5895,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3CredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3CredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3CredentialScanObject
 #>
 function New-AzPurviewAmazonS3CredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3CredentialScan])]
@@ -6022,7 +6022,7 @@ ServiceUrl               : s3://multicloud-e2e-2
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3DataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3DataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3DataSourceObject
 #>
 function New-AzPurviewAmazonS3DataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3DataSource])]
@@ -6129,7 +6129,7 @@ SCANNINGRULECUSTOMFILEEXTENSION <ICustomFileExtension[]>:
   [Enabled <Boolean?>]: 
   [FileExtension <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3ScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3ScanRulesetObject
 #>
 function New-AzPurviewAmazonS3ScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3ScanRuleset])]
@@ -6244,7 +6244,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlCredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonSqlCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonSqlCredentialScanObject
 #>
 function New-AzPurviewAmazonSqlCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlCredentialScan])]
@@ -6381,7 +6381,7 @@ VpcEndpointServiceName   : com.amazonaws.ypce.wus.123456789
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonSqlDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonSqlDataSourceObject
 #>
 function New-AzPurviewAmazonSqlDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlDataSource])]
@@ -6480,7 +6480,7 @@ Version                              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonSqlScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonSqlScanRulesetObject
 #>
 function New-AzPurviewAmazonSqlScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlScanRuleset])]
@@ -6580,7 +6580,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbCredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureCosmosDbCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureCosmosDbCredentialScanObject
 #>
 function New-AzPurviewAzureCosmosDbCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbCredentialScan])]
@@ -6704,7 +6704,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureCosmosDbDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureCosmosDbDataSourceObject
 #>
 function New-AzPurviewAzureCosmosDbDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbDataSource])]
@@ -6813,7 +6813,7 @@ Version                              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureCosmosDbScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureCosmosDbScanRulesetObject
 #>
 function New-AzPurviewAzureCosmosDbScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbScanRuleset])]
@@ -6913,7 +6913,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerCredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerCredentialScanObject
 #>
 function New-AzPurviewAzureDataExplorerCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerCredentialScan])]
@@ -7037,7 +7037,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerDataSourceObject
 #>
 function New-AzPurviewAzureDataExplorerDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerDataSource])]
@@ -7149,7 +7149,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerMsiScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerMsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerMsiScanObject
 #>
 function New-AzPurviewAzureDataExplorerMsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerMsiScan])]
@@ -7259,7 +7259,7 @@ Version                              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerScanRulesetObject
 #>
 function New-AzPurviewAzureDataExplorerScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerScanRuleset])]
@@ -7359,7 +7359,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceCredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceCredentialScanObject
 #>
 function New-AzPurviewAzureFileServiceCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceCredentialScan])]
@@ -7483,7 +7483,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceDataSourceObject
 #>
 function New-AzPurviewAzureFileServiceDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceDataSource])]
@@ -7605,7 +7605,7 @@ SCANNINGRULECUSTOMFILEEXTENSION <ICustomFileExtension[]>:
   [Enabled <Boolean?>]: 
   [FileExtension <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceScanRulesetObject
 #>
 function New-AzPurviewAzureFileServiceScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceScanRuleset])]
@@ -7705,7 +7705,7 @@ Name              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureKeyVault
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureKeyVaultObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureKeyVaultObject
 #>
 function New-AzPurviewAzureKeyVaultObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureKeyVault])]
@@ -7790,7 +7790,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlCredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureMySqlCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureMySqlCredentialScanObject
 #>
 function New-AzPurviewAzureMySqlCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlCredentialScan])]
@@ -7925,7 +7925,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureMySqlDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureMySqlDataSourceObject
 #>
 function New-AzPurviewAzureMySqlDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlDataSource])]
@@ -8039,7 +8039,7 @@ Version                              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureMySqlScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureMySqlScanRulesetObject
 #>
 function New-AzPurviewAzureMySqlScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlScanRuleset])]
@@ -8142,7 +8142,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlCredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzurePostgreSqlCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzurePostgreSqlCredentialScanObject
 #>
 function New-AzPurviewAzurePostgreSqlCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlCredentialScan])]
@@ -8282,7 +8282,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzurePostgreSqlDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzurePostgreSqlDataSourceObject
 #>
 function New-AzPurviewAzurePostgreSqlDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlDataSource])]
@@ -8396,7 +8396,7 @@ Version                              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzurePostgreSqlScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzurePostgreSqlScanRulesetObject
 #>
 function New-AzPurviewAzurePostgreSqlScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlScanRuleset])]
@@ -8685,7 +8685,7 @@ RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>:
   [TeradataScanRulesetName <String>]: 
   [TeradataScanRulesetType <ScanRulesetType?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupCredentialScanObject
 #>
 function New-AzPurviewAzureResourceGroupCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupCredentialScan])]
@@ -8807,7 +8807,7 @@ SubscriptionId           : 6810b9ce-82d3-4562-9658-xxxxxxxxxx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupDataSourceObject
 #>
 function New-AzPurviewAzureResourceGroupDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupDataSource])]
@@ -9095,7 +9095,7 @@ RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>:
   [TeradataScanRulesetName <String>]: 
   [TeradataScanRulesetType <ScanRulesetType?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupMsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupMsiScanObject
 #>
 function New-AzPurviewAzureResourceGroupMsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupMsiScan])]
@@ -9223,7 +9223,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseCredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseCredentialScanObject
 #>
 function New-AzPurviewAzureSqlDatabaseCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseCredentialScan])]
@@ -9352,7 +9352,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseDataSourceObject
 #>
 function New-AzPurviewAzureSqlDatabaseDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseDataSource])]
@@ -9467,7 +9467,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceCredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceCredentialScanObject
 #>
 function New-AzPurviewAzureSqlDatabaseManagedInstanceCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceCredentialScan])]
@@ -9596,7 +9596,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceDataSourceObject
 #>
 function New-AzPurviewAzureSqlDatabaseManagedInstanceDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceDataSource])]
@@ -9709,7 +9709,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceMsiScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceMsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceMsiScanObject
 #>
 function New-AzPurviewAzureSqlDatabaseManagedInstanceMsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceMsiScan])]
@@ -9824,7 +9824,7 @@ Version                              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceScanRulesetObject
 #>
 function New-AzPurviewAzureSqlDatabaseManagedInstanceScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceScanRuleset])]
@@ -9923,7 +9923,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseMsiScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseMsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseMsiScanObject
 #>
 function New-AzPurviewAzureSqlDatabaseMsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseMsiScan])]
@@ -10038,7 +10038,7 @@ Version                              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseScanRulesetObject
 #>
 function New-AzPurviewAzureSqlDatabaseScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseScanRuleset])]
@@ -10139,7 +10139,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseCredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseCredentialScanObject
 #>
 function New-AzPurviewAzureSqlDataWarehouseCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseCredentialScan])]
@@ -10268,7 +10268,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseDataSourceObject
 #>
 function New-AzPurviewAzureSqlDataWarehouseDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseDataSource])]
@@ -10381,7 +10381,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseMsiScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseMsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseMsiScanObject
 #>
 function New-AzPurviewAzureSqlDataWarehouseMsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseMsiScan])]
@@ -10496,7 +10496,7 @@ Version                              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseScanRulesetObject
 #>
 function New-AzPurviewAzureSqlDataWarehouseScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseScanRuleset])]
@@ -10595,7 +10595,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageCredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageCredentialScanObject
 #>
 function New-AzPurviewAzureStorageCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageCredentialScan])]
@@ -10714,7 +10714,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageDataSourceObject
 #>
 function New-AzPurviewAzureStorageDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageDataSource])]
@@ -10825,7 +10825,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageMsiScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageMsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageMsiScanObject
 #>
 function New-AzPurviewAzureStorageMsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageMsiScan])]
@@ -10943,7 +10943,7 @@ SCANNINGRULECUSTOMFILEEXTENSION <ICustomFileExtension[]>:
   [Enabled <Boolean?>]: 
   [FileExtension <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageScanRulesetObject
 #>
 function New-AzPurviewAzureStorageScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageScanRuleset])]
@@ -11244,7 +11244,7 @@ RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>:
   [TeradataScanRulesetName <String>]: 
   [TeradataScanRulesetType <ScanRulesetType?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSubscriptionCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSubscriptionCredentialScanObject
 #>
 function New-AzPurviewAzureSubscriptionCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionCredentialScan])]
@@ -11365,7 +11365,7 @@ SubscriptionId           : 6810b9ce-82d3-4562-9658-xxxxxxxxxx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSubscriptionDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSubscriptionDataSourceObject
 #>
 function New-AzPurviewAzureSubscriptionDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionDataSource])]
@@ -11648,7 +11648,7 @@ RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>:
   [TeradataScanRulesetName <String>]: 
   [TeradataScanRulesetType <ScanRulesetType?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSubscriptionMsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSubscriptionMsiScanObject
 #>
 function New-AzPurviewAzureSubscriptionMsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionMsiScan])]
@@ -11964,7 +11964,7 @@ RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>:
   [TeradataScanRulesetName <String>]: 
   [TeradataScanRulesetType <ScanRulesetType?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSynapseWorkspaceCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSynapseWorkspaceCredentialScanObject
 #>
 function New-AzPurviewAzureSynapseWorkspaceCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceCredentialScan])]
@@ -12090,7 +12090,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSynapseWorkspaceDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSynapseWorkspaceDataSourceObject
 #>
 function New-AzPurviewAzureSynapseWorkspaceDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceDataSource])]
@@ -12398,7 +12398,7 @@ RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>:
   [TeradataScanRulesetName <String>]: 
   [TeradataScanRulesetType <ScanRulesetType?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSynapseWorkspaceMsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSynapseWorkspaceMsiScanObject
 #>
 function New-AzPurviewAzureSynapseWorkspaceMsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceMsiScan])]
@@ -12520,7 +12520,7 @@ Version                              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSynapseWorkspaceScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSynapseWorkspaceScanRulesetObject
 #>
 function New-AzPurviewAzureSynapseWorkspaceScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceScanRuleset])]
@@ -12626,7 +12626,7 @@ Version                :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.CustomClassificationRule
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewCustomClassificationRuleObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewCustomClassificationRuleObject
 #>
 function New-AzPurviewCustomClassificationRuleObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.CustomClassificationRule])]
@@ -12725,7 +12725,7 @@ Name              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewFilterObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewFilterObject
 #>
 function New-AzPurviewFilterObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter])]
@@ -12804,7 +12804,7 @@ Service                  : xe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewOracleDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewOracleDataSourceObject
 #>
 function New-AzPurviewOracleDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource])]
@@ -12902,7 +12902,7 @@ Tenant                   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBiDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIDataSourceObject
 #>
 function New-AzPurviewPowerBIDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIDataSource])]
@@ -12999,7 +12999,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBiDelegatedScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIDelegatedScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIDelegatedScanObject
 #>
 function New-AzPurviewPowerBIDelegatedScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIDelegatedScan])]
@@ -13137,7 +13137,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBiMsiScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIMsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIMsiScanObject
 #>
 function New-AzPurviewPowerBIMsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIMsiScan])]
@@ -13239,7 +13239,7 @@ Regex ^col1$
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewRegexClassificationRulePatternObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewRegexClassificationRulePatternObject
 #>
 function New-AzPurviewRegexClassificationRulePatternObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern])]
@@ -13312,7 +13312,7 @@ SystemNumber             : 32
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapEccDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapEccDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapEccDataSourceObject
 #>
 function New-AzPurviewSapEccDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapEccDataSource])]
@@ -13406,7 +13406,7 @@ SystemNumber             : 32
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapS4HanaDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapS4HanaDataSourceObject
 #>
 function New-AzPurviewSapS4HanaDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaDataSource])]
@@ -13508,7 +13508,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaSapS4HanaCredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapS4HanaSapS4HanaCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapS4HanaSapS4HanaCredentialScanObject
 #>
 function New-AzPurviewSapS4HanaSapS4HanaCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaSapS4HanaCredentialScan])]
@@ -13650,7 +13650,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseCredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewSqlServerDatabaseCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSqlServerDatabaseCredentialScanObject
 #>
 function New-AzPurviewSqlServerDatabaseCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseCredentialScan])]
@@ -13779,7 +13779,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewSqlServerDatabaseDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSqlServerDatabaseDataSourceObject
 #>
 function New-AzPurviewSqlServerDatabaseDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseDataSource])]
@@ -13888,7 +13888,7 @@ Version                              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewSqlServerDatabaseScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSqlServerDatabaseScanRulesetObject
 #>
 function New-AzPurviewSqlServerDatabaseScanRulesetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseScanRuleset])]
@@ -13982,7 +13982,7 @@ Scan                     :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.TeradataDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewTeradataDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewTeradataDataSourceObject
 #>
 function New-AzPurviewTeradataDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.TeradataDataSource])]
@@ -14094,7 +14094,7 @@ SCHEDULEMONTHLYOCCURRENCE <IRecurrenceScheduleOccurrence[]>:
   [Day <DayOfWeek?>]: 
   [Occurrence <Int32?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewTriggerObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewTriggerObject
 #>
 function New-AzPurviewTriggerObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Trigger])]

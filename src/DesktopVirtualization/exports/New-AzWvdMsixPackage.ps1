@@ -63,7 +63,7 @@ PACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies.
   [MinVersion <String>]: Dependency version required.
   [Publisher <String>]: Name of dependency publisher.
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdmsixpackage
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdmsixpackage
 #>
 function New-AzWvdMsixPackage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackage])]

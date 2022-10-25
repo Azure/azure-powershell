@@ -37,7 +37,7 @@ BODY <IPathsHv033BApplicationsApplicationIdMicrosoftGraphRemovepasswordPostReque
   [(Any) <Object>]: This indicates any property can be added to this object.
   [KeyId <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadapplicationpassword
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadapplicationpassword
 #>
 function Remove-AzADApplicationPassword {
 [OutputType([System.Boolean])]

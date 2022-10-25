@@ -25,7 +25,7 @@ New-AzMLWorkspaceMLFlowModelJobOutputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MlFlowModelJobOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceMLFlowModelJobOutputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceMLFlowModelJobOutputObject
 #>
 function New-AzMLWorkspaceMLFlowModelJobOutputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MLFlowModelJobOutput])]

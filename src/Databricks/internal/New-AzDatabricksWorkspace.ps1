@@ -99,7 +99,7 @@ PARAMETER <IWorkspace>: Information about workspace.
   [UiDefinitionUri <String>]: The blob URI where the UI definition file is located.
   [VnetAddressPrefixValue <String>]: The value which should be used for this field.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
+https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
 #>
 function New-AzDatabricksWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace])]

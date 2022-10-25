@@ -27,7 +27,7 @@ Create a vm group by id in a private cloud workload network.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVMGroup
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkvmgroup
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkvmgroup
 #>
 function New-AzVMwareWorkloadNetworkVMGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVMGroup])]

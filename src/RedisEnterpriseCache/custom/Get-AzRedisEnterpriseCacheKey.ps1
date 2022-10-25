@@ -28,7 +28,7 @@ primary-key                                  secondary-key
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachekey
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachekey
 #>
 function Get-AzRedisEnterpriseCacheKey {
     [Alias('Get-AzRedisEnterpriseCacheDatabaseKey', 'Get-AzRedisEnterpriseCacheAccessKey')]

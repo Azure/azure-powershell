@@ -58,7 +58,7 @@ PARAMETER <ISbAuthorizationRule>: Description of a namespace authorization rule.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusnamespaceauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusnamespaceauthorizationrule
 #>
 function New-AzServiceBusNamespaceAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]

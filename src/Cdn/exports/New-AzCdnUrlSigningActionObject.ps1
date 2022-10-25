@@ -35,7 +35,7 @@ PARAMETERNAMEOVERRIDE <IUrlSigningParamIdentifier[]>: Defines which query string
   ParamIndicator <ParamIndicator>: Indicates the purpose of the parameter
   ParamName <String>: Parameter name
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlSigningActionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlSigningActionObject
 #>
 function New-AzCdnUrlSigningActionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningAction])]

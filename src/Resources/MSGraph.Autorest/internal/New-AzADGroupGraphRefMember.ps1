@@ -37,7 +37,7 @@ System.Collections.Hashtable
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadgroupgraphrefmember
+https://learn.microsoft.com/powershell/module/az.resources/new-azadgroupgraphrefmember
 #>
 function New-AzADGroupGraphRefMember {
 [OutputType([System.Boolean])]

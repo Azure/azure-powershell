@@ -42,7 +42,7 @@ INPUTOBJECT <IDynatraceObservabilityIdentity>: Identity Parameter
   [RuleSetName <String>]: Monitor resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitortagrule
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitortagrule
 #>
 function Get-AzDynatraceMonitorTagRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ITagRule])]

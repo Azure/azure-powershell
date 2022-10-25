@@ -27,7 +27,7 @@ Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -M
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachineextension
+https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachineextension
 #>
 function Get-AzConnectedMachineExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension])]

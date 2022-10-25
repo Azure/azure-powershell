@@ -53,7 +53,7 @@ PARAMETER <IConfiguration>: Represents a Configuration.
   [Source <String>]: Source of the configuration.
   [Value <String>]: Value of the configuration.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlconfiguration
+https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlconfiguration
 #>
 function Update-AzMySqlConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration])]

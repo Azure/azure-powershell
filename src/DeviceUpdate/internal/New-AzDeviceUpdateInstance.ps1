@@ -32,7 +32,7 @@ To create the parameters described below, construct a hash table containing the 
 IOTHUB <IIotHubSettings[]>: List of IoT Hubs associated with the account.
   ResourceId <String>: IoTHub resource ID
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateinstance
+https://learn.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateinstance
 #>
 function New-AzDeviceUpdateInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance])]

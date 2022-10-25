@@ -25,7 +25,7 @@ New-AzEventHubConsumerGroup -Name myConsumerGroup -NamespaceName myNamespace -Re
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubconsumergroup
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubconsumergroup
 #>
 function New-AzEventHubConsumerGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup])]

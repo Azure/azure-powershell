@@ -25,7 +25,7 @@ New-AzGrafanaMonitorWorkspaceIntegrationObject -AzureMonitorWorkspaceResourceId 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.AzureMonitorWorkspaceIntegration
 .Link
-https://docs.microsoft.com/powershell/module/az.dashboard/new-azgrafanamonitorworkspaceintegrationobject
+https://learn.microsoft.com/powershell/module/az.dashboard/new-azgrafanamonitorworkspaceintegrationobject
 #>
 function New-AzGrafanaMonitorWorkspaceIntegrationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.AzureMonitorWorkspaceIntegration])]

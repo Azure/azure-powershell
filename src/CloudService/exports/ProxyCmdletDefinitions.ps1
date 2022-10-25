@@ -70,7 +70,7 @@ $cloudServiceInstanceView.ToJsonString()
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceInstanceView
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceinstanceview
+https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceinstanceview
 #>
 function Get-AzCloudServiceInstanceView {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceInstanceView])]
@@ -222,7 +222,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudservicenetworkinterface
+https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudservicenetworkinterface
 #>
 function Get-AzCloudServiceNetworkInterface {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.INetworkInterface])]
@@ -408,7 +408,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceosfamily
+https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceosfamily
 #>
 function Get-AzCloudServiceOSFamily {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSFamily])]
@@ -568,7 +568,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceosversion
+https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceosversion
 #>
 function Get-AzCloudServiceOSVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSVersion])]
@@ -729,7 +729,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudservicepublicipaddress
+https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudservicepublicipaddress
 #>
 function Get-AzCloudServicePublicIPAddress {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddress])]
@@ -906,7 +906,7 @@ Get-AzCloudServiceRoleInstanceRemoteDesktopFile -ResourceGroupName "ContosOrg" -
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceremotedesktopfile
+https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceremotedesktopfile
 #>
 function Get-AzCloudServiceRoleInstanceRemoteDesktopFile {
 [OutputType([System.Boolean])]
@@ -1051,7 +1051,7 @@ Get-AzCloudServiceRoleInstanceView -ResourceGroupName "ContosOrg" -CloudServiceN
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstanceView
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceview
+https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceview
 #>
 function Get-AzCloudServiceRoleInstanceView {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstanceView])]
@@ -1206,7 +1206,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstance
+https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstance
 #>
 function Get-AzCloudServiceRoleInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstance])]
@@ -1408,7 +1408,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudservice
+https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudservice
 #>
 function Get-AzCloudService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService])]
@@ -1574,7 +1574,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudservicerebuild
+https://learn.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudservicerebuild
 #>
 function Invoke-AzCloudServiceRebuild {
 [OutputType([System.Boolean])]
@@ -1758,7 +1758,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudservicereimage
+https://learn.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudservicereimage
 #>
 function Invoke-AzCloudServiceReimage {
 [OutputType([System.Boolean])]
@@ -1942,7 +1942,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudserviceroleinstancerebuild
+https://learn.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudserviceroleinstancerebuild
 #>
 function Invoke-AzCloudServiceRoleInstanceRebuild {
 [OutputType([System.Boolean])]
@@ -2121,7 +2121,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudserviceroleinstancereimage
+https://learn.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudserviceroleinstancereimage
 #>
 function Invoke-AzCloudServiceRoleInstanceReimage {
 [OutputType([System.Boolean])]
@@ -2484,7 +2484,7 @@ ROLEPROFILE <ICloudServiceRoleProfile>: Describes the role profile for the cloud
     [SkuName <String>]: The sku name. NOTE: If the new SKU is not supported on the hardware the cloud service is currently on, you need to delete and recreate the cloud service or move back to the old sku.
     [SkuTier <String>]: Specifies the tier of the cloud service. Possible Values are <br /><br /> **Standard** <br /><br /> **Basic**
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservice
+https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudservice
 #>
 function New-AzCloudService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService])]
@@ -2775,7 +2775,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/remove-azcloudserviceroleinstance
+https://learn.microsoft.com/powershell/module/az.cloudservice/remove-azcloudserviceroleinstance
 #>
 function Remove-AzCloudServiceRoleInstance {
 [OutputType([System.Boolean])]
@@ -2956,7 +2956,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/remove-azcloudservice
+https://learn.microsoft.com/powershell/module/az.cloudservice/remove-azcloudservice
 #>
 function Remove-AzCloudService {
 [OutputType([System.Boolean])]
@@ -3130,7 +3130,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/restart-azcloudserviceroleinstance
+https://learn.microsoft.com/powershell/module/az.cloudservice/restart-azcloudserviceroleinstance
 #>
 function Restart-AzCloudServiceRoleInstance {
 [OutputType([System.Boolean])]
@@ -3312,7 +3312,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/restart-azcloudservice
+https://learn.microsoft.com/powershell/module/az.cloudservice/restart-azcloudservice
 #>
 function Restart-AzCloudService {
 [OutputType([System.Boolean])]
@@ -3473,7 +3473,7 @@ Set-AzCloudServiceUpdateDomain -CloudServiceName "ContosoCS" -ResourceGroupName 
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/set-azcloudserviceupdatedomain
+https://learn.microsoft.com/powershell/module/az.cloudservice/set-azcloudserviceupdatedomain
 #>
 function Set-AzCloudServiceUpdateDomain {
 [OutputType([System.Boolean])]
@@ -3645,7 +3645,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/start-azcloudservice
+https://learn.microsoft.com/powershell/module/az.cloudservice/start-azcloudservice
 #>
 function Start-AzCloudService {
 [OutputType([System.Boolean])]
@@ -3821,7 +3821,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/stop-azcloudservice
+https://learn.microsoft.com/powershell/module/az.cloudservice/stop-azcloudservice
 #>
 function Stop-AzCloudService {
 [OutputType([System.Boolean])]
@@ -4082,7 +4082,7 @@ PARAMETER <ICloudService>: Describes the cloud service.
     [(Any) <String>]: This indicates any property can be added to this object.
   [UpgradeMode <CloudServiceUpgradeMode?>]: Update mode for the cloud service. Role instances are allocated to update domains when the service is deployed. Updates can be initiated manually in each update domain or initiated automatically in all update domains.         Possible Values are <br /><br />**Auto**<br /><br />**Manual** <br /><br />**Simultaneous**<br /><br />         If not specified, the default value is Auto. If set to Manual, PUT UpdateDomain must be called to apply the update. If set to Auto, the update is automatically applied to each update domain in sequence.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/update-azcloudservice
+https://learn.microsoft.com/powershell/module/az.cloudservice/update-azcloudservice
 #>
 function Update-AzCloudService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService])]
@@ -4213,7 +4213,7 @@ $extension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -Resour
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservicediagnosticsextension
+https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudservicediagnosticsextension
 #>
 function New-AzCloudServiceDiagnosticsExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension])]
@@ -4334,7 +4334,7 @@ $extension = New-AzCloudServiceExtensionObject -Name "GenevaExtension" -Publishe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceextensionobject
+https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceextensionobject
 #>
 function New-AzCloudServiceExtensionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension])]
@@ -4450,7 +4450,7 @@ FRONTENDIPCONFIGURATION <ILoadBalancerFrontendIPConfiguration[]>: FrontendIPConf
   [PublicIPAddressId <String>]: Resource Id
   [SubnetId <String>]: Resource Id
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceloadbalancerconfigurationobject
+https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceloadbalancerconfigurationobject
 #>
 function New-AzCloudServiceLoadBalancerConfigurationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerConfiguration])]
@@ -4527,7 +4527,7 @@ $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'C
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceloadbalancerfrontendipconfigurationobject
+https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceloadbalancerfrontendipconfigurationobject
 #>
 function New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration])]
@@ -4610,7 +4610,7 @@ $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension'
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceremotedesktopextensionobject
+https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceremotedesktopextensionobject
 #>
 function New-AzCloudServiceRemoteDesktopExtensionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension])]
@@ -4702,7 +4702,7 @@ $role = New-AzCloudServiceRoleProfilePropertiesObject -Name 'WebRole' -SkuName '
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleProfileProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceroleprofilepropertiesobject
+https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceroleprofilepropertiesobject
 #>
 function New-AzCloudServiceRoleProfilePropertiesObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleProfileProperties])]
@@ -4784,7 +4784,7 @@ $secretGroup = New-AzCloudServiceVaultSecretGroupObject -Id $keyVault.ResourceId
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceVaultSecretGroup
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservicevaultsecretgroupobject
+https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudservicevaultsecretgroupobject
 #>
 function New-AzCloudServiceVaultSecretGroupObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceVaultSecretGroup])]
@@ -4905,7 +4905,7 @@ CLOUDSERVICE <CloudService>:
     [(Any) <String>]: This indicates any property can be added to this object.
   [UpgradeMode <CloudServiceUpgradeMode?>]: Update mode for the cloud service. Role instances are allocated to update domains when the service is deployed. Updates can be initiated manually in each update domain or initiated automatically in all update domains.         Possible Values are <br /><br />**Auto**<br /><br />**Manual** <br /><br />**Simultaneous**<br /><br />         If not specified, the default value is Auto. If set to Manual, PUT UpdateDomain must be called to apply the update. If set to Auto, the update is automatically applied to each update domain in sequence.
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/Switch-AzCloudService
+https://learn.microsoft.com/powershell/module/az.cloudservice/Switch-AzCloudService
 #>
 function Switch-AzCloudService {
 [OutputType([System.Boolean])]

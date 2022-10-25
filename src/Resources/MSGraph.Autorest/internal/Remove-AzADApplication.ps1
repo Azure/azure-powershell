@@ -29,7 +29,7 @@ Get-AzADApplication -ObjectId $id | Remove-AzADApplication
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadapplication
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadapplication
 #>
 function Remove-AzADApplication {
 [OutputType([System.Boolean])]

@@ -41,7 +41,7 @@ INPUTOBJECT <IManagedServiceIdentity>: Identity Parameter
   [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
   [SubscriptionId <String>]: The Id of the Subscription to which the identity belongs.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/remove-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/remove-azuserassignedidentity
 #>
 function Remove-AzUserAssignedIdentity {
 [OutputType([System.Boolean])]

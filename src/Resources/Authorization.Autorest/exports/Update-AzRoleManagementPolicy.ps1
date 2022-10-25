@@ -98,7 +98,7 @@ RULE <IRoleManagementPolicyRule[]>: The rule applied to the policy.
   [TargetObject <String[]>]: The list of target objects.
   [TargetOperation <String[]>]: The type of operation.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
+https://learn.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
 #>
 function Update-AzRoleManagementPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy])]

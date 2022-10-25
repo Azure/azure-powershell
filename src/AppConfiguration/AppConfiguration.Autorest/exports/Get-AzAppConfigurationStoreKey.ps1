@@ -25,7 +25,7 @@ Get-AzAppConfigurationStoreKey -Name azpstest-appstore -ResourceGroupName azpste
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IApiKey
 .Link
-https://docs.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstorekey
+https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstorekey
 #>
 function Get-AzAppConfigurationStoreKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IApiKey])]

@@ -25,7 +25,7 @@ Remove-AzADAppFederatedCredential -ApplicationObjectId $appObjectId -FederatedCr
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadappfederatedcredential
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadappfederatedcredential
 #>
 function Remove-AzADAppFederatedCredential {
 [OutputType([System.Boolean])]

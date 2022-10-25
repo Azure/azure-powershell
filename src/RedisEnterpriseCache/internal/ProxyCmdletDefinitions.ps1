@@ -25,7 +25,7 @@ Export-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -SasU
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/export-azredisenterprisecache
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/export-azredisenterprisecache
 #>
 function Export-AzRedisEnterpriseCache {
 [Alias('Export-AzRedisEnterpriseCacheDatabase')]
@@ -187,7 +187,7 @@ Get-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IDatabase
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachedatabase
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachedatabase
 #>
 function Get-AzRedisEnterpriseCacheDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IDatabase])]
@@ -325,7 +325,7 @@ Get-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachekey
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachekey
 #>
 function Get-AzRedisEnterpriseCacheKey {
 [Alias('Get-AzRedisEnterpriseCacheDatabaseKey', 'Get-AzRedisEnterpriseCacheAccessKey')]
@@ -464,7 +464,7 @@ Lists all of the available REST API operations of the Microsoft.Cache provider.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheoperation
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheoperation
 #>
 function Get-AzRedisEnterpriseCacheOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IOperation])]
@@ -573,7 +573,7 @@ Gets the specified private endpoint connection associated with the RedisEnterpri
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnection
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheprivateendpointconnection
 #>
 function Get-AzRedisEnterpriseCachePrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnection])]
@@ -713,7 +713,7 @@ Gets the private link resources that need to be created for a RedisEnterprise cl
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateLinkResource
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheprivatelinkresource
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheprivatelinkresource
 #>
 function Get-AzRedisEnterpriseCachePrivateLinkResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateLinkResource])]
@@ -847,7 +847,7 @@ Get-AzRedisEnterpriseCache
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.ICluster
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecache
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecache
 #>
 function Get-AzRedisEnterpriseCache {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.ICluster])]
@@ -981,7 +981,7 @@ Import-AzRedisEnterpriseCache -ClusterName "MyCache1" -ResourceGroupName "MyGrou
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/import-azredisenterprisecache
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/import-azredisenterprisecache
 #>
 function Import-AzRedisEnterpriseCache {
 [Alias('Import-AzRedisEnterpriseCacheDatabase')]
@@ -1157,7 +1157,7 @@ MODULE <IModule[]>: Optional set of redis modules to enable in this database - m
   Name <String>: The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
   [Arg <String>]: Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachedatabase
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachedatabase
 #>
 function New-AzRedisEnterpriseCacheDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IDatabase])]
@@ -1387,7 +1387,7 @@ New-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyT
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachekey
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachekey
 #>
 function New-AzRedisEnterpriseCacheKey {
 [Alias('New-AzRedisEnterpriseCacheDatabaseKey', 'New-AzRedisEnterpriseCacheAccessKey')]
@@ -1549,7 +1549,7 @@ New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Locatio
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.ICluster
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecache
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecache
 #>
 function New-AzRedisEnterpriseCache {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.ICluster])]
@@ -1755,7 +1755,7 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecachedatabase
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecachedatabase
 #>
 function Remove-AzRedisEnterpriseCacheDatabase {
 [OutputType([System.Boolean])]
@@ -1936,7 +1936,7 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecacheprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecacheprivateendpointconnection
 #>
 function Remove-AzRedisEnterpriseCachePrivateEndpointConnection {
 [OutputType([System.Boolean])]
@@ -2100,7 +2100,7 @@ PROPERTY <IPrivateEndpointConnection>: The Private Endpoint Connection resource.
   [PrivateLinkServiceConnectionStateDescription <String>]: The reason for approval/rejection of the connection.
   [PrivateLinkServiceConnectionStateStatus <PrivateEndpointServiceConnectionStatus?>]: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/set-azredisenterprisecacheprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/set-azredisenterprisecacheprivateendpointconnection
 #>
 function Set-AzRedisEnterpriseCachePrivateEndpointConnection {
 [OutputType([System.Boolean])]
@@ -2301,7 +2301,7 @@ MODULE <IModule[]>: Optional set of redis modules to enable in this database - m
   Name <String>: The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
   [Arg <String>]: Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecachedatabase
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecachedatabase
 #>
 function Update-AzRedisEnterpriseCacheDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IDatabase])]

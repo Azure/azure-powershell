@@ -25,7 +25,7 @@ New-AzCdnDeliveryRuleCookiesConditionObject -Name Cookies -ParameterOperator Equ
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleCookiesCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleCookiesConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleCookiesConditionObject
 #>
 function New-AzCdnDeliveryRuleCookiesConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleCookiesCondition])]

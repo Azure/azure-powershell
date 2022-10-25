@@ -81,7 +81,7 @@ METADATA <IMetadataModel>: Metadata resource definition.
   [SupportTier <SupportTier?>]: Type of support for content item
   [Version <String>]: Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices.  Can also be any string, but then we cannot guarantee any version checks
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelmetadata
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelmetadata
 #>
 function New-AzSentinelMetadata {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IMetadataModel])]

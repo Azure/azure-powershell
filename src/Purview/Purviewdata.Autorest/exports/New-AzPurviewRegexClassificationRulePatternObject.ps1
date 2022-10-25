@@ -29,7 +29,7 @@ Regex ^col1$
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewRegexClassificationRulePatternObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewRegexClassificationRulePatternObject
 #>
 function New-AzPurviewRegexClassificationRulePatternObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern])]

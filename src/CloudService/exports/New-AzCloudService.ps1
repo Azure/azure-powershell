@@ -230,7 +230,7 @@ ROLEPROFILE <ICloudServiceRoleProfile>: Describes the role profile for the cloud
     [SkuName <String>]: The sku name. NOTE: If the new SKU is not supported on the hardware the cloud service is currently on, you need to delete and recreate the cloud service or move back to the old sku.
     [SkuTier <String>]: Specifies the tier of the cloud service. Possible Values are <br /><br /> **Standard** <br /><br /> **Basic**
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservice
+https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudservice
 #>
 function New-AzCloudService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService])]

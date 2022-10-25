@@ -55,7 +55,7 @@ VALIDATESECRETINPUT <IValidateSecretInput>: Input of the secret to be validated.
   [SecretSourceId <String>]: Resource ID.
   [SecretVersion <String>]: Secret version, if customer is using a specific version.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/invoke-azcdnsecretvalidate
+https://learn.microsoft.com/powershell/module/az.cdn/invoke-azcdnsecretvalidate
 #>
 function Invoke-AzCdnSecretValidate {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateSecretOutput])]

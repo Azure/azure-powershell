@@ -27,7 +27,7 @@ Lists available operations for the Microsoft.Kusto provider.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustooperation
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustooperation
 #>
 function Get-AzKustoOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IOperation])]
@@ -177,7 +177,7 @@ PARAMETER <IDataConnectionValidation>: Class representing an data connection val
   [Kind <DataConnectionKind?>]: Kind of the endpoint for the data connection
   [Location <String>]: Resource location.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/invoke-azkustodataconnectionvalidation
+https://learn.microsoft.com/powershell/module/az.kusto/invoke-azkustodataconnectionvalidation
 #>
 function Invoke-AzKustoDataConnectionValidation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnectionValidationResult])]
@@ -381,7 +381,7 @@ PARAMETER <IDatabase>: Class representing a Kusto database.
   [AzureAsyncOperation <String>]: 
   [Location <String>]: Resource location.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustodatabase
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodatabase
 #>
 function New-AzKustoDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase])]
@@ -566,7 +566,7 @@ PARAMETER <IDataConnection>: Class representing an data connection.
   [AzureAsyncOperation <String>]: 
   [Location <String>]: Resource location.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustodataconnection
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodataconnection
 #>
 function New-AzKustoDataConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection])]
@@ -785,7 +785,7 @@ PARAMETER <IDatabase>: Class representing a Kusto database.
   [AzureAsyncOperation <String>]: 
   [Location <String>]: Resource location.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/update-azkustodatabase
+https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodatabase
 #>
 function Update-AzKustoDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase])]
@@ -1014,7 +1014,7 @@ PARAMETER <IDataConnection>: Class representing an data connection.
   [AzureAsyncOperation <String>]: 
   [Location <String>]: Resource location.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/update-azkustodataconnection
+https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodataconnection
 #>
 function Update-AzKustoDataConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection])]

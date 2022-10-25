@@ -25,7 +25,7 @@ Get-AzDynatraceMonitorSSODetail -ResourceGroupName dyobrg -MonitorName dyob-pwsh
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ISsoDetailsResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorssodetail
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorssodetail
 #>
 function Get-AzDynatraceMonitorSSODetail {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ISsoDetailsResponse])]

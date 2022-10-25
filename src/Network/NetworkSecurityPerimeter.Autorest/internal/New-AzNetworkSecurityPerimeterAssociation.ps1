@@ -56,7 +56,7 @@ PARAMETER <INspAssociation>: The NSP resource association resource
   [PrivateLinkResourceId <String>]: Resource ID.
   [ProfileId <String>]: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterassociation
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterassociation
 #>
 function New-AzNetworkSecurityPerimeterAssociation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAssociation])]

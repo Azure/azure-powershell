@@ -87,7 +87,7 @@ LAB <Lab>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicestemplatevm
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicestemplatevm
 #>
 function Get-AzLabServicesTemplateVM {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]

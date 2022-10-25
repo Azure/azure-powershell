@@ -41,7 +41,7 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/get-aznginxcertificate
+https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxcertificate
 #>
 function Get-AzNginxCertificate {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate])]
@@ -236,7 +236,7 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/get-aznginxconfiguration
+https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxconfiguration
 #>
 function Get-AzNginxConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration])]
@@ -435,7 +435,7 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/get-aznginxdeployment
+https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxdeployment
 #>
 function Get-AzNginxDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment])]
@@ -611,7 +611,7 @@ New-AzNginxCertificate -DeploymentName nginx-test -Name cert-test -ResourceGroup
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/new-aznginxcertificate
+https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxcertificate
 #>
 function New-AzNginxCertificate {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate])]
@@ -835,7 +835,7 @@ PROTECTEDFILE <INginxConfigurationFile[]>: .
   [Content <String>]: 
   [VirtualPath <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/new-aznginxconfiguration
+https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxconfiguration
 #>
 function New-AzNginxConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration])]
@@ -1072,7 +1072,7 @@ NETWORKPROFILE <INginxNetworkProfile>: .
   [NetworkInterfaceConfiguration <INginxNetworkInterfaceConfiguration>]: 
     [SubnetId <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/new-aznginxdeployment
+https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxdeployment
 #>
 function New-AzNginxDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment])]
@@ -1327,7 +1327,7 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/remove-aznginxcertificate
+https://learn.microsoft.com/powershell/module/az.nginx/remove-aznginxcertificate
 #>
 function Remove-AzNginxCertificate {
 [OutputType([System.Boolean])]
@@ -1538,7 +1538,7 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/remove-aznginxconfiguration
+https://learn.microsoft.com/powershell/module/az.nginx/remove-aznginxconfiguration
 #>
 function Remove-AzNginxConfiguration {
 [OutputType([System.Boolean])]
@@ -1749,7 +1749,7 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/remove-aznginxdeployment
+https://learn.microsoft.com/powershell/module/az.nginx/remove-aznginxdeployment
 #>
 function Remove-AzNginxDeployment {
 [OutputType([System.Boolean])]
@@ -1954,7 +1954,7 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/update-aznginxdeployment
+https://learn.microsoft.com/powershell/module/az.nginx/update-aznginxdeployment
 #>
 function Update-AzNginxDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment])]
@@ -2188,7 +2188,7 @@ New-AzNginxConfigurationFileObject -Content aHR0cCB7 -VirtualPath nginx.conf
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxConfigurationFile
 .Link
-https://docs.microsoft.com/powershell/module/az.Nginx/new-AzNginxConfigurationFileObject
+https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxConfigurationFileObject
 #>
 function New-AzNginxConfigurationFileObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxConfigurationFile])]
@@ -2305,7 +2305,7 @@ FRONTENDIPCONFIGURATION <INginxFrontendIPConfiguration>:
 NETWORKINTERFACECONFIGURATION <INginxNetworkInterfaceConfiguration>: 
   [SubnetId <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Nginx/new-AzNginxNetworkProfileObject
+https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxNetworkProfileObject
 #>
 function New-AzNginxNetworkProfileObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxNetworkProfile])]
@@ -2409,7 +2409,7 @@ New-AzNginxPrivateIPAddressObject -PrivateIPAddress 10.0.0.0 -PrivateIPAllocatio
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxPrivateIPAddress
 .Link
-https://docs.microsoft.com/powershell/module/az.Nginx/new-AzNginxPrivateIPAddressObject
+https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxPrivateIPAddressObject
 #>
 function New-AzNginxPrivateIPAddressObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxPrivateIPAddress])]
@@ -2517,7 +2517,7 @@ New-AzNginxPublicIPAddressObject -Id /subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxPublicIPAddress
 .Link
-https://docs.microsoft.com/powershell/module/az.Nginx/new-AzNginxPublicIPAddressObject
+https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxPublicIPAddressObject
 #>
 function New-AzNginxPublicIPAddressObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxPublicIPAddress])]

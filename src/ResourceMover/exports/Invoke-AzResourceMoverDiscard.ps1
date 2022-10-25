@@ -73,7 +73,7 @@ Status         : Succeeded
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverdiscard
+https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverdiscard
 #>
 function Invoke-AzResourceMoverDiscard {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus])]

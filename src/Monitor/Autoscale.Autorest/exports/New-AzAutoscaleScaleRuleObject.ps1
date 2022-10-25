@@ -35,7 +35,7 @@ METRICTRIGGERDIMENSION <IScaleRuleMetricDimension[]>: List of dimension conditio
   Operator <ScaleRuleMetricDimensionOperationType>: the dimension operator. Only 'Equals' and 'NotEquals' are supported. 'Equals' being equal to any of the values. 'NotEquals' being not equal to all of the values
   Value <String[]>: list of dimension values. For example: ["App1","App2"].
 .Link
-https://docs.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleScaleRuleObject
+https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleScaleRuleObject
 #>
 function New-AzAutoscaleScaleRuleObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRule])]

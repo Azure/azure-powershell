@@ -25,7 +25,7 @@ Install-AzStackHCIRemoteSupport
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/install-azstackhciremotesupport
+https://learn.microsoft.com/powershell/module/az.stackhci/install-azstackhciremotesupport
 #>
 function Install-AzStackHCIRemoteSupport {
 [OutputType([System.Boolean])]

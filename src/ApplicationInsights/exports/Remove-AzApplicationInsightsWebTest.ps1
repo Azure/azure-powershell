@@ -46,7 +46,7 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightswebtest
+https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightswebtest
 #>
 function Remove-AzApplicationInsightsWebTest {
 [OutputType([System.Boolean])]

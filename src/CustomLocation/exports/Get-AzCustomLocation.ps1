@@ -59,7 +59,7 @@ INPUTOBJECT <ICustomLocationIdentity>: Identity Parameter
   [ResourceName <String>]: Custom Locations name.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.customlocation/get-azcustomlocation
+https://learn.microsoft.com/powershell/module/az.customlocation/get-azcustomlocation
 #>
 function Get-AzCustomLocation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation])]

@@ -53,7 +53,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
 PARAMETER <ICheckNameAvailabilityParameter>: Parameter supplied to check Namespace name availability operation 
   Name <String>: Name to check the namespace name availability
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/test-azeventhubdisasterrecoveryconfignameavailability
+https://learn.microsoft.com/powershell/module/az.eventhub/test-azeventhubdisasterrecoveryconfignameavailability
 #>
 function Test-AzEventHubDisasterRecoveryConfigNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICheckNameAvailabilityResult])]

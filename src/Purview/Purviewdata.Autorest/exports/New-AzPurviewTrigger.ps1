@@ -75,7 +75,7 @@ BODY <ITrigger>: .
     [Occurrence <Int32?>]: 
   [ScheduleWeekDay <DaysOfWeek[]>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewtrigger
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewtrigger
 #>
 function New-AzPurviewTrigger {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger])]

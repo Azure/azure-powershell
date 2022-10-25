@@ -53,7 +53,7 @@ INPUTOBJECT <IMySqlIdentity>: The server to connect.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/test-azmysqlflexibleserverconnect
+https://learn.microsoft.com/powershell/module/az.mysql/test-azmysqlflexibleserverconnect
 #>
 function Test-AzMySqlFlexibleServerConnect {
 [OutputType([System.String])]

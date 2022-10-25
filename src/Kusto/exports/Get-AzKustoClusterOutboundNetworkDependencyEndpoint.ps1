@@ -25,7 +25,7 @@ Get-AzKustoClusterOutboundNetworkDependencyEndpoint -ClusterName "mycluster" -Re
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IOutboundNetworkDependenciesEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoclusteroutboundnetworkdependencyendpoint
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusteroutboundnetworkdependencyendpoint
 #>
 function Get-AzKustoClusterOutboundNetworkDependencyEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IOutboundNetworkDependenciesEndpoint])]

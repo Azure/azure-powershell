@@ -27,7 +27,7 @@ Set-AzStackHCI -ComputerName ClusterNode1 -DiagnosticLevel Basic
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/set-azstackhci
+https://learn.microsoft.com/powershell/module/az.stackhci/set-azstackhci
 #>
 function Set-AzStackHCI {
 [OutputType([System.Management.Automation.PSObject])]

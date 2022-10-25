@@ -37,7 +37,7 @@ PROTECTEDFILE <INginxConfigurationFile[]>: .
   [Content <String>]: 
   [VirtualPath <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/new-aznginxconfiguration
+https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxconfiguration
 #>
 function New-AzNginxConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration])]

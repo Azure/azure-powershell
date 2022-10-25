@@ -36,7 +36,7 @@ SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager
   [Reason <String>]: Reason of the SKU capability.
   [Value <String>]: Value of the SKU capability.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebapp
+https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebapp
 #>
 function New-AzStaticWebApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource])]

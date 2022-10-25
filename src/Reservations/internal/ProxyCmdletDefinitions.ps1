@@ -27,7 +27,7 @@ List all the operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IOperationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationsoperation
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationsoperation
 #>
 function Get-AzReservationsOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IOperationResponse])]
@@ -154,7 +154,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/merge-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/merge-azreservation
 #>
 function Merge-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
@@ -327,7 +327,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/split-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/split-azreservation
 #>
 function Split-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]

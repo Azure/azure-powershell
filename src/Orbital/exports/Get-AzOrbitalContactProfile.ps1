@@ -46,7 +46,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [SpacecraftName <String>]: Spacecraft ID.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/get-azorbitalcontactprofile
+https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalcontactprofile
 #>
 function Get-AzOrbitalContactProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile])]

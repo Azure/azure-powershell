@@ -68,7 +68,7 @@ USERCONFIGURATION <INetworkFunctionUserConfiguration[]>: The network function co
   [RoleName <String>]: The name of the network function role.
   [UserDataParameter <IAny>]: The user data parameters from the customer.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkfunction
+https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkfunction
 #>
 function New-AzConnectedNetworkFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction])]

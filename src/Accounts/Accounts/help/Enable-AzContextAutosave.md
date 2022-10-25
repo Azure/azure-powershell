@@ -11,7 +11,7 @@ schema: 2.0.0
 Azure contexts are PowerShell objects representing your active subscription to run commands against,
 and the authentication information needed to connect to an Azure cloud. With Azure contexts, Azure
 PowerShell doesn't need to reauthenticate your account each time you switch subscriptions. For more
-information, see [Azure PowerShell context objects](https://docs.microsoft.com/powershell/azure/context-persistence).
+information, see [Azure PowerShell context objects](https://learn.microsoft.com/powershell/azure/context-persistence).
 
 This cmdlet allows the Azure context information to be saved and automatically loaded when you start
 a PowerShell process. For example, when opening a new window.

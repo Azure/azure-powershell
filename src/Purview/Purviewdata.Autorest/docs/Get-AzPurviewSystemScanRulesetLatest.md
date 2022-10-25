@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanrulesetlatest
+online version: https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanrulesetlatest
 schema: 2.0.0
 ---
 

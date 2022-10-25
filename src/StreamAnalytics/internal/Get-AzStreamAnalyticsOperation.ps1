@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsoperation
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsoperation
 #>
 function Get-AzStreamAnalyticsOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOperation])]

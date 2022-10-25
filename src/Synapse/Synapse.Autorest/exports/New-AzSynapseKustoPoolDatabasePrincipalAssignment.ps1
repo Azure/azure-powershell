@@ -29,7 +29,7 @@ testws/testkustopool/testdatabase/kustoprincipal Microsoft.Synapse/workspaces/ku
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabasePrincipalAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabaseprincipalassignment
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabaseprincipalassignment
 #>
 function New-AzSynapseKustoPoolDatabasePrincipalAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabasePrincipalAssignment])]

@@ -59,7 +59,7 @@ STATICACL <IAcl[]>: Access Control List (ACL) for an iSCSI Target; defines LUN m
   InitiatorIqn <String>: iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
   MappedLun <String[]>: List of LUN names mapped to the ACL.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/update-azdiskpooliscsitarget
+https://learn.microsoft.com/powershell/module/az.diskpool/update-azdiskpooliscsitarget
 #>
 function Update-AzDiskPoolIscsiTarget {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget])]

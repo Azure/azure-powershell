@@ -27,7 +27,7 @@ List all the operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IOperationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationsoperation
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationsoperation
 #>
 function Get-AzReservationsOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IOperationResponse])]

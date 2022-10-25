@@ -25,7 +25,7 @@ Get-AzDynatraceMonitorHost -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorhost
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorhost
 #>
 function Get-AzDynatraceMonitorHost {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMInfo])]

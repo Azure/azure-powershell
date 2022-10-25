@@ -51,7 +51,7 @@ PAYLOAD <ITransferOffersProperties>: Transfer offers properties
   [Operation <String>]: Operation to perform (For example: Copy or Move)
   [TargetCollection <String[]>]: Target collections ids
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/copy-azmarketplaceprivatestorecollectionoffer
+https://learn.microsoft.com/powershell/module/az.marketplace/copy-azmarketplaceprivatestorecollectionoffer
 #>
 function Copy-AzMarketplacePrivateStoreCollectionOffer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersResponse])]
@@ -228,7 +228,7 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
   [PrivateStoreId <String>]: The store ID - must use the tenant ID
   [RequestApprovalId <String>]: The request approval ID to get create or update
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplacebillingprivatestoreaccount
+https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplacebillingprivatestoreaccount
 #>
 function Get-AzMarketplaceBillingPrivateStoreAccount {
 [OutputType([System.String])]
@@ -367,7 +367,7 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
 PAYLOAD <ICollectionsToSubscriptionsMappingPayload>: The subscriptions list to get the related collections
   [SubscriptionId <String[]>]: Subscriptions ids list
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplacecollectiontosubscriptionmapping
+https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplacecollectiontosubscriptionmapping
 #>
 function Get-AzMarketplaceCollectionToSubscriptionMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsToSubscriptionsMappingResponseProperties])]
@@ -528,7 +528,7 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
   [PrivateStoreId <String>]: The store ID - must use the tenant ID
   [RequestApprovalId <String>]: The request approval ID to get create or update
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorecollectionoffer
+https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorecollectionoffer
 #>
 function Get-AzMarketplacePrivateStoreCollectionOffer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer])]
@@ -682,7 +682,7 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
   [PrivateStoreId <String>]: The store ID - must use the tenant ID
   [RequestApprovalId <String>]: The request approval ID to get create or update
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorecollection
+https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorecollection
 #>
 function Get-AzMarketplacePrivateStoreCollection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection], [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsList])]
@@ -825,7 +825,7 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
   [PrivateStoreId <String>]: The store ID - must use the tenant ID
   [RequestApprovalId <String>]: The request approval ID to get create or update
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorev1
+https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorev1
 #>
 function Get-AzMarketplacePrivateStoreV1 {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IPrivateStore])]
@@ -973,7 +973,7 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
   [PrivateStoreId <String>]: The store ID - must use the tenant ID
   [RequestApprovalId <String>]: The request approval ID to get create or update
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplacequeryprivatestoreoffer
+https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplacequeryprivatestoreoffer
 #>
 function Get-AzMarketplaceQueryPrivateStoreOffer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IQueryOffers])]
@@ -1102,7 +1102,7 @@ To create the parameters described below, construct a hash table containing the 
 PLAN <IPlan[]>: Offer plans
   [Accessibility <Accessibility?>]: Plan accessibility
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollectionoffer
+https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollectionoffer
 #>
 function New-AzMarketplacePrivateStoreCollectionOffer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer])]
@@ -1262,7 +1262,7 @@ fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 12/13/2021 11:12:27 AM                     
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollection
+https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollection
 #>
 function New-AzMarketplacePrivateStoreCollection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection])]
@@ -1419,7 +1419,7 @@ To create the parameters described below, construct a hash table containing the 
 NOTIFICATIONSETTINGRECIPIENT <IRecipient[]>: Gets or sets list of notified recipients for new requests
   [PrincipalId <String>]: Principal ID
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestore
+https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestore
 #>
 function New-AzMarketplacePrivateStore {
 [OutputType([System.Boolean])]
@@ -1601,7 +1601,7 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
   [PrivateStoreId <String>]: The store ID - must use the tenant ID
   [RequestApprovalId <String>]: The request approval ID to get create or update
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/remove-azmarketplaceprivatestorecollectionoffer
+https://learn.microsoft.com/powershell/module/az.marketplace/remove-azmarketplaceprivatestorecollectionoffer
 #>
 function Remove-AzMarketplacePrivateStoreCollectionOffer {
 [OutputType([System.Boolean])]
@@ -1751,7 +1751,7 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
   [PrivateStoreId <String>]: The store ID - must use the tenant ID
   [RequestApprovalId <String>]: The request approval ID to get create or update
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/remove-azmarketplaceprivatestorecollection
+https://learn.microsoft.com/powershell/module/az.marketplace/remove-azmarketplaceprivatestorecollection
 #>
 function Remove-AzMarketplacePrivateStoreCollection {
 [OutputType([System.Boolean])]
@@ -1894,7 +1894,7 @@ PAYLOAD <IBulkCollectionsPayload>: Bulk collections action properties
   [Action <String>]: Action to perform (For example: EnableCollections, DisableCollections)
   [CollectionId <String[]>]: collection ids list that the action is performed on
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/set-azmarketplacebulkprivatestorecollectionaction
+https://learn.microsoft.com/powershell/module/az.marketplace/set-azmarketplacebulkprivatestorecollectionaction
 #>
 function Set-AzMarketplaceBulkPrivateStoreCollectionAction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsResponse])]
@@ -2036,7 +2036,7 @@ To create the parameters described below, construct a hash table containing the 
 PLAN <IPlan[]>: Offer plans
   [Accessibility <Accessibility?>]: Plan accessibility
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/set-azmarketplaceprivatestorecollectionoffer
+https://learn.microsoft.com/powershell/module/az.marketplace/set-azmarketplaceprivatestorecollectionoffer
 #>
 function Set-AzMarketplacePrivateStoreCollectionOffer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer])]
@@ -2196,7 +2196,7 @@ Name                                 SystemDataCreatedAt SystemDataCreatedBy Sys
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/set-azmarketplaceprivatestorecollection
+https://learn.microsoft.com/powershell/module/az.marketplace/set-azmarketplaceprivatestorecollection
 #>
 function Set-AzMarketplacePrivateStoreCollection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection])]
@@ -2353,7 +2353,7 @@ To create the parameters described below, construct a hash table containing the 
 NOTIFICATIONSETTINGRECIPIENT <IRecipient[]>: Gets or sets list of notified recipients for new requests
   [PrincipalId <String>]: Principal ID
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/set-azmarketplaceprivatestore
+https://learn.microsoft.com/powershell/module/az.marketplace/set-azmarketplaceprivatestore
 #>
 function Set-AzMarketplacePrivateStore {
 [OutputType([System.Boolean])]

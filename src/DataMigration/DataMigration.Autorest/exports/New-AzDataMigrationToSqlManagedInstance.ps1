@@ -27,7 +27,7 @@ New-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -Ma
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqlmanagedinstance
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationtosqlmanagedinstance
 #>
 function New-AzDataMigrationToSqlManagedInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi])]

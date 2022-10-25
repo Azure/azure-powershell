@@ -25,7 +25,7 @@ New-AzMLWorkspaceEnvironmentVersion -ResourceGroupName ml-rg-test -WorkspaceName
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEnvironmentVersion
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceenvironmentversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceenvironmentversion
 #>
 function New-AzMLWorkspaceEnvironmentVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEnvironmentVersion])]

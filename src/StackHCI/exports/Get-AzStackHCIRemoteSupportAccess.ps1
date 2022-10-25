@@ -27,7 +27,7 @@ Get-AzStackHCIRemoteSupportAccess -Cluster -IncludeExpired
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportaccess
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportaccess
 #>
 function Get-AzStackHCIRemoteSupportAccess {
 [OutputType([System.Boolean])]

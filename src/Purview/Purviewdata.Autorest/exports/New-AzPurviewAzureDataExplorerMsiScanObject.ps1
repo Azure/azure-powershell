@@ -40,7 +40,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerMsiScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerMsiScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerMsiScanObject
 #>
 function New-AzPurviewAzureDataExplorerMsiScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerMsiScan])]

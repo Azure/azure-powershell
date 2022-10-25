@@ -25,7 +25,7 @@ Gets all incident bookmarks.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IHuntingBookmark
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentbookmark
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentbookmark
 #>
 function Get-AzSentinelIncidentBookmark {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IHuntingBookmark])]

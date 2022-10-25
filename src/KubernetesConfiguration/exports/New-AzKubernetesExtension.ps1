@@ -35,7 +35,7 @@ flux microsoft.flux 1.0.0   Succeeded         True                    Stable
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesextension
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesextension
 #>
 function New-AzKubernetesExtension {
 [Alias('New-AzK8sExtension')]

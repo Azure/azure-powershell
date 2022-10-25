@@ -37,7 +37,7 @@ FRONTENDIPCONFIGURATION <ILoadBalancerFrontendIPConfiguration[]>: FrontendIPConf
   [PublicIPAddressId <String>]: Resource Id
   [SubnetId <String>]: Resource Id
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceloadbalancerconfigurationobject
+https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceloadbalancerconfigurationobject
 #>
 function New-AzCloudServiceLoadBalancerConfigurationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerConfiguration])]

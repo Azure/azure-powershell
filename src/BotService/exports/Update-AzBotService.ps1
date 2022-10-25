@@ -42,7 +42,7 @@ INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the Bot resource.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/update-azbotservice
+https://learn.microsoft.com/powershell/module/az.botservice/update-azbotservice
 #>
 function Update-AzBotService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]

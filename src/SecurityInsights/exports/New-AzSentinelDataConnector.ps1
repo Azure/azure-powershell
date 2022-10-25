@@ -69,7 +69,7 @@ UICONFIGSAMPLEQUERY <SampleQueries[]>: [Parameter(ParameterSetName = 'APIPolling
   [Description <String>]: The sample query description
   [Query <String>]: the sample query
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
 #>
 function New-AzSentinelDataConnector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector])]

@@ -28,7 +28,7 @@ Created             CreatedBy           Key                              Name
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogApiKey
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitorapikey
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitorapikey
 #>
 function Get-AzDatadogMonitorApiKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogApiKey])]

@@ -25,7 +25,7 @@ Get-AzCdnEndpointResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnendpointresourceusage
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnendpointresourceusage
 #>
 function Get-AzCdnEndpointResourceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage])]

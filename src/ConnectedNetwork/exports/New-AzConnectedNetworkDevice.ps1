@@ -72,7 +72,7 @@ To create the parameters described below, construct a hash table containing the 
 PROPERTY <IDevicePropertiesFormat>: Device properties.
   DeviceType <DeviceType>: The type of the device.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkdevice
+https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkdevice
 #>
 function New-AzConnectedNetworkDevice {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice])]

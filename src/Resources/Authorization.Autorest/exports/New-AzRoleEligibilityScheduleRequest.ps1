@@ -33,7 +33,7 @@ New-AzRoleEligibilityScheduleRequest -Name $guid -Scope $scope -ExpirationDurati
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azroleeligibilityschedulerequest
+https://learn.microsoft.com/powershell/module/az.resources/new-azroleeligibilityschedulerequest
 #>
 function New-AzRoleEligibilityScheduleRequest {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest])]

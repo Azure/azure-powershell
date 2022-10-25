@@ -55,7 +55,7 @@ METRIC <IMetricSettings[]>: The list of metric settings.
   [RetentionPolicyEnabled <Boolean?>]: a value indicating whether the retention policy is enabled.
   [TimeGrain <TimeSpan?>]: the timegrain of the metric in ISO8601 format.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/new-azdiagnosticsetting
+https://learn.microsoft.com/powershell/module/az.monitor/new-azdiagnosticsetting
 #>
 function New-AzDiagnosticSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource])]

@@ -43,7 +43,7 @@ CUSTOMERSUBSCRIPTIONDETAIL <ICustomerSubscriptionDetails>: Customer subscription
     [Name <String>]: Name of subscription registered feature
     [State <String>]: State of subscription registered feature
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderproductfamily
+https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderproductfamily
 #>
 function Get-AzEdgeOrderProductFamily {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IProductFamily])]

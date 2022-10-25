@@ -36,7 +36,7 @@ Id
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.ILinkedResource
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitorlinkedresource
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitorlinkedresource
 #>
 function Get-AzDatadogMonitorLinkedResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.ILinkedResource])]

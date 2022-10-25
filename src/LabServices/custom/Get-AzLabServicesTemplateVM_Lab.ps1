@@ -21,7 +21,7 @@ API to get the template vm for the lab.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicestemplatevm
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicestemplatevm
 #>
 function Get-AzLabServicesTemplateVM_Lab {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]

@@ -25,7 +25,7 @@ Get-AzFrontDoorCdnOriginGroupResourceUsage -ResourceGroupName testps-rg-da16jm -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigingroupresourceusage
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigingroupresourceusage
 #>
 function Get-AzFrontDoorCdnOriginGroupResourceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage])]

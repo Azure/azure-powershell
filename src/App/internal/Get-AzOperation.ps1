@@ -27,7 +27,7 @@ Lists all of the available RP operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IOperationDetail
 .Link
-https://docs.microsoft.com/powershell/module/az.app/get-azoperation
+https://learn.microsoft.com/powershell/module/az.app/get-azoperation
 #>
 function Get-AzOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IOperationDetail])]

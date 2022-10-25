@@ -55,7 +55,7 @@ PARAMETER <INetworkSecurityPerimeter>: The Network Security Perimeter resource
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeter
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeter
 #>
 function New-AzNetworkSecurityPerimeter {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INetworkSecurityPerimeter])]

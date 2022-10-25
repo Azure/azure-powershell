@@ -46,7 +46,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofileassignment
+https://learn.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofileassignment
 #>
 function Remove-AzAutomanageConfigProfileAssignment {
 [OutputType([System.Boolean])]

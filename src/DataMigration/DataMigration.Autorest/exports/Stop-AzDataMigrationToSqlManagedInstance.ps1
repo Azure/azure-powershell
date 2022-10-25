@@ -27,7 +27,7 @@ Get-AzDataMigrationToSqlManagedInstance -InputObject $miMigration
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqlmanagedinstance
+https://learn.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqlmanagedinstance
 #>
 function Stop-AzDataMigrationToSqlManagedInstance {
 [OutputType([System.Boolean])]

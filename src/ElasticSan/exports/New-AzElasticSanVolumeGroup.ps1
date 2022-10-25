@@ -70,7 +70,7 @@ PARAMETER <IVolumeGroup>: Response for Volume Group request.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolumegroup
+https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolumegroup
 #>
 function New-AzElasticSanVolumeGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup])]

@@ -27,7 +27,7 @@ Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedprivatelinkscope
+https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedprivatelinkscope
 #>
 function Get-AzConnectedPrivateLinkScope {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope])]

@@ -25,7 +25,7 @@ Creates a new origin within the specified origin group.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOrigin
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnorigin
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnorigin
 #>
 function New-AzFrontDoorCdnOrigin {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOrigin])]

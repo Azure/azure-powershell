@@ -58,7 +58,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsoutput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsoutput
 #>
 function Get-AzStreamAnalyticsOutput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput])]

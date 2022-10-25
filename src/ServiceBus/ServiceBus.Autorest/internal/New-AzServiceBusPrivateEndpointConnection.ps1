@@ -61,7 +61,7 @@ PARAMETER <IPrivateEndpointConnection>: Properties of the PrivateEndpointConnect
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusprivateendpointconnection
 #>
 function New-AzServiceBusPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection])]

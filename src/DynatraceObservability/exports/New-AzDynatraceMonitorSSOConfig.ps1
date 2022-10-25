@@ -25,7 +25,7 @@ New-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource
 .Link
-https://docs.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitorssoconfig
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitorssoconfig
 #>
 function New-AzDynatraceMonitorSSOConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource])]

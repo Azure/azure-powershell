@@ -25,7 +25,7 @@ Get-AzKustoClusterLanguageExtension -ResourceGroupName testrg -ClusterName testn
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ILanguageExtension
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/get-azkustoclusterlanguageextension
+https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusterlanguageextension
 #>
 function Get-AzKustoClusterLanguageExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ILanguageExtension])]

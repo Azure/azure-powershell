@@ -25,7 +25,7 @@ New-AzSpringCloudBuildpackBinding -ResourceGroupName springcloudrg -ServiceName 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuildpackBindingResource
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildpackbinding
+https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildpackbinding
 #>
 function New-AzSpringCloudBuildpackBinding {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuildpackBindingResource])]

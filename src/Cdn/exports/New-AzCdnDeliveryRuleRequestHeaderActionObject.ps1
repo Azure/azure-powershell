@@ -25,7 +25,7 @@ New-AzCdnDeliveryRuleRequestHeaderActionObject -Name ModifyRequestHeader -Parame
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderAction
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestHeaderActionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestHeaderActionObject
 #>
 function New-AzCdnDeliveryRuleRequestHeaderActionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderAction])]

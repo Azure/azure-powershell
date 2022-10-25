@@ -40,7 +40,7 @@ NETWORKACLSVIRTUALNETWORKRULE <IVirtualNetworkRule[]>: The list of virtual netwo
   [Action <Action?>]: The action of virtual network rule.
 
 .Link
-https://docs.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolumegroup
+https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolumegroup
 #>
 function Add-AzElasticSanVolumeGroupNetworkRule {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]])]

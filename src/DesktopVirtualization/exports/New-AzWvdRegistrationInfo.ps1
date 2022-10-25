@@ -25,7 +25,7 @@ New-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName Hos
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IRegistrationInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo
 #>
 function New-AzWvdRegistrationInfo {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IRegistrationInfo])]

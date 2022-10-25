@@ -47,7 +47,7 @@ INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
   [SourceControlConfigurationName <String>]: Name of the Source Control Configuration.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azkubernetesextension
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azkubernetesextension
 #>
 function Update-AzKubernetesExtension {
 [Alias('Update-AzK8sExtension')]

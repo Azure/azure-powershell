@@ -25,7 +25,7 @@ New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Endpoin
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOrigin
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azcdnorigin
+https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnorigin
 #>
 function New-AzCdnOrigin {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOrigin])]

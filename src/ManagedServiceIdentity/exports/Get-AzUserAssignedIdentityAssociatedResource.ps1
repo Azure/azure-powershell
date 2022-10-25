@@ -28,7 +28,7 @@ Get-AzUserAssignedIdentityAssociatedResource -ResourceGroupName azure-rg-test -N
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IAzureResource
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/get-azuserassignedidentityassociatedresource
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azuserassignedidentityassociatedresource
 #>
 function Get-AzUserAssignedIdentityAssociatedResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IAzureResource])]

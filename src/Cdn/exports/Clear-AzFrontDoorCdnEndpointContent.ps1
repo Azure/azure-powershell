@@ -52,7 +52,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/clear-azfrontdoorcdnendpointcontent
+https://learn.microsoft.com/powershell/module/az.cdn/clear-azfrontdoorcdnendpointcontent
 #>
 function Clear-AzFrontDoorCdnEndpointContent {
 [OutputType([System.Boolean])]

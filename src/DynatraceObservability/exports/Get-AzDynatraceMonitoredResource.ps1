@@ -25,7 +25,7 @@ Get-AzDynatraceMonitoredResource -ResourceGroupName dyobrg -MonitorName dyob-pws
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitoredResource
 .Link
-https://docs.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitoredresource
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitoredresource
 #>
 function Get-AzDynatraceMonitoredResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitoredResource])]

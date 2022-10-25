@@ -44,7 +44,7 @@ PROPERTY <IServerAdministratorResource>: Represents a and external administrator
   [Sid <String>]: The server administrator Sid (Secure ID).
   [TenantId <String>]: The server Active Directory Administrator tenant id.
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/set-azpostgresqlserveradministrator
+https://learn.microsoft.com/powershell/module/az.postgresql/set-azpostgresqlserveradministrator
 #>
 function Set-AzPostgreSqlServerAdministrator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerAdministratorResource])]

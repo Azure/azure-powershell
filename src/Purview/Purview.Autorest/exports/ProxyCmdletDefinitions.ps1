@@ -25,7 +25,7 @@ Get-AzPurviewAccountKey -AccountName test-pa -ResourceGroupName test-rg
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewaccountkey
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewaccountkey
 #>
 function Get-AzPurviewAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccessKeys])]
@@ -171,7 +171,7 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The subscription identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewaccount
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewaccount
 #>
 function Get-AzPurviewAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount])]
@@ -317,7 +317,7 @@ Get-AzPurviewDefaultAccount -ScopeTenantId xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewdefaultaccount
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewdefaultaccount
 #>
 function Get-AzPurviewDefaultAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload])]
@@ -456,7 +456,7 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The subscription identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewaccount
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewaccount
 #>
 function Remove-AzPurviewAccount {
 [OutputType([System.Boolean])]
@@ -608,7 +608,7 @@ Remove-AzPurviewDefaultAccount -ScopeTenantId xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewdefaultaccount
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewdefaultaccount
 #>
 function Remove-AzPurviewDefaultAccount {
 [OutputType([System.Boolean])]
@@ -753,7 +753,7 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The subscription identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/update-azpurviewaccount
+https://learn.microsoft.com/powershell/module/az.purview/update-azpurviewaccount
 #>
 function Update-AzPurviewAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount])]
@@ -936,7 +936,7 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The subscription identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/add-azpurviewaccountrootcollectionadmin
+https://learn.microsoft.com/powershell/module/az.purview/add-azpurviewaccountrootcollectionadmin
 #>
 function Add-AzPurviewAccountRootCollectionAdmin {
 [OutputType([System.Boolean])]
@@ -1081,7 +1081,7 @@ New-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Location eastus -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewaccount
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewaccount
 #>
 function New-AzPurviewAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount])]
@@ -1266,7 +1266,7 @@ Set-AzPurviewDefaultAccount -AccountName test-pa -ResourceGroupName test-rg -Sco
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/set-azpurviewdefaultaccount
+https://learn.microsoft.com/powershell/module/az.purview/set-azpurviewdefaultaccount
 #>
 function Set-AzPurviewDefaultAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload])]
@@ -1411,7 +1411,7 @@ Test-AzPurviewAccountNameAvailability -Name test-pa -Type Tenant
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ICheckNameAvailabilityResult
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/test-azpurviewaccountnameavailability
+https://learn.microsoft.com/powershell/module/az.purview/test-azpurviewaccountnameavailability
 #>
 function Test-AzPurviewAccountNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ICheckNameAvailabilityResult])]

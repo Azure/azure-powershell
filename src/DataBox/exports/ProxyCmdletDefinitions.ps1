@@ -56,7 +56,7 @@ PS C:\> $cabinetJobSecret = $obj.JobSecret.CabinetPodSecret | Format-List
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentials
 .Link
-https://docs.microsoft.com/powershell/module/az.databox/get-azdataboxjobcredential
+https://learn.microsoft.com/powershell/module/az.databox/get-azdataboxjobcredential
 #>
 function Get-AzDataBoxJobCredential {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IUnencryptedCredentials])]
@@ -201,7 +201,7 @@ abcOrder               westus   Cancelled     ImportToAzure   DataBox None      
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource
 .Link
-https://docs.microsoft.com/powershell/module/az.databox/get-azdataboxjob
+https://learn.microsoft.com/powershell/module/az.databox/get-azdataboxjob
 #>
 function Get-AzDataBoxJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource])]
@@ -529,7 +529,7 @@ DETAIL <IJobDetails>: Details of a job run. This field will only be sent for exp
     [StreetAddress3 <String>]: Street Address line 3.
     [ZipExtendedCode <String>]: Extended Zip Code.
 .Link
-https://docs.microsoft.com/powershell/module/az.databox/new-azdataboxjob
+https://learn.microsoft.com/powershell/module/az.databox/new-azdataboxjob
 #>
 function New-AzDataBoxJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource])]
@@ -745,7 +745,7 @@ PS C:\> Remove-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "resourceGro
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.databox/remove-azdataboxjob
+https://learn.microsoft.com/powershell/module/az.databox/remove-azdataboxjob
 #>
 function Remove-AzDataBoxJob {
 [OutputType([System.Boolean])]
@@ -895,7 +895,7 @@ Powershell10 WestUS   Cancelled ImportToAzure DataBox UserAssigned NonScheduled 
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.databox/stop-azdataboxjob
+https://learn.microsoft.com/powershell/module/az.databox/stop-azdataboxjob
 #>
 function Stop-AzDataBoxJob {
 [OutputType([System.Boolean])]
@@ -1118,7 +1118,7 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
   [StreetAddress3 <String>]: Street Address line 3.
   [ZipExtendedCode <String>]: Extended Zip Code.
 .Link
-https://docs.microsoft.com/powershell/module/az.databox/update-azdataboxjob
+https://learn.microsoft.com/powershell/module/az.databox/update-azdataboxjob
 #>
 function Update-AzDataBoxJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource])]
@@ -1319,7 +1319,7 @@ NOTIFICATIONPREFERENCE <INotificationPreference[]>: Notification preference for 
   SendNotification <Boolean>: Notification is required or not.
   StageName <NotificationStageName>: Name of the stage.
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxContactDetailsObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxContactDetailsObject
 #>
 function New-AzDataBoxContactDetailsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetails])]
@@ -1480,7 +1480,7 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
   [StreetAddress3 <String>]: Street Address line 3.
   [ZipExtendedCode <String>]: Extended Zip Code.
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxDiskJobDetailsObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxDiskJobDetailsObject
 #>
 function New-AzDataBoxDiskJobDetailsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxDiskJobDetails])]
@@ -1673,7 +1673,7 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
   [StreetAddress3 <String>]: Street Address line 3.
   [ZipExtendedCode <String>]: Extended Zip Code.
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxHeavyJobDetailsObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxHeavyJobDetailsObject
 #>
 function New-AzDataBoxHeavyJobDetailsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxHeavyJobDetails])]
@@ -1881,7 +1881,7 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping address of the customer.
   [StreetAddress3 <String>]: Street Address line 3.
   [ZipExtendedCode <String>]: Extended Zip Code.
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxJobDetailsObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxJobDetailsObject
 #>
 function New-AzDataBoxJobDetailsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails])]
@@ -2017,7 +2017,7 @@ IDENTITYPROPERTY <IIdentityProperties>: Managed identity properties used for key
   [Type <String>]: Managed service identity type.
   [UserAssignedResourceId <String>]: Arm resource id for user assigned identity to be used to fetch MSI token.
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxKeyEncryptionKeyObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxKeyEncryptionKeyObject
 #>
 function New-AzDataBoxKeyEncryptionKeyObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.KeyEncryptionKey])]
@@ -2101,7 +2101,7 @@ PS C:\> $managedDiskAccount=New-AzDataBoxManagedDiskDetailsObject -ResourceGroup
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ManagedDiskDetails
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxManagedDiskDetailsObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxManagedDiskDetailsObject
 #>
 function New-AzDataBoxManagedDiskDetailsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ManagedDiskDetails])]
@@ -2193,7 +2193,7 @@ Commercial  San Francisco             US      94107      CA              101 TOW
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxShippingAddressObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxShippingAddressObject
 #>
 function New-AzDataBoxShippingAddressObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress])]
@@ -2315,7 +2315,7 @@ StorageAccount                /subscriptions/SubscriptionId/resourceGroups/resou
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.StorageAccountDetails
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxStorageAccountDetailsObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxStorageAccountDetailsObject
 #>
 function New-AzDataBoxStorageAccountDetailsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.StorageAccountDetails])]
@@ -2417,7 +2417,7 @@ TRANSFERFILTERDETAIL <ITransferConfigurationTransferFilterDetails>: Map of filte
     FilterFilePath <String>: Path of the file that contains the details of all items to transfer.
     FilterFileType <FilterFileType>: Type of the filter file.
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxTransferConfigurationObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxTransferConfigurationObject
 #>
 function New-AzDataBoxTransferConfigurationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferConfiguration])]

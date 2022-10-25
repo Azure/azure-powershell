@@ -27,7 +27,7 @@ Lists all the available Domain Services operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IOperationEntity
 .Link
-https://docs.microsoft.com/powershell/module/az.addomainservices/get-azaddomainserviceoperation
+https://learn.microsoft.com/powershell/module/az.addomainservices/get-azaddomainserviceoperation
 #>
 function Get-AzADDomainServiceOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IOperationEntity])]

@@ -25,7 +25,7 @@ Get-AzDynatraceMonitorAppService -ResourceGroupName dyobrg -MonitorName dyob-pws
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IAppServiceInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorappservice
+https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorappservice
 #>
 function Get-AzDynatraceMonitorAppService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IAppServiceInfo])]

@@ -76,7 +76,7 @@ PARAMETER <INspAccessRule>: The NSP access rule resource
   [Subscription <ISubscriptionId[]>]: List of subscription ids
     [Id <String>]: Subscription id in the ARM id format.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeteraccessrule
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeteraccessrule
 #>
 function New-AzNetworkSecurityPerimeterAccessRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAccessRule])]
@@ -228,7 +228,7 @@ PARAMETER <INspAssociation>: The NSP resource association resource
   [PrivateLinkResourceId <String>]: Resource ID.
   [ProfileId <String>]: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterassociation
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterassociation
 #>
 function New-AzNetworkSecurityPerimeterAssociation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAssociation])]
@@ -379,7 +379,7 @@ PARAMETER <INspProfile>: The network security perimeter profile resource
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterprofile
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterprofile
 #>
 function New-AzNetworkSecurityPerimeterProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspProfile])]
@@ -530,7 +530,7 @@ PARAMETER <INetworkSecurityPerimeter>: The Network Security Perimeter resource
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeter
+https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeter
 #>
 function New-AzNetworkSecurityPerimeter {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INetworkSecurityPerimeter])]

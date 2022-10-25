@@ -49,7 +49,7 @@ INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/stop-azdiskpool
+https://learn.microsoft.com/powershell/module/az.diskpool/stop-azdiskpool
 #>
 function Stop-AzDiskPool {
 [OutputType([System.Boolean])]

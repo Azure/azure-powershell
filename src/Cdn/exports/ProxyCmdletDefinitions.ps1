@@ -51,7 +51,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/clear-azcdnendpointcontent
+https://learn.microsoft.com/powershell/module/az.cdn/clear-azcdnendpointcontent
 #>
 function Clear-AzCdnEndpointContent {
 [OutputType([System.Boolean])]
@@ -295,7 +295,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/clear-azfrontdoorcdnendpointcontent
+https://learn.microsoft.com/powershell/module/az.cdn/clear-azfrontdoorcdnendpointcontent
 #>
 function Clear-AzFrontDoorCdnEndpointContent {
 [OutputType([System.Boolean])]
@@ -541,7 +541,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/disable-azcdncustomdomaincustomhttps
+https://learn.microsoft.com/powershell/module/az.cdn/disable-azcdncustomdomaincustomhttps
 #>
 function Disable-AzCdnCustomDomainCustomHttps {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICustomDomain])]
@@ -757,7 +757,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/enable-azcdncustomdomaincustomhttps
+https://learn.microsoft.com/powershell/module/az.cdn/enable-azcdncustomdomaincustomhttps
 #>
 function Enable-AzCdnCustomDomainCustomHttps {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICustomDomain])]
@@ -974,7 +974,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdncustomdomain
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdncustomdomain
 #>
 function Get-AzCdnCustomDomain {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICustomDomain])]
@@ -1161,7 +1161,7 @@ Get-AzCdnEdgeNode
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEdgeNode
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnedgenode
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnedgenode
 #>
 function Get-AzCdnEdgeNode {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEdgeNode])]
@@ -1300,7 +1300,7 @@ Get-AzCdnEndpointResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnendpointresourceusage
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnendpointresourceusage
 #>
 function Get-AzCdnEndpointResourceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage])]
@@ -1490,7 +1490,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnendpoint
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnendpoint
 #>
 function Get-AzCdnEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint])]
@@ -1693,7 +1693,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnorigingroup
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnorigingroup
 #>
 function Get-AzCdnOriginGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOriginGroup])]
@@ -1903,7 +1903,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnorigin
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnorigin
 #>
 function Get-AzCdnOrigin {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOrigin])]
@@ -2090,7 +2090,7 @@ Get-AzCdnProfileResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName c
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnprofileresourceusage
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnprofileresourceusage
 #>
 function Get-AzCdnProfileResourceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage])]
@@ -2253,7 +2253,7 @@ Get-AzCdnProfileSupportedOptimizationType -ResourceGroupName testps-rg-da16jm -P
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.OptimizationType
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnprofilesupportedoptimizationtype
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnprofilesupportedoptimizationtype
 #>
 function Get-AzCdnProfileSupportedOptimizationType {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.OptimizationType])]
@@ -2414,7 +2414,7 @@ Get-AzCdnSubscriptionResourceUsage
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnsubscriptionresourceusage
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnsubscriptionresourceusage
 #>
 function Get-AzCdnSubscriptionResourceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage])]
@@ -2586,7 +2586,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdncustomdomain
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdncustomdomain
 #>
 function Get-AzFrontDoorCdnCustomDomain {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdDomain])]
@@ -2765,7 +2765,7 @@ Get-AzFrontDoorCdnEndpointResourceUsage -ResourceGroupName testps-rg-da16jm -Pro
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnendpointresourceusage
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnendpointresourceusage
 #>
 function Get-AzFrontDoorCdnEndpointResourceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage])]
@@ -2955,7 +2955,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnendpoint
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnendpoint
 #>
 function Get-AzFrontDoorCdnEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdEndpoint])]
@@ -3134,7 +3134,7 @@ Get-AzFrontDoorCdnOriginGroupResourceUsage -ResourceGroupName testps-rg-da16jm -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigingroupresourceusage
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigingroupresourceusage
 #>
 function Get-AzFrontDoorCdnOriginGroupResourceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage])]
@@ -3324,7 +3324,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigingroup
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigingroup
 #>
 function Get-AzFrontDoorCdnOriginGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOriginGroup])]
@@ -3526,7 +3526,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigin
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigin
 #>
 function Get-AzFrontDoorCdnOrigin {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOrigin])]
@@ -3712,7 +3712,7 @@ Get-AzFrontDoorCdnProfileResourceUsage -ResourceGroupName testps-rg-da16jm -Prof
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnprofileresourceusage
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnprofileresourceusage
 #>
 function Get-AzFrontDoorCdnProfileResourceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage])]
@@ -3896,7 +3896,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnroute
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnroute
 #>
 function Get-AzFrontDoorCdnRoute {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRoute])]
@@ -4083,7 +4083,7 @@ Get-AzFrontDoorCdnRuleSetResourceUsage -ResourceGroupName testps-rg-da16jm -Prof
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnrulesetresourceusage
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnrulesetresourceusage
 #>
 function Get-AzFrontDoorCdnRuleSetResourceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage])]
@@ -4273,7 +4273,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnruleset
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnruleset
 #>
 function Get-AzFrontDoorCdnRuleSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRuleSet])]
@@ -4476,7 +4476,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnrule
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnrule
 #>
 function Get-AzFrontDoorCdnRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRule])]
@@ -4687,7 +4687,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnsecret
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnsecret
 #>
 function Get-AzFrontDoorCdnSecret {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecret])]
@@ -4890,7 +4890,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnsecuritypolicy
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnsecuritypolicy
 #>
 function Get-AzFrontDoorCdnSecurityPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicy])]
@@ -5098,7 +5098,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/import-azcdnendpointcontent
+https://learn.microsoft.com/powershell/module/az.cdn/import-azcdnendpointcontent
 #>
 function Import-AzCdnEndpointContent {
 [OutputType([System.Boolean])]
@@ -5315,7 +5315,7 @@ New-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -E
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICustomDomain
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azcdncustomdomain
+https://learn.microsoft.com/powershell/module/az.cdn/new-azcdncustomdomain
 #>
 function New-AzCdnCustomDomain {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICustomDomain])]
@@ -5568,7 +5568,7 @@ URLSIGNINGKEY <IUrlSigningKey[]>: List of keys used to validate the signed URL h
   KeySourceParameterSubscriptionId <String>: Subscription Id of the user's Key Vault containing the secret
   KeySourceParameterVaultName <String>: The name of the user's Key Vault containing the secret
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azcdnendpoint
+https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnendpoint
 #>
 function New-AzCdnEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint])]
@@ -5916,7 +5916,7 @@ RESPONSEBASEDORIGINERRORDETECTIONSETTING <IResponseBasedOriginErrorDetectionPara
   [ResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes?>]: Type of response errors for real user requests for which origin will be deemed unhealthy
   [ResponseBasedFailoverThresholdPercentage <Int32?>]: The percentage of failed requests in the sample where failover should trigger.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azcdnorigingroup
+https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnorigingroup
 #>
 function New-AzCdnOriginGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOriginGroup])]
@@ -6133,7 +6133,7 @@ New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Endpoin
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOrigin
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azcdnorigin
+https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnorigin
 #>
 function New-AzCdnOrigin {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOrigin])]
@@ -6409,7 +6409,7 @@ TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enab
   [Secret <IResourceReference>]: Resource reference to the secret. ie. subs/rg/profile/secret
     [Id <String>]: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdncustomdomain
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdncustomdomain
 #>
 function New-AzFrontDoorCdnCustomDomain {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdDomain])]
@@ -6615,7 +6615,7 @@ New-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnendpoint
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnendpoint
 #>
 function New-AzFrontDoorCdnEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdEndpoint])]
@@ -6840,7 +6840,7 @@ LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>: Load balancing settings
   [SampleSize <Int32?>]: The number of samples to consider for load balancing decisions
   [SuccessfulSamplesRequired <Int32?>]: The number of samples within the sample period that must succeed
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnorigingroup
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnorigingroup
 #>
 function New-AzFrontDoorCdnOriginGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOriginGroup])]
@@ -7049,7 +7049,7 @@ Creates a new origin within the specified origin group.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOrigin
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnorigin
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnorigin
 #>
 function New-AzFrontDoorCdnOrigin {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOrigin])]
@@ -7348,7 +7348,7 @@ CUSTOMDOMAIN <IActivatedResourceReference[]>: Domains referenced by this endpoin
 RULESET <IResourceReference[]>: rule sets referenced by this endpoint.
   [Id <String>]: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnroute
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnroute
 #>
 function New-AzFrontDoorCdnRoute {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRoute])]
@@ -7639,7 +7639,7 @@ New-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRuleSet
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnruleset
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnruleset
 #>
 function New-AzFrontDoorCdnRuleSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRuleSet])]
@@ -7831,7 +7831,7 @@ ACTION <IDeliveryRuleAction1[]>: A list of actions that are executed when all th
 CONDITION <IDeliveryRuleCondition[]>: A list of conditions that must be matched for the actions to be executed
   Name <MatchVariable>: The name of the condition for the delivery rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnrule
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnrule
 #>
 function New-AzFrontDoorCdnRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRule])]
@@ -8061,7 +8061,7 @@ To create the parameters described below, construct a hash table containing the 
 PARAMETER <ISecretParameters>: object which contains secret parameters
   Type <SecretType>: The type of the secret resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnsecret
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnsecret
 #>
 function New-AzFrontDoorCdnSecret {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecret])]
@@ -8252,7 +8252,7 @@ New-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicy
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnsecuritypolicy
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnsecuritypolicy
 #>
 function New-AzFrontDoorCdnSecurityPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicy])]
@@ -8459,7 +8459,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azcdncustomdomain
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdncustomdomain
 #>
 function Remove-AzCdnCustomDomain {
 [OutputType([System.Boolean])]
@@ -8680,7 +8680,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azcdnendpoint
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdnendpoint
 #>
 function Remove-AzCdnEndpoint {
 [OutputType([System.Boolean])]
@@ -8895,7 +8895,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azcdnorigingroup
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdnorigingroup
 #>
 function Remove-AzCdnOriginGroup {
 [OutputType([System.Boolean])]
@@ -9116,7 +9116,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azcdnorigin
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdnorigin
 #>
 function Remove-AzCdnOrigin {
 [OutputType([System.Boolean])]
@@ -9337,7 +9337,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdncustomdomain
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdncustomdomain
 #>
 function Remove-AzFrontDoorCdnCustomDomain {
 [OutputType([System.Boolean])]
@@ -9551,7 +9551,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnendpoint
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnendpoint
 #>
 function Remove-AzFrontDoorCdnEndpoint {
 [OutputType([System.Boolean])]
@@ -9765,7 +9765,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnorigingroup
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnorigingroup
 #>
 function Remove-AzFrontDoorCdnOriginGroup {
 [OutputType([System.Boolean])]
@@ -9979,7 +9979,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnorigin
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnorigin
 #>
 function Remove-AzFrontDoorCdnOrigin {
 [OutputType([System.Boolean])]
@@ -10199,7 +10199,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnroute
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnroute
 #>
 function Remove-AzFrontDoorCdnRoute {
 [OutputType([System.Boolean])]
@@ -10420,7 +10420,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnruleset
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnruleset
 #>
 function Remove-AzFrontDoorCdnRuleSet {
 [OutputType([System.Boolean])]
@@ -10635,7 +10635,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnrule
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnrule
 #>
 function Remove-AzFrontDoorCdnRule {
 [OutputType([System.Boolean])]
@@ -10857,7 +10857,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnsecret
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnsecret
 #>
 function Remove-AzFrontDoorCdnSecret {
 [OutputType([System.Boolean])]
@@ -11072,7 +11072,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnsecuritypolicy
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnsecuritypolicy
 #>
 function Remove-AzFrontDoorCdnSecurityPolicy {
 [OutputType([System.Boolean])]
@@ -11287,7 +11287,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/start-azcdnendpoint
+https://learn.microsoft.com/powershell/module/az.cdn/start-azcdnendpoint
 #>
 function Start-AzCdnEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint])]
@@ -11496,7 +11496,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/stop-azcdnendpoint
+https://learn.microsoft.com/powershell/module/az.cdn/stop-azcdnendpoint
 #>
 function Stop-AzCdnEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint])]
@@ -11705,7 +11705,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/test-azcdnendpointcustomdomain
+https://learn.microsoft.com/powershell/module/az.cdn/test-azcdnendpointcustomdomain
 #>
 function Test-AzCdnEndpointCustomDomain {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainOutput])]
@@ -11889,7 +11889,7 @@ Test-AzCdnNameAvailability -Name endptest001 -Type Microsoft.Cdn/Profiles/Endpoi
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/test-azcdnnameavailability
+https://learn.microsoft.com/powershell/module/az.cdn/test-azcdnnameavailability
 #>
 function Test-AzCdnNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput])]
@@ -12056,7 +12056,7 @@ Test-AzCdnProbe -ProbeUrl "https://azurecdn-files.azureedge.net/dsa-test/probe-v
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateProbeOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/test-azcdnprobe
+https://learn.microsoft.com/powershell/module/az.cdn/test-azcdnprobe
 #>
 function Test-AzCdnProbe {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateProbeOutput])]
@@ -12232,7 +12232,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnendpointcustomdomain
+https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnendpointcustomdomain
 #>
 function Test-AzFrontDoorCdnEndpointCustomDomain {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainOutput])]
@@ -12416,7 +12416,7 @@ Test-AzFrontDoorCdnEndpointNameAvailability -ResourceGroupName testps-rg-da16jm 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckEndpointNameAvailabilityOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnendpointnameavailability
+https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnendpointnameavailability
 #>
 function Test-AzFrontDoorCdnEndpointNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckEndpointNameAvailabilityOutput])]
@@ -12613,7 +12613,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofilehostnameavailability
+https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofilehostnameavailability
 #>
 function Test-AzFrontDoorCdnProfileHostNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput])]
@@ -12842,7 +12842,7 @@ URLSIGNINGKEY <IUrlSigningKey[]>: List of keys used to validate the signed URL h
   KeySourceParameterSubscriptionId <String>: Subscription Id of the user's Key Vault containing the secret
   KeySourceParameterVaultName <String>: The name of the user's Key Vault containing the secret
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azcdnendpoint
+https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnendpoint
 #>
 function Update-AzCdnEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IEndpoint])]
@@ -13192,7 +13192,7 @@ RESPONSEBASEDORIGINERRORDETECTIONSETTING <IResponseBasedOriginErrorDetectionPara
   [ResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes?>]: Type of response errors for real user requests for which origin will be deemed unhealthy
   [ResponseBasedFailoverThresholdPercentage <Int32?>]: The percentage of failed requests in the sample where failover should trigger.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azcdnorigingroup
+https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnorigingroup
 #>
 function Update-AzCdnOriginGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOriginGroup])]
@@ -13438,7 +13438,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azcdnorigin
+https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnorigin
 #>
 function Update-AzCdnOrigin {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOrigin])]
@@ -13730,7 +13730,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdncustomdomainvalidationtoken
+https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdncustomdomainvalidationtoken
 #>
 function Update-AzFrontDoorCdnCustomDomainValidationToken {
 [OutputType([System.Boolean])]
@@ -13953,7 +13953,7 @@ TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enab
   [Secret <IResourceReference>]: Resource reference to the secret. ie. subs/rg/profile/secret
     [Id <String>]: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdncustomdomain
+https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdncustomdomain
 #>
 function Update-AzFrontDoorCdnCustomDomain {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdDomain])]
@@ -14189,7 +14189,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnendpoint
+https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnendpoint
 #>
 function Update-AzFrontDoorCdnEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdEndpoint])]
@@ -14424,7 +14424,7 @@ LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>: Load balancing settings
   [SampleSize <Int32?>]: The number of samples to consider for load balancing decisions
   [SuccessfulSamplesRequired <Int32?>]: The number of samples within the sample period that must succeed
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnorigingroup
+https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnorigingroup
 #>
 function Update-AzFrontDoorCdnOriginGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOriginGroup])]
@@ -14662,7 +14662,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnorigin
+https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnorigin
 #>
 function Update-AzFrontDoorCdnOrigin {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOrigin])]
@@ -14978,7 +14978,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 RULESET <IResourceReference[]>: rule sets referenced by this endpoint.
   [Id <String>]: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnroute
+https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnroute
 #>
 function Update-AzFrontDoorCdnRoute {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRoute])]
@@ -15304,7 +15304,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnrule
+https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnrule
 #>
 function Update-AzFrontDoorCdnRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRule])]
@@ -15560,7 +15560,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnsecuritypolicy
+https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnsecuritypolicy
 #>
 function Update-AzFrontDoorCdnSecurityPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicy])]
@@ -15779,7 +15779,7 @@ INPUTOBJECT <ICdnIdentity>:
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnprofile
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnprofile
 #>
 function Get-AzCdnProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile])]
@@ -15968,7 +15968,7 @@ INPUTOBJECT <ICdnIdentity>:
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnprofile
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnprofile
 #>
 function Get-AzFrontDoorCdnProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile])]
@@ -16132,7 +16132,7 @@ New-AzCdnDeliveryRuleCookiesConditionObject -Name Cookies -ParameterOperator Equ
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleCookiesCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleCookiesConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleCookiesConditionObject
 #>
 function New-AzCdnDeliveryRuleCookiesConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleCookiesCondition])]
@@ -16263,7 +16263,7 @@ New-AzCdnDeliveryRuleHttpVersionConditionObject -Name HttpVersion -ParameterMatc
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleHttpVersionCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleHttpVersionConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleHttpVersionConditionObject
 #>
 function New-AzCdnDeliveryRuleHttpVersionConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleHttpVersionCondition])]
@@ -16381,7 +16381,7 @@ New-AzCdnDeliveryRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleIsDeviceCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleIsDeviceConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleIsDeviceConditionObject
 #>
 function New-AzCdnDeliveryRuleIsDeviceConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleIsDeviceCondition])]
@@ -16516,7 +16516,7 @@ ACTION <IDeliveryRuleAction1[]>: A list of actions that are executed when all th
 CONDITION <IDeliveryRuleCondition[]>: A list of conditions that must be matched for the actions to be executed.
   Name <MatchVariable>: The name of the condition for the delivery rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleObject
 #>
 function New-AzCdnDeliveryRuleObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRule])]
@@ -16638,7 +16638,7 @@ New-AzCdnDeliveryRulePostArgsConditionObject -Name PostArgs -ParameterOperator E
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRulePostArgsCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRulePostArgsConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRulePostArgsConditionObject
 #>
 function New-AzCdnDeliveryRulePostArgsConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRulePostArgsCondition])]
@@ -16769,7 +16769,7 @@ New-AzCdnDeliveryRuleQueryStringConditionObject -Name QueryString -ParameterOper
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleQueryStringCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleQueryStringConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleQueryStringConditionObject
 #>
 function New-AzCdnDeliveryRuleQueryStringConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleQueryStringCondition])]
@@ -16894,7 +16894,7 @@ New-AzCdnDeliveryRuleRemoteAddressConditionObject -Name RemoteAddress -Parameter
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRemoteAddressCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRemoteAddressConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRemoteAddressConditionObject
 #>
 function New-AzCdnDeliveryRuleRemoteAddressConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRemoteAddressCondition])]
@@ -17021,7 +17021,7 @@ New-AzCdnDeliveryRuleRequestBodyConditionObject -Name RequestBody -ParameterOper
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestBodyCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestBodyConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestBodyConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestBodyConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestBodyCondition])]
@@ -17146,7 +17146,7 @@ New-AzCdnDeliveryRuleRequestHeaderActionObject -Name ModifyRequestHeader -Parame
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderAction
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestHeaderActionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestHeaderActionObject
 #>
 function New-AzCdnDeliveryRuleRequestHeaderActionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderAction])]
@@ -17264,7 +17264,7 @@ New-AzCdnDeliveryRuleRequestHeaderConditionObject  -Name RequestHeader -Paramete
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestHeaderConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestHeaderConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestHeaderConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderCondition])]
@@ -17395,7 +17395,7 @@ New-AzCdnDeliveryRuleRequestMethodConditionObject -Name RequestMethod -Parameter
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestMethodCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestMethodConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestMethodConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestMethodConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestMethodCondition])]
@@ -17513,7 +17513,7 @@ New-AzCdnDeliveryRuleRequestSchemeConditionObject -Name RequestScheme -Parameter
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestSchemeCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestSchemeConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestSchemeConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestSchemeConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestSchemeCondition])]
@@ -17631,7 +17631,7 @@ New-AzCdnDeliveryRuleRequestUriConditionObject -Name RequestUri -ParameterOperat
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestUriCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestUriConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestUriConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestUriConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestUriCondition])]
@@ -17756,7 +17756,7 @@ New-AzCdnDeliveryRuleResponseHeaderActionObject -Name ModifyResponseHeader -Para
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleResponseHeaderAction
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleResponseHeaderActionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleResponseHeaderActionObject
 #>
 function New-AzCdnDeliveryRuleResponseHeaderActionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleResponseHeaderAction])]
@@ -17874,7 +17874,7 @@ New-AzCdnDeliveryRuleUrlFileExtensionConditionObject -Name UrlFileExtension -Par
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleUrlFileExtensionCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleUrlFileExtensionConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleUrlFileExtensionConditionObject
 #>
 function New-AzCdnDeliveryRuleUrlFileExtensionConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleUrlFileExtensionCondition])]
@@ -17999,7 +17999,7 @@ New-AzCdnDeliveryRuleUrlFileNameConditionObject -Name UrlFileName -ParameterOper
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleUrlFileNameCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleUrlFileNameConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleUrlFileNameConditionObject
 #>
 function New-AzCdnDeliveryRuleUrlFileNameConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleUrlFileNameCondition])]
@@ -18124,7 +18124,7 @@ New-AzCdnDeliveryRuleUrlPathConditionObject -Name UrlPath -ParameterOperator Equ
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleUrlPathCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleUrlPathConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleUrlPathConditionObject
 #>
 function New-AzCdnDeliveryRuleUrlPathConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleUrlPathCondition])]
@@ -18249,7 +18249,7 @@ New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 120 -ProbePath "/che
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.HealthProbeParameters
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnHealthProbeParametersObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnHealthProbeParametersObject
 #>
 function New-AzCdnHealthProbeParametersObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.HealthProbeParameters])]
@@ -18367,7 +18367,7 @@ New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.CdnManagedHttpsParameters
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnManagedHttpsParametersObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnManagedHttpsParametersObject
 #>
 function New-AzCdnManagedHttpsParametersObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.CdnManagedHttpsParameters])]
@@ -18487,7 +18487,7 @@ New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Stand
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azcdnprofile
+https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnprofile
 #>
 function New-AzCdnProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile])]
@@ -18690,7 +18690,7 @@ Create an in-memory object for ResourceReference.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnResourceReferenceObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnResourceReferenceObject
 #>
 function New-AzCdnResourceReferenceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference])]
@@ -18798,7 +18798,7 @@ HTTPERRORRANGE <IHttpErrorRangeParameters[]>: The list of Http status code range
   [Begin <Int32?>]: The inclusive start of the http status code range.
   [End <Int32?>]: The inclusive end of the http status code range.
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
 #>
 function New-AzCdnResponseBasedOriginErrorDetectionParametersObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResponseBasedOriginErrorDetectionParameters])]
@@ -18912,7 +18912,7 @@ Create an in-memory object for UrlRedirectAction.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRedirectAction
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlRedirectActionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlRedirectActionObject
 #>
 function New-AzCdnUrlRedirectActionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRedirectAction])]
@@ -19060,7 +19060,7 @@ Create an in-memory object for UrlRewriteAction.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRewriteAction
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlRewriteActionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlRewriteActionObject
 #>
 function New-AzCdnUrlRewriteActionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRewriteAction])]
@@ -19189,7 +19189,7 @@ PARAMETERNAMEOVERRIDE <IUrlSigningParamIdentifier[]>: Defines which query string
   ParamIndicator <ParamIndicator>: Indicates the purpose of the parameter
   ParamName <String>: Parameter name
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlSigningActionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlSigningActionObject
 #>
 function New-AzCdnUrlSigningActionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningAction])]
@@ -19305,7 +19305,7 @@ Create an in-memory object for UserManagedHttpsParameters.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UserManagedHttpsParameters
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnUserManagedHttpsParametersObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnUserManagedHttpsParametersObject
 #>
 function New-AzCdnUserManagedHttpsParametersObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UserManagedHttpsParameters])]
@@ -19457,7 +19457,7 @@ To create the parameters described below, construct a hash table containing the 
 SECRET <IResourceReference>: Resource reference to the secret. ie. subs/rg/profile/secret.
   [Id <String>]: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
 #>
 function New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.AFDDomainHttpsParameters])]
@@ -19572,7 +19572,7 @@ New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.HealthProbeParameters
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
 #>
 function New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.HealthProbeParameters])]
@@ -19690,7 +19690,7 @@ New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMill
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.LoadBalancingSettingsParameters
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject
 #>
 function New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.LoadBalancingSettingsParameters])]
@@ -19800,7 +19800,7 @@ New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnprofile
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnprofile
 #>
 function New-AzFrontDoorCdnProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile])]
@@ -20002,7 +20002,7 @@ New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnResourceReferenceObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnResourceReferenceObject
 #>
 function New-AzFrontDoorCdnResourceReferenceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResourceReference])]
@@ -20100,7 +20100,7 @@ New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOpera
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleClientPortCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleClientPortConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleClientPortConditionObject
 #>
 function New-AzFrontDoorCdnRuleClientPortConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleClientPortCondition])]
@@ -20225,7 +20225,7 @@ New-AzFrontDoorCdnRuleCookiesConditionObject -Name Cookies -ParameterOperator Eq
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleCookiesCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleCookiesConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleCookiesConditionObject
 #>
 function New-AzFrontDoorCdnRuleCookiesConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleCookiesCondition])]
@@ -20356,7 +20356,7 @@ New-AzFrontDoorCdnRuleHostNameConditionObject -Name HostName -ParameterOperator 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleHostNameCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleHostNameConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleHostNameConditionObject
 #>
 function New-AzFrontDoorCdnRuleHostNameConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleHostNameCondition])]
@@ -20481,7 +20481,7 @@ New-AzFrontDoorCdnRuleHttpVersionConditionObject -Name HttpVersion -ParameterMat
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleHttpVersionCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleHttpVersionConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleHttpVersionConditionObject
 #>
 function New-AzFrontDoorCdnRuleHttpVersionConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleHttpVersionCondition])]
@@ -20599,7 +20599,7 @@ New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValu
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleIsDeviceCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleIsDeviceConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleIsDeviceConditionObject
 #>
 function New-AzFrontDoorCdnRuleIsDeviceConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleIsDeviceCondition])]
@@ -20717,7 +20717,7 @@ New-AzFrontDoorCdnRulePostArgsConditionObject -Name PostArgs -ParameterOperator 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRulePostArgsCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRulePostArgsConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRulePostArgsConditionObject
 #>
 function New-AzFrontDoorCdnRulePostArgsConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRulePostArgsCondition])]
@@ -20848,7 +20848,7 @@ New-AzFrontDoorCdnRuleQueryStringConditionObject -Name QueryString -ParameterOpe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleQueryStringCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleQueryStringConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleQueryStringConditionObject
 #>
 function New-AzFrontDoorCdnRuleQueryStringConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleQueryStringCondition])]
@@ -20973,7 +20973,7 @@ New-AzFrontDoorCdnRuleRemoteAddressConditionObject -Name RemoteAddress -Paramete
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRemoteAddressCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRemoteAddressConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRemoteAddressConditionObject
 #>
 function New-AzFrontDoorCdnRuleRemoteAddressConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRemoteAddressCondition])]
@@ -21100,7 +21100,7 @@ New-AzFrontDoorCdnRuleRequestBodyConditionObject -Name RequestBody -ParameterOpe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestBodyCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestBodyConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestBodyConditionObject
 #>
 function New-AzFrontDoorCdnRuleRequestBodyConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestBodyCondition])]
@@ -21225,7 +21225,7 @@ New-AzFrontDoorCdnRuleRequestHeaderActionObject -Name ModifyRequestHeader -Param
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderAction
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestHeaderActionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestHeaderActionObject
 #>
 function New-AzFrontDoorCdnRuleRequestHeaderActionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderAction])]
@@ -21343,7 +21343,7 @@ New-AzFrontDoorCdnRuleRequestHeaderConditionObject -Name RequestHeader -Paramete
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestHeaderConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestHeaderConditionObject
 #>
 function New-AzFrontDoorCdnRuleRequestHeaderConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderCondition])]
@@ -21474,7 +21474,7 @@ New-AzFrontDoorCdnRuleRequestMethodConditionObject -Name RequestMethod -Paramete
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestMethodCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestMethodConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestMethodConditionObject
 #>
 function New-AzFrontDoorCdnRuleRequestMethodConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestMethodCondition])]
@@ -21592,7 +21592,7 @@ New-AzFrontDoorCdnRuleRequestSchemeConditionObject -Name RequestScheme -Paramete
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestSchemeCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestSchemeConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestSchemeConditionObject
 #>
 function New-AzFrontDoorCdnRuleRequestSchemeConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestSchemeCondition])]
@@ -21710,7 +21710,7 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestUriCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestUriConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRequestUriConditionObject
 #>
 function New-AzFrontDoorCdnRuleRequestUriConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestUriCondition])]
@@ -21835,7 +21835,7 @@ New-AzFrontDoorCdnRuleResponseHeaderActionObject -Name ModifyResponseHeader -Par
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleResponseHeaderAction
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleResponseHeaderActionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleResponseHeaderActionObject
 #>
 function New-AzFrontDoorCdnRuleResponseHeaderActionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleResponseHeaderAction])]
@@ -21954,7 +21954,7 @@ New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name RouteConfigur
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRouteConfigurationOverrideAction
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject
 #>
 function New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRouteConfigurationOverrideAction])]
@@ -22103,7 +22103,7 @@ New-AzFrontDoorCdnRuleServerPortConditionObject -Name ServerPort -ParameterOpera
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleServerPortCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleServerPortConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleServerPortConditionObject
 #>
 function New-AzFrontDoorCdnRuleServerPortConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleServerPortCondition])]
@@ -22228,7 +22228,7 @@ Create an in-memory object for DeliveryRuleSocketAddrCondition.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleSocketAddrCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleSocketAddrConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleSocketAddrConditionObject
 #>
 function New-AzFrontDoorCdnRuleSocketAddrConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleSocketAddrCondition])]
@@ -22353,7 +22353,7 @@ New-AzFrontDoorCdnRuleSslProtocolConditionObject -Name SslProtocol -ParameterMat
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleSslProtocolCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleSslProtocolConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleSslProtocolConditionObject
 #>
 function New-AzFrontDoorCdnRuleSslProtocolConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleSslProtocolCondition])]
@@ -22472,7 +22472,7 @@ New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject -Name UrlFileExtension -Pa
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleUrlFileExtensionCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlFileExtensionConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlFileExtensionConditionObject
 #>
 function New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleUrlFileExtensionCondition])]
@@ -22597,7 +22597,7 @@ New-AzFrontDoorCdnRuleUrlFileNameConditionObject -Name UrlFileName -ParameterOpe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleUrlFileNameCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlFileNameConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlFileNameConditionObject
 #>
 function New-AzFrontDoorCdnRuleUrlFileNameConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleUrlFileNameCondition])]
@@ -22722,7 +22722,7 @@ Create an in-memory object for DeliveryRuleUrlPathCondition.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleUrlPathCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlPathConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlPathConditionObject
 #>
 function New-AzFrontDoorCdnRuleUrlPathConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleUrlPathCondition])]
@@ -22847,7 +22847,7 @@ New-AzFrontDoorCdnRuleUrlRedirectActionObject -Name UrlRedirect -ParameterRedire
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRedirectAction
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlRedirectActionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlRedirectActionObject
 #>
 function New-AzFrontDoorCdnRuleUrlRedirectActionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRedirectAction])]
@@ -22993,7 +22993,7 @@ New-AzFrontDoorCdnRuleUrlRewriteActionObject -Name UrlRewrite -ParameterDestinat
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRewriteAction
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlRewriteActionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlRewriteActionObject
 #>
 function New-AzFrontDoorCdnRuleUrlRewriteActionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRewriteAction])]
@@ -23122,7 +23122,7 @@ PARAMETERNAMEOVERRIDE <IUrlSigningParamIdentifier[]>: Defines which query string
   ParamIndicator <ParamIndicator>: Indicates the purpose of the parameter
   ParamName <String>: Parameter name
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlSigningActionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlSigningActionObject
 #>
 function New-AzFrontDoorCdnRuleUrlSigningActionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningAction])]
@@ -23237,7 +23237,7 @@ New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $t
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.CustomerCertificateParameters
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretCustomerCertificateParametersObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretCustomerCertificateParametersObject
 #>
 function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.CustomerCertificateParameters])]
@@ -23360,7 +23360,7 @@ Add code here
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.AzureFirstPartyManagedCertificateParameters
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject
 #>
 function New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.AzureFirstPartyManagedCertificateParameters])]
@@ -23459,7 +23459,7 @@ Add code here
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ManagedCertificateParameters
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretManagedCertificateParametersObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretManagedCertificateParametersObject
 #>
 function New-AzFrontDoorCdnSecretManagedCertificateParametersObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ManagedCertificateParameters])]
@@ -23558,7 +23558,7 @@ Add code here
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningKeyParameters
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretUrlSigningKeyParametersObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretUrlSigningKeyParametersObject
 #>
 function New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningKeyParameters])]
@@ -23684,7 +23684,7 @@ To create the parameters described below, construct a hash table containing the 
 DOMAIN <IActivatedResourceReference[]>: List of domains.
   [Id <String>]: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
 #>
 function New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.SecurityPolicyWebApplicationFirewallAssociation])]
@@ -23801,7 +23801,7 @@ ASSOCIATION <ISecurityPolicyWebApplicationFirewallAssociation[]>: Waf associatio
     [Id <String>]: Resource ID.
   [PatternsToMatch <String[]>]: List of paths
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnFrontDoorSecurityPolicyWebApplicationFirewallParametersObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnFrontDoorSecurityPolicyWebApplicationFirewallParametersObject
 #>
 function New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.SecurityPolicyWebApplicationFirewallParameters])]
@@ -23931,7 +23931,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azcdnprofile
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdnprofile
 #>
 function Remove-AzCdnProfile {
 [OutputType([System.Boolean])]
@@ -24144,7 +24144,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnprofile
+https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnprofile
 #>
 function Remove-AzFrontDoorCdnProfile {
 [OutputType([System.Boolean])]
@@ -24363,7 +24363,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azcdnprofile
+https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnprofile
 #>
 function Update-AzCdnProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile])]
@@ -24590,7 +24590,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnprofile
+https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnprofile
 #>
 function Update-AzFrontDoorCdnProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile])]

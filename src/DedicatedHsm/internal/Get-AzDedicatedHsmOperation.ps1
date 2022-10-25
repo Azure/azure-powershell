@@ -27,7 +27,7 @@ Get a list of Dedicated HSM operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsmOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.dedicatedhsm/get-azdedicatedhsmoperation
+https://learn.microsoft.com/powershell/module/az.dedicatedhsm/get-azdedicatedhsmoperation
 #>
 function Get-AzDedicatedHsmOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsmOperation])]

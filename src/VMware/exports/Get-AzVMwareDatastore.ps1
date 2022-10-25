@@ -60,7 +60,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwaredatastore
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwaredatastore
 #>
 function Get-AzVMwareDatastore {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastore])]

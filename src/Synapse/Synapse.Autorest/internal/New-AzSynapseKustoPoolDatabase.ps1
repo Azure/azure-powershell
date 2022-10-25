@@ -45,7 +45,7 @@ PARAMETER <IDatabase>: Class representing a Kusto database.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabase
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabase
 #>
 function New-AzSynapseKustoPoolDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabase])]

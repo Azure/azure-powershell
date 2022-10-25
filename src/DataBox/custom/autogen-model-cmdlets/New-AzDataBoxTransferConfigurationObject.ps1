@@ -23,7 +23,7 @@ Create an in-memory object for TransferConfiguration.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxTransferConfigurationObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxTransferConfigurationObject
 #>
 function New-AzDataBoxTransferConfigurationObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.TransferConfiguration')]

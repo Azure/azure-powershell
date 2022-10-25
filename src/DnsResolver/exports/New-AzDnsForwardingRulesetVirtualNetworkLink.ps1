@@ -27,7 +27,7 @@ New-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName dnsForwar
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetvirtualnetworklink
+https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetvirtualnetworklink
 #>
 function New-AzDnsForwardingRulesetVirtualNetworkLink {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink])]

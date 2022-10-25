@@ -44,7 +44,7 @@ INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
   [RegistrationDefinitionId <String>]: The GUID of the registration definition.
   [Scope <String>]: The scope of the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesmarketplacedefinitionswithoutscope
+https://learn.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesmarketplacedefinitionswithoutscope
 #>
 function Get-AzManagedServicesMarketplaceDefinitionsWithoutScope {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IMarketplaceRegistrationDefinition])]
@@ -187,7 +187,7 @@ INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
   [RegistrationDefinitionId <String>]: The GUID of the registration definition.
   [Scope <String>]: The scope of the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesmarketplacedefinition
+https://learn.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesmarketplacedefinition
 #>
 function Get-AzManagedServicesMarketplaceDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IMarketplaceRegistrationDefinition])]
@@ -328,7 +328,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesoperation
+https://learn.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesoperation
 #>
 function Get-AzManagedServicesOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IOperation])]

@@ -38,7 +38,7 @@ Status         : Succeeded
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermoveresource
+https://learn.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermoveresource
 #>
 function Remove-AzResourceMoverMoveResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus])]

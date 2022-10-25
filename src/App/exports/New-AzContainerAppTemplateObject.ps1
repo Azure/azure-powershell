@@ -56,7 +56,7 @@ VOLUMEMOUNT <IVolumeMount[]>: Container volume mounts.
   [MountPath <String>]: Path within the container at which the volume should be mounted.Must not contain ':'.
   [VolumeName <String>]: This must match the Name of a Volume.
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerapptemplateobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerapptemplateobject
 #>
 function New-AzContainerAppTemplateObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container])]

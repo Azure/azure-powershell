@@ -60,7 +60,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/lock-azvmwarevirtualmachinemovement
+https://learn.microsoft.com/powershell/module/az.vmware/lock-azvmwarevirtualmachinemovement
 #>
 function Lock-AzVMwareVirtualMachineMovement {
 [OutputType([System.Boolean])]

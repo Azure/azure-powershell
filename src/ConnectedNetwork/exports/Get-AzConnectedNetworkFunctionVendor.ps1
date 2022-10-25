@@ -38,7 +38,7 @@ SkuList                                                                         
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionVendor
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkfunctionvendor
+https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkfunctionvendor
 #>
 function Get-AzConnectedNetworkFunctionVendor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionVendor])]

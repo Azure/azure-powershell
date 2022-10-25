@@ -43,7 +43,7 @@ INPUTOBJECT <IDashboardIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The workspace name of Azure Managed Grafana.
 .Link
-https://docs.microsoft.com/powershell/module/az.dashboard/get-azgrafana
+https://learn.microsoft.com/powershell/module/az.dashboard/get-azgrafana
 #>
 function Get-AzGrafana {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana])]

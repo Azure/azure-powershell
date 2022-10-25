@@ -38,7 +38,7 @@ Type                         : microsoft.hybridnetwork/vendors/vendorskus/previe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription
 .Link
-https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorskupreview
+https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorskupreview
 #>
 function New-AzConnectedNetworkVendorSkuPreview {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IPreviewSubscription])]

@@ -58,7 +58,7 @@ PARAMETER <IKustoPool>: Class representing a Kusto kusto pool.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [WorkspaceUid <String>]: The workspace unique identifier.
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopool
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopool
 #>
 function New-AzSynapseKustoPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool])]

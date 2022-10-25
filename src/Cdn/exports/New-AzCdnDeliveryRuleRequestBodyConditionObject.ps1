@@ -25,7 +25,7 @@ New-AzCdnDeliveryRuleRequestBodyConditionObject -Name RequestBody -ParameterOper
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestBodyCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestBodyConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleRequestBodyConditionObject
 #>
 function New-AzCdnDeliveryRuleRequestBodyConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestBodyCondition])]

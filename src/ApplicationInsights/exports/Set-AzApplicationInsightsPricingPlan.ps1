@@ -25,7 +25,7 @@ Set-AzApplicationInsightsPricingPlan -ResourceGroupName "testgroup" -Name "test"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan
+https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan
 #>
 function Set-AzApplicationInsightsPricingPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentBillingFeatures])]
