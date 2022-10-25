@@ -14,7 +14,7 @@
 # ----------------------------------------------------------------------------------
 
 # Usage: 1. This script can be called by build.proj used in CI pipeline
-#        2. Can be used to do static analysis in local env. Such as: .\tools\ExecuteCIStep.ps1 -StaticAnalysisSignature -ModuleList "Accounts;Compute"
+#        2. Can be used to do static analysis in local env. Such as: .\tools\ExecuteCIStep.ps1 -StaticAnalysisSignature -TargetModule "Accounts;Compute"
 Param(
     [Switch]
     $Build,
@@ -56,7 +56,7 @@ Param(
     $StaticAnalysisOutputDirectory='artifacts/StaticAnalysisResults',
 
     [String]
-    $ModuleList
+    $TargetModule
 )
 $ErrorActionPreference = 'Stop'
 
@@ -71,33 +71,37 @@ If ($Build)
     {
         dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -p:GenerateDocumentationFile=false -fl "/flp1:logFile=$LogFile;verbosity=quiet"
     }
-    $LogContent = Get-Content $LogFile
-    $BuildResultArray = @()
-    ForEach ($Line In $LogContent)
+    If (Test-Path -Path "$RepoArtifacts/PipelineResult")
     {
-        $Position, $ErrorOrWarningType, $Detail = $Line.Split(": ")
-        $Detail = Join-String -Separator ": " -InputObject $Detail
-        If ($Position.Contains("src"))
+        $LogContent = Get-Content $LogFile
+        $BuildResultArray = @()
+        ForEach ($Line In $LogContent)
         {
-            $ModuleName = $Position.Replace("\", "/").Split("src/")[1].Split('/')[0]
+            $Position, $ErrorOrWarningType, $Detail = $Line.Split(": ")
+            $Detail = Join-String -Separator ": " -InputObject $Detail
+            If ($Position.Contains("src"))
+            {
+                $ModuleName = $Position.Replace("\", "/").Split("src/")[1].Split('/')[0]
+            }
+            Else
+            {
+                $ModuleName = "dotnet"
+            }
+            $Type, $Code = $ErrorOrWarningType.Split(" ")
+            $BuildResultArray += @{
+                "Position" = $Position;
+                "Module" = $ModuleName;
+                "Type" = $Type;
+                "Code" = $Code;
+                "Detail" = $Detail
+            }
         }
-        Else
-        {
-            $ModuleName = "dotnet"
-        }
-        $Type, $Code = $ErrorOrWarningType.Split(" ")
-        $BuildResultArray += @{
-            "Position" = $Position;
-            "Module" = $ModuleName;
-            "Type" = $Type;
-            "Code" = $Code;
-            "Detail" = $Detail
-        }
+        ConvertTo-Json -Depth 10 -InputObject $BuildResultArray | Out-File -FilePath "$RepoArtifacts/PipelineResult/Build.json"
     }
-    ConvertTo-Json -Depth 10 -InputObject $BuildResultArray | Out-File -FilePath "$RepoArtifacts/PipelineResult/Build.json"
+    Return
 }
 
-If (-Not $PSBoundParameters.ContainsKey("ModuleList"))
+If (-Not $PSBoundParameters.ContainsKey("TargetModule"))
 {
     $CIPlan = Get-Content $RepoArtifacts/PipelineResult/CIPlan.json | ConvertFrom-Json
 }
@@ -105,56 +109,61 @@ If (-Not $PSBoundParameters.ContainsKey("ModuleList"))
 If ($Test -And $CIPlan.test.Length -Ne 0)
 {
     dotnet test $RepoArtifacts/Azure.PowerShell.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $Configuration --framework $TestFramework --logger trx --results-directory $TestOutputDirectory
+    Return
 }
 
 If ($StaticAnalysisBreakingChange)
 {
-    If ($PSBoundParameters.ContainsKey("ModuleList"))
+    If ($PSBoundParameters.ContainsKey("TargetModule"))
     {
-        $BreakingChangeCheckModuleList = $ModuleList
+        $BreakingChangeCheckModuleList = $TargetModule
     }
     Else
     {
         $BreakingChangeCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.'breaking-change'
     }
     dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers breaking-change -u -m $BreakingChangeCheckModuleList
+    Return
 }
 
 If ($StaticAnalysisDependency)
 {
-    If ($PSBoundParameters.ContainsKey("ModuleList"))
+    If ($PSBoundParameters.ContainsKey("TargetModule"))
     {
-        $DependencyCheckModuleList = $ModuleList
+        $DependencyCheckModuleList = $TargetModule
     }
     Else
     {
         $DependencyCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.dependency
     }
     dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers dependency -u -m $DependencyCheckModuleList
+    Return
 }
 
 If ($StaticAnalysisSignature)
 {
-    If ($PSBoundParameters.ContainsKey("ModuleList"))
+    If ($PSBoundParameters.ContainsKey("TargetModule"))
     {
-        $SignatureCheckModuleList = $ModuleList
+        $SignatureCheckModuleList = $TargetModule
     }
     Else
     {
         $SignatureCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.signature
     }
     dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers signature -u -m $SignatureCheckModuleList
+    Return
 }
 
 If ($StaticAnalysisHelp)
 {
-    If ($PSBoundParameters.ContainsKey("ModuleList"))
+    If ($PSBoundParameters.ContainsKey("TargetModule"))
     {
-        $HelpCheckModuleList = $ModuleList
+        $HelpCheckModuleList = $TargetModule
     }
     Else
     {
         $HelpCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.help
     }
     dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers help -u -m $HelpCheckModuleList
+    Return
 }
