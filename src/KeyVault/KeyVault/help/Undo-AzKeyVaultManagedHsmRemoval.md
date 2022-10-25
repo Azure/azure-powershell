@@ -2,7 +2,6 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 online version: https://learn.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultmanagedhsmremoval
-
 schema: 2.0.0
 ---
 
@@ -16,13 +15,13 @@ Recover a managed HSM.
 ### Default (Default)
 ```
 Undo-AzKeyVaultManagedHsmRemoval [-Name] <String> [-ResourceGroupName] <String> [-Location] <String>
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Undo-AzKeyVaultManagedHsmRemoval [-InputObject] <PSDeletedManagedHsm> [-Tag <Hashtable>]
+Undo-AzKeyVaultManagedHsmRemoval [-InputObject] <PSDeletedManagedHsm>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
@@ -154,21 +153,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tag
-A hash table which represents resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
