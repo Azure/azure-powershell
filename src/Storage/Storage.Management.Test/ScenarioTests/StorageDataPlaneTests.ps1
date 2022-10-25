@@ -159,7 +159,7 @@ function Test-Blob
     New-TestResourceGroupAndStorageAccount -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
 
     try{
-
+        $location = Get-ProviderLocation ResourceManagement    
         $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
@@ -168,7 +168,15 @@ function Test-Blob
         $localDestFile = "localdestblobtestfile.txt"
         $localDestFile2 = "localdestblobtestfile2.txt"
 
-        $containerName = "blobtestcontainer"          
+        $containerName = "blobtestcontainer"    
+        $storageAccountName2 = $storageAccountName + "2"
+        New-AzStorageAccount -Name $storageAccountName2 -ResourceGroupName $ResourceGroupName -Location $location -Type 'Standard_LRS' 
+        $storageAccountKeyValue2 = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName2)[0].Value
+        $storageContext2 = New-AzStorageContext -StorageAccountName $StorageAccountName2 -StorageAccountKey $storageAccountKeyValue2
+        $containerName3 = "blobtestcontainer2"
+        New-AzStorageContainer $containerName3 -Context $storageContext
+        New-AzStorageContainer $containerName3 -Context $storageContext2
+
         $objectName1 = "blobtest1.txt"
         $objectName2 = "blobtest2.txt"
         $ContentType = "image/jpeg"
@@ -200,10 +208,12 @@ function Test-Blob
         $blob = Get-AzStorageContainer -Name $containerName -Context $storageContext | Get-AzStorageBlob
         Assert-AreEqual $blob.Count 1
         Assert-AreEqual $blob.Name $objectName1
-        Assert-AreEqual $blob.ICloudBlob.Properties.ContentType $ContentType
-        Assert-AreEqual $blob.ICloudBlob.Properties.ContentMD5 $ContentMD5
-        Assert-AreEqual $blob.ICloudBlob.Properties.StandardBlobTier $StandardBlobTier
-        $blob.ICloudBlob.SetStandardBlobTier($StandardBlobTier2, "High")
+        Assert-AreEqual $blob.BlobProperties.ContentType $ContentType
+        Assert-AreEqual $blob.BlobProperties.AccessTier $StandardBlobTier
+        $contentHash = [System.Convert]::ToBase64String($blob.BlobProperties.ContentHash)
+        Assert-AreEqual $contentHash $ContentMD5
+
+        $blob.BlobBaseClient.SetAccessTier($StandardBlobTier2)
         $blob.ICloudBlob.FetchAttributes()
         Assert-AreEqual $blob.ICloudBlob.Properties.StandardBlobTier $StandardBlobTier2
         Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName2 -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext
@@ -238,7 +248,7 @@ function Test-Blob
         Assert-AreEqual $blob.Count 2
         Assert-AreEqual $blob[0].Name $objectName1
         Assert-AreEqual $blob[1].Name $objectName2
-        Assert-AreEqual $blob[1].ICloudBlob.Properties.StandardBlobTier $StandardBlobTier
+        Assert-AreEqual $blob[1].BlobProperties.AccessTier $StandardBlobTier
 
         # Download storage blob to compare with the local file.
         Get-AzStorageBlobContent -Container $containerName -Blob $objectName2 -Destination $localDestFile -Force -Context $storageContext
@@ -291,7 +301,7 @@ function Test-Blob
         Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName -Etag $immutabilityPolicy.Etag
         
         # Encryption Scope Test
-        $scopename = "testscope"
+        $scopename = "testscope" 
         $scopename2 = "testscope2"
         $containerName2 = "testscopecontainer"
         New-AzStorageEncryptionScope -ResourceGroupName $ResourceGroupName -StorageAccountName $storageAccountName -EncryptionScopeName $scopename -StorageEncryption
@@ -350,10 +360,29 @@ function Test-Blob
         $blob = Get-AzStorageBlob -Container $containerNamevlw -Blob $objectName  -Context $storageContext
         Set-AzStorageBlobLegalHold -Container $containerNamevlw -Blob $objectName  -Context $storageContext  -DisableLegalHold
         $blob = Get-AzStorageBlob -Container $containerNamevlw -Blob $objectName  -Context $storageContext
+        
+        $blobTypes = @("Block","Page","Append")
+        # Upload blob for all 3 types of blobs 
+        foreach ($blobType in $blobTypes) {
+            $blobName = $blobType + "SrcBlob"
+            $t = Set-AzStorageBlobContent -File $localSrcFile -Container $containerName3 -Blob $blobName -Force -Properties @{"ContentType" = $ContentType} -Context $storageContext -BlobType $blobType
+        }
+        # Test all 9 directions of copy 
+        foreach ($srcType in $blobTypes) {
+            foreach ($destType in $blobTypes) {
+                $srcBlobName = $srcType + "SrcBlob"
+                $destBlobName = $srcType + "To" + $destType + "Blob"
+                $copiedBlob = Copy-AzStorageBlob -SrcContainer $containerName3 -SrcBlob $srcBlobName -Context $storageContext -DestContainer $containerName3 -DestBlob $destBlobName -DestContext $storageContext2 -DestBlobType $destType -Force
+                Assert-AreEqual $copiedBlob.BlobProperties.BlobType $destType
+                Assert-AreEqual $copiedBlob.Name $destBlobName
+                Assert-AreEqual $copiedBlob.BlobBaseClient.AccountName $storageAccountName2
+            }
+        }
 
         # Clean Storage Account
         Remove-AzStorageContainer -Name $containerName -Force -Context $storageContext
-
+        Remove-AzStorageContainer -Name $containerName3 -Force -Context $storageContext
+        Remove-AzStorageContainer -Name $containerName3 -Force -Context $storageContext2
     }
     finally
     {
@@ -523,8 +552,9 @@ function Test-BlobFileCopy
         $blob = Get-AzStorageContainer -Name $containerName -Context $storageContext |Get-AzStorageBlob
         Assert-AreEqual $blob.Count 1
         Assert-AreEqual $blob.Name $objectName1
-        Assert-AreEqual $blob.ICloudBlob.Properties.ContentType $ContentType
-        Assert-AreEqual $blob.ICloudBlob.Properties.ContentMD5 $ContentMD5           
+        Assert-AreEqual $blob.BlobProperties.ContentType $ContentType
+        $contentHash = [System.Convert]::ToBase64String($blob.BlobProperties.ContentHash)
+        Assert-AreEqual $contentHash $ContentMD5
 
         $shareName = "blobfilecopytestshare"
         #File Creation
