@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added possible value `LocalGateway` for parameter `GatewayType`
+    - `New-AzVirtualNetworkGateway`
+* Exposed `ExtendedLocation` and `VNetExtendedLocationResourceId` for `VirtualNetworkGateway`
+    - `Get-AzVirtualNetworkGateway`
 * Added new cmdlet to get firewall learned ip prefixes 
     * `Get-AzFirewallLearnedIpPrefix`
 * Fixed a bug that does not update firewall policy application, network and nat rules' descriptions even though description is provided via description parameter

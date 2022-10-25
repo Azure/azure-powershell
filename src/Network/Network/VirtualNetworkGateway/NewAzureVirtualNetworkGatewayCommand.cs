@@ -69,12 +69,29 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The type of this virtual network gateway: Vpn, ExoressRoute")]
+            HelpMessage = "The type of this virtual network gateway: Vpn, ExoressRoute, LocalGateway")]
         [ValidateSet(
             MNM.VirtualNetworkGatewayType.Vpn,
             MNM.VirtualNetworkGatewayType.ExpressRoute,
+            MNM.VirtualNetworkGatewayType.LocalGateway,
             IgnoreCase = true)]
         public string GatewayType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The extended location of this virtual network gateway")]
+        [ValidateSet(
+            "MicrosoftRRDCLab3",
+            IgnoreCase = true)]
+        public string ExtendedLocation { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "VNetExtendedLocationResourceId for Virtual network gateway.")]
+        [ValidateNotNullOrEmpty]
+        public string VNetExtendedLocationResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -376,6 +393,11 @@ namespace Microsoft.Azure.Commands.Network
 
             }
             vnetGateway.GatewayType = this.GatewayType;
+            if(vnetGateway.GatewayType == "LocalGateway")
+            {
+                vnetGateway.ExtendedLocation = new PSExtendedLocation(this.ExtendedLocation);
+                vnetGateway.VNetExtendedLocationResourceId = this.VNetExtendedLocationResourceId;
+            }
             vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;
             vnetGateway.DisableIPsecProtection = this.DisableIPsecProtection;

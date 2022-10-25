@@ -931,6 +931,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVpnClientConnectionHealthDetail, MNM.VpnClientConnectionHealthDetail>();
                 cfg.CreateMap<CNM.PSIpConfigurationBgpPeeringAddress, MNM.IPConfigurationBgpPeeringAddress>();
                 cfg.CreateMap<CNM.PSVirtualNetworkGatewayNatRule, MNM.VirtualNetworkGatewayNatRule>();
+                cfg.CreateMap<CNM.PSExtendedLocation, MNM.ExtendedLocation>();
                 cfg.CreateMap<CNM.PSVirtualNetworkGatewayPolicyGroup, MNM.VirtualNetworkGatewayPolicyGroup>();
                 cfg.CreateMap<CNM.PSVirtualNetworkGatewayPolicyGroupMember, MNM.VirtualNetworkGatewayPolicyGroupMember>();
                 cfg.CreateMap<CNM.PSClientConnectionConfiguration, MNM.VngClientConnectionConfiguration>();
@@ -957,6 +958,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VpnClientConnectionHealthDetail, CNM.PSVpnClientConnectionHealthDetail>();
                 cfg.CreateMap<MNM.IPConfigurationBgpPeeringAddress, CNM.PSIpConfigurationBgpPeeringAddress>();
                 cfg.CreateMap<MNM.VirtualNetworkGatewayNatRule, CNM.PSVirtualNetworkGatewayNatRule>();
+                cfg.CreateMap<MNM.ExtendedLocation, CNM.PSExtendedLocation>();
                 cfg.CreateMap<MNM.VirtualNetworkGatewayPolicyGroup, CNM.PSVirtualNetworkGatewayPolicyGroup>();
                 cfg.CreateMap<MNM.VirtualNetworkGatewayPolicyGroupMember, CNM.PSVirtualNetworkGatewayPolicyGroupMember>();
                 cfg.CreateMap<MNM.VngClientConnectionConfiguration, CNM.PSClientConnectionConfiguration>();
