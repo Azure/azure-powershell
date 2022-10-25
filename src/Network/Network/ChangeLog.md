@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added possible value `LocalGateway` for parameter `GatewayType`
+    - `New-AzVirtualNetworkGateway`
+* Exposed `ExtendedLocation` and `VNetExtendedLocationResourceId` for `VirtualNetworkGateway`
+    - `Get-AzVirtualNetworkGateway`
 * Added new cmdlet to get firewall learned ip prefixes 
     * `Get-AzFirewallLearnedIpPrefix`
 * Fixed a bug that does not update firewall policy application, network and nat rules' descriptions even though description is provided via description parameter
@@ -34,6 +38,10 @@
     * `New-AzVpnClientConnectionConfiguration`
 * Added message in breaking change attribute to notify that load balancer sku default behaviour will be changed
     * `New-AzLoadBalancer`
+* Added cmdlet preview to notify customers to use defualt value or leave null for load balancer probe theshold property
+    * `New-AzLoadBalancerProbeConfig`
+    * `Set-AzLoadBalancerProbeConfig`
+    * `Add-AzLoadBalancerProbeConfig`
 
 ## Version 5.0.0
 * Added a new endpoint switch `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`
