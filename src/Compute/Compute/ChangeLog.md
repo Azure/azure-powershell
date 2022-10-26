@@ -29,7 +29,7 @@
 * Improved cmdlet description for `Set-AzVM` and added examples.
 * Updated property mapping for parameter `Encryption` of `New-AzGalleryImageVersion`
 * Updated list format to display all VmssVmRunCommand properties for `Get-AzVmssVmRunCommand`
-* Made changes to 'Get-AzGallery', 'New-AzGallery', 'Update-AzGallery', 'Get-AzGalleryImageDefinition', 'Get-AzGalleryImageVersion', 'New-AzVm' and 'New-AzVmss' for community galleries
+* Updated `Get-AzGallery`, `New-AzGallery`, `Update-AzGallery`, `Get-AzGalleryImageDefinition`, `Get-AzGalleryImageVersion`, `New-AzVm` and `New-AzVmss` to support community galleries
 
 ## Version 5.0.0
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
