@@ -4886,6 +4886,7 @@ function Install-DeployModule {
         $ModuleName
     )
 
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstallModule" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
     if(Get-Module | Where-Object { $_.Name -eq $ModuleName }){
         Write-InfoLog("$ModuleName is loaded already ...")
     }
@@ -4917,7 +4918,8 @@ function Install-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType([Boolean])]
     param()
-
+    
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstall" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
     if(Assert-IsObservabilityStackPresent){
         Write-InfoLog("Install-AzStackHCIRemoteSupport is not available.")
     }
@@ -4944,6 +4946,7 @@ function Remove-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
 
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportRemove" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
     if(Assert-IsObservabilityStackPresent){
         Write-InfoLog("Remove-AzStackHCIRemoteSupport is not available.")
     }
@@ -5097,10 +5100,11 @@ function Assert-IsObservabilityStackPresent{
     [OutputType([Boolean])]
     param()
 
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportObsStackPresent" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
     try{
         $obsService = Get-Service -Name "*Observability RemoteSupportAgent*" -ErrorAction SilentlyContinue
         $deviceType = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\AzureStack" -ErrorAction SilentlyContinue).DeviceType
-        if($obsService -or $deviceType -eq "AzureEdge"){
+        if($null -ne $obsService -or $deviceType -eq "AzureEdge"){
             Write-InfoLog("AzureStack device type is AzureEdge.")
             return $true
         }
