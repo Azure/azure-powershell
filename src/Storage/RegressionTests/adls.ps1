@@ -47,16 +47,19 @@ Describe "dataplane test" {
         #$dir11 = New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname11 -Directory
 
         # Create File, and show properties/matadata in console (Note, Permission/Umask is not supported)
-        $file1 = New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $filepath11 -Source $localSrcFile -Permission rwxrwxrwx -Umask ---rwx--- -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
-        $file1.IsDirectory | should -Be $false
+        $sas = New-AzStorageContainerSASToken -Name $filesystemName -Permission rwdl -Context $ctx
+        $sasctx = New-AzStorageContext -StorageAccountName $ctx.StorageAccountName -SasToken $sas
+        $file1 = New-AzDataLakeGen2Item -Context $sasctx -FileSystem $filesystemName -Path $filepath11 -Source $localSrcFile -Permission rwxrwxrwx -Umask ---rwx--- -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" } $file1.IsDirectory | should -Be $false
         $file1.Permissions.ToSymbolicPermissions() | should -be "rwx---rwx"
         $file1.Properties.Metadata.Count  | should -Be 2
         $file1.Properties.ContentEncoding | should -Be "UDF8"
+        $file1.Properties.ContentLength | should -Be (Get-Item $localSrcFile).Length
         ## create a file with task
         $task = New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $filepath12 -Source $localSrcFile -Force -asjob
         $task | Wait-Job
         $task.State | should -be "Completed"
         $task.Output[0].IsDirectory | should -be $false
+        $task.Output[0].Properties.ContentLength | should -Be (Get-Item $localSrcFile).Length
         ## create a Datalake gen2 file and with the  source file name
         $destPath = $dirname1 + "\"+ (Get-Item $localSrcFile).Name
         $file2 = New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $destPath -Source $localSrcFile -Force
@@ -107,7 +110,8 @@ Describe "dataplane test" {
 
         # Get an Item (Will always fetch ACL/permission/owner)
         ## Get a folder, and show properties with dfs SAS
-        $sas = New-AzDataLakeGen2SasToken -FileSystem $filesystemName -Path $dirname1 -Permission rw -Context $ctx -Protocol Https -IPAddressOrRange 0.0.0.0-255.255.255.0 -StartTime (Get-Date) -ExpiryTime (Get-Date).AddDays(6)
+        $sas = New-AzDataLakeGen2SasToken -FileSystem $filesystemName -Path $dirname1 -Permission rw -Context $ctx -Protocol Https -IPAddressOrRange 0.0.0.0-255.255.255.0 -StartTime (Get-Date) -ExpiryTime (Get-Date).AddDays(6)  -EncryptionScope scope1
+        $sas | should -BeLike "*ses=scope1*"
         $ctxsas = New-AzStorageContext -StorageAccountName $ctx.StorageAccountName -SasToken $sas
         $dir1 = Get-AzDataLakeGen2Item -Context $ctxsas -FileSystem $filesystemName -Path $dirname1
         $dir1.Name | should -be $dirname1

@@ -206,11 +206,11 @@ Describe "dataplane test" {
 
         # copy with tier
         Start-AzStorageBlobCopy -AbsoluteUri $a.ICloudBlob.Uri.ToString() -DestContainer $containerName -DestBlob testtier.txt -Context $ctx -DestContext $ctx -Force -StandardBlobTier hot -RehydratePriority High
-        (Get-AzStorageBlob -Container $containerName -Blob testtier.txt -Context $ctx).ICloudBlob.Properties.StandardBlobTier  | should -Be "hot"
+        (Get-AzStorageBlob -Container $containerName -Blob testtier.txt -Context $ctx).BlobProperties.AccessTier  | should -Be "hot"
         Start-AzStorageBlobCopy -srcContainer $containerName -SrcBlob test.txt -DestContainer $containerName -DestBlob testtier.txt -Context $ctx -DestContext $ctx -Force -RehydratePriority Standard
-        (Get-AzStorageBlob -Container $containerName -Blob testtier.txt -Context $ctx).ICloudBlob.Properties.StandardBlobTier | should -Be "hot"
+        (Get-AzStorageBlob -Container $containerName -Blob testtier.txt -Context $ctx).BlobProperties.AccessTier | should -Be "hot"
         Start-AzStorageBlobCopy -srcContainer $containerName -SrcBlob test.txt -DestContainer $containerName -DestBlob testtier.txt -Context $ctx -DestContext $ctx -Force -StandardBlobTier Archive 
-        (Get-AzStorageBlob -Container $containerName -Blob testtier.txt -Context $ctx).ICloudBlob.Properties.StandardBlobTier  | should -Be "Archive"
+        (Get-AzStorageBlob -Container $containerName -Blob testtier.txt -Context $ctx).BlobProperties.AccessTier  | should -Be "Archive"
         Start-AzStorageBlobCopy -srcContainer $containerName -SrcBlob test.txt -DestContainer $containerName -DestBlob test1.txt -Context $ctx -DestContext $ctx -Force          
         $b = Get-AzStorageBlob -Container $containerName -Context $ctx
         $copystate = Get-AzStorageBlobCopyState -Container $containerName -Blob test1.txt -Context $ctx
@@ -451,15 +451,15 @@ Describe "dataplane test" {
         #blob<->File Copy
         Start-AzStorageBlobCopy  -SrcShareName $containerName -SrcFilePath test1.txt -DestContainer $containerName -DestBlob test2.txt -Force -Context $ctx -DestContext $ctx -StandardBlobTier Cool -RehydratePriority High
         Get-AzStorageBlobCopyState -Container $containerName -Blob test2.txt -Context $ctx    
-        if ((Get-AzStorageBlob -Container $containerName -Blob test2.txt -Context $ctx).ICloudBlob.Properties.StandardBlobTier -ne "Cool") { throw;}
+        if ((Get-AzStorageBlob -Container $containerName -Blob test2.txt -Context $ctx).BlobProperties.AccessTier -ne "Cool") { throw;}
         Start-AzStorageFileCopy  -SrcContainerName $containerName -SrcBlobName test.txt  -DestShareName $containerName -DestFilePath test2.txt -Force -Context $ctx -DestContext $ctx
         Get-AzStorageFileCopyState -ShareName $containerName -FilePath test2.txt -Context $ctx
 
         $fileuri = New-AzStorageFileSASToken -ShareName $containerName -Path test1.txt -Permission rdwl -ExpiryTime 2029-12-12 -Context $ctx -FullUri
         Start-AzStorageBlobCopy -AbsoluteUri $fileuri -DestContainer $containerName -DestBlob testtier4.txt -Force  -DestContext $ctx #-RehydratePriority Standard
-        if ((Get-AzStorageBlob -Container $containerName -Blob testtier4.txt -Context $ctx).ICloudBlob.Properties.StandardBlobTier -ne "hot") { throw;}
+        if ((Get-AzStorageBlob -Container $containerName -Blob testtier4.txt -Context $ctx).BlobProperties.AccessTier -ne "hot") { throw;}
         Start-AzStorageBlobCopy -AbsoluteUri $fileuri -DestContainer $containerName -DestBlob testtier5.txt -Force  -DestContext $ctx -StandardBlobTier Archive
-        if ((Get-AzStorageBlob -Container $containerName -Blob testtier5.txt -Context $ctx).ICloudBlob.Properties.StandardBlobTier -ne "Archive") { throw;}
+        if ((Get-AzStorageBlob -Container $containerName -Blob testtier5.txt -Context $ctx).BlobProperties.AccessTier -ne "Archive") { throw;}
         $Error.Count | should -be 0
     }
 
@@ -963,10 +963,16 @@ Describe "dataplane test" {
             ($blobs | ?{$_.BlobClient.BlobContainerName -eq $containerName})[0].ContentType  | Should -Not -Be $null
             ($blobs | ?{$_.BlobClient.BlobContainerName -eq $containerName})[0].LastModified| Should -Not -Be $null
 
+            # list blob inside a container with container sas
+            $sas = New-AzStorageContainerSASToken -Name $containerName -Context $ctx -Permission f 
+            $sasctx = New-AzStorageContext -StorageAccountName $ctx.StorageAccountName -SasToken $sas
+            $blobs = Get-AzStorageBlobByTag -TagFilterSqlExpression """tag3""='value3'" -Context $sasctx -Container $containerName
+            $blobs.Count | should -Be 3
+
             # list blobs inside specific containers with specific tag
-            #$blobs = Get-AzStorageBlobByTag -TagFilterSqlExpression "@container='$($containerName)' AND ""tag3""='value3' AND ""tag2""='value2'" -Context $ctx -GetBlobProperty
-            #$blobs.Count | should -BeGreaterOrEqual 1
-            #$blobs[0].ContentType | Should -Not -Be $null
+            $blobs = Get-AzStorageBlobByTag -TagFilterSqlExpression "@container='$($containerName)' AND ""tag3""='value3' AND ""tag2""='value2'" -Context $ctx -GetBlobProperty
+            $blobs.Count | should -BeGreaterOrEqual 1
+            $blobs[0].ContentType | Should -Not -Be $null
 
             #list blob by tag , and chunk by chunk (with continuation token)
             $MaxReturn = 2
@@ -1233,6 +1239,565 @@ Describe "dataplane test" {
         $blobVersion = $blob[1]
         $destBlob = $blobVersion | Copy-AzStorageBlob -DestBlob "blobVersionToBlock" -DestBlobType Block -DestContext $ctx2 -Force
         $destBlob.Name | Should -Be "blobVersionToBlock"
+
+        $Error.Count | should -be 0
+    }
+
+    
+    It "File cmdlet pipeline - for track2 migration"  {
+        $Error.Clear() 
+
+        $ctx2 = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName2).Context
+
+        $sas = New-AzStorageAccountSASToken -Service File -ResourceType Container,Object,Service -Permission rwdl -ExpiryTime (Get-Date).AddDays(6) -Context $ctx
+        $ctxaccountsas = New-AzStorageContext -StorageAccountName $ctx.StorageAccountName -SasToken $sas
+
+        # All following File request will run with RequestIntent=Backup 
+        $shareName = GetRandomContainerName
+        $shareName2 = $shareName +2
+        $shareName3 = $shareName +3
+
+        # Prepare data
+            $s = New-AzStorageShare -Name $shareName -Context $ctx
+
+            New-AzStorageDirectory -ShareName $shareName -Path dir1 -Context $ctx 
+            New-AzStorageDirectory -ShareName $shareName -Path dir1/dir2 -Context $ctx 
+            Set-AzStorageFileContent -ShareName $shareName -Source $localSrcFile -Path dir1/test1 -Context $ctx -Force
+            Set-AzStorageFileContent -ShareName $shareName -Source $localSrcFile -Path testfile -Context $ctx -Force
+
+            $s.ShareClient.CreateSnapshot()
+
+        # create Share
+            $share2 = New-AzStorageShare -Name $shareName2 -Context $ctx
+
+        # Get share 
+            $shares = Get-AzStorageShare -Context $ctx
+            $shares.count | should -BeGreaterOrEqual 3
+            $s = Get-AzStorageShare -Name $shareName -Context $ctx
+            $s.Name | should -be $shareName
+
+
+        ## snapshot ##
+            $shareSnapshot = $s.ShareClient.CreateSnapshot()
+            $ss = (Get-AzStorageShare -Context $ctx | ?{$_.IsSnapshot -and $_.Name -eq $shareName}) |Select-Object -First 1
+
+
+        ### Delete 
+            $share2 = Get-AzStorageShare -Name $shareName2 -Context $ctx
+            Set-AzStorageFileContent  -ShareName $shareName2 -Source C:\temp\1.txt -Path testfile -Context $ctx -Force
+
+            Remove-AzStorageShare -Share $share2.CloudFileShare -Force 
+            $share2.ShareClient.Exists().Value | should -be $false
+
+            $share3 = New-AzStorageShare -Name $shareName3 -Context $ctxaccountsas
+            $shareSnapshot3 = $share3.ShareClient.CreateSnapshot()
+            Remove-AzStorageShare -Name $shareName3 -IncludeAllSnapshot -Context $ctx
+            $share3.ShareClient.Exists().Value | should -be $false
+
+
+            # delete share snapshot fail with -IncludeAllSnapshot
+            Remove-AzStorageShare -Share $ss.CloudFileShare  -IncludeAllSnapshot -ErrorAction SilentlyContinue -Context $ctx # Should fail 
+            $Error.Count | should -BeLessOrEqual 1
+            $Error[0].Exception.Message| should -BeLike "*'IncludeAllSnapshot' should only be specified to delete a base share, and should not be specified to delete a Share snapshot*"
+            $Error.Clear()
+
+        # set share quota
+            $sq = $ss | Set-AzStorageShareQuota -Quota 4096
+            $sq.ShareProperties.QuotaInGB | should -be 4096
+            $sq = Set-AzStorageShareQuota -Name $shareName -Context $ctx -Quota 1024
+            $sq.ShareProperties.QuotaInGB | should -be 1024
+            $sq = Set-AzStorageShareQuota -Share $s.CloudFileShare -Quota 2048
+            $sq.ShareProperties.QuotaInGB | should -be 2048
+            $sq = Set-AzStorageShareQuota -Name $shareName -Quota 1024  -Context $ctx 
+            $sq.ShareProperties.QuotaInGB | should -be 1024
+
+        ## ACCESS POLICY
+            New-AzStorageShareStoredAccessPolicy -ShareName $shareName -Context $ctx -Policy 123 -Permission rwdl -StartTime (Get-Date) -ExpiryTime (Get-Date).AddDays(200)
+            New-AzStorageShareStoredAccessPolicy -ShareName $shareName -Context $ctx -Policy 1234  -StartTime (Get-Date) -ExpiryTime (Get-Date).AddDays(200) 
+            New-AzStorageShareStoredAccessPolicy -ShareName $shareName -Context $ctx -Policy abc -Permission rwdlc 
+            New-AzStorageShareStoredAccessPolicy -ShareName $shareName -Context $ctx -Policy abcd -Permission rwdlc -ExpiryTime (Get-Date).AddDays(100)
+
+            $policies = Get-AzStorageShareStoredAccessPolicy -ShareName $shareName -Context $ctx
+            $policies.Count | should -be 4    
+
+            Set-AzStorageShareStoredAccessPolicy -ShareName $shareName -Context $ctx -Policy abc -Permission r
+            $policies = Get-AzStorageShareStoredAccessPolicy -ShareName $shareName -Context $ctx
+            $policies.Count | should -be 4
+            ($policies | ?{ $_.Policy -eq "abc"}).Permissions | should -be r 
+    
+            Remove-AzStorageShareStoredAccessPolicy -ShareName $shareName  -Policy abc -PassThru  -Context $ctx
+            $policies = Get-AzStorageShareStoredAccessPolicy -ShareName $shareName -Context $ctx
+            $policies.Count | should -be 3
+            Remove-AzStorageShareStoredAccessPolicy -ShareName $shareName  -Policy 1234 -Context $ctx 
+            $policies = Get-AzStorageShareStoredAccessPolicy -ShareName $shareName -Context $ctx
+            $policies.Count | should -be 2
+    
+            $policies = Get-AzStorageShareStoredAccessPolicy -ShareName $shareName -Policy abcd -Context $ctx | Remove-AzStorageShareStoredAccessPolicy -ShareName $shareName  -Context $ctx 
+
+
+        # Share SAS
+            $saslist = New-Object System.Collections.Generic.List[System.String]
+            $saslist.Add((New-AzStorageShareSASToken -ShareName $shareName -Policy 123  -IPAddressOrRange "0.0.0.0-255.255.255.255" -Protocol HttpsOnly -Context $ctx))
+            $saslist.Add((New-AzStorageShareSASToken -ShareName $shareName -Permission rl -Context $ctx ))
+            $saslist.Add((New-AzStorageShareSASToken -ShareName $shareName -Permission rlwd -IPAddressOrRange "0.0.0.0-255.255.255.255" -Protocol HttpsOrHttp -Context $ctx))
+            foreach ($sas in $saslist)
+            {
+                $sasctx = New-AzStorageContext -StorageAccountName $ctx.StorageAccountName -SasToken $sas
+                Get-AzStorageFile -ShareName $shareName -Context $sasctx
+            }
+
+            $sasUri = New-AzStorageShareSASToken -ShareName $shareName -Permission rlwd -IPAddressOrRange "12.3.4-5.6.7.8" -Protocol HttpsOnly -Context $ctx -FullUri
+            $sasUri | should -BeLike "$($ctx.StorageAccount.FileEndpoint)*$($shareName)*sp=rwdl*sig=*"
+
+        #File SAS
+            $f1 = Get-AzStorageFile -ShareName $shareName  -Path dir1/test1 -Context $ctx 
+            $fs1 = $ss | Get-AzStorageFile  -Path dir1/test1 
+
+            $saslist = New-Object System.Collections.Generic.List[System.String]
+
+            $saslist.Add((New-AzStorageFileSASToken -ShareName $shareName -Path $f1.ShareFileClient.Path -Permission rlwd -IPAddressOrRange "0.0.0.0-255.255.255.255" -Protocol HttpsOnly -ExpiryTime 2050-10-10 -Context $ctx))
+            $saslist.Add((New-AzStorageFileSASToken -ShareName $shareName -Path $f1.ShareFileClient.Path -Policy 123 -Protocol HttpsOnly -IPAddressOrRange "0.0.0.0-255.255.255.255" -Context $ctx ))
+           # $saslist.Add(($f1 | New-AzStorageFileSASToken -Permission rlwd -IPAddressOrRange "0.0.0.0-255.255.255.255" -Protocol HttpsOnly -ExpiryTime 2050-10-10 -Context $ctx ))
+           # $saslist.Add(($f1 | New-AzStorageFileSASToken -Policy 123 -Protocol HttpsOnly -IPAddressOrRange "0.0.0.0-255.255.255.255" -Context $ctx))
+           # $saslist.Add(($fs1 | New-AzStorageFileSASToken -Permission rlwd -IPAddressOrRange "0.0.0.0-255.255.255.255" -Protocol HttpsOnly -ExpiryTime 2050-10-10 -Context $ctx)) 
+
+            foreach ($sas in $saslist)
+            {
+                $sasctx = New-AzStorageContext -StorageAccountName $ctx.StorageAccountName -SasToken $sas
+                Get-AzStorageFile -ShareName $shareName -Path $f1.ShareFileClient.Path -Context $sasctx
+            }
+
+        # Directory
+
+            $sas = $ss | New-AzStorageShareSASToken -Permission rlwd -IPAddressOrRange "0.0.0.0-255.255.255.255" -Protocol HttpsOnly 
+            $sasctx = New-AzStorageContext -StorageAccountName $ctx.StorageAccountName -SasToken $sas
+            $d = Get-AzStorageFile -ShareName $shareName -Context $sasctx
+
+            $d2 = $s | New-AzStorageDirectory -Path dir2 
+            $d2.ShareDirectoryClient.Path | should -be dir2
+
+            $d2 = Get-AzStorageFile -ShareName $shareName -Path dir2 -Context $ctx
+            $d3 = $d2| New-AzStorageDirectory -Path dir3
+            $d3.ShareDirectoryClient.Path | should -be dir2/dir3
+            Remove-AzStorageDirectory -Directory $d3.CloudFileDirectory
+
+            $d3 = New-AzStorageDirectory -ShareName $shareName -Path dir2/dir3 -Context $sasctx 
+            $d3.ShareDirectoryClient.Path | should -be dir2/dir3
+
+            $d4 = New-AzStorageDirectory -Directory $d2.CloudFileDirectory -Path dir4 
+            $d4.ShareDirectoryClient.Path | should -be dir2/dir4 
+    
+            $d5 = New-AzStorageDirectory -ShareName $shareName -Path dir2/dir5 -Context $ctx
+            $d5.ShareDirectoryClient.Path | should -be dir2/dir5
+    
+            $d = Get-AzStorageFile -ShareName $shareName -Context $sasctx
+            $ds = $d | ?{$_.Name -eq "dir2"} | Get-AzStorageFile
+            $ds.Count | should -BeGreaterOrEqual 3
+
+            Remove-AzStorageDirectory -ShareName $shareName -Path dir2/dir3 -Context $ctx 
+            $d4 | Remove-AzStorageDirectory -Context $ctx 
+            Remove-AzStorageDirectory -Share $s.CloudFileShare -Path dir2/dir5
+    
+            $ds = $d | ?{$_.Name -eq "dir2"} | Get-AzStorageFile
+            $ds.Count | should -Be 0
+
+            $s | Remove-AzStorageDirectory -Path dir2 
+            $d2.ShareDirectoryClient.Exists().value | should -be $false
+
+        # File remove
+            # remove by manul parameter    
+            $f = Get-AzStorageFile -ShareName $shareName -Path dir1/test1 -Context $ctx  
+            $f.ShareFileClient.Exists().value | should -be $true
+
+            $f = Remove-AzStorageFile -ShareName $shareName -Path dir1/test1 -Context $ctx -PassThru    
+            $f.ShareFileClient.Exists().value | should -be $false
+            Set-AzStorageFileContent -ShareName $shareName -Source $localSrcFile -Path dir1/test1 -Context $ctx -Force
+            $f.ShareFileClient.Exists().value | should -be $true
+
+            #remove by file pipeline
+            $f | Remove-AzStorageFile  
+            $f.ShareFileClient.Exists().value | should -be $false
+            Set-AzStorageFileContent -Share $s.CloudFileShare -Source $localSrcFile -Path dir1/test1  -Force
+            $f.ShareFileClient.Exists().value | should -be $true
+
+            Remove-AzStorageFile  -File $f.CloudFile    
+            $f.ShareFileClient.Exists().value | should -be $false 
+            $dir1 = Get-AzStorageFile -ShareName $shareName -Path dir1 -Context $ctx
+            Set-AzStorageFileContent -Directory $dir1.CloudFileDirectory -Source $localSrcFile -Path test1 -Force
+            $f.ShareFileClient.Exists().value | should -be $true
+
+            # remove by dir pipeline
+            $s | Get-AzStorageFile -Path dir1 | Remove-AzStorageFile -Path test1  -PassThru
+            $f.ShareFileClient.Exists().value | should -be $false
+            Set-AzStorageFileContent -ShareName $shareName -Source $localSrcFile -Path dir1/test1 -Context $ctx -Force
+            $f.ShareFileClient.Exists().value | should -be $true
+
+            Remove-AzStorageFile -Directory $dir1.CloudFileDirectory  -Path test1  -PassThru
+            $f.ShareFileClient.Exists().value | should -be $false
+            $dir1 | Set-AzStorageFileContent -Source $localSrcFile -Path test1 -Force
+            $f.ShareFileClient.Exists().value | should -be $true
+    
+            # remove by share pipeline
+            $s | Remove-AzStorageFile -Path dir1/test1  -PassThru
+            $f.ShareFileClient.Exists().value | should -be $false
+            $dir1 | Set-AzStorageFileContent -Source $localSrcFile -Path test1 -Force
+            $f.ShareFileClient.Exists().value | should -be $true
+
+            Remove-AzStorageFile -Share $s.CloudFileShare  -Path dir1/test1  -PassThru
+            $f.ShareFileClient.Exists().value | should -be $false
+            $dir1 | Set-AzStorageFileContent -Source $localSrcFile -Path test1 -Force
+            $f.ShareFileClient.Exists().value | should -be $true
+
+            # remove file from snapshot should fail
+            $Error.Count | should -Be 0
+            $ss  | Remove-AzStorageFile -Path dir1/test1  -PassThru -ErrorAction SilentlyContinue # Should fail 
+            $Error.Count | should -BeLessOrEqual 1
+            $Error[0].Exception.Message| should -BeLike "*Value for one of the query parameters specified in the request URI is invalid.*"
+            $Error.Clear()
+
+        # File Copy
+
+            ### prepare blob
+
+            # manual parameters
+
+            # Get-AzStorageFile -ShareName $shareName -Path dir1/test1 -Context $ctx | Start-AzStorageFileCopy  -DestShareName $shareName -DestFilePath dir1/copydest -Force # will fail, aligne with before
+    
+            $Error.Count | should -Be 0
+            New-AzStorageContainer -Name $shareName -Context $ctx -ErrorAction SilentlyContinue
+            $b = Set-AzStorageblobContent -Container $shareName -File $localSrcFile -blob testblob -Context $ctx -Force
+            New-AzStorageShare -Name $shareName -Context $ctx2 -ErrorAction SilentlyContinue
+            New-AzStorageDirectory -ShareName $shareName -Path dir1 -Context $ctx2 -ErrorAction SilentlyContinue
+            $Error.Clear()
+
+    
+            $fsrc = $s | Get-AzStorageFile -Path dir1/test1 -Context $ctx 
+            $f = Start-AzStorageFileCopy -SrcShareName $shareName -SrcFilePath dir1/test1 -DestShareName $shareName -DestFilePath dir1/copydest -Context $ctx -DestContext $ctx2 -Force
+            $f | Get-AzStorageFileCopyState -WaitForComplete
+            $f.ShareFileClient.AccountName | should -be $ctx2.StorageAccountName
+            $f.ShareFileClient.Path | should -be "dir1/copydest"
+            $f.FileProperties.ContentLength | should -be $fsrc.Length
+            $f = Start-AzStorageFileCopy -SrcShareName $shareName -SrcFilePath dir1/test1 -DestShareName $shareName -DestFilePath dir1/copydest -Context $ctx -Force
+            $f | Get-AzStorageFileCopyState -WaitForComplete
+            $f.ShareFileClient.AccountName | should -be $ctx.StorageAccountName
+            $f.ShareFileClient.Path | should -be "dir1/copydest"
+            $f.FileProperties.ContentLength | should -be $fsrc.Length
+
+            $f = Start-AzStorageFileCopy -SrcContainerName  $shareName -SrcBlobName testblob -DestShareName $shareName -DestFilePath dir1/copydest -Context $ctx -DestContext $ctx2 -Force
+            $f | Get-AzStorageFileCopyState -WaitForComplete
+            $f.ShareFileClient.AccountName | should -be $ctx2.StorageAccountName
+            $f.ShareFileClient.Path | should -be "dir1/copydest"
+            $f.FileProperties.ContentLength | should -be $b.Length
+            $f = Start-AzStorageFileCopy -SrcContainerName  $shareName -SrcBlobName testblob -DestShareName $shareName -DestFilePath dir1/copydest -Context $ctx -Force
+            $f | Get-AzStorageFileCopyState -WaitForComplete
+            $f.ShareFileClient.AccountName | should -be $ctx.StorageAccountName
+            $f.ShareFileClient.Path | should -be "dir1/copydest"
+            $f.FileProperties.ContentLength | should -Be $b.Length
+
+
+
+            # from file object 
+            $f1 = $ss | Get-AzStorageFile -Path dir1/test1 -Context $ctx 
+            $fd = Get-AzStorageFile -ShareName $shareName  -Path dir1/copydest -Context $ctx 
+                # fail since not dest context
+                #$f1  | Start-AzStorageFileCopy  -DestShareName $shareName -DestFilePath dir1/copydest -Force
+                #Start-AzStorageFileCopy -SrcFile $f1.CloudFile  -DestShareName $shareName -DestFilePath dir1/copydest -Force
+                # fail since not dest context
+                #$f1  | Start-AzStorageFileCopy  -DestShareName $shareName -DestFilePath dir1/copydest -Force -Context $ctx 
+                #Start-AzStorageFileCopy -SrcFile $f1.CloudFile  -DestShareName $shareName -DestFilePath dir1/copydest -Force -Context $ctx 
+
+                # success
+                $f2 = $f1  | Start-AzStorageFileCopy  -DestShareName $shareName -DestFilePath dir1/copydest -Force -DestContext $ctx 
+                $f2 | Get-AzStorageFileCopyState -WaitForComplete
+                $f2.ShareFileClient.AccountName | should -be $ctx.StorageAccountName
+                $f2.ShareFileClient.Path | should -be "dir1/copydest"
+                $f2.FileProperties.ContentLength | should -Be $f1.Length
+
+                $f2 = Start-AzStorageFileCopy -SrcFile $f1.CloudFile  -DestShareName $shareName -DestFilePath dir1/copydest -Force -DestContext $ctx 
+                $f2 | Get-AzStorageFileCopyState -WaitForComplete
+                $f2.ShareFileClient.AccountName | should -be $ctx.StorageAccountName
+                $f2.ShareFileClient.Path | should -be "dir1/copydest"
+                $f2.FileProperties.ContentLength | should -Be $f1.Length
+
+                $fdest = Get-AzStorageFile -ShareName $shareName -Path dir1/copydest -Context  $ctx2
+                $f2 = Start-AzStorageFileCopy -SrcFile $f1.CloudFile  -DestFile $fdest.CloudFile -Force #-DestContext $ctx   
+                $f2 | Get-AzStorageFileCopyState -WaitForComplete
+                $f2.ShareFileClient.AccountName | should -be $ctx2.StorageAccountName
+                $f2.ShareFileClient.Path | should -be "dir1/copydest"
+                $f2.FileProperties.ContentLength | should -Be $f1.Length
+         
+                $f2 = $f1  | Start-AzStorageFileCopy  -DestFile $fdest.CloudFile -Force
+                $f2 | Get-AzStorageFileCopyState -WaitForComplete
+                $f2.ShareFileClient.AccountName | should -be $ctx2.StorageAccountName
+                $f2.ShareFileClient.Path | should -be "dir1/copydest"
+                $f2.FileProperties.ContentLength | should -Be $f1.Length
+
+            # From Share object
+                $f2 = Start-AzStorageFileCopy -SrcShare $s.CloudFileShare -SrcFilePath dir1/test1 -DestShareName $shareName -DestFilePath dir1/copydest -Force -DestContext $ctx 
+                $f2 | Get-AzStorageFileCopyState -WaitForComplete
+                $f2.ShareFileClient.AccountName | should -be $ctx.StorageAccountName
+                $f2.ShareFileClient.Path | should -be "dir1/copydest"
+                $f2.FileProperties.ContentLength | should -Be (Get-AzStorageFile -ShareName $shareName -Path dir1/test1 -Context $ctx).Length
+
+                # copy from file in share snapshot
+                $f2 = Start-AzStorageFileCopy -SrcShare $ss.CloudFileShare -SrcFilePath dir1/test1 -DestShareName $shareName -DestFilePath dir1/copydest -Force -DestContext $ctx 
+                $copystatus = $f2 | Get-AzStorageFileCopyState -WaitForComplete
+                $f2.ShareFileClient.AccountName | should -be $ctx.StorageAccountName
+                $f2.ShareFileClient.Path | should -be "dir1/copydest"
+                $f2.FileProperties.ContentLength | should -Be $f1.Length  
+                #check copy status
+                $srcfile = Get-AzStorageFile -Share $ss.CloudFileShare -Path dir1/test1          
+                $copystatus.Status | should -be Success
+                $copystatus.Source| should -BeLike "$($srcfile.CloudFile.SnapshotQualifiedStorageUri.PrimaryUri.ToString())*"
+                $copystatus.TotalBytes | should -be $srcfile.Length
+                $copystatus.BytesCopied | should -be $srcfile.Length
+
+            # From blob object
+            $b = Get-AzStorageBlob -Containe $shareName -Blob testblob -Context $ctx 
+            $bs = $b.ICloudBlob.Snapshot()
+            $bs.FetchAttributes()
+                # fail since not dest context
+                #$b | Start-AzStorageFileCopy  -DestShareName $shareName -DestFilePath dir1/copydest -Force
+                #Start-AzStorageFileCopy -SrcBlob $b.ICloudBlob  -DestShareName $shareName -DestFilePath dir1/copydest -Force
+                # fail since not dest context
+                #$b | Start-AzStorageFileCopy  -DestShareName $shareName -DestFilePath dir1/copydest -Force -Context $ctx 
+                #Start-AzStorageFileCopy -SrcBlob $b.ICloudBlob  -DestShareName $shareName -DestFilePath dir1/copydest -Force -Context $ctx 
+                # success
+                $f = $b | Start-AzStorageFileCopy  -DestShareName $shareName -DestFilePath dir1/copydest -Force -DestContext $ctx2 
+                $f | Get-AzStorageFileCopyState -WaitForComplete
+                $f.ShareFileClient.AccountName | should -be $ctx2.StorageAccountName
+                $f.ShareFileClient.Path | should -be "dir1/copydest"
+                $f.FileProperties.ContentLength | should -Be $b.Length
+
+                $f = Start-AzStorageFileCopy -SrcBlob $b.ICloudBlob  -DestShareName $shareName -DestFilePath dir1/copydest -Force -DestContext $ctx2 
+                $f | Get-AzStorageFileCopyState -WaitForComplete
+                $f.ShareFileClient.AccountName | should -be $ctx2.StorageAccountName
+                $f.ShareFileClient.Path | should -be "dir1/copydest"
+                $f.FileProperties.ContentLength | should -Be $b.Length
+        
+                $fdest = Get-AzStorageFile -ShareName $shareName -Path dir1/copydest -Context  $ctx2
+                $f = Start-AzStorageFileCopy -SrcBlob $bs -DestFile $fdest.CloudFile -Force
+                $copystatus = $f | Get-AzStorageFileCopyState -WaitForComplete
+                $f.ShareFileClient.AccountName | should -be $ctx2.StorageAccountName
+                $f.ShareFileClient.Path | should -be "dir1/copydest"
+                $f.FileProperties.ContentLength | should -Be $bs.Properties.Length
+                #check copy status
+                $srcfile = Get-AzStorageFile -Share $ss.CloudFileShare -Path dir1/test1          
+                $copystatus.Status | should -be Success
+                $copystatus.Source| should -BeLike "$($bs.SnapshotQualifiedStorageUri.PrimaryUri.ToString())*"
+                $copystatus.TotalBytes | should -be $bs.Properties.Length
+                $copystatus.BytesCopied | should -be $bs.Properties.Length
+
+            # from container object
+                $c = Get-AzStorageContainer -Name  $shareName -Context $ctx 
+                $f = Start-AzStorageFileCopy -SrcContainer $c.CloudBlobContainer  -SrcBlobName testblob  -DestShareName $shareName -DestFilePath dir1/copydest -Force -DestContext $ctx2 
+                $f | Get-AzStorageFileCopyState -WaitForComplete
+                $f.ShareFileClient.AccountName | should -be $ctx2.StorageAccountName
+                $f.ShareFileClient.Path | should -be "dir1/copydest"
+                $f.FileProperties.ContentLength | should -Be $b.Length
+            # from Uri
+                $uri1 = New-AzStorageFileSASToken -ShareName $shareName -Path dir1/test1 -Permission rwdl -FullUri -Context $ctx 
+                $f = Start-AzStorageFileCopy -AbsoluteUri $uri1  -DestShareName $shareName -DestFilePath dir1/copydest -Force -DestContext $ctx2 
+                $f | Get-AzStorageFileCopyState -WaitForComplete
+                $f.ShareFileClient.AccountName | should -be $ctx2.StorageAccountName
+                $f.ShareFileClient.Path | should -be "dir1/copydest"
+                #$f.FileProperties.ContentLength | should -Be $f1.Length
+
+                $f = Start-AzStorageFileCopy -AbsoluteUri $uri1  -DestFile $fdest.CloudFile -Force 
+                $f | Get-AzStorageFileCopyState -WaitForComplete
+                $f.ShareFileClient.AccountName | should -be $ctx2.StorageAccountName
+                $f.ShareFileClient.Path | should -be "dir1/copydest"
+
+                $f = Start-AzStorageFileCopy -AbsoluteUri $uri1  -DestShareName $shareName -DestFilePath dir1/copydest -Force -DestContext $ctx2 
+                $f | Get-AzStorageFileCopyState -WaitForComplete
+                $f.ShareFileClient.AccountName | should -be $ctx2.StorageAccountName
+                $f.ShareFileClient.Path | should -be "dir1/copydest"
+
+
+
+        # Get copy state
+            ## Prepare a big blob
+            $biglocalfile = $localBigSrcFile
+            $bigfile = Set-AzStorageFileContent -ShareName $shareName -Source $biglocalfile -Path bigfile -Context $ctx2 -Force -PassThru
+
+            ## start copy     
+            $bigdestfile = Start-AzStorageFileCopy -SrcFile  $bigfile.CloudFile -DestShareName $shareName -DestFilePath dir1/bigcopydest -DestContext $ctx -Force
+
+            # get copy status in different ways
+            $fd = Get-AzStorageFile -ShareName $shareName  -Path dir1/bigcopydest -Context $ctx 
+            $fd.FileProperties.CopyStatus | should -be Pending
+            $fd.FileProperties.CopySource | should -BeLike "$($bigfile.CloudFile.SnapshotQualifiedStorageUri.PrimaryUri.ToString())*"
+
+            $copystatus = $bigdestfile | Get-AzStorageFileCopyState
+            $copystatus.Status | should -be Pending
+            $copystatus.Source| should -BeLike "$($bigfile.CloudFile.SnapshotQualifiedStorageUri.PrimaryUri.ToString())*"
+            $copystatus.TotalBytes | should -be $bigfile.Length
+            $copystatus.BytesCopied | should -BeLessOrEqual $bigfile.Length
+
+            $copystatus = Get-AzStorageFileCopyState -ShareName $shareName  -FilePath dir1/bigcopydest -Context $ctx 
+            $copystatus.Status | should -be Pending
+            $copystatus.Source| should -BeLike "$($bigfile.CloudFile.SnapshotQualifiedStorageUri.PrimaryUri.ToString())*"
+            $copystatus.TotalBytes | should -be $bigfile.Length
+            $copystatus.BytesCopied | should -BeLessOrEqual $bigfile.Length
+
+            $copystatus = Get-AzStorageFileCopyState -File $bigdestfile.CloudFile
+            $copystatus.Status | should -be Pending
+            $copystatus.Source| should -BeLike "$($bigfile.CloudFile.SnapshotQualifiedStorageUri.PrimaryUri.ToString())*"
+            $copystatus.TotalBytes | should -be $bigfile.Length
+            $copystatus.BytesCopied | should -BeLessOrEqual $bigfile.Length
+
+            # wait for complete
+            $copystatus = $fd | Get-AzStorageFileCopyState -WaitForComplete
+            $copystatus.Status | should -be Success
+            $copystatus.Source| should -BeLike "$($bigfile.CloudFile.SnapshotQualifiedStorageUri.PrimaryUri.ToString())*"
+            $copystatus.TotalBytes | should -be $bigfile.Length
+            $copystatus.BytesCopied | should -be $bigfile.Length
+    
+            $bigdestfile = Start-AzStorageFileCopy -SrcFile  $bigfile.CloudFile -DestShareName $shareName -DestFilePath dir1/bigcopydest -DestContext $ctx -Force
+            Get-AzStorageFileCopyState -ShareName $shareName  -FilePath dir1/bigcopydest -Context $ctx -WaitForComplete
+            $copystatus.Status | should -be Success
+            $copystatus.Source| should -BeLike "$($bigfile.CloudFile.SnapshotQualifiedStorageUri.PrimaryUri.ToString())*"
+            $copystatus.TotalBytes | should -be $bigfile.Length
+            $copystatus.BytesCopied | should -be $bigfile.Length
+
+            $fd | Remove-AzStorageFile 
+
+
+        # Stop copy 
+            # by pipeline
+            Start-AzStorageFileCopy -SrcFile  $bigfile.CloudFile -DestShareName $shareName -DestFilePath dir1/bigcopydest -DestContext $ctx -Force
+            $fd = Get-AzStorageFile -ShareName $shareName  -Path dir1/bigcopydest -Context $ctx 
+            ($fd | Get-AzStorageFileCopyState).Status | should -be Pending
+            $stopmessage = $fd | Stop-AzStorageFileCopy -CopyId $fd.FileProperties.CopyId
+            $stopmessage | should -BeLike "Stopped the copy task on file '$($fd.ShareFileClient.Uri.ToString())' successfully."
+            $copystatus = $fd | Get-AzStorageFileCopyState
+            $copystatus.Status | should -be Aborted
+            $copystatus.Source| should -BeLike "$($bigfile.CloudFile.SnapshotQualifiedStorageUri.PrimaryUri.ToString())*"
+            $copystatus.TotalBytes | should -be $bigfile.Length
+            $copystatus.BytesCopied | should -BeLessOrEqual $bigfile.Length 
+
+            # manually
+            Start-AzStorageFileCopy -SrcFile  $bigfile.CloudFile -DestShareName $shareName -DestFilePath dir1/bigcopydest -DestContext $ctx -Force
+            ($fd | Get-AzStorageFileCopyState).Status | should -be Pending
+            $stopmessage = Stop-AzStorageFileCopy -ShareName $shareName  -FilePath dir1/bigcopydest -Context $ctx -Force
+            $stopmessage | should -BeLike "Stopped the copy task on file '$($fd.ShareFileClient.Uri.ToString())' successfully."
+            $copystatus = $fd | Get-AzStorageFileCopyState
+            $copystatus.Status | should -be Aborted
+            $copystatus.Source| should -BeLike "$($bigfile.CloudFile.SnapshotQualifiedStorageUri.PrimaryUri.ToString())*"
+            $copystatus.TotalBytes | should -be $bigfile.Length
+            $copystatus.BytesCopied | should -BeLessOrEqual $bigfile.Length 
+
+            # by file object
+            Start-AzStorageFileCopy -SrcFile  $bigfile.CloudFile -DestShareName $shareName -DestFilePath dir1/bigcopydest -DestContext $ctx -Force
+            ($fd | Get-AzStorageFileCopyState).Status | should -be Pending
+            $stopmessage = Stop-AzStorageFileCopy -File $fd.CloudFile -Context $ctx -Force
+            $stopmessage | should -BeLike "Stopped the copy task on file '$($fd.ShareFileClient.Uri.ToString())' successfully."
+            $copystatus = $fd | Get-AzStorageFileCopyState
+            $copystatus.Status | should -be Aborted
+            $copystatus.Source| should -BeLike "$($bigfile.CloudFile.SnapshotQualifiedStorageUri.PrimaryUri.ToString())*"
+            $copystatus.TotalBytes | should -be $bigfile.Length
+            $copystatus.BytesCopied | should -BeLessOrEqual $bigfile.Length 
+
+        # List file handles
+            #List from share
+            Get-AzStorageFileHandle -ShareName $shareName -Context $ctx
+            Get-AzStorageFileHandle -ShareName $shareName -Context $ctx -Recursive        
+            Get-AzStorageFileHandle -ShareName $shareName -Context $ctx -Recursive -Skip 1 -First 3
+            $share = Get-AzStorageShare -Name $shareName -Context $ctx
+            $share | Get-AzStorageFileHandle  -Recursive 
+            $share.CloudFileShare | Get-AzStorageFileHandle  -Recursive 
+
+            # list from dir
+            Get-AzStorageFileHandle -ShareName $shareName -Path dir1 -Context $ctx        
+            Get-AzStorageFileHandle -ShareName $shareName -Path dir1 -Context $ctx -Recursive
+            $dir = Get-AzStorageFile -ShareName $shareName -Path dir1 -Context $ctx
+            $dir | Get-AzStorageFileHandle  -Recursive 
+            $dir.CloudFileDirectory | Get-AzStorageFileHandle  -Recursive 
+
+            #list from file
+            Get-AzStorageFileHandle  -ShareName $shareName -Path dir1/test1  -Context $ctx
+            Get-AzStorageFileHandle  -ShareName $shareName -Path dir1/test1  -Context $ctx -Skip 1 -First 1
+            $file = Get-AzStorageFile -ShareName $shareName -Path dir1/test1  -Context $ctx
+            $file | Get-AzStorageFileHandle  -Recursive 
+            $file.CloudFile | Get-AzStorageFileHandle  -Recursive 
+
+
+        # close file handles
+            $h =Get-AzStorageFileHandle -ShareName $containerName -Context $ctx -Recursive   
+            $h.Count | should -BeGreaterOrEqual 0
+
+
+            # From Share - close all
+            Close-AzStorageFileHandle -ShareName $shareName -CloseAll -Context $ctx -PassThru
+            Close-AzStorageFileHandle -ShareName $shareName -CloseAll -Recursive -Context $ctx
+            $share = Get-AzStorageShare -Name $shareName -Context $ctx
+            $share | Close-AzStorageFileHandle  -Recursive -CloseAll -PassThru
+            $share.CloudFileShare | Close-AzStorageFileHandle  -CloseAll -PassThru
+
+            # From Dir - close all
+            Close-AzStorageFileHandle -ShareName $shareName -Path dir1 -CloseAll -Context $ctx
+            Close-AzStorageFileHandle -ShareName $shareName -Path dir1 -CloseAll -Recursive -Context $ctx
+            $dir = Get-AzStorageFile -ShareName $shareName -Path dir1 -Context $ctx
+            $dir | Close-AzStorageFileHandle  -CloseAll 
+            $dir.CloudFileDirectory | Close-AzStorageFileHandle  -Recursive -CloseAll -PassThru
+        
+            # From file - close all
+            Close-AzStorageFileHandle -ShareName $shareName -Path dir1/test1 -CloseAll -Context $ctx -PassThru
+            $file = Get-AzStorageFile -ShareName $shareName -Path dir1/test1 -Context $ctx
+            $file | Close-AzStorageFileHandle  -CloseAll  
+            $file.CloudFile | Close-AzStorageFileHandle  -CloseAll 
+
+            # From Share - Close single
+            if ($h.count -ge 5)
+            {
+                $h[0] |  Close-AzStorageFileHandle -ShareName $shareName -Context $ctx
+                $h[1] |  Close-AzStorageFileHandle -share $share.CloudFileShare 
+                $share = Get-AzStorageShare -Name $shareName -Context $ctx
+                $share |  Close-AzStorageFileHandle -FileHandle $h[2] 
+                $share.CloudFileShare |  Close-AzStorageFileHandle -FileHandle $h[3] 
+                Close-AzStorageFileHandle -ShareName $shareName -Context $ctx -FileHandle $h[4] 
+            }
+
+            # TEst continueation token
+            Close-AzStorageFileHandle -ShareName $shareName -CloseAll -Recursive -Context $ctx -PassThru
+            Close-AzStorageFileHandle -ShareName $shareName -Path dir1 -CloseAll -Recursive -Context $ctx -PassThru
+
+        # Download file
+
+            $share = Get-AzStorageShare -Name $shareName -Context $ctx
+            $snapshot = $share.ShareClient.CreateSnapshot().value
+
+            # Set-AzStorageFileContent -ShareName $containerName -Path 0size -Source C:\temp\0  -Context $ctx -force 
+        
+            $file = Get-AzStorageFileContent -Destination $localDestFile -ShareName $shareName -Path $bigfile.ShareFileClient.Path -CheckMd5 -Context $ctx2 -force -PassThru
+            CompareFileFileMD5 $localDestFile $file
+
+            # del $localDestFile
+
+            # share pipeline
+            $sharesnapshot = Get-AzStorageShare -Name $shareName -Context $ctx -SnapshotTime $snapshot.Snapshot        
+            $file = $sharesnapshot | Get-AzStorageFileContent -Destination $localDestFile -Path dir1/test1  -PassThru   -force
+            CompareFileFileMD5 $localDestFile $file        
+            $file = Get-AzStorageFileContent -Destination $localDestFile -Share $sharesnapshot.CloudFileShare -Path dir1/test1 -PassThru -force 
+            CompareFileFileMD5 $localDestFile $file
+
+            #dir pipeline
+            $dir = $share | Get-AzStorageFile -Path dir1
+            $file = $dir | Get-AzStorageFileContent -Destination $localDestFile -Path test1 -force -PassThru
+            CompareFileFileMD5 $localDestFile $file  
+
+            del $localDestFile
+
+            $file = $dir.CloudFileDirectory | Get-AzStorageFileContent -Destination $localDestFile -Path test1 -force -PassThru
+            CompareFileFileMD5 $localDestFile $file  
+
+            #file pipeline
+            $file = Get-AzStorageFile -ShareName $shareName -Path dir1/test1 -Context $ctx  
+            $file = Get-AzStorageFileContent -Destination $localDestFile -File $file.CloudFile -force -PassThru
+            CompareFileFileMD5 $localDestFile $file      
+            $file = $file | Get-AzStorageFileContent -Destination $localDestFile  -force -PassThru
+            CompareFileFileMD5 $localDestFile $file 
+
 
         $Error.Count | should -be 0
     }

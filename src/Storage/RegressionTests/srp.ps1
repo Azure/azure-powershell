@@ -840,7 +840,7 @@ Describe "Management plan test" {
              Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $srcAccountName
 
             Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $destAccountName -IsVersioningEnabled $false -EnableChangeFeed $true
-            Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $srcAccountName -IsVersioningEnabled $true -EnableChangeFeed $true
+            Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $destAccountName -IsVersioningEnabled $true -EnableChangeFeed $true
              Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $destAccountName
              Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $srcAccountName
 
@@ -2710,6 +2710,61 @@ Describe "Management plan test" {
         $a.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties.DomainGuid | should -Be $DomainGuid
 
         remove-AzStorageAccount -ResourceGroupName $rgname -Name $accountName -Force -AsJob
+
+        $Error.Count | should -be 0
+    }
+
+    
+    It "FederatedClientId" -Skip {
+        $Error.Clear()
+
+        Add-AzAccount -Subscription $config.federatedClientId.subscription -Tenant $config.federatedClientId.tenant
+
+        $rgName = 'weitry';
+        $keyvaultName = $config.federatedClientId.keyvaultName
+        $keyvaultUri = "https://$($keyvaultName).vault.azure.net:443"
+        $keyname = "wrappingKey"
+       
+        $accountName = "weifederatedid1"
+        
+        $useridentity= $config.federatedClientId.useridentity
+
+        if ($false)
+        {
+
+            # prepare keyvault  
+            $location =  'eastus'; 
+    
+            $keyVault = New-AzKeyVault -VaultName $keyvaultName -ResourceGroupName $rgName -Location $location -EnablePurgeProtection
+            # give service principle "weiwei's AAD app" (d6f7e858-345d-45f6-849c-8175519656b7) access to the keyvault 
+            Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $rgName -ObjectId $config.federatedClientId.objectId -PermissionsToKeys backup,create,delete,get,import,get,list,update,restore 
+
+            $key = Add-AzKeyVaultKey -VaultName $keyvaultName -Name $keyname -Destination 'Software'    
+            $keyversion = $key.Version
+
+            # create 1 User identity, and give them access to keyvault
+            $userId3 = New-AzUserAssignedIdentity -ResourceGroupName $rgName -Name weitestidfed
+            Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $rgName -ObjectId $userId3.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
+            $useridentity= $userId3.Id
+        }
+
+
+        # Create Account with UAI (SystemAssignedUserAssigned)
+            $storageAccountName = $accountName
+            # KeyVaultFederatedClientId is application IS for service principle 
+            $account = New-AzStorageAccount -ResourceGroupName $rgName -Name $storageAccountName -Kind StorageV2 -SkuName Standard_LRS -Location eastus2 `
+                        -UserAssignedIdentityId $useridentity  -IdentityType SystemAssignedUserAssigned  `
+                        -KeyName $keyname -KeyVaultUri $keyvaultUri -KeyVaultUserAssignedIdentityId $useridentity -KeyVaultFederatedClientId $config.federatedClientId.federatedClientId #-debug
+            $account.Encryption.EncryptionIdentity.EncryptionFederatedIdentityClientId | should -be $config.federatedClientId.federatedClientId
+
+        # update account
+            $account = Set-AzStorageAccount -ResourceGroupName $rgName -Name $storageAccountName `
+                        -KeyName $keyname -KeyVaultUri $keyvaultUri -KeyVaultUserAssignedIdentityId $useridentity -KeyVaultFederatedClientId $config.federatedClientId.federatedClientId2 #-debug
+            $account.Encryption.EncryptionIdentity.EncryptionFederatedIdentityClientId | should -be $config.federatedClientId.federatedClientId2
+
+            $account = Set-AzStorageAccount -ResourceGroupName $rgName -Name $storageAccountName -KeyVaultFederatedClientId $config.federatedClientId.federatedClientId2 #-debug
+            $account.Encryption.EncryptionIdentity.EncryptionFederatedIdentityClientId | should -be $config.federatedClientId.federatedClientId2
+
 
         $Error.Count | should -be 0
     }
