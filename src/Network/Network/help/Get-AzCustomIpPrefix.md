@@ -61,7 +61,7 @@ This command gets a CustomIpPrefix resource named myCustomIpPrefix in resource g
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByNameParameterSet
 Aliases: ResourceName
 
@@ -84,14 +84,14 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -99,14 +99,14 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceId
 The resource id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 

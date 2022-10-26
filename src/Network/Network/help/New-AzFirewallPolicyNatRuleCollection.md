@@ -14,8 +14,7 @@ Create a new Azure Firewall Policy Nat Rule Collection
 
 ```
 New-AzFirewallPolicyNatRuleCollection -Name <String> -Priority <UInt32>
- [-Rule <PSAzureFirewallPolicyNatRule[]>] -ActionType <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -Rule <PSAzureFirewallPolicyNetworkRule[]> -ActionType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,10 +36,10 @@ This example creates a nat rule collection with a network rule
 The type of the rule action
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Dnat, Snat
+Accepted values: Dnat
 
 Required: True
 Position: Named
@@ -53,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,7 +67,7 @@ Accept wildcard characters: False
 The name of the Network Rule Collection
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +82,7 @@ Accept wildcard characters: False
 The priority of the rule collection
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -98,9 +97,40 @@ Accept wildcard characters: False
 The list of network rules
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyNatRule[]
+Type: PSAzureFirewallPolicyNetworkRule
 Parameter Sets: (All)
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

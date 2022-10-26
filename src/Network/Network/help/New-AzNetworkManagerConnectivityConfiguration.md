@@ -14,10 +14,12 @@ Creates a network manager connectivity configuration.
 
 ```
 New-AzNetworkManagerConnectivityConfiguration -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> -AppliesToGroup <PSNetworkManagerConnectivityGroupItem[]>
- -ConnectivityTopology <String> [-Description <String>] [-Hub <PSNetworkManagerHub[]>] [-DeleteExistingPeering]
- [-IsGlobal] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceGroupName <String>
+ -AppliesToGroup <Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem[]>
+ -ConnectivityTopology <String> [-Description <String>]
+ [-Hub <Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerHub[]>]
+ [-DeleteExistingPeering] [-IsGlobal] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,9 +34,8 @@ $connectivityGroup  = @($connectivityGroupItem)
 
 $hub = New-AzNetworkManagerHub -ResourceId "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub" -ResourceType "Microsoft.Network/virtualNetworks" 
 $hubList = @($hub)
-New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName psResourceGroup -Name "psConnectivityConfig" -NetworkManagerName psNetworkManager -ConnectivityTopology "HubAndSpoke" -Hub $hublist -AppliesToGroup $connectivityGroup -DeleteExistingPeering
+New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName psResourceGroup -Name "psConnectivityConfig" -NetworkManagerName psNetworkManager -ConnectivityTopology "HubAndSpoke" -Hub $hublist -AppliesToGroup $connectivityGroup -DeleteExistingPeering 
 ```
-
 ```output
 ConnectivityTopology  : HubAndSpoke
 Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
@@ -72,7 +73,6 @@ Name                  : psConnectivityConfig
 Etag                  :
 Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfig
 ```
-
 Creates a hub and spoke network manager connectivity configuration.
 
 ### Example 2
@@ -80,9 +80,8 @@ Creates a hub and spoke network manager connectivity configuration.
 $connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
 [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem]]$connectivityGroup  = @()  
 $connectivityGroup.Add($connectivityGroupItem)   
-New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName psResourceGroup -Name "psConnectivityConfigMesh" -NetworkManagerName psNetworkManager -ConnectivityTopology "Mesh" -AppliesToGroup $connectivityGroup -DeleteExistingPeering
+New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName psResourceGroup -Name "psConnectivityConfigMesh" -NetworkManagerName psNetworkManager -ConnectivityTopology "Mesh" -AppliesToGroup $connectivityGroup -DeleteExistingPeering 
 ```
-
 ```output
 ConnectivityTopology  : Mesh
 Hubs                  : {}
@@ -115,7 +114,6 @@ Name                  : psConnectivityConfigMesh
 Etag                  :
 Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfigMesh
 ```
-
 Creates a mesh network manager connectivity configuration.
 
 ## PARAMETERS
@@ -139,7 +137,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +152,7 @@ Accept wildcard characters: False
 Connectivity Topology.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: HubAndSpoke, Mesh
@@ -170,7 +168,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -185,7 +183,7 @@ Accept wildcard characters: False
 DeleteExistingPeering Flag.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -200,7 +198,7 @@ Accept wildcard characters: False
 Description.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -215,7 +213,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +228,7 @@ Accept wildcard characters: False
 Hub Id list.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerHub[]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerHub]
 Parameter Sets: (All)
 Aliases:
 
@@ -245,7 +243,7 @@ Accept wildcard characters: False
 IsGlobal Flag.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -260,7 +258,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -275,7 +273,7 @@ Accept wildcard characters: False
 The network manager name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -290,7 +288,7 @@ Accept wildcard characters: True
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -305,7 +303,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -321,7 +319,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -352,7 +350,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzNetworkManagerConnectivityConfiguration](./Get-AzNetworkManagerConnectivityConfiguration.md)
 
 [Remove-AzNetworkManagerConnectivityConfiguration](./Remove-AzNetworkManagerConnectivityConfiguration.md)

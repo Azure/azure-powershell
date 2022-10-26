@@ -13,8 +13,8 @@ Updates a network manager..
 ## SYNTAX
 
 ```
-Set-AzNetworkManager -InputObject <PSNetworkManager> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzNetworkManager -InputObject <PSNetworkManager> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,6 @@ $networkManager = Get-AzNetworkManager -ResourceGroupName "psResourceGroup" -Nam
 $networkManager.Description = "updated description"
 Set-AzNetworkManager -InputObject $networkManager
 ```
-
 ```output
 Location                        : westus
 Tag                             : {}
@@ -64,7 +63,6 @@ Name                            : psNetworkManager
 Etag                            :
 Id                              : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
 ```
-
 Example to update the description of a network manager.
 
 ### Example 2
@@ -74,7 +72,6 @@ $access  = @("Connectivity", "SecurityAdmin")
 $networkManager.NetworkManagerScopeAccesses = $access
 Set-AzNetworkManager -InputObject $networkManager
 ```
-
 ```output
 Location                        : westus
 Tag                             : {}
@@ -110,7 +107,6 @@ Name                            : psNetworkManager
 Etag                            :
 Id                              : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
 ```
-
 Updates a network manager scope access.
 
 ## PARAMETERS
@@ -119,7 +115,7 @@ Updates a network manager scope access.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +130,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -149,7 +145,7 @@ Accept wildcard characters: False
 The Network Manager
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManager
+Type: PSNetworkManager
 Parameter Sets: (All)
 Aliases:
 
@@ -164,7 +160,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -180,7 +176,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -207,7 +203,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [New-AzNetworkManager](./New-AzNetworkManager.md)
 
 [Get-AzNetworkManager](./Get-AzNetworkManager.md)

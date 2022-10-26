@@ -35,7 +35,7 @@ $instance1 = $vmssInstance1.Name
 $instance2 = $vmssInstance2.Name
 $scope = New-AzPacketCaptureScopeConfig -Include $instance1, $instance2
 
-New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $networkWatcher -TargetId $vmss.Id -TargetType "azurevmss" -Scope $scope -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSecond 60
+New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $networkWatcher -TargetId $vmss.Id -TargetType "azurevmss" -Scope $scope -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60
 ```
 
 In this example we create a packet capture named "PacketCaptureTest" with multiple VMSS Instances in Include Scope and a time limit. Once the session is complete, it will be saved to the specified storage account. 
@@ -52,7 +52,7 @@ $instance1 = $vmssInstance1.Name
 $instance2 = $vmssInstance2.Name
 $scope = New-AzPacketCaptureScopeConfig -Exclude $instance1, $instance2
 
-New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $networkWatcher -TargetId $vmss.Id -TargetType "azurevmss" -Scope $scope -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSecond 60
+New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $networkWatcher -TargetId $vmss.Id -TargetType "azurevmss" -Scope $scope -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60
 ```
 
 In this example we create a packet capture named "PacketCaptureTest" with multiple VMSS Instances in Exclude Scope - meaning that apart from these provided Instance, Packet Capture would be working on all other instances and a time limit. Once the session is complete, it will be saved to the specified storage account. 
@@ -119,7 +119,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [New-AzNetworkWatcher](./New-AzNetworkWatcher.md)
 
 [Get-AzNetworkWatcher](./Get-AzNetworkWatcher.md)
