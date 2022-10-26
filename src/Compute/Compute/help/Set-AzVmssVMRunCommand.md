@@ -12,6 +12,7 @@ The operation to create or update the VMSS VM run command.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
 Set-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -RunCommandName <String>
  -VMScaleSetName <String> [-SubscriptionId <String>] -Location <String> [-AsyncExecution]
@@ -20,6 +21,16 @@ Set-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -RunComm
  [-SourceCommandId <String>] [-SourceScript <String>] [-SourceScriptUri <String>] [-Tag <Hashtable>]
  [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ScriptLocalPath
+```
+Set-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -RunCommandName <String>
+ -VMScaleSetName <String> [-SubscriptionId <String>] -Location <String> [-AsyncExecution]
+ [-ErrorBlobUri <String>] [-OutputBlobUri <String>] [-Parameter <IRunCommandInputParameter[]>]
+ [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <String>] [-RunAsUser <String>]
+ [-Tag <Hashtable>] [-TimeoutInSecond <Int32>] -ScriptLocalPath <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -255,12 +266,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScriptLocalPath
+
+```yaml
+Type: System.String
+Parameter Sets: ScriptLocalPath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SourceCommandId
 Specifies a commandId of predefined built-in script.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -275,7 +300,7 @@ Specifies the script content to be executed on the VM.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -290,7 +315,7 @@ Specifies the script download location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
