@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Fixed EdgeZone does not pass to VM for `New-AzVM` "SimpleParameterSet" [#18978] 
+* Added 'ScriptFilePath' parameter set for `Set-AzVMRunCommand` and `Set-AzVmssVMRunCommand` to allow users to pass in the path of the file that has the run command script
 * Added `-AsJob` optional parameter to `Remove-AzVMExtension` cmdlet.
 * Added `-EdgeZone` optional parameter for `Get-AzComputeResourceSku` and `New-AzSnapshotUpdateConfig` cmdlets.
 * Added Disk Delete Optional parameters `OsDisk Deletion Option` and `Delete Option` to the `Set-AzVmssStorageProfile` (OS Disk) and `Add-AzVmssDataDisk` (Data Disk)
