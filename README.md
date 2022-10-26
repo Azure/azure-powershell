@@ -11,10 +11,10 @@ The Az PowerShell module is preinstalled in [Azure Cloud Shell][AzureCloudShell]
 
 The following table contains a list of the Azure PowerShell rollup modules.
 
-             Description              | Module Name |     PowerShell Gallery Link
-------------------------------------- | ----------- | --------------------------------
-Azure PowerShell                      | `Az`        | [![Az]][AzGallery]
-Azure PowerShell with preview modules | `AzPreview` | [![AzPreview]][AzPreviewGallery]
+Description       | Module Name  | PowerShell Gallery Link
+----------------- | ------------ | -----------------------
+Azure PowerShell  | `Az`         | [![Az]][AzGallery]
+Azure PowerShell with preview modules | `AzPreview`                             | [![AzPreview]][AzPreviewGallery]
 
 For a complete list of the modules found in this repository, see
 [Azure PowerShell Modules][AzurePowerShellModules].
