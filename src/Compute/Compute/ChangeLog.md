@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Fixed EdgeZone does not pass to VM for `New-AzVM` "SimpleParameterSet" [#18978] 
 * Added `-AsJob` optional parameter to `Remove-AzVMExtension` cmdlet.
 * Added `-EdgeZone` optional parameter for `Get-AzComputeResourceSku` and `New-AzSnapshotUpdateConfig` cmdlets.
 * Added Disk Delete Optional parameters `OsDisk Deletion Option` and `Delete Option` to the `Set-AzVmssStorageProfile` (OS Disk) and `Add-AzVmssDataDisk` (Data Disk)
