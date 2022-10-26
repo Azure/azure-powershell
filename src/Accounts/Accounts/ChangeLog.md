@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Updated `Get-AzSubscription` to retreived subscription by Id rather than listed all the subscripitons from server if subscription Id is provided. [#19115]
+* Updated `Get-AzSubscription` to retrieve subscription by Id rather than listed all the subscriptions from server if subscription Id is provided. [#19115]
 
 ## Version 2.10.2
 * Upgraded Azure.Core to 1.25.0 and Azure.Identity to 1.6.1
@@ -45,7 +45,7 @@
 
 ## Version 2.9.0
 * Supported exporting and importing configurations by `Export-AzConfig` and `Import-AzConfig`.
-* Fixed an issue that Az.Accounts may fail to be imported in parallel PowerShell processes. [#18321] 
+* Fixed an issue that Az.Accounts may fail to be imported in parallel PowerShell processes. [#18321]
 * Fixed incorrect access token [#18105]
 * Upgraded version of Microsoft.Identity.Client for .NET Framework. [#18495]
 * Fixed an issue that Az.Accounts failed to be imported if multiple environment variables, which only differ by case, are set. [#18304]
