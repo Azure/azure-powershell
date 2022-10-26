@@ -28,3 +28,4 @@ Describe 'Remove-AzDatabricksAccessConnector' {
         } | Should -Not -Throw
     }
 }
+

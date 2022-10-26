@@ -1,4 +1,4 @@
-﻿/*---------------------------------------------------------------------------------------------
+/*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
@@ -103,3 +103,4 @@ Get-ChildItem function: | Where-Object {{ ($currentFunctions -notcontains $_) -a
         public PSObject HelpInfo { get; set; }
     }
 }
+

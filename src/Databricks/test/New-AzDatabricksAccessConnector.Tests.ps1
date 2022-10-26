@@ -19,3 +19,4 @@ Describe 'New-AzDatabricksAccessConnector' {
         { New-AzDatabricksAccessConnector -ResourceGroupName $env.resourceGroup -Name $env.accessConnectorname01 -Location eastus } | Should -Not -Throw
     }
 }
+

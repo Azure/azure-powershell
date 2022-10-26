@@ -33,3 +33,4 @@ Describe 'Get-AzDatabricksWorkspace' {
         $workspace.Name | Should -Be $env.testWorkspace2
     }
 }
+

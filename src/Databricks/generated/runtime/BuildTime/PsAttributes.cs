@@ -112,3 +112,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         public bool HasWidth => Width != -1;
     }
 }
+

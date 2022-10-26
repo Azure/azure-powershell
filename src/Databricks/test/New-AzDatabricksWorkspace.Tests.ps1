@@ -25,3 +25,4 @@ Describe 'New-AzDatabricksWorkspace' {
         { Remove-AzDatabricksWorkspace -Name $name -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
     }
 }
+

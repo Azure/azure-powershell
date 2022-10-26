@@ -18,3 +18,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PowerShell
             collection.GroupBy(selector).Select(group => group.First());
     }
 }
+

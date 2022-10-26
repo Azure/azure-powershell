@@ -34,3 +34,4 @@ Describe 'Get-AzDatabricksAccessConnector' {
         } | Should -Not -Throw
     }
 }
+

@@ -24,3 +24,4 @@ Describe 'Remove-AzDatabricksWorkspace' {
         { Remove-AzDatabricksWorkspace -InputObject $res } | Should -Not -Throw
     }
 }
+

@@ -159,3 +159,4 @@ Write-Host -ForegroundColor Green 'Creating example stubs...'
 Export-ExampleStub -ExportsFolder $exportsFolder -OutputFolder $examplesFolder
 
 Write-Host -ForegroundColor Green '-------------Done-------------'
+

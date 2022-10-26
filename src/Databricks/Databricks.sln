@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.6.30114.105
@@ -102,3 +102,4 @@ Global
 		{223A50A4-F615-434E-826D-24989991E4F8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
+

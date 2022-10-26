@@ -200,3 +200,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PowerShell
         public static PsModuleHelpInfo ToModuleInfo(this PSModuleInfo moduleInfo) => new PsModuleHelpInfo(moduleInfo);
     }
 }
+

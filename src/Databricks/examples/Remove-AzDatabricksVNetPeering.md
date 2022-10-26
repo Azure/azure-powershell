@@ -12,3 +12,4 @@ Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName 
 
 This command removes a vnet peering of databricks by object
 
+

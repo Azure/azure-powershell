@@ -27,7 +27,7 @@ Creates vNet Peering for workspace.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/set-azdatabricksvnetpeering
+https://learn.microsoft.com/powershell/module/az.databricks/set-azdatabricksvnetpeering
 #>
 function Set-AzDatabricksVNetPeering {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering])]
@@ -216,3 +216,4 @@ end {
     }
 } 
 }
+

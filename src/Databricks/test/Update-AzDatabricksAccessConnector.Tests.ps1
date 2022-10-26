@@ -28,3 +28,4 @@ Describe 'Update-AzDatabricksAccessConnector' {
         } | Should -Not -Throw
     }
 }
+

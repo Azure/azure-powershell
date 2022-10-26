@@ -27,7 +27,7 @@ Lists all of the available RP operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/get-azdatabricksoperation
+https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksoperation
 #>
 function Get-AzDatabricksOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOperation])]
@@ -158,7 +158,7 @@ PARAMETER <IAccessConnector>: Information about azure databricks accessConnector
     [(Any) <String>]: This indicates any property can be added to this object.
   [IdentityType <IdentityType?>]: The identity type.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksaccessconnector
+https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksaccessconnector
 #>
 function New-AzDatabricksAccessConnector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IAccessConnector])]
@@ -319,7 +319,7 @@ VIRTUALNETWORKPEERINGPARAMETER <IVirtualNetworkPeering>: Peerings in a VirtualNe
   [RemoteVirtualNetworkId <String>]: The Id of the remote virtual network.
   [UseRemoteGateway <Boolean?>]: If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksvnetpeering
+https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksvnetpeering
 #>
 function New-AzDatabricksVNetPeering {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering])]
@@ -526,7 +526,7 @@ PARAMETER <IWorkspace>: Information about workspace.
   [UiDefinitionUri <String>]: The blob URI where the UI definition file is located.
   [VnetAddressPrefixValue <String>]: The value which should be used for this field.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
+https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
 #>
 function New-AzDatabricksWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace])]
@@ -876,7 +876,7 @@ Creates vNet Peering for workspace.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/set-azdatabricksvnetpeering
+https://learn.microsoft.com/powershell/module/az.databricks/set-azdatabricksvnetpeering
 #>
 function Set-AzDatabricksVNetPeering {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering])]
@@ -1101,7 +1101,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/update-azdatabricksworkspace
+https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksworkspace
 #>
 function Update-AzDatabricksWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace])]
@@ -1247,3 +1247,4 @@ end {
     }
 } 
 }
+

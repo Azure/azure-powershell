@@ -23,3 +23,4 @@ Describe 'Get-AzDatabricksOutboundNetworkDependenciesEndpoint' {
         } | Should -Not -Throw
     }
 }
+

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/powershell/module/az.databricks/get-azdatabricksvnetpeering
+online version: https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksvnetpeering
 schema: 2.0.0
 ---
 
@@ -215,4 +215,5 @@ To create the parameters described below, construct a hash table containing the 
   - `[WorkspaceName <String>]`: The name of the workspace.
 
 ## RELATED LINKS
+
 

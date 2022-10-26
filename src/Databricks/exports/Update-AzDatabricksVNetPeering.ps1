@@ -43,7 +43,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity parameter.
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/update-azdatabricksvnetpeering
+https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksvnetpeering
 #>
 function Update-AzDatabricksVNetPeering {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering])]
@@ -251,3 +251,4 @@ end {
     }
 } 
 }
+

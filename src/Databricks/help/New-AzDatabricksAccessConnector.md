@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksaccessconnector
+online version: https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksaccessconnector
 schema: 2.0.0
 ---
 
@@ -219,4 +219,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
+
 

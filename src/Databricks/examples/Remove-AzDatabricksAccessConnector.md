@@ -18,3 +18,4 @@ Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name da
 
 This command deletes the azure databricks accessConnector by pipeline
 
+

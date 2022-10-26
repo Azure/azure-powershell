@@ -22,3 +22,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PowerShell
         public static string NormalizeNewLines(this string value) => value.ReplaceNewLines("\u00A0").Replace("\u00A0", Environment.NewLine);
     }
 }
+

@@ -13,3 +13,4 @@ Remove-AzDatabricksWorkspace -InputObject $dbr
 
 This command removes a Databricks workspace from a resource group.
 
+

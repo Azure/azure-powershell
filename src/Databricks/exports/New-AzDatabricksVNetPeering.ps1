@@ -25,7 +25,7 @@ New-AzDatabricksVNetPeering -Name vnetpeering-t01 -WorkspaceName databricks-test
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksvnetpeering
+https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksvnetpeering
 #>
 function New-AzDatabricksVNetPeering {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering])]
@@ -246,3 +246,4 @@ end {
     }
 } 
 }
+
