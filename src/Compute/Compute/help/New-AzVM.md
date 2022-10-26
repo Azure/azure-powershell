@@ -318,6 +318,38 @@ New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig -DisableIntegri
 
 This example Creates a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
 
+### Example 8: Creating a VM for Trusted Launch SecurityType, then enabling/diasbling SecureBoot and Vtpm flags.
+```powershell
+$rgname = "rgname";
+$loc = "eastus";
+ 
+New-AzResourceGroup -Name $rgname -Location $loc -Force;    
+
+# VM Profile & Hardware       
+$domainNameLabel1 = "d1" + $rgname;
+$vmsize = 'Standard_D4s_v3';
+$vmname1 = $rgname + 'V';
+$imageName = "Win2016DataCenterGenSecond";
+$disable = $false;
+$enable = $true;
+
+$password = Get-PasswordForVM;
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+$user = "admin01";
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+# VM creation using Simple parameterset
+New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Size $vmsize -Image $imageName -DomainNameLabel $domainNameLabel1 -SecurityType "TrustedLaunch";
+$vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+
+# Verify Values
+#$vm1.SecurityProfile.SecurityType "TrustedLaunch";
+#$vm1.SecurityProfile.UefiSettings.VTpmEnabled $true;
+#$vm1.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+```
+
+This example Creates a new VM (Simple Parameterset) with the Trusted Launch Security Type and sets flags SecureBoot and Vtpm as True by default.
+
 ## PARAMETERS
 
 ### -AddressPrefix

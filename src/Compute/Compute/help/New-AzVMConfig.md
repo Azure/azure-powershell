@@ -60,6 +60,65 @@ The second command creates a virtual machine object, and then stores it in the $
 The command assigns a name and size to the virtual machine.
 The virtual machine belongs to the availability set stored in $AvailabilitySet.
 
+### Example 2: Create a VM using Virtual Machine Config object for TrustedLaunch Secuirty Type, flags Vtpm  and Secure Boot are set to True by default.
+```powershell
+$rgname = "rgname";
+$loc = "eastus";
+
+New-AzResourceGroup -Name $rgname -Location $loc -Force;    
+ 
+# VM Profile & Hardware
+$domainNameLabel = "d1" + $rgname;
+$vmsize = 'Standard_D4s_v3';
+$vmname = $rgname + 'Vm';
+$securityType_TL = "TrustedLaunch";
+$vnetname = "myVnet";
+$vnetAddress = "10.0.0.0/16";
+$subnetname = "slb" + $rgname;
+$subnetAddress = "10.0.2.0/24";
+$OSDiskName = $vmname + "-osdisk";
+$NICName = $vmname+ "-nic";
+$NSGName = $vmname + "-NSG";
+$OSDiskSizeinGB = 128;
+$PublisherName = "MicrosoftWindowsServer";
+$Offer = "WindowsServer";
+$SKU = "2016-datacenter-gensecond";
+$disable = $false;
+$enable = $true;
+$extDefaultName = "GuestAttestation";
+$vmGADefaultIDentity = "SystemAssigned";
+
+# Credential
+$password = Get-PasswordForVM;
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+$user = "admin01";
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+# Network resources
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+$vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgname -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+$nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+# Configure Values using VMConfig Object
+$vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
+Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
+Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+  
+# VM Creation using VMConfig for Trusted Launch SecurityType
+$vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType_TL;
+New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+
+# Validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
+#$vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
+#$vm.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+```
+
+This example creats a VM using VmConfig object for Trusted Launch SecurityType and vlaidates flags Vtpm and SecureBoot to be true (under this setting by default)
+
 ## PARAMETERS
 
 ### -AvailabilitySetId
