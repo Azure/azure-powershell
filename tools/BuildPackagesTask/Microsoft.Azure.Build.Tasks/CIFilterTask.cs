@@ -397,13 +397,20 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             
             FilterTaskResult.PhaseInfo = influencedModuleInfo;
 
-            influencedModuleInfo[string.Format("{0}-module", BUILD_PHASE)] = new HashSet<string>(influencedModuleInfo[BUILD_PHASE].Select(GetModuleNameFromPath).Where(x => x != null));
-            influencedModuleInfo[string.Format("{0}-module", TEST_PHASE)] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Select(GetModuleNameFromPath).Where(x => x != null));
             if (!Directory.Exists(config.ArtifactPipelineInfoFolder))
             {
                 Directory.CreateDirectory(config.ArtifactPipelineInfoFolder);
             }
-            File.WriteAllText(Path.Combine(config.ArtifactPipelineInfoFolder, "CIPlan.json"), JsonConvert.SerializeObject(influencedModuleInfo, Formatting.Indented));
+            Dictionary<string, HashSet<string>> CIPlan = new Dictionary<string, HashSet<string>>
+            {
+                [BUILD_PHASE] = new HashSet<string>(influencedModuleInfo[BUILD_PHASE].Select(GetModuleNameFromPath).Where(x => x != null)),
+                [ANALYSIS_BREAKING_CHANGE_PHASE] = influencedModuleInfo[ANALYSIS_BREAKING_CHANGE_PHASE],
+                [ANALYSIS_DEPENDENCY_PHASE] = influencedModuleInfo[ANALYSIS_DEPENDENCY_PHASE],
+                [ANALYSIS_HELP_PHASE] = influencedModuleInfo[ANALYSIS_HELP_PHASE],
+                [ANALYSIS_SIGNATURE_PHASE] = influencedModuleInfo[ANALYSIS_SIGNATURE_PHASE],
+                [TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Select(GetModuleNameFromPath).Where(x => x != null))
+            };
+            File.WriteAllText(Path.Combine(config.ArtifactPipelineInfoFolder, "CIPlan.json"), JsonConvert.SerializeObject(CIPlan, Formatting.Indented));
 
             return true;
         }

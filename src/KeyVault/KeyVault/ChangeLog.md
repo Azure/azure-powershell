@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Bumped API version to 2022-07-01
+* Added `Undo-AzKeyVaultManagedHsm` to recover deleted managed HSM
 
 ## Version 4.8.0
 * Fixed the exception content swallowed issue when exception.Response is null [#19531]

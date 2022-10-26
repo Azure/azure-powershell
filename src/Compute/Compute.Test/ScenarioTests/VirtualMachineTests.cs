@@ -237,6 +237,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VirtualMachineRemoveExtension()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineRemoveExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGetHost()
         {
             TestRunner.RunTestScript("Test-VirtualMachineGetHost");

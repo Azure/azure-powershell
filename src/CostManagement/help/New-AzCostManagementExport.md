@@ -347,7 +347,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport
+### Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport
 
 ## NOTES
 

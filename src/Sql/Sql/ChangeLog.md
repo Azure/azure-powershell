@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* StorageContainerSasToken parameter in the `Start-AzSqlInstanceDatabaseLogReplay` cmdlet is now optional
 
 ## Version 4.0.0
 * Added new fields to the `Get-AzSqlInstanceDatabaseLogReplay` cmdlet
