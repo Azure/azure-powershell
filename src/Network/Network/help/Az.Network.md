@@ -395,6 +395,9 @@ Gets a Azure Firewall.
 ### [Get-AzFirewallFqdnTag](Get-AzFirewallFqdnTag.md)
 Gets the available Azure Firewall Fqdn Tags.
 
+### [Get-AzFirewallLearnedIpPrefix](Get-AzFirewallLearnedIpPrefix.md)
+Gets firewall auto learned ip prefixes.
+
 ### [Get-AzFirewallPolicy](Get-AzFirewallPolicy.md)
 Gets a Azure Firewall Policy
 
