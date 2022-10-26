@@ -12,22 +12,19 @@ Retrieves  a hub route table resource associated with a VirtualHub.
 
 ## SYNTAX
 
-### ByVirtualHubName (Default)
-```
-Get-AzVHubRouteTable -ResourceGroupName <String> -HubName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+### ByVHubRouteTableName (Default)
+```powershell
+Get-AzVHubRouteTable -ResourceGroupName <String> -ParentResourceName <String> -Name <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
-```
-Get-AzVHubRouteTable -VirtualHub <PSVirtualHub> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+```powershell
+Get-AzVHubRouteTable -Name <String> -VirtualHub <PSVirtualHub> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByVirtualHubResourceId
-```
-Get-AzVHubRouteTable -ParentResourceId <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+### ByVHubRouteTableResourceId
+```powershell
+Get-AzVHubRouteTable -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,11 +102,26 @@ This command lists all the hub route tables in the specified VirtualHub.
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -120,13 +132,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HubName
-The parent resource name.
+### -Name
+The resource name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByVirtualHubName
-Aliases: VirtualHubName, ParentVirtualHubName, ParentResourceName
+Type: String
+Parameter Sets: ByVHubRouteTableName, ByVirtualHubObject
+Aliases: ResourceName, VHubRouteTableName
 
 Required: True
 Position: Named
@@ -135,33 +147,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The resource name.
+### -ParentObject
+The parent virtual hub object of this resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ResourceName, VirtualHubRouteTableName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: True
-```
-
-### -ParentResourceId
-The parent resource id.
-
-```yaml
-Type: System.String
-Parameter Sets: ByVirtualHubResourceId
-Aliases: VirtualHubId, ParentVirtualHubId
+Type: PSVirtualHub
+Parameter Sets: ByVirtualHubObject
+Aliases: ParentVirtualHub, VirtualHub
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ParentResourceName
+The parent resource name.
+
+```yaml
+Type: String
+Parameter Sets: ByVHubRouteTableName
+Aliases: VirtualHubName, ParentVirtualHubName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -169,8 +181,8 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByVirtualHubName
+Type: String
+Parameter Sets: ByVHubRouteTableName
 Aliases:
 
 Required: True
@@ -180,18 +192,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualHub
-The parent resource.
+### -ResourceId
+The resource id of the vhubroutetable resource to Get.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
-Parameter Sets: ByVirtualHubObject
-Aliases: ParentObject, ParentVirtualHub
+Type: String
+Parameter Sets: ByVHubRouteTableResourceId
+Aliases: VHubRouteTableId
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

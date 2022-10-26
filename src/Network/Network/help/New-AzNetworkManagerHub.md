@@ -26,13 +26,11 @@ The **New-AzNetworkManagerHub** cmdlet creates a network manager hub.
 ```powershell
 New-AzNetworkManagerHub -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup" -ResourceType "Microsoft.Network/virtualNetworks"
 ```
-
 ```output
 ResourceId                                                                                                                                               ResourceType
 ----------                                                                                                                                               ------------
 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup Microsoft.Network/virtualNetworks
 ```
-
 Creates a network manager virtual network hub.
 
 ## PARAMETERS
@@ -41,7 +39,7 @@ Creates a network manager virtual network hub.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -56,7 +54,7 @@ Accept wildcard characters: False
 Resource Id
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +69,7 @@ Accept wildcard characters: False
 Resource Type
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,5 +94,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [New-AzNetworkManagerConnectivityConfiguration](./New-AzNetworkManagerConnectivityConfiguration.md)

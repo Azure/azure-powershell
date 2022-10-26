@@ -113,7 +113,6 @@ EgressBytesTransferred  : 91334484
 IngressBytesTransferred : 100386089
 TunnelConnectionStatus  : []
 ```
-
 ### Example 3: Add/Remove natRules to an existing VirtualNetworkGatewayConnection
 ```powershell
 $conn = Get-AzVirtualNetworkGatewayConnection -Name 1 -ResourceGroupName myRG
@@ -160,7 +159,6 @@ EgressNatRules          : [
                             }
                           ]
 ```
-
 The first command gets a virtual network gateway connection named 1 that belongs to resource group myRG and stores it to the variable named $conn.
 The second command gets the virtual network gateway natRule named natRule1 and stores it to the variable named $egressNatrule.
 The third command sets virtual network gateway connection with removed all IngressNatRules and add egressNatrule into EgressNatRules.
@@ -174,6 +172,21 @@ Run cmdlet in the background
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -216,7 +229,7 @@ Accept wildcard characters: False
 Dead Peer Detection Timeout of the connection in seconds.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -374,21 +387,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
