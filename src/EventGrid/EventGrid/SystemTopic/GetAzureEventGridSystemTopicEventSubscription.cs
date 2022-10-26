@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
             if (!string.IsNullOrEmpty(this.EventSubscriptionName))
             {
-                EventSubscription eventSubscription = this.Client.GetSystemTopicEventSubscriptiion(this.ResourceGroupName, this.SystemTopicName, this.EventSubscriptionName);
+                EventSubscription eventSubscription = this.Client.GetSystemTopicEventSubscription(this.ResourceGroupName, this.SystemTopicName, this.EventSubscriptionName);
                 PSEventSubscription psEventSubscription;
 
                 if (includeFullEndpointUrl &&

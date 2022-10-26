@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -87,8 +88,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         {
             _cmdlet.TargetResourceScope = new[] { "resourceId1", "resourceId2" };
             _cmdlet.ActionGroup = new[] {
-                new ActivityLogAlertActionGroup("actionGroupId1", null),
-                new ActivityLogAlertActionGroup("actionGroupId2", null)
+                new Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup("actionGroupId1", null),
+                new Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup("actionGroupId2", null)
             };
 
             _cmdlet.ExecuteCmdlet();
@@ -112,8 +113,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         {
             _cmdlet.TargetResourceScope = new[] { "resourceId1", "resourceId2" };
             _cmdlet.ActionGroup = new[] {
-                new ActivityLogAlertActionGroup("actionGroupId1", new Dictionary<string, string> {{"key1", "value1"}}),
-                new ActivityLogAlertActionGroup("actionGroupId2", null)
+                new Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup("actionGroupId1", new Dictionary<string, string> {{"key1", "value1"}}),
+                new Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup("actionGroupId2", null)
             };
 
             _cmdlet.ActionGroupId = new[] { "actionGroupId1", "actionGroupId3" };

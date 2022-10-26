@@ -25,12 +25,12 @@ Lists all of the available NetworkFunction Rest API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IOperation
 .Link
 https://docs.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctionoperation
 #>
 function Get-AzNetworkFunctionOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

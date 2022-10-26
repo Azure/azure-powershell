@@ -3274,6 +3274,99 @@ function Test-VirtualMachineGetStatusWithHealhtExtension
 
 <#
 .SYNOPSIS
+Test Virtual Machines's Remove Extension.
+Description:
+This test creates a virtual machine and adds a vm health extension. It then removes the health Extension and tests Remove-AzVMExtension.
+#>
+function Test-VirtualMachineRemoveExtension
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+       # Common
+       $loc = Get-ComputeVMLocation;
+       $loc = $loc.Replace(' ', '');
+
+       New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+       # VM Profile & Hardware
+       $vmname = 'vm' + $rgname;
+
+       # OS & Image
+       $username = "admin01";
+       $password = $PLACEHOLDER | ConvertTo-SecureString -AsPlainText -Force;
+       $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password;
+       $domainNameLabel = "d" + $rgname;
+
+       # Virtual Machine
+       New-AzVM -ResourceGroupName $rgname -Location $loc -DomainNameLabel $domainNameLabel -Name $vmname -Credential $cred;
+
+       # Adding health extension on VM
+       $publicConfig = @{"protocol" = "http"; "port" = 80; "requestPath" = "/healthEndpoint"};
+       $extensionName = "myHealthExtension";
+       $extensionType = "ApplicationHealthWindows";
+       $publisher = "Microsoft.ManagedServices";
+       Set-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Publisher $publisher -Settings $publicConfig -ExtensionType $extensionType -ExtensionName $extensionName -Loc $loc -TypeHandlerVersion "1.0";
+
+       # Get VM
+       $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname -Status;
+
+       #Check for VmHealth Extension after removal
+       Remove-AzVMExtension -ResourceGroupName $rgname -Name $extensionName -VMName $vmname -Force;
+       Assert-ThrowsContains {
+            Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extensionName -Status; } `
+            "was not found";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machines
+#>
+function Test-VirtualMachineGetHost
+{
+    param ($loc)
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
+        $loc = $loc.Replace(' ', '');
+        
+        # Creating the resource group
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Hostgroup and Hostgroupname
+        $hostGroupName = $rgname + "HostGroup";
+        New-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName -Location $loc -PlatformFaultDomain 1 -Zone "2" -Tag @{key1 = "val1"};
+
+        $Sku = "ESv3-Type1";
+        $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -Name $hostGroupName;
+        $hostName = $rgname + "Host";
+        New-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Location $loc -Sku $Sku -Tag @{key1  = "val2"};
+        $dedicatedHost = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        $host2 = Get-AzHost -ResourceId $dedicatedHost.Id;
+        
+        Assert-NotNull $host2.Id;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machines
 #>
 function Test-VirtualMachineGetStatusWithAssignedHost
