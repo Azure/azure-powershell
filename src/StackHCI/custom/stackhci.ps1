@@ -4886,7 +4886,7 @@ function Install-DeployModule {
     )
 
     if(Get-Module | Where-Object { $_.Name -eq $ModuleName }){
-        Write-InfoLog("$ModuleName is loaded already ...")
+        Write-InfoLog("$ModuleName is loaded already...")
     }
     else{
         Write-InfoLog("$ModuleName is not loaded, downloading...")
