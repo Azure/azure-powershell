@@ -27,8 +27,8 @@ Add-AzLoadBalancerInboundNatRuleConfig -LoadBalancer <PSLoadBalancer> -Name <Str
 Add-AzLoadBalancerInboundNatRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>]
  [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP]
  [-EnableTcpReset] [-FrontendIpConfigurationId <String>] [-FrontendPortRangeStart <Int32>]
- [-FrontendPortRangeEnd <Int32>] [-BackendAddressPoolId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-FrontendPortRangeEnd <Int32>] [-BackendAddressPoolId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,36 +59,6 @@ The second command uses the pipeline operator to pass the load balancer in $slb 
 The last command sets the configuration to the loadbalancer, if you don't perform Set-AzLoadBalancer, your changes will not be applied to the loadbalancer.
 
 ## PARAMETERS
-
-### -BackendAddressPool
-Specifies the backend address pool to associate with an inbound NAT rule configuration.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
-Parameter Sets: SetByResource
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -BackendAddressPoolId
-Specifies the ID of a BackendAddressPool object to associate with an inbound NAT rule configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: SetByResourceId
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -BackendPort
 Specifies the backend port for traffic matched by a rule configuration.
@@ -195,36 +165,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -FrontendPortRangeEnd
-Specifies the last port number in the range of external ports that is used by a rule configuration. Acceptable values range between 1 and 65535.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -FrontendPortRangeStart
-Specifies the first port number in the range of external ports that is used by a rule configuration. Acceptable values range between 1 and 65534.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -IdleTimeoutInMinutes
 Specifies the length of time, in minutes, that the state of conversations is maintained in a load balancer.
 
@@ -278,6 +218,66 @@ The acceptable values for this parameter are: Tcp or Udp.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FrontendPortRangeStart
+Specifies the first port number in the range of external ports that is used by a rule configuration. Acceptable values range between 1 and 65534.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FrontendPortRangeEnd
+Specifies the last port number in the range of external ports that is used by a rule configuration. Acceptable values range between 1 and 65535.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BackendAddressPool
+Specifies the backend address pool to associate with an inbound NAT rule configuration.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
+Parameter Sets: SetByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BackendAddressPoolId
+Specifies the ID of a BackendAddressPool object to associate with an inbound NAT rule configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
 Aliases:
 
 Required: False

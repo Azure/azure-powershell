@@ -33,7 +33,6 @@ WorkspaceSettings : {
                       "WorkspaceResourceId": "MyWSResourceId"
                     }
 ```
-
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -14,7 +14,8 @@ Lists NetworkManager Active Security Admin Rules in network manager.
 
 ```
 Get-AzNetworkManagerActiveSecurityAdminRule -NetworkManagerName <String> -ResourceGroupName <String>
- [-Region <String[]>] [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Region <String[]>] [-SkipToken <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +28,6 @@ The **Get-AzNetworkManagerActiveSecurityAdminRule** cmdlet lists NetworkManager 
 $regions = @("centraluseuap")  
 Get-AzNetworkManagerActiveSecurityAdminRule -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -Region $regions -SkipToken "FakeSkipToken"
 ```
-
 ```output
 Value     : [
               {
@@ -85,7 +85,6 @@ Value     : [
             ]
 SkipToken :
 ```
-
 Lists NetworkManager Active Security Admin Rules in network manager for region centraluseuap.
 
 ## PARAMETERS
@@ -94,7 +93,7 @@ Lists NetworkManager Active Security Admin Rules in network manager for region c
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -109,7 +108,7 @@ Accept wildcard characters: False
 The network manager name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +123,7 @@ Accept wildcard characters: True
 List of regions.
 
 ```yaml
-Type: System.String[]
+Type: System.String[]	
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +138,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +153,7 @@ Accept wildcard characters: True
 SkipToken.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

@@ -12,28 +12,24 @@ Delete a routing intent resource associated with a VirtualHub.
 
 ## SYNTAX
 
-### ByRoutingInctentName (Default)
-```
-Remove-AzRoutingIntent -ResourceGroupName <String> -ParentResourceName <String> -Name <String> [-AsJob]
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+### ByRoutingIntentName (Default)
+```powershell
+Remove-AzRoutingIntent -ResourceGroupName <String> -ParentResourceName <String> -Name <String> [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
-```
-Remove-AzRoutingIntent -Name <String> -ParentObject <PSVirtualHub> [-AsJob] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByRoutingInctentObject
-```
-Remove-AzRoutingIntent -InputObject <PSRoutingIntent> [-AsJob] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```powershell
+Remove-AzRoutingIntent -Name <String> -VirtualHub <PSVirtualHub> [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByRoutingInctentResourceId
+### ByRoutingIntentObject
+```powershell
+Remove-AzRoutingIntent [-InputObject <PSRoutingIntent>] [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
-Remove-AzRoutingIntent -ResourceId <String> [-AsJob] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+### ByRoutingIntentResourceId
+```powershell
+Remove-AzRoutingIntent -ResourceId <String> [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +51,7 @@ This command deletes the routing intent of the virtual hub.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -85,7 +81,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -100,8 +96,8 @@ Accept wildcard characters: False
 The RoutingIntent resource to remove.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRoutingIntent
-Parameter Sets: ByRoutingInctentObject
+Type: PSRoutingIntent
+Parameter Sets: ByRoutingIntentObject
 Aliases: RoutingIntent
 
 Required: True
@@ -115,8 +111,8 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByRoutingInctentName, ByVirtualHubObject
+Type: String
+Parameter Sets: ByRoutingIntentName, ByVirtualHubObject
 Aliases: ResourceName, RoutingIntentName
 
 Required: True
@@ -130,14 +126,14 @@ Accept wildcard characters: False
 The parent virtual hub object of this resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
+Type: PSVirtualHub
 Parameter Sets: ByVirtualHubObject
-Aliases: VirtualHub, ParentVirtualHub
+Aliases: ParentVirtualHub, VirtualHub
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -145,8 +141,8 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByRoutingInctentName
+Type: String
+Parameter Sets: ByRoutingIntentName
 Aliases: VirtualHubName, ParentVirtualHubName
 
 Required: True
@@ -160,7 +156,7 @@ Accept wildcard characters: False
 Returns an object representing the item on which this operation is being performed.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -175,8 +171,8 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByRoutingInctentName
+Type: String
+Parameter Sets: ByRoutingIntentName
 Aliases:
 
 Required: True
@@ -190,8 +186,8 @@ Accept wildcard characters: False
 The resource id of the RoutingIntent resource to remove.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByRoutingInctentResourceId
+Type: String
+Parameter Sets: ByRoutingIntentResourceId
 Aliases: RoutingIntentId
 
 Required: True
@@ -205,7 +201,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -221,7 +217,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

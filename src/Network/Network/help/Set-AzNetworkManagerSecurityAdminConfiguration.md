@@ -13,8 +13,9 @@ Updates a network manager security admin configuration.
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerSecurityAdminConfiguration -InputObject <PSNetworkManagerSecurityAdminConfiguration>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzNetworkManagerSecurityAdminConfiguration
+ -InputObject <PSNetworkManagerSecurityAdminConfiguration> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +29,6 @@ $NetworkManagerSecurityConfiguration = Get-AzNetworkManagerSecurityAdminConfigur
 $NetworkManagerSecurityConfiguration.applyOnNetworkIntentPolicyBasedServices = @("None")
 Set-AzNetworkManagerSecurityAdminConfiguration -InputObject $NetworkManagerSecurityConfiguration
 ```
-
 ```output
 SecurityType                                :
 ApplyOnNetworkIntentPolicyBasedServices     : {None}
@@ -53,7 +53,6 @@ Name                                        : psSecurityAdminConfig
 Etag                                        :
 Id                                          : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig
 ```
-
 Updates a network manager security admin configuration apply on network intent policy based services property.
 
 ## PARAMETERS
@@ -62,7 +61,7 @@ Updates a network manager security admin configuration apply on network intent p
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -77,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -92,7 +91,7 @@ Accept wildcard characters: False
 The NetworkManagerSecurityAdminConfiguration
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityAdminConfiguration
+Type: PSNetworkManagerSecurityAdminConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +106,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -123,7 +122,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -150,7 +149,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzNetworkManagerSecurityAdminConfiguration](./Get-AzNetworkManagerSecurityAdminConfiguration.md)
 
 [New-AzNetworkManagerSecurityAdminConfiguration](./New-AzNetworkManagerSecurityAdminConfiguration.md)

@@ -7,29 +7,23 @@ schema: 2.0.0
 
 # Disconnect-AzVirtualNetworkGatewayVpnConnection
 
-## SYNOPSIS
+## SYNOPSIS 
 Disconnect given connected vpn client connections with a given virtual network gateway.
 
 ## SYNTAX
-
-### ByFactoryName (Default)
+### ByVpnGatewayName (Default)
 ```
-Disconnect-AzVirtualNetworkGatewayVpnConnection -VirtualNetworkGatewayName <String> -ResourceGroupName <String>
- -VpnConnectionId <String[]> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceName <String> -ResourceGroupName <String> -InputObject <PSVirtualNetworkGateway> -ResourceId <ResourceId> -VpnConnectionId <VpnConnectionIds> [-AsJob] [<CommonParameters>]
 ```
 
-### ByResourceId
+### ByVpnGatewayObject
 ```
-Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceId <String> -VpnConnectionId <String[]> [-AsJob]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Disconnect-AzVirtualNetworkGatewayVpnConnection -InputObject <PSP2SVpnGateway> -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
 ```
 
-### ByFactoryObject
+### ByVpnGatewayResourceId
 ```
-Disconnect-AzVirtualNetworkGatewayVpnConnection [-InputObject <PSVirtualNetworkGateway>]
- -VpnConnectionId <String[]> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceId <String> -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,73 +38,28 @@ Disconnect-AzVirtualNetworkGatewayVpnConnection -ResourceName vnet-gw -ResourceG
 
 ## PARAMETERS
 
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Virtual network gateway object
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
-Parameter Sets: ByFactoryObject
-Aliases: VirtualNetworkGateway
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns an object representing the item on which this operation is being performed.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Virtual network gateway resource group's name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFactoryName
+Parameter Sets: ByVpnGatewayName
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceName
+Virtual network gateway name
+
+```yaml
+Type: System.String
+Parameter Sets: ByVpnGatewayName
+Aliases: VirtualNetworkGatewayName
 
 Required: True
 Position: Named
@@ -124,23 +73,8 @@ Virtual network gateway resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
-Aliases: VirtualNetworkGatewayId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -VirtualNetworkGatewayName
-Virtual network gateway name
-
-```yaml
-Type: System.String
-Parameter Sets: ByFactoryName
-Aliases: ResourceName
+Parameter Sets: ByVpnGatewayResourceId
+Aliases: ResourceId
 
 Required: True
 Position: Named
@@ -153,9 +87,9 @@ Accept wildcard characters: False
 Vpn Connection Ids
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: VpnConnectionId
 
 Required: True
 Position: Named
@@ -164,28 +98,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -InputObject
+Virtual network gateway object
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Parameter Sets: ByVpnGatewayObject
+Aliases: VirtualNetworkGateway
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+### -AsJob
+Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: wi
+Aliases:
 
 Required: False
 Position: Named
