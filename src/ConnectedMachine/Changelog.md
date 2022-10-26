@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue with Connect-AzConnectedMachine throwing errors when onboarding multiple machines at once
 
 ## Version 0.4.0
 * Updated the API version to stable 2022-03-10

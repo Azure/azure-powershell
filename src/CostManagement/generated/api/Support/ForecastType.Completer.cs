@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Usage".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Usage", "Usage", global::System.Management.Automation.CompletionResultType.ParameterValue, "Usage");
+                yield return new global::System.Management.Automation.CompletionResult("'Usage'", "Usage", global::System.Management.Automation.CompletionResultType.ParameterValue, "Usage");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ActualCost".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ActualCost", "ActualCost", global::System.Management.Automation.CompletionResultType.ParameterValue, "ActualCost");
+                yield return new global::System.Management.Automation.CompletionResult("'ActualCost'", "ActualCost", global::System.Management.Automation.CompletionResultType.ParameterValue, "ActualCost");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AmortizedCost".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AmortizedCost", "AmortizedCost", global::System.Management.Automation.CompletionResultType.ParameterValue, "AmortizedCost");
+                yield return new global::System.Management.Automation.CompletionResult("'AmortizedCost'", "AmortizedCost", global::System.Management.Automation.CompletionResultType.ParameterValue, "AmortizedCost");
             }
         }
     }

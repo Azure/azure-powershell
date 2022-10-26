@@ -33,6 +33,7 @@ The **Get-AzNetworkManagerSecurityAdminConfiguration** cmdlet gets a security ad
 ```powershell
 Get-AzNetworkManagerSecurityAdminConfiguration  -Name "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
 ```
+
 ```output
 Name               : TestSecConfig
 Description        : DESCription
@@ -52,12 +53,14 @@ SystemData         : {
                        "LastModifiedAt": "2021-10-18T04:05:59"
                      }
 ```
+
 Get a security admin configuration.
 
 ### Example 2
 ```powershell
 Get-AzNetworkManagerSecurityAdminConfiguration -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
 ```
+
 ```output
 Name               : TestSecConfig
 Description        : DESCription
@@ -95,6 +98,7 @@ SystemData         : {
                        "LastModifiedAt": "2021-10-18T04:05:59"
                      }
 ```
+
 Gets all security admin configurations on a network manager.
 
 ## PARAMETERS
@@ -103,7 +107,7 @@ Gets all security admin configurations on a network manager.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -118,7 +122,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -130,7 +134,7 @@ Accept wildcard characters: True
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
 Aliases: ResourceName
 
@@ -145,7 +149,7 @@ Accept wildcard characters: True
 The network manager name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -160,7 +164,7 @@ Accept wildcard characters: True
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -185,6 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzNetworkManagerSecurityAdminConfiguration](./New-AzNetworkManagerSecurityAdminConfiguration.md)
 
 [Remove-AzNetworkManagerSecurityAdminConfiguration](./Remove-AzNetworkManagerSecurityAdminConfiguration.md)

@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 10, PropertyName = "terminateTLS")]
         public bool? TerminateTLS { get; set; }
 
+        [JsonProperty("description")]
+        public string Description { get; set; }
 
         [JsonIgnore]
         public string ProtocolsText
