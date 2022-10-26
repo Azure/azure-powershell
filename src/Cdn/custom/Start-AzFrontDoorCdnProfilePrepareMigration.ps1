@@ -172,8 +172,9 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
                 $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
                 $hasWafpolicy = $false
+                $existManagedMigrateFromWaf = $false
                 $allWafPolicies = @()
-                # $frontDoorInfos[0].WebApplicationFirewallPolicyLink
+
                 foreach ($info in $frontDoorInfos) {
                     if($info.WebApplicationFirewallPolicyLink) {
                         $hasWafpolicy = $true
@@ -188,23 +189,31 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 Write-Debug("Waf Policy parameter ok now and enter validation the format of waf Id.")
 
                 # 2. Validate the format of the waf policy and the migrateFrom.Id whether exists in the profile.
+                # 3. Validate the Sku argument, if a managed waf associated, then the profile only can migrated to Premium tier. 
                 # /subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******
                 foreach ($policy in $wafPolicies) {
                     $migrateFromId = $policy.MigratedFromId
-                    Write-Debug("MigratedFromId, " + $migrateFromId)
-                   
                     ParseWafPolicyResourceId -WafResourceId $migrateFromId
-                    Write-Debug("test1 Done")
-
                     if ($allWafPolicies -NotContains $migrateFromId)
                     {
                         throw 'Waf policy: $policy.MigratedFromId, not exists in the profile. Waf policy provided should exist in the profile.'
                     }
+
+                    # Validate the Sku argument 
+                    $migrateFromWafPreperty = GetMigrateFromWafProperty -MigrateWafResourceId $migrateFromId
+                    if ($migrateFromWafPreperty.ManagedRules) {
+                        $existManagedMigrateFromWaf = $true
+                        if (${SkuName} -ne "Premium_AzureFrontDoor") {
+                            Throw 'Please check parameter SkuName: ${SkuName}. The AFD (classic) instance has managed WAF rules associated, and it can only be migrated to Premium tier. If you want to migrate to Standard tier, please remove the association on AFD (classic) and migrate afterwards '
+                        }
+                    }
+
+                    # Validate the format of the migrateToId
                     ParseWafPolicyResourceId -WafResourceId $policy.MigratedToId
                 }
 
                 # 4. Validate whether MigratedToId policy already exists in the subsrciption or not; If not existed, then create a new waf policy.
-                # 5. Validate the Sku
+                # 5. If exists, validate the MigrateToId waf policy whether meets the requirements.
                 foreach ($policy in $wafPolicies) {
                     $migrateToWafId = $policy.MigratedToId
                     $migrateToWafResourceGroup = $migrateToWafId.split("/")[4]
@@ -212,18 +221,24 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
 
                     try {
                         $existed = Get-AzFrontDoorWafPolicy -ResourceGroupName $migrateToWafResourceGroup -Name $migrateToWafName
-                        
-                        # Validate the Sku
-                        
                     }
+                    # Not exists, create a new waf policy. Corrpesonding to "Copy to a new one" on Portal side.
                     catch {
-                        $migrateFromWafId = $policy.MigratedFromId
-                        $migrateFromWafResourceGroup = $migrateFromWafId.split("/")[4]
-                        $migrateFromWafName = $migrateFromWafId.split("/")[8]
-                        $migrateFromWafProperty = Get-AzFrontDoorWafPolicy -ResourceGroupName $migrateFromWafResourceGroup -Name $migrateFromWafName
+                        # $migrateFromWafId = $policy.MigratedFromId
+                        # $migrateFromWafResourceGroup = $migrateFromWafId.split("/")[4]
+                        # $migrateFromWafName = $migrateFromWafId.split("/")[8]
+                        # $migrateFromWafProperty = Get-AzFrontDoorWafPolicy -ResourceGroupName $migrateFromWafResourceGroup -Name $migrateFromWafName
 
                         # Create a new waf policy. 
-                        CreatePremiumWafPolicy -ResourceGroupName $migrateToWafResourceGroup -Name $migrateToWafName -WafProperty $migrateFromWafProperty
+                        $migrateFromWafPreperty = GetMigrateFromWafProperty -MigrateWafResourceId $policy.MigratedFromId
+                        CreateNewWafPolicy -ResourceGroupName $migrateToWafResourceGroup -Name $migrateToWafName -WafProperty $migrateFromWafProperty
+                    }
+
+                    # Corrpesonding to "Select an exsiting one" on Portal side.
+                    if ($existed -and $existManagedMigrateFromWaf) { 
+                        if (!$existed.ManagedRules) {
+                            Throw 'Please check parameter migrateToId: $migrateToWafId. The AFD (classic) instance has managed WAF rules associated, and it can only be migrated to Premium tier.'
+                        }
                     }
                 }
             }
@@ -237,19 +252,29 @@ function ParseWafPolicyResourceId {
     param (
         [string]$WafResourceId
     )
+
     Write-Debug("Validate the resource ID")
     $array = $WafResourceId.ToLower().split('/')
-    Write-Debug("array: " + $array)
     if ($array.Length -ne 9){
-        throw 'On stage one: Format of WebApplicationFirewallMapping is not correct, please check the parameter.'
+        throw "The Format of WebApplicationFirewallMapping is supposed to be like '/subscriptions/******/resourceGroups/******/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******'"
     }
     if ($array[1] -gt "subscriptions" -or $array[3] -gt "resourcegroups" -or $array[5] -gt "providers" -or $array[6] -gt "microsoft.network" -or $array[7] -gt "frontdoorwebapplicationfirewallpolicies") {
-        throw 'On stage two: Format of WebApplicationFirewallMapping is not correct, please check the parameter.'
+        throw "The Format of WebApplicationFirewallMapping is supposed to be like '/subscriptions/******/resourceGroups/******/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******'"
     }
 }
 
+function GetMigrateWafProperty {
+    param (
+        [string]$MigrateWafResourceId
+    )
+
+    Write-Debug("Get the property of the ID")
+    return Get-AzFrontDoorWafPolicy -ResourceGroupName $MigrateWafResourceId.split("/")[4] -Name $MigrateWafResourceId.split("/")[8]
+}
+
+
 # Corresponding to "Copy to a new waf policy"
-function CreateWafPolicy {
+function CreateNewWafPolicy {
     param (
         [string]$ResourceGroupName,
         [string]$Name,
@@ -261,7 +286,38 @@ function CreateWafPolicy {
         $skuName = "Premium_AzureFrontDoor"
     }
 
-    # Complete command
-    # New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku "Premium_AzureFrontDoor" -EnabledState $WafProperty.PolicyEnabledState -Mode $WafProperty.PolicyMode -Customrule $WafProperty.CustomRules -ManagedRule $WafProperty.ManagedRules -RedirectUrl $WafProperty.RedirectUrl -CustomBlockResponseStatusCode $WafProperty.CustomBlockResponseStatusCode -CustomBlockResponseBody $WafProperty.CustomBlockResponseBody -RequestBodyCheck $WafProperty.RequestBodyCheck 
-    New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku $skuName -EnabledState $WafProperty.PolicyEnabledState -Mode $WafProperty.PolicyMode -Customrule $WafProperty.CustomRules -RequestBodyCheck $WafProperty.RequestBodyCheck -CustomBlockResponseStatusCode $WafProperty.CustomBlockResponseStatusCode -ManagedRule $WafProperty.ManagedRules -RedirectUrl $WafProperty.RedirectUrl
+    # Remove the null/empty property
+    $validatedWafProperty = ValidateWafPolicyProperty $WafProperty
+
+    # New a waf policy, copied from the Migrtae
+    New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku $skuName @validatedWafProperty
+}
+
+# Validate the property of a waf policy
+function ValidateWafPolicyProperty {
+    param (
+        [Microsoft.Azure.Commands.FrontDoor.Models.PSTrackedResource]$WafProperty
+    )
+
+    $wafPropertHash = @{}
+    $wafPropertHash.Add('EnabledState', $WafProperty.PolicyEnabledState)
+    $wafPropertHash.Add('Mode', $WafProperty.PolicyMode)
+    $wafPropertHash.Add('Customrule', $WafProperty.CustomRules)
+    $wafPropertHash.Add('ManagedRule', $WafProperty.ManagedRules)
+    $wafPropertHash.Add('RedirectUrl', $WafProperty.RedirectUrl)
+    $wafPropertHash.Add('CustomBlockResponseStatusCode', $WafProperty.CustomBlockResponseStatusCode)
+    $wafPropertHash.Add('CustomBlockResponseBody', $WafProperty.CustomBlockResponseBody)
+    $wafPropertHash.Add('RequestBodyCheck', $WafProperty.RequestBodyCheck)
+
+    # If the propery is null, then remove from the hash table.
+    $null = $wafPropertHash.Remove('PolicyEnabledState')
+    $null = $wafPropertHash.Remove('PolicyMode')
+    $null = $wafPropertHash.Remove('CustomRules')
+    $null = $wafPropertHash.Remove('ManagedRules')
+    $null = $wafPropertHash.Remove('RedirectUrl')
+    $null = $wafPropertHash.Remove('CustomBlockResponseStatusCode')
+    $null = $wafPropertHash.Remove('CustomBlockResponseBody')
+    $null = $wafPropertHash.Remove('RequestBodyCheck')
+
+    return $wafPropertHash
 }

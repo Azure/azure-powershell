@@ -236,7 +236,37 @@ function CreatePremiumWafPolicy {
         [Microsoft.Azure.Commands.FrontDoor.Models.PSTrackedResource]$WafProperty
     )
 
-    # Complete command
-    # New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku "Premium_AzureFrontDoor" -EnabledState $wafPolicyProperty.PolicyEnabledState -Mode $wafPolicyProperty.PolicyMode -Customrule $wafPolicyProperty.CustomRules -ManagedRule $wafPolicyProperty.ManagedRules -RedirectUrl $wafPolicyProperty.RedirectUrl -CustomBlockResponseStatusCode $wafPolicyProperty.CustomBlockResponseStatusCode -CustomBlockResponseBody $wafPolicyProperty.CustomBlockResponseBody -RequestBodyCheck $wafPolicyProperty.RequestBodyCheck 
+    # Remove the null/empty property
+    $validatedWafProperty = ValidateWafPolicyProperty $WafProperty
+
     New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku "Premium_AzureFrontDoor" -EnabledState $WafProperty.PolicyEnabledState -Mode $WafProperty.PolicyMode -Customrule $WafProperty.CustomRules -RequestBodyCheck $WafProperty.RequestBodyCheck 
+}
+
+# Validate the property of a waf policy
+function ValidateWafPolicyProperty {
+    param (
+        [Microsoft.Azure.Commands.FrontDoor.Models.PSTrackedResource]$WafProperty
+    )
+
+    $wafPropertHash = @{}
+    $wafPropertHash.Add('EnabledState', $WafProperty.PolicyEnabledState)
+    $wafPropertHash.Add('Mode', $WafProperty.PolicyMode)
+    $wafPropertHash.Add('Customrule', $WafProperty.CustomRules)
+    $wafPropertHash.Add('ManagedRule', $WafProperty.ManagedRules)
+    $wafPropertHash.Add('RedirectUrl', $WafProperty.RedirectUrl)
+    $wafPropertHash.Add('CustomBlockResponseStatusCode', $WafProperty.CustomBlockResponseStatusCode)
+    $wafPropertHash.Add('CustomBlockResponseBody', $WafProperty.CustomBlockResponseBody)
+    $wafPropertHash.Add('RequestBodyCheck', $WafProperty.RequestBodyCheck)
+
+    # If the propery is null, then remove from the hash table.
+    $null = $wafPropertHash.Remove('PolicyEnabledState')
+    $null = $wafPropertHash.Remove('PolicyMode')
+    $null = $wafPropertHash.Remove('CustomRules')
+    $null = $wafPropertHash.Remove('ManagedRules')
+    $null = $wafPropertHash.Remove('RedirectUrl')
+    $null = $wafPropertHash.Remove('CustomBlockResponseStatusCode')
+    $null = $wafPropertHash.Remove('CustomBlockResponseBody')
+    $null = $wafPropertHash.Remove('RequestBodyCheck')
+
+    return $wafPropertHash
 }
