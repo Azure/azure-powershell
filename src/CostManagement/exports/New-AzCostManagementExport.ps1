@@ -31,7 +31,7 @@ New-AzCostManagementExport -Scope "subscriptions/***********" -Name "CostManagem
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/new-azcostmanagementexport
+https://learn.microsoft.com/powershell/module/az.costmanagement/new-azcostmanagementexport
 #>
 function New-AzCostManagementExport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport])]

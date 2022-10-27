@@ -66,7 +66,7 @@ TAG <IQueryComparisonExpression>: Has comparison expression for a tag.
   Name <String>: The name of the column to use in comparison.
   Value <String[]>: Array of values to use for comparison
 .Link
-https://docs.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryFilterObject
+https://learn.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryFilterObject
 #>
 function New-AzCostManagementQueryFilterObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryFilter])]
