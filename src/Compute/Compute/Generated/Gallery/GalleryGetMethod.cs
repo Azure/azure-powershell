@@ -168,28 +168,35 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         public void CommunityGalleryGet()
         {
-            if (this.IsParameterBound(c => c.GalleryPublicName))
+            if (this.IsParameterBound(c => c.GalleryPublicName) && this.IsParameterBound(c=> c.Location))
             {
                 CommunityGallery result = CommunityGalleriesClient.Get(this.Location, this.GalleryPublicName);
                 var psObject = new PSCommunityGallery();
                 ComputeAutomationAutoMapperProfile.Mapper.Map<CommunityGallery, PSCommunityGallery>(result, psObject);
                 WriteObject(psObject);
             }
-            else
+            else if(this.IsParameterBound(c=> c.Community))
             {
-                //find out if its ok to create client locally
                 ResourceGraphClient rgClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceGraphClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 QueryRequest request = new QueryRequest();
-                string query = "communitygalleryresources | where type == 'microsoft.compute/locations/communitygalleries' | project name, type, id, location";
-
+                string query;
+                if (this.IsParameterBound(c => c.Location))
+                {
+                    query = "communitygalleryresources | where type == 'microsoft.compute/locations/communitygalleries' | where location =='" + this.Location + "' | project name, type, id, location";
+                }
+                else
+                {
+                    query = "communitygalleryresources | where type == 'microsoft.compute/locations/communitygalleries' | project name, type, id, location";
+                }
                 request.Query = query;
                 QueryResponse response = rgClient.Resources(request);
-                Dictionary<string,string> output = new Dictionary<string, string>();
-
+                Dictionary<string, string> output = new Dictionary<string, string>();
                 var data = JsonConvert.DeserializeObject<List<PSCommunityGallery>>(response.Data.ToString());
-                
                 WriteObject(data);
-
+            }
+            else if(this.IsParameterBound(c => c.GalleryPublicName))
+            {
+                throw new Exception("Location cannot be null. Add location using -Location parameter.");
             }
         }
 
@@ -244,7 +251,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = "SharedGalleryParameterSet")]
         [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = "CommunityGalleryParameterSet")]
         [LocationCompleter("Microsoft.Compute/Galleries", "Microsoft.Compute/CommunityGalleries")]
@@ -260,7 +267,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Expand { get; set; }
 
         [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = "CommunityGalleryParameterSet",
            HelpMessage = "List community galleries.")]
