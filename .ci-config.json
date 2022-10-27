@@ -299,5 +299,6 @@
     "Resources",
     "Storage",
     "Websites"
-  ]
+  ],
+  "artifactPipelineInfoFolder": "artifacts/PipelineResult"
 }
