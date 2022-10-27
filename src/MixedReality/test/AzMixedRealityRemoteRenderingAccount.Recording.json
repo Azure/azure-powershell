@@ -1,0 +1,587 @@
+{
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb?api-version=2021-03-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb?api-version=2021-03-01-preview",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "81" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb" ],
+        "MS-CV": [ "lOthcJm6nk29vd441EBkjA.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-request-id": [ "c97e373c-11f5-4294-835e-1d5be3ae6d8a" ],
+        "x-ms-correlation-request-id": [ "c97e373c-11f5-4294-835e-1d5be3ae6d8a" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065600Z:c97e373c-11f5-4294-835e-1d5be3ae6d8a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:55:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "540" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb\",\"name\":\"jg2imb\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"d8d9fb04-a792-4824-8f96-464815d82afb\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"28779dd0-d518-4b0d-aaa6-191ef8729789\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w?api-version=2021-03-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w?api-version=2021-03-01-preview",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "81" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w" ],
+        "MS-CV": [ "6JwZsA8EjkeXR66CJBS9LA.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-request-id": [ "8058a9fb-94f8-4e65-ab30-83e0174899aa" ],
+        "x-ms-correlation-request-id": [ "8058a9fb-94f8-4e65-ab30-83e0174899aa" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065603Z:8058a9fb-94f8-4e65-ab30-83e0174899aa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:56:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "540" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w\",\"name\":\"tj9d6w\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"fa954fd7-c2c6-4f6e-bc32-98683dfb0141\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"3726c249-c2f8-427d-bd67-b9dae7d6c83f\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+KeyRegenerateExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb/regenerateKeys?api-version=2021-03-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb/regenerateKeys?api-version=2021-03-01-preview",
+      "Content": "{\r\n  \"serial\": 1\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "19" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "MS-CV": [ "6gdkzVXbGEqenVLkMh35cQ.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-request-id": [ "1b447798-34fa-4363-96db-676bda932fdd" ],
+        "x-ms-correlation-request-id": [ "1b447798-34fa-4363-96db-676bda932fdd" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065604Z:1b447798-34fa-4363-96db-676bda932fdd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:56:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "123" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryKey\":\"99k9NQ3eH04eW+r0A/GZ8yWLmhb7YTG3nMM7/wFhekc=\",\"secondaryKey\":\"PZEqh7rdH3GY+0GKVtz1H+fpNuqRV6TzJFftPhT12LM=\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+KeyList+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb/listKeys?api-version=2021-03-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb/listKeys?api-version=2021-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "e80f952e-e403-42f3-a612-ea36272eb919" ],
+        "CommandName": [ "Get-AzMixedRealityRemoteRenderingAccountKey" ],
+        "FullCommandName": [ "Get-AzMixedRealityRemoteRenderingAccountKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.MixedReality/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "MS-CV": [ "TPWWwL40M0yUnyAdodps4w.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-request-id": [ "bce633bc-85de-412f-8a80-44a1608c145e" ],
+        "x-ms-correlation-request-id": [ "bce633bc-85de-412f-8a80-44a1608c145e" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065605Z:bce633bc-85de-412f-8a80-44a1608c145e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:56:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "123" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryKey\":\"99k9NQ3eH04eW+r0A/GZ8yWLmhb7YTG3nMM7/wFhekc=\",\"secondaryKey\":\"PZEqh7rdH3GY+0GKVtz1H+fpNuqRV6TzJFftPhT12LM=\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MixedReality/remoteRenderingAccounts?api-version=2021-03-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MixedReality/remoteRenderingAccounts?api-version=2021-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "7f23cc1d-8c29-460e-9141-f83ab19707b8" ],
+        "CommandName": [ "Get-AzMixedRealityRemoteRenderingAccount" ],
+        "FullCommandName": [ "Get-AzMixedRealityRemoteRenderingAccount_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.MixedReality/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "MS-CV": [ "bl5ybxaWP0GV2eTU3ZLjyw.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "8a0818a2-3cc6-4fc2-a3f8-ad5c9b86739e" ],
+        "x-ms-correlation-request-id": [ "8a0818a2-3cc6-4fc2-a3f8-ad5c9b86739e" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065606Z:8a0818a2-3cc6-4fc2-a3f8-ad5c9b86739e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:56:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1985" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nextLink\":null,\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/gw6q1k\",\"name\":\"gw6q1k\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":null,\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"a7c221ef-b728-42e4-b519-cc724ea2e9e5\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group/providers/Microsoft.MixedReality/remoteRenderingAccounts/azpstestrenderingaccount\",\"name\":\"azpstestrenderingaccount\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":null,\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"46d8e238-a60e-49aa-a5e9-15dcc7db6671\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb\",\"name\":\"jg2imb\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"d8d9fb04-a792-4824-8f96-464815d82afb\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"28779dd0-d518-4b0d-aaa6-191ef8729789\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w\",\"name\":\"tj9d6w\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"fa954fd7-c2c6-4f6e-bc32-98683dfb0141\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"3726c249-c2f8-427d-bd67-b9dae7d6c83f\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts?api-version=2021-03-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts?api-version=2021-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "cf634d7d-c541-4562-a1ca-cd3cd18c6035" ],
+        "CommandName": [ "Get-AzMixedRealityRemoteRenderingAccount" ],
+        "FullCommandName": [ "Get-AzMixedRealityRemoteRenderingAccount_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.MixedReality/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "MS-CV": [ "jwimqjevz0OMXzmiKN8gBw.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-request-id": [ "62ed7720-6354-43fc-9442-ba3ab41b6379" ],
+        "x-ms-correlation-request-id": [ "62ed7720-6354-43fc-9442-ba3ab41b6379" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065606Z:62ed7720-6354-43fc-9442-ba3ab41b6379" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:56:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1526" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nextLink\":null,\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/gw6q1k\",\"name\":\"gw6q1k\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":null,\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"a7c221ef-b728-42e4-b519-cc724ea2e9e5\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb\",\"name\":\"jg2imb\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"d8d9fb04-a792-4824-8f96-464815d82afb\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"28779dd0-d518-4b0d-aaa6-191ef8729789\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w\",\"name\":\"tj9d6w\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"fa954fd7-c2c6-4f6e-bc32-98683dfb0141\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"3726c249-c2f8-427d-bd67-b9dae7d6c83f\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb?api-version=2021-03-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb?api-version=2021-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "c98ff547-a2a2-4245-9f83-117d9e5ee9bd" ],
+        "CommandName": [ "Get-AzMixedRealityRemoteRenderingAccount" ],
+        "FullCommandName": [ "Get-AzMixedRealityRemoteRenderingAccount_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.MixedReality/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "MS-CV": [ "ZkpNj7rB0kaC+K9X096HRg.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-request-id": [ "9157f068-0ef0-4791-9bcc-1e3cf52f0f9d" ],
+        "x-ms-correlation-request-id": [ "9157f068-0ef0-4791-9bcc-1e3cf52f0f9d" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065607Z:9157f068-0ef0-4791-9bcc-1e3cf52f0f9d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:56:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "540" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb\",\"name\":\"jg2imb\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"d8d9fb04-a792-4824-8f96-464815d82afb\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"28779dd0-d518-4b0d-aaa6-191ef8729789\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+KeyRegenerateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w?api-version=2021-03-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w?api-version=2021-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "251a778d-c265-4481-8234-ff8558269f8a" ],
+        "CommandName": [ "Get-AzMixedRealityRemoteRenderingAccount" ],
+        "FullCommandName": [ "Get-AzMixedRealityRemoteRenderingAccount_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.MixedReality/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "MS-CV": [ "nAJMH+D9oUWQwD8tljG1Ow.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-request-id": [ "bdcb85c6-56af-4362-8ae2-8084e5d1e096" ],
+        "x-ms-correlation-request-id": [ "bdcb85c6-56af-4362-8ae2-8084e5d1e096" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065608Z:bdcb85c6-56af-4362-8ae2-8084e5d1e096" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:56:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "540" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w\",\"name\":\"tj9d6w\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"fa954fd7-c2c6-4f6e-bc32-98683dfb0141\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"3726c249-c2f8-427d-bd67-b9dae7d6c83f\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+KeyRegenerateViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w/regenerateKeys?api-version=2021-03-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w/regenerateKeys?api-version=2021-03-01-preview",
+      "Content": "{\r\n  \"serial\": 1\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "19" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "MS-CV": [ "TJi03pdOoU6zR5o1nHWzkA.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-request-id": [ "9ae6dd32-bd52-4088-93d0-de0ad86de10f" ],
+        "x-ms-correlation-request-id": [ "9ae6dd32-bd52-4088-93d0-de0ad86de10f" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065609Z:9ae6dd32-bd52-4088-93d0-de0ad86de10f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:56:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "123" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"primaryKey\":\"R2XrqgZ2HVDtYtnMoSUNuAmUhssRCsG2on+/ewUX0+Y=\",\"secondaryKey\":\"0hNI2BMxQCMg4xyhp1MyNY09qHsux9RaTHWX4NpVzx8=\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb?api-version=2021-03-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb?api-version=2021-03-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"a\": \"1\"\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "61" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "MS-CV": [ "AirGDByz1Ui33fHgc3SVfg.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-request-id": [ "314ebda8-1627-4fbe-aa36-0b014012d4d9" ],
+        "x-ms-correlation-request-id": [ "314ebda8-1627-4fbe-aa36-0b014012d4d9" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065611Z:314ebda8-1627-4fbe-aa36-0b014012d4d9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:56:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "547" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb\",\"name\":\"jg2imb\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"d8d9fb04-a792-4824-8f96-464815d82afb\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{\"a\":\"1\"},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"28779dd0-d518-4b0d-aaa6-191ef8729789\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w?api-version=2021-03-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w?api-version=2021-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "461d6344-c48d-4d61-894a-a22492c53eea" ],
+        "CommandName": [ "Get-AzMixedRealityRemoteRenderingAccount" ],
+        "FullCommandName": [ "Get-AzMixedRealityRemoteRenderingAccount_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.MixedReality/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "MS-CV": [ "SxMnsNWImEm2bUMSlBEnQw.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-request-id": [ "4f3fa56a-1379-4b98-90ee-4ddad4a07867" ],
+        "x-ms-correlation-request-id": [ "4f3fa56a-1379-4b98-90ee-4ddad4a07867" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065612Z:4f3fa56a-1379-4b98-90ee-4ddad4a07867" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:56:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "540" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w\",\"name\":\"tj9d6w\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"fa954fd7-c2c6-4f6e-bc32-98683dfb0141\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"3726c249-c2f8-427d-bd67-b9dae7d6c83f\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w?api-version=2021-03-01-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w?api-version=2021-03-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"a\": \"1\"\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "61" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "MS-CV": [ "QoIFHwIUgk+W6P+Ky+3K1Q.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-request-id": [ "0b841254-566b-4ef8-a318-96e531934632" ],
+        "x-ms-correlation-request-id": [ "0b841254-566b-4ef8-a318-96e531934632" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065614Z:0b841254-566b-4ef8-a318-96e531934632" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:56:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "547" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w\",\"name\":\"tj9d6w\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"fa954fd7-c2c6-4f6e-bc32-98683dfb0141\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{\"a\":\"1\"},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"3726c249-c2f8-427d-bd67-b9dae7d6c83f\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb?api-version=2021-03-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/jg2imb?api-version=2021-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "ed4b8c33-cfcc-4048-9f2e-175117e7191b" ],
+        "CommandName": [ "Remove-AzMixedRealityRemoteRenderingAccount" ],
+        "FullCommandName": [ "Remove-AzMixedRealityRemoteRenderingAccount_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.MixedReality/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "MS-CV": [ "ni8bGeh7oUeiImOFPAYI2A.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-request-id": [ "fb852516-f010-4e28-b4f9-a78ed89c3f2e" ],
+        "x-ms-correlation-request-id": [ "fb852516-f010-4e28-b4f9-a78ed89c3f2e" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065617Z:fb852516-f010-4e28-b4f9-a78ed89c3f2e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:56:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w?api-version=2021-03-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w?api-version=2021-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "a780dddc-f46d-4446-a994-dc41b8c3d84c" ],
+        "CommandName": [ "Get-AzMixedRealityRemoteRenderingAccount" ],
+        "FullCommandName": [ "Get-AzMixedRealityRemoteRenderingAccount_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.MixedReality/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "MS-CV": [ "DLTn0mgFpki9K6muReZQWg.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-request-id": [ "687e68e2-6ab1-48ce-98bd-1d0c94e9ca57" ],
+        "x-ms-correlation-request-id": [ "687e68e2-6ab1-48ce-98bd-1d0c94e9ca57" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065618Z:687e68e2-6ab1-48ce-98bd-1d0c94e9ca57" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:56:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "547" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w\",\"name\":\"tj9d6w\",\"type\":\"Microsoft.MixedReality/remoteRenderingAccounts\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"fa954fd7-c2c6-4f6e-bc32-98683dfb0141\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"location\":\"eastus\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":{\"a\":\"1\"},\"properties\":{\"accountDomain\":\"eastus.mixedreality.azure.com\",\"accountId\":\"3726c249-c2f8-427d-bd67-b9dae7d6c83f\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzMixedRealityRemoteRenderingAccount+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w?api-version=2021-03-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup/providers/Microsoft.MixedReality/remoteRenderingAccounts/tj9d6w?api-version=2021-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "1883d08a-f979-49ae-929e-8f46b3c18e5a" ],
+        "CommandName": [ "Remove-AzMixedRealityRemoteRenderingAccount" ],
+        "FullCommandName": [ "Remove-AzMixedRealityRemoteRenderingAccount_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.MixedReality/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "MS-CV": [ "tcPPDrZ+ZUOxS+kFHb3mHg.0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "x-ms-request-id": [ "540df21f-9bcd-480c-9ed2-fc1f91969004" ],
+        "x-ms-correlation-request-id": [ "540df21f-9bcd-480c-9ed2-fc1f91969004" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221027T065620Z:540df21f-9bcd-480c-9ed2-fc1f91969004" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 27 Oct 2022 06:56:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}
