@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 92F192A5-F75E-4EFE-B2D2-B0DF0B78D3B5
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azvmssipconfig
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azvmssipconfig
 schema: 2.0.0
 ---
 
@@ -335,5 +335,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Add-AzVmssNetworkInterfaceConfiguration](./Add-AzVmssNetworkInterfaceConfiguration.md)
+
 
 

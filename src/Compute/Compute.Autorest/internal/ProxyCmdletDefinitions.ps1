@@ -59,7 +59,7 @@ TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is go
   [SecurityProfileSecureVMDiskEncryptionSetId <String>]: secure VM disk encryption set id
   [StorageAccountType <StorageAccountType?>]: Specifies the storage account type to be used to store the image. This property is not updatable.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryapplicationversion
+https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplicationversion
 #>
 function New-AzGalleryApplicationVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
@@ -318,7 +318,7 @@ New-AzGalleryApplication -ResourceGroupName $rgName -Location EastUS -GalleryNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
+https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
 #>
 function New-AzGalleryApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
@@ -555,7 +555,7 @@ TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is go
   [SecurityProfileSecureVMDiskEncryptionSetId <String>]: secure VM disk encryption set id
   [StorageAccountType <StorageAccountType?>]: Specifies the storage account type to be used to store the image. This property is not updatable.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
+https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
 #>
 function Update-AzGalleryApplicationVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
@@ -779,3 +779,4 @@ end {
     }
 } 
 }
+

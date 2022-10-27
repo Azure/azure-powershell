@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 6BCB36BC-F5E6-4EDD-983C-8BDE7A9B004D
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiskencryptionextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmdiskencryptionextension
 schema: 2.0.0
 ---
 
@@ -689,5 +689,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMDiskEncryptionStatus](./Get-AzVMDiskEncryptionStatus.md)
 
 [Remove-AzVMDiskEncryptionExtension](./Remove-AzVMDiskEncryptionExtension.md)
+
 
 

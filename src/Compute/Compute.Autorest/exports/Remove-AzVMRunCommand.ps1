@@ -47,7 +47,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/remove-azvmruncommand
+https://learn.microsoft.com/powershell/module/az.compute/remove-azvmruncommand
 #>
 function Remove-AzVMRunCommand {
 [OutputType([System.Boolean])]
@@ -229,3 +229,4 @@ end {
     }
 } 
 }
+

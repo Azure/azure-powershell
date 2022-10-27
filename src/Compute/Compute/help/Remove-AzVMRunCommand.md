@@ -1,7 +1,7 @@
 ---
 external help file: Az.Compute-help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvmruncommand
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmruncommand
 schema: 2.0.0
 ---
 
@@ -244,3 +244,4 @@ To create the parameters described below, construct a hash table containing the 
   - `[VMScaleSetName <String>]`: The name of the VM scale set.
 
 ## RELATED LINKS
+

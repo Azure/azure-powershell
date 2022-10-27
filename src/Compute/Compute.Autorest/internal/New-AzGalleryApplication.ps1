@@ -25,7 +25,7 @@ New-AzGalleryApplication -ResourceGroupName $rgName -Location EastUS -GalleryNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
+https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
 #>
 function New-AzGalleryApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
@@ -198,3 +198,4 @@ end {
     }
 } 
 }
+

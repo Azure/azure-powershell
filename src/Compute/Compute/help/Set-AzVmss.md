@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 6442E5BB-D59D-483B-8AC5-2586C6C1E925
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmss
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmss
 schema: 2.0.0
 ---
 
@@ -274,5 +274,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Stop-AzVmss](./Stop-AzVmss.md)
 
 [Update-AzVmss](./Update-AzVmss.md)
+
 
 

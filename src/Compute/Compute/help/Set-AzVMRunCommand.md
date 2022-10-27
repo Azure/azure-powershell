@@ -1,7 +1,7 @@
 ---
 external help file: Az.Compute-help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmruncommand
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmruncommand
 schema: 2.0.0
 ---
 
@@ -404,3 +404,4 @@ To create the parameters described below, construct a hash table containing the 
   - `Value <String>`: The run command parameter value.
 
 ## RELATED LINKS
+

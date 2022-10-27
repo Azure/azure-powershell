@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: EC4E8CC1-C21F-4D41-818F-D0BC15AEEE1D
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvmssnetworkinterfaceconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmssnetworkinterfaceconfiguration
 schema: 2.0.0
 ---
 
@@ -151,5 +151,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Add-AzVmssNetworkInterfaceConfiguration](./Add-AzVmssNetworkInterfaceConfiguration.md)
 
 [Get-AzVmss](./Get-AzVmss.md)
+
 
 

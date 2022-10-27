@@ -33,7 +33,7 @@
   }
 
   if(-not $accountsModule) {
-    Write-Error "`nThis module requires $accountsName version 2.7.5 or greater. For installation instructions, please see: https://docs.microsoft.com/powershell/azure/install-az-ps" -ErrorAction Stop
+    Write-Error "`nThis module requires $accountsName version 2.7.5 or greater. For installation instructions, please see: https://learn.microsoft.com/powershell/azure/install-az-ps" -ErrorAction Stop
   } elseif (($accountsModule.Version -lt [System.Version]'2.7.5') -and (-not $localAccounts)) {
     Write-Error "`nThis module requires $accountsName version 2.7.5 or greater. An earlier version of Az.Accounts is imported in the current PowerShell session. If you are running test, please try to add the switch '-RegenerateSupportModule' when executing 'test-module.ps1'. Otherwise please open a new PowerShell session and import this module again.`nAdditionally, this error could indicate that multiple incompatible versions of Azure PowerShell modules are installed on your system. For troubleshooting information, please see: https://aka.ms/azps-version-error" -ErrorAction Stop
   }
@@ -113,3 +113,4 @@
   $instance.Init();
   Write-Information "Loaded Module '$($instance.Name)'"
 # endregion
+

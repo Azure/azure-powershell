@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
 schema: 2.0.0
 ---
 
@@ -253,4 +253,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
+
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: A1EA7D34-A8B4-4FA0-BD8C-3E846715AFBA
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmplan
 schema: 2.0.0
 ---
 
@@ -158,3 +158,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMImageSku](./Get-AzVMImageSku.md)
 
 [New-AzVMConfig](./New-AzVMConfig.md)
+

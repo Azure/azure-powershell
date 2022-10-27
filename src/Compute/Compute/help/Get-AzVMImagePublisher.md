@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 7311F66C-3370-4436-8030-6D98D42C3112
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher
 schema: 2.0.0
 ---
 
@@ -83,5 +83,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMImageSku](./Get-AzVMImageSku.md)
 
 [Save-AzVMImage](./Save-AzVMImage.md)
+
 
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 5008F83F-AF3E-47CF-99A3-55129E654128
-online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret
+online version: https://learn.microsoft.com/powershell/module/az.compute/add-azvmsecret
 schema: 2.0.0
 ---
 
@@ -169,3 +169,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzVMConfig](./New-AzVMConfig.md)
 
 [Set-AzVMOperatingSystem](./Set-AzVMOperatingSystem.md)
+

@@ -367,7 +367,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
         public string OnlineVersion { get; }
         public string[] RelatedLinks { get; }
 
-        private const string HelpLinkPrefix = @"https://docs.microsoft.com/powershell/module/";
+        private const string HelpLinkPrefix = @"https://learn.microsoft.com/powershell/module/";
 
         public CommentInfo(VariantGroup variantGroup)
         {
@@ -512,3 +512,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell
         public static DefaultInfo ToDefaultInfo(this PSDefaultValueAttribute defaultValueAttribute, ParameterGroup parameterGroup) => new DefaultInfo(defaultValueAttribute, parameterGroup);
     }
 }
+

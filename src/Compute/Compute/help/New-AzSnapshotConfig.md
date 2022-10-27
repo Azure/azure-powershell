@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig
 schema: 2.0.0
 ---
 
@@ -525,3 +525,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

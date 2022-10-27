@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 473C71A8-1DF7-487A-B239-B80E2BB63B82
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvmchefextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmchefextension
 schema: 2.0.0
 ---
 
@@ -200,3 +200,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMChefExtension](./Get-AzVMChefExtension.md)
 
 [Set-AzVMChefExtension](./Set-AzVMChefExtension.md)
+

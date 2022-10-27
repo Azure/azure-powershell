@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 987BD670-20F3-4105-A5BE-03E712AB2B56
-online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmsswinrmlistener
+online version: https://learn.microsoft.com/powershell/module/az.compute/add-azvmsswinrmlistener
 schema: 2.0.0
 ---
 
@@ -151,5 +151,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [New-AzVmssConfig](./New-AzVmssConfig.md)
+
 
 

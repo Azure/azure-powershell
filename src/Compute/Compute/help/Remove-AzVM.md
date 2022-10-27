@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: A16C2084-30A4-4AB8-AE22-28CC6E74FD48
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvm
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvm
 schema: 2.0.0
 ---
 
@@ -218,5 +218,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Stop-AzVM](./Stop-AzVM.md)
 
 [Update-AzVM](./Update-AzVM.md)
+
 
 

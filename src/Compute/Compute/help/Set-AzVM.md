@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 939320CB-2595-4150-AFDD-500CEA78559C
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvm
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvm
 schema: 2.0.0
 ---
 
@@ -268,5 +268,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzVM](./Get-AzVM.md)
+
 
 

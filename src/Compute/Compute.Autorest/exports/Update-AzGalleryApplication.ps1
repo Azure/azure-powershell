@@ -47,7 +47,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryapplication
+https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplication
 #>
 function Update-AzGalleryApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
@@ -240,3 +240,4 @@ end {
     }
 } 
 }
+

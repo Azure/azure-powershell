@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: C7FCF2CA-2C8D-4280-BF68-10DEA96642A5
-online version: https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdscextension
+online version: https://learn.microsoft.com/powershell/module/az.compute/remove-azvmdscextension
 schema: 2.0.0
 ---
 
@@ -157,5 +157,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMDscExtension](./Get-AzVMDscExtension.md)
 
 [Set-AzVMDscExtension](./Set-AzVMDscExtension.md)
+
 
 
