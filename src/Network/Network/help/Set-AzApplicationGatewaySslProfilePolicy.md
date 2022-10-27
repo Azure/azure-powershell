@@ -15,7 +15,8 @@ Modifies the SSL policy of an application gateway SSL profile.
 ```
 Set-AzApplicationGatewaySslProfilePolicy -SslProfile <PSApplicationGatewaySslProfile>
  [-DisabledSslProtocols <String[]>] [-PolicyType <String>] [-PolicyName <String>] [-CipherSuite <String[]>]
- [-MinProtocolVersion <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-MinProtocolVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +39,7 @@ The first command gets the application gateway named ApplicationGateway01 in the
 Ssl cipher suites to be enabled in the specified order to application gateway
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -53,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,10 +69,10 @@ Accept wildcard characters: False
 List of SSL protocols to be disabled
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: TLSv1_0, TLSv1_1, TLSv1_2, TLSv1_3
+Accepted values: TLSv1_0, TLSv1_1, TLSv1_2
 
 Required: False
 Position: Named
@@ -84,10 +85,10 @@ Accept wildcard characters: False
 Minimum version of Ssl protocol to be supported on application gateway
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: TLSv1_0, TLSv1_1, TLSv1_2, TLSv1_3
+Accepted values: TLSv1_0, TLSv1_1, TLSv1_2
 
 Required: False
 Position: Named
@@ -100,7 +101,7 @@ Accept wildcard characters: False
 Name of Ssl predefined policy
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -115,10 +116,10 @@ Accept wildcard characters: False
 Type of Ssl Policy
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Predefined, Custom, CustomV2
+Accepted values: Predefined, Custom
 
 Required: False
 Position: Named
@@ -131,7 +132,7 @@ Accept wildcard characters: False
 The application gateway SSL profile
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslProfile
+Type: PSApplicationGatewaySslProfile
 Parameter Sets: (All)
 Aliases:
 
@@ -139,6 +140,37 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

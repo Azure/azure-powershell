@@ -13,8 +13,9 @@ Updates a network manager security admin rule.
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerSecurityAdminRule -InputObject <PSNetworkManagerSecurityBaseAdminRule> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzNetworkManagerSecurityAdminRule
+ -InputObject <PSNetworkManagerSecurityBaseAdminRule> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +29,6 @@ $SecurityAdminRule = Get-AzNetworkManagerSecurityAdminRule  -Name "psRule" -Rule
 $SecurityAdminRule.priority = 50
 Set-AzNetworkManagerSecurityAdminRule -InputObject $SecurityAdminRule
 ```
-
 ```output
 Protocol                  : Tcp
 Direction                 : Inbound
@@ -73,7 +73,6 @@ Name                      : psRule
 Etag                      :
 Id                        : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig/ruleCollections/psRuleCollection/rules/psRule
 ```
-
 Updates a network manager security admin rule's priority'.
 
 ## PARAMETERS
@@ -82,7 +81,7 @@ Updates a network manager security admin rule's priority'.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +96,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -112,7 +111,7 @@ Accept wildcard characters: False
 The Network Manager Security Admin Rule
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityBaseAdminRule
+Type: PSNetworkManagerSecurityBaseAdminRule
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +126,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -143,7 +142,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -170,7 +169,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzNetworkManagerSecurityAdminRule](./Get-AzNetworkManagerSecurityAdminRule.md)
 
 [New-AzNetworkManagerSecurityAdminRule](./New-AzNetworkManagerSecurityAdminRule.md)

@@ -12,22 +12,21 @@ Reset a VPN Site Link Connection
 
 ## SYNTAX
 
-### ByName (Default)
+### ByName
 ```
 Reset-AzVpnSiteLinkConnection -ResourceGroupName <String> -VpnGatewayName <String> -VpnConnectionName <String>
- -Name <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Name <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Reset-AzVpnSiteLinkConnection -InputObject <PSVpnSiteLinkConnection> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Reset-AzVpnSiteLinkConnection -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-AzVpnSiteLinkConnection -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +47,7 @@ Resets the VPN Site Link Connection with the name "test-linkConnection" within t
 Run cmdlet in the background.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -63,7 +62,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -78,7 +77,7 @@ Accept wildcard characters: False
 The Vpn site link connection object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVpnSiteLinkConnection
+Type: PSVpnSiteLinkConnection
 Parameter Sets: ByInputObject
 Aliases: VpnSiteLinkConnection
 
@@ -93,7 +92,7 @@ Accept wildcard characters: False
 The Vpn site link connection name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByName
 Aliases: ResourceName, VpnSiteLinkConnectionName
 
@@ -108,7 +107,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByName
 Aliases:
 
@@ -123,7 +122,7 @@ Accept wildcard characters: False
 The Azure resource ID of the Vpn site link connection which has to be reset.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -138,7 +137,7 @@ Accept wildcard characters: False
 The Vpn connection name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByName
 Aliases: ParentName
 
@@ -153,41 +152,11 @@ Accept wildcard characters: False
 The Vpn gateway name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByName
 Aliases: GrandParentName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -206,7 +175,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-
-## RELATED LINKS
 
 ## RELATED LINKS

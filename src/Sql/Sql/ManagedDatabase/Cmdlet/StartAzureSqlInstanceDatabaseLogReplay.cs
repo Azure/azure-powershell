@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets the Sas token of the storage container.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "The storage container Sas token.")]
         [Alias("SasToken")]
         [ValidateNotNullOrEmpty]

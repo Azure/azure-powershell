@@ -20,8 +20,8 @@ Set-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterf
  [-PublicIpAddress <PSPublicIpAddress>] [-LoadBalancerBackendAddressPool <PSBackendAddressPool[]>]
  [-LoadBalancerInboundNatRule <PSInboundNatRule[]>]
  [-ApplicationGatewayBackendAddressPool <PSApplicationGatewayBackendAddressPool[]>]
- [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-GatewayLoadBalancerId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -29,6 +29,15 @@ Set-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterf
 Set-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
  [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-SubnetId <String>]
  [-PublicIpAddressId <String>] [-LoadBalancerBackendAddressPoolId <String[]>]
+ [-LoadBalancerInboundNatRuleId <String[]>] [-ApplicationGatewayBackendAddressPoolId <String[]>]
+ [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SetByResourceGatewayLoadBalancer
+```
+Set-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
+ [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-SubnetId <String>]
+ [-PublicIpAddressId <String>] [-GatewayLoadBalancerId <String>] [-LoadBalancerBackendAddressPoolId <String[]>]
  [-LoadBalancerInboundNatRuleId <String[]>] [-ApplicationGatewayBackendAddressPoolId <String[]>]
  [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -159,7 +168,7 @@ Specifies the ID of the Gateway Load Balancer Provider Frontend Ip Configuration
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResource
+Parameter Sets: SetByResourceGatewayLoadBalancer
 Aliases:
 
 Required: False
@@ -370,7 +379,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
