@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         OsProfile = new OSProfile
                         {
                             ComputerName = name,
-                            WindowsConfiguration = imageAndOsType?.CreateWindowsConfiguration(),
+                            WindowsConfiguration = (imageAndOsType?.OsType != OperatingSystemTypes.Windows) ? null : imageAndOsType.CreateWindowsConfiguration(),
                             LinuxConfiguration = (imageAndOsType?.OsType != OperatingSystemTypes.Linux) ? null : new LinuxConfiguration
                             {
                                 Ssh = new SshConfiguration(sshPublicKeys)
@@ -111,10 +111,14 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         StorageProfile = new StorageProfile
                         {
-                            ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : new ImageReference
+                            //ImageReference = (imageReferenceId.Contains("CommunityGalleries")) ? new ImageReference { CommunityGalleryImageId = imageReferenceId}
+                            ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
+                            {
+                                CommunityGalleryImageId = imageReferenceId
+                            }: new ImageReference
                             {
                                 Id = imageReferenceId
-                            },
+                            }),
                             DataDisks = DataDiskStrategy.CreateDataDisks(
                                 imageAndOsType?.DataDiskLuns, dataDisks, dataDiskDeleteOption),
                             DiskControllerType = diskControllerType
