@@ -43,7 +43,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/remove-azdatabricksaccessconnector
+https://learn.microsoft.com/powershell/module/az.databricks/remove-azdatabricksaccessconnector
 #>
 function Remove-AzDatabricksAccessConnector {
 [OutputType([System.Boolean])]
