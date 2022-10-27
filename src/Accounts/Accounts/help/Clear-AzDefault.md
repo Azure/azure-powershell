@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/powershell/module/az.accounts/clear-azdefault
+online version: https://learn.microsoft.com/powershell/module/az.accounts/clear-azdefault
 schema: 2.0.0
 ---
 
