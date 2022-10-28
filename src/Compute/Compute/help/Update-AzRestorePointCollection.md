@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/update-azrestorepointcollection
+online version: https://learn.microsoft.com/powershell/module/az.compute/update-azrestorepointcollection
 schema: 2.0.0
 ---
 

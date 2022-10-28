@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 3E7B9EFA-8BC2-46EB-9AD7-43EAB7FF3891
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmssosprofile
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmssosprofile
 schema: 2.0.0
 ---
 
