@@ -61,10 +61,11 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         ${ClassicResourceReferenceId},
 
         [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
+        [Alias('ProfileName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
         # Name of the new profile that need to be created.
-        ${ProfileName},
+        ${Name},
 
         [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
         [ValidateNotNull()]
@@ -95,6 +96,22 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         [System.String]
         # Azure Subscription ID.
         ${SubscriptionId},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
+        # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        ${IdentityType},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
+        [System.Collections.Hashtable]
+        # The set of user assigned identities associated with the resource.
+        # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        # The dictionary values can be empty objects ({}) in requests.
+        ${IdentityUserAssignedIdentity},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -173,12 +190,12 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
                 $hasWafpolicy = $false
                 $existManagedMigrateFromWaf = $false
-                $allWafPolicies = @()
+                $allWafPolicies = [System.Collections.ArrayList]@()
 
                 foreach ($info in $frontDoorInfos) {
                     if($info.WebApplicationFirewallPolicyLink) {
                         $hasWafpolicy = $true
-                        $allWafPolicies += $info.WebApplicationFirewallPolicyLink
+                        $allWafPolicies.Add($info.WebApplicationFirewallPolicyLink)
                     }
                 }
 
@@ -200,7 +217,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                     }
 
                     # Validate the Sku argument 
-                    $migrateFromWafPreperty = GetMigrateFromWafProperty -MigrateWafResourceId $migrateFromId
+                    $migrateFromWafPreperty = GetMigrateWafProperty -MigrateWafResourceId $migrateFromId
                     if ($migrateFromWafPreperty.ManagedRules) {
                         $existManagedMigrateFromWaf = $true
                         if (${SkuName} -ne "Premium_AzureFrontDoor") {
@@ -230,7 +247,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                         # $migrateFromWafProperty = Get-AzFrontDoorWafPolicy -ResourceGroupName $migrateFromWafResourceGroup -Name $migrateFromWafName
 
                         # Create a new waf policy. 
-                        $migrateFromWafPreperty = GetMigrateFromWafProperty -MigrateWafResourceId $policy.MigratedFromId
+                        $migrateFromWafPreperty = GetMigrateWafProperty -MigrateWafResourceId $policy.MigratedFromId
                         CreateNewWafPolicy -ResourceGroupName $migrateToWafResourceGroup -Name $migrateToWafName -WafProperty $migrateFromWafProperty
                     }
 
@@ -243,7 +260,58 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 }
             }
         }
+
         Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters
+
+        # MSI 
+        if ($PSBoundParameters.ContainsKey('IdentityType')) {
+            if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
+                throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
+            }
+            else {
+                Import-Module -Name Az.FrontDoor
+            }
+
+            if(!(Get-Module -ListAvailable -Name AzureRM.KeyVault)) {
+                throw 'Please install AzureRM.KeyVault module by entering "Install-Module -Name AzureRM.KeyVault"'
+            }
+            else {
+                Import-Module -Name Az.FrontDoor
+            }
+
+
+            if (${IdentityType} -eq "SystemAssigned" ) {
+                Write-Debug("System assigned MSI started...")
+
+                # 1. Get "principalId" from RP
+                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType ${IdentityType} 
+                $indentityPrincipal = $profileIdentity.IdentityPrincipalId
+                Write-Debug("Value of the principal Id: " + $indentityPrincipal)
+
+                # 2. Grant Key Vault permission: Get all the BYOC key vault of the fronted endpoint in the frontdoor.
+                $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
+                $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
+                $vaultArray = [System.Collections.ArrayList]@()
+                foreach ($info in $frontDoorInfos) {
+                    if ($info.Vault) {
+                        $vaultArray.Add($info.Vault)
+                    }
+                }
+                Write-Debug("All the key vaults are: " + $vaultArray)
+
+                # 3. Call Key Vault module: Grant key vault accsee policys
+                foreach ($vault in $vaultArray) {
+                    Write-Debug("Call the key vault module to set access...")
+                    Set-AzureRmKeyVaultAccessPolicy -VaultName $vault -ObjectId $indentityPrincipal -PermissionsToSecrets Get,Set
+                }
+
+            } elseif (${IdentityType} -eq "UserAssigned") {
+                $profileIdentity = Az.Cdn.internal\Update-AzCdnProfile @PSBoundParameters
+                # PrincipalId is used for granting when call KeyVault module API. 
+                $indentityPrincipalArray = $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId
+                
+            }
+        }
     }
 }
 
@@ -286,9 +354,11 @@ function CreateNewWafPolicy {
         $skuName = "Premium_AzureFrontDoor"
     }
 
+    Write-Debug("validate the waf property......")
     # Remove the null/empty property
     $validatedWafProperty = ValidateWafPolicyProperty $WafProperty
 
+    Write-Debug("begin new waf policy......")
     # New a waf policy, copied from the Migrtae
     New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku $skuName @validatedWafProperty
 }
@@ -299,6 +369,7 @@ function ValidateWafPolicyProperty {
         [Microsoft.Azure.Commands.FrontDoor.Models.PSTrackedResource]$WafProperty
     )
 
+    Write-Debug("begin to validate the property....")
     $wafPropertHash = @{}
     $wafPropertHash.Add('EnabledState', $WafProperty.PolicyEnabledState)
     $wafPropertHash.Add('Mode', $WafProperty.PolicyMode)
@@ -319,5 +390,6 @@ function ValidateWafPolicyProperty {
     $null = $wafPropertHash.Remove('CustomBlockResponseBody')
     $null = $wafPropertHash.Remove('RequestBodyCheck')
 
+    Write-Debug("end validat the waf property...." + $wafPropertHash)
     return $wafPropertHash
 }

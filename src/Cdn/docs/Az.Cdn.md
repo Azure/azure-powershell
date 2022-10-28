@@ -23,6 +23,10 @@ Disable https delivery of the custom domain.
 ### [Enable-AzCdnCustomDomainCustomHttps](Enable-AzCdnCustomDomainCustomHttps.md)
 Enable https delivery of the custom domain.
 
+### [Enable-AzFrontDoorCdnProfileManagedIdentityGrant](Enable-AzFrontDoorCdnProfileManagedIdentityGrant.md)
+Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
+Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
+
 ### [Get-AzCdnCustomDomain](Get-AzCdnCustomDomain.md)
 Gets an existing custom domain within an endpoint.
 

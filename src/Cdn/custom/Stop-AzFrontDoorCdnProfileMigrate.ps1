@@ -34,10 +34,11 @@ function Stop-AzFrontDoorCdnProfileMigrate {
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
+        [Alias('ProfileName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # Name of the new profile that created in AFDx.
-        ${ProfileName},
+        ${Name},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
@@ -113,6 +114,6 @@ function Stop-AzFrontDoorCdnProfileMigrate {
     )
 
     process {
-        Remove-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName}
+        Remove-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name}
     }
 }

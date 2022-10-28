@@ -193,7 +193,7 @@ function Update-AzFrontDoorCdnProfileSku {
                         Write-Debug("Current policy name: " + $policyName)
                         # Get the waf policy name of the security.
                         try{
-                            $policyNameProperty =  Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName afd -ProfileName skuupgradetest10 -Name $policyName
+                            $policyNameProperty = Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName} -Name $policyName
                         }
                         catch {
                             throw 'Security policy name not exists in this profile...'

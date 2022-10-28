@@ -14,7 +14,7 @@ This will delete all the AFD Standard or Premium configurations.
 ## SYNTAX
 
 ```
-Stop-AzFrontDoorCdnProfileMigrate -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Stop-AzFrontDoorCdnProfileMigrate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -78,6 +78,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the new profile that created in AFDx.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ProfileName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -87,21 +102,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProfileName
-Name of the new profile that created in AFDx.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
