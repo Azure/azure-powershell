@@ -497,11 +497,17 @@ public static int hashForArtifact(String artifact)
 }
 "@
         Add-Type -TypeDefinition $Source -Language CSharp
-        $hash = [HashFunctions]::hashForArtifact($HashCodeInput)
+        if ([string]::IsNullOrEmpty($mappingObject.ProviderSpecificDetail.KeyVaultUri)) {
+             $LogStorageAccountID = $mappingObject.ProviderSpecificDetail.StorageAccountId
+             $LogStorageAccountSas = $LogStorageAccountID.Split('/')[-1] + '-cacheSas'
+        }
+        else {
+            $hash = [HashFunctions]::hashForArtifact($HashCodeInput)
+            $LogStorageAccountID = "/subscriptions/" + $SubscriptionId + "/resourceGroups/" +
+            $ResourceGroupName + "/providers/Microsoft.Storage/storageAccounts/migratelsa" + $hash
+            $LogStorageAccountSas = "migratelsa" + $hash + '-cacheSas'
+        }
 
-        $LogStorageAccountID = "/subscriptions/" + $SubscriptionId + "/resourceGroups/" +
-        $ResourceGroupName + "/providers/Microsoft.Storage/storageAccounts/migratelsa" + $hash
-        $LogStorageAccountSas = "migratelsa" + $hash + '-cacheSas'
         if (!$HasTargetBDStorage) {
             $TargetBootDiagnosticsStorageAccount = $LogStorageAccountID
         }
