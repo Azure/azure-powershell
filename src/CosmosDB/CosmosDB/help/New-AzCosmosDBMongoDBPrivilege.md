@@ -39,7 +39,7 @@ Microsoft.Azure.Commands.CosmosDB.Models.PSMongoPrivilege
 
 ## PARAMETERS
 
-## -PrivilegeResource
+### -PrivilegeResource
 Microsoft.Azure.Commands.CosmosDB.Models.PSMongoPrivilegeResource Object.
 
 ```yaml
@@ -53,7 +53,7 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 
-## -Actions
+### -Actions
 Array of valid Actions(e.g. insert, find).
 
 ```yaml
