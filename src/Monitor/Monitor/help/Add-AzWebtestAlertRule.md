@@ -278,8 +278,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Set-AzActivityLogAlert](./Set-AzActivityLogAlert.md)
-
 [Add-AzMetricAlertRule](./Add-AzMetricAlertRule.md)
 
 [Get-AzAlertHistory](./Get-AzAlertHistory.md)

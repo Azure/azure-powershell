@@ -23,34 +23,12 @@ Creates or updates a Azure Traffic Collector resource
 New-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroupname test -location eastus | Format-List
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IAzureTrafficCollector
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-COLLECTORPOLICY <ICollectorPolicy[]>: Collector Policies for Azure Traffic Collector.
-  [Location <String>]: Resource location.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [EmissionPolicy <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
-    [EmissionDestination <IEmissionPolicyDestination[]>]: Emission policy destinations.
-      [DestinationType <DestinationType?>]: Emission destination type.
-    [EmissionType <EmissionType?>]: Emission format type.
-  [IngestionPolicyIngestionSource <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
-    [ResourceId <String>]: Resource ID.
-    [SourceType <SourceType?>]: Ingestion source type.
-  [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector
 .Link
 https://docs.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctiontrafficcollector
 #>
 function New-AzNetworkFunctionTrafficCollector {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IAzureTrafficCollector])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -80,16 +58,8 @@ param(
     ${Location},
 
     [Parameter()]
-    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ICollectorPolicy[]]
-    # Collector Policies for Azure Traffic Collector.
-    # To construct, see NOTES section for COLLECTORPOLICY properties and create a hash table.
-    ${CollectorPolicy},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -180,7 +150,7 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.NetworkFunction.custom\New-AzNetworkFunctionTrafficCollector';
+            CreateExpanded = 'Az.NetworkFunction.private\New-AzNetworkFunctionTrafficCollector_CreateExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

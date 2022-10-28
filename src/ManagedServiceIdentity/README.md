@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ManagedServiceIdentity ser
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -30,20 +30,22 @@ For information on how to develop for `Az.ManagedServiceIdentity`, see [how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 476564a1aa6ddb38ec681c9f89d42f00c1becd25
+branch: main
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/msi/resource-manager/Microsoft.ManagedIdentity/stable/2018-11-30/ManagedIdentity.json
+  - $(repo)/specification/msi/resource-manager/Microsoft.ManagedIdentity/preview/2022-01-31-preview/ManagedIdentity.json
 
 subject-prefix: ""
 resourcegroup-append: true
 nested-object-to-string: true
 identity-correction-for-post: true
+module-version: 0.2.0
 
 directive:
   - where:
       verb: Set
+      subject: SystemAssignedIdentity|UserAssignedIdentity
     remove: true
 
   - where:
@@ -62,4 +64,76 @@ directive:
       parameter-name: ResourceName
     set:
       parameter-name: Name
+
+  # Associated Resources
+
+  - where:
+      subject: UserAssignedIdentityAssociatedResource
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: UserAssignedIdentityAssociatedResource
+    set:
+      preview-message: This is a preview version of the Associated Resources feature.
+
+  # Federated identity credentials
+
+  - where:
+      verb: Set
+      subject: FederatedIdentityCredentials
+    set:
+      verb: Update
+      subject: FederatedIdentityCredentials
+    
+  - where:
+      subject: FederatedIdentityCredentials
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+    remove: true
+
+  - where:
+      subject: FederatedIdentityCredentials
+      parameter-name: ResourceName
+    set:
+      parameter-name: IdentityName
+
+  - where:
+      subject: FederatedIdentityCredentials
+      parameter-name: FederatedIdentityCredentialResourceName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: FederatedIdentityCredentials
+      parameter-name: Audience
+    required: true
+    set:
+      default:
+        script: '@("api://AzureADTokenExchange")'
+
+  - where:
+      subject: FederatedIdentityCredentials
+      parameter-name: Issuer
+    required: true
+
+  - where:
+      subject: FederatedIdentityCredentials
+      parameter-name: Subject
+    required: true
+
+  - where:
+      model-name: FederatedIdentityCredential
+    set:
+      format-table:
+        properties:
+          - Name
+          - Issuer
+          - Subject
+          - Audience
+
+  - where:
+      subject: FederatedIdentityCredentials
+    set:
+      preview-message: This is a preview version of the Federated Identity Credentials feature.
 ```

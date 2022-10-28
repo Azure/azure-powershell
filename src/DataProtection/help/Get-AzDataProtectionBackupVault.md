@@ -8,11 +8,16 @@ schema: 2.0.0
 # Get-AzDataProtectionBackupVault
 
 ## SYNOPSIS
-Returns resource collection belonging to a resource group.
+Returns resource collection belonging to a subscription.
 
 ## SYNTAX
 
-### Get1 (Default)
+### Get (Default)
+```
+Get-AzDataProtectionBackupVault [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
 ```
 Get-AzDataProtectionBackupVault -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -31,7 +36,7 @@ Get-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-Default
 ```
 
 ## DESCRIPTION
-Returns resource collection belonging to a resource group.
+Returns resource collection belonging to a subscription.
 
 ## EXAMPLES
 
@@ -132,7 +137,7 @@ The subscription Id.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get1, Get2
+Parameter Sets: Get, Get1, Get2
 Aliases:
 
 Required: False

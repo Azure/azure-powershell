@@ -2588,5 +2588,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("TierAfterDurationCheckFailedWithRetentionDuration", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to For triggering cross zonal restore for CRR enabled (RA-GRS) vaults, please ensure that the recovery point is zone pinned. Please remove TargetZone parameter or try a valid scenario.
+        /// </summary>
+        public static string UnsupportedCZRWithNonZonePinnedVMForCRRVault
+        {
+            get
+            {
+                return ResourceManager.GetString("UnsupportedCZRWithNonZonePinnedVMForCRRVault", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to For triggering cross zonal restore for CRR enabled (RA-GRS) vaults, please ensure that the restore is triggered for secondary region. Please remove TargetZone parameter or try a valid scenario.
+        /// </summary>
+        public static string UnsupportedCZRForCRRVaultToPrimaryRegion
+        {
+            get
+            {
+                return ResourceManager.GetString("UnsupportedCZRForCRRVaultToPrimaryRegion", resourceCulture);
+            }
+        }
     }
 }

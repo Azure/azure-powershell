@@ -14,7 +14,8 @@ Creates an object to update NIC properties of a replicating server.
 
 ```
 New-AzMigrateNicMapping -NicID <String> [-TargetNicIP <String>] [-TargetNicName <String>]
- [-TargetNicSelectionType <String>] [-TargetNicSubnet <String>] [<CommonParameters>]
+ [-TargetNicSelectionType <String>] [-TargetNicSubnet <String>] [-TestNicIP <String>]
+ [-TestNicSubnet <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,6 +101,36 @@ Accept wildcard characters: False
 
 ### -TargetNicSubnet
 Specifies the Subnet name for the NIC in the destination Virtual Network to which the server needs to be migrated.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestNicIP
+Specifies the IP within the destination test subnet to be used for the NIC.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestNicSubnet
+Specifies the Subnet name for the NIC in the destination Virtual Network to which the server needs to be test migrated.
 
 ```yaml
 Type: System.String

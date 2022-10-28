@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Cost service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -45,14 +45,14 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-Branch: 2cb80cf6668074c84cf02cf45b6bb897eff47e9b
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2020-06-01/costmanagement.json
-  - $(repo)/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2020-06-01/costmanagement.exports.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/6080bb1fc0e219b72ed3c85966b54334e22e9980/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/costmanagement.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/14f29e62df4563d9bf4b9d98ae0688420df12053/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/costmanagement.exports.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/fbb4e2c74897a67a75116d2a3157bd146262def4/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2022-05-01/costmanagement.generatecostdetailsreport.json
 title: CostManagement
-module-version: 0.1.0
+module-version: 0.3.0
 
 service-name: CostManagement
 
@@ -80,6 +80,27 @@ directive:
       subject: ByDimensionExternalCloudProviderType|CloudForecast|DismissAlert|Forecast
       verb: Invoke
     remove: true
+  # Get the result of the specified operation. This link is provided in the CostDetails creation request response Location header.
+  - where:
+      subject: GenerateCostDetailReportOperationResult
+      verb: Get
+    remove: true
+  
+  - where:
+      subject: GenerateCostDetailReportOperation
+    set:
+      subject: DetailReport
+
+  # The schema of their response body is the same
+  - where:
+      subject: ByGenerateReservationDetailReportBillingAccountId|ByGenerateReservationDetailReportBillingProfileId
+    set:
+      subject: ReservationDetailReport
+  - where:
+      subject: ReservationDetailReport
+      variant: ByViaIdentity|ByViaIdentity1
+    remove: true
+
   - where:
       subject: Export|ExportExecutionHistory|ExportExecution
       parameter-name: Scope

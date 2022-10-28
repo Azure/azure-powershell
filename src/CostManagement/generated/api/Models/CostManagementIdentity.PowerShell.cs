@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -65,13 +67,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Scope, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ViewName = (string) content.GetValueForProperty("ViewName",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ViewName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).AlertId = (string) content.GetValueForProperty("AlertId",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).AlertId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType = (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType?) content.GetValueForProperty("ExternalCloudProviderType",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderId = (string) content.GetValueForProperty("ExternalCloudProviderId",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExportName = (string) content.GetValueForProperty("ExportName",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExportName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("Scope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Scope, global::System.Convert.ToString);
+            }
+            if (content.Contains("ViewName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ViewName = (string) content.GetValueForProperty("ViewName",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ViewName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AlertId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).AlertId = (string) content.GetValueForProperty("AlertId",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).AlertId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExternalCloudProviderType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType = (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType?) content.GetValueForProperty("ExternalCloudProviderType",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType.CreateFrom);
+            }
+            if (content.Contains("ExternalCloudProviderId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderId = (string) content.GetValueForProperty("ExternalCloudProviderId",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderId, global::System.Convert.ToString);
+            }
+            if (content.Contains("BillingAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).BillingAccountId = (string) content.GetValueForProperty("BillingAccountId",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).BillingAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("BillingProfileId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).BillingProfileId = (string) content.GetValueForProperty("BillingProfileId",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).BillingProfileId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExportName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExportName = (string) content.GetValueForProperty("ExportName",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExportName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).OperationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -89,13 +124,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Scope, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ViewName = (string) content.GetValueForProperty("ViewName",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ViewName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).AlertId = (string) content.GetValueForProperty("AlertId",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).AlertId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType = (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType?) content.GetValueForProperty("ExternalCloudProviderType",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderId = (string) content.GetValueForProperty("ExternalCloudProviderId",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExportName = (string) content.GetValueForProperty("ExportName",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExportName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("Scope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Scope, global::System.Convert.ToString);
+            }
+            if (content.Contains("ViewName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ViewName = (string) content.GetValueForProperty("ViewName",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ViewName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AlertId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).AlertId = (string) content.GetValueForProperty("AlertId",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).AlertId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExternalCloudProviderType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType = (Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType?) content.GetValueForProperty("ExternalCloudProviderType",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderType, Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType.CreateFrom);
+            }
+            if (content.Contains("ExternalCloudProviderId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderId = (string) content.GetValueForProperty("ExternalCloudProviderId",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExternalCloudProviderId, global::System.Convert.ToString);
+            }
+            if (content.Contains("BillingAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).BillingAccountId = (string) content.GetValueForProperty("BillingAccountId",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).BillingAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("BillingProfileId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).BillingProfileId = (string) content.GetValueForProperty("BillingProfileId",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).BillingProfileId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExportName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExportName = (string) content.GetValueForProperty("ExportName",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).ExportName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).OperationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -129,7 +197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         /// Creates a new instance of <see cref="CostManagementIdentity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="CostManagementIdentity" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

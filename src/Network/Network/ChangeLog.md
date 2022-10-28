@@ -19,6 +19,16 @@
 --->
 
 ## Upcoming Release
+* Added possible value `LocalGateway` for parameter `GatewayType`
+    - `New-AzVirtualNetworkGateway`
+* Exposed `ExtendedLocation` and `VNetExtendedLocationResourceId` for `VirtualNetworkGateway`
+    - `Get-AzVirtualNetworkGateway`
+* Added new cmdlet to get firewall learned ip prefixes 
+    * `Get-AzFirewallLearnedIpPrefix`
+* Fixed a bug that does not update firewall policy application, network and nat rules' descriptions even though description is provided via description parameter
+* Added new cmdlet `Get-AzNetworkSecurityPerimeterAssociableResourceType`
+* Updated `New-AzIpConfigurationBgpPeeringAddressObject` to remove validate null or empty check for CustomAddress in Azure Virtual Network Gateway
+* Updated `New-AzVirtualNetworkGateway` to add validate null or empty check for CustomAddress in Azure Virtual Network Gateway
 * Updated cmdlets to add new property of `VirtualNetworkGatewayPolicyGroup` and `VpnClientConnectionConfiguration` in Azure Virtual Network Gateway
     * `New-AzVirtualNetworkGateway`
     * `Set-AzVirtualNetworkGateway`
@@ -28,8 +38,12 @@
     * `New-AzVpnClientConnectionConfiguration`
 * Added message in breaking change attribute to notify that load balancer sku default behaviour will be changed
     * `New-AzLoadBalancer`
+* Added cmdlet preview to notify customers to use defualt value or leave null for load balancer probe theshold property
+    * `New-AzLoadBalancerProbeConfig`
+    * `Set-AzLoadBalancerProbeConfig`
+    * `Add-AzLoadBalancerProbeConfig`
 
-## Version 4.21.0
+## Version 5.0.0
 * Added a new endpoint switch `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`
 * Updated `New-AzVirtualNetworkGatewayConnection` to support bypassing the ExpressRoute gateway when accessing private-links
 * Updated `Update-AzCustomIpPrefix` to support no-internet advertise CustomIpPrefix
