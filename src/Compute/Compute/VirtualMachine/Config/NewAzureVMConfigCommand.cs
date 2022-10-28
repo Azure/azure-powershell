@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Commands.Compute
                     vm.SecurityProfile.UefiSettings = new UefiSettings();
                 }
                 vm.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
-
+            }
             if (this.IsParameterBound(c => c.DiskControllerType))
             {
                 if (vm.StorageProfile == null)

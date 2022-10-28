@@ -74,7 +74,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
             string securityType = null,
-            Dictionary<string, List<string>> auxAuthHeader = null
             Dictionary<string, List<string>> auxAuthHeader = null,
             string diskControllerType = null
             )
