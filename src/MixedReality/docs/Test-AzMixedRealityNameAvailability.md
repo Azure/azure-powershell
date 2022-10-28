@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.MixedReality
-online version: https://docs.microsoft.com/powershell/module/az.mixedreality/test-azmixedrealitynameavailabilitylocal
+online version: https://docs.microsoft.com/powershell/module/az.mixedreality/test-azmixedrealitynameavailability
 schema: 2.0.0
 ---
 
-# Test-AzMixedRealityNameAvailabilityLocal
+# Test-AzMixedRealityNameAvailability
 
 ## SYNOPSIS
 Check Name Availability for local uniqueness
@@ -14,13 +14,13 @@ Check Name Availability for local uniqueness
 
 ### CheckExpanded (Default)
 ```
-Test-AzMixedRealityNameAvailabilityLocal -Location <String> -Name <String> -Type <String>
+Test-AzMixedRealityNameAvailability -Location <String> -Name <String> -Type <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
-Test-AzMixedRealityNameAvailabilityLocal -InputObject <IMixedRealityIdentity> -Name <String> -Type <String>
+Test-AzMixedRealityNameAvailability -InputObject <IMixedRealityIdentity> -Name <String> -Type <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Check Name Availability for local uniqueness
 
 ### Example 1: Check Name Availability for local uniqueness.
 ```powershell
-Test-AzMixedRealityNameAvailabilityLocal -Location eastus -Name azpstest -Type "Microsoft.MixedReality/spatialAnchorsAccounts"
+Test-AzMixedRealityNameAvailability -Location eastus -Name azpstest -Type "Microsoft.MixedReality/spatialAnchorsAccounts"
 ```
 
 ```output

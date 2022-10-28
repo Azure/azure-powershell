@@ -62,7 +62,7 @@ Delete a Remote Rendering Account.
 ### [Remove-AzMixedRealitySpatialAnchorsAccount](Remove-AzMixedRealitySpatialAnchorsAccount.md)
 Delete a Spatial Anchors Account.
 
-### [Test-AzMixedRealityNameAvailabilityLocal](Test-AzMixedRealityNameAvailabilityLocal.md)
+### [Test-AzMixedRealityNameAvailability](Test-AzMixedRealityNameAvailability.md)
 Check Name Availability for local uniqueness
 
 ### [Update-AzMixedRealityObjectAnchorsAccount](Update-AzMixedRealityObjectAnchorsAccount.md)

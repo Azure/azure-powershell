@@ -67,4 +67,9 @@ directive:
   - where:
       variant: ^Check$|^CheckViaIdentity$|^Regenerate$|^RegenerateViaIdentity$
     remove: true
+  - where:
+      verb: Test
+      subject: ^NameAvailabilityLocal$
+    set:
+      subject: NameAvailability
 ```
