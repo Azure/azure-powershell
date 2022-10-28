@@ -22,6 +22,7 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -134,6 +135,17 @@ namespace Microsoft.Azure.Commands.Network
                 this.ApplicationGatewayFirewallPolicyClient.CreateOrUpdate(ResourceGroupName, Name, firewallPolicyModel);
 
                 var getApplicationGatewayFirewallPolicy = this.GetApplicationGatewayFirewallPolicy(ResourceGroupName, Name);
+
+                // Assign the CustomBlockResponse fields from policy settings to policy (Feature parity with AFD WAF Policy)
+                getApplicationGatewayFirewallPolicy.CustomBlockResponseStatusCode = getApplicationGatewayFirewallPolicy.PolicySettings.CustomBlockResponseStatusCode;
+
+                // decode the body value as it is base64 encoded
+                if (!string.IsNullOrEmpty(getApplicationGatewayFirewallPolicy.PolicySettings.CustomBlockResponseBody))
+                {
+                    string decodedCustomBlockResponseBody = Encoding.UTF8.GetString(Convert.FromBase64String(getApplicationGatewayFirewallPolicy.PolicySettings.CustomBlockResponseBody));
+                    getApplicationGatewayFirewallPolicy.CustomBlockResponseBody = decodedCustomBlockResponseBody;
+                }
+
                 WriteObject(getApplicationGatewayFirewallPolicy);
             }
         }

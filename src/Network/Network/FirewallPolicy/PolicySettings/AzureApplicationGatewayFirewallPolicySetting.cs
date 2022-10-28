@@ -49,9 +49,11 @@ namespace Microsoft.Azure.Commands.Network
         public int MaxFileUploadInMb { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Custom Response Status Code")]
+        [ValidateNotNullOrEmpty]
         public int? CustomBlockResponseStatusCode { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Custom Response Body")]
+        [ValidateNotNullOrEmpty]
         public string CustomBlockResponseBody { get; set; }
 
         public override void ExecuteCmdlet()

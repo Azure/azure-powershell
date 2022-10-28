@@ -70,6 +70,7 @@
     - `New-AzLoadBalancer`
 
 * Onboard Project AzureML Registries to Private Link Common Cmdlets
+* Added optional parameters `CustomBlockResponseStatusCode` and `CustomBlockResponseBody` parameter to `AzApplicationGatewayFirewallPolicy`
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`

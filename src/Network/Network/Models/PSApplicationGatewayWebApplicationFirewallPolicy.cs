@@ -26,5 +26,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSApplicationGatewayFirewallPolicySettings PolicySettings { get; set; }
 
         public PSApplicationGatewayFirewallPolicyManagedRules ManagedRules { get; set; }
+
+        // CustomBlockResponse fields to be mapped from inside the policy settings
+        // to be shown as response in PS (Feature parity with AFD WAF Policy)
+        public int? CustomBlockResponseStatusCode { get; set; }
+
+        public string CustomBlockResponseBody { get; set; }
     }
 }
