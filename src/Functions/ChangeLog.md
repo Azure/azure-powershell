@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.0.6
 * Added warning logs to detect Az context switching in Get-AzFunctionApp
 
 ## Version 4.0.5

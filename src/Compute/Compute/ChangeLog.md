@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 5.1.0
 * Fixed EdgeZone does not pass to VM for `New-AzVM` "SimpleParameterSet" [#18978] 
 * Added 'ScriptFilePath' parameter set for `Set-AzVMRunCommand` and `Set-AzVmssVMRunCommand` to allow users to pass in the path of the file that has the run command script
 * Added `-AsJob` optional parameter to `Remove-AzVMExtension` cmdlet.

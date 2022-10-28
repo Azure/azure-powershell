@@ -12,7 +12,7 @@
 RootModule = './Az.Migrate.psm1'
 
 # Version number of this module.
-ModuleVersion = '2.0.0'
+ModuleVersion = '2.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.2'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = './bin/Az.Migrate.private.dll'
@@ -127,7 +127,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Added parameter ''CacheStorageAccountId'' to ''Initialize-AzMigrateReplicationInfrastructure''
+* Added support for OS Disk Swap and Test Migrate Subnet Selection'
 
         # Prerelease string of this module
         # Prerelease = ''

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.2
 * Supported WDAC compliant APIs
 * Fixed module versions of dependent PS modules
 * Updated Remote Support cmdlets to check device type between HCIv2 and AzureEdge
