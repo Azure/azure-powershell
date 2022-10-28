@@ -12,10 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSDdosSettings
     {
-        public string ProtectionMode;
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ProtectionMode { get; set; }
     }
 }

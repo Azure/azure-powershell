@@ -1570,6 +1570,10 @@
                 <Label>DnsSettings</Label>
                 <PropertyName>DnsSettingsText</PropertyName>
               </ListItem>
+			  <ListItem>
+				<Label>DdosSettings</Label>
+				<PropertyName>DdosSettingsText</PropertyName>
+			  </ListItem>
               <ListItem>
                 <Label>Zones</Label>
                 <PropertyName>Zones</PropertyName>
@@ -4081,6 +4085,10 @@
                 <Label>VirtualNetworks</Label>
                 <PropertyName>VirtualNetworksText</PropertyName>
               </ListItem>
+			  <ListItem>
+				<Label>PublicIpAddresses</Label>
+				<PropertyName>PublicIpAddressesText</PropertyName>
+			  </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
