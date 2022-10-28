@@ -11569,6 +11569,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
             }
         }
 
+        /// <summary>Finds the valid recovery point in time ranges for the restore.</summary>
         /// <param name="subscriptionId">The subscription Id.</param>
         /// <param name="resourceGroupName">The name of the resource group where the backup vault is present.</param>
         /// <param name="vaultName">The name of the backup vault.</param>
@@ -11620,6 +11621,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
             }
         }
 
+        /// <summary>Finds the valid recovery point in time ranges for the restore.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request body for operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>

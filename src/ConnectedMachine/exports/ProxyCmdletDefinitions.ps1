@@ -2600,28 +2600,28 @@ The operation to create or update the extension.
 The operation to create or update the extension.
 .Example
 $splat = @{
-            ResourceGroupName = "connectedMachines"
-            MachineName = "linux-eastus1_1"
-            Name = "customScript"
-            Settings = @{
-                commandToExecute = "ls -l"
-            }
-        }
+    ResourceGroupName = "connectedMachines"
+    MachineName = "linux-eastus1_1"
+    Name = "customScript"
+    Settings = @{
+        commandToExecute = "ls -l"
+    }
+}
 Update-AzConnectedMachineExtension @splat
 .Example
 $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
 $extToUpdate | Update-AzConnectedMachineExtension -Settings @{
-                commandToExecute = "ls -l"
-            }
+    commandToExecute = "ls -l"
+}
 .Example
 $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
 # Update the settings on the object that will be used via the pipeline
 $extToUpdate.Setting.commandToExecute = "ls -l"
 $splat = @{
-            ResourceGroupName = "connectedMachines"
-            MachineName = "linux-eastus1_1"
-            Name = "customScript"
-        }
+    ResourceGroupName = "connectedMachines"
+    MachineName = "linux-eastus1_1"
+    Name = "customScript"
+}
 $extToUpdate | Update-AzConnectedMachineExtension @splat
 .Example
 $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
@@ -3249,7 +3249,13 @@ To update other fields use the CreateOrUpdate method.
 Updates an existing PrivateLinkScope's tags.
 To update other fields use the CreateOrUpdate method.
 .Example
-PS C:\> $scope = Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
+$scope = Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
+
+Name         Location    PublicNetworkAccess ProvisioningState
+----         --------    ------------------- -----------------
+name         eastus2euap Disabled            Succeeded
+
+$scope.Tag
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.ITagsResource

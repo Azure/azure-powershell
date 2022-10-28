@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated `Get-AzSubscription` to retreived subscription by Id rather than listed all the subscripitons from server if subscription Id is provided. [#19115]
 
 ## Version 2.10.2
 * Upgraded Azure.Core to 1.25.0 and Azure.Identity to 1.6.1
