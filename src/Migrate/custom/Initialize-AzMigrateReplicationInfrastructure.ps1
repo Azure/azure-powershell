@@ -268,11 +268,11 @@ public static int hashForArtifact(String artifact)
             $hash = Receive-Job $job
 
             Write-Host "Initiating Artifact Creation for Appliance: ", $applianceName
+            $MigratePrefix = "migrate"
 
             if ([string]::IsNullOrEmpty($CacheStorageAccountId)) {
                 # Phase 1
                 # Storage account
-                $MigratePrefix = "migrate"
                 $LogStorageAcName = $MigratePrefix + "lsa" + $hash
                 $GateWayStorageAcName = $MigratePrefix + "gwsa" + $hash
                 $StorageType = "Microsoft.Storage/storageAccounts"

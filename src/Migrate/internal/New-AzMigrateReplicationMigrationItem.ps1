@@ -34,7 +34,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICDETAIL <IEnableMigrationProviderSpecificInput>: The provider specific details.
   InstanceType <String>: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationmigrationitem
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationmigrationitem
 #>
 function New-AzMigrateReplicationMigrationItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem])]
