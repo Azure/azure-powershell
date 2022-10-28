@@ -41,7 +41,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICINPUT <IReplicationProviderSpecificContainerMappingInput>: Provider specific input for pairing.
   InstanceType <String>: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationprotectioncontainermapping
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationprotectioncontainermapping
 #>
 function New-AzMigrateReplicationProtectionContainerMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping])]

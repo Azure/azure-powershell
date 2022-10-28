@@ -27,7 +27,7 @@ The operation to initiate pause replication of the item.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/suspend-azmigratereplicationmigrationitemreplication
+https://learn.microsoft.com/powershell/module/az.migrate/suspend-azmigratereplicationmigrationitemreplication
 #>
 function Suspend-AzMigrateReplicationMigrationItemReplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem])]

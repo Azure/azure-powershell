@@ -50,7 +50,7 @@ BODY <IVMwareSite>: Site REST Resource.
   [Tag <IVMwareSiteTags>]: Dictionary of <string>
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/set-azmigratesite
+https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratesite
 #>
 function Set-AzMigrateSite {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite])]
