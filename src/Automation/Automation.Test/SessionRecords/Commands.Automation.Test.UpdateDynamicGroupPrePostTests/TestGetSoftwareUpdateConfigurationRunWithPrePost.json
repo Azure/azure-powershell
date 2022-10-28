@@ -1,27 +1,27 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-02/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/softwareUpdateConfigurationRuns/e5934d51-6e50-41f8-b860-3a3657040f8d?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25SdW5zL2U1OTM0ZDUxLTZlNTAtNDFmOC1iODYwLTNhMzY1NzA0MGY4ZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
+      "RequestUri": "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationRuns/7f077575-3905-4608-843e-5651884ffea1?api-version=2022-08-08",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzgzZmQ2NTItNjRmMy00NjgwLTgxZTktMGI5NzhjNTQyMDA1L3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25SdW5zLzdmMDc3NTc1LTM5MDUtNDYwOC04NDNlLTU2NTE4ODRmZmVhMT9hcGktdmVyc2lvbj0yMDIyLTA4LTA4",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e6084b2d-3b9d-405a-b5b8-4471cfebfd59"
+          "03b4080c-1a93-4aa5-ba8b-9cc363692e59"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.700.22.47601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ],
         "x-ms-activity-id": [
-          "8fff27ce-aed4-40f6-9d94-dc6345a74ca5"
+          "9f37b9ad-314b-4806-9345-211a14775248"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -30,37 +30,31 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8fff27ce-aed4-40f6-9d94-dc6345a74ca5"
+          "9f37b9ad-314b-4806-9345-211a14775248"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "3acd9bc9-291c-4311-b33a-1e0f3afd54f5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20221027T115544Z:3acd9bc9-291c-4311-b33a-1e0f3afd54f5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-correlation-request-id": [
-          "a03d0e38-5ce7-445f-b741-1a8d5e830250"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210407T035642Z:a03d0e38-5ce7-445f-b741-1a8d5e830250"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 07 Apr 2021 03:56:42 GMT"
+          "Thu, 27 Oct 2022 11:55:43 GMT"
         ],
         "Content-Length": [
-          "681"
+          "701"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,12 +63,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-02/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/softwareUpdateConfigurationRuns/e5934d51-6e50-41f8-b860-3a3657040f8d\",\r\n  \"name\": \"e5934d51-6e50-41f8-b860-3a3657040f8d\",\r\n  \"type\": null,\r\n  \"properties\": {\r\n    \"softwareUpdateConfiguration\": {\r\n      \"name\": \"test-suc\"\r\n    },\r\n    \"status\": \"Succeeded\",\r\n    \"configuredDuration\": \"PT2H\",\r\n    \"osType\": \"Windows\",\r\n    \"startTime\": \"2021-03-31T17:15:38.3433333+05:30\",\r\n    \"endTime\": \"2021-03-31T17:25:14.45+05:30\",\r\n    \"computerCount\": 1,\r\n    \"failedCount\": 0,\r\n    \"error\": null,\r\n    \"tasks\": null,\r\n    \"creationTime\": \"2021-03-31T17:15:38.3433333+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2021-03-31T17:25:42.457+05:30\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationRuns/7f077575-3905-4608-843e-5651884ffea1\",\r\n  \"name\": \"7f077575-3905-4608-843e-5651884ffea1\",\r\n  \"type\": null,\r\n  \"properties\": {\r\n    \"softwareUpdateConfiguration\": {\r\n      \"name\": \"mo-onetime-01\"\r\n    },\r\n    \"status\": \"Succeeded\",\r\n    \"configuredDuration\": \"PT2H\",\r\n    \"osType\": \"Windows\",\r\n    \"startTime\": \"2022-10-20T21:11:04.7272531+05:30\",\r\n    \"endTime\": \"2022-10-20T21:15:29.0233333+05:30\",\r\n    \"computerCount\": 2,\r\n    \"failedCount\": 0,\r\n    \"error\": null,\r\n    \"tasks\": null,\r\n    \"creationTime\": \"2022-10-20T21:11:04.7272531+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2022-10-20T21:16:11.2733333+05:30\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+    "SubscriptionId": "783fd652-64f3-4680-81e9-0b978c542005"
   }
 }
