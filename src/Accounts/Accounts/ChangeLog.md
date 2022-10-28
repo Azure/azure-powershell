@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.10.3
 * Updated `Get-AzSubscription` to retrieve subscription by Id rather than listed all the subscriptions from server if subscription Id is provided. [#19115]
 
 ## Version 2.10.2

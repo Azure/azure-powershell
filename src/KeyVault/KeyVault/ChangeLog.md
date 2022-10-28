@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.9.0
 * Bumped API version to 2022-07-01
 * Added `Undo-AzKeyVaultManagedHsm` to recover deleted managed HSM
 
