@@ -171,6 +171,11 @@ function Enable-AzFrontDoorCdnProfileManagedIdentityGrant {
     
     process {
         if ($PSBoundParameters.ContainsKey('IdentityType')) {
+            if(${IdentityType} -eq "None") {
+                Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name} -IdentityType ${IdentityType} 
+                return
+            }
+
             if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
                 throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
             }
@@ -182,7 +187,7 @@ function Enable-AzFrontDoorCdnProfileManagedIdentityGrant {
                 throw 'Please install Az.KeyVault module by entering "Install-Module -Name Az.KeyVault"'
             }
             else {
-                Import-Module -Name Az.FrontDoor
+                Import-Module -Name Az.KeyVault
             }
 
 
@@ -209,14 +214,31 @@ function Enable-AzFrontDoorCdnProfileManagedIdentityGrant {
                 }
 
             } elseif (${IdentityType} -eq "UserAssigned") {
-                $profileIdentity = Az.Cdn.internal\Update-AzCdnProfile @PSBoundParameters
+                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name} -IdentityType ${IdentityType} -IdentityUserAssignedIdentity ${IdentityUserAssignedIdentity}
                 # PrincipalId is used for granting when call KeyVault module API. 
                 $indentityPrincipalArray = $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId
-                
+
+                # 2. Grant Key Vault permission: Get all the BYOC key vaults of the fronted endpoint in the classic AFD.
+                $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
+                $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
+                $vaultArray = [System.Collections.ArrayList]@()
+                foreach ($info in $frontDoorInfos) {
+                    if ($info.Vault) {
+                        $vaultName = $info.Vault.split("/")[-1]
+                        $vaultArray.Add($vaultName)
+                    }
+                }
+
+                # 3. Call Key Vault module: Grant key vault accsee policys
+                foreach ($vault in $vaultArray) {
+                    Write-Debug("Call the key vault module to set access...")
+
+                    foreach ($principal in $indentityPrincipalArray) {
+                        Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificate Get
+                    }
+                }
             }
         }
-
-
     }
 }
     

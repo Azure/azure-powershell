@@ -265,26 +265,31 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
 
         # MSI 
         if ($PSBoundParameters.ContainsKey('IdentityType')) {
+            if(${IdentityType} -eq "None") {
+                Write-Debug("System assigned MSI started...")
+                Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name} -IdentityType ${IdentityType} 
+                Write-Debug("System assigned MSI done...")
+                return
+            }
+
             if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
                 throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
-            }
-            else {
+            } else {
                 Import-Module -Name Az.FrontDoor
             }
 
-            if(!(Get-Module -ListAvailable -Name AzureRM.KeyVault)) {
-                throw 'Please install AzureRM.KeyVault module by entering "Install-Module -Name AzureRM.KeyVault"'
-            }
-            else {
-                Import-Module -Name Az.FrontDoor
+            if(!(Get-Module -ListAvailable -Name Az.KeyVault)) {
+                throw 'Please install Az.KeyVault module by entering "Install-Module -Name Az.KeyVault"'
+            } else {
+                Import-Module -Name Az.KeyVault
             }
 
 
-            if (${IdentityType} -eq "SystemAssigned" ) {
+            if(${IdentityType} -eq "SystemAssigned" ) {
                 Write-Debug("System assigned MSI started...")
 
                 # 1. Get "principalId" from RP
-                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType ${IdentityType} 
+                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name} -IdentityType ${IdentityType} 
                 $indentityPrincipal = $profileIdentity.IdentityPrincipalId
                 Write-Debug("Value of the principal Id: " + $indentityPrincipal)
 
@@ -369,27 +374,30 @@ function ValidateWafPolicyProperty {
         [Microsoft.Azure.Commands.FrontDoor.Models.PSTrackedResource]$WafProperty
     )
 
-    Write-Debug("begin to validate the property....")
     $wafPropertHash = @{}
-    $wafPropertHash.Add('EnabledState', $WafProperty.PolicyEnabledState)
-    $wafPropertHash.Add('Mode', $WafProperty.PolicyMode)
-    $wafPropertHash.Add('Customrule', $WafProperty.CustomRules)
-    $wafPropertHash.Add('ManagedRule', $WafProperty.ManagedRules)
-    $wafPropertHash.Add('RedirectUrl', $WafProperty.RedirectUrl)
-    $wafPropertHash.Add('CustomBlockResponseStatusCode', $WafProperty.CustomBlockResponseStatusCode)
-    $wafPropertHash.Add('CustomBlockResponseBody', $WafProperty.CustomBlockResponseBody)
-    $wafPropertHash.Add('RequestBodyCheck', $WafProperty.RequestBodyCheck)
-
-    # If the propery is null, then remove from the hash table.
-    $null = $wafPropertHash.Remove('PolicyEnabledState')
-    $null = $wafPropertHash.Remove('PolicyMode')
-    $null = $wafPropertHash.Remove('CustomRules')
-    $null = $wafPropertHash.Remove('ManagedRules')
-    $null = $wafPropertHash.Remove('RedirectUrl')
-    $null = $wafPropertHash.Remove('CustomBlockResponseStatusCode')
-    $null = $wafPropertHash.Remove('CustomBlockResponseBody')
-    $null = $wafPropertHash.Remove('RequestBodyCheck')
-
-    Write-Debug("end validat the waf property...." + $wafPropertHash)
+    if ($WafProperty.PolicyEnabledState) {
+        $wafPropertHash.Add('EnabledState', $WafProperty.PolicyEnabledState)
+    } 
+    if ($WafProperty.PolicyMode) {
+        $wafPropertHash.Add('Mode', $WafProperty.PolicyMode)
+    }
+    if ($WafProperty.CustomRules) {
+        $wafPropertHash.Add('Customrule', $WafProperty.CustomRules)
+    }
+    if ($WafProperty.ManagedRules) {
+        $wafPropertHash.Add('ManagedRule', $WafProperty.ManagedRules)
+    }
+    if ($WafProperty.RedirectUrl) {
+        $wafPropertHash.Add('RedirectUrl', $WafProperty.RedirectUrl)
+    }
+    if ($WafProperty.CustomBlockResponseStatusCode) {
+        $wafPropertHash.Add('CustomBlockResponseStatusCode', $WafProperty.CustomBlockResponseStatusCode)
+    }
+    if ($WafProperty.CustomBlockResponseBody) {
+        $wafPropertHash.Add('CustomBlockResponseBody', $WafProperty.CustomBlockResponseBody)
+    }
+    if ($WafProperty.RequestBodyCheck) {
+        $wafPropertHash.Add('RequestBodyCheck', $WafProperty.RequestBodyCheck)
+    }
     return $wafPropertHash
 }

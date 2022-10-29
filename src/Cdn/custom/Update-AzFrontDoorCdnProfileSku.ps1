@@ -239,7 +239,7 @@ function CreatePremiumWafPolicy {
     # Remove the null/empty property
     $validatedWafProperty = ValidateWafPolicyProperty $WafProperty
 
-    New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku "Premium_AzureFrontDoor" -EnabledState $WafProperty.PolicyEnabledState -Mode $WafProperty.PolicyMode -Customrule $WafProperty.CustomRules -RequestBodyCheck $WafProperty.RequestBodyCheck 
+    New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku "Premium_AzureFrontDoor" @validatedWafProperty
 }
 
 # Validate the property of a waf policy
@@ -249,24 +249,29 @@ function ValidateWafPolicyProperty {
     )
 
     $wafPropertHash = @{}
-    $wafPropertHash.Add('EnabledState', $WafProperty.PolicyEnabledState)
-    $wafPropertHash.Add('Mode', $WafProperty.PolicyMode)
-    $wafPropertHash.Add('Customrule', $WafProperty.CustomRules)
-    $wafPropertHash.Add('ManagedRule', $WafProperty.ManagedRules)
-    $wafPropertHash.Add('RedirectUrl', $WafProperty.RedirectUrl)
-    $wafPropertHash.Add('CustomBlockResponseStatusCode', $WafProperty.CustomBlockResponseStatusCode)
-    $wafPropertHash.Add('CustomBlockResponseBody', $WafProperty.CustomBlockResponseBody)
-    $wafPropertHash.Add('RequestBodyCheck', $WafProperty.RequestBodyCheck)
-
-    # If the propery is null, then remove from the hash table.
-    $null = $wafPropertHash.Remove('PolicyEnabledState')
-    $null = $wafPropertHash.Remove('PolicyMode')
-    $null = $wafPropertHash.Remove('CustomRules')
-    $null = $wafPropertHash.Remove('ManagedRules')
-    $null = $wafPropertHash.Remove('RedirectUrl')
-    $null = $wafPropertHash.Remove('CustomBlockResponseStatusCode')
-    $null = $wafPropertHash.Remove('CustomBlockResponseBody')
-    $null = $wafPropertHash.Remove('RequestBodyCheck')
-
+    if ($WafProperty.PolicyEnabledState) {
+        $wafPropertHash.Add('EnabledState', $WafProperty.PolicyEnabledState)
+    } 
+    if ($WafProperty.PolicyMode) {
+        $wafPropertHash.Add('Mode', $WafProperty.PolicyMode)
+    }
+    if ($WafProperty.CustomRules) {
+        $wafPropertHash.Add('Customrule', $WafProperty.CustomRules)
+    }
+    if ($WafProperty.ManagedRules) {
+        $wafPropertHash.Add('ManagedRule', $WafProperty.ManagedRules)
+    }
+    if ($WafProperty.RedirectUrl) {
+        $wafPropertHash.Add('RedirectUrl', $WafProperty.RedirectUrl)
+    }
+    if ($WafProperty.CustomBlockResponseStatusCode) {
+        $wafPropertHash.Add('CustomBlockResponseStatusCode', $WafProperty.CustomBlockResponseStatusCode)
+    }
+    if ($WafProperty.CustomBlockResponseBody) {
+        $wafPropertHash.Add('CustomBlockResponseBody', $WafProperty.CustomBlockResponseBody)
+    }
+    if ($WafProperty.RequestBodyCheck) {
+        $wafPropertHash.Add('RequestBodyCheck', $WafProperty.RequestBodyCheck)
+    }
     return $wafPropertHash
 }
