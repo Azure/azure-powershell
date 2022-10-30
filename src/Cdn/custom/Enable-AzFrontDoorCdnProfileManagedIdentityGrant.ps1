@@ -68,11 +68,10 @@ function Enable-AzFrontDoorCdnProfileManagedIdentityGrant {
         ${ResourceGroupName},
 
         [Parameter(Mandatory)]
-        [Alias('ProfileName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
-        ${Name},
+        ${ProfileName},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
@@ -172,7 +171,7 @@ function Enable-AzFrontDoorCdnProfileManagedIdentityGrant {
     process {
         if ($PSBoundParameters.ContainsKey('IdentityType')) {
             if(${IdentityType} -eq "None") {
-                Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name} -IdentityType ${IdentityType} 
+                Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType ${IdentityType} 
                 return
             }
 
@@ -193,7 +192,7 @@ function Enable-AzFrontDoorCdnProfileManagedIdentityGrant {
 
             if (${IdentityType} -eq "SystemAssigned" ) {
                 # 1. Get "principalId" from RP
-                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name} -IdentityType ${IdentityType} 
+                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType ${IdentityType} 
                 $indentityPrincipal = $profileIdentity.IdentityPrincipalId
 
                 # 2. Grant Key Vault permission: Get all the BYOC key vaults of the fronted endpoint in the classic AFD.
@@ -210,11 +209,11 @@ function Enable-AzFrontDoorCdnProfileManagedIdentityGrant {
                 # 3. Call Key Vault module: Grant key vault accsee policys
                 foreach ($vault in $vaultArray) {
                     Write-Debug("Call the key vault module to set access...")
-                    Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $indentityPrincipal -PermissionsToSecrets Get -PermissionsToCertificate Get
+                    Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $indentityPrincipal -PermissionsToSecrets Get -PermissionsToCertificates Get
                 }
 
             } elseif (${IdentityType} -eq "UserAssigned") {
-                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name} -IdentityType ${IdentityType} -IdentityUserAssignedIdentity ${IdentityUserAssignedIdentity}
+                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType ${IdentityType} -IdentityUserAssignedIdentity ${IdentityUserAssignedIdentity}
                 # PrincipalId is used for granting when call KeyVault module API. 
                 $indentityPrincipalArray = $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId
 
@@ -234,7 +233,7 @@ function Enable-AzFrontDoorCdnProfileManagedIdentityGrant {
                     Write-Debug("Call the key vault module to set access...")
 
                     foreach ($principal in $indentityPrincipalArray) {
-                        Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificate Get
+                        Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
                     }
                 }
             }
