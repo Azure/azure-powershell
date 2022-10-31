@@ -13,7 +13,8 @@ Updates a connectivity configuration.
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerConnectivityConfiguration -InputObject <PSNetworkManagerConnectivityConfiguration> [-AsJob]
+Set-AzNetworkManagerConnectivityConfiguration
+ -InputObject <PSNetworkManagerConnectivityConfiguration> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +34,6 @@ $connectivityGroup.Add($connectivityGroupItem2)
 $ConnectivityConfiguration.AppliesToGroups = $connectivityGroup
 Set-AzNetworkManagerConnectivityConfiguration -InputObject $ConnectivityConfiguration
 ```
-
 ```output
 ConnectivityTopology  : HubAndSpoke
 Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
@@ -80,7 +80,6 @@ Name                  : psConnectivityConfig
 Etag                  :
 Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfig
 ```
-
 Updates a connectivity configuration's group members.
 
 ## PARAMETERS
@@ -89,7 +88,7 @@ Updates a connectivity configuration's group members.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +103,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -119,7 +118,7 @@ Accept wildcard characters: False
 The NetworkManagerConnectivityConfiguration
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityConfiguration
+Type: PSNetworkManagerConnectivityConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +133,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -150,7 +149,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -177,7 +176,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzNetworkManagerConnectivityConfiguration](./Get-AzNetworkManagerConnectivityConfiguration.md)
 
 [New-AzNetworkManagerConnectivityConfiguration](./New-AzNetworkManagerConnectivityConfiguration.md)

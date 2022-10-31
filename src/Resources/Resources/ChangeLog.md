@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.4.0
 * Fixed parameter `Count` for
     - Get-AzADApplication
     - Get-AzADServicePrincipal

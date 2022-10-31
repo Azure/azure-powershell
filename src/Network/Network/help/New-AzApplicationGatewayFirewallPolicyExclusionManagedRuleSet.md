@@ -13,7 +13,7 @@ Creates an ExclusionManagedRuleSet for the firewallPolicy exclusion
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet -Type <String> -Version <String>
+New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleSet -RuleSetType <String> -RuleSetVersion <String>
  [-RuleGroup <PSApplicationGatewayFirewallPolicyExclusionManagedRuleGroup[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -64,13 +64,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Type
-RuleSet Type.
+### -RuleSetType
+Specify the RuleSetType in a exclusionManagedRuleSet
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: RuleSetType
+Aliases:
 
 Required: True
 Position: Named
@@ -79,13 +79,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Version
-RuleSet Version.
+### -RuleSetVersion
+Specify the RuleSetVersion in a exclusionManagedRuleSet
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: RuleSetVersion
+Aliases:
 
 Required: True
 Position: Named

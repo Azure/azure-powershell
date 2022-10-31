@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.0
 * Added readonly Status property in EventHub Namespace 
 
 ## Version 3.0.0

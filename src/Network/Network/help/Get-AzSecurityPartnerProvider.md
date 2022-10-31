@@ -34,6 +34,7 @@ The **Get-AzSecurityPartnerProvider** cmdlet gets an Azure SecurityPartnerProvid
 Get-AzSecurityPartnerProvider -ResourceGroupName securityPartnerProviderRG -Name securityPartnerProvider
 ```
 
+
 ### Example 2
 ```powershell
 $securityPartnerProviderId = '/subscriptions/8c992d64-fce9-426d-b278-85642dfeab03/resourceGroups/securityPartnerProviderRG/providers/Microsoft.Network/securityPartnerProvider/securityPartnerProvider'
@@ -46,7 +47,7 @@ Get-AzSecurityPartnerProvider -ResourceId $securityPartnerProviderId
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -61,7 +62,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SecurityPartnerProviderNameParameterSet
 Aliases: ResourceName
 
@@ -69,14 +70,14 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SecurityPartnerProviderNameParameterSet
 Aliases:
 
@@ -84,14 +85,14 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceId
 The resource Id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SecurityPartnerProviderResourceIdParameterSet
 Aliases:
 
@@ -99,7 +100,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
