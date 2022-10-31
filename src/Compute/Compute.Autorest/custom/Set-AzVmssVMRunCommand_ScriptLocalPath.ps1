@@ -186,7 +186,7 @@ function Set-AzVmssVMRunCommand_ScriptLocalPath {
         if ($PSBoundParameters.ContainsKey("ScriptLocalPath"))
         {
             # Read Local File and add 
-            $script = Get-Content -Path $ScriptLocalPath
+            $script = (Get-Content -Path $ScriptLocalPath) -join ";"
             $PSBoundParameters.Add("SourceScript", $script)
             # If necessary, remove the -ParameterA parameter from the dictionary of bound parameters
             $null = $PSBoundParameters.Remove("ScriptLocalPath")
