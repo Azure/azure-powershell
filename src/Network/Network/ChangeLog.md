@@ -42,6 +42,7 @@
     * `New-AzLoadBalancerProbeConfig`
     * `Set-AzLoadBalancerProbeConfig`
     * `Add-AzLoadBalancerProbeConfig`
+* Fixed a bug that added Ddos related properties when viewing PublicIpAddress and DdosProtectionPlan objects
 
 ## Version 5.0.0
 * Added a new endpoint switch `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`

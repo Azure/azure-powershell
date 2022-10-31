@@ -4086,8 +4086,8 @@
                 <PropertyName>VirtualNetworksText</PropertyName>
               </ListItem>
 			  <ListItem>
-				<Label>PublicIpAddresses</Label>
-				<PropertyName>PublicIpAddressesText</PropertyName>
+				<Label>PublicIPAddresses</Label>
+				<PropertyName>PublicIPAddressesText</PropertyName>
 			  </ListItem>
             </ListItems>
           </ListEntry>
