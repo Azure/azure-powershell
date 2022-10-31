@@ -27,7 +27,7 @@ The operation to create or update the run command.
 
 ## EXAMPLES
 
-### Example 1: Create or update Run Command on a VM using a storage blob SAS URL
+### Example 1: Create or update Run Command on a VM using SourceScriptUri (storage blob SAS URL).
 
 ```powershell
 Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceScriptUri "https://myst.blob.core.windows.net/mycontainer/myscript.ps1?sp=r&st=2022-10-27T21:02:35Z&se=2022-10-28T05:02:35Z&spr=https&sv=2021-06-08&sr=b&sig=0I%2FIiYayRwHasfasasfdasdfasdeTsQjLnpZjA%3D"
@@ -35,7 +35,7 @@ Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRun
 
 Create or update Run Command on a Windows VM using a SAS URL of a storage blob that contains .ps1 script. Note SAS URL must provide read access to the blob. An expiry time of 24 hours is suggested for SAS URL. SAS URLs can be generated on Azure portal using blob's options , or SAS token using New-AzStorageBlobSASToken. If generating SAS token using New-AzStorageBlobSASToken, your SAS URL = base blob URL + "?" + SAS token from New-AzStorageBlobSASToken.
 
-### Example 2: Create or update Run Command on a VM using a local script file.
+### Example 2: Create or update Run Command on a VM using ScriptLocalPath (local script file).
 
 ```powershell
 Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1"
@@ -43,7 +43,7 @@ Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRun
 
 Create or update Run Command on a VM using a local script file that is on the client machine where cmdlet is executed.
 
-### Example 3: Create or update Run Command on a VM using script text.
+### Example 3: Create or update Run Command on a VM using SourceScript (script text).
 
 ```powershell
 Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunCommand2 -Location EastUS2EUAP -SourceScript "id; echo HelloWorld"
@@ -51,7 +51,7 @@ Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunC
 
 Create or update Run Command on a VM passing the script content directly to -SourceScript parameter. Use ';' to delimit multiple commands.
 
-### Example 4: Create or update Run Command on a VM using commandId.
+### Example 4: Create or update Run Command on a VM using SourceCommandId.
 
 ```powershell
 Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceCommandId DisableWindowsUpdate
@@ -59,13 +59,13 @@ Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRun
 
 Create or update Run Command on a VM using pre-existing commandId. Available commandIds can be retrieved using Get-AzVMRunCommandDocument.
 
-### Example 5: Create or update Run Command on a VM and stream standard output and standard error messages to output and error Append blobs.
+### Example 5: Create or update Run Command on a VM using OutputBlobUri, ErrorBlobUri to stream standard output and standard error messages to output and error Append blobs.
 
 ```powershell
-Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunCommand3 -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -OutputBlobUri "https://vivst.blob.core.windows.net/vivcontainer/output.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5hasfadsfasdF4jIkRJra4S5FlEo%3D" -ErrorBlobUri "https://vivst.blob.core.windows.net/vivcontainer/error.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5h%asfasdfgdT%2F4jasfasdf5FlEo%3D"
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunCommand3 -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -OutputBlobUri "https://myst.blob.core.windows.net/mycontainer/output.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5hasfadsfasdF4jIkRJra4S5FlEo%3D" -ErrorBlobUri "https://myst.blob.core.windows.net/mycontainer/error.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5h%asfasdfgdT%2F4jasfasdf5FlEo%3D"
 ```
 
-Create or update Run Command on a VM and stream standard output and standard error messages to output and error Append blobs. Note output and error blobs must be of type AppendBlob and their  SAS URLs must provide read, append, create, write access to the blob. An expiry time of 24 hours is suggested for SAS URL. If output or error blob does not exist, a blob of type AppendBlob will be created.  SAS URLs can be generated on Azure portal using blob's options , or SAS token using New-AzStorageBlobSASToken. If generating SAS token using New-AzStorageBlobSASToken, your SAS URL = base blob URL + "?" + SAS token from New-AzStorageBlobSASToken.
+Create or update Run Command on a VM and stream standard output and standard error messages to output and error Append blobs. Note output and error blobs must be of type AppendBlob and their  SAS URLs must provide read, append, create, write access to the blob. An expiry time of 24 hours is suggested for SAS URL. If output or error blob does not exist, a blob of type AppendBlob will be created.  SAS URLs can be generated on Azure portal using blob's options , or SAS token using New-AzStorageBlobSASToken. If generating SAS token using New-AzStorageBlobSASToken, SAS URL = base blob URL + "?" + SAS token from New-AzStorageBlobSASToken.
 
 ### Example 6: Create or update Run Command on a VM, run the Run Command as a different user using RunAsUser and RunAsPassword parameters.
 
@@ -74,6 +74,24 @@ Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRun
 ```
 
 Create or update Run Command on a VM, run the Run Command as a different user using RunAsUser and RunAsPassword parameters. For RunAs to work properly, contact admin of VM and make sure user is added on the VM, user has access to resources accessed by the Run Command (Directories, Files, Network etc.), and in case of Windows VM, 'Secondary Logon' service is running on the VM.
+
+### Example 7: Create or update Run Command on a VM instance using Parameter and ProtectedParameter parameters (Public and Protected Parameters to script)
+
+```powershell
+$PublicParametersArray = @([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter]@{name='publicParam1';value='publicParam1value'},
+>> [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter]@{name='publicParam2';value='publicParam2value'})
+
+$ProtectedParametersArray = @([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter]@{name='secret1';value='secret1value'},
+>> [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter]@{name='secret2';value='secret2value'})
+
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceScriptUri "https://myst.blob.core.windows.net/mycontainer/myscript.ps1?sp=r&st=2022-10-27T21:02:35Z&se=2022-10-28T05:02:35Z&spr=https&sv=2021-06-08&sr=b&sig=0I%2FIiYayRwHasfasasfdasdfasdeTsQjLnpZjA%3D" -Parameter $PublicParametersArray -ProtectedParameter $ProtectedParametersArray
+```
+
+Use ProtectedParameter to pass any sensitive inputs to script such as passwords, keys etc. 
+
+Windows: Parameters and ProtectedParameters are passed to script as arguments are passed to script and run like this - "myscript.ps1 -publicParam1 publicParam1value -publicParam2 publicParam2value -secret1 secret1value -secret2 secret2value"
+
+Linux: Named Parameters and its values are set to environment config, which should be accessible within the .sh script. For Nameless arguments, pass an empty string to name input. Nameless arguments are passed to script and run like this - "myscript.sh publicParam1value publicParam2value secret1value secret2value"
 
 ## PARAMETERS
 
