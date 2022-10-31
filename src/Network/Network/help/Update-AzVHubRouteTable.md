@@ -13,29 +13,23 @@ Delete a hub route table resource associated with a VirtualHub.
 ## SYNTAX
 
 ### ByVHubRouteTableName (Default)
-```
-Update-AzVHubRouteTable -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- [-Route <PSVHubRoute[]>] [-Label <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+```powershell
+Update-AzVHubRouteTable -ResourceGroupName <String> -ParentResourceName <String> -Name <String>[-Route <PSVHubRoute[]>] [-Label <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
-```
-Update-AzVHubRouteTable -Name <String> -ParentObject <PSVirtualHub> [-Route <PSVHubRoute[]>]
- [-Label <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+```powershell
+Update-AzVHubRouteTable -Name <String> -ParentObject <PSVirtualHub> [-Route <PSVHubRoute[]>] [-Label <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVHubRouteTableObject
-```
-Update-AzVHubRouteTable -InputObject <PSVHubRouteTable> [-Route <PSVHubRoute[]>] [-Label <String[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```powershell
+Update-AzVHubRouteTable -InputObject <PSVHubRouteTable> [-Route <PSVHubRoute[]>] [-Label <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVHubRouteTableResourceId
-```
-Update-AzVHubRouteTable -ResourceId <String> [-Route <PSVHubRoute[]>] [-Label <String[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```powershell
+Update-AzVHubRouteTable -ResourceId <String> [-Route <PSVHubRoute[]>] [-Label <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +87,7 @@ This command deletes the hub route table of the virtual hub.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +102,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -123,7 +117,7 @@ Accept wildcard characters: False
 The vhubroutetable resource to Update.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVHubRouteTable
+Type: PSVHubRouteTable
 Parameter Sets: ByVHubRouteTableObject
 Aliases: VHubRouteTable, RouteTable
 
@@ -138,9 +132,9 @@ Accept wildcard characters: False
 The list of labels.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceName, VHubRouteTableName
 
 Required: False
 Position: Named
@@ -153,9 +147,9 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVHubRouteTableName, ByVirtualHubObject
-Aliases: ResourceName, VHubRouteTableName, RouteTableName
+Aliases: ResourceName, VHubRouteTableName
 
 Required: True
 Position: Named
@@ -168,14 +162,14 @@ Accept wildcard characters: False
 The parent virtual hub object of this resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
+Type: PSVirtualHub
 Parameter Sets: ByVirtualHubObject
-Aliases: VirtualHub, ParentVirtualHub
+Aliases: ParentVirtualHub, VirtualHub
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -183,7 +177,7 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVHubRouteTableName
 Aliases: VirtualHubName, ParentVirtualHubName
 
@@ -198,7 +192,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVHubRouteTableName
 Aliases:
 
@@ -213,9 +207,9 @@ Accept wildcard characters: False
 The resource id of the vhubroutetable resource to Update.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVHubRouteTableResourceId
-Aliases: VHubRouteTableId, RouteTableId
+Aliases: VHubRouteTableId
 
 Required: True
 Position: Named
@@ -228,9 +222,9 @@ Accept wildcard characters: False
 The list of routes for this route table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVHubRoute[]
+Type: PSVHubRoute[]
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceName, VHubRouteTableName
 
 Required: False
 Position: Named
@@ -243,7 +237,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -259,7 +253,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

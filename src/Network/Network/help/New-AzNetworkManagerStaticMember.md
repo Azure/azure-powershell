@@ -28,7 +28,6 @@ The **New-AzNetworkManagerStaticMember** cmdlet creates a network manager static
 $vnetId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnet"
 New-AzNetworkManagerStaticMember -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -NetworkGroupName "psNetworkGroup" -Name "psStaticMember" -ResourceId $vnetId
 ```
-
 ```output
 ResourceId        : /subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnet
 DisplayName       :
@@ -48,7 +47,6 @@ Name              : psStaticMember
 Etag              :
 Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup/staticMembers/psStaticMember
 ```
-
 Creates a network manager static member with a vnet resource.
 
 ## PARAMETERS
@@ -57,7 +55,7 @@ Creates a network manager static member with a vnet resource.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -87,7 +85,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +100,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -117,7 +115,7 @@ Accept wildcard characters: False
 The network manager group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +130,7 @@ Accept wildcard characters: True
 The network manager name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +145,7 @@ Accept wildcard characters: True
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +160,7 @@ Accept wildcard characters: False
 Resource Id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +175,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -193,7 +191,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -218,7 +216,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzNetworkManagerStaticMember](./Get-AzNetworkManagerStaticMember.md)
 
 [Remove-AzNetworkManagerStaticMember](./Remove-AzNetworkManagerStaticMember.md)

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.0
 * Fixed list parameter set for `Get-AzDataProtectionBackupVault`
 
 ## Version 0.5.0

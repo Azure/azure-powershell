@@ -25,7 +25,7 @@ Get-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVM
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateproject
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateproject
 #>
 function Get-AzMigrateProject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject])]

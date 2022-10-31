@@ -27,7 +27,7 @@ The operation to initiate test migrate cleanup.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/test-azmigratereplicationmigrationitemmigratecleanup
+https://learn.microsoft.com/powershell/module/az.migrate/test-azmigratereplicationmigrationitemmigratecleanup
 #>
 function Test-AzMigrateReplicationMigrationItemMigrateCleanup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem])]

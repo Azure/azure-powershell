@@ -26,8 +26,8 @@ New-AzApplicationGatewayPathRuleConfig -Name <String> -Paths <String[]>
  [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>]
  [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
  [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
- [-RedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
  [-FirewallPolicy <PSApplicationGatewayWebApplicationFirewallPolicy>]
+ [-RedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -149,21 +149,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -FirewallPolicy
 Specifies the object reference to a top-level firewall policy. 
 The object reference can be created by using New-AzApplicationGatewayWebApplicationFirewallPolicy cmdlet.
@@ -174,7 +159,6 @@ Instead of the default values, users can specify PolicySettings, ManagedRules by
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallPolicy
-Parameter Sets: SetByResource
 Aliases:
 
 Required: False
@@ -192,9 +176,23 @@ For instance:
 -FirewallPolicyId  `/subscriptions/<subscription-id>/resourceGroups/<resource-group-id>/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/<firewallPolicyName>`
 
 ```yaml
-Type: System.String
-Parameter Sets: SetByResourceId
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallPolicy
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -294,7 +292,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

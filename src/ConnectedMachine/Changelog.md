@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.1
 * Fixed issue with Connect-AzConnectedMachine throwing errors when onboarding multiple machines at once
 
 ## Version 0.4.0

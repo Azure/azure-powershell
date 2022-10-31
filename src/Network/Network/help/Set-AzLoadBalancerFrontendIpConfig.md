@@ -16,43 +16,50 @@ Updates a front-end IP configuration for a load balancer.
 ### SetByResourceSubnet (Default)
 ```
 Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-PrivateIpAddress <String>]
- [-PrivateIpAddressVersion <String>] [-Zone <String[]>] -Subnet <PSSubnet> [-GatewayLoadBalancerId <String>]
+ [-PrivateIpAddressVersion <String>] [-Zone <String[]>] -Subnet <PSSubnet>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdSubnet
 ```
 Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-PrivateIpAddress <String>]
- [-PrivateIpAddressVersion <String>] [-Zone <String[]>] -SubnetId <String> [-GatewayLoadBalancerId <String>]
+ [-PrivateIpAddressVersion <String>] [-Zone <String[]>] -SubnetId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdPublicIpAddress
 ```
 Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
- -PublicIpAddressId <String> [-GatewayLoadBalancerId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -PublicIpAddressId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourcePublicIpAddress
 ```
 Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
- -PublicIpAddress <PSPublicIpAddress> [-GatewayLoadBalancerId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -PublicIpAddress <PSPublicIpAddress> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceIdPublicIpAddressPrefix
 ```
 Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
- -PublicIpAddressPrefixId <String> [-GatewayLoadBalancerId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -PublicIpAddressPrefixId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourcePublicIpAddressPrefix
 ```
 Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
- -PublicIpAddressPrefix <PSPublicIpPrefix> [-GatewayLoadBalancerId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -PublicIpAddressPrefix <PSPublicIpPrefix> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SetByResourceGatewayLoadBalancerId
+```
+Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
+ -PublicIpAddress <PSPublicIpAddress> [-GatewayLoadBalancerId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +75,6 @@ $slb | Add-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subnet $Subnet
 $slb | Set-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subnet $Subnet
 $slb | Set-AzLoadBalancer
 ```
-
 The first command gets the virtual subnet named Subnet, and then stores it in the $Subnet variable.
 The second command gets the associated load balancer named MyLoadBalancer, and then stores it in the $slb variable.
 The third command uses the pipeline operator to pass the load balancer in $slb to Add-AzLoadBalancerFrontendIpConfig, which creates a front-end IP configuration named NewFrontend for $slb.
@@ -100,21 +106,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GatewayLoadBalancerId
-Specifies the ID of the Gateway Load Balancer Provider Frontend Ip Configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -LoadBalancer
 Specifies a load balancer.
 This cmdlet updates a front-end configuration for the load balancer that this parameter specifies.
@@ -128,6 +119,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -GatewayLoadBalancerId
+Specifies the ID of the Gateway Load Balancer Provider Frontend Ip Configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceGatewayLoadBalancer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -219,7 +225,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

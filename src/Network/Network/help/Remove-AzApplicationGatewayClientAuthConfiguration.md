@@ -38,7 +38,7 @@ The first command gets the application gateway named ApplicationGateway01 in the
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The ssl profile
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslProfile
+Type: PSApplicationGatewaySslProfile
 Parameter Sets: (All)
 Aliases:
 
