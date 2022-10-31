@@ -185,6 +185,23 @@ function New-AzConnectedKubernetes {
     )
 
     process {
+        $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
+        try {
+            $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
+        } catch {
+            throw 
+        }
+        $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
+        switch ($confirmation) {
+            'Y' {
+                Break
+            }
+
+            Default {
+                Return
+            }
+        }
+
         if ($PSBoundParameters.ContainsKey('KubeConfig')) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         } elseif (Test-Path Env:KUBECONFIG) {
