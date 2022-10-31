@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Csv".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Csv", "Csv", global::System.Management.Automation.CompletionResultType.ParameterValue, "Csv");
+                yield return new global::System.Management.Automation.CompletionResult("'Csv'", "Csv", global::System.Management.Automation.CompletionResultType.ParameterValue, "Csv");
             }
         }
     }

@@ -73,7 +73,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [VcenterName <String>]: VCenter ARM name.
   [VirtualMachineName <String>]: Virtual Machine name.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratevcenter
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratevcenter
 #>
 function Get-AzMigrateVCenter {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVCenter])]

@@ -576,7 +576,7 @@ Sets the disk encryption key properties on a snapshot update object.
 Sets the key encryption key properties on a snapshot update object.
 
 ### [Set-AzVM](Set-AzVM.md)
-Marks a virtual machine as generalized.
+This cmdlet can be used to do the followings: reapply or redeploy a virtual machine, mark a virtual machine as generalized, simulate eviction to a spot virtual machine.
 
 ### [Set-AzVMAccessExtension](Set-AzVMAccessExtension.md)
 Adds the VMAccess extension to a virtual machine.

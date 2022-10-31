@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Use this to set the encryption type of the disk encryption set")]
-        [PSArgumentCompleter("EncryptionAtRestWithPlatformAndCustomerKeys", "EncryptionAtRestWithCustomerKey")]
+        [PSArgumentCompleter("EncryptionAtRestWithPlatformAndCustomerKeys", "EncryptionAtRestWithCustomerKey", "ConfidentialVmEncryptedWithCustomerKey")]
         public string EncryptionType { get; set; }
 
         [Parameter(

@@ -32,6 +32,9 @@ Deletes a specified Azure Traffic Collector resource.
 ### [Update-AzNetworkFunctionCollectorPolicy](Update-AzNetworkFunctionCollectorPolicy.md)
 Creates or updates a Collector Policy resource
 
+### [Update-AzNetworkFunctionCollectorPolicyTag](Update-AzNetworkFunctionCollectorPolicyTag.md)
+Updates the specified Collector Policy tags.
+
 ### [Update-AzNetworkFunctionTrafficCollector](Update-AzNetworkFunctionTrafficCollector.md)
 Creates or updates a Azure Traffic Collector resource
 

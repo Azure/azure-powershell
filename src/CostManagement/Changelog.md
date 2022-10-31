@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.0
+* Upgraded Api version to 2021-10-01
+
 ## Version 0.2.0
 * Fixed an error that the CostmanagementExport could not be updated correctly
 

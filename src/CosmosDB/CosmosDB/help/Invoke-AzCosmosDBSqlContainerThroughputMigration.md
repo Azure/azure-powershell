@@ -32,7 +32,7 @@ Invoke-AzCosmosDBSqlContainerThroughputMigration [-Name <String>] -InputObject <
 ```
 
 ## DESCRIPTION
-ThroughpyteType paramter defines the throughput to which you want to migrate to.
+ThroughputType parameter defines the throughput to which you want to migrate to.
 
 ## EXAMPLES
 

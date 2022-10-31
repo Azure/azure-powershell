@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.11.0
 * Added new commands to CalculateRefund and Return reservation
 * Added new commands to Archive/Unarchive cancelled/expired/failed reservation 
 

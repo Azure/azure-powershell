@@ -40,6 +40,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A value indicating whether permissions are consented or not.")]
         public bool ConsentToPermissions { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
