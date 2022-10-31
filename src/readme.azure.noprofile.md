@@ -4,7 +4,7 @@
 ``` yaml
 azure: true
 powershell: true
-help-link-prefix: https://docs.microsoft.com/powershell/module/
+help-link-prefix: https://learn.microsoft.com/powershell/module/
 license-header: MICROSOFT_MIT_NO_VERSION
 pwsh-license-header: MICROSOFT_APACHE_NO_VERSION
 branch: main
