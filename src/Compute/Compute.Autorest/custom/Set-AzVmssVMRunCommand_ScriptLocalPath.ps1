@@ -191,7 +191,7 @@ function Set-AzVmssVMRunCommand_ScriptLocalPath {
             # If necessary, remove the -ParameterA parameter from the dictionary of bound parameters
             $null = $PSBoundParameters.Remove("ScriptLocalPath")
         }
-        Az.Compute\Set-AzVMRunCommand @PSBoundParameters
+        Az.Compute\Set-AzVmssVMRunCommand @PSBoundParameters
     }
 }
     
