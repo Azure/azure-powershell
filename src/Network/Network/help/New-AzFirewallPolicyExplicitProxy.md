@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicyexplicitproxy
+online version:https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicyexplicitproxy
 schema: 2.0.0
 ---
 
@@ -25,18 +25,16 @@ The **New-AzFirewallPolicyExplicitProxy** cmdlet creates an explicit proxy
 
 ### Example 1
 ```powershell
-New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 100 -HttpsPort 101 -EnablePacFile  -PacFilePort 130 -PacFile "sampleurlfortesting.blob.core.windowsnet/nothing"
+ New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 100 -HttpsPort 101 -EnablePacFile  -PacFilePort 130 -PacFile "sampleurlfortesting.blob.core.windowsnet/nothing"
 ```
-
 ```output
-EnableExplicitProxy	: true	
+		EnableExplicitProxy	: true	
 		EnablePacFile	    : true	
 		HttpPort	        : 100	
 		HttpsPort	        : 101	
 		PacFile	            : "sampleurlfortesting.blob.core.windowsnet/nothing"
-		PacFilePort	        : 130
+		PacFilePort	        : 130	
 ```
-
 This example creates an explicit proxy with provided settings
 
 ## PARAMETERS
@@ -45,7 +43,7 @@ This example creates an explicit proxy with provided settings
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -61,7 +59,7 @@ Enable Explicit Proxy.
 By default it is disabled.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -77,7 +75,7 @@ Enable PAC File.
 By default it is disabled.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +90,7 @@ Accept wildcard characters: False
 Port number for explicit proxy http protocol.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +105,7 @@ Accept wildcard characters: False
 Port number for explicit proxy https protocol.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +120,7 @@ Accept wildcard characters: False
 SAS URL for PAC file.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -137,7 +135,7 @@ Accept wildcard characters: False
 Port number for firewall to serve PAC file.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +150,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -168,7 +166,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -193,7 +191,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [New-AzFireWallPolicy](./New-AzFireWallPolicy.md)
 
 [Set-AzFireWallPolicy](./Set-AzFireWallPolicy.md)

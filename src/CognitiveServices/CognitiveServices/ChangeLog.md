@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.12.0
 * Updated CognitiveServices PowerShell to use 2022-10-01 version.
 
 ## Version 1.11.0

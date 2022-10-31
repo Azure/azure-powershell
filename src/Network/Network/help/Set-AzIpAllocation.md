@@ -14,20 +14,20 @@ Saves a modified IpAllocation.
 
 ### SetByNameParameterSet
 ```
-Set-AzIpAllocation -ResourceGroupName <String> -Name <String> [-IpAllocationTag <Hashtable>] [-Tag <Hashtable>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzIpAllocation [-ResourceGroupName] <String> [-Name] <String> [-IpAllocationTag <Hashtable>]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzIpAllocation -ResourceId <String> [-IpAllocationTag <Hashtable>] [-Tag <Hashtable>] [-AsJob]
+Set-AzIpAllocation [-ResourceId] <String> [-IpAllocationTag <Hashtable>] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Set-AzIpAllocation -InputObject <PSIpAllocation> [-IpAllocationTag <Hashtable>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzIpAllocation [-InputObject] <PSIpAllocation> [-IpAllocationTag <Hashtable>] [-Tag <Hashtable>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

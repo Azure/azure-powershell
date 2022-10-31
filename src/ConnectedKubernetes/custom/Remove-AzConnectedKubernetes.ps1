@@ -20,12 +20,9 @@ Delete a connected cluster, removing the tracked resource in Azure Resource Mana
 .Description
 Delete a connected cluster, removing the tracked resource in Azure Resource Manager (ARM).
 .Example
-PS C:\> Remove-AzConnectedKubernetes -ResourceGroupName azureps-manual-test -ClusterName ps-connaks-t01
-
+Remove-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group
 .Example
-PS C:\> $connaks = Get-AzConnectedKubernetes -ResourceGroupName azureps-manual-test -Name ps-connaks-t02
-PS C:\> Remove-AzConnectedKubernetes -InputObject $connaks
-
+Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group | Remove-AzConnectedKubernetes
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedKubernetesIdentity
@@ -61,7 +58,7 @@ param(
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
-    
+
     [Parameter(HelpMessage="Path to the kube config file")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [System.String]

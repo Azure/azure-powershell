@@ -13,8 +13,8 @@ Update a network manger subscription connection.
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerSubscriptionConnection -InputObject <PSNetworkManagerConnection> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzNetworkManagerSubscriptionConnection -InputObject <PSNetworkManagerConnection>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,6 @@ $networkManagerConnection = Get-AzNetworkManagerSubscriptionConnection -Name "su
 $networkManagerConnection.description = " new description"
 Set-AzNetworkManagerSubscriptionConnection -InputObject $networkManagerConnection
 ```
-
 ```output
 NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
 ConnectionState   : Conflict
@@ -42,7 +41,6 @@ Name              : subConnection
 Etag              :
 Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/providers/Microsoft.Network/networkManagerConnections/subConnection
 ```
-
 Updates a network manger subscription connection description.
 
 ## PARAMETERS
@@ -51,7 +49,7 @@ Updates a network manger subscription connection description.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -81,7 +79,7 @@ Accept wildcard characters: False
 The NetworkManagerSubscriptionConnection
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnection
+Type: PSNetworkManagerConnection
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +94,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -112,7 +110,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
