@@ -86,6 +86,11 @@ namespace Microsoft.Azure.Commands.Compute.Models
         //Gets or sets the security profile 
         public SecurityProfile SecurityProfile { get; set; }
 
+        //Gets or sets the OS name
+        public string OsName { get; set; }
+        //Gets or sets the OS version
+        public string OsVersion { get; set; }
+
         // Gets or sets the OS profile.
         public OSProfile OSProfile { get; set; }
 
