@@ -71,6 +71,9 @@ Creates the DatabaseInfo object for the Azure Database Migration Service, which 
 ### [New-AzDataMigrationFileShare](New-AzDataMigrationFileShare.md)
 Creates the FileShare object for the Azure Database Migration Service, which specifies the local network share to take the source database backups to.
 
+### [New-AzDataMigrationLoginsMigration](New-AzDataMigrationLoginsMigration.md)
+Migrate logins from the source Sql Servers to the target Azure Sql Servers.
+
 ### [New-AzDataMigrationMongoDbCollectionSetting](New-AzDataMigrationMongoDbCollectionSetting.md)
 Creates collection setting for migration according for the mongoDb migration
 

@@ -20,7 +20,7 @@ Sync backup instance again in case of failure\r\nThis action will retry last fai
 .Description
 Sync backup instance again in case of failure\r\nThis action will retry last failed operation and will bring backup instance to valid state
 .Example
-PS C:\> Sync-AzDataProtectionBackupInstance -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
+Sync-AzDataProtectionBackupInstance -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
 
 .Outputs
 System.Boolean

@@ -31,7 +31,7 @@ Get-AzGallery [-GalleryUniqueName <String>] [-Scope <String>] -Location <String>
 
 ### CommunityGalleryParameterSet
 ```
-Get-AzGallery [-GalleryPublicName <String>] -Location <String> [-Community]
+Get-AzGallery [-GalleryPublicName <String>] [-Location <String>] [-Community]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -192,7 +192,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CommunityGalleryParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -264,10 +264,22 @@ Location of the Shared Image Gallery.
 
 ```yaml
 Type: System.String
-Parameter Sets: SharedGalleryParameterSet, CommunityGalleryParameterSet
+Parameter Sets: SharedGalleryParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: CommunityGalleryParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

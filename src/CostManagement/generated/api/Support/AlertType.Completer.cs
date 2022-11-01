@@ -28,31 +28,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Budget".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Budget", "Budget", global::System.Management.Automation.CompletionResultType.ParameterValue, "Budget");
+                yield return new global::System.Management.Automation.CompletionResult("'Budget'", "Budget", global::System.Management.Automation.CompletionResultType.ParameterValue, "Budget");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Invoice".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Invoice", "Invoice", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invoice");
+                yield return new global::System.Management.Automation.CompletionResult("'Invoice'", "Invoice", global::System.Management.Automation.CompletionResultType.ParameterValue, "Invoice");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Credit".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Credit", "Credit", global::System.Management.Automation.CompletionResultType.ParameterValue, "Credit");
+                yield return new global::System.Management.Automation.CompletionResult("'Credit'", "Credit", global::System.Management.Automation.CompletionResultType.ParameterValue, "Credit");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Quota".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Quota", "Quota", global::System.Management.Automation.CompletionResultType.ParameterValue, "Quota");
+                yield return new global::System.Management.Automation.CompletionResult("'Quota'", "Quota", global::System.Management.Automation.CompletionResultType.ParameterValue, "Quota");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "General".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("General", "General", global::System.Management.Automation.CompletionResultType.ParameterValue, "General");
+                yield return new global::System.Management.Automation.CompletionResult("'General'", "General", global::System.Management.Automation.CompletionResultType.ParameterValue, "General");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "xCloud".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("xCloud", "xCloud", global::System.Management.Automation.CompletionResultType.ParameterValue, "xCloud");
+                yield return new global::System.Management.Automation.CompletionResult("'xCloud'", "xCloud", global::System.Management.Automation.CompletionResultType.ParameterValue, "xCloud");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BudgetForecast".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BudgetForecast", "BudgetForecast", global::System.Management.Automation.CompletionResultType.ParameterValue, "BudgetForecast");
+                yield return new global::System.Management.Automation.CompletionResult("'BudgetForecast'", "BudgetForecast", global::System.Management.Automation.CompletionResultType.ParameterValue, "BudgetForecast");
             }
         }
     }

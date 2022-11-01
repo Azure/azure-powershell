@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Area".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Area", "Area", global::System.Management.Automation.CompletionResultType.ParameterValue, "Area");
+                yield return new global::System.Management.Automation.CompletionResult("'Area'", "Area", global::System.Management.Automation.CompletionResultType.ParameterValue, "Area");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Line".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Line", "Line", global::System.Management.Automation.CompletionResultType.ParameterValue, "Line");
+                yield return new global::System.Management.Automation.CompletionResult("'Line'", "Line", global::System.Management.Automation.CompletionResultType.ParameterValue, "Line");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "StackedColumn".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("StackedColumn", "StackedColumn", global::System.Management.Automation.CompletionResultType.ParameterValue, "StackedColumn");
+                yield return new global::System.Management.Automation.CompletionResult("'StackedColumn'", "StackedColumn", global::System.Management.Automation.CompletionResultType.ParameterValue, "StackedColumn");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "GroupedColumn".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("GroupedColumn", "GroupedColumn", global::System.Management.Automation.CompletionResultType.ParameterValue, "GroupedColumn");
+                yield return new global::System.Management.Automation.CompletionResult("'GroupedColumn'", "GroupedColumn", global::System.Management.Automation.CompletionResultType.ParameterValue, "GroupedColumn");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Table".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Table", "Table", global::System.Management.Automation.CompletionResultType.ParameterValue, "Table");
+                yield return new global::System.Management.Automation.CompletionResult("'Table'", "Table", global::System.Management.Automation.CompletionResultType.ParameterValue, "Table");
             }
         }
     }

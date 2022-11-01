@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 5.0.0
+* [Breaking Change] Removed the alias `Install-AzAksKubectl` of `Install-AzAksCliTool`.
+
 ## Version 4.3.0
 * Added support of `FQDN` in `Import-AzAksCredential` [#17711]
 * Added hint when `Import-AzAksCredential` meets bad formatted kubernetes configuration file [#16741]

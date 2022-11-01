@@ -26,8 +26,6 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSAzureFirewallHubIpAddresses), DeprecatedOutputProperties = new[] { "publicIPAddresses" })]
-    [CmdletOutputBreakingChange(typeof(PSAzureFirewall), DeprecatedOutputProperties = new[] { "IdentifyTopFatFlow" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Firewall", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSAzureFirewall))]
     public class NewAzureFirewallCommand : AzureFirewallBaseCmdlet
 
@@ -234,7 +232,6 @@ namespace Microsoft.Azure.Commands.Network
         )]
         public SwitchParameter AllowActiveFTP { get; set; }
 
-        [CmdletParameterBreakingChange("IdentifyTopFatFlow", ReplaceMentCmdletParameterName = "EnableFatFlowLogging")]
         [Parameter(
            Mandatory = false,
            HelpMessage = "Enable Fat Flow Logging. By default it is false."
@@ -246,6 +243,11 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "Enable UDP Log Optimization. By default it is false."
        )]
         public SwitchParameter EnableUDPLogOptimization { get; set; }
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "The Route Server Id for the firewall")]
+        public string RouteServerId { get; set; }
 
         public override void Execute()
         {
@@ -339,7 +341,8 @@ namespace Microsoft.Azure.Commands.Network
                     AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
                     Sku = sku,
                     EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
-                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null)
+                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null),
+                    RouteServerId = this.RouteServerId
                 };
 
                 if (this.Zone != null)

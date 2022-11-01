@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.5.0
+* Added parameter `comment` for `Update-AzAlerteState`
+
 ## Version 0.4.1
 * Added support for 24-hour clock in `Set-AzAlertProcessingRule` [#17762]
 

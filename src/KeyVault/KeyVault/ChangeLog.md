@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 4.9.0
+* Bumped API version to 2022-07-01
+* Added `Undo-AzKeyVaultManagedHsm` to recover deleted managed HSM
+
+## Version 4.8.0
+* Fixed the exception content swallowed issue when exception.Response is null [#19531]
+* Added the existing parameters `Exportable`, `Immutable`, `UseDefaultCVMPolicy`, and `ReleasePolicyPath`
+  to the parameter sets `InteractiveCreate`, `InputObjectCreate`, and `ResourceIdCreate`.
+
 ## Version 4.7.0
 * Fixed parameter validation logic of `-UseDefaultCVMPolicy`
 * Added parameter `ContentType` in `Import-AzKeyVaultCertificate` to support importing pem via certificate string

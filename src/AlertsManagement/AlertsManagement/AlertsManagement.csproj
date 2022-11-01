@@ -7,7 +7,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.AlertsManagement" Version="1.0.0" />
+    <ProjectReference Include="..\AlertsManagement.Sdk\AlertsManagement.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>
