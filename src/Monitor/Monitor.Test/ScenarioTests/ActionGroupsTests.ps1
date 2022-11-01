@@ -47,20 +47,20 @@ function Test-AddGetListSetRemoveActionGroup
 		Assert-AreEqual true $email2.UseCommonAlertSchema
 
 		Write-Verbose " ****** Creating a new event hub receiver with default UseCommonAlertSchema not explicitly set"
-		$eventhub1 = New-AzActionGroupReceiver -EventHubReceiver -Name 'eventhub1receiver' -SubscriptionId '5def922a-3ed4-49c1-b9fd-05ec533819a3' -EventHubNameSpace 'eventhubNameSpace1' -EventHubName 'testEventHubName1'
+		$eventhub1 = New-AzActionGroupReceiver -EventHubReceiver -Name 'eventhub1receiver' -SubscriptionId '9d864cef-c8f3-4932-84ca-c2888126d793' -EventHubNameSpace 'eventhubNameSpace1' -EventHubName 'testEventHubName1'
 		Assert-NotNull $eventhub1
 		Assert-AreEqual 'eventhub1receiver' $eventhub1.Name
-		Assert-AreEqual '5def922a-3ed4-49c1-b9fd-05ec533819a3' $eventhub1.SubscriptionId
+		Assert-AreEqual '9d864cef-c8f3-4932-84ca-c2888126d793' $eventhub1.SubscriptionId
 		Assert-AreEqual 'eventhubNameSpace1' $eventhub1.EventHubNameSpace
 		Assert-AreEqual 'testEventHubName1' $eventhub1.EventHubName
 		# when UseCommonAlertSchema is not set explicitly , then it is false
 		Assert-AreEqual false $eventhub1.UseCommonAlertSchema
 		
 		Write-Verbose " ****** Creating a new event hub receiver with  UseCommonAlertSchema  explicitly set to true"
-		$eventhub2 = New-AzActionGroupReceiver -EventHubReceiver -Name 'eventhub2receiver' -SubscriptionId '5def922a-3ed4-49c1-b9fd-05ec533819a3' -EventHubNameSpace 'eventhubNameSpace2' -EventHubName 'testEventHubName2' -UseCommonAlertSchema
+		$eventhub2 = New-AzActionGroupReceiver -EventHubReceiver -Name 'eventhub2receiver' -SubscriptionId '9d864cef-c8f3-4932-84ca-c2888126d793' -EventHubNameSpace 'eventhubNameSpace2' -EventHubName 'testEventHubName2' -UseCommonAlertSchema
 		Assert-NotNull $eventhub2
 		Assert-AreEqual 'eventhub2receiver' $eventhub2.Name
-		Assert-AreEqual '5def922a-3ed4-49c1-b9fd-05ec533819a3' $eventhub2.SubscriptionId
+		Assert-AreEqual '9d864cef-c8f3-4932-84ca-c2888126d793' $eventhub2.SubscriptionId
 		Assert-AreEqual 'eventhubNameSpace2' $eventhub2.EventHubNameSpace
 		Assert-AreEqual 'testEventHubName2' $eventhub2.EventHubName
 		Assert-AreEqual true $eventhub2.UseCommonAlertSchema

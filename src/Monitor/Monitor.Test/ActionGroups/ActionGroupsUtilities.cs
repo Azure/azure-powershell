@@ -196,6 +196,17 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             };
         }
 
+        public static TestNotificationDetailsResponse CreateTestNotificationDetailsResponse()
+        {
+            return new TestNotificationDetailsResponse()
+            {
+                ActionDetails = new List<ActionDetail>() { new ActionDetail { MechanismType = "Email", Detail = "This is a test message.", Name = "Name", SendTime = DateTime.Now.ToString(), Status = "Completed", SubState = null } },
+                CompletedTime = DateTime.Now.ToString(),
+                CreatedTime = DateTime.Now.ToString(),
+                State = "Complete",
+                Context = new Context() { ContextType = "Test", NotificationSource = "Test Source" }
+            };
+        }
 
         public static ActionGroupResource CreateActionGroupResource(
             string name,
@@ -238,8 +249,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
 
                 eventHubReceivers: new List<EventHubReceiver>
                 {
-                    CreateEventHubReceiver("eventhub1", "5def922a-3ed4-49c1-b9fd-05ec533819a3", "eventhub1NameSpace1", "testEventHubName1"),
-                    CreateEventHubReceiver("eventhub2", "5def922a-3ed4-49c1-b9fd-05ec533819a3", "eventhub1NameSpace1", "testEventHubName2", false)
+                    CreateEventHubReceiver("eventhub1", "9d864cef-c8f3-4932-84ca-c2888126d793", "eventhub1NameSpace1", "testEventHubName1"),
+                    CreateEventHubReceiver("eventhub2", "9d864cef-c8f3-4932-84ca-c2888126d793", "eventhub1NameSpace1", "testEventHubName2", false)
                 },
 
                 armRoleReceivers: new List<ArmRoleReceiver>

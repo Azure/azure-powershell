@@ -1252,6 +1252,7 @@
     "New-AzActionGroupReceiver": "New-AzureRmActionGroupReceiver",
     "Set-AzActionGroup": "Set-AzureRmActionGroup",
     "Get-AzActionGroup": "Get-AzureRmActionGroup",
+    "Test-AzActionGroup": "Test-AzureRmActionGroup",
     "Remove-AzActionGroup": "Remove-AzureRmActionGroup",
     "New-AzMetricFilter": "New-AzureRmMetricFilter"
   },
