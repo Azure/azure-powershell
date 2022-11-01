@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/powershell/module/az.databricks/remove-azdatabricksaccessconnector
+online version: https://learn.microsoft.com/powershell/module/az.databricks/remove-azdatabricksaccessconnector
 schema: 2.0.0
 ---
 
@@ -218,7 +218,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IDatabricksIdentity>`: Identity Parameter
+INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
   - `[ConnectorName <String>]`: The name of the azure databricks accessConnector.
   - `[GroupId <String>]`: The name of the private link resource
   - `[Id <String>]`: Resource identity path
