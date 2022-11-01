@@ -163,10 +163,6 @@ function New-AzFrontDoorCdnProfile {
     process {
         if(ISFrontDoorCdnProfile($PSBoundParameters['SkuName']))
         {
-            if($PSBoundParameters.ContainsKey('IdentityType'))
-            {
-                throw "Detailed realization pending..."
-            }
             Az.Cdn.internal\New-AzCdnProfile @PSBoundParameters
         }
         else

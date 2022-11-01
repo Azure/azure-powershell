@@ -15,19 +15,39 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnProfileS
 }
 
 Describe 'Update-AzFrontDoorCdnProfileSku' {
-    It 'UpgradeViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Upgrade' -skip {
+        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+        {
+            $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
+
+                $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+
+                $profileSku = "Standard_AzureFrontDoor";
+                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
+
+                # $securityPolicyName = "waf1"
+                # $wafName = "afdxSkuTest"
+                # $changeToWafPolicyId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/$wafName"
+                # $waf1 = New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName $securityPolicyName -ChangeToWafPolicyId $changeToWafPolicyId
+                # $upgrade = New-AzCdnProfileUpgradeParametersObject -WafMappingList $waf1
+                Update-AzFrontDoorCdnProfileSku -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }
+        }
     }
+
 
     It 'UpgradeExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        {
 
-    It 'Upgrade' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpgradeViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        } | Should -Not -Throw
     }
 }

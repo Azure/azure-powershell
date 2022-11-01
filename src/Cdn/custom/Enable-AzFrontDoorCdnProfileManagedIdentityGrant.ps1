@@ -55,38 +55,43 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/enable-azfrontdoorcdnprofilemanagedidentitygrant
+https://docs.microsoft.com/powershell/module/az.cdn/enable-azfrontdoorcdnprofilemanagedidentity
 #>
-function Enable-AzFrontDoorCdnProfileManagedIdentityGrant {
+function Enable-AzFrontDoorCdnProfileManagedIdentity {
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
     [OutputType([System.Boolean])]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='Start', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='Start', Mandatory)]
+        [Parameter(ParameterSetName='Start1', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # Name of the Resource group within the Azure subscription.
         ${ResourceGroupName},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='Start', Mandatory)]
+        [Parameter(ParameterSetName='Start1', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
         ${ProfileName},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='Start', Mandatory)]
+        [Parameter(ParameterSetName='Start1', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
         # Resource ID of the classic AFD.
         ${ClassicResourceReferenceId},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='Start', Mandatory)]
+        [Parameter(ParameterSetName='Start1', Mandatory)]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
         # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
         ${IdentityType},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='Start1', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
         [System.Collections.Hashtable]
@@ -170,9 +175,18 @@ function Enable-AzFrontDoorCdnProfileManagedIdentityGrant {
     
     process {
         if ($PSBoundParameters.ContainsKey('IdentityType')) {
-            if(${IdentityType} -eq "None") {
-                Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType ${IdentityType} 
+            $identityTypeLower = ${IdentityType}.ToString().ToLower()
+            Write-Debug("Before lower:" + ${IdentityType})
+            Write-Debug("ToLower:" + $identityTypeLower)
+            if($identityTypeLower -eq "none") {
+                Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower
                 return
+            }
+
+            # Validate the value of the IdentityType 
+            $validIdentityType = @("systemassigned", "userAssigned", "systemassigned, userAssigned", "userAssigned, systemassigned")
+            if($validIdentityType -NotContains $identityTypeLower) {
+                Throw "The Identity Type 'NotSpecified' is invalid. The supported types are 'SystemAssigned,UserAssigned,None'."
             }
 
             if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
@@ -189,50 +203,46 @@ function Enable-AzFrontDoorCdnProfileManagedIdentityGrant {
                 Import-Module -Name Az.KeyVault
             }
 
+            # 1. Get "principalId" from RP
+            if($identityTypeLower -eq "systemassigned") {
+                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower
+            }
+            else {
+                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower -IdentityUserAssignedIdentity ${IdentityUserAssignedIdentity}
+            }
+            
+            $systemAssigendPrincipalIndentity = $profileIdentity.IdentityPrincipalId
+            $userAssignedPrincipalIndentity = $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId
 
-            if (${IdentityType} -eq "SystemAssigned" ) {
-                # 1. Get "principalId" from RP
-                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType ${IdentityType} 
-                $indentityPrincipal = $profileIdentity.IdentityPrincipalId
-
-                # 2. Grant Key Vault permission: Get all the BYOC key vaults of the fronted endpoint in the classic AFD.
-                $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
-                $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
-                $vaultArray = [System.Collections.ArrayList]@()
-                foreach ($info in $frontDoorInfos) {
-                    if ($info.Vault) {
-                        $vaultName = $info.Vault.split("/")[-1]
-                        $vaultArray.Add($vaultName)
-                    }
+            # 2. Grant Key Vault permission: Get all the BYOC key vaults of the fronted endpoint in the classic AFD.
+            $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
+            $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
+            $vaultArray = [System.Collections.ArrayList]@()
+            foreach ($info in $frontDoorInfos) {
+                if ($info.Vault) {
+                    $vaultName = $info.Vault.split("/")[-1]
+                    $vaultArray.Add($vaultName)
                 }
+            }
 
+            if ($identityTypeLower -eq "systemAssigned" ) {
                 # 3. Call Key Vault module: Grant key vault accsee policys
                 foreach ($vault in $vaultArray) {
-                    Write-Debug("Call the key vault module to set access...")
-                    Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $indentityPrincipal -PermissionsToSecrets Get -PermissionsToCertificates Get
+                    Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $systemAssigendPrincipalIndentity -PermissionsToSecrets Get -PermissionsToCertificates Get
                 }
 
-            } elseif (${IdentityType} -eq "UserAssigned") {
-                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType ${IdentityType} -IdentityUserAssignedIdentity ${IdentityUserAssignedIdentity}
-                # PrincipalId is used for granting when call KeyVault module API. 
-                $indentityPrincipalArray = $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId
-
-                # 2. Grant Key Vault permission: Get all the BYOC key vaults of the fronted endpoint in the classic AFD.
-                $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
-                $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
-                $vaultArray = [System.Collections.ArrayList]@()
-                foreach ($info in $frontDoorInfos) {
-                    if ($info.Vault) {
-                        $vaultName = $info.Vault.split("/")[-1]
-                        $vaultArray.Add($vaultName)
-                    }
-                }
-
+            } elseif ($identityTypeLower -eq "userAssigned") {
                 # 3. Call Key Vault module: Grant key vault accsee policys
                 foreach ($vault in $vaultArray) {
-                    Write-Debug("Call the key vault module to set access...")
-
-                    foreach ($principal in $indentityPrincipalArray) {
+                    foreach ($principal in $userAssignedPrincipalIndentity) {
+                        Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
+                    }
+                }
+            } else {
+                # 3. Call Key Vault module: Grant key vault accsee policys
+                foreach ($vault in $vaultArray) {
+                    Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $systemAssigendPrincipalIndentity -PermissionsToSecrets Get -PermissionsToCertificates Get
+                    foreach ($principal in $userAssignedPrincipalIndentity) {
                         Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
                     }
                 }

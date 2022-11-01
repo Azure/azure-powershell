@@ -30,6 +30,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResu
 https://docs.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofilecanmigrateornot
 #>
 function Test-AzFrontDoorCdnProfileCanMigrateOrNot {
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(

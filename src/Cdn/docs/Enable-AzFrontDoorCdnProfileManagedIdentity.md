@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/enable-azfrontdoorcdnprofilemanagedidentitygrant
+online version: https://docs.microsoft.com/powershell/module/az.cdn/enable-azfrontdoorcdnprofilemanagedidentity
 schema: 2.0.0
 ---
 
-# Enable-AzFrontDoorCdnProfileManagedIdentityGrant
+# Enable-AzFrontDoorCdnProfileManagedIdentity
 
 ## SYNOPSIS
 Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
@@ -13,11 +13,19 @@ Deleting a profile will result in the deletion of all of the sub-resources inclu
 
 ## SYNTAX
 
+### Start (Default)
 ```
-Enable-AzFrontDoorCdnProfileManagedIdentityGrant -Name <String> -ResourceGroupName <String>
+Enable-AzFrontDoorCdnProfileManagedIdentity -ProfileName <String> -ResourceGroupName <String>
  -ClassicResourceReferenceId <String> -IdentityType <ManagedServiceIdentityType> [-SubscriptionId <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Start1
+```
+Enable-AzFrontDoorCdnProfileManagedIdentity -ProfileName <String> -ResourceGroupName <String>
+ -ClassicResourceReferenceId <String> -IdentityType <ManagedServiceIdentityType>
+ -IdentityUserAssignedIdentity <Hashtable> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,23 +125,8 @@ The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: Start1
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ProfileName
 
 Required: True
 Position: Named
@@ -166,6 +159,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProfileName
+Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
