@@ -612,4 +612,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="RecoverHsm" xml:space="preserve">
     <value>Recover HSM?</value>
   </data>
+  <data name="FetchDefaultCVMPolicyFromLocal" xml:space="preserve">
+    <value>Fetching default CVM policy from local backup copy.</value>
+  </data>
 </root>

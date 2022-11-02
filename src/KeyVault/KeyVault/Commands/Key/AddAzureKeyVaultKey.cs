@@ -28,6 +28,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
+using System.Reflection;
 using System.Security;
 using Track2Sdk = Azure.Security.KeyVault.Keys;
 
@@ -73,10 +74,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #region Constants 
 
-        private const string DefaultCVMPolicyUrl = "https://cvmprivatepreviewsa.blob.core.windows.net/cvmpublicpreviewcontainer/skr-policy.json";
-        
+        private const string DefaultCVMPolicyUrl = "https://raw.githubusercontent.com/Azure/confidential-computing-cvm/main/cvm_deployment/key/skr-policy.json";
+        private const string DefaultCVMPolicyPath = "Microsoft.Azure.Commands.KeyVault.Resources.skr-policy.json";
+
         #endregion
-        
+
         #region Input Parameter Definitions
 
         /// <summary>
@@ -447,14 +449,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 try
                 {
-                    using (var client = new HttpClient())
+                    ReleasePolicy = new PSKeyReleasePolicy()
                     {
-                        ReleasePolicy = new PSKeyReleasePolicy()
-                        {
-                            PolicyContent = client.GetStringAsync(DefaultCVMPolicyUrl).ConfigureAwait(true).GetAwaiter().GetResult(),
-                            Immutable = this.Immutable.IsPresent
-                        };
-                    }
+                        PolicyContent = GetDefaultCVMPolicy(),
+                        Immutable = this.Immutable.IsPresent
+                    };
                 }
                 catch(Exception e)
                 {
@@ -628,6 +627,36 @@ namespace Microsoft.Azure.Commands.KeyVault
             };
 
             return converterChain.ConvertToTrack2SdkKeyFromFile(keyFile, KeyFilePassword, converterExtraInfo);
+        }
+        
+        private string GetDefaultCVMPolicy()
+        {
+            string defaultCVMPolicy = null;
+
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    defaultCVMPolicy = client.GetStringAsync(DefaultCVMPolicyUrl).ConfigureAwait(true).GetAwaiter().GetResult();
+                }
+            }
+            catch
+            {
+                WriteWarning(string.Format(Resources.FetchDefaultCVMPolicyFromLocal));
+                try
+                {
+                    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(DefaultCVMPolicyPath))
+                    using (var reader = new StreamReader(stream))
+                    {
+                        defaultCVMPolicy = reader.ReadToEnd();
+                    }
+                }
+                catch(Exception ex)
+                {
+                    WriteWarning(string.Format(Resources.FetchDefaultCVMPolicyFailed, ex.Message));
+                };
+            }
+            return defaultCVMPolicy;
         }
     }
 }

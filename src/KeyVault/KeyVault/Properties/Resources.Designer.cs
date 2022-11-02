@@ -442,6 +442,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fetching default CVM policy from local backup copy..
+        /// </summary>
+        internal static string FetchDefaultCVMPolicyFromLocal {
+            get {
+                return ResourceManager.GetString("FetchDefaultCVMPolicyFromLocal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Can not find file &apos;{0}&apos;..
         /// </summary>
         internal static string FileNotFound {
