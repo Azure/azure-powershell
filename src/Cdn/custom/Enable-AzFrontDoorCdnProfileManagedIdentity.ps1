@@ -225,21 +225,22 @@ function Enable-AzFrontDoorCdnProfileManagedIdentity {
                 }
             }
 
+            # Waiting for PrincipalIndentity could be found in Graph.
+            Start-Sleep -Seconds 5
+
+            # 3. Call Key Vault module: Grant key vault accsee policies
             if ($identityTypeLower -eq "systemAssigned" ) {
-                # 3. Call Key Vault module: Grant key vault accsee policys
                 foreach ($vault in $vaultArray) {
                     Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $systemAssigendPrincipalIndentity -PermissionsToSecrets Get -PermissionsToCertificates Get
                 }
 
             } elseif ($identityTypeLower -eq "userAssigned") {
-                # 3. Call Key Vault module: Grant key vault accsee policys
                 foreach ($vault in $vaultArray) {
                     foreach ($principal in $userAssignedPrincipalIndentity) {
                         Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
                     }
                 }
             } else {
-                # 3. Call Key Vault module: Grant key vault accsee policys
                 foreach ($vault in $vaultArray) {
                     Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $systemAssigendPrincipalIndentity -PermissionsToSecrets Get -PermissionsToCertificates Get
                     foreach ($principal in $userAssignedPrincipalIndentity) {

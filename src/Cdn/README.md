@@ -151,6 +151,10 @@ directive:
       variant: ^EnableExpanded$|^EnableViaIdentityExpanded$
       subject: ^CustomDomainCustomHttps$
     remove: true
+  - where:
+      variant: ^UpgradeExpanded$
+      subject: AFDProfileSku
+    remove: true
 
   # Hide Cdn profile
   - where:

@@ -265,76 +265,101 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             }
         }
 
-        Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters
-
         # MSI 
         if ($PSBoundParameters.ContainsKey('IdentityType')) {
-            if(${IdentityType} -eq "None") {
-                Write-Debug("System assigned MSI started...")
-                Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType ${IdentityType} 
-                Write-Debug("System assigned MSI done...")
+            $identityTypeLower = ${IdentityType}.ToString().ToLower()
+            Write-Debug("Before lower:" + ${IdentityType})
+            Write-Debug("ToLower:" + $identityTypeLower)
+            if($identityTypeLower -eq "none") {
+                Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower
                 return
+            }
+
+            # Validate the value of the IdentityType 
+            $validIdentityType = @("systemassigned", "userAssigned", "systemassigned, userAssigned", "userAssigned, systemassigned")
+            if($validIdentityType -NotContains $identityTypeLower) {
+                Throw "The Identity Type 'NotSpecified' is invalid. The supported types are 'SystemAssigned,UserAssigned,None'."
             }
 
             if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
                 throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
-            } else {
+            }
+            else {
                 Import-Module -Name Az.FrontDoor
             }
 
             if(!(Get-Module -ListAvailable -Name Az.KeyVault)) {
                 throw 'Please install Az.KeyVault module by entering "Install-Module -Name Az.KeyVault"'
-            } else {
+            }
+            else {
                 Import-Module -Name Az.KeyVault
             }
 
+            $identityUserAssignedIdentityValue = ${IdentityUserAssignedIdentity}
 
-            if (${IdentityType} -eq "SystemAssigned" ) {
-                # 1. Get "principalId" from RP
-                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType ${IdentityType} 
-                $indentityPrincipal = $profileIdentity.IdentityPrincipalId
+            # Create AFDx Profile
+            $null = $PSBoundParameters.Remove('IdentityType')
+            $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
 
-                # 2. Grant Key Vault permission: Get all the BYOC key vaults of the fronted endpoint in the classic AFD.
-                $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
-                $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
-                $vaultArray = [System.Collections.ArrayList]@()
-                foreach ($info in $frontDoorInfos) {
-                    if ($info.Vault) {
-                        $vaultName = $info.Vault.split("/")[-1]
-                        $vaultArray.Add($vaultName)
-                    }
+            Write-Debug("Start: Before calling Move-AzCdnProfile command...")
+            Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters
+
+            Write-Debug("Begin to MSI...")
+            # 1. Get "principalId" from RP
+            if($identityTypeLower -eq "systemassigned") {
+                Write-Debug("System Assigend...")
+                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower
+            }
+            else {
+                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower -IdentityUserAssignedIdentity ${IdentityUserAssignedIdentity}
+            }
+            
+            $systemAssigendPrincipalIndentity = $profileIdentity.IdentityPrincipalId
+            $userAssignedPrincipalIndentity = $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId
+
+            Write-Debug("Begin to grant...")
+            # 2. Grant Key Vault permission: Get all the BYOC key vaults of the fronted endpoint in the classic AFD.
+            $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
+            $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
+            $vaultArray = [System.Collections.ArrayList]@()
+            foreach ($info in $frontDoorInfos) {
+                if ($info.Vault) {
+                    $vaultName = $info.Vault.split("/")[-1]
+                    $vaultArray.Add($vaultName)
                 }
+            }
 
+            Start-Sleep -Seconds 5
+
+            if ($identityTypeLower -eq "systemAssigned" ) {
                 # 3. Call Key Vault module: Grant key vault accsee policys
                 foreach ($vault in $vaultArray) {
-                    Write-Debug("Call the key vault module to set access...")
-                    Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $indentityPrincipal -PermissionsToSecrets Get -PermissionsToCertificate Get
-                }
-            } elseif (${IdentityType} -eq "UserAssigned") {
-                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType ${IdentityType} -IdentityUserAssignedIdentity ${IdentityUserAssignedIdentity}
-                # PrincipalId is used for granting when call KeyVault module API. 
-                $indentityPrincipalArray = $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId
-
-                # 2. Grant Key Vault permission: Get all the BYOC key vaults of the fronted endpoint in the classic AFD.
-                $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
-                $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
-                $vaultArray = [System.Collections.ArrayList]@()
-                foreach ($info in $frontDoorInfos) {
-                    if ($info.Vault) {
-                        $vaultName = $info.Vault.split("/")[-1]
-                        $vaultArray.Add($vaultName)
-                    }
+                    Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $systemAssigendPrincipalIndentity -PermissionsToSecrets Get -PermissionsToCertificates Get
                 }
 
+            } elseif ($identityTypeLower -eq "userAssigned") {
                 # 3. Call Key Vault module: Grant key vault accsee policys
                 foreach ($vault in $vaultArray) {
-                    Write-Debug("Call the key vault module to set access...")
-
-                    foreach ($principal in $indentityPrincipalArray) {
-                        Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificate Get
+                    foreach ($principal in $userAssignedPrincipalIndentity) {
+                        Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
+                    }
+                }
+            } else {
+                # 3. Call Key Vault module: Grant key vault accsee policys
+                foreach ($vault in $vaultArray) {
+                    Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $systemAssigendPrincipalIndentity -PermissionsToSecrets Get -PermissionsToCertificates Get
+                    foreach ($principal in $userAssignedPrincipalIndentity) {
+                        Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
                     }
                 }
             }
+        }
+        else {
+            $null = $PSBoundParameters.Remove('IdentityType')
+            $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
+
+            Write-Debug("Before calling Move-AzCdnProfile command...")
+            Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters
         }
     }
 }

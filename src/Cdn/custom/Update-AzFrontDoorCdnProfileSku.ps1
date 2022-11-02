@@ -172,12 +172,15 @@ function Update-AzFrontDoorCdnProfileSku {
             }
 
             $wafPolicies = $PSBoundParameters.ProfileUpgradeParameter
+            $validateWafId = "^/subscriptions/(?<subscriptionId>[^/]+)/resourcegroups/(?<resourceGroupName>[^/]+)/providers/microsoft.network/frontdoorwebapplicationfirewallpolicies/(?<policyName>[^/]+)$"
 
             if($wafPolicies.count -ne 0) {
                 # 1. Validate the format of the waf ID
                 foreach ($wafMapping in $wafPolicies.WafMappingList) {
                     $changeToWafPolciy = $wafMapping.ChangeToWafPolicyId
-                    ParseWafResourceId -WafResourceId $changeToWafPolciy
+                    if ($changeToWafPolciy.ToLower() -notmatch $validateWafId) {
+                        throw "The format of Waf policy id is supposed to be like '/subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******' "
+                    }
                 }
 
                 foreach ($wafMapping in $wafPolicies.wafMappingList) {
@@ -185,9 +188,9 @@ function Update-AzFrontDoorCdnProfileSku {
                     $changeToWafPolicyName = $changeToWafPolicy.split("/")[8]
                     $changeToWafPolicyResourceGroup = $changeToWafPolicy.split("/")[4]
 
-                    # 2. Validate whether the policy already exists in the subsrciption or not
+                    # 2. Validate whether the policy already exists in the subsrciption
                     try {
-                        $existed = Get-AzFrontDoorWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName
+                        $existed = Get-AzFrontDoorWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName -erroraction ignore
                     }
                     catch {
                         $policyName = $wafMapping.SecurityPolicyName
@@ -214,20 +217,6 @@ function Update-AzFrontDoorCdnProfileSku {
     }
 }
 
-# Parse the format of the waf reource id. 
-function ParseWafResourceId {
-    param (
-        [string]$WafResourceId
-    )
-
-    $array = $WafResourceId.ToLower().split('/')
-    if ($array.Length -ne 9){
-        throw 'Format of WebApplicationFirewallMapping is not correct, please check the parameter.'
-    }
-    if ($array[1] -gt "subscriptions" -or $array[3] -gt "resourcegroups" -or $array[5] -gt "providers" -or $array[6] -gt "microsoft.network" -or $array[7] -gt "frontdoorwebapplicationfirewallpolicies") {
-        throw 'Format of WebApplicationFirewallMapping is not correct, please check the parameter.'
-    }
-}
 
 # Corresponding to "Copy to a new waf policy"
 function CreatePremiumWafPolicy {
