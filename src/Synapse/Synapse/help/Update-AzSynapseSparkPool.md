@@ -132,14 +132,14 @@ This command disables auto-pause for an Apache Spark pool in Azure Synapse Analy
 Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableDynamicExecutorAllocation $true -MinExecutorCount 1 -MaxExecutorCount 5
 ```
 
-This command enables dynamice executor allocation and specify min executor count and max executor count for an Apache Spark pool in Azure Synapse Analytics.
+This command enables dynamic executor allocation and specify min executor count and max executor count for an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 10
 ```powershell
 Update-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -EnableDynamicExecutorAllocation $false
 ```
 
-This command disables dynamice executor allocation for an Apache Spark pool in Azure Synapse Analytics.
+This command disables dynamic executor allocation for an Apache Spark pool in Azure Synapse Analytics.
 
 ### Example 11
 ```powershell
