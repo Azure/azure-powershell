@@ -29,7 +29,7 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IWebTest
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,7 +45,7 @@ REQUESTHEADER <IHeaderField[]>: List of headers and their values to add to the W
 https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightswebtest
 #>
 function New-AzApplicationInsightsWebTest {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IWebTest])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest])]
     [CmdletBinding(DefaultParameterSetName='CreateStandard', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -118,14 +118,14 @@ function New-AzApplicationInsightsWebTest {
     
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IWebTestGeolocation[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTestGeolocation[]]
         # A list of where to physically run the tests from to give global coverage for accessibility of your application.
         # To construct, see NOTES section for GEOLOCATION properties and create a hash table.
         ${GeoLocation},
     
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKindEnum])]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKind])]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKindEnum]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKind]
         # The kind of web test this is, valid choices are ping, multistep, and standard.
         ${Kind},
     
@@ -144,7 +144,7 @@ function New-AzApplicationInsightsWebTest {
         [Parameter(ParameterSetName = "CreateStandard")]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IHeaderField[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IHeaderField[]]
         # List of headers and their values to add to the WebTest call.
         # To construct, see NOTES section for REQUESTHEADER properties and create a hash table.
         ${RequestHeader},
@@ -195,7 +195,7 @@ function New-AzApplicationInsightsWebTest {
         ${RuleSslCheck},
     
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IWebtestsResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebtestsResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},

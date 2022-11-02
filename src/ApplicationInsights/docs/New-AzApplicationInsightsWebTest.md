@@ -17,7 +17,7 @@ Creates or updates an Application Insights web test definition.
 New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ContentIgnoreCase] [-ContentMatch <String>] [-ContentPassIfTextFound]
  [-Description <String>] [-Enabled] [-Frequency <Int32>] [-GeoLocation <IWebTestGeolocation[]>]
- [-Kind <WebTestKindEnum>] [-RequestBody <String>] [-RequestFollowRedirect] [-RequestHeader <IHeaderField[]>]
+ [-Kind <WebTestKind>] [-RequestBody <String>] [-RequestFollowRedirect] [-RequestHeader <IHeaderField[]>]
  [-RequestHttpVerb <String>] [-RequestParseDependent] [-RequestUrl <String>] [-RetryEnabled]
  [-RuleExpectedHttpStatusCode <Int32>] [-RuleIgnoreHttpsStatusCode]
  [-RuleSslCertRemainingLifetimeCheck <Int32>] [-RuleSslCheck] [-Tag <Hashtable>] [-TestName <String>]
@@ -28,7 +28,7 @@ New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Loc
 ```
 New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-Configuration <String>] [-ContentMatch <String>] [-Description <String>]
- [-Enabled] [-Frequency <Int32>] [-GeoLocation <IWebTestGeolocation[]>] [-Kind <WebTestKindEnum>]
+ [-Enabled] [-Frequency <Int32>] [-GeoLocation <IWebTestGeolocation[]>] [-Kind <WebTestKind>]
  [-RequestParseDependent] [-RequestUrl <String>] [-RetryEnabled] [-RuleExpectedHttpStatusCode <Int32>]
  [-Tag <Hashtable>] [-TestName <String>] [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -244,7 +244,7 @@ A list of where to physically run the tests from to give global coverage for acc
 To construct, see NOTES section for GEOLOCATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IWebTestGeolocation[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTestGeolocation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -259,7 +259,7 @@ Accept wildcard characters: False
 The kind of web test this is, valid choices are ping, multistep, and standard.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKindEnum
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKind
 Parameter Sets: (All)
 Aliases:
 
@@ -335,7 +335,7 @@ List of headers and their values to add to the WebTest call.
 To construct, see NOTES section for REQUESTHEADER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IHeaderField[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IHeaderField[]
 Parameter Sets: CreateStandard
 Aliases:
 
@@ -582,7 +582,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.IWebTest
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest
 
 ## NOTES
 
@@ -593,10 +593,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-GEOLOCATION <IWebTestGeolocation[]>: A list of where to physically run the tests from to give global coverage for accessibility of your application.
+`GEOLOCATION <IWebTestGeolocation[]>`: A list of where to physically run the tests from to give global coverage for accessibility of your application.
   - `[Location <String>]`: Location ID for the WebTest to run from.
 
-REQUESTHEADER <IHeaderField[]>: List of headers and their values to add to the WebTest call.
+`REQUESTHEADER <IHeaderField[]>`: List of headers and their values to add to the WebTest call.
   - `[Name <String>]`: The name of the header.
   - `[Value <String>]`: The value of the header.
 

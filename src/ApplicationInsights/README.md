@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ApplicationInsights servic
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -31,18 +31,17 @@ For information on how to develop for `Az.ApplicationInsights`, see [how-to.md](
 
 ``` yaml
 # lock the commit
-branch: e1eca381eca8ec1f80b722e5dbf060fdeef48653
+branch: 60be34ab72f1483aef8feede852bc9f2f1921897
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/preview/2018-05-01-preview/webTests_API.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/9735d8c1580e6b56e6d4508be6ec00f46e45cb77/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/components_API.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/e129012901bbd9cc0f182ec5b539bccf2440ef4a/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentApiKeys_API.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/8f0d54f788304518eca62ddf281b8c889ad9613c/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentAnnotations_API.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/e129012901bbd9cc0f182ec5b539bccf2440ef4a/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentFeaturesAndPricing_API.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/e129012901bbd9cc0f182ec5b539bccf2440ef4a/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentContinuousExport_API.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/e129012901bbd9cc0f182ec5b539bccf2440ef4a/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/aiOperations_API.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/88e7838a09868a51de3894114355c75929847a46/specification/applicationinsights/resource-manager/Microsoft.Insights/preview/2020-03-01-preview/componentLinkedStorageAccounts_API.json
+  - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2022-06-15/webTests_API.json
+  - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/components_API.json
+  - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentApiKeys_API.json
+  - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentAnnotations_API.json
+  - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentFeaturesAndPricing_API.json
+  - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentContinuousExport_API.json
+  - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/preview/2020-03-01-preview/componentLinkedStorageAccounts_API.json
 module-version: 0.1.0
 subject-prefix: $(service-name)
 

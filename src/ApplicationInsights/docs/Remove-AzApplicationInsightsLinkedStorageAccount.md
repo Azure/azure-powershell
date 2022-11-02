@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://docs.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightslinkedstorageaccount
+online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightslinkedstorageaccount
 schema: 2.0.0
 ---
 
@@ -181,7 +181,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <IApplicationInsightsIdentity>`: Identity Parameter
   - `[AnnotationId <String>]`: The unique annotation ID. This is unique within a Application Insights component.
   - `[ComponentName <String>]`: The name of the Application Insights component resource.
   - `[ExportId <String>]`: The Continuous Export configuration ID. This is unique within a Application Insights component.

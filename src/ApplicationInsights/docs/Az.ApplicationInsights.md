@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ApplicationInsights
 Module Guid: 031a685e-5904-433f-b2f8-4fcef3cd15d8
-Download Help Link: https://docs.microsoft.com/powershell/module/az.applicationinsights
+Download Help Link: https://learn.microsoft.com/powershell/module/az.applicationinsights
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -80,5 +80,5 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 Update linked storage accounts for an Application Insights component.
 
 ### [Update-AzApplicationInsightsWebTestTag](Update-AzApplicationInsightsWebTestTag.md)
-Creates or updates an Application Insights web test definition.
+Updates the tags associated with an Application Insights web test.
 
