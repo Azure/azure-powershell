@@ -125,6 +125,11 @@ function New-AzConnectedKubernetes {
         ${Tag},
 
         [Parameter()]
+        [System.Management.Automation.SwitchParameter]
+        # Accept EULA of ConnectedKubernetes, legal term will pop up without this parameter provided
+        ${AcceptEULA},
+
+        [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Azure')]
@@ -185,21 +190,25 @@ function New-AzConnectedKubernetes {
     )
 
     process {
-        $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
-        try {
-            $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
-        } catch {
-            throw 
-        }
-        $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
-        switch ($confirmation) {
-            'Y' {
-                Break
+        if(!$AcceptEULA){
+            $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
+            try {
+                $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
+            } catch {
+                throw 
             }
+            $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
+            switch ($confirmation) {
+                'Y' {
+                    Break
+                }
 
-            Default {
-                Return
+                Default {
+                    Return
+                }
             }
+        }else {
+            $null = $PSBoundParameters.Remove('AcceptEULA')
         }
 
         if ($PSBoundParameters.ContainsKey('KubeConfig')) {
