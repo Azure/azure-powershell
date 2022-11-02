@@ -44,7 +44,7 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 ### [Get-AzEventHubKey](Get-AzEventHubKey.md)
 Gets an EventHub SAS key
 
-### [Get-AzEventHubNamespace](Get-AzEventHubNamespace.md)
+### [Get-AzEventHubNamespaceV2](Get-AzEventHubNamespaceV2.md)
 Gets the description of the specified namespace.
 
 ### [Get-AzEventHubNetworkRuleSet](Get-AzEventHubNetworkRuleSet.md)
@@ -86,10 +86,11 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHu
 ### [New-AzEventHubKey](New-AzEventHubKey.md)
 Regenerates an EventHub SAS key
 
-### [New-AzEventHubNamespace](New-AzEventHubNamespace.md)
-Creates or updates a namespace.
-Once created, this namespace's resource manifest is immutable.
-This operation is idempotent.
+### [New-AzEventHubKeyVaultPropertiesObject](New-AzEventHubKeyVaultPropertiesObject.md)
+Create an in-memory object for KeyVaultProperties.
+
+### [New-AzEventHubNamespaceV2](New-AzEventHubNamespaceV2.md)
+Updates an EventHub Entity
 
 ### [New-AzEventHubSchemaGroup](New-AzEventHubSchemaGroup.md)
 
@@ -119,7 +120,7 @@ Deletes a consumer group from the specified Event Hub and resource group.
 ### [Remove-AzEventHubGeoDRConfiguration](Remove-AzEventHubGeoDRConfiguration.md)
 Deletes an Alias(Disaster Recovery configuration)
 
-### [Remove-AzEventHubNamespace](Remove-AzEventHubNamespace.md)
+### [Remove-AzEventHubNamespaceV2](Remove-AzEventHubNamespaceV2.md)
 Deletes an existing namespace.
 This operation also removes all associated resources under the namespace.
 
@@ -151,7 +152,7 @@ This operation disables the Disaster Recovery and stops replicating changes from
 ### [Set-AzEventHubGeoDRConfigurationFailOver](Set-AzEventHubGeoDRConfigurationFailOver.md)
 Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
-### [Set-AzEventHubNamespaceName](Set-AzEventHubNamespaceName.md)
+### [Set-AzEventHubNamespaceV2](Set-AzEventHubNamespaceV2.md)
 Updates an EventHub Entity
 
 ### [Set-AzEventHubNetworkRuleSet](Set-AzEventHubNetworkRuleSet.md)

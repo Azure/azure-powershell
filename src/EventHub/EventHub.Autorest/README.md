@@ -145,15 +145,11 @@ directive:
       subject: PrivateLinkResource
     set:
       subject: PrivateLink
+
 # Renaming New-AzEventHubNamespace
   - where:
-      subject: Namespace
-    set:
-      subject: NamespaceV2
-  
-  - where:
       verb: New
-      subject: NamespaceV2
+      subject: Namespace
       parameter-name: EncryptionRequireInfrastructureEncryption
     set:
       parameter-name: RequireInfrastructureEncryption
@@ -186,6 +182,18 @@ directive:
       property-name: IsAutoInflateEnabled
     set:
       property-name: EnableAutoInflate
+  
+  - where:
+      verb: New
+      subject: Namespace
+      parameter-name: EncryptionKeySource
+    set:
+      parameter-name: KeySource
+  - where:
+      model-name: EhNamespace
+      property-name: EncryptionKeySource
+    set:
+      property-name: KeySource
 
   - where:
       verb: New
@@ -210,6 +218,16 @@ directive:
       property-name: IdentityUserAssignedIdentity
     set:
       property-name: IdentityId
+  
+  - where:
+      subject: Namespace
+    set:
+      subject: NamespaceV2
+    
+  - where:
+      verb: New
+      subject: NamespaceV2
+    hide: true
 
   - where:
       verb: Get
@@ -382,4 +400,4 @@ directive:
       suppress-format: true
 
   - model-cmdlet:
-    - KeyVaultProperty
+    - KeyVaultProperties
