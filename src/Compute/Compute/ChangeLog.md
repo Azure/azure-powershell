@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+* Added `-SecurityType`, `-EnableSecureBoot` and `-EnableVtpm` parameters to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
+* Configured flags `-EnableSecureBoot` and `-EnableVtpm` to default to True for TrustedLaunch,ConfidentialVM SecurityType to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
 
 ## Version 5.1.0
 * Fixed EdgeZone does not pass to VM for `New-AzVM` "SimpleParameterSet" [#18978] 
@@ -47,8 +49,6 @@
 * Added `-DiskControllerType` property to the following cmdlets: `New-AzVm`, `New-AzVmss`, `New-AzVmConfig`, `Set-AzVmssStorageProfile`
 
 ## Version 4.31.0
-* Added `-SecurityType`, `-EnableSecureBoot` and `-EnableVtpm` parameters to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
-* Configured flags `-EnableSecureBoot` and `-EnableVtpm` to default to True for TrustedLaunch,ConfidentialVM SecurityType to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets
 * Added Trusted Launch Generic Breaking Change warning for `New-AzVM`, `New-AzDisk` and `New-AzVMSS` cmdlets.
 * `Get-AzVMRunCommand` now shows all the properties of VMRunCommand in a list format.
 * Added new Parameter `-PublicIpSku` to the `NewAzVM` cmdlet with acceptable values : "Basic" and "Standard". 

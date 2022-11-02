@@ -141,7 +141,7 @@ $vmssName2 = 'vmss2' + $rgname;
 $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 
 $adminUsername = 'usertest';
-$adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+$adminPassword = "PassWord123" | ConvertTo-SecureString -AsPlainText -Force;
 
 $imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
 $imgRef.PublisherName = $PublisherName;

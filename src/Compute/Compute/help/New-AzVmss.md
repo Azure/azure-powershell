@@ -273,7 +273,7 @@ $SKU = "2016-datacenter-gensecond";
 $disable = $false;
 $enable = $true;
 $adminUsername = 'usertest';
-$adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+$adminPassword = "PassWord123" | ConvertTo-SecureString -AsPlainText -Force;
 $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
 
 # VMSS Creation 

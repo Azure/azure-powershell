@@ -333,7 +333,7 @@ $imageName = "Win2016DataCenterGenSecond";
 $disable = $false;
 $enable = $true;
 
-$password = Get-PasswordForVM;
+$password = "Password123";
 $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
 $user = "admin01";
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
