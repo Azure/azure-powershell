@@ -182,7 +182,7 @@ function Set-AzEventHubNamespaceV2{
             $hasIdentityId = $PSBoundParameters.Remove('IdentityId')
             $hasEnableAutoInflate = $PSBoundParameters.Remove('EnableAutoInflate')
             $hasKafkaEnabled = $PSBoundParameters.Remove('KafkaEnabled')
-            $hasMaximumThroughputUnit = $PSBoundParameters.Remove('MaximumThroughputUnits')
+            $hasMaximumThroughputUnits = $PSBoundParameters.Remove('MaximumThroughputUnits')
             $hasMinimumTlsVersion = $PSBoundParameters.Remove('MinimumTlsVersion')
             $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption') 
             $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
