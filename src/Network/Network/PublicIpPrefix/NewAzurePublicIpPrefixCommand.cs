@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The public IP prefix location.")]
         [LocationCompleter("Microsoft.Network/publicIPPrefixes")]
