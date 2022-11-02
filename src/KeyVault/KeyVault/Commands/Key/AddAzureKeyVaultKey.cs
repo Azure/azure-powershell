@@ -447,19 +447,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (this.UseDefaultCVMPolicy.IsPresent)
             {
-                try
+                ReleasePolicy = new PSKeyReleasePolicy()
                 {
-                    ReleasePolicy = new PSKeyReleasePolicy()
-                    {
-                        PolicyContent = GetDefaultCVMPolicy(),
-                        Immutable = this.Immutable.IsPresent
-                    };
-                }
-                catch(Exception e)
-                {
-                    // Swallow exception to fetch default policy
-                    WriteWarning(string.Format(Resources.FetchDefaultCVMPolicyFailed, e.Message));
-                }
+                    PolicyContent = GetDefaultCVMPolicy(),
+                    Immutable = this.Immutable.IsPresent
+                };
             }
 
             if(this.IsParameterBound(c => c.ReleasePolicyPath))
@@ -639,10 +631,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     defaultCVMPolicy = client.GetStringAsync(DefaultCVMPolicyUrl).ConfigureAwait(true).GetAwaiter().GetResult();
                 }
+
             }
-            catch
+            catch (Exception e)
             {
-                WriteWarning(string.Format(Resources.FetchDefaultCVMPolicyFromLocal));
+                WriteWarning(string.Format(Resources.FetchDefaultCVMPolicyFromLocal, e.Message));
                 try
                 {
                     using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(DefaultCVMPolicyPath))
@@ -651,9 +644,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                         defaultCVMPolicy = reader.ReadToEnd();
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    WriteWarning(string.Format(Resources.FetchDefaultCVMPolicyFailed, ex.Message));
+                    throw new AzPSArgumentException(string.Format(Resources.FetchDefaultCVMPolicyFailedWithErrorMessage, ex.Message), nameof(UseDefaultCVMPolicy));
                 };
             }
             return defaultCVMPolicy;
