@@ -3036,6 +3036,7 @@ function Test-VirtualMachineGetStatus
 
         Assert-True {$vm.OsName -like "*windows*"}
         Assert-NotNullOrEmpty $vm.OsVersion
+        Assert-NotNullOrEmpty $vm.HyperVGeneration
         $a = $vm | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("Statuses");}
@@ -3044,6 +3045,7 @@ function Test-VirtualMachineGetStatus
         Assert-AreEqual "VM running" ($vms | ? {$_.Name -eq $vmname}).PowerState;
         Assert-True {($vms | ? {$_.Name -eq $vmname}).OsName -like "*windows*"}
         Assert-NotNullOrEmpty ($vms | ? {$_.Name -eq $vmname}).OsVersion
+        Assert-NotNullOrEmpty ($vms | ? {$_.Name -eq $vmname}).HyperVGeneration
         $a = $vms | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("VM running")};
@@ -3052,6 +3054,7 @@ function Test-VirtualMachineGetStatus
         Assert-AreEqual "VM running" ($vms | ? {$_.Name -eq $vmname}).PowerState;
         Assert-True {($vms | ? {$_.Name -eq $vmname}).OsName -like "*windows*"}
         Assert-NotNullOrEmpty ($vms | ? {$_.Name -eq $vmname}).OsVersion
+        Assert-NotNullOrEmpty ($vms | ? {$_.Name -eq $vmname}).HyperVGeneration
         $a = $vms | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("VM running")};

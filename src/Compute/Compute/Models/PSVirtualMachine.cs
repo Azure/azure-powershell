@@ -90,6 +90,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string OsName { get; set; }
         //Gets or sets the OS version
         public string OsVersion { get; set; }
+        //Gets or sets the HyperV Generation
+        public string HyperVGeneration { get; set; }
 
         // Gets or sets the OS profile.
         public OSProfile OSProfile { get; set; }
