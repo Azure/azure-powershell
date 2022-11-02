@@ -146,7 +146,7 @@ If ($Build)
                 }
                 $ModuleBuildInfoList += @{
                     Module = "Az.$ModuleName";
-                    Status = "Fail";
+                    Status = "Failed";
                     Content = $Content;
                 }
             }
@@ -157,7 +157,7 @@ If ($Build)
         }
         If ($BuildResultArray.Length -Ne 0)
         {
-            $BuildDetail.Status = "Fail"
+            $BuildDetail.Status = "Failed"
             $DependencyStepStatus = "Canceled"
         }
         Else

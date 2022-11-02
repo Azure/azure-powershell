@@ -95,7 +95,7 @@ ForEach ($Step In $Steps)
             }
             Else
             {
-                $ModuleInfo.Status = "Fail"
+                $ModuleInfo.Status = "Failed"
             }
 
             $MatchedIssues = $Issues | Where-Object { $_.Module -Eq $ModuleName }
@@ -143,7 +143,7 @@ ForEach ($Step In $Steps)
         }
         Else
         {
-            $Details.Status = "Fail"
+            $Details.Status = "Failed"
         }
     }
 }
