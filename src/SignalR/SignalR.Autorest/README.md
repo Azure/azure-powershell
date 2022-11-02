@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the WebPubSub service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -36,7 +36,7 @@ require:
 sanitize-names: true
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/webpubsub/resource-manager/Microsoft.SignalRService/stable/2021-10-01/webpubsub.json
+  - $(repo)/specification/webpubsub/resource-manager/Microsoft.SignalRService/preview/2022-08-01-preview/webpubsub.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger
 
@@ -49,7 +49,8 @@ psm1-custom: custom/Az.SignalR.custom.psm1
 # Normally, title is the service name
 title: WebPubSub
 subject-prefix: ''
-branch: ab0c850713dcb87f906e8f38f73d43099668a60f
+# When updating the commit hash, please update all occurrences in the file
+branch: 492cf91751be945ceae53cfdd53b1ff2fb878703
 
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
@@ -129,7 +130,7 @@ directive:
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ab0c850713dcb87f906e8f38f73d43099668a60f/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/492cf91751be945ceae53cfdd53b1ff2fb878703/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
             }
           }
         }
@@ -149,7 +150,7 @@ directive:
           "default": {
             "description": "Error response describing why the operation failed.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ab0c850713dcb87f906e8f38f73d43099668a60f/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/492cf91751be945ceae53cfdd53b1ff2fb878703/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
             }
           }
         }
@@ -212,6 +213,24 @@ directive:
           - CapacityMinimum
           - CapacityMaximum
           - CapacityScaleType
+  - where:
+      model-name: CustomCertificate
+    set:
+      format-table:
+        properties:
+          - Name
+          - KeyVaultBaseUri
+          - KeyVaultSecretName
+          - KeyVaultSecretVersion
+          - ProvisioningState
+  - where:
+      model-name: CustomDomain
+    set:
+      format-table:
+        properties:
+          - Name
+          - DomainName
+          - ProvisioningState
   # rename parameters
   - where:
       parameter-name: IdentityUserAssignedIdentity
@@ -286,3 +305,11 @@ directive:
       parameter-name: Name
       alias: ResourceName
 ```
+
+## Azure Web PubSub custom development guidance
+
+This chapter contains development guidance specific to Azure Web PubSub service.
+
+### Generate error handling customization code
+
+The default error handling logic only prints the message field of the `ErrorResponse`. However, it's usually not enough for our services where we have to combine the `target` and `message` fields to figure out how to fix the error. Therefore, we should run the script "resources\GenerateCustomErrorHandling.ps1" to generate error handling customization code for each cmdlets. If you have written other csharp customization logic, take care because the script overrides the current files.
