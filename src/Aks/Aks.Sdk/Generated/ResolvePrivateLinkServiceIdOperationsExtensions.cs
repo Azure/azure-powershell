@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='resourceName'>
             /// The name of the managed cluster resource.
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// The operations group for this extension method.
             /// </param>
             /// <param name='resourceGroupName'>
-            /// The name of the resource group.
+            /// The name of the resource group. The name is case insensitive.
             /// </param>
             /// <param name='resourceName'>
             /// The name of the managed cluster resource.

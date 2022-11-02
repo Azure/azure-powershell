@@ -34,15 +34,15 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="createdByType">The type of identity that created the
         /// resource. Possible values include: 'User', 'Application',
         /// 'ManagedIdentity', 'Key'</param>
-        /// <param name="createdAt">The UTC timestamp of resource
-        /// creation.</param>
+        /// <param name="createdAt">The timestamp of resource creation
+        /// (UTC).</param>
         /// <param name="lastModifiedBy">The identity that last modified the
         /// resource.</param>
         /// <param name="lastModifiedByType">The type of identity that last
         /// modified the resource. Possible values include: 'User',
         /// 'Application', 'ManagedIdentity', 'Key'</param>
-        /// <param name="lastModifiedAt">The type of identity that last
-        /// modified the resource.</param>
+        /// <param name="lastModifiedAt">The timestamp of resource last
+        /// modification (UTC)</param>
         public SystemData(string createdBy = default(string), string createdByType = default(string), System.DateTime? createdAt = default(System.DateTime?), string lastModifiedBy = default(string), string lastModifiedByType = default(string), System.DateTime? lastModifiedAt = default(System.DateTime?))
         {
             CreatedBy = createdBy;
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string CreatedByType { get; set; }
 
         /// <summary>
-        /// Gets or sets the UTC timestamp of resource creation.
+        /// Gets or sets the timestamp of resource creation (UTC).
         /// </summary>
         [JsonProperty(PropertyName = "createdAt")]
         public System.DateTime? CreatedAt { get; set; }
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string LastModifiedByType { get; set; }
 
         /// <summary>
-        /// Gets or sets the type of identity that last modified the resource.
+        /// Gets or sets the timestamp of resource last modification (UTC)
         /// </summary>
         [JsonProperty(PropertyName = "lastModifiedAt")]
         public System.DateTime? LastModifiedAt { get; set; }

@@ -41,12 +41,15 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// cluster.</param>
         /// <param name="enablePrivateClusterPublicFQDN">Whether to create
         /// additional public FQDN for private cluster or not.</param>
-        public ManagedClusterAPIServerAccessProfile(IList<string> authorizedIPRanges = default(IList<string>), bool? enablePrivateCluster = default(bool?), string privateDNSZone = default(string), bool? enablePrivateClusterPublicFQDN = default(bool?))
+        /// <param name="disableRunCommand">Whether to disable run command for
+        /// the cluster or not.</param>
+        public ManagedClusterAPIServerAccessProfile(IList<string> authorizedIPRanges = default(IList<string>), bool? enablePrivateCluster = default(bool?), string privateDNSZone = default(string), bool? enablePrivateClusterPublicFQDN = default(bool?), bool? disableRunCommand = default(bool?))
         {
             AuthorizedIPRanges = authorizedIPRanges;
             EnablePrivateCluster = enablePrivateCluster;
             PrivateDNSZone = privateDNSZone;
             EnablePrivateClusterPublicFQDN = enablePrivateClusterPublicFQDN;
+            DisableRunCommand = disableRunCommand;
             CustomInit();
         }
 
@@ -97,6 +100,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [JsonProperty(PropertyName = "enablePrivateClusterPublicFQDN")]
         public bool? EnablePrivateClusterPublicFQDN { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to disable run command for the cluster or not.
+        /// </summary>
+        [JsonProperty(PropertyName = "disableRunCommand")]
+        public bool? DisableRunCommand { get; set; }
 
     }
 }

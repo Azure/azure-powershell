@@ -58,12 +58,15 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// for more details. Possible values include: 'None',
         /// 'Windows_Server'</param>
         /// <param name="enableCSIProxy">Whether to enable CSI proxy.</param>
-        public ManagedClusterWindowsProfile(string adminUsername, string adminPassword = default(string), string licenseType = default(string), bool? enableCSIProxy = default(bool?))
+        /// <param name="gmsaProfile">The Windows gMSA Profile in the Managed
+        /// Cluster.</param>
+        public ManagedClusterWindowsProfile(string adminUsername, string adminPassword = default(string), string licenseType = default(string), bool? enableCSIProxy = default(bool?), WindowsGmsaProfile gmsaProfile = default(WindowsGmsaProfile))
         {
             AdminUsername = adminUsername;
             AdminPassword = adminPassword;
             LicenseType = licenseType;
             EnableCSIProxy = enableCSIProxy;
+            GmsaProfile = gmsaProfile;
             CustomInit();
         }
 
@@ -122,6 +125,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </remarks>
         [JsonProperty(PropertyName = "enableCSIProxy")]
         public bool? EnableCSIProxy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Windows gMSA Profile in the Managed Cluster.
+        /// </summary>
+        [JsonProperty(PropertyName = "gmsaProfile")]
+        public WindowsGmsaProfile GmsaProfile { get; set; }
 
         /// <summary>
         /// Validate the object.

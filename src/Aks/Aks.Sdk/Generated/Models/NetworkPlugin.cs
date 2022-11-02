@@ -28,5 +28,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// for more information.
         /// </summary>
         public const string Kubenet = "kubenet";
+        /// <summary>
+        /// No CNI plugin is pre-installed. See [BYO
+        /// CNI](https://docs.microsoft.com/en-us/azure/aks/use-byo-cni) for
+        /// more information.
+        /// </summary>
+        public const string None = "none";
     }
 }

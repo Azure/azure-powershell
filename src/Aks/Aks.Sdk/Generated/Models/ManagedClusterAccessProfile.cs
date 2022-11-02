@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// Managed cluster Access Profile.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ManagedClusterAccessProfile : Resource
+    public partial class ManagedClusterAccessProfile : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the ManagedClusterAccessProfile
@@ -36,15 +36,21 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the ManagedClusterAccessProfile
         /// class.
         /// </summary>
-        /// <param name="location">Resource location</param>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="tags">Resource tags</param>
+        /// <param name="location">The geo-location where the resource
+        /// lives</param>
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
+        /// <param name="name">The name of the resource</param>
+        /// <param name="type">The type of the resource. E.g.
+        /// "Microsoft.Compute/virtualMachines" or
+        /// "Microsoft.Storage/storageAccounts"</param>
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
+        /// <param name="tags">Resource tags.</param>
         /// <param name="kubeConfig">Base64-encoded Kubernetes configuration
         /// file.</param>
-        public ManagedClusterAccessProfile(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), byte[] kubeConfig = default(byte[]))
-            : base(location, id, name, type, tags)
+        public ManagedClusterAccessProfile(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), byte[] kubeConfig = default(byte[]))
+            : base(location, id, name, type, systemData, tags)
         {
             KubeConfig = kubeConfig;
             CustomInit();

@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// 'Ephemeral'</param>
         /// <param name="kubeletDiskType">Possible values include: 'OS',
         /// 'Temporary'</param>
+        /// <param name="workloadRuntime">Possible values include:
+        /// 'OCIContainer', 'WasmWasi'</param>
         /// <param name="vnetSubnetID">The ID of the subnet which agent pool
         /// nodes and optionally pods will join on startup.</param>
         /// <param name="podSubnetID">The ID of the subnet which pods will join
@@ -54,26 +56,30 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="osType">Possible values include: 'Linux',
         /// 'Windows'</param>
         /// <param name="osSKU">Possible values include: 'Ubuntu',
-        /// 'CBLMariner'</param>
+        /// 'CBLMariner', 'Windows2019', 'Windows2022'</param>
         /// <param name="maxCount">The maximum number of nodes for
         /// auto-scaling</param>
         /// <param name="minCount">The minimum number of nodes for
         /// auto-scaling</param>
         /// <param name="enableAutoScaling">Whether to enable
         /// auto-scaler</param>
+        /// <param name="scaleDownMode">The scale down mode to use when scaling
+        /// the Agent Pool.</param>
         /// <param name="type">Possible values include:
         /// 'VirtualMachineScaleSets', 'AvailabilitySet'</param>
         /// <param name="mode">Possible values include: 'System',
         /// 'User'</param>
-        /// <param name="orchestratorVersion">The version of Kubernetes running
-        /// on the Agent Pool.</param>
+        /// <param name="orchestratorVersion">The version of Kubernetes
+        /// specified by the user.</param>
+        /// <param name="currentOrchestratorVersion">The version of Kubernetes
+        /// the Agent Pool is running.</param>
         /// <param name="nodeImageVersion">The version of node image</param>
         /// <param name="upgradeSettings">Settings for upgrading the
         /// agentpool</param>
         /// <param name="provisioningState">The current deployment or
         /// provisioning state.</param>
-        /// <param name="powerState">Describes whether the Agent Pool is
-        /// Running or Stopped</param>
+        /// <param name="powerState">Whether the Agent Pool is running or
+        /// stopped.</param>
         /// <param name="availabilityZones">The list of Availability zones to
         /// use for nodes. This can only be specified if the AgentPoolType
         /// property is 'VirtualMachineScaleSets'.</param>
@@ -109,8 +115,14 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="gpuInstanceProfile">GPUInstanceProfile to be used to
         /// specify GPU MIG instance profile for supported GPU VM SKU. Possible
         /// values include: 'MIG1g', 'MIG2g', 'MIG3g', 'MIG4g', 'MIG7g'</param>
-        public ManagedClusterAgentPoolProfile(string name, int? count = default(int?), string vmSize = default(string), int? osDiskSizeGB = default(int?), string osDiskType = default(string), string kubeletDiskType = default(string), string vnetSubnetID = default(string), string podSubnetID = default(string), int? maxPods = default(int?), string osType = default(string), string osSKU = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string type = default(string), string mode = default(string), string orchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), PowerState powerState = default(PowerState), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), string nodePublicIPPrefixID = default(string), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> nodeLabels = default(IDictionary<string, string>), IList<string> nodeTaints = default(IList<string>), string proximityPlacementGroupID = default(string), KubeletConfig kubeletConfig = default(KubeletConfig), LinuxOSConfig linuxOSConfig = default(LinuxOSConfig), bool? enableEncryptionAtHost = default(bool?), bool? enableUltraSSD = default(bool?), bool? enableFIPS = default(bool?), string gpuInstanceProfile = default(string))
-            : base(count, vmSize, osDiskSizeGB, osDiskType, kubeletDiskType, vnetSubnetID, podSubnetID, maxPods, osType, osSKU, maxCount, minCount, enableAutoScaling, type, mode, orchestratorVersion, nodeImageVersion, upgradeSettings, provisioningState, powerState, availabilityZones, enableNodePublicIP, nodePublicIPPrefixID, scaleSetPriority, scaleSetEvictionPolicy, spotMaxPrice, tags, nodeLabels, nodeTaints, proximityPlacementGroupID, kubeletConfig, linuxOSConfig, enableEncryptionAtHost, enableUltraSSD, enableFIPS, gpuInstanceProfile)
+        /// <param name="creationData">CreationData to be used to specify the
+        /// source Snapshot ID if the node pool will be created/upgraded using
+        /// a snapshot.</param>
+        /// <param name="hostGroupID">The fully qualified resource ID of the
+        /// Dedicated Host Group to provision virtual machines from, used only
+        /// in creation scenario and not allowed to changed once set.</param>
+        public ManagedClusterAgentPoolProfile(string name, int? count = default(int?), string vmSize = default(string), int? osDiskSizeGB = default(int?), string osDiskType = default(string), string kubeletDiskType = default(string), string workloadRuntime = default(string), string vnetSubnetID = default(string), string podSubnetID = default(string), int? maxPods = default(int?), string osType = default(string), string osSKU = default(string), int? maxCount = default(int?), int? minCount = default(int?), bool? enableAutoScaling = default(bool?), string scaleDownMode = default(string), string type = default(string), string mode = default(string), string orchestratorVersion = default(string), string currentOrchestratorVersion = default(string), string nodeImageVersion = default(string), AgentPoolUpgradeSettings upgradeSettings = default(AgentPoolUpgradeSettings), string provisioningState = default(string), PowerState powerState = default(PowerState), IList<string> availabilityZones = default(IList<string>), bool? enableNodePublicIP = default(bool?), string nodePublicIPPrefixID = default(string), string scaleSetPriority = default(string), string scaleSetEvictionPolicy = default(string), double? spotMaxPrice = default(double?), IDictionary<string, string> tags = default(IDictionary<string, string>), IDictionary<string, string> nodeLabels = default(IDictionary<string, string>), IList<string> nodeTaints = default(IList<string>), string proximityPlacementGroupID = default(string), KubeletConfig kubeletConfig = default(KubeletConfig), LinuxOSConfig linuxOSConfig = default(LinuxOSConfig), bool? enableEncryptionAtHost = default(bool?), bool? enableUltraSSD = default(bool?), bool? enableFIPS = default(bool?), string gpuInstanceProfile = default(string), CreationData creationData = default(CreationData), string hostGroupID = default(string))
+            : base(count, vmSize, osDiskSizeGB, osDiskType, kubeletDiskType, workloadRuntime, vnetSubnetID, podSubnetID, maxPods, osType, osSKU, maxCount, minCount, enableAutoScaling, scaleDownMode, type, mode, orchestratorVersion, currentOrchestratorVersion, nodeImageVersion, upgradeSettings, provisioningState, powerState, availabilityZones, enableNodePublicIP, nodePublicIPPrefixID, scaleSetPriority, scaleSetEvictionPolicy, spotMaxPrice, tags, nodeLabels, nodeTaints, proximityPlacementGroupID, kubeletConfig, linuxOSConfig, enableEncryptionAtHost, enableUltraSSD, enableFIPS, gpuInstanceProfile, creationData, hostGroupID)
         {
             Name = name;
             CustomInit();

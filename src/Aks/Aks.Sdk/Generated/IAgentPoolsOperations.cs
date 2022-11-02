@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Gets a list of agent pools in the specified managed cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Gets the specified managed cluster agent pool.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Creates or updates an agent pool in the specified managed cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Deletes an agent pool in the specified managed cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Gets the upgrade profile for an agent pool.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// for more details about the version lifecycle.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// https://docs.microsoft.com/azure/aks/node-image-upgrade
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
@@ -225,12 +225,12 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AgentPool>> UpgradeNodeImageVersionWithHttpMessagesAsync(string resourceGroupName, string resourceName, string agentPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AgentPool,AgentPoolsUpgradeNodeImageVersionHeaders>> UpgradeNodeImageVersionWithHttpMessagesAsync(string resourceGroupName, string resourceName, string agentPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates or updates an agent pool in the specified managed cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Deletes an agent pool in the specified managed cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// https://docs.microsoft.com/azure/aks/node-image-upgrade
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AgentPool>> BeginUpgradeNodeImageVersionWithHttpMessagesAsync(string resourceGroupName, string resourceName, string agentPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AgentPool,AgentPoolsUpgradeNodeImageVersionHeaders>> BeginUpgradeNodeImageVersionWithHttpMessagesAsync(string resourceGroupName, string resourceName, string agentPoolName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a list of agent pools in the specified managed cluster.
         /// </summary>

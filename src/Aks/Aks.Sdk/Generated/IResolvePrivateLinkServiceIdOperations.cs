@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Gets the private link service ID for the specified managed cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.

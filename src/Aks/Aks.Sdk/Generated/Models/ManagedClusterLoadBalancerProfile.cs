@@ -49,7 +49,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="idleTimeoutInMinutes">Desired outbound flow idle
         /// timeout in minutes. Allowed values are in the range of 4 to 120
         /// (inclusive). The default value is 30 minutes.</param>
-        public ManagedClusterLoadBalancerProfile(ManagedClusterLoadBalancerProfileManagedOutboundIPs managedOutboundIPs = default(ManagedClusterLoadBalancerProfileManagedOutboundIPs), ManagedClusterLoadBalancerProfileOutboundIPPrefixes outboundIPPrefixes = default(ManagedClusterLoadBalancerProfileOutboundIPPrefixes), ManagedClusterLoadBalancerProfileOutboundIPs outboundIPs = default(ManagedClusterLoadBalancerProfileOutboundIPs), IList<ResourceReference> effectiveOutboundIPs = default(IList<ResourceReference>), int? allocatedOutboundPorts = default(int?), int? idleTimeoutInMinutes = default(int?))
+        /// <param name="enableMultipleStandardLoadBalancers">Enable multiple
+        /// standard load balancers per AKS cluster or not.</param>
+        public ManagedClusterLoadBalancerProfile(ManagedClusterLoadBalancerProfileManagedOutboundIPs managedOutboundIPs = default(ManagedClusterLoadBalancerProfileManagedOutboundIPs), ManagedClusterLoadBalancerProfileOutboundIPPrefixes outboundIPPrefixes = default(ManagedClusterLoadBalancerProfileOutboundIPPrefixes), ManagedClusterLoadBalancerProfileOutboundIPs outboundIPs = default(ManagedClusterLoadBalancerProfileOutboundIPs), IList<ResourceReference> effectiveOutboundIPs = default(IList<ResourceReference>), int? allocatedOutboundPorts = default(int?), int? idleTimeoutInMinutes = default(int?), bool? enableMultipleStandardLoadBalancers = default(bool?))
         {
             ManagedOutboundIPs = managedOutboundIPs;
             OutboundIPPrefixes = outboundIPPrefixes;
@@ -57,6 +59,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             EffectiveOutboundIPs = effectiveOutboundIPs;
             AllocatedOutboundPorts = allocatedOutboundPorts;
             IdleTimeoutInMinutes = idleTimeoutInMinutes;
+            EnableMultipleStandardLoadBalancers = enableMultipleStandardLoadBalancers;
             CustomInit();
         }
 
@@ -109,6 +112,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [JsonProperty(PropertyName = "idleTimeoutInMinutes")]
         public int? IdleTimeoutInMinutes { get; set; }
+
+        /// <summary>
+        /// Gets or sets enable multiple standard load balancers per AKS
+        /// cluster or not.
+        /// </summary>
+        [JsonProperty(PropertyName = "enableMultipleStandardLoadBalancers")]
+        public bool? EnableMultipleStandardLoadBalancers { get; set; }
 
         /// <summary>
         /// Validate the object.

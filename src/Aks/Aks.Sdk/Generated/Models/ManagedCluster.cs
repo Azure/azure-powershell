@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// Managed cluster.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ManagedCluster : Resource
+    public partial class ManagedCluster : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the ManagedCluster class.
@@ -34,18 +34,31 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <summary>
         /// Initializes a new instance of the ManagedCluster class.
         /// </summary>
-        /// <param name="location">Resource location</param>
-        /// <param name="id">Resource Id</param>
-        /// <param name="name">Resource name</param>
-        /// <param name="type">Resource type</param>
-        /// <param name="tags">Resource tags</param>
+        /// <param name="location">The geo-location where the resource
+        /// lives</param>
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
+        /// <param name="name">The name of the resource</param>
+        /// <param name="type">The type of the resource. E.g.
+        /// "Microsoft.Compute/virtualMachines" or
+        /// "Microsoft.Storage/storageAccounts"</param>
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
+        /// <param name="tags">Resource tags.</param>
+        /// <param name="sku">The managed cluster SKU.</param>
+        /// <param name="extendedLocation">The extended location of the Virtual
+        /// Machine.</param>
+        /// <param name="identity">The identity of the managed cluster, if
+        /// configured.</param>
         /// <param name="provisioningState">The current provisioning
         /// state.</param>
         /// <param name="powerState">The Power State of the cluster.</param>
         /// <param name="maxAgentPools">The max number of agent pools for the
         /// managed cluster.</param>
-        /// <param name="kubernetesVersion">The version of Kubernetes the
-        /// Managed Cluster is running.</param>
+        /// <param name="kubernetesVersion">The version of Kubernetes specified
+        /// by the user.</param>
+        /// <param name="currentKubernetesVersion">The version of Kubernetes
+        /// the Managed Cluster is running.</param>
         /// <param name="dnsPrefix">The DNS prefix of the Managed
         /// Cluster.</param>
         /// <param name="fqdnSubdomain">The FQDN subdomain of the private
@@ -66,6 +79,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="addonProfiles">The profile of managed cluster
         /// add-on.</param>
         /// <param name="podIdentityProfile">The pod identity profile of the
+        /// Managed Cluster.</param>
+        /// <param name="oidcIssuerProfile">The OIDC issuer profile of the
         /// Managed Cluster.</param>
         /// <param name="nodeResourceGroup">The name of the resource group
         /// containing agent pool nodes.</param>
@@ -95,18 +110,23 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// disabled on the Managed Cluster.</param>
         /// <param name="httpProxyConfig">Configurations for provisioning the
         /// cluster with HTTP proxy servers.</param>
-        /// <param name="identity">The identity of the managed cluster, if
-        /// configured.</param>
-        /// <param name="sku">The managed cluster SKU.</param>
-        /// <param name="extendedLocation">The extended location of the Virtual
-        /// Machine.</param>
-        public ManagedCluster(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), PowerState powerState = default(PowerState), int? maxAgentPools = default(int?), string kubernetesVersion = default(string), string dnsPrefix = default(string), string fqdnSubdomain = default(string), string fqdn = default(string), string privateFQDN = default(string), string azurePortalFQDN = default(string), IList<ManagedClusterAgentPoolProfile> agentPoolProfiles = default(IList<ManagedClusterAgentPoolProfile>), ContainerServiceLinuxProfile linuxProfile = default(ContainerServiceLinuxProfile), ManagedClusterWindowsProfile windowsProfile = default(ManagedClusterWindowsProfile), ManagedClusterServicePrincipalProfile servicePrincipalProfile = default(ManagedClusterServicePrincipalProfile), IDictionary<string, ManagedClusterAddonProfile> addonProfiles = default(IDictionary<string, ManagedClusterAddonProfile>), ManagedClusterPodIdentityProfile podIdentityProfile = default(ManagedClusterPodIdentityProfile), string nodeResourceGroup = default(string), bool? enableRBAC = default(bool?), bool? enablePodSecurityPolicy = default(bool?), ContainerServiceNetworkProfile networkProfile = default(ContainerServiceNetworkProfile), ManagedClusterAADProfile aadProfile = default(ManagedClusterAADProfile), ManagedClusterAutoUpgradeProfile autoUpgradeProfile = default(ManagedClusterAutoUpgradeProfile), ManagedClusterPropertiesAutoScalerProfile autoScalerProfile = default(ManagedClusterPropertiesAutoScalerProfile), ManagedClusterAPIServerAccessProfile apiServerAccessProfile = default(ManagedClusterAPIServerAccessProfile), string diskEncryptionSetID = default(string), IDictionary<string, ManagedClusterPropertiesIdentityProfileValue> identityProfile = default(IDictionary<string, ManagedClusterPropertiesIdentityProfileValue>), IList<PrivateLinkResource> privateLinkResources = default(IList<PrivateLinkResource>), bool? disableLocalAccounts = default(bool?), ManagedClusterHTTPProxyConfig httpProxyConfig = default(ManagedClusterHTTPProxyConfig), ManagedClusterIdentity identity = default(ManagedClusterIdentity), ManagedClusterSKU sku = default(ManagedClusterSKU), ExtendedLocation extendedLocation = default(ExtendedLocation))
-            : base(location, id, name, type, tags)
+        /// <param name="securityProfile">Security profile for the managed
+        /// cluster.</param>
+        /// <param name="storageProfile">Storage profile for the managed
+        /// cluster.</param>
+        /// <param name="publicNetworkAccess">PublicNetworkAccess of the
+        /// managedCluster</param>
+        public ManagedCluster(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), ManagedClusterSKU sku = default(ManagedClusterSKU), ExtendedLocation extendedLocation = default(ExtendedLocation), ManagedClusterIdentity identity = default(ManagedClusterIdentity), string provisioningState = default(string), PowerState powerState = default(PowerState), int? maxAgentPools = default(int?), string kubernetesVersion = default(string), string currentKubernetesVersion = default(string), string dnsPrefix = default(string), string fqdnSubdomain = default(string), string fqdn = default(string), string privateFQDN = default(string), string azurePortalFQDN = default(string), IList<ManagedClusterAgentPoolProfile> agentPoolProfiles = default(IList<ManagedClusterAgentPoolProfile>), ContainerServiceLinuxProfile linuxProfile = default(ContainerServiceLinuxProfile), ManagedClusterWindowsProfile windowsProfile = default(ManagedClusterWindowsProfile), ManagedClusterServicePrincipalProfile servicePrincipalProfile = default(ManagedClusterServicePrincipalProfile), IDictionary<string, ManagedClusterAddonProfile> addonProfiles = default(IDictionary<string, ManagedClusterAddonProfile>), ManagedClusterPodIdentityProfile podIdentityProfile = default(ManagedClusterPodIdentityProfile), ManagedClusterOIDCIssuerProfile oidcIssuerProfile = default(ManagedClusterOIDCIssuerProfile), string nodeResourceGroup = default(string), bool? enableRBAC = default(bool?), bool? enablePodSecurityPolicy = default(bool?), ContainerServiceNetworkProfile networkProfile = default(ContainerServiceNetworkProfile), ManagedClusterAADProfile aadProfile = default(ManagedClusterAADProfile), ManagedClusterAutoUpgradeProfile autoUpgradeProfile = default(ManagedClusterAutoUpgradeProfile), ManagedClusterPropertiesAutoScalerProfile autoScalerProfile = default(ManagedClusterPropertiesAutoScalerProfile), ManagedClusterAPIServerAccessProfile apiServerAccessProfile = default(ManagedClusterAPIServerAccessProfile), string diskEncryptionSetID = default(string), IDictionary<string, UserAssignedIdentity> identityProfile = default(IDictionary<string, UserAssignedIdentity>), IList<PrivateLinkResource> privateLinkResources = default(IList<PrivateLinkResource>), bool? disableLocalAccounts = default(bool?), ManagedClusterHTTPProxyConfig httpProxyConfig = default(ManagedClusterHTTPProxyConfig), ManagedClusterSecurityProfile securityProfile = default(ManagedClusterSecurityProfile), ManagedClusterStorageProfile storageProfile = default(ManagedClusterStorageProfile), string publicNetworkAccess = default(string))
+            : base(location, id, name, type, systemData, tags)
         {
+            Sku = sku;
+            ExtendedLocation = extendedLocation;
+            Identity = identity;
             ProvisioningState = provisioningState;
             PowerState = powerState;
             MaxAgentPools = maxAgentPools;
             KubernetesVersion = kubernetesVersion;
+            CurrentKubernetesVersion = currentKubernetesVersion;
             DnsPrefix = dnsPrefix;
             FqdnSubdomain = fqdnSubdomain;
             Fqdn = fqdn;
@@ -118,6 +138,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             ServicePrincipalProfile = servicePrincipalProfile;
             AddonProfiles = addonProfiles;
             PodIdentityProfile = podIdentityProfile;
+            OidcIssuerProfile = oidcIssuerProfile;
             NodeResourceGroup = nodeResourceGroup;
             EnableRBAC = enableRBAC;
             EnablePodSecurityPolicy = enablePodSecurityPolicy;
@@ -131,9 +152,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             PrivateLinkResources = privateLinkResources;
             DisableLocalAccounts = disableLocalAccounts;
             HttpProxyConfig = httpProxyConfig;
-            Identity = identity;
-            Sku = sku;
-            ExtendedLocation = extendedLocation;
+            SecurityProfile = securityProfile;
+            StorageProfile = storageProfile;
+            PublicNetworkAccess = publicNetworkAccess;
             CustomInit();
         }
 
@@ -141,6 +162,24 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the managed cluster SKU.
+        /// </summary>
+        [JsonProperty(PropertyName = "sku")]
+        public ManagedClusterSKU Sku { get; set; }
+
+        /// <summary>
+        /// Gets or sets the extended location of the Virtual Machine.
+        /// </summary>
+        [JsonProperty(PropertyName = "extendedLocation")]
+        public ExtendedLocation ExtendedLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity of the managed cluster, if configured.
+        /// </summary>
+        [JsonProperty(PropertyName = "identity")]
+        public ManagedClusterIdentity Identity { get; set; }
 
         /// <summary>
         /// Gets the current provisioning state.
@@ -161,20 +200,37 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public int? MaxAgentPools { get; private set; }
 
         /// <summary>
-        /// Gets or sets the version of Kubernetes the Managed Cluster is
-        /// running.
+        /// Gets or sets the version of Kubernetes specified by the user.
         /// </summary>
         /// <remarks>
-        /// When you upgrade a supported AKS cluster, Kubernetes minor versions
-        /// cannot be skipped. All upgrades must be performed sequentially by
-        /// major version number. For example, upgrades between 1.14.x ->
-        /// 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is
-        /// not allowed. See [upgrading an AKS
+        /// Both patch version (major.minor.patch) (e.g. 1.20.13) and
+        /// (major.minor) (e.g. 1.20) are supported. When (major.minor) is
+        /// specified, the latest supported GA patch version is chosen
+        /// automatically. Updating the cluster with the same (major.minor)
+        /// once it has been created (e.g. 1.14.x -) 1.14) will not trigger an
+        /// upgrade, even if a newer patch version is available. When you
+        /// upgrade a supported AKS cluster, Kubernetes minor versions cannot
+        /// be skipped. All upgrades must be performed sequentially by major
+        /// version number. For example, upgrades between 1.14.x -) 1.15.x or
+        /// 1.15.x -) 1.16.x are allowed, however 1.14.x -) 1.16.x is not
+        /// allowed. See [upgrading an AKS
         /// cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for
         /// more details.
         /// </remarks>
         [JsonProperty(PropertyName = "properties.kubernetesVersion")]
         public string KubernetesVersion { get; set; }
+
+        /// <summary>
+        /// Gets the version of Kubernetes the Managed Cluster is running.
+        /// </summary>
+        /// <remarks>
+        /// If kubernetesVersion was a fully specified version
+        /// (major.minor.patch), this field will be exactly equal to it. If
+        /// kubernetesVersion was (major.minor), this field will contain the
+        /// full (major.minor.patch) version being used.
+        /// </remarks>
+        [JsonProperty(PropertyName = "properties.currentKubernetesVersion")]
+        public string CurrentKubernetesVersion { get; private set; }
 
         /// <summary>
         /// Gets or sets the DNS prefix of the Managed Cluster.
@@ -264,6 +320,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public ManagedClusterPodIdentityProfile PodIdentityProfile { get; set; }
 
         /// <summary>
+        /// Gets or sets the OIDC issuer profile of the Managed Cluster.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.oidcIssuerProfile")]
+        public ManagedClusterOIDCIssuerProfile OidcIssuerProfile { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the resource group containing agent pool
         /// nodes.
         /// </summary>
@@ -331,7 +393,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Gets or sets identities associated with the cluster.
         /// </summary>
         [JsonProperty(PropertyName = "properties.identityProfile")]
-        public IDictionary<string, ManagedClusterPropertiesIdentityProfileValue> IdentityProfile { get; set; }
+        public IDictionary<string, UserAssignedIdentity> IdentityProfile { get; set; }
 
         /// <summary>
         /// Gets or sets private link resources associated with the cluster.
@@ -360,22 +422,26 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public ManagedClusterHTTPProxyConfig HttpProxyConfig { get; set; }
 
         /// <summary>
-        /// Gets or sets the identity of the managed cluster, if configured.
+        /// Gets or sets security profile for the managed cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "identity")]
-        public ManagedClusterIdentity Identity { get; set; }
+        [JsonProperty(PropertyName = "properties.securityProfile")]
+        public ManagedClusterSecurityProfile SecurityProfile { get; set; }
 
         /// <summary>
-        /// Gets or sets the managed cluster SKU.
+        /// Gets or sets storage profile for the managed cluster.
         /// </summary>
-        [JsonProperty(PropertyName = "sku")]
-        public ManagedClusterSKU Sku { get; set; }
+        [JsonProperty(PropertyName = "properties.storageProfile")]
+        public ManagedClusterStorageProfile StorageProfile { get; set; }
 
         /// <summary>
-        /// Gets or sets the extended location of the Virtual Machine.
+        /// Gets or sets publicNetworkAccess of the managedCluster
         /// </summary>
-        [JsonProperty(PropertyName = "extendedLocation")]
-        public ExtendedLocation ExtendedLocation { get; set; }
+        /// <remarks>
+        /// Allow or deny public network access for AKS. Possible values
+        /// include: 'Enabled', 'Disabled'
+        /// </remarks>
+        [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
+        public string PublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Validate the object.

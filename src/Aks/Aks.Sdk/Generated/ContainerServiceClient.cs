@@ -47,14 +47,12 @@ namespace Microsoft.Azure.Management.ContainerService
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Client Api Version.
+        /// The API version to use for this operation.
         /// </summary>
         public string ApiVersion { get; private set; }
 
@@ -110,6 +108,11 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Gets the IResolvePrivateLinkServiceIdOperations.
         /// </summary>
         public virtual IResolvePrivateLinkServiceIdOperations ResolvePrivateLinkServiceId { get; private set; }
+
+        /// <summary>
+        /// Gets the ISnapshotsOperations.
+        /// </summary>
+        public virtual ISnapshotsOperations Snapshots { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ContainerServiceClient class.
@@ -359,8 +362,9 @@ namespace Microsoft.Azure.Management.ContainerService
             PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             ResolvePrivateLinkServiceId = new ResolvePrivateLinkServiceIdOperations(this);
+            Snapshots = new SnapshotsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2021-05-01";
+            ApiVersion = "2022-09-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

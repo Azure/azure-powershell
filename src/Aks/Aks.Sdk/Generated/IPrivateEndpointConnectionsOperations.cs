@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Updates a private endpoint connection.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Deletes a private endpoint connection.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// Deletes a private endpoint connection.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the managed cluster resource.

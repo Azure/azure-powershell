@@ -10,32 +10,32 @@
 
 namespace Microsoft.Azure.Management.ContainerService.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
-    public partial class ManagedClusterPropertiesIdentityProfileValue : UserAssignedIdentity
+    /// <summary>
+    /// AzureFile CSI Driver settings for the storage profile.
+    /// </summary>
+    public partial class ManagedClusterStorageProfileFileCSIDriver
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// ManagedClusterPropertiesIdentityProfileValue class.
+        /// ManagedClusterStorageProfileFileCSIDriver class.
         /// </summary>
-        public ManagedClusterPropertiesIdentityProfileValue()
+        public ManagedClusterStorageProfileFileCSIDriver()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// ManagedClusterPropertiesIdentityProfileValue class.
+        /// ManagedClusterStorageProfileFileCSIDriver class.
         /// </summary>
-        /// <param name="resourceId">The resource ID of the user assigned
-        /// identity.</param>
-        /// <param name="clientId">The client ID of the user assigned
-        /// identity.</param>
-        /// <param name="objectId">The object ID of the user assigned
-        /// identity.</param>
-        public ManagedClusterPropertiesIdentityProfileValue(string resourceId = default(string), string clientId = default(string), string objectId = default(string))
-            : base(resourceId, clientId, objectId)
+        /// <param name="enabled">Whether to enable AzureFile CSI Driver. The
+        /// default value is true.</param>
+        public ManagedClusterStorageProfileFileCSIDriver(bool? enabled = default(bool?))
         {
+            Enabled = enabled;
             CustomInit();
         }
 
@@ -43,6 +43,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets whether to enable AzureFile CSI Driver. The default
+        /// value is true.
+        /// </summary>
+        [JsonProperty(PropertyName = "enabled")]
+        public bool? Enabled { get; set; }
 
     }
 }

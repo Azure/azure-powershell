@@ -32,13 +32,18 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the
         /// ManagedClusterLoadBalancerProfileManagedOutboundIPs class.
         /// </summary>
-        /// <param name="count">The desired number of outbound IPs
+        /// <param name="count">The desired number of IPv4 outbound IPs
         /// created/managed by Azure for the cluster load balancer. Allowed
         /// values must be in the range of 1 to 100 (inclusive). The default
         /// value is 1. </param>
-        public ManagedClusterLoadBalancerProfileManagedOutboundIPs(int? count = default(int?))
+        /// <param name="countIPv6">The desired number of IPv6 outbound IPs
+        /// created/managed by Azure for the cluster load balancer. Allowed
+        /// values must be in the range of 1 to 100 (inclusive). The default
+        /// value is 0 for single-stack and 1 for dual-stack. </param>
+        public ManagedClusterLoadBalancerProfileManagedOutboundIPs(int? count = default(int?), int? countIPv6 = default(int?))
         {
             Count = count;
+            CountIPv6 = countIPv6;
             CustomInit();
         }
 
@@ -48,12 +53,22 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the desired number of outbound IPs created/managed by
-        /// Azure for the cluster load balancer. Allowed values must be in the
-        /// range of 1 to 100 (inclusive). The default value is 1.
+        /// Gets or sets the desired number of IPv4 outbound IPs
+        /// created/managed by Azure for the cluster load balancer. Allowed
+        /// values must be in the range of 1 to 100 (inclusive). The default
+        /// value is 1.
         /// </summary>
         [JsonProperty(PropertyName = "count")]
         public int? Count { get; set; }
+
+        /// <summary>
+        /// Gets or sets the desired number of IPv6 outbound IPs
+        /// created/managed by Azure for the cluster load balancer. Allowed
+        /// values must be in the range of 1 to 100 (inclusive). The default
+        /// value is 0 for single-stack and 1 for dual-stack.
+        /// </summary>
+        [JsonProperty(PropertyName = "countIPv6")]
+        public int? CountIPv6 { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -72,6 +87,17 @@ namespace Microsoft.Azure.Management.ContainerService.Models
                 if (Count < 1)
                 {
                     throw new ValidationException(ValidationRules.InclusiveMinimum, "Count", 1);
+                }
+            }
+            if (CountIPv6 != null)
+            {
+                if (CountIPv6 > 100)
+                {
+                    throw new ValidationException(ValidationRules.InclusiveMaximum, "CountIPv6", 100);
+                }
+                if (CountIPv6 < 0)
+                {
+                    throw new ValidationException(ValidationRules.InclusiveMinimum, "CountIPv6", 0);
                 }
             }
         }

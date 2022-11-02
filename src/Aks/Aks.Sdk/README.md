@@ -23,7 +23,40 @@ payload-flattening-threshold: 1
 ###
 ``` yaml
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/4522e1d3fb6dcb81bc63e3414d11dd7eaf08264b/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2021-05-01/managedClusters.json
+  - D:\code\for_read\azure-rest-api-specs\specification\containerservice\resource-manager\Microsoft.ContainerService\stable\2022-09-01\managedClusters.json
+
+### There are 2 same "type" property with same x-ms-enum.name="ResourceIdentityType" defined in both managedClusters.json and its referenced types.json. 
+### Rename the one in types.json to avoid autorest converting error.
+### There are <> in description of orchestratorVersion & currentOrchestratorVersion & kubernetesVersion & currentKubernetesVersion, which will make dotnet build failed.
+### Replace <> with () in these descriptions.
+directive:
+  - from: swagger-document
+    where: $.definitions.Identity.properties.type["x-ms-enum"]
+    transform: $.name = "ResourceIdentityTypeForCommonTypes"
+  - from: swagger-document
+    where: $.definitions.ManagedClusterAgentPoolProfileProperties.properties.orchestratorVersion
+    transform: $["description"] = $["description"].replaceAll("<", "(");
+  - from: swagger-document
+    where: $.definitions.ManagedClusterAgentPoolProfileProperties.properties.orchestratorVersion
+    transform: $["description"] = $["description"].replaceAll(">", ")");
+  - from: swagger-document
+    where: $.definitions.ManagedClusterAgentPoolProfileProperties.properties.currentOrchestratorVersion
+    transform: $["description"] = $["description"].replaceAll("<", "(");
+  - from: swagger-document
+    where: $.definitions.ManagedClusterAgentPoolProfileProperties.properties.currentOrchestratorVersion
+    transform: $["description"] = $["description"].replaceAll(">", ")");
+  - from: swagger-document
+    where: $.definitions.ManagedClusterProperties.properties.kubernetesVersion
+    transform: $["description"] = $["description"].replaceAll("<", "(");
+  - from: swagger-document
+    where: $.definitions.ManagedClusterProperties.properties.kubernetesVersion
+    transform: $["description"] = $["description"].replaceAll(">", ")");
+  - from: swagger-document
+    where: $.definitions.ManagedClusterProperties.properties.currentKubernetesVersion
+    transform: $["description"] = $["description"].replaceAll("<", "(");
+  - from: swagger-document
+    where: $.definitions.ManagedClusterProperties.properties.currentKubernetesVersion
+    transform: $["description"] = $["description"].replaceAll(">", ")");
 
 output-folder: Generated
 namespace: Microsoft.Azure.Management.ContainerService

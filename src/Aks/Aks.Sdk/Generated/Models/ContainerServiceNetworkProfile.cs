@@ -12,6 +12,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
     using Microsoft.Rest;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -33,8 +35,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// class.
         /// </summary>
         /// <param name="networkPlugin">Network plugin used for building the
-        /// Kubernetes network. Possible values include: 'azure',
-        /// 'kubenet'</param>
+        /// Kubernetes network. Possible values include: 'azure', 'kubenet',
+        /// 'none'</param>
         /// <param name="networkPolicy">Network policy used for building the
         /// Kubernetes network. Possible values include: 'calico',
         /// 'azure'</param>
@@ -57,7 +59,15 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// cluster.</param>
         /// <param name="loadBalancerProfile">Profile of the cluster load
         /// balancer.</param>
-        public ContainerServiceNetworkProfile(string networkPlugin = default(string), string networkPolicy = default(string), string networkMode = default(string), string podCidr = default(string), string serviceCidr = default(string), string dnsServiceIP = default(string), string dockerBridgeCidr = default(string), string outboundType = default(string), string loadBalancerSku = default(string), ManagedClusterLoadBalancerProfile loadBalancerProfile = default(ManagedClusterLoadBalancerProfile))
+        /// <param name="natGatewayProfile">Profile of the cluster NAT
+        /// gateway.</param>
+        /// <param name="podCidrs">The CIDR notation IP ranges from which to
+        /// assign pod IPs.</param>
+        /// <param name="serviceCidrs">The CIDR notation IP ranges from which
+        /// to assign service cluster IPs.</param>
+        /// <param name="ipFamilies">The IP families used to specify IP
+        /// versions available to the cluster.</param>
+        public ContainerServiceNetworkProfile(string networkPlugin = default(string), string networkPolicy = default(string), string networkMode = default(string), string podCidr = default(string), string serviceCidr = default(string), string dnsServiceIP = default(string), string dockerBridgeCidr = default(string), string outboundType = default(string), string loadBalancerSku = default(string), ManagedClusterLoadBalancerProfile loadBalancerProfile = default(ManagedClusterLoadBalancerProfile), ManagedClusterNATGatewayProfile natGatewayProfile = default(ManagedClusterNATGatewayProfile), IList<string> podCidrs = default(IList<string>), IList<string> serviceCidrs = default(IList<string>), IList<string> ipFamilies = default(IList<string>))
         {
             NetworkPlugin = networkPlugin;
             NetworkPolicy = networkPolicy;
@@ -69,6 +79,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             OutboundType = outboundType;
             LoadBalancerSku = loadBalancerSku;
             LoadBalancerProfile = loadBalancerProfile;
+            NatGatewayProfile = natGatewayProfile;
+            PodCidrs = podCidrs;
+            ServiceCidrs = serviceCidrs;
+            IpFamilies = ipFamilies;
             CustomInit();
         }
 
@@ -79,7 +93,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <summary>
         /// Gets or sets network plugin used for building the Kubernetes
-        /// network. Possible values include: 'azure', 'kubenet'
+        /// network. Possible values include: 'azure', 'kubenet', 'none'
         /// </summary>
         [JsonProperty(PropertyName = "networkPlugin")]
         public string NetworkPlugin { get; set; }
@@ -138,7 +152,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// This can only be set at cluster creation time and cannot be changed
         /// later. For more information see [egress outbound
         /// type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
-        /// Possible values include: 'loadBalancer', 'userDefinedRouting'
+        /// Possible values include: 'loadBalancer', 'userDefinedRouting',
+        /// 'managedNATGateway', 'userAssignedNATGateway'
         /// </remarks>
         [JsonProperty(PropertyName = "outboundType")]
         public string OutboundType { get; set; }
@@ -160,6 +175,48 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [JsonProperty(PropertyName = "loadBalancerProfile")]
         public ManagedClusterLoadBalancerProfile LoadBalancerProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile of the cluster NAT gateway.
+        /// </summary>
+        [JsonProperty(PropertyName = "natGatewayProfile")]
+        public ManagedClusterNATGatewayProfile NatGatewayProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the CIDR notation IP ranges from which to assign pod
+        /// IPs.
+        /// </summary>
+        /// <remarks>
+        /// One IPv4 CIDR is expected for single-stack networking. Two CIDRs,
+        /// one for each IP family (IPv4/IPv6), is expected for dual-stack
+        /// networking.
+        /// </remarks>
+        [JsonProperty(PropertyName = "podCidrs")]
+        public IList<string> PodCidrs { get; set; }
+
+        /// <summary>
+        /// Gets or sets the CIDR notation IP ranges from which to assign
+        /// service cluster IPs.
+        /// </summary>
+        /// <remarks>
+        /// One IPv4 CIDR is expected for single-stack networking. Two CIDRs,
+        /// one for each IP family (IPv4/IPv6), is expected for dual-stack
+        /// networking. They must not overlap with any Subnet IP ranges.
+        /// </remarks>
+        [JsonProperty(PropertyName = "serviceCidrs")]
+        public IList<string> ServiceCidrs { get; set; }
+
+        /// <summary>
+        /// Gets or sets the IP families used to specify IP versions available
+        /// to the cluster.
+        /// </summary>
+        /// <remarks>
+        /// IP families are used to determine single-stack or dual-stack
+        /// clusters. For single-stack, the expected value is IPv4. For
+        /// dual-stack, the expected values are IPv4 and IPv6.
+        /// </remarks>
+        [JsonProperty(PropertyName = "ipFamilies")]
+        public IList<string> IpFamilies { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -200,6 +257,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
             if (LoadBalancerProfile != null)
             {
                 LoadBalancerProfile.Validate();
+            }
+            if (NatGatewayProfile != null)
+            {
+                NatGatewayProfile.Validate();
             }
         }
     }
