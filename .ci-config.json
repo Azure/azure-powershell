@@ -88,7 +88,8 @@
       ],
       "phases": [
         "build:module",
-        "help:module"
+        "help:module",
+        "example:module"
       ]
     },
     {

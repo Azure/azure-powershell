@@ -9,6 +9,7 @@ variables:
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
   Azure_PS_TestCoverage: true
+  PowerShellPlatform: Windows PowerShell
 
 trigger: none
 
@@ -36,6 +37,7 @@ jobs:
       osName: ${{ variables.WindowsName }}
       testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}
 
 - job: Analyze
   displayName: Analyze
@@ -56,6 +58,7 @@ jobs:
       osName: $(OSName)
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}
 
 - job: Test
   displayName: Test
@@ -77,3 +80,4 @@ jobs:
       testFramework: ${{ variables.TestFramework }}
       testTarget: ${{ variables.TestTarget }}
       configuration: ${{ variables.Configuration }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}

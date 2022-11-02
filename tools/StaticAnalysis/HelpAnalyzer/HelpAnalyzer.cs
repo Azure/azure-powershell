@@ -169,7 +169,7 @@ namespace StaticAnalysis.HelpAnalyzer
                 var module = proxy.GetModuleMetadata(cmdletFile);
                 var cmdlets = module.Cmdlets;
                 var helpRecords = CmdletHelpParser.GetHelpTopics(helpFile, helpLogger);
-                ValidateHelpRecords(cmdlets, helpRecords, helpLogger);
+                ValidateHelpRecords(module.ModuleName, cmdlets, helpRecords, helpLogger);
                 helpLogger.Decorator.Remove("Cmdlet");
                 // TODO: Remove IfDef code
 #if !NETSTANDARD
@@ -247,14 +247,14 @@ namespace StaticAnalysis.HelpAnalyzer
             allCmdlets.AddRange(cmdlets);
             helpLogger.Decorator.Remove("Cmdlet");
 
-            ValidateHelpRecords(allCmdlets, helpFiles, helpLogger);
+            ValidateHelpRecords(moduleName, allCmdlets, helpFiles, helpLogger);
             ValidateHelpMarkdown(helpFolder, helpFiles, helpLogger);
 
             Directory.SetCurrentDirectory(savedDirectory);
 
         }
 
-        private void ValidateHelpRecords(IList<CmdletMetadata> cmdlets, IList<string> helpRecords,
+        private void ValidateHelpRecords(string moduleName, IList<CmdletMetadata> cmdlets, IList<string> helpRecords,
             ReportLogger<HelpIssue> helpLogger)
         {
             var cmdletDict = new Dictionary<string, CmdletMetadata>();
@@ -265,7 +265,8 @@ namespace StaticAnalysis.HelpAnalyzer
                 {
                     HelpIssue issue = new HelpIssue
                     {
-                        Target = cmdlet.ClassName,
+                        Assembly = moduleName,
+                        Target = cmdlet.Name,
                         Severity = 1,
                         ProblemId = MissingHelp,
                         Remediation = string.Format("Add Help record for cmdlet {0} to help file.", cmdlet.Name)
