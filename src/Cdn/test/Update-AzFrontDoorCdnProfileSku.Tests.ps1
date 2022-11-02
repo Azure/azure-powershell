@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnProfileS
 }
 
 Describe 'Update-AzFrontDoorCdnProfileSku' {
-    It 'Upgrade' -skip {
+    It 'Upgrade' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         {
             $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
@@ -37,11 +37,13 @@ Describe 'Update-AzFrontDoorCdnProfileSku' {
                 # $changeToWafPolicyId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/$wafName"
                 # $waf1 = New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName $securityPolicyName -ChangeToWafPolicyId $changeToWafPolicyId
                 # $upgrade = New-AzCdnProfileUpgradeParametersObject -WafMappingList $waf1
-                Update-AzFrontDoorCdnProfileSku -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName
+                $updatedProfile = Update-AzFrontDoorCdnProfileSku -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName
+                $updatedProfile.ProfileName | Should -Be "Premium_AzureFrontDoor"
+            } Finally
             {
                 Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
             }
-        }
+        } | Should -Not -Throw
     }
 
 
