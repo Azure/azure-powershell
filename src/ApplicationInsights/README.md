@@ -42,6 +42,10 @@ input-file:
   - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentFeaturesAndPricing_API.json
   - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/componentContinuousExport_API.json
   - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/preview/2020-03-01-preview/componentLinkedStorageAccounts_API.json
+  - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2021-03-08/workbookOperations_API.json
+  - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-11-20/workbookTemplates_API.json
+  - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2021-03-08/myworkbooks_API.json
+  - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2022-04-01/workbooks_API.json
 module-version: 0.1.0
 subject-prefix: $(service-name)
 
@@ -72,8 +76,22 @@ directive:
     where: $
     transform: return $.replace(/providers\/Microsoft.Insights\//g, "providers/microsoft.insights/")
 
+  - from: swagger-document
+    where: $.definitions.WorkbookTemplateProperties.properties.templateData
+    transform: >-
+      return {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Valid JSON object containing workbook template payload."
+      }
+
   - where:
       subject: WebTest
+      verb: Set
+    remove: true
+
+  - where:
+      subject: MyWorkbook|Workbook|WorkbookTemplate
       verb: Set
     remove: true
 
@@ -278,7 +296,53 @@ directive:
       parameter-name: WebTestName
     set:
       parameter-name: Name
+  # ResourceName value will auto assign to the name on service.
+  - where:
+      subject: MyWorkbook|Workbook
+      parameter-name: Name
+    hide: true
+    set:
+      parameter-name: HideName
 
+  - where:
+      subject: MyWorkbook|Workbook
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: MyWorkbook|Workbook
+      parameter-name: SourceId
+    set:
+      parameter-name: LinkedSourceId
+
+  - where:
+      subject: MyWorkbook|Workbook
+      parameter-name: PropertiesSourceId
+    set:
+      parameter-name: SourceId
+
+  - where:
+      subject: MyWorkbook|Workbook
+      parameter-name: PropertiesTag
+    set:
+      parameter-name: SourceTag
+
+  - where:
+      subject: MyWorkbook
+      parameter-name: Kind
+    hide: true
+    set:
+      default:
+        script: '"user"'
+  
+  - where:
+      subject: Workbook
+      parameter-name: Kind
+    hide: true
+    set:
+      default:
+        script: '"shared"'
   # Hide command for custom command.
   - where:
       verb: New
@@ -287,6 +351,7 @@ directive:
 
   - model-cmdlet:
     - WebTestGeolocation
+    - WorkbookTemplateGallery
     # Hide for custom modle cmdlet.
     # - HeaderField
   
@@ -300,4 +365,15 @@ directive:
           - Location
           - WebTestKind
           - Enabled
+  - where:
+      model-name: MyWorkbook|Workbook
+    set:
+      format-table:
+        properties:
+          - ResourceGroupName
+          - Name
+          - DisplayName
+          - Location
+          - Kind
+          - Category
 ```
