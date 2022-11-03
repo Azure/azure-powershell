@@ -33,7 +33,6 @@ The **Get-AzNetworkManager** cmdlet gets one or more network managers in a resou
 ```powershell
 Get-AzNetworkManager -ResourceGroupName "TestResourceGroup" -Name "TestNM"
 ```
-
 ```output
 DisplayName                     :
 Description                     :
@@ -64,14 +63,12 @@ SystemData                      : {
 Name                            : TestNM
 Etag                            : W/"00000000-0000-0000-0000-000000000000"
 ```
-
 Retrieve a network manager.
 
 ### Example 2: List all network managers in a resource group
 ```powershell
 Get-AzNetworkManager -ResourceGroupName "TestResourceGroup"
 ```
-
 ```output
 DisplayName                     :
 Description                     :
@@ -102,7 +99,6 @@ SystemData                      : {
 Name                            : TestNM
 Etag                            : W/"00000000-0000-0000-0000-000000000000"
 ```
-
 List all network managers in a resource group.
 
 ## PARAMETERS
@@ -111,7 +107,7 @@ List all network managers in a resource group.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -126,7 +122,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -138,7 +134,7 @@ Accept wildcard characters: True
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Expand
 Aliases: ResourceName
 
@@ -153,7 +149,7 @@ Accept wildcard characters: True
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: NoExpand
 Aliases:
 
@@ -165,7 +161,7 @@ Accept wildcard characters: True
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Expand
 Aliases:
 

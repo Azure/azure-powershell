@@ -256,104 +256,122 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
 
                     }
-
-
+                    
                     SharingUpdate sharingUpdate = new SharingUpdate();
+                    if (this.Reset.IsPresent)
+                    {
+                        sharingUpdate.OperationType = "Reset";
+                    }
+                    else if (this.Community.IsPresent)
+                    {
+                        sharingUpdate.OperationType = "EnableCommunity";
+                    }
+                    
+
                     if (this.Share.IsPresent)
                     {
                         if (this.Reset.IsPresent)
                         {
                             // if sub or tenant is present return error 
-                            if (this.IsParameterBound(c => c.Subscription) || this.IsParameterBound(c => c.Tenant))
-                            {
-                                throw new Exception("Parameter '-Reset' cannot be used with parameters '-Tenant', '-Subscription' or 'Community'.");
-                            }
-                            else
-                            {
-                                sharingUpdate.OperationType = "Reset";
-                            }
+                            //if (this.IsParameterBound(c => c.Subscription) || this.IsParameterBound(c => c.Tenant) || this.IsParameterBound(c => c.RemoveTenant) || this.IsParameterBound(c => c.RemoveSubscription))
+                            //{
+                            //    throw new Exception("Parameter '-Reset' cannot be used with parameters '-Tenant', '-Subscription' or '-Community'.");
+                            //}
+                            sharingUpdate.OperationType = "Reset";
                         }
-                        if (this.IsParameterBound(c => c.Subscription))
+                        else if (this.IsParameterBound(c => c.Community))
                         {
-                            if (sharingUpdate.Groups == null)
+                            if (this.Community.IsPresent)
                             {
-                                sharingUpdate.Groups = new List<SharingProfileGroup>();
-                            }
-                            SharingProfileGroup sharingProfile = new SharingProfileGroup();
-                            sharingProfile.Type = "Subscriptions";
-                            sharingProfile.Ids = new List<string>();
-                            foreach (var id in this.Subscription)
-                            {
-                                sharingProfile.Ids.Add(id);
-                            }
-                            sharingUpdate.Groups.Add(sharingProfile);
-                            sharingUpdate.OperationType = "Add";
-                        }
-                        if (this.IsParameterBound(c => c.Tenant))
-                        {
-                            if (sharingUpdate.Groups == null)
-                            {
-                                sharingUpdate.Groups = new List<SharingProfileGroup>();
-                            }
-                            SharingProfileGroup sharingProfile = new SharingProfileGroup();
-                            sharingProfile.Type = "AADTenants";
-                            sharingProfile.Ids = new List<string>();
-                            foreach (var id in this.Tenant)
-                            {
-                                sharingProfile.Ids.Add(id);
-                            }
-                            sharingUpdate.Groups.Add(sharingProfile);
-                            sharingUpdate.OperationType = "Add";
-                        }
-                        if (this.IsParameterBound(c => c.RemoveTenant))
-                        {
-                            if (sharingUpdate.Groups == null)
-                            {
-                                sharingUpdate.Groups = new List<SharingProfileGroup>();
-                            }
-                            SharingProfileGroup sharingProfile = new SharingProfileGroup();
-                            sharingProfile.Type = "AADTenants";
-                            sharingProfile.Ids = new List<string>();
-                            foreach (var id in this.RemoveTenant)
-                            {
-                                sharingProfile.Ids.Add(id);
-                            }
-                            sharingUpdate.Groups.Add(sharingProfile);
-                            sharingUpdate.OperationType = "Remove";
-                        }
-                        if (this.IsParameterBound(c => c.RemoveSubscription))
-                        {
-                            if (sharingUpdate.Groups == null)
-                            {
-                                sharingUpdate.Groups = new List<SharingProfileGroup>();
-                            }
-                            SharingProfileGroup sharingProfile = new SharingProfileGroup();
-                            sharingProfile.Type = "Subscriptions";
-                            sharingProfile.Ids = new List<string>();
-                            foreach (var id in this.RemoveSubscription)
-                            {
-                                sharingProfile.Ids.Add(id);
-                            }
-                            sharingUpdate.Groups.Add(sharingProfile);
-                            sharingUpdate.OperationType = "Remove";
-                        }
-                        if (this.IsParameterBound(c => c.Community))
-                        {
-                            if(this.Community.IsPresent)
                                 sharingUpdate.OperationType = "EnableCommunity";
+                            }
                         }
-
+                        else if (this.IsParameterBound(c => c.Subscription) || this.IsParameterBound(c => c.Tenant) || this.IsParameterBound(c => c.RemoveTenant) || this.IsParameterBound(c => c.RemoveSubscription))
+                        {
+                            if (this.IsParameterBound(c => c.Subscription))
+                            {
+                                if (sharingUpdate.Groups == null)
+                                {
+                                    sharingUpdate.Groups = new List<SharingProfileGroup>();
+                                }
+                                SharingProfileGroup sharingProfile = new SharingProfileGroup();
+                                sharingProfile.Type = "Subscriptions";
+                                sharingProfile.Ids = new List<string>();
+                                foreach (var id in this.Subscription)
+                                {
+                                    sharingProfile.Ids.Add(id);
+                                }
+                                sharingUpdate.Groups.Add(sharingProfile);
+                                sharingUpdate.OperationType = "Add";
+                            }
+                            if (this.IsParameterBound(c => c.Tenant))
+                            {
+                                if (sharingUpdate.Groups == null)
+                                {
+                                    sharingUpdate.Groups = new List<SharingProfileGroup>();
+                                }
+                                SharingProfileGroup sharingProfile = new SharingProfileGroup();
+                                sharingProfile.Type = "AADTenants";
+                                sharingProfile.Ids = new List<string>();
+                                foreach (var id in this.Tenant)
+                                {
+                                    sharingProfile.Ids.Add(id);
+                                }
+                                sharingUpdate.Groups.Add(sharingProfile);
+                                sharingUpdate.OperationType = "Add";
+                            }
+                            if (this.IsParameterBound(c => c.RemoveTenant))
+                            {
+                                if (sharingUpdate.Groups == null)
+                                {
+                                    sharingUpdate.Groups = new List<SharingProfileGroup>();
+                                }
+                                SharingProfileGroup sharingProfile = new SharingProfileGroup();
+                                sharingProfile.Type = "AADTenants";
+                                sharingProfile.Ids = new List<string>();
+                                foreach (var id in this.RemoveTenant)
+                                {
+                                    sharingProfile.Ids.Add(id);
+                                }
+                                sharingUpdate.Groups.Add(sharingProfile);
+                                sharingUpdate.OperationType = "Remove";
+                            }
+                            if (this.IsParameterBound(c => c.RemoveSubscription))
+                            {
+                                if (sharingUpdate.Groups == null)
+                                {
+                                    sharingUpdate.Groups = new List<SharingProfileGroup>();
+                                }
+                                SharingProfileGroup sharingProfile = new SharingProfileGroup();
+                                sharingProfile.Type = "Subscriptions";
+                                sharingProfile.Ids = new List<string>();
+                                foreach (var id in this.RemoveSubscription)
+                                {
+                                    sharingProfile.Ids.Add(id);
+                                }
+                                sharingUpdate.Groups.Add(sharingProfile);
+                                sharingUpdate.OperationType = "Remove";
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception("Parameters '-Subscription', '-Tenant', '-RemoveSubscription', '-RemoveTenant', '-Community' or '-Reset' must be used with '-Share' parameter.");
+                        }
                     }
-                    else if (this.IsParameterBound(c => c.Subscription) || this.IsParameterBound(c => c.Tenant) || this.Reset.IsPresent || this.IsParameterBound(c => c.RemoveSubscription) || this.IsParameterBound(c => c.RemoveTenant))
+                    else if (this.IsParameterBound(c => c.Subscription) || this.IsParameterBound(c => c.Tenant) || this.IsParameterBound(c => c.RemoveTenant) || this.IsParameterBound(c => c.RemoveSubscription))
                     {
-                        throw new Exception("Parameters '-Subscription', '-Tenant', '-RemoveSubscription', '-RemoveTenant', and '-Reset' must be used with '-Share' parameter.");
+                        throw new Exception("Parameters '-Subscription', '-Tenant', '-RemoveSubscription' or '-RemoveTenant'  must be used with '-Share' parameter.");
                     }
-                    
-                    var result = GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
-                    if (this.Share.IsPresent)
+
+                    Gallery result = new Gallery();
+                    if (this.Share.IsPresent || this.Community.IsPresent || this.Reset.IsPresent)
                     {
                         GallerySharingProfileClient.Update(resourceGroupName, galleryName, sharingUpdate);
                         result = GalleriesClient.Get(ResourceGroupName, galleryName, "Permissions");
+                    }
+                    else
+                    {
+                        GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
                     }
                     var psObject = new PSGallery();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<Gallery, PSGallery>(result, psObject);

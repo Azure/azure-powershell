@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.1.0
 * Supported generate DataLakeGen2 Sas token with Encryption scope
     -  `New-AzDataLakeGen2SasToken`
 * Supported blob type conversions in sync blob copy

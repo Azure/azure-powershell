@@ -80,9 +80,8 @@ This example sets the firewall policy with the new threat intel whitelist
 $exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 100 -HttpsPort 101 -EnablePacFile  -PacFilePort 130 -PacFile "sampleurlfortesting.blob.core.windowsnet/nothing"
 Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location westcentralus -ExplicitProxy $exProxy
 ```
-
 ```output
-BasePolicy	                : null	
+		BasePolicy	                : null	
 		DnsSettings  	            : null	
 		Etag	                    : null	
 		ExplicitProxy	
@@ -114,9 +113,8 @@ BasePolicy	                : null
 		ThreatIntelMode	            : "Alert"	
 		ThreatIntelWhitelist	    : null	
 		TransportSecurity	        : null	
-		Type	                    : null
+		Type	                    : null	
 ```
-
 This example sets the firewall policy with the explicit proxy settings
 
 ## PARAMETERS
@@ -523,5 +521,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [New-AzFirewallPolicyExplicitProxy](./New-AzFirewallPolicyExplicitProxy.md)

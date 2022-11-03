@@ -413,7 +413,13 @@ function Test-PPGVMIntentAndZoneFeatures
 
         $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
         Assert-AreEqual $vm.Id $ppg.VirtualMachines[0].Id;
-        Assert-AreEqual $vm.ProximityPlacementGroup.Id $ppg.Id; 
+        Assert-AreEqual $vm.ProximityPlacementGroup.Id $ppg.Id;
+        
+        # Create a virtual machine using Simple Parameter set.
+        $domainNameLabel = "d" + $rgname;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -credential $cred -DomainNameLabel $domainNameLabel -ProximityPlacementGroupId $ppg.Id ;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
+        Assert-AreEqual $ppg.Id $vm.ProximityPlacementGroup.Id;
     }
     finally 
     {
