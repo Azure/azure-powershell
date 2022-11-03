@@ -15,13 +15,14 @@ Install Azure PowerShell modules.
 ### Default (Default)
 ```
 Install-AzModule [[-Name] <String[]>] [-RequiredAzVersion <String>] -Repository <String> [-AllowPrerelease]
- [-UseExactAccountVersion] [-Scope <String>] [-RemovePrevious] [-RemoveAzureRm] [-Force] [<CommonParameters>]
+ [-UseExactAccountVersion] [-Scope <String>] [-RemovePrevious] [-RemoveAzureRm] [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByPath
 ```
-Install-AzModule -Path <String> [-Scope <String>] [-RemovePrevious] [-RemoveAzureRm] [-Force]
- [<CommonParameters>]
+Install-AzModule -Path <String> [-Scope <String>] [-RemovePrevious] [-RemoveAzureRm] [-Force] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -196,6 +197,37 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -30,7 +30,7 @@ function Install-AzModule {
 #>
 
     [OutputType([PSCustomObject[]])]
-    [CmdletBinding(DefaultParameterSetName = 'Default', PositionalBinding = $false)]
+    [CmdletBinding(DefaultParameterSetName = 'Default', PositionalBinding = $false, SupportsShouldProcess)]
     param(
         [Parameter(ParameterSetName = 'Default', HelpMessage = 'Az modules to install. Can be the names without Az. prefix', ValueFromPipelineByPropertyName = $true, Position = 0)]
         [string[]]
