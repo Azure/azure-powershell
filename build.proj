@@ -272,7 +272,8 @@
     <Message Importance="high" Text="Running static analysis..." />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" />
-    
+
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/StaticAnalysis/CollectStaticAnalysisPipelineResult.ps1 -StaticAnalysisOutputDirectory $(StaticAnalysisOutputDirectory) &quot;"/>
     <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers check-error" />
     <OnError ExecuteTargets="StaticAnalysisErrorMessage" />
   </Target>

@@ -1,4 +1,4 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Az.Accounts","Microsoft.Azure.Commands.Profile.Context.RemoveAzureRmContext","Remove-AzContext","0","2000","The cmdlet 'Remove-AzContext' no longer supports the parameter 'Name' and no alias was found for the original parameter name.","Add the parameter 'Name' back to the cmdlet 'Remove-AzContext', or add an alias to the original parameter name."
 "Az.Accounts","Microsoft.Azure.Commands.Profile.Context.RemoveAzureRmContext","Remove-AzContext","0","1050","The parameter set 'RemoveByName' for cmdlet 'Remove-AzContext' has been removed.","Add parameter set 'RemoveByName' back to cmdlet 'Remove-AzContext'."
 "Az.Accounts","Microsoft.Azure.Commands.Profile.Context.RenameAzureRmContext","Rename-AzContext","0","2000","The cmdlet 'Rename-AzContext' no longer supports the parameter 'SourceName' and no alias was found for the original parameter name.","Add the parameter 'SourceName' back to the cmdlet 'Rename-AzContext', or add an alias to the original parameter name."
