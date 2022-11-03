@@ -30,7 +30,7 @@ function Install-AzModule {
 #>
 
     [OutputType([PSCustomObject[]])]
-    [CmdletBinding(DefaultParameterSetName = 'Default', PositionalBinding = $false, SupportsShouldProcess)]
+    [CmdletBinding(DefaultParameterSetName = 'Default', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Default', HelpMessage = 'Az modules to install. Can be the names without Az. prefix', ValueFromPipelineByPropertyName = $true, Position = 0)]
         [string[]]
@@ -41,7 +41,7 @@ function Install-AzModule {
         [string]
         ${RequiredAzVersion},
 
-        [Parameter(ParameterSetName = 'Default', HelpMessage = 'The Registered Repostory.')]
+        [Parameter(ParameterSetName = 'Default', Mandatory, HelpMessage = 'The Registered Repository. Example: PSGallery.')]
         [ValidateNotNullOrEmpty()]
         [string]
         ${Repository},

@@ -32,7 +32,7 @@ function Update-AzModule {
         [string[]]
         ${Name},
 
-        [Parameter(HelpMessage = 'The Registered Repostory.')]
+        [Parameter(Mandatory, HelpMessage = 'The Registered Repository. Example: PSGallery.')]
         [ValidateNotNullOrEmpty()]
         [string]
         ${Repository},
