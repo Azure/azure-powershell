@@ -21,7 +21,7 @@ Create a DriverList Object for ImportExport.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.DriveStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.importexport/new-AzImportExportDriveListObject
+https://learn.microsoft.com/powershell/module/az.importexport/new-AzImportExportDriveListObject
 #>
 function New-AzImportExportDriveListObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus')]
