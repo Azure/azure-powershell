@@ -13,7 +13,7 @@ Creating or Updating a Remote Rendering Account.
 ## SYNTAX
 
 ```
-New-AzMixedRealityRemoteRenderingAccount -AccountName <String> -ResourceGroupName <String> -Location <String>
+New-AzMixedRealityRemoteRenderingAccount -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>]
  [-KindFamily <String>] [-KindName <String>] [-KindSize <String>] [-KindTier <SkuTier>]
  [-PlanType <ResourceIdentityType>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
@@ -28,7 +28,7 @@ Creating or Updating a Remote Rendering Account.
 
 ### Example 1: Creating or Updating a Remote Rendering Account.
 ```powershell
-New-AzMixedRealityRemoteRenderingAccount -AccountName azpstestrenderingaccount -ResourceGroupName azps_test_group -Location eastus -IdentityType 'SystemAssigned'
+New-AzMixedRealityRemoteRenderingAccount -Name azpstestrenderingaccount -ResourceGroupName azps_test_group -Location eastus -IdentityType 'SystemAssigned'
 ```
 
 ```output
@@ -40,21 +40,6 @@ eastus   azpstestrenderingaccount azps_test_group
 Creating or Updating a Remote Rendering Account.
 
 ## PARAMETERS
-
-### -AccountName
-Name of an Mixed Reality Account.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -167,6 +152,21 @@ Accept wildcard characters: False
 
 ### -Location
 The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of an Mixed Reality Account.
 
 ```yaml
 Type: System.String

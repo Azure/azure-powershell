@@ -1,19 +1,19 @@
 ---
 external help file:
 Module Name: Az.MixedReality
-online version: https://docs.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityspatialanchorsaccount
+online version: https://docs.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityobjectanchoraccount
 schema: 2.0.0
 ---
 
-# New-AzMixedRealitySpatialAnchorsAccount
+# New-AzMixedRealityObjectAnchorAccount
 
 ## SYNOPSIS
-Creating or Updating a Spatial Anchors Account.
+Creating or Updating an object anchors Account.
 
 ## SYNTAX
 
 ```
-New-AzMixedRealitySpatialAnchorsAccount -AccountName <String> -ResourceGroupName <String> -Location <String>
+New-AzMixedRealityObjectAnchorAccount -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>]
  [-KindFamily <String>] [-KindName <String>] [-KindSize <String>] [-KindTier <SkuTier>]
  [-PlanType <ResourceIdentityType>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
@@ -22,39 +22,24 @@ New-AzMixedRealitySpatialAnchorsAccount -AccountName <String> -ResourceGroupName
 ```
 
 ## DESCRIPTION
-Creating or Updating a Spatial Anchors Account.
+Creating or Updating an object anchors Account.
 
 ## EXAMPLES
 
-### Example 1: Creating or Updating a Spatial Anchors Account.
+### Example 1: Creating or Updating an object anchors Account.
 ```powershell
-New-AzMixedRealitySpatialAnchorsAccount -AccountName azpstestanchorsaccount -ResourceGroupName azps_test_group -Location eastus
+New-AzMixedRealityObjectAnchorAccount -Name azpstestanchorsaccount-object -ResourceGroupName azps_test_group -Location eastus2
 ```
 
 ```output
-Location Name                   ResourceGroupName
--------- ----                   -----------------
-eastus   azpstestanchorsaccount azps_test_group
+Location Name                          ResourceGroupName
+-------- ----                          -----------------
+eastus2  azpstestanchorsaccount-object azps_test_group
 ```
 
-Creating or Updating a Spatial Anchors Account.
+Creating or Updating an object anchors Account.
 
 ## PARAMETERS
-
-### -AccountName
-Name of an Mixed Reality Account.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -167,6 +152,21 @@ Accept wildcard characters: False
 
 ### -Location
 The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of an Mixed Reality Account.
 
 ```yaml
 Type: System.String
@@ -374,7 +374,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount
+### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IObjectAnchorsAccount
 
 ## NOTES
 

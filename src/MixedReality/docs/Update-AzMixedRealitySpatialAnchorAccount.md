@@ -1,20 +1,20 @@
 ---
 external help file:
 Module Name: Az.MixedReality
-online version: https://docs.microsoft.com/powershell/module/az.mixedreality/update-azmixedrealityobjectanchorsaccount
+online version: https://docs.microsoft.com/powershell/module/az.mixedreality/update-azmixedrealityspatialanchoraccount
 schema: 2.0.0
 ---
 
-# Update-AzMixedRealityObjectAnchorsAccount
+# Update-AzMixedRealitySpatialAnchorAccount
 
 ## SYNOPSIS
-Updating an Object Anchors Account
+Updating a Spatial Anchors Account
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzMixedRealityObjectAnchorsAccount -AccountName <String> -ResourceGroupName <String> -Location <String>
+Update-AzMixedRealitySpatialAnchorAccount -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>]
  [-KindFamily <String>] [-KindName <String>] [-KindSize <String>] [-KindTier <SkuTier>]
  [-PlanType <ResourceIdentityType>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
@@ -24,7 +24,7 @@ Update-AzMixedRealityObjectAnchorsAccount -AccountName <String> -ResourceGroupNa
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMixedRealityObjectAnchorsAccount -InputObject <IMixedRealityIdentity> -Location <String>
+Update-AzMixedRealitySpatialAnchorAccount -InputObject <IMixedRealityIdentity> -Location <String>
  [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>] [-KindFamily <String>] [-KindName <String>]
  [-KindSize <String>] [-KindTier <SkuTier>] [-PlanType <ResourceIdentityType>] [-SkuCapacity <Int32>]
  [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
@@ -33,39 +33,24 @@ Update-AzMixedRealityObjectAnchorsAccount -InputObject <IMixedRealityIdentity> -
 ```
 
 ## DESCRIPTION
-Updating an Object Anchors Account
+Updating a Spatial Anchors Account
 
 ## EXAMPLES
 
-### Example 1: Updating an Object Anchors Account.
+### Example 1: Updating a Spatial Anchors Account.
 ```powershell
-Update-AzMixedRealityObjectAnchorsAccount -AccountName azpstestanchorsaccount-object -ResourceGroupName azps_test_group -Location eastus2 -Tag @{"a"="1"}
+Update-AzMixedRealitySpatialAnchorAccount -Name azpstestanchorsaccount -ResourceGroupName azps_test_group -Location eastus -Tag @{"a"="1"}
 ```
 
 ```output
-Location Name                          ResourceGroupName
--------- ----                          -----------------
-eastus2  azpstestanchorsaccount-object azps_test_group
+Location Name                   ResourceGroupName
+-------- ----                   -----------------
+eastus   azpstestanchorsaccount azps_test_group
 ```
 
-Updating an Object Anchors Account.
+Updating a Spatial Anchors Account.
 
 ## PARAMETERS
-
-### -AccountName
-Name of an Mixed Reality Account.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -198,6 +183,21 @@ The geo-location where the resource lives
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of an Mixed Reality Account.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -403,7 +403,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IObjectAnchorsAccount
+### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount
 
 ## NOTES
 

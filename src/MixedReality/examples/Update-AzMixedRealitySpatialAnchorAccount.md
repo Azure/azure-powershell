@@ -1,6 +1,6 @@
 ### Example 1: Updating a Spatial Anchors Account.
 ```powershell
-Update-AzMixedRealitySpatialAnchorsAccount -AccountName azpstestanchorsaccount -ResourceGroupName azps_test_group -Location eastus -Tag @{"a"="1"}
+Update-AzMixedRealitySpatialAnchorAccount -Name azpstestanchorsaccount -ResourceGroupName azps_test_group -Location eastus -Tag @{"a"="1"}
 ```
 
 ```output

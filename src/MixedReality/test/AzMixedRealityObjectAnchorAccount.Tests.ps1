@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'AzMixedRealityObjectAnchorsAccount'))
+if(($null -eq $TestName) -or ($TestName -contains 'AzMixedRealityObjectAnchorAccount'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'AzMixedRealityObjectAnchorsAccount.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'AzMixedRealityObjectAnchorAccount.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,13 +14,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzMixedRealityObjectAnchorsAc
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'AzMixedRealityObjectAnchorsAccount' {
+Describe 'AzMixedRealityObjectAnchorAccount' {
     It 'CreateExpanded' {
         {
-            $config = New-AzMixedRealityObjectAnchorsAccount -AccountName $env.objectAnchorsAccount1 -ResourceGroupName $env.resourceGroup -Location eastus2
+            $config = New-AzMixedRealityObjectAnchorAccount -Name $env.objectAnchorsAccount1 -ResourceGroupName $env.resourceGroup -Location eastus2
             $config.Name | Should -Be $env.objectAnchorsAccount1
 
-            $config = New-AzMixedRealityObjectAnchorsAccount -AccountName $env.objectAnchorsAccount2 -ResourceGroupName $env.resourceGroup -Location eastus2
+            $config = New-AzMixedRealityObjectAnchorAccount -Name $env.objectAnchorsAccount2 -ResourceGroupName $env.resourceGroup -Location eastus2
             $config.Name | Should -Be $env.objectAnchorsAccount2
         } | Should -Not -Throw
     }
@@ -48,7 +48,7 @@ Describe 'AzMixedRealityObjectAnchorsAccount' {
 
     It 'Get' {
         {
-            $config = Get-AzMixedRealityObjectAnchorsAccount -AccountName $env.objectAnchorsAccount1 -ResourceGroupName $env.resourceGroup
+            $config = Get-AzMixedRealityObjectAnchorAccount -Name $env.objectAnchorsAccount1 -ResourceGroupName $env.resourceGroup
             $config.Name | Should -Be $env.objectAnchorsAccount1
         } | Should -Not -Throw
     }
@@ -62,7 +62,7 @@ Describe 'AzMixedRealityObjectAnchorsAccount' {
 
     It 'KeyRegenerateViaIdentityExpanded' {
         {
-            $config = Get-AzMixedRealityObjectAnchorsAccount -AccountName $env.objectAnchorsAccount2 -ResourceGroupName $env.resourceGroup
+            $config = Get-AzMixedRealityObjectAnchorAccount -Name $env.objectAnchorsAccount2 -ResourceGroupName $env.resourceGroup
             $config = New-AzMixedRealityObjectAnchorAccountKey -InputObject $config -Serial 1
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
@@ -70,29 +70,29 @@ Describe 'AzMixedRealityObjectAnchorsAccount' {
 
     It 'UpdateExpanded' {
         {
-            $config = Update-AzMixedRealityObjectAnchorsAccount -AccountName $env.objectAnchorsAccount1 -ResourceGroupName $env.resourceGroup -Location eastus2 -Tag @{"a"="1"}
+            $config = Update-AzMixedRealityObjectAnchorAccount -Name $env.objectAnchorsAccount1 -ResourceGroupName $env.resourceGroup -Location eastus2 -Tag @{"a"="1"}
             $config.Name | Should -Be $env.objectAnchorsAccount1
         } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' {
         {
-            $config = Get-AzMixedRealityObjectAnchorsAccount -AccountName $env.objectAnchorsAccount2 -ResourceGroupName $env.resourceGroup
-            $config = Update-AzMixedRealityObjectAnchorsAccount -InputObject $config -Location eastus2 -Tag @{"a"="1"}
+            $config = Get-AzMixedRealityObjectAnchorAccount -Name $env.objectAnchorsAccount2 -ResourceGroupName $env.resourceGroup
+            $config = Update-AzMixedRealityObjectAnchorAccount -InputObject $config -Location eastus2 -Tag @{"a"="1"}
             $config.Name | Should -Be $env.objectAnchorsAccount2
         } | Should -Not -Throw
     }
 
     It 'Delete' {
         {
-            Remove-AzMixedRealityObjectAnchorsAccount -AccountName $env.objectAnchorsAccount1 -ResourceGroupName $env.resourceGroup
+            Remove-AzMixedRealityObjectAnchorAccount -Name $env.objectAnchorsAccount1 -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         {
-            $config = Get-AzMixedRealityObjectAnchorsAccount -AccountName $env.objectAnchorsAccount2 -ResourceGroupName $env.resourceGroup
-            Remove-AzMixedRealityObjectAnchorsAccount -InputObject $config
+            $config = Get-AzMixedRealityObjectAnchorAccount -Name $env.objectAnchorsAccount2 -ResourceGroupName $env.resourceGroup
+            Remove-AzMixedRealityObjectAnchorAccount -InputObject $config
         } | Should -Not -Throw
     }
 }

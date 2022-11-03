@@ -24,3 +24,15 @@ eastus   azpstestanchorsaccount azps_test_group
 
 List Spatial Anchors Accounts by Resource Group.
 
+### Example 3: Retrieve a Spatial Anchors Account.
+```powershell
+Get-AzMixedRealitySpatialAnchorAccount -Name azpstestanchorsaccount -ResourceGroupName azps_test_group
+```
+
+```output
+Location Name                   ResourceGroupName
+-------- ----                   -----------------
+eastus   azpstestanchorsaccount azps_test_group
+```
+
+Retrieve a Spatial Anchors Account.

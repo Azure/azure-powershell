@@ -17,10 +17,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzMixedRealityRemoteRendering
 Describe 'AzMixedRealityRemoteRenderingAccount' {
     It 'CreateExpanded' {
         {
-            $config = New-AzMixedRealityRemoteRenderingAccount -AccountName $env.remoteRenderingAccount1 -ResourceGroupName $env.resourceGroup -Location eastus -IdentityType 'SystemAssigned'
+            $config = New-AzMixedRealityRemoteRenderingAccount -Name $env.remoteRenderingAccount1 -ResourceGroupName $env.resourceGroup -Location eastus -IdentityType 'SystemAssigned'
             $config.Name | Should -Be $env.remoteRenderingAccount1
 
-            $config = New-AzMixedRealityRemoteRenderingAccount -AccountName $env.remoteRenderingAccount2 -ResourceGroupName $env.resourceGroup -Location eastus -IdentityType 'SystemAssigned'
+            $config = New-AzMixedRealityRemoteRenderingAccount -Name $env.remoteRenderingAccount2 -ResourceGroupName $env.resourceGroup -Location eastus -IdentityType 'SystemAssigned'
             $config.Name | Should -Be $env.remoteRenderingAccount2
         } | Should -Not -Throw
     }
@@ -55,14 +55,14 @@ Describe 'AzMixedRealityRemoteRenderingAccount' {
 
     It 'Get' {
         {
-            $config = Get-AzMixedRealityRemoteRenderingAccount -ResourceGroupName $env.resourceGroup -AccountName $env.remoteRenderingAccount1
+            $config = Get-AzMixedRealityRemoteRenderingAccount -ResourceGroupName $env.resourceGroup -Name $env.remoteRenderingAccount1
             $config.Name | Should -Be $env.remoteRenderingAccount1
         } | Should -Not -Throw
     }
 
     It 'KeyRegenerateViaIdentityExpanded' {
         {
-            $config = Get-AzMixedRealityRemoteRenderingAccount -ResourceGroupName $env.resourceGroup -AccountName $env.remoteRenderingAccount2
+            $config = Get-AzMixedRealityRemoteRenderingAccount -ResourceGroupName $env.resourceGroup -Name $env.remoteRenderingAccount2
             $config = New-AzMixedRealityRemoteRenderingAccountKey -InputObject $config -Serial 1
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
@@ -70,14 +70,14 @@ Describe 'AzMixedRealityRemoteRenderingAccount' {
 
     It 'UpdateExpanded' {
         {
-            $config = Update-AzMixedRealityRemoteRenderingAccount -AccountName $env.remoteRenderingAccount1 -ResourceGroupName $env.resourceGroup -Location eastus -Tag @{"a"="1"}
+            $config = Update-AzMixedRealityRemoteRenderingAccount -Name $env.remoteRenderingAccount1 -ResourceGroupName $env.resourceGroup -Location eastus -Tag @{"a"="1"}
             $config.Name | Should -Be $env.remoteRenderingAccount1
         } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' {
         {
-            $config = Get-AzMixedRealityRemoteRenderingAccount -ResourceGroupName $env.resourceGroup -AccountName $env.remoteRenderingAccount2
+            $config = Get-AzMixedRealityRemoteRenderingAccount -ResourceGroupName $env.resourceGroup -Name $env.remoteRenderingAccount2
             $config = Update-AzMixedRealityRemoteRenderingAccount -InputObject $config -Location eastus -Tag @{"a"="1"}
             $config.Name | Should -Be $env.remoteRenderingAccount2
         } | Should -Not -Throw
@@ -85,13 +85,13 @@ Describe 'AzMixedRealityRemoteRenderingAccount' {
 
     It 'Delete' {
         {
-            Remove-AzMixedRealityRemoteRenderingAccount -AccountName $env.remoteRenderingAccount1 -ResourceGroupName $env.resourceGroup
+            Remove-AzMixedRealityRemoteRenderingAccount -Name $env.remoteRenderingAccount1 -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         {
-            $config = Get-AzMixedRealityRemoteRenderingAccount -ResourceGroupName $env.resourceGroup -AccountName $env.remoteRenderingAccount2
+            $config = Get-AzMixedRealityRemoteRenderingAccount -ResourceGroupName $env.resourceGroup -Name $env.remoteRenderingAccount2
             Remove-AzMixedRealityRemoteRenderingAccount -InputObject $config
         } | Should -Not -Throw
     }

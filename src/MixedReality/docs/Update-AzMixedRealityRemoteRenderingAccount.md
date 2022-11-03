@@ -14,8 +14,8 @@ Updating a Remote Rendering Account
 
 ### UpdateExpanded (Default)
 ```
-Update-AzMixedRealityRemoteRenderingAccount -AccountName <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>] [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>]
+Update-AzMixedRealityRemoteRenderingAccount -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>]
  [-KindFamily <String>] [-KindName <String>] [-KindSize <String>] [-KindTier <SkuTier>]
  [-PlanType <ResourceIdentityType>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
  [-SkuSize <String>] [-SkuTier <SkuTier>] [-StorageAccountName <String>] [-Tag <Hashtable>]
@@ -39,7 +39,7 @@ Updating a Remote Rendering Account
 
 ### Example 1: Updating a Remote Rendering Account.
 ```powershell
-Update-AzMixedRealityRemoteRenderingAccount -AccountName azpstestrenderingaccount -ResourceGroupName azps_test_group -Location eastus -Tag @{"a"="1"}
+Update-AzMixedRealityRemoteRenderingAccount -Name azpstestrenderingaccount -ResourceGroupName azps_test_group -Location eastus -Tag @{"a"="1"}
 ```
 
 ```output
@@ -51,21 +51,6 @@ eastus   azpstestrenderingaccount azps_test_group
 Updating a Remote Rendering Account.
 
 ## PARAMETERS
-
-### -AccountName
-Name of an Mixed Reality Account.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -198,6 +183,21 @@ The geo-location where the resource lives
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of an Mixed Reality Account.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True

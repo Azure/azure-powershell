@@ -1,6 +1,6 @@
 ### Example 1: Updating an Object Anchors Account.
 ```powershell
-Update-AzMixedRealityObjectAnchorsAccount -AccountName azpstestanchorsaccount-object -ResourceGroupName azps_test_group -Location eastus2 -Tag @{"a"="1"}
+Update-AzMixedRealityObjectAnchorAccount -Name azpstestanchorsaccount-object -ResourceGroupName azps_test_group -Location eastus2 -Tag @{"a"="1"}
 ```
 
 ```output

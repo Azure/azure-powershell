@@ -1,6 +1,6 @@
 ### Example 1: Creating or Updating a Spatial Anchors Account.
 ```powershell
-New-AzMixedRealitySpatialAnchorsAccount -AccountName azpstestanchorsaccount -ResourceGroupName azps_test_group -Location eastus
+New-AzMixedRealitySpatialAnchorAccount -Name azpstestanchorsaccount -ResourceGroupName azps_test_group -Location eastus
 ```
 
 ```output

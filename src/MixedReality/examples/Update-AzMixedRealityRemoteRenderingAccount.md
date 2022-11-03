@@ -1,6 +1,6 @@
 ### Example 1: Updating a Remote Rendering Account.
 ```powershell
-Update-AzMixedRealityRemoteRenderingAccount -AccountName azpstestrenderingaccount -ResourceGroupName azps_test_group -Location eastus -Tag @{"a"="1"}
+Update-AzMixedRealityRemoteRenderingAccount -Name azpstestrenderingaccount -ResourceGroupName azps_test_group -Location eastus -Tag @{"a"="1"}
 ```
 
 ```output

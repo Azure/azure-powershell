@@ -1,6 +1,6 @@
 ### Example 1: Creating or Updating an object anchors Account.
 ```powershell
-New-AzMixedRealityObjectAnchorsAccount -AccountName azpstestanchorsaccount-object -ResourceGroupName azps_test_group -Location eastus2
+New-AzMixedRealityObjectAnchorAccount -Name azpstestanchorsaccount-object -ResourceGroupName azps_test_group -Location eastus2
 ```
 
 ```output

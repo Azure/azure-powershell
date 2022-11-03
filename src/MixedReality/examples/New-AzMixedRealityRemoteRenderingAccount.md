@@ -1,6 +1,6 @@
 ### Example 1: Creating or Updating a Remote Rendering Account.
 ```powershell
-New-AzMixedRealityRemoteRenderingAccount -AccountName azpstestrenderingaccount -ResourceGroupName azps_test_group -Location eastus -IdentityType 'SystemAssigned'
+New-AzMixedRealityRemoteRenderingAccount -Name azpstestrenderingaccount -ResourceGroupName azps_test_group -Location eastus -IdentityType 'SystemAssigned'
 ```
 
 ```output

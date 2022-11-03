@@ -41,7 +41,7 @@ input-file:
   - $(repo)/specification/mixedreality/resource-manager/Microsoft.MixedReality/preview/2021-03-01-preview/object-anchors.json
 
 title: MixedReality
-module-version: 0.1.0
+module-version: 0.2.0
 subject-prefix: $(service-name)
 
 identity-correction-for-post: true
@@ -72,4 +72,27 @@ directive:
       subject: ^NameAvailabilityLocal$
     set:
       subject: NameAvailability
+  - where:
+      subject: ^SpatialAnchorsAccount$
+    set:
+      subject: SpatialAnchorAccount
+  - where:
+      subject: ^ObjectAnchorsAccount$
+    set:
+      subject: ObjectAnchorAccount
+  - where:
+      subject: SpatialAnchorAccount
+      parameter-name: AccountName
+    set:
+      parameter-name: Name
+  - where:
+      subject: ObjectAnchorAccount
+      parameter-name: AccountName
+    set:
+      parameter-name: Name
+  - where:
+      subject: RemoteRenderingAccount
+      parameter-name: AccountName
+    set:
+      parameter-name: Name
 ```

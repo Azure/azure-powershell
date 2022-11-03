@@ -26,7 +26,7 @@ List Remote Rendering Account by Resource Group.
 
 ### Example 3: Get a Remote Rendering Account.
 ```powershell
-Get-AzMixedRealityRemoteRenderingAccount -ResourceGroupName azps_test_group -AccountName azpstestrenderingaccount
+Get-AzMixedRealityRemoteRenderingAccount -ResourceGroupName azps_test_group -Name azpstestrenderingaccount
 ```
 
 ```output
