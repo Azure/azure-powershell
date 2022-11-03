@@ -268,7 +268,12 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/StaticAnalysis/ExampleAnalyzer/Measure-MarkdownOrScript.ps1 -MarkdownPaths $(RepoArtifacts)/FilesChanged.txt -RulePaths $(RepoTools)/StaticAnalysis/ExampleAnalyzer/AnalyzeRules/*.psm1 &quot;"/>
   </Target>
 
-  <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisBreakingChange;StaticAnalysisDependency;StaticAnalysisSignature;StaticAnalysisHelp;StaticAnalysisExample">
+  <Target Name="StaticAnalysisNecessaryChange" Condition="'$(RunStaticAnalysis)' == 'true'">
+    <Message Importance="high" Text="Running static analysis for necessary changes..." />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\StaticAnalysis\NecessaryChangeAnalyzer\Test-NecessaryChange.ps1 &quot;" />
+  </Target>
+
+  <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisBreakingChange;StaticAnalysisDependency;StaticAnalysisSignature;StaticAnalysisHelp;StaticAnalysisExample;StaticAnalysisNecessaryChange">
     <Message Importance="high" Text="Running static analysis..." />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" />
