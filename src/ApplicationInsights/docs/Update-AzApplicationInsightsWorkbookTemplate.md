@@ -1,42 +1,75 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightslinkedstorageaccount
+online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightsworkbooktemplate
 schema: 2.0.0
 ---
 
-# Remove-AzApplicationInsightsLinkedStorageAccount
+# Update-AzApplicationInsightsWorkbookTemplate
 
 ## SYNOPSIS
-Delete linked storage accounts for an Application Insights component.
+Updates a workbook template that has already been added.
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzApplicationInsightsLinkedStorageAccount -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzApplicationInsightsWorkbookTemplate -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Author <String>] [-Gallery <IWorkbookTemplateGallery[]>]
+ [-Localized <Hashtable>] [-Priority <Int32>] [-Tag <Hashtable>] [-TemplateData <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Remove-AzApplicationInsightsLinkedStorageAccount -InputObject <IApplicationInsightsIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzApplicationInsightsWorkbookTemplate -InputObject <IApplicationInsightsIdentity> [-Author <String>]
+ [-Gallery <IWorkbookTemplateGallery[]>] [-Localized <Hashtable>] [-Priority <Int32>] [-Tag <Hashtable>]
+ [-TemplateData <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete linked storage accounts for an Application Insights component.
+Updates a workbook template that has already been added.
 
 ## EXAMPLES
 
-### Example 1: Delete linked storage account associated with application insights component "componentName"
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzApplicationInsights -ResourceGroupName "rgName" -Name "componentName" | Remove-AzApplicationInsightsLinkedStorageAccount
+{{ Add code here }}
 ```
 
-Delete linked storage account associated with application insights component "componentName"
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -Author
+Information about the author of the workbook template.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -53,13 +86,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Gallery
+Workbook galleries supported by the template.
+To construct, see NOTES section for GALLERY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplateGallery[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -69,13 +118,29 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Localized
+Key value pair of localized gallery.
+Each key is the locale code of languages supported by the Azure portal.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Application Insights component resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: ApplicationInsightsComponentName, ComponentName
+Parameter Sets: UpdateExpanded
+Aliases:
 
 Required: True
 Position: Named
@@ -84,11 +149,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Priority
+Priority of the template.
+Determines which template to open when a workbook gallery is opened in viewer mode.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +171,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -120,12 +186,42 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplateData
+Valid JSON object containing workbook template payload.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -170,7 +266,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate
 
 ## NOTES
 
@@ -180,6 +276,13 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+
+`GALLERY <IWorkbookTemplateGallery[]>`: Workbook galleries supported by the template.
+  - `[Category <String>]`: Category for the gallery.
+  - `[Name <String>]`: Name of the workbook template in the gallery.
+  - `[Order <Int32?>]`: Order of the template within the gallery.
+  - `[ResourceType <String>]`: Azure resource type supported by the gallery.
+  - `[Type <String>]`: Type of workbook supported by the workbook template.
 
 `INPUTOBJECT <IApplicationInsightsIdentity>`: Identity Parameter
   - `[AnnotationId <String>]`: The unique annotation ID. This is unique within a Application Insights component.

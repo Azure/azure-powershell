@@ -1,40 +1,61 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightslinkedstorageaccount
+online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightsworkbooktemplate
 schema: 2.0.0
 ---
 
-# Get-AzApplicationInsightsLinkedStorageAccount
+# Get-AzApplicationInsightsWorkbookTemplate
 
 ## SYNOPSIS
-Returns the current linked storage settings for an Application Insights component.
+Get a single workbook template by its resourceName.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
-Get-AzApplicationInsightsLinkedStorageAccount -Name <String> -ResourceGroupName <String>
+Get-AzApplicationInsightsWorkbookTemplate -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzApplicationInsightsWorkbookTemplate -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzApplicationInsightsLinkedStorageAccount -InputObject <IApplicationInsightsIdentity>
+Get-AzApplicationInsightsWorkbookTemplate -InputObject <IApplicationInsightsIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the current linked storage settings for an Application Insights component.
+Get a single workbook template by its resourceName.
 
 ## EXAMPLES
 
-### Example 1: Get linked storage account associated with component "componentName"
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName "rgName" -ComponentName "componentName"
+{{ Add code here }}
 ```
 
-Get linked storage account associated with component "componentName"
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -75,7 +96,7 @@ The name of the Application Insights component resource.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: ApplicationInsightsComponentName, ComponentName
+Aliases:
 
 Required: True
 Position: Named
@@ -90,7 +111,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -105,7 +126,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -124,7 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20200301Preview.IComponentLinkedStorageAccounts
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate
 
 ## NOTES
 

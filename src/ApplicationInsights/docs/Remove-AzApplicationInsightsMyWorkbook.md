@@ -1,40 +1,55 @@
 ---
 external help file:
 Module Name: Az.ApplicationInsights
-online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightslinkedstorageaccount
+online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightsmyworkbook
 schema: 2.0.0
 ---
 
-# Get-AzApplicationInsightsLinkedStorageAccount
+# Remove-AzApplicationInsightsMyWorkbook
 
 ## SYNOPSIS
-Returns the current linked storage settings for an Application Insights component.
+Delete a private workbook.
 
 ## SYNTAX
 
-### Get (Default)
+### Delete (Default)
 ```
-Get-AzApplicationInsightsLinkedStorageAccount -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzApplicationInsightsMyWorkbook -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### DeleteViaIdentity
 ```
-Get-AzApplicationInsightsLinkedStorageAccount -InputObject <IApplicationInsightsIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzApplicationInsightsMyWorkbook -InputObject <IApplicationInsightsIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the current linked storage settings for an Application Insights component.
+Delete a private workbook.
 
 ## EXAMPLES
 
-### Example 1: Get linked storage account associated with component "componentName"
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName "rgName" -ComponentName "componentName"
+{{ Add code here }}
 ```
 
-Get linked storage account associated with component "componentName"
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -59,7 +74,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -74,10 +89,25 @@ The name of the Application Insights component resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: ApplicationInsightsComponentName, ComponentName
+Parameter Sets: Delete
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -90,7 +120,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -104,13 +134,44 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -124,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20200301Preview.IComponentLinkedStorageAccounts
+### System.Boolean
 
 ## NOTES
 
