@@ -13,8 +13,8 @@ Update Azure PowerShell modules.
 ## SYNTAX
 
 ```
-Update-AzModule [[-Name] <String[]>] [-Repository <String>] [-Scope <String>] [-KeepPrevious] [-Force]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzModule [[-Name] <String[]>] -Repository <String> [-Scope <String>] [-KeepPrevious] [-Force] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,14 +52,15 @@ Accept wildcard characters: False
 ```
 
 ### -Repository
-The Registered Repostory.
+The Registered Repository.
+Example: PSGallery.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
