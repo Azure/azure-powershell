@@ -143,6 +143,10 @@ namespace Microsoft.Azure.Commands.Synapse
         public string SparkConfigFilePath { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+           HelpMessage = HelpMessages.SparkConfigurationResource)]
+        public PSSparkConfigurationResource SparkConfiguration { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
             HelpMessage = HelpMessages.PackageAction)]
         public SynapseConstants.PackageActionType PackageAction { get; set; }
 
@@ -276,6 +280,21 @@ namespace Microsoft.Azure.Commands.Synapse
                 {
                     existingSparkPool.CustomLibraries = existingSparkPool.CustomLibraries.Where(lib => !this.Package.Any(p => lib.Path.Equals(p.Path, System.StringComparison.OrdinalIgnoreCase))).ToList();
                 }
+            }
+
+            if (this.IsParameterBound(c => c.SparkConfiguration))
+            {
+                if (this.SparkConfiguration != null)
+                {
+                    existingSparkPool.SparkConfigProperties = new SparkConfigProperties()
+                    {
+                        Filename = SparkConfiguration.Name,
+                        ConfigurationType = ConfigurationType.Artifact,                       
+                        Content = Newtonsoft.Json.JsonConvert.SerializeObject(SparkConfiguration)
+                    };
+                }
+                else
+                    existingSparkPool.SparkConfigProperties = null;
             }
 
             bool? isForceApplySetting = false;

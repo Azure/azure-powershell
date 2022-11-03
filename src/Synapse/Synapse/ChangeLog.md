@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool configuration artifact by `-SparkCongifuration`, parameter `-SparkConfigFilePath` is deprecated now
 
 ## Version 2.1.0
 * Updated `Update-AzSynaspeWorkSpace` and `New-AzSynpaseWorkspace` to support for Workspace Encrytion Managed Identity setting
