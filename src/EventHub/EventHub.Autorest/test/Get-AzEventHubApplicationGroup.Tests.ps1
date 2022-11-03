@@ -15,12 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubApplicationGrou
 }
 
 Describe 'Get-AzEventHubApplicationGroup' {
-    It 'List' {
+    It 'List' -skip {
         $listOfAppGroups = Get-AzEventHubApplicationGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $listOfAppGroups.Count | Should -Be 1
     }
 
-    It 'Get' {
+    It 'Get' -skip {
         $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.appGroup
         $appGroup.Name | Should -Be $env.appGroup
         $appGroup.Policy.Count | Should -Be 1
@@ -28,7 +28,7 @@ Describe 'Get-AzEventHubApplicationGroup' {
         $appGroup.IsEnabled | Should -Be $true
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip {
         $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.appGroup
 
         $appGroup = Get-AzEventHubApplicationGroup -InputObject $appGroup

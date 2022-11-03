@@ -15,7 +15,7 @@ Updates an EventHub Entity
 ```
 Set-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AlternateName <String>] [-ClusterArmId <String>] [-DisableLocalAuth] [-EnableAutoInflate]
- [-IdentityId <Hashtable>] [-IdentityType <ManagedServiceIdentityType>] [-KafkaEnabled]
+ [-IdentityId <IIdentityUserAssignedIdentities>] [-IdentityType <ManagedServiceIdentityType>] [-KafkaEnabled]
  [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnits <Int32>]
  [-MinimumTlsVersion <TlsVersion>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
@@ -143,9 +143,10 @@ Accept wildcard characters: False
 
 ### -IdentityId
 Properties for User Assigned Identities
+To construct, see NOTES section for IDENTITYID properties and create a hash table.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities
 Parameter Sets: (All)
 Aliases:
 
@@ -390,6 +391,9 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+
+`IDENTITYID <IIdentityUserAssignedIdentities>`: Properties for User Assigned Identities
+  - `[(Any) <IUserAssignedIdentity>]`: This indicates any property can be added to this object.
 
 `KEYVAULTPROPERTY <IKeyVaultProperties[]>`: Properties to configure Encryption
   - `[IdentityUserAssignedIdentity <String>]`: ARM ID of user Identity selected for encryption

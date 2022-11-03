@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubAuthorizationRu
 }
 
 Describe 'New-AzEventHubAuthorizationRule' {
-    It 'NewExpandedNamespace' {
+    It 'NewExpandedNamespace' -skip {
         $authRule = New-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.authRule2 -Rights @("Manage", "Send", "Listen")
         $authRule.Name | Should -Be $env.authRule2
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup
@@ -25,7 +25,7 @@ Describe 'New-AzEventHubAuthorizationRule' {
         $listOfAuthRules.Count | Should -Be 3
     }
 
-    It 'NewExpandedEntity' {
+    It 'NewExpandedEntity' -skip {
         $authRule = New-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.eventHubAuthRule2 -Rights @("Listen")
         $authRule.Name | Should -Be $env.eventHubAuthRule2
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup

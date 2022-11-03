@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubConsumerGroup')
 }
 
 Describe 'New-AzEventHubConsumerGroup' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         # Testing creation of consumer group
         $consumerGroup = New-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.consumerGroup2 -UserMetadata "Test Metadata"
         $consumerGroup.Name | Should -Be $env.consumerGroup2

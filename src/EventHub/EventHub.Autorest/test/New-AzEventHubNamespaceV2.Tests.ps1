@@ -16,12 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubNamespaceV2'))
 
 Describe 'New-AzEventHubNamespaceV2' {
     It 'SetExpanded' {
-        $eventHubNamespace = New-AzEventHubNamespace -ResourceGroupName $env.resourceGroupName -Name $env.namespace -SkuName Standard -Location eastus
-        $eventHubNamespace.Name | Should -Be $env.namespace
+        $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2 -SkuName Standard -Location eastus
+        $eventHubNamespace.Name | Should -Be $env.namespaceV2
         $eventHubNamespace.SkuName | Should be Standard
 
-        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespace -SkuCapacity 10 -MaximumThroughputUnits 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth -KafkaEnabled -MinimumTlsVersion 1.1
-        $eventHubNamespace.Name | Should be $env.namespace
+        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2 -SkuCapacity 10 -MaximumThroughputUnits 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth -KafkaEnabled -MinimumTlsVersion 1.1
+        $eventHubNamespace.Name | Should be $env.namespaceV2
         $eventHubNamespace.SkuCapacity | Should be 10
         $eventHubNamespace.SkuName | Should be Standard
         $eventHubNamespace.MaximumThroughputUnits | Should be 18
@@ -32,8 +32,9 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventHubNamespace.KafkaEnabled | Should be $true
         
 
-        $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespace -SkuName Premium -Location eastus -IdentityType SystemAssigned        $eventhubNamespace.MaximumThroughputUnits | Should -Be 0
-        $eventhubNamespace.Name | Should -Be $env.namespace
+        $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2 -SkuName Premium -Location eastus -IdentityType SystemAssigned        
+        $eventhubNamespace.MaximumThroughputUnits | Should -Be 0
+        $eventhubNamespace.Name | Should -Be $env.namespaceV2
         $eventhubNamespace.IdentityType | Should -Be SystemAssigned
         $eventhubNamespace.SkuName | Should -Be Premium
         $eventhubNamespace.SkuTier | Should be Premium
@@ -45,7 +46,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $a.Add('/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/shubham-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSI-rg02',[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
         $ec1 = New-AzEventHubKeyVaultPropertiesObject -KeyName key4 -KeyVaulturi https://keyvault-rg1.vault.azure.net/ -IdentityUserAssignedIdentity /subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/shubham-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSI-rg01
         $ec2 = New-AzEventHubKeyVaultPropertiesObject -KeyName key5 -KeyVaulturi https://keyvault-rg1.vault.azure.net/ -IdentityUserAssignedIdentity /subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/shubham-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSI-rg01
-        $eventHubNamespace = New-AzEventHubNamespaceV2-ResourceGroupName $env.resourceGroup -Name $env.namespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -IdentityId $a -KeyVaultProperty $ec1,$ec2
+        $eventHubNamespace = New-AzEventHubNamespaceV2-ResourceGroupName $env.resourceGroup -Name $env.namespaceV2 -SkuName Premium -Location northeurope -IdentityType UserAssigned -IdentityId $a -KeyVaultProperty $ec1,$ec2
         $eventhubNamespace.IdentityType | Should -Be UserAssigned
         $eventhubNamespace.SkuName | Should -Be Premium
         $eventhubNamespace.SkuTier | Should be Premium
@@ -55,9 +56,9 @@ Describe 'New-AzEventHubNamespaceV2' {
 
 
         $ec3 = New-AzEventHubKeyVaultPropertiesObject -KeyName key6 -KeyVaulturi https://keyvault-rg1.vault.azure.net/ -IdentityUserAssignedIdentity /subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/shubham-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSI-rg0
-        $eventHubNamespace = Get-AzEventHubNamespace -ResourceGroupName $env.resourceGroup -Name $env.namespace
+        $eventHubNamespace = Get-AzEventHubNamespace -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2
         $eventhubNamespace.KeyVaultProperty += $ec3
-        $eventhubNamespace.Name | Should -Be $env.namespace
+        $eventhubNamespace.Name | Should -Be $env.namespaceV2
         $eventhubNamespace.IdentityType | Should -Be UserAssigned
         $eventhubNamespace.SkuName | Should -Be Premium
         $eventhubNamespace.KeyVaultProperty.Count | Should be 3

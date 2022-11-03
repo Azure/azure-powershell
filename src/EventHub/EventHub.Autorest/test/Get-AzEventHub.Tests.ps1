@@ -15,19 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHub'))
 }
 
 Describe 'Get-AzEventHub' {
-    It 'List' {
+    It 'List' -skip {
         $listOfEventHubs = Get-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $listOfEventHubs.Count | Should -Be 1
     }
 
-    It 'Get' {
+    It 'Get' -skip{
         $eventHub = Get-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.eventHub
         $eventHub.Name | Should -Be $env.eventHub
         $eventHub.MessageRetentionInDays | Should -Be 1
         $eventHub.PartitionCount | Should -Be 1
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip {
         $eventHub = Get-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.eventHub
 
         $eventHub = Get-AzEventHub -InputObject $eventHub

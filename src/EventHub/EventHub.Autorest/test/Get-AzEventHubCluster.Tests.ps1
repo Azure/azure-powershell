@@ -15,24 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubCluster'))
 }
 
 Describe 'Get-AzEventHubCluster' {
-    It 'List' {
+    It 'List' -skip {
         $listOfCluster = Get-AzEventHubCluster
         $listOfCluster.Count | Should -BeGreaterThan 10
     }
 
-    It 'Get' {
+    It 'Get' -skip {
         $cluster = Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.createdCluster
         $cluster.Name | Should -Be $env.createdCluster
         $cluster.Capacity | Should -Be 1
         $cluster.SkuName | Should -Be "Dedicated"
     }
 
-    It 'List1' {
+    It 'List1' -skip {
         $listOfCluster = Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup
         $listOfCluster.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip {
         $cluster = Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.createdCluster
         
         $cluster = Get-AzEventHubCluster -InputObject $cluster

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubKey'))
 }
 
 Describe 'New-AzEventHubKey' {
-    It 'NewExpandedNamespace' {
+    It 'NewExpandedNamespace' -skip {
         $currentKeys = Get-AzEventHubKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.authRule
         
         $newKeys = New-AzEventHubKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.authRule -KeyType PrimaryKey
@@ -41,7 +41,7 @@ Describe 'New-AzEventHubKey' {
         $newKeys.SecondaryKey | Should -Be $env.namespaceSecondaryKey
     }
 
-    It 'NewExpandedEntity' {
+    It 'NewExpandedEntity' -skip {
         $currentKeys = Get-AzEventHubKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.eventHubAuthRule
         
         $newKeys = New-AzEventHubKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.eventHubAuthRule -KeyType PrimaryKey

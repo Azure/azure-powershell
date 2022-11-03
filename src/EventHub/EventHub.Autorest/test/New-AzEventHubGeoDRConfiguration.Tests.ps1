@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubGeoDRConfigurat
 }
 
 Describe 'New-AzEventHubGeoDRConfiguration' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
         $drConfig.ResourceGroupName | Should -Be $env.resourceGroup
         $drConfig.Name | Should -Be $env.alias
