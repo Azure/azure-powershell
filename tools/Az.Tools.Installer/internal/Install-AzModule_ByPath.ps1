@@ -81,7 +81,7 @@ function Install-AzModule_ByPath {
                     Scope = if ($Scope) {$Scope} else {'CurrentUser'}
                     RemovePrevious = $RemovePrevious
                     Force = $Force
-                    Invoker = $Invoker             
+                    Invoker = $Invoker
                 }
                 Install-SingleModuleFromPackage @installModuleParams
             }
