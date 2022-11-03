@@ -71,7 +71,7 @@ This example generates a blob SAS token with life time.
 PS C:\> $ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
 PS C:\> $StartTime = Get-Date
 PS C:\> $EndTime = $startTime.AddDays(6)
-PS C:\> New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -context $ctx
+PS C:\> New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $ctx
 ```
 
 This example generates a User Identity blob SAS token with storage context based on OAuth authentication
