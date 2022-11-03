@@ -121,6 +121,13 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookName");
             }
+            if (runbookName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z]*-*[a-zA-Z0-9]*$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z]*-*[a-zA-Z0-9]*$");
+                }
+            }
             if (jobStreamId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "jobStreamId");
@@ -343,6 +350,13 @@ namespace Microsoft.Azure.Management.Automation
             if (runbookName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookName");
+            }
+            if (runbookName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z]*-*[a-zA-Z0-9]*$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z]*-*[a-zA-Z0-9]*$");
+                }
             }
             string apiVersion = "2022-08-08";
             // Tracing

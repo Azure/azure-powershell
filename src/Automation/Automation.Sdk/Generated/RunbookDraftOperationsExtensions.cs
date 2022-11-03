@@ -186,9 +186,9 @@ namespace Microsoft.Azure.Management.Automation
             /// <param name='runbookName'>
             /// The runbook name.
             /// </param>
-            public static void UndoEdit(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName)
+            public static RunbookDraftUndoEditResult UndoEdit(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName)
             {
-                operations.UndoEditAsync(resourceGroupName, automationAccountName, runbookName).GetAwaiter().GetResult();
+                return operations.UndoEditAsync(resourceGroupName, automationAccountName, runbookName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -210,9 +210,12 @@ namespace Microsoft.Azure.Management.Automation
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task UndoEditAsync(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<RunbookDraftUndoEditResult> UndoEditAsync(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.UndoEditWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.UndoEditWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
             /// <summary>

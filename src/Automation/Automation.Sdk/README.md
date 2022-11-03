@@ -47,10 +47,10 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/softwareUpdateConfigurationMachineRun.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/account.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2015-10-31/webhook.json
-  - https://github.com/sushil490023/azure-rest-api-specs/blob/feature-Automation/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/runbook.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/runbook.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/hybridRunbookWorker.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/hybridRunbookWorkerGroup.json
-  - https://github.com/sushil490023/azure-rest-api-specs/blob/updatePython3Swagger/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/python3package.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/python3package.json
 
 
 output-folder: Generated
