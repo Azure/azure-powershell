@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <param name="isComposite">Gets or sets type of module, if its
         /// composite or not.</param>
         /// <param name="etag">Gets or sets the etag of the resource.</param>
-        public Module(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string location = default(string), bool? isGlobal = default(bool?), string version = default(string), long? sizeInBytes = default(long?), int? activityCount = default(int?), ModuleProvisioningState? provisioningState = default(ModuleProvisioningState?), ContentLink contentLink = default(ContentLink), ModuleErrorInfo error = default(ModuleErrorInfo), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string description = default(string), bool? isComposite = default(bool?), string etag = default(string))
+        public Module(string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string location = default(string), bool? isGlobal = default(bool?), string version = default(string), long? sizeInBytes = default(long?), int? activityCount = default(int?), string provisioningState = default(string), ContentLink contentLink = default(ContentLink), ModuleErrorInfo error = default(ModuleErrorInfo), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string description = default(string), bool? isComposite = default(bool?), string etag = default(string))
             : base(id, name, type, tags, location)
         {
             IsGlobal = isGlobal;
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// 'Updating'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public ModuleProvisioningState? ProvisioningState { get; set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets or sets the contentLink of the module.

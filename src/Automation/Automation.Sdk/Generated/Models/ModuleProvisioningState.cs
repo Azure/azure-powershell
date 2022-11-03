@@ -10,135 +10,27 @@
 
 namespace Microsoft.Azure.Management.Automation.Models
 {
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using System.Runtime;
-    using System.Runtime.Serialization;
 
     /// <summary>
     /// Defines values for ModuleProvisioningState.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum ModuleProvisioningState
+    public static class ModuleProvisioningState
     {
-        [EnumMember(Value = "Created")]
-        Created,
-        [EnumMember(Value = "Creating")]
-        Creating,
-        [EnumMember(Value = "StartingImportModuleRunbook")]
-        StartingImportModuleRunbook,
-        [EnumMember(Value = "RunningImportModuleRunbook")]
-        RunningImportModuleRunbook,
-        [EnumMember(Value = "ContentRetrieved")]
-        ContentRetrieved,
-        [EnumMember(Value = "ContentDownloaded")]
-        ContentDownloaded,
-        [EnumMember(Value = "ContentValidated")]
-        ContentValidated,
-        [EnumMember(Value = "ConnectionTypeImported")]
-        ConnectionTypeImported,
-        [EnumMember(Value = "ContentStored")]
-        ContentStored,
-        [EnumMember(Value = "ModuleDataStored")]
-        ModuleDataStored,
-        [EnumMember(Value = "ActivitiesStored")]
-        ActivitiesStored,
-        [EnumMember(Value = "ModuleImportRunbookComplete")]
-        ModuleImportRunbookComplete,
-        [EnumMember(Value = "Succeeded")]
-        Succeeded,
-        [EnumMember(Value = "Failed")]
-        Failed,
-        [EnumMember(Value = "Cancelled")]
-        Cancelled,
-        [EnumMember(Value = "Updating")]
-        Updating
-    }
-    internal static class ModuleProvisioningStateEnumExtension
-    {
-        internal static string ToSerializedValue(this ModuleProvisioningState? value)
-        {
-            return value == null ? null : ((ModuleProvisioningState)value).ToSerializedValue();
-        }
-
-        internal static string ToSerializedValue(this ModuleProvisioningState value)
-        {
-            switch( value )
-            {
-                case ModuleProvisioningState.Created:
-                    return "Created";
-                case ModuleProvisioningState.Creating:
-                    return "Creating";
-                case ModuleProvisioningState.StartingImportModuleRunbook:
-                    return "StartingImportModuleRunbook";
-                case ModuleProvisioningState.RunningImportModuleRunbook:
-                    return "RunningImportModuleRunbook";
-                case ModuleProvisioningState.ContentRetrieved:
-                    return "ContentRetrieved";
-                case ModuleProvisioningState.ContentDownloaded:
-                    return "ContentDownloaded";
-                case ModuleProvisioningState.ContentValidated:
-                    return "ContentValidated";
-                case ModuleProvisioningState.ConnectionTypeImported:
-                    return "ConnectionTypeImported";
-                case ModuleProvisioningState.ContentStored:
-                    return "ContentStored";
-                case ModuleProvisioningState.ModuleDataStored:
-                    return "ModuleDataStored";
-                case ModuleProvisioningState.ActivitiesStored:
-                    return "ActivitiesStored";
-                case ModuleProvisioningState.ModuleImportRunbookComplete:
-                    return "ModuleImportRunbookComplete";
-                case ModuleProvisioningState.Succeeded:
-                    return "Succeeded";
-                case ModuleProvisioningState.Failed:
-                    return "Failed";
-                case ModuleProvisioningState.Cancelled:
-                    return "Cancelled";
-                case ModuleProvisioningState.Updating:
-                    return "Updating";
-            }
-            return null;
-        }
-
-        internal static ModuleProvisioningState? ParseModuleProvisioningState(this string value)
-        {
-            switch( value )
-            {
-                case "Created":
-                    return ModuleProvisioningState.Created;
-                case "Creating":
-                    return ModuleProvisioningState.Creating;
-                case "StartingImportModuleRunbook":
-                    return ModuleProvisioningState.StartingImportModuleRunbook;
-                case "RunningImportModuleRunbook":
-                    return ModuleProvisioningState.RunningImportModuleRunbook;
-                case "ContentRetrieved":
-                    return ModuleProvisioningState.ContentRetrieved;
-                case "ContentDownloaded":
-                    return ModuleProvisioningState.ContentDownloaded;
-                case "ContentValidated":
-                    return ModuleProvisioningState.ContentValidated;
-                case "ConnectionTypeImported":
-                    return ModuleProvisioningState.ConnectionTypeImported;
-                case "ContentStored":
-                    return ModuleProvisioningState.ContentStored;
-                case "ModuleDataStored":
-                    return ModuleProvisioningState.ModuleDataStored;
-                case "ActivitiesStored":
-                    return ModuleProvisioningState.ActivitiesStored;
-                case "ModuleImportRunbookComplete":
-                    return ModuleProvisioningState.ModuleImportRunbookComplete;
-                case "Succeeded":
-                    return ModuleProvisioningState.Succeeded;
-                case "Failed":
-                    return ModuleProvisioningState.Failed;
-                case "Cancelled":
-                    return ModuleProvisioningState.Cancelled;
-                case "Updating":
-                    return ModuleProvisioningState.Updating;
-            }
-            return null;
-        }
+        public const string Created = "Created";
+        public const string Creating = "Creating";
+        public const string StartingImportModuleRunbook = "StartingImportModuleRunbook";
+        public const string RunningImportModuleRunbook = "RunningImportModuleRunbook";
+        public const string ContentRetrieved = "ContentRetrieved";
+        public const string ContentDownloaded = "ContentDownloaded";
+        public const string ContentValidated = "ContentValidated";
+        public const string ConnectionTypeImported = "ConnectionTypeImported";
+        public const string ContentStored = "ContentStored";
+        public const string ModuleDataStored = "ModuleDataStored";
+        public const string ActivitiesStored = "ActivitiesStored";
+        public const string ModuleImportRunbookComplete = "ModuleImportRunbookComplete";
+        public const string Succeeded = "Succeeded";
+        public const string Failed = "Failed";
+        public const string Cancelled = "Cancelled";
+        public const string Updating = "Updating";
     }
 }
