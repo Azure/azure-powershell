@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -53,10 +54,10 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             {
                 //Web-Test
             }
-            Actions = new ActivityLogAlertActionGroup[metricAlertResource.Actions.Count];
+            Actions = new Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[metricAlertResource.Actions.Count];
             for(int i = 0; i < metricAlertResource.Actions.Count;i++)
             {
-                Actions[i] = new ActivityLogAlertActionGroup(metricAlertResource.Actions[i].ActionGroupId, metricAlertResource.Actions[i].WebHookProperties);
+                Actions[i] = new Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup(metricAlertResource.Actions[i].ActionGroupId, metricAlertResource.Actions[i].WebHookProperties);
             }
 
             var resourceIdentifier = new ResourceIdentifier(metricAlertResource.Id);
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// Gets or sets list of action groups.
         /// </summary>
         [JsonProperty(PropertyName = "actions")]
-        public new ActivityLogAlertActionGroup[] Actions { get; set; }
+        public new Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[] Actions { get; set; }
 
         ///<summary>
         ///Gets or sets the resource group name

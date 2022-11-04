@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Newtonsoft.Json;
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
+    using Microsoft.Azure.Management.Network.Models;
 
     public class PSVirtualNetworkGateway : PSTopLevelResource
     {
@@ -57,6 +58,12 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string VpnGatewayGeneration { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string VNetExtendedLocationResourceId { get; set; }
+
         public List<PSVirtualNetworkGatewayNatRule> NatRules { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -66,6 +73,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string IpConfigurationsText
         {
             get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ExtendedLocationText
+        {
+            get { return JsonConvert.SerializeObject(ExtendedLocation, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string VNetExtendedLocationResourceIdText
+        {
+            get { return JsonConvert.SerializeObject(VNetExtendedLocationResourceId, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

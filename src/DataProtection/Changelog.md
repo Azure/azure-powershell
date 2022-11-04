@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* Fixed list parameter set for `Get-AzDataProtectionBackupVault`
+
 ## Version 0.5.0
 * Added support for automatic assignment of permissions for configure backup for DPP workloads - AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL using Set-AzDataProtectionMSIPermission cmdlet
 * Added support for adding custom tags for new backup instance using New-AzDataProtectionBackupInstance cmdlet

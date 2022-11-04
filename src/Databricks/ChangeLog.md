@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.0
+* Added `RequiredNsgRule` parameter in the `Update-AzDatabricksWorkspace`.
+
 ## Version 1.3.0
 * Upgraded API version to 2022-04-01-preview
 * Modified description of `EnableNoPublicIP` parameter in the `New-AzDatabricksWorkspace`. [#14381]

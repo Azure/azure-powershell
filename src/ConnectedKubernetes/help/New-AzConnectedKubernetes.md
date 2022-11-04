@@ -14,9 +14,11 @@ API to register a new Kubernetes cluster and create a tracked resource in Azure 
 
 ```
 New-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Distribution <String>] [-Infrastructure <String>] [-KubeConfig <String>]
- [-KubeContext <String>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AzureHybridBenefit <AzureHybridBenefit>] [-Distribution <String>]
+ [-DistributionVersion <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
+ [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +54,36 @@ This command creates a connected kubernetes with parameters kubeConfig and kubeC
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureHybridBenefit
+Indicates whether Azure Hybrid Benefit is opted in
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 The name of the Kubernetes cluster on which get is called.
 
@@ -84,6 +116,21 @@ Accept wildcard characters: False
 
 ### -Distribution
 The Kubernetes distribution running on this connected cluster.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DistributionVersion
+The Kubernetes distribution version on this connected cluster.
 
 ```yaml
 Type: System.String
@@ -143,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Location of the cluster
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
@@ -151,6 +198,51 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkScopeResourceId
+The resource id of the private link scope this connected cluster is assigned to, if any.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkState
+Property which describes the state of private link on a connected cluster resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.PrivateLinkState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -173,7 +265,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the kubernetes cluster is registered.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -188,7 +281,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the subscription to which the kubernetes cluster is registered.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -255,7 +348,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster
 
 ## NOTES
 

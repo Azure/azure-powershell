@@ -8,12 +8,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Extensions;
     using System;
 
+    /// <summary>Finds the valid recovery point in time ranges for the restore.</summary>
     /// <remarks>
     /// [OpenAPI] Find=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/findRestorableTimeRanges"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Find, @"AzDataProtectionRestorableTimeRange_FindExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupFindRestorableTimeRangesResponseResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description(@"")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description(@"Finds the valid recovery point in time ranges for the restore.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Generated]
     public partial class FindAzDataProtectionRestorableTimeRange_FindExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener

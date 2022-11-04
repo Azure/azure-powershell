@@ -20,8 +20,23 @@
 
 -->
 ## Upcoming Release
+* Fixed `Get-AzVm` cmdlet when parameter "-Status" is provided, return property `OsName`, `OsVersion` and `HyperVGeneration`
 
-## Version 4.32.0
+## Version 5.1.0
+* Fixed EdgeZone does not pass to VM for `New-AzVM` "SimpleParameterSet" [#18978] 
+* Added 'ScriptFilePath' parameter set for `Set-AzVMRunCommand` and `Set-AzVmssVMRunCommand` to allow users to pass in the path of the file that has the run command script
+* Added `-AsJob` optional parameter to `Remove-AzVMExtension` cmdlet.
+* Added `-EdgeZone` optional parameter for `Get-AzComputeResourceSku` and `New-AzSnapshotUpdateConfig` cmdlets.
+* Added Disk Delete Optional parameters `OsDisk Deletion Option` and `Delete Option` to the `Set-AzVmssStorageProfile` (OS Disk) and `Add-AzVmssDataDisk` (Data Disk)
+* Improved printed output for `Get-AzComputeResourceSku`
+* Updated `Get-AzHost` cmdlet logic to return Host for `-ResourceId` parameterset.
+* Added `-OSDiskSizeGB` optional parameter for `Set-AzVmssStorageProfile`.
+* Improved cmdlet description for `Set-AzVM` and added examples.
+* Updated property mapping for parameter `Encryption` of `New-AzGalleryImageVersion`
+* Updated list format to display all VmssVmRunCommand properties for `Get-AzVmssVmRunCommand`
+* Updated `Get-AzGallery`, `New-AzGallery`, `Update-AzGallery`, `Get-AzGalleryImageDefinition`, `Get-AzGalleryImageVersion`, `New-AzVm` and `New-AzVmss` to support community galleries
+
+## Version 5.0.0
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
 * Added Confidential VM functionality to multiple cmdlets.
   * Added new parameter `SecureVMDiskEncryptionSet` to cmdlet `Set-AzDiskSecurityProfile`.

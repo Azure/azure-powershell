@@ -19,8 +19,14 @@
 -->
 ## Upcoming Release
 
-## Version 5.7.0
-* [Breaking Change] Added fix for Enable-AzRecoveryServicesBackupProtection cmdlet. Resolved the null refrence issue by making policy a mandatory parameter.
+## Version 6.1.0
+* Added support for cross zonal restore for ZRS vaults for non-ZonePinned VM
+* Fixed bug with Update-AzRecoveryServicesAsrProtectionContainerMapping
+* Added new scenarios: EZ-to-AZ, EZ-to-AZ, EZ-to-EZ
+* Removed `VmName` from non A2A scenarios of `New-AzRecoveryServicesAsrReplicationProtectedItem` as it is not applicable
+
+## Version 6.0.0
+* [Breaking Change] Added fix for Enable-AzRecoveryServicesBackupProtection cmdlet. Resolved the null reference issue by making policy a mandatory parameter.
 * [Breaking Change] Removed status filter from Get-AzRecoveryServicesBackupContainer command
 * Added SubTasks Duration for IaasVM job
 

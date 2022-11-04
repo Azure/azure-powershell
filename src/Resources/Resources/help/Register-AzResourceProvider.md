@@ -14,7 +14,7 @@ Registers a resource provider.
 ## SYNTAX
 
 ```
-Register-AzResourceProvider -ProviderNamespace <String> [-ConsentToPermissions <Boolean>]
+Register-AzResourceProvider -ProviderNamespace <String> [-ConsentToPermissions <Boolean>] [-AsJob]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -39,6 +39,21 @@ You can specify a different version than the default version.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

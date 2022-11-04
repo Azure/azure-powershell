@@ -77,8 +77,20 @@ function New-AzMigrateServerReplication {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the Subnet name within the destination Virtual Netowk to which the server needs to be migrated.
+        # Specifies the Subnet name within the destination Virtual Network to which the server needs to be migrated.
         ${TargetSubnetName},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Virtual Network id within the destination Azure subscription to which the server needs to be test migrated.
+        ${TestNetworkId},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Subnet name within the destination Virtual Network to which the server needs to be test migrated.
+        ${TestSubnetName},
 
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -264,6 +276,8 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('TargetResourceGroupId')
         $null = $PSBoundParameters.Remove('TargetNetworkId')
         $null = $PSBoundParameters.Remove('TargetSubnetName')
+        $null = $PSBoundParameters.Remove('TestNetworkId')
+        $null = $PSBoundParameters.Remove('TestSubnetName')
         $null = $PSBoundParameters.Remove('TargetVMName')
         $null = $PSBoundParameters.Remove('TargetVMSize')
         $null = $PSBoundParameters.Remove('PerformAutoResync')
@@ -483,11 +497,17 @@ public static int hashForArtifact(String artifact)
 }
 "@
         Add-Type -TypeDefinition $Source -Language CSharp
-        $hash = [HashFunctions]::hashForArtifact($HashCodeInput)
+        if ([string]::IsNullOrEmpty($mappingObject.ProviderSpecificDetail.KeyVaultUri)) {
+             $LogStorageAccountID = $mappingObject.ProviderSpecificDetail.StorageAccountId
+             $LogStorageAccountSas = $LogStorageAccountID.Split('/')[-1] + '-cacheSas'
+        }
+        else {
+            $hash = [HashFunctions]::hashForArtifact($HashCodeInput)
+            $LogStorageAccountID = "/subscriptions/" + $SubscriptionId + "/resourceGroups/" +
+            $ResourceGroupName + "/providers/Microsoft.Storage/storageAccounts/migratelsa" + $hash
+            $LogStorageAccountSas = "migratelsa" + $hash + '-cacheSas'
+        }
 
-        $LogStorageAccountID = "/subscriptions/" + $SubscriptionId + "/resourceGroups/" +
-        $ResourceGroupName + "/providers/Microsoft.Storage/storageAccounts/migratelsa" + $hash
-        $LogStorageAccountSas = "migratelsa" + $hash + '-cacheSas'
         if (!$HasTargetBDStorage) {
             $TargetBootDiagnosticsStorageAccount = $LogStorageAccountID
         }
@@ -611,6 +631,8 @@ public static int hashForArtifact(String artifact)
         $ProviderSpecificDetails.TargetNetworkId = $TargetNetworkId
         $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupId
         $ProviderSpecificDetails.TargetSubnetName = $TargetSubnetName
+        $ProviderSpecificDetails.TestNetworkId = $TestNetworkId
+        $ProviderSpecificDetails.TestSubnetName = $TestSubnetName
 
         if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
             throw "The target virtual machine name must be between 1 and 64 characters long."

@@ -63,6 +63,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "As the blobs get by tag don't contain blob proeprties, specify tis parameter to get blob properties with an additional request on each blob.")]
         public SwitchParameter GetBlobProperty { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Container name, specify this parameter to only return all blobs whose tags match a search expression in the container.")]
+        [ValidateNotNullOrEmpty]
+        public string Container { get; set; }
+
         // Overwrite the useless parameter
         public override string TagCondition { get; set; }
         protected override bool UseTrack2Sdk()
@@ -94,6 +98,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
 
             BlobServiceClient blobServiceClient = Util.GetTrack2BlobServiceClient(localChannel.StorageContext, ClientOptions);
+            BlobContainerClient containerClient = null;
+            if (!string.IsNullOrEmpty(this.Container))
+            {
+                containerClient = blobServiceClient.GetBlobContainerClient(this.Container);
+            }
+
 
             int listCount = InternalMaxCount;
             int MaxListCount = 5000;
@@ -106,9 +116,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 requestCount = Math.Min(listCount, MaxListCount);
                 realListCount = 0;
-                IEnumerator<Page<TaggedBlobItem>> enumerator = blobServiceClient.FindBlobsByTags(tagFilterSqlExpression, CmdletCancellationToken)
-                    .AsPages(track2ContinuationToken, requestCount)
-                    .GetEnumerator();
+                IEnumerator<Page<TaggedBlobItem>> enumerator;
+
+                if (string.IsNullOrEmpty(this.Container))
+                {
+                    enumerator = blobServiceClient.FindBlobsByTags(tagFilterSqlExpression, CmdletCancellationToken)
+                        .AsPages(track2ContinuationToken, requestCount)
+                        .GetEnumerator();
+                }
+                else
+                {
+                    enumerator = containerClient.FindBlobsByTags(tagFilterSqlExpression, CmdletCancellationToken)
+                        .AsPages(track2ContinuationToken, requestCount)
+                        .GetEnumerator();
+                }
 
                 Page<TaggedBlobItem> page;
                 enumerator.MoveNext();

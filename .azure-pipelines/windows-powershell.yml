@@ -8,6 +8,7 @@ variables:
   IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
+  PowerShellPlatform: Windows PowerShell
 
 trigger: none
 
@@ -35,6 +36,7 @@ jobs:
       osName: ${{ variables.WindowsName }}
       testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}
 
 - job: Analyze
   displayName: Analyze
@@ -55,6 +57,7 @@ jobs:
       osName: $(OSName)
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}
 
 - job: Test
   displayName: Test
@@ -76,3 +79,4 @@ jobs:
       testFramework: ${{ variables.TestFramework }}
       testTarget: ${{ variables.TestTarget }}
       configuration: ${{ variables.Configuration }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}
