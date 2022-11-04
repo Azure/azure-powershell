@@ -329,7 +329,7 @@ function Test-CreateNewWebAppSlot
 		Assert-AreEqual $appWithSlotName $slot1.Name
 		Assert-AreEqual $serverFarm.Id $slot1.ServerFarmId
 		Assert-AreEqual $tag.Keys $slot1.Tags.Keys
-        Assert-AreEqual $tag.Values $slot1.Tags.Values
+        	Assert-AreEqual $tag.Values $slot1.Tags.Values
 	}
 	finally
 	{
