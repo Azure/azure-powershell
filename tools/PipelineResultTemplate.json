@@ -29,8 +29,8 @@
         "Details": [
         ]
     },
-    "necessary-change": {
-        "Name": "Necessary Change Check",
+    "file-change": {
+        "Name": "File Change Check",
         "Order": 6,
         "Details": [
         ]

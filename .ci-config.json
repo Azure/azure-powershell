@@ -100,7 +100,7 @@
         "build:related-module",
         "dependence:dependence-module",
         "test:dependence-module",
-        "necessary-change:module"
+        "file-change:module"
       ]
     },
     {
@@ -113,7 +113,7 @@
         "help:module",
         "signature:module",
         "test:dependence-module",
-        "necessary-change:module"
+        "file-change:module"
       ]
     },
     {

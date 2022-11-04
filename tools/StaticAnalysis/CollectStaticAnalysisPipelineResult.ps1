@@ -67,8 +67,8 @@ $Steps = @(
         IssuePath = "$StaticAnalysisOutputDirectory/SignatureIssues.csv"
     },
     @{
-        StepName = "necessary-change"
-        IssuePath = "$StaticAnalysisOutputDirectory/NecessaryChangeIssue.csv"
+        StepName = "file-change"
+        IssuePath = "$StaticAnalysisOutputDirectory/FileChangeIssue.csv"
     }
 )
 
@@ -106,7 +106,7 @@ ForEach ($Step In $Steps)
             If ($MatchedIssues.Length -Ne 0)
             {
                 #Region generate table head of each step
-                $NormalSteps = [System.Collections.Generic.HashSet[String]]@("breaking-change", "help", "signature", "necessary-change")
+                $NormalSteps = [System.Collections.Generic.HashSet[String]]@("breaking-change", "help", "signature", "file-change")
                 If ($NormalSteps.Contains($StepName))
                 {
                     $Content = "|Type|Cmdlet|Description|Remediation|`n|---|---|---|---|`n"

@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         private const string ANALYSIS_HELP_PHASE = "help";
         private const string ANALYSIS_DEPENDENCY_PHASE = "dependency";
         private const string ANALYSIS_SIGNATURE_PHASE = "signature";
-        private const string ANALYSIS_NECESSARY_CHANGE_PHASE = "necessary-change";
+        private const string ANALYSIS_FILE_CHANGE_PHASE = "file-change";
         private const string TEST_PHASE = "test";
         private const string ACCOUNT_MODULE_NAME = "Accounts";
 
@@ -191,7 +191,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 [ANALYSIS_HELP_EXAMPLE_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
                 [ANALYSIS_HELP_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
                 [ANALYSIS_SIGNATURE_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
-                [ANALYSIS_NECESSARY_CHANGE_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
+                [ANALYSIS_FILE_CHANGE_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
                 [TEST_PHASE] = new HashSet<string>(GetTestCsprojList(TargetModule, csprojMap).ToList())
             };
 
@@ -247,7 +247,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                         ANALYSIS_HELP_EXAMPLE_PHASE + ":" + AllModule,
                         ANALYSIS_HELP_PHASE + ":" + AllModule,
                         ANALYSIS_SIGNATURE_PHASE + ":" + AllModule,
-                        ANALYSIS_NECESSARY_CHANGE_PHASE + ":" + AllModule,
+                        ANALYSIS_FILE_CHANGE_PHASE + ":" + AllModule,
                         TEST_PHASE + ":" + AllModule,
                     };
                 }
@@ -296,7 +296,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 ANALYSIS_HELP_EXAMPLE_PHASE,
                 ANALYSIS_HELP_PHASE,
                 ANALYSIS_SIGNATURE_PHASE,
-                ANALYSIS_NECESSARY_CHANGE_PHASE,
+                ANALYSIS_FILE_CHANGE_PHASE,
                 TEST_PHASE
             };
             foreach (string phaseName in expectedKeyList)
@@ -417,7 +417,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 [ANALYSIS_HELP_EXAMPLE_PHASE] = influencedModuleInfo[ANALYSIS_HELP_EXAMPLE_PHASE],
                 [ANALYSIS_HELP_PHASE] = influencedModuleInfo[ANALYSIS_HELP_PHASE],
                 [ANALYSIS_SIGNATURE_PHASE] = influencedModuleInfo[ANALYSIS_SIGNATURE_PHASE],
-                [ANALYSIS_NECESSARY_CHANGE_PHASE] = influencedModuleInfo[ANALYSIS_NECESSARY_CHANGE_PHASE],
+                [ANALYSIS_FILE_CHANGE_PHASE] = influencedModuleInfo[ANALYSIS_FILE_CHANGE_PHASE],
                 [TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Select(GetModuleNameFromPath).Where(x => x != null))
             };
             File.WriteAllText(Path.Combine(config.ArtifactPipelineInfoFolder, "CIPlan.json"), JsonConvert.SerializeObject(CIPlan, Formatting.Indented));

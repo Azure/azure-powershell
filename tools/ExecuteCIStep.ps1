@@ -23,9 +23,6 @@ Param(
     $BuildAction='build',
 
     [Switch]
-    $GenerateDocumentationFile,
-
-    [Switch]
     $Test,
 
     [Switch]
@@ -39,6 +36,9 @@ Param(
     
     [Switch]
     $StaticAnalysisHelp,
+
+    [Switch]
+    $GenerateDocumentationFile=$False,
 
     [String]
     $RepoArtifacts='artifacts',
@@ -63,14 +63,8 @@ $ErrorActionPreference = 'Stop'
 If ($Build)
 {
     $LogFile = "$RepoArtifacts/Build.Log"
-    If ($GenerateDocumentationFile)
-    {
-        dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -fl "/flp1:logFile=$LogFile;verbosity=quiet"
-    }
-    Else
-    {
-        dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -p:GenerateDocumentationFile=false -fl "/flp1:logFile=$LogFile;verbosity=quiet"
-    }
+    
+    dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -p:GenerateDocumentationFile=$GenerateDocumentationFile -fl "/flp1:logFile=$LogFile;verbosity=quiet"
     If (Test-Path -Path "$RepoArtifacts/PipelineResult")
     {
         $LogContent = Get-Content $LogFile

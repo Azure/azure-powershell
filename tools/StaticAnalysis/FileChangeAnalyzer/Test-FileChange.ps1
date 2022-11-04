@@ -14,7 +14,7 @@
 Param (
 )
 
-Class NecessaryChangeIssue {
+Class FileChangeIssue {
     [String]$Module
     [Int]$Severity
     [String]$Description
@@ -24,7 +24,7 @@ $ExceptionList = @()
 
 $FilesChangedPath = "$PSScriptRoot/../../../artifacts/FilesChanged.txt"
 $FilesChanged = Get-Content $FilesChangedPath
-$ExceptionFilePath = "$PSScriptRoot/../../../artifacts/StaticAnalysisResults/NecessaryChangeIssue.csv"
+$ExceptionFilePath = "$PSScriptRoot/../../../artifacts/StaticAnalysisResults/FileChangeIssue.csv"
 $UpdatedChangeLogs = @{}
 
 ForEach ($FilePath In ($FilesChanged | Where-Object { $_.EndsWith("ChangeLog.md") }))
@@ -38,14 +38,14 @@ ForEach ($FilePath In $FilesChanged)
     If ($FilePath.StartsWith("src/"))
     {
         $ModuleName = $FilePath.Split("/")[1]
-        $FileTypeArray = @(".cs", ".psd1", ".csproj", ".json")
+        $FileTypeArray = @(".cs", ".psd1", ".csproj", ".json", ".ps1xml", ".resx")
         ForEach ($FileType In $FileTypeArray)
         {
             If ($FilePath.EndsWith($FileType))
             {
                 If (-Not ($UpdatedChangeLogs.ContainsKey($ModuleName)))
                 {
-                    $ExceptionList += [NecessaryChangeIssue]@{
+                    $ExceptionList += [FileChangeIssue]@{
                         Module = "Az.$ModuleName";
                         Severity = 2;
                         Description = "A update of `ChangeLog.md` is necessary if you want a new version of Az.$ModuleName."
@@ -58,7 +58,7 @@ ForEach ($FilePath In $FilesChanged)
         If ($FilePath.EndsWith("AssemblyInfo.cs"))
         {
             $ModuleName = $FilePath.Split("/")[1]
-            $ExceptionList += [NecessaryChangeIssue]@{
+            $ExceptionList += [FileChangeIssue]@{
                 Module = "Az.$ModuleName";
                 Severity = 2;
                 Description = "We will update AssemblyInfo.cs automaticlly. Please donot update it manually."
