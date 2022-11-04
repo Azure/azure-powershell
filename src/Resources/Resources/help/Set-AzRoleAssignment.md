@@ -35,7 +35,7 @@ Set-AzRoleAssignment -InputFile <String> [-PassThru] [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-Use the New-AzRoleAssignment command to modify an existing assignment.  
+Use the Set-AzRoleAssignment command to modify an existing assignment.  
 Descriptions can be any valid string, use that to diferentiate from one another.  
 if Condition is set Condition Version has to be set as well but if you're updating a Condition that is not necesary.
 Condition Version can be upgraded from 1.0 to 2.0 but it can't not be downgraded back. Be cautious as 2.0 is not retrocompatible with 1.0.
