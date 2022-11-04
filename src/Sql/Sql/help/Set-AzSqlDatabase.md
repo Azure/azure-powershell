@@ -205,7 +205,7 @@ Accept wildcard characters: False
 ```
 
 ### -BackupStorageRedundancy
-The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.
+The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone, Geo and GeoZone. To know the options supported by each edition of the database, see [Get-AzSqlCapability](https://learn.microsoft.com/en-us/powershell/module/az.sql/get-azsqlcapability).
 
 ```yaml
 Type: System.String

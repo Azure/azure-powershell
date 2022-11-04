@@ -70,9 +70,11 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private const string BUILD_PHASE = "build";
         private const string ANALYSIS_BREAKING_CHANGE_PHASE = "breaking-change";
+        private const string ANALYSIS_HELP_EXAMPLE_PHASE = "help-example";
         private const string ANALYSIS_HELP_PHASE = "help";
         private const string ANALYSIS_DEPENDENCY_PHASE = "dependency";
         private const string ANALYSIS_SIGNATURE_PHASE = "signature";
+        private const string ANALYSIS_FILE_CHANGE_PHASE = "file-change";
         private const string TEST_PHASE = "test";
         private const string ACCOUNT_MODULE_NAME = "Accounts";
 
@@ -186,8 +188,10 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 [BUILD_PHASE] = new HashSet<string>(GetBuildCsprojList(TargetModule, csprojMap).ToList()),
                 [ANALYSIS_BREAKING_CHANGE_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
                 [ANALYSIS_DEPENDENCY_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
+                [ANALYSIS_HELP_EXAMPLE_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
                 [ANALYSIS_HELP_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
                 [ANALYSIS_SIGNATURE_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
+                [ANALYSIS_FILE_CHANGE_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
                 [TEST_PHASE] = new HashSet<string>(GetTestCsprojList(TargetModule, csprojMap).ToList())
             };
 
@@ -240,8 +244,10 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                         BUILD_PHASE + ":" + AllModule,
                         ANALYSIS_BREAKING_CHANGE_PHASE + ":" + AllModule,
                         ANALYSIS_DEPENDENCY_PHASE + ":" + AllModule,
+                        ANALYSIS_HELP_EXAMPLE_PHASE + ":" + AllModule,
                         ANALYSIS_HELP_PHASE + ":" + AllModule,
                         ANALYSIS_SIGNATURE_PHASE + ":" + AllModule,
+                        ANALYSIS_FILE_CHANGE_PHASE + ":" + AllModule,
                         TEST_PHASE + ":" + AllModule,
                     };
                 }
@@ -287,8 +293,10 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 BUILD_PHASE,
                 ANALYSIS_BREAKING_CHANGE_PHASE,
                 ANALYSIS_DEPENDENCY_PHASE,
+                ANALYSIS_HELP_EXAMPLE_PHASE,
                 ANALYSIS_HELP_PHASE,
                 ANALYSIS_SIGNATURE_PHASE,
+                ANALYSIS_FILE_CHANGE_PHASE,
                 TEST_PHASE
             };
             foreach (string phaseName in expectedKeyList)
@@ -406,8 +414,10 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 [BUILD_PHASE] = new HashSet<string>(influencedModuleInfo[BUILD_PHASE].Select(GetModuleNameFromPath).Where(x => x != null)),
                 [ANALYSIS_BREAKING_CHANGE_PHASE] = influencedModuleInfo[ANALYSIS_BREAKING_CHANGE_PHASE],
                 [ANALYSIS_DEPENDENCY_PHASE] = influencedModuleInfo[ANALYSIS_DEPENDENCY_PHASE],
+                [ANALYSIS_HELP_EXAMPLE_PHASE] = influencedModuleInfo[ANALYSIS_HELP_EXAMPLE_PHASE],
                 [ANALYSIS_HELP_PHASE] = influencedModuleInfo[ANALYSIS_HELP_PHASE],
                 [ANALYSIS_SIGNATURE_PHASE] = influencedModuleInfo[ANALYSIS_SIGNATURE_PHASE],
+                [ANALYSIS_FILE_CHANGE_PHASE] = influencedModuleInfo[ANALYSIS_FILE_CHANGE_PHASE],
                 [TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Select(GetModuleNameFromPath).Where(x => x != null))
             };
             File.WriteAllText(Path.Combine(config.ArtifactPipelineInfoFolder, "CIPlan.json"), JsonConvert.SerializeObject(CIPlan, Formatting.Indented));
@@ -455,8 +465,10 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                         [BUILD_PHASE] = new HashSet<string>(selectedModuleList),
                         [ANALYSIS_BREAKING_CHANGE_PHASE] = new HashSet<string>(selectedModuleList),
                         [ANALYSIS_DEPENDENCY_PHASE] = new HashSet<string>(selectedModuleList),
+                        [ANALYSIS_HELP_EXAMPLE_PHASE] = new HashSet<string>(selectedModuleList),
                         [ANALYSIS_HELP_PHASE] = new HashSet<string>(selectedModuleList),
                         [ANALYSIS_SIGNATURE_PHASE] = new HashSet<string>(selectedModuleList),
+                        [ANALYSIS_HELP_EXAMPLE_PHASE] = new HashSet<string>(selectedModuleList),
                         [TEST_PHASE] = new HashSet<string>(selectedModuleList)
                     };
                     FilterTaskResult.PhaseInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);

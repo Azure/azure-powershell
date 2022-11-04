@@ -22,6 +22,7 @@
 ## Upcoming Release
 * Added `-SecurityType`, `-EnableSecureBoot` and `-EnableVtpm` parameters to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
 * Configured flags `-EnableSecureBoot` and `-EnableVtpm` to default to True for TrustedLaunch,ConfidentialVM SecurityType to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
+* Fixed `Get-AzVm` cmdlet when parameter "-Status" is provided, return property `OsName`, `OsVersion` and `HyperVGeneration`
 
 ## Version 5.1.0
 * Fixed EdgeZone does not pass to VM for `New-AzVM` "SimpleParameterSet" [#18978] 

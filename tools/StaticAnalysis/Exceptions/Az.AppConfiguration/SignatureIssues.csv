@@ -1,4 +1,4 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Az.AppConfiguration","Get-AzAppConfigurationStore","Get-AzAppConfigurationStore","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzAppConfigurationStore does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.AppConfiguration","Get-AzAppConfigurationStoreKey","Get-AzAppConfigurationStoreKey","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzAppConfigurationStoreKey does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.AppConfiguration","New-AzAppConfigurationStore","New-AzAppConfigurationStore","1","8100","New-AzAppConfigurationStore Does not support ShouldProcess but the cmdlet verb New indicates that it should.","Determine if the cmdlet should implement ShouldProcess and if so determine if it should implement Force / ShouldContinue"

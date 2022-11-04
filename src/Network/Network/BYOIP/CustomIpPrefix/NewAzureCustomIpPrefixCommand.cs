@@ -166,10 +166,6 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     psModel.PrefixType = "Child";
                 }
-                else
-                {
-                    psModel.PrefixType = "Singular";
-                }
             }
 
             var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.CustomIpPrefix>(psModel);

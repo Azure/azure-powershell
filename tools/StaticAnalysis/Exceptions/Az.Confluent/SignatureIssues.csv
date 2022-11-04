@@ -1,4 +1,4 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Az.Confluent","Get-AzConfluentMarketplaceAgreement","Get-AzConfluentMarketplaceAgreement","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzConfluentMarketplaceAgreement does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.Confluent","Get-AzConfluentOrganization","Get-AzConfluentOrganization","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzConfluentOrganization does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.Confluent","New-AzConfluentMarketplaceAgreement","New-AzConfluentMarketplaceAgreement","1","8100","New-AzConfluentMarketplaceAgreement Does not support ShouldProcess but the cmdlet verb New indicates that it should.","Determine if the cmdlet should implement ShouldProcess and if so determine if it should implement Force / ShouldContinue"

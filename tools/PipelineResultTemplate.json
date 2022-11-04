@@ -1,0 +1,44 @@
+{
+    "build": {
+        "Name": "Build",
+        "Order": 1,
+        "Details": [
+        ]
+    },
+    "breaking-change": {
+        "Name": "Breaking Change Check",
+        "Order": 2,
+        "Details": [
+        ]
+    },
+    "signature": {
+        "Name": "Signature Check",
+        "Order": 3,
+        "Details": [
+        ]
+    },
+    "help-example": {
+        "Name": "Help Example Check",
+        "Order": 4,
+        "Details": [
+        ]
+    },
+    "help": {
+        "Name": "Help File Existence Check",
+        "Order": 5,
+        "Details": [
+        ]
+    },
+    "file-change": {
+        "Name": "File Change Check",
+        "Order": 6,
+        "Details": [
+        ]
+    },
+    "test": {
+        "Name": "Test",
+        "Order": 100,
+        "Details": [
+        ]
+    }
+}
