@@ -22,6 +22,13 @@ function setupEnv() {
     $resourceGroup = "resourceGroupAutorest" + (RandomString -allChars $false -len 6)
     $namespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
     $namespaceV2 = "namespaceV2" + (RandomString -allChars $false -len 6)
+    $namespaceV3 = "namespaceV3" + (RandomString -allChars $false -len 6)
+    $namespaceV4 = "namespaceV4" + (RandomString -allChars $false -len 6)
+    $namespaceV5 = "namespaceV5" + (RandomString -allChars $false -len 6)
+    $namespaceV6 = "namespaceV6" + (RandomString -allChars $false -len 6)
+    $namespaceV7 = "namespaceV7" + (RandomString -allChars $false -len 6)
+    $namespaceV8 = "namespaceV8" + (RandomString -allChars $false -len 6)
+    $namespaceV9 = "namespaceV9" + (RandomString -allChars $false -len 6)
     $namespaceResourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.EventHub/namespaces/" + $namespaceName
     $primaryNamespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
     $primaryNamespaceResourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.EventHub/namespaces/" + $primaryNamespaceName
@@ -60,6 +67,13 @@ function setupEnv() {
     $env.Add("resourceGroup", $resourceGroup)
     $env.Add("namespace", $namespaceName)
     $env.Add("namespaceV2", $namespaceV2)
+    $env.Add("namespaceV3", $namespaceV3)
+    $env.Add("namespaceV4", $namespaceV4)
+    $env.Add("namespaceV5", $namespaceV5)
+    $env.Add("namespaceV6", $namespaceV6)
+    $env.Add("namespaceV7", $namespaceV7)
+    $env.Add("namespaceV8", $namespaceV8)
+    $env.Add("namespaceV9", $namespaceV9)
     $env.Add("primaryNamespace", $primaryNamespaceName)
     $env.Add("secondaryNamespace", $secondaryNamespace)
     $env.Add("primaryNamespaceResourceId", $primaryNamespaceResourceId)
@@ -147,6 +161,6 @@ function GenerateSASKey {
 
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.resourceGroup
+    Remove-AzResourceGroup -Name $resourceGroup
 }
 
