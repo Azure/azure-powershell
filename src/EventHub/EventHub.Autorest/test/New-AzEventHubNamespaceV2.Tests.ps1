@@ -52,7 +52,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventhubNamespace.SkuTier | Should be Premium
         $eventhubNamespace.Location | Should -Be "North Europe"
         $eventhubNamespace.KeyVaultProperty.Count | Should be 2
-        $eventhubNamespace.IdentityId | Should -Be 2
+        $eventhubNamespace.IdentityId.Count | Should -Be 2
 
 
         $ec3 = New-AzEventHubKeyVaultPropertiesObject -KeyName key6 -KeyVaulturi https://keyvault-rg1.vault.azure.net/ -IdentityUserAssignedIdentity /subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/shubham-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSI-rg0
@@ -62,7 +62,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventhubNamespace.IdentityType | Should -Be UserAssigned
         $eventhubNamespace.SkuName | Should -Be Premium
         $eventhubNamespace.KeyVaultProperty.Count | Should be 3
-        $eventhubNamespace.IdentityId | Should -Be 2
+        $eventhubNamespace.IdentityId.Count | Should -Be 2
  
     }
 }
