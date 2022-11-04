@@ -60,7 +60,7 @@ Describe 'Set-AzEventHubNamespaceV2' {
 
         $ec3 = New-AzEventHubKeyVaultPropertiesObject -KeyName key6 -KeyVaulturi https://keyvault-rg1.vault.azure.net/ -IdentityUserAssignedIdentity /subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/shubham-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSI-rg0
         $eventhubNamespace.KeyVaultProperty += $ec3
-        $namespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespace9 -KeyVaultProperty $eventhubNamespace.KeyVaultProperty
+        $namespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV9 -KeyVaultProperty $eventhubNamespace.KeyVaultProperty
         $namespace.KeyVaultProperty.Count | Should be 3
 
         #$ec1 = New-AzEventHubKeyVaultPropertiesObject -KeyName key4 -KeyVaultUri https://keyvault-rg1.vault.azure.net/
