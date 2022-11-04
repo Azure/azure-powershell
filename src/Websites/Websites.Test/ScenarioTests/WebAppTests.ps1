@@ -438,7 +438,7 @@ function Test-CreateNewWebApp
 		Assert-AreEqual $wname $actual.Name
 		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
 		Assert-AreEqual $tag.Keys $actual.Tags.Keys
-        Assert-AreEqual $tag.Values $actual.Tags.Values
+                Assert-AreEqual $tag.Values $actual.Tags.Values
 
 		# Get new web app
 		$result = Get-AzWebApp -ResourceGroupName $rgname -Name $wname
