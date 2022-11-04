@@ -22,9 +22,10 @@ Class FileChangeIssue {
 }
 $ExceptionList = @()
 
-$FilesChangedPath = "$PSScriptRoot/../../../artifacts/FilesChanged.txt"
+$ArtifactsFolder = "$PSScriptRoot/../../../artifacts"
+$FilesChangedPath = "$ArtifactsFolder/FilesChanged.txt"
 $FilesChanged = Get-Content $FilesChangedPath
-$ExceptionFilePath = "$PSScriptRoot/../../../artifacts/StaticAnalysisResults/FileChangeIssue.csv"
+$ExceptionFilePath = "$ArtifactsFolder/StaticAnalysisResults/FileChangeIssue.csv"
 $UpdatedChangeLogs = @{}
 
 ForEach ($FilePath In ($FilesChanged | Where-Object { $_.EndsWith("ChangeLog.md") }))
@@ -38,26 +39,24 @@ ForEach ($FilePath In $FilesChanged)
     If ($FilePath.StartsWith("src/"))
     {
         $ModuleName = $FilePath.Split("/")[1]
-        $FileTypeArray = @(".cs", ".psd1", ".csproj", ".json", ".ps1xml", ".resx")
-        ForEach ($FileType In $FileTypeArray)
+
+        $FileTypeArray = @(".cs", ".psd1", ".csproj", ".ps1xml", ".resx")
+        $FileType = [System.IO.Path]::GetExtension($FilePath)
+        If ($FileType -In $FileTypeArray)
         {
-            If ($FilePath.EndsWith($FileType))
+            If (-Not ($UpdatedChangeLogs.ContainsKey($ModuleName)))
             {
-                If (-Not ($UpdatedChangeLogs.ContainsKey($ModuleName)))
-                {
-                    $ExceptionList += [FileChangeIssue]@{
-                        Module = "Az.$ModuleName";
-                        Severity = 2;
-                        Description = "It is required to update `ChangeLog.md` if you want to release a new version for Az.$ModuleName."
-                        Remediation = "Add a changelog record under `Upcoming Release` section with past tense."
-                    }
+                $ExceptionList += [FileChangeIssue]@{
+                    Module = "Az.$ModuleName";
+                    Severity = 2;
+                    Description = "It is required to update `ChangeLog.md` if you want to release a new version for Az.$ModuleName."
+                    Remediation = "Add a changelog record under `Upcoming Release` section with past tense."
                 }
             }
         }
 
-        If ($FilePath.EndsWith("AssemblyInfo.cs"))
+        If ([System.IO.Path]::GetFileName($FilePath) -Eq "AssemblyInfo.cs")
         {
-            $ModuleName = $FilePath.Split("/")[1]
             $ExceptionList += [FileChangeIssue]@{
                 Module = "Az.$ModuleName";
                 Severity = 2;
