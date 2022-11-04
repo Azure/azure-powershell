@@ -23,7 +23,7 @@ payload-flattening-threshold: 1
 ###
 ``` yaml
 input-file:
-  - D:\code\for_read\azure-rest-api-specs\specification\containerservice\resource-manager\Microsoft.ContainerService\stable\2022-09-01\managedClusters.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/195cd610db0accd0422c3e00a72df739ab4de677/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2022-09-01/managedClusters.json
 
 ### There are 2 same "type" property with same x-ms-enum.name="ResourceIdentityType" defined in both managedClusters.json and its referenced types.json. 
 ### Rename the one in types.json to avoid autorest converting error.
