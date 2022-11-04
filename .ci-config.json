@@ -99,7 +99,8 @@
       "phases": [
         "build:related-module",
         "dependence:dependence-module",
-        "test:dependence-module"
+        "test:dependence-module",
+        "file-change:module"
       ]
     },
     {
@@ -111,7 +112,8 @@
         "breaking-change:module",
         "help:module",
         "signature:module",
-        "test:dependence-module"
+        "test:dependence-module",
+        "file-change:module"
       ]
     },
     {
