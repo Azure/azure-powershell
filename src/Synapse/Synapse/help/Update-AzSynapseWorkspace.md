@@ -135,9 +135,28 @@ $uamis = Get-AzUserAssignedIdentity -ResourceGroupName ContosoResourceGroup
 $identityId = $uamis[0].Id
 $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 $ws | Update-AzSynapseWorkspace -UseSystemAssignedIdentityInEncryption $false -UserAssignedIdentityInEncryption $identityId
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws.Encryption.CustomerManagedKeyDetails.Key
 ```
 
-This commands updates workspace Encryption Managed Identity as User Assigned and specify an user assigned identity Id to access your customer-managed key stored in key vault.
+```output
+Name    KeyVaultUrl
+----    -----------
+default https://contosoKeyValut.vault.azure.net/keys/testkey
+```
+
+```powershell
+$ws = Get-AzSynapseWorkspace -name ContosoWorkspace
+$ws.Encryption.CustomerManagedKeyDetails.KekIdentity
+```
+
+```output
+UserAssignedIdentity                                                                                                                                        UseSystemAssignedIdentity
+--------------------                                                                                                                                        -------------------------
+/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/ContosoResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uaminame                     False
+```
+
+This commands updates workspace Encryption Managed Identity as User Assigned and specify an user assigned identity Id to access your customer-managed key stored in key vault. After updating, we can call `Get-AzSynapseWorkspace` to get Encryption properties of workspace.
 
 ## PARAMETERS
 
