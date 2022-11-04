@@ -1,16 +1,20 @@
 ﻿# Invoke-Pester C:\Users\weiwei\Desktop\PSH_Script\PSHTest\dataplane.ps1 -Show All -Strict -ExcludeTagFilter "Preview" 
-C:\Users\weiwei\Desktop\PSH_Script\PSHTest\utils.ps1
 
 
 BeforeAll {
-    Import-Module C:\Users\weiwei\Desktop\PSH_Script\Assert.ps1
-    Import-Module C:\Users\weiwei\Desktop\PSH_Script\PSHTest\utils.ps1
+    # Modify the path to your own
+    Import-Module D:\code\azure-powershell\src\Storage\RegressionTests\utils.ps1
+
+    [xml]$config = Get-Content D:\code\azure-powershell\src\Storage\RegressionTests\config.xml
+    $globalNode = $config.SelectSingleNode("config/section[@id='global']")
+    $testNode = $config.SelectSingleNode("config/section[@id='adls']")
+
+    # Create the directory C:\temp locally before tests 
     $rootFolder = "C:\temp"
     cd $rootFolder
 
-    $rgname = "weitry";
-   # $accountName = "weisanity1"
-    $accountName = "weiadlscanary1"
+    $rgname = $globalNode.resourceGroupName
+    $accountName = $testNode.accountName
     $ctx = (Get-AzStorageAccount -ResourceGroupName $rgname -Name $accountName).Context
 
     $localSrcFile = "C:\temp\testfile_1K_0" #The file need exist before test, and should be 512 bytes aligned
@@ -23,7 +27,7 @@ BeforeAll {
     $filepath12 = "dir1/f%3Aile2"
     $filepath21 = "dir2/file1"
     $filepath22 = "dir2/file2"
-    $id = "d6f7e858-345d-45f6-849c-8175519656b7"
+    $id = (Get-AzADServicePrincipal -ApplicationId $globalNode.applicationId).Id
 
     $container1 = New-AzDatalakeGen2FileSystem -Context $ctx -Name $filesystemName
 }
@@ -49,7 +53,8 @@ Describe "dataplane test" {
         # Create File, and show properties/matadata in console (Note, Permission/Umask is not supported)
         $sas = New-AzStorageContainerSASToken -Name $filesystemName -Permission rwdl -Context $ctx
         $sasctx = New-AzStorageContext -StorageAccountName $ctx.StorageAccountName -SasToken $sas
-        $file1 = New-AzDataLakeGen2Item -Context $sasctx -FileSystem $filesystemName -Path $filepath11 -Source $localSrcFile -Permission rwxrwxrwx -Umask ---rwx--- -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" } $file1.IsDirectory | should -Be $false
+        $file1 = New-AzDataLakeGen2Item -Context $sasctx -FileSystem $filesystemName -Path $filepath11 -Source $localSrcFile -Permission rwxrwxrwx -Umask ---rwx--- -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" } 
+        $file1.IsDirectory | should -Be $false
         $file1.Permissions.ToSymbolicPermissions() | should -be "rwx---rwx"
         $file1.Properties.Metadata.Count  | should -Be 2
         $file1.Properties.ContentEncoding | should -Be "UDF8"

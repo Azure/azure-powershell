@@ -1,40 +1,36 @@
 ﻿# Invoke-Pester C:\Users\weiwei\Desktop\PSH_Script\PSHTest\dataplane.ps1 -Show All -Strict -ExcludeTagFilter "Preview" 
-C:\Users\weiwei\Desktop\PSH_Script\PSHTest\utils.ps1
-
 
 BeforeAll {
-    Import-Module C:\Users\weiwei\Desktop\PSH_Script\Assert.ps1
-    $config = (Get-Content D:\code\azure-powershell\src\Storage\RegressionTests\config.json -Raw | ConvertFrom-Json).srpPreview
+    Import-Module D:\code\azure-powershell\src\Storage\RegressionTests\utils.ps1
 
-    $secpasswd = ConvertTo-SecureString $config.credentials.secpwd -AsPlainText -Force
-    $cred = New-Object System.Management.Automation.PSCredential ($config.credentials.username, $secpasswd)
-    Add-AzAccount -ServicePrincipal -Tenant $config.credentials.tenantId -SubscriptionId $config.credentials.subscriptionId -Credential $cred 
+    [xml]$config = Get-Content D:\code\azure-powershell\src\Storage\RegressionTests\config.xml
+    $globalNode = $config.SelectSingleNode("config/section[@id='global']")
+    $testNode = $config.SelectSingleNode("config/section[@id='srp']")
 
-    $rgname = "weitry";
-    $accountName = "weisanity5"
-    $accountName2 = "weisanity6"
+    $secpasswd = ConvertTo-SecureString $globalNode.secPwd -AsPlainText -Force
+    $cred = New-Object System.Management.Automation.PSCredential ($globalNode.applicationId, $secpasswd)
+    Add-AzAccount -ServicePrincipal -Tenant $globalNode.tenantId -SubscriptionId $globalNode.subscriptionId -Credential $cred 
 
-    $containerName = "weitest"
+    $rgname = $globalNode.resourceGroupName
+    $accountName = GetRandomAccountName
+    $containerName = GetRandomContainerName
 }
 
 Describe "Management plan test - preview" { 
     It "Copy Scope" {
         $Error.Clear()
-
-        $resourceGroupName = “weitry” ## e.g. testrg”
-        $storageAccountName = “weicopyscoperegression1" ## e.g. “testaccount”
-
-
+        
+        $accountNameCopyScope = $accountName + "cpys"
         # Create account 
-        $account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -Location centraluseuap -SkuName Standard_LRS -Kind StorageV2 -AllowedCopyScope AAD 
+        $account = New-AzStorageAccount -ResourceGroupName $rgname -Name $accountNameCopyScope -Location centraluseuap -SkuName Standard_LRS -Kind StorageV2 -AllowedCopyScope AAD 
         $account.AllowedCopyScope | should -be AAD
 
         # update account 
-        $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -AllowedCopyScope PrivateLink
+        $account = Set-AzStorageAccount -ResourceGroupName $rgname -Name $accountNameCopyScope -AllowedCopyScope PrivateLink
         $account.AllowedCopyScope | should -be PrivateLink
 
         # clean up
-        Remove-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -Force -AsJob
+        Remove-AzStorageAccount -ResourceGroupName $rgname -Name $accountNameCopyScope -Force -AsJob
 
         $Error.Count | should -be 0
     }

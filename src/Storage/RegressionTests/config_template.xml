@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <!-- Global credentials used in all tests  -->
+    <section id="global">
+        <secPwd>placeholder</secPwd>
+        <applicationId>placeholder</applicationId>
+        <tenantId>placeholder</tenantId>
+        <subscriptionId>placeholder</subscriptionId>
+        <resourceGroupName>placeholder</resourceGroupName>
+    </section>
+    
+    <!-- Config for adls.ps1 -->
+    <section id="adls">
+        <!-- Account requirements: -->
+        <!-- 1. Enable HierarchicalNamespace -->
+        <accountName>placeholder</accountName>
+        <entityId>placeholder</entityId>
+    </section>
+    
+    <!-- Config for alds_setaclresusive.ps1 -->
+    <section id="adlsSetAcl">
+        <accountName>placeholder</accountName>
+        <leaseId>placeholder</leaseId>
+    </section>
+
+    <!-- Config for dataplane.ps1 -->
+    <section id="dataplane">
+        <!-- Account requirements:
+        1. Enable AllowSharedKeyAccess
+        2. Enable DeleteRetentionPolicy
+        3. Enable ContainerDeleteRetentionPolicy
+        4. Enable LastAccessTimeTrackingPolicy
+        5. Enable versioning  -->
+        <accountName id="1">placeholder</accountName>
+        <accountName id="2">placeholder</accountName>
+        <!-- TODO: Add any special requirements to the account if exits  -->
+        <accountName id="3">placeholder</accountName>
+        <paritionZone>
+            <nameZone>placeholder</nameZone>
+        </paritionZone>
+        <downloadManagedDisk>
+            <diskName>placeholder</diskName>
+        </downloadManagedDisk>
+    </section>
+    
+    <!-- Config for dataplane_preview.ps1 -->
+    <section id="dataplanePreview">
+        <accountName>placeholder</accountName>
+    </section>
+
+    <!-- Config for srp.ps1  -->
+    <section id="srp">
+        <!-- Account requirements:
+        1. Enable AllowSharedKeyAccess
+        2. Enable DeleteRetentionPolicy
+        3. Enable ContainerDeleteRetentionPolicy
+        4. Enable LastAccessTimeTrackingPolicy
+        5. Enable versioning  -->
+        <accountName id="1">placeholder</accountName>
+        <accountName id="2">placeholder</accountName>
+        <!-- Accounts for ORS test. Prepartion steps can be found in the test case  -->
+        <accountName id="4">placeholder</accountName>
+        <accountName id="5">placeholder</accountName>
+        <!-- Container requirements:  -->
+        <!-- 1. Contains a blob named "test" -->
+        <containerName id="1">placeholder</containerName>
+        <!-- vents are created beforehand. See details in the test case  -->
+        <vnet id="1">placeholder</vnet>
+        <vnet id="2">placeholder</vnet>
+        <!-- Key vault created under the testing resource group. Refer to test case User identity for creation instructions -->
+        <keyVault id="1">
+            <vaultName>placeholder</vaultName>
+            <keyVaultUri>placeholder</keyVaultUri>
+            <keyName>placeholder</keyName>
+            <keyVersion>placeholder</keyVersion>
+            <argumentList>placeholder</argumentList>
+            <keyUri id="1">placeholder</keyUri>
+            <keyUri id="2">placeholder</keyUri>
+            <keyUri id="3">placeholder</keyUri>
+        </keyVault>
+        <fileAD>
+            <resourceGroupName>placeholder</resourceGroupName>
+            <accountName id="1">placeholder</accountName>
+            <accountName id="2">placeholder</accountName>
+            <accountName id="3">placeholder</accountName>
+            <accountName id="4">placeholder</accountName>
+            <accountName id="5">placeholder</accountName>
+            <domainName>placeholder</domainName>
+            <netBiosDomainName>placeholder</netBiosDomainName>
+            <forestName>placeholder</forestName>
+            <domainGuid>placeholder</domainGuid>
+            <domainSid>placeholder</domainSid>
+            <azureStorageSid>placeholder</azureStorageSid>
+        </fileAD>
+        <userIdentity>
+            <!-- Key vault is created before tests. Creation steps are in the test case  -->
+            <keyVaultName id="1">placeholder</keyVaultName>
+            <keyVaultName id="2">placeholder</keyVaultName>
+            <keyVersion id="1">placeholder</keyVersion>
+            <keyVersion id="2">placeholder</keyVersion>
+            <userIdentity id="1">placeholder</userIdentity>
+            <userIdentity id="2">placeholder</userIdentity>
+            <adGroupObjectId id="1">placeholder</adGroupObjectId>
+            <!-- ID of /subscriptions/{SubscriptionId}/resourceGroups/weitry/providers/Microsoft.ManagedIdentity/userAssignedIdentities/weitestid1 -->
+            <adGroupObjectId id="2">placeholder</adGroupObjectId>
+            <!-- ID of /subscriptions/{SubscriptionId}/resourceGroups/weitry/providers/Microsoft.ManagedIdentity/userAssignedIdentities/weitestid2 -->
+            <adGroupObjectId id="3">placeholder</adGroupObjectId>
+        </userIdentity>
+        <nfsv3>
+            <!-- vnet should be created beforehand with the following commands:  -->
+            <!-- New-AzVirtualNetwork -ResourceGroupName $rgname -Location "eastus2euap" -AddressPrefix 10.0.0.0/24 -Name "vnet1"  -->
+            <!-- $n = Get-AzVirtualNetwork -ResourceGroupName $rgname -Name "vnet1" | Add-AzVirtualNetworkSubnetConfig -Name "subnet1" -AddressPrefix "10.0.0.0/28" -ServiceEndpoint "Microsoft.Storage"  | Set-AzVirtualNetwork  -->
+            <vnet>placeholder</vnet>
+        </nfsv3>
+        <federatedClientId>
+            <subscription>placeholder</subscription>
+            <tenant>placeholder</tenant>
+            <keyvaultName>placeholder</keyvaultName>
+            <userIdentity>placeholder</userIdentity>
+            <objectId>placeholder</objectId>
+            <federatedClientId id="1">placeholder</federatedClientId>
+            <federatedClientId id="2">placeholder</federatedClientId>
+        </federatedClientId>
+    </section>
+</config>

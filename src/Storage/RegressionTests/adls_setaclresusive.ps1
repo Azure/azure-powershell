@@ -1,5 +1,4 @@
 ﻿# Invoke-Pester C:\Users\weiwei\Desktop\PSH_Script\PSHTest\dataplane.ps1 -Show All -Strict -ExcludeTagFilter "Preview" 
-Import-Module C:\Users\weiwei\Desktop\PSH_Script\PSHTest\utils.ps1
 
 function ResetFileToFail
 {
@@ -12,21 +11,27 @@ function ResetFileToFail
 
 
 BeforeAll {
-    # Replace the path to your local config file 
-    $config = (Get-Content D:\code\azure-powershell\src\Storage\RegressionTests\config.json -Raw | ConvertFrom-Json).adlsSetAclConfig
-    Import-Module C:\Users\weiwei\Desktop\PSH_Script\Assert.ps1
-    Import-Module C:\Users\weiwei\Desktop\PSH_Script\PSHTest\utils.ps1
-    $secpasswd = ConvertTo-SecureString $config.credentials.secpwd -AsPlainText -Force
-    $cred = New-Object System.Management.Automation.PSCredential ($config.credentials.username, $secpasswd)
-    Add-AzAccount -ServicePrincipal -Tenant $config.credentials.tenantId -SubscriptionId $config.credentials.subscriptionId -Credential $cred 
+    # Modify the path to your own
+    Import-Module D:\code\azure-powershell\src\Storage\RegressionTests\utils.ps1
+    
+    [xml]$config = Get-Content D:\code\azure-powershell\src\Storage\RegressionTests\config.xml
+    $globalNode = $config.SelectSingleNode("config/section[@id='global']")
+    $testNode = $config.SelectSingleNode("config/section[@id='adlsSetAcl']")
+    
+    $secpasswd = ConvertTo-SecureString $globalNode.secPwd -AsPlainText -Force
+    $cred = New-Object System.Management.Automation.PSCredential ($globalNode.applicationId, $secpasswd)
+    Add-AzAccount -ServicePrincipal -Tenant $globalNode.tenantId -SubscriptionId $globalNode.subscriptionId -Credential $cred 
 
-    $ctx = New-AzStorageContext  aclcbn06stf -StorageAccountKey $config.credentials.storageAccountKey
-    $ctx2 = New-AzStorageContext  aclcbn06stf
+    $resourceGroupName = $globalNode.resourceGroupName
+    $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $testNode.accountName)[0].Value
+
+    $ctx = New-AzStorageContext  $testNode.accountName -StorageAccountKey $storageAccountKey
+    $ctx2 = New-AzStorageContext  $testNode.accountName
 
     $filesystemName = "adlstest2"
-    $localSrcFile = "C:\temp\testfile_1K_0"
-    $id = $config.credentials.entityId
-    $leaseID = $config.credentials.leaseId
+    $localSrcFile = "C:\temp\testfile_1K_0" #The file needs to exist before tests, and should be 512 bytes aligned
+    $id = $globalNode.applicationId
+    $leaseID = $testNode.leaseId
 
 
     # create file system

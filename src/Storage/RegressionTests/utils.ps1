@@ -1,8 +1,4 @@
-﻿$filePathConfig = (Get-Content D:\psh_scripts\config.json -Raw | ConvertFrom-Json).filePaths
-Import-Module $filePathConfig.assert
-
-
-function Assert-AreEqual
+﻿function Assert-AreEqual
 {
     param([object] $expected, [object] $actual, [string] $message)
 
@@ -63,6 +59,11 @@ function CreateFileTree
 function GetRandomContainerName
 {
     return "container"+(Get-Date).Ticks
+}
+
+function GetRandomAccountName 
+{
+    return "sto"+ (Get-Random)
 }
 
 
