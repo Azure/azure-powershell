@@ -1,21 +1,18 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
-```
+Remove-AzApplicationInsightsWorkbookTemplate -ResourceGroupName $env.resourceGroup -Name workbooktemplate-pwsh01
 
 ```output
-{{ Add output here }}
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzApplicationInsightsWorkbookTemplate -ResourceGroupName $env.resourceGroup -Name workbooktemplate-pwsh01 | Remove-AzApplicationInsightsWorkbookTemplate
 ```
 
 ```output
-{{ Add output here }}
 ```
 
 {{ Add description here }}

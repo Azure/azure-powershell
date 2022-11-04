@@ -24,22 +24,13 @@ Create an in-memory object for WorkbookTemplateGallery.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+New-AzApplicationInsightsWorkbookTemplateGalleryObject -Category "Failures" -Name "Simple Template" -Type 'tsg' -ResourceType "microsoft.insights/components" -Order 100
 ```
 
 ```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
+Name            Category
+----            --------
+Simple Template Failures
 ```
 
 {{ Add description here }}

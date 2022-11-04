@@ -12,13 +12,7 @@ Get a single workbook template by its resourceName.
 
 ## SYNTAX
 
-### List (Default)
-```
-Get-AzApplicationInsightsWorkbookTemplate -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
+### Get (Default)
 ```
 Get-AzApplicationInsightsWorkbookTemplate -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -48,11 +42,42 @@ Get a single workbook template by its resourceName.
 
 ### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+$gallery = New-AzApplicationInsightsWorkbookTemplateGalleryObject -Category "Failures" -Name "Simple Template" -Type 'tsg' -ResourceType "microsoft.insights/components" -Order 100
+
+$data = @{
+  "version"= "Notebook/1.0";
+  "items"= @(
+    @{
+      "type"= 1;
+      "content"= @{
+        "json"= "## New workbook\n---\n\nWelcome to your new workbook.  This area will display text formatted as markdown.\n\n\nWe've included a basic analytics query to get you started. Use the `Edit` button below each section to configure it or add more sections."
+      };
+      "name"= "text - 2"
+    },
+    @{
+      "type"= 3;
+      "content"= @{
+        "version"= "KqlItem/1.0";
+        "query"= "union withsource=TableName *\n| summarize Count=count() by TableName\n| render barchart";
+        "size"= 1;
+        "exportToExcelOptions"= "visible";
+        "queryType"= 0;
+        "resourceType"= "microsoft.operationalinsights/workspaces"
+      };
+      "name"= "query - 2"
+    }
+  );
+  "styleSettings"= @{};
+  "$schema"= "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}
+
+New-AzApplicationInsightsWorkbookTemplate -ResourceGroupName resourceGroup -Name 'workbooktemplate-pwsh01' -Location 'westus2' -Gallery $gallery -TemplateData $data -Priority 1 | Get-AzApplicationInsightsWorkbookTemplate -ResourceGroupName $env.resourceGroup -Name workbooktemplate-pwsh01 | Get-AzApplicationInsightsWorkbookTemplate
 ```
 
 ```output
-{{ Add output here }}
+ResourceGroupName       Name                    Location
+-----------------       ----                    --------
+appinsights-hkrs2v-test workbooktemplate-pwsh01 westus2
 ```
 
 {{ Add description here }}
@@ -111,7 +136,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -126,7 +151,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False

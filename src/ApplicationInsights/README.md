@@ -84,6 +84,30 @@ directive:
           "additionalProperties": true,
           "description": "Valid JSON object containing workbook template payload."
       }
+  # Add 200 status code.
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/myWorkbooks/{resourceName}"].patch.responses
+    transform: >-
+      return {
+          "200": {
+            "description": "The private workbook definition updated.",
+            "schema": {
+              "$ref": "#/definitions/MyWorkbook"
+            }
+          },
+          "201": {
+            "description": "The private workbook definition updated.",
+            "schema": {
+              "$ref": "#/definitions/MyWorkbook"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/MyWorkbookError"
+            }
+          }
+        }
 
   - where:
       subject: WebTest
@@ -93,6 +117,12 @@ directive:
   - where:
       subject: MyWorkbook|Workbook|WorkbookTemplate
       verb: Set
+    remove: true
+  # Response schema does not map defined in the swagger.
+  - where:
+      verb: Get
+      subject: WorkbookTemplate
+      variant: ^List$
     remove: true
 
   - where:
