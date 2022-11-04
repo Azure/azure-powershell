@@ -40,7 +40,7 @@ ForEach ($FilePath In $FilesChanged)
     {
         $ModuleName = $FilePath.Split("/")[1]
 
-        $FileTypeArray = @(".cs", ".psd1", ".csproj", ".ps1xml", ".resx")
+        $FileTypeArray = @(".cs", ".psd1", ".csproj", ".ps1xml", ".resx", ".ps1", ".psm1")
         $FileType = [System.IO.Path]::GetExtension($FilePath)
         If ($FileType -In $FileTypeArray)
         {
