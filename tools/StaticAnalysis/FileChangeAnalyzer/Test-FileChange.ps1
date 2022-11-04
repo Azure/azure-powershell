@@ -48,7 +48,7 @@ ForEach ($FilePath In $FilesChanged)
                     $ExceptionList += [FileChangeIssue]@{
                         Module = "Az.$ModuleName";
                         Severity = 2;
-                        Description = "A update of `ChangeLog.md` is necessary if you want a new version of Az.$ModuleName."
+                        Description = "It is required to update `ChangeLog.md` if you want to release a new version for Az.$ModuleName."
                         Remediation = "Add a changelog record under `Upcoming Release` section with past tense."
                     }
                 }
@@ -61,8 +61,8 @@ ForEach ($FilePath In $FilesChanged)
             $ExceptionList += [FileChangeIssue]@{
                 Module = "Az.$ModuleName";
                 Severity = 2;
-                Description = "We will update AssemblyInfo.cs automaticlly. Please donot update it manually."
-                Remediation = "Revert AssemblyInfo.cs to last version."
+                Description = "AssemblyInfo.cs will be updated automatically. Please do not update it manually."
+                Remediation = "Revert AssemblyInfo.cs to its last version."
             }
         }
     }
