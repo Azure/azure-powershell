@@ -31,7 +31,7 @@ namespace Commands.Automation.Test
         public void TestCreateRunbookGraph()
         {
             // Write PS Function and call it here
-            TestRunner.RunTestScript("Test-CreateRunbookGraph -Name RB-Graphical-01");
+            TestRunner.RunTestScript("Test-CreateRunbookGraph -Name RB-Graphical");
         }
 
         [Fact]
