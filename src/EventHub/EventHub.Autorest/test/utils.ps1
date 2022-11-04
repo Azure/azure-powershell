@@ -161,6 +161,6 @@ function GenerateSASKey {
 
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $resourceGroup
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 
