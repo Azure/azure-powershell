@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         throw new ArgumentException(Resources.BothRetentionAndSchedulePoliciesEmpty);
                     }
                     AzureVmWorkloadProtectionPolicy azureVmWorkloadModifyPolicy = new AzureVmWorkloadProtectionPolicy();
-                    azureVmWorkloadModifyPolicy.Settings = new Settings("UTC",
+                    azureVmWorkloadModifyPolicy.Settings = new Settings(((CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy).ScheduleRunTimeZone,
                         ((AzureVmWorkloadPolicy)policy).IsCompression,
                         ((AzureVmWorkloadPolicy)policy).IsCompression);
                     azureVmWorkloadModifyPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     AzureWorkloadProviderHelper.CopyScheduleTimeToRetentionTimes(
                         (CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy,
                         (CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy);
-                    Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
+                    Logger.Instance.WriteDebug("Copy of RetentionTime from SchedulePolicy to RetentionPolicy is successful");
 
                     // Now validate both RetentionPolicy and SchedulePolicy matches or not
                     PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
@@ -720,9 +720,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         PolicyHelpers.ValidateFullBackupRetentionPolicyWithTieringPolicy((CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy, ((AzureVmWorkloadPolicy)policy).FullBackupTieringPolicy, true);
                     }
 
+                    string timeZone = (((CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy).ScheduleRunTimeZone != null) ? ((CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy).ScheduleRunTimeZone  : "UTC";
+
                     // construct Service Client policy request
                     AzureVmWorkloadProtectionPolicy azureVmWorkloadProtectionPolicy = new AzureVmWorkloadProtectionPolicy();
-                    azureVmWorkloadProtectionPolicy.Settings = new Settings("UTC",
+                    azureVmWorkloadProtectionPolicy.Settings = new Settings(timeZone,
                         ((AzureVmWorkloadPolicy)policy).IsCompression,
                         ((AzureVmWorkloadPolicy)policy).IsCompression);
                     azureVmWorkloadProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
@@ -760,9 +762,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 PolicyHelpers.ValidateFullBackupRetentionPolicyWithTieringPolicy(((SQLRetentionPolicy)retentionPolicy).FullBackupRetentionPolicy, tieringDetails);
                 Logger.Instance.WriteDebug("Validation of Retention policy with Tiering policy is successful");
 
+                string timeZone = (((SQLSchedulePolicy)schedulePolicy).FullBackupSchedulePolicy.ScheduleRunTimeZone != null) ? ((SQLSchedulePolicy)schedulePolicy).FullBackupSchedulePolicy.ScheduleRunTimeZone : "UTC";
+
                 // construct Service Client policy request            
                 AzureVmWorkloadProtectionPolicy azureVmWorkloadProtectionPolicy = new AzureVmWorkloadProtectionPolicy();
-                azureVmWorkloadProtectionPolicy.Settings = new Settings("UTC",
+                azureVmWorkloadProtectionPolicy.Settings = new Settings(timeZone, 
                     ((SQLSchedulePolicy)schedulePolicy).IsCompression,
                     ((SQLSchedulePolicy)schedulePolicy).IsCompression);
                 azureVmWorkloadProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(workloadType.ToString());

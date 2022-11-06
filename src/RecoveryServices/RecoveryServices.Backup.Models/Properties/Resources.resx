@@ -289,7 +289,7 @@
     <value>Please pass Job or List of Jobs as input. Your input is of type: {0}</value>
   </data>
   <data name="ScheduleTimeNotInUTCTimeZoneException" xml:space="preserve">
-    <value>ScheduleRunTimes in Schedule Policy should be in UTC Timezone</value>
+    <value>ScheduleRunTimes in Schedule Policy should be in UTC Time, however policy can be created in a different time zone by providing the timezone in ScheduleRunTimeZone attribute</value>
   </data>
   <data name="InvalidProtectionItemException" xml:space="preserve">
     <value>Invalid Item - either NULL or NOT of type: {0}</value>
