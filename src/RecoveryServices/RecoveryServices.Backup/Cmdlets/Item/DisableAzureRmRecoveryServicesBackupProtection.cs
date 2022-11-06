@@ -55,6 +55,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
 
         /// <summary>
+        /// If this option is used, all the data backed up for this item will 
+        /// expire as per the protection policy retention settings
+        /// </summary>
+        [Parameter(Mandatory = false,  HelpMessage = ParamHelpMsgs.Item.SuspendBackupOption)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter RetainRecoveryPointsAsPerPolicy { get; set; }
+
+        /// <summary>
         /// Auxiliary access token for authenticating critical operation to resource guard subscription
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken, ValueFromPipeline = false)]
@@ -88,6 +96,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         if (Token != "" && Token != null && !this.DeleteBackupData)
                         {
                             throw new ArgumentException(String.Format(Resources.DisableWithRetainBackupNotCrititcal));
+                        }
+
+                        if(DeleteBackupData && RetainRecoveryPointsAsPerPolicy.IsPresent)
+                        {
+                            throw new ArgumentException(String.Format(Resources.CantRemoveAndRetainRPsSimultaneously));
                         }
 
                         PsBackupProviderManager providerManager =
@@ -166,6 +179,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                         vaultName: vaultName,
                                         resourceGroupName: resourceGroupName);
                             }
+                        }
+                        else if (RetainRecoveryPointsAsPerPolicy.IsPresent)
+                        {
+                            var itemResponse = psBackupProvider.SuspendBackup();
+                            Logger.Instance.WriteDebug("Suspend backup response " + JsonConvert.SerializeObject(itemResponse));
+
+                            // Track Response and display job details
+                            HandleCreatedJob(
+                                    itemResponse,
+                                    Resources.DisableProtectionOperation,
+                                    vaultName: vaultName,
+                                    resourceGroupName: resourceGroupName);
                         }
                         else
                         {

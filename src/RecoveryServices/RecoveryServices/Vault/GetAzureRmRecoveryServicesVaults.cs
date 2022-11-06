@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [OutputType(typeof(ARSVault))]
     public class GetAzureRmRecoveryServicesVaults : RecoveryServicesCmdletBase
     {
-
         public const string ByTagObjectParameterSet = "ByTagObjectParameterSet";
         public const string ByTagNameValueParameterSet = "ByTagNameValueParameterSet";
         public const string ByNameVaultResourceGroupParameterSet = "ByNameVaultResourceGroupParameterSet";
@@ -68,6 +67,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
+
+        /// <summary>
+        /// Filters RS vault based on Immutability State. Allowed values are Disabled, Unlocked, Locked.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        [ValidateSet("Disabled", "Unlocked", "Locked")]
+        public ImmutabilityState? ImmutabilityState { get; set; }
 
         #endregion Parameters
 
@@ -168,6 +174,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     }
                 }
             }
+
+            // filter based on immutabilityState
+            if(ImmutabilityState != null)
+            {
+                filteredVaults = filteredVaults.Where(
+                filteredVault =>
+                {
+                    if(filteredVault != null && filteredVault.Properties != null && filteredVault.Properties.SecuritySettings != null && filteredVault.Properties.SecuritySettings.ImmutabilitySettings != null
+                         && filteredVault.Properties.SecuritySettings.ImmutabilitySettings.State == ImmutabilityState.ToString())
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }).ToList();
+            }
+            
+
             if (string.IsNullOrEmpty(this.Name))
             {
                 this.WriteObject(filteredVaults.Select(v => new ARSVault(v)), true);

@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using Microsoft.Rest.Azure.OData;
 using RestAzureNS = Microsoft.Rest.Azure;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -145,8 +146,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 AzureFabricName,
                 containerName,
                 protectedItemName,
-                moveRequest
-                ).Result.Body;
+                moveRequest.ObjectType,
+                moveRequest.ExcludedRPList
+                ).Result.Body; // track1
 
             Func<string, RestAzureNS.IPage<RecoveryPointResource>> listNextAsync =
                 nextLink => BmsAdapter.Client.RecoveryPointsRecommendedForMove.ListNextWithHttpMessagesAsync(

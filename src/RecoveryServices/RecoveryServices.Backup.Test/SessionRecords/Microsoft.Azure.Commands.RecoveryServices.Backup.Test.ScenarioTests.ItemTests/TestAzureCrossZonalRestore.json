@@ -3058,6 +3058,64 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "119"
+        ],
+        "x-ms-correlation-request-id": [
+          "daae4779-41c0-4ef8-b71f-5d9cadbf72e9"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T080852Z:daae4779-41c0-4ef8-b71f-5d9cadbf72e9"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:08:51 GMT"
+        ],
+        "Content-Length": [
+          "1289"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT1M47.6042985S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
         "x-ms-request-id": [
           "430f5c28-7883-44da-9c56-ba66c89789b1"
         ],
@@ -3077,11 +3135,101 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "x-ms-request-id": [
+          "92825f0c-b921-4511-8702-bd881b56d8c5"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "116"
+        ],
+        "x-ms-correlation-request-id": [
+          "92825f0c-b921-4511-8702-bd881b56d8c5"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T080855Z:92825f0c-b921-4511-8702-bd881b56d8c5"
+        ],
         "Date": [
           "Tue, 29 Nov 2022 17:23:42 GMT"
         ],
+        "Content-Length": [
+          "1289"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
         "Expires": [
           "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT1M50.8446345S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "2acd6ce6-c823-46d5-b22c-0c1d7de5007b"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "115"
+        ],
+        "x-ms-correlation-request-id": [
+          "2acd6ce6-c823-46d5-b22c-0c1d7de5007b"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T080856Z:2acd6ce6-c823-46d5-b22c-0c1d7de5007b"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:08:56 GMT"
         ],
         "Content-Length": [
           "0"
@@ -3097,6 +3245,9 @@
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "e535ddab-d07d-470d-b6c7-05eece744951"
+        ],
+        "Accept-Language": [
+          "en-US"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.51102",
@@ -3119,11 +3270,107 @@
         "x-ms-ratelimit-remaining-resource": [
           "Microsoft.Compute/GetOperation3Min;14998,Microsoft.Compute/GetOperation30Min;29998"
         ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "ee981772-2f6c-4f7b-89c2-efbb7db14095"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "29"
+        ],
+        "x-ms-correlation-request-id": [
+          "ee981772-2f6c-4f7b-89c2-efbb7db14095"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081039Z:ee981772-2f6c-4f7b-89c2-efbb7db14095"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:10:38 GMT"
+        ],
+        "Content-Length": [
+          "1289"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT3M34.1554508S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
         "x-ms-request-id": [
           "2cd61168-ee88-4ac7-8ceb-fdee4ba2ed4a"
+        ],
+        "Pragma": [
+          "no-cache"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -3132,14 +3379,56 @@
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
+        "x-ms-request-id": [
+          "a0b675f1-cae6-4e2b-8524-92d6f6f74e97"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "27"
+        ],
         "x-ms-correlation-request-id": [
           "f1037f94-a034-4d92-98f2-77de56ddbbac"
         ],
         "x-ms-routing-request-id": [
           "JIOINDIAWEST:20221129T172353Z:f1037f94-a034-4d92-98f2-77de56ddbbac"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "x-ms-request-id": [
+          "733580cc-e1a1-4c6c-8391-e2603f25da21"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "26"
+        ],
+        "x-ms-correlation-request-id": [
+          "733580cc-e1a1-4c6c-8391-e2603f25da21"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081042Z:733580cc-e1a1-4c6c-8391-e2603f25da21"
         ],
         "Date": [
           "Tue, 29 Nov 2022 17:23:53 GMT"
@@ -3186,8 +3475,105 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "25"
+        ],
+        "x-ms-correlation-request-id": [
+          "504a4dd3-81f2-49c6-a9e1-d5538a5dc330"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081043Z:504a4dd3-81f2-49c6-a9e1-d5538a5dc330"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:10:42 GMT"
+        ],
+        "Content-Length": [
+          "1289"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT3M38.4050844S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
         "x-ms-request-id": [
           "54ebb8db-4671-4f0f-9a2d-99a164c2bbea"
+        ],
+        "Content-Length": [
+          "1289"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT3M39.4206576S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -3202,8 +3588,70 @@
         "x-ms-routing-request-id": [
           "JIOINDIAWEST:20221129T172424Z:f28ae18f-82ad-4bab-99f8-758cf8ef1227"
         ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT3M40.6848418S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "x-ms-request-id": [
+          "f120d74b-8c1e-4720-9ca4-03dec447a479"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "22"
+        ],
+        "x-ms-correlation-request-id": [
+          "f120d74b-8c1e-4720-9ca4-03dec447a479"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081046Z:f120d74b-8c1e-4720-9ca4-03dec447a479"
         ],
         "Date": [
           "Tue, 29 Nov 2022 17:24:23 GMT"
@@ -3247,11 +3695,143 @@
         "x-ms-ratelimit-remaining-resource": [
           "Microsoft.Compute/GetOperation3Min;14995,Microsoft.Compute/GetOperation30Min;29995"
         ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "1d0117b6-ec2f-4922-8b18-adac1c2211e4"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "21"
+        ],
+        "x-ms-correlation-request-id": [
+          "1d0117b6-ec2f-4922-8b18-adac1c2211e4"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081047Z:1d0117b6-ec2f-4922-8b18-adac1c2211e4"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:10:47 GMT"
+        ],
+        "Content-Length": [
+          "1289"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT3M42.9973949S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
         "x-ms-request-id": [
           "50e1788f-bb27-4466-8243-b9c4420b0eb4"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "20"
+        ],
+        "x-ms-correlation-request-id": [
+          "12ef598a-46fd-41d5-aa76-312ff372f7ea"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081048Z:12ef598a-46fd-41d5-aa76-312ff372f7ea"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:10:48 GMT"
+        ],
+        "Content-Length": [
+          "1289"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT3M44.0378084S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -3269,14 +3849,919 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "x-ms-request-id": [
+          "860af750-5a6c-4480-8d2f-c49c25353cf5"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "18"
+        ],
+        "x-ms-correlation-request-id": [
+          "860af750-5a6c-4480-8d2f-c49c25353cf5"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081050Z:860af750-5a6c-4480-8d2f-c49c25353cf5"
+        ],
         "Date": [
           "Tue, 29 Nov 2022 17:24:23 GMT"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "b10fb36f-55fd-4b02-ad36-d64f5517f357"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "9"
+        ],
+        "x-ms-correlation-request-id": [
+          "b10fb36f-55fd-4b02-ad36-d64f5517f357"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081101Z:b10fb36f-55fd-4b02-ad36-d64f5517f357"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:11:01 GMT"
+        ],
+        "Content-Length": [
+          "1289"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT3M56.6853943S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "d7397f15-44a7-4b74-989b-be6b20d94f41"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "8"
+        ],
+        "x-ms-correlation-request-id": [
+          "d7397f15-44a7-4b74-989b-be6b20d94f41"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081102Z:d7397f15-44a7-4b74-989b-be6b20d94f41"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:11:02 GMT"
+        ],
+        "Content-Length": [
+          "1289"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT3M57.6543038S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "3b73c21d-1e89-41c9-a827-7fe43eda71f1"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "7"
+        ],
+        "x-ms-correlation-request-id": [
+          "3b73c21d-1e89-41c9-a827-7fe43eda71f1"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081103Z:3b73c21d-1e89-41c9-a827-7fe43eda71f1"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:11:03 GMT"
+        ],
+        "Content-Length": [
+          "1289"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT3M58.6068508S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "377bfece-988d-4182-aab9-e31fa9b075c6"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "6"
+        ],
+        "x-ms-correlation-request-id": [
+          "377bfece-988d-4182-aab9-e31fa9b075c6"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081104Z:377bfece-988d-4182-aab9-e31fa9b075c6"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:11:04 GMT"
+        ],
+        "Content-Length": [
+          "1289"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT3M59.8413221S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "86dc90fe-a618-41b4-bf83-34e196020388"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "5"
+        ],
+        "x-ms-correlation-request-id": [
+          "86dc90fe-a618-41b4-bf83-34e196020388"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081105Z:86dc90fe-a618-41b4-bf83-34e196020388"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:11:05 GMT"
+        ],
+        "Content-Length": [
+          "1288"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT4M0.9206526S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "1db06fa9-27e4-4019-8bc2-862c87c4b064"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "4"
+        ],
+        "x-ms-correlation-request-id": [
+          "1db06fa9-27e4-4019-8bc2-862c87c4b064"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081106Z:1db06fa9-27e4-4019-8bc2-862c87c4b064"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:11:06 GMT"
+        ],
+        "Content-Length": [
+          "1288"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT4M1.9881804S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "9c68c84b-1bfd-4baa-a3ba-86d54f620f53"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "3"
+        ],
+        "x-ms-correlation-request-id": [
+          "9c68c84b-1bfd-4baa-a3ba-86d54f620f53"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081107Z:9c68c84b-1bfd-4baa-a3ba-86d54f620f53"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:11:07 GMT"
+        ],
+        "Content-Length": [
+          "1288"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT4M3.0133095S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "f84b930f-02e4-444c-9f4e-423f75c9028f"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "2"
+        ],
+        "x-ms-correlation-request-id": [
+          "f84b930f-02e4-444c-9f4e-423f75c9028f"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081108Z:f84b930f-02e4-444c-9f4e-423f75c9028f"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:11:08 GMT"
+        ],
+        "Content-Length": [
+          "1288"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT4M4.0036095S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "4051ad49-bc22-4dbc-a144-184d78c1f51f"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "1"
+        ],
+        "x-ms-correlation-request-id": [
+          "4051ad49-bc22-4dbc-a144-184d78c1f51f"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081109Z:4051ad49-bc22-4dbc-a144-184d78c1f51f"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:11:09 GMT"
+        ],
+        "Content-Length": [
+          "1288"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT4M5.0294744S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "14c112cb-01a9-4d4b-9965-359598349c31"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "0"
+        ],
+        "x-ms-correlation-request-id": [
+          "14c112cb-01a9-4d4b-9965-359598349c31"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081110Z:14c112cb-01a9-4d4b-9965-359598349c31"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:11:10 GMT"
+        ],
+        "Content-Length": [
+          "1288"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT4M6.0506352S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "cb797d8b-0bca-44fb-93ee-a526354e8458"
+        ],
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098",
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "-1"
+        ],
+        "x-ms-correlation-request-id": [
+          "cb797d8b-0bca-44fb-93ee-a526354e8458"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081111Z:cb797d8b-0bca-44fb-93ee-a526354e8458"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:11:11 GMT"
+        ],
+        "Content-Length": [
+          "1288"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"name\": \"31e562c7-5a2a-4887-80b6-00544a43217c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;HIAGARG;hiagaNZP\",\r\n    \"duration\": \"PT4M7.1155524S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        },\r\n        {\r\n          \"taskId\": \"Create the restored virtual machine\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"NotStarted\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover VM to an alternate location\",\r\n        \"Original VM Name\": \"hiagaNZP\",\r\n        \"Target VM Name\": \"czr-pstest-vm\",\r\n        \"Target VNet Name\": \"Group hiagarg hiagaNZPVNet\",\r\n        \"Target Storage Account Name\": \"hiagaeussa\",\r\n        \"Recovery point time \": \"10/27/2022 3:14:05 AM\",\r\n        \"Target resource group\": \"hiagarg\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"AlternateLocation\"\r\n      },\r\n      \"progressPercentage\": 1.0,\r\n      \"dynamicErrorMessage\": \"\"\r\n    },\r\n    \"entityFriendlyName\": \"hiagaNZP\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2022-10-28T08:07:03.8693756Z\",\r\n    \"activityId\": \"84257844-cffa-42fb-8e93-9c0d8b49a098\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupJobs/31e562c7-5a2a-4887-80b6-00544a43217c?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwSm9icy8zMWU1NjJjNy01YTJhLTQ4ODctODBiNi0wMDU0NGE0MzIxN2M/YXBpLXZlcnNpb249MjAyMi0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84257844-cffa-42fb-8e93-9c0d8b49a098"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "324"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "7e8de5b8-3d47-4df4-8c4a-307d055945ee"
+        ],
+        "x-ms-correlation-request-id": [
+          "7e8de5b8-3d47-4df4-8c4a-307d055945ee"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081112Z:7e8de5b8-3d47-4df4-8c4a-307d055945ee"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:11:11 GMT"
+        ],
+        "Connection": [
+          "close"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ],
         "Content-Length": [
-          "0"
+          "236"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceRequestsThrottled\",\r\n    \"message\": \"Number of requests for action 'Microsoft.RecoveryServices/vaults/backupJobs/read' exceeded the limit of '150' for time interval '01:00:00'. Please try again after '324' seconds.\"\r\n  }\r\n}",
+      "StatusCode": 429
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/czr-pstest-vm?api-version=2022-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9jenItcHN0ZXN0LXZtP2FwaS12ZXJzaW9uPTIwMjItMDgtMDE=",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7584f811-0767-481c-9083-b73ea3935f7f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/58.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "c27db258-cebc-452f-ba92-b95158b08650"
+        ],
+        "x-ms-correlation-request-id": [
+          "c27db258-cebc-452f-ba92-b95158b08650"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20221028T081255Z:c27db258-cebc-452f-ba92-b95158b08650"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 28 Oct 2022 08:12:55 GMT"
+        ],
+        "Expires": [
+          "-1"
         ]
       },
       "ResponseBody": "",
