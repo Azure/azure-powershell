@@ -1,0 +1,176 @@
+{
+   "resourceType":"containerGroups",
+   "apiVersion":"2021-09-01",
+   "learnMore":{
+      "url":"https://learn.microsoft.com/powershell/module/az.containerinstance"
+   },
+   "commands":[
+      {
+         "name":"Get-AzContainerGroup",
+         "description":"Gets the properties of the specified container group in the specified subscription and resource group.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
+         "confirmation":false,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainergroup"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-SubscriptionId <String[]>]",
+                     "-ResourceGroupName <String>",
+                     "-Name <String>"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Gets the properties of the specified container group in the specified subscription and resource group.",
+               "parameters":[
+                  {
+                     "name":"SubscriptionId",
+                     "value":"subscriptionId"
+                  },
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-VMScaleSetName",
+                     "value":"[path.containerGroupName]"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "name":"Restart-AzContainerGroup",
+         "description":"Restarts all containers in a container group in place.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/restart",
+         "confirmation":false,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.containerinstance/restart-azcontainergroup"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-SubscriptionId <String>]",
+                     "-ResourceGroupName <String>",
+                     "-Name <String>",
+                     "[-NoWait]",
+                     "[-PassThru]",
+                     "[-WhatIf]",
+                     "[-Confirm]"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Restarts all containers in a container group in place.",
+               "parameters":[
+                  {
+                     "name":"-SubscriptionId",
+                     "value":"[path.subscriptionId]"
+                  },                  
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-Name",
+                     "value":"[path.containerGroupName]"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "name":"Start-AzContainerGroup",
+         "description":"Starts all containers in a container group.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/start",
+         "confirmation":false,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.containerinstance/start-azcontainergroup"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-SubscriptionId <String>]",
+                     "-ResourceGroupName <String>",
+                     "-Name <String>",
+                     "[-NoWait]",
+                     "[-PassThru]",
+                     "[-WhatIf]",
+                     "[-Confirm]"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Starts all containers in a container group.",
+               "parameters":[
+                  {
+                     "name":"-SubscriptionId",
+                     "value":"[path.subscriptionId]"
+                  },                  
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-Name",
+                     "value":"[path.containerGroupName]"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "name":"Stop-AzContainerGroup",
+         "description":"Stops all containers in a container group.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/stop",
+         "confirmation":false,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.containerinstance/stop-azcontainergroup"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-SubscriptionId <String>]",
+                     "-ResourceGroupName <String>",
+                     "-Name <String>",
+                     "[-PassThru]",
+                     "[-WhatIf]",
+                     "[-Confirm]"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Stops all containers in a container group.",
+               "parameters":[
+                  {
+                     "name":"-SubscriptionId",
+                     "value":"[path.subscriptionId]"
+                  },                  
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-Name",
+                     "value":"[path.containerGroupName]"
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

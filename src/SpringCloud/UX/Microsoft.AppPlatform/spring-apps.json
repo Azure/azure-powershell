@@ -1,0 +1,53 @@
+{
+    "resourceType": "spring/apps",
+    "apiVersion": "2020-07-01",
+    "learnMore": {
+      "url": "https://learn.microsoft.com/powershell/module/az.springcloud/#spring-cloud"
+    },
+    "commands": [
+      {
+        "name": "Get-AzSpringCloudApp",
+        "description": "Get an App and its properties.",
+        "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
+        "help": {
+          "learnMore": {
+            "url": "https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudapp"
+          },
+          "parameterSets": [
+            {
+              "parameters": [
+                "-AppName <String>",
+                "-ServiceName <String>",
+                "-ResourceGroupName <String>",
+                "[-SubscriptionId <String[]>]"
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+              "description": "Get Spring Cloud App by name.",
+              "parameters": [
+                  {
+                      "name": "-ResourceGroupName",
+                      "value": "[path.resourceGroupName]"
+                  },
+                  {
+                      "name": "-AppName",
+                      "value": "[path.appName]"
+                  },
+                  {
+                      "name": "-ServiceName",
+                      "value": "[path.serviceName]"
+                  },
+                  {
+                      "name": "-SubscriptionId",
+                      "value": "[path.subscriptionId]"
+                  }
+              ]
+          }
+        ]
+      }
+    ]
+  }
+  
