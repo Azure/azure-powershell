@@ -174,9 +174,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityType = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType?) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityType, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType.CreateFrom);
             }
-            if (content.Contains("IdentityId"))
+            if (content.Contains("UserAssignedIdentity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityId = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityId, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("SystemDataCreatedByType"))
             {
@@ -359,9 +359,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityType = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType?) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityType, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType.CreateFrom);
             }
-            if (content.Contains("IdentityId"))
+            if (content.Contains("UserAssignedIdentity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityId = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityId, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("SystemDataCreatedByType"))
             {

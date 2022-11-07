@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubSchemaGroup'))
 }
 
 Describe 'New-AzEventHubSchemaGroup' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         $schemaGroup = New-AzEventHubSchemaGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.schemaGroup2 -SchemaCompatibility Forward -SchemaType Avro -GroupProperty @{a='b'; c='d'}
         $schemaGroup.Name | Should -Be $env.schemaGroup2
         $schemaGroup.ResourceGroupName | Should -Be $env.resourceGroup

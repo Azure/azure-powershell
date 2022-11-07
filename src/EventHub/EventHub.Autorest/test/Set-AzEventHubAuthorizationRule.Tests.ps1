@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubAuthorizationRu
 }
 
 Describe 'Set-AzEventHubAuthorizationRule' {
-    It 'SetExpandedNamespace' -skip {
+    It 'SetExpandedNamespace'  {
         $authRule = Set-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.authRule2 -Rights @("Listen")
         $authRule.Name | Should -Be $env.authRule2
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup
@@ -23,7 +23,7 @@ Describe 'Set-AzEventHubAuthorizationRule' {
         $authRule.Rights[0] | Should -Be "Listen"
     }
 
-    It 'SetExpandedEntity' -skip {
+    It 'SetExpandedEntity' {
         $authRule = Set-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.eventHubAuthRule2 -Rights @("Send")
         $authRule.Name | Should -Be $env.eventHubAuthRule2
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup
@@ -31,7 +31,7 @@ Describe 'Set-AzEventHubAuthorizationRule' {
         $authRule.Rights[0] | Should -Be "Send"
     }
 
-    It 'SetViaIdentityExpanded' -skip {
+    It 'SetViaIdentityExpanded' {
         $authRule = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.authRule2
         
         $authRule = Set-AzEventHubAuthorizationRule -InputObject $authRule -Rights @("Manage", "Send", "Listen")

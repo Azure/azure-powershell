@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubApplicationGrou
 }
 
 Describe 'New-AzEventHubApplicationGroup' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded'  {
         $t1 = New-AzEventHubThrottlingPolicyConfig -Name t1 -MetricId IncomingMessages -RateLimitThreshold 10000
         $t2 = New-AzEventHubThrottlingPolicyConfig -Name t2 -MetricId OutgoingBytes -RateLimitThreshold 20000
         $appGroup = New-AzEventHubApplicationGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name $env.appGroup2 -ClientAppGroupIdentifier SASKeyName=a -Policy $t1, $t2

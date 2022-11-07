@@ -15,19 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubPrivateEndpoint
 }
 
 Describe 'Get-AzEventHubPrivateEndpointConnection' {
-    #$listOfPrivateEndpoints = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+    $listOfPrivateEndpoints = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
     
-    It 'List' -skip {
+    It 'List'  {
         $listOfPrivateEndpoints.Count | Should -Be 2
     }
 
-    It 'Get' -skip {
+    It 'Get'  {
         $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[0].Name
         $privateEndpoint.ConnectionState | Should -Be "Rejected"
         $privateEndpoint.Description | Should -Be ""
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity'  {
         $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[1].Name
         $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint
         $privateEndpoint.ConnectionState | Should -Be "Rejected"

@@ -333,7 +333,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IEventHubIdentity>`: Identity parameter.
+INPUTOBJECT <IEventHubIdentity>: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[ApplicationGroupName <String>]`: The Application Group name 
   - `[AuthorizationRuleName <String>]`: The authorization rule name.
@@ -348,7 +348,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[SchemaGroupName <String>]`: The Schema Group name 
   - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
-`POLICY <IApplicationGroupPolicy[]>`: List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
+POLICY <IApplicationGroupPolicy[]>: List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
   - `Name <String>`: The Name of this policy
 
 ## RELATED LINKS

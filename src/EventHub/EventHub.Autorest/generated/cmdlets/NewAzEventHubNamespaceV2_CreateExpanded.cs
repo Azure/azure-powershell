@@ -117,18 +117,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
-        /// <summary>Properties for User Assigned Identities</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Properties for User Assigned Identities")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Properties for User Assigned Identities",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities IdentityId { get => _parametersBody.IdentityId ?? null /* object */; set => _parametersBody.IdentityId = value; }
-
         /// <summary>Type of managed service identity.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Body)]
@@ -389,6 +377,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.ITrackedResourceTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.ITrackedResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+
+        /// <summary>Properties for User Assigned Identities</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Properties for User Assigned Identities")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Properties for User Assigned Identities",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities UserAssignedIdentity { get => _parametersBody.UserAssignedIdentity ?? null /* object */; set => _parametersBody.UserAssignedIdentity = value; }
 
         /// <summary>
         /// Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.

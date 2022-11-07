@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubNetworkRuleSet'
 }
 
 Describe 'Get-AzEventHubNetworkRuleSet' {
-    It 'Get' -skip {
+    It 'Get'  {
         $networkRuleSet = Get-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $networkRuleSet.PublicNetworkAccess | Should -Be "Enabled"
         $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $null

@@ -53,10 +53,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.Identity()); set => this._identity = value; }
 
-        /// <summary>Properties for User Assigned Identities</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities IdentityId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
-
         /// <summary>ObjectId from the KeyVault</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
         public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).PrincipalId; }
@@ -256,6 +252,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
         public global::System.DateTime? UpdatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).UpdatedAt; }
 
+        /// <summary>Properties for User Assigned Identities</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities UserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
+
         /// <summary>
         /// Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
         /// </summary>
@@ -325,14 +325,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         SerializedName = @"isAutoInflateEnabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? EnableAutoInflate { get; set; }
-        /// <summary>Properties for User Assigned Identities</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Properties for User Assigned Identities",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities) })]
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities IdentityId { get; set; }
         /// <summary>ObjectId from the KeyVault</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
@@ -541,6 +533,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         SerializedName = @"updatedAt",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? UpdatedAt { get;  }
+        /// <summary>Properties for User Assigned Identities</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Properties for User Assigned Identities",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities UserAssignedIdentity { get; set; }
         /// <summary>
         /// Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
         /// </summary>
@@ -571,8 +571,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEncryption Encryption { get; set; }
         /// <summary>Properties of BYOK Identity description</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentity Identity { get; set; }
-        /// <summary>Properties for User Assigned Identities</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities IdentityId { get; set; }
         /// <summary>ObjectId from the KeyVault</summary>
         string IdentityPrincipalId { get; set; }
         /// <summary>TenantId from the KeyVault</summary>
@@ -637,6 +635,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CreatedByType? SystemDataLastModifiedByType { get; set; }
         /// <summary>The time the Namespace was updated.</summary>
         global::System.DateTime? UpdatedAt { get; set; }
+        /// <summary>Properties for User Assigned Identities</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities UserAssignedIdentity { get; set; }
         /// <summary>
         /// Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
         /// </summary>

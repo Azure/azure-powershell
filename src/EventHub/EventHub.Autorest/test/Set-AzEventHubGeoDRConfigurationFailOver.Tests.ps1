@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubGeoDRConfigurat
 }
 
 Describe 'Set-AzEventHubGeoDRConfigurationFailOver' {
-    It 'Fail' -skip {
+    It 'Fail'  {
         Set-AzEventHubGeoDRConfigurationFailOver -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace -Name $env.alias
         
         while($drConfig.ProvisioningState -ne "Succeeded"){
@@ -43,7 +43,7 @@ Describe 'Set-AzEventHubGeoDRConfigurationFailOver' {
             }
         }
     }
-    It 'FailViaIdentity' -skip {
+    It 'FailViaIdentity'  {
         $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
         
         Set-AzEventHubGeoDRConfigurationFailOver -InputObject $drConfig

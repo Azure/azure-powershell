@@ -15,10 +15,10 @@ Updates an EventHub Entity
 ```
 New-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AlternateName <String>] [-ClusterArmId <String>] [-DisableLocalAuth] [-EnableAutoInflate]
- [-IdentityId <IIdentityUserAssignedIdentities>] [-IdentityType <ManagedServiceIdentityType>] [-KafkaEnabled]
- [-KeyVaultProperty <IKeyVaultProperties[]>] [-Location <String>] [-MaximumThroughputUnits <Int64>]
- [-MinimumTlsVersion <TlsVersion>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-RequireInfrastructureEncryption] [-SkuCapacity <Int64>] [-SkuName <SkuName>] [-Tag <Hashtable>]
+ [-IdentityType <ManagedServiceIdentityType>] [-KafkaEnabled] [-KeyVaultProperty <IKeyVaultProperties[]>]
+ [-Location <String>] [-MaximumThroughputUnits <Int64>] [-MinimumTlsVersion <TlsVersion>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int64>]
+ [-SkuName <SkuName>] [-Tag <Hashtable>] [-UserAssignedIdentity <IIdentityUserAssignedIdentities>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -131,22 +131,6 @@ Value that indicates whether AutoInflate is enabled for eventhub namespace.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityId
-Properties for User Assigned Identities
-To construct, see NOTES section for IDENTITYID properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities
 Parameter Sets: (All)
 Aliases:
 
@@ -374,6 +358,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentity
+Properties for User Assigned Identities
+To construct, see NOTES section for USERASSIGNEDIDENTITY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -423,14 +423,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`IDENTITYID <IIdentityUserAssignedIdentities>`: Properties for User Assigned Identities
-  - `[(Any) <IUserAssignedIdentity>]`: This indicates any property can be added to this object.
-
-`KEYVAULTPROPERTY <IKeyVaultProperties[]>`: Properties to configure Encryption
+KEYVAULTPROPERTY <IKeyVaultProperties[]>: Properties to configure Encryption
   - `[IdentityUserAssignedIdentity <String>]`: ARM ID of user Identity selected for encryption
   - `[KeyName <String>]`: Name of the Key from KeyVault
   - `[KeyVaultUri <String>]`: Uri of KeyVault
   - `[KeyVersion <String>]`: Key Version
+
+USERASSIGNEDIDENTITY <IIdentityUserAssignedIdentities>: Properties for User Assigned Identities
+  - `[(Any) <IUserAssignedIdentity>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

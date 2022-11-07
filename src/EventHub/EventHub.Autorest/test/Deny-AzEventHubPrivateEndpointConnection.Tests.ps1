@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deny-AzEventHubPrivateEndpoin
 Describe 'Deny-AzEventHubPrivateEndpointConnection' {
     $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
 
-    It 'SetExpanded' -skip {
+    It 'SetExpanded' {
         $privateEndpoint[0].ConnectionState | Should -Be "Approved"
         $privateEndpoint[0].Description | Should -Be ""
         
@@ -26,7 +26,7 @@ Describe 'Deny-AzEventHubPrivateEndpointConnection' {
         $firstPrivateEndpoint.Description | Should -Be ""
     }
 
-    It 'SetViaIdentityExpanded' -skip {
+    It 'SetViaIdentityExpanded'  {
         $secondPrivateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $privateEndpoint[1].Name
 
         $secondPrivateEndpoint = Deny-AzEventHubPrivateEndpointConnection -InputObject $secondPrivateEndpoint -Description "Bye"

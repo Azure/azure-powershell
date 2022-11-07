@@ -15,13 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubKey'))
 }
 
 Describe 'Get-AzEventHubKey' {
-    It 'GetExpandedNamespace' -skip {
+    It 'GetExpandedNamespace'  {
         $namespaceKeys = Get-AzEventHubKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.authRule
         $namespaceKeys.PrimaryKey | Should -Not -Be $null
         $namespaceKeys.SecondaryKey | Should -Not -Be $null
     }
 
-    It 'GetExpandedEntity' -skip {
+    It 'GetExpandedEntity'  {
         $eventHubKeys = Get-AzEventHubKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.eventHubAuthRule
         $eventHubKeys.PrimaryKey | Should -Not -Be $null
         $eventHubKeys.SecondaryKey | Should -Not -Be $null

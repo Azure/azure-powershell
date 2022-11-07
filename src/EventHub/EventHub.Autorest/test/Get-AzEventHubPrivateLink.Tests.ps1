@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzEventHubPrivateLink' {
-    It 'Get' -skip {
+    It 'Get'  {
         $privateLink = Get-AzEventHubPrivateLink -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup
         $privateLink.Name | Should -Be "namespace"
         $privateLink.GroupId | Should -Be "namespace"

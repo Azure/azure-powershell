@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubVirtualNetworkR
 }
 
 Describe 'New-AzEventHubVirtualNetworkRuleConfig' {
-    It '__AllParameterSets' -skip {
+    It '__AllParameterSets'  {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
