@@ -20,14 +20,41 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
 
-    $resourceGroupName = "test-rg" + (RandomString -allChars $false -len 5)
-    $env.AddWithCache('resourceGroupName', $resourceGroupName, $UsePreviousConfigForRecord)
+    $resourceGroupName = "azcli-test-rg"
+    $env.Add("resourceGroupName", $resourceGroupName)
 
     $location = "eastus"
-    $env.AddWithCache('location', $location, $UsePreviousConfigForRecord)
+    $env.Add("location", $location)
+
+    $extendedLocationType = "CustomLocation"
+    $env.Add("extendedLocationType", $extendedLocationType)
+
+    $extendedLocationName = "/subscriptions/$($env.SubscriptionId)/resourceGroups/azcli-test-rg/providers/Microsoft.ExtendedLocation/customLocations/azcli-test-cl3"
+    $env.Add("extendedLocationName", $extendedLocationName)
+
+    $vcenterId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/azcli-test-rg/providers/microsoft.connectedvmwarevsphere/VCenters/azcli-test-vc3"
+    $env.Add("vcenterId", $vcenterId)
 
     $clusterName = "test-cluster" + (RandomString -allChars $false -len 5)
-    $env.AddWithCache('clusterName', $clusterName, $UsePreviousConfigForRecord)
+    $env.Add("clusterName", $clusterName)
+
+    $datastoreName = "test-datastore" + (RandomString -allChars $false -len 5)
+    $env.Add("datastoreName", $datastoreName)
+
+    $hostName = "test-host" + (RandomString -allChars $false -len 5)
+    $env.Add("hostName", $hostName)
+
+    $resourcePoolName = "test-resourcePool" + (RandomString -allChars $false -len 5)
+    $env.Add("resourcePoolName", $resourcePoolName)
+
+    $vcenterName = "azcli-test-vc3"
+    $env.Add("vcenterName", $vcenterName)
+
+    $vmName = "test-tls-2016-vm2"
+    $env.Add("vmName", $vmName)
+
+    $vmTemplateName = "test-vmtemplate" + (RandomString -allChars $false -len 5)
+    $env.Add("vmTemplateName", $vmTemplateName)
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

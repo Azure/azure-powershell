@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzConnectedVMwareVMAssessPatch'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedVMwareVCenter'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzConnectedVMwareVMAssessPatch.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzConnectedVMwareVCenter.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzConnectedVMwareVMAss
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Invoke-AzConnectedVMwareVMAssessPatch' {
-    It 'Assess' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'AzConnectedVMwareVCenter' {
+    It 'Get' {
+        $vc = Get-AzConnectedVMwareVCenter -ResourceGroupName $env.ResourceGroupName -Name $env.vcenterName
+        $vc.Name | Should -Be $env.vcenterName
     }
 
-    It 'AssessViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }
