@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
 
 		[Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
+        	public SwitchParameter AsJob { get; set; }
 
 		[Parameter(Mandatory = false, HelpMessage = "Tags are name/value pairs that enable you to categorize resources")]
 		public Hashtable Tag { get; set; }
