@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated `Update-AzSynaspeWorkSpace` and `New-AzSynpaseWorkspace` to support for Workspace Encrytion Managed Identity setting
 
 ## Version 2.0.0
 * [Breaking Change] Updated models of Synapse Link for Azure Sql Database
