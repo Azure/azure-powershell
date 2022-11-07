@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
@@ -66,15 +67,15 @@ namespace Microsoft.Azure.Commands.Profile
         {
             if (!string.IsNullOrWhiteSpace(this.SubscriptionName))
             {
-                IAzureSubscription result;
+                IEnumerable<IAzureSubscription> result;
                 try
                 {
-                    if (!this._client.TryGetSubscriptionByName(TenantId, this.SubscriptionName, out result))
+                    if (!this._client.TryGetSubscriptionListByName(TenantId, this.SubscriptionName, out result))
                     {
                         ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionName);
                     }
 
-                    WriteObject(new PSAzureSubscription(result));
+                    WriteObject(result.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true); 
                 }
                 catch (AadAuthenticationException exception)
                 {
@@ -85,15 +86,15 @@ namespace Microsoft.Azure.Commands.Profile
             }
             else if (!string.IsNullOrWhiteSpace(this.SubscriptionId))
             {
-                IAzureSubscription result;
+                IEnumerable<IAzureSubscription> result = null;
                 try
                 {
-                    if (!this._client.TryGetSubscriptionById(TenantId, this.SubscriptionId, out result))
+                    result = this._client.TryGetSubscriptionById(TenantId, this.SubscriptionId);
+                    if (result == null || result.Count() == 0)
                     {
                         ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionId);
                     }
-
-                    WriteObject( new PSAzureSubscription(result));
+                    WriteObject(new PSAzureSubscription(result.FirstOrDefault()));
                 }
                 catch (AadAuthenticationException exception)
                 {

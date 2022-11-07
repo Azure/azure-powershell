@@ -29,7 +29,7 @@ $DisksToInclude += $DataDisk
 New-AzMigrateServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site/machines/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f" -LicenseType NoLicenseType -TargetResourceGroupId "/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG" -TargetNetworkId  "/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork" -TargetSubnetName default -TargetVMName "prsadhu-TestVM" -DiskToInclude $DisksToInclude -PerformAutoResync true
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -58,7 +58,7 @@ VMTAG <IVMwareCbtEnableMigrationInputTargetVmtags>: Specifies the tag to be used
 https://docs.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIdDefaultUser', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -83,7 +83,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the Subnet name within the destination Virtual Netowk to which the server needs to be migrated.
+    # Specifies the Subnet name within the destination Virtual Network to which the server needs to be migrated.
     ${TargetSubnetName},
 
     [Parameter(Mandatory)]
@@ -120,6 +120,18 @@ param(
     [System.String]
     # Specifies if Azure Hybrid benefit for SQL Server is applicable for the server to be migrated.
     ${SqlServerLicenseType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Virtual Network id within the destination Azure subscription to which the server needs to be test migrated.
+    ${TestNetworkId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Subnet name within the destination Virtual Network to which the server needs to be test migrated.
+    ${TestSubnetName},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -160,21 +172,21 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetVmtags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtEnableMigrationInputTargetVmtags]
     # Specifies the tag to be used for VM creation.
     # To construct, see NOTES section for VMTAG properties and create a hash table.
     ${VMTag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetNicTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtEnableMigrationInputTargetNicTags]
     # Specifies the tag to be used for NIC creation.
     # To construct, see NOTES section for NICTAG properties and create a hash table.
     ${NicTag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetDiskTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtEnableMigrationInputTargetDiskTags]
     # Specifies the tag to be used for disk creation.
     # To construct, see NOTES section for DISKTAG properties and create a hash table.
     ${DiskTag},
@@ -208,7 +220,7 @@ param(
     [Parameter(ParameterSetName='ByIdPowerUser', Mandatory)]
     [Parameter(ParameterSetName='ByInputObjectPowerUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtDiskInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtDiskInput[]]
     # Specifies the disks on the source server to be included for replication.
     # To construct, see NOTES section for DISKTOINCLUDE properties and create a hash table.
     ${DiskToInclude},

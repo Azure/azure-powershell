@@ -30,6 +30,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         protected const int size8MB = 8 * 1024 * 1024;
 
+        protected const int size256MB = 256 * 1024 * 1024;
+
         /// <summary>
         /// block blob type
         /// </summary>

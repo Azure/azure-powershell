@@ -20,16 +20,14 @@ Creates or updates a Collector Policy resource
 .Description
 Creates or updates a Collector Policy resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzNetworkFunctionCollectorPolicy -collectorpolicyname cp1 -azuretrafficcollectorname atc -resourcegroupname rg1 -location eastus | Format-List
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ICollectorPolicy
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ICollectorPolicy
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,6 +50,14 @@ INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
   [SubscriptionId <String>]: Azure Subscription ID.
 
 PARAMETER <ICollectorPolicy>: Collector policy resource.
+  Location <String>: Resource location.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
   [EmissionPolicy <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
     [EmissionDestination <IEmissionPolicyDestination[]>]: Emission policy destinations.
       [DestinationType <DestinationType?>]: Emission destination type.
@@ -60,17 +66,12 @@ PARAMETER <ICollectorPolicy>: Collector policy resource.
     [ResourceId <String>]: Resource ID.
     [SourceType <SourceType?>]: Ingestion source type.
   [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
 https://docs.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctioncollectorpolicy
 #>
 function New-AzNetworkFunctionCollectorPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ICollectorPolicy])]
-[CmdletBinding(DefaultParameterSetName='CreateViaIdentityExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
@@ -109,15 +110,21 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ICollectorPolicy]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy]
     # Collector policy resource.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
+    [System.String]
+    # Resource location.
+    ${Location},
+
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IEmissionPoliciesPropertiesFormat[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IEmissionPoliciesPropertiesFormat[]]
     # Emission policies.
     # To construct, see NOTES section for EMISSIONPOLICY properties and create a hash table.
     ${EmissionPolicy},
@@ -125,7 +132,7 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IIngestionSourcesPropertiesFormat[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IIngestionSourcesPropertiesFormat[]]
     # Ingestion Sources.
     # To construct, see NOTES section for INGESTIONPOLICYINGESTIONSOURCE properties and create a hash table.
     ${IngestionPolicyIngestionSource},
@@ -136,6 +143,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.IngestionType]
     # The ingestion type.
     ${IngestionPolicyIngestionType},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

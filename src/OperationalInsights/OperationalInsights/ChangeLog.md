@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.2.0
 * Added new cmdlets for Table resource: 'New-AzOperationalInsightsRestoreTable', 'New-AzOperationalInsightsSearchTable', 'New-AzOperationalInsightsTable','Remove-AzOperationalInsightsTable','Update-AzOperationalInsightsTable', 'Convert-AzOperationalInsightsMigrateTable'
 * Added new property 'DefaultDataCollectionRuleResourceId' to 'Set-AzOperationalInsightsWorkspace' and to 'New-AzOperationalInsightsWorkspace' cmdlets
 

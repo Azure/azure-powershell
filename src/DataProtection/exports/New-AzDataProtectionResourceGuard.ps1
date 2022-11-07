@@ -20,15 +20,15 @@ Creates a resource guard under a resource group
 .Description
 Creates a resource guard under a resource group
 .Example
-PS C:\> New-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "mua-rg" -Name "mua-resource-guard" -Location "centraluseuap"
+New-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "mua-rg" -Name "mua-resource-guard" -Location "centraluseuap"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IResourceGuardResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IResourceGuardResource
 .Link
 https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionresourceguard
 #>
 function New-AzDataProtectionResourceGuard {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IResourceGuardResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IResourceGuardResource])]
 [CmdletBinding(DefaultParameterSetName='CreateResourceGuard', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

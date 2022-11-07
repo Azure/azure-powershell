@@ -25,12 +25,12 @@ Get-AzMigrateReplicationProtectionContainer -ResourceGroupName azmigratepwshtest
 Get-AzMigrateReplicationProtectionContainer -ResourceGroupName azmigratepwshtestasr13072020  -ResourceName AzMigrateTestProjectPWSH02aarsvault -FabricName AzMigratePWSHTc8d1replicationfabric -ProtectionContainerName AzMigratePWSHTc8d1replicationcontainer
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProtectionContainer
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainer
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainer
 #>
 function Get-AzMigrateReplicationProtectionContainer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProtectionContainer])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

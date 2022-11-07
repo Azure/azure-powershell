@@ -36,9 +36,11 @@ The **Get-AzStorageLocalUserKey** cmdlet lists SSH authorized keys and shared ke
 ## EXAMPLES
 
 ### Example 1: List SSH authorized keys and shared key of a specified local user.
+```powershell
+Get-AzStorageLocalUserKey -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1
 ```
-PS C:\> Get-AzStorageLocalUserKey -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1
 
+```output
 SshAuthorizedKeys                                    SharedKey                                                                               
 -----------------                                    ---------                                                                               
 {ssh-rsa keykeykeykeykew=, ssh-rsa keykeykeykeykew=} <hidden>

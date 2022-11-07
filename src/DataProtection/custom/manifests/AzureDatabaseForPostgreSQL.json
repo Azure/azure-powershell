@@ -1,4 +1,7 @@
 ﻿{
+  "datasourcePermissions": [ "Reader" ],
+  "snapshotRGPermissions": [],
+  "keyVaultPermissions": [ "Key Vault Secrets User" ],
   "isProxyResource": true,
   "resourceType": "Microsoft.DBforPostgreSQL/servers/databases",
   "parentResourceType": "Microsoft.DBforPostgreSQL/servers",

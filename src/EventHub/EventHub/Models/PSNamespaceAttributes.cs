@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 DisableLocalAuth = evResource.DisableLocalAuth;
                 ClusterArmId = evResource.ClusterArmId;
                 Encryption = new PSEncryptionAttributes(evResource.Encryption);
+                Status = evResource.Status;
             }
         }
         
@@ -185,5 +186,10 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
 
         public PSEventHubPrivateEndpointConnectionAttributes[] PrivateEndpointConnections { get; set; }
+
+        /// <summary>
+        /// Status of namespace.
+        /// </summary>
+        public string Status { get; }
     }
 }

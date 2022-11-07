@@ -283,6 +283,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzRoutingIntent](./New-AzRoutingIntent.md)
 
-[Update-AzRoutingIntent](./Update-AzRoutingIntent.md)
+[Set-AzRoutingIntent](./Set-AzRoutingIntent.md)
 
 [Remove-AzRoutingIntent](./Remove-AzRoutingIntent.md)

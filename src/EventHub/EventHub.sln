@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -23,6 +23,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{7A4B0770-E6C4-479F-9EF4-6C549F217B3C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{09FBDEE2-8E92-4763-B91E-0BFA01046B15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EventHub", "EventHub.Autorest\Az.EventHub.csproj", "{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +72,10 @@ Global
 		{09FBDEE2-8E92-4763-B91E-0BFA01046B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09FBDEE2-8E92-4763-B91E-0BFA01046B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09FBDEE2-8E92-4763-B91E-0BFA01046B15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

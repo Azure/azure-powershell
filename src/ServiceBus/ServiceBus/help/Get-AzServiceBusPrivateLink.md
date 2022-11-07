@@ -1,33 +1,42 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
+external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusprivatelink
 schema: 2.0.0
 ---
 
 # Get-AzServiceBusPrivateLink
 
 ## SYNOPSIS
-Gets list of resources that supports Privatelinks.
+Gets lists of resources that supports Privatelinks.
 
 ## SYNTAX
 
 ```
-Get-AzServiceBusPrivateLink [-ResourceGroupName] <String> [-NamespaceName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzServiceBusPrivateLink -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets list of resources that supports Privatelinks.
+Gets lists of resources that supports Privatelinks.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get private links associated with a ServiceBus namespace
 ```powershell
-Get-AzServiceBusPrivateLink -ResourceGroupName myresourcegroup -NamespaceName mynamespace
+Get-AzServiceBusPrivateLink -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
-Gets lists of resources that supports Privatelinks on `mynamespace`.
+```output
+GroupId          : namespace
+Id               : subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace/privateLinkResources/namespace
+Name             : namespace
+RequiredMember   : {namespace}
+RequiredZoneName : {privatelink.servicebus.windows.net}
+Type             : Microsoft.ServiceBus/namespaces/privateLinkResources
+```
+
+Gets private link resources available on ServiceBus namespace `myNamespace`.
 
 ## PARAMETERS
 
@@ -35,9 +44,9 @@ Gets lists of resources that supports Privatelinks on `mynamespace`.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -47,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-EventHub Namespace Name.
+The namespace name
 
 ```yaml
 Type: System.String
@@ -55,54 +64,39 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource Group Name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -ResourceGroupName
+Name of the Resource group within the Azure subscription.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
-Aliases: wi
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -112,12 +106,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusPrivateLinkResourceAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateLinkResourcesListResult
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS

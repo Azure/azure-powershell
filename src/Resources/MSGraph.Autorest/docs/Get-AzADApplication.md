@@ -14,7 +14,7 @@ Lists entities from applications or get entity from applications by key
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzADApplication [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
+Get-AzADApplication [-Count] [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
  [-ConsistencyLevel <String>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -83,17 +83,24 @@ Search for application display name starts with
 
 ### Example 4: Get application by object Id
 ```powershell
-Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
+Get-AzADApplication -ObjectId $id -Select Tags -AppendSelected
 ```
 
 Get application by object Id and append property 'Tags' after default properties: 'DisplayName', 'Id', 'DeletedDateTime', 'IdentifierUris', 'Web', 'AppId', 'SignInAudience'
 
-### Example 4: Get applications owned by current user
+### Example 5: Get applications owned by current user
 ```powershell
-Get-AzADapplication -OwnedApplication
+Get-AzADApplication -OwnedApplication
 ```
 
 Get applications owned by current user
+
+### Example 6: Get applications with filter
+```powershell
+Get-AzADApplication -Filter "startsWith(DisplayName,'some-name')"
+```
+
+Get applications with filter
 
 ## PARAMETERS
 
@@ -133,6 +140,21 @@ Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-
 
 ```yaml
 Type: System.String
+Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Count
+Include count of items
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: EmptyParameterSet
 Aliases:
 
@@ -189,7 +211,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filter
-Filter items by property values
+Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
 
 ```yaml
 Type: System.String

@@ -88,7 +88,8 @@
       ],
       "phases": [
         "build:module",
-        "help:module"
+        "help:module",
+        "example:module"
       ]
     },
     {
@@ -299,5 +300,6 @@
     "Resources",
     "Storage",
     "Websites"
-  ]
+  ],
+  "artifactPipelineInfoFolder": "artifacts/PipelineResult"
 }

@@ -20,6 +20,7 @@ using System.Linq;
 using Microsoft.Azure.Storage.File;
 using System.Net;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using Azure.Storage.Files.Shares.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
 {
@@ -63,6 +64,44 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
             this.FileId = handle.FileId;
             this.ParentId = handle.ParentId;
             this.SessionId = handle.SessionId;
+        }
+
+        public PSFileHandle(ShareFileHandle handle)
+        {
+            if (!String.IsNullOrEmpty(handle.HandleId))
+            {
+                this.HandleId = Convert.ToUInt64(handle.HandleId);
+            }
+            this.Path = handle.Path;
+            if (!String.IsNullOrEmpty(handle.ClientIp))
+            {
+                string[] clientIPs = handle.ClientIp.Split(new char[] { ':'}, StringSplitOptions.RemoveEmptyEntries);
+                if (clientIPs.Length >= 1)
+                {
+                    this.ClientIp = IPAddress.Parse(clientIPs[0]);
+                }
+                if (clientIPs.Length >= 2 && !String.IsNullOrEmpty(clientIPs[1]))
+                {
+                    this.ClientPort = Convert.ToInt32(clientIPs[1]);
+                }
+            }
+            if (handle.OpenedOn != null)
+            {
+                this.OpenTime = handle.OpenedOn.Value;
+            }
+            this.LastReconnectTime = handle.LastReconnectedOn;
+            if (!String.IsNullOrEmpty(handle.FileId))
+            {
+                this.FileId = Convert.ToUInt64(handle.FileId);
+            }
+            if (!String.IsNullOrEmpty(handle.ParentId))
+            {
+                this.ParentId = Convert.ToUInt64(handle.ParentId);
+            }
+            if (!String.IsNullOrEmpty(handle.SessionId))
+            {
+                this.SessionId = Convert.ToUInt64(handle.SessionId);
+            }
         }
     }
 }

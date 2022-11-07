@@ -47,6 +47,8 @@ Invoke a run command 'RunPowerShellScript' with overriding the script 'sample.ps
 
 ### Example 2: Invoke a command on Linux
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 export param1=var1 param2=var2
 set -- var1 var2 var3
@@ -168,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScriptString
-{{ Fill ScriptString Description }}
+The script to be executed as a string.
 
 ```yaml
 Type: System.String

@@ -25,7 +25,7 @@ Get-AzMigrateSolution -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSV
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratesolution
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratesolution
 #>
 function Get-AzMigrateSolution {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution])]

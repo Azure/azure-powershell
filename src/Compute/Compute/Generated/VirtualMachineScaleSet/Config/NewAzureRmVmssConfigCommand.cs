@@ -292,6 +292,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("Replace", "Restart", "Reimage")]
         public string AutomaticRepairAction { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The number of VMs that should be regular priority VMs before adding any Spot VMs",
+            ValueFromPipelineByPropertyName = true)]
+        public int BaseRegularPriorityCount { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The percentage of VMs that should be regular priority after the base number of regular priority VMs has been reached",
+            ValueFromPipelineByPropertyName = true)]
+        public int RegularPriorityPercentage { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -331,6 +343,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // ExtendedLocation
             CM.PSExtendedLocation vExtendedLocation = null;
+
+            // PriorityMix
+            PriorityMixPolicy vPriorityMixPolicy = null;
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -674,11 +689,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vIdentity = new VirtualMachineScaleSetIdentity();
                 }
 
-                vIdentity.UserAssignedIdentities = new Dictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>();
+                vIdentity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
 
                 foreach (var id in this.IdentityId)
                 {
-                    vIdentity.UserAssignedIdentities.Add(id, new VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue());
+                    vIdentity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
                 }
             }
 
@@ -711,6 +726,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vAutomaticRepairsPolicy.RepairAction = this.AutomaticRepairAction;
             }
 
+            if (this.IsParameterBound(c => c.BaseRegularPriorityCount))
+            {
+                if (vPriorityMixPolicy == null)
+                {
+                    vPriorityMixPolicy = new PriorityMixPolicy();
+                }
+                vPriorityMixPolicy.BaseRegularPriorityCount = this.BaseRegularPriorityCount;
+            }
+
+            if (this.IsParameterBound(c => c.RegularPriorityPercentage))
+            {
+                if (vPriorityMixPolicy == null)
+                {
+                    vPriorityMixPolicy = new PriorityMixPolicy();
+                }
+                vPriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
+            }
+
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
@@ -732,7 +765,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ScaleInPolicy = vScaleInPolicy,
                 Identity = vIdentity,
                 OrchestrationMode = this.IsParameterBound(c => c.OrchestrationMode) ? this.OrchestrationMode : null,
-                SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null
+                SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
+                PriorityMixPolicy = vPriorityMixPolicy 
             };
 
             WriteObject(vVirtualMachineScaleSet);

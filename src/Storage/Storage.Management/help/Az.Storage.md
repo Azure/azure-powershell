@@ -233,6 +233,15 @@ Creates a SSH public key object, which can be used in Set-AzStorageLocalUser.
 ### [New-AzStorageAccountManagementPolicyBlobIndexMatchObject](New-AzStorageAccountManagementPolicyBlobIndexMatchObject.md)
 Creates a ManagementPolicy BlobIndexMatch object, which can be used in New-AzStorageAccountManagementPolicyFilter.
 
+### [New-AzStorageLocalUserPermissionScope](New-AzStorageLocalUserPermissionScope.md)
+Creates a permission scope object, which can be used in Set-AzStorageLocalUser.
+
+### [New-AzStorageLocalUserSshPassword](New-AzStorageLocalUserSshPassword.md)
+Regenerate SSH password of a specified local user in a storage account.
+
+### [New-AzStorageLocalUserSshPublicKey](New-AzStorageLocalUserSshPublicKey.md)
+Creates a SSH public key object, which can be used in Set-AzStorageLocalUser.
+
 ### [New-AzStorageAccountManagementPolicyFilter](New-AzStorageAccountManagementPolicyFilter.md)
 Creates a ManagementPolicy rule filter object, which can be used in New-AzStorageAccountManagementPolicyRule.
 

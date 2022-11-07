@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PsModuleName>Advisor</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\Az.autorest.props" />
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+</Project>

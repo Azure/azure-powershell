@@ -20,13 +20,9 @@ Gets a recoverable MySQL Server.
 .Description
 Gets a recoverable MySQL Server.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
@@ -138,6 +134,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.MySql.private\Get-AzMySqlRecoverableServer_Get';
             GetViaIdentity = 'Az.MySql.private\Get-AzMySqlRecoverableServer_GetViaIdentity';
@@ -151,6 +148,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -159,15 +157,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

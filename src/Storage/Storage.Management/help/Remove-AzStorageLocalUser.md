@@ -36,8 +36,8 @@ The **Remove-AzStorageLocalUser** cmdlet removes a specified local user from a s
 ## EXAMPLES
 
 ### Example 1: Remove a specified local user
-```
-PS C:\> Remove-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1
+```powershell
+Remove-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1
 ```
 
 This command removes a specified local user.

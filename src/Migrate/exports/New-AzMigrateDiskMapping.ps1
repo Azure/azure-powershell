@@ -23,12 +23,12 @@ The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attache
 New-AzMigrateDiskMapping -DiskID a -DiskType Standard -IsOSDisk 'true'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtDiskInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtDiskInput
 .Link
 https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 #>
 function New-AzMigrateDiskMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtDiskInput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtDiskInput])]
 [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

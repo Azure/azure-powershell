@@ -337,3 +337,93 @@ function Test-ProximityPlacementGroupVM
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test the PPG Zones and the vmIntentList parameters. 
+#>
+function Test-PPGVMIntentAndZoneFeatures
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "westeurope";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a VM first
+        $ppgname = $rgname + 'ppg';
+        $vmIntentList1 = 'Standard_D4d_v4';
+        $vmIntentList2 = 'Standard_D4d_v5';
+        $vmIntentListUpdate3 = 'Standard_DS3_v2';
+        $zone = '1';
+        $zone2 = '2';
+
+        $proxgroup = New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Location $loc -Zone $zone -IntentVMSizeList $vmIntentList1, $vmIntentList2 ;
+
+        $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
+        Assert-AreEqual $ppg.Intent.VmSizes[0] $vmIntentList1;
+        Assert-AreEqual $ppg.Intent.VmSizes[1] $vmIntentList2;
+        Assert-AreEqual $ppg.Zones[0] $zone;
+
+        $proxgroup = New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Location $loc -Zone $zone -IntentVMSizeList $vmIntentList1, $vmIntentListUpdate3 ;
+        $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
+        Assert-AreEqual $ppg.Intent.VmSizes[0] $vmIntentList1;
+        Assert-AreEqual $ppg.Intent.VmSizes[1] $vmIntentListUpdate3;
+
+        # Create a subnet configuration
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix 192.168.1.0/24;
+
+        # Create a virtual network
+        $vnet = New-AzVirtualNetwork -ResourceGroupName $rgname -Location $loc -Name  ('vnet' + $rgname) -AddressPrefix 192.168.0.0/16 -Subnet $subnet;
+
+        # Create a public IP address and specify a DNS name
+        $pip = New-AzPublicIpAddress -ResourceGroupName $rgname -Location $loc -Name ('pubip' + $rgname) -AllocationMethod Static -IdleTimeoutInMinutes 4;
+
+        # Create a network security group
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgname -Location $loc -Name ('netsg' + $rgname);
+
+        # Create a virtual network card and associate with public IP address and NSG
+        $nic = New-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc `
+                                      -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id;
+
+        $vmname = 'vm' + $rgname;
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $vmSize = 'Standard_D4ds_v5';
+
+        # Create a virtual machine configuration
+        $p = New-AzVMConfig -VMName $vmName -VMSize $vmSize -ProximityPlacementGroupId $ppg.Id `
+                  | Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred `
+                  | Add-AzVMNetworkInterface -Id $nic.Id;
+
+        $publisherName = "MicrosoftWindowsServer";
+        $offer = "WindowsServer";
+        $sku = "2019-DataCenter";
+        $vmconfig = Set-AzVMSourceImage -VM $p -PublisherName $publisherName -Offer $offer -Skus $sku -Version 'latest';
+
+
+        # Create a virtual machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
+        Assert-AreEqual $ppg.Id $vm.ProximityPlacementGroup.Id;
+
+        $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
+        Assert-AreEqual $vm.Id $ppg.VirtualMachines[0].Id;
+        Assert-AreEqual $vm.ProximityPlacementGroup.Id $ppg.Id;
+        
+        # Create a virtual machine using Simple Parameter set.
+        $domainNameLabel = "d" + $rgname;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -credential $cred -DomainNameLabel $domainNameLabel -ProximityPlacementGroupId $ppg.Id ;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
+        Assert-AreEqual $ppg.Id $vm.ProximityPlacementGroup.Id;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
