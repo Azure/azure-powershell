@@ -22,7 +22,7 @@
       "phases": [
         "build:all",
         "breaking-change:all",
-        "dependence:all",
+        "dependency:all",
         "help:all",
         "signature:all",
         "test:all",
@@ -35,7 +35,7 @@
       ],
       "phases": [
         "build:all",
-        "dependence:all",
+        "dependency:all",
         "test:all"
       ]
     },
@@ -45,7 +45,7 @@
       ],
       "phases": [
         "build:all",
-        "dependence:all"
+        "dependency:all"
       ]
     },
     {
@@ -98,7 +98,7 @@
       ],
       "phases": [
         "build:related-module",
-        "dependence:dependence-module",
+        "dependency:dependence-module",
         "test:dependence-module",
         "file-change:module"
       ]
@@ -125,7 +125,7 @@
       ],
       "phases": [
         "build:module",
-        "dependence:module"
+        "dependency:module"
       ]
     },
     {
@@ -163,7 +163,7 @@
       "phases": [
         "build:all",
         "breaking-change:all",
-        "dependence:all",
+        "dependency:all",
         "help:all",
         "signature:all"
       ]
@@ -193,7 +193,7 @@
       "phases": [
         "build:all",
         "breaking-change:all",
-        "dependence:all",
+        "dependency:all",
         "help:all",
         "signature:all",
         "test:all"
@@ -215,7 +215,7 @@
       ],
       "phases": [
         "build:all",
-        "dependence:all"
+        "dependency:all"
       ]
     },
     {
@@ -281,7 +281,7 @@
       "phases": [
         "build:all",
         "breaking-change:all",
-        "dependence:all",
+        "dependency:all",
         "help:all",
         "signature:all",
         "test:all"
