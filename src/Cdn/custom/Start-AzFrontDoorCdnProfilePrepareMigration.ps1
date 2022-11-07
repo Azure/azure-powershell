@@ -98,22 +98,6 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         ${SubscriptionId},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
-        # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        ${IdentityType},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
-        [System.Collections.Hashtable]
-        # The set of user assigned identities associated with the resource.
-        # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        # The dictionary values can be empty objects ({}) in requests.
-        ${IdentityUserAssignedIdentity},
-
-        [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Azure')]
@@ -183,12 +167,15 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             }
 
             $wafPolicies = $PSBoundParameters.MigrationWebApplicationFirewallMapping
-
-            
             if($wafPolicies.count -gt 0) {
                 # 1. Validate whether there is any waf policy associated with the profile.
                 $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
-                $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
+                try {
+                    $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName -ErrorAction Stop
+                }
+                catch {
+                    Throw "FrontDoorName: '$frontDoorName' dose not exist in the resource group."
+                }
                 $hasWafpolicy = $false
                 $existManagedRuleMigrateFromWaf = $false
                 $allWafPolicies = [System.Collections.ArrayList]@()
@@ -209,8 +196,13 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
 
                 # 2. Validate the format of the waf policy and the migrateFrom.Id whether exists in the profile.
                 # 3. Validate the Sku argument, if a managed waf associated, then the profile only can migrated to Premium tier. 
+                if ($wafPolicies.count -ne $allWafPolicies.count) {
+                    throw "WafMappingList parameter length should be equal to the number of waf policy in the profile."
+                }
+                
                 foreach ($policy in $wafPolicies) {
                     $migrateFromId = $policy.MigratedFromId
+                    $migrateFromWafSubId = $migrateFromId.split("/")[2]
                     if ($migrateFromId.ToLower() -notmatch $validateWafId) {
                         throw "The format of Waf policy id is supposed to be like '/subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******' "
                     }
@@ -241,11 +233,16 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 # 5. If exists, validate the MigrateToId waf policy whether meets the requirements.
                 foreach ($policy in $wafPolicies) {
                     $migrateToWafId = $policy.MigratedToId
+                    $migrateToWafSubId = $migrateToWafId.split("/")[2]
+                    if ($migrateToWafSubId -ne $migrateFromWafSubId) {
+                        throw "The selected or created waf policy should be in the same subscription as the classic Afd waf policy."
+                    }
+
                     $migrateToWafResourceGroup = $migrateToWafId.split("/")[4]
                     $migrateToWafName = $migrateToWafId.split("/")[8]
 
                     try {
-                        $existed = Get-AzFrontDoorWafPolicy -ResourceGroupName $migrateToWafResourceGroup -Name $migrateToWafName
+                        $existed = Get-AzFrontDoorWafPolicy -ResourceGroupName $migrateToWafResourceGroup -Name $migrateToWafName -ErrorAction Stop
                     }
                     # Not exists, create a new waf policy. Corrpesonding to "Copy to a new one" on Portal side.
                     catch {
@@ -311,7 +308,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower
             }
             else {
-                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower -IdentityUserAssignedIdentity ${IdentityUserAssignedIdentity}
+                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower -IdentityUserAssignedIdentity $identityUserAssignedIdentityValue
             }
             
             $systemAssigendPrincipalIndentity = $profileIdentity.IdentityPrincipalId

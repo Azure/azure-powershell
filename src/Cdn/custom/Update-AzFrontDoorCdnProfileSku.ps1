@@ -190,14 +190,14 @@ function Update-AzFrontDoorCdnProfileSku {
 
                     # 2. Validate whether the policy already exists in the subsrciption
                     try {
-                        $existed = Get-AzFrontDoorWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName -erroraction ignore
+                        Get-AzFrontDoorWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName -ErrorAction Stop
                     }
                     catch {
                         $policyName = $wafMapping.SecurityPolicyName
                         Write-Debug("Current policy name: " + $policyName)
                         # Get the waf policy name of the security.
                         try{
-                            $policyNameProperty = Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName} -Name $policyName
+                            $policyNameProperty = Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName} -Name $policyName -ErrorAction Stop
                         }
                         catch {
                             throw 'Security policy name not exists in this profile...'
