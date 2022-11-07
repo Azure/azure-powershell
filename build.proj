@@ -74,6 +74,9 @@
     <DockerRoot>$(RepoRoot)docker</DockerRoot>
     <DockerTools>$(RepoTools)Docker</DockerTools>
     <DockerImageName Condition="'$(DockerImageName)' == ''">azure-powershell</DockerImageName>
+ 
+    <!-- XML documentation related -->    
+    <GenerateDocumentationFile Condition="'$(GenerateDocumentationFile)' != 'false'">true</Configuration>
   </PropertyGroup>
 
   <!-- Tasks -->
