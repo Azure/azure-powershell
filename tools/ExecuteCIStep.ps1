@@ -214,7 +214,10 @@ If ($StaticAnalysisBreakingChange)
     {
         $BreakingChangeCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.'breaking-change'
     }
-    dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers breaking-change -u -m $BreakingChangeCheckModuleList
+    If ("" -Ne $BreakingChangeCheckModuleList)
+    {
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers breaking-change -u -m $BreakingChangeCheckModuleList
+    }
     Return
 }
 
@@ -228,7 +231,10 @@ If ($StaticAnalysisDependency)
     {
         $DependencyCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.dependency
     }
-    dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers dependency -u -m $DependencyCheckModuleList
+    If ("" -Ne $DependencyCheckModuleList)
+    {
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers dependency -u -m $DependencyCheckModuleList
+    }
     Return
 }
 
@@ -242,7 +248,10 @@ If ($StaticAnalysisSignature)
     {
         $SignatureCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.signature
     }
-    dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers signature -u -m $SignatureCheckModuleList
+    If ("" -Ne $SignatureCheckModuleList)
+    {
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers signature -u -m $SignatureCheckModuleList
+    }
     Return
 }
 
@@ -256,6 +265,9 @@ If ($StaticAnalysisHelp)
     {
         $HelpCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.help
     }
-    dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers help -u -m $HelpCheckModuleList
+    If ("" -Ne $HelpCheckModuleList)
+    {
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers help -u -m $HelpCheckModuleList
+    }
     Return
 }
