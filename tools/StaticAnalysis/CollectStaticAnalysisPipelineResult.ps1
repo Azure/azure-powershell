@@ -65,6 +65,10 @@ $Steps = @(
     @{
         StepName = "signature"
         IssuePath = "$StaticAnalysisOutputDirectory/SignatureIssues.csv"
+    },
+    @{
+        StepName = "file-change"
+        IssuePath = "$StaticAnalysisOutputDirectory/FileChangeIssue.csv"
     }
 )
 
@@ -102,7 +106,8 @@ ForEach ($Step In $Steps)
             If ($MatchedIssues.Length -Ne 0)
             {
                 #Region generate table head of each step
-                If (($StepName -Eq "breaking-change") -Or ($StepName -Eq "help") -Or ($StepName -Eq "signature"))
+                $NormalSteps = [System.Collections.Generic.HashSet[String]]@("breaking-change", "help", "signature", "file-change")
+                If ($NormalSteps.Contains($StepName))
                 {
                     $Content = "|Type|Cmdlet|Description|Remediation|`n|---|---|---|---|`n"
                 }
@@ -123,7 +128,7 @@ ForEach ($Step In $Steps)
                         $ErrorTypeEmoji = "⚠️"
                     }
                     #Region generate table content of each step
-                    If (($StepName -Eq "breaking-change") -Or ($StepName -Eq "help") -Or ($StepName -Eq "signature"))
+                    If ($NormalSteps.Contains($StepName))
                     {
                         $Content += "|$ErrorTypeEmoji|$($Issue.Target)|$($Issue.Description)|$($Issue.Remediation)|`n"
                     }
