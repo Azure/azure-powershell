@@ -2,7 +2,7 @@
   "resourceType": "managedClusters/agentPools",
   "apiVersion": "2021-05-01",
   "learnMore": {
-    "url": "https://docs.microsoft.com/powershell/module/az.aks/#kubernetes-service"
+    "url": "https://learn.microsoft.com/powershell/module/az.aks/#kubernetes-service"
   },
   "commands": [
     {
@@ -11,7 +11,7 @@
       "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
       "help":{
         "learnMore": {
-          "url": "https://docs.microsoft.com/powershell/module/az.aks/get-azaksnodepool"
+          "url": "https://learn.microsoft.com/powershell/module/az.aks/get-azaksnodepool"
         },
         "parameterSets": [
           {

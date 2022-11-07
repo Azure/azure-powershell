@@ -2,7 +2,7 @@
   "resourceType": "managedClusters",
   "apiVersion": "2021-05-01",
   "learnMore": {
-    "url": "https://docs.microsoft.com/powershell/module/az.aks/#kubernetes-service"
+    "url": "https://learn.microsoft.com/powershell/module/az.aks/#kubernetes-service"
   },
   "commands": [
     {
@@ -11,7 +11,7 @@
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}",
       "help": {
         "learnMore": {
-          "url": "https://docs.microsoft.com/powershell/module/az.aks/get-azakscluster"
+          "url": "https://learn.microsoft.com/powershell/module/az.aks/get-azakscluster"
         },
         "parameterSets": [
           {

@@ -2,7 +2,7 @@
 	"resourceType": "virtualNetworks",
 	"apiVersion": "2021-08-01",
 	"learnMore": {
-		"url": "https://docs.microsoft.com/powershell/module/az.network/#virtual-network"
+		"url": "https://learn.microsoft.com/powershell/module/az.network/#virtual-network"
 	},
 	"commands": [
 		{
@@ -12,7 +12,7 @@
 			"confirmation": false,
 			"help": {
 				"learnMore": {
-					"url": "https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork"
+					"url": "https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetwork"
 				},
 				"parameterSets": [
 					{

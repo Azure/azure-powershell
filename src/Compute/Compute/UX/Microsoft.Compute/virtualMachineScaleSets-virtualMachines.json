@@ -2,7 +2,7 @@
     "resourceType":"virtualMachineScaleSets/virtualMachines",
     "apiVersion":"2022-03-01",
     "learnMore":{
-       "url":"https://docs.microsoft.com/powershell/module/az.compute/#vm-scale-sets"
+       "url":"https://learn.microsoft.com/powershell/module/az.compute/#vm-scale-sets"
     },
     "commands":[
        {
@@ -12,7 +12,7 @@
           "confirmation":false,
           "help":{
              "learnMore":{
-                "url":"https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm"
+                "url":"https://learn.microsoft.com/powershell/module/az.compute/get-azvmssvm"
              },
              "parameterSets":[
                 {

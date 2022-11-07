@@ -2,7 +2,7 @@
     "resourceType": "networkInterfaces",
     "apiVersion": "2021-08-01",
     "learnMore": {
-        "url": "https://docs.microsoft.com/powershell/module/az.network/#networking"
+        "url": "https://learn.microsoft.com/powershell/module/az.network/#networking"
     },
     "commands": [
         {
@@ -12,7 +12,7 @@
             "confirmation": false,
             "help": {
                 "learnMore": {
-                    "url": "https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface"
+                    "url": "https://learn.microsoft.com/powershell/module/az.network/get-aznetworkinterface"
                 },
                 "parameterSets": [
                     {

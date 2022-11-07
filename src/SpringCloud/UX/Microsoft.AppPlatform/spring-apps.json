@@ -2,7 +2,7 @@
     "resourceType": "spring/apps",
     "apiVersion": "2020-07-01",
     "learnMore": {
-      "url": "https://docs.microsoft.com/powershell/module/az.springcloud/#spring-cloud"
+      "url": "https://learn.microsoft.com/powershell/module/az.springcloud/#spring-cloud"
     },
     "commands": [
       {
@@ -11,7 +11,7 @@
         "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
         "help": {
           "learnMore": {
-            "url": "https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudapp"
+            "url": "https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudapp"
           },
           "parameterSets": [
             {

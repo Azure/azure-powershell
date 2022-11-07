@@ -2,7 +2,7 @@
     "resourceType": "configurationStores",
     "apiVersion": "2020-06-01",
     "learnMore": {
-        "url": "https://docs.microsoft.com/powershell/module/az.appconfiguration/"
+        "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/"
     },
     "commands": [
         {
@@ -11,7 +11,7 @@
             "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
             "help": {
                 "learnMore": {
-                    "url": "https://docs.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstore"
+                    "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstore"
                 },
                 "parameterSets": [
                     {
@@ -49,7 +49,7 @@
             "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/ListKeys",
             "help": {
                 "learnMore": {
-                    "url": "https://docs.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstorekey"
+                    "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstorekey"
                 },
                 "parameterSets": [
                     {

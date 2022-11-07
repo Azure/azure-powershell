@@ -2,7 +2,7 @@
    "resourceType":"virtualMachineScaleSets",
    "apiVersion":"2022-03-01",
    "learnMore":{
-      "url":"https://docs.microsoft.com/powershell/module/az.compute/#vm-scale-sets"
+      "url":"https://learn.microsoft.com/powershell/module/az.compute/#vm-scale-sets"
    },
    "commands":[
       {
@@ -12,7 +12,7 @@
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.compute/get-azvmss"
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/get-azvmss"
             },
             "parameterSets":[
                {
@@ -61,7 +61,7 @@
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.compute/get-azvmssrollingupgrade"
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/get-azvmssrollingupgrade"
             },
             "parameterSets":[
                {
@@ -95,7 +95,7 @@
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.compute/restart-azvmss"
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/restart-azvmss"
             },
             "parameterSets":[
                {
@@ -133,7 +133,7 @@
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.compute/start-azvmss"
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/start-azvmss"
             },
             "parameterSets":[
                {
@@ -171,7 +171,7 @@
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.compute/Start-AzVmssRollingExtensionUpgrade"
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/Start-AzVmssRollingExtensionUpgrade"
             },
             "parameterSets":[
                {
@@ -208,7 +208,7 @@
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade"
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade"
             },
             "parameterSets":[
                {
@@ -245,7 +245,7 @@
          "confirmation":true,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.compute/Stop-AzVmss"
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/Stop-AzVmss"
             },
             "parameterSets":[
                {
@@ -289,7 +289,7 @@
          "confirmation":true,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.compute/Stop-AzVmssRollingUpgrade"
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/Stop-AzVmssRollingUpgrade"
             },
             "parameterSets":[
                {

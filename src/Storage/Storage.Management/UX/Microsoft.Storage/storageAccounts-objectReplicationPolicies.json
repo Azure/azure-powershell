@@ -2,7 +2,7 @@
     "resourceType":"storageAccounts/objectReplicationPolicies",
     "apiVersion":"2021-08-01",
     "learnMore":{
-       "url":"https://docs.microsoft.com/powershell/module/az.storage/#storage"       
+       "url":"https://learn.microsoft.com/powershell/module/az.storage/#storage"       
     },
     "commands":[
       {
@@ -12,7 +12,7 @@
         "confirmation":false,
         "help":{
            "learnMore":{
-              "url":"https://docs.microsoft.com/powershell/module/az.storage/get-azstorageobjectreplicationpolicy"
+              "url":"https://learn.microsoft.com/powershell/module/az.storage/get-azstorageobjectreplicationpolicy"
            },
            "parameterSets":[
               {

@@ -2,7 +2,7 @@
    "resourceType":"containerGroups/containers",
    "apiVersion":"2021-09-01",
    "learnMore":{
-      "url":"https://docs.microsoft.com/powershell/module/az.containerinstance"
+      "url":"https://learn.microsoft.com/powershell/module/az.containerinstance"
    },
    "commands":[
       {
@@ -12,7 +12,7 @@
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.containerinstance/add-azcontainerinstanceoutput"
+               "url":"https://learn.microsoft.com/powershell/module/az.containerinstance/add-azcontainerinstanceoutput"
             },
             "parameterSets":[
                {

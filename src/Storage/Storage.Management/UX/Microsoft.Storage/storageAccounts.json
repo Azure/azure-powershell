@@ -2,7 +2,7 @@
     "resourceType":"storageAccounts",
     "apiVersion":"2021-08-01",
     "learnMore":{
-       "url":"https://docs.microsoft.com/powershell/module/az.storage/#storage"       
+       "url":"https://learn.microsoft.com/powershell/module/az.storage/#storage"       
     },
     "commands":[
        {
@@ -12,7 +12,7 @@
           "confirmation":false,
           "help":{
              "learnMore":{
-                "url":"https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccount"
+                "url":"https://learn.microsoft.com/powershell/module/az.storage/get-azstorageaccount"
              },
              "parameterSets":[
                 {
@@ -54,7 +54,7 @@
          "confirmation":true,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.storage/invoke-azstorageaccountfailover"
+               "url":"https://learn.microsoft.com/powershell/module/az.storage/invoke-azstorageaccountfailover"
             },
             "parameterSets":[
                {
@@ -88,7 +88,7 @@
         "confirmation":true,
         "help":{
            "learnMore":{
-              "url":"https://docs.microsoft.com/powershell/module/az.storage/stop-azstorageaccounthierarchicalnamespaceupgrade"
+              "url":"https://learn.microsoft.com/powershell/module/az.storage/stop-azstorageaccounthierarchicalnamespaceupgrade"
            },
            "parameterSets":[
               {
@@ -123,7 +123,7 @@
         "confirmation":true,
         "help":{
            "learnMore":{
-              "url":"https://docs.microsoft.com/powershell/module/az.storage/stop-azstorageaccounthierarchicalnamespaceupgrade"
+              "url":"https://learn.microsoft.com/powershell/module/az.storage/stop-azstorageaccounthierarchicalnamespaceupgrade"
            },
            "parameterSets":[
               {

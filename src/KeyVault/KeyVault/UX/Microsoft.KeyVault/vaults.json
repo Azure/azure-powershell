@@ -2,7 +2,7 @@
     "resourceType":"vaults",
     "apiVersion":"2021-06-01-preview",
     "learnMore":{
-       "url":"https://docs.microsoft.com/powershell/module/az.keyvault/#key-vault"       
+       "url":"https://learn.microsoft.com/powershell/module/az.keyvault/#key-vault"       
     },
     "commands":[
        {
@@ -12,7 +12,7 @@
           "confirmation":false,
           "help":{
              "learnMore":{
-                "url":"https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault"
+                "url":"https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvault"
              },
              "parameterSets":[
                 {
@@ -52,7 +52,7 @@
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultkey"
+               "url":"https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultkey"
             },
             "parameterSets":[
                {
@@ -82,7 +82,7 @@
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultcertificate"
+               "url":"https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultcertificate"
             },
             "parameterSets":[
                {
@@ -112,7 +112,7 @@
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret"
+               "url":"https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret"
             },
             "parameterSets":[
                {

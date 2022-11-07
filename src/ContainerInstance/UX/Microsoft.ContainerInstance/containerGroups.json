@@ -2,7 +2,7 @@
    "resourceType":"containerGroups",
    "apiVersion":"2021-09-01",
    "learnMore":{
-      "url":"https://docs.microsoft.com/powershell/module/az.containerinstance"
+      "url":"https://learn.microsoft.com/powershell/module/az.containerinstance"
    },
    "commands":[
       {
@@ -12,7 +12,7 @@
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.containerinstance/get-azcontainergroup"
+               "url":"https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainergroup"
             },
             "parameterSets":[
                {
@@ -51,7 +51,7 @@
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.containerinstance/restart-azcontainergroup"
+               "url":"https://learn.microsoft.com/powershell/module/az.containerinstance/restart-azcontainergroup"
             },
             "parameterSets":[
                {
@@ -94,7 +94,7 @@
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.containerinstance/start-azcontainergroup"
+               "url":"https://learn.microsoft.com/powershell/module/az.containerinstance/start-azcontainergroup"
             },
             "parameterSets":[
                {
@@ -137,7 +137,7 @@
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://docs.microsoft.com/powershell/module/az.containerinstance/stop-azcontainergroup"
+               "url":"https://learn.microsoft.com/powershell/module/az.containerinstance/stop-azcontainergroup"
             },
             "parameterSets":[
                {
