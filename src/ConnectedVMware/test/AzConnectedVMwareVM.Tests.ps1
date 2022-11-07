@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzConnectedVMwareVM'))
 }
 
 Describe 'AzConnectedVMwareVM' {
-    It 'CreateExpanded' -Skip {
-        New-AzConnectedVMwareVM -Name $env.vmName -ResourceGroupName $env.resourceGroupName -Location $env.location -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -InventoryItemId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc3/InventoryItems/vm-109264"
+    It 'CreateExpanded' {
+        New-AzConnectedVMwareVM -Name $env.vmName -ResourceGroupName $env.resourceGroupName -Location $env.location -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -InventoryItemId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc3/InventoryItems/vm-1106469"
     }
 
     It 'Get' {
@@ -24,7 +24,7 @@ Describe 'AzConnectedVMwareVM' {
         $vm.Name | Should -Be $env.vmName
     }
 
-    It 'Delete' -Skip {
+    It 'Delete' {
         Remove-AzConnectedVMwareVM -Name $env.vmName -ResourceGroupName $env.resourceGroupName
     }
 }
