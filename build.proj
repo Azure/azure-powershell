@@ -76,7 +76,7 @@
     <DockerImageName Condition="'$(DockerImageName)' == ''">azure-powershell</DockerImageName>
  
     <!-- XML documentation related -->    
-    <GenerateDocumentationFile Condition="'$(GenerateDocumentationFile)' != 'false'">true</Configuration>
+    <GenerateDocumentationFile Condition="'$(GenerateDocumentationFile)' != 'false'">true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <!-- Tasks -->
