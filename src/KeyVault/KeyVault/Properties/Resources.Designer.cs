@@ -435,9 +435,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Fetch default CVM Policy failed, {0}.
         /// </summary>
-        internal static string FetchDefaultCVMPolicyFailed {
+        internal static string FetchDefaultCVMPolicyFailedWithErrorMessage {
             get {
-                return ResourceManager.GetString("FetchDefaultCVMPolicyFailed", resourceCulture);
+                return ResourceManager.GetString("FetchDefaultCVMPolicyFailedWithErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fetching default CVM policy from remote failed because {0}. Trying to fetch default CVM policy from local backup copy..
+        /// </summary>
+        internal static string FetchDefaultCVMPolicyFromLocal {
+            get {
+                return ResourceManager.GetString("FetchDefaultCVMPolicyFromLocal", resourceCulture);
             }
         }
         

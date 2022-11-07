@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,6 +79,13 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.EncryptionKeyName)]
         [ValidateNotNullOrEmpty]
         public string EncryptionKeyName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.UserAssignedIdentityInEncryption)]
+        public string UserAssignedIdentityInEncryption { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.UseSystemAssignedIdentityInEncryption)]
+        [ValidateNotNullOrEmpty]
+        public object UseSystemAssignedIdentityInEncryption { get; set; }        
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.GitRepository)]
         [ValidateNotNull]
@@ -137,14 +145,21 @@ namespace Microsoft.Azure.Commands.Synapse
             patchInfo.Tags = this.IsParameterBound(c => c.Tag) ? TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) : TagsConversionHelper.CreateTagDictionary(this.InputObject?.Tags, validate:true);
             patchInfo.SqlAdministratorLoginPassword = this.IsParameterBound(c => c.SqlAdministratorLoginPassword) ? this.SqlAdministratorLoginPassword.ConvertToString() : null;
             patchInfo.ManagedVirtualNetworkSettings = this.IsParameterBound(c => c.ManagedVirtualNetwork) ? this.ManagedVirtualNetwork?.ToSdkObject() : this.InputObject?.ManagedVirtualNetworkSettings?.ToSdkObject();           
-            string encrptionKeyName = this.IsParameterBound(c => c.EncryptionKeyName) ? this.EncryptionKeyName : this.InputObject?.Encryption?.CustomerManagedKeyDetails?.Key?.Name;
-            patchInfo.Encryption = !string.IsNullOrEmpty(encrptionKeyName) ? new EncryptionDetails
+            string encrptionKeyName = this.IsParameterBound(c => c.EncryptionKeyName) ? this.EncryptionKeyName : this.InputObject?.Encryption?.CustomerManagedKeyDetails?.Key?.Name;           
+            string userAssignedIdentityInEncryption = this.IsParameterBound(c => c.UserAssignedIdentityInEncryption) ? this.UserAssignedIdentityInEncryption : this.InputObject?.Encryption?.CustomerManagedKeyDetails?.KekIdentity?.UserAssignedIdentity;
+            object useSystemAssignedIdentityInEncryption = this.IsParameterBound(c => c.UseSystemAssignedIdentityInEncryption) ? this.UseSystemAssignedIdentityInEncryption : this.InputObject?.Encryption?.CustomerManagedKeyDetails?.KekIdentity?.UseSystemAssignedIdentity;
+            patchInfo.Encryption = !string.IsNullOrEmpty(encrptionKeyName) || this.IsParameterBound(c => c.UseSystemAssignedIdentityInEncryption) ? new EncryptionDetails
             {
                 Cmk = new CustomerManagedKeyDetails
                 {
                     Key = new WorkspaceKeyDetails
                     {
                         Name = encrptionKeyName
+                    },
+                    KekIdentity = new KekIdentityProperties
+                    {
+                        UserAssignedIdentity = userAssignedIdentityInEncryption,
+                        UseSystemAssignedIdentity = useSystemAssignedIdentityInEncryption
                     }
                 }
             } : null;

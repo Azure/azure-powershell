@@ -14,7 +14,10 @@
   <ItemGroup>
     <PackageReference Include="YamlDotNet.Signed" Version="5.2.1" />
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.ContainerService" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aks.Sdk\Aks.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>

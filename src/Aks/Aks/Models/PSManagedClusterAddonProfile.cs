@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.ContainerService.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Aks.Models
@@ -30,5 +31,10 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// Gets or sets key-value pairs for configuring an add-on.
         /// </summary>
         public IDictionary<string, string> Config { get; set; }
+
+        /// <summary>
+        /// Gets information of user assigned identity used by this add-on.
+        /// </summary>
+        public ManagedClusterAddonProfileIdentity Identity { get; private set; }
     }
 }

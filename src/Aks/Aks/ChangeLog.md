@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bumped API version to 2022-09-01
 
 ## Version 5.0.0
 * [Breaking Change] Removed the alias `Install-AzAksKubectl` of `Install-AzAksCliTool`.
