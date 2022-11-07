@@ -69,9 +69,41 @@ directive:
   - from: swagger-document
     where: $..patch
     transform: delete $.externalDocs
+
+  - from: swagger-document
+    where: $.definitions.PutJobParameters.properties.tags
+    transform: >-
+      return {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Specifies the tags that will be assigned to the job."
+        }
+
+  - from: swagger-document
+    where: $.definitions.UpdateJobParameters.properties.tags
+    transform: >-
+      return {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Specifies the tags that will be assigned to the job."
+        }
+
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
+
+  - where:
+      subject: Job
+      parameter-name: BlobPath
+    set:
+      parameter-name: BlobListBlobPath
+
+  - where:
+      subject: Job
+      parameter-name: EncryptionKeyKekVaultResourceId
+    set:
+      parameter-name: EncryptionKeyKekVaultId
+
   - where:
       subject: Job
     set:
@@ -85,4 +117,5 @@ directive:
     set:
       subject: ImportExportBitLockerKey
     hide: true
+
 ```

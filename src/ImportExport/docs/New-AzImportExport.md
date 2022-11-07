@@ -14,26 +14,25 @@ Creates a new job or updates an existing job in the specified subscription.
 
 ```
 New-AzImportExport -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AcceptLanguage <String>] [-ClientTenantId <String>] [-BackupDriveManifest]
- [-BlobListBlobPathPrefix <String[]>] [-BlobPath <String[]>] [-CancelRequested]
- [-DeliveryPackageCarrierName <String>] [-DeliveryPackageDriveCount <Int64>]
- [-DeliveryPackageShipDate <String>] [-DeliveryPackageTrackingNumber <String>] [-DiagnosticsPath <String>]
- [-DriveList <IDriveStatus[]>] [-EncryptionKeyKekType <EncryptionKekType>] [-EncryptionKeyKekUrl <String>]
- [-EncryptionKeyKekVaultResourceId <String>] [-ExportBlobListBlobPath <String>]
- [-IncompleteBlobListUri <String>] [-JobType <String>] [-Location <String>] [-LogLevel <String>]
- [-PercentComplete <Int64>] [-ProvisioningState <String>] [-ReturnAddressCity <String>]
- [-ReturnAddressCountryOrRegion <String>] [-ReturnAddressEmail <String>] [-ReturnAddressPhone <String>]
- [-ReturnAddressPostalCode <String>] [-ReturnAddressRecipientName <String>]
- [-ReturnAddressStateOrProvince <String>] [-ReturnAddressStreetAddress1 <String>]
- [-ReturnAddressStreetAddress2 <String>] [-ReturnPackageCarrierName <String>]
- [-ReturnPackageDriveCount <Int64>] [-ReturnPackageShipDate <String>] [-ReturnPackageTrackingNumber <String>]
- [-ReturnShippingCarrierAccountNumber <String>] [-ReturnShippingCarrierName <String>]
- [-ShippingInformationCity <String>] [-ShippingInformationCountryOrRegion <String>]
- [-ShippingInformationPhone <String>] [-ShippingInformationPostalCode <String>]
- [-ShippingInformationRecipientName <String>] [-ShippingInformationStateOrProvince <String>]
- [-ShippingInformationStreetAddress1 <String>] [-ShippingInformationStreetAddress2 <String>] [-State <String>]
- [-StorageAccountId <String>] [-Tag <IAny>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AcceptLanguage <String>] [-ClientTenantId <String>] [-BackupDriveManifest] [-BlobListBlobPath <String[]>]
+ [-BlobListBlobPathPrefix <String[]>] [-CancelRequested] [-DeliveryPackageCarrierName <String>]
+ [-DeliveryPackageDriveCount <Int64>] [-DeliveryPackageShipDate <String>]
+ [-DeliveryPackageTrackingNumber <String>] [-DiagnosticsPath <String>] [-DriveList <IDriveStatus[]>]
+ [-EncryptionKeyKekType <EncryptionKekType>] [-EncryptionKeyKekUrl <String>]
+ [-EncryptionKeyKekVaultId <String>] [-ExportBlobListBlobPath <String>] [-IncompleteBlobListUri <String>]
+ [-JobType <String>] [-Location <String>] [-LogLevel <String>] [-PercentComplete <Int64>]
+ [-ProvisioningState <String>] [-ReturnAddressCity <String>] [-ReturnAddressCountryOrRegion <String>]
+ [-ReturnAddressEmail <String>] [-ReturnAddressPhone <String>] [-ReturnAddressPostalCode <String>]
+ [-ReturnAddressRecipientName <String>] [-ReturnAddressStateOrProvince <String>]
+ [-ReturnAddressStreetAddress1 <String>] [-ReturnAddressStreetAddress2 <String>]
+ [-ReturnPackageCarrierName <String>] [-ReturnPackageDriveCount <Int64>] [-ReturnPackageShipDate <String>]
+ [-ReturnPackageTrackingNumber <String>] [-ReturnShippingCarrierAccountNumber <String>]
+ [-ReturnShippingCarrierName <String>] [-ShippingInformationCity <String>]
+ [-ShippingInformationCountryOrRegion <String>] [-ShippingInformationPhone <String>]
+ [-ShippingInformationPostalCode <String>] [-ShippingInformationRecipientName <String>]
+ [-ShippingInformationStateOrProvince <String>] [-ShippingInformationStreetAddress1 <String>]
+ [-ShippingInformationStreetAddress2 <String>] [-State <String>] [-StorageAccountId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,8 +87,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BlobListBlobPathPrefix
-A collection of blob-prefix strings.
+### -BlobListBlobPath
+A collection of blob-path strings.
 
 ```yaml
 Type: System.String[]
@@ -103,8 +102,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BlobPath
-A collection of blob-path strings.
+### -BlobListBlobPathPrefix
+A collection of blob-prefix strings.
 
 ```yaml
 Type: System.String[]
@@ -285,7 +284,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EncryptionKeyKekVaultResourceId
+### -EncryptionKeyKekVaultId
 Specifies the keyvault resource id for kek encryption key.
 
 ```yaml
@@ -832,7 +831,7 @@ Accept wildcard characters: False
 Specifies the tags that will be assigned to the job.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
