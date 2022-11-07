@@ -50,7 +50,7 @@ function setupEnv() {
     $vcenterName = "azcli-test-vc3"
     $env.Add("vcenterName", $vcenterName)
 
-    $vmName = "test-tls-2016-vm2"
+    $vmName = "vm-1106469"
     $env.Add("vmName", $vmName)
 
     $vmTemplateName = "test-vmtemplate" + (RandomString -allChars $false -len 5)
