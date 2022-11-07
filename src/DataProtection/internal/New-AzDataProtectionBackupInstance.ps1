@@ -105,7 +105,7 @@ PROPERTY <IBackupInstance>: BackupInstanceResource properties
   [FriendlyName <String>]: Gets or sets the Backup Instance friendly name.
   [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupinstance
+https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupinstance
 #>
 function New-AzDataProtectionBackupInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupInstanceResource])]

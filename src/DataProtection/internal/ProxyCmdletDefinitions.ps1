@@ -49,7 +49,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription Id.
   [VaultName <String>]: The name of the backup vault.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackupvault
+https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackupvault
 #>
 function Get-AzDataProtectionBackupVault {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupVaultResource])]
@@ -168,7 +168,7 @@ Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupN
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupRecoveryPointResource
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionrecoverypoint
+https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionrecoverypoint
 #>
 function Get-AzDataProtectionRecoveryPoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupRecoveryPointResource])]
@@ -395,7 +395,7 @@ PROPERTY <IBackupInstance>: BackupInstanceResource properties
   [FriendlyName <String>]: Gets or sets the Backup Instance friendly name.
   [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupinstance
+https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupinstance
 #>
 function New-AzDataProtectionBackupInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupInstanceResource])]
@@ -597,7 +597,7 @@ PARAMETER <IBaseBackupPolicyResource>: BaseBackupPolicy resource
   [DatasourceType <String[]>]: Type of datasource for the backup management
   [ObjectType <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackuppolicy
+https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackuppolicy
 #>
 function New-AzDataProtectionBackupPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBaseBackupPolicyResource])]
@@ -782,7 +782,7 @@ STORAGESETTING <IStorageSetting[]>: Storage Settings
   [DatastoreType <StorageSettingStoreTypes?>]: Gets or sets the type of the datastore.
   [Type <StorageSettingTypes?>]: Gets or sets the type.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
+https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
 #>
 function New-AzDataProtectionBackupVault {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupVaultResource])]
@@ -1002,7 +1002,7 @@ PARAMETER <IResourceGuardResource>: .
     [(Any) <String>]: This indicates any property can be added to this object.
   [CriticalOperationExclusionList <String[]>]: List of critical operations which are not protected by this resourceGuard
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionresourceguard
+https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionresourceguard
 #>
 function New-AzDataProtectionResourceGuard {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IResourceGuardResource])]
@@ -1276,7 +1276,7 @@ PARAMETER <IValidateForBackupRequest>: Validate for backup request
     [FriendlyName <String>]: Gets or sets the Backup Instance friendly name.
     [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancereadiness
+https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancereadiness
 #>
 function Test-AzDataProtectionBackupInstanceReadiness {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IOperationJobExtendedInfo])]
@@ -1485,7 +1485,7 @@ RESTOREREQUESTOBJECT <IAzureBackupRestoreRequest>: Gets or sets the restore requ
   SourceDataStoreType <SourceDataStoreType>: Gets or sets the type of the source data store.
   [SourceResourceId <String>]: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancerestore
+https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancerestore
 #>
 function Test-AzDataProtectionBackupInstanceRestore {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IOperationJobExtendedInfo])]

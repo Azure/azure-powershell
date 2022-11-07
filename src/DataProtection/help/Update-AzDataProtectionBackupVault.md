@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionbackupvault
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionbackupvault
 schema: 2.0.0
 ---
 
