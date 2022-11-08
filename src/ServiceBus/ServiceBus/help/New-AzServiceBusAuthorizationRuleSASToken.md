@@ -39,12 +39,12 @@ $EndTime = $StartTime.AddHours(2.0)
 $SasToken = New-AzServiceBusAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime
 ```
 
-Generate SAS token for the given authorixation rule for Namespace with expiry time.
+Generate SAS token for the given authorization rule for Namespace with expiry time.
 
 ## PARAMETERS
 
 ### -AuthorizationRuleId
-ARM ResourceId of the Authoraization Rule
+ARM ResourceId of the Authorization Rule
 
 ```yaml
 Type: System.String
