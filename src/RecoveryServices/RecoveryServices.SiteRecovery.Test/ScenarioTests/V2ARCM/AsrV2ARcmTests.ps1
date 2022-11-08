@@ -16,10 +16,10 @@
 ########################## Site Recovery Tests #############################
 
 # Inputs
-$vaultRg = "V2A-ECY"
-$vaultName = "Rcm-Vault-150"
-$primaryFabricName = "Rcm-Vault-150-vmwarefabric"
-$primaryContainerName = "Rcm-Vault-4678replicationcontainer"
+$vaultRg = "PwsTest"
+$vaultName = "PwsTest-rcm-vault"
+$primaryFabricName = "PwsTest-rcm-vault-vmwarefabric"
+$primaryContainerName = "PwsTest-rc0015replicationcontainer"
 $policyName = "v2aRcm-pwsh-testpolicy"
 $failbackPolicyName = "appconsistency-policy-failback"
 $primaryContainerMappingName = "v2aRcm-pwsh-testmapping"
@@ -181,6 +181,35 @@ function Test-V2ARCMContainerMapping {
     $Mapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $Container `
         -Name $primaryContainerMappingName    
     Assert-NotNull($Mapping)
+}
+
+<#
+.SYNOPSIS
+	Site Recovery V2A RCM get protectable item test.
+#>
+function Test-V2ARCMProtectableItem {
+
+    # Set vault context.
+    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
+    Set-ASRVaultContext -Vault $Vault
+    
+    # Get fabric.
+    $Fabric = Get-AzRecoveryServicesAsrFabric -Name $primaryFabricName
+    Assert-NotNull($Fabric)
+    Assert-true { $Fabric.name -eq $primaryFabricName }
+
+    # Get container.
+    $Container = Get-AzRecoveryServicesAsrProtectionContainer -Name $primaryContainerName -Fabric $Fabric
+    Assert-NotNull($Container)
+    Assert-true { $Container.name -eq $primaryContainerName }
+
+    # List protectable item.
+    $ProtectableItem = Get-ASRProtectableItem -ProtectionContainer $Container `
+        -SiteId $Fabric.FabricSpecificDetails.VmwareSiteId
+
+    # Get protectable item.
+    $ProtectableItem = Get-ASRProtectableItem -ProtectionContainer $Container `
+        -SiteId $Fabric.FabricSpecificDetails.VmwareSiteId -FriendlyName $vmName
 }
 
 <#

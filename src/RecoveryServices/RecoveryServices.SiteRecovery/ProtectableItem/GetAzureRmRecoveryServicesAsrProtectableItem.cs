@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         Resources.NoProtectableMachinesInSite,
                         this.SiteId));
             }
-            
+
             this.WriteProtectableItems(machines);
         }
 
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var machines =
                 this.FabricDiscoveryClient
-                .GetAzureSiteRecoveryDiscoveredMachines(this.SiteId)
+                .GetAzureSiteRecoveryDiscoveredMachines(this.SiteId, this.FriendlyName)
                 .Where(x => !x.Properties.IsDeleted)
                 .ToList();
             if (!machines.Any())
@@ -254,23 +254,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         this.SiteId));
             }
 
-            var filteredMachines =
-                machines
-                .Where(x => string.Equals(
-                    x.Properties.DisplayName,
-                    this.FriendlyName,
-                    StringComparison.OrdinalIgnoreCase))
-                .ToList();
-            if (!filteredMachines.Any())
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                        Resources.ProtectableMachineNotFound,
-                        this.FriendlyName,
-                        this.SiteId));
-            }
-
-            this.WriteProtectableItems(filteredMachines);
+            this.WriteProtectableItems(machines);
         }
 
         /// <summary>

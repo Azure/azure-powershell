@@ -67,6 +67,15 @@ namespace RecoveryServices.SiteRecovery.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestV2ARCMProtectableItem()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMProtectableItem");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestV2ARCMEnableDR()
         {
             TestRunner.RunTestScript(
