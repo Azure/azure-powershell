@@ -20,8 +20,7 @@ get predictive autoscale metric future data
 .Description
 get predictive autoscale metric future data
 .Example
-Get-AzAutoscalePredictiveMetric -AutoscaleSettingName test-autoscalesetting -ResourceGroupName test-group -Timespan "2021-10-14T22:00:00.000Z/2021-10-16T22:00:00.000Z" -Aggregation "Total" -Interval ([System.TimeSpan]::New(0,60,0)) -MetricName "PercentageCPU" -MetricNamespace
- "Microsoft.Compute/virtualMachineScaleSets"
+Get-AzAutoscalePredictiveMetric -AutoscaleSettingName test-autoscalesetting -ResourceGroupName test-group -Timespan "2021-10-14T22:00:00.000Z/2021-10-16T22:00:00.000Z" -Aggregation "Total" -Interval ([System.TimeSpan]::New(0,60,0)) -MetricName "PercentageCPU" -MetricNamespace "Microsoft.Compute/virtualMachineScaleSets"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleIdentity
@@ -38,7 +37,7 @@ INPUTOBJECT <IAutoscaleIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/get-azautoscalepredictivemetric
+https://learn.microsoft.com/powershell/module/az.monitor/get-azautoscalepredictivemetric
 #>
 function Get-AzAutoscalePredictiveMetric {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IPredictiveResponse])]

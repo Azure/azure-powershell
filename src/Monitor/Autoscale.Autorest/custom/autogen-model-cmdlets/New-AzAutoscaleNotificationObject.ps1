@@ -23,7 +23,7 @@ Create an in-memory object for AutoscaleNotification.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleNotification
 .Link
-https://docs.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleNotificationObject
+https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleNotificationObject
 #>
 function New-AzAutoscaleNotificationObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleNotification')]

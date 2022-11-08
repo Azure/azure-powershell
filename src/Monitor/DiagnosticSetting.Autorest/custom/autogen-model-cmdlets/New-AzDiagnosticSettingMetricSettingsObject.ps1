@@ -23,7 +23,7 @@ Create an in-memory object for MetricSettings.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.MetricSettings
 .Link
-https://docs.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingMetricSettingsObject
+https://learn.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingMetricSettingsObject
 #>
 function New-AzDiagnosticSettingMetricSettingsObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.MetricSettings')]

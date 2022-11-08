@@ -37,7 +37,7 @@ ANYOF <IAlertRuleLeafCondition[]>: An Activity Log Alert rule condition that is 
   [Equal <String>]: The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
   [Field <String>]: The name of the Activity Log event's field that this condition will examine.         The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
 .Link
-https://docs.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject
+https://learn.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject
 #>
 function New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition])]
