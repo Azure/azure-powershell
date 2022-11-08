@@ -23,7 +23,7 @@ Create an in-memory object for WebhookNotification.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotification
 .Link
-https://docs.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleWebhookNotificationObject
+https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleWebhookNotificationObject
 #>
 function New-AzAutoscaleWebhookNotificationObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotification')]

@@ -160,7 +160,7 @@ Above set of cmdlets will create a metric alert rule with dimensions.
 The Action Group for rule
 
 ```yaml
-Type: Microsoft.Azure.Management.Monitor.Models.ActivityLogAlertActionGroup[]
+Type: Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[]
 Parameter Sets: (All)
 Aliases: Actions
 

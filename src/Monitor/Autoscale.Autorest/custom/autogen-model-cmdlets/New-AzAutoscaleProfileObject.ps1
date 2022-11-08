@@ -23,7 +23,7 @@ Create an in-memory object for AutoscaleProfile.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile
 .Link
-https://docs.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleProfileObject
+https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleProfileObject
 #>
 function New-AzAutoscaleProfileObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile')]

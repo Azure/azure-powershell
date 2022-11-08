@@ -1,7 +1,7 @@
 ---
 external help file: Az.ScheduledQueryRule.psm1-help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule
+online version: https://learn.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule
 schema: 2.0.0
 ---
 

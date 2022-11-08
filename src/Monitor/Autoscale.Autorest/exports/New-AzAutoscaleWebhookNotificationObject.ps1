@@ -32,7 +32,7 @@ To create the parameters described below, construct a hash table containing the 
 PROPERTY <IWebhookNotificationProperties>: a property bag of settings. This value can be empty.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleWebhookNotificationObject
+https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleWebhookNotificationObject
 #>
 function New-AzAutoscaleWebhookNotificationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.WebhookNotification])]
