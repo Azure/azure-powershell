@@ -141,36 +141,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Azure DataLakeGen2 Item constructor
         /// </summary>
-        /// <param name="pathClient">DataLakePathClient object</param>
-        /// <param name="fileSystem">File System object</param>
-        public AzureDataLakeGen2Item(DataLakePathClient pathClient, DataLakeFileSystemClient fileSystem)
-        {
-            Name = pathClient.Name;
-            Path = pathClient.Path;
-            Properties = pathClient.GetProperties();
-            AccessControl = pathClient.GetAccessControl();
-            Length = Properties.ContentLength;
-            ContentType = Properties.ContentType;
-            LastModified = Properties.LastModified;
-            Permissions = AccessControl.Permissions;
-            ACL = PSPathAccessControlEntry.ParsePSPathAccessControlEntrys(AccessControl.AccessControlList);
-            Owner = AccessControl.Owner;
-            Group = AccessControl.Group;
-            if (Properties.IsDirectory)
-            {
-                Directory = fileSystem.GetDirectoryClient(pathClient.Path);
-                IsDirectory = true;
-            }
-            else
-            {
-                File = fileSystem.GetFileClient(pathClient.Path);
-                IsDirectory = false;
-            }
-        }
-
-        /// <summary>
-        /// Azure DataLakeGen2 Item constructor
-        /// </summary>
         /// <param name="fileClient">Datalake gen2 file object</param>
         public AzureDataLakeGen2Item(DataLakeFileClient fileClient)
         {

@@ -30,6 +30,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
  [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>]
  [-DnsEndpointType <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [<CommonParameters>]
 ```
 
 ### AzureActiveDirectoryKerberosForFile
@@ -37,19 +38,19 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
 New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Location] <String>
  [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
- [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVersion <String>]
- [-KeyVaultUri <String>] [-NetworkRuleSet <PSNetworkRuleSet>] [-EnableSftp <Boolean>]
- [-EnableLocalUser <Boolean>] [-EnableHierarchicalNamespace <Boolean>] [-EnableLargeFileShare]
- [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
+ [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>]
+ [-KeyName <String>] [-KeyVersion <String>] [-KeyVaultUri <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableHierarchicalNamespace <Boolean>]
+ [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
  -EnableAzureActiveDirectoryKerberosForFile <Boolean> [-ActiveDirectoryDomainName <String>]
  [-ActiveDirectoryDomainGuid <String>] [-AsJob] [-EncryptionKeyTypeForTable <String>]
  [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
  [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
- [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>]
- [-AllowedCopyScope <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [<CommonParameters>]
+ [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>]
+ [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>] [-DnsEndpointType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -60,7 +61,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>]
  [-KeyName <String>] [-KeyVersion <String>] [-KeyVaultUri <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
  [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableHierarchicalNamespace <Boolean>]
- [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
+ [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
  [-EnableActiveDirectoryDomainServicesForFile <Boolean>] [-ActiveDirectoryDomainName <String>]
  [-ActiveDirectoryNetBiosDomainName <String>] [-ActiveDirectoryForestName <String>]
  [-ActiveDirectoryDomainGuid <String>] [-ActiveDirectoryDomainSid <String>]
@@ -72,7 +73,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
  [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>]
  [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>] [-DnsEndpointType <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -337,7 +338,16 @@ ImmutabilityPeriodSinceCreationInDays State    AllowProtectedAppendWrites
 The command creates an account and enable account level immutability with versioning by '-EnableAccountLevelImmutability', then all the containers under this account will have object-level immutability enabled by default.
 The account is also created with a default account-level immutability policy which is inherited and applied to objects that do not possess an explicit immutability policy at the object level. 
 
-### Example 17: Create account with AllowedCopyScope as AAD
+### Example 17: Create a Storage account with enable Azure Files Active Directory Domain Service Kerberos Authentication.
+```
+PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableAzureActiveDirectoryKerberosForFile $true `
+        -ActiveDirectoryDomainName "mydomain.com" `
+        -ActiveDirectoryDomainGuid "12345678-1234-1234-1234-123456789012"
+```
+
+This command creates a Storage account with enable Azure Files Active Directory Domain Service Kerberos Authentication.
+
+### Example 18: Create account with AllowedCopyScope as AAD
 ```
 PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -AllowedCopyScope AAD 
 
@@ -347,7 +357,7 @@ AAD
 
 The command creates account with AllowedCopyScope as AAD.
 
-### Example 18: Create a Storage account with Keyvault from another tenant (access Keyvault with FederatedClientId)
+### Example 19: Create a Storage account with Keyvault from another tenant (access Keyvault with FederatedClientId)
 ```powershell
 # create Storage account with Keyvault encryption (access Keyvault with FederatedClientId), then show properties
 PS C:\> $account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -Kind StorageV2 -SkuName Standard_LRS -Location eastus2euap `
@@ -371,7 +381,7 @@ LastKeyRotationTimestamp      : 3/3/2022 2:07:34 AM
 
 This command creates a storage account with Keyvault from another tenant (access Keyvault with FederatedClientId).
 
-### Example 19: Create account with DnsEndpointType as AzureDnsZone
+### Example 20: Create account with DnsEndpointType as AzureDnsZone
 ```powershell
 New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -DnsEndpointType AzureDnsZone
 ```
@@ -828,21 +838,6 @@ Accept wildcard characters: False
 
 ### -EnableNfsV3
 Enable NFS 3.0 protocol support if sets to true
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableSftp
-Enable Secure File Transfer Protocol for the Storage account.
 
 ```yaml
 Type: System.Boolean

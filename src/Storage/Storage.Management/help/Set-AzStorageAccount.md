@@ -27,7 +27,7 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
  [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
  [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -45,7 +45,7 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
  [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
  [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureActiveDirectoryKerberosForFile
@@ -53,16 +53,16 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
- [-KeyVaultUserAssignedIdentityId <String>] [-IdentityType <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-UpgradeToStorageV2] [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>]
- [-PublishInternetEndpoint <Boolean>] [-EnableAzureActiveDirectoryKerberosForFile <Boolean>]
- [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryDomainGuid <String>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
- [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
- [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-EnableLargeFileShare]
+ [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
+ [-EnableAzureActiveDirectoryKerberosForFile <Boolean>] [-ActiveDirectoryDomainName <String>]
+ [-ActiveDirectoryDomainGuid <String>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
+ [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
+ [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>] [-ImmutabilityPolicyState <String>]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -408,6 +408,8 @@ The storage account must be created with enable account level immutability with 
 The account-level immutability policy will be inherited and applied to objects that do not possess an explicit immutability policy at the object level.
 
 ### Example 20: Update a Storage account by enable Sftp and localuser
+<!-- Skip: Output cannot be splitted from code -->
+
 ```powershell
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableSftp $true -EnableLocalUser $true 
 
@@ -817,36 +819,6 @@ Learn more in https://go.microsoft.com/fwlink/?linkid=2086047
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableLocalUser
-Enable local users feature for the Storage account.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableSftp
-Enable Secure File Transfer Protocol for the Storage account.
-
-```yaml
-Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
