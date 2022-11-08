@@ -98,6 +98,22 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         ${SubscriptionId},
 
         [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
+        # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        ${IdentityType},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
+        [System.Collections.Hashtable]
+        # The set of user assigned identities associated with the resource.
+        # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        # The dictionary values can be empty objects ({}) in requests.
+        ${IdentityUserAssignedIdentity},
+
+        [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Azure')]
@@ -305,10 +321,12 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             # 1. Get "principalId" from RP
             if($identityTypeLower -eq "systemassigned") {
                 Write-Debug("System Assigend...")
-                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower
+                $profileIdentity = RetryCommand -Command 'Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower' -RetryTimes 6 -SecondsDelay 5 -Debug
+                # $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower
             }
             else {
-                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower -IdentityUserAssignedIdentity $identityUserAssignedIdentityValue
+                $profileIdentity = RetryCommand -Command 'Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower -IdentityUserAssignedIdentity $identityUserAssignedIdentityValue' -RetryTimes 6 -SecondsDelay 5 -Debug
+                # $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower -IdentityUserAssignedIdentity $identityUserAssignedIdentityValue
             }
             
             $systemAssigendPrincipalIndentity = $profileIdentity.IdentityPrincipalId
@@ -437,4 +455,34 @@ function ValidateMigrationWafPolicyProperty {
     Write-Host("wafHash manage rule: " + $wafHash.ManagedRule)
 
     return $wafHash
+}
+
+function RetryCommand {
+    param (
+        [string]$Command,
+        [int]$RetryTimes,
+        [int]$SecondsDelay
+    )
+
+    $retryCount = 0
+    $completed = $false
+
+    while (-not $completed) {
+        try {
+            $res = & $Command
+            Write-Debug ("Command [{0}] succeeded." -f $Command)
+            $completed = $true
+            return $res
+        } 
+        catch {
+            if ($retryCount -ge $RetryTimes) {
+                Write-Verbose ("Command [{0}] failed the maximum number of {1} times." -f $Command, $retryCount)
+                throw
+            } else {
+                Write-Debug ("Command [{0}] failed. Retrying in {1} seconds." -f $command, $SecondsDelay)
+                Start-Sleep $SecondsDelay
+                $retryCount++
+            }
+        }
+    }
 }
