@@ -15,7 +15,7 @@
     <PackageReference Include="Azure.Storage.Files.DataLake" Version="12.10.0" />
     <PackageReference Include="Azure.Storage.Files.Shares" Version="12.10.0" />
     <PackageReference Include="Azure.Storage.Queues" Version="12.10.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="24.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="25.0.0" />
   </ItemGroup>
 
 </Project>

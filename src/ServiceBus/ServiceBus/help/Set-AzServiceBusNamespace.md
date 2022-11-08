@@ -15,7 +15,7 @@ Updates the description of an existing Service Bus namespace.
 ```
 Set-AzServiceBusNamespace [-ResourceGroupName] <String> [[-Location] <String>] [-Name] <String>
  [-SkuName <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DisableLocalAuth] [-IdentityType <String>]
- [-IdentityId <String[]>] [-EncryptionConfig <PSEncryptionConfigAttributes[]>]
+ [-IdentityId <String[]>] [-EncryptionConfig <PSEncryptionConfigAttributes[]>] [-MinimumTlsVersion <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ The **Set-AzServiceBusNamespace** cmdlet updates the description of the specifie
 
 ### Example 1
 ```powershell
-Set-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUs -SkuName Premium -SkuCapacity 1 -Tag @{Tag2="Tag2Value"}
+Set-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUs -SkuName Premium -SkuCapacity 1 -Tag @{Tag2="Tag2Value"} -MinimumTlsVersion 1.1
 ```
 
 ```output
@@ -40,6 +40,7 @@ ProvisioningState  : Succeeded
 CreatedAt          :
 UpdatedAt          :
 ServiceBusEndpoint :
+MinimumTlsVersion  : 1.1
 ```
 
 Updates the Service Bus namespace with a new description.
@@ -221,6 +222,23 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MinimumTlsVersion
+The minimum TLS version for the namespace to support, e.g.
+'1.2'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: 1.0, 1.1, 1.2
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

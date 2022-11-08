@@ -157,6 +157,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? EnableSftp { get; set; }
         public bool? EnableLocalUser { get; set; }
 
+        public bool? EnableSftp { get; set; }
+        public bool? EnableLocalUser { get; set; }
+
         public bool? AllowSharedKeyAccess { get; set; }
 
         public PSExtendedLocation ExtendedLocation { get; set; }

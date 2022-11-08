@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventHub.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
@@ -33,10 +34,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSEventHubClusterAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster", ChangeDescription = ClusterInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
         [Parameter(Mandatory = true, ParameterSetName = ClusterInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Cluster Object")]
         [ValidateNotNullOrEmpty]
         public PSEventHubAttributes InputObject { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = ClusterResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Cluster Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

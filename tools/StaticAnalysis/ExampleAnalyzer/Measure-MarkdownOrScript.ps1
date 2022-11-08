@@ -3,7 +3,7 @@
         The script to find examples in ".md" and analyze the examples by custom rules.
     .PARAMETER MarkdownPaths
     Markdown searching paths. Empty for current path. Supports wildcard.
-    .PARAMETER ScriptPath
+    .PARAMETER ScriptPaths
     PowerShell script searching paths. Empty for current path. Supports wildcard.
     .PARAMETER RulePaths
     PSScriptAnalyzer custom rules paths. Empty for current path. Supports wildcard.

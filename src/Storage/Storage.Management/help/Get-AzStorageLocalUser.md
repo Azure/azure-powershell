@@ -30,6 +30,9 @@ The **Get-AzStorageLocalUser** cmdlet gets a specified local user or lists all l
 ## EXAMPLES
 
 ### Example 1: Get a specified local user
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $localUser = Get-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1
 
@@ -52,10 +55,12 @@ rw          file    share2
 This command gets a specified local user, and show the properties of it.
 
 ### Example 2: List all local users in a storage account
+```powershell
+Get-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
 ```
-PS C:\> Get-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" 
 
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+```output
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes SshAuthorizedKeys
 ----      ---                                          ------------- ------------ --------- -------------- ---------------- -----------------

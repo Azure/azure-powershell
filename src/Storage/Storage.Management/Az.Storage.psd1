@@ -204,9 +204,9 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'New-AzStorageAccountManagementPolicyBlobIndexMatchObject', 
                'Set-AzStorageLocalUser', 'Get-AzStorageLocalUser', 
                'Remove-AzStorageLocalUser', 'Get-AzStorageLocalUserKey', 
-               'New-AzStorageLocalUserSshPassword', 
-               'New-AzStorageLocalUserSshPublicKey', 
-               'New-AzStorageLocalUserPermissionScope'
+               'New-AzStorageLocalUserSshPassword', 'New-AzStorageLocalUserSshPublicKey', 
+               'New-AzStorageLocalUserPermissionScope', 
+               'Get-AzDataLakeGen2DeletedItem', 'Restore-AzDataLakeGen2DeletedItem'
 
 # Variables to export from this module
 # VariablesToExport = @()

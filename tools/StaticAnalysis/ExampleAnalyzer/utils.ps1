@@ -41,7 +41,7 @@ class AnalysisOutput{
     .SYNOPSIS
     Get examples details from ".md".
     .DESCRIPTION
-    Splits title, code, output, description according to regular expression.
+    Split title, code, output, description line by line according to block identifiers.
 #>
 function Get-ExamplesDetailsFromMd {
     param (
@@ -228,8 +228,7 @@ function Set-ExampleProperties{
 
 <#
     .SYNOPSIS
-    Tests whether the script is integral, outputs examples in ".md" to "TempScript.ps1" 
-    and records the Scale, Missing,  DeletePromptAndSeparateOutput class.
+    Check whether the docs are complete, integrate examples to one script.
 #>
 function Measure-SectionMissingAndOutputScript {
     param (

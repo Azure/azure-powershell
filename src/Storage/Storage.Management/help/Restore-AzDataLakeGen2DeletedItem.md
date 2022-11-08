@@ -33,9 +33,9 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: List all deleted files or directories from a Filesystem, and restore them by pipeline
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $items = Get-AzDataLakeGen2DeletedItem -FileSystem "filesystem1" 
-
 PS C:\> $items
 
    FileSystem Name: filesystem1
@@ -60,11 +60,12 @@ dir0/dir2/file3      False        1024            2021-05-19 07:06:42Z rw-r-----
 This command lists all deleted files or directories from a Filesystem, the restore all of them by pipeline.
 
 ### Example 2: Restore an single file with path and DeletionId
+```powershell
+Restore-AzDataLakeGen2DeletedItem -FileSystem "filesystem1"  -Path dir0/dir1/file1 -DeletionId 132658838415219780
 ```
-PS C:\> Restore-AzDataLakeGen2DeletedItem -FileSystem "filesystem1"  -Path dir0/dir1/file1 -DeletionId 132658838415219780
 
-
-   FileSystem Name: filesystem1
+```output
+FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
 ----                 -----------  ------          ------------         -----------  -----                -----               

@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// </summary>
         public static PolicyBase GetPolicyModelForAzureIaaSVM(ServiceClientModel.ProtectionPolicyResource serviceClientResponse,
            PolicyBase policyModel)
-        {   
+        {
             string backupManagementType = Management.RecoveryServices.Backup.Models.BackupManagementType.AzureIaasVM;
             if (((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType() !=
                                                                        typeof(ServiceClientModel.LongTermRetentionPolicy))
@@ -190,7 +190,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).InstantRPDetails.AzureBackupRGNamePrefix;
             iaasPolicyModel.AzureBackupRGNameSuffix = 
                 ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).InstantRPDetails.AzureBackupRGNameSuffix;
-            
+
+            // fetch the smart tiering details          
+            if (((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TieringPolicy != null &&
+                ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TieringPolicy.ContainsKey(ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString()))
+            {
+                iaasPolicyModel.TieringPolicy = new TieringPolicy();
+
+                string tieringMode = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TieringPolicy[ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString()].TieringMode;
+
+                iaasPolicyModel.TieringPolicy.TieringMode = (tieringMode == "TierRecommended") ? TieringMode.TierRecommended : ((tieringMode == "TierAfter") ? TieringMode.TierAllEligible : ((tieringMode == "DoNotTier") ? TieringMode.DoNotTier : 0));
+
+                iaasPolicyModel.TieringPolicy.TierAfterDuration = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TieringPolicy[ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString()].Duration;
+
+                iaasPolicyModel.TieringPolicy.TierAfterDurationType = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TieringPolicy[ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString()].DurationType;
+            }
+
             return policyModel;
         }
 
@@ -293,7 +308,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                             policy.RetentionPolicy.GetType());
                         Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                         return null;
-                    }
+                    }                    
                 }
                 else if (string.Compare(policy.PolicyType, "Differential") == 0)
                 {
@@ -347,6 +362,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
             azureVmWorkloadPolicyModel.ProtectedItemsCount = ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.
                 Properties).ProtectedItemsCount;
+                        
             return policyModel;
         }
 
@@ -812,6 +828,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     azureVmWorkloadPolicyModel.FullBackupRetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy(
                         (ServiceClientModel.LongTermRetentionPolicy)subProtectionPolicy.RetentionPolicy,
                         ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);
+
+                    // fetch the smart tiering details            
+                    if (subProtectionPolicy.TieringPolicy != null &&
+                        subProtectionPolicy.TieringPolicy.ContainsKey(ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString()))
+                    {
+                        azureVmWorkloadPolicyModel.FullBackupTieringPolicy = new TieringPolicy();
+
+                        string tieringMode = subProtectionPolicy.TieringPolicy[ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString()].TieringMode;
+
+                        azureVmWorkloadPolicyModel.FullBackupTieringPolicy.TieringMode = (tieringMode == "TierRecommended") ? TieringMode.TierRecommended : ((tieringMode == "TierAfter") ? TieringMode.TierAllEligible : ((tieringMode == "DoNotTier") ? TieringMode.DoNotTier : 0));
+
+                        azureVmWorkloadPolicyModel.FullBackupTieringPolicy.TierAfterDuration = subProtectionPolicy.TieringPolicy[ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString()].Duration;
+
+                        azureVmWorkloadPolicyModel.FullBackupTieringPolicy.TierAfterDurationType = subProtectionPolicy.TieringPolicy[ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString()].DurationType;
+                    }
                 }
                 else if (string.Compare(subProtectionPolicy.PolicyType, "Differential") == 0)
                 {
