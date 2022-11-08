@@ -138,7 +138,7 @@ pac136,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Storag
 pac137,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.StreamAnalytics,2.0.0
 pac138,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Subscription,0.8.1
 pac139,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Support,1.0.0
-pac140,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Synapse,2.0.0
+pac140,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Synapse,2.1.0
 pac141,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.TimeSeriesInsights,0.2.0
 pac142,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.TrafficManager,1.1.0
 pac143,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.VMware,0.5.0
