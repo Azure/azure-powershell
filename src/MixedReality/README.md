@@ -73,20 +73,28 @@ directive:
     set:
       subject: NameAvailability
   - where:
-      subject: ^SpatialAnchorsAccount$
+      subject: ^SpatialAnchorAccount$
     set:
-      subject: SpatialAnchorAccount
+      subject: SpatialAnchorsAccount
   - where:
-      subject: ^ObjectAnchorsAccount$
+      subject: ^ObjectAnchorAccount$
     set:
-      subject: ObjectAnchorAccount
+      subject: ObjectAnchorsAccount
   - where:
-      subject: SpatialAnchorAccount
+      subject: ^SpatialAnchorAccountKey$
+    set:
+      subject: SpatialAnchorsAccountKey
+  - where:
+      subject: ^ObjectAnchorAccountKey$
+    set:
+      subject: ObjectAnchorsAccountKey
+  - where:
+      subject: SpatialAnchorsAccount
       parameter-name: AccountName
     set:
       parameter-name: Name
   - where:
-      subject: ObjectAnchorAccount
+      subject: ObjectAnchorsAccount
       parameter-name: AccountName
     set:
       parameter-name: Name

@@ -1,6 +1,6 @@
 ### Example 1: Regenerate specified Key of an object anchors Account.
 ```powershell
-New-AzMixedRealityObjectAnchorAccountKey -AccountName azpstestanchorsaccount-object -ResourceGroupName azps_test_group -Serial 1
+New-AzMixedRealityObjectAnchorsAccountKey -AccountName azpstestanchorsaccount-object -ResourceGroupName azps_test_group -Serial 1
 ```
 
 ```output

@@ -1,6 +1,6 @@
 ### Example 1: List Both of the 2 Keys of a Spatial Anchors Account.
 ```powershell
-Get-AzMixedRealitySpatialAnchorAccountKey -AccountName azpstestanchorsaccount -ResourceGroupName azps_test_group
+Get-AzMixedRealitySpatialAnchorsAccountKey -AccountName azpstestanchorsaccount -ResourceGroupName azps_test_group
 ```
 
 ```output

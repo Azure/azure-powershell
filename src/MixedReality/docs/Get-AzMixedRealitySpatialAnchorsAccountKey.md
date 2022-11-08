@@ -1,39 +1,39 @@
 ---
 external help file:
 Module Name: Az.MixedReality
-online version: https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityobjectanchoraccountkey
+online version: https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityspatialanchorsaccountkey
 schema: 2.0.0
 ---
 
-# Get-AzMixedRealityObjectAnchorAccountKey
+# Get-AzMixedRealitySpatialAnchorsAccountKey
 
 ## SYNOPSIS
-List Both of the 2 Keys of an object anchors Account
+List Both of the 2 Keys of a Spatial Anchors Account
 
 ## SYNTAX
 
 ```
-Get-AzMixedRealityObjectAnchorAccountKey -AccountName <String> -ResourceGroupName <String>
+Get-AzMixedRealitySpatialAnchorsAccountKey -AccountName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List Both of the 2 Keys of an object anchors Account
+List Both of the 2 Keys of a Spatial Anchors Account
 
 ## EXAMPLES
 
-### Example 1: List Both of the 2 Keys of an object anchors Account.
+### Example 1: List Both of the 2 Keys of a Spatial Anchors Account.
 ```powershell
-Get-AzMixedRealityObjectAnchorAccountKey -AccountName azpstestanchorsaccount-object -ResourceGroupName azps_test_group
+Get-AzMixedRealitySpatialAnchorsAccountKey -AccountName azpstestanchorsaccount -ResourceGroupName azps_test_group
 ```
 
 ```output
-PrimaryKey              SecondaryKey
-----------              ------------
-7N9FGZT/5******PhlS1e8= fO/rmry******+mP5VJCZS4s=
+PrimaryKey             SecondaryKey
+----------             ------------
+OAocrh+K******8VRRO/I= froxBip******KVs6tqyPA=
 ```
 
-List Both of the 2 Keys of an object anchors Account.
+List Both of the 2 Keys of a Spatial Anchors Account.
 
 ## PARAMETERS
 

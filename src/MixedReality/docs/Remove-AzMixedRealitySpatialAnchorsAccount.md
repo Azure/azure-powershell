@@ -1,40 +1,40 @@
 ---
 external help file:
 Module Name: Az.MixedReality
-online version: https://docs.microsoft.com/powershell/module/az.mixedreality/remove-azmixedrealityobjectanchoraccount
+online version: https://docs.microsoft.com/powershell/module/az.mixedreality/remove-azmixedrealityspatialanchorsaccount
 schema: 2.0.0
 ---
 
-# Remove-AzMixedRealityObjectAnchorAccount
+# Remove-AzMixedRealitySpatialAnchorsAccount
 
 ## SYNOPSIS
-Delete an Object Anchors Account.
+Delete a Spatial Anchors Account.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzMixedRealityObjectAnchorAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzMixedRealitySpatialAnchorsAccount -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzMixedRealityObjectAnchorAccount -InputObject <IMixedRealityIdentity> [-DefaultProfile <PSObject>]
+Remove-AzMixedRealitySpatialAnchorsAccount -InputObject <IMixedRealityIdentity> [-DefaultProfile <PSObject>]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete an Object Anchors Account.
+Delete a Spatial Anchors Account.
 
 ## EXAMPLES
 
-### Example 1: Delete an Object Anchors Account.
+### Example 1: Delete a Spatial Anchors Account.
 ```powershell
-Remove-AzMixedRealityObjectAnchorAccount -Name azpstestanchorsaccount-object -ResourceGroupName azps_test_group
+Remove-AzMixedRealitySpatialAnchorsAccount -Name azpstestanchorsaccount -ResourceGroupName azps_test_group
 ```
 
-Delete an Object Anchors Account.
+Delete a Spatial Anchors Account.
 
 ## PARAMETERS
 

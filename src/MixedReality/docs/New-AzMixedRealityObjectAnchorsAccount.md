@@ -1,20 +1,19 @@
 ---
 external help file:
 Module Name: Az.MixedReality
-online version: https://docs.microsoft.com/powershell/module/az.mixedreality/update-azmixedrealityobjectanchoraccount
+online version: https://docs.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityobjectanchorsaccount
 schema: 2.0.0
 ---
 
-# Update-AzMixedRealityObjectAnchorAccount
+# New-AzMixedRealityObjectAnchorsAccount
 
 ## SYNOPSIS
-Updating an Object Anchors Account
+Creating or Updating an object anchors Account.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Update-AzMixedRealityObjectAnchorAccount -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzMixedRealityObjectAnchorsAccount -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>]
  [-KindFamily <String>] [-KindName <String>] [-KindSize <String>] [-KindTier <SkuTier>]
  [-PlanType <ResourceIdentityType>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
@@ -22,24 +21,14 @@ Update-AzMixedRealityObjectAnchorAccount -Name <String> -ResourceGroupName <Stri
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
-```
-Update-AzMixedRealityObjectAnchorAccount -InputObject <IMixedRealityIdentity> -Location <String>
- [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>] [-KindFamily <String>] [-KindName <String>]
- [-KindSize <String>] [-KindTier <SkuTier>] [-PlanType <ResourceIdentityType>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
- [-StorageAccountName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Updating an Object Anchors Account
+Creating or Updating an object anchors Account.
 
 ## EXAMPLES
 
-### Example 1: Updating an Object Anchors Account.
+### Example 1: Creating or Updating an object anchors Account.
 ```powershell
-Update-AzMixedRealityObjectAnchorAccount -Name azpstestanchorsaccount-object -ResourceGroupName azps_test_group -Location eastus2 -Tag @{"a"="1"}
+New-AzMixedRealityObjectAnchorsAccount -Name azpstestanchorsaccount-object -ResourceGroupName azps_test_group -Location eastus2
 ```
 
 ```output
@@ -48,7 +37,7 @@ Location Name                          ResourceGroupName
 eastus2  azpstestanchorsaccount-object azps_test_group
 ```
 
-Updating an Object Anchors Account.
+Creating or Updating an object anchors Account.
 
 ## PARAMETERS
 
@@ -79,22 +68,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityIdentity
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -197,7 +170,7 @@ Name of an Mixed Reality Account.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -227,7 +200,7 @@ Name of an Azure resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -338,7 +311,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -399,8 +372,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IObjectAnchorsAccount
@@ -408,18 +379,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMixedRealityIdentity>`: Identity Parameter
-  - `[AccountName <String>]`: Name of an Mixed Reality Account.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location in which uniqueness will be verified.
-  - `[ResourceGroupName <String>]`: Name of an Azure resource group.
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 
 ## RELATED LINKS
 

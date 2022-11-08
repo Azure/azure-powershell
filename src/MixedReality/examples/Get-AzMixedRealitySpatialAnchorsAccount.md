@@ -1,6 +1,6 @@
 ### Example 1: List Spatial Anchors Accounts by Subscription.
 ```powershell
-Get-AzMixedRealitySpatialAnchorAccount
+Get-AzMixedRealitySpatialAnchorsAccount
 ```
 
 ```output
@@ -13,7 +13,7 @@ List Spatial Anchors Accounts by Subscription.
 
 ### Example 2: List Spatial Anchors Accounts by Resource Group.
 ```powershell
-Get-AzMixedRealitySpatialAnchorAccount -ResourceGroupName azps_test_group
+Get-AzMixedRealitySpatialAnchorsAccount -ResourceGroupName azps_test_group
 ```
 
 ```output
@@ -26,7 +26,7 @@ List Spatial Anchors Accounts by Resource Group.
 
 ### Example 3: Retrieve a Spatial Anchors Account.
 ```powershell
-Get-AzMixedRealitySpatialAnchorAccount -Name azpstestanchorsaccount -ResourceGroupName azps_test_group
+Get-AzMixedRealitySpatialAnchorsAccount -Name azpstestanchorsaccount -ResourceGroupName azps_test_group
 ```
 
 ```output

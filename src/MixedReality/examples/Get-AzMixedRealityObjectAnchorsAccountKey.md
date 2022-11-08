@@ -1,6 +1,6 @@
 ### Example 1: List Both of the 2 Keys of an object anchors Account.
 ```powershell
-Get-AzMixedRealityObjectAnchorAccountKey -AccountName azpstestanchorsaccount-object -ResourceGroupName azps_test_group
+Get-AzMixedRealityObjectAnchorsAccountKey -AccountName azpstestanchorsaccount-object -ResourceGroupName azps_test_group
 ```
 
 ```output

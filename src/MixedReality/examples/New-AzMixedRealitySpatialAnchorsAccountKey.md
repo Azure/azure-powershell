@@ -1,6 +1,6 @@
 ### Example 1: Regenerate specified Key of a Spatial Anchors Account.
 ```powershell
-New-AzMixedRealitySpatialAnchorAccountKey -AccountName azpstestanchorsaccount -ResourceGroupName azps_test_group -Serial 1
+New-AzMixedRealitySpatialAnchorsAccountKey -AccountName azpstestanchorsaccount -ResourceGroupName azps_test_group -Serial 1
 ```
 
 ```output

@@ -1,86 +1,64 @@
 ---
 external help file:
 Module Name: Az.MixedReality
-online version: https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityobjectanchoraccount
+online version: https://docs.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityspatialanchorsaccountkey
 schema: 2.0.0
 ---
 
-# Get-AzMixedRealityObjectAnchorAccount
+# New-AzMixedRealitySpatialAnchorsAccountKey
 
 ## SYNOPSIS
-Retrieve an Object Anchors Account.
+Regenerate specified Key of a Spatial Anchors Account
 
 ## SYNTAX
 
-### List (Default)
+### RegenerateExpanded (Default)
 ```
-Get-AzMixedRealityObjectAnchorAccount [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+New-AzMixedRealitySpatialAnchorsAccountKey -AccountName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Serial <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### Get
+### RegenerateViaIdentityExpanded
 ```
-Get-AzMixedRealityObjectAnchorAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzMixedRealityObjectAnchorAccount -InputObject <IMixedRealityIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzMixedRealityObjectAnchorAccount -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzMixedRealitySpatialAnchorsAccountKey -InputObject <IMixedRealityIdentity> [-Serial <Int32>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Retrieve an Object Anchors Account.
+Regenerate specified Key of a Spatial Anchors Account
 
 ## EXAMPLES
 
-### Example 1: List Object Anchors Accounts by Subscription.
+### Example 1: Regenerate specified Key of a Spatial Anchors Account.
 ```powershell
-Get-AzMixedRealityObjectAnchorAccount
+New-AzMixedRealitySpatialAnchorsAccountKey -AccountName azpstestanchorsaccount -ResourceGroupName azps_test_group -Serial 1
 ```
 
 ```output
-Location Name                          ResourceGroupName
--------- ----                          -----------------
-eastus2  azpstestanchorsaccount-object azps_test_group
+PrimaryKey             SecondaryKey
+----------             ------------
+OAocrh+K******8VRRO/I= froxBip******KVs6tqyPA=
 ```
 
-List Object Anchors Accounts by Subscription.
-
-### Example 2: List Object Anchors Accounts by Resource Group.
-```powershell
-Get-AzMixedRealityObjectAnchorAccount -ResourceGroupName azps_test_group
-```
-
-```output
-Location Name                          ResourceGroupName
--------- ----                          -----------------
-eastus2  azpstestanchorsaccount-object azps_test_group
-```
-
-List Object Anchors Accounts by Resource Group.
-
-### Example 3: Retrieve an Object Anchors Account.
-```powershell
-Get-AzMixedRealityObjectAnchorAccount -Name azpstestanchorsaccount-object -ResourceGroupName azps_test_group
-```
-
-```output
-Location Name                          ResourceGroupName
--------- ----                          -----------------
-eastus2  azpstestanchorsaccount-object azps_test_group
-```
-
-Retrieve an Object Anchors Account.
+Regenerate specified Key of a Spatial Anchors Account.
 
 ## PARAMETERS
+
+### -AccountName
+Name of an Mixed Reality Account.
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -103,7 +81,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: RegenerateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -113,12 +91,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of an Mixed Reality Account.
+### -ResourceGroupName
+Name of an Azure resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True
@@ -128,15 +106,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of an Azure resource group.
+### -Serial
+.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List1
+Type: System.Int32
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -149,13 +127,44 @@ This is a GUID-formatted string (e.g.
 00000000-0000-0000-0000-000000000000)
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List, List1
+Type: System.String
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -169,7 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IObjectAnchorsAccount
+### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys
 
 ## NOTES
 

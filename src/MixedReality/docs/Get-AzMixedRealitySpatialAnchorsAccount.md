@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.MixedReality
-online version: https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityspatialanchoraccount
+online version: https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityspatialanchorsaccount
 schema: 2.0.0
 ---
 
-# Get-AzMixedRealitySpatialAnchorAccount
+# Get-AzMixedRealitySpatialAnchorsAccount
 
 ## SYNOPSIS
 Retrieve a Spatial Anchors Account.
@@ -14,25 +14,25 @@ Retrieve a Spatial Anchors Account.
 
 ### List (Default)
 ```
-Get-AzMixedRealitySpatialAnchorAccount [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzMixedRealitySpatialAnchorsAccount [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzMixedRealitySpatialAnchorAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMixedRealitySpatialAnchorsAccount -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzMixedRealitySpatialAnchorAccount -InputObject <IMixedRealityIdentity> [-DefaultProfile <PSObject>]
+Get-AzMixedRealitySpatialAnchorsAccount -InputObject <IMixedRealityIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzMixedRealitySpatialAnchorAccount -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzMixedRealitySpatialAnchorsAccount -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ Retrieve a Spatial Anchors Account.
 
 ### Example 1: List Spatial Anchors Accounts by Subscription.
 ```powershell
-Get-AzMixedRealitySpatialAnchorAccount
+Get-AzMixedRealitySpatialAnchorsAccount
 ```
 
 ```output
@@ -56,7 +56,7 @@ List Spatial Anchors Accounts by Subscription.
 
 ### Example 2: List Spatial Anchors Accounts by Resource Group.
 ```powershell
-Get-AzMixedRealitySpatialAnchorAccount -ResourceGroupName azps_test_group
+Get-AzMixedRealitySpatialAnchorsAccount -ResourceGroupName azps_test_group
 ```
 
 ```output
@@ -69,7 +69,7 @@ List Spatial Anchors Accounts by Resource Group.
 
 ### Example 3: Retrieve a Spatial Anchors Account.
 ```powershell
-Get-AzMixedRealitySpatialAnchorAccount -Name azpstestanchorsaccount -ResourceGroupName azps_test_group
+Get-AzMixedRealitySpatialAnchorsAccount -Name azpstestanchorsaccount -ResourceGroupName azps_test_group
 ```
 
 ```output

@@ -1,64 +1,42 @@
 ---
 external help file:
 Module Name: Az.MixedReality
-online version: https://docs.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityobjectanchoraccountkey
+online version: https://docs.microsoft.com/powershell/module/az.mixedreality/remove-azmixedrealityobjectanchorsaccount
 schema: 2.0.0
 ---
 
-# New-AzMixedRealityObjectAnchorAccountKey
+# Remove-AzMixedRealityObjectAnchorsAccount
 
 ## SYNOPSIS
-Regenerate specified Key of an object anchors Account
+Delete an Object Anchors Account.
 
 ## SYNTAX
 
-### RegenerateExpanded (Default)
+### Delete (Default)
 ```
-New-AzMixedRealityObjectAnchorAccountKey -AccountName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Serial <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzMixedRealityObjectAnchorsAccount -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### RegenerateViaIdentityExpanded
+### DeleteViaIdentity
 ```
-New-AzMixedRealityObjectAnchorAccountKey -InputObject <IMixedRealityIdentity> [-Serial <Int32>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzMixedRealityObjectAnchorsAccount -InputObject <IMixedRealityIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Regenerate specified Key of an object anchors Account
+Delete an Object Anchors Account.
 
 ## EXAMPLES
 
-### Example 1: Regenerate specified Key of an object anchors Account.
+### Example 1: Delete an Object Anchors Account.
 ```powershell
-New-AzMixedRealityObjectAnchorAccountKey -AccountName azpstestanchorsaccount-object -ResourceGroupName azps_test_group -Serial 1
+Remove-AzMixedRealityObjectAnchorsAccount -Name azpstestanchorsaccount-object -ResourceGroupName azps_test_group
 ```
 
-```output
-PrimaryKey              SecondaryKey
-----------              ------------
-7N9FGZT/5******PhlS1e8= fO/rmry******+mP5VJCZS4s=
-```
-
-Regenerate specified Key of an object anchors Account.
+Delete an Object Anchors Account.
 
 ## PARAMETERS
-
-### -AccountName
-Name of an Mixed Reality Account.
-
-```yaml
-Type: System.String
-Parameter Sets: RegenerateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -81,7 +59,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IMixedRealityIdentity
-Parameter Sets: RegenerateViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -91,12 +69,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of an Azure resource group.
+### -Name
+Name of an Mixed Reality Account.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -106,15 +84,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Serial
-.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.Int32
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Name of an Azure resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -128,7 +121,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -178,7 +171,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys
+### System.Boolean
 
 ## NOTES
 

@@ -1,6 +1,6 @@
 ### Example 1: List Object Anchors Accounts by Subscription.
 ```powershell
-Get-AzMixedRealityObjectAnchorAccount
+Get-AzMixedRealityObjectAnchorsAccount
 ```
 
 ```output
@@ -13,7 +13,7 @@ List Object Anchors Accounts by Subscription.
 
 ### Example 2: List Object Anchors Accounts by Resource Group.
 ```powershell
-Get-AzMixedRealityObjectAnchorAccount -ResourceGroupName azps_test_group
+Get-AzMixedRealityObjectAnchorsAccount -ResourceGroupName azps_test_group
 ```
 
 ```output
@@ -26,7 +26,7 @@ List Object Anchors Accounts by Resource Group.
 
 ### Example 3: Retrieve an Object Anchors Account.
 ```powershell
-Get-AzMixedRealityObjectAnchorAccount -Name azpstestanchorsaccount-object -ResourceGroupName azps_test_group
+Get-AzMixedRealityObjectAnchorsAccount -Name azpstestanchorsaccount-object -ResourceGroupName azps_test_group
 ```
 
 ```output
