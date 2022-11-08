@@ -1,0 +1,42 @@
+{
+  "AzConnectedVMwareVM+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/test-tls-2016-vm2?api-version=2022-01-10-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachines/test-tls-2016-vm2?api-version=2022-01-10-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "ca76f841-5362-4589-a00b-b9f6ab3b2641" ],
+        "CommandName": [ "Get-AzConnectedVMwareVM" ],
+        "FullCommandName": [ "Get-AzConnectedVMwareVM_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2700e335-0000-0100-0000-631722190000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "2957d8c9-566e-4446-9b0d-3ccfac8065dd" ],
+        "x-ms-correlation-request-id": [ "2177e79c-2119-4882-ace9-c12d976b813a" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20221108T123725Z:2177e79c-2119-4882-ace9-c12d976b813a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 08 Nov 2022 12:37:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2961" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VirtualMachines/test-tls-2016-vm2\",\"name\":\"test-tls-2016-vm2\",\"type\":\"microsoft.connectedvmwarevsphere/virtualmachines\",\"kind\":\"VMware\",\"location\":\"eastus\",\"extendedLocation\":{\"type\":\"CustomLocation\",\"name\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/azcli-test-rg/providers/microsoft.extendedlocation/customlocations/azcli-test-cl\"},\"systemData\":{\"createdBy\":\"sanmishra@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-09-06T10:29:58.7536979Z\",\"lastModifiedBy\":\"sanmishra@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-09-06T10:34:00.8763709Z\"},\"identity\":{\"principalId\":\"946d4870-ee11-4a09-ab77-6a349757761a\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"},\"properties\":{\"inventoryItemId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc/InventoryItems/vm-908301\",\"vCenterId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc\",\"moRefId\":\"vm-908301\",\"provisioningState\":\"Succeeded\",\"statuses\":[{\"status\":\"True\",\"type\":\"Ready\",\"lastUpdatedAt\":\"2022-09-06T10:30:27.0882692Z\"},{\"status\":\"True\",\"type\":\"Idle\",\"lastUpdatedAt\":\"2022-09-06T10:30:27.0882692Z\"}],\"vmId\":\"448ba6f6-1d31-4b45-ba82-02049f8ad172\",\"placementProfile\":{},\"customResourceName\":\"448ba6f6-1d31-4b45-ba82-02049f8ad172\",\"networkProfile\":{\"networkInterfaces\":[{\"label\":\"Network adapter 1\",\"ipAddresses\":[\"2404:f801:4800:18:cd89:c35d:a475:5e87\",\"fe80::cd89:c35d:a475:5e87\",\"10.150.169.68\"],\"macAddress\":\"00:50:56:95:42:12\",\"networkMoRefId\":\"network-563661\",\"networkMoName\":\"VM Network\",\"nicType\":\"e1000e\",\"deviceKey\":4000,\"powerOnBoot\":\"enabled\",\"ipSettings\":{\"allocationMethod\":\"unset\"}}]},\"storageProfile\":{\"disks\":[{\"diskObjectId\":\"1831-2000\",\"label\":\"Hard disk 1\",\"diskSizeGB\":128,\"deviceKey\":2000,\"diskMode\":\"persistent\",\"controllerKey\":1000,\"unitNumber\":0,\"diskType\":\"flat\"}],\"scsiControllers\":[{\"type\":\"lsilogicsas\",\"controllerKey\":1000,\"scsiCtlrUnitNumber\":7,\"sharing\":\"noSharing\"}]},\"securityProfile\":{\"uefiSettings\":{\"secureBootEnabled\":true}},\"osProfile\":{\"computerName\":\"WIN-SLL72D76QIR\",\"osType\":\"Windows\",\"osName\":\"Microsoft Windows Server 2016 or later (64-bit)\",\"guestId\":\"windows9Server64Guest\",\"toolsRunningStatus\":\"guestToolsRunning\",\"toolsVersionStatus\":\"guestToolsSupportedNew\",\"toolsVersion\":\"11265\"},\"hardwareProfile\":{\"memorySizeMB\":4096,\"numCPUs\":2,\"numCoresPerSocket\":2,\"cpuHotAddEnabled\":false,\"cpuHotRemoveEnabled\":false,\"memoryHotAddEnabled\":false},\"instanceUuid\":\"5015b88e-40aa-e47a-fd6c-1b100b92cbd7\",\"moName\":\"test-tls-2016-vm2\",\"folderPath\":\"ArcPrivateClouds-67\",\"smbiosUuid\":\"4215791d-fa42-87d7-f7e4-910f01f9d8ec\",\"firmwareType\":\"efi\",\"powerState\":\"poweredOn\"}}"
+    }
+  }
+}

@@ -273,10 +273,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`BODY <IStopVirtualMachineOptions>`: Defines the stop action properties.
+BODY <IStopVirtualMachineOptions>: Defines the stop action properties.
   - `[SkipShutdown <Boolean?>]`: Gets or sets a value indicating whether to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Defaults to false.
 
-`INPUTOBJECT <IConnectedVMwareIdentity>`: Identity Parameter
+INPUTOBJECT <IConnectedVMwareIdentity>: Identity Parameter
   - `[ClusterName <String>]`: Name of the cluster.
   - `[DatastoreName <String>]`: Name of the datastore.
   - `[ExtensionName <String>]`: The name of the machine extension.

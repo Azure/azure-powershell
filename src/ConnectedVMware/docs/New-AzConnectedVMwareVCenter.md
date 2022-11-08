@@ -14,7 +14,7 @@ Create Or Update vCenter.
 
 ```
 New-AzConnectedVMwareVCenter -Name <String> -ResourceGroupName <String> -Fqdn <String> -Location <String>
- [-SubscriptionId <String>] [-CredentialsPassword <SecureString>] [-CredentialsUsername <String>]
+ [-SubscriptionId <String>] [-CredentialsPassword <String>] [-CredentialsUsername <String>]
  [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-Kind <String>] [-Port <Int32>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 Gets or sets the password to connect with the vCenter.
 
 ```yaml
-Type: System.Security.SecureString
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
