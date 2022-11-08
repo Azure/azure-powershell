@@ -422,6 +422,7 @@ function Test-CreateNewWebApp
 	$tier = "Shared"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
+	$tag= @{"TagKey" = "TagValue"}
 	try
 	{
 		#Setup
@@ -429,13 +430,15 @@ function Test-CreateNewWebApp
 		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
 		
 		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -AsJob
+		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -Tag $tag -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		
 		# Assert
 		Assert-AreEqual $wname $actual.Name
 		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
+		Assert-AreEqual $tag.Keys $actual.Tags.Keys
+                Assert-AreEqual $tag.Values $actual.Tags.Values
 
 		# Get new web app
 		$result = Get-AzWebApp -ResourceGroupName $rgname -Name $wname
