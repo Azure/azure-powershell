@@ -3485,6 +3485,8 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
         $PublisherName = "MicrosoftWindowsServer";
         $Offer = "WindowsServer";
         $SKU = "2016-datacenter-gensecond";
+        $domainNameLabel1 = "d1" + $rgname;
+        $domainNameLabel2 = "d2" + $rgname;
         $disable = $false;
         $enable = $true;
         $adminUsername = 'usertest';
@@ -3494,14 +3496,14 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
         # Requirements for the TrustedLaunch default behavior.
         #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
         # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
-        $res = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -SecurityType "TrustedLaunch";
+        $res = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -DomainNameLabel $domainNameLabel1 -SecurityType "TrustedLaunch" ;
 
         Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.SecurityType "TrustedLaunch";
         Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
         Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
         #Case 2: -SecurityType = "TrustedLaunch" || "ConfidentialVM" -EnableVtpm $false -EnableSecureBoot $true
-        $result = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName2 -ImageName $imageName -SecurityType "TrustedLaunch" -EnableVtpm $disable;
+        $result = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName2 -ImageName $imageName -DomainNameLabel $domainNameLabel2 -SecurityType "TrustedLaunch" -EnableVtpm $disable;
                 
         Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.SecurityType "TrustedLaunch";
         Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $false;
