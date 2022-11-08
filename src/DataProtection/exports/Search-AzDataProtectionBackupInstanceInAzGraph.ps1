@@ -29,7 +29,7 @@ Search-AzDataProtectionBackupInstanceInAzGraph -Subscription "xxxx-xxx-xxx" -Dat
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/search-azdataprotectionbackupinstanceinazgraph
+https://learn.microsoft.com/powershell/module/az.dataprotection/search-azdataprotectionbackupinstanceinazgraph
 #>
 function Search-AzDataProtectionBackupInstanceInAzGraph {
 [OutputType([PSObject])]
