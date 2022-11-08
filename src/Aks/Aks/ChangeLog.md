@@ -18,7 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.0
+* Added support of `FQDN` in `Import-AzAksCredential` [#17711]
+* Added hint when `Import-AzAksCredential` meets bad formatted kubernetes configuration file [#16741]
 * Added parameter `-NodeResourceGroup` for `New-AzAksCluster`. [#19014]
+* Added support for `Auto Upgrade` in `New-AzAksCluster` and `Set-AzAksCluster`.
+* Added support for `Http Proxy` in `New-AzAksCluster` and `Set-AzAksCluster`.
+* Added parameter `DisableLocalAccount` and `DiskEncryptionSetID` in `New-AzAksCluster` and `Set-AzAksCluster`.
+* Added logic for installing `kubelogin` in `Install-AzAksKubectl`.
 
 ## Version 4.2.1
 * Removed the warning messages for MSGraph migration [#18856]

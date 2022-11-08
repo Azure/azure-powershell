@@ -42,9 +42,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.AzureTrafficCollector</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.AzureTrafficCollector</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.AzureTrafficCollector</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.AzureTrafficCollector</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -112,9 +112,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.AzureTrafficCollectorListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.AzureTrafficCollectorListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.AzureTrafficCollectorListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.AzureTrafficCollectorListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -134,9 +134,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.AzureTrafficCollectorPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.AzureTrafficCollectorPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.AzureTrafficCollectorPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.AzureTrafficCollectorPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -156,9 +156,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.CloudErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.CloudErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.CloudErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.CloudErrorBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -190,14 +190,32 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.CollectorPolicy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.CollectorPolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.CollectorPolicy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.CollectorPolicy</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Etag</Label>
@@ -210,7 +228,25 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Etag</PropertyName>
@@ -224,9 +260,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.CollectorPolicyListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.CollectorPolicyListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.CollectorPolicyListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.CollectorPolicyListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -246,9 +282,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.CollectorPolicyPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.CollectorPolicyPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.CollectorPolicyPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.CollectorPolicyPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -268,55 +304,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.CollectorPolicySystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.EmissionPoliciesPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.CollectorPolicySystemData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.EmissionPoliciesPropertiesFormat</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.EmissionPoliciesPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.EmissionPoliciesPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -336,9 +326,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.EmissionPolicyDestination</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.EmissionPolicyDestination</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.EmissionPolicyDestination</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.EmissionPolicyDestination</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -358,9 +348,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IngestionPolicyPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IngestionPolicyPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IngestionPolicyPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IngestionPolicyPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -380,9 +370,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IngestionSourcesPropertiesFormat</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IngestionSourcesPropertiesFormat</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IngestionSourcesPropertiesFormat</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IngestionSourcesPropertiesFormat</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -408,9 +398,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.Operation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -442,9 +432,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -482,9 +472,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.OperationListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -504,9 +494,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ProxyResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -526,9 +516,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.SystemData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -572,9 +562,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.TagsObjectTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.TagsObjectTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.TagsObjectTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.TagsObjectTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -594,9 +584,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.TrackedResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -622,9 +612,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.TrackedResourceSystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.TrackedResourceSystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.TrackedResourceSystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.TrackedResourceSystemData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -668,9 +658,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.TrackedResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

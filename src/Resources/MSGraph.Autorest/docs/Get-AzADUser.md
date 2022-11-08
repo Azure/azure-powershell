@@ -14,9 +14,9 @@ Lists entities from users or get entity from users by key
 
 ### List (Default)
 ```
-Get-AzADUser [-AppendSelected] [-ConsistencyLevel <String>] [-DefaultProfile <PSObject>] [-Expand <String[]>]
- [-Filter <String>] [-First <UInt64>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
- [-Skip <UInt64>] [<CommonParameters>]
+Get-AzADUser [-Count] [-AppendSelected] [-ConsistencyLevel <String>] [-DefaultProfile <PSObject>]
+ [-Expand <String[]>] [-Filter <String>] [-First <UInt64>] [-Orderby <String[]>] [-Search <String>]
+ [-Select <String[]>] [-Skip <UInt64>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
@@ -104,6 +104,21 @@ Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-
 
 ```yaml
 Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Count
+Include count of items
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: List
 Aliases:
 

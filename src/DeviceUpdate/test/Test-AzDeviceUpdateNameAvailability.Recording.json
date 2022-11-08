@@ -1,0 +1,76 @@
+{
+  "Test-AzDeviceUpdateNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DeviceUpdate/checknameavailability?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DeviceUpdate/checknameavailability?api-version=2022-10-01",
+      "Content": "{\r\n  \"name\": \"azpstest-account\",\r\n  \"type\": \"Microsoft.DeviceUpdate/accounts\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "80" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-rpaas-checknameavailability-skipped-regions": [ "East US 2,East US,UK South,East US 2 EUAP,West US 3,West US 2,South Central US" ],
+        "x-ms-request-id": [ "5c356641-2315-47ea-893c-c166d6e758e4" ],
+        "x-ms-correlation-request-id": [ "407df717-5c09-444b-8b08-1bbfed7f2f9c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T093546Z:407df717-5c09-444b-8b08-1bbfed7f2f9c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:35:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzDeviceUpdateNameAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DeviceUpdate/checknameavailability?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DeviceUpdate/checknameavailability?api-version=2022-10-01",
+      "Content": "{\r\n  \"name\": \"azpstest-account\",\r\n  \"type\": \"Microsoft.DeviceUpdate/accounts\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "80" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-rpaas-checknameavailability-skipped-regions": [ "South Central US,East US 2,East US 2 EUAP,East US,West US 3,West US 2,West Europe,North Europe" ],
+        "x-ms-request-id": [ "7475167e-40b7-4489-a19c-206c79be0b8e" ],
+        "x-ms-correlation-request-id": [ "6433370e-aa55-4e9d-af88-d97f87e9142f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091806Z:6433370e-aa55-4e9d-af88-d97f87e9142f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:18:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  }
+}

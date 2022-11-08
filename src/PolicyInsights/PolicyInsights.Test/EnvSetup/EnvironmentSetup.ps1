@@ -56,7 +56,7 @@ $subDINEAssignment = New-AzPolicyAssignment -Name $(Get-TestSubscriptionDINEAssi
 $subModifyAssignment = New-AzPolicyAssignment -Name $(Get-TestSubscriptionModifyAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: never compliant modify policy" -PolicyDefinition $modifyPolicyDefinition -AssignIdentity -Location "westus2"
 
 # Give the assignments permissions to perform remediations
-Start-Sleep -Seconds 60
+Start-TestSleep -Seconds 60
 New-AzRoleAssignment -Scope "/providers/microsoft.management/managementgroups/$managementGroupId" -ObjectId $mgDINEAssignment.Identity.principalId -RoleDefinitionName "Key Vault Contributor"
 New-AzRoleAssignment -Scope "/subscriptions/$subscriptionId" -ObjectId $subDINEAssignment.Identity.principalId -RoleDefinitionName "Key Vault Contributor"
 New-AzRoleAssignment -Scope "/subscriptions/$subscriptionId" -ObjectId $subModifyAssignment.Identity.principalId -RoleDefinitionName "Tag Contributor"
@@ -85,7 +85,7 @@ $policySetDefinition = New-AzPolicySetDefinition -Name $(Get-TestPolicySetDefini
 # Assign the initiative to the subscription
 New-AzPolicyAssignment -Name $(Get-TestSubscriptionAuditInitiativeAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: initiative with audit policy (Sub)" -PolicySetDefinition $policySetDefinition
 
-Start-Sleep -Seconds 60
+Start-TestSleep -Seconds 60
 
 # In each RG, create 510 NSGs (will take a while)
 foreach ($resourceGroupName in @($resourceGroup1, $resourceGroup2)) {

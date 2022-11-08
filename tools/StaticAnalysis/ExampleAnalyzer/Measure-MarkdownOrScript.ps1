@@ -3,7 +3,7 @@
         The script to find examples in ".md" and analyze the examples by custom rules.
     .PARAMETER MarkdownPaths
     Markdown searching paths. Empty for current path. Supports wildcard.
-    .PARAMETER ScriptPath
+    .PARAMETER ScriptPaths
     PowerShell script searching paths. Empty for current path. Supports wildcard.
     .PARAMETER RulePaths
     PSScriptAnalyzer custom rules paths. Empty for current path. Supports wildcard.
@@ -67,21 +67,21 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
         $MarkdownPath = Get-Content $MarkdownPaths
     }
     # When the input $MarkdownPaths is the path of a folder
-    else{
+    else {
         $MarkdownPath = $MarkdownPaths
     }
-    foreach($_ in Get-ChildItem $MarkdownPath -Recurse:$Recurse.IsPresent){
+    foreach ($_ in Get-ChildItem $MarkdownPath -Recurse:$Recurse) {
         # Filter the .md of overview in "\help\"
         if ((Get-Item -Path $_.FullName).Directory.Name -eq "help" -and $_.FullName -cmatch ".*\.md" -and $_.BaseName -cmatch "^[A-Z][a-z]+-([A-Z][a-z0-9]*)+$") {
-            if((Get-Item -Path $_.FullName).Directory.Parent.Name -eq "netcoreapp3.1"){
+            if ((Get-Item -Path $_.FullName).Directory.Parent.Name -eq "netcoreapp3.1") {
                 continue
             }
             Write-Output "Searching in file $($_.FullName) ..."
-            if((Get-Item -Path $_.FullName).Directory.Parent.Parent.Name -ne "src"){
+            if ((Get-Item -Path $_.FullName).Directory.Parent.Parent.Name -ne "src") {
                 $module = (Get-Item -Path $_.FullName).Directory.Parent.Parent.Name
             }
-            else{
-               $module = (Get-Item -Path $_.FullName).Directory.Parent.Name 
+            else {
+                $module = (Get-Item -Path $_.FullName).Directory.Parent.Name
             }
             $cmdlet = $_.BaseName
             $result = Measure-SectionMissingAndOutputScript $module $cmdlet $_.FullName `
@@ -92,31 +92,26 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
             $totalLine = $result.TotalLine
         }
     }
-    if(!$NotCleanScripts.IsPresent){
-       $codeMap| Export-Csv $TempScriptMapPath -NoTypeInformation 
-    }
+    $codeMap | Export-Csv $TempScriptMapPath -NoTypeInformation
 }
 
 # Analyze scripts
-if ($PSCmdlet.ParameterSetName -eq "Script" -or !$SkipAnalyzing.IsPresent) {
-    if ($PSCmdlet.ParameterSetName -eq "Script"){
-        $codeMap = Merge-Scripts -ScriptPaths $ScriptPaths -Recurse:$Recurse.IsPresent -TempScriptPath $TempScriptPath
-        if(!$NotCleanScripts.IsPresent){
-            $codeMap| Export-Csv $TempScriptMapPath -NoTypeInformation 
-        }
+if ($PSCmdlet.ParameterSetName -eq "Script" -or !$SkipAnalyzing) {
+    if ($PSCmdlet.ParameterSetName -eq "Script") {
+        $codeMap = Merge-Scripts -ScriptPaths $ScriptPaths -Recurse:$Recurse -TempScriptPath $TempScriptPath
+        $codeMap | Export-Csv $TempScriptMapPath -NoTypeInformation
     }
     # Read and analyze ".ps1" in \ScriptsByExample
     Write-Output "Analyzing file ..."
-    $analysisResultsTable += Get-ScriptAnalyzerResult -ScriptPath $TempScriptPath -RulePaths $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -CodeMap $codeMap -ErrorAction Continue
-    
+    $analysisResultsTable += Get-ScriptAnalyzerResult -ScriptPath $TempScriptPath -RulePaths $RulePaths -IncludeDefaultRules:$IncludeDefaultRules -CodeMap $codeMap -ErrorAction Continue
+
     # Summarize analysis results, output in Result.csv
-    if($analysisResultsTable){
-        $analysisResultsTable| Where-Object {$_ -ne $null} | Export-Csv "$PSScriptRoot\..\..\..\artifacts\StaticAnalysisResults\ExampleIssues.csv" -NoTypeInformation
+    if ($analysisResultsTable) {
+        $analysisResultsTable | Where-Object { $_ -ne $null } | Export-Csv "$PSScriptRoot\..\..\..\artifacts\StaticAnalysisResults\ExampleIssues.csv" -NoTypeInformation
     }
 }
 
 # Clean caches
-if (!$NotCleanScripts.IsPresent) {
-    Remove-Item $TempScriptPath -ErrorAction Continue
-    Remove-Item $OutputFolder -ErrorAction SilentlyContinue
+if (-not $NotCleanScripts) {
+    Remove-Item $OutputFolder -Recurse -ErrorAction SilentlyContinue
 }

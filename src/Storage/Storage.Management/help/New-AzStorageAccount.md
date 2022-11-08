@@ -33,6 +33,26 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [<CommonParameters>]
 ```
 
+### AzureActiveDirectoryKerberosForFile
+```
+New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Location] <String>
+ [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
+ [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
+ [-IdentityType <String>] [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>]
+ [-KeyName <String>] [-KeyVersion <String>] [-KeyVaultUri <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>] [-EnableHierarchicalNamespace <Boolean>]
+ [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
+ -EnableAzureActiveDirectoryKerberosForFile <Boolean> [-ActiveDirectoryDomainName <String>]
+ [-ActiveDirectoryDomainGuid <String>] [-AsJob] [-EncryptionKeyTypeForTable <String>]
+ [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption] [-SasExpirationPeriod <TimeSpan>]
+ [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
+ [-AllowSharedKeyAccess <Boolean>] [-EnableNfsV3 <Boolean>] [-AllowCrossTenantReplication <Boolean>]
+ [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
+ [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-AllowProtectedAppendWrite <Boolean>]
+ [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>] [-DnsEndpointType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+```
+
 ### ActiveDirectoryDomainServicesForFile
 ```
 New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Location] <String>
@@ -96,7 +116,7 @@ This command creates a Storage account that has NetworkRuleSet property from JSO
 
 ### Example 5: Create a Storage account with Hierarchical Namespace enabled, Sftp enabled, and localuser enabled.
 ```powershell
-PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "US West" -SkuName "Standard_GRS" -Kind StorageV2  -EnableHierarchicalNamespace $true -EnableSftp $true -EnableLocalUser $true
+PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "US West" -SkuName "Standard_GRS" -Kind StorageV2  -EnableHierarchicalNamespace $true -EnableSftp $true -EnableLocalUser $true
 ```
 
 This command creates a Storage account with Hierarchical Namespace enabled, Sftp enabled, and localuser enabled.
@@ -126,6 +146,8 @@ This command creates a Storage account withenable Files Active Directory Domain 
 
 ### Example 8: Create a Storage account with Queue and Table Service use account-scoped encryption key, and Require Infrastructure Encryption.
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EncryptionKeyTypeForTable Account -EncryptionKeyTypeForQueue Account -RequireInfrastructureEncryption
 
@@ -152,6 +174,8 @@ Then get the Storage account properties, and view the encryption keytype of Queu
 
 ### Example 9: Create account MinimumTlsVersion  and AllowBlobPublicAccess, and disable SharedKey Access
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2 -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $false
 
@@ -169,6 +193,8 @@ The command create account with MinimumTlsVersion, AllowBlobPublicAccess, and di
 
 ### Example 10: Create a Storage account with RoutingPreference setting
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 PS C:\>$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -PublishMicrosoftEndpoint $true -PublishInternetEndpoint $true -RoutingChoice MicrosoftRouting
 
@@ -196,6 +222,8 @@ This command creates a Storage account with RoutingPreference setting: PublishMi
 
 ### Example 11: Create a Storage account with EdgeZone and AllowCrossTenantReplication
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 PS C:\>$account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -SkuName Premium_LRS -Location westus -EdgeZone "microsoftlosangeles1" -AllowCrossTenantReplication $false
 
@@ -213,6 +241,8 @@ This command creates a Storage account with EdgeZone as "microsoftlosangeles1" a
 
 ### Example 12: Create a Storage account with KeyExpirationPeriod and SasExpirationPeriod
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 PS C:\> $account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -SkuName Premium_LRS -Location eastus -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06"
 
@@ -227,6 +257,8 @@ This command creates a Storage account with KeyExpirationPeriod and SasExpiratio
 
 ### Example 13: Create a Storage account with Keyvault encryption (access Keyvault with user assigned identity)
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 # Create KeyVault (no need if using exist keyvault)
 PS C:\> $keyVault = New-AzKeyVault -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -Location eastus2euap -EnablePurgeProtection
@@ -261,6 +293,8 @@ This command first create a keyvault and a user assigned identity, then create a
 
 ### Example 14: Create account with EnableNfsV3
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableNfsV3 $true -EnableHierarchicalNamespace $true -EnableHttpsTrafficOnly $false -NetworkRuleSet (@{bypass="Logging,Metrics";
         virtualNetworkRules=(@{VirtualNetworkResourceId="$vnet1";Action="allow"});
@@ -273,6 +307,8 @@ The command create account with EnableNfsV3 as true, and then show the EnableNfs
 
 ### Example 15: Create account with disable PublicNetworkAccess
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -PublicNetworkAccess Disabled
 
@@ -284,6 +320,8 @@ The command creates account with disable PublicNetworkAccess of the account.
 
 ### Example 16: Create account with account level  mmutability policy
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableAccountLevelImmutability -ImmutabilityPeriod 1 -ImmutabilityPolicyState Unlocked -AllowProtectedAppendWrite $true
 
@@ -300,7 +338,18 @@ ImmutabilityPeriodSinceCreationInDays State    AllowProtectedAppendWrites
 The command creates an account and enable account level immutability with versioning by '-EnableAccountLevelImmutability', then all the containers under this account will have object-level immutability enabled by default.
 The account is also created with a default account-level immutability policy which is inherited and applied to objects that do not possess an explicit immutability policy at the object level. 
 
-### Example 17: Create account with AllowedCopyScope as AAD
+### Example 17: Create a Storage account with enable Azure Files Active Directory Domain Service Kerberos Authentication.
+<!-- Skip: Output cannot be splitted from code -->
+```
+PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableAzureActiveDirectoryKerberosForFile $true `
+        -ActiveDirectoryDomainName "mydomain.com" `
+        -ActiveDirectoryDomainGuid "12345678-1234-1234-1234-123456789012"
+```
+
+This command creates a Storage account with enable Azure Files Active Directory Domain Service Kerberos Authentication.
+
+
+### Example 18: Create account with AllowedCopyScope as AAD
 ```
 PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -AllowedCopyScope AAD 
 
@@ -310,7 +359,9 @@ AAD
 
 The command creates account with AllowedCopyScope as AAD.
 
-### Example 18: Create a Storage account with Keyvault from another tenant (access Keyvault with FederatedClientId)
+### Example 19: Create a Storage account with Keyvault from another tenant (access Keyvault with FederatedClientId)
+<!-- Skip: Output cannot be splitted from code -->
+
 ```powershell
 # create Storage account with Keyvault encryption (access Keyvault with FederatedClientId), then show properties
 PS C:\> $account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -Kind StorageV2 -SkuName Standard_LRS -Location eastus2euap `
@@ -334,7 +385,7 @@ LastKeyRotationTimestamp      : 3/3/2022 2:07:34 AM
 
 This command creates a storage account with Keyvault from another tenant (access Keyvault with FederatedClientId).
 
-### Example 19: Create account with DnsEndpointType as AzureDnsZone
+### Example 20: Create account with DnsEndpointType as AzureDnsZone
 ```powershell
 New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -DnsEndpointType AzureDnsZone
 ```
@@ -398,7 +449,7 @@ Specifies the domain GUID. This parameter must be set when -EnableActiveDirector
 
 ```yaml
 Type: System.String
-Parameter Sets: ActiveDirectoryDomainServicesForFile
+Parameter Sets: AzureActiveDirectoryKerberosForFile, ActiveDirectoryDomainServicesForFile
 Aliases:
 
 Required: False
@@ -413,7 +464,7 @@ Specifies the primary domain that the AD DNS server is authoritative for. This p
 
 ```yaml
 Type: System.String
-Parameter Sets: ActiveDirectoryDomainServicesForFile
+Parameter Sets: AzureActiveDirectoryKerberosForFile, ActiveDirectoryDomainServicesForFile
 Aliases:
 
 Required: False
@@ -529,8 +580,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowProtectedAppendWrite
-When enabled by set it to true, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. 
-This property can only be specified with '-EnableAccountLevelImmutability'.
+When enabled by set it to true, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property can only be specified with '-EnableAccountLevelImmutability'.
 
 ```yaml
 Type: System.Boolean
@@ -705,6 +755,21 @@ Parameter Sets: AzureActiveDirectoryDomainServicesForFile
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAzureActiveDirectoryKerberosForFile
+Enable Azure Files Active Directory Domain Service Kerberos Authentication for the storage account.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: AzureActiveDirectoryKerberosForFile
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
