@@ -683,7 +683,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-NETWORKPROFILENETWORKINTERFACE <INetworkInterface[]>: Gets or sets the list of network interfaces associated with the virtual machine.
+`NETWORKPROFILENETWORKINTERFACE <INetworkInterface[]>`: Gets or sets the list of network interfaces associated with the virtual machine.
   - `[DeviceKey <Int32?>]`: Gets or sets the device key value.
   - `[IPSettingAllocationMethod <IPAddressAllocationMethod?>]`: Gets or sets the nic allocation method.
   - `[IPSettingDnsServer <String[]>]`: Gets or sets the dns servers.
@@ -695,7 +695,7 @@ NETWORKPROFILENETWORKINTERFACE <INetworkInterface[]>: Gets or sets the list of n
   - `[NicType <NicType?>]`: NIC type
   - `[PowerOnBoot <PowerOnBootOption?>]`: Gets or sets the power on boot.
 
-STORAGEPROFILEDISK <IVirtualDisk[]>: Gets or sets the list of virtual disks associated with the virtual machine.
+`STORAGEPROFILEDISK <IVirtualDisk[]>`: Gets or sets the list of virtual disks associated with the virtual machine.
   - `[ControllerKey <Int32?>]`: Gets or sets the controller id.
   - `[DeviceKey <Int32?>]`: Gets or sets the device key value.
   - `[DeviceName <String>]`: Gets or sets the device name.

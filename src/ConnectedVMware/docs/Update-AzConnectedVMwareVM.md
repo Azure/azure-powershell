@@ -391,7 +391,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedVMwareIdentity>: Identity Parameter
+`INPUTOBJECT <IConnectedVMwareIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: Name of the cluster.
   - `[DatastoreName <String>]`: Name of the datastore.
   - `[ExtensionName <String>]`: The name of the machine extension.
@@ -408,14 +408,14 @@ INPUTOBJECT <IConnectedVMwareIdentity>: Identity Parameter
   - `[VirtualMachineTemplateName <String>]`: Name of the virtual machine template resource.
   - `[VirtualNetworkName <String>]`: Name of the virtual network resource.
 
-NETWORKPROFILENETWORKINTERFACE <INetworkInterfaceUpdate[]>: Gets or sets the list of network interfaces associated with the virtual machine.
+`NETWORKPROFILENETWORKINTERFACE <INetworkInterfaceUpdate[]>`: Gets or sets the list of network interfaces associated with the virtual machine.
   - `[DeviceKey <Int32?>]`: Gets or sets the device key value.
   - `[Name <String>]`: Gets or sets the name of the network interface.
   - `[NetworkId <String>]`: Gets or sets the ARM Id of the network resource to connect the virtual machine.
   - `[NicType <NicType?>]`: NIC type
   - `[PowerOnBoot <PowerOnBootOption?>]`: Gets or sets the power on boot.
 
-STORAGEPROFILEDISK <IVirtualDiskUpdate[]>: Gets or sets the list of virtual disks associated with the virtual machine.
+`STORAGEPROFILEDISK <IVirtualDiskUpdate[]>`: Gets or sets the list of virtual disks associated with the virtual machine.
   - `[ControllerKey <Int32?>]`: Gets or sets the controller id.
   - `[DeviceKey <Int32?>]`: Gets or sets the device key value.
   - `[DeviceName <String>]`: Gets or sets the device name.
