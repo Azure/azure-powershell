@@ -212,10 +212,12 @@ function Test-V2ARCMProtectableItem {
     # List protectable item.
     $ProtectableItem = Get-ASRProtectableItem -ProtectionContainer $Container `
         -SiteId $Fabric.FabricSpecificDetails.VmwareSiteId
+    Assert-NotNull($ProtectableItem)
 
     # Get protectable item.
     $ProtectableItem = Get-ASRProtectableItem -ProtectionContainer $Container `
         -SiteId $Fabric.FabricSpecificDetails.VmwareSiteId -FriendlyName $vmName
+    Assert-NotNull($ProtectableItem)
 }
 
 <#
