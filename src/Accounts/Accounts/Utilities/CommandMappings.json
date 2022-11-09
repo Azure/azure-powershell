@@ -383,6 +383,10 @@
       "Update-AzAutomanageConfigProfile": {}
     },
     "Az.Automation": {
+      "Set-AzAutomationPython3Package": {},
+      "New-AzAutomationPython3Package": {},
+      "Remove-AzAutomationPython3Package": {},
+      "Get-AzAutomationPython3Package": {},
       "Move-AzAutomationHybridRunbookWorker": {},
       "Remove-AzAutomationHybridRunbookWorker": {},
       "New-AzAutomationHybridRunbookWorker": {},
@@ -3271,6 +3275,7 @@
       "New-AzAutoscaleSetting": {},
       "New-AzAutoscaleWebhookNotificationObject": {},
       "Remove-AzAutoscaleSetting": {},
+      "Update-AzAutoscaleSetting": {},
       "Get-AzLog": {}
     },
     "Az.MonitoringSolutions": {
