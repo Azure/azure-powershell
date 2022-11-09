@@ -195,17 +195,12 @@ function New-AzConnectedKubernetes {
             try {
                 $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
             } catch {
-                throw 
+                Write-Error "Get legal term failed."
+                throw
             }
             $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
-            switch ($confirmation) {
-                'Y' {
-                    Break
-                }
-
-                Default {
-                    Return
-                }
+            if($confirmation -ine "Y"){
+                Return
             }
         }else {
             $null = $PSBoundParameters.Remove('AcceptEULA')

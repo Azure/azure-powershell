@@ -4,6 +4,9 @@ New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps
 ```
 
 ```output
+I confirm I have an eligible Windows Server license with Azure Hybrid Benefit to apply this benefit to AKS on Azure Stack HCI or Windows Server. Visit https://aka.ms/ahb-aks for details.
+[Y] Yes  [N] No  (default is "N"): Y
+
 Location Name              ResourceGroupName
 -------- ----              -----------------
 eastus   azps_test_cluster azps_test_group
@@ -17,6 +20,9 @@ New-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azp
 ```
 
 ```output
+I confirm I have an eligible Windows Server license with Azure Hybrid Benefit to apply this benefit to AKS on Azure Stack HCI or Windows Server. Visit https://aka.ms/ahb-aks for details.
+[Y] Yes  [N] No  (default is "N"): Y
+
 Location Name               ResourceGroupName
 -------- ----               -----------------
 eastus   azps_test_cluster1 azps_test_group
@@ -30,6 +36,9 @@ New-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azp
 ```
 
 ```output
+I confirm I have an eligible Windows Server license with Azure Hybrid Benefit to apply this benefit to AKS on Azure Stack HCI or Windows Server. Visit https://aka.ms/ahb-aks for details.
+[Y] Yes  [N] No  (default is "N"): Y
+
 Location Name               ResourceGroupName
 -------- ----               -----------------
 eastus   azps_test_cluster1 azps_test_group
