@@ -18,7 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Apiversion 2021-03-01-preview
+* Added `Get\New\Remove\Update-AzMixedRealityObjectAnchorsAccount` cmdlets
+* Added `Get\New-AzMixedRealityObjectAnchorsAccountKey` cmdlets
 
-## Version 0.1.0
-* First preview release for module Az.MixedReality
+## Version 0.1.4
+* Added Azure Remote Rendering Management Cmdlets
 
+## Version 0.1.3
+* Update references in .psd1 to use relative path
+
+## Version 0.1.2
+* Fixed miscellaneous typos across module
+
+## Version 0.1.1
+
+* General availability of `Az.MixedReality` module
