@@ -30,18 +30,11 @@ jobs:
   displayName: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
-  strategy:
-    matrix:
-      windows:
-        OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
-  pool:
-    vmImage: $(ImageName)
+  pool: pool-windows-2019
 
   steps:
   - template: util/build-steps.yml
     parameters:
-      osName: $(OSName)
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
@@ -56,13 +49,11 @@ jobs:
       windows:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
-  pool:
-    vmImage: $(ImageName)
+  pool: pool-windows-2019
 
   steps:
   - template: util/analyze-steps.yml
     parameters:
-      osName: $(OSName)
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}

@@ -1,4 +1,5 @@
 variables:
+  AgentPoolName: pool-windows-2019
   WindowsName: windows
   WindowsImage: windows-2019
   TestFramework: netcoreapp3.1
@@ -24,8 +25,7 @@ jobs:
   displayName: Build
   condition: and(eq(variables.IsGenerateBased, false), succeeded())
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
-  pool:
-    vmImage: ${{ variables.WindowsImage }}
+  pool: ${{ variables.AgentPoolName }}
 
   steps:
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
@@ -33,7 +33,6 @@ jobs:
     continueOnError: true
   - template: util/build-steps.yml
     parameters:
-      osName: ${{ variables.WindowsName }}
       testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
@@ -43,18 +42,11 @@ jobs:
   dependsOn: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
-  strategy:
-    matrix:
-      windows:
-        OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
-  pool:
-    vmImage: $(ImageName)
+  pool: ${{ variables.AgentPoolName }}
 
   steps:
   - template: util/analyze-steps.yml
     parameters:
-      osName: $(OSName)
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
@@ -64,18 +56,12 @@ jobs:
   dependsOn: Build
   condition: and(eq(variables.IsGenerateBased, false), succeeded())
   timeoutInMinutes: 180
-  strategy:
-    matrix:
-      windows:
-        OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
-  pool:
-    vmImage: $(ImageName)
+  pool: ${{ variables.AgentPoolName }}
 
   steps:
   - template: util/test-steps.yml
     parameters:
-      osName: $(OSName)
+      osName: ${{ variables.WindowsName }}
       testFramework: ${{ variables.TestFramework }}
       testTarget: ${{ variables.TestTarget }}
       configuration: ${{ variables.Configuration }}

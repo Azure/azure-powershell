@@ -19,8 +19,7 @@ jobs:
 - job: Job_1
   displayName: "Service: ${{ parameters.ServiceName }}"
   timeoutInMinutes: 90
-  pool:
-    name: pool-windows-2019
+  pool: pool-windows-2019
   steps:
   - checkout: self
   - task: NodeTool@0

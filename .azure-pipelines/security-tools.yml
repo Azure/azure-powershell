@@ -16,8 +16,7 @@ jobs:
 - job: Job_1
   displayName: Main
   timeoutInMinutes: 120
-  pool:
-    name: pool-windows-2019
+  pool: pool-windows-2019
   steps:
   - checkout: self
     fetchTags: false
