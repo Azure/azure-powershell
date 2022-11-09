@@ -1,8 +1,8 @@
 parameters:
-- name: ''
-- psVersion: ''
-- agentPoolName: ''
-- agentPoolVMImage: ''
+  name: ''
+  psVersion: ''
+  agentPoolName: ''
+  agentPoolVMImage: ''
 
 jobs:
 - job: ${{ parameters.name }}
