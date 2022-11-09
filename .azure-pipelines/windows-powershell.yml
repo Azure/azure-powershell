@@ -5,7 +5,6 @@ variables:
   TestFramework: netcoreapp3.1
   TestTarget: Test
   Configuration: Debug
-  DebugLocalBuildTasks: true
   IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120

@@ -1,16 +1,4 @@
 parameters:
-- name: win_image
-  displayName: Windows Image Version
-  type: string
-  default: windows-2019
-- name: linux_image
-  displayName: Linux Image Version
-  type: string
-  default: ubuntu-20.04
-- name: macOS_image
-  displayName: MacOS Image Version
-  type: string
-  default: macOS-11
 - name: win_ps
   displayName: Windows PowerShell Version
   type: string
@@ -31,6 +19,12 @@ parameters:
   displayName: PowerShell Latest Version
   type: string
   default: latest
+- winAgentPoolName: pool-windows-2019
+- winAgentPoolVMImage: ''
+- linuxAgentPoolName: pool-ubuntu-2004
+- linuxAgentPoolVMImage: ''
+- macOsAgentPoolName: Azure Pipelines
+- macOsAgentPoolVMImage: macOS-11
 
 pr: none
 trigger: none
@@ -39,65 +33,76 @@ jobs:
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Win_PS5_1_14_SmokeTest'
-    vmImage: ${{ parameters.win_image }}
+    agentPoolName: ${{ parameters.winAgentPoolName }}''
+    agentPoolVMImage: ${{ parameters.winAgentPoolVMImage }}
     psVersion: ${{ parameters.win_ps }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Win_PS7_0_X_SmokeTest'
-    vmImage: ${{ parameters.win_image }}
+    agentPoolName: ${{ parameters.winAgentPoolName }}''
+    agentPoolVMImage: ${{ parameters.winAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Win_PS7_1_X_SmokeTest'
-    vmImage: ${{ parameters.win_image }}
+    agentPoolName: ${{ parameters.winAgentPoolName }}''
+    agentPoolVMImage: ${{ parameters.winAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7_1 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Win_PS7_2_X_SmokeTest'
-    vmImage: ${{ parameters.win_image }}
+    agentPoolName: ${{ parameters.winAgentPoolName }}''
+    agentPoolVMImage: ${{ parameters.winAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7_2 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Win_Latest_PS_SmokeTest'
-    vmImage: ${{ parameters.win_image }}
+    agentPoolName: ${{ parameters.winAgentPoolName }}''
+    agentPoolVMImage: ${{ parameters.winAgentPoolVMImage }}
     psVersion: ${{ parameters.latest_ps }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Linux_PS7_0_X_SmokeTest'
-    vmImage: ${{ parameters.linux_image }}
+    agentPoolName: ${{ parameters.linuxAgentPoolName }}''
+    agentPoolVMImage: ${{ parameters.linuxAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Linux_PS7_1_X_SmokeTest'
-    vmImage: ${{ parameters.linux_image }}
+    agentPoolName: ${{ parameters.linuxAgentPoolName }}''
+    agentPoolVMImage: ${{ parameters.linuxAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7_1 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Linux_PS7_2_X_SmokeTest'
-    vmImage: ${{ parameters.linux_image }}
+    agentPoolName: ${{ parameters.linuxAgentPoolName }}''
+    agentPoolVMImage: ${{ parameters.linuxAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7_2 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Linux_Latest_PS_SmokeTest'
-    vmImage: ${{ parameters.linux_image }}
+    agentPoolName: ${{ parameters.linuxAgentPoolName }}''
+    agentPoolVMImage: ${{ parameters.linuxAgentPoolVMImage }}
     psVersion: ${{ parameters.latest_ps }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'MacOS_PS7_2_X_SmokeTest'
-    vmImage: ${{ parameters.macOS_image }}
+    agentPoolName: ${{ parameters.macOsAgentPoolName }}''
+    agentPoolVMImage: ${{ parameters.macOsAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7_2 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'MacOS_Latest_PS_SmokeTest'
-    vmImage: ${{ parameters.macOS_image }}
+    agentPoolName: ${{ parameters.macOsAgentPoolName }}''
+    agentPoolVMImage: ${{ parameters.macOsAgentPoolVMImage }}
     psVersion: ${{ parameters.latest_ps }}

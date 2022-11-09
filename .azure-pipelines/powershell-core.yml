@@ -1,25 +1,19 @@
 variables:
   WindowsName: windows 
-  WindowsImage: windows-2019
   WindowsAgentPoolName: pool-windows-2019
   WindowsAgentPoolVMImage: ''
   LinuxName: linux
-  LinuxImage: ubuntu-20.04
   LinuxAgentPoolName: pool-ubuntu-2004
   LinuxAgentPoolVMImage: ''
   MacOSName: macOS
-  MacOSImage: macOS-11
   MacOSAgentPoolName: 'Azure Pipelines'
   MacOSAgentPoolVMImage: macOS-11
   TestFramework: netcoreapp3.1
   TestTarget: Test
   Configuration: Debug
-  DebugLocalBuildTasks: true
-  IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
   TestTimeoutInMinutes: 180
-  BuildAzPredictor: false
   PowerShellPlatform: PowerShell Core
 
 trigger: none
@@ -50,11 +44,6 @@ jobs:
   dependsOn: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
-  strategy:
-    matrix:
-      windows:
-        OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
   pool: pool-windows-2019
 
   steps:
