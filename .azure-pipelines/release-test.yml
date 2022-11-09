@@ -6,27 +6,27 @@ parameters:
 - name: ps7
   displayName: PowerShell 7.0.x Version
   type: string
-  default: 7.0.8
+  default: 7.0.13
 - name: ps7_1
   displayName: PowerShell 7.1.x Version
   type: string
-  default: 7.1.5
+  default: 7.1.7
 - name: ps7_2
   displayName: PowerShell 7.2.x Version
   type: string
-  default: 7.2.0
+  default: 7.2.7
 - name: latest_ps
   displayName: PowerShell Latest Version
   type: string
   default: latest
 
 variables:
-- winAgentPoolName: pool-windows-2019
-- winAgentPoolVMImage: ''
-- linuxAgentPoolName: pool-ubuntu-2004
-- linuxAgentPoolVMImage: ''
-- macOsAgentPoolName: Azure Pipelines
-- macOsAgentPoolVMImage: macOS-11
+  winAgentPoolName: pool-windows-2019
+  winAgentPoolVMImage: ''
+  linuxAgentPoolName: pool-ubuntu-2004
+  linuxAgentPoolVMImage: ''
+  macOsAgentPoolName: Azure Pipelines
+  macOsAgentPoolVMImage: macOS-11
 
 pr: none
 trigger: none
