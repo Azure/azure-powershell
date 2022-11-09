@@ -32,6 +32,7 @@ jobs:
     condition: eq(variables.IsGenerateBased, true)
     inputs:
       versionSpec: 14.17.1
+  
   - task: PowerShell@2
     displayName: Install autorest
     condition: eq(variables.IsGenerateBased, true)
@@ -45,28 +46,32 @@ jobs:
       script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
     env:
       OCTOKITPAT: $(OCTOKITPAT)
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
+  - task: CredScan@3
     displayName: Run CredScan
     condition: in(variables['system.pullRequest.targetBranch'], 'generation', 'main')
     inputs:
-      toolMajorVersion: V2
-      outputFormat: sarif
-      scanFolder: SecurityTmp
-      suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
-      debugMode: false
-      folderSuppression: false
+      suppressionsFile: 'tools/SecurityTools/CredScanSuppressions.json'
   - task: PowerShell@2
     displayName: Cleanup Build
     inputs:
       targetType: inline
       script: ./tools/CleanupBuild.ps1
       pwsh: true
-  - task: PoliCheck@1
-    displayName: Run PoliCheck
+  - task: BinSkim@4
+    displayName: Run BinSkim
     inputs:
-      targetArgument: $(Build.SourcesDirectory)/artifacts/Debug
-      result: $(Build.SourcesDirectory)/artifacts/result/PoliCheck.xml
-      optionsFTPATH: tools/SecurityTools/PoliCheckFileExtensions.xml
+      InputType: 'Basic'
+      Function: 'analyze'
+      TargetPattern: 'guardianGlob'
+      AnalyzeTargetGlob: '$(Build.SourcesDirectory)/artifacts/**.dll;$(Build.SourcesDirectory)/artifacts/**.exe;'
+      AnalyzeStatistics: true
+  - task: PoliCheck@2
+    inputs:
+      targetType: 'F'
+      targetArgument: '$(Build.SourcesDirectory)/artifacts/Debug'
+      result: '$(Build.SourcesDirectory)/artifacts/result/PoliCheck.xml'
+      optionsFC: '1'
+      optionsXS: '1'
   - task: PublishPipelineArtifact@0
     displayName: Save artifacts
     condition: succeededOrFailed()
