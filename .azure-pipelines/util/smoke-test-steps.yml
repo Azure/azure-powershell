@@ -3,6 +3,7 @@ parameters:
   psVersion: ''
   agentPoolName: ''
   agentPoolVMImage: ''
+  netCoreVersion: ''
 
 jobs:
 - job: ${{ parameters.name }}
@@ -13,11 +14,11 @@ jobs:
 
   steps:
   - task: UseDotNet@2
-    condition: ne(variables['NetCoreVersion'], '')
-    displayName: 'Prepare .NET Core $(NetCoreVersion)'
+    condition: ne(${{ parameters.netCoreVersion }}, '')
+    displayName: 'Prepare .NET Core ${{ parameters.netCoreVersion }}'
     inputs:
       packageType: sdk
-      version: $(NetCoreVersion)
+      version: ${{ parameters.netCoreVersion }}
     
   - task: PowerShell@2
     displayName: Prepare Powershell ${{ parameters.psVersion }}
