@@ -14,7 +14,7 @@ Install Azure PowerShell modules.
 
 ### Default (Default)
 ```
-Install-AzModule [[-Name] <String[]>] [-RequiredAzVersion <String>] -Repository <String> [-AllowPrerelease]
+Install-AzModule [[-Name] <String[]>] [-RequiredAzVersion <String>] [-Repository <String>] [-AllowPrerelease]
  [-UseExactAccountVersion] [-Scope <String>] [-RemovePrevious] [-RemoveAzureRm] [-Force] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -80,15 +80,16 @@ Accept wildcard characters: False
 ```
 
 ### -Repository
-The Registered Repository.
-Example: PSGallery.
+The Registered Repository to install module from.
+If only one repository is registered in PowerShell, Install-AzModule will use it.
+If more than one, please specify the Repository.
 
 ```yaml
 Type: String
 Parameter Sets: Default
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

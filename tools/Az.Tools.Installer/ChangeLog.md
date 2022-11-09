@@ -1,6 +1,5 @@
 ## Upcoming Release
-* Made `Repository` parameter mandatory for `Install-AzModule` and `Update-AzModule`
-* Updated telemetry assembly to 2.21.0
+* Updated telemetry assembly to 2.13.1
 * Fixed typo in Az.Tools.Installer
 
 ## 0.2.0
