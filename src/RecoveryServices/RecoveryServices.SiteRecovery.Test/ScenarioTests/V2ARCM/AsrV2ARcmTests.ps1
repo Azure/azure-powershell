@@ -16,10 +16,11 @@
 ########################## Site Recovery Tests #############################
 
 # Inputs
-$vaultRg = "PwsTest"
-$vaultName = "PwsTest-rcm-vault"
-$primaryFabricName = "PwsTest-rcm-vault-vmwarefabric"
-$primaryContainerName = "PwsTest-rc0015replicationcontainer"
+$vaultRg = "V2A-ECY"
+$vaultName = "Rcm-Vault-150"
+$primaryFabricName = "Rcm-Vault-150-vmwarefabric"
+$primaryContainerName = "Rcm-Vault-4678replicationcontainer"
+
 $policyName = "v2aRcm-pwsh-testpolicy"
 $failbackPolicyName = "appconsistency-policy-failback"
 $primaryContainerMappingName = "v2aRcm-pwsh-testmapping"
@@ -188,6 +189,11 @@ function Test-V2ARCMContainerMapping {
 	Site Recovery V2A RCM get protectable item test.
 #>
 function Test-V2ARCMProtectableItem {
+
+    $vaultRg = "PwsTest"
+    $vaultName = "PwsTest-rcm-vault"
+    $primaryFabricName = "PwsTest-rcm-vault-vmwarefabric"
+    $primaryContainerName = "PwsTest-rc0015replicationcontainer"
 
     # Set vault context.
     $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
