@@ -37,7 +37,7 @@ PROPERTY <IListClusterUserCredentialProperties>: .
   AuthenticationMethod <AuthenticationMethod>: The mode of client authentication.
   ClientProxy <Boolean>: Boolean value to indicate whether the request is for client side proxy or not
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetesusercredential
+https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetesusercredential
 #>
 function Get-AzConnectedKubernetesUserCredential {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ICredentialResults])]
@@ -240,7 +240,7 @@ INPUTOBJECT <IConnectedKubernetesIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetes
+https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetes
 #>
 function Get-AzConnectedKubernetes {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster])]
@@ -414,6 +414,8 @@ API to register a new Kubernetes cluster and create a tracked resource in Azure 
 New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus
 .Example
 New-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
+.Example
+New-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01 -AzureHybridBenefit 'True' -PrivateLinkState 'Enabled' -Distribution "AKS_Management" -DistributionVersion "1.0" -PrivateLinkScopeResourceId "/subscriptions/{subscriptionId}/resourceGroups/azps_test_group/providers/Microsoft.HybridCompute/privateLinkScopes/azps-privatelinkscope" -infrastructure "azure_stack_hci" -ProvisioningState 'Succeeded'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster
@@ -514,6 +516,12 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Accept EULA of ConnectedKubernetes, legal term will pop up without this parameter provided
+    ${AcceptEULA},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
