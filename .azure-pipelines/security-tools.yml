@@ -67,7 +67,7 @@ jobs:
       AnalyzeTarget: '$(Build.SourcesDirectory)/artifacts/**.dll;$(Build.SourcesDirectory)/artifacts/**.exe'
       AnalyzeStatistics: true
   - task: PoliCheck@1
-    displayName: Run Policheck
+    displayName: Run PoliCheck
     inputs:
       targetArgument: $(Build.SourcesDirectory)/artifacts/Debug
       result: $(Build.SourcesDirectory)/artifacts/result/PoliCheck.xml
