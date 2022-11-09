@@ -145,7 +145,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fix spacing issues in Set-AzDataProtectionMSIPermission.ps1'
+        ReleaseNotes = '* Fixed spacing issues in Set-AzDataProtectionMSIPermission.ps1'
 
         # Prerelease string of this module
         # Prerelease = ''

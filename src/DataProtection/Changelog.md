@@ -20,7 +20,7 @@
 ## Upcoming Release
 
 ## Version 1.0.1
-* Fix spacing issues in Set-AzDataProtectionMSIPermission.ps1
+* Fixed spacing issues in Set-AzDataProtectionMSIPermission.ps1
 
 ## Version 1.0.0
 * Fixed list parameter set for `Get-AzDataProtectionBackupVault`
