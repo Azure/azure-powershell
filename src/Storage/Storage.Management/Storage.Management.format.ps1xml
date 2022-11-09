@@ -948,12 +948,20 @@
             <Label>IncludeBlobVersions</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+              <Alignment>Left</Alignment>
+              <Label>IncludeDeleted</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>BlobTypes</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>PrefixMatch</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+              <Alignment>Left</Alignment>
+              <Label>ExcludePrefix</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
@@ -996,12 +1004,20 @@
                 <ScriptBlock>$_.Definition.Filters.IncludeBlobVersions</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
+                  <Alignment>Left</Alignment>
+                  <ScriptBlock>$_.Definition.Filters.IncludeDeleted</ScriptBlock>
+              </TableColumnItem>  
+              <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <ScriptBlock>$_.Definition.Filters.BlobTypes</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <ScriptBlock>$_.Definition.Filters.PrefixMatch</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                  <Alignment>Left</Alignment>
+                  <ScriptBlock>$_.Definition.Filters.ExcludePrefix</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>

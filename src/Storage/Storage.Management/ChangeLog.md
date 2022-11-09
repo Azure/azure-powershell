@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported excludePrefix, includeDeleted, and many new schema fields in Blob Inventory
+    - `New-AzStorageBlobInventoryPolicyRule`
 
 ## Version 5.1.0
 * Supported generate DataLakeGen2 Sas token with Encryption scope
