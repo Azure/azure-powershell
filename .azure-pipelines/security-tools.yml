@@ -51,6 +51,7 @@ jobs:
     inputs:
       toolMajorVersion: 'V2'
       outputFormat: 'sarif'
+      scanFolder: SecurityTmp
       suppressionsFile: 'tools/SecurityTools/CredScanSuppressions.json'
   - task: PowerShell@2
     displayName: Cleanup Build
