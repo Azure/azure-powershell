@@ -64,7 +64,7 @@ jobs:
     inputs:
       InputType: 'Basic'
       Function: 'analyze'
-      AnalyzeTarget: '$(Build.SourcesDirectory)/artifacts/**.dll;$(Build.SourcesDirectory)/artifacts/**.exe'
+      AnalyzeTarget: '$(Build.SourcesDirectory)/artifacts/*.dll;$(Build.SourcesDirectory)/artifacts/*.exe'
       AnalyzeStatistics: true
   - task: PoliCheck@1
     displayName: Run PoliCheck
