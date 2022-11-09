@@ -19,6 +19,8 @@ parameters:
   displayName: PowerShell Latest Version
   type: string
   default: latest
+
+variables:
 - winAgentPoolName: pool-windows-2019
 - winAgentPoolVMImage: ''
 - linuxAgentPoolName: pool-ubuntu-2004
@@ -33,76 +35,76 @@ jobs:
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Win_PS5_1_14_SmokeTest'
-    agentPoolName: ${{ parameters.winAgentPoolName }}''
-    agentPoolVMImage: ${{ parameters.winAgentPoolVMImage }}
+    agentPoolName: ${{ variables.winAgentPoolName }}''
+    agentPoolVMImage: ${{ variables.winAgentPoolVMImage }}
     psVersion: ${{ parameters.win_ps }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Win_PS7_0_X_SmokeTest'
-    agentPoolName: ${{ parameters.winAgentPoolName }}''
-    agentPoolVMImage: ${{ parameters.winAgentPoolVMImage }}
+    agentPoolName: ${{ variables.winAgentPoolName }}''
+    agentPoolVMImage: ${{ variables.winAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Win_PS7_1_X_SmokeTest'
-    agentPoolName: ${{ parameters.winAgentPoolName }}''
-    agentPoolVMImage: ${{ parameters.winAgentPoolVMImage }}
+    agentPoolName: ${{ variables.winAgentPoolName }}''
+    agentPoolVMImage: ${{ variables.winAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7_1 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Win_PS7_2_X_SmokeTest'
-    agentPoolName: ${{ parameters.winAgentPoolName }}''
-    agentPoolVMImage: ${{ parameters.winAgentPoolVMImage }}
+    agentPoolName: ${{ variables.winAgentPoolName }}''
+    agentPoolVMImage: ${{ variables.winAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7_2 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Win_Latest_PS_SmokeTest'
-    agentPoolName: ${{ parameters.winAgentPoolName }}''
-    agentPoolVMImage: ${{ parameters.winAgentPoolVMImage }}
+    agentPoolName: ${{ variables.winAgentPoolName }}''
+    agentPoolVMImage: ${{ variables.winAgentPoolVMImage }}
     psVersion: ${{ parameters.latest_ps }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Linux_PS7_0_X_SmokeTest'
-    agentPoolName: ${{ parameters.linuxAgentPoolName }}''
-    agentPoolVMImage: ${{ parameters.linuxAgentPoolVMImage }}
+    agentPoolName: ${{ variables.linuxAgentPoolName }}''
+    agentPoolVMImage: ${{ variables.linuxAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Linux_PS7_1_X_SmokeTest'
-    agentPoolName: ${{ parameters.linuxAgentPoolName }}''
-    agentPoolVMImage: ${{ parameters.linuxAgentPoolVMImage }}
+    agentPoolName: ${{ variables.linuxAgentPoolName }}''
+    agentPoolVMImage: ${{ variables.linuxAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7_1 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Linux_PS7_2_X_SmokeTest'
-    agentPoolName: ${{ parameters.linuxAgentPoolName }}''
-    agentPoolVMImage: ${{ parameters.linuxAgentPoolVMImage }}
+    agentPoolName: ${{ variables.linuxAgentPoolName }}''
+    agentPoolVMImage: ${{ variables.linuxAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7_2 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'Linux_Latest_PS_SmokeTest'
-    agentPoolName: ${{ parameters.linuxAgentPoolName }}''
-    agentPoolVMImage: ${{ parameters.linuxAgentPoolVMImage }}
+    agentPoolName: ${{ variables.linuxAgentPoolName }}''
+    agentPoolVMImage: ${{ variables.linuxAgentPoolVMImage }}
     psVersion: ${{ parameters.latest_ps }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'MacOS_PS7_2_X_SmokeTest'
-    agentPoolName: ${{ parameters.macOsAgentPoolName }}''
-    agentPoolVMImage: ${{ parameters.macOsAgentPoolVMImage }}
+    agentPoolName: ${{ variables.macOsAgentPoolName }}''
+    agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7_2 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
     name: 'MacOS_Latest_PS_SmokeTest'
-    agentPoolName: ${{ parameters.macOsAgentPoolName }}''
-    agentPoolVMImage: ${{ parameters.macOsAgentPoolVMImage }}
+    agentPoolName: ${{ variables.macOsAgentPoolName }}''
+    agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
     psVersion: ${{ parameters.latest_ps }}
