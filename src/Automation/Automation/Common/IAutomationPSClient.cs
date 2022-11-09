@@ -466,5 +466,18 @@ namespace Microsoft.Azure.Commands.Automation.Common
             ref string nextLink);
 
         #endregion
+
+        #region Python3
+
+        Module CreatePython3Package(string resourceGroupName, string automationAccountName, Uri contentLink, string moduleName);
+        Module GetPython3Package(string resourceGroupName, string automationAccountName, string name);
+
+        Module UpdatePython3Package(string resourceGroupName, string automationAccountName, string name, Uri contentLink, string contentLinkVersion);
+
+        IEnumerable<Module> ListPython3Package(string resourceGroupName, string automationAccountName, ref string nextLink);
+
+        void DeletePython3Package(string resourceGroupName, string automationAccountName, string name);
+
+        #endregion
     }
 }

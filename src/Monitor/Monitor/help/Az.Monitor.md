@@ -221,6 +221,10 @@ Updates 'tags' and 'enabled' fields in an existing Alert rule.
 This method is used to update the Alert rule tags, and to enable or disable the Alert rule.
 To update other fields use CreateOrUpdate operation.
 
+### [Update-AzAutoscaleSetting](Update-AzAutoscaleSetting.md)
+Updates an existing AutoscaleSettingsResource.
+To update other fields use the CreateOrUpdate method.
+
 ### [Update-AzDataCollectionRule](Update-AzDataCollectionRule.md)
 Updates a data collection rule tags property.
 
@@ -229,3 +233,4 @@ Update for private link scope
 
 ### [Update-AzScheduledQueryRule](Update-AzScheduledQueryRule.md)
 Update a scheduled query rule.
+

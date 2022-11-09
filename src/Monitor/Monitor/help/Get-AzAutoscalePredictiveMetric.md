@@ -1,7 +1,7 @@
 ---
 external help file: Az.Autoscale.psm1-help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azautoscalepredictivemetric
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azautoscalepredictivemetric
 schema: 2.0.0
 ---
 

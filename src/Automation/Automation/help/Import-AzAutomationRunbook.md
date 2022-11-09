@@ -233,7 +233,7 @@ It is equivalent to GraphicalPowerShellWorkflow.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph, Python2, Python3
+Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph, Python2
 
 Required: True
 Position: Named

@@ -25,7 +25,7 @@ New-AzDiagnosticSettingSubscriptionLogSettingsObject -Category Recommendation -E
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings
 .Link
-https://docs.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingSubscriptionLogSettingsObject
+https://learn.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingSubscriptionLogSettingsObject
 #>
 function New-AzDiagnosticSettingSubscriptionLogSettingsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings])]

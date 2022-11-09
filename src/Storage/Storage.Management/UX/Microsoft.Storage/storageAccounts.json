@@ -1,0 +1,155 @@
+{
+    "resourceType":"storageAccounts",
+    "apiVersion":"2021-08-01",
+    "learnMore":{
+       "url":"https://learn.microsoft.com/powershell/module/az.storage/#storage"       
+    },
+    "commands":[
+       {
+          "name":"Get-AzStorageAccount",
+          "description":"Gets a Storage account.",
+          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
+          "confirmation":false,
+          "help":{
+             "learnMore":{
+                "url":"https://learn.microsoft.com/powershell/module/az.storage/get-azstorageaccount"
+             },
+             "parameterSets":[
+                {
+                   "parameters":[
+                      "[-ResourceGroupName] <String>",
+                      "[-Name] <String>",
+                      "[-IncludeGeoReplicationStats]"
+                   ]
+                },
+                {
+                  "parameters":[
+                     "[-ResourceGroupName] <String>",
+                     "[-Name] <String>",
+                     "[-IncludeBlobRestoreStatus]"
+                  ]                  
+                }
+             ]
+          },
+          "examples":[
+             {
+                "description":"Get a specified Storage account.",
+                "parameters":[    
+                   {
+                      "name":"-ResourceGroupName",
+                      "value":"[path.resourceGroupName]"
+                   },
+                   {
+                      "name":"-Name",
+                      "value":"[path.accountName]"
+                   }
+                ]
+             }
+          ]
+       },
+       {
+         "name":"Invoke-AzStorageAccountFailover",
+         "description":"Invokes failover of a Storage account.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover",
+         "confirmation":true,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.storage/invoke-azstorageaccountfailover"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-ResourceGroupName] <String>",
+                     "[-Name] <String>"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Invoke failover of a Storage account.",
+               "parameters":[    
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-Name",
+                     "value":"[path.accountName]"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+        "name":"Stop-AzStorageAccountHierarchicalNamespaceUpgrade",
+        "description":"Abort live Migration of storage account to enable Hns.",
+        "path":"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration",
+        "confirmation":true,
+        "help":{
+           "learnMore":{
+              "url":"https://learn.microsoft.com/powershell/module/az.storage/stop-azstorageaccounthierarchicalnamespaceupgrade"
+           },
+           "parameterSets":[
+              {
+                 "parameters":[
+                    "[-ResourceGroupName] <String>",
+                    "[-Name] <String>",
+                    "[-PassThru]"
+                 ]
+              }
+           ]
+        },
+        "examples":[
+           {
+              "description":"Aborts an ongoing HierarchicalNamespace upgrade task on a storage account.",
+              "parameters":[    
+                 {
+                    "name":"-ResourceGroupName",
+                    "value":"[path.resourceGroupName]"
+                 },
+                 {
+                    "name":"-Name",
+                    "value":"[path.accountName]"
+                 }
+              ]
+           }
+        ]
+      },
+      {
+        "name":"Revoke-AzStorageAccountUserDelegationKeys",
+        "description":"Revoke user delegation keys.",
+        "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/revokeUserDelegationKeys",
+        "confirmation":true,
+        "help":{
+           "learnMore":{
+              "url":"https://learn.microsoft.com/powershell/module/az.storage/stop-azstorageaccounthierarchicalnamespaceupgrade"
+           },
+           "parameterSets":[
+              {
+                 "parameters":[
+                    "[-ResourceGroupName] <String>",
+                    "[-Name] <String>",
+                    "[-PassThru]"
+                 ]
+              }
+           ]
+        },
+        "examples":[
+           {
+              "description":"Revoke all User Delegation keys of a Storage account.",
+              "parameters":[    
+                 {
+                    "name":"-ResourceGroupName",
+                    "value":"[path.resourceGroupName]"
+                 },
+                 {
+                    "name":"-Name",
+                    "value":"[path.accountName]"
+                 }
+              ]
+           }
+        ]
+      }
+    ]
+ }

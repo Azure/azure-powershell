@@ -251,5 +251,10 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         IHybridRunbookWorkerGroupOperations HybridRunbookWorkerGroup { get; }
 
+        /// <summary>
+        /// Gets the IPython3PackageOperations.
+        /// </summary>
+        IPython3PackageOperations Python3Package { get; }
+
     }
 }

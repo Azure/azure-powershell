@@ -23,7 +23,7 @@ Create an in-memory object for AlertRuleLeafCondition.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleLeafCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertAlertRuleLeafConditionObject
+https://learn.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertAlertRuleLeafConditionObject
 #>
 function New-AzActivityLogAlertAlertRuleLeafConditionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleLeafCondition')]

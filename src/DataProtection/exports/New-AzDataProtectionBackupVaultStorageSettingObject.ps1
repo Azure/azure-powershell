@@ -25,7 +25,7 @@ New-AzDataProtectionBackupVaultStorageSettingObject -Type GeoRedundant -DataStor
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvaultstoragesettingobject
+https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvaultstoragesettingobject
 #>
 function New-AzDataProtectionBackupVaultStorageSettingObject {
 [OutputType([PSObject])]

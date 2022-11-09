@@ -1,0 +1,58 @@
+{
+    "resourceType":"virtualMachineScaleSets/virtualMachines",
+    "apiVersion":"2022-03-01",
+    "learnMore":{
+       "url":"https://learn.microsoft.com/powershell/module/az.compute/#vm-scale-sets"
+    },
+    "commands":[
+       {
+          "name":"Get-AzVmssVM",
+          "description":"Gets the properties of a VMSS virtual machine.",
+          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}",
+          "confirmation":false,
+          "help":{
+             "learnMore":{
+                "url":"https://learn.microsoft.com/powershell/module/az.compute/get-azvmssvm"
+             },
+             "parameterSets":[
+                {
+                   "parameters":[
+                      "[[-ResourceGroupName] <System.String>]",
+                      "[[-VMScaleSetName] <System.String>]",
+                      "[[-InstanceId] <System.String>]",
+                      "[-UserData]"
+                   ]
+                },
+                {
+                  "parameters":[
+                     "[[-ResourceGroupName] <System.String>]",
+                     "[[-VMScaleSetName] <System.String>]",
+                     "[[-InstanceId] <System.String>]",
+                     "-InstanceView",
+                     "[-UserData]"
+                  ]
+               }
+             ]
+          },
+          "examples":[
+             {
+                "description":"Gets the properties of a VMSS virtual machine.",
+                "parameters":[
+                   {
+                      "name":"-ResourceGroupName",
+                      "value":"[path.resourceGroupName]"
+                   },
+                   {
+                      "name":"-VMScaleSetName",
+                      "value":"[path.vmScaleSetName]"
+                   },
+                   {
+                      "name":"-InstanceId",
+                      "value":"[path.instanceId]"
+                   }
+                ]
+             }
+          ]
+       }
+    ]
+ }

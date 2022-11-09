@@ -120,11 +120,18 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookName");
             }
+            if (runbookName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z]*-*[a-zA-Z0-9]*$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z]*-*[a-zA-Z0-9]*$");
+                }
+            }
             if (parameters == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
-            string apiVersion = "2018-06-30";
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -345,7 +352,14 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookName");
             }
-            string apiVersion = "2018-06-30";
+            if (runbookName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z]*-*[a-zA-Z0-9]*$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z]*-*[a-zA-Z0-9]*$");
+                }
+            }
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -556,7 +570,14 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookName");
             }
-            string apiVersion = "2018-06-30";
+            if (runbookName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z]*-*[a-zA-Z0-9]*$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z]*-*[a-zA-Z0-9]*$");
+                }
+            }
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -749,7 +770,14 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookName");
             }
-            string apiVersion = "2018-06-30";
+            if (runbookName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z]*-*[a-zA-Z0-9]*$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z]*-*[a-zA-Z0-9]*$");
+                }
+            }
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -942,7 +970,14 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookName");
             }
-            string apiVersion = "2018-06-30";
+            if (runbookName != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z]*-*[a-zA-Z0-9]*$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z]*-*[a-zA-Z0-9]*$");
+                }
+            }
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

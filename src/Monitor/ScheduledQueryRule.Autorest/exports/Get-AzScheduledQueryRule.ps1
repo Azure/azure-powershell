@@ -41,7 +41,7 @@ INPUTOBJECT <IScheduledQueryRuleIdentity>: Identity Parameter
   [RuleName <String>]: The name of the rule.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule
+https://learn.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule
 #>
 function Get-AzScheduledQueryRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource])]

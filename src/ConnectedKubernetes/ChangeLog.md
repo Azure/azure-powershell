@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added a related legal clause that users need to agree to when using the cmdlet `New-AzConnectedKubernetes` in order to successfully create.
 
 ## Version 0.5.0
 * Upgraded api version to 2022-10-01-preview

@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 2.1.0
+* Updated `Update-AzSynaspeWorkSpace` and `New-AzSynpaseWorkspace` to support for Workspace Encrytion Managed Identity setting
+
 ## Version 2.0.0
 * [Breaking Change] Updated models of Synapse Link for Azure Sql Database
 * Updated `New-AzSynapseWorkspace` and `Update-AzSynapseWorkspace` to support for user assigned managed identity (UAMI) by `-UserAssignedIdentityAction` and `-UserAssignedIdentityId`

@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The runbook name.
         /// </param>
         /// <param name='runbookContent'>
-        /// The runbook draft content.
+        /// The runbook draft content.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The runbook name.
         /// </param>
         /// <param name='runbookContent'>
-        /// The runbook draft content.
+        /// The runbook draft content.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

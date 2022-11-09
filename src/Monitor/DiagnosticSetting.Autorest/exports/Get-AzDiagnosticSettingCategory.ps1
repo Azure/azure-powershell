@@ -38,7 +38,7 @@ INPUTOBJECT <IDiagnosticSettingIdentity>: Identity Parameter
   [ResourceUri <String>]: The identifier of the resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsettingcategory
+https://learn.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsettingcategory
 #>
 function Get-AzDiagnosticSettingCategory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsCategoryResource])]

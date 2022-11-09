@@ -1,27 +1,27 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations?api-version=2019-06-01&$filter=properties%2FupdateConfiguration%2FazureVirtualMachines%2Fany%28m%3A%20m%20eq%20%27%2Fsubscriptions%2F422b6c61-95b0-4213-b3be-7282315df71d%2FresourceGroups%2Fmo-compute%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2Fmo-vm-w-01%27%29",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25zP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEmJGZpbHRlcj1wcm9wZXJ0aWVzJTJGdXBkYXRlQ29uZmlndXJhdGlvbiUyRmF6dXJlVmlydHVhbE1hY2hpbmVzJTJGYW55JTI4bSUzQSUyMG0lMjBlcSUyMCUyNyUyRnN1YnNjcmlwdGlvbnMlMkY0MjJiNmM2MS05NWIwLTQyMTMtYjNiZS03MjgyMzE1ZGY3MWQlMkZyZXNvdXJjZUdyb3VwcyUyRm1vLWNvbXB1dGUlMkZwcm92aWRlcnMlMkZNaWNyb3NvZnQuQ29tcHV0ZSUyRnZpcnR1YWxNYWNoaW5lcyUyRm1vLXZtLXctMDElMjclMjk=",
+      "RequestUri": "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations?api-version=2019-06-01&$filter=properties%2FupdateConfiguration%2FazureVirtualMachines%2Fany%28m%3A%20m%20eq%20%27%2Fsubscriptions%2F783fd652-64f3-4680-81e9-0b978c542005%2FresourceGroups%2Fmo-resources-eus%2Fproviders%2FMicrosoft.Compute%2FvirtualMachines%2Fmo-vm-w-01%27%29",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNzgzZmQ2NTItNjRmMy00NjgwLTgxZTktMGI5NzhjNTQyMDA1L3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25zP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEmJGZpbHRlcj1wcm9wZXJ0aWVzJTJGdXBkYXRlQ29uZmlndXJhdGlvbiUyRmF6dXJlVmlydHVhbE1hY2hpbmVzJTJGYW55JTI4bSUzQSUyMG0lMjBlcSUyMCUyNyUyRnN1YnNjcmlwdGlvbnMlMkY3ODNmZDY1Mi02NGYzLTQ2ODAtODFlOS0wYjk3OGM1NDIwMDUlMkZyZXNvdXJjZUdyb3VwcyUyRm1vLXJlc291cmNlcy1ldXMlMkZwcm92aWRlcnMlMkZNaWNyb3NvZnQuQ29tcHV0ZSUyRnZpcnR1YWxNYWNoaW5lcyUyRm1vLXZtLXctMDElMjclMjk=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d0c956bc-19bf-48ab-af0a-9b7112e6dab6"
+          "85527a36-5944-499a-aa1e-2df28855dde2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.700.22.47601",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ],
         "x-ms-activity-id": [
-          "73e12f17-1bad-4b64-87f1-87f45b0c8942"
+          "a7ee58ce-013f-429d-9d48-ee4ef5846b45"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -30,37 +30,31 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "73e12f17-1bad-4b64-87f1-87f45b0c8942"
+          "a7ee58ce-013f-429d-9d48-ee4ef5846b45"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "faa82caa-60d7-46a8-a3c7-58d988f18165"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20221027T114239Z:faa82caa-60d7-46a8-a3c7-58d988f18165"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
-        ],
-        "x-ms-correlation-request-id": [
-          "b790158f-df75-4871-bbc8-b264cd37c111"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210405T040410Z:b790158f-df75-4871-bbc8-b264cd37c111"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 05 Apr 2021 04:04:09 GMT"
+          "Thu, 27 Oct 2022 11:42:39 GMT"
         ],
         "Content-Length": [
-          "2157"
+          "2193"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,12 +63,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/mo-monthly-01\",\r\n      \"name\": \"mo-monthly-01\",\r\n      \"properties\": {\r\n        \"updateConfiguration\": {\r\n          \"operatingSystem\": \"Windows\",\r\n          \"windows\": {\r\n            \"includedUpdateClassifications\": \"Critical, Security\",\r\n            \"excludedKbNumbers\": [\r\n              \"KB-01\",\r\n              \"KB-02\"\r\n            ],\r\n            \"includedKbNumbers\": null,\r\n            \"rebootSetting\": \"IfRequired\"\r\n          },\r\n          \"linux\": null,\r\n          \"targets\": null,\r\n          \"duration\": \"PT2H\",\r\n          \"azureVirtualMachines\": [\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01\",\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02\"\r\n          ],\r\n          \"nonAzureComputerNames\": null\r\n        },\r\n        \"frequency\": \"Month\",\r\n        \"startTime\": \"2021-04-05T15:04:00+05:30\",\r\n        \"creationTime\": \"2021-04-04T23:27:04.013+05:30\",\r\n        \"lastModifiedTime\": \"2021-04-05T09:25:04.027+05:30\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"nextRun\": \"2021-04-05T15:04:00+05:30\",\r\n        \"tasks\": {\r\n          \"preTask\": null,\r\n          \"postTask\": null\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/mo-onetime-01\",\r\n      \"name\": \"mo-onetime-01\",\r\n      \"properties\": {\r\n        \"updateConfiguration\": {\r\n          \"operatingSystem\": \"Windows\",\r\n          \"windows\": {\r\n            \"includedUpdateClassifications\": \"Critical\",\r\n            \"excludedKbNumbers\": null,\r\n            \"includedKbNumbers\": null,\r\n            \"rebootSetting\": \"IfRequired\"\r\n          },\r\n          \"linux\": null,\r\n          \"targets\": null,\r\n          \"duration\": \"PT2H\",\r\n          \"azureVirtualMachines\": [\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01\",\r\n            \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02\"\r\n          ],\r\n          \"nonAzureComputerNames\": null\r\n        },\r\n        \"frequency\": \"OneTime\",\r\n        \"startTime\": \"2021-04-05T15:06:00+05:30\",\r\n        \"creationTime\": \"2021-04-04T23:26:25.717+05:30\",\r\n        \"lastModifiedTime\": \"2021-04-05T09:26:14.54+05:30\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"nextRun\": \"2021-04-05T15:06:00+05:30\",\r\n        \"tasks\": {\r\n          \"preTask\": null,\r\n          \"postTask\": null\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/mo-onetime-01\",\r\n      \"name\": \"mo-onetime-01\",\r\n      \"properties\": {\r\n        \"updateConfiguration\": {\r\n          \"operatingSystem\": \"Windows\",\r\n          \"windows\": {\r\n            \"includedUpdateClassifications\": \"Critical\",\r\n            \"excludedKbNumbers\": null,\r\n            \"includedKbNumbers\": null,\r\n            \"rebootSetting\": \"IfRequired\"\r\n          },\r\n          \"linux\": null,\r\n          \"targets\": null,\r\n          \"duration\": \"PT2H\",\r\n          \"azureVirtualMachines\": [\r\n            \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01\",\r\n            \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02\"\r\n          ],\r\n          \"nonAzureComputerNames\": null\r\n        },\r\n        \"frequency\": \"OneTime\",\r\n        \"startTime\": \"2022-10-27T22:29:00+05:30\",\r\n        \"creationTime\": \"2022-10-20T15:30:17.0866667+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-27T16:49:31.57+05:30\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"nextRun\": \"2022-10-27T22:29:00+05:30\",\r\n        \"tasks\": {\r\n          \"preTask\": null,\r\n          \"postTask\": null\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurations/mo-monthly-01\",\r\n      \"name\": \"mo-monthly-01\",\r\n      \"properties\": {\r\n        \"updateConfiguration\": {\r\n          \"operatingSystem\": \"Windows\",\r\n          \"windows\": {\r\n            \"includedUpdateClassifications\": \"Critical, Security\",\r\n            \"excludedKbNumbers\": [\r\n              \"KB-01\",\r\n              \"KB-02\"\r\n            ],\r\n            \"includedKbNumbers\": null,\r\n            \"rebootSetting\": \"IfRequired\"\r\n          },\r\n          \"linux\": null,\r\n          \"targets\": null,\r\n          \"duration\": \"PT2H\",\r\n          \"azureVirtualMachines\": [\r\n            \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01\",\r\n            \"/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02\"\r\n          ],\r\n          \"nonAzureComputerNames\": null\r\n        },\r\n        \"frequency\": \"Month\",\r\n        \"startTime\": \"2022-10-27T22:32:00+05:30\",\r\n        \"creationTime\": \"2022-10-20T15:33:29.6833333+05:30\",\r\n        \"lastModifiedTime\": \"2022-10-27T16:55:52.8733333+05:30\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"nextRun\": \"2022-11-02T22:32:00+05:30\",\r\n        \"tasks\": {\r\n          \"preTask\": null,\r\n          \"postTask\": null\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+    "SubscriptionId": "783fd652-64f3-4680-81e9-0b978c542005"
   }
 }

@@ -1,0 +1,139 @@
+{
+    "resourceType":"vaults",
+    "apiVersion":"2021-06-01-preview",
+    "learnMore":{
+       "url":"https://learn.microsoft.com/powershell/module/az.keyvault/#key-vault"       
+    },
+    "commands":[
+       {
+          "name":"Get-AzKeyVault",
+          "description":"Gets key vaults.",
+          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}",
+          "confirmation":false,
+          "help":{
+             "learnMore":{
+                "url":"https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvault"
+             },
+             "parameterSets":[
+                {
+                   "parameters":[
+                      "[-SubscriptionId <System.String>]",
+                      "[[-ResourceGroupName] <String>]",
+                      "[[-VaultName] <String>]",
+                      "[-Tag <System.Collections.Hashtable>]"
+                   ]
+                }
+             ]
+          },
+          "examples":[
+             {
+                "description":"Get a specific key vault.",
+                "parameters":[
+                   {
+                     "name":"-SubscriptionId",
+                     "value":"[path.subscriptionId]"
+                   },                  
+                   {
+                      "name":"-ResourceGroupName",
+                      "value":"[path.resourceGroupName]"
+                   },
+                   {
+                      "name":"-VaultName",
+                      "value":"[path.vaultName]"
+                   }
+                ]
+             }
+          ]
+       },
+       {
+         "name":"Get-AzKeyVaultKey",
+         "description":"Gets Key Vault keys.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}",
+         "confirmation":false,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultkey"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-VaultName] <System.String>",
+                     "[[-Name] <System.String>]"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Gets Key Vault keys.",
+               "parameters":[
+                  {
+                    "name":"-VaultName",
+                    "value":"[path.vaultName]"
+                  }
+               ]
+            }
+         ]
+       },
+       {
+         "name":"Get-AzKeyVaultCertificate",
+         "description":"Get certificates from a key vault.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}",
+         "confirmation":false,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultcertificate"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-VaultName] <System.String>",
+                     "[[-Name] <System.String>]"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Get certificates from a key vault.",
+               "parameters":[
+                  {
+                    "name":"-VaultName",
+                    "value":"[path.vaultName]"
+                  }
+               ]
+            }
+         ]
+       },
+       {
+         "name":"Get-AzKeyVaultSecret",
+         "description":"Gets the secrets in a key vault.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}",
+         "confirmation":false,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-VaultName] <System.String>",
+                     "[[-Name] <System.String>]"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Gets the secrets in a key vault.",
+               "parameters":[
+                  {
+                    "name":"-VaultName",
+                    "value":"[path.vaultName]"
+                  }
+               ]
+            }
+         ]
+       }
+    ]
+ }

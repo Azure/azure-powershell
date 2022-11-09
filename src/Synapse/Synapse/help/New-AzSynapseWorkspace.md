@@ -16,9 +16,10 @@ Creates a Synapse Analytics workspace.
 New-AzSynapseWorkspace -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
  -DefaultDataLakeStorageAccountName <String> -DefaultDataLakeStorageFilesystem <String>
  -SqlAdministratorLoginCredential <PSCredential> [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
- [-EncryptionKeyName <String>] [-EncryptionKeyIdentifier <String>] [-AsJob]
- [-ManagedResourceGroupName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
- [-EnablePublicNetworkAccess <Boolean>] [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
+ [-EncryptionKeyName <String>] [-EncryptionKeyIdentifier <String>] [-UserAssignedIdentityInEncryption <String>]
+ [-UseSystemAssignedIdentityInEncryption <Object>] [-AsJob] [-ManagedResourceGroupName <String>]
+ [-GitRepository <PSWorkspaceRepositoryConfiguration>] [-EnablePublicNetworkAccess <Boolean>]
+ [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -79,6 +80,32 @@ New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWork
 ```
 
 This command creates a Synapse Analytics workspace named ContosoWorkspace that uses the ContosoAdlGenStorage Data Store, in the resource group named ContosoResourceGroup, and add user assigned managed identities that get from ResourceGroup ContosoResourceGroup to workspace.
+
+### Example 6
+```powershell
+New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -EncryptionKeyIdentifier $identifier -UseSystemAssignedIdentityInEncryption $true
+$ws = Get-AzSynapseWorkspace -name ContosoWorkspace
+$ws.Encryption.CustomerManagedKeyDetails.Key
+```
+
+```output
+Name    KeyVaultUrl
+----    -----------
+default https://contosoKeyValut.vault.azure.net/keys/testkey
+```
+
+```powershell
+$ws = Get-AzSynapseWorkspace -name ContosoWorkspace
+$ws.Encryption.CustomerManagedKeyDetails.KekIdentity
+```
+
+```output
+UserAssignedIdentity UseSystemAssignedIdentity
+-------------------- -------------------------
+                                          True
+```
+
+This command creates a Synapse Analytics workspace named ContosoWorkspace that uses the ContosoAdlGenStorage Data Store, in the resource group named ContosoResourceGroup, and enable double encryption with customer-managed key with specified key identifier and set Managed Identity as System Assigned. After creation, we can call `Get-AzSynapseWorkspace` to get Encryption properties of workspace.
 
 ## PARAMETERS
 
@@ -312,6 +339,36 @@ User assigned managed identity Id for workspace.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityInEncryption
+User assigned identity resource Id used in Workspace Encryption
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseSystemAssignedIdentityInEncryption
+specifying whether to use system assigned identity in Workspace Encryption or not
+
+```yaml
+Type: System.Object
 Parameter Sets: (All)
 Aliases:
 

@@ -266,7 +266,11 @@ namespace Microsoft.Azure.Commands.Aks
 
         private string GenerateSshKeyValue()
         {
-            String generateSshKeyPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh", "id_rsa"); ;
+            String generateSshKeyFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh");
+            if (!Directory.Exists(generateSshKeyFolder)) {
+                Directory.CreateDirectory(generateSshKeyFolder);
+            }
+            String generateSshKeyPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh", "id_rsa");
             if (File.Exists(generateSshKeyPath))
             {
                 throw new AzPSArgumentException(
