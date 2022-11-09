@@ -327,7 +327,7 @@ directive:
     set:
       parameter-name: Name
       alias: CertificateName
-# Disable Inline on the Baseclass(Model)
+# Disable Inline on the Baseclass(Model).
   - no-inline:
     - EventListenerEndpoint
     - EventListenerFilter
