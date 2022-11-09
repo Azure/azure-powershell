@@ -13,16 +13,30 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.TestFx;
+using Microsoft.Azure.Test.HttpRecorder;
 using System;
 
 namespace Microsoft.Azure.Commands.TestFx
 {
     public static class TestEnvironmentFactory
     {
-        public static TestEnvironment GetTestEnvironment()
+        private static readonly TestEnvironment _environment;
+
+        static TestEnvironmentFactory()
         {
             string envStr = Environment.GetEnvironmentVariable(ConnectionStringKeys.TestCSMOrgIdConnectionStringKey);
-            return new TestEnvironment(envStr);
+            _environment = new TestEnvironment(envStr);
+        }
+
+        internal static TestEnvironment BuildTestFxEnvironment()
+        {
+            _environment.SetEnvironmentVariables();
+            return _environment;
+        }
+
+        public static TestEnvironment GetTestEnvironment()
+        {
+            return _environment;
         }
     }
 }

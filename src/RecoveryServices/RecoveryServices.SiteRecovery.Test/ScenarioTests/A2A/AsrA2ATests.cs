@@ -88,7 +88,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-NewContainer");
         }
 
-        [Fact]
+        [Fact(Skip = "Needs investigation, test times out after 60 minutes and successful enable DR.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2ARemoveReplicationProtectedItemDisk()
         {
@@ -130,6 +130,36 @@ namespace RecoveryServices.SiteRecovery.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AEdgeZoneToAzureRecoveryPlanReplication()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-EdgeZoneToAzureRecoveryPlanReplication");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AEdgeZoneToEdgeZoneRecoveryPlanReplication()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-EdgeZoneToEdgeZoneRecoveryPlanReplication");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AEdgeZoneToAvailabilityZoneRecoveryPlanReplication()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-EdgeZoneToAvailabilityZoneRecoveryPlanReplication");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2ARecoveryPlanReplication()
         {
             TestRunner.RunTestScript(
@@ -148,7 +178,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-VMSSReplication");
         }
 
-        [Fact]
+        [Fact(Skip = "Needs investigation, no suitable capacity reservation SKU found in eastus2euap or centraluseuap.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2ACRGReplication()
         {

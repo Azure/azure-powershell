@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Tag parameter for `New-AzWebApp` and `New-AzWebAppSlot`
+
+## Version 2.11.5
+* Fixed `Publish-AzWebApp` to use latest publish API when deploying war package [#19791]
+## Version 2.11.4
+* Fixed `Import-AzWebAppKeyVaultCertificate` to use certificate naming convention same as Az-CLI
 
 ## Version 2.11.3
 * Fixed `Publish-AzWebapp` to handle relative paths properly [#18028]

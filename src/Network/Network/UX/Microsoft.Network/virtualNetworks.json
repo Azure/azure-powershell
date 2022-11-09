@@ -1,0 +1,50 @@
+{
+	"resourceType": "virtualNetworks",
+	"apiVersion": "2021-08-01",
+	"learnMore": {
+		"url": "https://learn.microsoft.com/powershell/module/az.network/#virtual-network"
+	},
+	"commands": [
+		{
+			"name": "Get-AzVirtualNetwork",
+			"description": "Gets a virtual network in a resource group.",
+			"path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}",
+			"confirmation": false,
+			"help": {
+				"learnMore": {
+					"url": "https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetwork"
+				},
+				"parameterSets": [
+					{
+						"parameters": [
+							"[-Name <String>]",
+							"[-ResourceGroupName <String>]"
+						]
+					},
+					{
+						"parameters": [
+							"-Name <String>",
+							"-ResourceGroupName <String>",
+							"-ExpandResource <String>"
+						]
+					}
+				]
+			},
+			"examples": [
+				{
+					"description": "Gets a virtual network in a resource group.",
+					"parameters": [
+						{
+							"name": "-ResourceGroupName",
+							"value": "[path.resourceGroupName]"
+						},
+						{
+							"name": "-Name",
+							"value": "[path.virtualNetworkName]"
+						}
+					]
+				}
+			]
+		}
+	]
+}

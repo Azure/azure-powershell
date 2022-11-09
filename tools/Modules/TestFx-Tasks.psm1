@@ -228,7 +228,7 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
 
     if([string]::IsNullOrEmpty($TenantId) -eq $false)
     {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";AADTenant={0}"), $TenantId)
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";TenantId={0}"), $TenantId)
     }
 
     if([string]::IsNullOrEmpty($ServicePrincipalId) -eq $false)
@@ -325,7 +325,7 @@ Function Print-ConnectionString([string]$uid, [string]$subId, [string]$aadTenant
 
     if([string]::IsNullOrEmpty($aadTenant) -eq $false)
     {
-        Write-Host "AADTenant=" -ForegroundColor Green -NoNewline
+        Write-Host "TenantId=" -ForegroundColor Green -NoNewline
         Write-Host $aadTenant";" -NoNewline
     }
 

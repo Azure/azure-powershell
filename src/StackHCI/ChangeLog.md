@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.2
+* Supported WDAC compliant APIs
+* Fixed module versions of dependent PS modules
+* Updated Remote Support cmdlets to check device type between HCIv2 and AzureEdge
+
+## Version 1.3.1
+* Made GraphAccessToken parameter obsolete in Register-AzStackHCI, Unregister-AzStackHCI and Set-AzStackHCI cmdlets. This is because Az.StackHCI module does not depend on Azure AD anymore.
+* Include API version for all Microsoft.AzStackHCI related AZ-Resource calls
+
 ## Version 1.3.0
 * Added support to Stack HCI Cluster
 * Added support to Stack HCI Extension

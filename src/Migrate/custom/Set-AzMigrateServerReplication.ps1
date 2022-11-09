@@ -22,7 +22,7 @@ The Set-AzMigrateServerReplication cmdlet updates the target properties for the 
 https://docs.microsoft.com/powershell/module/az.migrate/set-azmigrateserverreplication
 #>
 function Set-AzMigrateServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
@@ -33,7 +33,7 @@ function Set-AzMigrateServerReplication {
 
         [Parameter(ParameterSetName = 'ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem]
         # Specifies the replicating server for which the properties need to be updated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${InputObject},
 
@@ -64,18 +64,24 @@ function Set-AzMigrateServerReplication {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
+        # Updates the Virtual Network id within the destination Azure subscription to which the server needs to be test migrated.
+        ${TestNetworkId},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
         # Updates the Resource Group id within the destination Azure subscription to which the server needs to be migrated.
         ${TargetResourceGroupID},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtNicInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput[]]
         # Updates the NIC for the Azure VM to be created.
         ${NicToUpdate},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtUpdateDiskInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtUpdateDiskInput[]]
         # Updates the disk for the Azure VM to be created.
         ${DiskToUpdate},
 
@@ -115,7 +121,7 @@ function Set-AzMigrateServerReplication {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetVmtags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtEnableMigrationInputTargetVmtags]
         # Specifies the tag to be used for VM creation.
         ${UpdateVMTag},
 
@@ -129,7 +135,7 @@ function Set-AzMigrateServerReplication {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetNicTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtEnableMigrationInputTargetNicTags]
         # Specifies the tag to be used for NIC creation.
         ${UpdateNicTag},
 
@@ -143,7 +149,7 @@ function Set-AzMigrateServerReplication {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetDiskTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtEnableMigrationInputTargetDiskTags]
         # Specifies the tag to be used for disk creation.
         ${UpdateDiskTag},
 
@@ -222,6 +228,7 @@ function Set-AzMigrateServerReplication {
         $HasTargetDiskName = $PSBoundParameters.ContainsKey('TargetDiskName')
         $HasTargetVmSize = $PSBoundParameters.ContainsKey('TargetVMSize')
         $HasTargetNetworkId = $PSBoundParameters.ContainsKey('TargetNetworkId')
+        $HasTestNetworkId = $PSBoundParameters.ContainsKey('TestNetworkId')
         $HasTargetResourceGroupID = $PSBoundParameters.ContainsKey('TargetResourceGroupID')
         $HasNicToUpdate = $PSBoundParameters.ContainsKey('NicToUpdate')
         $HasDiskToUpdate = $PSBoundParameters.ContainsKey('DiskToUpdate')
@@ -243,6 +250,7 @@ function Set-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('TargetDiskName')
         $null = $PSBoundParameters.Remove('TargetVMSize')
         $null = $PSBoundParameters.Remove('TargetNetworkId')
+        $null = $PSBoundParameters.Remove('TestNetworkId')
         $null = $PSBoundParameters.Remove('TargetResourceGroupID')
         $null = $PSBoundParameters.Remove('NicToUpdate')
         $null = $PSBoundParameters.Remove('DiskToUpdate')
@@ -280,7 +288,7 @@ function Set-AzMigrateServerReplication {
             
         $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
         if ($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt')) {
-            $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtUpdateMigrationItemInput]::new()
+            $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtUpdateMigrationItemInput]::new()
                 
             # Auto fill unchanged parameters
             $ProviderSpecificDetails.InstanceType = 'VMwareCbt'
@@ -476,6 +484,13 @@ function Set-AzMigrateServerReplication {
                 $ProviderSpecificDetails.TargetNetworkId = $ReplicationMigrationItem.ProviderSpecificDetail.TargetNetworkId
             }
 
+            if ($HasTestNetworkId) {
+                $ProviderSpecificDetails.TestNetworkId = $TestNetworkId
+            }
+            else {
+                $ProviderSpecificDetails.TestNetworkId = $ReplicationMigrationItem.ProviderSpecificDetail.VMNic[0].TestNetworkId
+            }
+
             if ($HasTargetResourceGroupID) {
                 $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupID
             }
@@ -527,10 +542,47 @@ function Set-AzMigrateServerReplication {
             }
 
             if ($HasDiskToUpdate) {
+                $diskIdDiskTypeMap = @{}
+                $originalDisks = $ReplicationMigrationItem.ProviderSpecificDetail.ProtectedDisk
+
+                foreach($DiskObject in $originalDisks) {
+                    if ($DiskObject.IsOSDisk -and $DiskObject.IsOSDisk -eq "True") {
+                        $previousOsDiskId = $DiskObject.DiskId
+                        Break
+                    }
+                }
+
                 $diskNamePresentinRg = New-Object Collections.Generic.List[String]
                 $duplicateDiskName = New-Object System.Collections.Generic.HashSet[String]
                 $uniqueDiskUuids = [System.Collections.Generic.HashSet[String]]::new([StringComparer]::InvariantCultureIgnoreCase)
+                $osDiskCount = 0
                 foreach($DiskObject in $DiskToUpdate) {
+                    if ($DiskObject.IsOSDisk -eq "True") {
+                        $osDiskCount++
+                        $changeOsDiskId = $DiskObject.DiskId
+                        if ($osDiskCount -gt 1) {
+                            throw "Multiple disks have been selected as OS Disk."
+                        }
+                    }
+
+                    $matchingUserInputDisk = $null
+                    $originalDisks = $ReplicationMigrationItem.ProviderSpecificDetail.ProtectedDisk
+                    foreach ($orgDisk in $originalDisks) {
+                        if ($orgDisk.DiskId -eq $DiskObject.DiskId)
+                        {
+                            $matchingUserInputDisk = $orgDisk
+                            break
+                        }
+                    }
+
+                    if ($matchingUserInputDisk -ne $null -and [string]::IsNullOrEmpty($DiskObject.TargetDiskName)) {
+                        $DiskObject.TargetDiskName = $matchingUserInputDisk.TargetDiskName
+                    }
+
+                    if ($matchingUserInputDisk -ne $null -and [string]::IsNullOrEmpty($DiskObject.IsOSDisk)) {
+                        $DiskObject.IsOSDisk = $matchingUserInputDisk.IsOSDisk
+                    }
+
                     $diskId = $ProviderSpecificDetails.TargetResourceGroupId + "/providers/Microsoft.Compute/disks/" + $DiskObject.TargetDiskName
                     $diskNamePresent = Get-AzResource -ResourceId $diskId -ErrorVariable notPresent -ErrorAction SilentlyContinue
                     if ($diskNamePresent) {
@@ -550,7 +602,58 @@ function Set-AzMigrateServerReplication {
                 if ($diskNamePresentinRg) {
                     throw "Disks with name $($diskNamePresentinRg -join ', ')' already exists in the target resource group."
                 }
-                $ProviderSpecificDetails.VMDisK = $DiskToUpdate
+
+                foreach($DiskObject in $DiskToUpdate) {
+                    if ($DiskObject.IsOSDisk) {
+                        $diskIdDiskTypeMap.Add($DiskObject.DiskId, $DiskObject.IsOSDisk)
+                    }
+                }
+
+                if ($changeOsDiskId -ne $null -and $changeOsDiskId -ne $previousOsDiskId) {
+                    if ($diskIdDiskTypeMap.ContainsKey($previousOsDiskId)) {
+                        $rem = $diskIdDiskTypeMap.Remove($previousOsDiskId)
+                        foreach($DiskObject in $DiskToUpdate) {
+                            if ($DiskObject.DiskId -eq $previousOsDiskId) {
+                                $DiskObject.IsOsDisk = "False"
+                            }
+                        }
+                    }
+                    else {
+                        $updateDisk = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtUpdateDiskInput]::new()
+                        $updateDisk.DiskId = $previousOsDiskId
+                        $updateDisk.IsOSDisk = "False"
+                        $originalDisks = $ReplicationMigrationItem.ProviderSpecificDetail.ProtectedDisk
+                        foreach ($orgDisk in $originalDisks) {
+                           if ($orgDisk.DiskId -eq $previousOsDiskId) {
+                               $updateDisk.TargetDiskName = $orgDisk.TargetDiskName
+                               break
+                            }
+                        }
+                        $DiskToUpdate += $updateDisk
+                    }
+                    $diskIdDiskTypeMap.Add($previousOsDiskId, "False")
+                }
+
+                $osDiskCount = 0
+
+                foreach ($DiskObject in $originalDisks) {
+                   if ($diskIdDiskTypeMap.Contains($DiskObject.DiskId)) {
+                       if ($diskIdDiskTypeMap.($DiskObject.DiskId) -eq "True") {
+                           $osDiskCount++
+                       }
+                   }
+                   elseif ($DiskObject.IsOSDisk -eq "True") {
+                       $osDiskCount++
+                   }
+                }
+
+                if ($osDiskCount -eq 0) {
+                   throw "OS disk cannot be excluded from migration."
+                }
+                elseif ($osDiskCount -ne 1) {
+                   throw "Multiple disks have been selected as OS Disk."
+                }
+               $ProviderSpecificDetails.VMDisK = $DiskToUpdate
             }
 
             if ($HasTargetDiskName) {
@@ -569,11 +672,11 @@ function Set-AzMigrateServerReplication {
                     throw "A disk with name $($TargetDiskName)' already exists in the target resource group."
                 }
 
-                [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtUpdateDiskInput[]]$updateDisksArray = @()
+                [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtUpdateDiskInput[]]$updateDisksArray = @()
                 $originalDisks = $ReplicationMigrationItem.ProviderSpecificDetail.ProtectedDisk
                 foreach ($DiskObject in $originalDisks) {
                     if ( $DiskObject.IsOSDisk) {
-                        $updateDisk = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtUpdateDiskInput]::new()
+                        $updateDisk = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtUpdateDiskInput]::new()
                         $updateDisk.DiskId = $DiskObject.DiskId
                         $updateDisk.TargetDiskName = $TargetDiskName
                         $updateDisksArray += $updateDisk
@@ -584,17 +687,19 @@ function Set-AzMigrateServerReplication {
             }
 
             $originalNics = $ReplicationMigrationItem.ProviderSpecificDetail.VMNic
-            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtNicInput[]]$updateNicsArray = @()
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput[]]$updateNicsArray = @()
             $nicNamePresentinRg = New-Object Collections.Generic.List[String]
             $duplicateNicName = New-Object System.Collections.Generic.HashSet[String]
 
             foreach ($storedNic in $originalNics) {
-                $updateNic = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtNicInput]::new()
+                $updateNic = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtNicInput]::new()
                 $updateNic.IsPrimaryNic = $storedNic.IsPrimaryNic
                 $updateNic.IsSelectedForMigration = $storedNic.IsSelectedForMigration
                 $updateNic.NicId = $storedNic.NicId
                 $updateNic.TargetStaticIPAddress = $storedNic.TargetIPAddress
+                $updateNic.TestStaticIPAddress = $storedNic.TestIPAddress
                 $updateNic.TargetSubnetName = $storedNic.TargetSubnetName
+                $updateNic.TestSubnetName = $storedNic.TestSubnetName
                 $updateNic.TargetNicName = $storedNic.TargetNicName
 
                 $matchingUserInputNic = $null
@@ -617,6 +722,9 @@ function Set-AzMigrateServerReplication {
                     }
                     if ($null -ne $matchingUserInputNic.TargetSubnetName) {
                         $updateNic.TargetSubnetName = $matchingUserInputNic.TargetSubnetName
+                    }
+                    if ($null -ne $matchingUserInputNic.TestSubnetName) {
+                        $updateNic.TestSubnetName = $matchingUserInputNic.TestSubnetName
                     }
                     if ($null -ne $matchingUserInputNic.TargetNicName) {
                         $nicId = $ProviderSpecificDetails.TargetResourceGroupId + "/providers/Microsoft.Network/networkInterfaces/" + $matchingUserInputNic.TargetNicName
@@ -642,6 +750,18 @@ function Set-AzMigrateServerReplication {
                                  throw "(InvalidPrivateIPAddressFormat) Static IP address value '$($matchingUserInputNic.TargetStaticIPAddress)' is invalid."
                              }
                              $updateNic.TargetStaticIPAddress = $matchingUserInputNic.TargetStaticIPAddress
+                        }
+                    }
+                    if ($null -ne $matchingUserInputNic.TestStaticIPAddress) {
+                        if ($matchingUserInputNic.TestStaticIPAddress -eq "auto") {
+                            $updateNic.TestStaticIPAddress = $null
+                        }
+                        else {
+                            $isValidIpAddress = [ipaddress]::TryParse($matchingUserInputNic.TestStaticIPAddress,[ref][ipaddress]::Loopback)
+                             if(!$isValidIpAddress) {
+                                 throw "(InvalidPrivateIPAddressFormat) Static IP address value '$($matchingUserInputNic.TestStaticIPAddress)' is invalid."
+                             }
+                             $updateNic.TestStaticIPAddress = $matchingUserInputNic.TestStaticIPAddress
                         }
                     }
                 }

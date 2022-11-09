@@ -228,7 +228,8 @@ function Test-GetAzureRmMetricAlertRuleV2
 	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
 	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
 	$NewActionGroup =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
-	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
+	$actionGroup = [Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]::New()
+	$actionGroup.ActionGroupId = $NewActionGroup.Id
 	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
 	Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:01:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
 
@@ -266,7 +267,8 @@ function Test-RemoveAzureRmAlertRuleV2
 	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
 	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
 	$NewActionGroup =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
-	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
+	$actionGroup = [Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]::New()
+	$actionGroup.ActionGroupId = $NewActionGroup.Id
 	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
 	Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:01:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
     try
@@ -303,7 +305,8 @@ function Test-AddAzureRmMetricAlertRuleV2
 	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
 	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
 	$NewActionGroup =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
-	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
+	$actionGroup = [Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]::New()
+	$actionGroup.ActionGroupId = $NewActionGroup.Id
 	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
     try
     {
@@ -345,7 +348,8 @@ function Test-AddAzureRmMetricAlertRuleV2-NoActionGroup
 	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
 	$NewActionGroup1 =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
 	$NewActionGroup2 =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
-	$actionGroup1 = New-AzActionGroup -ActionGroupId $NewActionGroup1.Id
+	$actionGroup = [Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]::New()
+	$actionGroup.ActionGroupId = $NewActionGroup1.Id
 	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
     try
     {
@@ -388,7 +392,8 @@ function Test-AddAzureRmMetricAlertRuleV2-ActionGroupId
 	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
 	$NewActionGroup1 =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
 	$NewActionGroup2 =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
-	$actionGroup1 = New-AzActionGroup -ActionGroupId $NewActionGroup1.Id
+	$actionGroup = [Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]::New()
+	$actionGroup.ActionGroupId = $NewActionGroup1.Id
 	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
     try
     {		
@@ -423,7 +428,7 @@ function Test-AddAzureRmMetricAlertRuleV2-skipMetricValidation
 	New-AzResourceGroup -Name $rgname -Location $location -Force
 	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
 	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacityCustom" -Operator GreaterThan -Threshold 8 -TimeAggregation Average -MetricNamespace "customNamespace" -SkipMetricValidation $true
-	Start-TestSleep 30000
+	Start-TestSleep -Seconds 30
 	try
     {		
 		# Test - create metric alert with SkipMetricValidation = true
@@ -546,7 +551,8 @@ function Test-AddAzureRmMetricAlertRuleV2-DynamicThreshold
 	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
 	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
 	$NewActionGroup =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
-	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
+	$actionGroup = [Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]::New()
+	$actionGroup.ActionGroupId = $NewActionGroup.Id
 	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "Transactions" -Operator GreaterThan -DynamicThreshold -TimeAggregation Total -Sensitivity High
     try
     {
@@ -581,7 +587,8 @@ function Test-AddAzureRmMetricAlertRuleV2-Webtest
 	New-AzResourceGroup -Name $rgname -Location $location -Force
 	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
 	$NewActionGroup =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
-	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
+	$actionGroup = [Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]::New()
+	$actionGroup.ActionGroupId = $NewActionGroup.Id
 	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "Transactions" -Operator GreaterThan -DynamicThreshold -TimeAggregation Total -Sensitivity High
 	$appInsightsResourceName = "appName"
 	$webTestResourceName = "webTestName"

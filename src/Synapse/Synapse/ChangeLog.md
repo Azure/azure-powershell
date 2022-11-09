@@ -20,6 +20,17 @@
 
 ## Upcoming Release
 
+## Version 2.1.0
+* Updated `Update-AzSynaspeWorkSpace` and `New-AzSynpaseWorkspace` to support for Workspace Encrytion Managed Identity setting
+
+## Version 2.0.0
+* [Breaking Change] Updated models of Synapse Link for Azure Sql Database
+* Updated `New-AzSynapseWorkspace` and `Update-AzSynapseWorkspace` to support for user assigned managed identity (UAMI) by `-UserAssignedIdentityAction` and `-UserAssignedIdentityId`
+* Added EnablePublicNetworkAccess parameter to `New-AzureSynapseWorkspace` and `Update-AzSynapseWorkspace`
+
+## Version 1.6.0
+* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool dynamic executor allocation by `-EnableDynamicExecutorAllocation`
+
 ## Version 1.5.0
 * Set `ResourceGroupName` as optional for `Set-AzSynapseSqlAuditSetting` cmdlet
 * Added LastCommitId parameter to `New-AzureSynapseGitRepositoryConfig`

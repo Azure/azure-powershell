@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Use this to set the encryption type of the disk encryption set")]
-        [PSArgumentCompleter("EncryptionAtRestWithPlatformAndCustomerKeys", "EncryptionAtRestWithCustomerKey")]
+        [PSArgumentCompleter("EncryptionAtRestWithPlatformAndCustomerKeys", "EncryptionAtRestWithCustomerKey", "ConfidentialVmEncryptedWithCustomerKey")]
         public string EncryptionType { get; set; }
 
         [Parameter(
@@ -146,20 +146,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 if (vIdentity.UserAssignedIdentities == null)
                 {
-                    vIdentity.UserAssignedIdentities = new Dictionary<string, EncryptionSetIdentityUserAssignedIdentitiesValue>();
+                    vIdentity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
                 }
 
                 foreach (DictionaryEntry de in this.UserAssignedIdentity)
                 {
                     if (((Hashtable)de.Value).Count == 0)
                     {
-                        vIdentity.UserAssignedIdentities.Add(de.Key.ToString(), new EncryptionSetIdentityUserAssignedIdentitiesValue());
+                        vIdentity.UserAssignedIdentities.Add(de.Key.ToString(), new UserAssignedIdentitiesValue());
                     }
                     else
                     {
                         string principalId = ((Hashtable)de.Value)["principalId"]?.ToString();
                         string clientId = ((Hashtable)de.Value)["clientId"]?.ToString();
-                        vIdentity.UserAssignedIdentities.Add(de.Key.ToString(), new EncryptionSetIdentityUserAssignedIdentitiesValue(principalId, clientId));
+                        vIdentity.UserAssignedIdentities.Add(de.Key.ToString(), new UserAssignedIdentitiesValue(principalId, clientId));
                     }
                 }
             }

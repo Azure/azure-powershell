@@ -627,6 +627,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #endregion
 
+        #region Tiering Policy conversions 
+
+        /// <summary>
+        /// Helper function to convert service tiering policy from ps tiering policy.
+        /// </summary>
+        public static IDictionary<string, ServiceClientModel.TieringPolicy> GetServiceClientTieringPolicy(
+            TieringPolicy tierPolicy, bool isSmartTieringEnabled = false)
+        {  
+            IDictionary<string, ServiceClientModel.TieringPolicy> tieringPolicy = null;
+
+            if (isSmartTieringEnabled)
+            {
+                tieringPolicy = new Dictionary<string, ServiceClientModel.TieringPolicy>();
+                ServiceClientModel.TieringPolicy newTeringPolicy = new ServiceClientModel.TieringPolicy();
+                if (tierPolicy != null)
+                {
+                    // tierPolicy.Validate();
+
+                    newTeringPolicy.TieringMode = (tierPolicy.TieringMode == TieringMode.TierAllEligible) ? ServiceClientModel.TieringMode.TierAfter.ToString() : tierPolicy.TieringMode.ToString();
+                    newTeringPolicy.DurationType = tierPolicy.TierAfterDurationType;
+                    newTeringPolicy.Duration = tierPolicy.TierAfterDuration;
+
+                    tieringPolicy.Add(ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString(), newTeringPolicy);
+                }
+                else // DO NOT TIER
+                {
+                    newTeringPolicy.TieringMode = ServiceClientModel.TieringMode.DoNotTier.ToString();
+                    tieringPolicy.Add(ServiceClientModel.RecoveryPointTierType.ArchivedRP.ToString(), newTeringPolicy);
+                }
+            }
+            else if (tierPolicy != null)
+            {
+                throw new ArgumentException(Resources.SmartTieringNotSupportedForSubscription);
+            }
+                        
+            return tieringPolicy;
+        }
+
+        #endregion
+
+
         private static int GetIntegerFromNullableIntgerValue(int? value)
         {
             return (value.HasValue ? (int)value : default(int));

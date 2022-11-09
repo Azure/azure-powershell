@@ -41,7 +41,7 @@ class AnalysisOutput{
     .SYNOPSIS
     Get examples details from ".md".
     .DESCRIPTION
-    Splits title, code, output, description according to regular expression.
+    Split title, code, output, description line by line according to block identifiers.
 #>
 function Get-ExamplesDetailsFromMd {
     param (
@@ -228,8 +228,7 @@ function Set-ExampleProperties{
 
 <#
     .SYNOPSIS
-    Tests whether the script is integral, outputs examples in ".md" to "TempScript.ps1" 
-    and records the Scale, Missing,  DeletePromptAndSeparateOutput class.
+    Check whether the docs are complete, integrate examples to one script.
 #>
 function Measure-SectionMissingAndOutputScript {
     param (
@@ -460,7 +459,7 @@ function Set-AnalysisOutput {
         [String]$Remediation
     )
     $result = [AnalysisOutput]@{
-        Module = $Module
+        Module = "Az.$Module"
         Cmdlet = $Cmdlet
         Example = $Example
         Line = $Line
@@ -517,7 +516,7 @@ function Get-ScriptAnalyzerResult {
         $locationMessage = $CodeMap[$analysisResult.Line - 1]
         if($analysisResult.RuleSuppressionID -ge 5000 -and $analysisResult.RuleSuppressionID -le 5199){
             $result = [AnalysisOutput]@{
-                Module = $locationMessage.Module
+                Module = "Az.$($locationMessage.Module)"
                 Cmdlet = $locationMessage.Cmdlet
                 Example = $locationMessage.Example
                 Line = $locationMessage.Line
@@ -531,7 +530,7 @@ function Get-ScriptAnalyzerResult {
         }
         else{
             $result = [AnalysisOutput]@{
-                Module = $locationMessage.Module
+                Module = "Az.$($locationMessage.Module)"
                 Cmdlet = $locationMessage.Cmdlet
                 Example = $locationMessage.Example
                 Line = $locationMessage.Line

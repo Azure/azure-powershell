@@ -42,7 +42,7 @@ This example is used to uncommit all connecitivity confgurations in West US regi
 ```powershell
 $regions = @( "westus")
 $configIds = @("/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig")
-Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "Connectivity" 
+Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "Connectivity" -ConfigurationId $configids
 ```
 This example is used to commit a security admin config in West US region.
 
@@ -55,6 +55,7 @@ Commit Type.
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: SecurityAdmin, Connectivity
 
 Required: True
 Position: Named

@@ -150,6 +150,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             string activity = String.Format(Resources.ReceiveAzureBlobActivity, blob.Name, filePath);
             string status = Resources.PrepareDownloadingBlob;
             ProgressRecord pr = new ProgressRecord(OutputStream.GetProgressId(taskId), activity, status);
+
+            // Get the length information if the blob doesn't have it 
+            if (blob.Properties.Length < 0)
+            {
+                blob.FetchAttributes();
+            }
+
             DataMovementUserData data = new DataMovementUserData()
             {
                 Data = blob,
@@ -319,7 +326,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
 
             //skip download the snapshot except the CloudBlob pipeline or blob Uri
-            DateTimeOffset? snapshotTime = Util.GetSnapshotTimeFromBlobUri(blob.Uri);
+            DateTimeOffset? snapshotTime = Util.GetSnapshotTimeFromUri(blob.Uri);
             if (snapshotTime != null && ParameterSetName != BlobParameterSet && ParameterSetName != UriParameterSet)
             {
                 WriteWarning(String.Format(Resources.SkipDownloadSnapshot, blob.Name, snapshotTime));

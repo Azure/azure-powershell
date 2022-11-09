@@ -57,6 +57,18 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         public string State { get; set; }
 
         /// <summary>
+        /// Alert Change State Comment
+        /// </summary>
+        [Parameter(Mandatory = false,
+                   ParameterSetName = ByIdParameterSet,
+                   HelpMessage = "Reason why to change state")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = ByInputObjectParameterSet,
+                   HelpMessage = "Reason why to change state")]
+        [ValidateNotNullOrEmpty]
+        public string Comment { get; set; }
+
+        /// <summary>
         /// Input Object
         /// </summary>
         [Parameter(Mandatory = true,
@@ -86,7 +98,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         break;
                 }
 
-                PSAlert alert = new PSAlert(this.AlertsManagementClient.Alerts.ChangeStateWithHttpMessagesAsync(id, State).Result.Body);
+                Comments comments = new Comments(Comment);
+                PSAlert alert = new PSAlert(this.AlertsManagementClient.Alerts.ChangeStateWithHttpMessagesAsync(id, State, comments).Result.Body);
                 WriteObject(sendToPipeline: alert);
             }
         }

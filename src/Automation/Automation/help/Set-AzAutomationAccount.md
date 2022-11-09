@@ -13,18 +13,8 @@ Modifies an Automation account.
 
 ## SYNTAX
 
-### AutomationServicesEncryption (Default)
 ```
 Set-AzAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Plan <String>] [-Tags <IDictionary>]
- [-AssignSystemIdentity] [-AssignUserIdentity <String[]>] [-AutomationServicesEncryption]
- [-DisablePublicNetworkAccess] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### KeyVaultEncryption
-```
-Set-AzAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Plan <String>] [-Tags <IDictionary>]
- [-AssignSystemIdentity] [-AssignUserIdentity <String[]>] [-KeyVaultEncryption] -KeyName <String>
- -KeyVersion <String> -KeyVaultUri <String> [-UserIdentityEncryption <String>] [-DisablePublicNetworkAccess]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -52,51 +42,6 @@ This command changes the plan to Basic for the Automation account named Automati
 
 ## PARAMETERS
 
-### -AssignSystemIdentity
-Generate and assign a new System Identity for this Automation Account for use with other services like Azure KeyVault.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AssignUserIdentity
-Specifies the list of user assigned identities associated with the automation account. The user assigned identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AutomationServicesEncryption
-Specify whether set Automation Account Encryption KeySource to Microsoft.AutomationServices or not.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AutomationServicesEncryption
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -106,81 +51,6 @@ Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisablePublicNetworkAccess
-Whether to disable traffic on the non-ARM endpoints (Webhook/Agent) from the public internet and allow access only through private network.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyName
-Automation Account encryption KeyVault KeyName
-
-```yaml
-Type: System.String
-Parameter Sets: KeyVaultEncryption
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyVaultEncryption
-Specify whether set Automation Account encryption keySource to Microsoft.KeyVault or not. If you specify KeyName, KeyVersion and KeyVaultUri, Automation Account Encryption KeySource will also be set to Microsoft.KeyVault whether this parameter is set or not.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: KeyVaultEncryption
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyVaultUri
-Automation Account encryption KeyVault KeyVaultUri
-
-```yaml
-Type: System.String
-Parameter Sets: KeyVaultEncryption
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyVersion
-Automation Account encryption KeyVault KeyVersion
-
-```yaml
-Type: System.String
-Parameter Sets: KeyVaultEncryption
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -249,21 +119,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -UserIdentityEncryption
-User Assigned Identity associated with the account to be used for encryption. The user assigned identity reference will be ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
-
-```yaml
-Type: System.String
-Parameter Sets: KeyVaultEncryption
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

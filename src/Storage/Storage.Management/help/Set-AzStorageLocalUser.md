@@ -35,6 +35,9 @@ To run this cmdlet, the storage account must has already set EnableLocalUser as 
 ## EXAMPLES
 
 ### Example 1: Create or update a local user
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
 
@@ -68,8 +71,8 @@ The third command creates or updates the local user.
 The following commands show the local user properties.
 
 ### Example 2: Create or update a local user by input permission scope and ssh key with json
-```
-PS C:\> Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -HasSharedKey $true -HasSshKey $true -HasSshPassword $true `
+```powershell
+Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -HasSharedKey $true -HasSshKey $true -HasSshPassword $true `
             -SshAuthorizedKey (@{
                 Description="sshpulickey name1";
                 Key="ssh-rsa keykeykeykeykey=";                
@@ -88,9 +91,10 @@ PS C:\> Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName
                 Service="share"; 
                 ResourceName="share1";
             })
+```
 
-
-   ResourceGroupName: weitry, StorageAccountName: weisftp3
+```output
+ResourceGroupName: weitry, StorageAccountName: weisftp3
 
 Name      Sid                                          HomeDirectory HasSharedKey HasSshKey HasSshPassword PermissionScopes        
 ----      ---                                          ------------- ------------ --------- -------------- ----------------         

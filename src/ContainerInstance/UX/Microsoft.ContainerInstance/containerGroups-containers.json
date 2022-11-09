@@ -1,0 +1,56 @@
+{
+   "resourceType":"containerGroups/containers",
+   "apiVersion":"2021-09-01",
+   "learnMore":{
+      "url":"https://learn.microsoft.com/powershell/module/az.containerinstance"
+   },
+   "commands":[
+      {
+         "name":"Add-AzContainerInstanceOutput",
+         "description":"Attach to the output stream of a specific container instance in a specified resource group and container group.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/containers/{containerName}/attach",
+         "confirmation":false,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.containerinstance/add-azcontainerinstanceoutput"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "-GroupName <String>",
+                     "-Name <String>",
+                     "-ResourceGroupName <String>",
+                     "[-SubscriptionId <String>]",
+                     "[-WhatIf]",
+                     "[-Confirm]"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Attach to the output stream of a specific container instance in a specified resource group and container group.",
+               "parameters":[
+                  {
+                     "name":"-SubscriptionId",
+                     "value":"[path.subscriptionId]"
+                  },                  
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-GroupName",
+                     "value":"[path.containerGroupName]"
+                  },
+                  {
+                     "name":"-Name",
+                     "value":"[path.containerName]"
+                  }
+               ]
+            }
+         ]
+      }
+
+   ]
+}

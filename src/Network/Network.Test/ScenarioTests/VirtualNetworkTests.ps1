@@ -1024,7 +1024,7 @@ function Test-ResourceNavigationLinksCRUD
         # In loop to check if cache exists
         for ($i = 0; $i -le 60; $i++)
         {
-            Start-TestSleep 30000
+            Start-TestSleep -Seconds 30
             $cacheGet = Get-AzRedisCache -ResourceGroupName $rgname -Name $cacheName
             if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
             {

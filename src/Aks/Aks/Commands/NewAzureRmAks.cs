@@ -343,6 +343,10 @@ namespace Microsoft.Azure.Commands.Aks
 
             var apiServerAccessProfile = CreateOrUpdateApiServerAccessProfile(null);
 
+            var httpProxyConfig = CreateOrUpdateHttpProxyConfig(null);
+
+            var autoUpgradeProfile = CreateOrUpdateAutoUpgradeProfile(null);
+
             var addonProfiles = CreateAddonsProfiles();
 
             WriteVerbose(string.Format(Resources.DeployingYourManagedKubeCluster, AcsSpFilePath));
@@ -361,7 +365,9 @@ namespace Microsoft.Azure.Commands.Aks
                 aadProfile: aadProfile,
                 addonProfiles: addonProfiles,
                 networkProfile: networkProfile,
-                apiServerAccessProfile: apiServerAccessProfile);
+                apiServerAccessProfile: apiServerAccessProfile,
+                httpProxyConfig: httpProxyConfig,
+                autoUpgradeProfile: autoUpgradeProfile);
 
             SetIdentity(managedCluster);
 
@@ -372,6 +378,14 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.FqdnSubdomain))
             {
                 managedCluster.FqdnSubdomain = FqdnSubdomain;
+            }
+            if (this.IsParameterBound(c => c.DiskEncryptionSetID))
+            {
+                managedCluster.DiskEncryptionSetID = DiskEncryptionSetID;
+            }
+            if (DisableLocalAccount.IsPresent)
+            {
+                managedCluster.DisableLocalAccounts = DisableLocalAccount;
             }
             //if(EnablePodSecurityPolicy.IsPresent)
             //{

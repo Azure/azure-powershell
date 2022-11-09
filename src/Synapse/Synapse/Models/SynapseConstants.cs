@@ -205,6 +205,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string DefaultAutoPauseDelayInMinute = "15";
 
+        public const string DefaultMinExecutorCount = "1";
+
+        public const string DefaultMaxExecutorCount = "2";
+
         public const string ActiveDirectoryOnlyAuthentication = nameof(ActiveDirectoryOnlyAuthentication);
 
         public const string LinkConnectionLinkTable = nameof(LinkConnectionLinkTable);
@@ -302,6 +306,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             Add,
             Remove
+        }
+        public enum UserAssignedManagedIdentityActionType
+        {
+            Add,
+            Remove,
+            Set
+        }
+
+        public class PublicNetworkAccess
+        {
+            public const string Enabled = "Enabled";
+            public const string Disabled = "Disabled";
         }
 
         public const string SparkConfiguration = nameof(SparkConfiguration);
