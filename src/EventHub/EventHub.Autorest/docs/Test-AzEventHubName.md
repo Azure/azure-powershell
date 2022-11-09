@@ -37,7 +37,9 @@ Test-AzEventHubName -NamespaceName myNamespace
 ```output
 Message                                                                                                NameAvailable Reason
 -------                                                                                                ------------- ------
-The specified name is not available. For more information visit https://aka.ms/eventhubsarmexceptions.         False NameInUse
+The specified name is not available.
+For more information visit https://aka.ms/eventhubsarmexceptions.
+       False NameInUse
 ```
 
 Checks the availability of namespace name `myNamespace`.
@@ -50,7 +52,9 @@ Test-AzEventHubName -NamespaceName myNamespace -ResourceGroupName myResourceGrou
 ```output
 Message                                                                                                NameAvailable Reason
 -------                                                                                                ------------- ------
-The specified name is not available. For more information visit https://aka.ms/eventhubsarmexceptions.         False NameInUse
+The specified name is not available.
+For more information visit https://aka.ms/eventhubsarmexceptions.
+       False NameInUse
 ```
 
 Checks the availability of alias name `myAlias` on namespace `myNamepace`.

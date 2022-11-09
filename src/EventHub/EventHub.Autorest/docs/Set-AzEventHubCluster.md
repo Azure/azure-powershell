@@ -264,7 +264,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IEventHubIdentity>`: Identity parameter.
+INPUTOBJECT <IEventHubIdentity>: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[ApplicationGroupName <String>]`: The Application Group name 
   - `[AuthorizationRuleName <String>]`: The authorization rule name.
@@ -279,7 +279,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[SchemaGroupName <String>]`: The Schema Group name 
   - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
-`TAG <ITrackedResourceTags>`: Resource tags.
+TAG <ITrackedResourceTags>: Resource tags.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS

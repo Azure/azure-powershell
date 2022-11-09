@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubGeoDRConfigurat
 }
 
 Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
-    It 'Break' -skip {
+    It 'Break' {
         Set-AzEventHubGeoDRConfigurationBreakPair -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -Name $env.alias
         
         while($drConfig.ProvisioningState -ne "Succeeded"){
@@ -40,7 +40,7 @@ Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
         }
     }
 
-    It 'BreakViaIdentity' -skip {
+    It 'BreakViaIdentity' {
         $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
 
         Set-AzEventHubGeoDRConfigurationBreakPair -InputObject $drConfig

@@ -15,12 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubSchemaGroup'))
 }
 
 Describe 'Get-AzEventHubSchemaGroup' {
-    It 'List' -skip {
+    It 'List'  {
         $listOfSchemaGroups = Get-AzEventHubSchemaGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $listOfSchemaGroups.Count | Should -Be 1
     }
 
-    It 'Get' -skip {
+    It 'Get'  {
         $schemaGroup = Get-AzEventHubSchemaGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.schemaGroup
         $schemaGroup.ResourceGroupName | Should -Be $env.resourceGroup
         $schemaGroup.Name | Should -Be $env.schemaGroup
@@ -28,7 +28,7 @@ Describe 'Get-AzEventHubSchemaGroup' {
         $schemaGroup.SchemaType | Should -Be "Avro"
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity'  {
         $schemaGroup = Get-AzEventHubSchemaGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.schemaGroup
         $schemaGroup = Get-AzEventHubSchemaGroup -InputObject $schemaGroup
         $schemaGroup.ResourceGroupName | Should -Be $env.resourceGroup

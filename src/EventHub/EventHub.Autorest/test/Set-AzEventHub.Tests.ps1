@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHub'))
 }
 
 Describe 'Set-AzEventHub' {
-    It 'SetExpanded' -skip {
+    It 'SetExpanded'  {
         $eventhub = Set-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.eventHub2 -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer $env.blobContainer -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId
         $eventhub.MessageRetentionInDays | Should -Be 6
         $eventhub.PartitionCount | Should -Be 5
@@ -43,7 +43,7 @@ Describe 'Set-AzEventHub' {
         $eventhub.StorageAccountResourceId | Should -Be $eventhub.StorageAccountResourceId
     }
 
-    It 'SetViaIdentityExpanded' -skip {
+    It 'SetViaIdentityExpanded'  {
         $eventhub = New-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name eventhub
 
         { Set-AzEventHub -InputObject $eventhub } | Should -Throw 'Please specify the property you want to update on the -InputObject'

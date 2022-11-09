@@ -179,8 +179,8 @@ function Set-AzEventHubNamespaceV2{
             $hasClusterArmId = $PSBoundParameters.Remove('ClusterArmId')
             $hasDisableLocalAuth = $PSBoundParameters.Remove('DisableLocalAuth')
             $hasKeyVaultProperty = $PSBoundParameters.Remove('KeyVaultProperty')
+            $hasUserAssignedIdentity = $PSBoundParameters.Remove('UserAssignedIdentity')
             $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
-            $hasIdentityId = $PSBoundParameters.Remove('IdentityId')
             $hasEnableAutoInflate = $PSBoundParameters.Remove('EnableAutoInflate')
             $hasKafkaEnabled = $PSBoundParameters.Remove('KafkaEnabled')
             $hasMaximumThroughputUnits = $PSBoundParameters.Remove('MaximumThroughputUnits')
@@ -227,8 +227,8 @@ function Set-AzEventHubNamespaceV2{
             if($RequireInfrastructureEncryption){
                 $eventHubNamespace.RequireInfrastructureEncryption = $RequireInfrastructureEncryption
             }
-            if ($hasIdentityId) {
-                $eventHubNamespace.IdentityId = $IdentityId
+            if ($hasUserAssignedIdentity) {
+                $eventHubNamespace.UserAssignedIdentity = $UserAssignedIdentity
             }
             if ($hasEnableAutoInflate) {
                 $eventHubNamespace.EnableAutoInflate = $EnableAutoInflate

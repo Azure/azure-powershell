@@ -212,12 +212,12 @@ directive:
       subject: Namespace
       parameter-name: IdentityUserAssignedIdentity
     set:
-      parameter-name: IdentityId
+      parameter-name: UserAssignedIdentity
   - where:
       model-name: EhNamespace
       property-name: IdentityUserAssignedIdentity
     set:
-      property-name: IdentityId
+      property-name: UserAssignedIdentity
   
   - where:
       subject: Namespace

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHub'))
 }
 
 Describe 'New-AzEventHub' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         # Create EventHub without capture
         $eventhub = New-AzEventHub -Name $env.eventHub2 -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -MessageRetentionInDays 6 -PartitionCount 5
         $eventhub.Name | Should -Be $env.eventHub2

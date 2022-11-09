@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubNetworkRuleSet'
 }
 
 Describe 'Set-AzEventHubNetworkRuleSet' {
-    It 'SetExpanded' -skip {
+    It 'SetExpanded'  {
         $ipRule1 = New-AzEventHubIPRuleConfig -IPMask 1.1.1.1 -Action Allow
         $ipRule2 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2 -Action Allow
 
@@ -53,7 +53,7 @@ Describe 'Set-AzEventHubNetworkRuleSet' {
 
     }
 
-    It 'SetViaIdentityExpanded' -skip {
+    It 'SetViaIdentityExpanded'  {
         $networkRuleSet = Get-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         
         { Set-AzEventHubNetworkRuleSet -InputObject $networkRuleSet } | Should -Throw 'Please specify the property you want to update on the -InputObject'

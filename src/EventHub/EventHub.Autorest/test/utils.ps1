@@ -117,7 +117,7 @@ function setupEnv() {
     $eventHubTemplate.parameters.peName1.value = $pe1
     $eventHubTemplate.parameters.peName2.value = $pe2
     Set-Content -Path .\test\deployment-template\parameter.json -Value (ConvertTo-Json $eventHubTemplate)
-    #$rg = New-AzResourceGroupDeployment -TemplateFile .\test\deployment-template\template.json -TemplateParameterFile .\test\deployment-template\parameter.json -Name eventHubTemplate -ResourceGroupName $resourceGroup
+    $rg = New-AzResourceGroupDeployment -TemplateFile .\test\deployment-template\template.json -TemplateParameterFile .\test\deployment-template\parameter.json -Name eventHubTemplate -ResourceGroupName $resourceGroup
 
     Write-Host -ForegroundColor Magenta "Deployed EventHubs namespace template"
 
@@ -125,7 +125,7 @@ function setupEnv() {
     $eventHubTemplate.parameters.secondarynamespace_name.value = $secondaryNamespace
     $eventHubTemplate.parameters.namespace_name.value = $primaryNamespaceName
     Set-Content -Path .\test\deployment-template\disasterRecoveryParameter.json -Value (ConvertTo-Json $eventHubTemplate)
-    #$rg = New-AzResourceGroupDeployment -TemplateFile .\test\deployment-template\disasterRecoveryTemplate.json -TemplateParameterFile .\test\deployment-template\disasterRecoveryParameter.json -Name DRConfigTemplate -ResourceGroupName $resourceGroup
+    $rg = New-AzResourceGroupDeployment -TemplateFile .\test\deployment-template\disasterRecoveryTemplate.json -TemplateParameterFile .\test\deployment-template\disasterRecoveryParameter.json -Name DRConfigTemplate -ResourceGroupName $resourceGroup
 
     $resourceNames = Get-Content .\test\deployment-template\pre-created-resources\parameter.json | ConvertFrom-Json
     $env.Add("storageAccountId", $resourceNames.parameters.storageAccountId.Value)

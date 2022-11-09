@@ -15,14 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEventHubCluster'))
 }
 
 Describe 'Remove-AzEventHubCluster' {
-    #$cluster = Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster2
+    $cluster = Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster2
 
-    It 'Delete' -skip {
+    It 'Delete' {
         Remove-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster2
         { Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster2 } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         { Remove-AzEventHubCluster -InputObject $cluster } | Should -Throw
     }
 }
