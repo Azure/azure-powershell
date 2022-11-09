@@ -45,10 +45,12 @@ jobs:
       script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
     env:
       OCTOKITPAT: $(OCTOKITPAT)
-  - task: CredScan@3
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
     displayName: Run CredScan
     condition: in(variables['system.pullRequest.targetBranch'], 'generation', 'main')
     inputs:
+      toolMajorVersion: 'V2'
+      outputFormat: 'sarif'
       suppressionsFile: 'tools/SecurityTools/CredScanSuppressions.json'
   - task: PowerShell@2
     displayName: Cleanup Build
@@ -56,15 +58,15 @@ jobs:
       targetType: inline
       script: ./tools/CleanupBuild.ps1
       pwsh: true
-  - task: BinSkim@4
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
     displayName: Run BinSkim
     inputs:
       InputType: 'Basic'
       Function: 'analyze'
-      TargetPattern: 'guardianGlob'
-      AnalyzeTargetGlob: '$(Build.SourcesDirectory)/artifacts/**.dll;$(Build.SourcesDirectory)/artifacts/**.exe;'
+      AnalyzeTarget: '$(Build.SourcesDirectory)/artifacts/**.dll;$(Build.SourcesDirectory)/artifacts/**.exe'
       AnalyzeStatistics: true
   - task: PoliCheck@2
+    displayName: Run Policheck
     inputs:
       targetType: 'F'
       targetArgument: '$(Build.SourcesDirectory)/artifacts/Debug'
