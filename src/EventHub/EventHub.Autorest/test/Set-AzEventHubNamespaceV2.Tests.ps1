@@ -54,7 +54,7 @@ Describe 'Set-AzEventHubNamespaceV2' {
         $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV9 -SkuName Premium -Location eastus
         $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV9 -IdentityType UserAssigned -IdentityId $a -KeyVaultProperty $ec1,$ec2
         $eventhubNamespace.IdentityType | Should be UserAssigned
-        #$eventhubNamespace.IdenitityId.Count | Should be 2
+        $eventhubNamespace.IdentityId.Count | Should be 2
         $eventhubNamespace.KeyVaultProperty.Count | Should be 2
         $eventhubNamespace.Name | Should be $env.namespaceV9
 

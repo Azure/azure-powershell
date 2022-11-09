@@ -74,9 +74,6 @@ Creates or updates an instance of an Event Hubs Cluster.
 ### [New-AzEventHubConsumerGroup](New-AzEventHubConsumerGroup.md)
 Creates or updates an Event Hubs consumer group as a nested resource within a Namespace.
 
-### [New-AzEventHubEncryptionObject](New-AzEventHubEncryptionObject.md)
-Create an in-memory object for Encryption.
-
 ### [New-AzEventHubGeoDRConfiguration](New-AzEventHubGeoDRConfiguration.md)
 Creates or updates a new Alias(Disaster Recovery configuration)
 
@@ -97,6 +94,9 @@ Updates an EventHub Entity
 
 ### [New-AzEventHubThrottlingPolicyConfig](New-AzEventHubThrottlingPolicyConfig.md)
 Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup
+
+### [New-AzEventHubUserAssignedIdentityObject](New-AzEventHubUserAssignedIdentityObject.md)
+Constructs a Powershell Hashtable with resource id of the Managed Identity as key and an empty object as value
 
 ### [New-AzEventHubVirtualNetworkRuleConfig](New-AzEventHubVirtualNetworkRuleConfig.md)
 Constructs an INwRuleSetVirtualNetworkRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
