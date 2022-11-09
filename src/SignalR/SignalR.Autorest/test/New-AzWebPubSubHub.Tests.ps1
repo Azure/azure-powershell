@@ -18,12 +18,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWebPubSubHub'))
 
 Describe 'New-AzWebPubSubHub' {
     It 'CreateExpanded' {
-        $eventHandler = @{UrlTemplate = 'http://example.com/api/{hub}/connect/{event}' ; AuthType = 'None' ; SystemEvent = 'connect' ; } ,
+        $eventHandlers = @{UrlTemplate = 'http://example.com/api/{hub}/connect/{event}' ; AuthType = 'None' ; SystemEvent = 'connect' ; } ,
         @{ UrlTemplate = 'http://example.com/api/{hub}/userevent/{event}' ; AuthType = 'None' ; UserEventPattern = '*' }
+
+        $eventListeners =
+        @{
+            Endpoint = $(New-AzWebPubSubEventHubEndpointObject -EventHubName connectivityHub -FullyQualifiedNamespace example.servicebus.windows.net);
+            Filter = $(New-AzWebPubSubEventNameFilterObject -SystemEvent connected, disconnected)
+        },
+        @{
+            Endpoint = $(New-AzWebPubSubEventHubEndpointObject -EventHubName messageHub -FullyQualifiedNamespace example.servicebus.windows.net);
+            Filter = $(New-AzWebPubSubEventNameFilterObject -UserEventPattern *)
+        }
+
         $hubName = 'testHub'
-        $hub = New-AzWebPubSubHub -Name $hubName -ResourceGroupName $env.ResourceGroupName -ResourceName $env.Wps1 -EventHandler $eventHandler
+        $hub = New-AzWebPubSubHub -Name $hubName -ResourceGroupName $env.ResourceGroupName -ResourceName $env.Wps1 -EventHandler $eventHandlers -EventListener $eventListeners
 
         $hub.Name | Should -Be $hubName
         $hub.EventHandler | Should -HaveCount 2
+        $hub.EventListener | Should -HaveCount 2
     }
 }

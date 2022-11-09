@@ -1,7 +1,10 @@
-function RandomString([bool]$allChars, [int32]$len) {
-    if ($allChars) {
+function RandomString([bool]$allChars, [int32]$len)
+{
+    if ($allChars)
+    {
         return -join ((33..126) | Get-Random -Count $len | % {[char]$_})
-    } else {
+    } else
+    {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
@@ -25,7 +28,7 @@ function setupEnv()
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
 
-    $env.ResourceGroupName = 'azwps-test-rg'
+    $env.ResourceGroupName = 'azwps-test-rg2'
     $env.Location = 'eastus'
     $env.WpsPrefix = 'azwps-'
     $env.Wps1 = $env.WpsPrefix + '1'
@@ -45,9 +48,10 @@ function setupEnv()
     Write-Host -ForegroundColor Green "Resource group created successfully."
     $createWpsJob1 = New-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $env.Wps1 -Location $env.Location -SkuName Standard_S1 -AsJob
     $createWpsJob2 = New-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $env.Wps2 -Location $env.Location -SkuName Standard_S1 -AsJob
+    Wait-Job $createWpsJob1, $createWpsJob2
     $createHubJob1 = New-AzWebPubSubHub -ResourceGroupName $env.ResourceGroupName -ResourceName $env.Wps1 -Name $env.Hub1 -AsJob
     $createHubJob2 = New-AzWebPubSubHub -ResourceGroupName $env.ResourceGroupName -ResourceName $env.Wps1 -Name $env.Hub2 -AsJob
-    Wait-Job $createWpsJob1, $createWpsJob2, $createHubJob1, $createHubJob2
+    Wait-Job $createHubJob1, $createHubJob2
 }
 function cleanupEnv()
 {

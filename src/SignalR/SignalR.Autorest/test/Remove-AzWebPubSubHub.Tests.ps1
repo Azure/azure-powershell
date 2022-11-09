@@ -1,22 +1,24 @@
 if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzWebPubSubHub'))
 {
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-  if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-  }
-  . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzWebPubSubHub.Recording.json'
-  $currentPath = $PSScriptRoot
-  while(-not $mockingPath) {
-      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-      $currentPath = Split-Path -Path $currentPath -Parent
-  }
-  . ($mockingPath | Select-Object -First 1).FullName
+    $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+    if (-Not (Test-Path -Path $loadEnvPath))
+    {
+        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+    }
+    . ($loadEnvPath)
+    $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzWebPubSubHub.Recording.json'
+    $currentPath = $PSScriptRoot
+    while(-not $mockingPath)
+    {
+        $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+        $currentPath = Split-Path -Path $currentPath -Parent
+    }
+    . ($mockingPath | Select-Object -First 1).FullName
 }
 
 Describe 'Remove-AzWebPubSubHub' {
     It 'Delete' {
-        $hubName = "hub-" + "remove-hub-" + "Delete"
+        $hubName = "hub" + "removehub" + "Delete"
         New-AzWebPubSubHub -ResourceGroupName $env.ResourceGroupName -ResourceName $env.Wps1 -Name $hubName
 
         Remove-AzWebPubSubHub -ResourceGroupName $env.ResourceGroupName -ResourceName $env.Wps1 -Name $hubName
@@ -26,7 +28,7 @@ Describe 'Remove-AzWebPubSubHub' {
     }
 
     It 'DeleteViaIdentity' {
-        $hubName = "hub-" + "remove-hub-" + "DeleteViaIdentity"
+        $hubName = "hub" + "removehub" + "DeleteViaIdentity"
         $hub = New-AzWebPubSubHub -ResourceGroupName $env.ResourceGroupName -ResourceName $env.Wps1 -Name $hubName
 
         Remove-AzWebPubSubHub -InputObject $hub

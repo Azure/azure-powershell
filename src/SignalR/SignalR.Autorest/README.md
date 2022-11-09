@@ -98,6 +98,11 @@ directive:
       variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
       subject: WebPubSubNameAvailability
     remove: true
+  # Get the custom domain after 'new' complete
+  - where:
+      verb: New
+      subject: WebPubSubCustomDomain
+    hide: true
   # Hide parameters
   - where:
       verb: Update
@@ -154,6 +159,26 @@ directive:
             }
           }
         }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customDomains/{name}"].put.responses
+    transform: >-
+      return {
+          "201": {
+            "description": "Created. The response describes the custom domain and contains a Location header to query the operation result.",
+            "schema": {
+              "$ref": "#/definitions/CustomDomain"
+            }
+          },
+         "200": {
+            "description": "The async operation to restart is finished.",
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/492cf91751be945ceae53cfdd53b1ff2fb878703/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
   # lowerCase 'webPubSub' to 'WebPubSub' so that we can piping
   - from: swagger-document
     where: $
@@ -163,10 +188,6 @@ directive:
     where: $.definitions.EventHandler.properties.systemEvents.description
     transform: >-
       return "Gets ot sets the list of system events. Valid values contain: 'connect', 'connected', 'disconnected'."
-  - from: swagger-document
-    where: $.definitions.RegenerateKeyParameters.properties.keyType.description
-    transform: >-
-      return "Must be either 'primary', 'secondary' or 'salt'(case-insensitive)."
   # format output
   - where:
       model-name: WebPubSubResource
@@ -289,21 +310,27 @@ directive:
       property-name: ResourceLogCategory
   # remove the subject before the 'Name' when multiple *Name parameter exist
   - where:
-      subject: WebPubSubEventHandler
-      parameter-name: EventHandlerName
-    set:
-      parameter-name: Name
-  - where:
       subject: WebPubSubHub
       parameter-name: HubName
     set:
       parameter-name: Name
+      alias: HubName
   - where:
       subject: WebPubSub
       parameter-name: ResourceName
     set:
       parameter-name: Name
       alias: ResourceName
+  - where:
+      subject: WebPubSubCustomCertificate
+      parameter-name: CertificateName
+    set:
+      parameter-name: Name
+      alias: CertificateName
+# Disable Inline on the Baseclass(Model)
+  - no-inline:
+    - EventListenerEndpoint
+    - EventListenerFilter
 ```
 
 ## Azure Web PubSub custom development guidance
