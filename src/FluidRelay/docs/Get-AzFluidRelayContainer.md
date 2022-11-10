@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.FluidRelay
-online version: https://docs.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelaycontainer
+online version: https://learn.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelaycontainer
 schema: 2.0.0
 ---
 

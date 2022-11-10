@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceLinker
-online version: https://docs.microsoft.com/powershell/module/az.ServiceLinker/new-AzServiceLinkerConfluentSchemaRegistryObject
+online version: https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-AzServiceLinkerConfluentSchemaRegistryObject
 schema: 2.0.0
 ---
 
