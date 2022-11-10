@@ -170,6 +170,7 @@ Test3 False   containername Blob       Csv     Weekly                           
 This command creates or updates the blob inventory policy of a Storage account with a json format policy.
 
 ### Example 3: Get the blob inventory policy from a Storage account, then set it to another Storage account.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$policy = Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" | Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup2" -AccountName "mystorageaccount2"
 ```
@@ -178,6 +179,7 @@ This command first gets the blob inventory policy from a Storage account, then s
 The proeprties： Destination, Enabled, and Rules of the policy will be set to the destination account.
 
 ### Example 4: Get the blob inventory policy rules from a Storage account, then set it to another Storage account.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$policy = ,((Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").Rules) | Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup2" -AccountName "mystorageaccount2" -Disabled
 ```
