@@ -24,12 +24,6 @@ Get-AzApplicationInsightsMyWorkbook -Name <String> -ResourceGroupName <String> [
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzApplicationInsightsMyWorkbook -InputObject <IApplicationInsightsIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### List
 ```
 Get-AzApplicationInsightsMyWorkbook -ResourceGroupName <String> -Category <CategoryType>
@@ -42,7 +36,7 @@ Get a single private workbook by its resourceName.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List private workbook by category
 ```powershell
 Get-AzApplicationInsightsMyWorkbook -Category 'workbook'
 ```
@@ -59,9 +53,9 @@ appinsights-hkrs2v-test 74446cb1-d125-4c1f-ab84-e57fd93101d2 Workbook03-display 
 appinsights-hkrs2v-test 5df8625f-fae4-4a38-9f43-62a40a2e99d1 5df8625f-fae4-4a38-9f43-62a40a2e99d1-display westus2  user   workbook
 ```
 
-{{ Add description here }}
+This command lists my workbook by category.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single private workbook by its resourceName 
 ```powershell
 Get-AzApplicationInsightsMyWorkbook -ResourceGroupName appinsights-hkrs2v-test -Name 5df8625f-fae4-4a38-9f43-62a40a2e99d1
 ```
@@ -72,23 +66,9 @@ ResourceGroupName       Name                                 DisplayName        
 appinsights-hkrs2v-test 5df8625f-fae4-4a38-9f43-62a40a2e99d1 5df8625f-fae4-4a38-9f43-62a40a2e99d1-display westus2  user workbook
 ```
 
-{{ Add description here }}
+This command gets a single private workbook by its resourceName.
 
-### Example 3: {{ Add title here }}
-```powershell
-$name = (New-Guid).ToString()
-New-AzApplicationInsightsMyWorkbook -ResourceGroupName $env.resourceGroup -Name $name -Location westus2  -DisplayName "$name-display" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/appinsights-hkrs2v-test/providers/microsoft.insights/components/appinsights-48mah3-pwsh" -Category 'workbook' -SerializedData $null | Get-AzApplicationInsightsMyWorkbook
-```
-
-```output
-ResourceGroupName       Name                                 DisplayName                                  Location Kind Category
------------------       ----                                 -----------                                  -------- ---- --------
-appinsights-hkrs2v-test 5df8625f-fae4-4a38-9f43-62a40a2e99d1 5df8625f-fae4-4a38-9f43-62a40a2e99d1-display westus2  user workbook
-```
-
-{{ Add description here }}
-
-### Example 4: {{ Add title here }}
+### Example 3: List private workbook by resource group
 ```powershell
 Get-AzApplicationInsightsMyWorkbook -ResourceGroupName appinsights-hkrs2v-test -Category 'workbook'
 ```
@@ -105,7 +85,7 @@ appinsights-hkrs2v-test 74446cb1-d125-4c1f-ab84-e57fd93101d2 Workbook03-display 
 appinsights-hkrs2v-test 5df8625f-fae4-4a38-9f43-62a40a2e99d1 5df8625f-fae4-4a38-9f43-62a40a2e99d1-display westus2  user   workbook
 ```
 
-{{ Add description here }}
+This command lists private workbook by resource group.
 
 ## PARAMETERS
 
@@ -152,22 +132,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -222,7 +186,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -252,8 +216,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook
@@ -261,25 +223,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IApplicationInsightsIdentity>`: Identity Parameter
-  - `[AnnotationId <String>]`: The unique annotation ID. This is unique within a Application Insights component.
-  - `[ComponentName <String>]`: The name of the Application Insights component resource.
-  - `[ExportId <String>]`: The Continuous Export configuration ID. This is unique within a Application Insights component.
-  - `[Id <String>]`: Resource identity path
-  - `[KeyId <String>]`: The API Key ID. This is unique within a Application Insights component.
-  - `[PurgeId <String>]`: In a purge status request, this is the Id of the operation the status of which is returned.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: The name of the Application Insights component resource.
-  - `[RevisionId <String>]`: The id of the workbook's revision.
-  - `[StorageType <StorageType?>]`: The type of the Application Insights component data source for the linked storage account.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 
 ## RELATED LINKS
 

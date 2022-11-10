@@ -12,22 +12,10 @@ Updates a private workbook that has already been added.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Update-AzApplicationInsightsMyWorkbook -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-LinkedSourceId <String>] [-Category <String>] [-DisplayName <String>] [-Etag <Hashtable>] [-Id <String>]
- [-IdentityType <String>] [-Location <String>] [-SerializedData <String>] [-SourceId <String>]
- [-SourceTag <String[]>] [-StorageUri <String>] [-Tag <Hashtable>] [-Type <String>] [-Version <String>]
+Update-AzApplicationInsightsMyWorkbook -Name <String> -ResourceGroupName <String>
+ -WorkbookProperty <IMyWorkbook> [-SubscriptionId <String>] [-LinkedSourceId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzApplicationInsightsMyWorkbook -InputObject <IApplicationInsightsIdentity> [-LinkedSourceId <String>]
- [-Category <String>] [-DisplayName <String>] [-Etag <Hashtable>] [-Id <String>] [-IdentityType <String>]
- [-Location <String>] [-SerializedData <String>] [-SourceId <String>] [-SourceTag <String[]>]
- [-StorageUri <String>] [-Tag <Hashtable>] [-Type <String>] [-Version <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,44 +23,22 @@ Updates a private workbook that has already been added.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Updates a private workbook that has already been added
 ```powershell
-{{ Add code here }}
+$myWorkbook = Get-AzApplicationInsightsMyWorkbook -ResourceGroupName "appinsights-hkrs2v-test" -Name "2e47417f-c136-44c0-b78f-7a4ca35fd9d1"
+$myWorkbook.DisplayName = "pwsh01"
+Update-AzApplicationInsightsMyWorkbook -ResourceGroupName "appinsights-hkrs2v-test" -Name "2e47417f-c136-44c0-b78f-7a4ca35fd9d1" -WorkbookProperty $myWorkbook
 ```
 
 ```output
-{{ Add output here }}
+ResourceGroupName       Name                                 DisplayName Location Kind Category
+-----------------       ----                                 ----------- -------- ---- --------
+appinsights-hkrs2v-test 2e47417f-c136-44c0-b78f-7a4ca35fd9d1 pwsh01      westus2  user workbook
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Updates a private workbook that has already been added.
 
 ## PARAMETERS
-
-### -Category
-Workbook category, as defined by the user at creation time.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -86,82 +52,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-The user-defined name of the private workbook.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Etag
-Resource etag
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-Azure resource Id
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The identity type.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -180,27 +70,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Resource location
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the Application Insights component resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -216,71 +91,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SerializedData
-Configuration of this particular private workbook.
-Configuration data is a string containing valid JSON
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceId
-Optional resourceId for a source resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceTag
-A list of 0 or more tags that are associated with this private workbook definition
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageUri
-BYOS Storage Account URI
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -292,7 +106,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -302,49 +116,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Resource tags
+### -WorkbookProperty
+An Application Insights private workbook definition.
+To construct, see NOTES section for WORKBOOKPROPERTY properties and create a hash table.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-Azure resource type
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Version
-This instance's version of the data model.
-This can change as new features are added that can be marked private workbook.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -384,7 +168,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook
 
 ## OUTPUTS
 
@@ -399,19 +183,30 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IApplicationInsightsIdentity>`: Identity Parameter
-  - `[AnnotationId <String>]`: The unique annotation ID. This is unique within a Application Insights component.
-  - `[ComponentName <String>]`: The name of the Application Insights component resource.
-  - `[ExportId <String>]`: The Continuous Export configuration ID. This is unique within a Application Insights component.
-  - `[Id <String>]`: Resource identity path
-  - `[KeyId <String>]`: The API Key ID. This is unique within a Application Insights component.
-  - `[PurgeId <String>]`: In a purge status request, this is the Id of the operation the status of which is returned.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: The name of the Application Insights component resource.
-  - `[RevisionId <String>]`: The id of the workbook's revision.
-  - `[StorageType <StorageType?>]`: The type of the Application Insights component data source for the linked storage account.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
+`WORKBOOKPROPERTY <IMyWorkbook>`: An Application Insights private workbook definition.
+  - `[Etag <IMyWorkbookResourceEtag>]`: Resource etag
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[Id <String>]`: Azure resource Id
+  - `[IdentityType <String>]`: The identity type.
+  - `[Location <String>]`: Resource location
+  - `[Name <String>]`: Azure resource name
+  - `[Tag <IMyWorkbookResourceTags>]`: Resource tags
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[Type <String>]`: Azure resource type
+  - `[Category <String>]`: Workbook category, as defined by the user at creation time.
+  - `[DisplayName <String>]`: The user-defined name of the private workbook.
+  - `[Kind <Kind?>]`: The kind of workbook. Choices are user and shared.
+  - `[PropertiesTag <String[]>]`: A list of 0 or more tags that are associated with this private workbook definition
+  - `[SerializedData <String>]`: Configuration of this particular private workbook. Configuration data is a string containing valid JSON
+  - `[SourceId <String>]`: Optional resourceId for a source resource.
+  - `[StorageUri <String>]`: BYOS Storage Account URI
+  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+  - `[Version <String>]`: This instance's version of the data model. This can change as new features are added that can be marked private workbook.
 
 ## RELATED LINKS
 

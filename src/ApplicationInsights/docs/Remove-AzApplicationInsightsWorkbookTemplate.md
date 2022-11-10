@@ -29,20 +29,20 @@ Delete a workbook template.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a workbook template
 ```powershell
 Remove-AzApplicationInsightsWorkbookTemplate -ResourceGroupName $env.resourceGroup -Name workbooktemplate-pwsh01
 
 ```
 
-{{ Add description here }}
+Delete a workbook template.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a workbook template by pipeline
 ```powershell
 Get-AzApplicationInsightsWorkbookTemplate -ResourceGroupName $env.resourceGroup -Name workbooktemplate-pwsh01 | Remove-AzApplicationInsightsWorkbookTemplate
 ```
 
-{{ Add description here }}
+Delete a workbook template by pipeline
 
 ## PARAMETERS
 

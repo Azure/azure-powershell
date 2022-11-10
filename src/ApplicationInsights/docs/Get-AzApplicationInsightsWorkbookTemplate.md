@@ -29,18 +29,20 @@ Get a single workbook template by its resourceName.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a single workbook template by its resourceName
 ```powershell
-{{ Add code here }}
+Get-AzApplicationInsightsWorkbookTemplate -ResourceGroupName resourceGroup -Name workbooktemplate-pwsh01
 ```
 
 ```output
-{{ Add output here }}
+ResourceGroupName       Name                    Location
+-----------------       ----                    --------
+appinsights-hkrs2v-test workbooktemplate-pwsh01 westu
 ```
 
-{{ Add description here }}
+This command gets a single workbook template by its resourceName.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single workbook template by pipeline
 ```powershell
 $gallery = New-AzApplicationInsightsWorkbookTemplateGalleryObject -Category "Failures" -Name "Simple Template" -Type 'tsg' -ResourceType "microsoft.insights/components" -Order 100
 
@@ -71,7 +73,7 @@ $data = @{
   "$schema"= "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
 }
 
-New-AzApplicationInsightsWorkbookTemplate -ResourceGroupName resourceGroup -Name 'workbooktemplate-pwsh01' -Location 'westus2' -Gallery $gallery -TemplateData $data -Priority 1 | Get-AzApplicationInsightsWorkbookTemplate -ResourceGroupName $env.resourceGroup -Name workbooktemplate-pwsh01 | Get-AzApplicationInsightsWorkbookTemplate
+New-AzApplicationInsightsWorkbookTemplate -ResourceGroupName resourceGroup -Name 'workbooktemplate-pwsh01' -Location 'westus2' -Gallery $gallery -TemplateData $data -Priority 1 | Get-AzApplicationInsightsWorkbookTemplate
 ```
 
 ```output
@@ -80,7 +82,7 @@ ResourceGroupName       Name                    Location
 appinsights-hkrs2v-test workbooktemplate-pwsh01 westus2
 ```
 
-{{ Add description here }}
+This command gets a single workbook template by pipeline.
 
 ## PARAMETERS
 
