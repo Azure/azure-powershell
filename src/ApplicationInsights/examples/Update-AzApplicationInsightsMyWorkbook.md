@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Updates a private workbook that has already been added
 ```powershell
-{{ Add code here }}
+$myWorkbook = Get-AzApplicationInsightsMyWorkbook -ResourceGroupName "appinsights-hkrs2v-test" -Name "2e47417f-c136-44c0-b78f-7a4ca35fd9d1"
+$myWorkbook.DisplayName = "pwsh01"
+Update-AzApplicationInsightsMyWorkbook -ResourceGroupName "appinsights-hkrs2v-test" -Name "2e47417f-c136-44c0-b78f-7a4ca35fd9d1" -WorkbookProperty $myWorkbook
 ```
 
 ```output
-{{ Add output here }}
+ResourceGroupName       Name                                 DisplayName Location Kind Category
+-----------------       ----                                 ----------- -------- ---- --------
+appinsights-hkrs2v-test 2e47417f-c136-44c0-b78f-7a4ca35fd9d1 pwsh01      westus2  user workbook
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Updates a private workbook that has already been added.

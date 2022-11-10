@@ -1,22 +1,9 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a private workbook
 ```powershell
-{{ Add code here }}
+Remove-AzApplicationInsightsMyWorkbook -ResourceGroupName appinsights-hkrs2v-test -Name c65b3461-9270-45b7-b6ad-ddd644458b0eR
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Delete a private workbook.

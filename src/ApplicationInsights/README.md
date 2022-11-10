@@ -124,9 +124,22 @@ directive:
       subject: WorkbookTemplate
       variant: ^List$
     remove: true
+  # The resource id of the Microsoft.Insights/myworkbooks does not match the path defined in swagger. 
+  - where:
+      verb: Get
+      subject: ^MyWorkbook$
+      variant: ^GetViaIdentity$
+    remove: true
 
   - where:
+      subject: ^ApiKey$|^ContinuousExport$|LinkedStorageAccount|^WebTest$|^WebTestTag$|^Workbook$|^WorkbookTemplate$
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+    remove: true
+
+  # The resource id of the Microsoft.Insights/myworkbooks does not match the path defined in swagger. 
+  - where:
+      subject: ^MyWorkbook$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^DeleteViaIdentity$
     remove: true
 
   # Hide ComponentCurrentBillingFeature related cmdlets

@@ -1,13 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a workbook
 ```powershell
 Remove-AzApplicationInsightsWorkbook -ResourceGroupName appinsights-hkrs2v-test -Name 7d195dcc-7d02-459f-a181-5b46662e4060
 
 ```output
 ```
 
-{{ Add description here }}
+Delete a workbook.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a workbook by pipeline
 ```powershell
 Get-AzApplicationInsightsWorkbook -ResourceGroupName appinsights-hkrs2v-test -Name 7d195dcc-7d02-459f-a181-5b46662e4060 | Remove-AzApplicationInsightsWorkbook
 ```
@@ -15,5 +15,4 @@ Get-AzApplicationInsightsWorkbook -ResourceGroupName appinsights-hkrs2v-test -Na
 ```output
 ```
 
-{{ Add description here }}
-
+Delete a workbook by pipeline

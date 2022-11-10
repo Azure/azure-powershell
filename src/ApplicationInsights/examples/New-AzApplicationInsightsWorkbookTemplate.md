@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new workbook template
 ```powershell
 $gallery = New-AzApplicationInsightsWorkbookTemplateGalleryObject -Category "Failures" -Name "Simple Template" -Type 'tsg' -ResourceType "microsoft.insights/components" -Order 100
 $data = @{
@@ -32,7 +32,9 @@ New-AzApplicationInsightsWorkbookTemplate -ResourceGroupName resourceGroup -Name
 ```
 
 ```output
-{{ Add output here }}
+ResourceGroupName       Name                    Location
+-----------------       ----                    --------
+appinsights-hkrs2v-test workbooktemplate-pwsh01 westus2
 ```
 
-{{ Add description here }}
+Create a new workbook template.

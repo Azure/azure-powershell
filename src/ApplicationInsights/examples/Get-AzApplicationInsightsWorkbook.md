@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: List workbooks by category
 ```powershell
 Get-AzApplicationInsightsWorkbook -Category 'workbook'
 ```
@@ -17,9 +17,9 @@ appinsights-hkrs2v-test b41466f0-a464-4531-ab31-df6ba613d8fe b41466f0-a464-4531-
 appinsights-hkrs2v-test f7d7151e-7907-4f46-8a5e-6bf4a4cfedec f7d7151e-7907-4f46-8a5e-6bf4a4cfedec-display westus2  shared workbook
 ```
 
-{{ Add description here }}
+This command lists workbooks by category.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single workbook by its resourceName
 ```powershell
 Get-AzApplicationInsightsWorkbook -ResourceGroupName appinsights-hkrs2v-test -Name f7d7151e-7907-4f46-8a5e-6bf4a4cfedec
 ```
@@ -30,9 +30,9 @@ ResourceGroupName       Name                                 DisplayName        
 appinsights-hkrs2v-test f7d7151e-7907-4f46-8a5e-6bf4a4cfedec f7d7151e-7907-4f46-8a5e-6bf4a4cfedec-display westus2  shared workboo
 ```
 
-{{ Add description here }}
+This command get a single workbook by its resourceName.
 
-### Example 3: {{ Add title here }}
+### Example 3: Get a single workbook by pipeline
 ```powershell
 $name = (New-Guid).ToString()
 New-AzApplicationInsightsWorkbook -ResourceGroupName $env.resourceGroup -Name $name -Location westus2  -DisplayName "$name-display" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/appinsights-hkrs2v-test/providers/microsoft.insights/components/appinsights-48mah3-pwsh" -Category 'workbook' -SerializedData $null | Get-AzApplicationInsightsWorkbook
@@ -44,11 +44,11 @@ ResourceGroupName       Name                                 DisplayName        
 appinsights-hkrs2v-test f7d7151e-7907-4f46-8a5e-6bf4a4cfedec f7d7151e-7907-4f46-8a5e-6bf4a4cfedec-display westus2  shared workboo
 ```
 
-{{ Add description here }}
+This command gets a single workbook by pipeline.
 
-### Example 4: {{ Add title here }}
+### Example 4: List all workbooks by resource group
 ```powershell
-Get-AzApplicationInsightsWorkbook -ResourceGroupName appinsights-hkrs2v-test -Category 'workbook
+Get-AzApplicationInsightsWorkbook -ResourceGroupName appinsights-hkrs2v-test -Category 'workbook'
 ```
 
 ```output
@@ -65,4 +65,4 @@ appinsights-hkrs2v-test b41466f0-a464-4531-ab31-df6ba613d8fe b41466f0-a464-4531-
 appinsights-hkrs2v-test f7d7151e-7907-4f46-8a5e-6bf4a4cfedec f7d7151e-7907-4f46-8a5e-6bf4a4cfedec-display westus2  shared workbook
 ```
 
-{{ Add description here }}
+This command lists all workbooks by resource group.

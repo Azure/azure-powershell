@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: List private workbook by category
 ```powershell
 Get-AzApplicationInsightsMyWorkbook -Category 'workbook'
 ```
@@ -15,9 +15,9 @@ appinsights-hkrs2v-test 74446cb1-d125-4c1f-ab84-e57fd93101d2 Workbook03-display 
 appinsights-hkrs2v-test 5df8625f-fae4-4a38-9f43-62a40a2e99d1 5df8625f-fae4-4a38-9f43-62a40a2e99d1-display westus2  user   workbook
 ```
 
-{{ Add description here }}
+This command lists my workbook by category.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a single private workbook by its resourceName 
 ```powershell
 Get-AzApplicationInsightsMyWorkbook -ResourceGroupName appinsights-hkrs2v-test -Name 5df8625f-fae4-4a38-9f43-62a40a2e99d1
 ```
@@ -28,23 +28,9 @@ ResourceGroupName       Name                                 DisplayName        
 appinsights-hkrs2v-test 5df8625f-fae4-4a38-9f43-62a40a2e99d1 5df8625f-fae4-4a38-9f43-62a40a2e99d1-display westus2  user workbook
 ```
 
-{{ Add description here }}
+This command gets a single private workbook by its resourceName.
 
-### Example 3: {{ Add title here }}
-```powershell
-$name = (New-Guid).ToString()
-New-AzApplicationInsightsMyWorkbook -ResourceGroupName $env.resourceGroup -Name $name -Location westus2  -DisplayName "$name-display" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/appinsights-hkrs2v-test/providers/microsoft.insights/components/appinsights-48mah3-pwsh" -Category 'workbook' -SerializedData $null | Get-AzApplicationInsightsMyWorkbook
-```
-
-```output
-ResourceGroupName       Name                                 DisplayName                                  Location Kind Category
------------------       ----                                 -----------                                  -------- ---- --------
-appinsights-hkrs2v-test 5df8625f-fae4-4a38-9f43-62a40a2e99d1 5df8625f-fae4-4a38-9f43-62a40a2e99d1-display westus2  user workbook
-```
-
-{{ Add description here }}
-
-### Example 4: {{ Add title here }}
+### Example 3: List private workbook by resource group
 ```powershell
 Get-AzApplicationInsightsMyWorkbook -ResourceGroupName appinsights-hkrs2v-test -Category 'workbook'
 ```
@@ -61,4 +47,4 @@ appinsights-hkrs2v-test 74446cb1-d125-4c1f-ab84-e57fd93101d2 Workbook03-display 
 appinsights-hkrs2v-test 5df8625f-fae4-4a38-9f43-62a40a2e99d1 5df8625f-fae4-4a38-9f43-62a40a2e99d1-display westus2  user   workbook
 ```
 
-{{ Add description here }}
+This command lists private workbook by resource group.

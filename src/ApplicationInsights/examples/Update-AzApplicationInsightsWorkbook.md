@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Updates a workbook that has already been added
 ```powershell
-{{ Add code here }}
+Update-AzApplicationInsightsWorkbook -ResourceGroupName appinsights-hkrs2v-test -Name cc18e5e4-9558-4be1-b333-20b28aaca021 -DisplayName "workbook-portal"
 ```
 
 ```output
-{{ Add output here }}
+ResourceGroupName       Name                                 DisplayName     Location Kind   Category
+-----------------       ----                                 -----------     -------- ----   --------
+appinsights-hkrs2v-test cc18e5e4-9558-4be1-b333-20b28aaca021 workbook-portal eastus   shared workbook
 ```
 
-{{ Add description here }}
+Updates a workbook that has already been added
 
-### Example 2: {{ Add title here }}
+### Example 2: Updates a workbook that has already been added by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzApplicationInsightsWorkbook -ResourceGroupName appinsights-hkrs2v-test -Name cc18e5e4-9558-4be1-b333-20b28aaca021 | Update-AzApplicationInsightsWorkbook -Tag @{'k1'='v1'}
 ```
 
 ```output
-{{ Add output here }}
+ResourceGroupName       Name                                 DisplayName     Location Kind   Category
+-----------------       ----                                 -----------     -------- ----   --------
+appinsights-hkrs2v-test cc18e5e4-9558-4be1-b333-20b28aaca021 workbook-portal eastus   shared workbook
 ```
 
-{{ Add description here }}
-
+Updates a workbook that has already been added by pipeline.
