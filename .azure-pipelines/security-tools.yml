@@ -53,19 +53,22 @@ jobs:
       outputFormat: sarif
       scanFolder: SecurityTmp
       suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
+    displayName: Run BinSkim
+    inputs:
+      InputType: 'Basic'
+      Function: 'analyze'
+      AnalyzeTarget: '$(Build.SourcesDirectory)/artifacts/Debug/*.dll;$(Build.SourcesDirectory)/artifacts/*.exe'
+      AnalyzeStatistics: true
+
   - task: PowerShell@2
     displayName: Cleanup Build
     inputs:
       targetType: inline
       script: ./tools/CleanupBuild.ps1
       pwsh: true
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
-    displayName: Run BinSkim
-    inputs:
-      InputType: 'Basic'
-      Function: 'analyze'
-      AnalyzeTarget: '$(Build.SourcesDirectory)/artifacts/*.dll;$(Build.SourcesDirectory)/artifacts/*.exe'
-      AnalyzeStatistics: true
+
   - task: PoliCheck@1
     displayName: Run PoliCheck
     inputs:

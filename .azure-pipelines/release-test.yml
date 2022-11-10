@@ -18,7 +18,7 @@ parameters:
 - name: latest_ps
   displayName: PowerShell Latest Version
   type: string
-  default: latest
+  default: 7.2.7
 
 variables:
   winAgentPoolName: pool-windows-2019
