@@ -760,4 +760,65 @@ Please contact Microsoft for further assistance.</value>
   <data name="CRRNotSupportedWIthCSR" xml:space="preserve">
     <value>Cross region restore is not supported along with cross subscription restore, please try passing either RestoreToSecondaryRegion or TargetSubscriptionId parameter but not both</value>
   </data>
+  <data name="InvalidScheduleWindow" xml:space="preserve">
+    <value>Hourly policy ScheduleWindowDuration should be multiple of ScheduleInterval and less than or equal to 24 Hrs. for WorkloadType AzureVM</value>
+  </data>
+  <data name="SmartTieringNotSupported" xml:space="preserve">
+    <value>Smart tiering is only supported for BackupManagementType AzureVM, AzureWorkload. Please try again after removing MoveToArchiveTier parameter.</value>
+  </data>
+  <data name="InvalidParametersForTiering" xml:space="preserve">
+    <value>Please remove TieringMode, TierAfterDuration, TierAfterDurationType parameters to disable smart tiering</value>
+  </data>
+  <data name="TierRecommendedNotSupportedForAzureWorkload" xml:space="preserve">
+    <value>Tiering mode TierRecommended is not supported for BackupManagementType AzureWorkload</value>
+  </data>
+  <data name="InvalidParameterTierAfterDuration" xml:space="preserve">
+    <value>TierAfterDuration, TierAfterDurationType is only acceptable for TieringMode: TierAllEligible</value>
+  </data>
+  <data name="MissingParameterTierAfterDuration" xml:space="preserve">
+    <value>TierAfterDuration, TierAfterDurationType is required for tiering mode TierAllEligible and the values should either be in Months or Days</value>
+  </data>
+  <data name="SmartTieringNotSupportedForSubscription" xml:space="preserve">
+    <value>Smart tiering is not supported for this subscription, please remove MoveToArchiveTier parameter and try again.</value>
+  </data>
+  <data name="MissingMonthlyOrYearlyRetention" xml:space="preserve">
+    <value>Monthly or Yearly retention needs to be set to enable Archive smart tiering</value>
+  </data>
+  <data name="IncompatibleRetentionAndTieringPolicy" xml:space="preserve">
+    <value>Monthly or Yearly retention needs to be set as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
+  </data>
+  <data name="IncompatibleRetentionPolicyForTierRecommended" xml:space="preserve">
+    <value>At least one of monthly or yearly retention should be >= 9 months for enabling TierRecommended mode for smart tiering</value>
+  </data>
+  <data name="RetentionShouldBeGreaterThan9MonthsOrDisableSmartTiering" xml:space="preserve">
+    <value>At least one of monthly or yearly retention should be >= 9 months as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
+  </data>
+  <data name="InvalidDurationTypeForAzureVM" xml:space="preserve">
+    <value>TierAfterDurationType should be in Months for workload type AzureVM</value>
+  </data>
+  <data name="InvalidDurationForTierAllEligiblePolicy" xml:space="preserve">
+    <value>TierAfterDuration needs to be >= 3 months, at least one of monthly or yearly retention should be >= (TierAfterDuration + 6) months</value>
+  </data>
+  <data name="IncompatibleRetentionDurationWithTierAfterDuration" xml:space="preserve">
+    <value>TierAfterDuration needs to be >= 3 months, at least one of monthly or yearly retention should be >= (TierAfterDuration + 6) months as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
+  </data>
+  <data name="FullBackupRetentionPolicyCantBeNull" xml:space="preserve">
+    <value>FullBackupRetentionPolicy can't be null while enabling Archive smart tiering for BackupManagementType AzureWorkload</value>
+  </data>
+  <data name="InvalidDurationTypeForAzureWorkload" xml:space="preserve">
+    <value>TierAfterDurationType should be in Days for workload type AzureWorkload</value>
+  </data>
+  <data name="IncompatibleRetentionPolicyWithTierAfterDuration" xml:space="preserve">
+    <value>TierAfterDuration needs to be >= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be >= (TierAfter + 180) days</value>
+  </data>
+  <data name="TierAfterDurationCheckFailedWithRetentionDuration" xml:space="preserve">
+    <value>TierAfterDuration needs to be >= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be >= (TierAfter + 180) days as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
+  </data>
+  <data name="UnsupportedCZRWithNonZonePinnedVMForCRRVault" xml:space="preserve">
+    <value>For triggering cross zonal restore for CRR enabled (RA-GRS) vaults, please ensure that the recovery point is zone pinned. Please remove TargetZone parameter or try a valid scenario.</value>
+  </data>
+  <data name="UnsupportedCZRForCRRVaultToPrimaryRegion" xml:space="preserve">
+    <value>For triggering cross zonal restore for CRR enabled (RA-GRS) vaults, please ensure that the restore is triggered for secondary region. Please remove TargetZone parameter or try a valid scenario.</value>
+  </data>	
+
 </root>

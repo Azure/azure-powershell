@@ -189,9 +189,6 @@
   <data name="NoStorageAccountWhenConfiguringAuditingPolicy" xml:space="preserve">
     <value>Cannot set auditing policy without a storage account name.</value>
   </data>
-  <data name="NoStorageAccountWhenConfiguringThreatDetectionPolicy" xml:space="preserve">
-    <value>Cannot set threat detection policy without a storage account name.</value>
-  </data>
   <data name="PdoTitle" xml:space="preserve">
     <value>PHP Data Objects(PDO) Sample Code:</value>
   </data>
@@ -309,17 +306,11 @@
   <data name="NeedToProvideEmail" xml:space="preserve">
     <value>You need to provide at least one email address or set EmailAdmins to True.</value>
   </data>
-  <data name="ServerNotApplicableForThreatDetection" xml:space="preserve">
-    <value>Threat detection is only available for the latest SQL Database Update (V12). Please upgrade to set it up on your database.</value>
-  </data>
   <data name="AuditingIsTurnedOff" xml:space="preserve">
     <value>In order to enable Threat Detection, please enable database auditing.</value>
   </data>
   <data name="InvalidExcludedDetectionTypeSet" xml:space="preserve">
     <value>Cannot use the '{0}' option with other excluded detection types.</value>
-  </data>
-  <data name="InvalidDetectionTypeList" xml:space="preserve">
-    <value>Cannot use the 'None' option with other detection types</value>
   </data>
   <data name="BaseConfirmActionProcessMessage" xml:space="preserve">
     <value>About to process resource</value>
@@ -735,5 +726,17 @@
   </data>
   <data name="StopLogReplayErrorDatabaseOrigin" xml:space="preserve">
     <value>Cannot stop the log replay as database {0} on the instance {1} in the resource group {2} was not created with log replay service.</value>
+  </data>
+  <data name="RemoveAzureSqlServerIpv6FirewallRuleDescription" xml:space="preserve">
+    <value>Permanently removing IPv6 Firewall Rule '{0}' for Azure Sql Database Server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlServerIpv6FirewallRuleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the IPv6 Firewall Rule '{0}' for Azure Sql Database Server  '{1}'?</value>
+  </data>
+  <data name="ServerIpv6FirewallRuleNameExists" xml:space="preserve">
+    <value>IPv6 Firewall Rule with name: '{0}' already exists for server '{1}'.</value>
+  </data>
+  <data name="ServerIpv6FirewallRuleNameDoesNotExist" xml:space="preserve">
+    <value>IPv6 Firewall Rule with name: '{0}' does not exist for server '{1}'.</value>
   </data>
 </root>

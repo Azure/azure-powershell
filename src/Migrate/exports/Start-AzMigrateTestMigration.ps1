@@ -26,7 +26,7 @@ $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -Subscri
 Start-AzMigrateTestMigration -InputObject $obj -TestNetworkId '/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,11 +35,22 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the test migration needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
   [Location <String>]: Resource Location
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
+    InstanceType <String>: Gets the instance type.
+
+NICTOUPDATE <IVMwareCbtNicInput[]>: Updates the NIC for the Azure VM to be created.
+  IsPrimaryNic <String>: A value indicating whether this is the primary NIC.
+  NicId <String>: The NIC Id.
+  [IsSelectedForMigration <String>]: A value indicating whether this NIC is selected for migration.
+  [TargetNicName <String>]: Target NIC name.
+  [TargetStaticIPAddress <String>]: The static IP address.
+  [TargetSubnetName <String>]: Target subnet name.
+  [TestStaticIPAddress <String>]: The test static IP address.
+  [TestSubnetName <String>]: The test subnet name.
 .Link
 https://docs.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
 #>
 function Start-AzMigrateTestMigration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -57,6 +68,13 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput[]]
+    # Updates the NIC for the Azure VM to be created.
+    # To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
+    ${NicToUpdate},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure Subscription ID.
@@ -64,7 +82,7 @@ param(
 
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem]
     # Specifies the replicating server for which the test migration needs to be initiated.
     # The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.

@@ -23,7 +23,6 @@ Deletes a backup policy belonging to a backup vault
 $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
 Remove-AzDataProtectionBackupPolicy -Name $policy[0].name -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
 
-
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
@@ -47,7 +46,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription Id.
   [VaultName <String>]: The name of the backup vault.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionbackuppolicy
+https://learn.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionbackuppolicy
 #>
 function Remove-AzDataProtectionBackupPolicy {
 [OutputType([System.Boolean])]

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Sql</PsModuleName>
@@ -8,6 +8,10 @@
 
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,11 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="3.1.0-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sql.LegacySdk\Sql.LegacySdk.csproj" />
+    <ProjectReference Include="..\Sql.Sdk\Sql.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>

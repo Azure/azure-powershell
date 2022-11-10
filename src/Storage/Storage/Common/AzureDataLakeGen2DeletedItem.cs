@@ -64,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// Azure DataLakeGen2 Deleted Item constructor
         /// </summary>
         /// <param name="deletedItem">Deleted Item</param>
-        /// <param name="fileSystem">File System object</param>
+        /// <param name="fileSystem">DataLakeFileSystemClient</param>
         public AzureDataLakeGen2DeletedItem(PathDeletedItem deletedItem, DataLakeFileSystemClient fileSystem)
         {
             this.Name = deletedItem.Path;

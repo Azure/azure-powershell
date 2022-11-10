@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            var client = context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            var client = context.GetServiceClient<ResourceManagementClient>();
             ResourceManagementClient = client;
             return client;
         }
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 }
             }
 
-            var client = context.GetServiceClient<BatchManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            var client = context.GetServiceClient<BatchManagementClient>();
             Subscription = client.SubscriptionId;
             BatchManagementClient = client;
             return client;
@@ -121,14 +121,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         private NetworkManagementClient GetNetworkManagementClient(MockContext context)
         {
-            var client = context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            var client = context.GetServiceClient<NetworkManagementClient>();
             NetworkManagementClient = client;
             return client;
         }
 
         private AzureRestClient GetAzureRestClient(MockContext context)
         {
-            var client = context.GetServiceClient<AzureRestClient>(TestEnvironmentFactory.GetTestEnvironment());
+            var client = context.GetServiceClient<AzureRestClient>();
             AzureRestClient = client;
             return client;
         }

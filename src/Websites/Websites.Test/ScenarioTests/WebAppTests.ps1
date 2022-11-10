@@ -422,6 +422,7 @@ function Test-CreateNewWebApp
 	$tier = "Shared"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
+	$tag= @{"TagKey" = "TagValue"}
 	try
 	{
 		#Setup
@@ -429,13 +430,15 @@ function Test-CreateNewWebApp
 		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
 		
 		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -AsJob
+		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -Tag $tag -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		
 		# Assert
 		Assert-AreEqual $wname $actual.Name
 		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
+		Assert-AreEqual $tag.Keys $actual.Tags.Keys
+                Assert-AreEqual $tag.Values $actual.Tags.Values
 
 		# Get new web app
 		$result = Get-AzWebApp -ResourceGroupName $rgname -Name $wname
@@ -1506,6 +1509,15 @@ function Test-PublishAzureWebAppFromWar
 		# Create new web app
 		$webapp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Location $location -AppServicePlan $planName 
 		
+		#Configuring jdk and web container
+        # Set Java runtime to 1.8 | Tomcat. In order to deploy war, site should be configured to run with stack = TOMCAT 
+		# or JBOSSEAP (only availble on Linux). In this test case, it creates Windows app. 
+		$javaVersion="1.8"
+        $javaContainer="TOMCAT"
+        $javaContainerVersion="8.5"
+        $PropertiesObject = @{javaVersion = $javaVersion;javaContainer = $javaContainer;javaContainerVersion = $javaContainerVersion}
+        New-AzResource -PropertyObject $PropertiesObject -ResourceGroupName $rgname -ResourceType Microsoft.Web/sites/config -ResourceName "$appName/web" -ApiVersion 2018-02-01 -Force
+
 		$warPath = Join-Path $ResourcesPath "HelloJava.war"
 		$publishedApp = Publish-AzWebApp -ResourceGroupName $rgname -Name $appName -ArchivePath $warPath -Force
 

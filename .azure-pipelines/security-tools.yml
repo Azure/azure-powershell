@@ -1,0 +1,76 @@
+# Variable 'IsGenerateBased' was defined in the Variables tab
+# Variable 'NugetSecurityAnalysisWarningLevel' was defined in the Variables tab
+# Variable 'OCTOKITPAT' was defined in the Variables tab
+# Cron Schedules have been converted using UTC Time Zone and may need to be updated for your location
+schedules:
+- cron: 0 4 * * 1,2,3,4,5
+  branches:
+    include:
+    - main
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: refs/heads/main
+jobs:
+- job: Job_1
+  displayName: Main
+  timeoutInMinutes: 120
+  pool:
+    name: pool-windows-2019
+  steps:
+  - checkout: self
+    fetchTags: false
+  - task: PowerShell@2
+    displayName: Install platyPS
+    inputs:
+      targetType: inline
+      script: Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser
+      pwsh: true
+  - task: NodeTool@0
+    displayName: Install Node 14.17.1
+    condition: eq(variables.IsGenerateBased, true)
+    inputs:
+      versionSpec: 14.17.1
+  - task: PowerShell@2
+    displayName: Install autorest
+    condition: eq(variables.IsGenerateBased, true)
+    inputs:
+      targetType: inline
+      script: npm install autorest@latest;$env:NODE_OPTIONS="--max-old-space-size=65536"
+  - task: PowerShell@2
+    displayName: Build
+    inputs:
+      targetType: inline
+      script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
+    env:
+      OCTOKITPAT: $(OCTOKITPAT)
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
+    displayName: Run CredScan
+    condition: in(variables['system.pullRequest.targetBranch'], 'generation', 'main')
+    inputs:
+      toolMajorVersion: V2
+      outputFormat: sarif
+      scanFolder: SecurityTmp
+      suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
+      debugMode: false
+      folderSuppression: false
+  - task: PowerShell@2
+    displayName: Cleanup Build
+    inputs:
+      targetType: inline
+      script: ./tools/CleanupBuild.ps1
+      pwsh: true
+  - task: PoliCheck@1
+    displayName: Run PoliCheck
+    inputs:
+      targetArgument: $(Build.SourcesDirectory)/artifacts/Debug
+      result: $(Build.SourcesDirectory)/artifacts/result/PoliCheck.xml
+      optionsFTPATH: tools/SecurityTools/PoliCheckFileExtensions.xml
+  - task: PublishPipelineArtifact@0
+    displayName: Save artifacts
+    condition: succeededOrFailed()
+    inputs:
+      artifactName: artifacts
+      targetPath: artifacts
+...

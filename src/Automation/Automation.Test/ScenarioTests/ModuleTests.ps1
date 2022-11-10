@@ -74,7 +74,7 @@ function Test-GetAllModules {
 	Assert-AreEqual $azureModule.ActivityCount $testGlobalModule.ActivityCount
 	Assert-NotNull $azureModule.CreationTime
 	Assert-NotNull $azureModule.LastModifiedTime
-	Assert-AreEqual $azureModule.ProvisioningState 'Created'
+	Assert-AreEqual $azureModule.ProvisioningState 'Succeeded'
 }
 
 <#
@@ -97,7 +97,7 @@ function Test-GetModuleByName {
 	Assert-AreEqual $output.ActivityCount $testGlobalModule.ActivityCount
 	Assert-NotNull $output.CreationTime
 	Assert-NotNull $output.LastModifiedTime
-	Assert-AreEqual $output.ProvisioningState 'Created'
+	Assert-AreEqual $output.ProvisioningState 'Succeeded'
 }
 
 <#
@@ -142,7 +142,7 @@ Tests updating a module already imported into an Automation account.
 function Test-SetModule {
 	EnsureTestModuleImported
 
-	$output = Set-AzAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount
+	$output = Set-AzAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount -ContentLinkVersion $testNonGlobalModule.Version
 
 	Assert-NotNull $output
 	$outputCount = $output | Measure-Object | % Count;

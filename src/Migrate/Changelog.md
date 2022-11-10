@@ -19,6 +19,22 @@
 -->
 ## Upcoming Release
 
+## Version 2.1.0
+* Added parameter `CacheStorageAccountId` to `Initialize-AzMigrateReplicationInfrastructure`
+* Added support for OS Disk Swap and Test Migrate Subnet Selection
+
+## Version 2.0.0
+* Updated ApiVersion to 2022-05-01
+* Added support for pause and resume
+  * `Suspend-AzMigrateServerReplication`
+  * `Resume-AzMigrateServerReplication`
+* [Breaking Change] Removed unless cmdlets
+  * `Get-AzMigrateReplicationEligibilityResult`
+  * `Get-AzMigrateReplicationProtectionIntent`
+  * `Get-AzMigrateReplicationVaultSetting`
+  * `Get-AzMigrateSupportedOperatingSystem`
+  * `New-AzMigrateReplicationProtectionIntent`
+  * `New-AzMigrateReplicationVaultSetting`
 ## Version 1.1.3
 * Fixed a cross-subscription issue
 

@@ -22,6 +22,7 @@ Container Apps                        | `Az.App`                                
 App Configuration                     | `Az.AppConfiguration`                   | [![AppConfiguration]][AppConfigurationGallery]
 Application Insights                  | `Az.ApplicationInsights`                | [![ApplicationInsights]][ApplicationInsightsGallery]
 Attestation                           | `Az.Attestation`                        | [![Attestation]][AttestationGallery]
+Automanage                            | `Az.Automanage`                         | [![Automanage]][AutomanageGallery]
 Automation                            | `Az.Automation`                         | [![Automation]][AutomationGallery]
 BareMetal                             | `Az.BareMetal`                          | [![BareMetal]][BareMetalGallery]
 Batch                                 | `Az.Batch`                              | [![Batch]][BatchGallery]
@@ -60,14 +61,17 @@ Dedicated HSM                         | `Az.DedicatedHsm`                       
 Deployment Manager                    | `Az.DeploymentManager`                  | [![DeploymentManager]][DeploymentManagerGallery]
 Windows Virtual Desktop               | `Az.DesktopVirtualization`              | [![DesktopVirtualization]][DesktopVirtualizationGallery]
 Device Provisioning Services          | `Az.DeviceProvisioningServices`         | [![DeviceProvisioningServices]][DeviceProvisioningServicesGallery]
+Device Update                         | `Az.DeviceUpdate`                       | [![DeviceUpdate]][DeviceUpdateGallery]
 Dev Spaces                            | `Az.DevSpaces`                          | [![DevSpaces]][DevSpacesGallery]
 DevTest Labs                          | `Az.DevTestLabs`                        | [![DevTestLabs]][DevTestLabsGallery]
 Digital Twins                         | `Az.DigitalTwins`                       | [![DigitalTwins]][DigitalTwinsGallery]
 Disk Pool                             | `Az.DiskPool`                           | [![DiskPool]][DiskPoolGallery]
 DNS                                   | `Az.Dns`                                | [![Dns]][DnsGallery]
 DnsResolver                           | `Az.DnsResolver`                        | [![DnsResolver]][DnsResolverGallery]
+DynatraceObservability                | `Az.DynatraceObservability`             | [![DynatraceObservability]][DynatraceObservabilityGallery]
 Stack Edge Order                      | `Az.EdgeOrder`                          | [![EdgeOrder]][EdgeOrderGallery]
 Elastic on Azure                      | `Az.Elastic`                            | [![Elastic]][ElasticGallery]
+ElasticSan on Azure                   | `Az.ElasticSan`                         | [![ElasticSan]][ElasticSanGallery]
 Event Grid                            | `Az.EventGrid`                          | [![EventGrid]][EventGridGallery]
 Event Hubs                            | `Az.EventHub`                           | [![EventHub]][EventHubGallery]
 Fluid Relay                           | `Az.FluidRelay`                         | [![FluidRelay]][FluidRelayGallery]
@@ -89,6 +93,7 @@ Kusto                                 | `Az.Kusto`                              
 Logic App                             | `Az.LogicApp`                           | [![LogicApp]][LogicAppGallery]
 Logz.io                               | `Az.Logz`                               | [![Logz]][LogzGallery]
 Machine Learning                      | `Az.MachineLearning`                    | [![MachineLearning]][MachineLearningGallery]
+Machine Learning Services             | `Az.MachineLearningServices`            | [![MachineLearningServices]][MachineLearningServicesGallery]
 Maintenance                           | `Az.Maintenance`                        | [![Maintenance]][MaintenanceGallery]
 Managed Service Identity              | `Az.ManagedServiceIdentity`             | [![ManagedServiceIdentity]][ManagedServiceIdentityGallery]
 Managed Services                      | `Az.ManagedServices`                    | [![ManagedServices]][ManagedServicesGallery]
@@ -106,6 +111,7 @@ Database for MySQL                    | `Az.MySql`                              
 NetApp Files                          | `Az.NetAppFiles`                        | [![NetAppFiles]][NetAppFilesGallery]
 Network                               | `Az.Network`                            | [![Network]][NetworkGallery]
 NetworkFunction                       | `Az.NetworkFunction`                    | [![NetworkFunction]][NetworkFunctionGallery]
+Nginx                                 | `Az.Nginx`                              | [![Nginx]][NginxGallery]
 Notification Hubs                     | `Az.NotificationHubs`                   | [![NotificationHubs]][NotificationHubsGallery]
 Operational Insights                  | `Az.OperationalInsights`                | [![OperationalInsights]][OperationalInsightsGallery]
 Orbital                               | `Az.Orbital`                            | [![Orbital]][OrbitalGallery]
@@ -136,8 +142,10 @@ SignalR                               | `Az.SignalR`                            
 SpringCloud                           | `Az.SpringCloud`                        | [![SpringCloud]][SpringCloudGallery]
 SQL                                   | `Az.Sql`                                | [![Sql]][SqlGallery]
 SQL Server on Virtual Machines        | `Az.SqlVirtualMachine`                  | [![SqlVirtualMachine]][SqlVirtualMachineGallery]
+SSH                                   | `Az.Ssh`                                | [![Ssh]][SshGallery]
 Stack HCI                             | `Az.StackHCI`                           | [![StackHCI]][StackHCIGallery]
 Storage                               | `Az.Storage`                            | [![Storage]][StorageGallery]
+Storage Mover                         | `Az.StorageMover`                       | [![StorageMover]][StorageMoverGallery]
 File Sync                             | `Az.StorageSync`                        | [![StorageSync]][StorageSyncGallery]
 Stream Analytics                      | `Az.StreamAnalytics`                    | [![StreamAnalytics]][StreamAnalyticsGallery]
 Subscription                          | `Az.Subscription`                       | [![Subscription]][SubscriptionGallery]
@@ -148,7 +156,6 @@ Traffic Manager                       | `Az.TrafficManager`                     
 Azure VMware Solution                 | `Az.VMware`                             | [![VMware]][VMwareGallery]
 Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery]
 Windows Iot Services                  | `Az.WindowsIotServices`                 | [![WindowsIotServices]][WindowsIotServicesGallery]
-Machine Learning Services             | `Az.MachineLearningServices`            | [![MachineLearningServices]][MachineLearningServices]
 
 <!-- References -->
 
@@ -166,6 +173,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [AppConfiguration]:           https://img.shields.io/powershellgallery/v/Az.AppConfiguration.svg?style=flat-square&label=Az.AppConfiguration
 [ApplicationInsights]:        https://img.shields.io/powershellgallery/v/Az.ApplicationInsights.svg?style=flat-square&label=Az.ApplicationInsights
 [Attestation]:                https://img.shields.io/powershellgallery/v/Az.Attestation.svg?style=flat-square&label=Az.Attestation
+[Automanage]:                 https://img.shields.io/powershellgallery/v/Az.Automanage.svg?style=flat-square&label=Az.Automanage
 [Automation]:                 https://img.shields.io/powershellgallery/v/Az.Automation.svg?style=flat-square&label=Az.Automation
 [BareMetal]:                  https://img.shields.io/powershellgallery/v/Az.BareMetal.svg?style=flat-square&label=Az.BareMetal
 [Batch]:                      https://img.shields.io/powershellgallery/v/Az.Batch.svg?style=flat-square&label=Az.Batch
@@ -206,12 +214,15 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [DiskPool]:                   https://img.shields.io/powershellgallery/v/Az.DiskPool.svg?style=flat-square&label=Az.DiskPool
 [DesktopVirtualization]:      https://img.shields.io/powershellgallery/v/Az.DesktopVirtualization.svg?style=flat-square&label=Az.DesktopVirtualization
 [DeviceProvisioningServices]: https://img.shields.io/powershellgallery/v/Az.DeviceProvisioningServices.svg?style=flat-square&label=Az.DeviceProvisioningServices
+[DeviceUpdate]:               https://img.shields.io/powershellgallery/v/Az.DeviceUpdate.svg?style=flat-square&label=Az.DeviceUpdate
 [DevSpaces]:                  https://img.shields.io/powershellgallery/v/Az.DevSpaces.svg?style=flat-square&label=Az.DevSpaces
 [DevTestLabs]:                https://img.shields.io/powershellgallery/v/Az.DevTestLabs.svg?style=flat-square&label=Az.DevTestLabs
 [Dns]:                        https://img.shields.io/powershellgallery/v/Az.Dns.svg?style=flat-square&label=Az.Dns
 [DnsResolver]:                https://img.shields.io/powershellgallery/v/Az.DnsResolver.svg?style=flat-square&label=Az.DnsResolver
+[DynatraceObservability]:     https://img.shields.io/powershellgallery/v/Az.DynatraceObservability.svg?style=flat-square&label=Az.DynatraceObservability
 [EdgeOrder]:                  https://img.shields.io/powershellgallery/v/Az.EdgeOrder.svg?style=flat-square&label=Az.EdgeOrder
 [Elastic]:                    https://img.shields.io/powershellgallery/v/Az.Elastic.svg?style=flat-square&label=Az.Elastic
+[ElasticSan]:                 https://img.shields.io/powershellgallery/v/Az.ElasticSan.svg?style=flat-square&label=Az.ElasticSan
 [EventGrid]:                  https://img.shields.io/powershellgallery/v/Az.EventGrid.svg?style=flat-square&label=Az.EventGrid
 [EventHub]:                   https://img.shields.io/powershellgallery/v/Az.EventHub.svg?style=flat-square&label=Az.EventHub
 [FluidRelay]:                 https://img.shields.io/powershellgallery/v/Az.FluidRelay.svg?style=flat-square&label=Az.FluidRelay
@@ -233,6 +244,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [LogicApp]:                   https://img.shields.io/powershellgallery/v/Az.LogicApp.svg?style=flat-square&label=Az.LogicApp
 [Logz]:                       https://img.shields.io/powershellgallery/v/Az.Logz.svg?style=flat-square&label=Az.Logz
 [MachineLearning]:            https://img.shields.io/powershellgallery/v/Az.MachineLearning.svg?style=flat-square&label=Az.MachineLearning
+[MachineLearningServices]:    https://img.shields.io/powershellgallery/v/Az.MachineLearningServices.svg?style=flat-square&label=Az.MachineLearningServices
 [Maintenance]:                https://img.shields.io/powershellgallery/v/Az.Maintenance.svg?style=flat-square&label=Az.Maintenance
 [ManagedServiceIdentity]:     https://img.shields.io/powershellgallery/v/Az.ManagedServiceIdentity.svg?style=flat-square&label=Az.ManagedServiceIdentity
 [ManagedServices]:            https://img.shields.io/powershellgallery/v/Az.ManagedServices.svg?style=flat-square&label=Az.ManagedServices
@@ -250,6 +262,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [NetAppFiles]:                https://img.shields.io/powershellgallery/v/Az.NetAppFiles.svg?style=flat-square&label=Az.NetAppFiles
 [Network]:                    https://img.shields.io/powershellgallery/v/Az.Network.svg?style=flat-square&label=Az.Network
 [NetworkFunction]:            https://img.shields.io/powershellgallery/v/Az.NetworkFunction.svg?style=flat-square&label=Az.NetworkFunction
+[Nginx]:                      https://img.shields.io/powershellgallery/v/Az.Nginx.svg?style=flat-square&label=Az.Nginx
 [NotificationHubs]:           https://img.shields.io/powershellgallery/v/Az.NotificationHubs.svg?style=flat-square&label=Az.NotificationHubs
 [OperationalInsights]:        https://img.shields.io/powershellgallery/v/Az.OperationalInsights.svg?style=flat-square&label=Az.OperationalInsights
 [Orbital]:                    https://img.shields.io/powershellgallery/v/Az.Orbital.svg?style=flat-square&label=Az.Orbital
@@ -280,8 +293,10 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [SpringCloud]:                https://img.shields.io/powershellgallery/v/Az.SpringCloud.svg?style=flat-square&label=Az.SpringCloud
 [Sql]:                        https://img.shields.io/powershellgallery/v/Az.Sql.svg?style=flat-square&label=Az.Sql
 [SqlVirtualMachine]:          https://img.shields.io/powershellgallery/v/Az.SqlVirtualMachine.svg?style=flat-square&label=Az.SqlVirtualMachine
+[Ssh]:                        https://img.shields.io/powershellgallery/v/Az.Ssh.svg?style=flat-square&label=Az.Ssh
 [StackHCI]:                   https://img.shields.io/powershellgallery/v/Az.StackHCI.svg?style=flat-square&label=Az.StackHCI
 [Storage]:                    https://img.shields.io/powershellgallery/v/Az.Storage.svg?style=flat-square&label=Az.Storage
+[StorageMover]:               https://img.shields.io/powershellgallery/v/Az.StorageMover.svg?style=flat-square&label=Az.StorageMover
 [StorageSync]:                https://img.shields.io/powershellgallery/v/Az.StorageSync.svg?style=flat-square&label=Az.StorageSync
 [StreamAnalytics]:            https://img.shields.io/powershellgallery/v/Az.StreamAnalytics.svg?style=flat-square&label=Az.StreamAnalytics
 [Subscription]:               https://img.shields.io/powershellgallery/v/Az.Subscription.svg?style=flat-square&label=Az.Subscription
@@ -292,7 +307,6 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [VMware]:                     https://img.shields.io/powershellgallery/v/Az.VMware.svg?style=flat-square&label=Az.VMware
 [Websites]:                   https://img.shields.io/powershellgallery/v/Az.Websites.svg?style=flat-square&label=Az.Websites
 [WindowsIotServices]:         https://img.shields.io/powershellgallery/v/Az.WindowsIotServices.svg?style=flat-square&label=Az.WindowsIotServices
-[MachineLearningServices]:    https://img.shields.io/powershellgallery/v/Az.MachineLearningServices.svg?style=flat-square&label=Az.MachineLearningServices
 
 <!-- PS Gallery -->
 [AzGallery]:                         https://www.powershellgallery.com/packages/Az/
@@ -308,6 +322,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [AppConfigurationGallery]:           https://www.powershellgallery.com/packages/Az.AppConfiguration/
 [ApplicationInsightsGallery]:        https://www.powershellgallery.com/packages/Az.ApplicationInsights/
 [AttestationGallery]:                https://www.powershellgallery.com/packages/Az.Attestation/
+[AutomanageGallery]:                 https://www.powershellgallery.com/packages/Az.Automanage/
 [AutomationGallery]:                 https://www.powershellgallery.com/packages/Az.Automation/
 [BareMetalGallery]:                  https://www.powershellgallery.com/packages/Az.BareMetal/
 [BatchGallery]:                      https://www.powershellgallery.com/packages/Az.Batch/
@@ -348,12 +363,15 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [DiskPoolGallery]:                   https://www.powershellgallery.com/packages/Az.DiskPool/
 [DesktopVirtualizationGallery]:      https://www.powershellgallery.com/packages/Az.DesktopVirtualization/
 [DeviceProvisioningServicesGallery]: https://www.powershellgallery.com/packages/Az.DeviceProvisioningServices/
+[DeviceUpdateGallery]:               https://www.powershellgallery.com/packages/Az.DeviceUpdate/
 [DevSpacesGallery]:                  https://www.powershellgallery.com/packages/Az.DevSpaces/
 [DevTestLabsGallery]:                https://www.powershellgallery.com/packages/Az.DevTestLabs/
 [DnsGallery]:                        https://www.powershellgallery.com/packages/Az.Dns/
 [DnsResolverGallery]:                https://www.powershellgallery.com/packages/Az.DnsResolver/
+[DynatraceObservabilityGallery]:     https://www.powershellgallery.com/packages/Az.DynatraceObservability/
 [EdgeOrderGallery]:                  https://www.powershellgallery.com/packages/Az.EdgeOrder/
 [ElasticGallery]:                    https://www.powershellgallery.com/packages/Az.Elastic/
+[ElasticSanGallery]:                 https://www.powershellgallery.com/packages/Az.ElasticSan/
 [EventGridGallery]:                  https://www.powershellgallery.com/packages/Az.EventGrid/
 [EventHubGallery]:                   https://www.powershellgallery.com/packages/Az.EventHub/
 [FluidRelayGallery]:                 https://www.powershellgallery.com/packages/Az.FluidRelay/
@@ -375,6 +393,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [LogicAppGallery]:                   https://www.powershellgallery.com/packages/Az.LogicApp/
 [LogzGallery]:                       https://www.powershellgallery.com/packages/Az.Logz/
 [MachineLearningGallery]:            https://www.powershellgallery.com/packages/Az.MachineLearning/
+[MachineLearningServicesGallery]:    https://www.powershellgallery.com/packages/Az.MachineLearningServices/
 [MaintenanceGallery]:                https://www.powershellgallery.com/packages/Az.Maintenance/
 [ManagedServiceIdentityGallery]:     https://www.powershellgallery.com/packages/Az.ManagedServiceIdentity/
 [ManagedServicesGallery]:            https://www.powershellgallery.com/packages/Az.ManagedServices/
@@ -392,6 +411,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [NetAppFilesGallery]:                https://www.powershellgallery.com/packages/Az.NetAppFiles/
 [NetworkGallery]:                    https://www.powershellgallery.com/packages/Az.Network/
 [NetworkFunctionGallery]:            https://www.powershellgallery.com/packages/Az.NetworkFunction/
+[NginxGallery]:                      https://www.powershellgallery.com/packages/Az.Nginx/
 [NotificationHubsGallery]:           https://www.powershellgallery.com/packages/Az.NotificationHubs/
 [OperationalInsightsGallery]:        https://www.powershellgallery.com/packages/Az.OperationalInsights/
 [OrbitalGallery]:                    https://www.powershellgallery.com/packages/Az.Orbital/
@@ -422,8 +442,10 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [SpringCloudGallery]:                https://www.powershellgallery.com/packages/Az.SpringCloud/
 [SqlGallery]:                        https://www.powershellgallery.com/packages/Az.Sql/
 [SqlVirtualMachineGallery]:          https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/
+[SshGallery]:                        https://www.powershellgallery.com/packages/Az.Ssh/
 [StackHCIGallery]:                   https://www.powershellgallery.com/packages/Az.StackHCI/
 [StorageGallery]:                    https://www.powershellgallery.com/packages/Az.Storage/
+[StorageMoverGallery]:               https://www.powershellgallery.com/packages/Az.StorageMover/
 [StorageSyncGallery]:                https://www.powershellgallery.com/packages/Az.StorageSync/
 [StreamAnalyticsGallery]:            https://www.powershellgallery.com/packages/Az.StreamAnalytics/
 [SubscriptionGallery]:               https://www.powershellgallery.com/packages/Az.Subscription/
@@ -434,4 +456,3 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [VMwareGallery]:                     https://www.powershellgallery.com/packages/Az.VMware/
 [WebsitesGallery]:                   https://www.powershellgallery.com/packages/Az.Websites/
 [WindowsIotServicesGallery]:         https://www.powershellgallery.com/packages/Az.WindowsIotServices/
-[MachineLearningServicesGallery]:    https://www.powershellgallery.com/packages/Az.MachineLearningServices/

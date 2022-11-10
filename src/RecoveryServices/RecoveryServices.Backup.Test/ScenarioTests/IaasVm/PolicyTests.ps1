@@ -26,6 +26,60 @@ $oldResourceGroupName = "sambit_rg"
 $oldVaultName = "sambit"
 $oldPolicyName = "iaasvmretentioncheck"
 
+function Test-AzureVMSmartTieringPolicy
+{
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaVault"
+	$tierRecommendedPolicy =  "hiagaVMArchiveTierRecomm"
+	$tierAfterPolicy = "hiagaVMArchiveTierAfter"
+	
+	try
+	{
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -PolicySubType Enhanced -ScheduleRunFrequency Weekly 
+		$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency  Weekly 
+
+		# create tier recommended policy 
+		$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierRecommendedPolicy  -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierRecommended 
+
+		Assert-True { $pol.Name -eq $tierRecommendedPolicy }
+		
+		# error scenario for tier after policy
+		Assert-ThrowsContains { $pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierAfterPolicy  -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 2 -TierAfterDurationType Months } `
+		"TierAfterDuration needs to be >= 3 months, at least one of monthly or yearly retention should be >= (TierAfterDuration + 6) months";
+
+		# create tier after policy 
+		$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierAfterPolicy -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 3 -TierAfterDurationType Months
+
+		Assert-True { $pol.Name -eq $tierAfterPolicy }
+
+		# modify policy 
+		$pol = Get-AzRecoveryServicesBackupProtectionPolicy  -VaultId $vault.ID | Where { $_.Name -match $tierRecommendedPolicy }
+		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol[0] -MoveToArchiveTier $false
+		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol[0] -MoveToArchiveTier $true -TieringMode TierRecommended
+		
+		# error scenario for retention policy
+		$pol = Get-AzRecoveryServicesBackupProtectionPolicy  -VaultId $vault.ID | Where { $_.Name -match $tierRecommendedPolicy }
+		$pol.RetentionPolicy.IsYearlyScheduleEnabled = $false
+		$pol.RetentionPolicy.MonthlySchedule.DurationCountInMonths = 8
+
+		Assert-ThrowsContains { Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol -RetentionPolicy $pol.RetentionPolicy } `
+		"At least one of monthly or yearly retention should be >= 9 months as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs";
+	}
+	finally
+	{
+		# Cleanup		
+		# Delete policy
+		$pol = Get-AzRecoveryServicesBackupProtectionPolicy  -VaultId $vault.ID | Where { $_.Name -match "Archive" }
+
+		foreach ($policy in $pol){
+		   Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $policy -Force
+		}
+	}
+}
+
 function Test-AzureVMEnhancedPolicy
 {
 	$location = "centraluseuap"
@@ -33,7 +87,6 @@ function Test-AzureVMEnhancedPolicy
 	$vaultName = "hiagaVault"
 	$newEnhPolicyName = "psTestEnhancedPolicy"
 	$scheduleRunTime = "2021-12-22T06:00:00.00+00:00"
-	$subscription = "38304e13-357e-405e-9e9a-220351dcce8c"  # remove
 	
 	try
 	{
@@ -96,7 +149,7 @@ function Test-AzureVMEnhancedPolicy
 
 function Test-AzureVMPolicy
 {
-	$location = "southeastasia"
+	$location = "eastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try

@@ -533,11 +533,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-HOSTPOOLREFERENCE <IScalingHostPoolReference[]>: List of ScalingHostPoolReference definitions.
+`HOSTPOOLREFERENCE <IScalingHostPoolReference[]>`: List of ScalingHostPoolReference definitions.
   - `[HostPoolArmPath <String>]`: Arm path of referenced hostpool.
   - `[ScalingPlanEnabled <Boolean?>]`: Is the scaling plan enabled for this hostpool.
 
-SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
+`SCHEDULE <IScalingSchedule[]>`: List of ScalingSchedule definitions.
   - `[DaysOfWeek <String[]>]`: Set of days of the week on which this schedule is active.
   - `[Name <String>]`: Name of the scaling schedule.
   - `[OffPeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for off-peak period.

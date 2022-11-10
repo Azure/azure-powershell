@@ -12,6 +12,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models
         Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentityInternal
     {
 
+        /// <summary>
+        /// Backing field for <see cref="FederatedIdentityCredentialResourceName" /> property.
+        /// </summary>
+        private string _federatedIdentityCredentialResourceName;
+
+        /// <summary>The name of the federated identity credential resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Owned)]
+        public string FederatedIdentityCredentialResourceName { get => this._federatedIdentityCredentialResourceName; set => this._federatedIdentityCredentialResourceName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -58,6 +67,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models
     public partial interface IManagedServiceIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.IJsonSerializable
     {
+        /// <summary>The name of the federated identity credential resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the federated identity credential resource.",
+        SerializedName = @"federatedIdentityCredentialResourceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string FederatedIdentityCredentialResourceName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Info(
         Required = false,
@@ -105,6 +122,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models
     internal partial interface IManagedServiceIdentityInternal
 
     {
+        /// <summary>The name of the federated identity credential resource.</summary>
+        string FederatedIdentityCredentialResourceName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The name of the Resource Group to which the identity belongs.</summary>

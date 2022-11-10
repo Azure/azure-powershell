@@ -25,11 +25,12 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: List all deleted files or directories from a Filesystem
+```powershell
+Get-AzDataLakeGen2DeletedItem -FileSystem "filesystem1" 
 ```
-PS C:\> Get-AzDataLakeGen2DeletedItem -FileSystem "filesystem1" 
 
-
-   FileSystem Name: filesystem1
+```output
+FileSystem Name: filesystem1
 
 Path                 DeletionId           DeletedOn            RemainingRetentionDays
 ----                 ----------           ---------            ----------------------
@@ -41,11 +42,11 @@ dir0/dir2/file3      132658834534174806   2021-05-19 07:37:33Z 3
 This command lists all deleted files or directories from a Filesystem.
 
 ### Example 2: List all deleted files or directories from a directory
+```powershell
+Get-AzDataLakeGen2DeletedItem -FileSystem "filesystem1" -Path dir0/dir2
 ```
-PS C:\> Get-AzDataLakeGen2DeletedItem -FileSystem "filesystem1" -Path dir0/dir2
-
-
-   FileSystem Name: filesystem1
+```output 
+FileSystem Name: filesystem1
 
 Path                 DeletionId           DeletedOn            RemainingRetentionDays
 ----                 ----------           ---------            ----------------------

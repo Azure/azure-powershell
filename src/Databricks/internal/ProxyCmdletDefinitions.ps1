@@ -20,21 +20,17 @@ Lists all of the available RP operations.
 .Description
 Lists all of the available RP operations.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOperation
 .Link
 https://docs.microsoft.com/powershell/module/az.databricks/get-azdatabricksoperation
 #>
 function Get-AzDatabricksOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -92,6 +88,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Databricks.private\Get-AzDatabricksOperation_List';
         }
@@ -101,6 +98,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -109,17 +107,177 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Creates or updates azure databricks accessConnector.
+.Description
+Creates or updates azure databricks accessConnector.
+.Example
+New-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac -Location eastus
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IAccessConnector
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IAccessConnector
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of the azure databricks accessConnector.
+  [GroupId <String>]: The name of the private link resource
+  [Id <String>]: Resource identity path
+  [PeeringName <String>]: The name of the workspace vNet peering.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [WorkspaceName <String>]: The name of the workspace.
+
+PARAMETER <IAccessConnector>: Information about azure databricks accessConnector.
+  Location <String>: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [IdentityType <IdentityType?>]: The identity type.
+.Link
+https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksaccessconnector
+#>
+function New-AzDatabricksAccessConnector {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IAccessConnector])]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IAccessConnector]
+    # Information about azure databricks accessConnector.
+    # To construct, see NOTES section for PARAMETER properties and create a hash table.
+    ${Parameter},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateViaIdentity = 'Az.Databricks.private\New-AzDatabricksAccessConnector_CreateViaIdentity';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
         throw
     }
 }
 
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -128,24 +286,21 @@ Creates vNet Peering for workspace.
 .Description
 Creates vNet Peering for workspace.
 .Example
-PS C:\> New-AzDatabricksVNetPeering -Name vnetpeering-t01 -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -RemoteVirtualNetworkId '/subscriptions/xxxxxx-xxxx-xxx-xxx/resourceGroups/azure-manual-test/providers/Microsoft.Network/virtualNetworks/vnet-test01'
-
-Name            Type
-----            ----
-vnetpeering-t01
+New-AzDatabricksVNetPeering -Name vnetpeering-t01 -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -RemoteVirtualNetworkId '/subscriptions/xxxxxx-xxxx-xxx-xxx/resourceGroups/azure-manual-test/providers/Microsoft.Network/virtualNetworks/vnet-test01'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IVirtualNetworkPeering
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IVirtualNetworkPeering
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of the azure databricks accessConnector.
   [GroupId <String>]: The name of the private link resource
   [Id <String>]: Resource identity path
   [PeeringName <String>]: The name of the workspace vNet peering.
@@ -167,7 +322,7 @@ VIRTUALNETWORKPEERINGPARAMETER <IVirtualNetworkPeering>: Peerings in a VirtualNe
 https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksvnetpeering
 #>
 function New-AzDatabricksVNetPeering {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IVirtualNetworkPeering])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
@@ -179,7 +334,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IVirtualNetworkPeering]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering]
     # Peerings in a VirtualNetwork resource
     # To construct, see NOTES section for VIRTUALNETWORKPEERINGPARAMETER properties and create a hash table.
     ${VirtualNetworkPeeringParameter},
@@ -251,6 +406,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             CreateViaIdentity = 'Az.Databricks.private\New-AzDatabricksVNetPeering_CreateViaIdentity';
         }
@@ -260,6 +416,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -268,17 +425,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -287,36 +447,24 @@ Creates a new workspace.
 .Description
 Creates a new workspace.
 .Example
-PS C:\> New-AzDatabricksWorkspace -Name workspace3miaeb -ResourceGroupName databricks-rg-rqb2yo -Location eastus -ManagedResourceGroupName databricks-group -Sku standard
-
-Name            ResourceGroupName    Location Managed Resource Group ID
-----            -----------------    -------- -------------------------
-workspace3miaeb databricks-rg-rqb2yo eastus   /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace3miaeb-3c0s2mbgrqv9k
+New-AzDatabricksWorkspace -Name workspace3miaeb -ResourceGroupName databricks-rg-rqb2yo -Location eastus -ManagedResourceGroupName databricks-group -Sku standard
 .Example
-PS C:\> $dlg = New-AzDelegation -Name dbrdl -ServiceName "Microsoft.Databricks/workspaces"
-PS C:\> $rdpRule = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
-PS C:\> $networkSecurityGroup = New-AzNetworkSecurityGroup -ResourceGroupName databricks-rg-rqb2yo -Location eastus -Name nsg-test -SecurityRules $rdpRule
-PS C:\> $privSubnet = New-AzVirtualNetworkSubnetConfig -Name priv-sub -AddressPrefix "10.0.1.0/24" -NetworkSecurityGroup $networkSecurityGroup -Delegation $dlg
-PS C:\> $pubSubnet = New-AzVirtualNetworkSubnetConfig -Name pub-sub  -AddressPrefix "10.0.2.0/24" -NetworkSecurityGroup $networkSecurityGroup -Delegation $dlg
-PS C:\> $testVN = New-AzVirtualNetwork -Name testvn -ResourceGroupName databricks-rg-rqb2yo -Location eastus -AddressPrefix "10.0.0.0/16" -Subnet $privSubnet,$pubSubnet
-PS C:\> New-AzDatabricksWorkspace -Name workspace3miaeb-with-custom-vn -ResourceGroupName databricks-rg-rqb2yo -Location eastus -VirtualNetworkId $testVN.Id -PrivateSubnetName $privSubnet.Name -PublicSubnetName $privSubnet.Name -Sku standard
-
-Name            ResourceGroupName    Location Managed Resource Group ID
-----            -----------------    -------- -------------------------
-workspace3miaeb databricks-rg-rqb2yo eastus   /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace3miaeb-3c0s2mbgrqv9k
+$dlg = New-AzDelegation -Name dbrdl -ServiceName "Microsoft.Databricks/workspaces"
+$rdpRule = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
+$networkSecurityGroup = New-AzNetworkSecurityGroup -ResourceGroupName databricks-rg-rqb2yo -Location eastus -Name nsg-test -SecurityRules $rdpRule
+$privSubnet = New-AzVirtualNetworkSubnetConfig -Name priv-sub -AddressPrefix "10.0.1.0/24" -NetworkSecurityGroup $networkSecurityGroup -Delegation $dlg
+$pubSubnet = New-AzVirtualNetworkSubnetConfig -Name pub-sub  -AddressPrefix "10.0.2.0/24" -NetworkSecurityGroup $networkSecurityGroup -Delegation $dlg
+$testVN = New-AzVirtualNetwork -Name testvn -ResourceGroupName databricks-rg-rqb2yo -Location eastus -AddressPrefix "10.0.0.0/16" -Subnet $privSubnet,$pubSubnet
+New-AzDatabricksWorkspace -Name workspace3miaeb-with-custom-vn -ResourceGroupName databricks-rg-rqb2yo -Location eastus -VirtualNetworkId $testVN.Id -PrivateSubnetName $privSubnet.Name -PublicSubnetName $pubSubnet.Name -Sku standard
 .Example
-PS C:\> New-AzDatabricksWorkspace -Name workspace3miaeb -ResourceGroupName databricks-rg-rqb2yo -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
-
-Name            ResourceGroupName    Location Managed Resource Group ID
-----            -----------------    -------- -------------------------
-workspace3miaeb databricks-rg-rqb2yo eastus   /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace3miaeb-3c0s2mbgrqv9k
+New-AzDatabricksWorkspace -Name workspace3miaeb -ResourceGroupName databricks-rg-rqb2yo -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -327,6 +475,7 @@ AUTHORIZATION <IWorkspaceProviderAuthorization[]>: The workspace provider author
   RoleDefinitionId <String>: The provider's role definition identifier. This role will define all the permissions that the provider must have on the workspace's container resource group. This role definition cannot have permission to delete the resource group.
 
 INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of the azure databricks accessConnector.
   [GroupId <String>]: The name of the private link resource
   [Id <String>]: Resource identity path
   [PeeringName <String>]: The name of the workspace vNet peering.
@@ -380,7 +529,7 @@ PARAMETER <IWorkspace>: Information about workspace.
 https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
 #>
 function New-AzDatabricksWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -432,7 +581,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspaceProviderAuthorization[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspaceProviderAuthorization[]]
     # The workspace provider authorizations.
     # To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
     ${Authorization},
@@ -578,7 +727,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -603,7 +752,7 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace]
     # Information about workspace.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -675,6 +824,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             CreateExpanded = 'Az.Databricks.private\New-AzDatabricksWorkspace_CreateExpanded';
             CreateViaIdentity = 'Az.Databricks.private\New-AzDatabricksWorkspace_CreateViaIdentity';
@@ -688,6 +838,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -696,17 +847,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -715,21 +869,17 @@ Creates vNet Peering for workspace.
 .Description
 Creates vNet Peering for workspace.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IVirtualNetworkPeering
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering
 .Link
 https://docs.microsoft.com/powershell/module/az.databricks/set-azdatabricksvnetpeering
 #>
 function Set-AzDatabricksVNetPeering {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IVirtualNetworkPeering])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -878,6 +1028,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             UpdateExpanded = 'Az.Databricks.private\Set-AzDatabricksVNetPeering_UpdateExpanded';
         }
@@ -890,6 +1041,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -898,17 +1050,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -917,32 +1072,27 @@ Updates a workspace.
 .Description
 Updates a workspace.
 .Example
-PS C:\> $dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspaceopsc46 -Tag @{'key'=1}
-PS C:\> Update-AzDatabricksWorkspace -InputObject $dbr -Tag @{key="value"}
-
-Name            ResourceGroupName    Location Managed Resource Group ID
-----            -----------------    -------- -------------------------
-workspace3miaeb databricks-rg-rqb2yo eastus   /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace3miaeb-3c0s2mbgrqv9k
+$dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspaceopsc46
+Update-AzDatabricksWorkspace -InputObject $dbr -Tag @{key="value"}
 .Example
-PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -PrepareEncryption
-PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -EncryptionKeySource 'Microsoft.KeyVault' -EncryptionKeyVaultUri https://keyvalult-j3kube.vault.azure.net/ -EncryptionKeyName key-p3bjsf -EncryptionKeyVersion 853999da89714fb4a1408681945135fd
-
-Name            ResourceGroupName    Location Managed Resource Group ID
-----            -----------------    -------- -------------------------
-workspace3miaeb databricks-rg-rqb2yo eastus   /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace3miaeb-3c0s2mbgrqv9k
+Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -PrepareEncryption
+Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -EncryptionKeySource 'Microsoft.KeyVault' -EncryptionKeyVaultUri https://keyvalult-j3kube.vault.azure.net/ -EncryptionKeyName key-p3bjsf -EncryptionKeyVersion 853999da89714fb4a1408681945135fd
 .Example
-PS C:\> Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -EncryptionKeySource 'Default'
+Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -EncryptionKeySource 'Default'
+.Example
+Update-AzDatabricksWorkspace -ResourceGroupName lucas-rg-test -Name databricks-t01 -RequiredNsgRule 'NoAzureDatabricksRules'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of the azure databricks accessConnector.
   [GroupId <String>]: The name of the private link resource
   [Id <String>]: Resource identity path
   [PeeringName <String>]: The name of the workspace vNet peering.
@@ -954,7 +1104,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.databricks/update-azdatabricksworkspace
 #>
 function Update-AzDatabricksWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -987,7 +1137,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspaceUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspaceUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -1059,6 +1209,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             UpdateExpanded = 'Az.Databricks.private\Update-AzDatabricksWorkspace_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Databricks.private\Update-AzDatabricksWorkspace_UpdateViaIdentityExpanded';
@@ -1072,6 +1223,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -1080,15 +1232,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

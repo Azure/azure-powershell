@@ -29,6 +29,8 @@ Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
 Get-AzADServicePrincipal -ApplicationId $appId
 .Example
 Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
+.Example
+Get-AzADServicePrincipal -Filter "startsWith(DisplayName,'some-name')"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -195,8 +197,14 @@ param(
 
     [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # Include count of items
+    ${Count},
+
+    [Parameter(ParameterSetName='EmptyParameterSet')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.String]
-    # Filter items by property values
+    # Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
     ${Filter},
 
     [Parameter(ParameterSetName='EmptyParameterSet')]

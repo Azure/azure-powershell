@@ -20,7 +20,7 @@ Deletes a ResourceGuard resource from the resource group.
 .Description
 Deletes a ResourceGuard resource from the resource group.
 .Example
-PS C:\> Remove-AzDataProtectionResourceGuard -Name "ResourceGuardName" -ResourceGroupName "ResourceGroupName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" 
+Remove-AzDataProtectionResourceGuard -Name "ResourceGuardName" -ResourceGroupName "ResourceGroupName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -45,7 +45,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription Id.
   [VaultName <String>]: The name of the backup vault.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionresourceguard
+https://learn.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionresourceguard
 #>
 function Remove-AzDataProtectionResourceGuard {
 [OutputType([System.Boolean])]

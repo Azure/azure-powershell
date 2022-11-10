@@ -1,0 +1,59 @@
+{
+    "resourceType":"virtualMachineScaleSets/virtualMachines/runCommands",
+    "apiVersion":"2021-07-01",
+    "learnMore":{
+       "url":"https://learn.microsoft.com/powershell/module/az.compute/#vm-scale-sets"
+    },
+    "commands":[
+       {
+          "name":"Get-AzVmssVMRunCommand",
+          "description":"The operation to get the VMSS VM run command.",
+          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}",
+          "confirmation":false,
+          "help":{
+             "learnMore":{
+                "url":"https://learn.microsoft.com/powershell/module/az.compute/get-azvmssvmruncommand"
+             },
+             "parameterSets":[
+                {
+                   "parameters":[
+                      "[-SubscriptionId <String[]>]",
+                      "-ResourceGroupName <String>",
+                      "-InstanceId <String>",
+                      "-RunCommandName <String>",
+                      "-VMScaleSetName <String>",
+                      "[-Expand <String>]"
+                   ]
+                }
+             ]
+          },
+          "examples":[
+             {
+                "description":"The operation to get the VMSS VM run command.",
+                "parameters":[
+                   {
+                      "name":"-SubscriptionId",
+                      "value":"[path.subscriptionId]"
+                   },
+                   {
+                      "name":"-ResourceGroupName",
+                      "value":"[path.resourceGroupName]"
+                   },
+                   {
+                      "name":"-VMScaleSetName",
+                      "value":"[path.vmScaleSetName]"
+                   },
+                   {
+                      "name":"-InstanceId",
+                      "value":"[path.instanceId]"
+                   },
+                   {
+                      "name":"-RunCommandName",
+                      "value":"[path.runCommandName]"
+                   }
+                ]
+             }
+          ]
+       }
+    ]
+ }

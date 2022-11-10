@@ -20,14 +20,14 @@ Gets a job with id in a backup vault
 .Description
 Gets a job with id in a backup vault
 .Example
-Get-AzDataProtectionjob -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault
+Get-AzDataProtectionJob -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName sarath-rg -VaultName sarath-vault
 .Example
-Get-AzDataProtectionjob -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -Id 4abaea8c-f53a-4bb1-9963-59f96b597165
+Get-AzDataProtectionJob -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -Id 4abaea8c-f53a-4bb1-9963-59f96b597165
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IAzureBackupJobResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupJobResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,10 +47,10 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription Id.
   [VaultName <String>]: The name of the backup vault.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionjob
+https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionjob
 #>
 function Get-AzDataProtectionJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IAzureBackupJobResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupJobResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

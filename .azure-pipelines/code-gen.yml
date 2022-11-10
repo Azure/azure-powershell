@@ -1,0 +1,105 @@
+# Variable 'BotAccessToken' was defined in the Variables tab
+# Multi-job configuration must be converted to matrix strategy: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml#multi-job-configuration
+parameters:
+- name: TargetBranch
+  displayName: Branch this module will generated to
+  type: string
+  default: main
+- name: ServiceName
+  displayName: Service to generate
+  type: string
+  default: Databricks
+
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: refs/heads/generation
+jobs:
+- job: Job_1
+  displayName: "Service: ${{ parameters.ServiceName }}"
+  timeoutInMinutes: 90
+  pool:
+    name: pool-windows-2019
+  steps:
+  - checkout: self
+  - task: NodeTool@0
+    displayName: Use Node 14.15.5
+    inputs:
+      versionSpec: 14.15.5
+  - task: Npm@1
+    displayName: Install autorest
+    inputs:
+      command: custom
+      verbose: false
+      customCommand: install -g  autorest@latest
+  - task: PowerShell@2
+    displayName: Generate
+    inputs:
+      targetType: inline
+      script: >-
+        $subModuleFolders =  Get-ChildItem -Directory -Filter *.Autorest;
+
+        if ($subModuleFolders -eq $null) {
+          autorest --max-memory-size=8192;
+        } else {
+          $subModuleFolders | foreach-object { cd $_.FullName; autorest --max-memory-size=8192};
+        }
+      workingDirectory: src/${{ parameters.ServiceName }}
+
+  - task: PowerShell@2
+    displayName: Build
+    inputs:
+      targetType: inline
+      script: >-
+        $subModuleFolders =  Get-ChildItem -Directory -Filter *.Autorest;
+
+        if ($subModuleFolders -eq $null) {
+          ./build-module.ps1;
+        } else {
+          $subModuleFolders | foreach-object { cd $_.FullName; ./build-module.ps1; cd ..}
+        }
+
+        mkdir ../../artifacts/src/${{ parameters.ServiceName }};
+
+        cp -r ./* ../../artifacts/src/${{ parameters.ServiceName }};
+      pwsh: true
+      workingDirectory: src/${{ parameters.ServiceName }}
+  - task: PowerShell@2
+    displayName: Checkout main branch
+    inputs:
+      targetType: inline
+      script: >-
+        if ((Test-Path src/${{ parameters.ServiceName }}))
+        {
+          rm -r src/${{ parameters.ServiceName }};
+        }
+        git checkout src/${{ parameters.ServiceName }};
+        git checkout -b codegen/${{ parameters.ServiceName }} origin/${{ parameters.TargetBranch }};
+  - pwsh: |
+      #Uninstall-Module -Name PackageManagement -AllVersions
+      Install-Module -Name PowerShellGet -RequiredVersion 2.2.3 -Force;
+      Install-Module -Name platyPS -RequiredVersion 0.14.2 -Force;
+      Install-Module -Name Az.Accounts -Force;
+      Import-Module .\tools\Gen2Master\MoveFromGeneration2Master.ps1;
+      $subModuleFolders = Get-ChildItem .\artifacts\src\${{ parameters.ServiceName }} -Directory -Filter *.Autorest;
+      if ($subModuleFolders -eq $null) {
+        Move-Generation2Master -SourcePath .\artifacts\src\${{ parameters.ServiceName }} -DestPath .\src\${{ parameters.ServiceName }};
+      } else {
+        Move-Generation2MasterHybrid -SourcePath .\artifacts\src\${{ parameters.ServiceName }} -DestPath .\src\${{ parameters.ServiceName }};
+      }
+      git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
+      git config user.name "azure-powershell-bot";
+      git add ./src;
+      git add tools/CreateMappings_rules.json;
+      git commit -m "Move ${{ parameters.ServiceName }} to ${{ parameters.TargetBranch }}";
+      git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git;
+      git push origin codegen/${{ parameters.ServiceName }} --force;
+    displayName: Create codegen/${{ parameters.ServiceName }} branch
+  - pwsh: |
+      $Title = "Migrate ${{ parameters.ServiceName }} from generation to ${{ parameters.TargetBranch }}"
+      $HeadBranch = "codegen/${{ parameters.ServiceName }}"
+      $BaseBranch = "${{ parameters.TargetBranch }}"
+      $Description = "Migrate ${{ parameters.ServiceName }} from generation to ${{ parameters.TargetBranch }}"
+      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(BotAccessToken) -Description $Description
+    displayName: Create PR to main branch

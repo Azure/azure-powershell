@@ -23,6 +23,9 @@ The **New-AzStorageLocalUserSshPublicKey** cmdlet creates a SSH public key objec
 ## EXAMPLES
 
 ### Example 1: Create SSH public key objects, then create or update local user with the SSH public key objects.
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
 

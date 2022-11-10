@@ -25,6 +25,8 @@ Get-AzADGroup -DisplayName $gname
 Get-AzADGroup -First 10
 .Example
 Get-AzADGroup -ObjectId $id -Select groupTypes -AppendSelected
+.Example
+Get-AzADGroup -Filter "startsWith(DisplayName,'some-name')"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -35,6 +37,12 @@ function Get-AzADGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup])]
 [CmdletBinding(DefaultParameterSetName='EmptyParameterSet', PositionalBinding=$false)]
 param(
+    [Parameter(ParameterSetName='EmptyParameterSet')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # Include count of items
+    ${Count},
+
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -52,7 +60,7 @@ param(
     [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
-    # Filter items by property values
+    # Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
     ${Filter},
 
     [Parameter(ParameterSetName='EmptyParameterSet')]

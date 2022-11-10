@@ -27,12 +27,12 @@ $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -R
 Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -BackupInstanceName $instance[2].Name -Id 892e5c5014dc4a96807d22924f5745c9
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IAzureBackupRecoveryPointResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupRecoveryPointResource
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionrecoverypoint
+https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionrecoverypoint
 #>
 function Get-AzDataProtectionRecoveryPoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IAzureBackupRecoveryPointResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupRecoveryPointResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

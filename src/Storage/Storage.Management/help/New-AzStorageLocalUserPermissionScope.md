@@ -23,6 +23,9 @@ The **New-AzStorageLocalUserPermissionScope** cmdlet creates a permission scope 
 ## EXAMPLES
 
 ### Example 1: Create permission scope objects, then create or update local user with the permission scope objects.
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $permissionScope1 = New-AzStorageLocalUserPermissionScope -Permission rw -Service blob -ResourceName container1 
 

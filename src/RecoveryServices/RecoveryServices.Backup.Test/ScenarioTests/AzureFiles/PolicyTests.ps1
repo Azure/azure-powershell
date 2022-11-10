@@ -12,13 +12,14 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$location = "southeastasia"
-$resourceGroupName = "pstestrg8895"
-$vaultName = "pstestrsv8895"
+$location = "eastasia" #"southeastasia"
+$resourceGroupName = "afs-pstest-rg" #"pstestrg8895"
+$vaultName = "afs-pstest-vault" # "pstestrsv8895"
 $fileShareFriendlyName = "fs1"
-$fileShareName = "AzureFileShare;fs1"
-$saName = "pstestsa8895"
 $skuName="Standard_LRS"
+$saName = "afspstestsa"
+$saRgName = "afs-pstest-rg" # "pstestrg8895"
+$fileShareName = "azurefileshare;7f34af6cfe2f3f3204cfd4d18cd6b37f7dec2c84a2d759ffab3d1367f9e17356" #"AzureFileShare;fs1"
 $newPolicyName = "newFilePolicy"
 $newHourlyPolicyName = "afsHourlyPolicy"
 $scheduleWindowStartTime = "2021-12-22T06:00:00.00+00:00"

@@ -7,6 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api10
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Extensions;
 
+    /// <summary>
+    /// Common fields that are returned in the response for all Azure Resource Manager resources
+    /// </summary>
     public partial class Resource :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api10.IResource,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api10.IResourceInternal
@@ -16,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api10
         private string _id;
 
         /// <summary>
-        /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Owned)]
         public string Id { get => this._id; }
@@ -41,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api10
         private string _type;
 
         /// <summary>
-        /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Owned)]
         public string Type { get => this._type; }
@@ -52,16 +55,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api10
 
         }
     }
+    /// Common fields that are returned in the response for all Azure Resource Manager resources
     public partial interface IResource :
         Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Info(
         Required = false,
         ReadOnly = true,
-        Description = @"Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}",
+        Description = @"Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get;  }
@@ -74,28 +78,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api10
         PossibleTypes = new [] { typeof(string) })]
         string Name { get;  }
         /// <summary>
-        /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.Info(
         Required = false,
         ReadOnly = true,
-        Description = @"The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.",
+        Description = @"The type of the resource. E.g. ""Microsoft.Compute/virtualMachines"" or ""Microsoft.Storage/storageAccounts""",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         string Type { get;  }
 
     }
+    /// Common fields that are returned in the response for all Azure Resource Manager resources
     internal partial interface IResourceInternal
 
     {
         /// <summary>
-        /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </summary>
         string Id { get; set; }
         /// <summary>The name of the resource</summary>
         string Name { get; set; }
         /// <summary>
-        /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         string Type { get; set; }
 

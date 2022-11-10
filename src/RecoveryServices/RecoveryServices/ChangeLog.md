@@ -19,6 +19,30 @@
 -->
 ## Upcoming Release
 
+## Version 6.1.0
+* Added support for cross zonal restore for ZRS vaults for non-ZonePinned VM
+* Fixed bug with Update-AzRecoveryServicesAsrProtectionContainerMapping
+* Added new scenarios: EZ-to-AZ, EZ-to-AZ, EZ-to-EZ
+* Removed `VmName` from non A2A scenarios of `New-AzRecoveryServicesAsrReplicationProtectedItem` as it is not applicable
+
+## Version 6.0.0
+* [Breaking Change] Added fix for Enable-AzRecoveryServicesBackupProtection cmdlet. Resolved the null reference issue by making policy a mandatory parameter.
+* [Breaking Change] Removed status filter from Get-AzRecoveryServicesBackupContainer command
+* Added SubTasks Duration for IaasVM job
+
+## Version 5.6.1
+* Removed AFEC feature check for Archive smart tiering
+
+## Version 5.6.0
+* Added support for Archive smart tiering for AzureVM and MSSQL workloads.
+
+## Version 5.5.0
+* Fixed GetAzRecoveryServicesVaultSettingsFile cmdlet used for downloading vault credential file.
+* Fixed issue in Disable-AzRecoveryServicesBackupProtection cmdlet.
+* Fixed issue in Enable-AzRecoveryServicesBackupProtection cmdlet.
+* Fixed output container in re-registration scenario for Register-AzRecoveryServicesBackupContainer cmdlet.
+* Added support for Enabling/Disabling the azure monitor and classic alerts for recovery services vault.
+
 ## Version 5.4.1
 * Fixed delay in long running operations [#18567]
 

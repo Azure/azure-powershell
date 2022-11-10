@@ -46,6 +46,18 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string GitRepository = "Git Repository Settings. Connect workspace to the repository for source control and collaboration for work on your workspace pipelines";
 
+        public const string PublicNetworkAccess = "Enable or Disable public network access to workspace. Possible values include: 'Enabled', 'Disabled'";
+
+        public const string UserAssignedIdentityAction = 
+@"Action must be specified when you add/remove/set user assigned managed identities for workspace. 
+The supported actions are:
+Add
+Remove
+Set
+Add means to add user assigned managed identities for workspace, Remove means to remove user assigned managed identities from workspace, Set can be used when you want to add and remove user assigned managed identities at the same time, current identities will be coverd by specified ones.";
+
+        public const string UserAssignedIdentityId = "User assigned managed identity Id for workspace.";
+
         public const string RepositoryType = "Select the repository type that you want to use to store your artifacts for this Synapse Analytics workspace, the type include DevOps and GitHub.";
 
         public const string HostName = "GitHub Enterprise host name. For example: https://github.mydomain.com";
@@ -91,6 +103,12 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public const string DisableAutoPause = "Indicates whether Auto-pause should be disabled.";
 
         public const string AutoPauseDelayInMinute = "Number of minutes idle. This parameter can be specified when Auto-pause is enabled. If it is not specified manually, the default value will be " + SynapseConstants.DefaultAutoPauseDelayInMinute + ".";
+
+        public const string EnableDynamicExecutorAllocation = "Indicates whether dynamic executor allocation should be enabled.";
+
+        public const string MinExecutorCount = "Minimum number of executors to be allocated in the specified Spark pool. This parameter can be specified when DynamicExecutorAllocation is enabled. The value should lie between 1 (inclusive) and maxExecutors (exclusive). If it is not specified manually, the default value will be " + SynapseConstants.DefaultMinExecutorCount + "."; 
+
+        public const string MaxExecutorCount = "Maximum number of executors to be allocated in the specified Spark pool. This parameter can be specified when DynamicExecutorAllocation is enabled. The value should lie between 1 (inclusive) and maximumNodeCount (exclusive). If it is not specified manually, the default value will be " + SynapseConstants.DefaultMaxExecutorCount + ".";
 
         public const string SparkVersion = "Apache Spark version. Allowed values: 2.3,2.4,3.1,3.2";
 
@@ -478,6 +496,10 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string EncryptionKeyName = "The workspace encryption key name.";
 
         public const string EncryptionKeyIdentifier = "Key identifier should be in the format of: https://{keyvaultname}.vault.azure.net/keys/{keyname}.";
+
+        public const string UserAssignedIdentityInEncryption = "User assigned identity resource Id used in Workspace Encryption";
+
+        public const string UseSystemAssignedIdentityInEncryption = "specifying whether to use system assigned identity in Workspace Encryption or not";
 
         public const string WorkspaceKeyName = "The name of the workspace key.";
 

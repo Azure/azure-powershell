@@ -24,12 +24,12 @@ This object is provided as an input to the Set-AzMigrateServerReplication cmdlet
 New-AzMigrateNicMapping -NicID a2399354-653a-464e-a567-d30ef5467a31 -TargetNicSelectionType primary -TargetNicIP "172.17.1.17"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtNicInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput
 .Link
 https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
 #>
 function New-AzMigrateNicMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtNicInput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput])]
 [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -61,7 +61,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the IP within the destination subnet to be used for the NIC.
-    ${TargetNicIP}
+    ${TargetNicIP},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Subnet name for the NIC in the destination Virtual Network to which the server needs to be test migrated.
+    ${TestNicSubnet},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the IP within the destination test subnet to be used for the NIC.
+    ${TestNicIP}
 )
 
 begin {

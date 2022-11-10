@@ -20,16 +20,14 @@ Returns a ResourceGuard belonging to a resource group.
 .Description
 Returns a ResourceGuard belonging to a resource group.
 .Example
-PS C:\> $resGuard = Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "RGName" -Name "ResourceGuardName"
-PS C:\> $resGuard
+Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "RGName" -Name "ResourceGuardName"
 .Example
-PS C:\> $resGuardList = Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "RGName"
-PS C:\> $resGuardList
+Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "RGName"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IResourceGuardResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IResourceGuardResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -49,10 +47,10 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription Id.
   [VaultName <String>]: The name of the backup vault.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionresourceguard
+https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionresourceguard
 #>
 function Get-AzDataProtectionResourceGuard {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IResourceGuardResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IResourceGuardResource])]
 [CmdletBinding(DefaultParameterSetName='Get1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

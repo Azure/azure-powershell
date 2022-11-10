@@ -6,9 +6,9 @@ Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName
 ```output
 Name              Location    PublicNetworkAccess ProvisioningState
 ----              --------    ------------------- ----------------- 
-name1 		eastus2euap Enabled             Succeeded 	 
-name2		eastus2euap Disabled            Succeeded        
-name3		eastus2euap Enabled             Succeeded         
+name1             eastus2euap Enabled             Succeeded
+name2             eastus2euap Disabled            Succeeded
+name3             eastus2euap Enabled             Succeeded
 ```
 Lists all private link scopes in a specified resource group
 
@@ -20,6 +20,6 @@ Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName
 ```output
 Name         Location    PublicNetworkAccess ProvisioningState
 ----         --------    ------------------- -----------------
-name1	     eastus2euap Enabled             Succeeded         
+name1        eastus2euap Enabled             Succeeded
 ```
 Gets a private link scope in a specified resource group by name

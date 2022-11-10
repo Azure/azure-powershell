@@ -93,6 +93,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var firstList = new List<string> { Guid.NewGuid().ToString() };
             var subscriptionList = new Queue<List<string>>();
             subscriptionList.Enqueue(firstList);
+
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
 
             MockSubscriptionClientFactory.TenantListQueueVerLatest = new Queue<Func<AzureOperationResponse<IPage<TenantIdDescription>>>>();
@@ -157,6 +159,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var firstList = new List<string> { Guid.NewGuid().ToString() };
             var subscriptionList = new Queue<List<string>>();
             subscriptionList.Enqueue(firstList);
+
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
 
             MockSubscriptionClientFactory.SubGetQueueVerLatest = new Queue<Func<AzureOperationResponse<Subscription>>>();
@@ -223,6 +227,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subscriptionList = new Queue<List<string>>();
             subscriptionList.Enqueue(firstList);
             subscriptionList.Enqueue(secondList);
+
+            MockSubscriptionClientFactory.Reset();
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
 
             MockSubscriptionClientFactory.SubListQueueVerLatest = new Queue<Func<AzureOperationResponse<IPage<Subscription>>>>();

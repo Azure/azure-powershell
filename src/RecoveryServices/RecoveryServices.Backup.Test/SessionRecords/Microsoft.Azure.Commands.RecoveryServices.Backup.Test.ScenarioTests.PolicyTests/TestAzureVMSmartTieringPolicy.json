@@ -1,0 +1,1265 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault?api-version=2022-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0P2FwaS12ZXJzaW9uPTIwMjItMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "25f5d6a7-b183-4bcf-b38e-09ce72fb6213"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.3.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "02012f92-1658-465c-a377-07ad8c4538d0"
+        ],
+        "x-ms-client-request-id": [
+          "25f5d6a7-b183-4bcf-b38e-09ce72fb6213"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "02012f92-1658-465c-a377-07ad8c4538d0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064247Z:02012f92-1658-465c-a377-07ad8c4538d0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:42:47 GMT"
+        ],
+        "Content-Length": [
+          "1266"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"hiagaVault\",\r\n  \"etag\": \"W/\\\"datetime'2022-08-16T05%3A34%3A28.7009731Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"608ca1e9-e854-46c6-984f-d812d0e657e6\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/hiagaczr-rg/providers/microsoft.managedidentity/userassignedidentities/hiagauseridentity\": {\r\n        \"clientId\": \"05a1da4a-ee20-42b9-94de-72175caa42bb\",\r\n        \"principalId\": \"af96ebe9-5ed3-4753-9849-c314ddc1150c\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V2\",\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"monitoringSettings\": {\r\n      \"azureMonitorAlertSettings\": {\r\n        \"alertsForAllJobFailures\": \"Enabled\"\r\n      },\r\n      \"classicAlertSettings\": {\r\n        \"alertsForCriticalOperations\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDIyLTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9a9d31dd-2e38-4779-ba8f-a681969a4d2b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "3ddfa1b5-d8a0-4651-94ee-4ccc271700ab"
+        ],
+        "x-ms-client-request-id": [
+          "9a9d31dd-2e38-4779-ba8f-a681969a4d2b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "299"
+        ],
+        "x-ms-correlation-request-id": [
+          "3ddfa1b5-d8a0-4651-94ee-4ccc271700ab"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064250Z:3ddfa1b5-d8a0-4651-94ee-4ccc271700ab"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:42:49 GMT"
+        ],
+        "Content-Length": [
+          "2"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDIyLTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9a9d31dd-2e38-4779-ba8f-a681969a4d2b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "6a43e986-d713-4dc5-98cd-5d5f4af0768d"
+        ],
+        "x-ms-client-request-id": [
+          "9a9d31dd-2e38-4779-ba8f-a681969a4d2b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "298"
+        ],
+        "x-ms-correlation-request-id": [
+          "6a43e986-d713-4dc5-98cd-5d5f4af0768d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064252Z:6a43e986-d713-4dc5-98cd-5d5f4af0768d"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:42:51 GMT"
+        ],
+        "Content-Length": [
+          "1415"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm\",\r\n  \"name\": \"hiagaVMArchiveTierRecomm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"policyType\": \"V2\",\r\n    \"instantRPDetails\": {},\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Weekly\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"scheduleRunTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ]\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 104,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 60,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [\r\n          \"January\"\r\n        ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 10,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"TierRecommended\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDIyLTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4d025e82-e57d-4602-b3d4-dc3bc8f5c305"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "d5dafe32-8328-40b4-9d08-d2900080e889"
+        ],
+        "x-ms-client-request-id": [
+          "4d025e82-e57d-4602-b3d4-dc3bc8f5c305"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "299"
+        ],
+        "x-ms-correlation-request-id": [
+          "d5dafe32-8328-40b4-9d08-d2900080e889"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064304Z:d5dafe32-8328-40b4-9d08-d2900080e889"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:43:03 GMT"
+        ],
+        "Content-Length": [
+          "1415"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm\",\r\n  \"name\": \"hiagaVMArchiveTierRecomm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"policyType\": \"V2\",\r\n    \"instantRPDetails\": {},\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Weekly\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"scheduleRunTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ]\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 104,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 60,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [\r\n          \"January\"\r\n        ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 10,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"TierRecommended\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDIyLTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "81841ca7-330b-4be1-a2be-943bca5238f1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "1608178c-9527-4520-98c7-4147f1766505"
+        ],
+        "x-ms-client-request-id": [
+          "81841ca7-330b-4be1-a2be-943bca5238f1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "299"
+        ],
+        "x-ms-correlation-request-id": [
+          "1608178c-9527-4520-98c7-4147f1766505"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064308Z:1608178c-9527-4520-98c7-4147f1766505"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:43:08 GMT"
+        ],
+        "Content-Length": [
+          "1409"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm\",\r\n  \"name\": \"hiagaVMArchiveTierRecomm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"policyType\": \"V2\",\r\n    \"instantRPDetails\": {},\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Weekly\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"scheduleRunTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ]\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 104,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 60,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [\r\n          \"January\"\r\n        ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 10,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"DoNotTier\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDIyLTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1c7d6a29-4c93-4f61-8eed-18e616c60d17"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "710a5d1b-5a4a-4aee-96f4-071bc3fbde8c"
+        ],
+        "x-ms-client-request-id": [
+          "1c7d6a29-4c93-4f61-8eed-18e616c60d17"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "299"
+        ],
+        "x-ms-correlation-request-id": [
+          "710a5d1b-5a4a-4aee-96f4-071bc3fbde8c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064317Z:710a5d1b-5a4a-4aee-96f4-071bc3fbde8c"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:43:17 GMT"
+        ],
+        "Content-Length": [
+          "1415"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm\",\r\n  \"name\": \"hiagaVMArchiveTierRecomm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"policyType\": \"V2\",\r\n    \"instantRPDetails\": {},\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Weekly\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"scheduleRunTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ]\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 104,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 60,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [\r\n          \"January\"\r\n        ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 10,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"TierRecommended\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDIyLTAyLTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9a9d31dd-2e38-4779-ba8f-a681969a4d2b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1889"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Weekly\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"scheduleRunTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ]\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 104,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 60,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [\r\n          \"January\"\r\n        ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 10,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"TierRecommended\"\r\n      }\r\n    },\r\n    \"instantRpRetentionRangeInDays\": 7,\r\n    \"timeZone\": \"UTC\",\r\n    \"policyType\": \"V2\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "e5af7e4b-0514-4c1f-85b4-d9dc1eeced82"
+        ],
+        "x-ms-client-request-id": [
+          "9a9d31dd-2e38-4779-ba8f-a681969a4d2b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "e5af7e4b-0514-4c1f-85b4-d9dc1eeced82"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064251Z:e5af7e4b-0514-4c1f-85b4-d9dc1eeced82"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:42:50 GMT"
+        ],
+        "Content-Length": [
+          "1415"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm\",\r\n  \"name\": \"hiagaVMArchiveTierRecomm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"policyType\": \"V2\",\r\n    \"instantRPDetails\": {},\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Weekly\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"scheduleRunTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ]\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 104,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 60,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [\r\n          \"January\"\r\n        ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 10,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"TierRecommended\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDIyLTAyLTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4d025e82-e57d-4602-b3d4-dc3bc8f5c305"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1871"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"instantRPDetails\": {},\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Weekly\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"scheduleRunTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ]\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 104,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 60,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [\r\n          \"January\"\r\n        ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 10,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"DoNotTier\"\r\n      }\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"policyType\": \"V2\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "57c76d20-f0f9-45cd-8d60-acf6a59f050b"
+        ],
+        "x-ms-client-request-id": [
+          "4d025e82-e57d-4602-b3d4-dc3bc8f5c305"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "57c76d20-f0f9-45cd-8d60-acf6a59f050b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064307Z:57c76d20-f0f9-45cd-8d60-acf6a59f050b"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:43:06 GMT"
+        ],
+        "Content-Length": [
+          "1409"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm\",\r\n  \"name\": \"hiagaVMArchiveTierRecomm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"policyType\": \"V2\",\r\n    \"instantRPDetails\": {},\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Weekly\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"scheduleRunTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ]\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 104,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 60,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [\r\n          \"January\"\r\n        ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 10,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"DoNotTier\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDIyLTAyLTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "81841ca7-330b-4be1-a2be-943bca5238f1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1877"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"instantRPDetails\": {},\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Weekly\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"scheduleRunTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ]\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 104,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 60,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [\r\n          \"January\"\r\n        ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 10,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"TierRecommended\"\r\n      }\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"policyType\": \"V2\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "531fbd25-7222-4129-a31f-eefa5539922e"
+        ],
+        "x-ms-client-request-id": [
+          "81841ca7-330b-4be1-a2be-943bca5238f1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "531fbd25-7222-4129-a31f-eefa5539922e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064311Z:531fbd25-7222-4129-a31f-eefa5539922e"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:43:11 GMT"
+        ],
+        "Content-Length": [
+          "1415"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm\",\r\n  \"name\": \"hiagaVMArchiveTierRecomm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"policyType\": \"V2\",\r\n    \"instantRPDetails\": {},\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Weekly\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"scheduleRunTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ]\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 104,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 60,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [\r\n          \"January\"\r\n        ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 10,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"TierRecommended\",\r\n        \"duration\": 0,\r\n        \"durationType\": \"Invalid\"\r\n      }\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjItMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d6fcd4bd-1111-49b0-b344-909d747bb2fe"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "850bf7fc-65d1-46d7-ab75-43ac9858317a"
+        ],
+        "x-ms-client-request-id": [
+          "d6fcd4bd-1111-49b0-b344-909d747bb2fe"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "298"
+        ],
+        "x-ms-correlation-request-id": [
+          "850bf7fc-65d1-46d7-ab75-43ac9858317a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064255Z:850bf7fc-65d1-46d7-ab75-43ac9858317a"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:42:55 GMT"
+        ],
+        "Content-Length": [
+          "2"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjItMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6a5d6b0f-8a1f-4458-ba5a-d46b0eae0236"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "d9ee383b-3ccc-464e-a958-78daa9e76d01"
+        ],
+        "x-ms-client-request-id": [
+          "6a5d6b0f-8a1f-4458-ba5a-d46b0eae0236"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "299"
+        ],
+        "x-ms-correlation-request-id": [
+          "d9ee383b-3ccc-464e-a958-78daa9e76d01"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064259Z:d9ee383b-3ccc-464e-a958-78daa9e76d01"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:42:58 GMT"
+        ],
+        "Content-Length": [
+          "2"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjItMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6a5d6b0f-8a1f-4458-ba5a-d46b0eae0236"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "77daef0d-2da9-4e4c-a562-63c85f538307"
+        ],
+        "x-ms-client-request-id": [
+          "6a5d6b0f-8a1f-4458-ba5a-d46b0eae0236"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "298"
+        ],
+        "x-ms-correlation-request-id": [
+          "77daef0d-2da9-4e4c-a562-63c85f538307"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064301Z:77daef0d-2da9-4e4c-a562-63c85f538307"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:43:00 GMT"
+        ],
+        "Content-Length": [
+          "1406"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter\",\r\n  \"name\": \"hiagaVMArchiveTierAfter\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"policyType\": \"V2\",\r\n    \"instantRPDetails\": {},\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Weekly\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"scheduleRunTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ]\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 104,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 60,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [\r\n          \"January\"\r\n        ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 10,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"TierAfter\",\r\n        \"duration\": 3,\r\n        \"durationType\": \"Months\"\r\n      }\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjItMDItMDE=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6a5d6b0f-8a1f-4458-ba5a-d46b0eae0236"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1942"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Weekly\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"scheduleRunTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ]\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 104,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 60,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [\r\n          \"January\"\r\n        ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 10,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"TierAfter\",\r\n        \"duration\": 3,\r\n        \"durationType\": \"Months\"\r\n      }\r\n    },\r\n    \"instantRpRetentionRangeInDays\": 7,\r\n    \"timeZone\": \"UTC\",\r\n    \"policyType\": \"V2\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "41b3f560-4dc4-43c1-ac4e-a54cc95dac5d"
+        ],
+        "x-ms-client-request-id": [
+          "6a5d6b0f-8a1f-4458-ba5a-d46b0eae0236"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "41b3f560-4dc4-43c1-ac4e-a54cc95dac5d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064301Z:41b3f560-4dc4-43c1-ac4e-a54cc95dac5d"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:43:00 GMT"
+        ],
+        "Content-Length": [
+          "1406"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter\",\r\n  \"name\": \"hiagaVMArchiveTierAfter\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"policyType\": \"V2\",\r\n    \"instantRPDetails\": {},\r\n    \"schedulePolicy\": {\r\n      \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n      \"scheduleRunFrequency\": \"Weekly\",\r\n      \"weeklySchedule\": {\r\n        \"scheduleRunDays\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"scheduleRunTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ]\r\n      }\r\n    },\r\n    \"retentionPolicy\": {\r\n      \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n      \"weeklySchedule\": {\r\n        \"daysOfTheWeek\": [\r\n          \"Sunday\"\r\n        ],\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 104,\r\n          \"durationType\": \"Weeks\"\r\n        }\r\n      },\r\n      \"monthlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 60,\r\n          \"durationType\": \"Months\"\r\n        }\r\n      },\r\n      \"yearlySchedule\": {\r\n        \"retentionScheduleFormatType\": \"Weekly\",\r\n        \"monthsOfYear\": [\r\n          \"January\"\r\n        ],\r\n        \"retentionScheduleWeekly\": {\r\n          \"daysOfTheWeek\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"weeksOfTheMonth\": [\r\n            \"First\"\r\n          ]\r\n        },\r\n        \"retentionTimes\": [\r\n          \"2022-09-26T05:30:00Z\"\r\n        ],\r\n        \"retentionDuration\": {\r\n          \"count\": 10,\r\n          \"durationType\": \"Years\"\r\n        }\r\n      }\r\n    },\r\n    \"tieringPolicy\": {\r\n      \"ArchivedRP\": {\r\n        \"tieringMode\": \"TierAfter\",\r\n        \"duration\": 3,\r\n        \"durationType\": \"Months\"\r\n      }\r\n    },\r\n    \"timeZone\": \"UTC\",\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjItMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "883b0d53-b7f1-4ebd-a7e1-60a77770125f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "a751603f-66be-4253-91e7-452fa3bc35e7"
+        ],
+        "x-ms-client-request-id": [
+          "883b0d53-b7f1-4ebd-a7e1-60a77770125f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "299"
+        ],
+        "x-ms-correlation-request-id": [
+          "a751603f-66be-4253-91e7-452fa3bc35e7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064302Z:a751603f-66be-4253-91e7-452fa3bc35e7"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:43:02 GMT"
+        ],
+        "Content-Length": [
+          "10285"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/HourlyLogBackup\",\r\n      \"name\": \"HourlyLogBackup\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLDataBase\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"Full\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Daily\",\r\n              \"scheduleRunTimes\": [\r\n                \"2021-07-20T23:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"dailySchedule\": {\r\n                \"retentionTimes\": [\r\n                  \"2021-07-20T23:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 30,\r\n                  \"durationType\": \"Days\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 60\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter\",\r\n      \"name\": \"hiagaVMArchiveTierAfter\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"policyType\": \"V2\",\r\n        \"instantRPDetails\": {},\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"weeklySchedule\": {\r\n            \"scheduleRunDays\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"scheduleRunTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ]\r\n          }\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"TierAfter\",\r\n            \"duration\": 3,\r\n            \"durationType\": \"Months\"\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/DefaultPolicy\",\r\n      \"name\": \"DefaultPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"instantRPDetails\": {},\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2021-07-20T23:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2021-07-20T23:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/SAPFullPortal\",\r\n      \"name\": \"SAPFullPortal\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SAPHanaDatabase\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"Full\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Weekly\",\r\n              \"scheduleRunDays\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"scheduleRunTimes\": [\r\n                \"2022-07-09T16:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"weeklySchedule\": {\r\n                \"daysOfTheWeek\": [\r\n                  \"Sunday\"\r\n                ],\r\n                \"retentionTimes\": [\r\n                  \"2022-07-09T16:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 104,\r\n                  \"durationType\": \"Weeks\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 120\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 15,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm\",\r\n      \"name\": \"hiagaVMArchiveTierRecomm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"policyType\": \"V2\",\r\n        \"instantRPDetails\": {},\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"weeklySchedule\": {\r\n            \"scheduleRunDays\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"scheduleRunTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ]\r\n          }\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"TierRecommended\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/NewSQLPolicy\",\r\n      \"name\": \"NewSQLPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLDataBase\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": true,\r\n          \"isCompression\": true\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"Full\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Weekly\",\r\n              \"scheduleRunDays\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"scheduleRunTimes\": [\r\n                \"2019-03-20T01:30:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"weeklySchedule\": {\r\n                \"daysOfTheWeek\": [\r\n                  \"Sunday\"\r\n                ],\r\n                \"retentionTimes\": [\r\n                  \"2019-03-20T01:30:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 104,\r\n                  \"durationType\": \"Weeks\"\r\n                }\r\n              },\r\n              \"monthlySchedule\": {\r\n                \"retentionScheduleFormatType\": \"Weekly\",\r\n                \"retentionScheduleWeekly\": {\r\n                  \"daysOfTheWeek\": [\r\n                    \"Sunday\"\r\n                  ],\r\n                  \"weeksOfTheMonth\": [\r\n                    \"First\"\r\n                  ]\r\n                },\r\n                \"retentionTimes\": [\r\n                  \"2019-03-20T01:30:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 60,\r\n                  \"durationType\": \"Months\"\r\n                }\r\n              },\r\n              \"yearlySchedule\": {\r\n                \"retentionScheduleFormatType\": \"Weekly\",\r\n                \"monthsOfYear\": [\r\n                  \"January\"\r\n                ],\r\n                \"retentionScheduleWeekly\": {\r\n                  \"daysOfTheWeek\": [\r\n                    \"Sunday\"\r\n                  ],\r\n                  \"weeksOfTheMonth\": [\r\n                    \"First\"\r\n                  ]\r\n                },\r\n                \"retentionTimes\": [\r\n                  \"2019-03-20T01:30:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 10,\r\n                  \"durationType\": \"Years\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Differential\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Weekly\",\r\n              \"scheduleRunDays\": [\r\n                \"Monday\",\r\n                \"Tuesday\",\r\n                \"Wednesday\",\r\n                \"Thursday\",\r\n                \"Friday\"\r\n              ],\r\n              \"scheduleRunTimes\": [\r\n                \"2022-06-22T08:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 70,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 15\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaSQLPolicy\",\r\n      \"name\": \"hiagaSQLPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLDataBase\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"Full\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Daily\",\r\n              \"scheduleRunTimes\": [\r\n                \"2021-07-20T23:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"dailySchedule\": {\r\n                \"retentionTimes\": [\r\n                  \"2021-07-20T23:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 30,\r\n                  \"durationType\": \"Days\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 60\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/DailyPolicy-l6dtamab\",\r\n      \"name\": \"DailyPolicy-l6dtamab\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2020-09-30T19:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2020-09-30T19:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/EnhancedPolicy\",\r\n      \"name\": \"EnhancedPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"policyType\": \"V2\",\r\n        \"instantRPDetails\": {},\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n          \"scheduleRunFrequency\": \"Hourly\",\r\n          \"hourlySchedule\": {\r\n            \"interval\": 4,\r\n            \"scheduleWindowStartTime\": \"2022-07-11T08:00:00Z\",\r\n            \"scheduleWindowDuration\": 12\r\n          }\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2022-07-11T08:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjItMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0947a5bc-8215-41a5-9b8f-9a8fd7084483"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "9bec4f2b-fe98-42dc-9756-0198a9f62510"
+        ],
+        "x-ms-client-request-id": [
+          "0947a5bc-8215-41a5-9b8f-9a8fd7084483"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "299"
+        ],
+        "x-ms-correlation-request-id": [
+          "9bec4f2b-fe98-42dc-9756-0198a9f62510"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064313Z:9bec4f2b-fe98-42dc-9756-0198a9f62510"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:43:12 GMT"
+        ],
+        "Content-Length": [
+          "10285"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/HourlyLogBackup\",\r\n      \"name\": \"HourlyLogBackup\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLDataBase\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"Full\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Daily\",\r\n              \"scheduleRunTimes\": [\r\n                \"2021-07-20T23:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"dailySchedule\": {\r\n                \"retentionTimes\": [\r\n                  \"2021-07-20T23:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 30,\r\n                  \"durationType\": \"Days\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 60\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter\",\r\n      \"name\": \"hiagaVMArchiveTierAfter\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"policyType\": \"V2\",\r\n        \"instantRPDetails\": {},\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"weeklySchedule\": {\r\n            \"scheduleRunDays\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"scheduleRunTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ]\r\n          }\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"TierAfter\",\r\n            \"duration\": 3,\r\n            \"durationType\": \"Months\"\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/DefaultPolicy\",\r\n      \"name\": \"DefaultPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"instantRPDetails\": {},\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2021-07-20T23:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2021-07-20T23:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/SAPFullPortal\",\r\n      \"name\": \"SAPFullPortal\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SAPHanaDatabase\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"Full\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Weekly\",\r\n              \"scheduleRunDays\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"scheduleRunTimes\": [\r\n                \"2022-07-09T16:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"weeklySchedule\": {\r\n                \"daysOfTheWeek\": [\r\n                  \"Sunday\"\r\n                ],\r\n                \"retentionTimes\": [\r\n                  \"2022-07-09T16:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 104,\r\n                  \"durationType\": \"Weeks\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 120\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 15,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm\",\r\n      \"name\": \"hiagaVMArchiveTierRecomm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"policyType\": \"V2\",\r\n        \"instantRPDetails\": {},\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"weeklySchedule\": {\r\n            \"scheduleRunDays\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"scheduleRunTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ]\r\n          }\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"TierRecommended\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/NewSQLPolicy\",\r\n      \"name\": \"NewSQLPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLDataBase\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": true,\r\n          \"isCompression\": true\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"Full\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Weekly\",\r\n              \"scheduleRunDays\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"scheduleRunTimes\": [\r\n                \"2019-03-20T01:30:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"weeklySchedule\": {\r\n                \"daysOfTheWeek\": [\r\n                  \"Sunday\"\r\n                ],\r\n                \"retentionTimes\": [\r\n                  \"2019-03-20T01:30:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 104,\r\n                  \"durationType\": \"Weeks\"\r\n                }\r\n              },\r\n              \"monthlySchedule\": {\r\n                \"retentionScheduleFormatType\": \"Weekly\",\r\n                \"retentionScheduleWeekly\": {\r\n                  \"daysOfTheWeek\": [\r\n                    \"Sunday\"\r\n                  ],\r\n                  \"weeksOfTheMonth\": [\r\n                    \"First\"\r\n                  ]\r\n                },\r\n                \"retentionTimes\": [\r\n                  \"2019-03-20T01:30:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 60,\r\n                  \"durationType\": \"Months\"\r\n                }\r\n              },\r\n              \"yearlySchedule\": {\r\n                \"retentionScheduleFormatType\": \"Weekly\",\r\n                \"monthsOfYear\": [\r\n                  \"January\"\r\n                ],\r\n                \"retentionScheduleWeekly\": {\r\n                  \"daysOfTheWeek\": [\r\n                    \"Sunday\"\r\n                  ],\r\n                  \"weeksOfTheMonth\": [\r\n                    \"First\"\r\n                  ]\r\n                },\r\n                \"retentionTimes\": [\r\n                  \"2019-03-20T01:30:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 10,\r\n                  \"durationType\": \"Years\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Differential\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Weekly\",\r\n              \"scheduleRunDays\": [\r\n                \"Monday\",\r\n                \"Tuesday\",\r\n                \"Wednesday\",\r\n                \"Thursday\",\r\n                \"Friday\"\r\n              ],\r\n              \"scheduleRunTimes\": [\r\n                \"2022-06-22T08:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 70,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 15\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaSQLPolicy\",\r\n      \"name\": \"hiagaSQLPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLDataBase\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"Full\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Daily\",\r\n              \"scheduleRunTimes\": [\r\n                \"2021-07-20T23:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"dailySchedule\": {\r\n                \"retentionTimes\": [\r\n                  \"2021-07-20T23:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 30,\r\n                  \"durationType\": \"Days\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 60\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/DailyPolicy-l6dtamab\",\r\n      \"name\": \"DailyPolicy-l6dtamab\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2020-09-30T19:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2020-09-30T19:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/EnhancedPolicy\",\r\n      \"name\": \"EnhancedPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"policyType\": \"V2\",\r\n        \"instantRPDetails\": {},\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n          \"scheduleRunFrequency\": \"Hourly\",\r\n          \"hourlySchedule\": {\r\n            \"interval\": 4,\r\n            \"scheduleWindowStartTime\": \"2022-07-11T08:00:00Z\",\r\n            \"scheduleWindowDuration\": 12\r\n          }\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2022-07-11T08:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjItMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e402945b-8d42-4788-980e-8e3a87b07f82"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "7b8a3928-4579-4dee-b2cc-b69b2b85e9e1"
+        ],
+        "x-ms-client-request-id": [
+          "e402945b-8d42-4788-980e-8e3a87b07f82"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "298"
+        ],
+        "x-ms-correlation-request-id": [
+          "7b8a3928-4579-4dee-b2cc-b69b2b85e9e1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064318Z:7b8a3928-4579-4dee-b2cc-b69b2b85e9e1"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:43:18 GMT"
+        ],
+        "Content-Length": [
+          "10285"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/HourlyLogBackup\",\r\n      \"name\": \"HourlyLogBackup\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLDataBase\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"Full\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Daily\",\r\n              \"scheduleRunTimes\": [\r\n                \"2021-07-20T23:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"dailySchedule\": {\r\n                \"retentionTimes\": [\r\n                  \"2021-07-20T23:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 30,\r\n                  \"durationType\": \"Days\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 60\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter\",\r\n      \"name\": \"hiagaVMArchiveTierAfter\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"policyType\": \"V2\",\r\n        \"instantRPDetails\": {},\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"weeklySchedule\": {\r\n            \"scheduleRunDays\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"scheduleRunTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ]\r\n          }\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"TierAfter\",\r\n            \"duration\": 3,\r\n            \"durationType\": \"Months\"\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/DefaultPolicy\",\r\n      \"name\": \"DefaultPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"instantRPDetails\": {},\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2021-07-20T23:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2021-07-20T23:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/SAPFullPortal\",\r\n      \"name\": \"SAPFullPortal\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SAPHanaDatabase\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"Full\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Weekly\",\r\n              \"scheduleRunDays\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"scheduleRunTimes\": [\r\n                \"2022-07-09T16:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"weeklySchedule\": {\r\n                \"daysOfTheWeek\": [\r\n                  \"Sunday\"\r\n                ],\r\n                \"retentionTimes\": [\r\n                  \"2022-07-09T16:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 104,\r\n                  \"durationType\": \"Weeks\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 120\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 15,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm\",\r\n      \"name\": \"hiagaVMArchiveTierRecomm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"policyType\": \"V2\",\r\n        \"instantRPDetails\": {},\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"weeklySchedule\": {\r\n            \"scheduleRunDays\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"scheduleRunTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ]\r\n          }\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 104,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 60,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-09-26T05:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 10,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"TierRecommended\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/NewSQLPolicy\",\r\n      \"name\": \"NewSQLPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLDataBase\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": true,\r\n          \"isCompression\": true\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"Full\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Weekly\",\r\n              \"scheduleRunDays\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"scheduleRunTimes\": [\r\n                \"2019-03-20T01:30:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"weeklySchedule\": {\r\n                \"daysOfTheWeek\": [\r\n                  \"Sunday\"\r\n                ],\r\n                \"retentionTimes\": [\r\n                  \"2019-03-20T01:30:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 104,\r\n                  \"durationType\": \"Weeks\"\r\n                }\r\n              },\r\n              \"monthlySchedule\": {\r\n                \"retentionScheduleFormatType\": \"Weekly\",\r\n                \"retentionScheduleWeekly\": {\r\n                  \"daysOfTheWeek\": [\r\n                    \"Sunday\"\r\n                  ],\r\n                  \"weeksOfTheMonth\": [\r\n                    \"First\"\r\n                  ]\r\n                },\r\n                \"retentionTimes\": [\r\n                  \"2019-03-20T01:30:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 60,\r\n                  \"durationType\": \"Months\"\r\n                }\r\n              },\r\n              \"yearlySchedule\": {\r\n                \"retentionScheduleFormatType\": \"Weekly\",\r\n                \"monthsOfYear\": [\r\n                  \"January\"\r\n                ],\r\n                \"retentionScheduleWeekly\": {\r\n                  \"daysOfTheWeek\": [\r\n                    \"Sunday\"\r\n                  ],\r\n                  \"weeksOfTheMonth\": [\r\n                    \"First\"\r\n                  ]\r\n                },\r\n                \"retentionTimes\": [\r\n                  \"2019-03-20T01:30:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 10,\r\n                  \"durationType\": \"Years\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Differential\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Weekly\",\r\n              \"scheduleRunDays\": [\r\n                \"Monday\",\r\n                \"Tuesday\",\r\n                \"Wednesday\",\r\n                \"Thursday\",\r\n                \"Friday\"\r\n              ],\r\n              \"scheduleRunTimes\": [\r\n                \"2022-06-22T08:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 70,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 15\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaSQLPolicy\",\r\n      \"name\": \"hiagaSQLPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureWorkload\",\r\n        \"workLoadType\": \"SQLDataBase\",\r\n        \"settings\": {\r\n          \"timeZone\": \"UTC\",\r\n          \"issqlcompression\": false,\r\n          \"isCompression\": false\r\n        },\r\n        \"subProtectionPolicy\": [\r\n          {\r\n            \"policyType\": \"Full\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n              \"scheduleRunFrequency\": \"Daily\",\r\n              \"scheduleRunTimes\": [\r\n                \"2021-07-20T23:00:00Z\"\r\n              ],\r\n              \"scheduleWeeklyFrequency\": 0\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n              \"dailySchedule\": {\r\n                \"retentionTimes\": [\r\n                  \"2021-07-20T23:00:00Z\"\r\n                ],\r\n                \"retentionDuration\": {\r\n                  \"count\": 30,\r\n                  \"durationType\": \"Days\"\r\n                }\r\n              }\r\n            }\r\n          },\r\n          {\r\n            \"policyType\": \"Log\",\r\n            \"schedulePolicy\": {\r\n              \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n              \"scheduleFrequencyInMins\": 60\r\n            },\r\n            \"retentionPolicy\": {\r\n              \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n              \"retentionDuration\": {\r\n                \"count\": 30,\r\n                \"durationType\": \"Days\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/DailyPolicy-l6dtamab\",\r\n      \"name\": \"DailyPolicy-l6dtamab\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureStorage\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Daily\",\r\n          \"scheduleRunTimes\": [\r\n            \"2020-09-30T19:30:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2020-09-30T19:30:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/EnhancedPolicy\",\r\n      \"name\": \"EnhancedPolicy\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n      \"properties\": {\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"policyType\": \"V2\",\r\n        \"instantRPDetails\": {},\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicyV2\",\r\n          \"scheduleRunFrequency\": \"Hourly\",\r\n          \"hourlySchedule\": {\r\n            \"interval\": 4,\r\n            \"scheduleWindowStartTime\": \"2022-07-11T08:00:00Z\",\r\n            \"scheduleWindowDuration\": 12\r\n          }\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"dailySchedule\": {\r\n            \"retentionTimes\": [\r\n              \"2022-07-11T08:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 30,\r\n              \"durationType\": \"Days\"\r\n            }\r\n          }\r\n        },\r\n        \"timeZone\": \"UTC\",\r\n        \"protectedItemsCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierAfter?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllckFmdGVyP2FwaS12ZXJzaW9uPTIwMjItMDItMDE=",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "40623f00-9f2f-4f7a-ae0c-039a0934a003"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "9ded7927-7573-4192-beee-9c6f04863ee2"
+        ],
+        "x-ms-client-request-id": [
+          "40623f00-9f2f-4f7a-ae0c-039a0934a003"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "9ded7927-7573-4192-beee-9c6f04863ee2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064320Z:9ded7927-7573-4192-beee-9c6f04863ee2"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:43:19 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupPolicies/hiagaVMArchiveTierRecomm?api-version=2022-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYVZhdWx0L2JhY2t1cFBvbGljaWVzL2hpYWdhVk1BcmNoaXZlVGllclJlY29tbT9hcGktdmVyc2lvbj0yMDIyLTAyLTAx",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d0f2d159-1d73-4524-b13e-19c48e075218"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/5.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "4f9cbb84-9391-4207-99bb-9a3c32fdce66"
+        ],
+        "x-ms-client-request-id": [
+          "d0f2d159-1d73-4524-b13e-19c48e075218"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "4f9cbb84-9391-4207-99bb-9a3c32fdce66"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220926T064322Z:4f9cbb84-9391-4207-99bb-9a3c32fdce66"
+        ],
+        "Date": [
+          "Mon, 26 Sep 2022 06:43:21 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "38304e13-357e-405e-9e9a-220351dcce8c"
+  }
+}

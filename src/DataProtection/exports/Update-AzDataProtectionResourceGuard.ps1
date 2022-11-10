@@ -20,18 +20,18 @@ Updates a resource guard belonging to a resource group
 .Description
 Updates a resource guard belonging to a resource group
 .Example
-PS C:\> $resourceGuard = Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "rgName" -Name "resGuardName"
-PS C:\> $criticalOperations  = $resourceGuard.ResourceGuardOperation.VaultCriticalOperation
-PS C:\> $operationsToBeExcluded = $criticalOperations | where { $_ -match "backupSecurityPIN/action" -or $_ -match "backupInstances/delete" }
-PS C:\> Update-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "rgName" -Name $resourceGuard.Name -CriticalOperationExclusionList $operationsToBeExcluded
+$resourceGuard = Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "rgName" -Name "resGuardName"
+$criticalOperations = $resourceGuard.ResourceGuardOperation.VaultCriticalOperation
+$operationsToBeExcluded = $criticalOperations | Where-Object { $_ -match "backupSecurityPIN/action" -or $_ -match "backupInstances/delete" }
+Update-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "rgName" -Name $resourceGuard.Name -CriticalOperationExclusionList $operationsToBeExcluded
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IResourceGuardResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IResourceGuardResource
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionresourceguard
+https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionresourceguard
 #>
 function Update-AzDataProtectionResourceGuard {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IResourceGuardResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IResourceGuardResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateResourceGuardOperations', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
