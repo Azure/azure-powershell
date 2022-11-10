@@ -1805,6 +1805,7 @@ function Test-StorageBlobInventory
         Assert-AreEqual 14 $policy1.Rules[0].Definition.SchemaFields.Count
         Assert-AreEqual $true $policy1.Rules[0].Definition.Filters.IncludeSnapshots
         Assert-AreEqual $true $policy1.Rules[0].Definition.Filters.IncludeBlobVersions
+        Assert-Null $policy1.Rules[0].Definition.Filters.IncludeDeleted
         Assert-AreEqual 2 $policy1.Rules[0].Definition.Filters.BlobTypes.Count
         Assert-AreEqual 5 $policy1.Rules[0].Definition.Filters.PrefixMatch.Count
         Assert-AreEqual "test2" $policy1.Rules[1].Name
@@ -1816,6 +1817,7 @@ function Test-StorageBlobInventory
         Assert-AreEqual 12 $policy1.Rules[1].Definition.SchemaFields.Count
         Assert-Null $policy1.Rules[1].Definition.Filters.IncludeSnapshots
         Assert-Null $policy1.Rules[1].Definition.Filters.IncludeBlobVersions
+        Assert-Null $policy1.Rules[1].Definition.Filters.IncludeDeleted
         Assert-AreEqual 2 $policy1.Rules[1].Definition.Filters.PrefixMatch.Count
         Assert-AreEqual "test3" $policy1.Rules[2].Name
         Assert-AreEqual $true $policy1.Rules[2].Enabled
@@ -1859,20 +1861,38 @@ function Test-StorageBlobInventory
                         ObjectType="Container";
                         Format="Parquet";
                         Schedule="Daily";
-                        SchemaFields=@("name","Metadata","PublicAccess");
+                        SchemaFields=@("name","Metadata","PublicAccess","DefaultEncryptionScope","DenyEncryptionScopeOverride");
                         Filters=(@{
                             PrefixMatch=@("conpre1","conpre2");
+                            ExcludePrefix=@("expre1","expre2");
+                        })
+                    })
+                },
+                @{
+                    Enabled=$false;
+                    Name="Test3";
+                    Destination=$containerName;
+                    Definition=(@{
+                        ObjectType="Blob";
+                        Format="Csv";
+                        Schedule="Weekly";
+                        SchemaFields=@("name","Deleted","RemainingRetentionDays","Content-Type","Content-Language","Cache-Control","Content-Disposition");
+                        Filters=(@{
+                            BlobTypes=@("blockBlob","appendBlob");
+                            PrefixMatch=@("conpre1","conpre2");
+                            ExcludePrefix=@("expre1","expre2");
+                            IncludeDeleted=$true
                         })
                     })
                 })
             })
         Assert-AreEqual $true $policy2.Enabled
-        Assert-AreEqual 2 $policy2.Rules.Count
+        Assert-AreEqual 3 $policy2.Rules.Count
 
         # get inventory policy 
         $policy2 = Get-AzStorageAccount -ResourceGroupName $rgname  -StorageAccountName $stoname | Get-AzStorageBlobInventoryPolicy 
         Assert-AreEqual $true $policy2.Enabled
-        Assert-AreEqual 2 $policy2.Rules.Count
+        Assert-AreEqual 3 $policy2.Rules.Count
         Assert-AreEqual "Test1" $policy2.Rules[0].Name
         Assert-AreEqual $true $policy2.Rules[0].Enabled
         Assert-AreEqual $containerName $policy2.Rules[0].Destination
@@ -1882,6 +1902,7 @@ function Test-StorageBlobInventory
         Assert-AreEqual 6 $policy2.Rules[0].Definition.SchemaFields.Count
         Assert-AreEqual $true $policy2.Rules[0].Definition.Filters.IncludeSnapshots
         Assert-AreEqual $true $policy2.Rules[0].Definition.Filters.IncludeBlobVersions
+        Assert-Null $policy2.Rules[0].Definition.Filters.IncludeDeleted
         Assert-AreEqual 2 $policy2.Rules[0].Definition.Filters.BlobTypes.Count
         Assert-AreEqual 2 $policy2.Rules[0].Definition.Filters.PrefixMatch.Count
         Assert-AreEqual "Test2" $policy2.Rules[1].Name
@@ -1890,11 +1911,25 @@ function Test-StorageBlobInventory
         Assert-AreEqual "Parquet" $policy2.Rules[1].Definition.Format
         Assert-AreEqual "Daily" $policy2.Rules[1].Definition.Schedule
         Assert-AreEqual "Container" $policy2.Rules[1].Definition.ObjectType
-        Assert-AreEqual 3 $policy2.Rules[1].Definition.SchemaFields.Count
+        Assert-AreEqual 5 $policy2.Rules[1].Definition.SchemaFields.Count
         Assert-Null $policy2.Rules[1].Definition.Filters.IncludeSnapshots
         Assert-Null $policy2.Rules[1].Definition.Filters.IncludeBlobVersions
+        Assert-Null $policy2.Rules[1].Definition.Filters.IncludeDeleted
         Assert-Null $policy2.Rules[1].Definition.Filters.BlobTypes
         Assert-AreEqual 2 $policy2.Rules[1].Definition.Filters.PrefixMatch.Count
+        Assert-AreEqual "Test3" $policy2.Rules[2].Name
+        Assert-AreEqual $false $policy2.Rules[2].Enabled
+        Assert-AreEqual $containerName $policy2.Rules[2].Destination
+        Assert-AreEqual "Csv" $policy2.Rules[2].Definition.Format
+        Assert-AreEqual "Weekly" $policy2.Rules[2].Definition.Schedule
+        Assert-AreEqual "Blob" $policy2.Rules[2].Definition.ObjectType
+        Assert-AreEqual 7 $policy2.Rules[2].Definition.SchemaFields.Count
+        Assert-Null $policy2.Rules[2].Definition.Filters.IncludeSnapshots
+        Assert-Null $policy2.Rules[2].Definition.Filters.IncludeBlobVersions
+        Assert-AreEqual $true $policy2.Rules[2].Definition.Filters.IncludeDeleted
+        Assert-AreEqual 2 $policy2.Rules[2].Definition.Filters.BlobTypes.Count
+        Assert-AreEqual 2 $policy2.Rules[2].Definition.Filters.PrefixMatch.Count
+        Assert-AreEqual 2 $policy2.Rules[2].Definition.Filters.ExcludePrefix.Count
 
         # remove policy 
         Get-AzStorageAccount -ResourceGroupName $rgname  -StorageAccountName $stoname | Remove-AzStorageBlobInventoryPolicy 
@@ -1913,6 +1948,7 @@ function Test-StorageBlobInventory
         Assert-AreEqual 14 $policy3.Rules[0].Definition.SchemaFields.Count
         Assert-AreEqual $true $policy3.Rules[0].Definition.Filters.IncludeSnapshots
         Assert-AreEqual $true $policy3.Rules[0].Definition.Filters.IncludeBlobVersions
+        Assert-Null $policy3.Rules[0].Definition.Filters.IncludeDeleted
         Assert-AreEqual 2 $policy3.Rules[0].Definition.Filters.BlobTypes.Count
         Assert-AreEqual 5 $policy3.Rules[0].Definition.Filters.PrefixMatch.Count
         Assert-AreEqual "test2" $policy3.Rules[1].Name
@@ -1924,6 +1960,7 @@ function Test-StorageBlobInventory
         Assert-AreEqual 12 $policy3.Rules[1].Definition.SchemaFields.Count
         Assert-Null $policy3.Rules[1].Definition.Filters.IncludeSnapshots
         Assert-Null $policy3.Rules[1].Definition.Filters.IncludeBlobVersions
+        Assert-Null $policy3.Rules[1].Definition.Filters.IncludeDeleted
         Assert-AreEqual 2 $policy3.Rules[1].Definition.Filters.PrefixMatch.Count
         Assert-AreEqual "test3" $policy3.Rules[2].Name
         Assert-AreEqual $true $policy3.Rules[2].Enabled
@@ -1934,14 +1971,16 @@ function Test-StorageBlobInventory
         Assert-AreEqual 7 $policy3.Rules[2].Definition.SchemaFields.Count
         Assert-Null $policy3.Rules[2].Definition.Filters.IncludeSnapshots
         Assert-Null $policy3.Rules[2].Definition.Filters.IncludeBlobVersions
+        Assert-AreEqual $true $policy3.Rules[2].Definition.Filters.IncludeDeleted
         Assert-AreEqual 1 $policy3.Rules[2].Definition.Filters.BlobTypes.Count
         Assert-AreEqual 2 $policy3.Rules[2].Definition.Filters.PrefixMatch.Count
+        Assert-AreEqual 2 $policy3.Rules[2].Definition.Filters.ExcludePrefix.Count
 
         # set policy by pipeline policy rules then get inventory policy 
         $policy4 = ,($policy2.Rules) | Set-AzStorageBlobInventoryPolicy -ResourceGroupName $rgname  -StorageAccountName $stoname -Disabled
         $policy4 = Get-AzStorageBlobInventoryPolicy -ResourceGroupName $rgname  -StorageAccountName $stoname	
         Assert-AreEqual $false $policy4.Enabled
-        Assert-AreEqual 2 $policy4.Rules.Count
+        Assert-AreEqual 3 $policy4.Rules.Count
         Assert-AreEqual "Test1" $policy4.Rules[0].Name
         Assert-AreEqual $true $policy4.Rules[0].Enabled
         Assert-AreEqual $containerName $policy4.Rules[0].Destination
@@ -1951,6 +1990,7 @@ function Test-StorageBlobInventory
         Assert-AreEqual 6 $policy4.Rules[0].Definition.SchemaFields.Count
         Assert-AreEqual $true $policy4.Rules[0].Definition.Filters.IncludeSnapshots
         Assert-AreEqual $true $policy4.Rules[0].Definition.Filters.IncludeBlobVersions
+        Assert-Null $policy4.Rules[0].Definition.Filters.IncludeDeleted
         Assert-AreEqual 2 $policy4.Rules[0].Definition.Filters.BlobTypes.Count
         Assert-AreEqual 2 $policy4.Rules[0].Definition.Filters.PrefixMatch.Count
         Assert-AreEqual "Test2" $policy4.Rules[1].Name
@@ -1959,11 +1999,25 @@ function Test-StorageBlobInventory
         Assert-AreEqual "Parquet" $policy4.Rules[1].Definition.Format
         Assert-AreEqual "Daily" $policy4.Rules[1].Definition.Schedule
         Assert-AreEqual "Container" $policy4.Rules[1].Definition.ObjectType
-        Assert-AreEqual 3 $policy4.Rules[1].Definition.SchemaFields.Count
+        Assert-AreEqual 5 $policy4.Rules[1].Definition.SchemaFields.Count
         Assert-Null $policy4.Rules[1].Definition.Filters.IncludeSnapshots
         Assert-Null $policy4.Rules[1].Definition.Filters.IncludeBlobVersions
+        Assert-Null $policy4.Rules[1].Definition.Filters.IncludeDeleted
         Assert-Null $policy4.Rules[1].Definition.Filters.BlobTypes
-        Assert-AreEqual 2 $policy4.Rules[1].Definition.Filters.PrefixMatch.Count	
+        Assert-AreEqual 2 $policy4.Rules[1].Definition.Filters.PrefixMatch.Count
+        Assert-AreEqual "Test3" $policy4.Rules[2].Name
+        Assert-AreEqual $false $policy4.Rules[2].Enabled
+        Assert-AreEqual $containerName $policy4.Rules[2].Destination
+        Assert-AreEqual "Csv" $policy4.Rules[2].Definition.Format
+        Assert-AreEqual "Weekly" $policy4.Rules[2].Definition.Schedule
+        Assert-AreEqual "Blob" $policy4.Rules[2].Definition.ObjectType
+        Assert-AreEqual 7 $policy4.Rules[2].Definition.SchemaFields.Count
+        Assert-Null $policy4.Rules[2].Definition.Filters.IncludeSnapshots
+        Assert-Null $policy4.Rules[2].Definition.Filters.IncludeBlobVersions
+        Assert-AreEqual $true $policy4.Rules[2].Definition.Filters.IncludeDeleted
+        Assert-AreEqual 2 $policy4.Rules[2].Definition.Filters.BlobTypes.Count
+        Assert-AreEqual 2 $policy4.Rules[2].Definition.Filters.PrefixMatch.Count
+        Assert-AreEqual 2 $policy4.Rules[2].Definition.Filters.ExcludePrefix.Count
 
         # remove policy 
         Remove-AzStorageBlobInventoryPolicy -ResourceGroupName $rgname  -StorageAccountName $stoname

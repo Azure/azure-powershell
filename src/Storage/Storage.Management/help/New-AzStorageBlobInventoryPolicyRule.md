@@ -41,7 +41,7 @@ PS C:\> $rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -Destination $
 PS C:\> $rule2 = New-AzStorageBlobInventoryPolicyRule -Name Test2 -Destination $containerName -Format Parquet -Schedule Weekly -IncludeBlobVersion -IncludeSnapshot -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
                 -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Expiry-Time,hdi_isfolder,Owner,Group,Permissions,Acl,Metadata
 PS C:\> $rule3 = New-AzStorageBlobInventoryPolicyRule -Name Test3 -Destination $containerName -Format Parquet -Schedule Weekly -IncludeBlobVersion -IncludeSnapshot -IncludeDeleted -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
-                 -ExcludePrefix ccc,ddd -BlobSchemaField name, Last-Modified, BlobType,AccessTier,AccessTierChangeTime,Content-Type,Content-CRC64,CopyId,x-ms-blob-sequence-number,TagCount
+                 -ExcludePrefix ccc,ddd -BlobSchemaField name,Last-Modified,BlobType,AccessTier,AccessTierChangeTime,Content-Type,Content-CRC64,CopyId,x-ms-blob-sequence-number,TagCount
 
 PS C:\> $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Disabled -Rule $rule1,$rule2
 
