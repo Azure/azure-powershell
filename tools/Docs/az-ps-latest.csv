@@ -24,7 +24,7 @@ pac22,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Communi
 pac23,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Compute,5.1.0
 pac24,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ConfidentialLedger,1.0.0
 pac25,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Confluent,0.2.0
-pac26,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ConnectedKubernetes,0.5.0
+pac26,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ConnectedKubernetes,0.6.0
 pac27,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ConnectedMachine,0.4.1
 pac28,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ConnectedNetwork,0.1.0
 pac29,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ContainerInstance,3.1.0
