@@ -252,7 +252,7 @@ $cvmDataDiskEncryption_lun0 = @{DiskEncryptionSetId = $dataDiskEncryptionSetId ;
 $cvmDataDiskEncryption = @($cvmDataDiskEncryption_lun0)
 
 $cvmEncryption = @{OSDiskImage = $cvmOsDiskEncryption; DataDiskImages = $cvmDataDiskEncryption}
-$region_northEurope = @{Name = 'NorthEuropeS';ReplicaCount = 3;StorageAccountType = 'Standard_LRS'; Encryption = $cvmEncryption}
+$region_northEurope = @{Name = 'NorthEurope';ReplicaCount = 3;StorageAccountType = 'Standard_LRS'; Encryption = $cvmEncryption}
 $targetRegions = @($region_northEurope)
 
 New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId -ReplicaCount 1 -StorageAccountType "Standard_LRS" -TargetRegion $targetRegions
