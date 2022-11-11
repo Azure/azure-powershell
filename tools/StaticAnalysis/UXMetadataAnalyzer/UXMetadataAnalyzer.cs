@@ -15,17 +15,16 @@
 //#define SERIALIZE
 
 using Newtonsoft.Json;
+
+using NJsonSchema;
+using NJsonSchema.Validation;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using Tools.Common.Helpers;
 using Tools.Common.Issues;
 using Tools.Common.Loaders;
 using Tools.Common.Loggers;
@@ -38,24 +37,20 @@ namespace StaticAnalysis.UXMetadataAnalyzer
     {
         public AnalysisLogger Logger { get; set; }
         public string Name { get; set; }
-        public string BreakingChangeIssueReportLoggerName { get; set; }
+        public string UXMetadataIssueReportLoggerName { get; set; }
+        private readonly JsonSchema schema;
+        private readonly JsonSchemaValidator schemaValidator = new JsonSchemaValidator();
 
-// TODO: Remove IfDef code
-#if !NETSTANDARD
-        private AppDomain _appDomain;
-#endif
-
-        public BreakingChangeAnalyzer()
+        public UXMetadataAnalyzer()
         {
-            Name = "Breaking Change Analyzer";
-            BreakingChangeIssueReportLoggerName = "BreakingChangeIssues.csv";
+            Name = "UX Metadata Analyzer";
+            UXMetadataIssueReportLoggerName = "UXMetadataIssues.csv";
+            var executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+            var schemaPath = Path.Combine(executingPath, "UXMetadataAnalyzer", "PortalInputSchema.json");
+            var schemaContent = File.ReadAllText(schemaPath);
+            schema = JsonSchema.FromJsonAsync(schemaContent).Result;
         }
 
-        /// <summary>
-        /// Given a set of directory paths containing PowerShell module folders,
-        /// analyze the breaking changes in the modules and report any issues
-        /// </summary>
-        /// <param name="cmdletProbingDirs">Set of directory paths containing PowerShell module folders to be checked for breaking changes.</param>
         public void Analyze(IEnumerable<string> cmdletProbingDirs)
         {
             Analyze(cmdletProbingDirs, null, null);
@@ -74,15 +69,6 @@ namespace StaticAnalysis.UXMetadataAnalyzer
             Analyze(cmdletProbingDirs, directoryFilter, cmdletFilter, null);
         }
 
-        /// <summary>
-        /// Given a set of directory paths containing PowerShell module folders,
-        /// analyze the breaking changes in the modules and report any issues
-        ///
-        /// Filters can be added to find breaking changes for specific modules
-        /// </summary>
-        /// <param name="cmdletProbingDirs">Set of directory paths containing PowerShell module folders to be checked for breaking changes.</param>
-        /// <param name="directoryFilter">Function that filters the directory paths to be checked.</param>
-        /// <param name="cmdletFilter">Function that filters the cmdlets to be checked.</param>
         public void Analyze(
             IEnumerable<string> cmdletProbingDirs,
             Func<IEnumerable<string>, IEnumerable<string>> directoryFilter,
@@ -90,7 +76,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
             IEnumerable<string> modulesToAnalyze)
         {
             var processedHelpFiles = new List<string>();
-            var issueLogger = Logger.CreateLogger<BreakingChangeIssue>("BreakingChangeIssues.csv");
+            var issueLogger = Logger.CreateLogger<UXMetadataIssue>("UXMetadataIssues.csv");
 
             if (directoryFilter != null)
             {
@@ -114,95 +100,42 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                     {
                         continue;
                     }
+                    string moduleName = Path.GetFileName(directory);
 
-                    var service = Path.GetFileName(directory);
-
-                    var manifestFiles = Directory.EnumerateFiles(directory, "*.psd1").ToList();
-
-                    if (manifestFiles.Count > 1)
-                    {
-                        manifestFiles = manifestFiles.Where(f => Path.GetFileName(f).IndexOf(service) >= 0).ToList();
-                    }
-
-                    if (manifestFiles.Count == 0)
+                    string UXFolder = Path.Combine(directory, "UX");
+                    if (!Directory.Exists(UXFolder))
                     {
                         continue;
                     }
 
-                    var psd1 = manifestFiles.FirstOrDefault();
-
-                    // Skip the modules whoes version is less than 1.0.0
-                    using (var ps = PowerShell.Create())
+                    var UXMetadataPathList = Directory.EnumerateFiles(UXFolder, "*.json", SearchOption.AllDirectories);
+                    foreach (var UXMetadataPath in UXMetadataPathList)
                     {
-                        ps.AddCommand("Test-ModuleManifest").AddParameter("Path", psd1);
-                        var result = ps.Invoke();
-                        PSModuleInfo moduleInfo = result[0].BaseObject as PSModuleInfo;
-                        if (moduleInfo.Version.Major < 1)
-                        {
-                            continue;
-                        }
+                        ValidateUXMetadata(moduleName, UXMetadataPath, issueLogger);
                     }
-
-                    var parentDirectory = Directory.GetParent(psd1).FullName;
-                    var psd1FileName = Path.GetFileName(psd1);
-
-                    string moduleName = psd1FileName.Replace(".psd1", "");
-
-                    Console.WriteLine(directory);
-                    Directory.SetCurrentDirectory(directory);
-
-                    issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = moduleName, "AssemblyFileName");
-                    processedHelpFiles.Add(moduleName);
-
-                    var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
-                    var fileName = $"{moduleName}.json";
-                    var executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
-
-                    var filePath = Path.Combine(executingPath, "SerializedCmdlets", fileName);
-
-                    if (!File.Exists(filePath))
-                    {
-                        continue;
-                    }
-
-                    var oldModuleMetadata = ModuleMetadata.DeserializeCmdlets(filePath);
-
-                    if (cmdletFilter != null)
-                    {
-                        var output = string.Format("Before filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
-                            oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
-
-                        output += string.Format("\nCmdlet file: {0}", moduleName);
-
-                        oldModuleMetadata.FilterCmdlets(cmdletFilter);
-                        newModuleMetadata.FilterCmdlets(cmdletFilter);
-
-                        output += string.Format("After filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
-                            oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
-
-                        foreach (var cmdlet in oldModuleMetadata.Cmdlets)
-                        {
-                            output += string.Format("\n\tOld cmdlet - {0}", cmdlet.Name);
-                        }
-
-                        foreach (var cmdlet in newModuleMetadata.Cmdlets)
-                        {
-                            output += string.Format("\n\tNew cmdlet - {0}", cmdlet.Name);
-                        }
-
-                        issueLogger.WriteMessage(output + Environment.NewLine);
-                    }
-
-                    RunBreakingChangeChecks(oldModuleMetadata, newModuleMetadata, issueLogger);
-  
                 }
             }
         }
 
+        private void ValidateUXMetadata(string moduleName, string UXMatadataPath, ReportLogger<UXMetadataIssue> issueLogger)
+        {
+            string data = File.ReadAllText(UXMatadataPath);
+            var result = schemaValidator.Validate(data, schema);
+            string resourceType = Path.GetFileName(Path.GetDirectoryName(UXMatadataPath));
+            if (result != null && result.Count != 0)
+            {
+                foreach (ValidationError error in result)
+                {
+                    issueLogger.LogUXMetadataIssue(moduleName, resourceType, UXMatadataPath, 1, error.ToString());
+                }
+            }
+        }
+
+
         public AnalysisReport GetAnalysisReport()
         {
             var analysisReport = new AnalysisReport();
-            var reportLog = Logger.GetReportLogger(BreakingChangeIssueReportLoggerName);
+            var reportLog = Logger.GetReportLogger(UXMetadataIssueReportLoggerName);
             if (!reportLog.Records.Any()) return analysisReport;
 
             foreach (var rec in reportLog.Records)
@@ -216,18 +149,17 @@ namespace StaticAnalysis.UXMetadataAnalyzer
 
     public static class LogExtensions
     {
-        public static void LogBreakingChangeIssue(
-            this ReportLogger<BreakingChangeIssue> issueLogger, CmdletMetadata cmdlet,
-            string description, string remediation, int severity, int problemId)
+        public static void LogUXMetadataIssue(
+            this ReportLogger<UXMetadataIssue> issueLogger, string module, string resourceType, string filePath,
+            int severity, string description)
         {
-            issueLogger.LogRecord(new BreakingChangeIssue
+            issueLogger.LogRecord(new UXMetadataIssue
             {
-                ClassName = cmdlet.ClassName,
-                Target = cmdlet.Name,
+                Module = module,
+                ResourceType = resourceType,
+                FilePath = filePath,
                 Description = description,
-                Remediation = remediation,
                 Severity = severity,
-                ProblemId = problemId
             });
         }
     }

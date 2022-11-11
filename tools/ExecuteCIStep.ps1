@@ -43,6 +43,9 @@ Param(
     [Switch]
     $StaticAnalysisHelp,
 
+    [Switch]
+    $StaticAnalysisUX,
+
     [String]
     $RepoArtifacts='artifacts',
 
@@ -218,11 +221,12 @@ If ($StaticAnalysis)
     {
         $Parameters["TargetModule"] = $TargetModule
     }
-    ./ExecuteCIStep.ps1 -StaticAnalysisBreakingChange @Parameters
-    ./ExecuteCIStep.ps1 -StaticAnalysisDependency @Parameters
-    ./ExecuteCIStep.ps1 -StaticAnalysisSignature @Parameters
-    ./ExecuteCIStep.ps1 -StaticAnalysisHelp @Parameters
-    ./ExecuteCIStep.ps1 -StaticAnalysisUX @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisBreakingChange @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisDependency @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisSignature @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisHelp @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters
+    Return
 }
 
 If ($StaticAnalysisBreakingChange)
@@ -310,6 +314,7 @@ If ($StaticAnalysisUX)
     If ("" -Ne $UXModuleList)
     {
         Write-Host "Running static analysis for UX metadata..."
+        # dotnet publish .\tools\StaticAnalysis\StaticAnalysis.Netcore.csproj -c Debug
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers ux -u -m $UXModuleList
     }
     Return

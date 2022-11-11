@@ -21,22 +21,22 @@ namespace StaticAnalysis.UXMetadataAnalyzer
     public class UXMetadataIssue : IReportRecord
     {
         public int ProblemId { get; set; }
+        public string Module { get; set; }
+        public string ResourceType { get; set; }
+        public string FilePath { get; set; }
         public string Description { get; set; }
-        public string Remediation { get; set; }
         public int Severity { get; set; }
-        public string AssemblyFileName { get; set; }
-        public string ClassName { get; set; }
-        public string Target { get; set; }
+        public string Remediation { get; set; }
         public string PrintHeaders()
         {
             return
-                "\"Module\",\"ClassName\",\"Target\",\"Severity\",\"ProblemId\",\"Description\",\"Remediation\"";
+                "\"Module\",\"ResourceType\",\"FilePath\",\"Severity\",\"Description\"";
         }
         public string FormatRecord()
         {
             return
-                string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\"",
-                AssemblyFileName, ClassName, Target, Severity, ProblemId, Description, Remediation);
+                string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\"",
+                Module, ResourceType, FilePath, Severity, Description);
         }
 
         public bool Match(IReportRecord other)
@@ -45,9 +45,9 @@ namespace StaticAnalysis.UXMetadataAnalyzer
             var record = other as UXMetadataIssue;
             if (record != null)
             {
-                result = string.Equals(record.ClassName, ClassName, StringComparison.OrdinalIgnoreCase) &&
-                    string.Equals(record.Target, Target, StringComparison.OrdinalIgnoreCase) &&
-                    record.ProblemId == ProblemId;
+                result = string.Equals(record.Module, Module, StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(record.ResourceType, ResourceType, StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(record.FilePath, FilePath, StringComparison.OrdinalIgnoreCase);
             }
 
             return result;
@@ -55,20 +55,18 @@ namespace StaticAnalysis.UXMetadataAnalyzer
 
         public IReportRecord Parse(string line)
         {
-            var matcher = "\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\"";
+            var matcher = "\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\"";
             var match = Regex.Match(line, matcher);
-            if (!match.Success || match.Groups.Count < 8)
+            if (!match.Success || match.Groups.Count < 6)
             {
                 throw new InvalidOperationException(string.Format("Could not parse '{0}' as BreakingChangeIssue record", line));
             }
 
-            AssemblyFileName = match.Groups[1].Value;
-            ClassName = match.Groups[2].Value;
-            Target = match.Groups[3].Value;
+            Module = match.Groups[1].Value;
+            ResourceType = match.Groups[2].Value;
+            FilePath = match.Groups[3].Value;
             Severity = int.Parse(match.Groups[4].Value);
-            ProblemId = int.Parse(match.Groups[5].Value);
-            Description = match.Groups[6].Value;
-            Remediation = match.Groups[7].Value;
+            Description = match.Groups[5].Value;
             return this;
         }
     }
