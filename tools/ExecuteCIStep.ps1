@@ -242,7 +242,6 @@ If ($StaticAnalysisBreakingChange)
     }
     Return
 }
-
 If ($StaticAnalysisDependency)
 {
     If ($PSBoundParameters.ContainsKey("TargetModule"))
@@ -257,6 +256,7 @@ If ($StaticAnalysisDependency)
     {
         Write-Host "Running static analysis for dependency..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers dependency -u -m $DependencyCheckModuleList
+        .($PSScriptRoot + "/CheckAssemblies.ps1") -BuildConfig $Configuration
     }
     Return
 }
