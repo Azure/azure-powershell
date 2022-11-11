@@ -265,6 +265,13 @@
     
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -StaticAnalysisHelp -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -StaticAnalysisOutputDirectory $(StaticAnalysisOutputDirectory)&quot;" />
   </Target>
+  
+  <Target Name="StaticAnalysisUX" Condition="'$(RunStaticAnalysis)' == 'true'">
+    <Message Importance="high" Text="Running static analysis for UX metadata..." />
+    <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
+    
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -StaticAnalysisUX -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -StaticAnalysisOutputDirectory $(StaticAnalysisOutputDirectory)&quot;" />
+  </Target>
 
   <Target Name="StaticAnalysisExample" Condition="'$(RunStaticAnalysis)' == 'true'" AfterTargets="StaticAnalysisHelp">
     <Message Importance="high" Text="Running static analysis for PowerShell examples..." />
@@ -276,7 +283,7 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\StaticAnalysis\FileChangeAnalyzer\Test-FileChange.ps1 &quot;" />
   </Target>
 
-  <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisBreakingChange;StaticAnalysisDependency;StaticAnalysisSignature;StaticAnalysisHelp;StaticAnalysisExample;StaticAnalysisFileChange">
+  <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisBreakingChange;StaticAnalysisDependency;StaticAnalysisSignature;StaticAnalysisHelp;StaticAnalysisExample;StaticAnalysisFileChange;StaticAnalysisUX">
     <Message Importance="high" Text="Running static analysis..." />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" />
