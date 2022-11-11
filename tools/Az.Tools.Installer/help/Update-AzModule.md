@@ -53,7 +53,7 @@ Accept wildcard characters: False
 
 ### -Repository
 The Registered Repository to install module from.
-If only one repository is registered in PowerShell, Install-AzModule will use it.
+If only one repository is registered in PowerShell, Update-AzModule will use it.
 If more than one, please specify the Repository.
 
 ```yaml
