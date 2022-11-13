@@ -908,7 +908,6 @@ function Test-CreateRPIWithListOfDisks
     param([string] $vaultSettingsFilePath)
 
     Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
-    $PrimaryFabricName = "arpita-old-dra"
     $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
     $pc =  Get-ASRProtectionContainer -Fabric $fabric
     $ProtectionContainerMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $pc
