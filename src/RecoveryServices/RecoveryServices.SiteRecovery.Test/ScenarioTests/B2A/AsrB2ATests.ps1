@@ -274,7 +274,7 @@ function Test-UpdateRPI
 }
 
 <#
-.SYNOPSIS=
+.SYNOPSIS
 Site Recovery Network Mapping
 #>
 function Test-MapNetwork
