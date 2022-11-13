@@ -47,7 +47,7 @@ https://docs.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofilep
 function Start-AzFrontDoorCdnProfilePrepareMigration {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult])]
-    [CmdletBinding(DefaultParameterSetName='MigrateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
@@ -55,19 +55,19 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         # Name of the Resource group within the Azure subscription.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
         # Resource ID.
         ${ClassicResourceReferenceId},
 
-        [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [System.String]
         # Name of the new profile that need to be created.
         ${ProfileName},
 
-        [Parameter(ParameterSetName='MigrateExpanded', Mandatory)]
+        [Parameter(Mandatory)]
         [ValidateNotNull()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName])]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
@@ -75,20 +75,13 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         # Name of the pricing tier.
         ${SkuName},
 
-        [Parameter(ParameterSetName='MigrateExpanded')]
+        [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrationWebApplicationFirewallMapping[]]
         # Waf mapping for the migrated profile
         # To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
         ${MigrationWebApplicationFirewallMapping},
-
-        [Parameter(ParameterSetName='Migrate', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrationParameters]
-        # Request body for Migrate operation.
-        # To construct, see NOTES section for MIGRATIONPARAMETER properties and create a hash table.
-        ${MigrationParameter},
 
         [Parameter(HelpMessage='The subscription ID that identifies an Azure subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
@@ -174,216 +167,169 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
     )
 
     process {
-        if($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping')) {
-            if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
-                throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
-            }
-            else {
-                Import-Module -Name Az.FrontDoor
-            }
+        # if (${ProfileName} -notmatch '(^\w+\[a-zA-Z0-9_]+)\w+$') {
+        #     throw "The profile name must begin with a letter or a number, and may only contain numbers and letters."
+        # }
+        # TODO: 抽象 check module
+        if (!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
+            throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
+        }
+        Import-Module -Name Az.FrontDoor
+        if (!(Get-Module -ListAvailable -Name Az.KeyVault)) {
+            throw 'Please install Az.KeyVault module by entering "Install-Module -Name Az.KeyVault"'
+        }
+        Import-Module -Name Az.KeyVault
 
+        ValidateWafPolicies
+        ValidateIdentityType
+
+        # 1. Validate whether the front door has waf policy
+        #    If associated with waf policy, then waf parameter should be typed.
+        # 2. Validate whether the profile has BYOC
+        #    If associated with BYOC, then MSIIdentity parameter should be typed.
+        $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
+        try {
+            $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
+        } catch {
+            Throw "FrontDoorName: '$frontDoorName' dose not exist in the resource group: '${ResourceGroupName}'."
+        }
+        $allPoliciesWithWAF = [System.Collections.ArrayList]@()
+        $allPoliciesWithVault = [System.Collections.ArrayList]@()
+        foreach ($info in $frontDoorInfos) {
+            if ($info.WebApplicationFirewallPolicyLink) {
+                $allPoliciesWithWAF.Add($info.WebApplicationFirewallPolicyLink)  | Out-Null
+            }
+            if ($info.Vault) {
+                $allPoliciesWithVault.Add($info.Vault.split("/")[-1]) | Out-Null
+            }
+        }
+        if (${MigrationWebApplicationFirewallMapping}.count -ne $allPoliciesWithWAF.count) {
+            throw "WafMappingList parameter length should be equal to the number of waf policy in the profile."
+        }
+        # TODO: check logic 要么都空 要么都非空
+        if (($PSBoundParameters.ContainsKey('IdentityType')) -ne ($allPoliciesWithVault.count -gt 0)) {
+            throw "MSIIdentity should be associated if the front door has Customer Certificates. If not, remove MSIIdentity parameter."
+        }
+
+        # Deal with Waf policy
+        if ($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping')) {
+            $hasManagedRule = $false
             $wafPolicies = $PSBoundParameters.MigrationWebApplicationFirewallMapping
-            if($wafPolicies.count -gt 0) {
-                # 1. Validate whether there is any waf policy associated with the profile.
-                $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
+            foreach ($policy in $wafPolicies) {
+                # ToDo: allPoliciesWithWAF use map
+                if ($allPoliciesWithWAF -NotContains $policy.MigratedFromId) {
+                    throw "Waf policy: '$migrateFromId' does not exist in the profile. Waf policy provided should exist in the profile."
+                }
+                # Validate the Sku argument, if a managed waf associated, then the profile only can migrated to Premium tier. 
+                $migrateFromWafPreperty = GetMigrateWafProperty -MigrateWafResourceId $policy.MigratedFromId
+                if ($migrateFromWafPreperty.ManagedRules) {
+                    $hasManagedRule = $true
+                    if ((${SkuName} -ne "Premium_AzureFrontDoor")) {
+                        throw "The AFD (classic) instance has managed WAF rules associated, and it can only be migrated to Premium tier. If you want to migrate to Standard tier, please remove the association on AFD (classic) and migrate afterwards."
+                    }
+                }
+            }
+           
+            # Validate whether MigratedToId policy already exists in the subsrciption; 
+            foreach ($policy in $wafPolicies) {
+                $migrateToWafId = $policy.MigratedToId
+                $migrateToWafArray = $policy.MigratedToId.split("/")
+                if ($migrateToWafArray[8] -notmatch '(^[a-zA-Z]+)\w+$') {
+                    throw "The WAF name must begin with a letter, and may only contain numbers and letters."
+                }
                 try {
-                    $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName -ErrorAction Stop
+                    $existed = Get-AzFrontDoorWafPolicy -ResourceGroupName $migrateToWafArray[4] -Name $migrateToWafArray[8] -ErrorAction Stop
                 }
                 catch {
-                    Throw "FrontDoorName: '$frontDoorName' dose not exist in the resource group."
+                    $migrateFromWafPreperty = GetMigrateWafProperty -MigrateWafResourceId $policy.MigratedFromId
+                    CreateNewWafPolicy -ResourceGroupName $migrateToWafArray[4] -Name $migrateToWafArray[8] -WafProperty $migrateFromWafPreperty -ManagedRuleMigrateFromWaf $hasManagedRule
                 }
-                $hasWafpolicy = $false
-                $existManagedRuleMigrateFromWaf = $false
-                $allWafPolicies = [System.Collections.ArrayList]@()
-
-                foreach ($info in $frontDoorInfos) {
-                    if($info.WebApplicationFirewallPolicyLink) {
-                        $hasWafpolicy = $true
-                        $allWafPolicies.Add($info.WebApplicationFirewallPolicyLink)
-                    }
-                }
-
-                if ($hasWafpolicy -eq $false) {
-                    throw 'No waf policy associated with the profile. Please check your profile.'
-                }
-
-                Write-Debug("Waf Policy parameter ok now and enter validation the format of waf Id.")
-                $validateWafId = "^/subscriptions/(?<subscriptionId>[^/]+)/resourcegroups/(?<resourceGroupName>[^/]+)/providers/microsoft.network/frontdoorwebapplicationfirewallpolicies/(?<policyName>[^/]+)$"
-
-                # 2. Validate the format of the waf policy and the migrateFrom.Id whether exists in the profile.
-                # 3. Validate the Sku argument, if a managed waf associated, then the profile only can migrated to Premium tier. 
-                if ($wafPolicies.count -ne $allWafPolicies.count) {
-                    throw "WafMappingList parameter length should be equal to the number of waf policy in the profile."
-                }
-                
-                foreach ($policy in $wafPolicies) {
-                    $migrateFromId = $policy.MigratedFromId
-                    $migrateFromWafSubId = $migrateFromId.split("/")[2]
-                    if ($migrateFromId.ToLower() -notmatch $validateWafId) {
-                        throw "The format of Waf policy id is supposed to be like '/subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******' "
-                    }
-
-                    # ParseWafPolicyResourceId -WafResourceId $migrateFromId
-                    if ($allWafPolicies -NotContains $migrateFromId)
-                    {
-                        throw "Waf policy: '$migrateFromId' does not exist in the profile. Waf policy provided should exist in the profile."
-                    }
-
-                    # Validate the Sku argument 
-                    $migrateFromWafPreperty = GetMigrateWafProperty -MigrateWafResourceId $migrateFromId
-                    if ($migrateFromWafPreperty.ManagedRules) {
-                        $existManagedRuleMigrateFromWaf = $true
-                        if (${SkuName} -ne "Premium_AzureFrontDoor") {
-                            throw "The AFD (classic) instance has managed WAF rules associated, and it can only be migrated to Premium tier. If you want to migrate to Standard tier, please remove the association on AFD (classic) and migrate afterwards."
-                        }
-                    }
-
-                    # Validate the format of the migrateToId
-                    # ParseWafPolicyResourceId -WafResourceId $policy.MigratedToId
-                    if ($policy.MigratedToId.ToLower() -notmatch $validateWafId) {
-                        throw "The format of Waf policy id is supposed to be like '/subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******' "
-                    }
-                }
-
-                # 4. Validate whether MigratedToId policy already exists in the subsrciption or not; If not existed, then create a new waf policy.
-                # 5. If exists, validate the MigrateToId waf policy whether meets the requirements.
-                foreach ($policy in $wafPolicies) {
-                    $migrateToWafId = $policy.MigratedToId
-                    $migrateToWafSubId = $migrateToWafId.split("/")[2]
-                    if ($migrateToWafSubId -ne $migrateFromWafSubId) {
-                        throw "The selected or created waf policy should be in the same subscription as the classic Afd waf policy."
-                    }
-
-                    $migrateToWafResourceGroup = $migrateToWafId.split("/")[4]
-                    $migrateToWafName = $migrateToWafId.split("/")[8]
-
-                    try {
-                        $existed = Get-AzFrontDoorWafPolicy -ResourceGroupName $migrateToWafResourceGroup -Name $migrateToWafName -ErrorAction Stop
-                    }
-                    # Not exists, create a new waf policy. Corrpesonding to "Copy to a new one" on Portal side.
-                    catch {
-                        # Create a new waf policy. 
-                        $migrateFromWafPreperty = GetMigrateWafProperty -MigrateWafResourceId $policy.MigratedFromId
-                        Write-Host("existManagedRuleMigrateFromWaf: " + $existManagedRuleMigrateFromWaf)
-                        CreateNewWafPolicy -ResourceGroupName $migrateToWafResourceGroup -Name $migrateToWafName -WafProperty $migrateFromWafPreperty -ManagedRuleMigrateFromWaf $existManagedRuleMigrateFromWaf
-                    }
-
-                    # Corrpesonding to "Select an exsiting one" on Portal side.
-                    if ($existed -and $existManagedRuleMigrateFromWaf) { 
-                        if (!$existed.ManagedRules) {
-                            throw "Please check parameter migrateToId: '$migrateToWafId'. The AFD (classic) instance has managed WAF rules associated, and it can only be migrated to Premium tier."
-                        }
+                if ($existed -and $hasManagedRule) { 
+                    if ((!$existed.ManagedRules) -and ($existed.Sku -ne "Premium_AzureFrontDoor")) {
+                        throw "Please check parameter migrateToId: '$migrateToWafId'. The AFD (classic) instance has managed WAF rules associated, and it can only be migrated to Premium tier."
                     }
                 }
             }
         }
+        
+        # Create AFDx Profile
+        $null = $PSBoundParameters.Remove('IdentityType')
+        $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
+        Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters 
 
-        # MSI 
-        if ($PSBoundParameters.ContainsKey('IdentityType')) {
-            $identityTypeLower = ${IdentityType}.ToString().ToLower()
-            Write-Debug("Before lower:" + ${IdentityType})
-            Write-Debug("ToLower:" + $identityTypeLower)
-            if($identityTypeLower -eq "none") {
-                Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower
-                return
-            }
+        # Deal with MSI parameter
+        # if ($PSBoundParameters.ContainsKey('IdentityType')) {
+        if ($allPoliciesWithVault.count -gt 0) {
+            # Waiting for results of profile created return
+            Start-Sleep(10)
 
-            # Validate the value of the IdentityType 
-            $validIdentityType = @("systemassigned", "userAssigned", "systemassigned, userAssigned", "userAssigned, systemassigned")
-            if($validIdentityType -NotContains $identityTypeLower) {
-                Throw "The Identity Type 'NotSpecified' is invalid. The supported types are 'SystemAssigned,UserAssigned,None'."
-            }
-
-            if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
-                throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
-            }
-            else {
-                Import-Module -Name Az.FrontDoor
-            }
-
-            if(!(Get-Module -ListAvailable -Name Az.KeyVault)) {
-                throw 'Please install Az.KeyVault module by entering "Install-Module -Name Az.KeyVault"'
-            }
-            else {
-                Import-Module -Name Az.KeyVault
-            }
-
-            $identityUserAssignedIdentityValue = ${IdentityUserAssignedIdentity}
-
-            # Create AFDx Profile
-            $null = $PSBoundParameters.Remove('IdentityType')
-            $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
-
-            Write-Debug("Start: Before calling Move-AzCdnProfile command...")
-            Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters
-
-            Write-Debug("Begin to MSI...")
-            # 1. Get "principalId" from RP
-            if($identityTypeLower -eq "systemassigned") {
-                Write-Debug("System Assigend...")
-                $profileIdentity = RetryCommand -Command 'Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower' -RetryTimes 6 -SecondsDelay 5 -Debug
-                # $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower
-            }
-            else {
-                $profileIdentity = RetryCommand -Command 'Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower -IdentityUserAssignedIdentity $identityUserAssignedIdentityValue' -RetryTimes 6 -SecondsDelay 5 -Debug
-                # $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower -IdentityUserAssignedIdentity $identityUserAssignedIdentityValue
+            # 1. Enable MSI: get "principalId" from RP
+            $commandArgs = @{ ResourceGroupName = ${ResourceGroupName}; Name = ${ProfileName}; IdentityType = ${IdentityType}; ErrorAction = 'Stop'}
+            if ($indentityType -ne "systemassigned") {
+                $commandArgs.Add('IdentityUserAssignedIdentity', ${IdentityUserAssignedIdentity})
             }
             
-            $systemAssigendPrincipalIndentity = $profileIdentity.IdentityPrincipalId
-            $userAssignedPrincipalIndentity = $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId
-
-            Write-Debug("Begin to grant...")
-            # 2. Grant Key Vault permission: Get all the BYOC key vaults of the fronted endpoint in the classic AFD.
-            $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
-            $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
-            $vaultArray = [System.Collections.ArrayList]@()
-            foreach ($info in $frontDoorInfos) {
-                if ($info.Vault) {
-                    $vaultName = $info.Vault.split("/")[-1]
-                    $vaultArray.Add($vaultName)
+            $profileIdentity = RetryCommand -Command 'Update-AzFrontDoorCdnProfile' -CommandArgs $commandArgs -RetryTimes 6 -SecondsDelay 10
+            $identity = [System.Collections.ArrayList]@()
+            foreach ($id in $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId) {
+                $identity.Add($id) | Out-Null
+            }
+            $identity.Add($profileIdentity.IdentityPrincipalId) | Out-Null
+            
+            # Waiting for MSI enabled...
+            Start-Sleep(10)
+            Write-Host("Grant managed identity to key vault")
+            foreach ($vault in $allPoliciesWithVault) {
+                foreach ($principal in $identity) {
+                    RetryCommand -Command 'Set-AzKeyVaultAccessPolicy' -CommandArgs @{ VaultName = $vault; ObjectId = $principal; PermissionsToSecrets = 'Get'; PermissionsToCertificates = 'Get'; ErrorAction = 'Stop'} -RetryTimes 6 -SecondsDelay 10 -Debug
+                    # Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
                 }
             }
-
-            Start-Sleep -Seconds 5
-
-            if ($identityTypeLower -eq "systemAssigned" ) {
-                # 3. Call Key Vault module: Grant key vault accsee policys
-                foreach ($vault in $vaultArray) {
-                    Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $systemAssigendPrincipalIndentity -PermissionsToSecrets Get -PermissionsToCertificates Get
-                }
-
-            } elseif ($identityTypeLower -eq "userAssigned") {
-                # 3. Call Key Vault module: Grant key vault accsee policys
-                foreach ($vault in $vaultArray) {
-                    foreach ($principal in $userAssignedPrincipalIndentity) {
-                        Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
-                    }
-                }
-            } else {
-                # 3. Call Key Vault module: Grant key vault accsee policys
-                foreach ($vault in $vaultArray) {
-                    Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $systemAssigendPrincipalIndentity -PermissionsToSecrets Get -PermissionsToCertificates Get
-                    foreach ($principal in $userAssignedPrincipalIndentity) {
-                        Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
-                    }
-                }
-            }
-        }
-        else {
-            $null = $PSBoundParameters.Remove('IdentityType')
-            $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
-
-            Write-Debug("Before calling Move-AzCdnProfile command...")
-            Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters
         }
     }
 }
+
+function ValidateIdentityType {
+    if (${IdentityType}) {
+        # TODO: improve logic
+        $validIdentityType = @("systemassigned", "userassigned", "systemassigned, userassigned", "userAssigned, systemassigned")
+        if ($validIdentityType -NotContains ${IdentityType}.ToString()) {
+            throw "The Identity Type 'NotSpecified' is invalid. The supported types are 'SystemAssigned,UserAssigned' when the front door has Customer Certificates during migration."
+        }
+        if (${IdentityType}.ToString() -ne "systemassigned") {
+            if (${IdentityUserAssignedIdentity}.count -eq 0) {
+                throw "Identities should not be empty or null to be assigned when using User Assigned type."
+            }
+        }
+    }
+}
+
+function ValidateWafPolicies{
+    if (${MigrationWebApplicationFirewallMapping}.count -gt 0) {
+        $wafPolicies = ${MigrationWebApplicationFirewallMapping}
+        $theSubId = $wafPolicies[0].MigratedFromId.split("/")[2] 
+        # Validate the format of the waf policy and the migrateFrom.Id whether exists in the profile.
+        $validateWafIdReg = "^/subscriptions/(?<subscriptionId>[^/]+)/resourcegroups/(?<resourceGroupName>[^/]+)/providers/microsoft.network/frontdoorwebapplicationfirewallpolicies/(?<policyName>[^/]+)$"
+        foreach ($policy in $wafPolicies) {
+            if ($policy.MigratedFromId.ToLower() -notmatch $validateWafIdReg) {
+                throw "The format of waf migrate from id: '$migrateFromId', supposed to be like '/subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******' "
+            }
+            if ($policy.MigratedToId.ToLower() -notmatch $validateWafIdReg) {
+                throw "The format of waf migrate to id: '${policy.MigratedToId.ToLower()}', supposed to be like '/subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******' "
+            }
+            if ($policy.MigratedToId.split("/")[2] -ne $theSubId) {
+                throw "The selected or created waf policy should be in the same subscription as the classic Afd waf policy."
+            }
+        }
+    }
+}
+
+# Get the property of waf policy associated with classic Afd
 function GetMigrateWafProperty {
     param (
         [string]$MigrateWafResourceId
     )
 
-    Write-Debug("Get the property of the ID")
     return Get-AzFrontDoorWafPolicy -ResourceGroupName $MigrateWafResourceId.split("/")[4] -Name $MigrateWafResourceId.split("/")[8]
 }
 
@@ -397,7 +343,6 @@ function CreateNewWafPolicy {
         [bool]$ManagedRuleMigrateFromWaf
     )
 
-    Write-Host("existManagedRuleMigrateFromWaf: " + $ManagedRuleMigrateFromWaf)
     if (${SkuName} -eq "Premium_AzureFrontDoor") {
         $sku = "Premium_AzureFrontDoor"
     } elseif ($ManagedRuleMigrateFromWaf) {
@@ -409,9 +354,8 @@ function CreateNewWafPolicy {
     # Remove the null/empty property
     $validatedWafProperty = ValidateMigrationWafPolicyProperty -WafProperty $WafProperty
 
-    Write-Debug("begin new waf policy......")
     # New a waf policy, copied from the Migrtae
-    New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku $sku @validatedWafProperty
+    New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku $sku @validatedWafProperty  | Out-Null
 }
 
 # Validate the property of a waf policy
@@ -419,10 +363,6 @@ function ValidateMigrationWafPolicyProperty {
     param (
         [Microsoft.Azure.Commands.FrontDoor.Models.PSTrackedResource]$WafProperty
     )
-
-    Write-Host("WafProperty: " + $WafProperty)
-    Write-Host("WafProperty custom rule: " + $WafProperty.CustomRules)
-    Write-Host("wafProperty manage rule: " + $WafProperty.ManagedRules)
 
     $wafHash = @{}
     if ($WafProperty.PolicyEnabledState) {
@@ -449,10 +389,6 @@ function ValidateMigrationWafPolicyProperty {
     if ($WafProperty.RequestBodyCheck) {
         $wafHash.Add('RequestBodyCheck', $WafProperty.RequestBodyCheck)
     }
-    
-    Write-Host("wafHash: " + $wafHash)
-    Write-Host("wafHash custom rule: " + $wafHash.Customrule)
-    Write-Host("wafHash manage rule: " + $wafHash.ManagedRule)
 
     return $wafHash
 }
@@ -460,6 +396,7 @@ function ValidateMigrationWafPolicyProperty {
 function RetryCommand {
     param (
         [string]$Command,
+        [hashtable]$CommandArgs, 
         [int]$RetryTimes,
         [int]$SecondsDelay
     )
@@ -469,17 +406,17 @@ function RetryCommand {
 
     while (-not $completed) {
         try {
-            $res = & $Command
-            Write-Debug ("Command [{0}] succeeded." -f $Command)
+            & $Command @CommandArgs
+            Write-Host ("Command [{0}] succeeded." -f $command)
             $completed = $true
             return $res
         } 
         catch {
             if ($retryCount -ge $RetryTimes) {
-                Write-Verbose ("Command [{0}] failed the maximum number of {1} times." -f $Command, $retryCount)
+                Write-Host ("Command [{0}] failed the maximum number of {1} times." -f $Command, $retryCount)
                 throw
             } else {
-                Write-Debug ("Command [{0}] failed. Retrying in {1} seconds." -f $command, $SecondsDelay)
+                Write-Host ("Command [{0}] loading..." -f $command)
                 Start-Sleep $SecondsDelay
                 $retryCount++
             }

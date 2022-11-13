@@ -51,44 +51,33 @@ https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnprofile
 function Update-AzFrontDoorCdnProfileSku {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile])]
-    [CmdletBinding(DefaultParameterSetName='Upgrade', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='Upgrade', Mandatory)]
-        [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
         ${ProfileName},
     
-        [Parameter(ParameterSetName='Upgrade', Mandatory)]
-        [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # Name of the Resource group within the Azure subscription.
         ${ResourceGroupName},
     
-        [Parameter(ParameterSetName='Upgrade')]
-        [Parameter(ParameterSetName='UpgradeExpanded')]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # Azure Subscription ID.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
+        [Parameter(Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileUpgradeParameters]
         # Parameters required for profile upgrade.
         # To construct, see NOTES section for PROFILEUPGRADEPARAMETER properties and create a hash table.
         ${ProfileUpgradeParameter},
-    
-        [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
-        [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileChangeSkuWafMapping[]]
-        # Web Application Firewall (WAF) and security policy mapping for the profile upgrade
-        # To construct, see NOTES section for WAFMAPPINGLIST properties and create a hash table.
-        ${WafMappingList},
     
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -151,11 +140,6 @@ function Update-AzFrontDoorCdnProfileSku {
     )
     
     process {
-        # if ($PSCmdlet.ParameterSetName -eq 'Update' -or $PSCmdlet.ParameterSetName -eq 'UpdateExpanded') {
-        #     $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName}
-        # }else {
-        #     throw "Not supported ParameterSetName."
-        # }
         $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName}
 
         if ($null -eq $frontDoorCdnProfile)
@@ -163,56 +147,54 @@ function Update-AzFrontDoorCdnProfileSku {
             throw "Provided FrontDoorCdnProfile does not exist."
         }
 
-        if($PSBoundParameters.ProfileUpgradeParameter) {
-            if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
-                throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
-            }
-            else {
-                Import-Module -Name Az.FrontDoor
-            }
+        if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
+            throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
+        }
+        Import-Module -Name Az.FrontDoor
 
-            $wafPolicies = $PSBoundParameters.ProfileUpgradeParameter
-            $validateWafId = "^/subscriptions/(?<subscriptionId>[^/]+)/resourcegroups/(?<resourceGroupName>[^/]+)/providers/microsoft.network/frontdoorwebapplicationfirewallpolicies/(?<policyName>[^/]+)$"
+        $wafPolicies = $PSBoundParameters.ProfileUpgradeParameter
+        $validateWafId = "^/subscriptions/(?<subscriptionId>[^/]+)/resourcegroups/(?<resourceGroupName>[^/]+)/providers/microsoft.network/frontdoorwebapplicationfirewallpolicies/(?<policyName>[^/]+)$"
 
-            if($wafPolicies.count -ne 0) {
-                # 1. Validate the format of the waf ID
-                foreach ($wafMapping in $wafPolicies.WafMappingList) {
-                    $changeToWafPolciy = $wafMapping.ChangeToWafPolicyId
-                    if ($changeToWafPolciy.ToLower() -notmatch $validateWafId) {
-                        throw "The format of Waf policy id is supposed to be like '/subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******' "
-                    }
+        if($wafPolicies.count -ne 0) {
+            # 1. Validate the format of the waf ID
+            foreach ($wafMapping in $wafPolicies.WafMappingList) {
+                $changeToWafPolciy = $wafMapping.ChangeToWafPolicyId
+                if ($changeToWafPolciy.ToLower() -notmatch $validateWafId) {
+                    throw "The format of Waf policy id is supposed to be like '/subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******' "
                 }
+            }
 
-                foreach ($wafMapping in $wafPolicies.wafMappingList) {
-                    $changeToWafPolicy = $wafMapping.ChangeToWafPolicyId
-                    $changeToWafPolicyName = $changeToWafPolicy.split("/")[8]
-                    $changeToWafPolicyResourceGroup = $changeToWafPolicy.split("/")[4]
+            foreach ($wafMapping in $wafPolicies.wafMappingList) {
+                $changeToWafPolicy = $wafMapping.ChangeToWafPolicyId
+                $changeToWafPolicyName = $changeToWafPolicy.split("/")[8]
+                if ($changeToWafPolicyName -notmatch '(^[a-zA-Z]+)\w+$') {
+                    throw "The WAF name must begin with a letter, and may only contain numbers and letters."
+                }
+                $changeToWafPolicyResourceGroup = $changeToWafPolicy.split("/")[4]
 
-                    # 2. Validate whether the policy already exists in the subsrciption
-                    try {
-                        Get-AzFrontDoorWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName -ErrorAction Stop
+                # 2. Validate whether the policy already exists in the subsrciption
+                try {
+                    Get-AzFrontDoorWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName -ErrorAction Stop | Out-Null
+                }
+                catch {
+                    $policyName = $wafMapping.SecurityPolicyName
+                    # Get the waf policy name of the security.
+                    try{
+                        $policyNameProperty = Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName} -Name $policyName -ErrorAction Stop
                     }
                     catch {
-                        $policyName = $wafMapping.SecurityPolicyName
-                        Write-Debug("Current policy name: " + $policyName)
-                        # Get the waf policy name of the security.
-                        try{
-                            $policyNameProperty = Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName} -Name $policyName -ErrorAction Stop
-                        }
-                        catch {
-                            throw 'Security policy name not exists in this profile...'
-                        }
-                        $currentWafName = $policyNameProperty.Parameter.WafPolicyId.split("/")[8]
-                        $currentWafResourceGroup = $policyNameProperty.Parameter.WafPolicyId.split("/")[4]
-                        Write-Debug("Current waf: " + $currentWafName + $currentWafResourceGroup)
-                        $wafPolicyProperty = Get-AzFrontDoorWafPolicy -ResourceGroupName $currentWafResourceGroup -Name $currentWafName
-
-                        # Create a new waf policy. 
-                        CreatePremiumWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName -WafProperty $wafPolicyProperty
+                        throw 'Security policy name not exists in this profile...'
                     }
+                    $currentWafName = $policyNameProperty.Parameter.WafPolicyId.split("/")[8]
+                    $currentWafResourceGroup = $policyNameProperty.Parameter.WafPolicyId.split("/")[4]
+                    $wafPolicyProperty = Get-AzFrontDoorWafPolicy -ResourceGroupName $currentWafResourceGroup -Name $currentWafName
+
+                    # Create a new waf policy. 
+                    CreatePremiumWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName -WafProperty $wafPolicyProperty
                 }
             }
         }
+
         Az.Cdn.internal\Update-AzFrontDoorCdnProfileSku @PSBoundParameters
     }
 }
@@ -229,7 +211,7 @@ function CreatePremiumWafPolicy {
     # Remove the null/empty property
     $validatedWafProperty = ValidateWafPolicyProperty $WafProperty
 
-    New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku "Premium_AzureFrontDoor" @validatedWafProperty
+    New-AzFrontDoorWafPolicy -ResourceGroupName $ResourceGroupName -Name $Name -Sku "Premium_AzureFrontDoor" @validatedWafProperty  | Out-Null
 }
 
 # Validate the property of a waf policy

@@ -13,20 +13,11 @@ The change need to be committed after this.
 
 ## SYNTAX
 
-### MigrateExpanded (Default)
 ```
 Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
  -ProfileName <String> -SkuName <SkuName> [-SubscriptionId <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Migrate
-```
-Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName <String>
- -MigrationParameter <IMigrationParameters> [-SubscriptionId <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -80,7 +71,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: MigrateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -137,29 +128,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MigrationParameter
-Request body for Migrate operation.
-To construct, see NOTES section for MIGRATIONPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrationParameters
-Parameter Sets: Migrate
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MigrationWebApplicationFirewallMapping
 Waf mapping for the migrated profile
 To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrationWebApplicationFirewallMapping[]
-Parameter Sets: MigrateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -189,7 +164,7 @@ Name of the new profile that need to be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: MigrateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -219,7 +194,7 @@ Name of the pricing tier.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName
-Parameter Sets: MigrateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -292,14 +267,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`MIGRATIONPARAMETER <IMigrationParameters>`: Request body for Migrate operation.
-  - `ProfileName <String>`: Name of the new profile that need to be created.
-  - `[ClassicResourceReferenceId <String>]`: Resource ID.
-  - `[MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>]`: Waf mapping for the migrated profile
-    - `[MigratedFromId <String>]`: Resource ID.
-    - `[MigratedToId <String>]`: Resource ID.
-  - `[SkuName <SkuName?>]`: Name of the pricing tier.
 
 `MIGRATIONWEBAPPLICATIONFIREWALLMAPPING <IMigrationWebApplicationFirewallMapping[]>`: Waf mapping for the migrated profile
   - `[MigratedFromId <String>]`: Resource ID.

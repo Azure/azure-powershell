@@ -12,17 +12,9 @@ Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 
 ## SYNTAX
 
-### Upgrade (Default)
 ```
 Update-AzFrontDoorCdnProfileSku -ProfileName <String> -ResourceGroupName <String>
  -ProfileUpgradeParameter <IProfileUpgradeParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpgradeExpanded
-```
-Update-AzFrontDoorCdnProfileSku -ProfileName <String> -ResourceGroupName <String>
- -WafMappingList <IProfileChangeSkuWafMapping[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -121,7 +113,7 @@ To construct, see NOTES section for PROFILEUPGRADEPARAMETER properties and creat
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileUpgradeParameters
-Parameter Sets: Upgrade
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -157,22 +149,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WafMappingList
-Web Application Firewall (WAF) and security policy mapping for the profile upgrade
-To construct, see NOTES section for WAFMAPPINGLIST properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileChangeSkuWafMapping[]
-Parameter Sets: UpgradeExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -232,10 +208,6 @@ To create the parameters described below, construct a hash table containing the 
   - `WafMappingList <IProfileChangeSkuWafMapping[]>`: Web Application Firewall (WAF) and security policy mapping for the profile upgrade
     - `SecurityPolicyName <String>`: The security policy name.
     - `[ChangeToWafPolicyId <String>]`: Resource ID.
-
-`WAFMAPPINGLIST <IProfileChangeSkuWafMapping[]>`: Web Application Firewall (WAF) and security policy mapping for the profile upgrade
-  - `SecurityPolicyName <String>`: The security policy name.
-  - `[ChangeToWafPolicyId <String>]`: Resource ID.
 
 ## RELATED LINKS
 
