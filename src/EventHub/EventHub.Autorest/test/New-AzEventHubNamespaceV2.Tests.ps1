@@ -30,7 +30,6 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventHubNamespace.EnableAutoInflate | Should be $true
         $eventHubNamespace.DisableLocalAuth | Should be $true
         $eventHubNamespace.KafkaEnabled | Should be $true
-        
 
         $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV4 -SkuName Premium -Location eastus -IdentityType SystemAssigned        
         $eventhubNamespace.MaximumThroughputUnits | Should -Be 0
@@ -40,31 +39,24 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventhubNamespace.SkuTier | Should be Premium
         $eventhubNamespace.Location | Should -Be "East Us"
 
-
-        $a = @{}
-        $a.Add('/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/shubham-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSI-rg01',[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
-        $a.Add('/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/shubham-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSI-rg02',[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
-        $ec1 = New-AzEventHubKeyVaultPropertiesObject -KeyName key4 -KeyVaulturi https://keyvault-rg1.vault.azure.net/ -IdentityUserAssignedIdentity /subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/shubham-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSI-rg01
-        $ec2 = New-AzEventHubKeyVaultPropertiesObject -KeyName key5 -KeyVaulturi https://keyvault-rg1.vault.azure.net/ -IdentityUserAssignedIdentity /subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/shubham-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSI-rg01
+        # Create namespace with UserAssigned Encryption Enabled
+        $a = New-AzEventHubUserAssignedIdentityObject -IdentityId $env.msi1, $env.msi2
+        $ec1 = New-AzEventHubKeyVaultPropertiesObject -KeyName key1 -KeyVaulturi $env.keyVaultUri -UserAssignedIdentity $env.msi1
+        $ec2 = New-AzEventHubKeyVaultPropertiesObject -KeyName key2 -KeyVaulturi $env.keyVaultUri -UserAssignedIdentity $env.msi1
         $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentity $a -KeyVaultProperty $ec1,$ec2
         $eventhubNamespace.IdentityType | Should -Be UserAssigned
         $eventhubNamespace.SkuName | Should -Be Premium
-        $eventhubNamespace.SkuTier | Should be Premium
+        $eventhubNamespace.SkuTier | Should -Be Premium
         $eventhubNamespace.Location | Should -Be "North Europe"
-        $eventhubNamespace.KeyVaultProperty.Count | Should be 2
+        $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
         $eventhubNamespace.UserAssignedIdentity.Count | Should -Be 2
 
-
-        $ec3 = New-AzEventHubKeyVaultPropertiesObject -KeyName key6 -KeyVaulturi https://keyvault-rg1.vault.azure.net/ -IdentityUserAssignedIdentity /subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/shubham-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MSI-rg0
         $eventhubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5
-        $eventhubNamespace.KeyVaultProperty += $ec3
         $eventhubNamespace.Name | Should -Be $env.namespaceV5
         $eventhubNamespace.IdentityType | Should -Be UserAssigned
         $eventhubNamespace.SkuName | Should -Be Premium
-        $eventhubNamespace.KeyVaultProperty.Count | Should be 3
+        $eventhubNamespace.KeyVaultProperty.Count | Should -Be 3
         $eventhubNamespace.UserAssignedIdentity.Count | Should -Be 2
 
-
- 
     }
 }

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "key_Vault_Name": {
+      "value": "keyVaultNamepoh46t"
+    },
+    "tenant_id": {
+      "value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    },
+    "object_id": {
+      "value": ""
+    },
+    "object_id_msi1": {
+      "value": "a52fa749-2e1b-4a81-ad5c-b7547cd446e0"
+    },
+    "object_id_msi2": {
+      "value": "c50027ce-3c5d-44df-bb25-44fcd4a7d0a4"
+    }
+  }
+}

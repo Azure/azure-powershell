@@ -228,7 +228,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-POLICY <IApplicationGroupPolicy[]>: List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
+`POLICY <IApplicationGroupPolicy[]>`: List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
   - `Name <String>`: The Name of this policy
 
 ## RELATED LINKS

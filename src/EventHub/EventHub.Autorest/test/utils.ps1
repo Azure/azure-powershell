@@ -21,6 +21,9 @@ function setupEnv() {
 
     $resourceGroup = "resourceGroupAutorest" + (RandomString -allChars $false -len 6)
     $namespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
+    $systemAssignedNamespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
+    $keyVaultName = "keyVaultName" + (RandomString -allChars $false -len 6)
+    $keyVaultUri = "https://" + $keyVaultName + "vault.azure.net/"
     $namespaceV2 = "namespaceV2" + (RandomString -allChars $false -len 6)
     $namespaceV3 = "namespaceV3" + (RandomString -allChars $false -len 6)
     $namespaceV4 = "namespaceV4" + (RandomString -allChars $false -len 6)
@@ -65,6 +68,8 @@ function setupEnv() {
     New-AzResourceGroup -Name $resourceGroup -Location eastus
 
     $env.Add("resourceGroup", $resourceGroup)
+    $env.Add("systemAssignedNamespaceName", $systemAssignedNamespaceName)
+    $env.Add("keyVaultUri", $keyVaultUri)
     $env.Add("namespace", $namespaceName)
     $env.Add("namespaceV2", $namespaceV2)
     $env.Add("namespaceV3", $namespaceV3)
@@ -108,6 +113,7 @@ function setupEnv() {
 
     $eventHubTemplate = Get-Content .\test\deployment-template\parameter.json | ConvertFrom-Json
     $eventHubTemplate.parameters.namespace_name.value = $namespaceName
+    $eventHubTemplate.parameters.system_assigned_namespace_name.value = $systemAssignedNamespaceName
     $eventHubTemplate.parameters.namespace_auth_rule_name.value = $authRule
     $eventHubTemplate.parameters.eventhub_auth_rule_name.value = $eventHubAuthRule
     $eventHubTemplate.parameters.eventhub_name.value = $eventHub
@@ -126,6 +132,18 @@ function setupEnv() {
     $eventHubTemplate.parameters.namespace_name.value = $primaryNamespaceName
     Set-Content -Path .\test\deployment-template\disasterRecoveryParameter.json -Value (ConvertTo-Json $eventHubTemplate)
     $rg = New-AzResourceGroupDeployment -TemplateFile .\test\deployment-template\disasterRecoveryTemplate.json -TemplateParameterFile .\test\deployment-template\disasterRecoveryParameter.json -Name DRConfigTemplate -ResourceGroupName $resourceGroup
+
+    Write-Host -ForegroundColor Magenta "Deploying KeyVault ARM template"
+
+    $namespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -NamespaceName $env.systemAssignedNamespaceName
+    $keyVaultTemplate = Get-Content .\test\deployment-template\keyVaultParameter.json | ConvertFrom-Json
+    $keyVaultTemplate.parameters.key_Vault_Name.value = $keyVaultName
+    $keyVaultTemplate.parameters.tenant_id.value = $env.Tenant
+    $keyVaultTemplate.parameters.object_id.value = $namespace.PrincipalId
+    Set-Content -Path .\test\deployment-template\keyVaultParameter.json -Value (ConvertTo-Json $keyVaultTemplate)
+    $rg = New-AzResourceGroupDeployment -TemplateFile .\test\deployment-template\keyVaultTemplate.json -TemplateParameterFile .\test\deployment-template\keyVaultParameter.json -Name keyVaultTemplate -ResourceGroupName $resourceGroup
+    
+    Write-Host -ForegroundColor Magenta "Deployed KeyVault ARM template"
 
     $resourceNames = Get-Content .\test\deployment-template\pre-created-resources\parameter.json | ConvertFrom-Json
     $env.Add("storageAccountId", $resourceNames.parameters.storageAccountId.Value)

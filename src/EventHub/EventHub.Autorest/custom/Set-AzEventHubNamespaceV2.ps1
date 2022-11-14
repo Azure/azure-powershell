@@ -37,6 +37,13 @@ function Set-AzEventHubNamespaceV2{
         # The name is case insensitive.
         ${ResourceGroupName},
 
+        [Parameter(ParameterSetName = 'SetViaIdentityExpanded', Mandatory, ValueFromPipeline, HelpMessage = "Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity]
+        # Identity Parameter
+        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+        ${InputObject},
+
         [Parameter(ParameterSetName = 'SetExpanded', HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
@@ -78,7 +85,7 @@ function Set-AzEventHubNamespaceV2{
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities]
         # IdentityId
-        ${IdentityId},
+        ${UserAssignedIdentity},
 
         [Parameter(HelpMessage = "Value that indicates whether AutoInflate is enabled for eventhub namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -93,11 +100,13 @@ function Set-AzEventHubNamespaceV2{
         [Parameter(HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Int32]
-        ${MaximumThroughputUnits},#MaximumThroughputUnits
+        # Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)
+        ${MaximumThroughputUnits},
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.TlsVersion]
+        # The minimum TLS version for the cluster to support, e.g. '1.2'
         ${MinimumTlsVersion},
 
         [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled.")]

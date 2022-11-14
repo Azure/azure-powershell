@@ -6,6 +6,10 @@
       "defaultValue": "AutomatedPSTesting",
       "type": "String"
     },
+    "system_assigned_namespace_name": {
+      "defaultValue": "AutomatedPSTesting",
+      "type": "String"
+    },
     "namespace_auth_rule_name": {
       "defaultValue": "namespaceAuthRule",
       "type": "String"
@@ -68,6 +72,29 @@
         "isAutoInflateEnabled": false,
         "maximumThroughputUnits": 0,
         "kafkaEnabled": true
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('system_assigned_namespace_name')]",
+      "location": "eastus",
+      "sku": {
+        "name": "Premium",
+        "tier": "Premium",
+        "capacity": 1
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": true,
+        "isAutoInflateEnabled": false,
+        "maximumThroughputUnits": 0,
+        "kafkaEnabled": true,
+        "identity": {
+          "type": "SystemAssigned"
+        }
       }
     },
     {
@@ -220,7 +247,7 @@
           }
         ],
         "subnet": {
-          "id": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn/subnets/default"
+          "id": "/subscriptions/a70b8550-49b1-4c60-b9f9-86b7edbf31e4/resourceGroups/PowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn2/subnets/default"
         }
       }
     },
@@ -250,7 +277,7 @@
           }
         ],
         "subnet": {
-          "id": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn/subnets/default"
+          "id": "/subscriptions/a70b8550-49b1-4c60-b9f9-86b7edbf31e4/resourceGroups/PowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn2/subnets/default"
         }
       }
     }

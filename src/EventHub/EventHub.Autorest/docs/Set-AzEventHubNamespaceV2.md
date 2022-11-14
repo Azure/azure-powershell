@@ -12,6 +12,7 @@ Updates an EventHub Entity
 
 ## SYNTAX
 
+### SetExpanded (Default)
 ```
 Set-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AlternateName <String>] [-ClusterArmId <String>] [-DisableLocalAuth] [-EnableAutoInflate]
@@ -20,6 +21,17 @@ Set-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-Subscript
  [-PublicNetworkAccess <PublicNetworkAccess>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <IIdentityUserAssignedIdentities>] [-DefaultProfile <PSObject>]
  [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SetViaIdentityExpanded
+```
+Set-AzEventHubNamespaceV2 -InputObject <IEventHubIdentity> [-AlternateName <String>] [-ClusterArmId <String>]
+ [-DisableLocalAuth] [-EnableAutoInflate] [-IdentityType <ManagedServiceIdentityType>] [-KafkaEnabled]
+ [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnits <Int32>]
+ [-MinimumTlsVersion <TlsVersion>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <IIdentityUserAssignedIdentities>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,6 +168,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity parameter.
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: SetViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -KafkaEnabled
 Value that indicates whether Kafka is enabled for eventhub namespace.
 
@@ -224,7 +252,7 @@ The name of EventHub namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -271,7 +299,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -302,7 +330,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -379,6 +407,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace
@@ -392,13 +422,28 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-KEYVAULTPROPERTY <IKeyVaultProperties[]>: Properties to configure Encryption
-  - `[IdentityUserAssignedIdentity <String>]`: ARM ID of user Identity selected for encryption
+`INPUTOBJECT <IEventHubIdentity>`: Identity parameter.
+  - `[Alias <String>]`: The Disaster Recovery configuration name
+  - `[ApplicationGroupName <String>]`: The Application Group name 
+  - `[AuthorizationRuleName <String>]`: The authorization rule name.
+  - `[ClusterName <String>]`: The name of the Event Hubs Cluster.
+  - `[ConsumerGroupName <String>]`: The consumer group name
+  - `[EventHubName <String>]`: The Event Hub name
+  - `[Id <String>]`: Resource identity path
+  - `[NamespaceName <String>]`: The Namespace name
+  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
+  - `[ResourceAssociationName <String>]`: The ResourceAssociation Name
+  - `[ResourceGroupName <String>]`: Name of the resource group within the azure subscription.
+  - `[SchemaGroupName <String>]`: The Schema Group name 
+  - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+`KEYVAULTPROPERTY <IKeyVaultProperties[]>`: Properties to configure Encryption
   - `[KeyName <String>]`: Name of the Key from KeyVault
   - `[KeyVaultUri <String>]`: Uri of KeyVault
   - `[KeyVersion <String>]`: Key Version
+  - `[UserAssignedIdentity <String>]`: ARM ID of user Identity selected for encryption
 
-USERASSIGNEDIDENTITY <IIdentityUserAssignedIdentities>: Properties for User Assigned Identities
+`USERASSIGNEDIDENTITY <IIdentityUserAssignedIdentities>`: Properties for User Assigned Identities
   - `[(Any) <IUserAssignedIdentity>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS

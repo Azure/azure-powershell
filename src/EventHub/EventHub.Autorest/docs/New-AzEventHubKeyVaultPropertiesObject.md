@@ -13,8 +13,8 @@ Create an in-memory object for KeyVaultProperties.
 ## SYNTAX
 
 ```
-New-AzEventHubKeyVaultPropertiesObject [-IdentityUserAssignedIdentity <String>] [-KeyName <String>]
- [-KeyVaultUri <String>] [-KeyVersion <String>] [<CommonParameters>]
+New-AzEventHubKeyVaultPropertiesObject [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-UserAssignedIdentity <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,21 +45,6 @@ Create an in-memory object for KeyVaultProperties.
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -IdentityUserAssignedIdentity
-ARM ID of user Identity selected for encryption.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -KeyName
 Name of the Key from KeyVault.
@@ -93,6 +78,21 @@ Accept wildcard characters: False
 
 ### -KeyVersion
 Key Version.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+ARM ID of user Identity selected for encryption.
 
 ```yaml
 Type: System.String
