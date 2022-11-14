@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Advisor
-online version: https://docs.microsoft.com/powershell/module/az.advisor/Set-AzAdvisorConfiguration
+online version: https://learn.microsoft.com/powershell/module/az.advisor/Set-AzAdvisorConfiguration
 schema: 2.0.0
 ---
 
