@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnProfileS
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnProfileSku' {
+Describe 'Update-AzFrontDoorCdnProfileSku' -Tag 'LiveOnly' {
     It 'Upgrade' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         {
@@ -32,13 +32,8 @@ Describe 'Update-AzFrontDoorCdnProfileSku' {
                 $profileSku = "Standard_AzureFrontDoor";
                 New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
 
-                # $securityPolicyName = "waf1"
-                # $wafName = "afdxSkuTest"
-                # $changeToWafPolicyId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/$wafName"
-                # $waf1 = New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName $securityPolicyName -ChangeToWafPolicyId $changeToWafPolicyId
-                # $upgrade = New-AzCdnProfileUpgradeParametersObject -WafMappingList $waf1
-                $updatedProfile = Update-AzFrontDoorCdnProfileSku -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName
-                $updatedProfile.ProfileName | Should -Be "Premium_AzureFrontDoor"
+                $updatedProfile = Update-AzFrontDoorCdnProfileSku -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -ProfileUpgradeParameter @{}
+                $updatedProfile.SkuName | Should -Be "Premium_AzureFrontDoor"
             } Finally
             {
                 Remove-AzResourceGroup -Name $ResourceGroupName -NoWait

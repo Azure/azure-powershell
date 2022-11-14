@@ -57,7 +57,6 @@ $upgrade.ToString()
 
 Create an in-memory object for ProfileUpgradeParameters.
 
-
 ## PARAMETERS
 
 ### -WafMappingList

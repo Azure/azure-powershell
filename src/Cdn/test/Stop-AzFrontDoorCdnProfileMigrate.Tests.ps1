@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzFrontDoorCdnProfileMig
 }
 
 Describe 'Stop-AzFrontDoorCdnProfileMigrate' {
-    It '__AllParameterSets' -skip {
+    It 'Delete' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

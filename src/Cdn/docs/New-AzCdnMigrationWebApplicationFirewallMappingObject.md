@@ -35,7 +35,6 @@ migrateFromId  migrateToId
 
 Create an in-memory object for MigrationWebApplicationFirewallMapping.
 
-
 ## PARAMETERS
 
 ### -MigratedFromId

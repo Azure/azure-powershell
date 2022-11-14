@@ -35,7 +35,6 @@ policyName
 
 Create an in-memory object for ProfileChangeSkuWafMapping.
 
-
 ## PARAMETERS
 
 ### -ChangeToWafPolicyId

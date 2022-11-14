@@ -35,7 +35,6 @@ True       Standard_AzureFrontDoor
 
 Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 
-
 ## PARAMETERS
 
 ### -ClassicResourceReferenceId

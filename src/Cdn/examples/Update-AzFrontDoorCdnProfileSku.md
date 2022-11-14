@@ -1,6 +1,6 @@
 ### Example 1: When a profile not associated with WAF policy.
 ```powershell
-Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName
+Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter @{}
 ```
 
 ```output
@@ -31,7 +31,7 @@ Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 ### Example 2: When the CDN profile associated with WAF and select an exsting WAF policy...
 ```powershell
 $waf1 = New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf1 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName1
-$waf2 = New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf2 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName2
+$waf2 = New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf2 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName2
 $upgrade1 = New-AzCdnProfileUpgradeParametersObject -WafMappingList $waf1
 $upgrade2 = New-AzCdnProfileUpgradeParametersObject -WafMappingList $waf2
 

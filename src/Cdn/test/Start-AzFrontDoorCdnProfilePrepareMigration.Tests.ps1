@@ -14,8 +14,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzFrontDoorCdnProfilePr
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Start-AzFrontDoorCdnProfilePrepareMigration' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'Start-AzFrontDoorCdnProfilePrepareMigration' -Tag 'LiveOnly'{
+    It 'MigrateExpanded' {
+        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+        {
+            $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
+            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+
+            try
+            {
+                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
+
+                $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+                Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+
+                $profileSku = "Standard_AzureFrontDoor";
+                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
+
+                $classicResourceReferenceId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Network/profiles/$frontDoorCdnProfileName"
+                $migratedProfileName = "$frontDoorCdnProfileName-migrated"
+
+                $migrateLocation = Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName $ResourceGroupName -ClassicResourceReferenceId $classicResourceReferenceId -ProfileName $migratedProfileName -SkuName $profileSku 
+                $migrateLocation.Location | Should -BeNullOrEmpty
+            } Finally
+            {
+                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
+            }
+        }
     }
 }
