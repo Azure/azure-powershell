@@ -1,0 +1,2 @@
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"  
+"Az.ApplicationInsights","New-AzApplicationInsightsWebTest","New-AzApplicationInsightsWebTest","0","2020","The cmdlet 'New-AzApplicationInsightsWebTest' no longer supports the type 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKindEnum' for parameter 'Kind'.","Change the type for parameter 'Kind' back to 'Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKindEnum'."
