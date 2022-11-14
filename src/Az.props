@@ -51,7 +51,6 @@
     <None Update="help\*.md" CopyToOutputDirectory="PreserveNewest" />
     <None Update="help\About\*.help.txt" CopyToOutputDirectory="PreserveNewest" />
     <None Update="*.ps1xml" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="UX\**\*.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
