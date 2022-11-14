@@ -218,6 +218,18 @@ directive:
       property-name: IdentityUserAssignedIdentity
     set:
       property-name: UserAssignedIdentity
+
+  - where:
+      model-name: EhNamespace
+      property-name: IdentityPrincipalId
+    set:
+      property-name: PrincipalId
+
+  - where:
+      model-name: EhNamespace
+      property-name: IdentityTenantId
+    set:
+      property-name: TenantId
   
   - where:
       subject: Namespace
@@ -228,6 +240,12 @@ directive:
       verb: New
       subject: NamespaceV2
     hide: true
+
+  - where:
+      model-name: KeyVaultProperties
+      property-name: IdentityUserAssignedIdentity
+    set:
+      property-name: UserAssignedIdentity
 
   - where:
       verb: Get
