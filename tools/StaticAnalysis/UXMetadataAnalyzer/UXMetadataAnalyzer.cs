@@ -126,7 +126,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
             {
                 foreach (ValidationError error in result)
                 {
-                    issueLogger.LogUXMetadataIssue(moduleName, resourceType, UXMatadataPath, 1, error.ToString());
+                    issueLogger.LogUXMetadataIssue(moduleName, resourceType, UXMatadataPath, 1, error.ToString().Replace("\n", "\\n"));
                 }
             }
         }
