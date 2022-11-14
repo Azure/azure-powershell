@@ -11,6 +11,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# Move the UX metadata files under modules to the artifacts folder for veridation. Merge the metadata file if the module is hybrid and both have metadata for the same sub resource type.
+
 Param(
     [String]
     $RepoArtifacts='artifacts',
@@ -20,7 +22,7 @@ Param(
 )
 
 $ConfigurationFolderPath = "$PSScriptRoot/../../../$RepoArtifacts/$Configuration"
-$Modules = Get-ChildItem -Path $ConfigurationFolderPath | % { $_.BaseName }
+$Modules = Get-ChildItem -Path $ConfigurationFolderPath | Where-Object { $_.BaseName }
 Write-Host $Modules
 ForEach ($ModuleName In $Modules)
 {
