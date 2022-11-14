@@ -22,27 +22,19 @@ Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profi
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 ```powershell
-{{ Add code here }}
+Test-AzFrontDoorCdnProfileCanMigrateOrNot -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/xxxxxxxxxxxxxxxxxxx//resourcegroups/testrg//providers/Microsoft.Network/Frontdoors/frontdoorName -SubscriptionId xxxxxxxxxxxxxxx 
 ```
 
 ```output
-{{ Add output here }}
+CanMigrate DefaultSku
+---------- ----------
+True       Standard_AzureFrontDoor
 ```
 
-{{ Add description here }}
+Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

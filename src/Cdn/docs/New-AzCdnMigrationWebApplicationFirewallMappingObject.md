@@ -22,27 +22,19 @@ Create an in-memory object for MigrationWebApplicationFirewallMapping.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for MigrationWebApplicationFirewallMapping.
 ```powershell
-{{ Add code here }}
+New-AzCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId migrateFromId -MigratedToId migrateToId
 ```
 
 ```output
-{{ Add output here }}
+MigratedFromId MigratedToId
+-------------- ------------
+migrateFromId  migrateToId
 ```
 
-{{ Add description here }}
+Create an in-memory object for MigrationWebApplicationFirewallMapping.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

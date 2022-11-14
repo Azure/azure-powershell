@@ -23,27 +23,13 @@ Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 ```powershell
-{{ Add code here }}
+Start-AzFrontDoorCdnProfileMigrate -ProfileName profileName-migrated -ResourceGroupName rgtest
 ```
 
-```output
-{{ Add output here }}
-```
+Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

@@ -23,27 +23,18 @@ Create an in-memory object for MigrationParameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for MigrationParameters.
 ```powershell
-{{ Add code here }}
+New-AzCdnMigrationParametersObject -ProfileName test
 ```
 
 ```output
-{{ Add output here }}
+ProfileName
+-----------
+test
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for MigrationParameters.
 
 ## PARAMETERS
 

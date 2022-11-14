@@ -27,27 +27,77 @@ The change need to be committed after this.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: When the CDN profile not associated with WAF and has no customer certificate... 
 ```powershell
-{{ Add code here }}
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName afd -ClassicResourceReferenceId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/AFD/providers/Microsoft.Network/Frontdoors/migrationtest001 -ProfileName migrationtest001-migrated -SkuName Standard_AzureFrontDoor
 ```
 
 ```output
-{{ Add output here }}
+Location
+--------
 ```
 
-{{ Add description here }}
+When the CDN profile not associated with WAF and has no customer certificate.
+Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+The change need to be committed after this.
 
-### Example 2: {{ Add title here }}
+### Example 2: When the CDN profile associated with WAF and copy to a new WAF policy...
 ```powershell
-{{ Add code here }}
+$wafMapping = New-AzCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/newWAFName
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName afd -ClassicResourceReferenceId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/AFD/providers/Microsoft.Network/Frontdoors/migrationtest001 -ProfileName migrationtest001-migrated -SkuName Standard_AzureFrontDoor -MigrationWebApplicationFirewallMapping $wafMapping
 ```
 
 ```output
-{{ Add output here }}
+Location
+--------
 ```
 
-{{ Add description here }}
+When the CDN profile associated with WAF and copy to a new waf policy.
+Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+The change need to be committed after this.
+
+### Example 3: When the CDN profile associated with WAF and select an exsting WAF policy...
+```powershell
+$wafMapping = New-AzCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName afd -ClassicResourceReferenceId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/AFD/providers/Microsoft.Network/Frontdoors/migrationtest001 -ProfileName migrationtest001-migrated -SkuName Standard_AzureFrontDoor -MigrationWebApplicationFirewallMapping $wafMapping
+```
+
+```output
+Location
+--------
+```
+
+When the CDN profile associated with WAF and select an exsting WAF policy.
+Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+The change need to be committed after this.
+
+
+### Example 4: When the CDN profile associated with WAF and has customer certificate... 
+```powershell
+$wafMapping1 = New-AzCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01test
+
+$wafMapping2 = New-AzCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf02 -MigratedToId  /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/tgtest02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf02test
+
+# enable MSI via SystemAssigned and UserAssigned
+$identityType = "SystemAssigned, UserAssigned"
+
+# UserIdentity information
+$userInfo = @{
+	"/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/rgtest01/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity01" = @{}
+	"/subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/rgtest02/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity02" = @{}
+}
+
+Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName afd -ClassicResourceReferenceId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest/providers/Microsoft.Network/Frontdoors/frontdoortest -ProfileName frontdoortest-migrated -SkuName Premium_AzureFrontDoor -MigrationWebApplicationFirewallMapping @($wafMapping1, $wafMapping2) -IdentityType$identityType -IdentityUserAssignedIdentity $userInfo
+```
+
+```output
+Location
+--------
+```
+
+When the CDN profile associated with WAF and has customer certificate.
+Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+The change need to be committed after this.
 
 ## PARAMETERS
 

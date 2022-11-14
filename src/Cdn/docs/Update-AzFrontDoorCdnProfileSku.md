@@ -23,27 +23,54 @@ Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: When a profile not associated with WAF policy.
 ```powershell
-{{ Add code here }}
+Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName
 ```
 
 ```output
-{{ Add output here }}
+Location Name              Kind      ResourceGroupName
+-------- ----              ----      -----------------
+Global   profileName       frontdoor rgName
 ```
+When a profile not associated with WAF policy.
+Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: When a CDN profile associated with WAF and copy to a new waf policy...
 ```powershell
-{{ Add code here }}
+$waf = New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/newWAFName
+$upgrade = New-AzCdnProfileUpgradeParametersObject -WafMappingList $waf
+
+Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter $upgrade
 ```
 
 ```output
-{{ Add output here }}
+Location Name              Kind      ResourceGroupName
+-------- ----              ----      -----------------
+Global   profileName       frontdoor rgName
 ```
 
-{{ Add description here }}
+When a CDN profile associated with WAF and copy to a new waf policy...
+Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
+
+### Example 2: When the CDN profile associated with WAF and select an exsting WAF policy...
+```powershell
+$waf1 = New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf1 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName1
+$waf2 = New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf2 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName2
+$upgrade1 = New-AzCdnProfileUpgradeParametersObject -WafMappingList $waf1
+$upgrade2 = New-AzCdnProfileUpgradeParametersObject -WafMappingList $waf2
+
+Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter -ProfileUpgradeParameter @($upgrade1, $upgrade2)
+```
+
+```output
+Location Name              Kind      ResourceGroupName
+-------- ----              ----      -----------------
+Global   profileName       frontdoor rgName
+```
+
+When the CDN profile associated with WAF and select an exsting WAF policy...
+Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 
 ## PARAMETERS
 

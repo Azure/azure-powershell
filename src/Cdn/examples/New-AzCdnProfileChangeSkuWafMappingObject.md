@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ProfileChangeSkuWafMapping.
 ```powershell
-{{ Add code here }}
+New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
 ```
 
 ```output
-{{ Add output here }}
+SecurityPolicyName
+------------------
+policyName
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for ProfileChangeSkuWafMapping.
 

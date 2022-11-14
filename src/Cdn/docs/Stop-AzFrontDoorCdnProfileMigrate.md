@@ -24,27 +24,14 @@ This will delete all the AFD Standard or Premium configurations.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Abort classic cdn migrate to AFDx.
 ```powershell
-{{ Add code here }}
+Stop-AzFrontDoorCdnProfileMigrate -Name profileName-migrated -ResourceGroupName rgtesg
 ```
 
-```output
-{{ Add output here }}
-```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Abort classic cdn migrate to AFDx.
+This will delete all the AFD Standard or Premium configurations.
 
 ## PARAMETERS
 
