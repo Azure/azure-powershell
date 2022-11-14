@@ -21,7 +21,7 @@ Param(
     $Configuration='Debug'
 )
 
-$ConfigurationFolderPath = "$PSScriptRoot/../../../$RepoArtifacts/$Configuration"
+$ConfigurationFolderPath = "$RepoArtifacts/$Configuration"
 $Modules = Get-ChildItem -Path $ConfigurationFolderPath | % { $_.BaseName }
 Write-Host $Modules
 ForEach ($ModuleName In $Modules)
