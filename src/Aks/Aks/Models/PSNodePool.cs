@@ -116,6 +116,12 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public string OsType { get; set; }
 
         /// <summary>
+        /// Gets or sets possible values include: 'Ubuntu', 'CBLMariner',
+        /// 'Windows2019', 'Windows2022'
+        /// </summary>
+        public string OsSKU { get; set; }
+
+        /// <summary>
         /// Gets or sets maximum number of nodes for auto-scaling
         /// </summary>
 
