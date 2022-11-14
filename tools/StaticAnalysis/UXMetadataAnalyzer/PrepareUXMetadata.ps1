@@ -22,14 +22,14 @@ Param(
 )
 
 $ConfigurationFolderPath = "$PSScriptRoot/../../../$RepoArtifacts/$Configuration"
-$Modules = Get-ChildItem -Path $ConfigurationFolderPath | Where-Object { $_.BaseName }
+$Modules = Get-ChildItem -Path $ConfigurationFolderPath | % { $_.BaseName }
 Write-Host $Modules
 ForEach ($ModuleName In $Modules)
 {
     $RPName = $ModuleName.Replace("Az.", "")
     $SourceFolder = "$PSScriptRoot/../../../src/$RPName"
     $UXFolderPath = "$ConfigurationFolderPath/$ModuleName/UX"
-    $MetadataFileArray = Get-ChildItem -Path $SourceFolder -Recurse -Filter UX | Get-ChildItem -Recurse -Filter *.json | Where-Object { $_.FullName }
+    $MetadataFileArray = Get-ChildItem -Path $SourceFolder -Recurse -Filter UX | Get-ChildItem -Recurse -Filter *.json | % { $_.FullName }
     If ($MetadataFileArray.Length -Eq 0)
     {
         Continue
