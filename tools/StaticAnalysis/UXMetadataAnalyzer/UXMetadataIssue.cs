@@ -59,7 +59,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
             var match = Regex.Match(line, matcher);
             if (!match.Success || match.Groups.Count < 6)
             {
-                throw new InvalidOperationException(string.Format("Could not parse '{0}' as BreakingChangeIssue record", line));
+                throw new InvalidOperationException(string.Format("Could not parse '{0}' as UXMetadataIssue record", line));
             }
 
             Module = match.Groups[1].Value;
