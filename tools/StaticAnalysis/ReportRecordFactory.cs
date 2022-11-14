@@ -18,6 +18,7 @@ using StaticAnalysis.DependencyAnalyzer;
 using StaticAnalysis.HelpAnalyzer;
 using StaticAnalysis.SignatureVerifier;
 using StaticAnalysis.ExampleAnalyzer;
+using StaticAnalysis.UXMetadataAnalyzer;
 
 using System;
 using System.Collections.Generic;
@@ -62,6 +63,10 @@ namespace StaticAnalysis
             if (type.Equals(typeof(ExampleIssue).FullName))
             {
                 return new ExampleIssue();
+            }
+            if (type.Equals(typeof(UXMetadataIssue).FullName))
+            {
+                return new UXMetadataIssue();
             }
 
             return null;
