@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the pagination bug in Get-AzRecoveryServicesAsrProtectableItem for the V2ARCM scenario.
 
 ## Version 6.1.0
 * Added support for cross zonal restore for ZRS vaults for non-ZonePinned VM
