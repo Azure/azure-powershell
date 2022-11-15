@@ -29,7 +29,7 @@ Get-AzADGroup -ObjectId $id -Select groupTypes -AppendSelected
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadgroup
+https://learn.microsoft.com/powershell/module/az.resources/get-azadgroup
 #>
 function Get-AzADGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup])]

@@ -75,7 +75,7 @@ GROUPOBJECT <IMicrosoftGraphGroup>: The target group object, could be used as pi
   [Theme <String>]: Specifies a Microsoft 365 group's color theme. Possible values are Teal, Purple, Green, Blue, Pink, Orange or Red. Returned by default.
   [Visibility <String>]: Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or Hiddenmembership. Hiddenmembership can be set only for Microsoft 365 groups, when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value is not specified during group creation on Microsoft Graph, a security group is created as Private by default and Microsoft 365 group is Public. See group visibility options to learn more. Returned by default.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadgroupmember
+https://learn.microsoft.com/powershell/module/az.resources/get-azadgroupmember
 #>
 function Get-AzADGroupMember {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject])]
