@@ -1226,6 +1226,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var storaeAccountParameter = new StorageAccountCreateParameters
             {
+                Kind = "StorageV2",
                 Location = this.Location ?? this.VM.Location,
                 ExtendedLocation = extendedLocation
             };
