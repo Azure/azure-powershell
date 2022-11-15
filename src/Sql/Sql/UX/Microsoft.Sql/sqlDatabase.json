@@ -2,7 +2,7 @@
     "resourceType":"servers-databases",
     "apiVersion":"2022-02-01-preview",
     "learnMore":{
-       "url":"https://docs.microsoft.com/powershell/module/az.sql/#sql"
+       "url":"https://learn.microsoft.com/powershell/module/az.sql/#sql"
     },
     "commands":[
        {
