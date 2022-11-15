@@ -14,7 +14,7 @@ Create or update an alert processing rule.
 
 ### BySimplifiedFormatSuppressionAlertProcessingRule (Default)
 ```
-Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>] -AlertProcessingRuleRuleType <String> 
+Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>] -AlertProcessingRuleType <String> 
  -Scope <System.Collections.Generic.List`1[System.String]> -Enabled <String> [-Tag <Hashtable>] 
  [-FilterSeverity <String>] [-FilterMonitorService <String>] [-FilterMonitorCondition <String>] [-FilterTargetResourceType <String>] 
  [-FilterTargetResource <String>] [-FilterTargetResourceGroup <String>] [-FilterAlertRuleId <String>] [-FilterAlertRuleNam <String>]
@@ -29,7 +29,7 @@ Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Descripti
 
 ### BySimplifiedFormatActionGroupAlertProcessingRule 
 ```
-Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>] -AlertProcessingRuleRuleType <String> 
+Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>] -AlertProcessingRuleType <String> 
  -Scope <System.Collections.Generic.List`1[System.String]> -Enabled <String> [-Tag <Hashtable>] 
  [-FilterSeverity <String>] [-FilterMonitorService <String>] [-FilterMonitorCondition <String>] [-FilterTargetResourceType <String>] 
  [-FilterTargetResource <String>] [-FilterTargetResourceGroup <String>] [-FilterAlertRuleId <String>] [-FilterAlertRuleName <String>]
