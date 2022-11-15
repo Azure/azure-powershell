@@ -23,7 +23,7 @@ Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.NetCoreZipUploadedUserSourceInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentNetCoreZipUploadedObject
+https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentNetCoreZipUploadedObject
 #>
 function New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.NetCoreZipUploadedUserSourceInfo')]

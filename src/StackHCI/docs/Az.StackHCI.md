@@ -1,7 +1,7 @@
 ---
 Module Name: Az.StackHCI
 Module Guid: 18e6b2a3-7e2d-4f6e-a8d2-09edaf462fd8
-Download Help Link: https://docs.microsoft.com/powershell/module/az.stackhci
+Download Help Link: https://learn.microsoft.com/powershell/module/az.stackhci
 Help Version: 1.0.0.0
 Locale: en-US
 ---

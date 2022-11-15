@@ -20,7 +20,7 @@ Creates or updates the data connector.
 Creates or updates the data connector.
 
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
 #>
 function New-AzSentinelDataConnector {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector])]

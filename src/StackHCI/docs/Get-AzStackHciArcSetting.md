@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciarcsetting
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciarcsetting
 schema: 2.0.0
 ---
 
