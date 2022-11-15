@@ -3,34 +3,34 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "namespace_name": {
-      "value": "namespaceNameqs1oet"
+      "value": "namespaceNameu24se3"
     },
     "system_assigned_namespace_name": {
-      "value": "namespaceName42r3bp"
+      "value": "namespaceName4f3ubh"
     },
     "namespace_auth_rule_name": {
-      "value": "auth-rulekydi6p"
+      "value": "auth-ruleb3ad6x"
     },
     "eventhub_auth_rule_name": {
-      "value": "auth-rulehk1gqa"
+      "value": "auth-rule96eojp"
     },
     "eventhub_name": {
-      "value": "eventHubn01kxg"
+      "value": "eventHub0tg4o5"
     },
     "schema_group_name": {
-      "value": "schemaGroup9iz4cg"
+      "value": "schemaGroupbxc2py"
     },
     "appgroup_name": {
-      "value": "appGroupmwuzog"
+      "value": "appGroupqcifeb"
     },
     "peName1": {
-      "value": "privateEndpoint-8rto2z"
+      "value": "privateEndpoint-jun90m"
     },
     "peName2": {
-      "value": "privateEndpoint-hwl3ax"
+      "value": "privateEndpoint-4m6hbf"
     },
     "namespaceResourceId": {
-      "value": "/subscriptions/a70b8550-49b1-4c60-b9f9-86b7edbf31e4/resourceGroups/resourceGroupAutorestg702ti/providers/Microsoft.EventHub/namespaces/namespaceNameqs1oet"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestypf6g4/providers/Microsoft.EventHub/namespaces/namespaceNameu24se3"
     }
   }
 }

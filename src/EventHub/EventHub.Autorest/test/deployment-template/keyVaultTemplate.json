@@ -93,7 +93,8 @@
       "properties": {
         "attributes": {
           "enabled": true
-        }
+        },
+        "kty": "RSA"
       }
     },
     {
@@ -107,7 +108,8 @@
       "properties": {
         "attributes": {
           "enabled": true
-        }
+        },
+        "kty": "RSA"
       }
     },
     {
@@ -121,7 +123,8 @@
       "properties": {
         "attributes": {
           "enabled": true
-        }
+        },
+        "kty": "RSA"
       }
     },
     {
@@ -135,7 +138,8 @@
       "properties": {
         "attributes": {
           "enabled": true
-        }
+        },
+        "kty":  "RSA"
       }
     },
     {
@@ -149,7 +153,8 @@
       "properties": {
         "attributes": {
           "enabled": true
-        }
+        },
+        "kty": "RSA"
       }
     },
     {
@@ -163,7 +168,8 @@
       "properties": {
         "attributes": {
           "enabled": true
-        }
+        },
+        "kty": "RSA"
       }
     }
   ]

@@ -3,25 +3,25 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storageAccountId": {
-      "value": "/subscriptions/a70b8550-49b1-4c60-b9f9-86b7edbf31e4/resourcegroups/PowershellTesting/providers/Microsoft.Storage/storageAccounts/testpsstorageaccount2"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Storage/storageAccounts/testpsstoragaccount"
     },
     "blobContainer": {
       "value": "container"
     },
     "virtualNetworkId": {
-      "value": "/subscriptions/a70b8550-49b1-4c60-b9f9-86b7edbf31e4/resourceGroups/PowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn2/subnets/default"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn/subnets/default"
     },
     "virtualNetworkId2": {
-      "value": "/subscriptions/a70b8550-49b1-4c60-b9f9-86b7edbf31e4/resourceGroups/PowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn2/subnets/default2"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn/subnets/default2"
     },
     "virtualNetworkId3": {
-      "value": "/subscriptions/a70b8550-49b1-4c60-b9f9-86b7edbf31e4/resourceGroups/PowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn2/subnets/default3"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn/subnets/default3"
     },
     "msi1": {
-      "value": "/subscriptions/a70b8550-49b1-4c60-b9f9-86b7edbf31e4/resourceGroups/PowershellTesting/providers/Microsoft.ManagedIdentity/userAssignedIdentities/Powershell-MSI-1"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/ps-testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI1"
     },
     "msi2": {
-      "value": "/subscriptions/a70b8550-49b1-4c60-b9f9-86b7edbf31e4/resourceGroups/PowershellTesting/providers/Microsoft.ManagedIdentity/userAssignedIdentities/Powershell-MSI-2"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/ps-testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PS-Testing-MSI2"
     }
   }
 }
