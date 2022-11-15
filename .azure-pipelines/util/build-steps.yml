@@ -2,6 +2,7 @@ parameters:
   osName: ''
   testFramework: ''
   configuration: ''
+  powerShellPlatform: ''
 
 steps:
 - task: NodeTool@0
@@ -51,6 +52,7 @@ steps:
     arguments: 'build.proj /t:Build /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
       OCTOKITPAT: $(OCTOKITPAT)
+      PowerShellPlatform: ${{ parameters.powerShellPlatform }}
 
 - task: PowerShell@2
   displayName: Build-AzPredictor

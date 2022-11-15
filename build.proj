@@ -74,6 +74,9 @@
     <DockerRoot>$(RepoRoot)docker</DockerRoot>
     <DockerTools>$(RepoTools)Docker</DockerTools>
     <DockerImageName Condition="'$(DockerImageName)' == ''">azure-powershell</DockerImageName>
+ 
+    <!-- XML documentation related -->    
+    <GenerateDocumentationFile Condition="'$(GenerateDocumentationFile)' != 'false'">true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <!-- Tasks -->
@@ -268,11 +271,17 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/StaticAnalysis/ExampleAnalyzer/Measure-MarkdownOrScript.ps1 -MarkdownPaths $(RepoArtifacts)/FilesChanged.txt -RulePaths $(RepoTools)/StaticAnalysis/ExampleAnalyzer/AnalyzeRules/*.psm1 &quot;"/>
   </Target>
 
-  <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisBreakingChange;StaticAnalysisDependency;StaticAnalysisSignature;StaticAnalysisHelp;StaticAnalysisExample">
+  <Target Name="StaticAnalysisFileChange" Condition="'$(RunStaticAnalysis)' == 'true'">
+    <Message Importance="high" Text="Running static analysis for file changes..." />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\StaticAnalysis\FileChangeAnalyzer\Test-FileChange.ps1 &quot;" />
+  </Target>
+
+  <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisBreakingChange;StaticAnalysisDependency;StaticAnalysisSignature;StaticAnalysisHelp;StaticAnalysisExample;StaticAnalysisFileChange">
     <Message Importance="high" Text="Running static analysis..." />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" />
-    
+
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/StaticAnalysis/CollectStaticAnalysisPipelineResult.ps1 -StaticAnalysisOutputDirectory $(StaticAnalysisOutputDirectory) &quot;"/>
     <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers check-error" />
     <OnError ExecuteTargets="StaticAnalysisErrorMessage" />
   </Target>
@@ -299,7 +308,7 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/NewOutputTypeIndex.ps1 -OutputFile $(RepoArtifacts)/outputtypes.json -BuildConfig $(Configuration)&quot;"  Condition="'$(TargetModule)' == ''"/>
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/NewHelpIndex.ps1 -OutputFile $(RepoArtifacts)/index.json -BuildConfig $(Configuration)&quot;" Condition="'$(TargetModule)' == ''"/>
 
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CleanupBuild.ps1 -BuildConfig $(Configuration)&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CleanupBuild.ps1 -BuildConfig $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) &quot;" />
 
     <Error Condition="'$(NuGetKey)' == ''" Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope $(Scope) -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot;&quot; -NugetExe $(NuGetCommand)" />

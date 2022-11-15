@@ -81,7 +81,7 @@ If ($Build)
             $Detail = Join-String -Separator ": " -InputObject $Detail
             If ($Position.Contains("src"))
             {
-                $ModuleName = $Position.Replace("\", "/").Split("src/")[1].Split('/')[0]
+                $ModuleName = "Az." + $Position.Replace("\", "/").Split("src/")[1].Split('/')[0]
             }
             Else
             {
@@ -96,7 +96,99 @@ If ($Build)
                 "Detail" = $Detail
             }
         }
-        ConvertTo-Json -Depth 10 -InputObject $BuildResultArray | Out-File -FilePath "$RepoArtifacts/PipelineResult/Build.json"
+
+        #Region produce result.json for GitHub bot to comsume
+        If ($IsWindows)
+        {
+            $OS = "Windows"
+        }
+        ElseIf ($IsLinux)
+        {
+            $OS = "Linux"
+        }
+        ElseIf ($IsMacOS)
+        {
+            $OS = "MacOS"
+        }
+        Else
+        {
+            $OS = "Others"
+        }
+        $Platform = "$($Env:PowerShellPlatform) - $OS"
+        $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" | ConvertFrom-Json
+        $ModuleBuildInfoList = @()
+        $CIPlan = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json" | ConvertFrom-Json
+        ForEach ($ModuleName In $CIPlan.build)
+        {
+            $BuildResultOfModule = $BuildResultArray | Where-Object { $_.Module -Eq "Az.$ModuleName" }
+            If ($BuildResultOfModule.Length -Eq 0)
+            {
+                $ModuleBuildInfoList += @{
+                    Module = "Az.$ModuleName";
+                    Status = "Success";
+                    Content = "";
+                }
+            }
+            Else
+            {
+                $Content = "|Type|Code|Position|Detail|`n|---|---|---|---|`n"
+                ForEach ($BuildResult In $BuildResultOfModule)
+                {
+                    If ($BuildResult.Type -Eq "Error")
+                    {
+                        $ErrorTypeEmoji = "❌"
+                    }
+                    ElseIf ($BuildResult.Type -Eq "Warning")
+                    {
+                        $ErrorTypeEmoji = "⚠️"
+                    }
+                    $Content += "|$ErrorTypeEmoji|$($BuildResult.Code)|$($BuildResult.Position)|$($BuildResult.Detail)|`n"
+                }
+                $ModuleBuildInfoList += @{
+                    Module = "Az.$ModuleName";
+                    Status = "Failed";
+                    Content = $Content;
+                }
+            }
+        }
+        $BuildDetail = @{
+            Platform = $Platform;
+            Modules = $ModuleBuildInfoList;
+        }
+        If ($BuildResultArray.Length -Ne 0)
+        {
+            $BuildDetail.Status = "Failed"
+            $DependencyStepStatus = "Canceled"
+        }
+        Else
+        {
+            $BuildDetail.Status = "Success"
+            $DependencyStepStatus = "Running"
+        }
+        $Template.Build.Details += $BuildDetail
+
+        $DependencyStepList = $Template | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" }
+
+        ForEach ($DependencyStep In $DependencyStepList)
+        {
+            $ModuleInfoList = @()
+            ForEach ($ModuleName In $CIPlan.$DependencyStep)
+            {
+                $ModuleInfoList += @{
+                    Module = "Az.$ModuleName";
+                    Status = $DependencyStepStatus;
+                    Content = "";
+                }
+            }
+            $Detail = @{
+                Status = $DependencyStepStatus;
+                Modules = $ModuleInfoList;
+            }
+            $Template.$DependencyStep.Details += $Detail
+        }
+
+        ConvertTo-Json -Depth 10 -InputObject $Template | Out-File -FilePath "$RepoArtifacts/PipelineResult/PipelineResult.json"
+        #EndRegion
     }
     Return
 }
@@ -122,7 +214,10 @@ If ($StaticAnalysisBreakingChange)
     {
         $BreakingChangeCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.'breaking-change'
     }
-    dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers breaking-change -u -m $BreakingChangeCheckModuleList
+    If ("" -Ne $BreakingChangeCheckModuleList)
+    {
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers breaking-change -u -m $BreakingChangeCheckModuleList
+    }
     Return
 }
 
@@ -136,7 +231,10 @@ If ($StaticAnalysisDependency)
     {
         $DependencyCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.dependency
     }
-    dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers dependency -u -m $DependencyCheckModuleList
+    If ("" -Ne $DependencyCheckModuleList)
+    {
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers dependency -u -m $DependencyCheckModuleList
+    }
     Return
 }
 
@@ -150,7 +248,10 @@ If ($StaticAnalysisSignature)
     {
         $SignatureCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.signature
     }
-    dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers signature -u -m $SignatureCheckModuleList
+    If ("" -Ne $SignatureCheckModuleList)
+    {
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers signature -u -m $SignatureCheckModuleList
+    }
     Return
 }
 
@@ -164,6 +265,9 @@ If ($StaticAnalysisHelp)
     {
         $HelpCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.help
     }
-    dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers help -u -m $HelpCheckModuleList
+    If ("" -Ne $HelpCheckModuleList)
+    {
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers help -u -m $HelpCheckModuleList
+    }
     Return
 }
