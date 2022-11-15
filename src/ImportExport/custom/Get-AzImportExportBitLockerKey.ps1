@@ -27,7 +27,7 @@ BitLockerKey                                            DriveId
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveBitLockerKey
 .Link
-https://docs.microsoft.com/powershell/module/az.importexport/get-azimportexportbitlockerkey
+https://learn.microsoft.com/powershell/module/az.importexport/get-azimportexportbitlockerkey
 #>
 function Get-AzImportExportBitLockerKey {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveBitLockerKey])]
