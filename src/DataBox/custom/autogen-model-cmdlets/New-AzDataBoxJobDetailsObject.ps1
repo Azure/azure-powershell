@@ -22,7 +22,7 @@
     .Outputs
     Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
     .Link
-    https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxJobDetailsObject
+    https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxJobDetailsObject
     #>
     function New-AzDataBoxJobDetailsObject {
         [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails')]
