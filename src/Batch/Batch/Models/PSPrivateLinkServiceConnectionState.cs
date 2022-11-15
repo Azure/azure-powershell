@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return new PSPrivateLinkServiceConnectionState(
                 privateLinkServiceConnectionState.Status,
                 privateLinkServiceConnectionState.Description,
-                privateLinkServiceConnectionState.ActionRequired);
+                privateLinkServiceConnectionState.ActionsRequired);
         }
     }
 }
