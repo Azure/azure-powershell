@@ -46,7 +46,7 @@
           "confirmation":false,
           "help":{
              "learnMore":{
-                "url":"https://docs.microsoft.com/powershell/module/az.compute/stop-azvm"
+                "url":"https://learn.microsoft.com/powershell/module/az.compute/stop-azvm"
              },
              "parameterSets":[
                 {
