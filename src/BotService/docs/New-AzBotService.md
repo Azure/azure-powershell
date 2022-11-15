@@ -16,7 +16,7 @@ Returns a BotService specified by the parameters.
 ```
 New-AzBotService -ApplicationId <String> -ResourceGroupName <String> -Sku <String> [-BotTemplateType <String>]
  [-Description <String>] [-DisplayName <String>] [-Endpoint <String>] [-Language <String>]
- [-Location <String>] [-Name <String>] [-Registration] [-serverFarmLocation <String>]
+ [-Location <String>] [-Name <String>] [-Registration] [-ServerFarmLocation <String>]
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzBotService -ApplicationId <String> -ResourceGroupName <String> -Sku <Strin
 ```
 New-AzBotService -ApplicationId <String> -ApplicationSecret <SecureString> -ResourceGroupName <String>
  -Sku <String> [-BotTemplateType <String>] [-Description <String>] [-ExistingServerFarmId <String>]
- [-Language <String>] [-Location <String>] [-Name <String>] [-serverFarmLocation <String>]
+ [-Language <String>] [-Location <String>] [-Name <String>] [-ServerFarmLocation <String>]
  [-SubscriptionId <String[]>] [-Webapp] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -256,7 +256,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -serverFarmLocation
+### -ServerFarmLocation
 Specifies the location of the server farm.
 
 ```yaml
