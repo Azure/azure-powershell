@@ -2,7 +2,7 @@
     "resourceType":"storageAccounts",
     "apiVersion":"2021-08-01",
     "learnMore":{
-       "url":"https://learn.microsoft.com/powershell/module/az.storage/#storage"       
+       "url":"https://learn.microsoft.com/powershell/module/az.storage/#storage"
     },
     "commands":[
        {
@@ -27,7 +27,7 @@
                      "[-ResourceGroupName] <String>",
                      "[-Name] <String>",
                      "[-IncludeBlobRestoreStatus]"
-                  ]                  
+                  ]
                 }
              ]
           },
@@ -68,7 +68,7 @@
          "examples":[
             {
                "description":"Invoke failover of a Storage account.",
-               "parameters":[    
+               "parameters":[
                   {
                      "name":"-ResourceGroupName",
                      "value":"[path.resourceGroupName]"
@@ -103,7 +103,7 @@
         "examples":[
            {
               "description":"Aborts an ongoing HierarchicalNamespace upgrade task on a storage account.",
-              "parameters":[    
+              "parameters":[
                  {
                     "name":"-ResourceGroupName",
                     "value":"[path.resourceGroupName]"
@@ -123,13 +123,13 @@
         "confirmation":true,
         "help":{
            "learnMore":{
-              "url":"https://learn.microsoft.com/powershell/module/az.storage/stop-azstorageaccounthierarchicalnamespaceupgrade"
+              "url":"https://learn.microsoft.com/powershell/module/az.storage/revoke-azstorageaccountuserdelegationkeys"
            },
            "parameterSets":[
               {
                  "parameters":[
                     "[-ResourceGroupName] <String>",
-                    "[-Name] <String>",
+                    "[-StorageAccountName] <String>",
                     "[-PassThru]"
                  ]
               }
@@ -138,13 +138,13 @@
         "examples":[
            {
               "description":"Revoke all User Delegation keys of a Storage account.",
-              "parameters":[    
+              "parameters":[
                  {
                     "name":"-ResourceGroupName",
                     "value":"[path.resourceGroupName]"
                  },
                  {
-                    "name":"-Name",
+                    "name":"-StorageAccountName",
                     "value":"[path.accountName]"
                  }
               ]

@@ -23,20 +23,21 @@ namespace StaticAnalysis.UXMetadataAnalyzer
         public int ProblemId { get; set; }
         public string Module { get; set; }
         public string ResourceType { get; set; }
-        public string FilePath { get; set; }
+        public string SubResourceType { get; set; }
+        public string Command { get; set; }
         public string Description { get; set; }
         public int Severity { get; set; }
         public string Remediation { get; set; }
         public string PrintHeaders()
         {
             return
-                "\"Module\",\"ResourceType\",\"FilePath\",\"Severity\",\"Description\"";
+                "\"Module\",\"Severity\",\"ResourceType\",\"SubResourceType\",\"Command\",\"Description\"";
         }
         public string FormatRecord()
         {
             return
-                string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\"",
-                Module, ResourceType, FilePath, Severity, Description);
+                string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\"",
+                Module, Severity, ResourceType, SubResourceType, Command, Description);
         }
 
         public bool Match(IReportRecord other)
@@ -47,7 +48,9 @@ namespace StaticAnalysis.UXMetadataAnalyzer
             {
                 result = string.Equals(record.Module, Module, StringComparison.OrdinalIgnoreCase) &&
                     string.Equals(record.ResourceType, ResourceType, StringComparison.OrdinalIgnoreCase) &&
-                    string.Equals(record.FilePath, FilePath, StringComparison.OrdinalIgnoreCase);
+                    string.Equals(record.SubResourceType, SubResourceType, StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(record.Command, Command, StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(record.Description, Description, StringComparison.OrdinalIgnoreCase);
             }
 
             return result;
@@ -55,18 +58,19 @@ namespace StaticAnalysis.UXMetadataAnalyzer
 
         public IReportRecord Parse(string line)
         {
-            var matcher = "\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\"";
+            var matcher = "\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\"";
             var match = Regex.Match(line, matcher);
-            if (!match.Success || match.Groups.Count < 6)
+            if (!match.Success || match.Groups.Count < 7)
             {
                 throw new InvalidOperationException(string.Format("Could not parse '{0}' as UXMetadataIssue record", line));
             }
 
             Module = match.Groups[1].Value;
-            ResourceType = match.Groups[2].Value;
-            FilePath = match.Groups[3].Value;
-            Severity = int.Parse(match.Groups[4].Value);
-            Description = match.Groups[5].Value;
+            Severity = int.Parse(match.Groups[2].Value);
+            ResourceType = match.Groups[3].Value;
+            SubResourceType = match.Groups[4].Value;
+            Command = match.Groups[5].Value;
+            Description = match.Groups[6].Value;
             return this;
         }
     }
