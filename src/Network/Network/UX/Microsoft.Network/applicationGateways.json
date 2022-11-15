@@ -2,7 +2,7 @@
 	"resourceType": "applicationGateways",
 	"apiVersion": "2022-05-01",
 	"learnMore": {
-		"url": "https://docs.microsoft.com/powershell/module/az.network/#network"
+		"url": "https://learn.microsoft.com/powershell/module/az.network/#network"
 	},
 	"commands": [
 		{
