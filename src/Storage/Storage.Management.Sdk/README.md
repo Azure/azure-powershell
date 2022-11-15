@@ -26,9 +26,9 @@ payload-flattening-threshold: 2
 ###
 ``` yaml
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/4e80dd0ac53f3e1694254e0a6966176e90ed38ff/specification/storage/resource-manager/Microsoft.Storage/stable/2022-05-01/storage.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/a98a48c6aced55dcf941778feb4f64c61a4599d2/specification/storage/resource-manager/Microsoft.Storage/stable/2022-05-01/blob.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/4e80dd0ac53f3e1694254e0a6966176e90ed38ff/specification/storage/resource-manager/Microsoft.Storage/stable/2022-05-01/file.json
+  - https://github.com/HimanshuChhabra/azure-rest-api-specs/blob/fb7cb60f0179a83aabc5fa0d6081e3806a47b196/specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/storage.json
+  - https://github.com/HimanshuChhabra/azure-rest-api-specs/blob/9414eb472ec5af5f83363554b658da1a9cce8965/specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/blob.json
+  - https://github.com/HimanshuChhabra/azure-rest-api-specs/blob/9414eb472ec5af5f83363554b658da1a9cce8965/specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/file.json
 
 output-folder: Generated
 

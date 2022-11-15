@@ -231,9 +231,22 @@ namespace Microsoft.Azure.Management.Storage
             /// Storage account names must be between 3 and 24 characters in length and use
             /// numbers and lower-case letters only.
             /// </param>
-            public static IPage<EncryptionScope> List(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName)
+            /// <param name='maxpagesize'>
+            /// Optional, specifies the maximum number of encryption scopes that will be
+            /// included in the list response.
+            /// </param>
+            /// <param name='filter'>
+            /// Optional. When specified, only encryption scope names starting with the
+            /// filter will be listed.
+            /// </param>
+            /// <param name='include'>
+            /// Optional, when specified, will list encryption scopes with the specific
+            /// state. Defaults to All. Possible values include: 'All', 'Enabled',
+            /// 'Disabled'
+            /// </param>
+            public static IPage<EncryptionScope> List(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, int? maxpagesize = default(int?), string filter = default(string), string include = default(string))
             {
-                return operations.ListAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+                return operations.ListAsync(resourceGroupName, accountName, maxpagesize, filter, include).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -252,12 +265,25 @@ namespace Microsoft.Azure.Management.Storage
             /// Storage account names must be between 3 and 24 characters in length and use
             /// numbers and lower-case letters only.
             /// </param>
+            /// <param name='maxpagesize'>
+            /// Optional, specifies the maximum number of encryption scopes that will be
+            /// included in the list response.
+            /// </param>
+            /// <param name='filter'>
+            /// Optional. When specified, only encryption scope names starting with the
+            /// filter will be listed.
+            /// </param>
+            /// <param name='include'>
+            /// Optional, when specified, will list encryption scopes with the specific
+            /// state. Defaults to All. Possible values include: 'All', 'Enabled',
+            /// 'Disabled'
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<EncryptionScope>> ListAsync(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<EncryptionScope>> ListAsync(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, int? maxpagesize = default(int?), string filter = default(string), string include = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, accountName, maxpagesize, filter, include, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
