@@ -100,7 +100,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 try
                 {
                     //The variable is set in pipeline: "azure-powershell - powershell-core"
-                    var client = new GitHubClient(new ProductHeaderValue("Azure"));
+                    var client = new GitHubClient(new ProductHeaderValue("wyunchi-ms"));
                     client.Credentials = new Credentials(Environment.GetEnvironmentVariable("OCTOKITPAT"));
                     IReadOnlyList<PullRequestFile> files;
                     try
@@ -111,7 +111,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     catch (AuthorizationException e)
                     {
                         Console.WriteLine(e.Message);
-                        client = new GitHubClient(new ProductHeaderValue("Azure"));
+                        client = new GitHubClient(new ProductHeaderValue("wyunchi-ms"));
                         files = client.PullRequest.Files(RepositoryOwner, RepositoryName, int.Parse(PullRequestNumber))
                                         .ConfigureAwait(false).GetAwaiter().GetResult();
                     }
