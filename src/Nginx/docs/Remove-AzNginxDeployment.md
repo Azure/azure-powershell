@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Nginx
-online version: https://docs.microsoft.com/powershell/module/az.nginx/remove-aznginxdeployment
+online version: https://learn.microsoft.com/powershell/module/az.nginx/remove-aznginxdeployment
 schema: 2.0.0
 ---
 
