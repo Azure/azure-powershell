@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MonitoringSolutions
-online version: https://docs.microsoft.com/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution
+online version: https://learn.microsoft.com/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution
 schema: 2.0.0
 ---
 
@@ -217,5 +217,5 @@ ALIASES
 
 
 
-[Get-AzOperationalInsightsWorkspace](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)
+[Get-AzOperationalInsightsWorkspace](https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)
 

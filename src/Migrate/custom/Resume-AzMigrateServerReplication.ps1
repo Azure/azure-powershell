@@ -19,7 +19,7 @@ Starts the replication that has been suspended.
 .Description
 The Resume-AzMigrateServerReplication starts the replication that has been suspended.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/resume-azmigrateserverreplication
+https://learn.microsoft.com/powershell/module/az.migrate/resume-azmigrateserverreplication
 #>
 function Resume-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
