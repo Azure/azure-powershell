@@ -92,7 +92,7 @@
           "confirmation":false,
           "help":{
              "learnMore":{
-                "url":"https://docs.microsoft.com/powershell/module/az.compute/restart-azvm"
+                "url":"https://learn.microsoft.com/powershell/module/az.compute/restart-azvm"
              },
              "parameterSets":[
                 {
