@@ -22,7 +22,7 @@
     .Outputs
     Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetails
     .Link
-    https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxContactDetailsObject
+    https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxContactDetailsObject
     #>
     function New-AzDataBoxContactDetailsObject {
         [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetails')]

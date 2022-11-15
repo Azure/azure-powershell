@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StreamAnalytics
-online version: https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticscluster
+online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticscluster
 schema: 2.0.0
 ---
 

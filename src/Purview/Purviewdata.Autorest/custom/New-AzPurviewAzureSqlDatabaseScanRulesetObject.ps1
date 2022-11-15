@@ -23,7 +23,7 @@ Create an in-memory object for AzureSqlDatabaseScanRuleset.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseScanRulesetObject
 #>
 function New-AzPurviewAzureSqlDatabaseScanRulesetObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseScanRuleset')]

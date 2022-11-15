@@ -19,7 +19,7 @@ Initialises the infrastructure for the migrate project.
 .Description
 The Initialize-AzMigrateReplicationInfrastructure cmdlet initialises the infrastructure for the migrate project.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
+https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
 #>
 function Initialize-AzMigrateReplicationInfrastructure {
     [OutputType([System.Boolean])]

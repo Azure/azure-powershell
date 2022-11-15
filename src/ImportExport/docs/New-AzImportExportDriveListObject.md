@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImportExport
-online version: https://docs.microsoft.com/powershell/module/az.importexport/new-AzImportExportDriveListObject
+online version: https://learn.microsoft.com/powershell/module/az.importexport/new-AzImportExportDriveListObject
 schema: 2.0.0
 ---
 
@@ -227,7 +227,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus
 
 ## NOTES
 
