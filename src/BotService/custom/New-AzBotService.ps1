@@ -95,7 +95,7 @@ function New-AzBotService {
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
         [System.String]
         # Specifies the location of the server farm.
-        ${serverFarmLocation} = 'westeurope',
+        ${ServerFarmLocation} = 'westeurope',
         
 
         [Parameter(Mandatory)]
@@ -250,7 +250,7 @@ function New-AzBotService {
                     'zipUrl' = $ZipUrl;
                     'botEnv' = 'prod';
                     'createServerFarm' = $CreateServerFarm;
-                    'serverFarmLocation' = $serverFarmLocation;
+                    'serverFarmLocation' = $ServerFarmLocation;
                     'botId' = $Name;
                     'description' = $Description
                 }
