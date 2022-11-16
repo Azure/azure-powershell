@@ -16,7 +16,7 @@
           "parameterSets": [
             {
               "parameters": [
-                "-ServiceName <String>",
+                "-Name <String>",
                 "-ResourceGroupName <String>",
                 "[-SubscriptionId <String[]>]"
               ]
@@ -32,7 +32,7 @@
                       "value": "[path.resourceGroupName]"
                   },
                   {
-                      "name": "-ServiceName",
+                      "name": "-Name",
                       "value": "[path.serviceName]"
                   },
                   {
