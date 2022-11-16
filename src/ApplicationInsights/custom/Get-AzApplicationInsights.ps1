@@ -19,7 +19,7 @@ Returns an Application Insights component.
 .Description
 Returns an Application Insights component.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights
+https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights
 #>
 function Get-AzApplicationInsights {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent], [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan])]
