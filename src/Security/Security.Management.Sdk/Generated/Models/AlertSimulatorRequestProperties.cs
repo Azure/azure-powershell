@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Management.Security.Models
     /// <summary>
     /// Describes properties of an alert simulation request
     /// </summary>
+    [Newtonsoft.Json.JsonObject("AlertSimulatorRequestProperties")]
     public partial class AlertSimulatorRequestProperties
     {
         /// <summary>

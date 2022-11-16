@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// exploitation. This step is usually detected as an attempt,
         /// originating from outside the network, to scan the target system and
         /// find a way in.  Further details on the PreAttack stage can be read
-        /// in [MITRE Pre-Att&ck
+        /// in [MITRE Pre-Attack
         /// matrix](https://attack.mitre.org/matrices/pre/).
         /// </summary>
         public const string PreAttack = "PreAttack";
