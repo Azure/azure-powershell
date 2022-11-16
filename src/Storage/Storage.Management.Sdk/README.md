@@ -26,10 +26,9 @@ payload-flattening-threshold: 2
 ###
 ``` yaml
 input-file:
-  - https://github.com/HimanshuChhabra/azure-rest-api-specs/blob/fb7cb60f0179a83aabc5fa0d6081e3806a47b196/specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/storage.json
-  - https://github.com/HimanshuChhabra/azure-rest-api-specs/blob/9414eb472ec5af5f83363554b658da1a9cce8965/specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/blob.json
-  - https://github.com/HimanshuChhabra/azure-rest-api-specs/blob/9414eb472ec5af5f83363554b658da1a9cce8965/specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/file.json
-
+  - https://github.com/Azure/azure-rest-api-specs/blob/da0cfefaa0e6c237e1e3819f1cb2e11d7606878d/specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/storage.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/da0cfefaa0e6c237e1e3819f1cb2e11d7606878d/specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/blob.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/da0cfefaa0e6c237e1e3819f1cb2e11d7606878d/specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/file.json
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.Storage
