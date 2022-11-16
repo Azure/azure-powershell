@@ -227,7 +227,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus
 
 ## NOTES
 

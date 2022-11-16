@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubschemagroup
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubschemagroup
 schema: 2.0.0
 ---
 
