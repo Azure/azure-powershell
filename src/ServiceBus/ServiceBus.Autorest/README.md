@@ -104,7 +104,7 @@ directive:
 #      subject: Namespace
 #    remove: true
 
-# Renaming New-AzEventHubNamespace
+# Renaming New-AzServiceBusNamespace
   - where:
       verb: New
       subject: Namespace
@@ -187,6 +187,11 @@ directive:
       subject: Namespace
     set:
       subject: NamespaceV2
+
+  - where:
+      verb: New
+      subject: NamespaceV2
+    hide: true
 
 # Rules
   - where:

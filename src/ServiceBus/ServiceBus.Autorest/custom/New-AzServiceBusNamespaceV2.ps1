@@ -21,25 +21,26 @@ Create the new ServiceBusNamespace Entity
 
 function New-AzServiceBusNamespaceV2{
 	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace])]
-    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, ConfirmImpact = 'Medium')]
+    [CmdletBinding(PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
-        [Parameter(ParameterSetName = 'NewExpandedNamespace', Mandatory, HelpMessage = "The name of ServiceBusNamespace")]
+        [Parameter(Mandatory, HelpMessage = "The name of ServiceBusNamespace")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         ${Name},
 
-        [Parameter(ParameterSetName = 'NewExpandedNamespace', Mandatory, HelpMessage = "The name of the ResourceGroupName.")]
+        [Parameter(Mandatory, HelpMessage = "The name of the ResourceGroupName.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         ${ResourceGroupName},
 
+        [Parameter(HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName = 'NewExpandedNamespace', Mandatory, HelpMessage = "Resource Location.")]
+        [Parameter(Mandatory, HelpMessage = "Resource Location.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.String]
         ${Location},
@@ -71,7 +72,7 @@ function New-AzServiceBusNamespaceV2{
 
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities]
+        [System.Collections.Hashtable]
         ${UserAssignedIdentity},
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
