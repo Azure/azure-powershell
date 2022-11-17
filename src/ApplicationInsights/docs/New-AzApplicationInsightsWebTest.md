@@ -17,7 +17,7 @@ Creates or updates an Application Insights web test definition.
 New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ContentIgnoreCase] [-ContentMatch <String>] [-ContentPassIfTextFound]
  [-Description <String>] [-Enabled] [-Frequency <Int32>] [-GeoLocation <IWebTestGeolocation[]>]
- [-Kind <WebTestKind>] [-RequestBody <String>] [-RequestFollowRedirect] [-RequestHeader <IHeaderField[]>]
+ [-Kind <WebTestKindEnum>] [-RequestBody <String>] [-RequestFollowRedirect] [-RequestHeader <IHeaderField[]>]
  [-RequestHttpVerb <String>] [-RequestParseDependent] [-RequestUrl <String>] [-RetryEnabled]
  [-RuleExpectedHttpStatusCode <Int32>] [-RuleIgnoreHttpsStatusCode]
  [-RuleSslCertRemainingLifetimeCheck <Int32>] [-RuleSslCheck] [-Tag <Hashtable>] [-TestName <String>]
@@ -28,7 +28,7 @@ New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Loc
 ```
 New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-Configuration <String>] [-ContentMatch <String>] [-Description <String>]
- [-Enabled] [-Frequency <Int32>] [-GeoLocation <IWebTestGeolocation[]>] [-Kind <WebTestKind>]
+ [-Enabled] [-Frequency <Int32>] [-GeoLocation <IWebTestGeolocation[]>] [-Kind <WebTestKindEnum>]
  [-RequestParseDependent] [-RequestUrl <String>] [-RetryEnabled] [-RuleExpectedHttpStatusCode <Int32>]
  [-Tag <Hashtable>] [-TestName <String>] [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -259,7 +259,7 @@ Accept wildcard characters: False
 The kind of web test this is, valid choices are ping, multistep, and standard.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKind
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKindEnum
 Parameter Sets: (All)
 Aliases:
 

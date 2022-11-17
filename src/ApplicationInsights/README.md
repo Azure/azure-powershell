@@ -67,9 +67,14 @@ directive:
         "multistep",
         "standard"
       ]
+  # For resolve breaking change issue.
   - from: swagger-document
-    where: $.definitions.WebTestProperties.properties.Kind.description
-    transform: return "The kind of web test this is, valid choices are ping, multistep, and standard."
+    where: $.definitions.WebTestProperties.properties.Kind.x-ms-enum
+    transform: >-
+      return {
+            "name": "WebTestKindEnum",
+            "modelAsString": false
+          }
 
   # microsoft.insights is the service response.
   - from: swagger-document
@@ -397,7 +402,7 @@ directive:
     - WorkbookTemplateGallery
     # Hide for custom modle cmdlet.
     # - HeaderField
-  
+
   # format output table
   - where:
       model-name: WebTest
