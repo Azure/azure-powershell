@@ -96,16 +96,6 @@ function Set-AzServiceBusNamespaceV2{
         [System.Int32]
         ${SkuCapacity},
 
-        [Parameter(HelpMessage = "Value that indicates whether AutoInflate is enabled for ServiceBus namespace.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        ${EnableAutoInflate},
-
-        [Parameter(HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [System.Int32]
-        ${MaximumThroughputUnits},
-
         [Parameter(HelpMessage = "Resource tags.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Collections.Hashtable]
@@ -219,12 +209,6 @@ function Set-AzServiceBusNamespaceV2{
             }
             if ($hasUserAssignedIdentity) {
                 $serviceBusNamespace.UserAssignedIdentity = $UserAssignedIdentity
-            }
-            if ($hasEnableAutoInflate) {
-                $serviceBusNamespace.EnableAutoInflate = $EnableAutoInflate
-            }
-            if ($hasMaximumThroughputUnits) {
-                $serviceBusNamespace.MaximumThroughputUnits = $MaximumThroughputUnits
             }
             if ($hasMinimumTlsVersion) {
                 $serviceBusNamespace.MinimumTlsVersion = $MinimumTlsVersion
