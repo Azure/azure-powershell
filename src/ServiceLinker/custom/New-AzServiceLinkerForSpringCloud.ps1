@@ -20,7 +20,7 @@ Create or update linker resource in spring cloud.
 .Description
 Create or update linker resource in spring cloud.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/new-azservicelinkerforspringcloud
+https://learn.microsoft.com/powershell/module/az.servicelinker/new-azservicelinkerforspringcloud
 #>
 function New-AzServiceLinkerForSpringCloud {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ILinkerResource])]

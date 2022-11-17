@@ -29,6 +29,12 @@
         "Details": [
         ]
     },
+    "file-change": {
+        "Name": "File Change Check",
+        "Order": 6,
+        "Details": [
+        ]
+    },
     "test": {
         "Name": "Test",
         "Order": 100,

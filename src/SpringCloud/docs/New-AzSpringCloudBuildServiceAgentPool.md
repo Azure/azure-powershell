@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildserviceagentpool
+online version: https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildserviceagentpool
 schema: 2.0.0
 ---
 

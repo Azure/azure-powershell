@@ -28,7 +28,7 @@ ErrorMessage
 event hub resource id and consumer group tuple provided are already used
 
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/invoke-azkustodataconnectionvalidation
+https://learn.microsoft.com/powershell/module/az.kusto/invoke-azkustodataconnectionvalidation
 #>
 function Invoke-AzKustoDataConnectionValidation {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnectionValidationResult])]

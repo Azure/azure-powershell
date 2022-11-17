@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DeviceUpdate
-online version: https://docs.microsoft.com/powershell/module/az.deviceupdate/remove-azdeviceupdateaccount
+online version: https://learn.microsoft.com/powershell/module/az.deviceupdate/remove-azdeviceupdateaccount
 schema: 2.0.0
 ---
 

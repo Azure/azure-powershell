@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Nginx
-online version: https://docs.microsoft.com/powershell/module/az.nginx/remove-aznginxcertificate
+online version: https://learn.microsoft.com/powershell/module/az.nginx/remove-aznginxcertificate
 schema: 2.0.0
 ---
 

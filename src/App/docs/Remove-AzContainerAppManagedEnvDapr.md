@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenvdapr
+online version: https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenvdapr
 schema: 2.0.0
 ---
 
