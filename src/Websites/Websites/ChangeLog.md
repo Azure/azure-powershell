@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added Tag parameter for `New-AzWebApp` and `New-AzWebAppSlot`
+* Fixed `Set-AzWebApp` and `Set-AZWebAppSlot` to rethrow exception when Service Principal/User doesn't have permission to list web app configuration. [#19942]
 
 ## Version 2.11.5
 * Fixed `Publish-AzWebApp` to use latest publish API when deploying war package [#19791]
