@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Gets the SASKey of a ServiceBus namespace, queue or topic.
+Update the ServiceBusNamespace Entity
 .Description
-Gets the SASKey of a ServiceBus namespace, queue or topic.
+Update the ServiceBusNamespace Entity
 #>
 
 function Set-AzServiceBusNamespaceV2{
@@ -38,11 +38,6 @@ function Set-AzServiceBusNamespaceV2{
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
-
-        [Parameter(ParameterSetName = 'SetExpandedNamespace', Mandatory, HelpMessage = "Resource Location.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [System.String]
-        ${Location},
 
         [Parameter(HelpMessage = "Alternate name for namespace")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
@@ -68,6 +63,13 @@ function Set-AzServiceBusNamespaceV2{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType]
         ${IdentityType},
+
+        [Parameter(HelpMessage = "Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
+        # Identity Parameter
+        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+        ${InputObject},
 
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
@@ -174,10 +176,8 @@ function Set-AzServiceBusNamespaceV2{
             $hasKeyVaultProperty = $PSBoundParameters.Remove('KeyVaultProperty')
             $hasUserAssignedIdentity = $PSBoundParameters.Remove('UserAssignedIdentity')
             $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
-            $hasEnableAutoInflate = $PSBoundParameters.Remove('EnableAutoInflate')
-            $hasMaximumThroughputUnits = $PSBoundParameters.Remove('MaximumThroughputUnits')
             $hasMinimumTlsVersion = $PSBoundParameters.Remove('MinimumTlsVersion')
-            $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption') 
+            $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption')
             $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
             $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
             $hasTag = $PSBoundParameters.Remove('Tag')
@@ -186,7 +186,7 @@ function Set-AzServiceBusNamespaceV2{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
             
-            $serviceBusNamespace = Get-ServiceBusNamespaceV2 @PSBoundParameters
+            $serviceBusNamespace = Get-AzServiceBusNamespaceV2 @PSBoundParameters
 
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')

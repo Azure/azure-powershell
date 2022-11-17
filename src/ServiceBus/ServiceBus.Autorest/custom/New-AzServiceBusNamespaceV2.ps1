@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Create the new ServiceBusNamespace Entity
+Create the new ServiceBusNamespace Entity.
 .Description
-Create the new ServiceBusNamespace Entity
+Create the new ServiceBusNamespace Entity.
 #>
 
 function New-AzServiceBusNamespaceV2{
