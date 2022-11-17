@@ -79,7 +79,9 @@
               "storage": []
             }
           }
-        ]
+        ],
+        "enableSoftDelete": true,
+        "enablePurgeProtection": true
       }
     },
     {

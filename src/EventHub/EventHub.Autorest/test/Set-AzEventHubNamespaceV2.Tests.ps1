@@ -17,17 +17,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubNamespaceV2'))
 function assertNamespaceUpdates{
     param([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace]$expectedNamespace,[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace]$namespace)
 
-    Assert-AreEqual $expectedNamespace.SkuName $namespace.SkuName
-    Assert-AreEqual $expectedNamespace.SkuCapacity $namespace.SkuCapacity
-    Assert-AreEqual $expectedNamespace.Name $namespace.Name
-    Assert-AreEqual $expectedNamespace.MaximumThroughputUnits $namespace.MaximumThroughputUnits
-    Assert-AreEqual $expectedNamespace.MinimumTlsVersion $namespace.MinimumTlsVersion
-    Assert-AreEqual $expectedNamespace.Location $namespace.Location
-    Assert-AreEqual $expectedNamespace.EnableAutoInflate $namespace.EnableAutoInflate
-    Assert-AreEqual $expectedNamespace.KafkaEnabled $namespace.KafkaEnabled
-    Assert-AreEqual $expectedNamespace.ZoneRedundant $namespace.ZoneRedundant
-    Assert-AreEqual $expectedNamespace.DisableLocalAuth $namespace.DisableLocalAuth
-    Assert-AreEqual $expectedNamespace.Tags.Count $namespace.Tags.Count
+    $expectedNamespace.SkuName | Should -Be $namespace.SkuName
+    $expectedNamespace.SkuCapacity | Should -Be $namespace.SkuCapacity
+    $expectedNamespace.Name | Should -Be $namespace.Name
+    $expectedNamespace.MaximumThroughputUnits | Should -Be $namespace.MaximumThroughputUnits
+    $expectedNamespace.MinimumTlsVersion | Should -Be $namespace.MinimumTlsVersion
+    $expectedNamespace.Location | Should -Be $namespace.Location
+    $expectedNamespace.EnableAutoInflate | Should -Be $namespace.EnableAutoInflate
+    $expectedNamespace.KafkaEnabled | Should -Be $namespace.KafkaEnabled
+    $expectedNamespace.ZoneRedundant | Should -Be $namespace.ZoneRedundant
+    $expectedNamespace.DisableLocalAuth | Should -Be $namespace.DisableLocalAuth
+    $expectedNamespace.Tag.Count | Should -Be $namespace.Tag.Count
 }
 
 Describe 'Set-AzEventHubNamespaceV2' {
@@ -37,11 +37,11 @@ Describe 'Set-AzEventHubNamespaceV2' {
         $ec1 = New-AzEventHubKeyVaultPropertiesObject -KeyName key3 -KeyVaulturi $env.keyVaulturi -UserAssignedIdentity $env.msi1
 
         $eventhubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5
-        $eventhubNamespace += $ec1
+        $eventhubNamespace.KeyVaultProperty += $ec1
 
         $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5 -KeyVaultProperty $eventhubNamespace.KeyVaultProperty
         $eventhubNamespace.IdentityType | Should -Be "UserAssigned"
-        $eventhubNamespace.IdentityId.Count | Should -Be 2
+        $eventhubNamespace.UserAssignedIdentity.Count | Should -Be 2
         $eventhubNamespace.KeyVaultProperty.Count | Should -Be 3
         $eventhubNamespace.Name | Should -Be $env.namespaceV5
 
@@ -53,15 +53,21 @@ Describe 'Set-AzEventHubNamespaceV2' {
         $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
         $eventhubNamespace.IdentityType | Should -Be "SystemAssigned"
 
-        # Remove KeyVaultProperty from namespace with SystemAssigned identity.
-        $eventhubNamespace.KeyVaultProperty = $namespace.KeyVaultProperty | Where-Object { $_ –ne $namespace.KeyVaultProperty[0] }
+        # Add KeyVaultProperty to a namespace with System Assigned identity
+        $ec3 = New-AzEventHubKeyVaultPropertiesObject -KeyName key3 -KeyVaulturi $env.keyVaulturi
+        $eventHubNamespace.KeyVaultProperty += $ec3
         $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -KeyVaultProperty $eventhubNamespace.KeyVaultProperty
-        $eventhubNamespace.KeyVaultProperty.Count | Should -Be 1
+        $eventHubNamespace.KeyVaultProperty.Count | Should -Be 3
+
+        # Remove KeyVaultProperty from namespace with SystemAssigned identity.
+        $eventhubNamespace.KeyVaultProperty = $namespace.KeyVaultProperty[0,2]
+        $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -KeyVaultProperty $eventhubNamespace.KeyVaultProperty
+        $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
         $eventhubNamespace.IdentityType | Should -Be "SystemAssigned"
 
         # Add UserAssigned Identity to above namespace to test for SystemAssigned and UserAssigned
         $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -IdentityType "SystemAssigned, UserAssigned"
-        $eventhubNamespace.KeyVaultProperty.Count | Should -Be 1
+        $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
         $eventhubNamespace.IdentityType | Should -Be "SystemAssigned, UserAssigned"
         
         # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None
@@ -73,37 +79,37 @@ Describe 'Set-AzEventHubNamespaceV2' {
     }
     It 'SetViaIdentityExpanded' {
         $expectedNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3
-        $namespace = Set-AzEventHubNamespace -InputObject $expectedNamespace -EnableAutoInflate:$false -MaximumThroughputUnits 0
-        $expectedNamespace.IsAutoInflateEnabled = $false
+        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -EnableAutoInflate:$false -MaximumThroughputUnits 0
+        $expectedNamespace.EnableAutoInflate = $false
         $expectedNamespace.MaximumThroughputUnits = 0
         assertNamespaceUpdates $expectedNamespace $namespace
 
-        $namespace = Set-AzEventHubNamespace -InputObject $expectedNamespace -EnableAutoInflate:$true -MaximumThroughputUnits 18
-        $expectedNamespace.IsAutoInflateEnabled = $true
+        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -EnableAutoInflate:$true -MaximumThroughputUnits 18
+        $expectedNamespace.EnableAutoInflate = $true
         $expectedNamespace.MaximumThroughputUnits = 18
         assertNamespaceUpdates $expectedNamespace $namespace
 
-        $namespace = Set-AzEventHubNamespace -InputObject $expectedNamespace -SkuCapacity 12
+        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -SkuCapacity 12
         $expectedNamespace.Sku.Capacity = 12
         assertNamespaceUpdates $expectedNamespace $namespace
 
-        $namespace = Set-AzEventHubNamespace -InputObject $expectedNamespace -MaximumThroughputUnits 25
+        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -MaximumThroughputUnits 25
         $expectedNamespace.MaximumThroughputUnits = 25
         assertNamespaceUpdates $expectedNamespace $namespace
 
-        $namespace = Set-AzEventHubNamespace -InputObject $expectedNamespace -MinimumTlsVersion 1.0
+        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -MinimumTlsVersion 1.0
         $expectedNamespace.MinimumTlsVersion = '1.0'
         assertNamespaceUpdates $expectedNamespace $namespace
 
-        $namespace = Set-AzEventHubNamespace -InputObject $expectedNamespace -MinimumTlsVersion 1.2
+        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -MinimumTlsVersion 1.2
         $expectedNamespace.MinimumTlsVersion = '1.2'
         assertNamespaceUpdates $expectedNamespace $namespace
 
-        $namespace = Set-AzEventHubNamespace -InputObject $expectedNamespace -DisableLocalAuth:$false
+        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -DisableLocalAuth:$false
         $expectedNamespace.DisableLocalAuth = $false
         assertNamespaceUpdates $expectedNamespace $namespace
 
-        $namespace = Set-AzEventHubNamespace -InputObject $expectedNamespace -DisableLocalAuth
+        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -DisableLocalAuth
         $expectedNamespace.DisableLocalAuth = $true
         assertNamespaceUpdates $expectedNamespace $namespace
     }

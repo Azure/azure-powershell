@@ -50,12 +50,26 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventhubNamespace.Location | Should -Be "North Europe"
         $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
         $eventhubNamespace.UserAssignedIdentity.Count | Should -Be 2
+        $eventhubNamespace.RequireInfrastructureEncryption | Should -Be $false
+
+        # Create namespace with UserAssigned Encryption Enabled and RequireInfrastructureEncryption true
+        $a = New-AzEventHubUserAssignedIdentityObject -IdentityId $env.msi1, $env.msi2
+        $ec1 = New-AzEventHubKeyVaultPropertiesObject -KeyName key1 -KeyVaulturi $env.keyVaultUri -UserAssignedIdentity $env.msi1
+        $ec2 = New-AzEventHubKeyVaultPropertiesObject -KeyName key2 -KeyVaulturi $env.keyVaultUri -UserAssignedIdentity $env.msi1
+        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV7 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentity $a -KeyVaultProperty $ec1,$ec2 -RequireInfrastructureEncryption
+        $eventhubNamespace.IdentityType | Should -Be UserAssigned
+        $eventhubNamespace.SkuName | Should -Be Premium
+        $eventhubNamespace.SkuTier | Should -Be Premium
+        $eventhubNamespace.Location | Should -Be "North Europe"
+        $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
+        $eventhubNamespace.UserAssignedIdentity.Count | Should -Be 2
+        $eventhubNamespace.RequireInfrastructureEncryption | Should -Be $true
 
         $eventhubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5
         $eventhubNamespace.Name | Should -Be $env.namespaceV5
         $eventhubNamespace.IdentityType | Should -Be UserAssigned
         $eventhubNamespace.SkuName | Should -Be Premium
-        $eventhubNamespace.KeyVaultProperty.Count | Should -Be 3
+        $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
         $eventhubNamespace.UserAssignedIdentity.Count | Should -Be 2
 
     }
