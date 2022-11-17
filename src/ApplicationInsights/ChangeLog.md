@@ -18,7 +18,22 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Supported Workbook Api. Below is the new cmdlet
+  * `Get-AzApplicationInsightsMyWorkbook`
+  * `Get-AzApplicationInsightsWorkbook`
+  * `Get-AzApplicationInsightsWorkbookRevision`
+  * `Get-AzApplicationInsightsWorkbookTemplate`
+  * `New-AzApplicationInsightsMyWorkbook`
+  * `New-AzApplicationInsightsWorkbook`
+  * `New-AzApplicationInsightsWorkbookTemplate`
+  * `New-AzApplicationInsightsWorkbookTemplateGalleryObject`
+  * `Remove-AzApplicationInsightsMyWorkbook`
+  * `Remove-AzApplicationInsightsWorkbook`
+  * `Remove-AzApplicationInsightsWorkbookTemplate`
+  * `Update-AzApplicationInsightsMyWorkbook`
+  * `Update-AzApplicationInsightsWorkbook`
+  * `Update-AzApplicationInsightsWorkbookTemplate`
+  
 ## Version 2.1.0
 * Fixed parameters for Set-AzApplicationInsightsDailyCap [#18315]
 * Fixed parameter `DocumentType` for `New-AzApplicationInsightsContinuousExport` and `Set-AzApplicationInsightsContinuousExport` [#18350]
