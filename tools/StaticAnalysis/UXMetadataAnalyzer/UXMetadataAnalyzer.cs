@@ -184,6 +184,8 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                     {
                         if (alias.Equals(parameterNameInExample, StringComparison.CurrentCultureIgnoreCase))
                         {
+                            string issueDescription = string.Format("Please use parameter {0} instead of alias {1}", parameterMetadata.Name, alias);
+                            issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, commandName, 2, issueDescription);
                             return parameterMetadata.Name;
                         }
                     }
