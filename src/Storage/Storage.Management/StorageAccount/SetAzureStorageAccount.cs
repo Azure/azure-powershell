@@ -910,18 +910,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         updateParameters.AllowedCopyScope = this.AllowedCopyScope;
                     }
-                    if (this.enableSftp != null)
-                    {
-                        updateParameters.IsSftpEnabled = this.enableSftp;
-                    }
-                    if (this.enableLocalUser != null)
-                    {
-                        updateParameters.IsLocalUserEnabled = this.enableLocalUser;
-                    }
-                    if (this.AllowedCopyScope != null)
-                    {
-                        updateParameters.AllowedCopyScope = this.AllowedCopyScope;
-                    }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
                         this.ResourceGroupName,
