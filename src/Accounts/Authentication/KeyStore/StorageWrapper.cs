@@ -14,19 +14,13 @@
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Identity.Client.Extensions.Msal;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     class StorageWrapper : IStorage
     { 
-        //fixme: remove linux tag or set as plaintext
         private const string KeyChainServiceName = "Microsoft.Azure.PowerShell";
-        private const string LinuxKeyRingSchema = "Microsoft.Azure.PowerShell";
-        private const string LinuxKeyRingCollection = MsalCacheHelper.LinuxKeyRingDefaultCollection;
-        private static readonly KeyValuePair<string, string> LinuxKeyRingAttr1 = new KeyValuePair<string, string>("MsalClientID", "Microsoft.Azure.PowerShell");
-        private static readonly KeyValuePair<string, string> LinuxKeyRingAttr2 = new KeyValuePair<string, string>("Microsoft.Azure.PowerShell", "1.0.0.0");
 
         public string FileName { get; set; }
         public string Directory { get; set; }
@@ -53,9 +47,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 storageProperties = new StorageCreationPropertiesBuilder(FileName, Directory)
                     .WithMacKeyChain(KeyChainServiceName + ".other_secrets", FileName)
-                    .WithLinuxKeyring(FileName, "default", "KeyStoreCache"
-                    , LinuxKeyRingAttr1, LinuxKeyRingAttr2);
-
+                    .WithLinuxUnprotectedFile();
                 _storage = Storage.Create(storageProperties.Build());
                 VerifyPersistence();
             }
@@ -142,6 +134,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             return _lastError;
         }
-
     }
 }
