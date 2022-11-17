@@ -67,6 +67,10 @@ directive:
         "multistep",
         "standard"
       ]
+  - from: swagger-document
+    where: $.definitions.WebTestProperties.properties.Kind.description
+    transform: return "The kind of web test this is, valid choices are ping, multistep, and standard."
+
   # For resolve breaking change issue.
   - from: swagger-document
     where: $.definitions.WebTestProperties.properties.Kind.x-ms-enum
