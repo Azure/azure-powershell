@@ -36,7 +36,7 @@ function Uninstall-AzModule {
         [string[]]
         ${Name},
 
-        [Parameter(ParameterSetName = 'Default',HelpMessage = 'Az modules to exclude from uninstallation.', ValueFromPipelineByPropertyName = $true)]
+        [Parameter(ParameterSetName = 'Default', HelpMessage = 'Az modules to exclude from uninstallation.', ValueFromPipelineByPropertyName = $true)]
         [ValidateNotNullOrEmpty()]
         [string[]]
         ${ExcludeModule},
