@@ -198,6 +198,10 @@ PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystora
 This first command gets NetworkRuleSet property from a Storage account, and the second command sets it to another Storage account 
 
 ### Example 9: Upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account
+<!-- Skip: Output cannot be splitted from code -->
+
+
+
 ```
 PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -UpgradeToStorageV2
 ```
