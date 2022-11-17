@@ -17,7 +17,6 @@ function Install-AzModule_Default {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess)]
     param(
         [Parameter(ValueFromPipelineByPropertyName = $true, Position = 0)]
-        #[ValidateNotNullOrEmpty()]
         [string[]]
         ${Name},
 
