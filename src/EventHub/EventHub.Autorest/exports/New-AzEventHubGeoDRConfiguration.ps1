@@ -20,7 +20,7 @@ Creates or updates a new Alias(Disaster Recovery configuration)
 .Description
 Creates or updates a new Alias(Disaster Recovery configuration)
 .Example
-New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
+New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery
@@ -38,7 +38,6 @@ param(
     ${Name},
 
     [Parameter(Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name

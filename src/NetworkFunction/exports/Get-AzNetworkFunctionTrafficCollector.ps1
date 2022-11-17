@@ -29,7 +29,7 @@ Get-AzNetworkFunctionTrafficCollector -ResourceGroupName test -name test | Forma
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IAzureTrafficCollector
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,7 +45,7 @@ INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctiontrafficcollector
 #>
 function Get-AzNetworkFunctionTrafficCollector {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IAzureTrafficCollector])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

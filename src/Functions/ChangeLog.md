@@ -19,8 +19,14 @@
 -->
 ## Upcoming Release
 
-## Version 4.0.4
-* Made PowerShell 7.2 the default when creating a PowerShell function app
+## Version 4.0.6
+* Added warning logs to detect Az context switching in Get-AzFunctionApp
+
+## Version 4.0.5
+* Enabled support to create Node 18 Preview and Java 17 Preview function apps (fixes issues #19184 and #18925)
+* Removed the logic that checks for AzureGermanCloud in the cloud endpoints (fixes issue #19667)
+* Hided generated unused cmdlets (fixes #16666)
+
 ## Version 4.0.3
 * Fixed an issue that New-AzFunctionApp cmdlet should write a warning message when setting default values for parameters that are not provided.
 

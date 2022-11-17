@@ -25,7 +25,7 @@ $SASToken = New-AzStorageBlobSASToken -Context $ctx -Container $containerName -b
 $storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
 $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
 $SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
-$SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + "?" +$SASToken 
+$SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + $SASToken 
 New-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -Install "powershell -command 'Expand-Archive -Path package.zip -DestinationPath C:\\package\'" -Remove "del C:\\package" 
 
 .Outputs

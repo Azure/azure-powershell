@@ -71,7 +71,7 @@ param(
     # Select properties to be returned
     ${Select},
 
-    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.Management.Automation.SwitchParameter]
     # Include count of items

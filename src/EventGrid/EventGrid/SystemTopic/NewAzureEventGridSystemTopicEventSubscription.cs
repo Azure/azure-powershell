@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                     WriteWarning(EventGridConstants.IncludedEventTypeDeprecationMessage);
                 }
 
-                EventSubscription eventSubscription = this.Client.createSystemTopicEventSubscriptiion(
+                EventSubscription eventSubscription = this.Client.createSystemTopicEventSubscription(
                     this.EventSubscriptionName,
                     this.ResourceGroupName,
                     this.SystemTopicName,

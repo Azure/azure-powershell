@@ -14,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accoun
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHub", "..\EventHub\EventHub\EventHub.csproj", "{1E60D2AC-DEA7-403C-86DC-7B8C47F54668}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EventHub", "EventHub.Autorest\Az.EventHub.csproj", "{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EventHub", "..\EventHub\EventHub.Autorest\Az.EventHub.csproj", "{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{FF81DC73-B8EC-4082-8841-4FBF2B16E7CE}"
 EndProject
@@ -28,7 +28,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relay", "..\Relay\Relay\Rel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBus", "..\ServiceBus\ServiceBus\ServiceBus.csproj", "{70B4325F-044A-44CE-AAC3-78CD5A8347DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ServiceBus", "ServiceBus.Autorest\Az.ServiceBus.csproj", "{7574F7DB-D5C3-42BD-97EE-40AE999BFFE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ServiceBus", "..\ServiceBus\ServiceBus.Autorest\Az.ServiceBus.csproj", "{7574F7DB-D5C3-42BD-97EE-40AE999BFFE1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage", "..\Storage\Storage\Storage.csproj", "{A2591FA5-BF93-4358-9097-E6D58FE1DDC4}"
 EndProject

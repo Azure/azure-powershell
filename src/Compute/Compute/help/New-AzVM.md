@@ -26,8 +26,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
  [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DiskControllerType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -57,11 +57,18 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
 
 ## DESCRIPTION
 The **New-AzVM** cmdlet creates a virtual machine in Azure.
-This cmdlet takes a virtual machine object as input.
-Use the New-AzVMConfig cmdlet to create a virtual machine object.
-The **New-AzVM** cmdlet will create a new storage account for boot diagnostics if one does not already exist. 
-Other cmdlets can be used to configure the virtual machine, such as Set-AzVMOperatingSystem, Set-AzVMSourceImage, Add-AzVMNetworkInterface, and Set-AzVMOSDisk.
-The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.
+This cmdlet takes a virtual machine object as input. The **New-AzVM** cmdlet will create a new storage account for boot diagnostics if one does not already exist. <br> <br>
+Use the **[New-AzVMConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmconfig)** cmdlet to create a virtual machine object. <br> 
+Then use the following cmdlets to set different properties of the virtual machine object:
+- **[Add-AzVMNetworkInterface](https://learn.microsoft.com/en-us/powershell/module/az.compute/add-azvmnetworkinterface)** to set the network profile.<br>
+- **[Set-AzVMOperatingSystem](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmoperatingsystem)** to set the OS profile. <br>
+- **[Set-AzVMSourceImage](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmsourceimage)** to set the source image.<br>
+- **[Set-AzVMOSDisk](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmosdisk)** to set the OS disk(storage profile).<br>
+- **[Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku)** can also be used to find out available virtual machine sizes for your subscription and region.<br>
+<br>
+The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.<br>
+<br>
+See [Quickstart: Create a Windows virtual machine in Azure with PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-powershell) for tutorial. <br>
 
 ## EXAMPLES
 
@@ -389,7 +396,18 @@ Accept wildcard characters: False
 ```
 
 ### -Credential
-The administrator credentials for the VM.
+The administrator credentials for the VM. <br><br>
+**Username** <br>
+**Restriction:** <br>
+Windows: Cannot contain special characters \/""[]:|<>+=;,?*@& or end in \".\" <br>
+Linux: Username must only contain letters, numbers, hyphens, and underscores and may not start with a hyphen or number. <br>
+**Disallowed values:** \"administrator\", \"admin\", \"user\", \"user1\", \"test\", \"user2\", \"test1\", \"user3\", \"admin1\", \"1\", \"123\", \"a\", \"actuser\", \"adm\", \"admin2\", \"aspnet\", \"backup\", \"console\", \"david\", \"guest\", \"john\", \"owner\", \"root\", \"server\", \"sql\", \"support\", \"support_388945a0\", \"sys\", \"test2\", \"test3\", \"user4\", \"user5\". <br>
+**Minimum-length:** 1  character <br>
+**Max-length:** 20 characters for Windows, 64 characters for Linux <br><br>
+**Password** <br>
+Must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character. <br>
+The value must be between 12 and 123 characters long.
+
 
 ```yaml
 Type: System.Management.Automation.PSCredential
@@ -475,6 +493,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DiskControllerType
+Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://docs.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://docs.microsoft.com/rest/api/compute/resourceskus/list) . <br> For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -921,7 +954,8 @@ Accept wildcard characters: False
 ```
 
 ### -Size
-The Virtual Machine Size.  The Default Value is: Standard_D2s_v3.
+The Virtual Machine Size. [Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region.<br>
+The Default Value is: Standard_D2s_v3.
 
 ```yaml
 Type: System.String

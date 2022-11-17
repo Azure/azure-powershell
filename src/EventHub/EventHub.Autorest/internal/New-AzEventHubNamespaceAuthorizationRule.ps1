@@ -72,7 +72,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name

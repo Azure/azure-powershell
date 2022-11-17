@@ -56,7 +56,6 @@ function Deny-AzEventHubPrivateEndpointConnection {
 [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace

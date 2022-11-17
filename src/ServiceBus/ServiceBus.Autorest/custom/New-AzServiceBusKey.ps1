@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Regenerates a ServiceBus SAS key
+Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 .Description
-Regenerates a ServiceBus SAS key
+Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 #>
 
 function New-AzServiceBusKey{
@@ -44,9 +44,9 @@ function New-AzServiceBusKey{
         # The name of the ServiceBus topic.
         ${TopicName},
 
-        [Parameter(ParameterSetName = 'NewExpandedNamespace', Mandatory, HelpMessage = "The name of EventHub namespace")]
-        [Parameter(ParameterSetName = 'NewExpandedQueue', Mandatory, HelpMessage = "The name of the EventHub namespace.")]
-        [Parameter(ParameterSetName = 'NewExpandedTopic', Mandatory, HelpMessage = "The name of the EventHub namespace.")]
+        [Parameter(ParameterSetName = 'NewExpandedNamespace', Mandatory, HelpMessage = "The name of the ServiceBus namespace")]
+        [Parameter(ParameterSetName = 'NewExpandedQueue', Mandatory, HelpMessage = "The name of the ServiceBus namespace")]
+        [Parameter(ParameterSetName = 'NewExpandedTopic', Mandatory, HelpMessage = "The name of the ServiceBus namespace")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of ServiceBus namespace

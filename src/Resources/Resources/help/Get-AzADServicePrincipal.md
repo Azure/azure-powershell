@@ -14,9 +14,9 @@ Lists entities from service principals or get entity from service principals by 
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzADServicePrincipal [-Select <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
- [-ConsistencyLevel <String>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzADServicePrincipal [-Select <String[]>] [-Count] [-Filter <String>] [-Orderby <String[]>]
+ [-Search <String>] [-ConsistencyLevel <String>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
@@ -53,12 +53,6 @@ Get-AzADServicePrincipal [-Select <String[]>] -ApplicationObject <IMicrosoftGrap
 ```
 Get-AzADServicePrincipal [-Select <String[]>] -ServicePrincipalName <String> [-First <UInt64>] [-Skip <UInt64>]
  [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzADServicePrincipal [-Select <String[]>] [-Count] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -177,7 +171,7 @@ Include count of items
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List
+Parameter Sets: EmptyParameterSet
 Aliases:
 
 Required: False

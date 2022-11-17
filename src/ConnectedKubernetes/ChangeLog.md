@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.6.0
+* Added a related legal clause that users need to agree to when using the cmdlet `New-AzConnectedKubernetes` in order to successfully create.
+
+## Version 0.5.0
+* Upgraded api version to 2022-10-01-preview
+
 ## Version 0.4.0
 * Fixed the issue that Azure Arc cannot connect to Kubernetes[#19080]
 

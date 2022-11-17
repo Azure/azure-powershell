@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedKubernetes
-online version: https://docs.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetes
+online version: https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetes
 schema: 2.0.0
 ---
 
@@ -185,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster
 
 ## NOTES
 

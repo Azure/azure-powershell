@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzServiceBusSubscription
 
 ## SYNOPSIS
-Sets a ServiceBus Topic
+Updates a ServiceBus Subscription
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Set-AzServiceBusSubscription -InputObject <IServiceBusIdentity> [-AutoDeleteOnId
 ```
 
 ## DESCRIPTION
-Sets a ServiceBus Topic
+Updates a ServiceBus Subscription
 
 ## EXAMPLES
 

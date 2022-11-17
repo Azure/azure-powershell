@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bumped API version to 2022-09-01
+* Added parameter `NodeOsSKU` for `New-AzAksCluster` and parameter `OsSKU` for `New-AzAksNodePool`
+
+## Version 5.0.0
+* [Breaking Change] Removed the alias `Install-AzAksKubectl` of `Install-AzAksCliTool`.
 
 ## Version 4.3.0
 * Added support of `FQDN` in `Import-AzAksCredential` [#17711]

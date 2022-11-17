@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Register-AzMigrateProjectTool' {
     It 'RegisterExpanded' {
         $toolName = "ServerMigration"
-        $projName = "cbtsignoff2105project"
+        $projName = "signoffccyproj"
         Register-AzMigrateProjectTool -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId -MigrateProjectName $projName -Tool $toolName
         $project = Get-AzMigrateProject -Name $projName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId
         $project.Property.RegisteredTool | Should -Contain $toolName

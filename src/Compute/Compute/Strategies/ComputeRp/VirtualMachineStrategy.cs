@@ -71,9 +71,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             int? vCPUsAvailable = null,
             int? vCPUsPerCore = null,
             string imageReferenceId = null,
-            Dictionary<string, List<string>> auxAuthHeader = null
+            Dictionary<string, List<string>> auxAuthHeader = null,
+            string diskControllerType = null,
+            Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null
             )
-
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -83,7 +84,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         OsProfile = new OSProfile
                         {
                             ComputerName = name,
-                            WindowsConfiguration = imageAndOsType?.CreateWindowsConfiguration(),
+                            WindowsConfiguration = (imageAndOsType?.OsType != OperatingSystemTypes.Windows) ? null : imageAndOsType.CreateWindowsConfiguration(),
                             LinuxConfiguration = (imageAndOsType?.OsType != OperatingSystemTypes.Linux) ? null : new LinuxConfiguration
                             {
                                 Ssh = new SshConfiguration(sshPublicKeys)
@@ -110,12 +111,17 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         StorageProfile = new StorageProfile
                         {
-                            ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : new ImageReference
+                            //ImageReference = (imageReferenceId.Contains("CommunityGalleries")) ? new ImageReference { CommunityGalleryImageId = imageReferenceId}
+                            ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
+                            {
+                                CommunityGalleryImageId = imageReferenceId
+                            }: new ImageReference
                             {
                                 Id = imageReferenceId
-                            },
+                            }),
                             DataDisks = DataDiskStrategy.CreateDataDisks(
-                                imageAndOsType?.DataDiskLuns, dataDisks, dataDiskDeleteOption)
+                                imageAndOsType?.DataDiskLuns, dataDisks, dataDiskDeleteOption),
+                            DiskControllerType = diskControllerType
                         },
                         AvailabilitySet = engine.GetReference(availabilitySet),
                         Zones = zones,
@@ -133,7 +139,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             CapacityReservationGroup = new SubResource(capacityReservationGroupId)
                         },
                         UserData = userData,
-                        PlatformFaultDomain = platformFaultDomain
+                        PlatformFaultDomain = platformFaultDomain,
+                        ExtendedLocation = extendedLocation
                     };
                     if(auxAuthHeader != null)
                     {
@@ -170,7 +177,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string userData = null,
             AdditionalCapabilities additionalCapabilities = null,
             int? vCPUsAvailable = null,
-            int? vCPUsPerCore = null
+            int? vCPUsPerCore = null,
+            Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -222,7 +230,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         CapacityReservationGroup = new SubResource(capacityReservationGroupId)
                     },
                     UserData = userData,
-                    PlatformFaultDomain = platformFaultDomain
+                    PlatformFaultDomain = platformFaultDomain,
+                    ExtendedLocation = extendedLocation
                 });
     }
 }

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-
+Finds the valid recovery point in time ranges for the restore.
 .Description
-
+Finds the valid recovery point in time ranges for the restore.
 .Example
 $startTime = (Get-Date).AddDays(-30).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
 $endTime = (Get-Date).AddDays(0).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
@@ -29,7 +29,7 @@ $pointInTimeRange.RestorableTimeRange | Format-List
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupFindRestorableTimeRangesResponseResource
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/find-azdataprotectionrestorabletimerange
+https://learn.microsoft.com/powershell/module/az.dataprotection/find-azdataprotectionrestorabletimerange
 #>
 function Find-AzDataProtectionRestorableTimeRange {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupFindRestorableTimeRangesResponseResource])]

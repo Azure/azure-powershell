@@ -6,7 +6,7 @@ New-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myEventHubsCluste
 ```output
 Capacity                     : 2
 CreatedAt                    : 2022-08-29T09:38:30.453Z
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/myEventHubsCluster
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/myEventHubsCluster
 Location                     : australiaeast
 MetricId                     : PROD-00-000
 Name                         : myEventHubsCluster
@@ -27,7 +27,7 @@ New-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myEventHubsCluste
 ```output
 Capacity                     : 1
 CreatedAt                    : 2022-08-29T09:38:30.453Z
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/myEventHubsCluster
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/myEventHubsCluster
 Location                     : australiaeast
 MetricId                     : PROD-00-000
 Name                         : myEventHubsCluster

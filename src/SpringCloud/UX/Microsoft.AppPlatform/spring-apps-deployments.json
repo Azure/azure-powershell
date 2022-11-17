@@ -1,0 +1,58 @@
+{
+    "resourceType": "spring/apps/deployments",
+    "apiVersion": "2020-07-01",
+    "learnMore": {
+      "url": "https://learn.microsoft.com/powershell/module/az.springcloud/#spring-cloud"
+    },
+    "commands": [
+      {
+        "name": "Get-AzSpringCloudAppDeployment",
+        "description": "Get a Deployment and its properties.",
+        "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments/{deploymentName}",
+        "help": {
+          "learnMore": {
+            "url": "https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudappdeployment"
+          },
+          "parameterSets": [
+            {
+              "parameters": [
+                "-DeploymentName <String>",
+                "-AppName <String>",
+                "-ServiceName <String>",
+                "-ResourceGroupName <String>",
+                "[-SubscriptionId <String[]>]"
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+              "description": "Get Spring Cloud App Deploymeng by name.",
+              "parameters": [
+                  {
+                      "name": "-ResourceGroupName",
+                      "value": "[path.resourceGroupName]"
+                  },
+                  {
+                      "name": "-AppName",
+                      "value": "[path.appName]"
+                  },
+                  {
+                      "name": "-ServiceName",
+                      "value": "[path.serviceName]"
+                  },
+                  {
+                      "name": "-DeploymentName",
+                      "value": "[path.deploymentName]"
+                  },
+                  {
+                      "name": "-SubscriptionId",
+                      "value": "[path.subscriptionId]"
+                  }
+              ]
+          }
+        ]
+      }
+    ]
+  }
+  

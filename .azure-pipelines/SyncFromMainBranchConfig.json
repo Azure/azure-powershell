@@ -8,7 +8,8 @@
         "build.proj",
         "src/Az.Test.props",
         "src/Az.autorest.hybrid.props",
-        "src/psm1.props"
+        "src/psm1.props",
+        "NuGet.Config"
     ],
     "UnSyncPath": [
         ".azure-pipelines/SyncFromMainBranchConfig.json"

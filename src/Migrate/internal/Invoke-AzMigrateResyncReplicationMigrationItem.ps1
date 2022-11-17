@@ -25,7 +25,7 @@ The operation to resynchronize replication of an ASR migration item.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -34,10 +34,10 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICDETAIL <IResyncProviderSpecificInput>: The provider specific details.
   InstanceType <String>: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/invoke-azmigrateresyncreplicationmigrationitem
+https://learn.microsoft.com/powershell/module/az.migrate/invoke-azmigrateresyncreplicationmigrationitem
 #>
 function Invoke-AzMigrateResyncReplicationMigrationItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='ResyncExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -79,7 +79,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResyncProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IResyncProviderSpecificInput]
     # The provider specific details.
     # To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
     ${ProviderSpecificDetail},

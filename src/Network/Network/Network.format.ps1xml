@@ -980,6 +980,10 @@
                 <Label>NatRules</Label>
                 <PropertyName>NatRulesText</PropertyName>
               </ListItem>
+			  <ListItem>
+				<Label>ExtendedLocation</Label>
+				<PropertyName>ExtendedLocationText</PropertyName>
+			  </ListItem>
               <ListItem>
                 <Label>EnableBgpRouteTranslationForNat</Label>
                 <PropertyName>EnableBgpRouteTranslationForNat</PropertyName>

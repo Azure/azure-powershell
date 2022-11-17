@@ -69,7 +69,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @"The Event Hub name",
         SerializedName = @"eventHubName",
         PossibleTypes = new [] { typeof(string) })]
-        [global::System.Management.Automation.Alias("EventHub")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Path)]
         public string EventHubName { get => this._eventHubName; set => this._eventHubName = value; }
 
@@ -107,7 +106,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @"The Namespace name",
         SerializedName = @"namespaceName",
         PossibleTypes = new [] { typeof(string) })]
-        [global::System.Management.Automation.Alias("Namespace")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Path)]
         public string NamespaceName { get => this._namespaceName; set => this._namespaceName = value; }
 

@@ -20,9 +20,7 @@ Constructs an INwRuleSetVirtualNetworkRules object that can be fed as input to S
 .Description
 Constructs an INwRuleSetVirtualNetworkRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzEventHubVirtualNetworkRuleConfig -SubnetId /subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules

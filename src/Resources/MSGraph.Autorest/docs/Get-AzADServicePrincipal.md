@@ -14,8 +14,8 @@ Lists entities from service principals or get entity from service principals by 
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzADServicePrincipal [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
- [-ConsistencyLevel <String>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
+Get-AzADServicePrincipal [-Count] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
+ [-Select <String[]>] [-ConsistencyLevel <String>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -35,12 +35,6 @@ Get-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication> [-Selec
 ```
 Get-AzADServicePrincipal -DisplayName <String> [-Select <String[]>] [-AppendSelected] [-First <UInt64>]
  [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzADServicePrincipal [-Count] [-Select <String[]>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
@@ -177,7 +171,7 @@ Include count of items
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List
+Parameter Sets: EmptyParameterSet
 Aliases:
 
 Required: False

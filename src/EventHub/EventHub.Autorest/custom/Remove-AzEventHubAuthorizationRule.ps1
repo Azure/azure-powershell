@@ -32,7 +32,6 @@ function Remove-AzEventHubAuthorizationRule{
         ${Name},
 
         [Parameter(ParameterSetName = 'RemoveExpandedEntity', Mandatory, HelpMessage = "The name of the EventHub entity.")]
-        [Alias('EventHub')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of the EventHub entity.
@@ -40,7 +39,6 @@ function Remove-AzEventHubAuthorizationRule{
 
         [Parameter(ParameterSetName = 'RemoveExpandedNamespace', Mandatory, HelpMessage = "The name of EventHub namespace")]
         [Parameter(ParameterSetName = 'RemoveExpandedEntity', Mandatory, HelpMessage = "The name of EventHub namespace")]
-        [Alias('Namespace')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of EventHub namespace

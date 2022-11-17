@@ -154,16 +154,21 @@ $galleryName = "myGallery"
 $galleryImageDefinitionName = "myImage"
 $galleryImageVersionName = "1.0.0"
 $location = "eastus"
+
 $sourceImageId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/virtualMachines/myVM"
 $diskEncryptionSetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/diskEncryptionSets/cvmDiskEncryptionSet"
-$replicaCount = 1
-$storageAccountType = "Standard_ZRS"
-$region_eastus = @{Name = 'East US';ReplicaCount = 3;StorageAccountType = 'Standard_LRS'; CVMEncryptionType="EncryptedWithCmk"; CVMDiskEncryptionSetID=$diskEncryptionSetId}
-$region_westus = @{Name = 'West US'}
+
+$cvmOsDiskEncryption = @{CVMEncryptionType=EncryptedWithCmk; CVMDiskEncryptionSetID=$diskEncryptionSetId}
+
+$cvmDataDiskEncryption_lun0 = @{DiskEncryptionSetId = $diskEncryptionSetId ; Lun = 0}
+$cvmDataDiskEncryption = @($cvmDataDiskEncryption_lun0)
+
+$cvmEncryption = @{OSDiskImage = $cvmOsDiskEncryption; DataDiskImages = $cvmDataDiskEncryption}
+$region_eastus = @{Name = 'East US';ReplicaCount = 3;StorageAccountType = 'Standard_LRS'; Encryption = $cvmEncryption}
 $region_ukwest = @{Name = 'UK West';ReplicaCount = 2}
-$region_southcentralus = @{Name = 'South Central US';StorageAccountType = 'Standard_LRS'}
-$targetRegions = @($region_eastus, $region_westus, $region_ukwest, $region_southcentralus)
-New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId -ReplicaCount 1 -StorageAccountType $storageAccountType -TargetRegion $targetRegions
+$targetRegions = @($region_eastus, $region_ukwest)
+
+New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId -ReplicaCount 1 -StorageAccountType "Standard_ZRS" -TargetRegion $targetRegions
 ```
 
 Create an image version in four regions. In this example, the global replica count is 1 and the global storage account type is Standard_ZRS. East US will have 3 replicas, each stored on Standard_LRS account storage. West US will inherit from global settings and have 1 replica stored on Standard_ZRS. UK West will have a replica count of 2 stored on Standard_ZRS. South Central US will have one replica stored on Standard_LRS.

@@ -1,0 +1,48 @@
+{
+    "resourceType": "spring",
+    "apiVersion": "2020-07-01",
+    "learnMore": {
+      "url": "https://learn.microsoft.com/powershell/module/az.springcloud/#spring-cloud"
+    },
+    "commands": [
+      {
+        "name": "Get-AzSpringCloud",
+        "description": "Get a Service and its properties.",
+        "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}",
+        "help": {
+          "learnMore": {
+            "url": "https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloud"
+          },
+          "parameterSets": [
+            {
+              "parameters": [
+                "-ServiceName <String>",
+                "-ResourceGroupName <String>",
+                "[-SubscriptionId <String[]>]"
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+              "description": "Get Spring Cloud Service by name.",
+              "parameters": [
+                  {
+                      "name": "-ResourceGroupName",
+                      "value": "[path.resourceGroupName]"
+                  },
+                  {
+                      "name": "-ServiceName",
+                      "value": "[path.serviceName]"
+                  },
+                  {
+                      "name": "-SubscriptionId",
+                      "value": "[path.subscriptionId]"
+                  }
+              ]
+          }
+        ]
+      }
+    ]
+  }
+  

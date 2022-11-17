@@ -34,6 +34,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'2022-08-01'", "2022-08-01", global::System.Management.Automation.CompletionResultType.ParameterValue, "2022-08-01");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "2022-11-01".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'2022-11-01'", "2022-11-01", global::System.Management.Automation.CompletionResultType.ParameterValue, "2022-11-01");
+            }
         }
     }
 }

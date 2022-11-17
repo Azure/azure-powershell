@@ -20,23 +20,11 @@ Creates a new firewall rule or updates an existing firewall rule.
 .Description
 Creates a new firewall rule or updates an existing firewall rule.
 .Example
-PS C:\> New-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.0        0.0.0.1
+New-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
 .Example
-PS C:\> New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -ClientIPAddress 0.0.0.1
-
-Name                                StartIPAddress EndIPAddress
-----                                -------------- ------------
-ClientIPAddress_2020-08-11_18-19-27 0.0.0.1        0.0.0.1
+New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -ClientIPAddress 0.0.0.1
 .Example
-PS C:\> New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -AllowAll
-
-Name                         StartIPAddress EndIPAddress
-----                         -------------- ------------
-AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
+New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -AllowAll
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
@@ -202,6 +190,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.MySql.private\New-AzMySqlFirewallRule_Create';
             CreateExpanded = 'Az.MySql.private\New-AzMySqlFirewallRule_CreateExpanded';
@@ -217,6 +206,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -225,15 +215,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
