@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvmruncommand
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmssvmruncommand
 schema: 2.0.0
 ---
 
@@ -41,6 +41,12 @@ The operation to create or update the VMSS VM run command.
 ### Example 1: Create or update Run Command on a VMSS VM instance using a storage blob SAS URL
 ```powershell
 Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 0 -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceScriptUri "https://myst.blob.core.windows.net/mycontainer/myscript.ps1?sp=r&st=2022-10-27T21:02:35Z&se=2022-10-28T05:02:35Z&spr=https&sv=2021-06-08&sr=b&sig=0I%2FIiYayRwHasfasasfdasdfasdeTsQjLnpZjA%3D"
+```
+
+```output
+Location Name             Type
+-------- ----             ----
+eastus   MyRunCommand Microsoft.Compute/virtualMachines/runCommands
 ```
 
 Create or update Run Command on a Windows VMSS VM instance  using a SAS URL of a storage blob that contains .ps1 script.
