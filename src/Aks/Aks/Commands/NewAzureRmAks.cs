@@ -21,7 +21,6 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
-
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Aks.Utils;
@@ -33,7 +32,6 @@ using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
@@ -59,6 +57,10 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "NodePoolMode represents mode of an node pool.")]
         [PSArgumentCompleter("System", "User")]
         public string NodePoolMode { get; set; } = "System";
+
+        [Parameter(Mandatory = false, HelpMessage = "The default OS sku for the node pools.")]
+        [PSArgumentCompleter("Ubuntu", "CBLMariner")]
+        public string NodeOsSKU { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.")]
         [PSArgumentCompleter("Delete", "Deallocate")]
@@ -266,7 +268,11 @@ namespace Microsoft.Azure.Commands.Aks
 
         private string GenerateSshKeyValue()
         {
-            String generateSshKeyPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh", "id_rsa"); ;
+            String generateSshKeyFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh");
+            if (!Directory.Exists(generateSshKeyFolder)) {
+                Directory.CreateDirectory(generateSshKeyFolder);
+            }
+            String generateSshKeyPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh", "id_rsa");
             if (File.Exists(generateSshKeyPath))
             {
                 throw new AzPSArgumentException(
@@ -450,6 +456,10 @@ namespace Microsoft.Azure.Commands.Aks
                 type: NodeVmSetType ?? "VirtualMachineScaleSets",
                 vnetSubnetID: NodeVnetSubnetID);
             defaultAgentPoolProfile.OsType = "Linux";
+            if (this.IsParameterBound(c => c.NodeOsSKU))
+            {
+                defaultAgentPoolProfile.OsSKU = NodeOsSKU;
+            }
             if (this.IsParameterBound(c => c.NodeMaxPodCount))
             {
                 defaultAgentPoolProfile.MaxPods = NodeMaxPodCount;

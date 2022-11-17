@@ -29,7 +29,7 @@ New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $date -Inter
 .Outputs
 System.String[]
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionpolicytriggerscheduleclientobject
+https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionpolicytriggerscheduleclientobject
 #>
 function New-AzDataProtectionPolicyTriggerScheduleClientObject {
 [OutputType([System.String[]])]

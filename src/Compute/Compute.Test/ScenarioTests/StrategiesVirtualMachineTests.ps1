@@ -63,14 +63,14 @@ function Test-SimpleNewVmWithDeleteOptions
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -NetworkInterfaceDeleteOption "Delete" -OSDiskDeleteOption "Detach" -DataDiskSizeInGb 32 -DataDiskDeleteOption "Delete"
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -NetworkInterfaceDeleteOption "Delete" -OSDiskDeleteOption "Delete" -DataDiskSizeInGb 32 -DataDiskDeleteOption "Delete"
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
         Assert-False { $x.AdditionalCapabilities.UltraSSDEnabled };
 
         Assert-AreEqual $x.NetworkProfile.NetworkInterfaces[0].DeleteOption "Delete"
-        Assert-AreEqual $x.StorageProfile.OSDisk.DeleteOption "Detach"
+        Assert-AreEqual $x.StorageProfile.OSDisk.DeleteOption "Delete"
         
     }
     finally

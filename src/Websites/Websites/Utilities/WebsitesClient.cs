@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             private set;
         }
 
-        public Site CreateWebApp(string resourceGroupName, string webAppName, string slotName, string location, string serverFarmId, CloningInfo cloningInfo, string aseName, string aseResourceGroupName)
+        public Site CreateWebApp(string resourceGroupName, string webAppName, string slotName, string location, string serverFarmId, CloningInfo cloningInfo, string aseName, string aseResourceGroupName, IDictionary<string, string> tags = null)
         {
             Site createdWebSite = null;
             string qualifiedSiteName;
@@ -68,7 +68,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                             Location = location,
                             ServerFarmId = serverFarmId,
                             CloningInfo = cloningInfo,
-                            HostingEnvironmentProfile = profile
+                            HostingEnvironmentProfile = profile,
+                            Tags = tags
                         });
             }
             else
@@ -80,7 +81,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                             Location = location,
                             ServerFarmId = serverFarmId,
                             CloningInfo = cloningInfo,
-                            HostingEnvironmentProfile = profile
+                            HostingEnvironmentProfile = profile,
+                            Tags = tags
                         });
             }
 
@@ -244,7 +246,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return HttpStatusCode.OK;
         }
 
-        public PSSite GetWebApp(string resourceGroupName, string webSiteName, string slotName)
+        public PSSite GetWebApp(string resourceGroupName, string webSiteName, string slotName, Boolean ignoreError = true)
         {
             Site site = null;
             string qualifiedSiteName;
@@ -253,7 +255,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WrappedWebsitesClient.WebApps().GetSlot(resourceGroupName, webSiteName, slotName) :
                 WrappedWebsitesClient.WebApps().Get(resourceGroupName, webSiteName);
 
-            GetWebAppConfiguration(resourceGroupName, webSiteName, slotName, site);
+            GetWebAppConfiguration(resourceGroupName, webSiteName, slotName, site, ignoreError);
             PSSite psSite = new PSSite(site);
             var AzureStorageAccounts = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName) ?
                                        GetAzureStorageAccounts(resourceGroupName, webSiteName, slotName, true) :
@@ -599,7 +601,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        public void GetWebAppConfiguration(string resourceGroupName, string webSiteName, string slotName, Site site)
+        public void GetWebAppConfiguration(string resourceGroupName, string webSiteName, string slotName, Site site, Boolean ignoreError = true)
         {
             string qualifiedSiteName;
             var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
@@ -627,9 +629,13 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                         Type = s.Value.Type
                     }).ToList();
             }
-            catch
+            catch (Exception e)
             {
-                //ignore if this call fails as it will for reader RBAC
+                if (!ignoreError)
+                {
+                    ReThrowException(e);
+                }
+                //continue if ignoreError is true, this call fails as it will for reader RBAC
             }
         }
 
@@ -1078,6 +1084,22 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             {
                 ErrorLogger(string.Format(errorFormat, args));
             }
+        }
+
+        private void ReThrowException(Exception e)
+        {
+            if (e.GetType() == typeof(DefaultErrorResponseException))
+            {
+                DefaultErrorResponseException originEx = (DefaultErrorResponseException)e;
+                if (originEx != null && originEx.Body != null && originEx.Body.Error != null)
+                {
+                    string errorMessage = string.Format("{0}.{1}", originEx.Message, originEx.Body.Error.Message);
+                    DefaultErrorResponseException ex = new DefaultErrorResponseException(errorMessage, originEx.InnerException);
+                    ex.Body = originEx.Body;
+                    throw ex;
+                }
+            }
+            throw e;
         }
     }
 }

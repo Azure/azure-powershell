@@ -67,7 +67,7 @@ BACKUPINSTANCE <IBackupInstanceResource>: Backup instance request object which w
     [FriendlyName <String>]: Gets or sets the Backup Instance friendly name.
     [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/set-azdataprotectionmsipermission
+https://learn.microsoft.com/powershell/module/az.dataprotection/set-azdataprotectionmsipermission
 #>
 function Set-AzDataProtectionMSIPermission {
 [OutputType([System.Object])]

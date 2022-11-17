@@ -32,7 +32,7 @@ To create the parameters described below, construct a hash table containing the 
 WEBHOOKPROPERTY <IActionGroupWebhookProperties>: the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertActionGroupObject
+https://learn.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertActionGroupObject
 #>
 function New-AzActivityLogAlertActionGroupObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ActionGroup])]

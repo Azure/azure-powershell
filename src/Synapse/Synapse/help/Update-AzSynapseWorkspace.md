@@ -16,30 +16,36 @@ Updates a Synapse Analytics workspace.
 ```
 Update-AzSynapseWorkspace [-ResourceGroupName <String>] -Name <String> [-Tag <Hashtable>]
  [-SqlAdministratorLoginPassword <SecureString>] [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
- [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
- [-EnablePublicNetworkAccess <Boolean>] [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionKeyName <String>] [-UserAssignedIdentityInEncryption <String>]
+ [-UseSystemAssignedIdentityInEncryption <Object>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
+ [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
+ [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
+ [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
 Update-AzSynapseWorkspace -InputObject <PSSynapseWorkspace> [-Tag <Hashtable>]
  [-SqlAdministratorLoginPassword <SecureString>] [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
- [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
- [-EnablePublicNetworkAccess <Boolean>] [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionKeyName <String>] [-UserAssignedIdentityInEncryption <String>]
+ [-UseSystemAssignedIdentityInEncryption <Object>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
+ [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
+ [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
+ [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
 Update-AzSynapseWorkspace -ResourceId <String> [-Tag <Hashtable>]
  [-SqlAdministratorLoginPassword <SecureString>] [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
- [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
- [-EnablePublicNetworkAccess <Boolean>] [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionKeyName <String>] [-UserAssignedIdentityInEncryption <String>]
+ [-UseSystemAssignedIdentityInEncryption <Object>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
+ [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
+ [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
+ [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +92,7 @@ This commands updates the specififed Azure Synapse Analytics workspace to enable
 
 ### Example 6
 ```powershell
-$uamis = Get-AzUserAssignedIdentity -ResourceGroupName bigdataqa
+$uamis = Get-AzUserAssignedIdentity -ResourceGroupName ContosoResourceGroup
 $uamilist = New-Object System.Collections.Generic.List[string]
 foreach($uami in $uamis){
 	$uamilist.Add($uami.Id)
@@ -99,7 +105,7 @@ This commands updates workspace to add user assigned managed identites in $uamil
 
 ### Example 7
 ```powershell
-$uamis = Get-AzUserAssignedIdentity -ResourceGroupName bigdataqa
+$uamis = Get-AzUserAssignedIdentity -ResourceGroupName ContosoResourceGroup
 $uamilist = New-Object System.Collections.Generic.List[string]
 foreach($uami in $uamis){
 	$uamilist.Add($uami.Id)
@@ -112,7 +118,7 @@ This commands removes user assigned managed identites $uamilist[0] from workspac
 
 ### Example 8
 ```powershell
-$uamis = Get-AzUserAssignedIdentity -ResourceGroupName bigdataqa
+$uamis = Get-AzUserAssignedIdentity -ResourceGroupName ContosoResourceGroup
 $uamilist = New-Object System.Collections.Generic.List[string]
 foreach($uami in $uamis){
 	$uamilist.Add($uami.Id)
@@ -122,6 +128,35 @@ Update-AzSynapseWorkspace -Name ContosoWorkspace -UserAssignedIdentityAction Set
 ```
 
 This commands updates workspace with user assigned managed identites $uamilist that will cover current identities.
+
+### Example 9
+```powershell
+$uamis = Get-AzUserAssignedIdentity -ResourceGroupName ContosoResourceGroup
+$identityId = $uamis[0].Id
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Update-AzSynapseWorkspace -UseSystemAssignedIdentityInEncryption $false -UserAssignedIdentityInEncryption $identityId
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws.Encryption.CustomerManagedKeyDetails.Key
+```
+
+```output
+Name    KeyVaultUrl
+----    -----------
+default https://contosoKeyValut.vault.azure.net/keys/testkey
+```
+
+```powershell
+$ws = Get-AzSynapseWorkspace -name ContosoWorkspace
+$ws.Encryption.CustomerManagedKeyDetails.KekIdentity
+```
+
+```output
+UserAssignedIdentity                                                                                                                                        UseSystemAssignedIdentity
+--------------------                                                                                                                                        -------------------------
+/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/ContosoResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uaminame                     False
+```
+
+This commands updates workspace Encryption Managed Identity as User Assigned and specify an user assigned identity Id to access your customer-managed key stored in key vault. After updating, we can call `Get-AzSynapseWorkspace` to get Encryption properties of workspace.
 
 ## PARAMETERS
 
@@ -331,6 +366,36 @@ User assigned managed identity Id for workspace.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityInEncryption
+User assigned identity resource Id used in Workspace Encryption
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseSystemAssignedIdentityInEncryption
+specifying whether to use system assigned identity in Workspace Encryption or not
+
+```yaml
+Type: System.Object
 Parameter Sets: (All)
 Aliases:
 

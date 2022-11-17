@@ -1,0 +1,325 @@
+{
+   "resourceType":"virtualMachineScaleSets",
+   "apiVersion":"2022-03-01",
+   "learnMore":{
+      "url":"https://learn.microsoft.com/powershell/module/az.compute/#vm-scale-sets"
+   },
+   "commands":[
+      {
+         "name":"Get-AzVmss",
+         "description":"The operation to get the VMSS VM run command.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
+         "confirmation":false,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/get-azvmss"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[[-ResourceGroupName] <System.String>]",
+                     "[[-VMScaleSetName] <String>]"
+                  ]
+               },
+               {
+                  "parameters":[
+                     "[[-ResourceGroupName] <System.String>]",
+                     "[[-VMScaleSetName] <String>]",
+                     "[-InstanceView]",
+                     "[-UserData]"
+                  ]
+               },
+               {
+                  "parameters":[
+                     "[[-ResourceGroupName] <System.String>]",
+                     "[[-VMScaleSetName] <String>]",
+                     "[-OSUpgradeHistory]"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Gets the properties of a VMSS.",
+               "parameters":[
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-VMScaleSetName",
+                     "value":"[path.vmScaleSetName]"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "name":"Get-AzVmssRollingUpgrade",
+         "description":"Shows the status of the latest virtual machine scale set rolling upgrade.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/latest",
+         "confirmation":false,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/get-azvmssrollingupgrade"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-ResourceGroupName] <System.String>",
+                     "[-VMScaleSetName] <System.String>"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Shows the status of the latest virtual machine scale set rolling upgrade.",
+               "parameters":[
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-VMScaleSetName",
+                     "value":"[path.vmScaleSetName]"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "name":"Restart-AzVmss",
+         "description":"Restarts the VMSS or a virtual machine within the VMSS.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/restart",
+         "confirmation":false,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/restart-azvmss"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-ResourceGroupName] <System.String>",
+                     "[-VMScaleSetName] <System.String>",
+                     "[[-InstanceId] <System.String[]>]",
+                     "[-AsJob]",
+                     "[-Confirm]",
+                     "[-WhatIf]"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Restarts the VMSS or a virtual machine within the VMSS.",
+               "parameters":[
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-VMScaleSetName",
+                     "value":"[path.vmScaleSetName]"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "name":"Start-AzVmss",
+         "description":"Starts the VMSS or a set of virtual machines within the VMSS.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/start",
+         "confirmation":false,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/start-azvmss"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-ResourceGroupName] <System.String>",
+                     "[-VMScaleSetName] <System.String>",
+                     "[[-InstanceId] <System.String[]>]",
+                     "[-AsJob]",
+                     "[-Confirm]",
+                     "[-WhatIf]"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Starts the VMSS or a set of virtual machines within the VMSS.",
+               "parameters":[
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-VMScaleSetName",
+                     "value":"[path.vmScaleSetName]"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "name":"Start-AzVmssRollingExtensionUpgrade",
+         "description":"This cmdlet starts a rolling upgrade for all extensions on the given Virtual Machine Scale Set to the latest available version.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensionRollingUpgrade",
+         "confirmation":false,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/Start-AzVmssRollingExtensionUpgrade"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-ResourceGroupName] <System.String>",
+                     "[-VMScaleSetName] <System.String>",
+                     "[-AsJob]",
+                     "[-Confirm]",
+                     "[-WhatIf]"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"This cmdlet starts a rolling upgrade for all extensions on the given Virtual Machine Scale Set to the latest available version.",
+               "parameters":[
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-VMScaleSetName",
+                     "value":"[path.vmScaleSetName]"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "name":"Start-AzVmssRollingOSUpgrade",
+         "description":"Starts a rolling upgrade to move all virtual machine scale set instances to the latest available Platform Image OS version.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osRollingUpgrade",
+         "confirmation":false,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-ResourceGroupName] <System.String>",
+                     "[-VMScaleSetName] <System.String>",
+                     "[-AsJob]",
+                     "[-Confirm]",
+                     "[-WhatIf]"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Starts a rolling upgrade to move all virtual machine scale set instances to the latest available Platform Image OS version.",
+               "parameters":[
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-VMScaleSetName",
+                     "value":"[path.vmScaleSetName]"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "name":"Stop-AzVmss",
+         "description":"Stops the VMSS or a set of virtual machines within the VMSS.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/poweroff",
+         "confirmation":true,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/Stop-AzVmss"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-ResourceGroupName] <System.String>",
+                     "[-VMScaleSetName] <System.String>",
+                     "[[-InstanceId] <System.String[]>]",
+                     "[-AsJob]",
+                     "[-Force]",
+                     "[-SkipShutdown]",
+                     "-StayProvisioned",
+                     "[-Confirm]",
+                     "[-WhatIf]"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Stops the VMSS or a set of virtual machines within the VMSS.",
+               "parameters":[
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-VMScaleSetName",
+                     "value":"[path.vmScaleSetName]"
+                  },
+                  {
+                     "name": "-StayProvisioned"
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "name":"Stop-AzVmssRollingUpgrade",
+         "description":"Cancels the current virtual machine scale set rolling upgrade.",
+         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/cancel",
+         "confirmation":true,
+         "help":{
+            "learnMore":{
+               "url":"https://learn.microsoft.com/powershell/module/az.compute/Stop-AzVmssRollingUpgrade"
+            },
+            "parameterSets":[
+               {
+                  "parameters":[
+                     "[-ResourceGroupName] <System.String>",
+                     "[-VMScaleSetName] <System.String>",
+                     "[[-InstanceId] <System.String[]>]",
+                     "[-AsJob]",
+                     "[-Force]",
+                     "[-Confirm]",
+                     "[-WhatIf]"
+                  ]
+               }
+            ]
+         },
+         "examples":[
+            {
+               "description":"Cancels the current virtual machine scale set rolling upgrade.",
+               "parameters":[
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-VMScaleSetName",
+                     "value":"[path.vmScaleSetName]"
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

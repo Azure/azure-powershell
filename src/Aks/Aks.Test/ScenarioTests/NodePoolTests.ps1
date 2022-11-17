@@ -5,7 +5,7 @@ function Test-NewNodePool
     $resourceGroupName = Get-RandomResourceGroupName
     $kubeClusterName = Get-RandomClusterName
     $location = 'eastus'
-    $kubeVersion = "1.20.7"
+    $kubeVersion = "1.24.3"
     $nodeVmSize = "Standard_A2"
     $nodeVmSetType = "VirtualMachineScaleSets"
     $nodeOsType = "Linux"
@@ -17,13 +17,13 @@ function Test-NewNodePool
     $winNodeOsType = "Windows"
     $updatedNodePoolSize = 5
 
-    $poolKubeVersion = "1.20.7"
+    $poolKubeVersion = "1.24.3"
 
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
         
-        $cred = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "uJa7Q~pyzJpxnv7it0f0Co~SL8qQWFL2t45DW")
+        $cred = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xSc8Q~kVbSNvv5aqTbbAnXLieQsc~ZlEw2GbtdrX")
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -ServicePrincipalIdAndSecret $cred -NetworkPlugin $networkPlugin `
             -KubernetesVersion $kubeVersion -NodeVmSetType $nodeVmSetType -WindowsProfileAdminUserName $winAdminUser `
             -WindowsProfileAdminUserPassword $winPassword

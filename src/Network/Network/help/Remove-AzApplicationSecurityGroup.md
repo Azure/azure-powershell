@@ -27,7 +27,7 @@ The **Remove-AzApplicationSecurityGroup** cmdlet removes an application security
 Remove-AzApplicationSecurityGroup -Name "MyApplicationSecurityGrouo" -ResourceGroupName "MyResourceGroup"
 ```
 
-This command deletes an application security group named MyApplicationSecurityGrouo in the resource group named MyResourceGroup.
+This command deletes an application security group named MyApplicationSecurityGroup in the resource group named MyResourceGroup.
 
 ## PARAMETERS
 

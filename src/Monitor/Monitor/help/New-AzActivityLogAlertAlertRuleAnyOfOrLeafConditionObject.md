@@ -1,7 +1,7 @@
 ---
 external help file: Az.ActivityLogAlert.psm1-help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject
+online version: https://learn.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject
 schema: 2.0.0
 ---
 

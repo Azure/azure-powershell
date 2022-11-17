@@ -58,7 +58,7 @@ foreach ($FacilityName in $FacilityNames) {
     -ResourceGroupName $ResourceGroupName `
     -WorkspaceName $WorkspaceName `
     -Name "Linux-syslog-$($Count)" `
-    -Facility $FacilityNames `
+    -Facility $FacilityName `
     -CollectEmergency `
     -CollectAlert `
     -CollectCritical `
