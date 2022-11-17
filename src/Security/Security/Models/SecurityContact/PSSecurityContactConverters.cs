@@ -14,6 +14,8 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Security.Models.Alerts;
+using Microsoft.Azure.Commands.SecurityCenter.Models.SecurityContact;
 using Microsoft.Azure.Management.Security.Models;
 
 namespace Microsoft.Azure.Commands.Security.Models.SecurityContacts
@@ -26,16 +28,36 @@ namespace Microsoft.Azure.Commands.Security.Models.SecurityContacts
             {
                 Id = value.Id,
                 Name = value.Name,
-                Email = value.Email,
+                Email = value.Emails,
                 Phone = value.Phone,
-                AlertNotifications = value.AlertNotifications,
-                AlertsToAdmins = value.AlertsToAdmins
+                AlertNotifications = value.AlertNotifications?.ConvertToPSType(),
+                NotificationsByRole = value.NotificationsByRole?.ConvertToPSType()
             };
         }
 
         public static List<PSSecurityContact> ConvertToPSType(this IEnumerable<SecurityContact> value)
         {
             return value.Select(sc => sc.ConvertToPSType()).ToList();
+        }
+
+        public static PSSecurityContactPropertiesAlertNotifications ConvertToPSType(this SecurityContactPropertiesAlertNotifications value)
+        {
+            return new PSSecurityContactPropertiesAlertNotifications
+            {
+                MinimalSeverity = value.MinimalSeverity,
+                State = value.State
+                
+            };
+        }
+
+        public static PSSecurityContactPropertiesNotificationsByRole ConvertToPSType(this SecurityContactPropertiesNotificationsByRole value)
+        {
+            return new PSSecurityContactPropertiesNotificationsByRole
+            {
+                State = value.State,
+                Roles = value.Roles?.ToList() ?? new List<string>(),
+
+            };
         }
     }
 }

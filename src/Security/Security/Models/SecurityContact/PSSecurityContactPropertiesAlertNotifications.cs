@@ -12,22 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.SecurityCenter.Models.SecurityContact;
-
-namespace Microsoft.Azure.Commands.Security.Models.SecurityContacts
+namespace Microsoft.Azure.Commands.SecurityCenter.Models.SecurityContact
 {
-    public class PSSecurityContact
+    public class PSSecurityContactPropertiesAlertNotifications
     {
-        public string Id { get; set; }
-
-        public string Name { get; set; }
-
-        public string Email { get; set; }
-
-        public string Phone { get; set; }
-
-        public PSSecurityContactPropertiesAlertNotifications AlertNotifications { get; set; }
-
-        public PSSecurityContactPropertiesNotificationsByRole NotificationsByRole { get; set; }
+        public string State { get; set; }
+        public string MinimalSeverity { get; set; }
     }
 }
