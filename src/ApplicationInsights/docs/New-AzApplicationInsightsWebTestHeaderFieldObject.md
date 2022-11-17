@@ -73,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.HeaderField
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.HeaderField
 
 ## NOTES
 
