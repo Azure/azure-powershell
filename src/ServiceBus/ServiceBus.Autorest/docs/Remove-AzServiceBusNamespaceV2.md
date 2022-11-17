@@ -1,42 +1,74 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://learn.microsoft.com/powershell/module/az.servicebus/stop-azservicebusmigration
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusnamespacev2
 schema: 2.0.0
 ---
 
-# Stop-AzServiceBusMigration
+# Remove-AzServiceBusNamespaceV2
 
 ## SYNOPSIS
-This operation reverts Migration
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ## SYNTAX
 
-### Revert (Default)
+### Delete (Default)
 ```
-Stop-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzServiceBusNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### RevertViaIdentity
+### DeleteViaIdentity
 ```
-Stop-AzServiceBusMigration -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzServiceBusNamespaceV2 -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This operation reverts Migration
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ## EXAMPLES
 
-### Example 1: Aborts a ServiceBus migration
+### Example 1: {{ Add title here }}
 ```powershell
-Stop-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+{{ Add code here }}
 ```
 
-Aborts migration on standard namespace `myNamespace`.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -59,7 +91,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: RevertViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -69,15 +101,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
+### -Name
 The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: Revert
-Aliases:
+Parameter Sets: Delete
+Aliases: NamespaceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -104,7 +151,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Revert
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -120,7 +167,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Revert
+Parameter Sets: Delete
 Aliases:
 
 Required: False
