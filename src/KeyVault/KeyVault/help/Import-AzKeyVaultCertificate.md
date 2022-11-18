@@ -23,8 +23,8 @@ Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> -FilePath <S
 ### ImportWithPrivateKeyFromString
 ```
 Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> -CertificateString <String>
- [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ContentType <String>] [-Password <SecureString>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ImportWithPrivateKeyFromCollection
@@ -105,6 +105,21 @@ Parameter Sets: ImportWithPrivateKeyFromString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContentType
+Specifies the type of the certificate to be imported. Regards certificate string as PFX format by default.
+
+```yaml
+Type: System.String
+Parameter Sets: ImportWithPrivateKeyFromString
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
