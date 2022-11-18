@@ -32,7 +32,6 @@ Delete a workbook.
 ### Example 1: Delete a workbook
 ```powershell
 Remove-AzApplicationInsightsWorkbook -ResourceGroupName appinsights-hkrs2v-test -Name 7d195dcc-7d02-459f-a181-5b46662e4060
-
 ```
 
 Delete a workbook.
