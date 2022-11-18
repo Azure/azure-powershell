@@ -28,12 +28,6 @@ Regenerates secret keys and returns them for the DirectLine Channel of a particu
 New-AzBotServiceDirectLineKey -ChannelName 'DirectLineChannel' -ResourceGroupName botTest-rg -ResourceName botTest1 -Key key1 -SiteName siteName
 ```
 
-```output
-Etag Kind Location Name SkuName SkuTier Zone
----- ---- -------- ---- ------- ------- ----
-          global                        {}
-```
-
 Regenerates secret keys and returns them for the DirectLine Channel of a particular BotService resource.
 
 ## PARAMETERS
