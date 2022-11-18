@@ -14,30 +14,30 @@
 
 <#
 .Synopsis
-Updates an EventHub Entity
+Creates an EventHub Namespace
 .Description
-Updates an EventHub Entity
+Creates an EventHub Namespace
 #>
 
 function New-AzEventHubNamespaceV2{
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace])]
-    [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 
-        [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub namespace.")]
+        [Parameter(Mandatory, HelpMessage = "The name of EventHub namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of EventHub namespace
         ${Name},
 
-        [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Parameter(Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'SetExpanded', HelpMessage = "The ID of the target subscription.")]
+        [Parameter(HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -81,7 +81,7 @@ function New-AzEventHubNamespaceV2{
 
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities]
+        [System.Collections.Hashtable]
         # IdentityId
         ${UserAssignedIdentity},
 
@@ -102,7 +102,7 @@ function New-AzEventHubNamespaceV2{
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.TlsVersion]
+        [System.String]
         ${MinimumTlsVersion},
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
@@ -194,7 +194,7 @@ function New-AzEventHubNamespaceV2{
             if($PSBoundParameters.ContainsKey('KeyVaultProperty')){
                 $PSBoundParameters.Add('KeySource', 'Microsoft.KeyVault')
             }
-            if ($PSCmdlet.ShouldProcess("EventHubNamespace $($eventHubNamespace.Name)", "Create or update")) {
+            if ($PSCmdlet.ShouldProcess("EventHubNamespace $($Name)", "Create or update")) {
                 Az.EventHub.private\New-AzEventHubNamespaceV2_CreateExpanded @PSBoundParameters
             }
 		}

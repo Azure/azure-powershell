@@ -60,18 +60,21 @@ Describe 'Set-AzEventHubNamespaceV2' {
         $eventHubNamespace.KeyVaultProperty.Count | Should -Be 3
 
         # Remove KeyVaultProperty from namespace with SystemAssigned identity.
-        $eventhubNamespace.KeyVaultProperty = $namespace.KeyVaultProperty[0,2]
+        $eventhubNamespace.KeyVaultProperty = $eventHubNamespace.KeyVaultProperty[0,2]
         $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -KeyVaultProperty $eventhubNamespace.KeyVaultProperty
         $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
         $eventhubNamespace.IdentityType | Should -Be "SystemAssigned"
 
         # Add UserAssigned Identity to above namespace to test for SystemAssigned and UserAssigned
-        $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -IdentityType "SystemAssigned, UserAssigned"
+
+        $identityHashTable = New-AzEventHubUserAssignedIdentityObject -IdentityId $env.msi1
+        $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentity $identityHashTable
         $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
         $eventhubNamespace.IdentityType | Should -Be "SystemAssigned, UserAssigned"
+        $eventhubNamespace.UserAssignedIdentity.Count | Should -Be 1
         
         # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None
-        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentity $env.msi1, $env.msi2
+        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentity $identityHashTable
         $eventHubNamespace.UserAssignedIdentity.Count | Should -Be 2
 
         $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -IdentityType None -UserAssignedIdentity:$null
@@ -90,7 +93,7 @@ Describe 'Set-AzEventHubNamespaceV2' {
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -SkuCapacity 12
-        $expectedNamespace.Sku.Capacity = 12
+        $expectedNamespace.SkuCapacity = 12
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -MaximumThroughputUnits 25

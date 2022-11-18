@@ -19,6 +19,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2 -SkuName Standard -Location eastus
         $eventHubNamespace.Name | Should -Be $env.namespaceV2
         $eventHubNamespace.SkuName | Should be Standard
+        $eventhubNamespace.MinimumTlsVersion | Should -Be "1.2"
 
         $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuCapacity 10 -MaximumThroughputUnits 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth -KafkaEnabled -MinimumTlsVersion 1.1
         $eventHubNamespace.Name | Should be $env.namespaceV3
@@ -38,6 +39,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventhubNamespace.SkuName | Should -Be Premium
         $eventhubNamespace.SkuTier | Should be Premium
         $eventhubNamespace.Location | Should -Be "East Us"
+        $eventhubNamespace.MinimumTlsVersion | Should -Be "1.2"
 
         # Create namespace with UserAssigned Encryption Enabled
         $a = New-AzEventHubUserAssignedIdentityObject -IdentityId $env.msi1, $env.msi2

@@ -1,0 +1,44 @@
+{
+  "Get-AzEventHubNetworkRuleSet+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest1sde2t/providers/Microsoft.EventHub/namespaces/namespaceNameuszo5l/networkRuleSets/default?api-version=2022-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest1sde2t/providers/Microsoft.EventHub/namespaces/namespaceNameuszo5l/networkRuleSets/default?api-version=2022-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "55" ],
+        "x-ms-client-request-id": [ "7561e437-067d-4af1-b26d-f4c9fe7a08f3" ],
+        "CommandName": [ "Get-AzEventHubNetworkRuleSet" ],
+        "FullCommandName": [ "Get-AzEventHubNetworkRuleSet_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "57bbf90b-0038-48e8-8d21-09f0fce59c80_M2SN1_M2SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11952" ],
+        "x-ms-correlation-request-id": [ "8830e2e5-b777-462c-b2bc-641bf658e90f" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221117T183710Z:8830e2e5-b777-462c-b2bc-641bf658e90f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 17 Nov 2022 18:37:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "389" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest1sde2t/providers/Microsoft.EventHub/namespaces/namespaceNameuszo5l/networkRuleSets/default\",\"name\":\"default\",\"type\":\"Microsoft.EventHub/Namespaces/NetworkRuleSets\",\"location\":\"East US\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Allow\",\"virtualNetworkRules\":[],\"ipRules\":[]}}",
+      "isContentBase64": false
+    }
+  }
+}

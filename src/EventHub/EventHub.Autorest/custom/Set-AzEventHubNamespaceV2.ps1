@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Updates an EventHub Entity
+Updates an EventHub Namespace
 .Description
-Updates an EventHub Entity
+Updates an EventHub Namespace
 #>
 
 function Set-AzEventHubNamespaceV2{
@@ -83,7 +83,7 @@ function Set-AzEventHubNamespaceV2{
 
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities]
+        [System.Collections.Hashtable]
         # IdentityId
         ${UserAssignedIdentity},
 
@@ -105,7 +105,7 @@ function Set-AzEventHubNamespaceV2{
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.TlsVersion]
+        [System.String]
         # The minimum TLS version for the cluster to support, e.g. '1.2'
         ${MinimumTlsVersion},
 
@@ -209,7 +209,6 @@ function Set-AzEventHubNamespaceV2{
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('EventHubName')
             $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('SubscriptionId')
             if ($hasAsJob) {

@@ -1,0 +1,37 @@
+{
+  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest1sde2t/providers/Microsoft.EventHub/namespaces/namespaceNameti43ol/disasterRecoveryConfigs/aliasgab8l2?api-version=2022-01-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest1sde2t/providers/Microsoft.EventHub/namespaces/namespaceNameti43ol/disasterRecoveryConfigs/aliasgab8l2?api-version=2022-01-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"partnerNamespace\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest1sde2t/providers/Microsoft.EventHub/namespaces/namespaceNamenju0yo\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "206" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "bc1e2777-b5d5-40ce-a039-adf40c0fa5c4" ],
+        "x-ms-correlation-request-id": [ "bc1e2777-b5d5-40ce-a039-adf40c0fa5c4" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221117T184009Z:bc1e2777-b5d5-40ce-a039-adf40c0fa5c4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 17 Nov 2022 18:40:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "160" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ParentResourceNotFound\",\"message\":\"Can not perform requested operation on nested resource. Parent resource \u0027namespaceNameti43ol\u0027 not found.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

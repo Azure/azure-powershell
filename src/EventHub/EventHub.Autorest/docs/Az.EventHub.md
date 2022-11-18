@@ -87,7 +87,7 @@ Regenerates an EventHub SAS key
 Create an in-memory object for KeyVaultProperties.
 
 ### [New-AzEventHubNamespaceV2](New-AzEventHubNamespaceV2.md)
-Updates an EventHub Entity
+Updates an EventHub Namespace
 
 ### [New-AzEventHubSchemaGroup](New-AzEventHubSchemaGroup.md)
 
@@ -153,7 +153,7 @@ This operation disables the Disaster Recovery and stops replicating changes from
 Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
 ### [Set-AzEventHubNamespaceV2](Set-AzEventHubNamespaceV2.md)
-Updates an EventHub Entity
+Updates an EventHub Namespace
 
 ### [Set-AzEventHubNetworkRuleSet](Set-AzEventHubNetworkRuleSet.md)
 Sets an EventHub Namespace Network Rule Set

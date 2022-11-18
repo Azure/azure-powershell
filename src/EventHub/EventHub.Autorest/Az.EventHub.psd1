@@ -1,5 +1,5 @@
 @{
-  GUID = 'c3f93fb7-6f6a-471a-9064-f4f38a883a47'
+  GUID = '9e121baf-ee5e-4cb7-bb95-fff6bb4ee003'
   RootModule = './Az.EventHub.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

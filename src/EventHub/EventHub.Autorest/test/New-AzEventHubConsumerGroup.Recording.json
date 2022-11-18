@@ -1,0 +1,74 @@
+{
+  "New-AzEventHubConsumerGroup+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest1sde2t/providers/Microsoft.EventHub/namespaces/namespaceNameuszo5l/eventhubs/eventHub4u93e6/consumergroups/consumerGroupbmw489?api-version=2022-01-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest1sde2t/providers/Microsoft.EventHub/namespaces/namespaceNameuszo5l/eventhubs/eventHub4u93e6/consumergroups/consumerGroupbmw489?api-version=2022-01-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"userMetadata\": \"Test Metadata\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "61" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
+        "x-ms-request-id": [ "eb14f822-6867-46b9-9318-b6cb050e1a50" ],
+        "x-ms-correlation-request-id": [ "eb14f822-6867-46b9-9318-b6cb050e1a50" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221117T183940Z:eb14f822-6867-46b9-9318-b6cb050e1a50" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 17 Nov 2022 18:39:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "468" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest1sde2t/providers/Microsoft.EventHub/namespaces/namespaceNameuszo5l/eventhubs/eventHub4u93e6/consumergroups/consumerGroupbmw489\",\"name\":\"consumerGroupbmw489\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs/consumergroups\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"2022-11-17T18:39:40.5160804Z\",\"updatedAt\":\"2022-11-17T18:39:40.5160804Z\",\"userMetadata\":\"Test Metadata\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzEventHubConsumerGroup+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest1sde2t/providers/Microsoft.EventHub/namespaces/namespaceNameuszo5l/eventhubs/eventHub4u93e6/consumergroups/consumerGroupbi8va1?api-version=2022-01-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest1sde2t/providers/Microsoft.EventHub/namespaces/namespaceNameuszo5l/eventhubs/eventHub4u93e6/consumergroups/consumerGroupbi8va1?api-version=2022-01-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"userMetadata\": \"Test Metadata\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "61" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1188" ],
+        "x-ms-request-id": [ "ee464c6d-b372-4765-930e-be7c6b47d151" ],
+        "x-ms-correlation-request-id": [ "ee464c6d-b372-4765-930e-be7c6b47d151" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221117T183942Z:ee464c6d-b372-4765-930e-be7c6b47d151" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 17 Nov 2022 18:39:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "468" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest1sde2t/providers/Microsoft.EventHub/namespaces/namespaceNameuszo5l/eventhubs/eventHub4u93e6/consumergroups/consumerGroupbi8va1\",\"name\":\"consumerGroupbi8va1\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs/consumergroups\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"2022-11-17T18:39:42.4536238Z\",\"updatedAt\":\"2022-11-17T18:39:42.4536238Z\",\"userMetadata\":\"Test Metadata\"}}",
+      "isContentBase64": false
+    }
+  }
+}

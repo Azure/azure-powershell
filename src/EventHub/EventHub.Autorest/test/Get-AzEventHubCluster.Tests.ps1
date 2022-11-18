@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubCluster'))
 }
 
 Describe 'Get-AzEventHubCluster' {
-    It 'List'  {
+    It 'List' {
         $listOfCluster = Get-AzEventHubCluster
         $listOfCluster.Count | Should -BeGreaterThan 10
     }

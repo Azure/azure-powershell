@@ -23,7 +23,7 @@ function setupEnv() {
     $namespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
     $systemAssignedNamespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
     $keyVaultName = "keyVaultName" + (RandomString -allChars $false -len 6)
-    $keyVaultUri = "https://" + $keyVaultName + "vault.azure.net/"
+    $keyVaultUri = "https://" + $keyVaultName + ".vault.azure.net/"
     $namespaceV2 = "namespaceV2" + (RandomString -allChars $false -len 6)
     $namespaceV3 = "namespaceV3" + (RandomString -allChars $false -len 6)
     $namespaceV4 = "namespaceV4" + (RandomString -allChars $false -len 6)
@@ -151,6 +151,9 @@ function setupEnv() {
     $env.Add("subnetId1", $resourceNames.parameters.virtualNetworkId.Value)
     $env.Add("subnetId2", $resourceNames.parameters.virtualNetworkId2.Value)
     $env.Add("subnetId3", $resourceNames.parameters.virtualNetworkId3.Value)
+    #msi 1 and msi 2 are Resource ID's of already existing managed identities
+    $env.Add("msi1", $resourceNames.parameters.msi1.Value)
+    $env.Add("msi2", $resourceNames.parameters.msi2.Value)
 
     Write-Host -ForegroundColor Magenta "Deployed Disaster Recovery template"
 

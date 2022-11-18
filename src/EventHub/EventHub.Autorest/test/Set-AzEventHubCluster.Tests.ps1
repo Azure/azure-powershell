@@ -22,7 +22,7 @@ Describe 'Set-AzEventHubCluster' {
         $cluster.Capacity | Should -Be 3
     }
 
-    It 'SetViaIdentityExpanded'  {
+    It 'SetViaIdentityExpanded' {
         $cluster = Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster
         
         { Set-AzEventHubCluster -InputObject $cluster } | Should -Throw 'Please specify the property you want to update on the -InputObject'

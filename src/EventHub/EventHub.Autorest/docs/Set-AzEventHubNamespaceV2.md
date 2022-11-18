@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzEventHubNamespaceV2
 
 ## SYNOPSIS
-Updates an EventHub Entity
+Updates an EventHub Namespace
 
 ## SYNTAX
 
@@ -17,49 +17,230 @@ Updates an EventHub Entity
 Set-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AlternateName <String>] [-ClusterArmId <String>] [-DisableLocalAuth] [-EnableAutoInflate]
  [-IdentityType <ManagedServiceIdentityType>] [-KafkaEnabled] [-KeyVaultProperty <IKeyVaultProperties[]>]
- [-MaximumThroughputUnits <Int32>] [-MinimumTlsVersion <TlsVersion>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <IIdentityUserAssignedIdentities>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MaximumThroughputUnits <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHubNamespaceV2 -InputObject <IEventHubIdentity> [-AlternateName <String>] [-ClusterArmId <String>]
  [-DisableLocalAuth] [-EnableAutoInflate] [-IdentityType <ManagedServiceIdentityType>] [-KafkaEnabled]
- [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnits <Int32>]
- [-MinimumTlsVersion <TlsVersion>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <IIdentityUserAssignedIdentities>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnits <Int32>] [-MinimumTlsVersion <String>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an EventHub Entity
+Updates an EventHub Namespace
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Add a KeyVaultProperty to an existing EventHub Namespace
 ```powershell
-{{ Add code here }}
+$eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+
+$newKeyVaultProperty = New-AzEventHubKeyVaultPropertiesObject -KeyName key3 -KeyVaultUri https://{keyVaultName}.vault.azure.net/ -UserAssignedIdentity "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+
+$eventHubNamespace.KeyVaultProperty += $newKeyVaultProperty
+
+Set-AzEventHubNamespaceV2 -InputObject $eventHubNamespace -KeyVaultProperty $eventHubNamespace.KeyVaultProperty
 ```
 
 ```output
-{{ Add output here }}
+AlternateName                   :
+ClusterArmId                    :
+CreatedAt                       : 11/17/2022 2:56:32 PM
+DisableLocalAuth                : False
+EnableAutoInflate               : False
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/damorg/providers/Microsoft.EventHub/namespaces/testNamespaceForCLI134
+IdentityType                    : UserAssigned
+KafkaEnabled                    : True
+KeySource                       : Microsoft.KeyVault
+KeyVaultProperty                : {{
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key1",
+                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVersion": ""
+                                  }, {
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key2",
+                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVersion": ""
+                                  }, {
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key3",
+                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVersion": ""
+                                  }}
+Location                        : North Europe
+MaximumThroughputUnits          : 0
+MetricId                        : {subscriptionId}:myNamespace
+MinimumTlsVersion               : 1.2
+Name                            : myNamespace
+PrincipalId                     :
+PrivateEndpointConnection       :
+ProvisioningState               : Succeeded
+PublicNetworkAccess             : Enabled
+RequireInfrastructureEncryption : False
+ResourceGroupName               : myResourceGroup
+ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
+SkuCapacity                     : 1
+SkuName                         : Premium
+SkuTier                         : Premium
+Status                          : Active
+Tag                             : {
+                                  }
+TenantId                        :
+Type                            : Microsoft.EventHub/Namespaces
+UpdatedAt                       : 11/17/2022 3:03:50 PM
+UserAssignedIdentity            : {
+                                    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
+                                    },
+                                    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
+                                    }
+                                  }
+ZoneRedundant                   : True
 ```
 
-{{ Add description here }}
+Adds a new KeyVaultProperty to EventHub namespace `myNamespace`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a KeyVaultProperty from an existing EventHub Namespace
 ```powershell
-{{ Add code here }}
+$eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+
+# Remove the last KeyVaultProperty from the list of KeyVaultProperties
+$eventHubNamespace.KeyVaultProperty = $eventHubNamespace.KeyVaultProperty | Where-Object { $_ -ne $eventHubNamespace.KeyVaultProperty[2] }
+
+Set-AzEventHubNamespaceV2 -InputObject $eventHubNamespace -KeyVaultProperty $eventHubNamespace.KeyVaultProperty
 ```
 
 ```output
-{{ Add output here }}
+AlternateName                   :
+ClusterArmId                    :
+CreatedAt                       : 11/17/2022 2:56:32 PM
+DisableLocalAuth                : False
+EnableAutoInflate               : False
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/damorg/providers/Microsoft.EventHub/namespaces/testNamespaceForCLI134
+IdentityType                    : UserAssigned
+KafkaEnabled                    : True
+KeySource                       : Microsoft.KeyVault
+KeyVaultProperty                : {{
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key1",
+                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVersion": ""
+                                  }, {
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key2",
+                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVersion": ""
+                                  }}
+Location                        : North Europe
+MaximumThroughputUnits          : 0
+MetricId                        : {subscriptionId}:myNamespace
+MinimumTlsVersion               : 1.2
+Name                            : myNamespace
+PrincipalId                     :
+PrivateEndpointConnection       :
+ProvisioningState               : Succeeded
+PublicNetworkAccess             : Enabled
+RequireInfrastructureEncryption : False
+ResourceGroupName               : myResourceGroup
+ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
+SkuCapacity                     : 1
+SkuName                         : Premium
+SkuTier                         : Premium
+Status                          : Active
+Tag                             : {
+                                  }
+TenantId                        :
+Type                            : Microsoft.EventHub/Namespaces
+UpdatedAt                       : 11/17/2022 3:03:50 PM
+UserAssignedIdentity            : {
+                                    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
+                                    },
+                                    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
+                                    }
+                                  }
+ZoneRedundant                   : True
 ```
 
-{{ Add description here }}
+Removes a new KeyVaultProperty to EventHub namespace `myNamespace`.
+
+### Example 3: Set DisableLocalAuth to true on an existing EventHub namespace
+```powershell
+Set-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace -DisableLocalAuth
+```
+
+```output
+AlternateName                   :
+ClusterArmId                    :
+CreatedAt                       : 11/17/2022 2:56:32 PM
+DisableLocalAuth                : False
+EnableAutoInflate               : False
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/damorg/providers/Microsoft.EventHub/namespaces/testNamespaceForCLI134
+IdentityType                    : UserAssigned
+KafkaEnabled                    : True
+KeySource                       : Microsoft.KeyVault
+KeyVaultProperty                : {{
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key1",
+                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVersion": ""
+                                  }, {
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key2",
+                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVersion": ""
+                                  }}
+Location                        : North Europe
+MaximumThroughputUnits          : 0
+MetricId                        : {subscriptionId}:myNamespace
+MinimumTlsVersion               : 1.2
+Name                            : myNamespace
+PrincipalId                     :
+PrivateEndpointConnection       :
+ProvisioningState               : Succeeded
+PublicNetworkAccess             : Enabled
+RequireInfrastructureEncryption : False
+ResourceGroupName               : myResourceGroup
+ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
+SkuCapacity                     : 1
+SkuName                         : Premium
+SkuTier                         : Premium
+Status                          : Active
+Tag                             : {
+                                  }
+TenantId                        :
+Type                            : Microsoft.EventHub/Namespaces
+UpdatedAt                       : 11/17/2022 3:03:50 PM
+UserAssignedIdentity            : {
+                                    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
+                                    },
+                                    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
+                                    }
+                                  }
+ZoneRedundant                   : True
+```
+
+Sets `DisableLocalAuth` to true on an EventHub namespace `myNamespace`.
 
 ## PARAMETERS
 
@@ -236,7 +417,7 @@ The minimum TLS version for the cluster to support, e.g.
 '1.2'
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.TlsVersion
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -357,10 +538,9 @@ Accept wildcard characters: False
 
 ### -UserAssignedIdentity
 Properties for User Assigned Identities
-To construct, see NOTES section for USERASSIGNEDIDENTITY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -442,9 +622,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[KeyVaultUri <String>]`: Uri of KeyVault
   - `[KeyVersion <String>]`: Key Version
   - `[UserAssignedIdentity <String>]`: ARM ID of user Identity selected for encryption
-
-`USERASSIGNEDIDENTITY <IIdentityUserAssignedIdentities>`: Properties for User Assigned Identities
-  - `[(Any) <IUserAssignedIdentity>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 
