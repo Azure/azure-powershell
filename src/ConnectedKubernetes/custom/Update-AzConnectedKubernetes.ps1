@@ -81,6 +81,11 @@ param(
     ${AzureHybridBenefit},
 
     [Parameter()]
+    [System.Management.Automation.SwitchParameter]
+    # Accept EULA of ConnectedKubernetes, legal term will pop up without this parameter provided
+    ${AcceptEULA},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [System.String]
     # Represents the distribution of the connected cluster
@@ -148,6 +153,23 @@ param(
 )
 
     process {
+        if($AzureHybridBenefit){
+            if(!$AcceptEULA){
+                $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
+                try {
+                    $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
+                } catch {
+                    Write-Error "Get legal term failed."
+                    throw
+                }
+                $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
+                if($confirmation -ine "Y"){
+                    Return
+                }
+            }
+        }
+        $null = $PSBoundParameters.Remove('AcceptEULA')
+
         Az.ConnectedKubernetes.internal\Update-AzConnectedKubernetes @PSBoundParameters
     }
 }
