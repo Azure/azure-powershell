@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
 
+## Version 6.1.1
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
 ## Version 6.1.0
 * Added support for cross zonal restore for ZRS vaults for non-ZonePinned VM
 * Fixed bug with Update-AzRecoveryServicesAsrProtectionContainerMapping
