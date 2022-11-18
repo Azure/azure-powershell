@@ -13,8 +13,8 @@ Creates a new CosmosDB MongoDB Privilege object to be used to create or update  
 ## SYNTAX
 
 ```
-New-AzCosmosDBMongoDBPrivilege -PrivilegeResource <Microsoft.Azure.Commands.CosmosDB.Models.PSMongoPrivilegeResource>  -Actions <String[]> 
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzCosmosDBMongoDBPrivilege [-PrivilegeResource <PSMongoPrivilegeResource>] [-Actions <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,21 +39,6 @@ Microsoft.Azure.Commands.CosmosDB.Models.PSMongoPrivilege
 
 ## PARAMETERS
 
-### -PrivilegeResource
-Microsoft.Azure.Commands.CosmosDB.Models.PSMongoPrivilegeResource Object.
-
-```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSMongoPrivilegeResource
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Actions
 Array of valid Actions(e.g. insert, find).
 
@@ -62,40 +47,39 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: cf
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -PrivilegeResource
+Microsoft.Azure.Commands.CosmosDB.Models.PSMongoPrivilegeResource Object.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoPrivilegeResource
 Parameter Sets: (All)
-Aliases: wi
+Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -112,6 +96,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzCosmosDBMongoDBRoleDefinition](./New-AzCosmosDBMongoDBRoleDefinition.md)
 
 [Update-AzCosmosDBMongoDBRoleDefinition](./Update-AzCosmosDBMongoDBRoleDefinition.md)

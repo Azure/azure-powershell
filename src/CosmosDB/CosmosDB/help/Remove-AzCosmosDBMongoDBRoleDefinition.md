@@ -5,43 +5,36 @@ online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/remove-
 schema: 2.0.0
 ---
 
-# Remove-AzCosmosDBMongoDBRoleDefinition
+# Remove-AzCosmosDBMongoDBDatabase
 
 ## SYNOPSIS
-Deletes an existing CosmosDB MongoDB Role Definition.
+Deletes a CosmosDB MongoDB Database.
 
 ## SYNTAX
 
-### Default Parameter Set
+### ByNameParameterSet
 ```
-Remove-AzCosmosDBMongoDBRoleDefinition -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
- -Id <String> [-PassThru]  [-Confirm]
- [<CommonParameters>]
+Remove-AzCosmosDBMongoDBDatabase -AccountName <String> -Name <String> -ResourceGroupName <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzCosmosDBMongoDBRoleDefinition -InputObject <PSMongoDBRoleDefinitionGetResults> [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzCosmosDBMongoDBDatabase -InputObject <PSMongoDBDatabaseGetResults> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzCosmosDBMongoDBRoleDefinition** cmdlet deletes an existing CosmosDB MongoDB Role Definition.
+The **Remove-AzCosmosDBMongoDBDatabase** cmdlet deletes a CosmosDB MongoDB Database.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Remove-AzCosmosDBMongoDBRoleDefinition -ResourceGroupName {rgName} -AccountName {accountName} -DatabaseName {dbName} -Id {roleDefId}
+Remove-AzCosmosDBMongoDBDatabase -ResourceGroupName "rgName" -AccountName "accountName" -Name "dbName"
 ```
 
 The cmdlet returns an object of type bool(when -PassThru is passed) which is true, if the delete was successful.
-
-### Example 2
-```powershell
-$RoleDef = Get-AzCosmosDBMongoDBRoleDefinition -AccountName accountName -ResourceGroupName resourceGroupName -Id id
-
-Remove-AzCosmosDBMongoDBRoleDefinition -InputObject $RoleDef
 
 ## PARAMETERS
 
@@ -60,15 +53,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseName
-Database name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByNameParameterSet
-Aliases:
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -76,10 +69,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-PSMongoDBRoleDefinitionGetResults Object
+Mongo Database object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBRoleDefinitionGetResults
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBDatabaseGetResults
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -90,8 +83,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Id
-Mongo Role Definition ID.
+### -Name
+Database name.
 
 ```yaml
 Type: System.String
@@ -172,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBRoleDefinitionGetResults
+### Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBDatabaseGetResults
 
 ## OUTPUTS
 
@@ -183,8 +176,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-[Get-AzCosmosDBMongoDBRoleDefinition](./Get-AzCosmosDBMongoDBRoleDefinition.md)
-
-[New-AzCosmosDBMongoDBRoleDefinition](./New-AzCosmosDBMongoDBRoleDefinition.md)
-
-[Update-AzCosmosDBMongoDBRoleDefinition](./Update-AzCosmosDBMongoDBRoleDefinition.md)

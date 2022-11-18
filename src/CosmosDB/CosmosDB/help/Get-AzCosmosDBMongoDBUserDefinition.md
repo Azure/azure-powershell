@@ -15,13 +15,14 @@ Gets the CosmosDB MongoDB User Definition.
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBMongoDBUserDefinition -ResourceGroupName <String> -AccountName <String> [-Id <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DatabaseName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBMongoDBUserDefinition [-Id <String>] -DatabaseAccountObject <PSDatabaseAccountGetResults>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzCosmosDBMongoDBUserDefinition [-Id <String>] [-DatabaseName <String>]
+ -DatabaseAccountObject <PSDatabaseAccountGetResults> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,6 +35,7 @@ Id can be either fully qualified or just the id string.
 ```powershell
 Get-AzCosmosDBMongoDBUserDefinition -AccountName accountName -ResourceGroupName resourceGroupName -Id id
 ```
+
 ```output
 Id           : /subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/mongodbUserDefinitions/id
 UserName     : test_user_name
@@ -57,6 +59,36 @@ Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseAccountObject
+CosmosDB Account object
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DatabaseName
+Database Name for the MongoDB Role Definition.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -90,21 +122,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentObject
-CosmosDB Account object
-
-```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

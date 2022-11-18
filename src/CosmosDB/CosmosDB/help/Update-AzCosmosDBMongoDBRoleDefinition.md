@@ -12,51 +12,39 @@ Update an existing CosmosDB MongoDB Role Definition.
 
 ## SYNTAX
 
-### Default Parameter Set
+### ByFieldsDataActionsParameterSet (Default)
 ```
-Update-AzCosmosDBMongoDBRoleDefinition 
-	-ResourceGroupName <String> 
-	-AccountName <String> 
-	-DatabaseName <String> 
-	-Id <String> 
-	-RoleName <String> 
-	-Type <String> 
-	-Privileges <Microsoft.Azure.Commands.CosmosDB.Models.PSMongoPrivilege[]> 
-	[-Roles <Microsoft.Azure.Commands.CosmosDB.Models.PSMongoRole[]>]
-```
-### ParentObject Parameter Set
-```
-Update-AzCosmosDBMongoDBRoleDefinition 
-	-Id <String> 
-	-DatabaseAccountObject <PSDatabaseAccountGetResults>
-	-RoleName <String> 
-	-Type <String> 
-	-DatabaseName <String> 
-	-Privileges <Microsoft.Azure.Commands.CosmosDB.Models.PSMongoPrivilege[]> 
-	[-Roles <Microsoft.Azure.Commands.CosmosDB.Models.PSMongoRole[]>]
+New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
+ -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### InputObject Parameter Set
+### ByNameParameterSet
 ```
-Update-AzCosmosDBMongoDBRoleDefinition 
-	-Id <String> 
-	-InputObject <PSMongoDBRoleDefinitionGetResults>
-	-RoleName <String> 
-	-Type <String> 
-	-DatabaseName <String> 
-	-Privileges <Microsoft.Azure.Commands.CosmosDB.Models.PSMongoPrivilege[]> 
-	[-Roles <Microsoft.Azure.Commands.CosmosDB.Models.PSMongoRole[]>]
+New-AzCosmosDBMongoDBRoleDefinition -ResourceGroupName <String> -AccountName <String> -Id <String>
+ -RoleName <String> -Type <String> -DatabaseName <String> -Privileges <PSMongoPrivilege[]>
+ [-Roles <PSMongoRole[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceId Parameter Set
+### ByParentObjectDataActionsParameterSet
 ```
-Update-AzCosmosDBMongoDBRoleDefinition 
-	-ResourceId <String> 
-	-Id <String> 
-	-RoleName <String> 
-	-Type <String> -DatabaseName <String> 
-	-Privileges <Microsoft.Azure.Commands.CosmosDB.Models.PSMongoPrivilege[]> 
-	[-Roles <Microsoft.Azure.Commands.CosmosDB.Models.PSMongoRole[]>]
+New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
+ -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] -DatabaseAccountObject <PSDatabaseAccountGetResults>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByParentObjectPermissionsParameterSet
+```
+New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
+ -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] -DatabaseAccountObject <PSDatabaseAccountGetResults>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdParameterSet
+```
+New-AzCosmosDBMongoDBRoleDefinition -Id <String> -RoleName <String> -Type <String> -DatabaseName <String>
+ -Privileges <PSMongoPrivilege[]> [-Roles <PSMongoRole[]>] [-ResourceId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +56,7 @@ In order to specify the Role Definition's Roles,  use the New-AzCosmosDBMongoDBR
 
 ### Example 1: Default
 ```powershell
-  $Actions = 'insert', 'find'
+$Actions = 'insert', 'find'
   $PrivilegeResource = New-AzCosmosDBMongoDBPrivilegeResource -Database test -Collection test
   $Privilege = New-AzCosmosDBMongoDBPrivilege -PrivilegeResource $PrivilegeResource -Actions $Actions
   $Roles = New-AzCosmosDBMongoDBRole -Database test -Role roleName
@@ -153,7 +141,7 @@ Name of the Cosmos DB database account.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsDataActionsParameterSet, ByFieldsPermissionsParameterSet
+Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
@@ -163,11 +151,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Privileges
-Set of Privileges for CosmosDB MongoDB API.
+### -DatabaseAccountObject
+Role definition object.
 
 ```yaml
-Type: System.Collections.Generic.List`1[{Microsoft.Azure.Management.CosmosDB.Models.Privilege]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults
+Parameter Sets: ByParentObjectDataActionsParameterSet, ByParentObjectPermissionsParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DatabaseName
+Database Name for the MongoDB Role Definition.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -178,14 +181,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Roles
-Set of inherited roles for CosmosDB MongoDB API Role Definition.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.CosmosDB.Models.Role]
-Aliases:
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -207,33 +211,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseAccountObject
-Role definition object.
+### -Privileges
+Set of Privileges for CosmosDB MongoDB API.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults
-Parameter Sets: ByParentObjectDataActionsParameterSet, ByParentObjectPermissionsParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoPrivilege[]
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InputObject
-Role definition object.
-
-```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBRoleDefinitionGetResults
-Parameter Sets: ByParentObjectDataActionsParameterSet, ByParentObjectPermissionsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -242,10 +231,25 @@ Name of resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsDataActionsParameterSet, ByFieldsPermissionsParameterSet
+Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ResourceId of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceIdParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -267,6 +271,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Roles
+Set of inherited roles for CosmosDB MongoDB API Role Definition.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoRole[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Type
 Type of Role Definition, either CustomRole or BuiltInRole.
 Default value is CustomRole.
@@ -276,7 +295,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -314,7 +333,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParametersU
+### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

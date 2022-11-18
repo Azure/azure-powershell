@@ -12,17 +12,22 @@ Deletes an existing CosmosDB MongoDB User Definition.
 
 ## SYNTAX
 
-### Default Parameter Set
+### ByNameParameterSet (Default)
 ```
-Remove-AzCosmosDBMongoDBUserDefinition -ResourceGroupName <String> -AccountName <String> -DatabaseName <String>
- -Id <String> [-PassThru]  [-Confirm]
- [<CommonParameters>]
+Remove-AzCosmosDBMongoDBUserDefinition -ResourceGroupName <String> -AccountName <String> -Id <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByParentObjectParameterSet
+```
+Remove-AzCosmosDBMongoDBUserDefinition -Id <String> -DatabaseAccountObject <PSDatabaseAccountGetResults>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzCosmosDBMongoDBUserDefinition -InputObject <PSMongoDBUserDefinitionGetResults> [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzCosmosDBMongoDBUserDefinition -Id <String> -InputObject <PSMongoDBUserDefinitionGetResults>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,12 +68,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseName
-Database name.
+### -DatabaseAccountObject
+CosmosDB Account object
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Mongo User Definition ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByNameParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -82,7 +117,7 @@ Accept wildcard characters: False
 PSMongoDBUserDefinitionGetResults Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBUserDefinitionGetResults
+Type: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB.PSMongoDBUserDefinitionGetResults
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -90,21 +125,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Id
-Mongo User Definition ID.
-
-```yaml
-Type: System.String
-Parameter Sets: ByNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -186,6 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Get-AzCosmosDBMongoDBUserDefinition](./Get-AzCosmosDBMongoDBUserDefinition.md)
 
 [New-AzCosmosDBMongoDBUserDefinition](./New-AzCosmosDBMongoDBUserDefinition.md)
