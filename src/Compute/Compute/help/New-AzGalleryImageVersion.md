@@ -246,7 +246,7 @@ $sourceImageId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGr
 $cvmDiskEncryptionSetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/diskEncryptionSets/cvmDiskEncryptionSet"
 $dataDiskEncryptionSetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/diskEncryptionSets/dataDiskEncryptionSet"
 
-$cvmOsDiskEncryption = @{CVMEncryptionType=EncryptedWithCmk; CVMDiskEncryptionSetID=$cvmDiskEncryptionSetId}
+$cvmOsDiskEncryption = @{CVMEncryptionType='EncryptedWithCmk'; CVMDiskEncryptionSetID=$cvmDiskEncryptionSetId}
 
 $cvmDataDiskEncryption_lun0 = @{DiskEncryptionSetId = $dataDiskEncryptionSetId ; Lun = 0}
 $cvmDataDiskEncryption = @($cvmDataDiskEncryption_lun0)
