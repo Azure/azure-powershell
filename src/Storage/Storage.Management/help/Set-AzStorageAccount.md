@@ -422,7 +422,7 @@ Enabled
 
 This command updates a Storage account by set PublicNetworkAccess as enabled.
 
-### Example 19: Update account level  mmutability policy
+### Example 19: Update account level immutability policy
 <!-- Skip: Output cannot be splitted from code -->
 
 
