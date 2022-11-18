@@ -207,7 +207,6 @@ function Install-AzModuleInternal {
                                 $result = Install-SingleModule -ModuleName $tmodule.Name -ModuleVersion $tmodule.Version -InstallModuleParam $tInstallModuleParam -RemovePrevious:($using:confirmUninstallation)
                                 Write-Output $result
                             } -ThrottleLimit $maxJobCount
-                             #-StreamingHost $Host
                         }
                     }
                     else {

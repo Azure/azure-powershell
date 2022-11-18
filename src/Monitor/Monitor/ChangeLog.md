@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+* Fixed bug for `New-AzActivityLogAlert` and `Update-AzActivityLogAlert` [#19927]
 
 ## Version 4.2.1
 * Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]

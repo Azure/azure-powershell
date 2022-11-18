@@ -55,7 +55,7 @@ PARAMETER <IResourceGuardResource>: .
     [(Any) <String>]: This indicates any property can be added to this object.
   [CriticalOperationExclusionList <String[]>]: List of critical operations which are not protected by this resourceGuard
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionresourceguard
+https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionresourceguard
 #>
 function New-AzDataProtectionResourceGuard {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IResourceGuardResource])]

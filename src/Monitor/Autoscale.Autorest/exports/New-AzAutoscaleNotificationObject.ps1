@@ -35,7 +35,7 @@ WEBHOOK <IWebhookNotification[]>: the collection of webhook notifications.
     [(Any) <String>]: This indicates any property can be added to this object.
   [ServiceUri <String>]: the service address to receive the notification.
 .Link
-https://docs.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleNotificationObject
+https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleNotificationObject
 #>
 function New-AzAutoscaleNotificationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleNotification])]

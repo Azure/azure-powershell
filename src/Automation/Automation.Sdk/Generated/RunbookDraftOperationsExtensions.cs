@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Automation
             /// The runbook name.
             /// </param>
             /// <param name='runbookContent'>
-            /// The runbook draft content.
+            /// The runbook draft content.
             /// </param>
             public static Stream ReplaceContent(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent)
             {
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Automation
             /// The runbook name.
             /// </param>
             /// <param name='runbookContent'>
-            /// The runbook draft content.
+            /// The runbook draft content.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Management.Automation
             /// The runbook name.
             /// </param>
             /// <param name='runbookContent'>
-            /// The runbook draft content.
+            /// The runbook draft content.
             /// </param>
             public static Stream BeginReplaceContent(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent)
             {
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.Automation
             /// The runbook name.
             /// </param>
             /// <param name='runbookContent'>
-            /// The runbook draft content.
+            /// The runbook draft content.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

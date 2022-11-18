@@ -28,7 +28,7 @@ New-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azpstes
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IManagedEnvironmentStorage
 .Link
-https://docs.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvstorage
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvstorage
 #>
 function New-AzContainerAppManagedEnvStorage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IManagedEnvironmentStorage])]

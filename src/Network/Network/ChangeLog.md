@@ -27,6 +27,9 @@
 ## Version 5.1.1
 * Fixed bug with New-AzCustomIpPrefix
 
+## Version 5.1.1
+* Fixed bug with New-AzCustomIpPrefix
+
 ## Version 5.1.0
 * Added possible value `LocalGateway` for parameter `GatewayType`
     - `New-AzVirtualNetworkGateway`

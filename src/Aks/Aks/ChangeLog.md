@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+* Bumped API version to 2022-09-01
+* Added parameter `NodeOsSKU` for `New-AzAksCluster` and parameter `OsSKU` for `New-AzAksNodePool`
 
 ## Version 5.0.1
 * Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]

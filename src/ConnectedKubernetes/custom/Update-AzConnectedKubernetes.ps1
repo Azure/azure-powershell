@@ -39,7 +39,7 @@ INPUTOBJECT <IConnectedKubernetesIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedkubernetes/update-azconnectedkubernetes
+https://learn.microsoft.com/powershell/module/az.connectedkubernetes/update-azconnectedkubernetes
 #>
 function Update-AzConnectedKubernetes {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster])]
@@ -79,6 +79,11 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit]
     # Indicates whether Azure Hybrid Benefit is opted in
     ${AzureHybridBenefit},
+
+    [Parameter()]
+    [System.Management.Automation.SwitchParameter]
+    # Accept EULA of ConnectedKubernetes, legal term will pop up without this parameter provided
+    ${AcceptEULA},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
@@ -148,6 +153,23 @@ param(
 )
 
     process {
+        if($AzureHybridBenefit){
+            if(!$AcceptEULA){
+                $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
+                try {
+                    $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
+                } catch {
+                    Write-Error "Get legal term failed."
+                    throw
+                }
+                $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
+                if($confirmation -ine "Y"){
+                    Return
+                }
+            }
+        }
+        $null = $PSBoundParameters.Remove('AcceptEULA')
+
         Az.ConnectedKubernetes.internal\Update-AzConnectedKubernetes @PSBoundParameters
     }
 }

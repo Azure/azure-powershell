@@ -1,4 +1,4 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Az.Compute","Get-AzVmssVMRunCommand","Get-AzVmssVMRunCommand","0","1020","The cmdlet 'Get-AzVmssVMRunCommand' no longer has output type 'Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand'.","Make cmdlet 'Get-AzVmssVMRunCommand' return type 'Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand'."
 "Az.Compute","Get-AzVmssVMRunCommand","Get-AzVmssVMRunCommand","0","1060","The parameter set 'List' for cmdlet 'Get-AzVmssVMRunCommand' is no longer the default parameter set.","Change the default parameter for cmdlet 'Get-AzVmssVMRunCommand' back to 'List'."
 "Az.Compute","Get-AzVmssVMRunCommand","Get-AzVmssVMRunCommand","0","1060","The parameter set 'List' for cmdlet 'Get-AzVmssVMRunCommand' is no longer the default parameter set.","Change the default parameter for cmdlet 'Get-AzVmssVMRunCommand' back to 'List'."

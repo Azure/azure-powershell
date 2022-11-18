@@ -917,6 +917,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.RecoveryResourceGroupId;
             }
 
+            if (this.IsParameterBound(c => c.IncludeDiskId))
+            {
+                List<string> disksToInclude = IncludeDiskId.ToList();
+                providerSettings.DisksToInclude = disksToInclude;
+            }
+
             input.Properties.ProviderSpecificDetails = providerSettings;
         }
 

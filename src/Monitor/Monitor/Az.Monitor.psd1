@@ -106,7 +106,7 @@ FunctionsToExport = 'Get-AzActivityLogAlert', 'New-AzActivityLogAlert',
                'New-AzAutoscaleScaleRuleMetricDimensionObject', 
                'New-AzAutoscaleScaleRuleObject', 'New-AzAutoscaleSetting', 
                'New-AzAutoscaleWebhookNotificationObject', 
-               'Remove-AzAutoscaleSetting'
+               'Remove-AzAutoscaleSetting', 'Update-AzAutoscaleSetting'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile', 
@@ -134,7 +134,7 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'Remove-AzDataCollectionRuleAssociation'
 
 # Variables to export from this module
-# VariablesToExport = @()
+VariablesToExport = '*'
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzLog'
@@ -154,7 +154,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','Monitor'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'Monitor'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -179,7 +179,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
- } # End of PrivateData hashtable
+} # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
