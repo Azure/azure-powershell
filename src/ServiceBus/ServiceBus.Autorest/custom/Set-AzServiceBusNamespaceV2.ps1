@@ -14,30 +14,38 @@
 
 <#
 .Synopsis
-Update the ServiceBusNamespace Entity
+Updates a ServiceBus namespace
 .Description
-Update the ServiceBusNamespace Entity
+Updates a ServiceBus namespace
 #>
 
 function Set-AzServiceBusNamespaceV2{
 	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
-        [Parameter(ParameterSetName = 'SetExpandedNamespace', Mandatory, HelpMessage = "The name of ServiceBusNamespace")]
+        [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of ServiceBusNamespace")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         ${Name},
 
-        [Parameter(ParameterSetName = 'SetExpandedNamespace', Mandatory, HelpMessage = "The name of the ResourceGroupName.")]
+        [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the ResourceGroupName.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         ${ResourceGroupName},
 
+        [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
+
+        [Parameter(ParameterSetName = 'SetViaIdentityExpanded', HelpMessage = "Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
+        # Identity Parameter
+        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+        ${InputObject},
 
         [Parameter(HelpMessage = "Alternate name for namespace")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
@@ -64,13 +72,6 @@ function Set-AzServiceBusNamespaceV2{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType]
         ${IdentityType},
 
-        [Parameter(HelpMessage = "Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
-
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Collections.Hashtable]
@@ -78,7 +79,8 @@ function Set-AzServiceBusNamespaceV2{
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.TlsVersion]
+        #[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.TlsVersion]
+        [System.String]
         ${MinimumTlsVersion},
 
         [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled.")]
@@ -91,7 +93,7 @@ function Set-AzServiceBusNamespaceV2{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuName]
         ${SkuName},
 
-        [Parameter(HelpMessage = "The Event Hubs throughput units for Basic or Standard tiers, where value should be 0 to 20 throughput units. The Event Hubs premium units for Premium tier, where value should be 0 to 10 premium units.")]
+        [Parameter(HelpMessage = "The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Int32]
         ${SkuCapacity},
@@ -175,14 +177,13 @@ function Set-AzServiceBusNamespaceV2{
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
-            
+            Write-Host @PSBoundParameters
             $serviceBusNamespace = Get-AzServiceBusNamespaceV2 @PSBoundParameters
 
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('EventHubName')
             $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('SubscriptionId')
 

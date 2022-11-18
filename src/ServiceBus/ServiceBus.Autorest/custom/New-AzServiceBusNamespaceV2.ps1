@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Create the new ServiceBusNamespace Entity.
+Creates a new ServiceBus namespace.
 .Description
-Create the new ServiceBusNamespace Entity.
+Creates a new ServiceBus namespace.
 #>
 
 function New-AzServiceBusNamespaceV2{
@@ -77,7 +77,8 @@ function New-AzServiceBusNamespaceV2{
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.TlsVersion]
+        #[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.TlsVersion]
+        [System.String]
         ${MinimumTlsVersion},
 
         [Parameter(HelpMessage = "This determines if traffic is allowed over public network. By default it is enabled.")]
@@ -90,7 +91,7 @@ function New-AzServiceBusNamespaceV2{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuName]
         ${SkuName},
 
-        [Parameter(HelpMessage = "The Event Hubs throughput units for Basic or Standard tiers, where value should be 0 to 20 throughput units. The Event Hubs premium units for Premium tier, where value should be 0 to 10 premium units.")]
+        [Parameter(HelpMessage = "The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Int32]
         ${SkuCapacity},

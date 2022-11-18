@@ -128,18 +128,6 @@ directive:
       property-name: EncryptionKeyVaultProperty
     set:
       property-name: KeyVaultProperty
-
-  - where:
-      verb: New
-      subject: Namespace
-      parameter-name: IsAutoInflateEnabled
-    set:
-      parameter-name: EnableAutoInflate
-  - where:
-      model-name: SbNamespace
-      property-name: IsAutoInflateEnabled
-    set:
-      property-name: EnableAutoInflate
   
   - where:
       verb: New

@@ -83,15 +83,15 @@ Describe 'Set-AzServiceBusNamespaceV2' {
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -MinimumTlsVersion 1.2
-        $expectedNamespace.MinimumTlsVersion = '1.2'
+        $expectedNamespace.MinimumTlsVersion | Should -Be '1.2'
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -DisableLocalAuth:$false
-        $expectedNamespace.DisableLocalAuth = $false
+        $expectedNamespace.DisableLocalAuth | Should -Be $false
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -DisableLocalAuth
-        $expectedNamespace.DisableLocalAuth = $true
+        $expectedNamespace.DisableLocalAuth | Should -Be $true
         assertNamespaceUpdates $expectedNamespace $namespace
     }
 }

@@ -15,14 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzServiceBusNamespaceV2')
 }
 
 Describe 'New-AzServiceBusNamespaceV2' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2 -SkuName Standard -Location eastus
         $serviceBusNamespace.Name | Should -Be $env.namespaceV2
         $serviceBusNamespace.SkuName | Should -Be Standard
 
-        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuCapacity 10 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -DisableLocalAuth -MinimumTlsVersion 1.1
+        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuCapacity 12 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -DisableLocalAuth -MinimumTlsVersion 1.1
         $serviceBusNamespace.Name | Should -Be $env.namespaceV3
-        $serviceBusNamespace.SkuCapacity | Should -Be 10
+        $serviceBusNamespace.SkuCapacity | Should -Be 12
         $serviceBusNamespace.SkuName | Should -Be Standard
         $serviceBusNamespace.SkuTier | Should -Be Standard
         $serviceBusNamespace.MinimumTlsVersion | Should -Be '1.1'
