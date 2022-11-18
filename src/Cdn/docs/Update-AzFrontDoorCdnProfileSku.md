@@ -58,10 +58,9 @@ Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 ```powershell
 $waf1 = New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf1 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName1
 $waf2 = New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName waf2 -ChangeToWafPolicyId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgtest02/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName2
-$upgrade1 = New-AzCdnProfileUpgradeParametersObject -WafMappingList $waf1
-$upgrade2 = New-AzCdnProfileUpgradeParametersObject -WafMappingList $waf2
+$upgrade = New-AzCdnProfileUpgradeParametersObject -WafMappingList @($waf1, $waf2)
 
-Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter -ProfileUpgradeParameter @($upgrade1, $upgrade2)
+Update-AzFrontDoorCdnProfileSku -ProfileName profileName -ResourceGroupName rgName -ProfileUpgradeParameter -ProfileUpgradeParameter $upgrade
 ```
 
 ```output

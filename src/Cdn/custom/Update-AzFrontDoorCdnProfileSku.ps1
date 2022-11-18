@@ -140,13 +140,6 @@ function Update-AzFrontDoorCdnProfileSku {
     )
     
     process {
-        $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -ProfileName ${ProfileName}
-
-        if ($null -eq $frontDoorCdnProfile)
-        {
-            throw "Provided FrontDoorCdnProfile does not exist."
-        }
-
         if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
             throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
         }

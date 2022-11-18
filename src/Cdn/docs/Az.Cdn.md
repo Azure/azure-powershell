@@ -405,6 +405,8 @@ Commit the migrated Azure Frontdoor(Standard/Premium) profile.
 
 ### [Start-AzFrontDoorCdnProfilePrepareMigration](Start-AzFrontDoorCdnProfilePrepareMigration.md)
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+MigrationWebApplicationFirewallMapping should be associated if the front door has WAF policy.
+MSI Identity should be associated if the frontdoor has Customer Certificates.
 The change need to be committed after this.
 
 ### [Stop-AzCdnEndpoint](Stop-AzCdnEndpoint.md)

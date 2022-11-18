@@ -27,7 +27,7 @@ When the CDN proflie associated with WAF and copy to a new waf policy.
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
 The change need to be committed after this.
 
-### Example 3: When the CDN proflie associated with WAF and select an exsting WAF policy...
+### Example 3: When the CDN proflie associated with WAF and select an existing WAF policy...
 ```powershell
 $wafMapping = New-AzCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf01 -MigratedToId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName01/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/existingWAFName
 Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName rgName -ClassicResourceReferenceId /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/rgName/providers/Microsoft.Network/Frontdoors/name -ProfileName name-migrated -SkuName Standard_AzureFrontDoor -MigrationWebApplicationFirewallMapping $wafMapping
@@ -38,7 +38,7 @@ Location
 --------
 ```
 
-When the CDN proflie associated with WAF and select an exsting WAF policy.
+When the CDN proflie associated with WAF and select an existing WAF policy.
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
 The change need to be committed after this.
 

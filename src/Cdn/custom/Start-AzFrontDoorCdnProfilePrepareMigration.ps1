@@ -16,6 +16,7 @@
 <#
 .Synopsis
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+MigrationWebApplicationFirewallMapping should be associated if the front door has WAF policy.  MSI Identity should be associated if the frontdoor has Customer Certificates.
 The change need to be committed after this.
 .Description
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
@@ -167,10 +168,6 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
     )
 
     process {
-        # if (${ProfileName} -notmatch '(^\w+\[a-zA-Z0-9_]+)\w+$') {
-        #     throw "The profile name must begin with a letter or a number, and may only contain numbers and letters."
-        # }
-        # TODO: 抽象 check module
         if (!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
             throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
         }
@@ -180,6 +177,18 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         }
         Import-Module -Name Az.KeyVault
 
+        $classicResourceId = ${ClassicResourceReferenceId}.split("/")
+        $frontDoorName = $classicResourceId[-1]
+        $sku = ${SkuName}.ToString().ToLower()
+
+        try {
+            $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
+        } catch {
+            throw "FrontDoorName: '$frontDoorName' dose not exist in the resource group: '${ResourceGroupName}'."
+        }
+
+        # Validate the parameter
+        ValidateInputType
         ValidateWafPolicies
         ValidateIdentityType
 
@@ -187,12 +196,6 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         #    If associated with waf policy, then waf parameter should be typed.
         # 2. Validate whether the profile has BYOC
         #    If associated with BYOC, then MSIIdentity parameter should be typed.
-        $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
-        try {
-            $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
-        } catch {
-            Throw "FrontDoorName: '$frontDoorName' dose not exist in the resource group: '${ResourceGroupName}'."
-        }
         $allPoliciesWithWAF = [System.Collections.ArrayList]@()
         $allPoliciesWithVault = [System.Collections.ArrayList]@()
         foreach ($info in $frontDoorInfos) {
@@ -204,9 +207,9 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             }
         }
         if (${MigrationWebApplicationFirewallMapping}.count -ne $allPoliciesWithWAF.count) {
-            throw "WafMappingList parameter length should be equal to the number of waf policy in the profile."
+            throw "MigrationWebApplicationFirewallMapping parameter length should be equal to the number of waf policy in the profile."
         }
-        # TODO: check logic 要么都空 要么都非空
+
         if (($PSBoundParameters.ContainsKey('IdentityType')) -ne ($allPoliciesWithVault.count -gt 0)) {
             throw "MSIIdentity should be associated if the front door has Customer Certificates. If not, remove MSIIdentity parameter."
         }
@@ -224,7 +227,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                 $migrateFromWafPreperty = GetMigrateWafProperty -MigrateWafResourceId $policy.MigratedFromId
                 if ($migrateFromWafPreperty.ManagedRules) {
                     $hasManagedRule = $true
-                    if ((${SkuName} -ne "Premium_AzureFrontDoor")) {
+                    if (($sku -ne "premium_azurefrontdoor")) {
                         throw "The AFD (classic) instance has managed WAF rules associated, and it can only be migrated to Premium tier. If you want to migrate to Standard tier, please remove the association on AFD (classic) and migrate afterwards."
                     }
                 }
@@ -245,7 +248,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                     CreateNewWafPolicy -ResourceGroupName $migrateToWafArray[4] -Name $migrateToWafArray[8] -WafProperty $migrateFromWafPreperty -ManagedRuleMigrateFromWaf $hasManagedRule
                 }
                 if ($existed -and $hasManagedRule) { 
-                    if ((!$existed.ManagedRules) -and ($existed.Sku -ne "Premium_AzureFrontDoor")) {
+                    if ((!$existed.ManagedRules) -and ($existed.Sku.ToLower() -ne "premium_azurefrontdoor")) {
                         throw "Please check parameter migrateToId: '$migrateToWafId'. The AFD (classic) instance has managed WAF rules associated, and it can only be migrated to Premium tier."
                     }
                 }
@@ -255,8 +258,10 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         # Create AFDx Profile
         $null = $PSBoundParameters.Remove('IdentityType')
         $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
+        # Deal with difference between PS5 and PS7.
+        $PSBoundParameters.Add('ErrorAction', 'Stop')
         Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters 
-
+        
         # Deal with MSI parameter
         # if ($PSBoundParameters.ContainsKey('IdentityType')) {
         if ($allPoliciesWithVault.count -gt 0) {
@@ -289,16 +294,54 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
     }
 }
 
+function ValidateInputType {
+    $validateResourceIdReg = "^/subscriptions/[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}/resourcegroups/(?<resourceGroupName>[^/]+)/providers/microsoft.network/frontdoors/(?<frontDoorName>[^/]+)$"
+    if (${ClassicResourceReferenceId} -notmatch $validateResourceIdReg) {
+        throw "The format of ClassicResourceReferenceId: '${ClassicResourceReferenceId}', supposed to be like '/subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoors/******' "
+    }
+
+    $resourceGroup = $classicResourceId[4]
+    if ($resourceGroup -ne ${ResourceGroupName}) {
+        throw "ResourceGroupName parameter should be be the same as the resourceGroupName in ClassicResourceReferenceId..."
+    }
+
+    if (${ProfileName} -notmatch '^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$') {
+        throw "The value must begin with a letter or number, and may contain only letters, numbers or hyphens. It must end with a letter or number..."
+    }
+    
+    # Check if the profile already exists in the resourceGroup
+    
+    try {
+        $existedProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroup -Name ${ProfileName} -ErrorAction Stop
+    } catch {
+        Write-debug("Profile Parameter is good for migration.")
+    }
+
+    if ($existedProfile) {
+        throw "The profile name: '${ProfileName}' already exists. Please use a different name."
+    }
+
+    if (($sku -ne "standard_azurefrontdoor") -and ($sku -ne "premium_azurefrontdoor"))
+    {
+        throw "'$sku' + is not a valid SKU. Please use a valid AzureFrontDoor SkuName."
+    }
+}
+
 function ValidateIdentityType {
     if (${IdentityType}) {
-        # TODO: improve logic
-        $validIdentityType = @("systemassigned", "userassigned", "systemassigned, userassigned", "userAssigned, systemassigned")
-        if ($validIdentityType -NotContains ${IdentityType}.ToString()) {
-            throw "The Identity Type 'NotSpecified' is invalid. The supported types are 'SystemAssigned,UserAssigned' when the front door has Customer Certificates during migration."
+        $identityTypeArray =  ${IdentityType}.ToString().split(",")
+        if (($identityTypeArray.Count -gt 2)) {
+            throw "The IdentityType is invalid. The supported types are 'SystemAssigned,UserAssigned' when the front door has Customer Certificates during migration."
         }
-        if (${IdentityType}.ToString() -ne "systemassigned") {
-            if (${IdentityUserAssignedIdentity}.count -eq 0) {
-                throw "Identities should not be empty or null to be assigned when using User Assigned type."
+        foreach($identity in $identityTypeArray) {
+            $id = $identity.Trim().ToLower()
+            if (($id -ne "userassigned") -and ($id -ne "systemassigned")) {
+                throw "The IdentityType is invalid. The supported types are 'SystemAssigned,UserAssigned' when the front door has Customer Certificates during migration."
+            }
+            if ($id -eq "userassigned") {
+                if (${IdentityUserAssignedIdentity}.count -eq 0) {
+                    throw "Identities should not be empty or null to be assigned when using User Assigned type."
+                }
             }
         }
     }
@@ -309,7 +352,7 @@ function ValidateWafPolicies{
         $wafPolicies = ${MigrationWebApplicationFirewallMapping}
         $theSubId = $wafPolicies[0].MigratedFromId.split("/")[2] 
         # Validate the format of the waf policy and the migrateFrom.Id whether exists in the profile.
-        $validateWafIdReg = "^/subscriptions/(?<subscriptionId>[^/]+)/resourcegroups/(?<resourceGroupName>[^/]+)/providers/microsoft.network/frontdoorwebapplicationfirewallpolicies/(?<policyName>[^/]+)$"
+        $validateWafIdReg = "^/subscriptions/[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}/resourcegroups/(?<resourceGroupName>[^/]+)/providers/microsoft.network/frontdoorwebapplicationfirewallpolicies/(?<policyName>[^/]+)$"
         foreach ($policy in $wafPolicies) {
             if ($policy.MigratedFromId.ToLower() -notmatch $validateWafIdReg) {
                 throw "The format of waf migrate from id: '$migrateFromId', supposed to be like '/subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******' "
@@ -343,12 +386,13 @@ function CreateNewWafPolicy {
         [bool]$ManagedRuleMigrateFromWaf
     )
 
-    if (${SkuName} -eq "Premium_AzureFrontDoor") {
-        $sku = "Premium_AzureFrontDoor"
+    # $sku = ${SkuName}.ToLower()
+    if ($sku -eq "premium_azurefrontdoor") {
+        $sku = "premium_azurefrontdoor"
     } elseif ($ManagedRuleMigrateFromWaf) {
-        $sku = "Premium_AzureFrontDoor"
+        $sku = "premium_azurefrontdoor"
     } else {
-        $sku = "Standard_AzureFrontDoor"
+        $sku = "standard_azurefrontdoor"
     }
 
     # Remove the null/empty property
