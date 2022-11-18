@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az.app/new-azcontainerapp
+online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerapp
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Create or update a Container App.
 
 ### Example 1: Create or update a Container App.
 ```powershell
-$trafficWeight = New-AzContainerAppTrafficWeightObject -Label production -LatestRevision:$True -Weight 100
+$trafficWeight = New-AzContainerAppTrafficWeightObject -Label production -LatestRevision $True -Weight 100
 $secretObject = New-AzContainerAppSecretObject -Name "facebook-secret" -Value "facebook-password"
 
 $containerAppHttpHeader = New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome

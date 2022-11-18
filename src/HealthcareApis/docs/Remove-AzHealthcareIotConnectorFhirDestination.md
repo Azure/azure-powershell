@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HealthcareApis
-online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareiotconnectorfhirdestination
+online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareiotconnectorfhirdestination
 schema: 2.0.0
 ---
 

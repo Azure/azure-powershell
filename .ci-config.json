@@ -113,7 +113,8 @@
         "help:module",
         "signature:module",
         "test:dependence-module",
-        "file-change:module"
+        "file-change:module",
+        "ux:module"
       ]
     },
     {

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azstaticwebappbuild
+online version: https://learn.microsoft.com/powershell/module/az.websites/remove-azstaticwebappbuild
 schema: 2.0.0
 ---
 

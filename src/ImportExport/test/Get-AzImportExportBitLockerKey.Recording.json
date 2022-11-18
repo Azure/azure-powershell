@@ -1,8 +1,8 @@
 {
-  "Get-AzImportExportBitLockerKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/test-job/listBitLockerKeys?api-version=2016-11-01+1": {
+  "Get-AzImportExportBitLockerKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/test-job/listBitLockerKeys?api-version=2021-01-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/test-job/listBitLockerKeys?api-version=2016-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/test-job/listBitLockerKeys?api-version=2021-01-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "27" ],

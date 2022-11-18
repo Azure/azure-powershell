@@ -1,5 +1,4 @@
 parameters:
-  osName: ''
   configuration: ''
   testFramework: ''
   powerShellPlatform: ''

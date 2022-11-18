@@ -64,7 +64,7 @@ $null = New-Item -ItemType File  $TempScriptPath
 if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     # When the input $MarkdownPaths is the path of txt file contained markdown paths
     if ((Test-Path $MarkdownPaths -PathType Leaf) -and $MarkdownPaths.EndsWith(".txt")) {
-        $MarkdownPath = Get-Content $MarkdownPaths
+        $MarkdownPath = Get-Content $MarkdownPaths | Where-Object { $_.StartsWith("src") }
     }
     # When the input $MarkdownPaths is the path of a folder
     else {

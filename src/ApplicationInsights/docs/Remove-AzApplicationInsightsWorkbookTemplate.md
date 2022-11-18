@@ -32,7 +32,6 @@ Delete a workbook template.
 ### Example 1: Delete a workbook template
 ```powershell
 Remove-AzApplicationInsightsWorkbookTemplate -ResourceGroupName appinsights-hkrs2v-test -Name workbooktemplate-pwsh01
-
 ```
 
 Delete a workbook template.

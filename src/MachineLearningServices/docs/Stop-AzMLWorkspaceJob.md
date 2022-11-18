@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/stop-azmlworkspacejob
+online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/stop-azmlworkspacejob
 schema: 2.0.0
 ---
 

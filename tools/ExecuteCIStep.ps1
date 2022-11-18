@@ -29,6 +29,9 @@ Param(
     $Test,
 
     [Switch]
+    $StaticAnalysis,
+
+    [Switch]
     $StaticAnalysisBreakingChange,
 
     [Switch]
@@ -39,6 +42,9 @@ Param(
     
     [Switch]
     $StaticAnalysisHelp,
+
+    [Switch]
+    $StaticAnalysisUX,
 
     [String]
     $RepoArtifacts='artifacts',
@@ -204,6 +210,25 @@ If ($Test -And $CIPlan.test.Length -Ne 0)
     Return
 }
 
+If ($StaticAnalysis)
+{
+    $Parameters = @{
+        RepoArtifacts = $RepoArtifacts;
+        StaticAnalysisOutputDirectory = $StaticAnalysisOutputDirectory;
+        Configuration = $Configuration;
+    }
+    If ($PSBoundParameters.ContainsKey("TargetModule"))
+    {
+        $Parameters["TargetModule"] = $TargetModule
+    }
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisBreakingChange @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisDependency @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisSignature @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisHelp @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters
+    Return
+}
+
 If ($StaticAnalysisBreakingChange)
 {
     If ($PSBoundParameters.ContainsKey("TargetModule"))
@@ -216,11 +241,11 @@ If ($StaticAnalysisBreakingChange)
     }
     If ("" -Ne $BreakingChangeCheckModuleList)
     {
+        Write-Host "Running static analysis for breaking change..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers breaking-change -u -m $BreakingChangeCheckModuleList
     }
     Return
 }
-
 If ($StaticAnalysisDependency)
 {
     If ($PSBoundParameters.ContainsKey("TargetModule"))
@@ -233,7 +258,9 @@ If ($StaticAnalysisDependency)
     }
     If ("" -Ne $DependencyCheckModuleList)
     {
+        Write-Host "Running static analysis for dependency..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers dependency -u -m $DependencyCheckModuleList
+        .($PSScriptRoot + "/CheckAssemblies.ps1") -BuildConfig $Configuration
     }
     Return
 }
@@ -250,6 +277,7 @@ If ($StaticAnalysisSignature)
     }
     If ("" -Ne $SignatureCheckModuleList)
     {
+        Write-Host "Running static analysis for signature..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers signature -u -m $SignatureCheckModuleList
     }
     Return
@@ -267,7 +295,27 @@ If ($StaticAnalysisHelp)
     }
     If ("" -Ne $HelpCheckModuleList)
     {
+        Write-Host "Running static analysis for help..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers help -u -m $HelpCheckModuleList
+    }
+    Return
+}
+
+If ($StaticAnalysisUX)
+{
+    If ($PSBoundParameters.ContainsKey("TargetModule"))
+    {
+        $UXModuleList = $TargetModule
+    }
+    Else
+    {
+        $UXModuleList = Join-String -Separator ';' -InputObject $CIPlan.ux
+    }
+    If ("" -Ne $UXModuleList)
+    {
+        Write-Host "Running static analysis for UX metadata..."
+        .("$PSScriptRoot/StaticAnalysis/UXMetadataAnalyzer/PrepareUXMetadata.ps1") -RepoArtifacts $RepoArtifacts -Configuration $Configuration
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers ux -u -m $UXModuleList
     }
     Return
 }
