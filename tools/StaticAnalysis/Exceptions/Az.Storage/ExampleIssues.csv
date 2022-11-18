@@ -1,5 +1,0 @@
-"Module","Cmdlet","Example","Line","RuleName","ProblemID","Severity","Description","Extent","Remediation"
-"Az.Storage","Get-AzStorageEncryptionScope","4","1","MissingArgument","5200","1","Missing argument in parameter list.",",","Unexpected Error. Please check [Trouble Shotting for Unexpected Errors in Example Issues](***/blob/main/documentation/Debugging-StaticAnalysis-Errors.md#Troubleshotting-Example-Issues) for more details."
-"Az.Storage","Get-AzStorageEncryptionScope","4","1","Invalid_Cmdlet","5000","1","name is not a valid command name.","name, test","Check the spell of name."
-"Az.Storage","Get-AzStorageEncryptionScope","4","1","Unbinded_Expression","5014","1","Get-AzStorageEncryptionScope (name, test) is not explicitly assigned to a parameter.","(name, test)","Assign (name, test) explicitly to the parameter."
-"Az.Storage","Get-AzStorageEncryptionScope","4","1","Invalid_Parameter_Name","5011","1","Get-AzStorageEncryptionScope -<unknown> is not a valid parameter name.","?","Check validity of the parameter -<unknown>."

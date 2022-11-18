@@ -80,7 +80,7 @@ If there are more than 10 encryption scopes to be listed, the command will still
 
 ### Example 4: List all disabled encryption scopes with names starting with "test" of a Storage account 
 ```powershell
-Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Include Disabled -Filter “startswith(name, test)”
+Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Include Disabled -Filter "startswith(name, test)"
 ```
 
 ```output
