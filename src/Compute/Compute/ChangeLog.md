@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
 
 ## Version 5.1.1
 * Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
