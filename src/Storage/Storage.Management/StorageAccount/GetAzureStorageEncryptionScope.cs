@@ -73,11 +73,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public int? MaxPageSize { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "The filter of encryption scope name. When specified, only encryption scope names starting with the filter will be listed.")]
+            HelpMessage = "The filter of encryption scope name. When specified, only encryption scope names starting with the filter will be listed. eg: startswith(name, <prefix>)")]
         public string Filter { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "The filter of encryption scope name. When specified, only encryption scope names starting with the filter will be listed.")]
+            HelpMessage = "Optional, when specified, will list encryption scopes with the specific state. Defaults to All.")]
         [ValidateSet(ListEncryptionScopesInclude.All,
             ListEncryptionScopesInclude.Enabled,
             ListEncryptionScopesInclude.Disabled)]
@@ -85,7 +85,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         public override void ExecuteCmdlet()
         {
-            this.StorageClient.BaseUri = new System.Uri("https://eastus2euap.management.azure.com");
             base.ExecuteCmdlet();
 
             switch (ParameterSetName)
