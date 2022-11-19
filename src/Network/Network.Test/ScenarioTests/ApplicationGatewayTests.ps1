@@ -54,6 +54,25 @@ function Test-AvailableWafRuleSets
 	Assert-NotNull $result.Value[0].RuleGroups[0].Rules[0].RuleId
 }
 
+function Test-WafDynamicManifests
+{
+	$location = "westus";
+	$result = Get-AzApplicationGatewayWafDynamicManifests -Location $location
+	# need to add the correct path - alon
+	Assert-NotNull $result
+	Assert-NotNull $result.defaultRuleSetType
+	Assert-NotNull $result.defaultRuleSetVersion
+	Assert-NotNull $result.availableRuleSets[0].RuleSetType
+	Assert-NotNull $result.availableRuleSets[0].RuleSetVersion
+	Assert-NotNull $result.availableRuleSets[0].tiers[0]
+	Assert-NotNull $result.availableRuleSets[0].RuleGroups
+	Assert-True { $result.availableRuleSets[0].RuleGroups.Count -gt 0 }
+	Assert-NotNull $result.availableRuleSets[0].RuleGroups[0].RuleGroupName
+	Assert-NotNull $result.availableRuleSets[0].RuleGroups[0].Rules
+	Assert-True { $result.availableRuleSets[0].RuleGroups[0].Rules.Count -gt 0 }
+	Assert-NotNull $result.availableRuleSets[0].RuleGroups[0].Rules[0].RuleId
+}
+
 <#
 .SYNOPSIS
 Application gateway tests
