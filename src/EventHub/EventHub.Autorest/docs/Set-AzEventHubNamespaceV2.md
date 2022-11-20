@@ -15,7 +15,7 @@ Updates an EventHub Namespace
 ### SetExpanded (Default)
 ```
 Set-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AlternateName <String>] [-ClusterArmId <String>] [-DisableLocalAuth] [-EnableAutoInflate]
+ [-AlternateName <String>] [-DisableLocalAuth] [-EnableAutoInflate]
  [-IdentityType <ManagedServiceIdentityType>] [-KafkaEnabled] [-KeyVaultProperty <IKeyVaultProperties[]>]
  [-MaximumThroughputUnits <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
@@ -25,8 +25,8 @@ Set-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-Subscript
 
 ### SetViaIdentityExpanded
 ```
-Set-AzEventHubNamespaceV2 -InputObject <IEventHubIdentity> [-AlternateName <String>] [-ClusterArmId <String>]
- [-DisableLocalAuth] [-EnableAutoInflate] [-IdentityType <ManagedServiceIdentityType>] [-KafkaEnabled]
+Set-AzEventHubNamespaceV2 -InputObject <IEventHubIdentity> [-AlternateName <String>] [-DisableLocalAuth]
+ [-EnableAutoInflate] [-IdentityType <ManagedServiceIdentityType>] [-KafkaEnabled]
  [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnits <Int32>] [-MinimumTlsVersion <String>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
@@ -264,21 +264,6 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClusterArmId
-Cluster ARM ID of the Namespace.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

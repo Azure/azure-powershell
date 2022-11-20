@@ -118,7 +118,7 @@ Describe 'Set-AzEventHubNamespaceV2' {
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -PublicNetworkAccess "Disabled"
-        $expectedNamespace.PublicNetworkAccess | Should -Be "Disabled"
+        $expectedNamespace.PublicNetworkAccess = "Disabled"
         assertNamespaceUpdates $expectedNamespace $namespace
     }
 }

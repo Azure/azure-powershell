@@ -56,11 +56,6 @@ function Set-AzEventHubNamespaceV2{
         [System.String]
         ${AlternateName},
 
-        [Parameter(HelpMessage = "Cluster ARM ID of the Namespace.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [System.String]
-        ${ClusterArmId},
-
         [Parameter(HelpMessage = "This property disables SAS authentication for the Event Hubs namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Management.Automation.SwitchParameter]
@@ -185,7 +180,6 @@ function Set-AzEventHubNamespaceV2{
     process{
 		try{
             $hasAlternateName = $PSBoundParameters.Remove('AlternateName')
-            $hasClusterArmId = $PSBoundParameters.Remove('ClusterArmId')
             $hasDisableLocalAuth = $PSBoundParameters.Remove('DisableLocalAuth')
             $hasKeyVaultProperty = $PSBoundParameters.Remove('KeyVaultProperty')
             $hasUserAssignedIdentity = $PSBoundParameters.Remove('UserAssignedIdentity')
@@ -217,10 +211,6 @@ function Set-AzEventHubNamespaceV2{
 
             if ($hasAlternateName) {
                 $eventHubNamespace.AlternateName = $AlternateName
-            }
-
-            if ($hasClusterArmId) {
-                $eventHubNamespace.ClusterArmId = $ClusterArmId
             }
             if ($hasDisableLocalAuth) {
                 $eventHubNamespace.DisableLocalAuth = $DisableLocalAuth
