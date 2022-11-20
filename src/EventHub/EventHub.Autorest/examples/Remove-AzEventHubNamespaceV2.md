@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete an EventHub namespace
 ```powershell
-{{ Add code here }}
+Remove-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 ```
 
-```output
-{{ Add output here }}
-```
+Deletes an EventHub namespace `myNamespace` under resource group `myResourceGroup`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete an EventHub namespace using InputObject parameter set
 ```powershell
-{{ Add code here }}
+$namespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
+Remove-AzEventHubNamespaceV2 -InputObject $namespace
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Deletes an EventHub namespace `myNamespace` under resource group `myResourceGroup` using InputObject parameter set.
 

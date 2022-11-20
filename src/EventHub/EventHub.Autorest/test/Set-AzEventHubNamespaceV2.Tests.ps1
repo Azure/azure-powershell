@@ -28,6 +28,7 @@ function assertNamespaceUpdates{
     $expectedNamespace.ZoneRedundant | Should -Be $namespace.ZoneRedundant
     $expectedNamespace.DisableLocalAuth | Should -Be $namespace.DisableLocalAuth
     $expectedNamespace.Tag.Count | Should -Be $namespace.Tag.Count
+    $expectedNamespace.PublicNetworkAccess | Should -Be $namespace.PublicNetworkAccess
 }
 
 Describe 'Set-AzEventHubNamespaceV2' {
@@ -75,7 +76,7 @@ Describe 'Set-AzEventHubNamespaceV2' {
         
         # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None
         $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentity $identityHashTable
-        $eventHubNamespace.UserAssignedIdentity.Count | Should -Be 2
+        $eventHubNamespace.UserAssignedIdentity.Count | Should -Be 1
 
         $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -IdentityType None -UserAssignedIdentity:$null
         $eventhubNamespace.IdentityType | Should -Be $null
@@ -114,6 +115,10 @@ Describe 'Set-AzEventHubNamespaceV2' {
 
         $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -DisableLocalAuth
         $expectedNamespace.DisableLocalAuth = $true
+        assertNamespaceUpdates $expectedNamespace $namespace
+
+        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -PublicNetworkAccess "Disabled"
+        $expectedNamespace.PublicNetworkAccess | Should -Be "Disabled"
         assertNamespaceUpdates $expectedNamespace $namespace
     }
 }

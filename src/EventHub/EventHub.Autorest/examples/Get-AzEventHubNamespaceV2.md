@@ -1,22 +1,57 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get an EventHub namespace
 ```powershell
-{{ Add code here }}
+Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 ```
 
 ```output
-{{ Add output here }}
+AlternateName                   :
+ClusterArmId                    :
+CreatedAt                       : 11/17/2022 3:14:09 PM
+DisableLocalAuth                : True
+EnableAutoInflate               : True
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.EventHub/namespaces/myNamespace
+IdentityType                    :
+KafkaEnabled                    : True
+KeySource                       :
+KeyVaultProperty                :
+Location                        : South Central US
+MaximumThroughputUnits          : 0
+MetricId                        : {subscriptionId}:myNamespace
+MinimumTlsVersion               : 1.2
+Name                            : myNamespace
+PrincipalId                     : 000000000000000000
+PrivateEndpointConnection       :
+ProvisioningState               : Succeeded
+PublicNetworkAccess             : Enabled
+RequireInfrastructureEncryption :
+ResourceGroupName               : myResourceGroup
+ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
+SkuCapacity                     : 1
+SkuName                         : Standard
+SkuTier                         : Standard
+Status                          : Active
+Tag                             : {
+                                  }
+TenantId                        : 00000000000
+Type                            : Microsoft.EventHub/Namespaces
+UpdatedAt                       : 11/17/2022 3:21:19 PM
+UserAssignedIdentity            : {
+                                  }
+ZoneRedundant                   : True
 ```
 
-{{ Add description here }}
+Gets details of an EventHub namespace `myNamespace` in resource group `myResourceGroup`.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all EventHub namespaces in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup
 ```
 
-```output
-{{ Add output here }}
+Lists all EventHub namespaces under resource group `myResourceGroup`.
+
+### Example 2: List all EventHub namespaces in a subscription
+```powershell
+Get-AzEventHubNamespaceV2
 ```
 
-{{ Add description here }}
-
+Lists all EventHub namespaces in the current subscription context.

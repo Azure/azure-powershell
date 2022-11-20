@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubNamespaceV2
 
 ## SYNOPSIS
-Updates an EventHub Namespace
+Creates an EventHub Namespace
 
 ## SYNTAX
 
@@ -23,7 +23,7 @@ New-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-Subscript
 ```
 
 ## DESCRIPTION
-Updates an EventHub Namespace
+Creates an EventHub Namespace
 
 ## EXAMPLES
 

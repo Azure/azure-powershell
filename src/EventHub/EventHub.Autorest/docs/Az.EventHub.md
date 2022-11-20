@@ -87,7 +87,7 @@ Regenerates an EventHub SAS key
 Create an in-memory object for KeyVaultProperties.
 
 ### [New-AzEventHubNamespaceV2](New-AzEventHubNamespaceV2.md)
-Updates an EventHub Namespace
+Creates an EventHub Namespace
 
 ### [New-AzEventHubSchemaGroup](New-AzEventHubSchemaGroup.md)
 

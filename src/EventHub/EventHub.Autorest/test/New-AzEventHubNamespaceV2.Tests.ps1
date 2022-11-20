@@ -20,8 +20,9 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventHubNamespace.Name | Should -Be $env.namespaceV2
         $eventHubNamespace.SkuName | Should be Standard
         $eventhubNamespace.MinimumTlsVersion | Should -Be "1.2"
+        $eventhubNamespace.PublicNetworkAccess | Should -Be "Enabled"
 
-        $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuCapacity 10 -MaximumThroughputUnits 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth -KafkaEnabled -MinimumTlsVersion 1.1
+        $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuCapacity 10 -MaximumThroughputUnits 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth -KafkaEnabled -MinimumTlsVersion 1.1 -PublicNetworkAccess Disabled
         $eventHubNamespace.Name | Should be $env.namespaceV3
         $eventHubNamespace.SkuCapacity | Should be 10
         $eventHubNamespace.SkuName | Should be Standard
@@ -31,6 +32,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventHubNamespace.EnableAutoInflate | Should be $true
         $eventHubNamespace.DisableLocalAuth | Should be $true
         $eventHubNamespace.KafkaEnabled | Should be $true
+        $eventHubNamespace.PublicNetworkAccess | Should -Be "Disabled"
 
         $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV4 -SkuName Premium -Location eastus -IdentityType SystemAssigned        
         $eventhubNamespace.MaximumThroughputUnits | Should -Be 0
@@ -67,12 +69,21 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventhubNamespace.UserAssignedIdentity.Count | Should -Be 2
         $eventhubNamespace.RequireInfrastructureEncryption | Should -Be $true
 
+        # Create an EventHub namespace within a dedicated cluster
+        $clusterNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV9 -SkuName Standard -Location australiaeast
+        $clusterNamespace.Name | Should -Be $env.namespaceV9
+        $clusterNamespace.ClusterArmId | Should -Be $env.ClusterArmId
+        $clusterNamespace.SkuName | Should -Be "Standard"
+
         $eventhubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5
         $eventhubNamespace.Name | Should -Be $env.namespaceV5
-        $eventhubNamespace.IdentityType | Should -Be UserAssigned
-        $eventhubNamespace.SkuName | Should -Be Premium
+        $eventhubNamespace.IdentityType | Should -Be "UserAssigned"
+        $eventhubNamespace.SkuName | Should -Be "Premium"
         $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
         $eventhubNamespace.UserAssignedIdentity.Count | Should -Be 2
+
+        $listOfNamespaces = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup
+        $listOfNamespaces.Count | Should -BeGreaterOrEqual 5
 
     }
 }

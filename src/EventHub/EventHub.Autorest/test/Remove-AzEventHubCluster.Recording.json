@@ -1,13 +1,13 @@
 {
-  "Remove-AzEventHubCluster+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/clusterztejhw?api-version=2022-01-01-preview+1": {
+  "Remove-AzEventHubCluster+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/clusterraui89?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/clusterztejhw?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/clusterraui89?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "169" ],
-        "x-ms-client-request-id": [ "8cc9680e-6caf-4c81-a1c5-73e372fed6be" ],
+        "x-ms-unique-id": [ "192" ],
+        "x-ms-client-request-id": [ "f1552a8b-a70e-4afe-80d3-ee3706a85cbb" ],
         "CommandName": [ "Get-AzEventHubCluster" ],
         "FullCommandName": [ "Get-AzEventHubCluster_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,19 +23,19 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "61c85368-8cd1-4cbf-9349-32e25efab57a" ],
-        "x-ms-correlation-request-id": [ "61c85368-8cd1-4cbf-9349-32e25efab57a" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221117T191002Z:61c85368-8cd1-4cbf-9349-32e25efab57a" ],
+        "x-ms-request-id": [ "a7716da0-0416-44e1-a944-954db4d9a4b7" ],
+        "x-ms-correlation-request-id": [ "a7716da0-0416-44e1-a944-954db4d9a4b7" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221118T111124Z:a7716da0-0416-44e1-a944-954db4d9a4b7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 17 Nov 2022 19:10:02 GMT" ]
+        "Date": [ "Fri, 18 Nov 2022 11:11:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ],
         "Content-Length": [ "239" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.EventHub/clusters/clusterztejhw\u0027 under resource group \u0027AutomatedPowershellTesting\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.EventHub/clusters/clusterraui89\u0027 under resource group \u0027AutomatedPowershellTesting\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
       "isContentBase64": false
     }
   }
