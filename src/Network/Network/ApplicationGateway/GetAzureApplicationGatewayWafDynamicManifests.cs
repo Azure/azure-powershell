@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayWafDynamicManifests"), OutputType(typeof(PSApplicationGatewayWafDynamicManifests))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayWafDynamicManifest"), OutputType(typeof(PSApplicationGatewayWafDynamicManifests))]
     public class GetAzureApplicationGatewayWafDynamicManifests : NetworkBaseCmdlet
     {
         [Parameter(

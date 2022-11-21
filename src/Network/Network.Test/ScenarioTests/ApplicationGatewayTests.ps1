@@ -54,10 +54,10 @@ function Test-AvailableWafRuleSets
 	Assert-NotNull $result.Value[0].RuleGroups[0].Rules[0].RuleId
 }
 
-function Test-WafDynamicManifests
+function Test-WafDynamicManifest
 {
 	$location = "westus";
-	$result = Get-AzApplicationGatewayWafDynamicManifests -Location $location
+	$result = Get-AzApplicationGatewayWafDynamicManifest -Location $location
 	# need to add the correct path - alon
 	Assert-NotNull $result
 	Assert-NotNull $result.defaultRuleSetType

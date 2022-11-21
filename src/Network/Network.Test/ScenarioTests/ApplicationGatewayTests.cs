@@ -47,9 +47,9 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
-        public void TestWafDynamicManifests()
+        public void TestWafDynamicManifest()
         {
-            TestRunner.RunTestScript("Test-WafDynamicManifests");
+            TestRunner.RunTestScript("Test-WafDynamicManifest");
         }
 
         [Fact]
