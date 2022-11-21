@@ -1,8 +1,8 @@
 {
-  "New-AzEventHubApplicationGroup+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/applicationGroups/appGroup0nl26b?api-version=2022-01-01-preview+1": {
+  "New-AzEventHubApplicationGroup+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/applicationGroups/appGroup7zaepv?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/applicationGroups/appGroup0nl26b?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/applicationGroups/appGroup7zaepv?api-version=2022-01-01-preview",
       "Content": "{\n  \"properties\": {\n    \"clientAppGroupIdentifier\": \"SASKeyName=a\",\n    \"policies\": [\n      {\n        \"name\": \"t1\",\n        \"type\": \"ThrottlingPolicy\",\n        \"rateLimitThreshold\": 10000,\n        \"metricId\": \"IncomingMessages\"\n      },\n      {\n        \"name\": \"t2\",\n        \"type\": \"ThrottlingPolicy\",\n        \"rateLimitThreshold\": 20000,\n        \"metricId\": \"OutgoingBytes\"\n      }\n    ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,22 +17,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "db39f59c-379c-4126-8825-bf2bfc049177_M2SN1_M2SN1" ],
+        "x-ms-request-id": [ "15dbe39f-4e8b-4c04-9c80-8085ee09a989_M9SN1_M9SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
-        "x-ms-correlation-request-id": [ "b75047ca-58d4-46fa-a80b-9d9cef383691" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221118T103715Z:b75047ca-58d4-46fa-a80b-9d9cef383691" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-correlation-request-id": [ "19a93dd6-6681-4d1e-a7a2-9abd6f6b0afd" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221120T175618Z:19a93dd6-6681-4d1e-a7a2-9abd6f6b0afd" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 18 Nov 2022 10:37:14 GMT" ]
+        "Date": [ "Sun, 20 Nov 2022 17:56:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "576" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/applicationGroups/appGroup0nl26b\",\"name\":\"appGroup0nl26b\",\"type\":\"Microsoft.EventHub/Namespaces/ApplicationGroups\",\"location\":\"East US\",\"properties\":{\"clientAppGroupIdentifier\":\"SASKeyName=a\",\"policies\":[{\"type\":\"ThrottlingPolicy\",\"name\":\"t1\",\"metricId\":\"IncomingMessages\",\"rateLimitThreshold\":10000},{\"type\":\"ThrottlingPolicy\",\"name\":\"t2\",\"metricId\":\"OutgoingBytes\",\"rateLimitThreshold\":20000}],\"isEnabled\":true}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/applicationGroups/appGroup7zaepv\",\"name\":\"appGroup7zaepv\",\"type\":\"Microsoft.EventHub/Namespaces/ApplicationGroups\",\"location\":\"East US\",\"properties\":{\"clientAppGroupIdentifier\":\"SASKeyName=a\",\"policies\":[{\"type\":\"ThrottlingPolicy\",\"name\":\"t1\",\"metricId\":\"IncomingMessages\",\"rateLimitThreshold\":10000},{\"type\":\"ThrottlingPolicy\",\"name\":\"t2\",\"metricId\":\"OutgoingBytes\",\"rateLimitThreshold\":20000}],\"isEnabled\":true}}",
       "isContentBase64": false
     }
   }

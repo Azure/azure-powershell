@@ -1,13 +1,13 @@
 {
-  "Set-AzEventHubAuthorizationRule+[NoContext]+SetExpandedNamespace+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationRules/auth-ruleyx65li?api-version=2022-01-01-preview+1": {
+  "Set-AzEventHubAuthorizationRule+[NoContext]+SetExpandedNamespace+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationRules/auth-ruleqb9mvh?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationRules/auth-ruleyx65li?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationRules/auth-ruleqb9mvh?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "246" ],
-        "x-ms-client-request-id": [ "e30680b4-8c9a-4b7e-9cfe-6017a9a5bee4" ],
+        "x-ms-unique-id": [ "248" ],
+        "x-ms-client-request-id": [ "77e04bd7-e2f0-4d18-b852-7665172cf7d5" ],
         "CommandName": [ "Az.EventHub.private\\Get-AzEventHubNamespaceAuthorizationRule_Get" ],
         "FullCommandName": [ "Get-AzEventHubNamespaceAuthorizationRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,27 +23,27 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11816" ],
-        "x-ms-request-id": [ "39bad75e-ac23-492e-95d0-7a18215909c2" ],
-        "x-ms-correlation-request-id": [ "39bad75e-ac23-492e-95d0-7a18215909c2" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221118T111747Z:39bad75e-ac23-492e-95d0-7a18215909c2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11791" ],
+        "x-ms-request-id": [ "7320ccd6-42de-4ace-9efa-99ce23dca3fa" ],
+        "x-ms-correlation-request-id": [ "7320ccd6-42de-4ace-9efa-99ce23dca3fa" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221120T183754Z:7320ccd6-42de-4ace-9efa-99ce23dca3fa" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 18 Nov 2022 11:17:47 GMT" ]
+        "Date": [ "Sun, 20 Nov 2022 18:37:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "352" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationrules/auth-ruleyx65li\",\"name\":\"auth-ruleyx65li\",\"type\":\"Microsoft.EventHub/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Manage\",\"Send\",\"Listen\"]}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationrules/auth-ruleqb9mvh\",\"name\":\"auth-ruleqb9mvh\",\"type\":\"Microsoft.EventHub/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Manage\",\"Send\",\"Listen\"]}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubAuthorizationRule+[NoContext]+SetExpandedNamespace+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationRules/auth-ruleyx65li?api-version=2022-01-01-preview+2": {
+  "Set-AzEventHubAuthorizationRule+[NoContext]+SetExpandedNamespace+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationRules/auth-ruleqb9mvh?api-version=2022-01-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationRules/auth-ruleyx65li?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationRules/auth-ruleqb9mvh?api-version=2022-01-01-preview",
       "Content": "{\n  \"properties\": {\n    \"rights\": [ \"Listen\" ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -60,31 +60,31 @@
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1166" ],
-        "x-ms-request-id": [ "c4312020-3a0e-4769-adf7-1ba760dda090" ],
-        "x-ms-correlation-request-id": [ "c4312020-3a0e-4769-adf7-1ba760dda090" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221118T111754Z:c4312020-3a0e-4769-adf7-1ba760dda090" ],
+        "x-ms-request-id": [ "3408a605-7c48-4186-ad1d-d00d869ea515" ],
+        "x-ms-correlation-request-id": [ "3408a605-7c48-4186-ad1d-d00d869ea515" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221120T183801Z:3408a605-7c48-4186-ad1d-d00d869ea515" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 18 Nov 2022 11:17:54 GMT" ]
+        "Date": [ "Sun, 20 Nov 2022 18:38:00 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "336" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationRules/auth-ruleyx65li\",\"name\":\"auth-ruleyx65li\",\"type\":\"Microsoft.EventHub/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationRules/auth-ruleqb9mvh\",\"name\":\"auth-ruleqb9mvh\",\"type\":\"Microsoft.EventHub/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubAuthorizationRule+[NoContext]+SetExpandedEntity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationRules/auth-ruleayb508?api-version=2022-01-01-preview+1": {
+  "Set-AzEventHubAuthorizationRule+[NoContext]+SetExpandedEntity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationRules/auth-rulep4bmi7?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationRules/auth-ruleayb508?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationRules/auth-rulep4bmi7?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "248" ],
-        "x-ms-client-request-id": [ "d2ddc154-61c6-4120-b80f-17b0489d17e5" ],
+        "x-ms-unique-id": [ "250" ],
+        "x-ms-client-request-id": [ "408dce46-7686-40d1-8429-3928da5c7e13" ],
         "CommandName": [ "Az.EventHub.private\\Get-AzEventHubAuthorizationRule_Get" ],
         "FullCommandName": [ "Get-AzEventHubAuthorizationRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -100,27 +100,27 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11815" ],
-        "x-ms-request-id": [ "8673ff19-790e-43f4-bbe7-58806e275e2b" ],
-        "x-ms-correlation-request-id": [ "8673ff19-790e-43f4-bbe7-58806e275e2b" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221118T111755Z:8673ff19-790e-43f4-bbe7-58806e275e2b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11790" ],
+        "x-ms-request-id": [ "f4a064cd-113b-4376-81c6-e6c26017cd49" ],
+        "x-ms-correlation-request-id": [ "f4a064cd-113b-4376-81c6-e6c26017cd49" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221120T183802Z:f4a064cd-113b-4376-81c6-e6c26017cd49" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 18 Nov 2022 11:17:55 GMT" ]
+        "Date": [ "Sun, 20 Nov 2022 18:38:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "371" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationrules/auth-ruleayb508\",\"name\":\"auth-ruleayb508\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs/authorizationrules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationrules/auth-rulep4bmi7\",\"name\":\"auth-rulep4bmi7\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs/authorizationrules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubAuthorizationRule+[NoContext]+SetExpandedEntity+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationRules/auth-ruleayb508?api-version=2022-01-01-preview+2": {
+  "Set-AzEventHubAuthorizationRule+[NoContext]+SetExpandedEntity+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationRules/auth-rulep4bmi7?api-version=2022-01-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationRules/auth-ruleayb508?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationRules/auth-rulep4bmi7?api-version=2022-01-01-preview",
       "Content": "{\n  \"properties\": {\n    \"rights\": [ \"Send\" ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -137,31 +137,31 @@
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1165" ],
-        "x-ms-request-id": [ "14c9c263-d2b7-45da-b1b4-57c24c336046" ],
-        "x-ms-correlation-request-id": [ "14c9c263-d2b7-45da-b1b4-57c24c336046" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221118T111756Z:14c9c263-d2b7-45da-b1b4-57c24c336046" ],
+        "x-ms-request-id": [ "7e03b1c0-4661-4341-ad36-624f6b7414c7" ],
+        "x-ms-correlation-request-id": [ "7e03b1c0-4661-4341-ad36-624f6b7414c7" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221120T183802Z:7e03b1c0-4661-4341-ad36-624f6b7414c7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 18 Nov 2022 11:17:56 GMT" ]
+        "Date": [ "Sun, 20 Nov 2022 18:38:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "349" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationRules/auth-ruleayb508\",\"name\":\"auth-ruleayb508\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs/authorizationrules\",\"properties\":{\"rights\":[\"Send\"]}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationRules/auth-rulep4bmi7\",\"name\":\"auth-rulep4bmi7\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs/authorizationrules\",\"properties\":{\"rights\":[\"Send\"]}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubAuthorizationRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationRules/auth-ruleyx65li?api-version=2022-01-01-preview+1": {
+  "Set-AzEventHubAuthorizationRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationRules/auth-ruleqb9mvh?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationRules/auth-ruleyx65li?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationRules/auth-ruleqb9mvh?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "250" ],
-        "x-ms-client-request-id": [ "3b39ff70-7769-437f-a762-862cba7ca5ee" ],
+        "x-ms-unique-id": [ "252" ],
+        "x-ms-client-request-id": [ "c98110ee-2165-4bf6-a4eb-808e478bb4b4" ],
         "CommandName": [ "Az.EventHub.private\\Get-AzEventHubNamespaceAuthorizationRule_Get" ],
         "FullCommandName": [ "Get-AzEventHubNamespaceAuthorizationRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -177,32 +177,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11814" ],
-        "x-ms-request-id": [ "bc4741e2-9529-46e2-801e-3fa93a4fc811" ],
-        "x-ms-correlation-request-id": [ "bc4741e2-9529-46e2-801e-3fa93a4fc811" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221118T111757Z:bc4741e2-9529-46e2-801e-3fa93a4fc811" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11789" ],
+        "x-ms-request-id": [ "95047c7b-15b2-4fb2-842a-eb6d9f5ecf96" ],
+        "x-ms-correlation-request-id": [ "95047c7b-15b2-4fb2-842a-eb6d9f5ecf96" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221120T183804Z:95047c7b-15b2-4fb2-842a-eb6d9f5ecf96" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 18 Nov 2022 11:17:57 GMT" ]
+        "Date": [ "Sun, 20 Nov 2022 18:38:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "336" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationrules/auth-ruleyx65li\",\"name\":\"auth-ruleyx65li\",\"type\":\"Microsoft.EventHub/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationrules/auth-ruleqb9mvh\",\"name\":\"auth-ruleqb9mvh\",\"type\":\"Microsoft.EventHub/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubAuthorizationRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationRules/auth-ruleyx65li?api-version=2022-01-01-preview+2": {
+  "Set-AzEventHubAuthorizationRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationRules/auth-ruleqb9mvh?api-version=2022-01-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationRules/auth-ruleyx65li?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationRules/auth-ruleqb9mvh?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "251" ],
-        "x-ms-client-request-id": [ "3f1b7796-e457-42de-b299-0dc2d25e11da" ],
+        "x-ms-unique-id": [ "253" ],
+        "x-ms-client-request-id": [ "a07e3901-212e-4cf2-8714-2ba0d11d9de4" ],
         "CommandName": [ "Az.EventHub.private\\Get-AzEventHubNamespaceAuthorizationRule_GetViaIdentity" ],
         "FullCommandName": [ "Get-AzEventHubNamespaceAuthorizationRule_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -218,27 +218,27 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11813" ],
-        "x-ms-request-id": [ "e319c93e-3cfd-4225-8ac2-2609be42a7b1" ],
-        "x-ms-correlation-request-id": [ "e319c93e-3cfd-4225-8ac2-2609be42a7b1" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221118T111758Z:e319c93e-3cfd-4225-8ac2-2609be42a7b1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11788" ],
+        "x-ms-request-id": [ "5f57f1d0-79e7-427b-9e5b-8eff673f7796" ],
+        "x-ms-correlation-request-id": [ "5f57f1d0-79e7-427b-9e5b-8eff673f7796" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221120T183805Z:5f57f1d0-79e7-427b-9e5b-8eff673f7796" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 18 Nov 2022 11:17:58 GMT" ]
+        "Date": [ "Sun, 20 Nov 2022 18:38:04 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "336" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationrules/auth-ruleyx65li\",\"name\":\"auth-ruleyx65li\",\"type\":\"Microsoft.EventHub/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationrules/auth-ruleqb9mvh\",\"name\":\"auth-ruleqb9mvh\",\"type\":\"Microsoft.EventHub/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubAuthorizationRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationRules/auth-ruleyx65li?api-version=2022-01-01-preview+3": {
+  "Set-AzEventHubAuthorizationRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationRules/auth-ruleqb9mvh?api-version=2022-01-01-preview+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationRules/auth-ruleyx65li?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationRules/auth-ruleqb9mvh?api-version=2022-01-01-preview",
       "Content": "{\n  \"properties\": {\n    \"rights\": [ \"Manage\", \"Send\", \"Listen\" ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -255,31 +255,31 @@
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1164" ],
-        "x-ms-request-id": [ "58bb8ca4-c960-4f55-891b-2a179fd9e3a2" ],
-        "x-ms-correlation-request-id": [ "58bb8ca4-c960-4f55-891b-2a179fd9e3a2" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221118T111805Z:58bb8ca4-c960-4f55-891b-2a179fd9e3a2" ],
+        "x-ms-request-id": [ "7373b47b-3e5e-4fff-9c3e-3feab2cc37c9" ],
+        "x-ms-correlation-request-id": [ "7373b47b-3e5e-4fff-9c3e-3feab2cc37c9" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221120T183812Z:7373b47b-3e5e-4fff-9c3e-3feab2cc37c9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 18 Nov 2022 11:18:04 GMT" ]
+        "Date": [ "Sun, 20 Nov 2022 18:38:11 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "352" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/authorizationRules/auth-ruleyx65li\",\"name\":\"auth-ruleyx65li\",\"type\":\"Microsoft.EventHub/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Manage\",\"Send\",\"Listen\"]}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/authorizationRules/auth-ruleqb9mvh\",\"name\":\"auth-ruleqb9mvh\",\"type\":\"Microsoft.EventHub/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Manage\",\"Send\",\"Listen\"]}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubAuthorizationRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationRules/auth-ruleayb508?api-version=2022-01-01-preview+4": {
+  "Set-AzEventHubAuthorizationRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationRules/auth-rulep4bmi7?api-version=2022-01-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationRules/auth-ruleayb508?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationRules/auth-rulep4bmi7?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "253" ],
-        "x-ms-client-request-id": [ "4c9d88d4-72c9-4a97-85cf-a76bd94492e1" ],
+        "x-ms-unique-id": [ "255" ],
+        "x-ms-client-request-id": [ "f65dee52-d9ca-4062-aa45-341abc35b5c8" ],
         "CommandName": [ "Az.EventHub.private\\Get-AzEventHubAuthorizationRule_Get" ],
         "FullCommandName": [ "Get-AzEventHubAuthorizationRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -295,32 +295,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11812" ],
-        "x-ms-request-id": [ "94e336ba-e20d-4422-90d3-3cdafe48cd43" ],
-        "x-ms-correlation-request-id": [ "94e336ba-e20d-4422-90d3-3cdafe48cd43" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221118T111806Z:94e336ba-e20d-4422-90d3-3cdafe48cd43" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11787" ],
+        "x-ms-request-id": [ "b888ca64-e59b-4211-8e83-d0f326cf9193" ],
+        "x-ms-correlation-request-id": [ "b888ca64-e59b-4211-8e83-d0f326cf9193" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221120T183813Z:b888ca64-e59b-4211-8e83-d0f326cf9193" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 18 Nov 2022 11:18:05 GMT" ]
+        "Date": [ "Sun, 20 Nov 2022 18:38:12 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "369" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationrules/auth-ruleayb508\",\"name\":\"auth-ruleayb508\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs/authorizationrules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Send\"]}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationrules/auth-rulep4bmi7\",\"name\":\"auth-rulep4bmi7\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs/authorizationrules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Send\"]}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubAuthorizationRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationRules/auth-ruleayb508?api-version=2022-01-01-preview+5": {
+  "Set-AzEventHubAuthorizationRule+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationRules/auth-rulep4bmi7?api-version=2022-01-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationRules/auth-ruleayb508?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationRules/auth-rulep4bmi7?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "254" ],
-        "x-ms-client-request-id": [ "a814a304-cde3-47f0-92a1-106f49840d77" ],
+        "x-ms-unique-id": [ "256" ],
+        "x-ms-client-request-id": [ "f0708b53-335c-4d23-ab99-c1c804514b96" ],
         "CommandName": [ "Az.EventHub.private\\Get-AzEventHubAuthorizationRule_GetViaIdentity" ],
         "FullCommandName": [ "Get-AzEventHubAuthorizationRule_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -336,27 +336,27 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11811" ],
-        "x-ms-request-id": [ "4d062588-2748-4187-bcf6-07ed656d86d7" ],
-        "x-ms-correlation-request-id": [ "4d062588-2748-4187-bcf6-07ed656d86d7" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221118T111807Z:4d062588-2748-4187-bcf6-07ed656d86d7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11786" ],
+        "x-ms-request-id": [ "22fd7d11-0e15-4940-89fd-795d466e22f2" ],
+        "x-ms-correlation-request-id": [ "22fd7d11-0e15-4940-89fd-795d466e22f2" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221120T183814Z:22fd7d11-0e15-4940-89fd-795d466e22f2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 18 Nov 2022 11:18:06 GMT" ]
+        "Date": [ "Sun, 20 Nov 2022 18:38:13 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "369" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationrules/auth-ruleayb508\",\"name\":\"auth-ruleayb508\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs/authorizationrules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Send\"]}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationrules/auth-rulep4bmi7\",\"name\":\"auth-rulep4bmi7\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs/authorizationrules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Send\"]}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubAuthorizationRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationRules/auth-ruleayb508?api-version=2022-01-01-preview+6": {
+  "Set-AzEventHubAuthorizationRule+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationRules/auth-rulep4bmi7?api-version=2022-01-01-preview+6": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationRules/auth-ruleayb508?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationRules/auth-rulep4bmi7?api-version=2022-01-01-preview",
       "Content": "{\n  \"properties\": {\n    \"rights\": [ \"Manage\", \"Send\", \"Listen\" ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -373,19 +373,19 @@
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1163" ],
-        "x-ms-request-id": [ "a91ed8f1-359c-4f3f-ad41-51ec61733775" ],
-        "x-ms-correlation-request-id": [ "a91ed8f1-359c-4f3f-ad41-51ec61733775" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221118T111808Z:a91ed8f1-359c-4f3f-ad41-51ec61733775" ],
+        "x-ms-request-id": [ "510bcfc1-e0e6-41a4-b1b7-566937cf7b97" ],
+        "x-ms-correlation-request-id": [ "510bcfc1-e0e6-41a4-b1b7-566937cf7b97" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221120T183815Z:510bcfc1-e0e6-41a4-b1b7-566937cf7b97" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 18 Nov 2022 11:18:07 GMT" ]
+        "Date": [ "Sun, 20 Nov 2022 18:38:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "367" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestu73q4d/providers/Microsoft.EventHub/namespaces/namespaceNamegdl9hk/eventhubs/eventHubdzk2ho/authorizationRules/auth-ruleayb508\",\"name\":\"auth-ruleayb508\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs/authorizationrules\",\"properties\":{\"rights\":[\"Manage\",\"Send\",\"Listen\"]}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestfwtue1/providers/Microsoft.EventHub/namespaces/namespaceNamew5y7k6/eventhubs/eventHub7nef1r/authorizationRules/auth-rulep4bmi7\",\"name\":\"auth-rulep4bmi7\",\"type\":\"Microsoft.EventHub/namespaces/eventhubs/authorizationrules\",\"properties\":{\"rights\":[\"Manage\",\"Send\",\"Listen\"]}}",
       "isContentBase64": false
     }
   }

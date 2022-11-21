@@ -1,8 +1,8 @@
 {
-  "New-AzEventHubCluster+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/cluster5nfrp9?api-version=2022-01-01-preview+1": {
+  "New-AzEventHubCluster+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/clusterldc79a?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/cluster5nfrp9?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/clusterldc79a?api-version=2022-01-01-preview",
       "Content": "{\n  \"location\": \"eastasia\",\n  \"sku\": {\n    \"name\": \"Dedicated\",\n    \"capacity\": 2\n  },\n  \"properties\": {\n    \"supportsScaling\": true\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,36 +17,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/microsoft.eventhub/locations/eastasia/clusterOperationResults/326100e2-f69d-4268-8503-075374f62b6e-AutomatedPowershellTesting-cluster5nfrp9?isAsyncHeader=false\u0026resourceName=cluster5nfrp9\u0026resourceGroupName=AutomatedPowershellTesting\u0026resourceType=cluster\u0026api-version=2022-01-01-preview" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com:443/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/microsoft.eventhub/locations/eastasia/clusterOperationResults/326100e2-f69d-4268-8503-075374f62b6e-AutomatedPowershellTesting-cluster5nfrp9?isAsyncHeader=true\u0026resourceName=cluster5nfrp9\u0026resourceGroupName=AutomatedPowershellTesting\u0026resourceType=cluster\u0026api-version=2022-01-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/microsoft.eventhub/locations/eastasia/clusterOperationResults/326100e2-f69d-4268-8503-075374f62b6e-AutomatedPowershellTesting-clusterldc79a?isAsyncHeader=false\u0026resourceName=clusterldc79a\u0026resourceGroupName=AutomatedPowershellTesting\u0026resourceType=cluster\u0026api-version=2022-01-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com:443/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/microsoft.eventhub/locations/eastasia/clusterOperationResults/326100e2-f69d-4268-8503-075374f62b6e-AutomatedPowershellTesting-clusterldc79a?isAsyncHeader=true\u0026resourceName=clusterldc79a\u0026resourceGroupName=AutomatedPowershellTesting\u0026resourceType=cluster\u0026api-version=2022-01-01-preview" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
-        "x-ms-request-id": [ "d134ff1a-c3bc-4023-aad5-6628194dc283" ],
-        "x-ms-correlation-request-id": [ "d134ff1a-c3bc-4023-aad5-6628194dc283" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221118T103756Z:d134ff1a-c3bc-4023-aad5-6628194dc283" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
+        "x-ms-request-id": [ "993621d3-ae50-4058-a0cc-aa6381e775f4" ],
+        "x-ms-correlation-request-id": [ "993621d3-ae50-4058-a0cc-aa6381e775f4" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221120T175700Z:993621d3-ae50-4058-a0cc-aa6381e775f4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 18 Nov 2022 10:37:56 GMT" ]
+        "Date": [ "Sun, 20 Nov 2022 17:56:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "333" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/cluster5nfrp9\",\"name\":\"cluster5nfrp9\",\"type\":\"Microsoft.EventHub/Clusters\",\"location\":\"eastasia\",\"properties\":{\"status\":\"Unknown\",\"supportsScaling\":true},\"sku\":{\"name\":\"Dedicated\",\"capacity\":2}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/clusterldc79a\",\"name\":\"clusterldc79a\",\"type\":\"Microsoft.EventHub/Clusters\",\"location\":\"eastasia\",\"properties\":{\"status\":\"Unknown\",\"supportsScaling\":true},\"sku\":{\"name\":\"Dedicated\",\"capacity\":2}}",
       "isContentBase64": false
     }
   },
-  "New-AzEventHubCluster+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/microsoft.eventhub/locations/eastasia/clusterOperationResults/326100e2-f69d-4268-8503-075374f62b6e-AutomatedPowershellTesting-cluster5nfrp9?isAsyncHeader=true\u0026resourceName=cluster5nfrp9\u0026resourceGroupName=AutomatedPowershellTesting\u0026resourceType=cluster\u0026api-version=2022-01-01-preview+2": {
+  "New-AzEventHubCluster+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/microsoft.eventhub/locations/eastasia/clusterOperationResults/326100e2-f69d-4268-8503-075374f62b6e-AutomatedPowershellTesting-clusterldc79a?isAsyncHeader=true\u0026resourceName=clusterldc79a\u0026resourceGroupName=AutomatedPowershellTesting\u0026resourceType=cluster\u0026api-version=2022-01-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/microsoft.eventhub/locations/eastasia/clusterOperationResults/326100e2-f69d-4268-8503-075374f62b6e-AutomatedPowershellTesting-cluster5nfrp9?isAsyncHeader=true\u0026resourceName=cluster5nfrp9\u0026resourceGroupName=AutomatedPowershellTesting\u0026resourceType=cluster\u0026api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/microsoft.eventhub/locations/eastasia/clusterOperationResults/326100e2-f69d-4268-8503-075374f62b6e-AutomatedPowershellTesting-clusterldc79a?isAsyncHeader=true\u0026resourceName=clusterldc79a\u0026resourceGroupName=AutomatedPowershellTesting\u0026resourceType=cluster\u0026api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "75" ],
-        "x-ms-client-request-id": [ "6a57d8b7-2214-4b4b-b297-7530e7b19a88" ],
+        "x-ms-client-request-id": [ "68d06ee1-e8e2-4497-8314-7e377182be35" ],
         "CommandName": [ "New-AzEventHubCluster" ],
         "FullCommandName": [ "New-AzEventHubCluster_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -61,20 +61,20 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11938" ],
-        "x-ms-request-id": [ "adfd17ad-2646-41be-9466-15261b28860e" ],
-        "x-ms-correlation-request-id": [ "adfd17ad-2646-41be-9466-15261b28860e" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221118T103826Z:adfd17ad-2646-41be-9466-15261b28860e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11909" ],
+        "x-ms-request-id": [ "15df2357-44e3-4773-b339-662f9a68a170" ],
+        "x-ms-correlation-request-id": [ "15df2357-44e3-4773-b339-662f9a68a170" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221120T175730Z:15df2357-44e3-4773-b339-662f9a68a170" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 18 Nov 2022 10:38:25 GMT" ]
+        "Date": [ "Sun, 20 Nov 2022 17:57:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "188" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"326100e2-f69d-4268-8503-075374f62b6e-AutomatedPowershellTesting-cluster5nfrp9\",\"status\":\"Failed\",\"error\":{\"code\":\"500\",\"message\":\"No InternalSubscription has necessary capacity\"}}",
+      "Content": "{\"name\":\"326100e2-f69d-4268-8503-075374f62b6e-AutomatedPowershellTesting-clusterldc79a\",\"status\":\"Failed\",\"error\":{\"code\":\"500\",\"message\":\"No InternalSubscription has necessary capacity\"}}",
       "isContentBase64": false
     }
   }
