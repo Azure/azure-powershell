@@ -14,7 +14,7 @@ ClusterArmId                    :
 CreatedAt                       : 11/17/2022 2:56:32 PM
 DisableLocalAuth                : False
 EnableAutoInflate               : False
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/damorg/providers/Microsoft.EventHub/namespaces/testNamespaceForCLI134
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.EventHub/namespaces/myNamespace
 IdentityType                    : UserAssigned
 KafkaEnabled                    : True
 KeySource                       : Microsoft.KeyVault
@@ -57,7 +57,7 @@ UpdatedAt                       : 11/17/2022 3:03:50 PM
 UserAssignedIdentity            : {
                                     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
                                     },
-                                    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
+                                    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity": {
                                     }
                                   }
 ZoneRedundant                   : True
