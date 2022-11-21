@@ -23,6 +23,9 @@
 * Fixed `Get-AzVm` cmdlet when parameter "-Status" is provided, return property `OsName`, `OsVersion` and `HyperVGeneration`
 * Fixed `New-AzVM` cmdlet when creating VM with bootdiagnostic storage causes exception `Kind` cannot be null.
 
+## Version 5.1.1
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
 ## Version 5.1.0
 * Fixed EdgeZone does not pass to VM for `New-AzVM` "SimpleParameterSet" [#18978] 
 * Added 'ScriptFilePath' parameter set for `Set-AzVMRunCommand` and `Set-AzVmssVMRunCommand` to allow users to pass in the path of the file that has the run command script
