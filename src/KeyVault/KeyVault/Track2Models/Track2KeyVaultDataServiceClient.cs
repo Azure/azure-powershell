@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
         {
-            return VaultClient.ImportCertificate(vaultName, certName, Encoding.ASCII.GetBytes(certificate), certPassword, tags, contentType);
+            return VaultClient.ImportCertificate(vaultName, certName, Convert.FromBase64String(certificate), certPassword, tags, contentType);
         }
 
         public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
