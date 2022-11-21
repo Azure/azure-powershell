@@ -19,15 +19,16 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2 -SkuName Standard -Location eastus
         $serviceBusNamespace.Name | Should -Be $env.namespaceV2
         $serviceBusNamespace.SkuName | Should -Be Standard
+        $serviceBusNamespace.Location | should -Be "East Us"
 
-        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuCapacity 12 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -DisableLocalAuth -MinimumTlsVersion 1.1
+        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -DisableLocalAuth -MinimumTlsVersion 1.1
         $serviceBusNamespace.Name | Should -Be $env.namespaceV3
-        $serviceBusNamespace.SkuCapacity | Should -Be 12
         $serviceBusNamespace.SkuName | Should -Be Standard
         $serviceBusNamespace.SkuTier | Should -Be Standard
         $serviceBusNamespace.MinimumTlsVersion | Should -Be '1.1'
         $serviceBusNamespace.Location | Should -Be "South Central Us"
         $serviceBusNamespace.DisableLocalAuth | Should -Be $true
+        $serviceBusNamespace.Tag.Count | should -Be 2
 
         $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV4 -SkuName Premium -Location eastus -IdentityType SystemAssigned
         $serviceBusNamespace.Name | Should -Be $env.namespaceV4
@@ -48,14 +49,18 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.KeyVaultProperty.Count | Should -Be 2
         $serviceBusNamespace.UserAssignedIdentity.Count | Should -Be 2
 
-        $ec3 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key3 -KeyVaulturi $env.keyVaultUri -UserAssignedIdentity $env.msi1
-        $serviceBusNamespace.KeyVaultProperty += $ec3
-        $serviceBusNamespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5
-        $serviceBusNamespace.Name | Should -Be $env.namespaceV5
+        # Create namespace with UserAssigned Encryption Enabled and RequireInfrastructureEncryption true
+        $a = New-AzServiceBusUserAssignedIdentityObject -IdentityId $env.msi1, $env.msi2
+        $ec1 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key1 -KeyVaulturi $env.keyVaultUri -UserAssignedIdentity $env.msi1
+        $ec2 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key2 -KeyVaulturi $env.keyVaultUri -UserAssignedIdentity $env.msi1
+        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV9 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentity $a -KeyVaultProperty $ec1,$ec2 -RequireInfrastructureEncryption
         $serviceBusNamespace.IdentityType | Should -Be UserAssigned
         $serviceBusNamespace.SkuName | Should -Be Premium
-        $serviceBusNamespace.KeyVaultProperty.Count | Should -Be 3
+        $serviceBusNamespace.SkuTier | Should -Be Premium
+        $serviceBusNamespace.Location | Should -Be "North Europe"
+        $serviceBusNamespace.KeyVaultProperty.Count | Should -Be 2
         $serviceBusNamespace.UserAssignedIdentity.Count | Should -Be 2
+        $serviceBusNamespace.RequireInfrastructureEncryption | Should -Be $true
 
     }
 }

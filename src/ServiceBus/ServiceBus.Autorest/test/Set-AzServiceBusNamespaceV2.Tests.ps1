@@ -25,6 +25,7 @@ function assertNamespaceUpdates{
     $expectedNamespace.ZoneRedundant | Should -Be $namespace.ZoneRedundant
     $expectedNamespace.DisableLocalAuth | Should -Be $namespace.DisableLocalAuth
     $expectedNamespace.Tag.Count | Should -Be $namespace.Tag.Count
+    $expectedNamespace.PublicNetworkAccess | Should -Be $namespace.PublicNetworkAccess
 }
 Describe 'Set-AzServiceBusNamespaceV2' {
     It 'SetExpanded' {
@@ -74,24 +75,29 @@ Describe 'Set-AzServiceBusNamespaceV2' {
         $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace
         assertNamespaceUpdates $expectedNamespace $namespace
 
-        $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -SkuCapacity 12
-        $expectedNamespace.SkuCapacity | Should -Be 12
-        assertNamespaceUpdates $expectedNamespace $namespace
-
         $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -MinimumTlsVersion 1.0
-        $expectedNamespace.MinimumTlsVersion | Should -Be '1.0'
+        $namespace.MinimumTlsVersion | Should -Be '1.0'
+        $expectedNamespace.MinimumTlsVersion = '1.0'
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -MinimumTlsVersion 1.2
-        $expectedNamespace.MinimumTlsVersion | Should -Be '1.2'
+        $namespace.MinimumTlsVersion | Should -Be '1.2'
+        $expectedNamespace.MinimumTlsVersion = '1.2'
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -DisableLocalAuth:$false
-        $expectedNamespace.DisableLocalAuth | Should -Be $false
+        $namespace.DisableLocalAuth | Should -Be $false
+        $expectedNamespace.DisableLocalAuth = $false
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -DisableLocalAuth
-        $expectedNamespace.DisableLocalAuth | Should -Be $true
+        $namespace.DisableLocalAuth | Should -Be $true
+        $expectedNamespace.DisableLocalAuth = $true
+        assertNamespaceUpdates $expectedNamespace $namespace
+
+        $expectedNamespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV4 
+        $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -SkuCapacity 16
+        $expectedNamespace.SkuCapacity = 16
         assertNamespaceUpdates $expectedNamespace $namespace
     }
 }
