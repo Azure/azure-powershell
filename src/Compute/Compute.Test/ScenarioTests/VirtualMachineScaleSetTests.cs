@@ -283,5 +283,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetPriorityMixPolicy");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetConfidentialVMSecurityType()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMSecurityType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetConfidentialVMSecurityTypeGuest()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMDiskwithVMGuestState");
+        }
     }
 }

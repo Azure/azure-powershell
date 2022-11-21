@@ -100,6 +100,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
                             }
 
+
+                            if (this.IsParameterBound(c => c.ImageReferenceId))
+                            {
+                                /*if (parameters.VirtualMachineProfile == null)
+                                {
+                                    parameters.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+
+                                }*/
+                                var x = parameters.VirtualMachineProfile.StorageProfile.ImageReference;
+                                /*
+                                 * ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : new ImageReference
+                                {
+                                    Id = imageReferenceId
+                                }
+                                */
+                            }
+
                             // For Cross-tenant RBAC sharing
                             Dictionary<string, List<string>> auxAuthHeader = null;
                             if (!string.IsNullOrEmpty(parameters.VirtualMachineProfile?.StorageProfile?.ImageReference?.Id))
@@ -237,9 +254,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                                 }
                             }
-
-
-
 
                             var psObject = new PSVirtualMachineScaleSet();
                             ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
