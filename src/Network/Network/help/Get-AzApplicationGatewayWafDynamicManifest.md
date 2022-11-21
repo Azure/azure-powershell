@@ -23,7 +23,7 @@ The **Get-AzApplicationGatewayWafDynamicManifest** cmdlet gets athe web applicat
 
 ### Example 1
 ```powershell
-$wafManifest = Get-AzApplicationGatewayWafDynamicManifest
+$wafManifest = Get-AzApplicationGatewayWafDynamicManifest -Location westcentralus
 ```
 
 This commands returns the web application firewall manifest and all the supported rule sets.
