@@ -36,7 +36,7 @@ Get a Run Command for VMSS VM with Instance View. Instance View contains executi
 ### Example 3: Get all Run Commands for a VMSS VM instance
 
 ```powershell
-Get-AzVmssVMRunCommand -ResourceGroupName MyRG -VMName MyVM
+Get-AzVmssVMRunCommand -ResourceGroupName MyRG -VMScaleSetName MyVMSS -InstanceId 1
 ```
 
 Get list of all Run Commands for a VM.
