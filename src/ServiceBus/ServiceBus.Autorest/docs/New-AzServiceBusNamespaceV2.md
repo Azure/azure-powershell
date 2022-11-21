@@ -193,7 +193,7 @@ UserAssignedIdentity            : {
 ZoneRedundant                   : False
 ```
 
-Create a standard ServiceBus namespace `myNamespace` with DisableLocalAuth enabled..
+Create a standard ServiceBus namespace `myNamespace` with DisableLocalAuth enabled.
 
 ## PARAMETERS
 

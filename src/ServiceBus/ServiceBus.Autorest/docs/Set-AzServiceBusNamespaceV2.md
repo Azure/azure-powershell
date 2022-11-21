@@ -107,7 +107,7 @@ UserAssignedIdentity            : {
 ZoneRedundant                   : False
 ```
 
-#Adds a new KeyVaultProperty to ServiceBus namespace `myNamespace`.
+Adds a new KeyVaultProperty to ServiceBus namespace `myNamespace`.
 
 ### Example 2: Remove a KeyVaultProperty from an existing ServiceBus Namespace
 ```powershell
@@ -177,7 +177,7 @@ UserAssignedIdentity            : {
 ZoneRedundant                   : False
 ```
 
-# Remove the second KeyVaultProperty from the list of KeyVaultProperties
+Remove the second KeyVaultProperty from the list of KeyVaultProperties.
 
 ### Example 3: Add UserAssigned Identity to Namespace with IdentityType SystemAssigned to test for SystemAssigned and UserAssigned
 ```powershell
@@ -231,7 +231,7 @@ UserAssignedIdentity            : {
 ZoneRedundant                   : False
 ```
 
-#Added UserAssigned Identity to Namespace with IdentityType SystemAssigned to test for SystemAssigned and UserAssigned.
+Added UserAssigned Identity to Namespace with IdentityType SystemAssigned to test for SystemAssigned and UserAssigned.
 
 ### Example 4: # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None.
 ```powershell
@@ -280,7 +280,7 @@ UserAssignedIdentity            : {
 ZoneRedundant                   : False
 ```
 
-#Created a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None.
+Created a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None.
 
 ## PARAMETERS
 
