@@ -170,6 +170,10 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 agentPool.EnableAutoScaling = EnableAutoScaling.ToBool();
             }
+            if (this.IsParameterBound(c => c.Mode))
+            {
+                agentPool.Mode = Mode;
+            }
             if (EnableNodePublicIp.IsPresent)
             {
                 agentPool.EnableNodePublicIP = EnableNodePublicIp.ToBool();

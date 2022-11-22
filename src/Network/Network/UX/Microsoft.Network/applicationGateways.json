@@ -46,7 +46,7 @@
 			"confirmation": false,
 			"help": {
 				"learnMore": {
-					"url": "https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgateway"
+					"url": "https://learn.microsoft.com/powershell/module/az.network/remove-azapplicationgateway"
 				},
 				"parameterSets": [
 					{

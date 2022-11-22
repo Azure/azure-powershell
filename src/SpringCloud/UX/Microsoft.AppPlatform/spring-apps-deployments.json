@@ -16,7 +16,7 @@
           "parameterSets": [
             {
               "parameters": [
-                "-DeploymentName <String>",
+                "-Name <String>",
                 "-AppName <String>",
                 "-ServiceName <String>",
                 "-ResourceGroupName <String>",
@@ -42,7 +42,7 @@
                       "value": "[path.serviceName]"
                   },
                   {
-                      "name": "-DeploymentName",
+                      "name": "-Name",
                       "value": "[path.deploymentName]"
                   },
                   {
