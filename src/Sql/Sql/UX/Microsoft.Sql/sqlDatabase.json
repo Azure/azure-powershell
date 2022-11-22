@@ -2,7 +2,7 @@
     "resourceType":"servers-databases",
     "apiVersion":"2022-02-01-preview",
     "learnMore":{
-       "url":"https://docs.microsoft.com/powershell/module/az.sql/#sql"
+       "url":"https://learn.microsoft.com/powershell/module/az.sql/#sql"
     },
     "commands":[
        {
@@ -92,7 +92,11 @@
           "confirmation":false,
           "help":{
              "learnMore":{
+<<<<<<< HEAD
                 "url":"https://learn.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase"
+=======
+                "url":"https://learn.microsoft.com/powershell/module/az.compute/restart-azvm"
+>>>>>>> 13d3896f2cf00acfb658e9926ecda37e87d49ca0
              },
              "parameterSets":[
                 {
