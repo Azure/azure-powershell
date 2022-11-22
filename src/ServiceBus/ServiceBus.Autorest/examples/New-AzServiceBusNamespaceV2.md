@@ -1,8 +1,8 @@
 ### Example 1: Create a new ServiceBus namespace with UserAssignedIdentity Encryption
 ```powershell
-$identityHashTable = New-AzServiceBusUserAssignedIdentityObject -IdentityId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity","/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
-$keyVaultProperty1 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key4 -KeyVaultUri https://{keyVaultName}.vault.azure.net/ -UserAssignedIdentity "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
-$keyVaultProperty2 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key5 -KeyVaultUri https://{keyVaultName}.vault.azure.net/ -UserAssignedIdentity "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$identityHashTable = New-AzServiceBusUserAssignedIdentityObject -IdentityId "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity","/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
+$keyVaultProperty1 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key4 -KeyVaultUri https://{keyVaultName}.vault.azure.net/ -UserAssignedIdentity "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$keyVaultProperty2 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key5 -KeyVaultUri https://{keyVaultName}.vault.azure.net/ -UserAssignedIdentity "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
 New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentity $identityHashTable -KeyVaultProperty $keyVaultProperty1,$keyVaultProperty2
 ```
 
@@ -10,14 +10,14 @@ New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 AlternateName                   :
 CreatedAt                       : 11/21/2022 5:15:41 AM
 DisableLocalAuth                : False
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/provide
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/provide
                                   rs/Microsoft.ServiceBus/namespaces/myNamespace
 IdentityType                    : UserAssigned
 KeySource                       : Microsoft.KeyVault
 KeyVaultProperty                : {{
                                     "identity": {
                                       "userAssignedIdentity": "/subscriptions/{subscriptionId}/reso
-                                  urceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity
+                                  urceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity
                                      "
                                     },
                                     "keyName": "key4",
@@ -26,7 +26,7 @@ KeyVaultProperty                : {{
                                   }, {
                                     "identity": {
                                       "userAssignedIdentity": "/subscriptions/{subscriptionId}/reso
-                                  urceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity
+                                  urceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity
                                      "
                                     },
                                     "keyName": "key5",
@@ -42,7 +42,7 @@ PrivateEndpointConnection       :
 ProvisioningState               : Succeeded
 PublicNetworkAccess             : Enabled
 RequireInfrastructureEncryption : False
-ResourceGroupName               : resourceGroupName
+ResourceGroupName               : myResourceGroup
 ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
 SkuCapacity                     : 1
 SkuName                         : Premium
@@ -60,10 +60,10 @@ TenantId                        :
 Type                            : Microsoft.ServiceBus/Namespaces
 UpdatedAt                       : 11/21/2022 5:23:01 AM
 UserAssignedIdentity            : {
-                                    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/prov
+                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/prov
                                   iders/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
                                     },
-                                    "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/shubham-rg/prov
+                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/prov
                                   iders/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity": {
                                     }
                                   }
@@ -82,7 +82,7 @@ New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 AlternateName                   :
 CreatedAt                       : 11/21/2022 5:33:10 AM
 DisableLocalAuth                : False
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/provide
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/provide
                                   rs/Microsoft.ServiceBus/namespaces/myNamespace
 IdentityType                    : SystemAssigned
 KeySource                       :
@@ -129,7 +129,7 @@ New-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -
 AlternateName                   :
 CreatedAt                       : 11/18/2022 6:06:22 AM
 DisableLocalAuth                : True
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/myNamespace
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace
 IdentityType                    :
 KeySource                       :
 KeyVaultProperty                :
@@ -142,7 +142,7 @@ PrivateEndpointConnection       :
 ProvisioningState               : Succeeded
 PublicNetworkAccess             : Enabled
 RequireInfrastructureEncryption :
-ResourceGroupName               : resourceGroupName
+ResourceGroupName               : myResourceGroup
 ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
 SkuCapacity                     :
 SkuName                         : Standard

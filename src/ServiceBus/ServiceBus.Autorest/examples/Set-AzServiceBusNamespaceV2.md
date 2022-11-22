@@ -1,7 +1,7 @@
 ### Example 1: Add a KeyVaultProperty to an existing ServiceBus Namespace
 ```powershell
 $serviceBusNamespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace
-$newKeyVaultProperty = New-AzServiceBusKeyVaultPropertiesObject -KeyName key6 -KeyVaultUri https://{keyVaultName}.vault.azure.net/ -UserAssignedIdentity "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$newKeyVaultProperty = New-AzServiceBusKeyVaultPropertiesObject -KeyName key6 -KeyVaultUri https://{keyVaultName}.vault.azure.net/ -UserAssignedIdentity "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
 $serviceBusNamespace.KeyVaultProperty += $newKeyVaultProperty
 Set-AzEventHubNamespaceV2 -InputObject $serviceBusNamespace -KeyVaultProperty $serviceBusNamespace.KeyVaultProperty
 ```
@@ -10,12 +10,12 @@ Set-AzEventHubNamespaceV2 -InputObject $serviceBusNamespace -KeyVaultProperty $s
 AlternateName                   :
 CreatedAt                       : 11/17/2022 5:51:52 AM
 DisableLocalAuth                : False
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ServiceBus/namespaces/myNamespace
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace
 IdentityType                    :
 KeySource                       :
 KeyVaultProperty                : {{
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ManagedIdentity/use
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/use
                                   rAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key4",
@@ -23,7 +23,7 @@ KeyVaultProperty                : {{
                                     "keyVersion": ""
                                   }, {
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ManagedIdentity/use
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/use
                                   rAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key5",
@@ -31,7 +31,7 @@ KeyVaultProperty                : {{
                                     "keyVersion": ""
                                   }, {
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ManagedIdentity/use
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/use
                                   rAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key6",
@@ -83,12 +83,12 @@ Set-AzServiceBusNamespaceV2 -InputObject $serviceBusNamespace -KeyVaultProperty 
 AlternateName                   :
 CreatedAt                       : 11/21/2022 5:15:41 AM
 DisableLocalAuth                : False
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ServiceBus/namespaces/myNamespace
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace
 IdentityType                    : UserAssigned
 KeySource                       : Microsoft.KeyVault
 KeyVaultProperty                : {{
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ManagedIdentity/
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/
                                       userAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key4",
@@ -96,7 +96,7 @@ KeyVaultProperty                : {{
                                     "keyVersion": ""
                                   }, {
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ManagedIdentity/
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/
                                       userAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key6",
@@ -130,10 +130,10 @@ TenantId                        :
 Type                            : Microsoft.ServiceBus/Namespaces
 UpdatedAt                       : 11/21/2022 8:52:02 AM
 UserAssignedIdentity            : {
-                                    "/subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ManagedIdentity/
+                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/
                                     userAssignedIdentities/myFirstIdentity": {
                                     },
-                                    "/subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ManagedIdentity/
+                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/
                                     userAssignedIdentities/mySecondIdentity": {
                                     }
                                   }
@@ -146,7 +146,7 @@ Remove the second KeyVaultProperty from the list of KeyVaultProperties.
 ### Example 3: Add UserAssigned Identity to Namespace with IdentityType SystemAssigned to test for SystemAssigned and UserAssigned
 ```powershell
 $serviceBusNamespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace
-$a = New-AzServiceBusUserAssignedIdentityObject -IdentityId /subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity,/subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity
+$a = New-AzServiceBusUserAssignedIdentityObject -IdentityId /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity,/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity
 Set-AzServiceBusNamespaceV2 -InputObject $serviceBusNamespace -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentity $a
 ```
 
@@ -154,7 +154,7 @@ Set-AzServiceBusNamespaceV2 -InputObject $serviceBusNamespace -IdentityType "Sys
 AlternateName                   :
 CreatedAt                       : 11/17/2022 3:54:50 AM
 DisableLocalAuth                : False
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ServiceBus/namespaces/myNamespace
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace
 IdentityType                    : SystemAssigned, UserAssigned
 KeySource                       :
 KeyVaultProperty                :
@@ -185,10 +185,10 @@ TenantId                        : 0000000000000000
 Type                            : Microsoft.ServiceBus/Namespaces
 UpdatedAt                       : 11/21/2022 9:15:53 AM
 UserAssignedIdentity            : {
-                                    "/subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ManagedIdentity/
+                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/
                                     userAssignedIdentities/mySecondIdentity": {
                                     },
-                                    "/subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ManagedIdentity/
+                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/
                                     userAssignedIdentities/myFirstIdentity": {
                                     }
                                   }
@@ -200,7 +200,7 @@ Added UserAssigned Identity to Namespace with IdentityType SystemAssigned to tes
 
 ### Example 4: # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None.
 ```powershell
-$a = New-AzServiceBusUserAssignedIdentityObject -IdentityId /subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity,/subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity
+$a = New-AzServiceBusUserAssignedIdentityObject -IdentityId /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup}\/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity,/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity
 $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentity $a
 $serviceBusNamespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -IdentityType None -UserAssignedIdentity:$null
 ```
@@ -209,22 +209,22 @@ $serviceBusNamespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName myResource
 AlternateName                   :
 CreatedAt                       : 11/17/2022 3:54:50 AM
 DisableLocalAuth                : False
-Id                              : /subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/shubham-rg/providers/M
-                                  icrosoft.ServiceBus/namespaces/srcrg32
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/M
+                                  icrosoft.ServiceBus/namespaces/myNamespace
 IdentityType                    :
 KeySource                       :
 KeyVaultProperty                :
 Location                        : North Europe
-MetricId                        : 326100e2-f69d-4268-8503-075374f62b6e:srcrg32
+MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
-Name                            : srcrg32
+Name                            : myNamespace
 PrincipalId                     :
 PrivateEndpointConnection       :
 ProvisioningState               : Succeeded
 PublicNetworkAccess             : Enabled
 RequireInfrastructureEncryption :
-ResourceGroupName               : shubham-rg
-ServiceBusEndpoint              : https://srcrg32.servicebus.windows.net:443/
+ResourceGroupName               : myResourceGroup
+ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
 SkuCapacity                     :
 SkuName                         : Standard
 SkuTier                         : Standard
