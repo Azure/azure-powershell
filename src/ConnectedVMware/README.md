@@ -64,6 +64,9 @@ directive:
   - where:
       verb: Set
     remove: true
+  - where:
+      subject: HybridIdentityMetadata
+    remove: true
   # Rename Invoke-AzConnectedVMwareAssessVirtualMachinePatch to Invoke-AzConnectedVMwareVirtualMachineAssessPatch
   - where:
       verb: Invoke
@@ -78,14 +81,6 @@ directive:
   - from: swagger-document 
     where: $.definitions.VICredential.properties.password
     transform: $.format = "password"
-  # Rename MetadataName in *-Az*HybridIdentityMetadata as Name
-  # Set MetadataName as the alias of Name in *-Az*HybridIdentityMetadata
-  - where:
-      subject: HybridIdentityMetadata
-      parameter-name: MetadataName
-    set:
-      parameter-name: Name
-      alias: MetadataName
   # Rename Name in *-Az*MachineExtension as VirtualMachineName
   - where:
       subject: MachineExtension
