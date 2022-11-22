@@ -62,6 +62,9 @@ directive:
     remove: true
   # Remove the set-* cmdlet
   - where:
+    verb: Set
+    remove: true
+  - where:
       verb: Get|Remove               # Get-AzConnectedVMwarevSphereHybridIdentityMetadata
       subject: HybridIdentityMetadata
     remove: true
@@ -79,14 +82,6 @@ directive:
   - from: swagger-document 
     where: $.definitions.VICredential.properties.password
     transform: $.format = "password"
-  # Rename MetadataName in *-Az*HybridIdentityMetadata as Name
-  # Set MetadataName as the alias of Name in *-Az*HybridIdentityMetadata
-  - where:
-      subject: HybridIdentityMetadata
-      parameter-name: MetadataName
-    set:
-      parameter-name: Name
-      alias: MetadataName
   # Rename Name in *-Az*MachineExtension as VirtualMachineName
   - where:
       subject: MachineExtension
