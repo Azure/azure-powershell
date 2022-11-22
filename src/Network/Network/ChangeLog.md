@@ -19,7 +19,7 @@
 --->
 
 ## Upcoming Release
-* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+* Added optional parameters `CustomBlockResponseStatusCode` and `CustomBlockResponseBody` parameter to `AzApplicationGatewayFirewallPolicySettings`
 
 ## Version 5.1.2
 * Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
@@ -91,7 +91,6 @@
 * Replaced `IdentifyTopFatFlow` parameter with 'EnableFatFlowLogging' parameter to `New-AzFirewall`
 * Fixed a bug not able to add MSSQL application rules to an AZURE FIREWALL POLICY
 * Onboard Project AzureML Registries to Private Link Common Cmdlets
-* Added optional parameters `CustomBlockResponseStatusCode` and `CustomBlockResponseBody` parameter to `AzApplicationGatewayFirewallPolicySettings`
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
