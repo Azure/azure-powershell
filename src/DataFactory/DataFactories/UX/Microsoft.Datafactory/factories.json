@@ -1,18 +1,18 @@
 {
     "resourceType":"factories",
-    "apiVersion":"2018-06-01",
+    "apiVersion":"2015-10-01",
     "learnMore":{
        "url":"https://learn.microsoft.com/powershell/module/az.datafactory/#datafactory"
     },
     "commands":[
        {
-          "name":"Get-AzDataFactoryV2",
+          "name":"Get-AzDataFactory",
           "description":"Gets information about Data Factory.",
           "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{dataFactoryName}",
           "confirmation":false,
           "help":{
              "learnMore":{
-                "url":"https://learn.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2"
+                "url":"https://learn.microsoft.com/powershell/module/az.datafactory/get-azdatafactory"
              },
              "parameterSets":[
                {
@@ -35,13 +35,13 @@
           ]
        },
        {
-         "name":"Remove-AzDataFactoryV2",
+         "name":"Remove-AzDataFactory",
          "description":"Removes a data factory.",
          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{dataFactoryName}",
          "confirmation":false,
          "help":{
             "learnMore":{
-               "url":"https://learn.microsoft.com/powershell/module/az.datafactory/remove-azdatafactoryv2"
+               "url":"https://learn.microsoft.com/powershell/module/az.datafactory/remove-azdatafactory"
             },
             "parameterSets":[
               {

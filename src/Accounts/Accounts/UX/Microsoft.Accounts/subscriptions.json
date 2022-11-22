@@ -2,7 +2,7 @@
     "resourceType":"subscriptions",
     "apiVersion":"2021-01-01",
     "learnMore":{
-       "url":"https://learn.microsoft.com/powershell/module/az.accounts/#subscriptions"
+       "url":"https://learn.microsoft.com/powershell/module/az.resources/#subscriptions"
     },
     "commands":[
        {
