@@ -1,2 +1,0 @@
-"Module","Severity","ResourceType","SubResourceType","Command","Description"
-"Az.DataFactory","1","Microsoft.Datafactory","factories","Remove-AzDataFactoryV2","Cannot find a matched parameter set for example of Remove-AzDataFactoryV2"
