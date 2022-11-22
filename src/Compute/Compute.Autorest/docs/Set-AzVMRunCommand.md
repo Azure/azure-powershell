@@ -12,6 +12,7 @@ The operation to create or update the run command.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
 Set-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName <String> -Location <String>
  [-SubscriptionId <String>] [-AsyncExecution] [-ErrorBlobUri <String>] [-OutputBlobUri <String>]
@@ -19,6 +20,16 @@ Set-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName 
  [-RunAsPassword <String>] [-RunAsUser <String>] [-SourceCommandId <String>] [-SourceScript <String>]
  [-SourceScriptUri <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ScriptLocalPath
+```
+Set-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName <String> -Location <String>
+ -ScriptLocalPath <String> [-SubscriptionId <String>] [-AsyncExecution] [-ErrorBlobUri <String>]
+ [-OutputBlobUri <String>] [-Parameter <IRunCommandInputParameter[]>]
+ [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <String>] [-RunAsUser <String>]
+ [-Tag <Hashtable>] [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -239,12 +250,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScriptLocalPath
+
+
+```yaml
+Type: System.String
+Parameter Sets: ScriptLocalPath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SourceCommandId
 Specifies a commandId of predefined built-in script.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -259,7 +285,7 @@ Specifies the script content to be executed on the VM.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -274,7 +300,7 @@ Specifies the script download location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False

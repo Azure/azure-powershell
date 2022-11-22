@@ -1795,6 +1795,120 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region Python3Package
+
+        public IEnumerable<Module> ListPython3Package(string resourceGroupName, string automationAccountName,
+            ref string nextLink)
+        {
+            Rest.Azure.IPage<AutomationManagement.Models.Module> response;
+
+            if (string.IsNullOrEmpty(nextLink))
+            {
+                response = this.automationManagementClient.Python3Package.ListByAutomationAccount(resourceGroupName, automationAccountName);
+            }
+            else
+            {
+                response = this.automationManagementClient.Python3Package.ListByAutomationAccountNext(nextLink);
+            }
+
+            nextLink = response.NextPageLink;
+            return response.Select(c => new Module(resourceGroupName, automationAccountName, c));
+        }
+
+        public void DeletePython3Package(string resourceGroupName, string automationAccountName, string name)
+        {
+            try
+            {
+                this.automationManagementClient.Python3Package.Delete(resourceGroupName, automationAccountName, name);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                {
+                    throw new ResourceNotFoundException(typeof(Module),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
+                }
+
+                throw;
+            }
+        }
+
+        public Module GetPython3Package(string resourceGroupName, string automationAccountName, string name)
+        {
+            try
+            {
+                var module =
+                    this.automationManagementClient.Python3Package.Get(resourceGroupName, automationAccountName, name);
+                return new Module(resourceGroupName, automationAccountName, module);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Module),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
+                }
+
+                throw;
+            }
+        }
+
+
+
+        public Module CreatePython3Package(string resourceGroupName, string automationAccountName, Uri contentLink,
+            string moduleName)
+        {
+            var createdModule = this.automationManagementClient.Python3Package.CreateOrUpdate(resourceGroupName,
+                automationAccountName,
+                moduleName,
+                new AutomationManagement.Models.PythonPackageCreateParameters()
+                { 
+                    ContentLink = new AutomationManagement.Models.ContentLink()
+                    {
+                        Uri = contentLink.ToString(),
+                        ContentHash = null,
+                        Version = null
+                    },
+                });
+
+            return this.GetPython3Package(resourceGroupName, automationAccountName, moduleName);
+        }
+
+        public Module UpdatePython3Package(string resourceGroupName, string automationAccountName, string name,
+            Uri contentLinkUri, string contentLinkVersion)
+        {
+            try
+            {
+                var moduleModel =
+                this.automationManagementClient.Python3Package.Get(resourceGroupName, automationAccountName, name);
+                if (contentLinkUri != null)
+                {
+                    var updateModule = this.automationManagementClient.Python3Package.Update(resourceGroupName,
+                    automationAccountName,
+                    name,
+                    new AutomationManagement.Models.PythonPackageUpdateParameters());
+                }
+                var updatedModule =
+                this.automationManagementClient.Python3Package.Get(resourceGroupName, automationAccountName, name);
+                return new Module(resourceGroupName, automationAccountName, updatedModule);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Module),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
+
+                }
+
+                throw;
+            }
+        }
+
+        #endregion
+
+
+
         #region Private Methods
 
         private Schedule CreateScheduleFromScheduleModel(string resourceGroupName, string automationAccountName,

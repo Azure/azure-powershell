@@ -338,7 +338,7 @@ CI in DevOps will happens under `Debug` folder. So you need to make sure that th
 Create this environment variables for the AD scenario tests:
 
 - `AZURE_SERVICE_PRINCIPAL` should be a service principal - an application defined in the subscription's tenant - that has management access to the subscription (or at least to a resource group in the tenant)
-  - `AZURE_SERVICE_PRINCIPAL=UserId=<UserGuid>;Password=<Password>;AADTenant=<TenantGuid>;SubscriptionId=<SubscriptionId>`
+  - `AZURE_SERVICE_PRINCIPAL=UserId=<UserGuid>;Password=<Password>;TenantId=<TenantGuid>;SubscriptionId=<SubscriptionId>`
 
 ### Recording/Running Tests
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzServiceBusAuthorizationRule
 
 ## SYNOPSIS
-Removes an ServiceBus Namespace, Queue or Topic Authorization Rule
+Removes the Authorization Rule of a ServiceBus Namespace, Queue or Topic
 
 ## SYNTAX
 
@@ -40,20 +40,20 @@ Remove-AzServiceBusAuthorizationRule -InputObject <IServiceBusIdentity> [-Defaul
 ```
 
 ## DESCRIPTION
-Removes an ServiceBus Namespace, Queue or Topic Authorization Rule
+Removes the Authorization Rule of a ServiceBus Namespace, Queue or Topic
 
 ## EXAMPLES
 
-### Example 1: Remove authorization rule from an a ServiceBus namespace
+### Example 1: Remove an authorization rule from a ServiceBus namespace
 ```powershell
-Remove-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule
+Remove-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule
 ```
 
-Deletes authorization rule `myAuthRule` from EventHub namespace `myNamespace`.
+Deletes authorization rule `myAuthRule` from ServiceBus namespace `myNamespace`.
 
-### Example 2: Remove authorization rule from a ServiceBus queue
+### Example 2: Remove an authorization rule from a ServiceBus queue
 ```powershell
-Remove-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -QueueName myQueue -Name myAuthRule
+Remove-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -QueueName myQueue -Name myAuthRule
 ```
 
 Deletes authorization rule `myAuthRule` from ServiceBus `myQueue` on namespace `myNamespace`.

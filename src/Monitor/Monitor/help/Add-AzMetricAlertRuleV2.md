@@ -123,7 +123,7 @@ This command disables a metric alert rule. Here, we are piping output of [Get-Az
 ### Example 4: Add a metric alert rule with dimensions
 
 ```powershell
-$act = New-AzActionGroup -ActionGroupId "/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/Microsoft.Insights/actiongroups/actionGroupDemo"
+$act = New-AzActivityLogAlertActionGroupObject -Id "/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/Microsoft.Insights/actiongroups/actionGroupDemo"
 $dim1 = New-AzMetricAlertRuleV2DimensionSelection -DimensionName "availabilityResult/name" -ValuesToInclude "gdtest"
 $dim2 = New-AzMetricAlertRuleV2DimensionSelection -DimensionName "availabilityResult/location" -ValuesToInclude "*"
 $criteria = New-AzMetricAlertRuleV2Criteria -MetricName "availabilityResults/availabilityPercentage" -DimensionSelection $dim1,$dim2 -TimeAggregation Average -Operator GreaterThan -Threshold 2
@@ -160,7 +160,7 @@ Above set of cmdlets will create a metric alert rule with dimensions.
 The Action Group for rule
 
 ```yaml
-Type: Microsoft.Azure.Management.Monitor.Models.ActivityLogAlertActionGroup[]
+Type: Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[]
 Parameter Sets: (All)
 Aliases: Actions
 

@@ -297,6 +297,7 @@ function Test-CreateNewWebAppSlot
 	$planName = Get-WebHostPlanName
 	$tier = "Standard"
 	$resourceType = "Microsoft.Web/sites"
+	$tag= @{"TagKey" = "TagValue"}
 	try
 	{
 		#Setup
@@ -318,7 +319,7 @@ function Test-CreateNewWebAppSlot
 		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
 
 		# Create deployment slot
-		$job = New-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AsJob
+		$job = New-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Tag $tag -AsJob
 		$job | Wait-Job
 		$slot1 = $job | Receive-Job
 
@@ -327,6 +328,8 @@ function Test-CreateNewWebAppSlot
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot1.Name
 		Assert-AreEqual $serverFarm.Id $slot1.ServerFarmId
+		Assert-AreEqual $tag.Keys $slot1.Tags.Keys
+        	Assert-AreEqual $tag.Values $slot1.Tags.Values
 	}
 	finally
 	{

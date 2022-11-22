@@ -983,7 +983,6 @@ System.Boolean
 https://docs.microsoft.com/powershell/module/az.aks/install-azaksclitool
 #>
 function Install-AzAksCliTool {
-[Alias('Install-AzAksKubectl')]
 [OutputType([System.Boolean])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(

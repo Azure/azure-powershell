@@ -29,7 +29,7 @@ Search-AzDataProtectionJobInAzGraph -Subscription "xxxx-xxx-xxx" -ResourceGroup 
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/search-azdataprotectionjobinazgraph
+https://learn.microsoft.com/powershell/module/az.dataprotection/search-azdataprotectionjobinazgraph
 #>
 function Search-AzDataProtectionJobInAzGraph {
 [OutputType([PSObject])]

@@ -182,7 +182,8 @@ namespace Microsoft.Azure.Commands.Network
                 WebCategories = this.WebCategory?.ToList(),
                 TargetUrls = this.TargetUrl?.ToList(),
                 TerminateTLS = this.TerminateTLS.IsPresent ? true : (bool?)null,
-                RuleType = "ApplicationRule"
+                RuleType = "ApplicationRule",
+                Description = this.Description
             };
             WriteObject(applicationRule);
         }

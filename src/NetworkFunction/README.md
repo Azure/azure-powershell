@@ -30,11 +30,11 @@ For information on how to develop for `Az.NetworkFunction`, see [how-to.md](how-
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 1cefdabe75c75323c6d3def3f6c80850c624bdea
+branch: 5ef93469c04983e472e57ca227fc5159d13a172a
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/networkfunction/resource-manager/Microsoft.NetworkFunction/stable/2022-08-01/AzureTrafficCollector.json
+  - $(repo)/specification/networkfunction/resource-manager/Microsoft.NetworkFunction/stable/2022-11-01/AzureTrafficCollector.json
 module-version: 0.1.0
 title: NetworkFunction
 subject-prefix: $(service-name)
@@ -57,6 +57,6 @@ directive:
       subject: (.)*(Operation)$
     hide: true
   - where:
-      verb: New|Set
+      verb: Set
     hide: true
 ```

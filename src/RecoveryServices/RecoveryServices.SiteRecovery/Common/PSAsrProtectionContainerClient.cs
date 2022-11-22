@@ -200,8 +200,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     updateInput,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
-                .GetResult()
-                .Body;
+                .GetResult();
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }

@@ -173,6 +173,6 @@ function New-AzActivityLogAlert {
     )
 
     process {
-        . Az.Monitor.internal\New-AzActivityLogAlert @PSBoundParameters
+        . Az.ActivityLogAlert.internal\New-AzActivityLogAlert @PSBoundParameters
     }
 }

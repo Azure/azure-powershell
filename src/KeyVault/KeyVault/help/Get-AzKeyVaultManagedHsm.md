@@ -253,3 +253,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzKeyVaultManagedHsm](./Remove-AzKeyVaultManagedHsm.md)
 
 [Update-AzKeyVaultManagedHsm](./Update-AzKeyVaultManagedHsm.md)
+
+[Undo-AzKeyVaultManagedHsmRemoval](./Undo-AzKeyVaultManagedHsmRemoval.md)

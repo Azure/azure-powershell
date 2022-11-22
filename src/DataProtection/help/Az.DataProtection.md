@@ -1,7 +1,7 @@
 ---
 Module Name: Az.DataProtection
 Module Guid: 0796af7c-0a7c-417f-8d0d-19f9179dac7a
-Download Help Link: https://docs.microsoft.com/powershell/module/az.dataprotection
+Download Help Link: https://learn.microsoft.com/powershell/module/az.dataprotection
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -24,7 +24,7 @@ Adds or removes schedule tag in an existing backup policy.
 Updates Backup schedule of an existing backup policy.
 
 ### [Find-AzDataProtectionRestorableTimeRange](Find-AzDataProtectionRestorableTimeRange.md)
-
+Finds the valid recovery point in time ranges for the restore.
 
 ### [Get-AzDataProtectionBackupInstance](Get-AzDataProtectionBackupInstance.md)
 Gets a backup instance with name in a backup vault
@@ -33,7 +33,7 @@ Gets a backup instance with name in a backup vault
 Gets a backup policy belonging to a backup vault
 
 ### [Get-AzDataProtectionBackupVault](Get-AzDataProtectionBackupVault.md)
-Returns resource collection belonging to a resource group.
+Returns resource collection belonging to a subscription.
 
 ### [Get-AzDataProtectionJob](Get-AzDataProtectionJob.md)
 Gets a job with id in a backup vault

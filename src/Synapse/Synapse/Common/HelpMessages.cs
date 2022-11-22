@@ -497,6 +497,10 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string EncryptionKeyIdentifier = "Key identifier should be in the format of: https://{keyvaultname}.vault.azure.net/keys/{keyname}.";
 
+        public const string UserAssignedIdentityInEncryption = "User assigned identity resource Id used in Workspace Encryption";
+
+        public const string UseSystemAssignedIdentityInEncryption = "specifying whether to use system assigned identity in Workspace Encryption or not";
+
         public const string WorkspaceKeyName = "The name of the workspace key.";
 
         public const string WorkspaceItemType = "The workspace item type.";

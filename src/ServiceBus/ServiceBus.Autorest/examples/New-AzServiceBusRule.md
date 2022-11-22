@@ -59,5 +59,5 @@ SqlFilterCompatibilityLevel            : 20
 SqlFilterRequiresPreprocessing         :
 ```
 
-Create a sql filter `myRule` in ServiceBus subscription `mySubscription`.
+Create a sql filter `mySqlRule` in ServiceBus subscription `mySubscription`.
 

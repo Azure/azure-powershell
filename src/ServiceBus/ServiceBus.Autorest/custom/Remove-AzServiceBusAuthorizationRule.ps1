@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Removes an ServiceBus Namespace, Queue or Topic Authorization Rule
+Removes the Authorization Rule of a ServiceBus Namespace, Queue or Topic
 .Description
-Removes an ServiceBus Namespace, Queue or Topic Authorization Rule
+Removes the Authorization Rule of a ServiceBus Namespace, Queue or Topic
 #>
 
 function Remove-AzServiceBusAuthorizationRule{

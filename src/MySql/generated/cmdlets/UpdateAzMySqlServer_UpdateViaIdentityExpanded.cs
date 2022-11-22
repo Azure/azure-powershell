@@ -36,6 +36,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Parameters allowed to update for a server.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParameters _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ServerUpdateParameters();
+
         /// <summary>The password of the administrator login.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The password of the administrator login.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MySql.ParameterCategory.Body)]
@@ -45,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         Description = @"The password of the administrator login.",
         SerializedName = @"administratorLoginPassword",
         PossibleTypes = new [] { typeof(System.Security.SecureString) })]
-        public System.Security.SecureString AdministratorLoginPassword { get => ParametersBody.AdministratorLoginPassword ?? null; set => ParametersBody.AdministratorLoginPassword = value; }
+        public System.Security.SecureString AdministratorLoginPassword { get => _parametersBody.AdministratorLoginPassword ?? null; set => _parametersBody.AdministratorLoginPassword = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -94,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.IdentityType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.IdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.IdentityType IdentityType { get => ParametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.IdentityType)""); set => ParametersBody.IdentityType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.IdentityType IdentityType { get => _parametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.IdentityType)""); set => _parametersBody.IdentityType = value; }
 
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity _inputObject;
@@ -108,11 +111,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Enforce a minimal Tls version for the server.</summary>
@@ -125,7 +128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         SerializedName = @"minimalTlsVersion",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum MinimalTlsVersion { get => ParametersBody.MinimalTlsVersion ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum)""); set => ParametersBody.MinimalTlsVersion = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum MinimalTlsVersion { get => _parametersBody.MinimalTlsVersion ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum)""); set => _parametersBody.MinimalTlsVersion = value; }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -134,12 +137,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MySql.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
-
-        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParameters _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ServerUpdateParameters();
-
-        /// <summary>Parameters allowed to update for a server.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParameters ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.HttpPipeline" /> that the remote call will use.
@@ -175,7 +172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PublicNetworkAccessEnum) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PublicNetworkAccessEnum))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PublicNetworkAccessEnum PublicNetworkAccess { get => ParametersBody.PublicNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PublicNetworkAccessEnum)""); set => ParametersBody.PublicNetworkAccess = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PublicNetworkAccessEnum PublicNetworkAccess { get => _parametersBody.PublicNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PublicNetworkAccessEnum)""); set => _parametersBody.PublicNetworkAccess = value; }
 
         /// <summary>The replication role of the server.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The replication role of the server.")]
@@ -186,7 +183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         Description = @"The replication role of the server.",
         SerializedName = @"replicationRole",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReplicationRole { get => ParametersBody.ReplicationRole ?? null; set => ParametersBody.ReplicationRole = value; }
+        public string ReplicationRole { get => _parametersBody.ReplicationRole ?? null; set => _parametersBody.ReplicationRole = value; }
 
         /// <summary>The scale up/out capacity, representing server's compute units.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The scale up/out capacity, representing server's compute units.")]
@@ -197,7 +194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         Description = @"The scale up/out capacity, representing server's compute units.",
         SerializedName = @"capacity",
         PossibleTypes = new [] { typeof(int) })]
-        public int SkuCapacity { get => ParametersBody.SkuCapacity ?? default(int); set => ParametersBody.SkuCapacity = value; }
+        public int SkuCapacity { get => _parametersBody.SkuCapacity ?? default(int); set => _parametersBody.SkuCapacity = value; }
 
         /// <summary>The family of hardware.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The family of hardware.")]
@@ -208,7 +205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         Description = @"The family of hardware.",
         SerializedName = @"family",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuFamily { get => ParametersBody.SkuFamily ?? null; set => ParametersBody.SkuFamily = value; }
+        public string SkuFamily { get => _parametersBody.SkuFamily ?? null; set => _parametersBody.SkuFamily = value; }
 
         /// <summary>
         /// The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
@@ -221,7 +218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         Description = @"The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuName { get => ParametersBody.SkuName ?? null; set => ParametersBody.SkuName = value; }
+        public string SkuName { get => _parametersBody.SkuName ?? null; set => _parametersBody.SkuName = value; }
 
         /// <summary>The size code, to be interpreted by resource as appropriate.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The size code, to be interpreted by resource as appropriate.")]
@@ -232,7 +229,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         Description = @"The size code, to be interpreted by resource as appropriate.",
         SerializedName = @"size",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuSize { get => ParametersBody.SkuSize ?? null; set => ParametersBody.SkuSize = value; }
+        public string SkuSize { get => _parametersBody.SkuSize ?? null; set => _parametersBody.SkuSize = value; }
 
         /// <summary>The tier of the particular SKU, e.g. Basic.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The tier of the particular SKU, e.g. Basic.")]
@@ -244,7 +241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier SkuTier { get => ParametersBody.SkuTier ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier)""); set => ParametersBody.SkuTier = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier SkuTier { get => _parametersBody.SkuTier ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier)""); set => _parametersBody.SkuTier = value; }
 
         /// <summary>Enable ssl enforcement or not when connect to server.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable ssl enforcement or not when connect to server.")]
@@ -256,7 +253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         SerializedName = @"sslEnforcement",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum SslEnforcement { get => ParametersBody.SslEnforcement ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum)""); set => ParametersBody.SslEnforcement = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum SslEnforcement { get => _parametersBody.SslEnforcement ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum)""); set => _parametersBody.SslEnforcement = value; }
 
         /// <summary>Backup retention days for the server. Day count is between 7 and 35.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Backup retention days for the server. Day count is between 7 and 35.")]
@@ -268,7 +265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         SerializedName = @"backupRetentionDays",
         PossibleTypes = new [] { typeof(int) })]
         [System.Management.Automation.ValidateRangeAttribute(7,35)]
-        public int StorageProfileBackupRetentionDay { get => ParametersBody.StorageProfileBackupRetentionDay ?? default(int); set => ParametersBody.StorageProfileBackupRetentionDay = value; }
+        public int StorageProfileBackupRetentionDay { get => _parametersBody.StorageProfileBackupRetentionDay ?? default(int); set => _parametersBody.StorageProfileBackupRetentionDay = value; }
 
         /// <summary>Enable Geo-redundant or not for server backup.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable Geo-redundant or not for server backup.")]
@@ -280,7 +277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         SerializedName = @"geoRedundantBackup",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.GeoRedundantBackup) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.GeoRedundantBackup))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.GeoRedundantBackup StorageProfileGeoRedundantBackup { get => ParametersBody.StorageProfileGeoRedundantBackup ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.GeoRedundantBackup)""); set => ParametersBody.StorageProfileGeoRedundantBackup = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.GeoRedundantBackup StorageProfileGeoRedundantBackup { get => _parametersBody.StorageProfileGeoRedundantBackup ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.GeoRedundantBackup)""); set => _parametersBody.StorageProfileGeoRedundantBackup = value; }
 
         /// <summary>Enable Storage Auto Grow.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable Storage Auto Grow.")]
@@ -292,7 +289,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         SerializedName = @"storageAutogrow",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow StorageProfileStorageAutogrow { get => ParametersBody.StorageProfileStorageAutogrow ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow)""); set => ParametersBody.StorageProfileStorageAutogrow = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow StorageProfileStorageAutogrow { get => _parametersBody.StorageProfileStorageAutogrow ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow)""); set => _parametersBody.StorageProfileStorageAutogrow = value; }
 
         /// <summary>Max storage allowed for a server.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Max storage allowed for a server.")]
@@ -303,7 +300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         Description = @"Max storage allowed for a server.",
         SerializedName = @"storageMB",
         PossibleTypes = new [] { typeof(int) })]
-        public int StorageProfileStorageMb { get => ParametersBody.StorageProfileStorageMb ?? default(int); set => ParametersBody.StorageProfileStorageMb = value; }
+        public int StorageProfileStorageMb { get => _parametersBody.StorageProfileStorageMb ?? default(int); set => _parametersBody.StorageProfileStorageMb = value; }
 
         /// <summary>Application-specific metadata in the form of key-value pairs.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -315,7 +312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         Description = @"Application-specific metadata in the form of key-value pairs.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParametersTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParametersTags Tag { get => ParametersBody.Tag ?? null /* object */; set => ParametersBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParametersTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>The version of a server.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of a server.")]
@@ -327,15 +324,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion Version { get => ParametersBody.Version ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion)""); set => ParametersBody.Version = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion Version { get => _parametersBody.Version ?? ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion)""); set => _parametersBody.Version = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ICloudError</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -346,8 +343,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer">Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -358,6 +355,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.MySql.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -383,14 +385,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.ParametersBody = this.ParametersBody;
+            clone._parametersBody = this._parametersBody;
             return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -523,7 +525,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.MySql.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -540,7 +541,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.ServersUpdateViaIdentity(InputObject.Id, ParametersBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.ServersUpdateViaIdentity(InputObject.Id, _parametersBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -557,13 +558,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ServerName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.ServersUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ServerName ?? null, ParametersBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.ServersUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ServerName ?? null, _parametersBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=ParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_parametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -594,8 +595,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ICloudError</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -617,14 +618,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -634,8 +635,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer">Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

@@ -19,16 +19,6 @@ namespace Microsoft.Azure.Commands.Insights.TransitionalClasses
 {
     static class TransitionHelpers
     {
-        static public ActivityLogAlertLeafCondition ToMirrorNamespace(Management.Monitor.Management.Models.ActivityLogAlertLeafCondition leafCondition)
-        {
-            return leafCondition as ActivityLogAlertLeafCondition;
-        }
-
-        static public Management.Monitor.Management.Models.ActivityLogAlertLeafCondition ToMirrorNamespace(ActivityLogAlertLeafCondition leafCondition)
-        {
-            return new Management.Monitor.Management.Models.ActivityLogAlertLeafCondition(leafCondition);
-        }
-
         static public RuleAction ToMirrorNamespace(Management.Monitor.Management.Models.RuleAction ruleAction)
         {
             var emailAction = ruleAction as Management.Monitor.Management.Models.RuleEmailAction;

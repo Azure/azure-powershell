@@ -60,7 +60,7 @@ The Event Hub name
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: EventHub
+Aliases:
 
 Required: True
 Position: Named
@@ -106,7 +106,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Creates an Service Bus Namespace, Queue, Topic Authorization Rule
+Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 .Description
-Creates an Service Bus Namespace, Queue, Topic Authorization Rule
+Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 #>
 
 function New-AzServiceBusAuthorizationRule{
