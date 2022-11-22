@@ -1,0 +1,7 @@
+"Module","Severity","ResourceType","SubResourceType","Command","Description"
+"Az.Monitor","1","Microsoft.Monitor","components","Get-AzApplicationInsights","Doc url is expect: https://learn.microsoft.com/powershell/module/az.monitor/get-azapplicationinsights but get: https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights"
+"Az.Monitor","2","Microsoft.Monitor","components","Get-AzApplicationInsights","The path /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.insights/components/{name} doesn't contains the right resource tpye: Microsoft.Monitor"
+"Az.Monitor","1","Microsoft.Monitor","components","Get-AzApplicationInsights","Cmdlet Get-AzApplicationInsights is not contained in Az.Monitor."
+"Az.Monitor","1","Microsoft.Monitor","components","Remove-AzApplicationInsights","Doc url is expect: https://learn.microsoft.com/powershell/module/az.monitor/remove-azapplicationinsights but get: https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsights"
+"Az.Monitor","2","Microsoft.Monitor","components","Remove-AzApplicationInsights","The path /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.insights/components/{name} doesn't contains the right resource tpye: Microsoft.Monitor"
+"Az.Monitor","1","Microsoft.Monitor","components","Remove-AzApplicationInsights","Cmdlet Remove-AzApplicationInsights is not contained in Az.Monitor."
