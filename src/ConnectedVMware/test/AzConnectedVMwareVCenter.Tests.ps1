@@ -1,4 +1,4 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedVMwareVCenter'))
+if(($null -eq $TestName) -or ($TestName -contains 'AzConnectedVMwareVCenter'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
