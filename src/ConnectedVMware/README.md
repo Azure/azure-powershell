@@ -62,10 +62,9 @@ directive:
     remove: true
   # Remove the set-* cmdlet
   - where:
-    verb: Set
+      verb: Set
     remove: true
   - where:
-      verb: Get|Remove               # Get-AzConnectedVMwarevSphereHybridIdentityMetadata
       subject: HybridIdentityMetadata
     remove: true
   # Rename Invoke-AzConnectedVMwareAssessVirtualMachinePatch to Invoke-AzConnectedVMwareVirtualMachineAssessPatch

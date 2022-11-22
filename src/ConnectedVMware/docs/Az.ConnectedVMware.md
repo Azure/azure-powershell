@@ -23,9 +23,6 @@ Implements GuestAgent GET method.
 ### [Get-AzConnectedVMwareHost](Get-AzConnectedVMwareHost.md)
 Implements host GET method.
 
-### [Get-AzConnectedVMwareHybridIdentityMetadata](Get-AzConnectedVMwareHybridIdentityMetadata.md)
-Implements HybridIdentityMetadata GET method.
-
 ### [Get-AzConnectedVMwareInventoryItem](Get-AzConnectedVMwareInventoryItem.md)
 Implements InventoryItem GET method.
 
@@ -65,9 +62,6 @@ Create Or Update GuestAgent.
 ### [New-AzConnectedVMwareHost](New-AzConnectedVMwareHost.md)
 Create Or Update host.
 
-### [New-AzConnectedVMwareHybridIdentityMetadata](New-AzConnectedVMwareHybridIdentityMetadata.md)
-Create Or Update HybridIdentityMetadata.
-
 ### [New-AzConnectedVMwareInventoryItem](New-AzConnectedVMwareInventoryItem.md)
 Create Or Update InventoryItem.
 
@@ -100,9 +94,6 @@ Implements GuestAgent DELETE method.
 
 ### [Remove-AzConnectedVMwareHost](Remove-AzConnectedVMwareHost.md)
 Implements host DELETE method.
-
-### [Remove-AzConnectedVMwareHybridIdentityMetadata](Remove-AzConnectedVMwareHybridIdentityMetadata.md)
-Implements HybridIdentityMetadata DELETE method.
 
 ### [Remove-AzConnectedVMwareInventoryItem](Remove-AzConnectedVMwareInventoryItem.md)
 Implements inventoryItem DELETE method.
