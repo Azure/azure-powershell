@@ -20,7 +20,12 @@ Patches a Container App using JSON Merge Patch
 .Description
 Patches a Container App using JSON Merge Patch
 .Example
-Update-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
+$secretObject = Get-AzContainerAppSecret -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
+$newSecretObject = @(0..($secretObject.Count-1))
+[array]::copy($secretObject,$newSecretObject,$secretObject.Count)
+$secretObject += New-AzContainerAppSecretObject -Name "yourkey" -Value "yourvalue"
+
+Update-AzContainerApp -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -ConfigurationSecret $secretObject -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -118,7 +123,7 @@ TEMPLATEVOLUME <IVolume[]>: List of volume definitions for the Container App.
   [StorageName <String>]: Name of storage resource. No need to provide for EmptyDir.
   [StorageType <StorageType?>]: Storage type for the volume. If not provided, use EmptyDir.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/update-azcontainerapp
+https://learn.microsoft.com/powershell/module/az.app/update-azcontainerapp
 #>
 function Update-AzContainerApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp])]

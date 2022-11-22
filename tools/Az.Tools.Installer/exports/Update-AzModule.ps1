@@ -32,7 +32,7 @@ function Update-AzModule {
         [string[]]
         ${Name},
 
-        [Parameter(HelpMessage = 'The Registered Repostory.')]
+        [Parameter(HelpMessage = 'The Registered Repository to install module from. If only one repository is registered in PowerShell, Update-AzModule will use it. If more than one, please specify the Repository.')]
         [ValidateNotNullOrEmpty()]
         [string]
         ${Repository},
