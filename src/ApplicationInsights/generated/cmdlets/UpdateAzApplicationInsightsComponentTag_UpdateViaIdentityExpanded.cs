@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         /// <summary>
         /// A container holding only the Tags for a resource, allowing the user to update the tags on a WebTest instance.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.ITagsResource _componentTagsBody = new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.TagsResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.ITagsResource _componentTagsBody = new Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.TagsResource();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -119,8 +119,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.ITagsResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20180501Preview.ITagsResourceTags Tag { get => _componentTagsBody.Tag ?? null /* object */; set => _componentTagsBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.ITagsResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.ITagsResourceTags Tag { get => _componentTagsBody.Tag ?? null /* object */; set => _componentTagsBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

@@ -140,6 +140,11 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public bool? EnableAutoScaling { get; set; }
 
         /// <summary>
+        /// Gets or sets mode for agent pool System or User
+        /// </summary>
+        public string Mode { get; set; }
+
+        /// <summary>
         /// Gets or sets agentPoolType represents types of an node pool.
         /// Possible values include: 'VirtualMachineScaleSets',
         /// 'AvailabilitySet'
