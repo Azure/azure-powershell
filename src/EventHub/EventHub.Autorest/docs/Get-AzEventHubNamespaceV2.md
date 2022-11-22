@@ -50,7 +50,7 @@ ClusterArmId                    :
 CreatedAt                       : 11/17/2022 3:14:09 PM
 DisableLocalAuth                : True
 EnableAutoInflate               : True
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.EventHub/namespaces/myNamespace
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
 IdentityType                    :
 KafkaEnabled                    : True
 KeySource                       :

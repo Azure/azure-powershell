@@ -64,10 +64,15 @@ function New-AzEventHubNamespaceV2{
         [System.Management.Automation.SwitchParameter]
         ${RequireInfrastructureEncryption},
 
-        [Parameter(HelpMessage = "Cluster ARM ID of the Namespace.")]
+        [Parameter(Mandatory, HelpMessage = "Cluster ARM ID of the Namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
         ${Location},
+
+        [Parameter(HelpMessage = "Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        ${ZoneRedundant},
 
         [Parameter(HelpMessage = "Properties to configure Encryption")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -81,19 +86,14 @@ function New-AzEventHubNamespaceV2{
 
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [System.Collections.Hashtable]
+        [System.String[]]
         # IdentityId
-        ${UserAssignedIdentity},
+        ${UserAssignedIdentityId},
 
         [Parameter(HelpMessage = "Value that indicates whether AutoInflate is enabled for eventhub namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         ${EnableAutoInflate},
-
-        [Parameter(HelpMessage = "Value that indicates whether Kafka is enabled for eventhub namespace.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        ${KafkaEnabled},
 
         [Parameter(HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -194,7 +194,19 @@ function New-AzEventHubNamespaceV2{
             if($PSBoundParameters.ContainsKey('KeyVaultProperty')){
                 $PSBoundParameters.Add('KeySource', 'Microsoft.KeyVault')
             }
-            if ($PSCmdlet.ShouldProcess("EventHubNamespace $($Name)", "Create or update")) {
+            if ($PSCmdlet.ShouldProcess("EventHub Namespace $($Name)", "Create or update")) {
+                
+                if($PSBoundParameters.ContainsKey('UserAssignedIdentityId')){
+                    $identityHashTable = @{}
+
+			        foreach ($resourceID in $UserAssignedIdentity){
+				        $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
+			        }
+
+                    $PSBoundParameters.Add("UserAssignedIdentity", $identityHashTable)
+                    $null = $PSBoundParameters.Remove("UserAssignedIdentityId")
+                }
+
                 Az.EventHub.private\New-AzEventHubNamespaceV2_CreateExpanded @PSBoundParameters
             }
 		}

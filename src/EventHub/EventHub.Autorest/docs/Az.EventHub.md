@@ -95,9 +95,6 @@ Creates an EventHub Namespace
 ### [New-AzEventHubThrottlingPolicyConfig](New-AzEventHubThrottlingPolicyConfig.md)
 Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup
 
-### [New-AzEventHubUserAssignedIdentityObject](New-AzEventHubUserAssignedIdentityObject.md)
-Constructs a Powershell Hashtable with resource id of the Managed Identity as key and an empty object as value
-
 ### [New-AzEventHubVirtualNetworkRuleConfig](New-AzEventHubVirtualNetworkRuleConfig.md)
 Constructs an INwRuleSetVirtualNetworkRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
 

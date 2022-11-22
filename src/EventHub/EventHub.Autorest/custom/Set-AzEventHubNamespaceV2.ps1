@@ -78,19 +78,14 @@ function Set-AzEventHubNamespaceV2{
 
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [System.Collections.Hashtable]
+        [System.String[]]
         # IdentityId
-        ${UserAssignedIdentity},
+        ${UserAssignedIdentityId},
 
         [Parameter(HelpMessage = "Value that indicates whether AutoInflate is enabled for eventhub namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         ${EnableAutoInflate},
-
-        [Parameter(HelpMessage = "Value that indicates whether Kafka is enabled for eventhub namespace.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        ${KafkaEnabled},
 
         [Parameter(HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -182,10 +177,9 @@ function Set-AzEventHubNamespaceV2{
             $hasAlternateName = $PSBoundParameters.Remove('AlternateName')
             $hasDisableLocalAuth = $PSBoundParameters.Remove('DisableLocalAuth')
             $hasKeyVaultProperty = $PSBoundParameters.Remove('KeyVaultProperty')
-            $hasUserAssignedIdentity = $PSBoundParameters.Remove('UserAssignedIdentity')
+            $hasUserAssignedIdentityId = $PSBoundParameters.Remove('UserAssignedIdentityId')
             $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
             $hasEnableAutoInflate = $PSBoundParameters.Remove('EnableAutoInflate')
-            $hasKafkaEnabled = $PSBoundParameters.Remove('KafkaEnabled')
             $hasMaximumThroughputUnits = $PSBoundParameters.Remove('MaximumThroughputUnits')
             $hasMinimumTlsVersion = $PSBoundParameters.Remove('MinimumTlsVersion')
             $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption') 
@@ -218,17 +212,20 @@ function Set-AzEventHubNamespaceV2{
             if ($hasIdentityType) {
                 $eventHubNamespace.IdentityType = $IdentityType
             }
-            if($RequireInfrastructureEncryption){
+            if ($RequireInfrastructureEncryption){
                 $eventHubNamespace.RequireInfrastructureEncryption = $RequireInfrastructureEncryption
             }
-            if ($hasUserAssignedIdentity) {
-                $eventHubNamespace.UserAssignedIdentity = $UserAssignedIdentity
+            if ($hasUserAssignedIdentityId) {
+                $identityHashTable = @{}
+
+			    foreach ($resourceID in $UserAssignedIdentityId){
+				    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
+			    }
+
+                $eventHubNamespace.UserAssignedIdentity = $identityHashTable
             }
             if ($hasEnableAutoInflate) {
                 $eventHubNamespace.EnableAutoInflate = $EnableAutoInflate
-            }
-            if ($hasKafkaEnabled) {
-                $eventHubNamespace.KafkaEnabled = $KafkaEnabled
             }
             if ($hasMaximumThroughputUnits) {
                 $eventHubNamespace.MaximumThroughputUnits = $MaximumThroughputUnits

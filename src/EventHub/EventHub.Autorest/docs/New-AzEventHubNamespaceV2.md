@@ -13,12 +13,12 @@ Creates an EventHub Namespace
 ## SYNTAX
 
 ```
-New-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AlternateName <String>] [-ClusterArmId <String>] [-DisableLocalAuth] [-EnableAutoInflate]
- [-IdentityType <ManagedServiceIdentityType>] [-KafkaEnabled] [-KeyVaultProperty <IKeyVaultProperties[]>]
- [-Location <String>] [-MaximumThroughputUnits <Int64>] [-MinimumTlsVersion <String>]
+New-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-AlternateName <String>] [-ClusterArmId <String>] [-DisableLocalAuth]
+ [-EnableAutoInflate] [-IdentityType <ManagedServiceIdentityType>] [-KafkaEnabled]
+ [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnits <Int64>] [-MinimumTlsVersion <String>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int64>]
- [-SkuName <SkuName>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>]
+ [-SkuName <SkuName>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -328,7 +328,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -491,11 +491,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UserAssignedIdentity
+### -UserAssignedIdentityId
 Properties for User Assigned Identities
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

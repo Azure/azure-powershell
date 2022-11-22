@@ -16,21 +16,21 @@ Updates an EventHub Namespace
 ```
 Set-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AlternateName <String>] [-DisableLocalAuth] [-EnableAutoInflate]
- [-IdentityType <ManagedServiceIdentityType>] [-KafkaEnabled] [-KeyVaultProperty <IKeyVaultProperties[]>]
+ [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
  [-MaximumThroughputUnits <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHubNamespaceV2 -InputObject <IEventHubIdentity> [-AlternateName <String>] [-DisableLocalAuth]
- [-EnableAutoInflate] [-IdentityType <ManagedServiceIdentityType>] [-KafkaEnabled]
- [-KeyVaultProperty <IKeyVaultProperties[]>] [-MaximumThroughputUnits <Int32>] [-MinimumTlsVersion <String>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-EnableAutoInflate] [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
+ [-MaximumThroughputUnits <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
+ [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -403,21 +403,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -KafkaEnabled
-Value that indicates whether Kafka is enabled for eventhub namespace.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -KeyVaultProperty
 Properties to configure Encryption
 To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
@@ -574,11 +559,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UserAssignedIdentity
+### -UserAssignedIdentityId
 Properties for User Assigned Identities
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
