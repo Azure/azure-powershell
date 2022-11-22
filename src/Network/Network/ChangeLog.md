@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added a new cmdlet to get the application gateway waf manifest and rules
+    - `Get-AzApplicationGatewayWafDynamicManifest`
 * Added a new endpoint swtich `AzureArcVM` in Networkwatcher ConnectionMonitor
     - `New-AzNetworkWatcherConnectionMonitor`
 * Updated commandlet to support bypassing the ExpressRoute gateway when accessing private-links.
