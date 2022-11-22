@@ -196,6 +196,8 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzCosmosDBMongoDBUserDefinition',
                'Get-AzCosmosDBMongoDBUserDefinition',
                'Remove-AzCosmosDBMongoDBUserDefinition'
+               'Get-AzCosmosDBService', 'New-AzCosmosDBService',
+               'Remove-AzCosmosDBService'
 
 # Variables to export from this module
 # VariablesToExport = @()
