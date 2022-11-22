@@ -192,7 +192,6 @@ function Set-AzEventHubNamespaceV2{
             $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
             $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
             $hasTag = $PSBoundParameters.Remove('Tag')
-            $hasDefaultProfile = $PSBoundParameters.Remove('DefaultProfile')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
@@ -205,9 +204,6 @@ function Set-AzEventHubNamespaceV2{
             $null = $PSBoundParameters.Remove('NamespaceName')
             $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('SubscriptionId')
-            if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
-            }
 
             if ($hasAlternateName) {
                 $eventHubNamespace.AlternateName = $AlternateName
@@ -249,8 +245,8 @@ function Set-AzEventHubNamespaceV2{
             if ($hasTag) {
                 $eventHubNamespace.Tag = $Tag
             }
-            if ($hasDefaultProfile) {
-                $eventHubNamespace.DefaultProfile = $DefaultProfile
+            if ($hasAsJob) {
+                $PSBoundParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("EventHubNamespace $($eventHubNamespace.Name)", "Create or update")) {
