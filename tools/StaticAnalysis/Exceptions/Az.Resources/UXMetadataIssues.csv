@@ -1,0 +1,5 @@
+"Module","Severity","ResourceType","SubResourceType","Command","Description"
+"Az.Resources","1","Microsoft.Resources","subscriptions","Get-AzSubscription","Doc url is expect: https://learn.microsoft.com/powershell/module/az.resources/get-azsubscription but get: https://learn.microsoft.com/powershell/module/az.accounts/get-azsubscription"
+"Az.Resources","1","Microsoft.Resources","subscriptions","Get-AzSubscription","Cmdlet Get-AzSubscription is not contained in Az.Resources."
+"Az.Resources","2","Microsoft.Resources","subscriptionsResourcegroups","Get-AzResourceGroup","The path /subscriptions/{subscriptionId}/resourceGroups/{name} doesn't contains the right resource tpye: Microsoft.Resources"
+"Az.Resources","2","Microsoft.Resources","subscriptionsResourcegroups","Remove-AzResourceGroup","The path /subscriptions/{subscriptionId}/resourceGroups/{name} doesn't contains the right resource tpye: Microsoft.Resources"
