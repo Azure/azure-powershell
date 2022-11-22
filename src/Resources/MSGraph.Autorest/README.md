@@ -192,7 +192,10 @@ directive:
   - where:
       subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|GroupGraphRefMember$|grouprefmember$
     hide: true
-
+  - where:
+      subject: organization
+      verb: New
+    hide: true
   - where:
       subject: ^group$
       verb: ^Update$
