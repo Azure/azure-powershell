@@ -169,7 +169,7 @@ components:
   schemas:
     microsoft.graph.orgContact:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: orgContact
           type: object
           properties:
@@ -224,19 +224,19 @@ components:
             directReports:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               x-ms-navigationProperty: true
             manager:
-              $ref: '#/components/schemas/microsoft.graph.directoryObject'
+              $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
             memberOf:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               x-ms-navigationProperty: true
             transitiveMemberOf:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               x-ms-navigationProperty: true
           additionalProperties:
             type: object
@@ -256,7 +256,7 @@ components:
             type: object
     microsoft.graph.extensionProperty:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: extensionProperty
           type: object
           properties:
@@ -283,7 +283,7 @@ components:
             type: object
     microsoft.graph.contract:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: contract
           type: object
           properties:
@@ -309,7 +309,7 @@ components:
             type: object
     microsoft.graph.device:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: device
           type: object
           properties:
@@ -404,25 +404,25 @@ components:
             memberOf:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               description: Groups and administrative units that this device is a member of. Read-only. Nullable. Supports $expand.
               x-ms-navigationProperty: true
             registeredOwners:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               description: 'The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Currently, there can be only one owner. Read-only. Nullable. Supports $expand.'
               x-ms-navigationProperty: true
             registeredUsers:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               description: 'Collection of registered users of the device. For cloud joined devices and registered personal devices, registered users are set to the same value as registered owners at the time of registration. Read-only. Nullable. Supports $expand.'
               x-ms-navigationProperty: true
             transitiveMemberOf:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               description: Groups and administrative units that the device is a member of. This operation is transitive. Supports $expand.
               x-ms-navigationProperty: true
             extensions:
@@ -455,7 +455,7 @@ components:
             deletedItems:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               description: Recently deleted items. Read-only. Nullable.
               x-ms-navigationProperty: true
             federationConfigurations:
@@ -468,7 +468,7 @@ components:
             type: object
     microsoft.graph.administrativeUnit:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: administrativeUnit
           type: object
           properties:
@@ -487,7 +487,7 @@ components:
             members:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               description: Users and groups that are members of this administrative unit. Supports $expand.
               x-ms-navigationProperty: true
             scopedRoleMembers:
@@ -534,7 +534,7 @@ components:
             type: object
     microsoft.graph.directoryRole:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: directoryRole
           type: object
           properties:
@@ -553,7 +553,7 @@ components:
             members:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               description: 'Users that are members of this directory role. HTTP Methods: GET, POST, DELETE. Read-only. Nullable. Supports $expand.'
               x-ms-navigationProperty: true
             scopedMembers:
@@ -566,7 +566,7 @@ components:
             type: object
     microsoft.graph.directoryRoleTemplate:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: directoryRoleTemplate
           type: object
           properties:
@@ -638,7 +638,7 @@ components:
             domainNameReferences:
               type: array
               items:
-                $ref: '#/components/schemas/microsoft.graph.directoryObject'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
               description: 'The objects such as users and groups that reference the domain ID. Read-only, Nullable. Supports $expand and $filter by the OData type of objects returned. For example /domains/{domainId}/domainNameReferences/microsoft.graph.user and /domains/{domainId}/domainNameReferences/microsoft.graph.group.'
               x-ms-navigationProperty: true
             federationConfiguration:
@@ -720,7 +720,7 @@ components:
             type: object
     microsoft.graph.organization:
       allOf:
-        - $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         - title: organization
           type: object
           properties:
@@ -1351,7 +1351,7 @@ components:
         value:
           type: array
           items:
-            $ref: '#/components/schemas/microsoft.graph.directoryObject'
+            $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
         '@odata.nextLink':
           type: string
           nullable: true
