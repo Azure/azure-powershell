@@ -29,53 +29,73 @@ function assertNamespaceUpdates{
     $expectedNamespace.DisableLocalAuth | Should -Be $namespace.DisableLocalAuth
     $expectedNamespace.Tag.Count | Should -Be $namespace.Tag.Count
     $expectedNamespace.PublicNetworkAccess | Should -Be $namespace.PublicNetworkAccess
+    $expectedNamespace.AlternateName | Should -Be $namespace.AlternateName
+    $expectedNamespace.IdentityType | Should -Be $namespace.IdentityType
+    $expectedNamespace.RequireInfrastructureEncryption | Should -Be $namespace.RequireInfrastructureEncryption
+
+    if ($expectedNamespace.UserAssignedIdentity -ne $null){
+        $expectedNamespace.UserAssignedIdentity.Count | Should -Be $namespace.UserAssignedIdentity.Count
+    }
+    else{
+        $expectedNamespace.UserAssignedIdentity | Should -Be $null
+    }
+
+    if ($expectedNamespace.KeyVaultProperty -ne $null){
+        $expectedNamespace.KeyVaultProperty.Count | Should -Be $namespace.KeyVaultProperty.Count
+    }
+    else{
+        $expectedNamespace.KeyVaultProperty | Should -Be $null
+    }
 }
 
 Describe 'Set-AzEventHubNamespaceV2' {
     It 'SetExpanded' {
         # Add Encryption Config to NamespaceV5 which was created in New-AzEventHubNamespaceV2
-        $a = New-AzEventHubUserAssignedIdentityObject -IdentityId $env.msi1, $env.msi2
         $ec1 = New-AzEventHubKeyVaultPropertiesObject -KeyName key3 -KeyVaulturi $env.keyVaulturi -UserAssignedIdentity $env.msi1
-
         $eventhubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5
         $eventhubNamespace.KeyVaultProperty += $ec1
-
-        $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5 -KeyVaultProperty $eventhubNamespace.KeyVaultProperty
-        $eventhubNamespace.IdentityType | Should -Be "UserAssigned"
-        $eventhubNamespace.UserAssignedIdentity.Count | Should -Be 2
-        $eventhubNamespace.KeyVaultProperty.Count | Should -Be 3
-        $eventhubNamespace.Name | Should -Be $env.namespaceV5
+        $namespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5 -KeyVaultProperty $eventhubNamespace.KeyVaultProperty
+        $namespace.KeyVaultProperty.Count | Should -Be 3
+        assertNamespaceUpdates $eventhubNamespace $namespace
 
         # Add KeyVaultProperty to a namespace with System Assigned
+        $eventhubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName
         $ec1 = New-AzEventHubKeyVaultPropertiesObject -KeyName key1 -KeyVaulturi $env.keyVaulturi
         $ec2 = New-AzEventHubKeyVaultPropertiesObject -KeyName key2 -KeyVaulturi $env.keyVaulturi
-
-        $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -KeyVaultProperty $ec1,$ec2
-        $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
-        $eventhubNamespace.IdentityType | Should -Be "SystemAssigned"
+        $namespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -KeyVaultProperty $ec1,$ec2
+        $namespace.KeyVaultProperty.Count | Should -Be 2
+        $eventhubNamespace.KeyVaultProperty = $namespace.KeyVaultProperty
+        assertNamespaceUpdates $eventhubNamespace $namespace
 
         # Add KeyVaultProperty to a namespace with System Assigned identity
         $ec3 = New-AzEventHubKeyVaultPropertiesObject -KeyName key3 -KeyVaulturi $env.keyVaulturi
         $eventHubNamespace.KeyVaultProperty += $ec3
-        $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -KeyVaultProperty $eventhubNamespace.KeyVaultProperty
-        $eventHubNamespace.KeyVaultProperty.Count | Should -Be 3
+        $namespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -KeyVaultProperty $eventhubNamespace.KeyVaultProperty
+        $namespace.KeyVaultProperty.Count | Should -Be 3
+        assertNamespaceUpdates $eventHubNamespace $namespace
 
         # Remove KeyVaultProperty from namespace with SystemAssigned identity.
         $eventhubNamespace.KeyVaultProperty = $eventHubNamespace.KeyVaultProperty[0,2]
-        $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -KeyVaultProperty $eventhubNamespace.KeyVaultProperty
-        $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
-        $eventhubNamespace.IdentityType | Should -Be "SystemAssigned"
+        $namespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -KeyVaultProperty $eventhubNamespace.KeyVaultProperty
+        $namespace.KeyVaultProperty.Count | Should -Be 2
+        assertNamespaceUpdates $eventHubNamespace $namespace
 
         # Add UserAssigned Identity to above namespace to test for SystemAssigned and UserAssigned
+        $namespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentityId $env.msi1
+        $eventHubNamespace.IdentityType = "SystemAssigned, UserAssigned"
+        $eventhubNamespace.UserAssignedIdentity = $namespace.UserAssignedIdentity
+        assertNamespaceUpdates $eventHubNamespace $namespace
 
-        $identityHashTable = New-AzEventHubUserAssignedIdentityObject -IdentityId $env.msi1
-        $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentity $identityHashTable
-        $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
-        $eventhubNamespace.IdentityType | Should -Be "SystemAssigned, UserAssigned"
-        $eventhubNamespace.UserAssignedIdentity.Count | Should -Be 1
+        # Add another UserAssignedIdentity to the above namespace
+        $identityId = $eventHubNamespace.UserAssignedIdentity.Keys
+        $identityId += $env.msi2
+        $namespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -UserAssignedIdentityId $identityId
+        $namespace.UserAssignedIdentityId.Count | Should -Be 2
+        $eventHubNamespace.UserAssignedIdentityId = $identityId
+        assertNamespaceUpdates $eventHubNamespace $namespace
         
         # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None
-        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentity $identityHashTable
+        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId $env.msi1
         $eventHubNamespace.UserAssignedIdentity.Count | Should -Be 1
 
         $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -IdentityType None -UserAssignedIdentity:$null
