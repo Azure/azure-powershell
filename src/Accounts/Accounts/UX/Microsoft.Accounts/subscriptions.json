@@ -8,7 +8,7 @@
        {
           "name":"Get-AzSubscription",
           "description":"Get subscriptions that the current account can access.",
-          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/subscriptions",
+          "path":"/subscriptions/{subscriptionId}",
           "confirmation":false,
           "help":{
              "learnMore":{
@@ -17,8 +17,7 @@
              "parameterSets":[
                 {
                    "parameters":[
-                      "[[-ResourceGroupName] <System.String>]",
-                      "[[-TenantId] <String>]"
+                      "[[-SubscriptionId] <String>]"
                    ]
                 }
              ]
@@ -28,12 +27,8 @@
                 "description":"Get subscriptions that the current account can access.",
                 "parameters":[
                    {
-                      "name":"-ResourceGroupName",
-                      "value":"[path.resourceGroupName]"
-                   },
-                   {
-                      "name":"-TenantId",
-                      "value":"[path.TenantId]"
+                      "name":"-SubscriptionId",
+                      "value":"[path.subscriptionId]"
                    }
                 ]
              }
