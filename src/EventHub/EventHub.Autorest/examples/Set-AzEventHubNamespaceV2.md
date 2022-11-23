@@ -1,4 +1,81 @@
-### Example 1: Add a KeyVaultProperty to an existing EventHub Namespace
+### Example 1: Add a ManagedIdentity to an EventHub namespace
+```powershell
+$eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+
+$identityId = $eventHubNamespace.UserAssignedIdentity.Keys
+
+$identityId += "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
+
+Set-AzEventHubNamespaceV2 -InputObject $eventHubNamespace -UserAssignedIdentityId $identityId
+```
+
+```output
+AlternateName                   :
+ClusterArmId                    :
+CreatedAt                       : 11/17/2022 2:56:32 PM
+DisableLocalAuth                : False
+EnableAutoInflate               : False
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+IdentityType                    : UserAssigned
+KafkaEnabled                    : True
+KeySource                       : Microsoft.KeyVault
+KeyVaultProperty                : {{
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key1",
+                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVersion": ""
+                                  }, {
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key2",
+                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVersion": ""
+                                  }, {
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key3",
+                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVersion": ""
+                                  }}
+Location                        : North Europe
+MaximumThroughputUnits          : 0
+MetricId                        : {subscriptionId}:myNamespace
+MinimumTlsVersion               : 1.2
+Name                            : myNamespace
+PrincipalId                     :
+PrivateEndpointConnection       :
+ProvisioningState               : Succeeded
+PublicNetworkAccess             : Enabled
+RequireInfrastructureEncryption : False
+ResourceGroupName               : myResourceGroup
+ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
+SkuCapacity                     : 1
+SkuName                         : Premium
+SkuTier                         : Premium
+Status                          : Active
+Tag                             : {
+                                  }
+TenantId                        :
+Type                            : Microsoft.EventHub/Namespaces
+UpdatedAt                       : 11/17/2022 3:03:50 PM
+UserAssignedIdentity            : {
+                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
+                                    },
+                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity": {
+                                    }
+                                  }
+ZoneRedundant                   : True
+```
+
+The output type of New and Set cmdlets `IEhNamespace` has a property named `UserAssignedIdentity` which is a hashtable. The keys
+of this hastable are the resource ID's of the managed identities the namespace is part of. To add or remove an IdentityId, extract the 
+keys from the hashtable, which would result in an array of strings which can then be queried and fed as input to set cmdlet as shown above.
+
+### Example 2: Add a KeyVaultProperty to an existing EventHub Namespace
 ```powershell
 $eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 
@@ -73,7 +150,7 @@ ZoneRedundant                   : True
 
 Adds a new KeyVaultProperty to EventHub namespace `myNamespace`.
 
-### Example 2: Remove a KeyVaultProperty from an existing EventHub Namespace
+### Example 3: Remove a KeyVaultProperty from an existing EventHub Namespace
 ```powershell
 $eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 
@@ -140,7 +217,7 @@ ZoneRedundant                   : True
 
 Removes a new KeyVaultProperty to EventHub namespace `myNamespace`.
 
-### Example 3: Set DisableLocalAuth to true on an existing EventHub namespace
+### Example 4: Set DisableLocalAuth to true on an existing EventHub namespace
 ```powershell
 Set-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace -DisableLocalAuth
 ```
@@ -202,11 +279,10 @@ ZoneRedundant                   : True
 
 Sets `DisableLocalAuth` to true on an EventHub namespace `myNamespace`.
 
-### Example 4: # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None.
+### Example 5: # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None.
 ```powershell
-$a = New-AzEventHubUserAssignedIdentityObject -IdentityId /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity,/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity
-$eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentity $a
-$eventHubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -IdentityType None -UserAssignedIdentity:$null
+$eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$eventHubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -IdentityType None -UserAssignedIdentityId:$null
 ```
 
 ```output

@@ -28,7 +28,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventHubNamespace.DisableLocalAuth | Should -Be $false
         $eventHubNamespace.KafkaEnabled | Should be $true
 
-        $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuCapacity 10 -MaximumThroughputUnits 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth -KafkaEnabled -MinimumTlsVersion 1.1 -PublicNetworkAccess Disabled -ZoneRedundant
+        $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuCapacity 10 -MaximumThroughputUnits 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth -MinimumTlsVersion 1.1 -PublicNetworkAccess Disabled -ZoneRedundant
         $eventHubNamespace.Name | Should be $env.namespaceV3
         $eventHubNamespace.SkuCapacity | Should be 10
         $eventHubNamespace.SkuName | Should be Standard
