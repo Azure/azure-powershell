@@ -38,10 +38,9 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.Location | Should -Be "East Us"
 
         # Create namespace with UserAssigned Encryption Enabled
-        $a = New-AzServiceBusUserAssignedIdentityObject -IdentityId $env.msi1, $env.msi2
         $ec1 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key1 -KeyVaulturi $env.keyVaultUri -UserAssignedIdentity $env.msi1
         $ec2 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key2 -KeyVaulturi $env.keyVaultUri -UserAssignedIdentity $env.msi1
-        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentity $a -KeyVaultProperty $ec1,$ec2
+        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId $env.msi1,$env.msi2 -KeyVaultProperty $ec1,$ec2
         $serviceBusNamespace.IdentityType | Should -Be UserAssigned
         $serviceBusNamespace.SkuName | Should -Be Premium
         $serviceBusNamespace.SkuTier | Should -Be Premium
@@ -50,10 +49,9 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.UserAssignedIdentity.Count | Should -Be 2
 
         # Create namespace with UserAssigned Encryption Enabled and RequireInfrastructureEncryption true
-        $a = New-AzServiceBusUserAssignedIdentityObject -IdentityId $env.msi1, $env.msi2
         $ec1 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key1 -KeyVaulturi $env.keyVaultUri -UserAssignedIdentity $env.msi1
         $ec2 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key2 -KeyVaulturi $env.keyVaultUri -UserAssignedIdentity $env.msi1
-        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV9 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentity $a -KeyVaultProperty $ec1,$ec2 -RequireInfrastructureEncryption
+        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV9 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId $env.msi1,$env.msi2 -KeyVaultProperty $ec1,$ec2 -RequireInfrastructureEncryption
         $serviceBusNamespace.IdentityType | Should -Be UserAssigned
         $serviceBusNamespace.SkuName | Should -Be Premium
         $serviceBusNamespace.SkuTier | Should -Be Premium

@@ -70,10 +70,15 @@ function New-AzServiceBusNamespaceV2{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType]
         ${IdentityType},
 
+        [Parameter(HelpMessage = "Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        ${zoneRedundant},
+
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [System.Collections.Hashtable]
-        ${UserAssignedIdentity},
+        [System.String[]]
+        ${UserAssignedIdentityId},
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
@@ -171,6 +176,16 @@ function New-AzServiceBusNamespaceV2{
                 $PSBoundParameters.Add('KeySource', 'Microsoft.KeyVault')
             }
             if ($PSCmdlet.ShouldProcess("ServiceBusNamespace $($serviceBusNamespace.Name)", "Create or update")) {
+                if($PSBoundParameters.ContainsKey('UserAssignedIdentityId')){
+                    $identityHashTable = @{}
+
+			        foreach ($resourceID in $UserAssignedIdentityId){
+				        $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.UserAssignedIdentity]::new())
+			        }
+
+                    $PSBoundParameters.Add("UserAssignedIdentity", $identityHashTable)
+                    $null = $PSBoundParameters.Remove("UserAssignedIdentityId")
+                }
                 Az.ServiceBus.private\New-AzServiceBusNamespaceV2_CreateExpanded @PSBoundParameters
             }
 		}

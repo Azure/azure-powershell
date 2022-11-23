@@ -74,8 +74,8 @@ function Set-AzServiceBusNamespaceV2{
 
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [System.Collections.Hashtable]
-        ${UserAssignedIdentity},
+        [System.String[]]
+        ${UserAssignedIdentityId},
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
@@ -166,7 +166,7 @@ function Set-AzServiceBusNamespaceV2{
             $hasAlternateName = $PSBoundParameters.Remove('AlternateName')
             $hasDisableLocalAuth = $PSBoundParameters.Remove('DisableLocalAuth')
             $hasKeyVaultProperty = $PSBoundParameters.Remove('KeyVaultProperty')
-            $hasUserAssignedIdentity = $PSBoundParameters.Remove('UserAssignedIdentity')
+            $hasUserAssignedIdentityId = $PSBoundParameters.Remove('UserAssignedIdentityId')
             $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
             $hasMinimumTlsVersion = $PSBoundParameters.Remove('MinimumTlsVersion')
             $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption')
@@ -177,7 +177,6 @@ function Set-AzServiceBusNamespaceV2{
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
-            Write-Host @PSBoundParameters
             $serviceBusNamespace = Get-AzServiceBusNamespaceV2 @PSBoundParameters
 
             # 2. PUT
@@ -186,10 +185,6 @@ function Set-AzServiceBusNamespaceV2{
             $null = $PSBoundParameters.Remove('NamespaceName')
             $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('SubscriptionId')
-
-            if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
-            }
 
             if ($hasAlternateName) {
                 $serviceBusNamespace.AlternateName = $AlternateName
@@ -208,8 +203,14 @@ function Set-AzServiceBusNamespaceV2{
             if($hasRequireInfrastructureEncryption){
                 $serviceBusNamespace.RequireInfrastructureEncryption = $RequireInfrastructureEncryption
             }
-            if ($hasUserAssignedIdentity) {
-                $serviceBusNamespace.UserAssignedIdentity = $UserAssignedIdentity
+            if ($hasUserAssignedIdentityId) {
+                
+                $identityHashTable = @{}
+
+			    foreach ($resourceID in $UserAssignedIdentityId){
+				    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.UserAssignedIdentity]::new())
+			    }
+                $serviceBusNamespace.UserAssignedIdentity = $identityHashTable
             }
             if ($hasMinimumTlsVersion) {
                 $serviceBusNamespace.MinimumTlsVersion = $MinimumTlsVersion
@@ -223,8 +224,8 @@ function Set-AzServiceBusNamespaceV2{
             if ($hasTag) {
                 $serviceBusNamespace.Tag = $Tag
             }
-            if ($hasDefaultProfile) {
-                $serviceBusNamespace.DefaultProfile = $DefaultProfile
+            if ($hasAsJob) {
+                $PSBoundParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("ServiceBusNamespace $($serviceBusNamespace.Name)", "Create or update")) {

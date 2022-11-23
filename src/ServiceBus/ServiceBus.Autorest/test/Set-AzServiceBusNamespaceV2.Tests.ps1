@@ -29,7 +29,6 @@ function assertNamespaceUpdates{
 }
 Describe 'Set-AzServiceBusNamespaceV2' {
     It 'SetExpanded' {
-        $a = New-AzServiceBusUserAssignedIdentityObject -IdentityId $env.msi1, $env.msi2
         $ec5 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key4 -KeyVaulturi $env.keyVaulturi -UserAssignedIdentity $env.msi1
 
         $serviceBusNamespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5
@@ -57,16 +56,16 @@ Describe 'Set-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.IdentityType | Should -Be "SystemAssigned"
 
         # Add UserAssigned Identity to above namespace to test for SystemAssigned and UserAssigned
-        $serviceBusNamespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentity $a
+        $serviceBusNamespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentityId $env.msi1,$env.msi2
         $serviceBusNamespace.KeyVaultProperty.Count | Should -Be 2
         $serviceBusNamespace.IdentityType | Should -Be "SystemAssigned, UserAssigned"
         $serviceBusNamespace.UserAssignedIdentity.Count | Should -Be 2
         
         # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None
-        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentity $a
+        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId $env.msi1, $env.msi2
         $serviceBusNamespace.UserAssignedIdentity.Count | Should -Be 2
 
-        $serviceBusNamespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -IdentityType None -UserAssignedIdentity:$null
+        $serviceBusNamespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -IdentityType None -UserAssignedIdentityId:$null
         $serviceBusNamespace.IdentityType | Should -Be $null
     }
 
@@ -76,28 +75,29 @@ Describe 'Set-AzServiceBusNamespaceV2' {
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -MinimumTlsVersion 1.0
-        $namespace.MinimumTlsVersion | Should -Be '1.0'
         $expectedNamespace.MinimumTlsVersion = '1.0'
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -MinimumTlsVersion 1.2
-        $namespace.MinimumTlsVersion | Should -Be '1.2'
         $expectedNamespace.MinimumTlsVersion = '1.2'
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -DisableLocalAuth:$false
-        $namespace.DisableLocalAuth | Should -Be $false
         $expectedNamespace.DisableLocalAuth = $false
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -DisableLocalAuth
-        $namespace.DisableLocalAuth | Should -Be $true
         $expectedNamespace.DisableLocalAuth = $true
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $expectedNamespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV4 
         $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -SkuCapacity 16
         $expectedNamespace.SkuCapacity = 16
+        assertNamespaceUpdates $expectedNamespace $namespace
+
+        $expectedNamespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3
+        $namespace = Set-AzServiceBusNamespaceV2 -InputObject $expectedNamespace -PublicNetworkAccess Disabled
+        $expectedNamespace.PublicNetworkAccess = "Disabled"
         assertNamespaceUpdates $expectedNamespace $namespace
     }
 }
