@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.AutoMapper" Version="6.2.2" />
     <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="8.0.0-preview" />
   </ItemGroup>
 

@@ -51,7 +51,7 @@ This command retrieves the certificate named MyCert from the key vault named MyK
 
 ### Example 2: Back up a certificate to a specified file name
 ```powershell
-Backup-AzKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyCert' -OutputFile 'C:\Backup.blob'
+Backup-AzKeyVaultCertificate -VaultName 'MyKeyVault' -Name 'MyCert' -OutputFile 'C:\Backup.blob'
 ```
 
 ```output

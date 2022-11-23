@@ -24,75 +24,144 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 .Example
 New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location eastus
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
+  [AnnotationId <String>]: The unique annotation ID. This is unique within a Application Insights component.
+  [ComponentName <String>]: The name of the Application Insights component resource.
+  [ExportId <String>]: The Continuous Export configuration ID. This is unique within a Application Insights component.
+  [Id <String>]: Resource identity path
+  [KeyId <String>]: The API Key ID. This is unique within a Application Insights component.
+  [PurgeId <String>]: In a purge status request, this is the Id of the operation the status of which is returned.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the Application Insights component resource.
+  [RevisionId <String>]: The id of the workbook's revision.
+  [StorageType <StorageType?>]: The type of the Application Insights component data source for the linked storage account.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [WebTestName <String>]: The name of the Application Insights WebTest resource.
+
+INSIGHTPROPERTY <IApplicationInsightsComponent>: An Application Insights component definition.
+  Location <String>: Resource location
+  Kind <String>: The kind of application that this component refers to, used to customize UI. This value is a freeform string, values should typically be one of the following: web, ios, other, store, java, phone.
+  [Tag <IComponentsResourceTags>]: Resource tags
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [ApplicationType <ApplicationType?>]: Type of application being monitored.
+  [DisableIPMasking <Boolean?>]: Disable IP masking.
+  [DisableLocalAuth <Boolean?>]: Disable Non-AAD based Auth.
+  [Etag <String>]: Resource etag
+  [FlowType <FlowType?>]: Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set to 'Bluefield' when creating/updating a component via the REST API.
+  [ForceCustomerStorageForProfiler <Boolean?>]: Force users to create their own storage account for profiler and debugger.
+  [HockeyAppId <String>]: The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.
+  [ImmediatePurgeDataOn30Day <Boolean?>]: Purge data immediately after 30 days.
+  [IngestionMode <IngestionMode?>]: Indicates the flow of the ingestion.
+  [PublicNetworkAccessForIngestion <PublicNetworkAccessType?>]: The network access type for accessing Application Insights ingestion.
+  [PublicNetworkAccessForQuery <PublicNetworkAccessType?>]: The network access type for accessing Application Insights query.
+  [RequestSource <RequestSource?>]: Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
+  [RetentionInDay <Int32?>]: Retention period in days.
+  [SamplingPercentage <Double?>]: Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
+  [WorkspaceResourceId <String>]: Resource Id of the log analytics workspace which the data will be ingested to. This property is required to create an application with this API version. Applications from older versions will not have this property.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights
 #>
 function New-AzApplicationInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Alias('ApplicationInsightsComponentName', 'ComponentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
     [System.String]
     # The name of the Application Insights component resource.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Create')]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent]
+    # An Application Insights component definition.
+    # To construct, see NOTES section for INSIGHTPROPERTY properties and create a hash table.
+    ${InsightProperty},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # The kind of application that this component refers to, used to customize UI.
     # This value is a freeform string, values should typically be one of the following: web, ios, other, store, java, phone.
     ${Kind},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # Resource location
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.ApplicationType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.ApplicationType]
     # Type of application being monitored.
     ${ApplicationType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Disable IP masking.
     ${DisableIPMasking},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Disable Non-AAD based Auth.
     ${DisableLocalAuth},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # Resource etag
     ${Etag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.FlowType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.FlowType]
@@ -100,46 +169,53 @@ param(
     # This is to be set to 'Bluefield' when creating/updating a component via the REST API.
     ${FlowType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Force users to create their own storage account for profiler and debugger.
     ${ForceCustomerStorageForProfiler},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.
     ${HockeyAppId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Purge data immediately after 30 days.
     ${ImmediatePurgeDataOn30Day},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.IngestionMode])]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.IngestionMode]
     # Indicates the flow of the ingestion.
     ${IngestionMode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType]
     # The network access type for accessing Application Insights ingestion.
     ${PublicNetworkAccessForIngestion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType]
     # The network access type for accessing Application Insights query.
     ${PublicNetworkAccessForQuery},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.RequestSource])]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.RequestSource]
@@ -147,26 +223,30 @@ param(
     # Customers using this API should set this to the default 'rest'.
     ${RequestSource},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Int32]
     # Retention period in days.
     ${RetentionInDay},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Double]
     # Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
     ${SamplingPercentage},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IComponentsResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # Resource Id of the log analytics workspace which the data will be ingested to.
@@ -231,9 +311,12 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
+            Create = 'Az.ApplicationInsights.private\New-AzApplicationInsights_Create';
             CreateExpanded = 'Az.ApplicationInsights.private\New-AzApplicationInsights_CreateExpanded';
+            CreateViaIdentity = 'Az.ApplicationInsights.private\New-AzApplicationInsights_CreateViaIdentity';
+            CreateViaIdentityExpanded = 'Az.ApplicationInsights.private\New-AzApplicationInsights_CreateViaIdentityExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 

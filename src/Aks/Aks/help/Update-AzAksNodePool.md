@@ -16,7 +16,7 @@ Update node pool in a managed cluster.
 ```
 Update-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <String> [-NodeCount <Int32>]
  [-NodeImageOnly] [-AsJob] [-Force] [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>]
- [-EnableAutoScaling] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-EnableAutoScaling] [-Mode <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ Update-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <St
 ```
 Update-AzAksNodePool -Name <String> -ClusterObject <PSKubernetesCluster> [-NodeCount <Int32>] [-NodeImageOnly]
  [-AsJob] [-Force] [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [-Mode <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Update-AzAksNodePool -InputObject <PSNodePool> [-NodeCount <Int32>] [-NodeImageOnly] [-AsJob] [-Force]
- [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling]
+ [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
@@ -39,7 +39,7 @@ Update-AzAksNodePool -InputObject <PSNodePool> [-NodeCount <Int32>] [-NodeImageO
 ### IdParameterSet
 ```
 Update-AzAksNodePool -Id <String> [-NodeCount <Int32>] [-NodeImageOnly] [-AsJob] [-Force]
- [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling]
+ [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
@@ -211,6 +211,21 @@ Minimum number of nodes for auto-scaling.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Mode
+The pool mode
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

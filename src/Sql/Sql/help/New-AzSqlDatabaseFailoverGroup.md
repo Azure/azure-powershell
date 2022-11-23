@@ -26,6 +26,9 @@ Two Azure SQL Database TDS endpoints are created at FailoverGroupName.SqlDatabas
 Newly created Failover Groups do not contain any databases. To control the set of databases in a Failover Group, use the 'Add-AzSqlDatabaseToFailoverGroup' and 'Remove-AzSqlDatabaseFromFailoverGroup' cmdlets.
 Only values greater than or equal to 1 hour are supported for the '-GracePeriodWithDataLossHours' parameter.
 
+[!NOTE] It's possible to deploy your auto-failover group across subscriptions by using the -PartnerSubscriptionId parameter in Azure Powershell starting with [Az.SQL 3.11.0](https://www.powershellgallery.com/packages/Az.Sql/3.11.0).
+
+
 ## EXAMPLES
 
 ### Example 1

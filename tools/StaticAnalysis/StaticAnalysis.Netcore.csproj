@@ -24,6 +24,7 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.0.6" />
+    <PackageReference Include="NJsonSchema" Version="10.8.0" />
     <PackageReference Include="System.Reflection.MetadataLoadContext" Version="5.0.0" />
   </ItemGroup>
 
@@ -52,6 +53,7 @@
     <EmbeddedResource Remove="StaticAnalysis.Test\**" />
     <None Remove="StaticAnalysis.Test\**" />
     <Content Include="log4net.config" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="UXMetadataAnalyzer\PortalInputSchema.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>

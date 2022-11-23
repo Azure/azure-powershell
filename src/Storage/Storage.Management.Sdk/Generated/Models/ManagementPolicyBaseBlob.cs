@@ -30,18 +30,25 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the ManagementPolicyBaseBlob class.
         /// </summary>
         /// <param name="tierToCool">The function to tier blobs to cool
-        /// storage. Support blobs currently at Hot tier</param>
+        /// storage.</param>
         /// <param name="tierToArchive">The function to tier blobs to archive
-        /// storage. Support blobs currently at Hot or Cool tier</param>
+        /// storage.</param>
+        /// <param name="tierToCold">The function to tier blobs to cold
+        /// storage.</param>
+        /// <param name="tierToHot">The function to tier blobs to hot storage.
+        /// This action can only be used with Premium Block Blob Storage
+        /// Accounts</param>
         /// <param name="delete">The function to delete the blob</param>
         /// <param name="enableAutoTierToHotFromCool">This property enables
         /// auto tiering of a blob from cool to hot on a blob access. This
         /// property requires
         /// tierToCool.daysAfterLastAccessTimeGreaterThan.</param>
-        public ManagementPolicyBaseBlob(DateAfterModification tierToCool = default(DateAfterModification), DateAfterModification tierToArchive = default(DateAfterModification), DateAfterModification delete = default(DateAfterModification), bool? enableAutoTierToHotFromCool = default(bool?))
+        public ManagementPolicyBaseBlob(DateAfterModification tierToCool = default(DateAfterModification), DateAfterModification tierToArchive = default(DateAfterModification), DateAfterModification tierToCold = default(DateAfterModification), DateAfterModification tierToHot = default(DateAfterModification), DateAfterModification delete = default(DateAfterModification), bool? enableAutoTierToHotFromCool = default(bool?))
         {
             TierToCool = tierToCool;
             TierToArchive = tierToArchive;
+            TierToCold = tierToCold;
+            TierToHot = tierToHot;
             Delete = delete;
             EnableAutoTierToHotFromCool = enableAutoTierToHotFromCool;
             CustomInit();
@@ -53,18 +60,29 @@ namespace Microsoft.Azure.Management.Storage.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the function to tier blobs to cool storage. Support
-        /// blobs currently at Hot tier
+        /// Gets or sets the function to tier blobs to cool storage.
         /// </summary>
         [JsonProperty(PropertyName = "tierToCool")]
         public DateAfterModification TierToCool { get; set; }
 
         /// <summary>
-        /// Gets or sets the function to tier blobs to archive storage. Support
-        /// blobs currently at Hot or Cool tier
+        /// Gets or sets the function to tier blobs to archive storage.
         /// </summary>
         [JsonProperty(PropertyName = "tierToArchive")]
         public DateAfterModification TierToArchive { get; set; }
+
+        /// <summary>
+        /// Gets or sets the function to tier blobs to cold storage.
+        /// </summary>
+        [JsonProperty(PropertyName = "tierToCold")]
+        public DateAfterModification TierToCold { get; set; }
+
+        /// <summary>
+        /// Gets or sets the function to tier blobs to hot storage. This action
+        /// can only be used with Premium Block Blob Storage Accounts
+        /// </summary>
+        [JsonProperty(PropertyName = "tierToHot")]
+        public DateAfterModification TierToHot { get; set; }
 
         /// <summary>
         /// Gets or sets the function to delete the blob
@@ -95,6 +113,14 @@ namespace Microsoft.Azure.Management.Storage.Models
             if (TierToArchive != null)
             {
                 TierToArchive.Validate();
+            }
+            if (TierToCold != null)
+            {
+                TierToCold.Validate();
+            }
+            if (TierToHot != null)
+            {
+                TierToHot.Validate();
             }
             if (Delete != null)
             {

@@ -43,7 +43,7 @@ Add-AzKeyVaultManagedStorageAccount -VaultName $kv.VaultName -AccountName $sa.St
 $sctx = New-AzStorageContext -StorageAccountName $sa.StorageAccountName -Protocol Https -StorageAccountKey Key1
 $start = [System.DateTime]::Now.AddDays(-1)
 $end = [System.DateTime]::Now.AddMonths(1)
-$at = New-AzStorageAccountSasToken -Service blob,file,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -StartTime $start -ExpiryTime $end -Context $sctx
+$at = "sv=2018-03-28&ss=bfqt&srt=sco&sp=rw&spr=https"
 $sas = Set-AzKeyVaultManagedStorageSasDefinition -AccountName $sa.StorageAccountName -VaultName $kv.VaultName -Name accountsas -TemplateUri $at -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
 Get-AzKeyVaultSecret -VaultName $kv.VaultName -Name $sas.Sid.Substring($sas.Sid.LastIndexOf('/')+1)
 ```
