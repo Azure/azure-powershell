@@ -44,9 +44,9 @@ Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -Instance
 ```
 
 ```output
-Location Name             Type
--------- ----             ----
-eastus   MyRunCommand Microsoft.Compute/virtualMachines/runCommands
+Location      Name          Type
+--------      ----          ----
+eastus2euap   MyRunCommand  Microsoft.Compute/virtualMachines/runCommands
 ```
 
 Create or update Run Command on a Windows VMSS VM instance  using a SAS URL of a storage blob that contains .ps1 script.
@@ -60,11 +60,23 @@ If generating SAS token using New-AzStorageBlobSASToken, your SAS URL = base blo
 Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 0 -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1"
 ```
 
+```output
+Location      Name          Type
+--------      ----          ----
+eastus2euap   MyRunCommand  Microsoft.Compute/virtualMachines/runCommands
+```
+
 Create or update Run Command on a VMSS VM instance  using a local script file that is on the client machine where cmdlet is executed.
 
 ### Example 3: Create or update Run Command on a VMSS VM instance using script text.
 ```powershell
 Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSSL -InstanceId 1 -RunCommandName MyRunCommand2 -Location EastUS2EUAP -SourceScript "id; echo HelloWorld"
+```
+
+```output
+Location      Name           Type
+--------      ----           ----
+eastus2euap   MyRunCommand2  Microsoft.Compute/virtualMachines/runCommands
 ```
 
 Create or update Run Command on a VMSS VM instance  passing the script content directly to -SourceScript parameter.
@@ -75,12 +87,24 @@ Use ';' to delimit multiple commands.
 Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 0 -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceCommandId DisableWindowsUpdate
 ```
 
+```output
+Location      Name          Type
+--------      ----          ----
+eastus2euap   MyRunCommand  Microsoft.Compute/virtualMachines/runCommands
+```
+
 Create or update Run Command on a VMSS VM instance using pre-existing commandId.
 Available commandIds can be retrieved using Get-AzVMRunCommandDocument.
 
 ### Example 5: Create or update Run Command on a VMSS VM instance and stream standard output and standard error messages to output and error Append blobs.
 ```powershell
 Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 1 -RunCommandName MyRunCommand3 -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -OutputBlobUri "https://vivst.blob.core.windows.net/vivcontainer/output.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5hasfadsfasdF4jIkRJra4S5FlEo%3D" -ErrorBlobUri "https://vivst.blob.core.windows.net/vivcontainer/error.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5h%asfasdfgdT%2F4jasfasdf5FlEo%3D"
+```
+
+```output
+Location      Name           Type
+--------      ----           ----
+eastus2euap   MyRunCommand3  Microsoft.Compute/virtualMachines/runCommands
 ```
 
 Create or update Run Command on a VMSS VM instance and stream standard output and standard error messages to output and error Append blobs.
@@ -93,6 +117,12 @@ If generating SAS token using New-AzStorageBlobSASToken, your SAS URL = base blo
 ### Example 6: Create or update Run Command on a VMSS VM instance, run the Run Command as a different user using RunAsUser and RunAsPassword parameters.
 ```powershell
 Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 1 -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -RunAsUser myusername -RunAsPassword mypassword
+```
+
+```output
+Location      Name          Type
+--------      ----          ----
+eastus2euap   MyRunCommand  Microsoft.Compute/virtualMachines/runCommands
 ```
 
 Create or update Run Command on a VMSS VM instance, run the Run Command as a different user using RunAsUser and RunAsPassword parameters.
