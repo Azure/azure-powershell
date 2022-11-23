@@ -19,8 +19,6 @@
 --->
 
 ## Upcoming Release
-* Added a new cmdlet to get the application gateway waf manifest and rules
-    - `Get-AzApplicationGatewayWafDynamicManifest`
 * Added a new endpoint swtich `AzureArcVM` in Networkwatcher ConnectionMonitor
     - `New-AzNetworkWatcherConnectionMonitor`
 * Updated commandlet to support bypassing the ExpressRoute gateway when accessing private-links.
@@ -72,6 +70,9 @@
     - `New-AzLoadBalancer`
 
 * Onboard Project AzureML Registries to Private Link Common Cmdlets
+
+* Added a new cmdlet to get the application gateway waf manifest and rules
+    - `Get-AzApplicationGatewayWafDynamicManifest`
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
