@@ -35,24 +35,25 @@ namespace Microsoft.Azure.Commands.Profile.Test
     {
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
+        private AzKeyStore keyStore;
         public AutosaveTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new MockCommandRuntime();
             dataStore = new MemoryDataStore();
-            ResetState();
+            keyStore = SetMockedAzKeyStore();
         }
 
-        private void SetMockedAzKeyStore()
+        private AzKeyStore SetMockedAzKeyStore()
         {
             var storageMocker = new Mock<IStorage>();
             storageMocker.Setup(f => f.Create()).Returns(storageMocker.Object);
             storageMocker.Setup(f => f.ReadData()).Returns(new byte[0]);
+            storageMocker.Setup(f => f.WriteData(It.IsAny<byte[]>())).Callback((byte[] s) => {});
             var keyStore = new AzKeyStore(AzureSession.Instance.ARMProfileDirectory, "keystore.cache", false, false, storageMocker.Object);
             AzKeyStore.RegisterJsonConverter(typeof(ServicePrincipalKey), typeof(ServicePrincipalKey).Name);
             AzKeyStore.RegisterJsonConverter(typeof(SecureString), typeof(SecureString).Name, new SecureStringConverter());
-            AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore);
-            keyStore.LoadStorage();
+            return keyStore;
         }
 
         void ResetState()
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Environment.SetEnvironmentVariable("Azure_PS_Data_Collection", "false");
             PowerShellTokenCacheProvider tokenProvider = new InMemoryTokenCacheProvider();
             AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => tokenProvider, true);
-            SetMockedAzKeyStore();
+            AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore, true);
         }
 
         [Fact]
