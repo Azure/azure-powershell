@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Helpers;
+
 using System;
 using System.IO;
 using System.Linq;
@@ -63,8 +65,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private Track1Sdk.JsonWebKey Convert(string pfxFileName, SecureString pfxPassword)
         {
-            X509Certificate2 certificate = new X509Certificate2(pfxFileName, pfxPassword, X509KeyStorageFlags.Exportable);
-
+            X509Certificate2 certificate = GetExportableCertificate(pfxFileName, pfxPassword);
             if (!certificate.HasPrivateKey)
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "pfx"));
 
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private Track2Sdk.JsonWebKey ConvertToTrack2SdkJsonWebKey(string pfxFileName, SecureString pfxPassword, WebKeyConverterExtraInfo extraInfo = null)
         {
-            X509Certificate2 certificate = new X509Certificate2(pfxFileName, pfxPassword, X509KeyStorageFlags.Exportable);
+            X509Certificate2 certificate = GetExportableCertificate(pfxFileName, pfxPassword);
 
             if (!certificate.HasPrivateKey)
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "pfx"));
@@ -169,6 +170,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         private static Track2Sdk.JsonWebKey CreateTrack2SdkJWK(Aes aes, WebKeyConverterExtraInfo extraInfo = null)
         {
             throw new NotImplementedException();
+        }
+
+        private static X509Certificate2 GetExportableCertificate(string fileName, SecureString pwd)
+        {
+            // X509KeyStorageFlags.Exportable doesn't work if cert.Get*PrivateKey().ExportParameter(true) on Windows and macOS 
+            // return new X509Certificate2(fileName, pwd, X509KeyStorageFlags.Exportable);
+            return CertificateExportHelper.ImportExportable(File.ReadAllBytes(fileName), pwd?.ConvertToString());
         }
 
         private IWebKeyConverter next;

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed certificate export parameter issue in `Add-AzKeyVaultKey` [#19623]
 * Fixed CertificateString decoding issue in `Import-AzKeyVaultCertificate`
 * Shifted the location of key CVM release policy to GitHub [#19984]
 * Added fallback logic (reading default CVM policy from a local copy) if fetching default CVM Policy from GitHub failed.
