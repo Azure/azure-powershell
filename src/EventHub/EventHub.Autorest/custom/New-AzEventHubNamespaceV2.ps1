@@ -71,7 +71,7 @@ function New-AzEventHubNamespaceV2{
 
         [Parameter(HelpMessage = "Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [System.String]
+        [System.Management.Automation.SwitchParameter]
         ${ZoneRedundant},
 
         [Parameter(HelpMessage = "Properties to configure Encryption")]
@@ -194,19 +194,18 @@ function New-AzEventHubNamespaceV2{
             if($PSBoundParameters.ContainsKey('KeyVaultProperty')){
                 $PSBoundParameters.Add('KeySource', 'Microsoft.KeyVault')
             }
+            
+            if($PSBoundParameters.ContainsKey('UserAssignedIdentityId')){
+                $identityHashTable = @{}
+
+			    foreach ($resourceID in $UserAssignedIdentityId){
+				    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
+			    }
+
+                $PSBoundParameters.Add("UserAssignedIdentity", $identityHashTable)
+                $null = $PSBoundParameters.Remove("UserAssignedIdentityId")
+            }
             if ($PSCmdlet.ShouldProcess("EventHub Namespace $($Name)", "Create or update")) {
-                
-                if($PSBoundParameters.ContainsKey('UserAssignedIdentityId')){
-                    $identityHashTable = @{}
-
-			        foreach ($resourceID in $UserAssignedIdentity){
-				        $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
-			        }
-
-                    $PSBoundParameters.Add("UserAssignedIdentity", $identityHashTable)
-                    $null = $PSBoundParameters.Remove("UserAssignedIdentityId")
-                }
-
                 Az.EventHub.private\New-AzEventHubNamespaceV2_CreateExpanded @PSBoundParameters
             }
 		}
