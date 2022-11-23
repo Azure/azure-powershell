@@ -8,7 +8,7 @@
        {
           "name":"Get-AzSubscription",
           "description":"Get subscriptions that the current account can access.",
-          "path":"/subscriptions/{subscriptionId}/providers/Microsoft.Resources/subscriptions",
+          "path":"/subscriptions/{subscriptionId}",
           "confirmation":false,
           "help":{
              "learnMore":{
