@@ -160,8 +160,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// Gets or sets the secondary type for the database if it is a secondary.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The secondary type of the database if it is a secondary.  Valid values are Geo and Named.")]
-        [ValidateSet("Named", "Geo")]
+            HelpMessage = "The secondary type of the database if it is a secondary.  Valid values are Geo, Named and Standby.")]
+        [ValidateSet("Named", "Geo", "Standby")]
         public string SecondaryType { get; set; }
 
         /// <summary>

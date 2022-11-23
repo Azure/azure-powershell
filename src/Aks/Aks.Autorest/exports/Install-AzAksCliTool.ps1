@@ -19,313 +19,154 @@
 Download and install kubectl and kubelogin.
 .Description
 Download and install kubectl and kubelogin.
+.Example
+Install-AzAksCliTool
+.Example
+Install-AzAksCliTool -KubectlInstallVersion "v1.25.0" -KubectlInstallDestination "~/bin/" -KubeloginInstallVersion "v0.0.20" -KubeloginInstallDestination "~/bin"
+
+.Outputs
+System.Boolean
+.Link
+https://docs.microsoft.com/powershell/module/az.aks/install-azaksclitool
 #>
-function Install-AzAksCliTool
-{
-    [OutputType([System.Boolean])]
-    [Alias("Install-AzAksKubectl")]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.CmdletBreakingChangeAttribute("9.0.0", "2022/10/12", ReplacementCmdletName = 'Install-AzAksCliTool')]
-    param(
-        [Alias("KubectlInstallDestination")]
-        [Parameter()]
-        [System.String]
-        # Path at which to install kubectl. Default to install into ~/.azure-kubectl/
-        ${Destination},
+function Install-AzAksCliTool {
+[OutputType([System.Boolean])]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter()]
+    [Alias('KubectlInstallDestination')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Path at which to install kubectl.
+    # Default to install into ~/.azure-kubectl/
+    ${Destination},
 
-        [Alias("KubectlInstallVersion")]
-        [Parameter()]
-        [System.String]
-        # Version of kubectl to install, e.g. 'v1.17.2'. Default value: Latest.
-        ${Version},
-    
-        [Alias("KubectlDownloadFromMirror")]
-        [Parameter()]
-        [System.Management.Automation.SwitchParameter]
-        # Download from mirror site : https://mirror.azure.cn/kubernetes/kubectl/
-        ${DownloadFromMirror},
+    [Parameter()]
+    [Alias('KubectlInstallVersion')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Version of kubectl to install, e.g.
+    # 'v1.17.2'.
+    # Default value: Latest.
+    ${Version},
 
-        [Parameter()]
-        [System.String]
-        # Path at which to install kubectl. Default to install into ~/.azure-kubelogin/
-        ${KubeloginInstallDestination},
+    [Parameter()]
+    [Alias('KubectlDownloadFromMirror')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Download from mirror site : https://mirror.azure.cn/kubernetes/kubectl/
+    ${DownloadFromMirror},
 
-        [Parameter()]
-        [System.String]
-        # Version of kubectl to install, e.g. 'v0.0.20'. Default value: Latest
-        ${KubeloginInstallVersion},
-    
-        [Parameter()]
-        [System.Management.Automation.SwitchParameter]
-        # Download from mirror site : https://mirror.azure.cn/kubernetes/kubelogin
-        ${KubeloginDownloadFromMirror},
-    
-        [Parameter()]
-        [System.Management.Automation.SwitchParameter]
-        # Wait for .NET debugger to attach
-        ${PassThru},
-    
-        [Parameter()]
-        [System.Management.Automation.SwitchParameter]
-        # Run cmdlet in the background
-        ${AsJob},
-    
-        [Parameter()]
-        [System.Management.Automation.SwitchParameter]
-        # Overwrite existing kubectl and kubelogin without prompt
-        ${Force}
-    )
-    
-    process
-    {
-        #Region Install kubectl
-        $KubectlParams = @{}
-        If ($PSBoundParameters.ContainsKey("Destination"))
-        {
-            $KubectlParams["Destination"] = $PSBoundParameters["Destination"]
-        }
-        If ($PSBoundParameters.ContainsKey("Version"))
-        {
-            $KubectlParams["Version"] = $PSBoundParameters["Version"]
-        }
-        If ($PSBoundParameters.ContainsKey("DownloadFromMirror"))
-        {
-            $KubectlParams["DownloadFromMirror"] = $PSBoundParameters["DownloadFromMirror"]
-        }
-        If ($PSBoundParameters.ContainsKey("Force"))
-        {
-            $KubectlParams["Force"] = $PSBoundParameters["Force"]
-        }
-        Install-Kubectl @KubectlParams
-        #EndRegion
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Path at which to install kubectl.
+    # Default to install into ~/.azure-kubelogin/
+    ${KubeloginInstallDestination},
 
-        #Region Install kubelogin
-        $KubeloginParams = @{}
-        If ($PSBoundParameters.ContainsKey("KubeloginInstallDestination"))
-        {
-            $KubeloginParams["Destination"] = $PSBoundParameters["KubeloginInstallDestination"]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Version of kubectl to install, e.g.
+    # 'v0.0.20'.
+    # Default value: Latest
+    ${KubeloginInstallVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Download from mirror site : https://mirror.azure.cn/kubernetes/kubelogin
+    ${KubeloginDownloadFromMirror},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${PassThru},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Run cmdlet in the background
+    ${AsJob},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Overwrite existing kubectl and kubelogin without prompt
+    ${Force}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
         }
-        If ($PSBoundParameters.ContainsKey("KubeloginInstallVersion"))
-        {
-            $KubeloginParams["Version"] = $PSBoundParameters["KubeloginInstallVersion"]
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Aks.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
         }
-        If ($PSBoundParameters.ContainsKey("KubeloginDownloadFromMirror"))
-        {
-            $KubeloginParams["DownloadFromMirror"] = $PSBoundParameters["KubeloginDownloadFromMirror"]
+
+        $mapping = @{
+            __AllParameterSets = 'Az.Aks.custom\Install-AzAksCliTool';
         }
-        If ($PSBoundParameters.ContainsKey("Force"))
-        {
-            $KubeloginParams["Force"] = $PSBoundParameters["Force"]
-        }
-        Install-Kubelogin @KubeloginParams
-        #EndRegion
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
     }
 }
 
-Function Install-Kubectl
-{
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.DoNotExportAttribute()]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-    param(
-        [Parameter()]
-        [System.String]
-        ${Destination},
-
-        [Parameter()]
-        [System.String]
-        ${Version},
-    
-        [Parameter()]
-        [System.Management.Automation.SwitchParameter]
-        ${DownloadFromMirror},
-    
-        [Parameter()]
-        [System.Management.Automation.SwitchParameter]
-        ${Force}
-    )
-
-    Process
-    {
-        $baseUrl = "https://storage.googleapis.com/kubernetes-release/release"
-        If ($DownloadFromMirror)
-        {
-            $baseUrl = "https://mirror.azure.cn/kubernetes/kubectl"
-        }
-        If (($Null -Eq $Destination) -or ("" -Eq $Destination))
-        {
-            $Destination = [System.IO.Path]::Combine($env:USERPROFILE, ".azure-kubectl")
-        }
-        If (-not (Test-Path -Path $Destination))
-        {
-            New-Item -Path $Destination -ItemType Directory
-        }
-        $Destination = Resolve-Path -Path $Destination
-        If (($Null -Eq $Version) -or ("" -Eq $Version))
-        {
-            $url = "$baseUrl/stable.txt"
-            $Version = (Invoke-WebRequest -Uri $url).Content.Trim()
-        }
-        If ($IsWindows)
-        {
-            $destFilePath = [System.IO.Path]::Combine($Destination, "kubectl.exe")
-            $downloadFileUrl = "$baseUrl/$Version/bin/windows/amd64/kubectl.exe"
-        }
-        ElseIf ($IsLinux)
-        {
-            $destFilePath = [System.IO.Path]::Combine($Destination, "kubectl")
-            $downloadFileUrl = "$baseUrl/$Version/bin/linux/amd64/kubectl"
-        }
-        ElseIf ($IsMacOS)
-        {
-            $destFilePath = [System.IO.Path]::Combine($Destination, "kubectl")
-            $downloadFileUrl = "$baseUrl/$Version/bin/darwin/amd64/kubectl"
-        }
-        Else
-        {
-            $message = "Sorry, this cmdlet is not supported in current OS."
-            $ex = [System.PlatformNotSupportedException]::New($message)
-            $ex.Data[[Microsoft.Azure.Commands.Common.AzurePSErrorDataKeys]::ErrorKindKey] = [Microsoft.Azure.Commands.Common.ErrorKind]::UserError
-            $ex.Data[[Microsoft.Azure.Commands.Common.AzurePSErrorDataKeys]::DesensitizedErrorMessageKey] = $message
-            throw $ex
-        }
-        #region download and install
-        If ($PSCmdlet.ShouldProcess("Downloading kubectl from internet.", $destFilePath))
-        {
-            If (Test-Path -Path $destFilePath)
-            {
-                If ($Force -Or $PSCmdlet.ShouldContinue("File $destFilePath exist, are you want to replace it?", "Replace file"))
-                {
-                    $tmpFilePath = "$destFilePath.tmp"
-                    Write-Verbose "Downloading from $downloadFileUrl to local: $tmpFilePath"
-                    Invoke-WebRequest -Uri $downloadFileUrl -OutFile $tmpFilePath
-                    Write-Verbose "Deleting $destFilePath"
-                    Remove-Item -Path $destFilePath
-                    Write-Verbose "Moving $tmpFilePath to $destFilePath"
-                    Move-Item -Path $tmpFilePath -Destination $destFilePath
-                }
-            }
-            Else
-            {
-                Write-Verbose "Downloading from $downloadFileUrl to local: $destFilePath"
-                Invoke-WebRequest -Uri $downloadFileUrl -OutFile $destFilePath
-            }
-        }
-        #endregion
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
     }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
 }
+end {
+    try {
+        $steppablePipeline.End()
 
-Function Install-Kubelogin
-{
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.DoNotExportAttribute()]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-    param(
-        [Parameter()]
-        [System.String]
-        ${Destination},
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Aks.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
 
-        [Parameter()]
-        [System.String]
-        ${Version},
-    
-        [Parameter()]
-        [System.Management.Automation.SwitchParameter]
-        ${DownloadFromMirror},
-    
-        [Parameter()]
-        [System.Management.Automation.SwitchParameter]
-        ${Force}
-    )
-
-    Process
-    {
-        $baseDownloadUrl = "https://github.com/Azure/kubelogin/releases/download"
-        $latestReleaseUrl = "https://api.github.com/repos/Azure/kubelogin/releases/latest"
-        If ($DownloadFromMirror)
-        {
-            $baseDownloadUrl = "https://mirror.azure.cn/kubernetes/kubelogin"
-            $latestReleaseUrl = "https://mirror.azure.cn/kubernetes/kubelogin/latest"
-        }
-        If (($Null -Eq $Destination) -or ("" -Eq $Destination))
-        {
-            $Destination = [System.IO.Path]::Combine($env:USERPROFILE, ".azure-kubelogin")
-        }
-        If (-not (Test-Path -Path $Destination))
-        {
-            New-Item -Path $Destination -ItemType Directory
-        }
-        $Destination = Resolve-Path -Path $Destination
-        If (($Null -Eq $Version) -or ("" -Eq $Version))
-        {
-            $latestVersionInfo = (Invoke-WebRequest -Uri $latestReleaseUrl).Content | ConvertFrom-Json
-            $Version = $latestVersionInfo.tag_name.Trim()
-        }
-        $downloadFileUrl = "$baseDownloadUrl/$Version/kubelogin.zip"
-        If ($IsWindows)
-        {
-            $subDir = "windows_amd64"
-            $binaryName = "kubelogin.exe"
-            $destFilePath = [System.IO.Path]::Combine($Destination, "kubelogin.exe")
-        }
-        ElseIf ($IsLinux)
-        {
-            $subDir = "linux_amd64"
-            $binaryName = "kubelogin"
-            $destFilePath = [System.IO.Path]::Combine($Destination, "kubelogin")
-        }
-        ElseIf ($IsMacOS)
-        {
-            If ($Env:PROCESSOR_ARCHITECTURE -Eq "AMD64")
-            {
-                $subDir = "darwin_amd64"
-            }
-            Else
-            {
-                $subDir = "darwin_arm64"
-            }
-            $binaryName = "kubelogin"
-            $destFilePath = [System.IO.Path]::Combine($Destination, "kubelogin")
-        }
-        Else
-        {
-            $message = "Sorry, this cmdlet is not supported in current OS."
-            $ex = [System.PlatformNotSupportedException]::New($message)
-            $ex.Data[[Microsoft.Azure.Commands.Common.AzurePSErrorDataKeys]::ErrorKindKey] = [Microsoft.Azure.Commands.Common.ErrorKind]::UserError
-            $ex.Data[[Microsoft.Azure.Commands.Common.AzurePSErrorDataKeys]::DesensitizedErrorMessageKey] = $message
-            throw $ex
-        }
-        
-        #region download and install
-        If ($PSCmdlet.ShouldProcess("Downloading kubelogin from internet.", $destFilePath))
-        {
-            $downloadFilePath = [System.IO.Path]::Combine($Destination, "kubelogin.zip")
-            $uncompressFolderPath = [System.IO.Path]::Combine($Destination, "kubelogin-folder")
-            $binFilePath = [System.IO.Path]::Combine($uncompressFolderPath, "bin", $subDir, $binaryName)
-            $shouldDownload = $true
-            If (Test-Path -Path $destFilePath)
-            {
-                If ($Force -Or $PSCmdlet.ShouldContinue("File $destFilePath exist, are you want to replace it?", "Replace file"))
-                {
-                    Write-Verbose "Deleting $destFilePath"
-                    Remove-Item -Path $destFilePath
-                }
-                Else
-                {
-                    $shouldDownload = $false
-                }
-            }
-            If ($shouldDownload)
-            {
-                Write-Verbose "Downloading from $downloadFileUrl to local: $downloadFilePath"
-                Invoke-WebRequest -Uri $downloadFileUrl -OutFile $downloadFilePath
-                Expand-Archive $downloadFilePath -DestinationPath $uncompressFolderPath -Force
-                Write-Verbose "Deleting $destFilePath"
-                Move-Item -Path $binFilePath -Destination $destFilePath
-                Write-Verbose "Deleting $downloadFilePath"
-                Remove-Item $downloadFilePath
-                Write-Verbose "Deleting $uncompressFolderPath"
-                Remove-Item $uncompressFolderPath -Recurse
-            }
-        }
-        #endregion
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
     }
+} 
 }

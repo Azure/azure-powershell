@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzServiceBusAuthorizationRule
 
 ## SYNOPSIS
-Gets an ServiceBus Authorization Rule
+Gets the Authorization Rule of a ServiceBus namespace, queue or topic.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ Get-AzServiceBusAuthorizationRule -InputObject <IServiceBusIdentity> [-DefaultPr
 ```
 
 ## DESCRIPTION
-Gets an ServiceBus Authorization Rule
+Gets the Authorization Rule of a ServiceBus namespace, queue or topic.
 
 ## EXAMPLES
 

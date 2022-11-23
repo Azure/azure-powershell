@@ -20,29 +20,7 @@ Get the available SKU information for the location
 .Description
 Get the available SKU information for the location
 .Example
-PS C:\> Get-AzMySqlFlexibleServerLocationBasedCapability -Location westus2
-"Please refer to https://aka.ms/mysql-pricing for pricing details"
-
-SKU               Memory Tier            vCore
----               ------ ----            -----
-Standard_B1s        1024 Burstable           1
-Standard_B1ms       2048 Burstable           1
-Standard_B2s        2048 Burstable           2
-Standard_D2ds_v4    4096 GeneralPurpose      2
-Standard_D4ds_v4    4096 GeneralPurpose      4
-Standard_D8ds_v4    4096 GeneralPurpose      8
-Standard_D16ds_v4   4096 GeneralPurpose     16
-Standard_D32ds_v4   4096 GeneralPurpose     32
-Standard_D48ds_v4   4096 GeneralPurpose     48
-Standard_D64ds_v4   4096 GeneralPurpose     64
-Standard_E2ds_v4    8192 MemoryOptimized     2
-Standard_E4ds_v4    8192 MemoryOptimized     4
-Standard_E8ds_v4    8192 MemoryOptimized     8
-Standard_E16ds_v4   8192 MemoryOptimized    16
-Standard_E32ds_v4   8192 MemoryOptimized    32
-Standard_E48ds_v4   8192 MemoryOptimized    48
-Standard_E64ds_v4   8192 MemoryOptimized    64
-
+Get-AzMySqlFlexibleServerLocationBasedCapability -Location westus2
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ICapabilityProperties
@@ -121,6 +99,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MySql.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             List = 'Az.MySql.custom\Get-AzMySqlFlexibleServerLocationBasedCapability';
         }
@@ -134,6 +130,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -142,15 +139,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MySql.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

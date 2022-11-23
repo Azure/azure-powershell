@@ -1,4 +1,4 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll","Microsoft.Azure.Commands.Management.IotHub.AddAzureRmIotHubKey","Add-AzIotHubKey","1","8410","Parameter Rights of cmdlet Add-AzIotHubKey does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll","Microsoft.Azure.Commands.Management.IotHub.NewAzureRmIotHub","New-AzIotHub","1","8410","Parameter Units of cmdlet New-AzIotHub does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll","Microsoft.Azure.Commands.Management.IotHub.NewAzureRmIotHub","New-AzIotHub","1","8410","Parameter Properties of cmdlet New-AzIotHub does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."

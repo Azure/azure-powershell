@@ -20,17 +20,9 @@ Manual failover a server.
 .Description
 Manual failover a server.
 .Example
-PS C:\> Update-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test -Sku Standard_D4ds_v4
-
-Name                 Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
-----                 --------  -------          -------        ------------------ ------- -------------
-mysql-test   West US 2 Standard_D2ds_v4 GeneralPurpose admin              5.7     32
+Update-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test -Sku Standard_D4ds_v4
 .Example
-PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlFlexibleServer -BackupRetentionDay 23 -StorageInMb 10240
-
-Name                 Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
-----                 --------  -------          -------        ------------------ ------- -------------
-mysql-test   West US 2 Standard_D2ds_v4 GeneralPurpose admin              5.7     32
+Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlFlexibleServer -BackupRetentionDay 23 -StorageInMb 10240
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerForUpdate
@@ -321,6 +313,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Failover = 'Az.MySql.private\Update-AzMySqlFlexibleServer_Failover';
             FailoverViaIdentity = 'Az.MySql.private\Update-AzMySqlFlexibleServer_FailoverViaIdentity';
@@ -338,6 +331,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -346,15 +340,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

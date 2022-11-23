@@ -25,7 +25,7 @@ Get-AzMigrateSite -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMwar
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratesite
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratesite
 #>
 function Get-AzMigrateSite {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite])]

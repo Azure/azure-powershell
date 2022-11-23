@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
@@ -58,5 +60,15 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RemoveBlueprintAssignment");
         }
 
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestResourceNameValidation()
+        {
+            Assert.Null(Record.Exception(() => Utils.ValidateName("Valid-resourceId")));
+            Assert.Null(Record.Exception(() => Utils.ValidateName("60b96b66-0ead-4cfc-831c-801616145b9c")));
+            Assert.Null(Record.Exception(() => Utils.ValidateName("H_-e.l(1)o۳৭﹏ǆ")));
+            Assert.Throws<ArgumentException>(() => Utils.ValidateName("trailing."));
+        }
     }
 }

@@ -44,6 +44,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty("translatedFqdn")]
         public string TranslatedFqdn { get; set; }
 
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
         [JsonIgnore]
         public string ProtocolsText
         {

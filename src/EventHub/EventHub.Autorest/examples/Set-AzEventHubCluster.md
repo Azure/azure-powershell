@@ -6,7 +6,7 @@ Set-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myCluster -Capaci
 ```output
 Capacity                     : 3
 CreatedAt                    : 2022-08-29T09:38:30.453Z
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/myCluster
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/myCluster
 Location                     : australiaeast
 MetricId                     : PROD-00-000
 Name                         : myCluster
@@ -28,7 +28,7 @@ Set-AzEventHubCluster -InputObject $cluster -Capacity 3
 ```output
 Capacity                     : 3
 CreatedAt                    : 2022-08-29T09:38:30.453Z
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/myCluster
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/myCluster
 Location                     : australiaeast
 MetricId                     : PROD-00-000
 Name                         : myCluster

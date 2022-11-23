@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.12.0
 * Added custom cmdlets for LoginsMigration:
   - New-AzDataMigrationLoginsMigration
 

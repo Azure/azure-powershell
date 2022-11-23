@@ -25,34 +25,16 @@ Creates or updates a Azure Traffic Collector resource
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IAzureTrafficCollector
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IAzureTrafficCollector
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-COLLECTORPOLICY <ICollectorPolicy[]>: Collector Policies for Azure Traffic Collector.
-  [Location <String>]: Resource location.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [EmissionPolicy <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
-    [EmissionDestination <IEmissionPolicyDestination[]>]: Emission policy destinations.
-      [DestinationType <DestinationType?>]: Emission destination type.
-    [EmissionType <EmissionType?>]: Emission format type.
-  [IngestionPolicyIngestionSource <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
-    [ResourceId <String>]: Resource ID.
-    [SourceType <SourceType?>]: Ingestion source type.
-  [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
-
 PARAMETER <IAzureTrafficCollector>: Azure Traffic Collector resource.
-  [Location <String>]: Resource location.
+  Location <String>: Resource location.
   [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
   [SystemDataCreatedBy <String>]: The identity that created the resource.
   [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
@@ -60,27 +42,11 @@ PARAMETER <IAzureTrafficCollector>: Azure Traffic Collector resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
-  [CollectorPolicy <ICollectorPolicy[]>]: Collector Policies for Azure Traffic Collector.
-    [Location <String>]: Resource location.
-    [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-    [SystemDataCreatedBy <String>]: The identity that created the resource.
-    [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-    [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-    [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-    [Tag <ITrackedResourceTags>]: Resource tags.
-    [EmissionPolicy <IEmissionPoliciesPropertiesFormat[]>]: Emission policies.
-      [EmissionDestination <IEmissionPolicyDestination[]>]: Emission policy destinations.
-        [DestinationType <DestinationType?>]: Emission destination type.
-      [EmissionType <EmissionType?>]: Emission format type.
-    [IngestionPolicyIngestionSource <IIngestionSourcesPropertiesFormat[]>]: Ingestion Sources.
-      [ResourceId <String>]: Resource ID.
-      [SourceType <SourceType?>]: Ingestion source type.
-    [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 .Link
 https://docs.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctiontrafficcollector
 #>
 function Set-AzNetworkFunctionTrafficCollector {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IAzureTrafficCollector])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -105,20 +71,12 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IAzureTrafficCollector]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector]
     # Azure Traffic Collector resource.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ICollectorPolicy[]]
-    # Collector Policies for Azure Traffic Collector.
-    # To construct, see NOTES section for COLLECTORPOLICY properties and create a hash table.
-    ${CollectorPolicy},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
     [System.String]
     # Resource location.
@@ -126,7 +84,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

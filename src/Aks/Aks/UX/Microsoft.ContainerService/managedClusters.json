@@ -1,0 +1,47 @@
+{
+  "resourceType": "managedClusters",
+  "apiVersion": "2021-05-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.aks/#kubernetes-service"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAksCluster",
+      "description": "Gets the details of the managed cluster with a specified resource group and name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.aks/get-azakscluster"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+            "description": "Get a cluster by resourceGroupName and clusterName.",
+            "parameters": [
+                {
+                    "name": "-ResourceGroupName",
+                    "value": "[path.resourceGroupName]"
+                },
+                {
+                    "name": "-Name",
+                    "value": "[path.clusterName]"
+                },
+                {
+                    "name": "-SubscriptionId",
+                    "value": "[path.subscriptionId]"
+                }
+            ]
+        }
+      ]
+    }
+  ]
+}

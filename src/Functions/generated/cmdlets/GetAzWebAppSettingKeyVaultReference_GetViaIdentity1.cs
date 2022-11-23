@@ -12,6 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     /// <remarks>
     /// [OpenAPI] GetAppSettingKeyVaultReference=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/configreferences/appsettings/{appSettingKey}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzWebAppSettingKeyVaultReference_GetViaIdentity1")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Gets the config reference and status of an app")]

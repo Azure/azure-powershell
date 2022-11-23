@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Sets a ServiceBus Rule
+Updates a ServiceBus Rule
 .Description
-Sets a ServiceBus Rule
+Updates a ServiceBus Rule
 #>
 
 function Set-AzServiceBusRule{

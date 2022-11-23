@@ -22,27 +22,18 @@ Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHu
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Constructs an IThrottlingPolicy object 
 ```powershell
-{{ Add code here }}
+New-AzEventHubThrottlingPolicyConfig -Name t1 -RateLimitThreshold 10000 -MetricId IncomingBytes
 ```
 
 ```output
-{{ Add output here }}
+MetricId      Name RateLimitThreshold Type
+--------      ---- ------------------ ----
+IncomingBytes t1                10000 ThrottlingPolicy
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Please refer examples for Set-AzEventHubApplicationGroup to know more.
 
 ## PARAMETERS
 

@@ -49,6 +49,11 @@ function setupEnv() {
     $pe1 = "privateEndpoint-" + (RandomString -allChars $false -len 6)
     $pe2 = "privateEndpoint-" + (RandomString -allChars $false -len 6)
 
+    $namespacePrimaryKey = GenerateSASKey
+    $namespaceSecondaryKey = GenerateSASKey
+    $eventHubPrimaryKey = GenerateSASKey
+    $eventHubSecondaryKey = GenerateSASKey
+
     New-AzResourceGroup -Name $resourceGroup -Location eastus
 
     $env.Add("resourceGroup", $resourceGroup)
@@ -80,6 +85,10 @@ function setupEnv() {
     $env.Add("consumerGroup2", $consumerGroup2)
     $env.Add("consumerGroup3", $consumerGroup3)
     $env.Add("alias", $alias)
+    $env.Add("namespacePrimaryKey", $namespacePrimaryKey)
+    $env.Add("namespaceSecondaryKey", $namespaceSecondaryKey)
+    $env.Add("eventHubPrimaryKey", $eventHubPrimaryKey)
+    $env.Add("eventHubSecondaryKey", $eventHubSecondaryKey)
 
     $eventHubTemplate = Get-Content .\test\deployment-template\parameter.json | ConvertFrom-Json
     $eventHubTemplate.parameters.namespace_name.value = $namespaceName
@@ -118,6 +127,22 @@ function setupEnv() {
     }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
+
+function GenerateSASKey {
+    [Reflection.Assembly]::LoadWithPartialName("System.Web")| out-null
+    $URI="myNamespace.servicebus.windows.net/myEventHub"
+    $Access_Policy_Name="RootManageSharedAccessKey"
+    $Access_Policy_Key="myPrimaryKey"
+    #Token expires now+300
+    $Expires=([DateTimeOffset]::Now.ToUnixTimeSeconds())+300
+    $SignatureString=[System.Web.HttpUtility]::UrlEncode($URI)+ "`n" + [string]$Expires
+    $HMAC = New-Object System.Security.Cryptography.HMACSHA256
+    $HMAC.key = [Text.Encoding]::ASCII.GetBytes($Access_Policy_Key)
+    $Signature = $HMAC.ComputeHash([Text.Encoding]::ASCII.GetBytes($SignatureString))
+    $Signature = [Convert]::ToBase64String($Signature)
+    $Signature
+}
+
 function cleanupEnv() {
     # Clean resources you create for testing
     Remove-AzResourceGroup -Name $env.resourceGroup

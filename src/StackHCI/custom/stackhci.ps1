@@ -200,6 +200,8 @@ $ClusterScheduledTaskReadyState = "Ready"
 
 $ArcSettingsDisableInProgressState = "DisableInProgress"
 
+$AzAccountsModuleVersion="2.10.2"
+$AzResourcesModuleVersion="6.2.0"
 
 Function Write-Log {
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
@@ -331,10 +333,10 @@ Function Write-NodeEventLog{
         {
             $session = New-PSSession -ComputerName localhost
         }
-        $sourceExists = Invoke-Command -Session $session -ScriptBlock {[System.Diagnostics.EventLog]::SourceExists("$using:sourceName") }
+        $sourceExists = Invoke-Command -Session $session -ScriptBlock {Get-EventLog -LogName Application -Source $using:sourceName -Newest 1 -ErrorAction SilentlyContinue }
         if(-not $sourceExists)
         {
-            Invoke-Command -Session $session -ScriptBlock { New-EventLog -LogName Application -Source $using:sourceName }
+            Invoke-Command -Session $session -ScriptBlock { New-EventLog -LogName Application -Source $using:sourceName -ErrorAction SilentlyContinue}
         }    
         $levelStr = $Level.ToString()
         Invoke-Command -Session $session -ScriptBlock { Write-EventLog -LogName Application -Source $using:sourceName -EventId $using:EventID -EntryType $using:levelStr -Message $using:Message }
@@ -381,8 +383,8 @@ $registerArcScript = {
     {
         # Params for Enable-AzureStackHCIArcIntegration 
         $AgentInstaller_WebLink                  = 'https://aka.ms/AzureConnectedMachineAgent'
-        $AgentInstaller_Name                     = 'AzureConnectedMachineAgent.msi'
-        $AgentInstaller_LogFile                  = 'ConnectedMachineAgentInstallationLog.txt'
+        $AgentInstaller_Name                     =  $env:windir + '\Tasks\ArcForServers' + '\AzureConnectedMachineAgent.msi'
+        $AgentInstaller_LogFile                  =  $env:windir + '\Tasks\ArcForServers' +'\ConnectedMachineAgentInstallationLog.txt'
         $AgentExecutable_Path                    =  $Env:Programfiles + '\AzureConnectedMachineAgent\azcmagent.exe'
 
         $DebugPreference = 'Continue'
@@ -403,10 +405,10 @@ $registerArcScript = {
         $LogFileName = $LogFileDir + '\RegisterArc_' + $datestring + '.log'
     
         Start-Transcript -LiteralPath $LogFileName -Append | Out-Null
-        $sourceExists = [System.Diagnostics.EventLog]::SourceExists('HCI Registration')
+        $sourceExists = Get-EventLog -LogName Application -Source 'HCI Registration' -Newest 1 -ErrorAction SilentlyContinue
         if(-not $sourceExists)
         {
-            New-EventLog -LogName Application -Source 'HCI Registration'
+            New-EventLog -LogName Application -Source 'HCI Registration' -ErrorAction SilentlyContinue
         }
         Write-Information 'Triggering Arc For Servers registration cmdlet'
         $arcStatus = Get-AzureStackHCIArcIntegration
@@ -450,7 +452,7 @@ $registerArcScript = {
         Write-Error -Exception $_.Exception -Category OperationStopped
         # Get script line number, offset and Command that resulted in exception. Write-ErrorLog with the exception above does not write this info.
         $positionMessage = $_.InvocationInfo.PositionMessage
-        Write-EventLog -LogName Application -Source "HCI Registration" -EventId 9116 -EntryType "Warning" -Message "Failed Arc For Servers registration: $positionMessage"
+        Write-EventLog -LogName Application -Source 'HCI Registration' -EventId 9116 -EntryType 'Warning' -Message 'Failed Arc For Servers registration: '+$positionMessage
         Write-Error ('Exception occurred in RegisterArcScript : ' + $positionMessage) -Category OperationStopped
     }
     finally
@@ -789,6 +791,36 @@ param(
     return "/Subscriptions/" + $SubscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.AzureStackHCI/clusters/" + $ResourceName
 }
 
+function Install-Dependent-Module{
+    param(
+    [string] $ModuleName,
+    [string] $ModuleVersion
+    )
+    try
+    {
+        Import-Module -Name $ModuleName -RequiredVersion $ModuleVersion -ErrorAction Stop
+        Write-VerboseLog ("Found required Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
+    }
+    catch
+    {
+        try
+        {
+            Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
+        }
+        catch
+        {
+            Install-PackageProvider NuGet -Force | Out-Null
+        }
+
+        Write-VerboseLog ("Installing Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
+
+        Install-Module -Name $ModuleName  -RequiredVersion $ModuleVersion  -Force -AllowClobber
+        Import-Module -Name $ModuleName -RequiredVersion $ModuleVersion
+        
+        Write-VerboseLog ("Successfully imported Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
+    }
+}
+
 function Azure-Login{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
@@ -805,24 +837,8 @@ param(
 
     Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -status $InstallAzResourcesMessage -percentcomplete 10
 
-    try
-    {
-        Import-Module -Name Az.Resources -ErrorAction Stop
-    }
-    catch
-    {
-        try
-        {
-            Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
-        }
-        catch
-        {
-            Install-PackageProvider NuGet -Force | Out-Null
-        }
-
-        Install-Module -Name Az.Resources -Force -AllowClobber
-        Import-Module -Name Az.Resources
-    }
+    Install-Dependent-Module -ModuleName "Az.Accounts" -ModuleVersion $AzAccountsModuleVersion
+    Install-Dependent-Module -ModuleName "Az.Resources" -ModuleVersion $AzResourcesModuleVersion
     Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -status $LoggingInToAzureMessage -percentcomplete 30
 
     if($EnvironmentName -eq $AzurePPE)
@@ -3423,23 +3439,8 @@ param(
         }
         else 
         {
-            try
-            {
-                Import-Module -Name Az.Resources -ErrorAction Stop
-            }
-            catch
-            {
-                try
-                {
-                    Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
-                }
-                catch
-                {
-                    Install-PackageProvider NuGet -Force | Out-Null
-                }
-                Install-Module -Name Az.Resources -Force -AllowClobber
-                Import-Module -Name Az.Resources
-            }    
+            Install-Dependent-Module -ModuleName "Az.Accounts" -ModuleVersion $AzAccountsModuleVersion
+            Install-Dependent-Module -ModuleName "Az.Resources" -ModuleVersion $AzResourcesModuleVersion
         }
 
         $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ApiVersion $RPAPIVersion -ErrorAction Stop
@@ -4885,11 +4886,12 @@ function Install-DeployModule {
         $ModuleName
     )
 
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstallModule" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
     if(Get-Module | Where-Object { $_.Name -eq $ModuleName }){
-        Write-Host "$ModuleName is loaded already ..."
+        Write-InfoLog("$ModuleName is loaded already ...")
     }
     else{
-        Write-Host "$ModuleName is not loaded, downloading ..."
+        Write-InfoLog("$ModuleName is not loaded, downloading ...")
 
         # Download Remote Support Deployment module from storage
         Invoke-DeploymentModuleDownload
@@ -4916,8 +4918,15 @@ function Install-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType([Boolean])]
     param()
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
-    Microsoft.AzureStack.Deployment.RemoteSupport\Install-RemoteSupport
+    
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstall" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
+    if(Assert-IsObservabilityStackPresent){
+        Write-InfoLog("Install-AzStackHCIRemoteSupport is not available.")
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Install-RemoteSupport
+    }
 }
 
 <#
@@ -4936,8 +4945,15 @@ function Remove-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType([Boolean])]
     param()
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
-    Microsoft.AzureStack.Deployment.RemoteSupport\Remove-RemoteSupport
+
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportRemove" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
+    if(Assert-IsObservabilityStackPresent){
+        Write-InfoLog("Remove-AzStackHCIRemoteSupport is not available.")
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Remove-RemoteSupport
+    }
 }
 
 <#
@@ -4988,9 +5004,14 @@ function Enable-AzStackHCIRemoteSupport{
         $AgreeToRemoteSupportConsent
     )
 
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
-
-    Microsoft.AzureStack.Deployment.RemoteSupport\Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
+    if(Assert-IsObservabilityStackPresent){
+        Import-Module DiagnosticsInitializer -Verbose -Force
+        Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
+    }
 }
 
 <#
@@ -5011,9 +5032,15 @@ function Disable-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType([Boolean])]
     param()
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
 
-    Microsoft.AzureStack.Deployment.RemoteSupport\Disable-RemoteSupport
+    if(Assert-IsObservabilityStackPresent){
+        Import-Module DiagnosticsInitializer -Verbose -Force
+        Disable-RemoteSupport
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Disable-RemoteSupport
+    }
 }
 
 <#
@@ -5048,9 +5075,48 @@ function Get-AzStackHCIRemoteSupportAccess{
         $IncludeExpired
     )
 
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+    if(Assert-IsObservabilityStackPresent){
+        Import-Module DiagnosticsInitializer -Verbose -Force
+        Get-RemoteSupportAccess -IncludeExpired:$IncludeExpired
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Get-RemoteSupportAccess -Cluster:$Cluster -IncludeExpired:$IncludeExpired
+    }
+}
 
-    Microsoft.AzureStack.Deployment.RemoteSupport\Get-RemoteSupportAccess -Cluster:$Cluster -IncludeExpired:$IncludeExpired
+<#
+.SYNOPSIS
+    Gets if Observability Remote Support Service exists. 
+.DESCRIPTION
+    Gets if Observability Remote Support Service exists to determine module to import.
+.PARAMETER 
+.EXAMPLE
+    The example below returns whether environment is HCI or not.
+    PS C:\> Assert-IsObservabilityStackPresent
+.NOTES
+#>
+function Assert-IsObservabilityStackPresent{
+    [OutputType([Boolean])]
+    param()
+
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportObsStackPresent" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
+    try{
+        $obsService = Get-Service -Name "*Observability RemoteSupportAgent*" -ErrorAction SilentlyContinue
+        $deviceType = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\AzureStack" -ErrorAction SilentlyContinue).DeviceType
+        if($null -ne $obsService -or $deviceType -eq "AzureEdge"){
+            Write-InfoLog("AzureStack device type is AzureEdge.")
+            return $true
+        }
+        else{
+            Write-InfoLog("AzureStack device type is not AzureEdge.")
+            return $false
+        }
+    }
+    catch{
+        Write-Error "Failed while getting Observability Remote Support service."
+        return $false
+    }
 }
 
 <#
@@ -5078,7 +5144,6 @@ function Get-AzStackHCIRemoteSupportAccess{
     PS C:\> Get-AzStackHCIRemoteSupportSessionHistory
 
 .NOTES
-
 #>
 function Get-AzStackHCIRemoteSupportSessionHistory{
     [OutputType([Boolean])]
@@ -5096,9 +5161,14 @@ function Get-AzStackHCIRemoteSupportSessionHistory{
         $FromDate = (Get-Date).AddDays(-7)
     )
 
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
-
-    Microsoft.AzureStack.Deployment.RemoteSupport\Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
+    if(Assert-IsObservabilityStackPresent){
+        Import-Module DiagnosticsInitializer -Verbose -Force
+        Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
+    }
 }
 
 # Export-ModuleMember -Function Register-AzStackHCI

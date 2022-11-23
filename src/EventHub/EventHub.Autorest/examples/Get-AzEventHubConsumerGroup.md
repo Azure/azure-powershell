@@ -5,7 +5,7 @@ Get-AzEventHubConsumerGroup -Name '$Default' -NamespaceName myNamespace -Resourc
 
 ```output
 CreatedAt                    : 9/13/2022 9:20:47 AM
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
                                /eventhubs/eh1/consumergroups/$Default
 Location                     : australiaeast
 Name                         : $Default

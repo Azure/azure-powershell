@@ -1,7 +1,7 @@
 ---
 external help file: Az.DiagnosticSetting.psm1-help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/remove-azdiagnosticsetting
+online version: https://learn.microsoft.com/powershell/module/az.monitor/remove-azdiagnosticsetting
 schema: 2.0.0
 ---
 

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.1
+* Fixed blueprint assignment name validation
+
 ## Version 0.4.0
 * Fix custom delegating handler to only apply to Blueprint requests
 

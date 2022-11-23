@@ -30,16 +30,22 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the ManagementPolicySnapShot class.
         /// </summary>
         /// <param name="tierToCool">The function to tier blob snapshot to cool
-        /// storage. Support blob snapshot currently at Hot tier</param>
+        /// storage.</param>
         /// <param name="tierToArchive">The function to tier blob snapshot to
-        /// archive storage. Support blob snapshot currently at Hot or Cool
-        /// tier</param>
+        /// archive storage.</param>
+        /// <param name="tierToCold">The function to tier blobs to cold
+        /// storage.</param>
+        /// <param name="tierToHot">The function to tier blobs to hot storage.
+        /// This action can only be used with Premium Block Blob Storage
+        /// Accounts</param>
         /// <param name="delete">The function to delete the blob
         /// snapshot</param>
-        public ManagementPolicySnapShot(DateAfterCreation tierToCool = default(DateAfterCreation), DateAfterCreation tierToArchive = default(DateAfterCreation), DateAfterCreation delete = default(DateAfterCreation))
+        public ManagementPolicySnapShot(DateAfterCreation tierToCool = default(DateAfterCreation), DateAfterCreation tierToArchive = default(DateAfterCreation), DateAfterCreation tierToCold = default(DateAfterCreation), DateAfterCreation tierToHot = default(DateAfterCreation), DateAfterCreation delete = default(DateAfterCreation))
         {
             TierToCool = tierToCool;
             TierToArchive = tierToArchive;
+            TierToCold = tierToCold;
+            TierToHot = tierToHot;
             Delete = delete;
             CustomInit();
         }
@@ -51,17 +57,28 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <summary>
         /// Gets or sets the function to tier blob snapshot to cool storage.
-        /// Support blob snapshot currently at Hot tier
         /// </summary>
         [JsonProperty(PropertyName = "tierToCool")]
         public DateAfterCreation TierToCool { get; set; }
 
         /// <summary>
         /// Gets or sets the function to tier blob snapshot to archive storage.
-        /// Support blob snapshot currently at Hot or Cool tier
         /// </summary>
         [JsonProperty(PropertyName = "tierToArchive")]
         public DateAfterCreation TierToArchive { get; set; }
+
+        /// <summary>
+        /// Gets or sets the function to tier blobs to cold storage.
+        /// </summary>
+        [JsonProperty(PropertyName = "tierToCold")]
+        public DateAfterCreation TierToCold { get; set; }
+
+        /// <summary>
+        /// Gets or sets the function to tier blobs to hot storage. This action
+        /// can only be used with Premium Block Blob Storage Accounts
+        /// </summary>
+        [JsonProperty(PropertyName = "tierToHot")]
+        public DateAfterCreation TierToHot { get; set; }
 
         /// <summary>
         /// Gets or sets the function to delete the blob snapshot
@@ -84,6 +101,14 @@ namespace Microsoft.Azure.Management.Storage.Models
             if (TierToArchive != null)
             {
                 TierToArchive.Validate();
+            }
+            if (TierToCold != null)
+            {
+                TierToCold.Validate();
+            }
+            if (TierToHot != null)
+            {
+                TierToHot.Validate();
             }
             if (Delete != null)
             {

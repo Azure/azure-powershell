@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzServiceBusQueue
 
 ## SYNOPSIS
-Sets a ServiceBus Queue
+Updates a ServiceBus Queue
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Set-AzServiceBusQueue -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <Tim
 ```
 
 ## DESCRIPTION
-Sets a ServiceBus Queue
+Updates a ServiceBus Queue
 
 ## EXAMPLES
 

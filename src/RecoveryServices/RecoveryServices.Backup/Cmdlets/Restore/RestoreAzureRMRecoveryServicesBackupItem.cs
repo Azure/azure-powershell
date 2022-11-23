@@ -429,26 +429,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     string storageType = getStorageResponse.Properties.StorageType;
                     bool crrEnabled = (bool)getStorageResponse.Properties.CrossRegionRestoreFlag;
 
-                    if (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.ZoneRedundant.ToString() ||
-                    (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled))
+                    AzureVmRecoveryPoint rp = (AzureVmRecoveryPoint)RecoveryPoint;
+
+                    // eliminate LRS/GRS
+                    if (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.ZoneRedundant.ToString() ||                     
+                        (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled))
                     {
-                        AzureVmRecoveryPoint rp = (AzureVmRecoveryPoint)RecoveryPoint;
-                        if (rp.RecoveryPointTier == RecoveryPointTier.VaultStandard)  // RP recovery type should be vault only
-                        {
-                            if (rp.Zones != null)
-                            {
-                                //target region should support Zones 
-                                /*if (RestoreToSecondaryRegion.IsPresent)
+                        // eliminate non-vault tier RPs 
+                        if (rp.RecoveryPointTier == RecoveryPointTier.VaultStandard)
+                        {                               
+                            // check CZR eligibility for RA-GRS
+                            if (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled)
+                            {                                
+                                if(rp.Zones == null)
                                 {
-                                    FeatureSupportRequest iaasvmFeatureRequest = new FeatureSupportRequest();
-                                    ServiceClientAdapter.BmsAdapter.Client.FeatureSupport.ValidateWithHttpMessagesAsync(secondaryRegion, iaasvmFeatureRequest);
-                                }*/
-                                providerParameters.Add(RecoveryPointParams.TargetZone, TargetZoneNumber);
+                                    throw new ArgumentException(Resources.UnsupportedCZRWithNonZonePinnedVMForCRRVault);
+                                }
+                                else if (!RestoreToSecondaryRegion.IsPresent)
+                                {
+                                    throw new ArgumentException(Resources.UnsupportedCZRForCRRVaultToPrimaryRegion);
+                                }
                             }
-                            else
-                            {
-                                throw new ArgumentException(string.Format(Resources.RecoveryPointZonePinnedException));
-                            }
+
+                            providerParameters.Add(RecoveryPointParams.TargetZone, TargetZoneNumber);
                         }
                         else
                         {
@@ -456,7 +459,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         }
                     }
                     else
-                    {
+                    {   
                         throw new ArgumentException(string.Format(Resources.ZonalRestoreVaultStorageRedundancyException));
                     }
                 }

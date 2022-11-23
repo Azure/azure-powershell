@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Sets a ServiceBus Topic
+Updates a ServiceBus Subscription
 .Description
-Sets a ServiceBus Topic
+Updates a ServiceBus Subscription
 .Example
 Set-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name mySubscription -DefaultMessageTimeToLive (New-TimeSpan -Days 10) -EnableBatchedOperations
 .Example

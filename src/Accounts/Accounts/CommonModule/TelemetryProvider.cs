@@ -149,6 +149,7 @@ namespace Microsoft.Azure.Commands.Common
                 InputFromPipeline = invocationInfo?.PipelineLength > 0,
                 UserAgent = AzurePSCmdlet.UserAgent,
                 AzVersion = AzurePSCmdlet.AzVersion,
+                AzAccountsVersion = AzurePSCmdlet.AzAccountsVersion,
                 PSVersion = AzurePSCmdlet.PowerShellVersion,
                 HostVersion = AzurePSCmdlet.PSHostVersion,
                 PSHostName = AzurePSCmdlet.PSHostName,
