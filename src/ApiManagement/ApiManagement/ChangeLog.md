@@ -18,8 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-*[Breaking Change]: changed the type of parameter Sku from Enum to String in `Add-AzApiManagementRegion`
-and `New-AzApiManagement` and `Update-AzApiManagementRegion`.
+
+## Version 4.0.1
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
+## Version 4.0.0
+* [Breaking Change] Changed the type of parameter `Sku` from Enum to String in `Add-AzApiManagementRegion`, `New-AzApiManagement` and `Update-AzApiManagementRegion`.
 
 ## Version 3.0.1
 * Supported GraphQL Specification Format

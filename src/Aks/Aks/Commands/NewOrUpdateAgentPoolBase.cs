@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Aks
@@ -30,5 +31,12 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable auto-scaler")]
         public SwitchParameter EnableAutoScaling { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible values include: 'System', 'User'
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The pool mode")]
+        [PSArgumentCompleter("System", "User")]
+        public string Mode { get; set; }
     }
 }

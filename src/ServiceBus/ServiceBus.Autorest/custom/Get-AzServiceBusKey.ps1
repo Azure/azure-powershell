@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Gets a ServiceBus SAS key
+Gets the SASKey of a ServiceBus namespace, queue or topic.
 .Description
-Gets a ServiceBus SAS key
+Gets the SASKey of a ServiceBus namespace, queue or topic.
 #>
 
 function Get-AzServiceBusKey{

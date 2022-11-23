@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzServiceBusTopic
 
 ## SYNOPSIS
-Sets a ServiceBus Topic
+Updates a ServiceBus Topic
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Set-AzServiceBusTopic -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <Tim
 ```
 
 ## DESCRIPTION
-Sets a ServiceBus Topic
+Updates a ServiceBus Topic
 
 ## EXAMPLES
 

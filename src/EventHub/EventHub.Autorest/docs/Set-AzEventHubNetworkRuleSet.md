@@ -37,7 +37,7 @@ Sets an EventHub Namespace Network Rule Set
 ```powershell
 $ipRule1 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2 -Action Allow
 $ipRule2 = New-AzEventHubIPRuleConfig -IPMask 3.3.3.3 -Action Allow
-$virtualNetworkRule1 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId /subscriptions/{subscriptionId}/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default
+$virtualNetworkRule1 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId '/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default'
 $networkRuleSet = Get-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 $networkRuleSet.IPRule += $ipRule1
 $networkRuleSet.IPRule += $ipRule2
@@ -57,7 +57,7 @@ IPRule                       : {{
                                  "ipMask": "3.3.3.3",
                                  "action": "Allow"
                                }}
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/networkRuleSets/
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/networkRuleSets/
                                default
 Location                     : Australia East
 Name                         : default
@@ -67,12 +67,12 @@ TrustedServiceAccessEnabled  :
 Type                         : Microsoft.EventHub/Namespaces/NetworkRuleSets
 VirtualNetworkRule           : {{
                                  "subnet": {
-                                   "id": "/subscriptions/{subscriptionId}/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default"
+                                   "id": "/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default"
                                  },
                                  "ignoreMissingVnetServiceEndpoint": false
                                },{
                                  "subnet": {
-                                   "id": "/subscriptions/{subscriptionId}/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/mySubnet"
+                                   "id": "/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/mySubnet"
                                  },
                                  "ignoreMissingVnetServiceEndpoint": false
                                }}
@@ -97,7 +97,7 @@ IPRule                       : {{
                                  "ipMask": "3.3.3.3",
                                  "action": "Allow"
                                }}
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/networkRuleSets/
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/networkRuleSets/
                                default
 Location                     : Australia East
 Name                         : default
@@ -107,12 +107,12 @@ TrustedServiceAccessEnabled  : True
 Type                         : Microsoft.EventHub/Namespaces/NetworkRuleSets
 VirtualNetworkRule           : {{
                                  "subnet": {
-                                   "id": "/subscriptions/{subscriptionId}/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default"
+                                   "id": "/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default"
                                  },
                                  "ignoreMissingVnetServiceEndpoint": false
                                },{
                                  "subnet": {
-                                   "id": "/subscriptions/{subscriptionId}/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/mySubnet"
+                                   "id": "/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/mySubnet"
                                  },
                                  "ignoreMissingVnetServiceEndpoint": false
                                }}
@@ -205,7 +205,7 @@ The name of EventHub namespace
 ```yaml
 Type: System.String
 Parameter Sets: SetExpanded
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

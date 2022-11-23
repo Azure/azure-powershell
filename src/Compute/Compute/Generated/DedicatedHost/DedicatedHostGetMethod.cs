@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     case "ResourceIdParameter":
                         resourceGroupName = GetResourceGroupName(this.ResourceId);
-                        hostGroupName = GetResourceName(this.ResourceId, "Microsoft.Compute/hosts", "hosts");
-                        hostName = GetResourceName(this.ResourceId, "Microsoft.Compute/hosts", "hosts");
+                        hostGroupName = GetResourceName(this.ResourceId, "Microsoft.Compute/hostGroups", "hosts");
+                        hostName = GetInstanceId(this.ResourceId, "Microsoft.Compute/hostGroups", "hosts");
                         break;
                     default:
                         resourceGroupName = this.ResourceGroupName;

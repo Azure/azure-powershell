@@ -86,15 +86,15 @@ namespace Microsoft.Azure.Commands.Profile
             }
             else if (!string.IsNullOrWhiteSpace(this.SubscriptionId))
             {
-                IAzureSubscription result;
+                IEnumerable<IAzureSubscription> result = null;
                 try
                 {
-                    if (!this._client.TryGetSubscriptionById(TenantId, this.SubscriptionId, out result))
+                    result = this._client.TryGetSubscriptionById(TenantId, this.SubscriptionId);
+                    if (result == null || result.Count() == 0)
                     {
                         ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionId);
                     }
-
-                    WriteObject( new PSAzureSubscription(result));
+                    WriteObject(new PSAzureSubscription(result.FirstOrDefault()));
                 }
                 catch (AadAuthenticationException exception)
                 {

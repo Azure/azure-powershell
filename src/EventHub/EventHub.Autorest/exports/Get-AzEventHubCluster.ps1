@@ -20,9 +20,7 @@ Gets the resource description of the specified Event Hubs Cluster.
 .Description
 Gets the resource description of the specified Event Hubs Cluster.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzEventHubCluster -ResourceGroupName myResourceGroup -Name DefaultCluster-11
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity

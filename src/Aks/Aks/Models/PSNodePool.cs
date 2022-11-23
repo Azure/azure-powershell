@@ -116,6 +116,12 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public string OsType { get; set; }
 
         /// <summary>
+        /// Gets or sets possible values include: 'Ubuntu', 'CBLMariner',
+        /// 'Windows2019', 'Windows2022'
+        /// </summary>
+        public string OsSKU { get; set; }
+
+        /// <summary>
         /// Gets or sets maximum number of nodes for auto-scaling
         /// </summary>
 
@@ -132,6 +138,11 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// </summary>
 
         public bool? EnableAutoScaling { get; set; }
+
+        /// <summary>
+        /// Gets or sets mode for agent pool System or User
+        /// </summary>
+        public string Mode { get; set; }
 
         /// <summary>
         /// Gets or sets agentPoolType represents types of an node pool.

@@ -82,6 +82,27 @@
                 "dependency": null,
                 "majorVersions": [
                     {
+                        "displayVersion": "18",
+                        "runtimeVersion": "~18",
+                        "supportedFunctionsExtensionVersions": [
+                            "~4"
+                        ],
+                        "isDefault": false,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "node",
+                            "WEBSITE_NODE_DEFAULT_VERSION": "~18"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": true,
+                            "netFrameworkVersion": "v6.0"
+                        },
+                        "isPreview": true,
+                        "isDeprecated": false,
+                        "isHidden": false
+                    },
+                    {
                         "displayVersion": "16",
                         "runtimeVersion": "~16",
                         "supportedFunctionsExtensionVersions": [
@@ -98,7 +119,7 @@
                             "use32BitWorkerProcess": true,
                             "netFrameworkVersion": "v6.0"
                         },
-                        "isPreview": true,
+                        "isPreview": false,
                         "isDeprecated": false,
                         "isHidden": false
                     },
@@ -196,6 +217,27 @@
                         },
                         "siteConfigPropertiesDictionary": {
                             "javaVersion": "11",
+                            "use32BitWorkerProcess": true,
+                            "netFrameworkVersion": "v6.0"
+                        },
+                        "isPreview": true,
+                        "isDeprecated": false,
+                        "isHidden": false
+                    },
+                    {
+                        "displayVersion": "17",
+                        "runtimeVersion": "17",
+                        "supportedFunctionsExtensionVersions": [
+                            "~4"
+                        ],
+                        "isDefault": false,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "java"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "javaVersion": "17",
                             "use32BitWorkerProcess": true,
                             "netFrameworkVersion": "v6.0"
                         },

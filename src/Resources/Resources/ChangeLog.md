@@ -19,6 +19,26 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.4.1
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
+## Version 6.4.0
+* Fixed parameter `Count` for
+    - Get-AzADApplication
+    - Get-AzADServicePrincipal
+    - Get-AzADUser
+* Polished preview warning message for:
+    - Add-AzADGroupMember
+    - Get-AzADGroupMember
+    - Remove-AzADGroupMember
+* Fixed a `NullReferenceException` when deploying a JSON template using Bicep extensibility
+* Added `-AsJob` to support running `Register-AzResourceProvider` as a Job
+
+## Version 6.3.1
+* Fixed NullReferenceException issue in `New-AzRoleAssignment` [#19793]
+
+## Version 6.3.0
 * Removed unused reference to resource identifier in role assignment create cmdlet
 * Exposed parameter `-Count` for `Get-AzADApplication`, `Get-AzADServicePrincipal`, `Get-AzADGroup` [#19476] 
 

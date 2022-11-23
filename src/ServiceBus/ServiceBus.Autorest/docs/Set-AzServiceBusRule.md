@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzServiceBusRule
 
 ## SYNOPSIS
-Sets a ServiceBus Rule
+Updates a ServiceBus Rule
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Set-AzServiceBusRule -InputObject <IServiceBusIdentity> [-ActionRequiresPreproce
 ```
 
 ## DESCRIPTION
-Sets a ServiceBus Rule
+Updates a ServiceBus Rule
 
 ## EXAMPLES
 

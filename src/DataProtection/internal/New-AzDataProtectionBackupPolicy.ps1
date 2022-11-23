@@ -57,7 +57,7 @@ PARAMETER <IBaseBackupPolicyResource>: BaseBackupPolicy resource
   [DatasourceType <String[]>]: Type of datasource for the backup management
   [ObjectType <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackuppolicy
+https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackuppolicy
 #>
 function New-AzDataProtectionBackupPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBaseBackupPolicyResource])]

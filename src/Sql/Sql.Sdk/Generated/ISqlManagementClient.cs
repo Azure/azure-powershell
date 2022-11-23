@@ -434,6 +434,11 @@ namespace Microsoft.Azure.Management.Sql
         IRecommendedSensitivityLabelsOperations RecommendedSensitivityLabels { get; }
 
         /// <summary>
+        /// Gets the IIPv6FirewallRulesOperations.
+        /// </summary>
+        IIPv6FirewallRulesOperations IPv6FirewallRules { get; }
+
+        /// <summary>
         /// Gets the IManagedDatabaseRestoreDetailsOperations.
         /// </summary>
         IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; }

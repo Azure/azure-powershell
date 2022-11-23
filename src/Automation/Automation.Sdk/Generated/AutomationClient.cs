@@ -257,6 +257,11 @@ namespace Microsoft.Azure.Management.Automation
         public virtual IHybridRunbookWorkerGroupOperations HybridRunbookWorkerGroup { get; private set; }
 
         /// <summary>
+        /// Gets the IPython3PackageOperations.
+        /// </summary>
+        public virtual IPython3PackageOperations Python3Package { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the AutomationClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -534,6 +539,7 @@ namespace Microsoft.Azure.Management.Automation
             TestJob = new TestJobOperations(this);
             HybridRunbookWorkers = new HybridRunbookWorkersOperations(this);
             HybridRunbookWorkerGroup = new HybridRunbookWorkerGroupOperations(this);
+            Python3Package = new Python3PackageOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

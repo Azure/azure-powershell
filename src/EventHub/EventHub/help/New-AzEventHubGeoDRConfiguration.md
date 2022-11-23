@@ -25,16 +25,16 @@ Creates or updates a new Alias(Disaster Recovery configuration)
 
 ### Example 1: Create a disaster recovery
 ```powershell
-New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
+New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
 ```
 
 ```output
 AlternateName                     :
-Id                                : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myPrimaryNamespace/disasterRecoveryCon
+Id                                : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myPrimaryNamespace/disasterRecoveryCon
                                     figs/myAlias
 Location                          :
 Name                              : myAlias
-PartnerNamespace                  : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
+PartnerNamespace                  : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
 PendingReplicationOperationsCount :
 ProvisioningState                 : Succeeded
 ResourceGroupName                 : myResourceGroup
@@ -96,7 +96,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

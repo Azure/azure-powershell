@@ -47,86 +47,86 @@
 
           # If more DataSourceTypes support this then we can make it manifest driven
           if($DatasourceType -eq "AzureDatabaseForPostgreSQL")
-            {
-                CheckPostgreSqlModuleDependency
-                CheckKeyVaultModuleDependency
+          {
+              CheckPostgreSqlModuleDependency
+              CheckKeyVaultModuleDependency
 
-                if($KeyVaultId -eq "" -or $KeyVaultId -eq $null)
-                {
-                    Write-Error "KeyVaultId not provided. Please provide the KeyVaultId parameter to successfully assign the permissions on the keyvault"
-                }
+              if($KeyVaultId -eq "" -or $KeyVaultId -eq $null)
+              {
+                  Write-Error "KeyVaultId not provided. Please provide the KeyVaultId parameter to successfully assign the permissions on the keyvault"
+              }
 
-                $KeyvaultName = GetResourceNameFromArmId -Id $KeyVaultId
-                $KeyvaultRGName = GetResourceGroupNameFromArmId -Id $KeyVaultId
-                $ServerName = GetResourceNameFromArmId -Id $DataSourceId
-                $ServerRG = GetResourceGroupNameFromArmId -Id $DataSourceId
-                  
-                $KeyvaultArray = $KeyVaultId.Split("/")
-                $KeyvaultRG = GetResourceGroupIdFromArmId -Id $KeyVaultId
-                $KeyvaultSubscriptionName = GetSubscriptionNameFromArmId -Id $KeyVaultId
+              $KeyvaultName = GetResourceNameFromArmId -Id $KeyVaultId
+              $KeyvaultRGName = GetResourceGroupNameFromArmId -Id $KeyVaultId
+              $ServerName = GetResourceNameFromArmId -Id $DataSourceId
+              $ServerRG = GetResourceGroupNameFromArmId -Id $DataSourceId
+                
+              $KeyvaultArray = $KeyVaultId.Split("/")
+              $KeyvaultRG = GetResourceGroupIdFromArmId -Id $KeyVaultId
+              $KeyvaultSubscriptionName = GetSubscriptionNameFromArmId -Id $KeyVaultId
 
-                if ($PSCmdlet.ShouldProcess("KeyVault: $($KeyvaultName) and PostgreSQLServer: $($ServerName)","
-                            1.'Allow All Azure services' under network connectivity in the Postgres Server
-                            2.'Allow Trusted Azure services' under network connectivity in the Key vault")) 
-                {
-                      
-                    Update-AzPostgreSqlServer -ResourceGroupName $ServerRG -ServerName $ServerName -PublicNetworkAccess Enabled| Out-Null
-                    New-AzPostgreSqlFirewallRule -Name AllowAllAzureIps -ResourceGroupName $ServerRG -ServerName $ServerName -EndIPAddress 0.0.0.0 -StartIPAddress 0.0.0.0 | Out-Null
-                       
-                    $SecretsList = ""
-                    try{$SecretsList =  Get-AzKeyVaultSecret -VaultName $KeyvaultName}
-                    catch{
-                        $err = $_
-                        throw $err
-                    }
+              if ($PSCmdlet.ShouldProcess("KeyVault: $($KeyvaultName) and PostgreSQLServer: $($ServerName)","
+                          1.'Allow All Azure services' under network connectivity in the Postgres Server
+                          2.'Allow Trusted Azure services' under network connectivity in the Key vault")) 
+              {                    
+                  Update-AzPostgreSqlServer -ResourceGroupName $ServerRG -ServerName $ServerName -PublicNetworkAccess Enabled| Out-Null
+                  New-AzPostgreSqlFirewallRule -Name AllowAllAzureIps -ResourceGroupName $ServerRG -ServerName $ServerName -EndIPAddress 0.0.0.0 -StartIPAddress 0.0.0.0 | Out-Null
+                     
+                  $SecretsList = ""
+                  try{$SecretsList =  Get-AzKeyVaultSecret -VaultName $KeyvaultName}
+                  catch{
+                      $err = $_
+                      throw $err
+                  }
               
-                    $SecretValid = $false
-                    $GivenSecretUri = $BackupInstance.Property.DatasourceAuthCredentials.SecretStoreResource.Uri
+                  $SecretValid = $false
+                  $GivenSecretUri = $BackupInstance.Property.DatasourceAuthCredentials.SecretStoreResource.Uri
               
-                    foreach($Secret in $SecretsList)
-                    {
-                        $SecretArray = $Secret.Id.Split("/")
-                        $SecretArray[2] = $SecretArray[2] -replace "....$"
-                        $SecretUri = $SecretArray[0] + "/" + $SecretArray[1] + "/"+  $SecretArray[2] + "/" +  $SecretArray[3] + "/" + $SecretArray[4] 
-                                
-                        if($Secret.Enabled -eq "true" -and $SecretUri -eq $GivenSecretUri)
-                        {$SecretValid = $true}
-                    }
-                    if($SecretValid -eq $false)
-                    {
-                        $err = "The Secret URI provided in the backup instance is not associated with the keyvault Id provided.Please provide a valid combination of Secret URI and keyvault Id"
-                        throw $err
-                    }
+                  foreach($Secret in $SecretsList)
+                  {
+                      $SecretArray = $Secret.Id.Split("/")
+                      $SecretArray[2] = $SecretArray[2] -replace "....$"
+                      $SecretUri = $SecretArray[0] + "/" + $SecretArray[1] + "/"+  $SecretArray[2] + "/" +  $SecretArray[3] + "/" + $SecretArray[4] 
+                              
+                      if($Secret.Enabled -eq "true" -and $SecretUri -eq $GivenSecretUri)
+                      {
+                          $SecretValid = $true
+                      }
+                  }
 
-                    if($KeyVault.PublicNetworkAccess -eq "Disabled")
-                    {
-                        $err = "Keyvault needs to have public network access enabled"
-                        throw $err
-                    }
+                  if($SecretValid -eq $false)
+                  {
+                      $err = "The Secret URI provided in the backup instance is not associated with the keyvault Id provided.Please provide a valid combination of Secret URI and keyvault Id"
+                      throw $err
+                  }
+
+                  if($KeyVault.PublicNetworkAccess -eq "Disabled")
+                  {
+                      $err = "Keyvault needs to have public network access enabled"
+                      throw $err
+                  }
             
-                    try{$KeyVault = Get-AzKeyVault -VaultName $KeyvaultName}
-                    catch{
-                        $err = $_
-                        throw $err
-                    }    
+                  try{$KeyVault = Get-AzKeyVault -VaultName $KeyvaultName}
+                  catch{
+                      $err = $_
+                      throw $err
+                  }    
             
-                    try{Update-AzKeyVaultNetworkRuleSet -VaultName $KeyvaultName -Bypass AzureServices -Confirm:$False}
-                    catch{
-                        $err = $_
-                        throw $err
-                    }
-                }
-            }
+                  try{Update-AzKeyVaultNetworkRuleSet -VaultName $KeyvaultName -Bypass AzureServices -Confirm:$False}
+                  catch{
+                      $err = $_
+                      throw $err
+                  }
+              }
+          }
 
           $MissingRolesInitially = $false
 
           foreach($Permission in $manifest.keyVaultPermissions)
           {                                                                                     
               if($KeyVault.EnableRbacAuthorization -eq $false )
-              {
-                
-                 try{
-                    
+              {                
+                 try{                    
                       $KeyVault = Get-AzKeyVault -VaultName $KeyvaultName 
                       $KeyVaultAccessPolicies = $KeyVault.AccessPolicies
 
@@ -137,6 +137,7 @@
                         Set-AzKeyVaultAccessPolicy -VaultName $KeyvaultName -ObjectId $vault.IdentityPrincipalId -PermissionsToSecrets Get,List -Confirm:$False 
                         break
                       }
+
                       $KeyvaultAccessPolicyPermissions = $KeyVaultAccessPolicy."PermissionsToSecrets"
                       $KeyvaultAccessPolicyPermissions+="Get"
                       $KeyvaultAccessPolicyPermissions+="List"
@@ -145,15 +146,15 @@
                       
                       Set-AzKeyVaultAccessPolicy -VaultName $KeyvaultName -ObjectId $vault.IdentityPrincipalId -PermissionsToSecrets $FinalKeyvaultAccessPolicyPermissions -Confirm:$False                 
                  }
-                 catch{$err = $_
-                 throw $err
+                 catch{
+                     $err = $_
+                     throw $err
                  }
               }
 
               else
               {
-                  $CheckPermission = $AllRoles
-                  | Where-Object { ($_.Scope -eq $KeyVaultId -or $_.Scope -eq $KeyvaultRG -or  $_.Scope -eq $KeyvaultSubscription) -and $_.RoleDefinitionName -eq $Permission}
+                  $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $KeyVaultId -or $_.Scope -eq $KeyvaultRG -or  $_.Scope -eq $KeyvaultSubscription) -and $_.RoleDefinitionName -eq $Permission}
               
                   if($CheckPermission -ne $null)
                   {
@@ -168,16 +169,14 @@
 
                       AssignMissingRoles -ObjectId $vault.IdentityPrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $KeyVaultId -ResourceGroup $KeyvaultRG -Subscription $KeyvaultSubscriptionName
 
-                      Write-Host "Assigned $($Permission) permission to the backup vault"
-                      
+                      Write-Host "Assigned $($Permission) permission to the backup vault"                      
                   }
               }
           }
                
           foreach($Permission in $manifest.datasourcePermissions)
           {
-              $CheckPermission = $AllRoles
-              | Where-Object { ($_.Scope -eq $DataSourceId -or $_.Scope -eq $ResourceRG -or  $_.Scope -eq $SubscriptionName) -and $_.RoleDefinitionName -eq $Permission}
+              $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $DataSourceId -or $_.Scope -eq $ResourceRG -or  $_.Scope -eq $SubscriptionName) -and $_.RoleDefinitionName -eq $Permission}
               
               if($CheckPermission -ne $null)
               {
@@ -200,8 +199,7 @@
           {
               $SnapshotResourceGroupId = $BackupInstance.Property.PolicyInfo.PolicyParameter.DataStoreParametersList[0].ResourceGroupId
 
-              $CheckPermission = $AllRoles
-              | Where-Object { ($_.Scope -eq $SnapshotResourceGroupId -or $_.Scope -eq $SubscriptionName)  -and $_.RoleDefinitionName -eq $Permission}
+              $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $SnapshotResourceGroupId -or $_.Scope -eq $SubscriptionName)  -and $_.RoleDefinitionName -eq $Permission}
 
               if($CheckPermission -ne $null)
               {
@@ -218,9 +216,7 @@
   
                   Write-Host "Assigned $($Permission) permission to the backup vault"
               }
-          }
-
-          
+          }          
           
           if($MissingRolesInitially -eq $true)
           {
@@ -228,7 +224,6 @@
               Start-Sleep -Seconds 60
           }
           
-          $WarningPreference = $OriginalWarningPreference
-          
+          $WarningPreference = $OriginalWarningPreference          
     }
 }

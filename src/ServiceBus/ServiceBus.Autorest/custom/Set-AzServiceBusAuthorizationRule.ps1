@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Sets an ServiceBus Namespace, Queue and Topic Authorization Rule
+Updates the authorization rule of a ServiceBus namespace, queue or topic.
 .Description
-Sets an ServiceBus Namespace, Queue and Topic Authorization Rule
+Updates the authorization rule of a ServiceBus namespace, queue or topic.
 #>
 
 function Set-AzServiceBusAuthorizationRule{

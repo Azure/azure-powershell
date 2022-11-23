@@ -128,8 +128,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             };
                             if (t["Encryption"] != null)
                             {
-                                var osDiskEncryptionSetId = (string)((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"])["DiskEncryptionSetId"];
-                                var osDiskImageEncryption = new OSDiskImageEncryption(osDiskEncryptionSetId);
+                                OSDiskImageEncryption osDiskImageEncryption = new OSDiskImageEncryption();
+                                if (((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"]) != null)
+                                {
+                                    var osDiskEncryptionSetId = (string)((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"])["DiskEncryptionSetId"];
+                                    osDiskImageEncryption.DiskEncryptionSetId = osDiskEncryptionSetId;
+
+                                    var cVMEncryptionType = (string)((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"])["CVMEncryptionType"];
+                                    var cVMDiskEncryptionSetID = (string)((Hashtable)((Hashtable)t["Encryption"])["osDiskImage"])["CVMDiskEncryptionSetID"];
+                                    if (cVMEncryptionType != null || cVMDiskEncryptionSetID != null)
+                                    {
+                                        OSDiskImageSecurityProfile osDiskImageSecurityProfile = new OSDiskImageSecurityProfile(cVMEncryptionType, cVMDiskEncryptionSetID);
+                                        osDiskImageEncryption.SecurityProfile = osDiskImageSecurityProfile;
+                                    }
+
+                                }
 
                                 List<DataDiskImageEncryption> dataDiskImageEncryption = null;
                                 var dataDiskImage = (object[])((Hashtable)t["Encryption"])["dataDiskImages"];
@@ -145,34 +158,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 }
                                 
                                 target.Encryption = new EncryptionImages(osDiskImageEncryption, dataDiskImageEncryption);
-                            }
-
-                            if (t["CVMEncryptionType"] != null)
-                            {  
-                                if (target.Encryption == null)
-                                {
-                                    target.Encryption = new EncryptionImages();
-                                }
-                                target.Encryption.OsDiskImage = new OSDiskImageEncryption();
-                                target.Encryption.OsDiskImage.SecurityProfile = new OSDiskImageSecurityProfile();
-                                target.Encryption.OsDiskImage.SecurityProfile.ConfidentialVMEncryptionType = (string)t["CVMEncryptionType"];
-                            }
-
-                            if (t["CVMDiskEncryptionSetID"] != null)
-                            {
-                                if (target.Encryption == null)
-                                {
-                                    target.Encryption = new EncryptionImages();
-                                }
-                                if (target.Encryption.OsDiskImage == null)
-                                {
-                                    target.Encryption.OsDiskImage = new OSDiskImageEncryption();
-                                }
-                                if (target.Encryption.OsDiskImage.SecurityProfile == null)
-                                {
-                                    target.Encryption.OsDiskImage.SecurityProfile = new OSDiskImageSecurityProfile();
-                                }
-                                target.Encryption.OsDiskImage.SecurityProfile.SecureVMDiskEncryptionSetId = (string)t["CVMDiskEncryptionSetID"];
                             }
 
                             galleryImageVersion.PublishingProfile.TargetRegions.Add(target);

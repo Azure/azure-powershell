@@ -1,7 +1,9 @@
 ### Example 1: List all configurations in specified MySql server
 ```powershell
-PS C:\> Get-AzMySqlFlexibleServerConfiguration -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+Get-AzMySqlFlexibleServerConfiguration -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+```
 
+```output
 Name                                     Value
 ----                                     -----
 archive                                  OFF
@@ -16,8 +18,10 @@ This cmdlet lists all configurations in specified MySql server.
 
 ### Example 2: Get specified MySql configuration by name
 ```powershell
-PS C:\> Get-AzMySqlFlexibleServerConfiguration -Name wait_timeout -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+Get-AzMySqlFlexibleServerConfiguration -Name wait_timeout -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+```
 
+```output
 Name         Value AllowedValue Source         DefaultValue
 ----         ----- ------------ ------         ------------
 wait_timeout 28800 1-31536000   system-default 28800
@@ -27,9 +31,11 @@ This cmdlet gets specified MySql configuration by name.
 
 ### Example 3: List configuration by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/configurations/wait_timeout"
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/configurations/wait_timeout"
 Get-AzMySqlFlexibleServerConfiguration -Name wait_timeout -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+```
 
+```output
 Name         Value AllowedValue Source         DefaultValue
 ----         ----- ------------ ------         ------------
 wait_timeout 28800 1-31536000   system-default 28800

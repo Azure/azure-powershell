@@ -20,7 +20,9 @@ Describe 'Set-AzEventHubGeoDRConfigurationFailOver' {
         
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
-            Start-Sleep 10
+            if ($TestMode -ne 'playback') {
+                Start-Sleep 10
+            }
         }
 
         $drConfig.Name | Should -Be $env.alias
@@ -29,12 +31,16 @@ Describe 'Set-AzEventHubGeoDRConfigurationFailOver' {
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
         $drConfig = Remove-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
-        Start-Sleep 180
+        if ($TestMode -ne 'playback') {
+            Start-Sleep 180
+        }
         $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
         
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-            Start-Sleep 10
+            if ($TestMode -ne 'playback') {
+                Start-Sleep 10
+            }
         }
     }
     It 'FailViaIdentity' {
@@ -44,7 +50,9 @@ Describe 'Set-AzEventHubGeoDRConfigurationFailOver' {
         
         do {
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
-            Start-Sleep 10
+            if ($TestMode -ne 'playback') {
+                Start-Sleep 10
+            }
         } while($drConfig.ProvisioningState -ne "Succeeded")
 
         $drConfig.Name | Should -Be $env.alias
@@ -54,7 +62,9 @@ Describe 'Set-AzEventHubGeoDRConfigurationFailOver' {
 
         $drConfig = Remove-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
         
-        Start-Sleep 180
+        if ($TestMode -ne 'playback') {
+            Start-Sleep 180
+        }
 
         { Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace } | Should -Throw
     }

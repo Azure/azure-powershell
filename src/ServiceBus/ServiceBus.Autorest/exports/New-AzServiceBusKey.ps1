@@ -16,13 +16,15 @@
 
 <#
 .Synopsis
-Regenerates a ServiceBus SAS key
+Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 .Description
-Regenerates a ServiceBus SAS key
+Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 .Example
 New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name rootmanagesharedaccesskey -KeyType PrimaryKey
 .Example
 New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -QueueName myQueue -Name rootmanagesharedaccesskey -KeyType SecondaryKey
+.Example
+New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name rootmanagesharedaccesskey -KeyType SecondaryKey
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
@@ -43,7 +45,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # The name of EventHub namespace
+    # The name of the ServiceBus namespace
     ${NamespaceName},
 
     [Parameter(Mandatory)]
