@@ -13,34 +13,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
     // https://stackoverflow.com/questions/57269726/x509certificate2-import-with-ncrypt-allow-plaintext-export-flag/57330499#57330499
     internal static class CertificateExportHelper
     {
-        internal static string Export(string fileName, string password, bool machineScope = false)
-        {
-            byte[] certificateBytes = File.ReadAllBytes(fileName);
-            X509Certificate2 cert = ImportExportable(certificateBytes, password, machineScope);
-
-            try
-            {
-                bool gotKey = NativeMethods.Crypt32.CryptAcquireCertificatePrivateKey(
-                    cert.Handle,
-                    NativeMethods.Crypt32.AcquireCertificateKeyOptions.CRYPT_ACQUIRE_ONLY_NCRYPT_KEY_FLAG,
-                    IntPtr.Zero,
-                    out SafeNCryptKeyHandle keyHandle,
-                    out int keySpec,
-                    out bool callerFree);
-
-                using (CngKey cngKey = CngKey.Open(keyHandle, 0))
-                {
-                    Console.WriteLine(cngKey.ExportPolicy);
-
-                    return  Convert.ToBase64String(cngKey.Export(CngKeyBlobFormat.Pkcs8PrivateBlob));
-                }
-            }
-            finally
-            {
-                cert.Reset();
-            }
-        }
-
         internal static X509Certificate2 ImportExportable(byte[] pfxBytes, string password, bool machineScope = false)
         {
             X509KeyStorageFlags flags = X509KeyStorageFlags.Exportable;
