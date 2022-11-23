@@ -31,7 +31,13 @@ function assertNamespaceUpdates{
     $expectedNamespace.PublicNetworkAccess | Should -Be $namespace.PublicNetworkAccess
     $expectedNamespace.AlternateName | Should -Be $namespace.AlternateName
     $expectedNamespace.IdentityType | Should -Be $namespace.IdentityType
-    $expectedNamespace.RequireInfrastructureEncryption | Should -Be $namespace.RequireInfrastructureEncryption
+    
+    if ($expectedNamespace.RequireInfrastructureEncryption -ne $true){
+        $namespace.RequireInfrastructureEncryption | Should -Not -Be $true
+    }
+    else{
+        $namespace.RequireInfrastructureEncryption | Should -Be $true
+    }
 
     if ($expectedNamespace.UserAssignedIdentity -ne $null){
         $expectedNamespace.UserAssignedIdentity.Count | Should -Be $namespace.UserAssignedIdentity.Count
@@ -90,8 +96,8 @@ Describe 'Set-AzEventHubNamespaceV2' {
         $identityId = $eventHubNamespace.UserAssignedIdentity.Keys
         $identityId += $env.msi2
         $namespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -UserAssignedIdentityId $identityId
-        $namespace.UserAssignedIdentityId.Count | Should -Be 2
-        $eventHubNamespace.UserAssignedIdentityId = $identityId
+        $namespace.UserAssignedIdentity.Count | Should -Be 2
+        $eventHubNamespace.UserAssignedIdentity = $namespace.UserAssignedIdentity
         assertNamespaceUpdates $eventHubNamespace $namespace
         
         # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None
