@@ -13,7 +13,8 @@ Gets the web application firewall manifest and all the supported rule sets.
 ## SYNTAX
 
 ```
-Get-AzApplicationGatewayWafDynamicManifest -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzApplicationGatewayWafDynamicManifest -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +45,7 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ### -Location
 The location where resource usage is queried.
 
