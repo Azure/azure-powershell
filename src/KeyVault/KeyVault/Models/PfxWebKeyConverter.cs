@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.KeyVault.Helpers;
 using System;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -174,9 +175,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private static X509Certificate2 GetExportableCertificate(string fileName, SecureString pwd)
         {
-            // X509KeyStorageFlags.Exportable doesn't work if cert.Get*PrivateKey().ExportParameter(true) on Windows and macOS 
-            // return new X509Certificate2(fileName, pwd, X509KeyStorageFlags.Exportable);
-            return CertificateExportHelper.ImportExportable(File.ReadAllBytes(fileName), pwd?.ConvertToString());
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                // cert.Get*PrivateKey().ExportParameter(true) doesn't work even cert is marked with X509KeyStorageFlags.Exportable on Windows and macOS 
+                return new X509Certificate2(fileName, pwd, X509KeyStorageFlags.Exportable);
+            }
+            else
+            {
+                return CertificateExportHelper.ImportExportable(File.ReadAllBytes(fileName), pwd?.ConvertToString());
+            }
+
         }
 
         private IWebKeyConverter next;
