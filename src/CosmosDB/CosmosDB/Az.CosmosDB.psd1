@@ -195,7 +195,7 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'New-AzCosmosDBMongoDBUserDefinition',
                'Update-AzCosmosDBMongoDBUserDefinition',
                'Get-AzCosmosDBMongoDBUserDefinition',
-               'Remove-AzCosmosDBMongoDBUserDefinition'
+               'Remove-AzCosmosDBMongoDBUserDefinition',
                'Get-AzCosmosDBService', 'New-AzCosmosDBService',
                'Remove-AzCosmosDBService'
 
