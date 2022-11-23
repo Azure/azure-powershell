@@ -1,21 +1,21 @@
 ﻿using Microsoft.Win32.SafeHandles;
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.KeyVault.Helpers
 {
-    class Class1
+    // Solution from https://stackoverflow.com/questions/57269726/x509certificate2-import-with-ncrypt-allow-plaintext-export-flag/57330499#57330499
+    internal static class CertificateExportHelper
     {
-        internal static void Main(string[] args)
+        internal static string Export(string fileName, string password, bool machineScope = false)
         {
-            byte[] ECDsaP256_DigitalSignature_Pfx_Windows = new byte[] { };
-            X509Certificate2 cert = ImportExportable(ECDsaP256_DigitalSignature_Pfx_Windows, "Test", machineScope: false);
+            byte[] certificateBytes = File.ReadAllBytes(fileName);
+            X509Certificate2 cert = ImportExportable(certificateBytes, password, machineScope);
 
             try
             {
@@ -31,9 +31,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
                 {
                     Console.WriteLine(cngKey.ExportPolicy);
 
-                    Console.WriteLine(
-                        Convert.ToBase64String(
-                            cngKey.Export(CngKeyBlobFormat.Pkcs8PrivateBlob)));
+                    return  Convert.ToBase64String(cngKey.Export(CngKeyBlobFormat.Pkcs8PrivateBlob));
                 }
             }
             finally

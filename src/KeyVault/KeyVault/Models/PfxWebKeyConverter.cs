@@ -14,14 +14,14 @@
 
 using System;
 using System.IO;
+using System.Linq;
 using System.Security;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Track2Sdk = Azure.Security.KeyVault.Keys;
 using Track1Sdk = Microsoft.Azure.KeyVault.WebKey;
-using System.Collections.Generic;
-using System.Linq;
+using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (!certificate.HasPrivateKey)
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "pfx"));
 
-            var key = certificate.PrivateKey as RSA;
+            var key = certificate.GetRSAPrivateKey();
 
             if (key == null)
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "pfx"));
@@ -83,13 +83,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (!certificate.HasPrivateKey)
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "pfx"));
 
-            var rsaKey = certificate.PrivateKey as RSA;
-            if (rsaKey != null)
-                return CreateTrack2SdkJWK(rsaKey, extraInfo);
+            var rsaKey = certificate.GetRSAPrivateKey();
 
-            var ecKey = certificate.PrivateKey as ECDsa;
+            if (rsaKey != null)
+            {
+                return CreateTrack2SdkJWK(rsaKey, extraInfo);
+            }
+
+            var ecKey = certificate.GetECDsaPrivateKey();
             if(ecKey != null)
+            {
                 return CreateTrack2SdkJWK(ecKey, extraInfo);
+            }
 
             // to do: support converting oct to jsonwebKey
 
@@ -146,7 +151,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("ecdSa");
             }
 
-            System.Security.Cryptography.ECParameters ecParameters = ecdSa.ExportParameters(true);
+            ECParameters ecParameters = ecdSa.ExportParameters(true);
             var webKey = new Track2Sdk.JsonWebKey(ecdSa, default, extraInfo?.KeyOps?.Select(op => new Track2Sdk.KeyOperation(op)))
             {
                 // note: Keyvault need distinguish EC and EC-HSM
