@@ -15,9 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceBusNamespaceV2')
 }
 
 Describe 'Get-AzServiceBusNamespaceV2' {
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'Get' {
         $namespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespace
         $namespace.Name | Should -Be $env.namespace
+    }
+
+    It 'List1' {
+        $listOfNamespaces = Get-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup
+        $listOfNamespaces.Count | Should -BeGreaterOrEqual 2
     }
 
     It 'GetViaIdentity' {
@@ -25,4 +34,5 @@ Describe 'Get-AzServiceBusNamespaceV2' {
         $namespace = Get-AzServiceBusNamespaceV2 -InputObject $namespace
         $namespace.Name | Should -Be $env.namespace
     }
+
 }
