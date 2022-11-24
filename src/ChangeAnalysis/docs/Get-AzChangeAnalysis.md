@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ChangeAnalysis
-online version: https://docs.microsoft.com/powershell/module/az.changeanalysis/get-azchangeanalysis
+online version: https://learn.microsoft.com/powershell/module/az.changeanalysis/get-azchangeanalysis
 schema: 2.0.0
 ---
 
