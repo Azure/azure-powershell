@@ -13,7 +13,7 @@ function Test-NewAzAksSimple
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
-        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xSc8Q~kVbSNvv5aqTbbAnXLieQsc~ZlEw2GbtdrX")
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "6wx8Q~6JrPOhO3Ycfoqj7K1iReTHJYQjoQGUKc2~")
 
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
@@ -21,6 +21,12 @@ function Test-NewAzAksSimple
         Assert-NotNull $cluster.DnsPrefix
         Assert-AreEqual 1 $cluster.AgentPoolProfiles.Length
         Assert-AreEqual 3 $cluster.AgentPoolProfiles[0].Count;
+        Assert-NotNull $cluster.AgentPoolProfiles[0].NodeImageVersion
+
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 3 $pools.Count
+        Assert-NotNull $pools.NodeImageVersion
+
         $cluster = $cluster | Set-AzAksCluster -NodeCount 2
         Assert-AreEqual 2 $cluster.AgentPoolProfiles[0].Count;
         $cluster | Import-AzAksCredential -Force

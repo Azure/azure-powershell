@@ -160,6 +160,11 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public string OrchestratorVersion { get; set; }
 
         /// <summary>
+        /// Gets the version of node image
+        /// </summary>
+        public string NodeImageVersion { get; private set; }
+
+        /// <summary>
         /// Gets the current deployment or provisioning state, which only
         /// appears in the response.
         /// </summary>
