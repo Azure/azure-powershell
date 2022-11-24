@@ -49,7 +49,7 @@ Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup
 
 Lists all EventHub namespaces under resource group `myResourceGroup`.
 
-### Example 2: List all EventHub namespaces in a subscription
+### Example 3: List all EventHub namespaces in a subscription
 ```powershell
 Get-AzEventHubNamespaceV2
 ```

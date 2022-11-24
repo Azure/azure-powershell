@@ -3,7 +3,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/Microsoft.EventHub/checkNameAvailability?api-version=2022-01-01-preview",
-      "Content": "{\n  \"name\": \"namespaceNameukj7mn\"\n}",
+      "Content": "{\n  \"name\": \"namespaceNameiv2whs\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,15 +17,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "cec69298-586d-4b1a-9553-e1f06d56f963_M2CH3_M2CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "f84efdff-a373-4140-ac7a-6f65bdf14c07" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221123T155652Z:f84efdff-a373-4140-ac7a-6f65bdf14c07" ],
+        "x-ms-request-id": [ "3b755de9-5a09-441b-8f2d-13804c08656c_M2DM2_M2DM2" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/DM2" ],
+        "Server": [ "Service-Bus-Resource-Provider/DM2", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "fbcb2488-c44f-4cd2-be3a-edcecc05b56c" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221124T123930Z:fbcb2488-c44f-4cd2-be3a-edcecc05b56c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 23 Nov 2022 15:56:52 GMT" ]
+        "Date": [ "Thu, 24 Nov 2022 12:39:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "159" ],
@@ -36,11 +36,11 @@
       "isContentBase64": false
     }
   },
-  "Test-AzEventHubName+[NoContext]+AliasAvailability+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestj9r7ot/providers/Microsoft.EventHub/namespaces/namespaceNameukj7mn/disasterRecoveryConfigs/checkNameAvailability?api-version=2022-01-01-preview+1": {
+  "Test-AzEventHubName+[NoContext]+AliasAvailability+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestxq9rwk/providers/Microsoft.EventHub/namespaces/namespaceNameiv2whs/disasterRecoveryConfigs/checkNameAvailability?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestj9r7ot/providers/Microsoft.EventHub/namespaces/namespaceNameukj7mn/disasterRecoveryConfigs/checkNameAvailability?api-version=2022-01-01-preview",
-      "Content": "{\n  \"name\": \"aliasq7rkiu\"\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestxq9rwk/providers/Microsoft.EventHub/namespaces/namespaceNameiv2whs/disasterRecoveryConfigs/checkNameAvailability?api-version=2022-01-01-preview",
+      "Content": "{\n  \"name\": \"aliashkwvxu\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -54,15 +54,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "f1463514-963e-4ef0-8a38-90565798110e_M2CH3_M2CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-correlation-request-id": [ "379b1529-1ca7-40f2-aaa0-a1ab1cab5960" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221123T155653Z:379b1529-1ca7-40f2-aaa0-a1ab1cab5960" ],
+        "x-ms-request-id": [ "47583131-1539-407c-86f1-32ad2695e525_M2DM2_M2DM2" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/DM2" ],
+        "Server": [ "Service-Bus-Resource-Provider/DM2", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "258d2568-5d82-4497-ba3e-f542c2ba409b" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221124T123931Z:258d2568-5d82-4497-ba3e-f542c2ba409b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 23 Nov 2022 15:56:53 GMT" ]
+        "Date": [ "Thu, 24 Nov 2022 12:39:31 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "38" ],
