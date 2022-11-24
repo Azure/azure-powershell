@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Construct an in-memory KeyVaultProperties object
 ```powershell
-{{ Add code here }}
+New-AzEventHubKeyVaultPropertiesObject -KeyName key1 -KeyVaultUri https://{keyVaultName}.vault.azure.net/
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates an in-memory object of type `IKeyVaultProperties`. An array of `IKeyVaultProperties` can be fed as 
+input to `KeyVaultProperty` parameter of New-AzEventHubNamespaceV2 and Set-AzEventHubNamespaceV2 to enable encryption.
