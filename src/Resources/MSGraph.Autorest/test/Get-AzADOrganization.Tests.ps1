@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzADOrganization'))
 }
 
 Describe 'Get-AzADOrganization' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { 
+            Get-AzADOrganization | Should -Not -Be $null
+        } | Should -Not -Throw
     }
 }
