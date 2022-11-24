@@ -1,13 +1,13 @@
 {
-  "Get-AzServiceBusTopic+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest8pghli/providers/Microsoft.ServiceBus/namespaces/namespaceNamec1leiv/topics/topic1?api-version=2022-01-01-preview+1": {
+  "Get-AzServiceBusTopic+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestzxu1k4/providers/Microsoft.ServiceBus/namespaces/namespaceNameu4sf79/topics/topic1?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest8pghli/providers/Microsoft.ServiceBus/namespaces/namespaceNamec1leiv/topics/topic1?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestzxu1k4/providers/Microsoft.ServiceBus/namespaces/namespaceNameu4sf79/topics/topic1?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "48" ],
-        "x-ms-client-request-id": [ "a33cc7ed-0fd8-42a9-afdc-0aacba64f030" ],
+        "x-ms-unique-id": [ "56" ],
+        "x-ms-client-request-id": [ "c8dddd10-56aa-4bc4-abdb-31af42c7e41a" ],
         "CommandName": [ "Get-AzServiceBusTopic" ],
         "FullCommandName": [ "Get-AzServiceBusTopic_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,34 +22,33 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "54e7823e-e241-4a18-8dcd-ff9175bcff8d_M8SN1_M8SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11960" ],
-        "x-ms-correlation-request-id": [ "28edc616-f3e5-4834-93b8-3315ef00291d" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220927T075408Z:28edc616-f3e5-4834-93b8-3315ef00291d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11952" ],
+        "x-ms-request-id": [ "54d13cd1-464a-4d1f-b6fd-a42a4a6d5ef5" ],
+        "x-ms-correlation-request-id": [ "54d13cd1-464a-4d1f-b6fd-a42a4a6d5ef5" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20221124T060545Z:54d13cd1-464a-4d1f-b6fd-a42a4a6d5ef5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 27 Sep 2022 07:54:07 GMT" ]
+        "Date": [ "Thu, 24 Nov 2022 06:05:44 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "966" ],
+        "Content-Length": [ "960" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest8pghli/providers/Microsoft.ServiceBus/namespaces/namespaceNamec1leiv/topics/topic1\",\"name\":\"topic1\",\"type\":\"Microsoft.ServiceBus/Namespaces/Topics\",\"location\":\"North Europe\",\"properties\":{\"maxMessageSizeInKilobytes\":1024,\"defaultMessageTimeToLive\":\"P10675199DT2H48M5.4775807S\",\"maxSizeInMegabytes\":1024,\"requiresDuplicateDetection\":false,\"duplicateDetectionHistoryTimeWindow\":\"PT10M\",\"enableBatchedOperations\":true,\"sizeInBytes\":0,\"status\":\"Active\",\"supportOrdering\":true,\"autoDeleteOnIdle\":\"P10675199DT2H48M5.4775807S\",\"enablePartitioning\":false,\"enableExpress\":false,\"createdAt\":\"2022-09-27T07:42:58.4360225Z\",\"updatedAt\":\"2022-09-27T07:43:00.5142504Z\",\"accessedAt\":\"2022-09-27T07:43:01.154Z\",\"subscriptionCount\":1,\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0}}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestzxu1k4/providers/Microsoft.ServiceBus/namespaces/namespaceNameu4sf79/topics/topic1\",\"name\":\"topic1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics\",\"location\":\"eastus\",\"properties\":{\"maxMessageSizeInKilobytes\":1024,\"defaultMessageTimeToLive\":\"P10675199DT2H48M5.4775807S\",\"maxSizeInMegabytes\":1024,\"requiresDuplicateDetection\":false,\"duplicateDetectionHistoryTimeWindow\":\"PT10M\",\"enableBatchedOperations\":true,\"sizeInBytes\":0,\"status\":\"Active\",\"supportOrdering\":true,\"autoDeleteOnIdle\":\"P10675199DT2H48M5.4775807S\",\"enablePartitioning\":false,\"enableExpress\":false,\"createdAt\":\"2022-11-24T05:50:16.2455037Z\",\"updatedAt\":\"2022-11-24T05:54:38.8420263Z\",\"accessedAt\":\"2022-11-24T05:50:18.511Z\",\"subscriptionCount\":1,\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0}}}",
       "isContentBase64": false
     }
   },
-  "Get-AzServiceBusTopic+[NoContext]+List+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest8pghli/providers/Microsoft.ServiceBus/namespaces/namespaceNamec1leiv/topics?api-version=2022-01-01-preview+1": {
+  "Get-AzServiceBusTopic+[NoContext]+List+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestzxu1k4/providers/Microsoft.ServiceBus/namespaces/namespaceNameu4sf79/topics?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest8pghli/providers/Microsoft.ServiceBus/namespaces/namespaceNamec1leiv/topics?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestzxu1k4/providers/Microsoft.ServiceBus/namespaces/namespaceNameu4sf79/topics?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "49" ],
-        "x-ms-client-request-id": [ "fcfbcbd9-d207-4fd9-a560-4be7ad1b732b" ],
+        "x-ms-unique-id": [ "57" ],
+        "x-ms-client-request-id": [ "184901b0-e329-41de-92d2-f09aa11f0c32" ],
         "CommandName": [ "Get-AzServiceBusTopic" ],
         "FullCommandName": [ "Get-AzServiceBusTopic_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -65,34 +64,33 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-inline-count": [ "" ],
-        "x-ms-request-id": [ "2e00f2a0-ffac-4694-91b2-a0a3033f97c5_M8SN1_M8SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11959" ],
-        "x-ms-correlation-request-id": [ "c5abff19-7e6f-477d-a12b-45272c77b260" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220927T075409Z:c5abff19-7e6f-477d-a12b-45272c77b260" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11951" ],
+        "x-ms-request-id": [ "e5678dbd-bab3-4def-8ef4-723833316eb0" ],
+        "x-ms-correlation-request-id": [ "e5678dbd-bab3-4def-8ef4-723833316eb0" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20221124T060545Z:e5678dbd-bab3-4def-8ef4-723833316eb0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 27 Sep 2022 07:54:08 GMT" ]
+        "Date": [ "Thu, 24 Nov 2022 06:05:45 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "978" ],
+        "Content-Length": [ "972" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest8pghli/providers/Microsoft.ServiceBus/namespaces/namespaceNamec1leiv/topics/topic1\",\"name\":\"topic1\",\"type\":\"Microsoft.ServiceBus/Namespaces/Topics\",\"location\":\"North Europe\",\"properties\":{\"maxMessageSizeInKilobytes\":1024,\"defaultMessageTimeToLive\":\"P10675199DT2H48M5.4775807S\",\"maxSizeInMegabytes\":1024,\"requiresDuplicateDetection\":false,\"duplicateDetectionHistoryTimeWindow\":\"PT10M\",\"enableBatchedOperations\":true,\"sizeInBytes\":0,\"status\":\"Active\",\"supportOrdering\":true,\"autoDeleteOnIdle\":\"P10675199DT2H48M5.4775807S\",\"enablePartitioning\":false,\"enableExpress\":false,\"createdAt\":\"2022-09-27T07:42:58.4360225Z\",\"updatedAt\":\"2022-09-27T07:43:00.5142504Z\",\"accessedAt\":\"2022-09-27T07:43:01.154Z\",\"subscriptionCount\":1,\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0}}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestzxu1k4/providers/Microsoft.ServiceBus/namespaces/namespaceNameu4sf79/topics/topic1\",\"name\":\"topic1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics\",\"location\":\"eastus\",\"properties\":{\"maxMessageSizeInKilobytes\":1024,\"defaultMessageTimeToLive\":\"P10675199DT2H48M5.4775807S\",\"maxSizeInMegabytes\":1024,\"requiresDuplicateDetection\":false,\"duplicateDetectionHistoryTimeWindow\":\"PT10M\",\"enableBatchedOperations\":true,\"sizeInBytes\":0,\"status\":\"Active\",\"supportOrdering\":true,\"autoDeleteOnIdle\":\"P10675199DT2H48M5.4775807S\",\"enablePartitioning\":false,\"enableExpress\":false,\"createdAt\":\"2022-11-24T05:50:16.2455037Z\",\"updatedAt\":\"2022-11-24T05:54:38.8420263Z\",\"accessedAt\":\"2022-11-24T05:50:18.511Z\",\"subscriptionCount\":1,\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0}}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzServiceBusTopic+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest8pghli/providers/Microsoft.ServiceBus/namespaces/namespaceNamec1leiv/topics/topic1?api-version=2022-01-01-preview+1": {
+  "Get-AzServiceBusTopic+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestzxu1k4/providers/Microsoft.ServiceBus/namespaces/namespaceNameu4sf79/topics/topic1?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest8pghli/providers/Microsoft.ServiceBus/namespaces/namespaceNamec1leiv/topics/topic1?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestzxu1k4/providers/Microsoft.ServiceBus/namespaces/namespaceNameu4sf79/topics/topic1?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "50" ],
-        "x-ms-client-request-id": [ "602ee05a-aa87-4a2c-8f4a-3f03fbd2a94d" ],
+        "x-ms-unique-id": [ "58" ],
+        "x-ms-client-request-id": [ "c7b7afbb-855b-408c-8853-76fb064d1083" ],
         "CommandName": [ "Get-AzServiceBusTopic" ],
         "FullCommandName": [ "Get-AzServiceBusTopic_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -107,22 +105,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "599ee8ae-14d7-4463-af10-7a2ca69afda0_M8SN1_M8SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11958" ],
-        "x-ms-correlation-request-id": [ "6f7be9bc-acd5-4632-b20f-9d08a50a03c0" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220927T075409Z:6f7be9bc-acd5-4632-b20f-9d08a50a03c0" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11950" ],
+        "x-ms-request-id": [ "dda4038c-ff03-4bf8-904a-df1a70a979b0" ],
+        "x-ms-correlation-request-id": [ "dda4038c-ff03-4bf8-904a-df1a70a979b0" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20221124T060546Z:dda4038c-ff03-4bf8-904a-df1a70a979b0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 27 Sep 2022 07:54:08 GMT" ]
+        "Date": [ "Thu, 24 Nov 2022 06:05:45 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "966" ],
+        "Content-Length": [ "960" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest8pghli/providers/Microsoft.ServiceBus/namespaces/namespaceNamec1leiv/topics/topic1\",\"name\":\"topic1\",\"type\":\"Microsoft.ServiceBus/Namespaces/Topics\",\"location\":\"North Europe\",\"properties\":{\"maxMessageSizeInKilobytes\":1024,\"defaultMessageTimeToLive\":\"P10675199DT2H48M5.4775807S\",\"maxSizeInMegabytes\":1024,\"requiresDuplicateDetection\":false,\"duplicateDetectionHistoryTimeWindow\":\"PT10M\",\"enableBatchedOperations\":true,\"sizeInBytes\":0,\"status\":\"Active\",\"supportOrdering\":true,\"autoDeleteOnIdle\":\"P10675199DT2H48M5.4775807S\",\"enablePartitioning\":false,\"enableExpress\":false,\"createdAt\":\"2022-09-27T07:42:58.4360225Z\",\"updatedAt\":\"2022-09-27T07:43:00.5142504Z\",\"accessedAt\":\"2022-09-27T07:43:01.154Z\",\"subscriptionCount\":1,\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0}}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestzxu1k4/providers/Microsoft.ServiceBus/namespaces/namespaceNameu4sf79/topics/topic1\",\"name\":\"topic1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics\",\"location\":\"eastus\",\"properties\":{\"maxMessageSizeInKilobytes\":1024,\"defaultMessageTimeToLive\":\"P10675199DT2H48M5.4775807S\",\"maxSizeInMegabytes\":1024,\"requiresDuplicateDetection\":false,\"duplicateDetectionHistoryTimeWindow\":\"PT10M\",\"enableBatchedOperations\":true,\"sizeInBytes\":0,\"status\":\"Active\",\"supportOrdering\":true,\"autoDeleteOnIdle\":\"P10675199DT2H48M5.4775807S\",\"enablePartitioning\":false,\"enableExpress\":false,\"createdAt\":\"2022-11-24T05:50:16.2455037Z\",\"updatedAt\":\"2022-11-24T05:54:38.8420263Z\",\"accessedAt\":\"2022-11-24T05:50:18.511Z\",\"subscriptionCount\":1,\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0}}}",
       "isContentBase64": false
     }
   }
