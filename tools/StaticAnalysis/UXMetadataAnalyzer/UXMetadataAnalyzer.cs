@@ -161,10 +161,12 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                     string description = string.Format("Cmdlet {0} is not contained in {1}.", command.Name, moduleName);
                     issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, command.Name, 1, description);
                 }
-
-                foreach (UXMetadataCommandExample example in command.Examples)
+                else
                 {
-                    ValidateExample(moduleName, resourceType, subResourceType, command.Name, cmdletMetadata, example, issueLogger);
+                    foreach (UXMetadataCommandExample example in command.Examples)
+                    {
+                        ValidateExample(moduleName, resourceType, subResourceType, command.Name, cmdletMetadata, example, issueLogger);
+                    }
                 }
             }
         }
