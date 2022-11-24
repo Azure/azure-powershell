@@ -490,9 +490,9 @@ namespace Microsoft.Azure.Management.Security
             }
             string apiVersion = "2022-03-01";
             Pricing pricing = new Pricing();
-            if (pricingTier != null || subPlan != null)
+            pricing.PricingTier = pricingTier;
+            if (subPlan != null)
             {
-                pricing.PricingTier = pricingTier;
                 pricing.SubPlan = subPlan;
             }
             // Tracing

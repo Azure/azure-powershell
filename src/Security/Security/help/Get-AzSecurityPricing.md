@@ -43,16 +43,22 @@ Get-AzSecurityPricing
 ```
 
 ```output
-Id                                                                                                                   Name                      PricingTier    FreeTrialRemainingTime
---                                                                                                                   ----                      -----------    ----------------------
-/subscriptions/fbaa2b23-e9dd-4bed-93c1-9e2a44f64bc0/providers/Microsoft.Security/pricings/VirtualMachines            VirtualMachines           Free           00:00:00
-/subscriptions/fbaa2b23-e9dd-4bed-93c1-9e2a44f64bc0/providers/Microsoft.Security/pricings/Sqlservers                 SqlServers                Standard       00:00:00
-/subscriptions/fbaa2b23-e9dd-4bed-93c1-9e2a44f64bc0/providers/Microsoft.Security/pricings/AppServices                AppServices               Free           00:00:00
-/subscriptions/fbaa2b23-e9dd-4bed-93c1-9e2a44f64bc0/providers/Microsoft.Security/pricings/StorageAccounts            StorageAccounts           Free           00:00:00
-/subscriptions/fbaa2b23-e9dd-4bed-93c1-9e2a44f64bc0/providers/Microsoft.Security/pricings/SqlserverVirtualMachines   SqlservervirtualMachines  Free           00:00:00
-/subscriptions/fbaa2b23-e9dd-4bed-93c1-9e2a44f64bc0/providers/Microsoft.Security/pricings/KubernetesService          KubernetesService         Free           00:00:00
-/subscriptions/fbaa2b23-e9dd-4bed-93c1-9e2a44f64bc0/providers/Microsoft.Security/pricings/ContainerRegistry          ContainerRegistry         Free           00:00:00
-/subscriptions/fbaa2b23-e9dd-4bed-93c1-9e2a44f64bc0/providers/Microsoft.Security/pricings/KeyVaults                  KeyVaults                 Free           00:00:00
+Id                                                                                                                      Name                          PricingTier   SubPlan             FreeTrialRemainingTime    Deprecated  ReplacedBy
+--                                                                                                                      ----                          -----------   -------             ----------------------    ----------  ----------
+/subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/providers/Microsoft.Security/pricings/VirtualMachines               VirtualMachines               Standard      P2                  00:00:00
+/subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/providers/Microsoft.Security/pricings/SqlServers                    SqlServers                    Standard                          00:00:00
+/subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/providers/Microsoft.Security/pricings/AppServices                   AppServices                   Standard                          00:00:00
+/subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/providers/Microsoft.Security/pricings/StorageAccounts               StorageAccounts               Standard      PerStorageAccount   00:00:00
+/subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/providers/Microsoft.Security/pricings/SqlServerVirtualMachines      SqlServerVirtualMachines      Standard                          00:00:00
+/subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/providers/Microsoft.Security/pricings/KubernetesService             KubernetesService             Free                              00:00:00                  True        [Containers]
+/subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/providers/Microsoft.Security/pricings/ContainerRegistry             ContainerRegistry             Free                              00:00:00                  True        [Containers]
+/subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/providers/Microsoft.Security/pricings/KeyVaults                     KeyVaults                     Standard                          00:00:00
+/subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/providers/Microsoft.Security/pricings/Dns                           Dns                           Standard                          00:00:00
+/subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/providers/Microsoft.Security/pricings/Arm                           Arm                           Standard                          00:00:00
+/subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/providers/Microsoft.Security/pricings/OpenSourceRelationalDatabases OpenSourceRelationalDatabases Standard                          00:00:00
+/subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/providers/Microsoft.Security/pricings/CosmosDbs                     CosmosDbs                     Standard                          00:00:00
+/subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/providers/Microsoft.Security/pricings/Containers                    Containers                    Standard                          00:00:00
+/subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/providers/Microsoft.Security/pricings/CloudPosture                  CloudPosture                  Free                              00:00:00
 ```
 
 Gets the status of each Azure Defender plan for the subscription.
