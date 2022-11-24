@@ -1,8 +1,8 @@
 {
-  "Update-AzApplicationInsightsWebTestTag+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2018-05-01-preview+1": {
+  "Update-AzApplicationInsightsWebTestTag+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2022-06-15+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2018-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2022-06-15",
       "Content": "{\r\n  \"tags\": {\r\n    \"hidden-link:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/appInsights-8f7gor-pwsh\": \"Resource\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -38,10 +38,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzApplicationInsightsWebTestTag+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2018-05-01-preview+1": {
+  "Update-AzApplicationInsightsWebTestTag+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2022-06-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2018-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2022-06-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -82,10 +82,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzApplicationInsightsWebTestTag+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2018-05-01-preview+2": {
+  "Update-AzApplicationInsightsWebTestTag+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2022-06-15+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2018-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/webtests/standardwebtest-p9b7o0-pwsh?api-version=2022-06-15",
       "Content": "{\r\n  \"tags\": {\r\n    \"hidden-link:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-hkrs2v-test/providers/microsoft.insights/components/appInsights-48mah3-pwsh\": \"Resource\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
