@@ -86,12 +86,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             };
             Storage.Create();
 
-            if (loadStorage)
+            if (loadStorage&&!LoadStorage())
             {
-                if (!LoadStorage())
-                {
-                    throw new InvalidOperationException("Failed to load keystore from storage.");
-                }
+                throw new InvalidOperationException("Failed to load keystore from storage.");
             }
         }
 
