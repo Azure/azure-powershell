@@ -1,0 +1,43 @@
+{
+    "resourceType":"subscriptions",
+    "apiVersion":"2021-01-01",
+    "learnMore":{
+       "url":"https://learn.microsoft.com/powershell/module/az.accounts/#subscriptions"
+    },
+    "commands":[
+       {
+          "name":"Get-AzSubscription",
+          "description":"Get subscriptions that the current account can access.",
+          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/subscriptions",
+          "confirmation":false,
+          "help":{
+             "learnMore":{
+                "url":"https://learn.microsoft.com/powershell/module/az.accounts/get-azsubscription"
+             },
+             "parameterSets":[
+                {
+                   "parameters":[
+                      "[[-ResourceGroupName] <System.String>]",
+                      "[[-TenantId] <String>]"
+                   ]
+                }
+             ]
+          },
+          "examples":[
+             {
+                "description":"Get subscriptions that the current account can access.",
+                "parameters":[
+                   {
+                      "name":"-ResourceGroupName",
+                      "value":"[path.resourceGroupName]"
+                   },
+                   {
+                      "name":"-TenantId",
+                      "value":"[path.TenantId]"
+                   }
+                ]
+             }
+          ]
+       }
+    ]
+ }

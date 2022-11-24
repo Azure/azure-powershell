@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedKubernetes
-online version: https://docs.microsoft.com/powershell/module/az.connectedkubernetes/update-azconnectedkubernetes
+online version: https://learn.microsoft.com/powershell/module/az.connectedkubernetes/update-azconnectedkubernetes
 schema: 2.0.0
 ---
 
@@ -15,13 +15,14 @@ API to update certain properties of the connected cluster resource
 ### UpdateExpanded (Default)
 ```
 Update-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AzureHybridBenefit <AzureHybridBenefit>] [-Distribution <String>] [-DistributionVersion <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>] [-Distribution <String>]
+ [-DistributionVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzConnectedKubernetes -InputObject <IConnectedKubernetesIdentity>
+Update-AzConnectedKubernetes -InputObject <IConnectedKubernetesIdentity> [-AcceptEULA]
  [-AzureHybridBenefit <AzureHybridBenefit>] [-Distribution <String>] [-DistributionVersion <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -31,7 +32,7 @@ API to update certain properties of the connected cluster resource
 
 ## EXAMPLES
 
-### Example 1: Update a connected kubernetes
+### Example 1: Update a connected kubernetes.
 ```powershell
 Update-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Tag @{'key'='1'}
 ```
@@ -44,7 +45,7 @@ eastus   azps_test_cluster azps_test_group
 
 This command updates a connected kubernetes.
 
-### Example 2: Update a connected kubernetes by object
+### Example 2: Update a connected kubernetes by object.
 ```powershell
 Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group | Update-AzConnectedKubernetes -Tag @{'key'='2'}
 ```
@@ -57,7 +58,51 @@ eastus   azps_test_cluster azps_test_group
 
 This command updates a connected kubernetes by object.
 
+### Example 3: Update a ConnectedKubernetes's AzureHybridBenefit.
+```powershell
+Update-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName azps_test_group -Tag @{'key'='1'} -AzureHybridBenefit 'True'
+```
+
+```output
+I confirm I have an eligible Windows Server license with Azure Hybrid Benefit to apply this benefit to AKS on Azure Stack HCI or Windows Server. Visit https://aka.ms/ahb-aks for details.
+[Y] Yes  [N] No  (default is "N"): y
+
+Location Name                  ResourceGroupName
+-------- ----                  -----------------
+eastus   azps_test_cluster_ahb azps_test_group
+```
+
+Update a ConnectedKubernetes's AzureHybridBenefit.
+
+### Example 4: Using [-AcceptEULA] will default to your acceptance of the terms of our legal agreement and update a ConnectedKubernetes's AzureHybridBenefit.
+```powershell
+Update-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName azps_test_group -Tag @{'key'='1'} -AzureHybridBenefit 'True' -AcceptEULA
+```
+
+```output
+Location Name                  ResourceGroupName
+-------- ----                  -----------------
+eastus   azps_test_cluster_ahb azps_test_group
+```
+
+Using [-AcceptEULA] will default to your acceptance of the terms of our legal agreement and update a ConnectedKubernetes's AzureHybridBenefit.
+
 ## PARAMETERS
+
+### -AcceptEULA
+Accept EULA of ConnectedKubernetes, legal term will pop up without this parameter provided
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AzureHybridBenefit
 Indicates whether Azure Hybrid Benefit is opted in
