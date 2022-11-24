@@ -23,28 +23,30 @@ Returns a BotService specified by the parameters.
 Initialize-AzBotServicePrepareDeploy -CodeDir D:\zips\MyEchoBot -ProjFileName MyEchoBot.csproj
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/initialize-azbotservicepreparedeploy
+https://learn.microsoft.com/powershell/module/az.botservice/initialize-azbotservicepreparedeploy
 #>
 function Initialize-AzBotServicePrepareDeploy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
     [System.String]
-    # The name of the Bot resource group in the user subscription.
+    # The path to prepare a resource.
     ${CodeDir},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
     [System.String]
+    # The project file name.
     ${ProjFileName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
     [System.String]
+    # The language could be C#, JavaScript or TypeScript.
     ${Language},
 
     [Parameter()]
