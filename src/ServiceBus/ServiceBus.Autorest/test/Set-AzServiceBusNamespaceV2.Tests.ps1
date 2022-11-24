@@ -26,6 +26,27 @@ function assertNamespaceUpdates{
     $expectedNamespace.DisableLocalAuth | Should -Be $namespace.DisableLocalAuth
     $expectedNamespace.Tag.Count | Should -Be $namespace.Tag.Count
     $expectedNamespace.PublicNetworkAccess | Should -Be $namespace.PublicNetworkAccess
+    $expectedNamespace.AlternateName | Should -Be $namespace.AlternateName
+    $expectedNamespace.IdentityType | Should -Be $namespace.IdentityType
+    if ($expectedNamespace.RequireInfrastructureEncryption -ne $true){
+        $namespace.RequireInfrastructureEncryption | Should -Not -Be $true
+    }
+    else{
+        $namespace.RequireInfrastructureEncryption | Should -Be $true
+    }
+    if ($expectedNamespace.UserAssignedIdentity -ne $null){
+        $expectedNamespace.UserAssignedIdentity.Count | Should -Be $namespace.UserAssignedIdentity.Count
+    }
+    else{
+        $expectedNamespace.UserAssignedIdentity | Should -Be $null
+    }
+
+    if ($expectedNamespace.KeyVaultProperty -ne $null){
+        $expectedNamespace.KeyVaultProperty.Count | Should -Be $namespace.KeyVaultProperty.Count
+    }
+    else{
+        $expectedNamespace.KeyVaultProperty | Should -Be $null
+    }
 }
 Describe 'Set-AzServiceBusNamespaceV2' {
     It 'SetExpanded' {
@@ -34,32 +55,45 @@ Describe 'Set-AzServiceBusNamespaceV2' {
         $serviceBusNamespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5
         $serviceBusNamespace.KeyVaultProperty += $ec5
 
-        $serviceBusNamespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5 -KeyVaultProperty $serviceBusNamespace.KeyVaultProperty
-        $serviceBusNamespace.IdentityType | Should -Be "UserAssigned"
-        $serviceBusNamespace.UserAssignedIdentity.Count | Should -Be 2
-        $serviceBusNamespace.KeyVaultProperty.Count | Should -Be 3
-        $serviceBusNamespace.Name | Should -Be $env.namespaceV5
+        $namespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5 -KeyVaultProperty $serviceBusNamespace.KeyVaultProperty
+        $namespace.KeyVaultProperty.Count | Should -Be 3
+        assertNamespaceUpdates $serviceBusNamespace $namespace
 
         # Add KeyVaultProperty to a namespace with System Assigned
+        $serviceBusNamespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName
         $ec1 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key1 -KeyVaulturi $env.keyVaulturi
-        $ec2 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key2 -KeyVaulturi $env.keyVaulturi
-        $ec3 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key3 -KeyVaulturi $env.keyVaulturi
+        $ec2 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key2 -KeyVaulturi $env.KeyVaulturi
 
-        $serviceBusNamespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -KeyVaultProperty $ec1,$ec2,$ec3
-        $serviceBusNamespace.KeyVaultProperty.Count | Should -Be 3
-        $serviceBusNamespace.IdentityType | Should -Be "SystemAssigned"
+        $namespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -KeyVaultProperty $ec1,$ec2
+        $namespace.KeyVaultProperty.Count | Should -Be 2
+        $serviceBusNamespace.KeyVaultProperty = $namespace.KeyVaultProperty
+        assertNamespaceUpdates $serviceBusNamespace $namespace
+
+        $ec3 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key3 -KeyVaulturi $env.keyVaulturi
+        $serviceBusNamespace.KeyVaultProperty += $ec3
+
+        $namespace = Set-AzServiceBUsNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -KeyVaultProperty $serviceBusNamespace.KeyVaultProperty
+        $namespace.KeyVaultProperty.Count | Should -Be 3
+        assertNamespaceUpdates $serviceBusNamespace $namespace
 
         # Remove KeyVaultProperty from namespace with SystemAssigned identity.
         $serviceBusNamespace.KeyVaultProperty = $serviceBusNamespace.KeyVaultProperty[0,2]
-        $serviceBusNamespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -KeyVaultProperty $serviceBusNamespace.KeyVaultProperty
-        $serviceBusNamespace.KeyVaultProperty.Count | Should -Be 2
-        $serviceBusNamespace.IdentityType | Should -Be "SystemAssigned"
+        $namespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -KeyVaultProperty $serviceBusNamespace.KeyVaultProperty
+        $namespace.KeyVaultProperty.Count | Should -Be 2
+        assertNamespaceUpdates $serviceBusNamespace $namespace
 
         # Add UserAssigned Identity to above namespace to test for SystemAssigned and UserAssigned
-        $serviceBusNamespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentityId $env.msi1,$env.msi2
-        $serviceBusNamespace.KeyVaultProperty.Count | Should -Be 2
-        $serviceBusNamespace.IdentityType | Should -Be "SystemAssigned, UserAssigned"
-        $serviceBusNamespace.UserAssignedIdentity.Count | Should -Be 2
+        $namespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentityId $env.msi1
+        $serviceBusNamespace.IdentityType = "SystemAssigned, UserAssigned"
+        $serviceBusNamespace.UserAssignedIdentity = $namespace.UserAssignedIdentity
+        assertNamespaceUpdates $serviceBusNamespace $namespace
+
+        $identityId = $serviceBusNamespace.UserAssignedIdentity.Keys
+        $identityId += $env.msi2
+        $namespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.systemAssignedNamespaceName -UserAssignedIdentityId $identityId
+        $namespace.UserAssignedIdentity.Count | Should -Be 2
+        $serviceBusNamespace.UserAssignedIdentity = $namespace.UserAssignedIdentity
+        assertNamespaceUpdates $serviceBusNamespace $namespace
         
         # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None
         $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId $env.msi1, $env.msi2

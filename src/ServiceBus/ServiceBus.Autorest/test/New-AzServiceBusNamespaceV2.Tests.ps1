@@ -21,7 +21,7 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.SkuName | Should -Be Standard
         $serviceBusNamespace.Location | should -Be "East Us"
 
-        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -DisableLocalAuth -MinimumTlsVersion 1.1
+        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -DisableLocalAuth -MinimumTlsVersion 1.1 
         $serviceBusNamespace.Name | Should -Be $env.namespaceV3
         $serviceBusNamespace.SkuName | Should -Be Standard
         $serviceBusNamespace.SkuTier | Should -Be Standard
@@ -30,12 +30,13 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.DisableLocalAuth | Should -Be $true
         $serviceBusNamespace.Tag.Count | should -Be 2
 
-        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV4 -SkuName Premium -Location eastus -IdentityType SystemAssigned
+        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV4 -SkuName Premium -Location eastus -IdentityType SystemAssigned -ZoneRedundant
         $serviceBusNamespace.Name | Should -Be $env.namespaceV4
         $serviceBusNamespace.IdentityType | Should -Be SystemAssigned
         $serviceBusNamespace.SkuName | Should -Be Premium
         $serviceBusNamespace.SkuTier | Should -Be Premium
         $serviceBusNamespace.Location | Should -Be "East Us"
+        $serviceBusNamespace.ZoneRedundant | Should be $true
 
         # Create namespace with UserAssigned Encryption Enabled
         $ec1 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key1 -KeyVaulturi $env.keyVaultUri -UserAssignedIdentity $env.msi1
@@ -47,6 +48,8 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.Location | Should -Be "North Europe"
         $serviceBusNamespace.KeyVaultProperty.Count | Should -Be 2
         $serviceBusNamespace.UserAssignedIdentity.Count | Should -Be 2
+        $serviceBusNamespace.RequireInfrastructureEncryption | Should -Be $false
+        $serviceBusNamespace.ZoneRedundant | Should be $false
 
         # Create namespace with UserAssigned Encryption Enabled and RequireInfrastructureEncryption true
         $ec1 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key1 -KeyVaulturi $env.keyVaultUri -UserAssignedIdentity $env.msi1

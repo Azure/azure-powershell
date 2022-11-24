@@ -18,7 +18,7 @@ New-AzServiceBusNamespaceV2 -Name <String> -ResourceGroupName <String> -Location
  [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
  [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-RequireInfrastructureEncryption]
  [-SkuCapacity <Int32>] [-SkuName <SkuName>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>]
- [-zoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+ [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -472,7 +472,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -zoneRedundant
+### -ZoneRedundant
 Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
 
 ```yaml

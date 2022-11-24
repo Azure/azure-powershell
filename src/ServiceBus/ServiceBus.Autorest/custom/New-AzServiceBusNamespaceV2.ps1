@@ -73,7 +73,7 @@ function New-AzServiceBusNamespaceV2{
         [Parameter(HelpMessage = "Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Management.Automation.SwitchParameter]
-        ${zoneRedundant},
+        ${ZoneRedundant},
 
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
@@ -175,8 +175,7 @@ function New-AzServiceBusNamespaceV2{
             if($PSBoundParameters.ContainsKey('KeyVaultProperty')){
                 $PSBoundParameters.Add('KeySource', 'Microsoft.KeyVault')
             }
-            if ($PSCmdlet.ShouldProcess("ServiceBusNamespace $($serviceBusNamespace.Name)", "Create or update")) {
-                if($PSBoundParameters.ContainsKey('UserAssignedIdentityId')){
+            if($PSBoundParameters.ContainsKey('UserAssignedIdentityId')){
                     $identityHashTable = @{}
 
 			        foreach ($resourceID in $UserAssignedIdentityId){
@@ -186,6 +185,7 @@ function New-AzServiceBusNamespaceV2{
                     $PSBoundParameters.Add("UserAssignedIdentity", $identityHashTable)
                     $null = $PSBoundParameters.Remove("UserAssignedIdentityId")
                 }
+            if ($PSCmdlet.ShouldProcess("ServiceBusNamespace $($serviceBusNamespace.Name)", "Create or update")) {
                 Az.ServiceBus.private\New-AzServiceBusNamespaceV2_CreateExpanded @PSBoundParameters
             }
 		}
