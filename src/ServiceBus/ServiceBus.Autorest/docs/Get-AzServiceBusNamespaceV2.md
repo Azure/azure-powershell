@@ -40,27 +40,80 @@ Gets a description for the specified namespace.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets a description for the specified namespace.
 ```powershell
-{{ Add code here }}
+$namespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 ```
 
 ```output
-{{ Add output here }}
+AlternateName                   :
+CreatedAt                       : 11/22/2022 4:15:58 PM
+DisableLocalAuth                : False
+Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace
+IdentityType                    : UserAssigned
+KeySource                       : Microsoft.KeyVault
+KeyVaultProperty                : {{
+                                    "identity": {
+                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/use
+                                  rAssignedIdentities/myFirstIdentity"
+                                    },
+                                    "keyName": "key4",
+                                    "keyVaultUri": "https://keyVaultName.vault.azure.net",
+                                    "keyVersion": ""
+                                  }}
+Location                        : East US
+MetricId                        : {subscriptionId}:myNamespace
+MinimumTlsVersion               : 1.2
+Name                            : myNamespace
+PrincipalId                     :
+PrivateEndpointConnection       :
+ProvisioningState               : Succeeded
+PublicNetworkAccess             : Enabled
+RequireInfrastructureEncryption : False
+ResourceGroupName               : myResourceGroup
+ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
+SkuCapacity                     : 1
+SkuName                         : Premium
+SkuTier                         : Premium
+Status                          : Active
+SystemDataCreatedAt             :
+SystemDataCreatedBy             :
+SystemDataCreatedByType         :
+SystemDataLastModifiedAt        :
+SystemDataLastModifiedBy        :
+SystemDataLastModifiedByType    :
+Tag                             : {
+                                  }
+TenantId                        :
+Type                            : Microsoft.ServiceBus/Namespaces
+UpdatedAt                       : 11/23/2022 7:14:58 AM
+UserAssignedIdentity            : {
+                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity
+                                    /userAssignedIdentities/myThirdIdentity": {
+                                    },
+                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity
+                                    /userAssignedIdentities/mySecondIdentity": {
+                                    },
+                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity
+                                    /userAssignedIdentities/myFirstIdentity": {
+                                    }
+                                  }
+ZoneRedundant                   : False
 ```
 
-{{ Add description here }}
+Get namespaces description from ResourceGroup.
 
-### Example 2: {{ Add title here }}
+### Example 2: Count the number of namespaces in the resourcegroup.
 ```powershell
-{{ Add code here }}
+$listOfNamespaces = Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup
+$listOfNamespaces.Count
 ```
 
 ```output
-{{ Add output here }}
+15
 ```
 
-{{ Add description here }}
+There are 15 namespaces present in the myResourceGroup.
 
 ## PARAMETERS
 

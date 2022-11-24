@@ -73,7 +73,7 @@ Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 Create an in-memory object for KeyVaultProperties.
 
 ### [New-AzServiceBusNamespaceV2](New-AzServiceBusNamespaceV2.md)
-Create the new ServiceBusNamespace Entity.
+Creates a new ServiceBus namespace.
 
 ### [New-AzServiceBusQueue](New-AzServiceBusQueue.md)
 Creates or updates a Service Bus queue.
@@ -87,9 +87,6 @@ Creates a topic subscription.
 
 ### [New-AzServiceBusTopic](New-AzServiceBusTopic.md)
 Creates a topic in the specified namespace.
-
-### [New-AzServiceBusUserAssignedIdentityObject](New-AzServiceBusUserAssignedIdentityObject.md)
-Constructs a Powershell Hashtable with resource id of the Managed Identity as key and an empty object as value
 
 ### [New-AzServiceBusVirtualNetworkRuleConfig](New-AzServiceBusVirtualNetworkRuleConfig.md)
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzServiceBusNetworkRuleSet
@@ -132,7 +129,7 @@ This operation disables the Disaster Recovery and stops replicating changes from
 Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
 ### [Set-AzServiceBusNamespaceV2](Set-AzServiceBusNamespaceV2.md)
-Update the ServiceBusNamespace Entity
+Updates a ServiceBus namespace
 
 ### [Set-AzServiceBusNetworkRuleSet](Set-AzServiceBusNetworkRuleSet.md)
 Updates the NetworkRuleSet of a ServiceBus namespace

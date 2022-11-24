@@ -1,4 +1,4 @@
-### Example 1: Get namespaces from ResourceGroup.
+### Example 1: Gets a description for the specified namespace.
 ```powershell
 $namespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 ```
@@ -58,7 +58,7 @@ UserAssignedIdentity            : {
                                   }
 ZoneRedundant                   : False
 ```
-Get namespaces from ResourceGroup.
+Get namespaces description from ResourceGroup.
 
 
 ### Example 2: Count the number of namespaces in the resourcegroup.

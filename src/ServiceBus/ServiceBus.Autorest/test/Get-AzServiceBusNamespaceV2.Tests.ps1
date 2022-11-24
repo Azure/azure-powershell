@@ -15,8 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceBusNamespaceV2')
 }
 
 Describe 'Get-AzServiceBusNamespaceV2' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List'  {
+        $listOfNamespaces = Get-AzServiceBusNamespaceV2
+        $listOfNamespaces.Count | Should -BeGreaterOrEqual 2
     }
 
     It 'Get' {

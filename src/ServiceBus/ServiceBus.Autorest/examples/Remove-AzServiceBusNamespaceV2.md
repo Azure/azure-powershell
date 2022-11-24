@@ -1,4 +1,4 @@
-### Example 1: Remove Namespace
+### Example 1: Deletes an existing namespace.
 ```powershell
 #Creating a namespace by using New Command.
 $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Standard -Location eastus    
