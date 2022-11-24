@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ManagedServiceIdentity
-online version: https://docs.microsoft.com/powershell/module/az.managedserviceidentity/get-azsystemassignedidentity
+online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azsystemassignedidentity
 schema: 2.0.0
 ---
 

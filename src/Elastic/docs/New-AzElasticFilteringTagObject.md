@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Elastic
-online version: https://docs.microsoft.com/powershell/module/az.Elastic/new-AzElasticFilteringTagObject
+online version: https://learn.microsoft.com/powershell/module/az.Elastic/new-AzElasticFilteringTagObject
 schema: 2.0.0
 ---
 

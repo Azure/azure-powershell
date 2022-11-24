@@ -19,7 +19,7 @@ Starts replication for the specified server.
 .Description
 The New-AzMigrateServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
@@ -497,11 +497,17 @@ public static int hashForArtifact(String artifact)
 }
 "@
         Add-Type -TypeDefinition $Source -Language CSharp
-        $hash = [HashFunctions]::hashForArtifact($HashCodeInput)
+        if ([string]::IsNullOrEmpty($mappingObject.ProviderSpecificDetail.KeyVaultUri)) {
+             $LogStorageAccountID = $mappingObject.ProviderSpecificDetail.StorageAccountId
+             $LogStorageAccountSas = $LogStorageAccountID.Split('/')[-1] + '-cacheSas'
+        }
+        else {
+            $hash = [HashFunctions]::hashForArtifact($HashCodeInput)
+            $LogStorageAccountID = "/subscriptions/" + $SubscriptionId + "/resourceGroups/" +
+            $ResourceGroupName + "/providers/Microsoft.Storage/storageAccounts/migratelsa" + $hash
+            $LogStorageAccountSas = "migratelsa" + $hash + '-cacheSas'
+        }
 
-        $LogStorageAccountID = "/subscriptions/" + $SubscriptionId + "/resourceGroups/" +
-        $ResourceGroupName + "/providers/Microsoft.Storage/storageAccounts/migratelsa" + $hash
-        $LogStorageAccountSas = "migratelsa" + $hash + '-cacheSas'
         if (!$HasTargetBDStorage) {
             $TargetBootDiagnosticsStorageAccount = $LogStorageAccountID
         }

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/powershell/module/az.servicebus/test-azservicebusname
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/test-azservicebusname
 schema: 2.0.0
 ---
 

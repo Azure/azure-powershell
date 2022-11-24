@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az./new-azcontainerapptrafficweightobject
+online version: https://learn.microsoft.com/powershell/module/az./new-azcontainerapptrafficweightobject
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Create an in-memory object for TrafficWeight.
 
 ### Example 1: Create a TrafficWeight object for ContainerApp.
 ```powershell
-New-AzContainerAppTrafficWeightObject -Label production -LatestRevision:$True -Weight 100
+New-AzContainerAppTrafficWeightObject -Label production -LatestRevision $True -Weight 100
 ```
 
 ```output

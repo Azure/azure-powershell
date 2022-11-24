@@ -22,7 +22,7 @@ Create a in-memory object for DigitalTwinsIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsIdentity
 .Link
-https://docs.microsoft.com/powershell/module/az.DigitalTwins/new-AzDigitalTwinsDigitalTwinsIdentityObject
+https://learn.microsoft.com/powershell/module/az.DigitalTwins/new-AzDigitalTwinsDigitalTwinsIdentityObject
 #>
 function New-AzDigitalTwinsDigitalTwinsIdentityObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsIdentity')]

@@ -19,10 +19,10 @@ Returns a BotService specified by the parameters.
 .Description
 Returns a BotService specified by the parameters.
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/export-azbotserviceapp
+https://learn.microsoft.com/powershell/module/az.botservice/export-azbotserviceapp
 #>
 function Export-AzBotServiceApp {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter()]
@@ -148,12 +148,15 @@ function DownloadBotZip
     param(
         [Parameter()]
         [System.String]
+        # The name of the Bot resource group in the user subscription.
         ${ResourceGroupName},
         [Parameter()]
         [System.String]
+        # The name of the Bot resource.
         ${Name},
         [Parameter()]
         [System.String]
+        # The path to save your bot.
         ${SavePath},
         [Parameter()]
         [hashtable]

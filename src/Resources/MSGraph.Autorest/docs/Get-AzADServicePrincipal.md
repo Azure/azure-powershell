@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceLinker
-online version: https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerforwebapp
+online version: https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerforwebapp
 schema: 2.0.0
 ---
 

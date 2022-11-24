@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/update-azwebpubsub
+online version: https://learn.microsoft.com/powershell/module/az.signalr/update-azwebpubsub
 schema: 2.0.0
 ---
 
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Represent the identity type: systemAssigned, userAssigned, None
+Represents the identity type: systemAssigned, userAssigned, None
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType
@@ -201,7 +201,7 @@ Gets or sets the list of category configurations.
 To construct, see NOTES section for LIVETRACECATEGORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ILiveTraceCategory[]
 Parameter Sets: (All)
 Aliases:
 
@@ -243,7 +243,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkAcLDefaultAction
-Default action when no other rule matches
+Azure Networking ACL Action.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction
@@ -277,7 +277,7 @@ ACLs for requests from private endpoints
 To construct, see NOTES section for PRIVATEENDPOINTACL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IPrivateEndpointAcl[]
 Parameter Sets: (All)
 Aliases:
 
@@ -357,7 +357,7 @@ Gets or sets the list of category configurations.
 To construct, see NOTES section for RESOURCELOGCATEGORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IResourceLogCategory[]
 Parameter Sets: (All)
 Aliases:
 
@@ -371,7 +371,7 @@ Accept wildcard characters: False
 ### -SkuCapacity
 Optional, integer.
 The unit count of the resource.
-1 by default.If present, following values are allowed: Free: 1 Standard: 1,2,5,10,20,50,100
+1 by default.If present, following values are allowed: Free: 1; Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
 
 ```yaml
 Type: System.Int32
@@ -387,7 +387,7 @@ Accept wildcard characters: False
 
 ### -SkuName
 The name of the SKU.
-Required.Allowed values: Standard_S1, Free_F1
+Required.Allowed values: Standard_S1, Free_F1, Premium_P1
 
 ```yaml
 Type: System.String
@@ -504,7 +504,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource
 
 ## NOTES
 
@@ -515,26 +515,28 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+`INPUTOBJECT <IWebPubSubIdentity>`: Identity Parameter
+  - `[CertificateName <String>]`: Custom certificate name
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region
+  - `[Name <String>]`: Custom domain name.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   - `[ResourceName <String>]`: The name of the resource.
   - `[SharedPrivateLinkResourceName <String>]`: The name of the shared private link resource
   - `[SubscriptionId <String>]`: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
-LIVETRACECATEGORY <ILiveTraceCategory[]>: Gets or sets the list of category configurations.
+`LIVETRACECATEGORY <ILiveTraceCategory[]>`: Gets or sets the list of category configurations.
   - `[Enabled <String>]`: Indicates whether or the live trace category is enabled.         Available values: true, false.         Case insensitive.
   - `[Name <String>]`: Gets or sets the live trace category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 
-PRIVATEENDPOINTACL <IPrivateEndpointAcl[]>: ACLs for requests from private endpoints
+`PRIVATEENDPOINTACL <IPrivateEndpointAcl[]>`: ACLs for requests from private endpoints
   - `Name <String>`: Name of the private endpoint connection
   - `[Allow <WebPubSubRequestType[]>]`: Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
   - `[Deny <WebPubSubRequestType[]>]`: Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
 
-RESOURCELOGCATEGORY <IResourceLogCategory[]>: Gets or sets the list of category configurations.
+`RESOURCELOGCATEGORY <IResourceLogCategory[]>`: Gets or sets the list of category configurations.
   - `[Enabled <String>]`: Indicates whether or the resource log category is enabled.         Available values: true, false.         Case insensitive.
   - `[Name <String>]`: Gets or sets the resource log category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 

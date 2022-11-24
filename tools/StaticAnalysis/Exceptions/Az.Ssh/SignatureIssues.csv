@@ -1,3 +1,3 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Az.Ssh","Microsoft.Azure.Commands.Ssh.EnterAzVMCommand","Enter-AzVM","1","8100","Enter-AzVM Does not support ShouldProcess but the cmdlet verb Enter indicates that it should.","Determine if the cmdlet should implement ShouldProcess and if so determine if it should implement Force / ShouldContinue"
 "Az.Ssh","Microsoft.Azure.Commands.Ssh.ExportAzSshConfig","Export-AzSshConfig","1","8100","Export-AzSshConfig Does not support ShouldProcess but the cmdlet verb Export indicates that it should.","Determine if the cmdlet should implement ShouldProcess and if so determine if it should implement Force / ShouldContinue"

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DeviceUpdate
-online version: https://docs.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateaccount
+online version: https://learn.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateaccount
 schema: 2.0.0
 ---
 
