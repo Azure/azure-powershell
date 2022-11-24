@@ -118,7 +118,7 @@ PrivateEndpointConnection       :
 ProvisioningState               : Succeeded
 PublicNetworkAccess             : Enabled
 RequireInfrastructureEncryption :
-ResourceGroupName               : myResourceGraph
+ResourceGroupName               : myResourceGroup
 ServiceBusEndpoint              : https://myNamespace.servicebus.windows.net:443/
 SkuCapacity                     : 1
 SkuName                         : Premium

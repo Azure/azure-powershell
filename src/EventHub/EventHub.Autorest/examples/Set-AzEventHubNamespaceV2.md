@@ -1,6 +1,6 @@
 ### Example 1: Add a ManagedIdentity to an EventHub namespace
 ```powershell
-$eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 
 $identityId = $eventHubNamespace.UserAssignedIdentity.Keys
 
@@ -77,7 +77,7 @@ keys from the hashtable, which would result in an array of strings which can the
 
 ### Example 2: Add a KeyVaultProperty to an existing EventHub Namespace
 ```powershell
-$eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 
 $newKeyVaultProperty = New-AzEventHubKeyVaultPropertiesObject -KeyName key3 -KeyVaultUri https://{keyVaultName}.vault.azure.net/ -UserAssignedIdentity "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
 
@@ -152,7 +152,7 @@ Adds a new KeyVaultProperty to EventHub namespace `myNamespace`.
 
 ### Example 3: Remove a KeyVaultProperty from an existing EventHub Namespace
 ```powershell
-$eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 
 # Remove the last KeyVaultProperty from the list of KeyVaultProperties
 $eventHubNamespace.KeyVaultProperty = $eventHubNamespace.KeyVaultProperty | Where-Object { $_ -ne $eventHubNamespace.KeyVaultProperty[2] }
@@ -219,7 +219,7 @@ Removes a new KeyVaultProperty to EventHub namespace `myNamespace`.
 
 ### Example 4: Set DisableLocalAuth to true on an existing EventHub namespace
 ```powershell
-Set-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace -DisableLocalAuth
+Set-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -DisableLocalAuth
 ```
 
 ```output
