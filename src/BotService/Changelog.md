@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded the bot service api to 2022-06-15-preview.
 
 ## Version 0.4.0
 * Fixed issue of `-Location` in `New-AzBotService`[#17185]
