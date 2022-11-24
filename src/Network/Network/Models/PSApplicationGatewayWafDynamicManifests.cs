@@ -1,5 +1,4 @@
-﻿//
-// Copyright (c) Microsoft.  All rights reserved.
+﻿// Copyright (c) Microsoft.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,24 +12,19 @@
 // limitations under the License.
 //
 
+using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSApplicationGatewayWebApplicationFirewallPolicy : PSTopLevelResource
+    public class PSApplicationGatewayWafDynamicManifests
     {
-        public List<PSApplicationGatewayFirewallCustomRule> CustomRules { get; set; }
+        public string DefaultRuleSetType { get; set; }
 
-        public PSApplicationGatewayFirewallPolicySettings PolicySettings { get; set; }
+        public string DefaultRuleSetVersion { get; set; }
 
-        public PSApplicationGatewayFirewallPolicyManagedRules ManagedRules { get; set; }
-
-        // CustomBlockResponse fields to be mapped from inside the policy settings
-        // to be shown as response in PS (Feature parity with AFD WAF Policy)
-        public int? CustomBlockResponseStatusCode { get; set; }
-
-        public string CustomBlockResponseBody { get; set; }
+        public List<PSApplicationGatewayFirewallManifestRuleSet> AvailableRuleSets { get; set; }
     }
 }
