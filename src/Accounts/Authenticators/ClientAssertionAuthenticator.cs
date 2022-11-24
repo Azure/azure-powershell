@@ -40,7 +40,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var requestContext = new TokenRequestContext(scopes);
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
 
-            TokenCredential tokenCredential = new ClientAssertionCredential(tenantId, spParameters.ClientId, () => GetClientAssertion(spParameters));
+            var options = new ClientAssertionCredentialOptions()
+            {
+                TokenCachePersistenceOptions = spParameters.TokenCacheProvider.GetTokenCachePersistenceOptions()
+            };
+            TokenCredential tokenCredential = new ClientAssertionCredential(tenantId, spParameters.ClientId, () => GetClientAssertion(spParameters), options);
             string parametersLog = $"- ClientId:'{spParameters.ClientId}', TenantId:'{tenantId}', ClientAssertion:'***' Scopes:'{string.Join(",", scopes)}'";
             return MsalAccessToken.GetAccessTokenAsync(
                 nameof(ClientAssertionAuthenticator),
