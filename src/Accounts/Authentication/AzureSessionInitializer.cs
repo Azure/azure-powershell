@@ -160,7 +160,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 ContextDirectory = profileDirectory,
                 Mode = ContextSaveMode.Process,
                 CacheFile = "msal.cache",
-                ContextFile = "AzureRmContext.json"
+                ContextFile = "AzureRmContext.json",
+                KeyStoreFile = "keystore.cache"
             };
 
             var settingsPath = Path.Combine(profileDirectory, settingsFile);
@@ -176,6 +177,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     result.ContextDirectory = migrated ? profileDirectory : settings.ContextDirectory ?? result.ContextDirectory;
                     result.Mode = settings.Mode;
                     result.ContextFile = settings.ContextFile ?? result.ContextFile;
+                    result.KeyStoreFile = settings.KeyStoreFile ?? result.KeyStoreFile;
                     result.Settings = settings.Settings;
                     bool updateSettings = false;
                     if (!settings.Settings.ContainsKey("InstallationId"))
