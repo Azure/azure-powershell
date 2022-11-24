@@ -279,6 +279,21 @@ directive:
       verb: Stop$|Resume$|Restart$
       subject: Job$
     remove: true
+  - from: Microsoft.RecoveryServices/stable/2022-05-01/service.json
+    where:
+      verb: Get
+      subject: ^ReplicationAppliance|^ReplicationEligibilityResult|^ReplicationProtectionIntent
+    remove: true
+  - from: Microsoft.RecoveryServices/stable/2022-05-01/service.json
+    where:
+      verb: Get
+      subject: ^ReplicationVaultSetting|^SupportedOperatingSystem|^ReplicationProtectionIntent
+    remove: true
+  - from: Microsoft.RecoveryServices/stable/2022-05-01/service.json
+    where:
+      verb: New
+      subject: ^ReplicationVaultSetting|^SupportedOperatingSystem|^ReplicationProtectionIntent
+    remove: true
   # Hide cmldets used by custom
   - from: Microsoft.RecoveryServices/stable/2022-05-01/service.json
     where:

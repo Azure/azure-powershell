@@ -1,7 +1,7 @@
 ---
 Module Name: Az.NetworkSecurityPerimeter
 Module Guid: 9560a0c7-e4ed-40d0-a8c4-9b28b241edca
-Download Help Link: https://docs.microsoft.com/powershell/module/az.networksecurityperimeter
+Download Help Link: https://learn.microsoft.com/powershell/module/az.networksecurityperimeter
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -16,6 +16,10 @@ Gets the specified network security perimeter by the name.
 
 ### [Get-AzNetworkSecurityPerimeterAccessRule](Get-AzNetworkSecurityPerimeterAccessRule.md)
 Gets the specified NSP access rule by name.
+
+### [Get-AzNetworkSecurityPerimeterAssociableResourceType](Get-AzNetworkSecurityPerimeterAssociableResourceType.md)
+Gets the list of resources that are onboarded with NSP.
+These resources can be associated with a network security perimeter
 
 ### [Get-AzNetworkSecurityPerimeterAssociation](Get-AzNetworkSecurityPerimeterAssociation.md)
 Gets the specified NSP association by name.

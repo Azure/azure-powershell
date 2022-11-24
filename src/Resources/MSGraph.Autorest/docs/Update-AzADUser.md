@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/update-azaduser
+online version: https://learn.microsoft.com/powershell/module/az.resources/update-azaduser
 schema: 2.0.0
 ---
 

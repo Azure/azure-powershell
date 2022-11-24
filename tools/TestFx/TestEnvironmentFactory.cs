@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.TestFx
 
         internal static TestEnvironment BuildTestFxEnvironment()
         {
-            _environment.SetRecordedEnvironmentVariables();
+            _environment.SetEnvironmentVariables();
             return _environment;
         }
 

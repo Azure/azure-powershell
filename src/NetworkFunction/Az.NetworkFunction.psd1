@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.NetworkFunction.private.dll'
   FormatsToProcess = './Az.NetworkFunction.format.ps1xml'
-  FunctionsToExport = 'Get-AzNetworkFunctionCollectorPolicy', 'Get-AzNetworkFunctionTrafficCollector', 'New-AzNetworkFunctionCollectorPolicy', 'New-AzNetworkFunctionTrafficCollector', 'Remove-AzNetworkFunctionCollectorPolicy', 'Remove-AzNetworkFunctionTrafficCollector', 'Update-AzNetworkFunctionCollectorPolicy', 'Update-AzNetworkFunctionTrafficCollector', 'Update-AzNetworkFunctionTrafficCollectorTag', '*'
+  FunctionsToExport = 'Get-AzNetworkFunctionCollectorPolicy', 'Get-AzNetworkFunctionTrafficCollector', 'New-AzNetworkFunctionCollectorPolicy', 'New-AzNetworkFunctionTrafficCollector', 'Remove-AzNetworkFunctionCollectorPolicy', 'Remove-AzNetworkFunctionTrafficCollector', 'Update-AzNetworkFunctionCollectorPolicy', 'Update-AzNetworkFunctionCollectorPolicyTag', 'Update-AzNetworkFunctionTrafficCollector', 'Update-AzNetworkFunctionTrafficCollectorTag', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

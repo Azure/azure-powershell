@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.3
+* Updated instrumental key
+
 ## Version 1.0.2
 * Updated survey message
 

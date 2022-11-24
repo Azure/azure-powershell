@@ -25,7 +25,7 @@ Remove-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -Permiss
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadapppermission
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadapppermission
 #>
 function Remove-AzADAppPermission {
 [OutputType([System.Boolean])]

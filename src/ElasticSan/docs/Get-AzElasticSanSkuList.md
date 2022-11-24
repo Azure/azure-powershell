@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ElasticSan
-online version: https://docs.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanskulist
+online version: https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanskulist
 schema: 2.0.0
 ---
 

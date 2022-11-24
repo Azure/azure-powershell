@@ -19,7 +19,7 @@ Starts the test migration for the replicating server.
 .Description
 The Start-AzMigrateTestMigration cmdlet initiates the test migration for the replicating server. 
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
+https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
 #>
 function Start-AzMigrateTestMigration {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
@@ -42,7 +42,13 @@ function Start-AzMigrateTestMigration {
         [System.String]
         # Updates the Virtual Network id within the destination Azure subscription to be used for test migration.
         ${TestNetworkID},
-    
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput[]]
+        # Updates the NIC for the Azure VM to be created.
+        ${NicToUpdate},
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
@@ -101,6 +107,7 @@ function Start-AzMigrateTestMigration {
     process {
         $null = $PSBoundParameters.Remove('TargetObjectID')
         $null = $PSBoundParameters.Remove('TestNetworkID')
+        $null = $PSBoundParameters.Remove('NicToUpdate')
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('ProjectName')
         $null = $PSBoundParameters.Remove('MachineName')
@@ -173,6 +180,7 @@ function Start-AzMigrateTestMigration {
             $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtTestMigrateInput]::new()
             $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
             $ProviderSpecificDetailInput.NetworkId = $TestNetworkID
+            $ProviderSpecificDetailInput.VMNic = $NicToUpdate
             $ProviderSpecificDetailInput.RecoveryPointId = $ReplicationMigrationItem.ProviderSpecificDetail.LastRecoveryPointId
 
             $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSpecificDetailInput)

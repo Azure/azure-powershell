@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/powershell/module/az.kusto/new-azkustoprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoprivateendpointconnection
 schema: 2.0.0
 ---
 

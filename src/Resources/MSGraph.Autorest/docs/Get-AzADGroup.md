@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadgroup
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azadgroup
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Lists entities from groups or get entity from groups by key
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzADGroup [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>] [-Filter <String>]
+Get-AzADGroup [-Count] [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>] [-Filter <String>]
  [-First <UInt64>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -23,12 +23,6 @@ Get-AzADGroup [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>
 ```
 Get-AzADGroup -DisplayName <String> [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>]
  [-First <UInt64>] [-Select <String[]>] [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzADGroup [-Count] [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>]
- [-Select <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
@@ -115,7 +109,7 @@ Include count of items
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List
+Parameter Sets: EmptyParameterSet
 Aliases:
 
 Required: False

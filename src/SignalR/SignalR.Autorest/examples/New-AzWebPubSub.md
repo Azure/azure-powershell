@@ -59,9 +59,9 @@ SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 2021-10-12 7:21:58 AM
 SystemDataLastModifiedBy     : testuser@microsoft.com
 SystemDataLastModifiedByType : User
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.TrackedResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.TrackedResourceTags
 Type                         : Microsoft.SignalRService/WebPubSub
-UserAssignedIdentity         : Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentityUserAssig
+UserAssignedIdentity         : Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ManagedIdentityUserAssig
                                nedIdentities
 Version                      : 1.0
 ```

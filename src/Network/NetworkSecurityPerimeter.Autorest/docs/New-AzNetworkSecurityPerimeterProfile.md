@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkSecurityPerimeter
-online version: https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterprofile
+online version: https://learn.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterprofile
 schema: 2.0.0
 ---
 
@@ -286,6 +286,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[AccessRuleName <String>]`: The name of the NSP access rule.
   - `[AssociationName <String>]`: The name of the NSP association.
   - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: The location of network security perimeter.
   - `[NetworkSecurityPerimeterName <String>]`: The name of the network security perimeter.
   - `[ProfileName <String>]`: The name of the NSP profile.
   - `[ResourceGroupName <String>]`: The name of the resource group.
