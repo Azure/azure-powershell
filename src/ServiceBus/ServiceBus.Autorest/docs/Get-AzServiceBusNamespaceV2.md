@@ -103,17 +103,19 @@ ZoneRedundant                   : False
 
 Get namespaces description from ResourceGroup.
 
-### Example 2: Count the number of namespaces in the resourcegroup.
+### Example 2: List all ServiceBus namespaces in a resource group.
 ```powershell
-$listOfNamespaces = Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup
-$listOfNamespaces.Count
+Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup
 ```
 
-```output
-15
+Lists all ServiceBus namespaces under resource group `myResourceGroup`.
+
+### Example 3: List all ServiceBus namespaces in a subscription
+```powershell
+Get-AzEventHubNamespaceV2
 ```
 
-There are 15 namespaces present in the myResourceGroup.
+Lists all ServiceBus namespaces in the current subscription context.
 
 ## PARAMETERS
 

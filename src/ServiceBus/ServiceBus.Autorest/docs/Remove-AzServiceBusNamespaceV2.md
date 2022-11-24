@@ -33,19 +33,18 @@ This operation also removes all associated resources under the namespace.
 
 ### Example 1: Deletes an existing namespace.
 ```powershell
-#Creating a namespace by using New Command.
-$serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Standard -Location eastus    
 Remove-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
-
-#Using the Get command, we are determining whether our namespace has been deleted or not. If it is deleted Command will throw Exception.
-Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 ```
 
-```output
-Get-AzServiceBusNamespaceV2_Get: The Resource 'Microsoft.ServiceBus/namespaces/srgtc6' under resource group 'shubham-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
+Deletes an ServiceBus namespace `myNamespace` under resource group `myResourceGroup`.
+
+### Example 2: Delete an ServiceBus namespace using InputObject parameter set
+```powershell
+$namespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
+Remove-AzServiceBusNamespaceV2 -InputObject $namespace
 ```
 
-A Namespace was created and subsequently removed.
+Deletes an ServiceBus namespace `myNamespace` under resource group `myResourceGroup` using InputObject parameter set.
 
 ## PARAMETERS
 
