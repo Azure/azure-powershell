@@ -116,6 +116,12 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public string OsType { get; set; }
 
         /// <summary>
+        /// Gets or sets possible values include: 'Ubuntu', 'CBLMariner',
+        /// 'Windows2019', 'Windows2022'
+        /// </summary>
+        public string OsSKU { get; set; }
+
+        /// <summary>
         /// Gets or sets maximum number of nodes for auto-scaling
         /// </summary>
 
@@ -134,6 +140,11 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public bool? EnableAutoScaling { get; set; }
 
         /// <summary>
+        /// Gets or sets mode for agent pool System or User
+        /// </summary>
+        public string Mode { get; set; }
+
+        /// <summary>
         /// Gets or sets agentPoolType represents types of an node pool.
         /// Possible values include: 'VirtualMachineScaleSets',
         /// 'AvailabilitySet'
@@ -147,6 +158,11 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// </summary>
 
         public string OrchestratorVersion { get; set; }
+
+        /// <summary>
+        /// Gets the version of node image
+        /// </summary>
+        public string NodeImageVersion { get; private set; }
 
         /// <summary>
         /// Gets the current deployment or provisioning state, which only

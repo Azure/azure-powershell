@@ -47,7 +47,7 @@ CRITERIONALLOF <ICondition[]>: A list of conditions to evaluate against the spec
   [Threshold <Double?>]: the criteria threshold value that activates the alert. Relevant and required only for rules of the kind LogAlert.
   [TimeAggregation <TimeAggregation?>]: Aggregation type. Relevant and required only for rules of the kind LogAlert.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule
+https://learn.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule
 #>
 function New-AzScheduledQueryRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource])]

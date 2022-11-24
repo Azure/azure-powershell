@@ -37,7 +37,7 @@ PROPERTY <IListClusterUserCredentialProperties>: .
   AuthenticationMethod <AuthenticationMethod>: The mode of client authentication.
   ClientProxy <Boolean>: Boolean value to indicate whether the request is for client side proxy or not
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetesusercredential
+https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetesusercredential
 #>
 function Get-AzConnectedKubernetesUserCredential {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ICredentialResults])]

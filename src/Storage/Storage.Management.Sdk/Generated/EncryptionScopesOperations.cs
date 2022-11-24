@@ -884,6 +884,19 @@ namespace Microsoft.Azure.Management.Storage
         /// Storage account names must be between 3 and 24 characters in length and use
         /// numbers and lower-case letters only.
         /// </param>
+        /// <param name='maxpagesize'>
+        /// Optional, specifies the maximum number of encryption scopes that will be
+        /// included in the list response.
+        /// </param>
+        /// <param name='filter'>
+        /// Optional. When specified, only encryption scope names starting with the
+        /// filter will be listed.
+        /// </param>
+        /// <param name='include'>
+        /// Optional, when specified, will list encryption scopes with the specific
+        /// state. Defaults to All. Possible values include: 'All', 'Enabled',
+        /// 'Disabled'
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -905,7 +918,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<EncryptionScope>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<EncryptionScope>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, int? maxpagesize = default(int?), string filter = default(string), string include = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -963,6 +976,17 @@ namespace Microsoft.Azure.Management.Storage
                     throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
                 }
             }
+            if (maxpagesize != null)
+            {
+                if (maxpagesize > 5000)
+                {
+                    throw new ValidationException(ValidationRules.InclusiveMaximum, "maxpagesize", 5000);
+                }
+                if (maxpagesize < 1)
+                {
+                    throw new ValidationException(ValidationRules.InclusiveMinimum, "maxpagesize", 1);
+                }
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -972,6 +996,9 @@ namespace Microsoft.Azure.Management.Storage
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("maxpagesize", maxpagesize);
+                tracingParameters.Add("filter", filter);
+                tracingParameters.Add("include", include);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
@@ -985,6 +1012,18 @@ namespace Microsoft.Azure.Management.Storage
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (maxpagesize != null)
+            {
+                _queryParameters.Add(string.Format("$maxpagesize={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(maxpagesize, Client.SerializationSettings).Trim('"'))));
+            }
+            if (filter != null)
+            {
+                _queryParameters.Add(string.Format("$filter={0}", System.Uri.EscapeDataString(filter)));
+            }
+            if (include != null)
+            {
+                _queryParameters.Add(string.Format("$include={0}", System.Uri.EscapeDataString(include)));
             }
             if (_queryParameters.Count > 0)
             {

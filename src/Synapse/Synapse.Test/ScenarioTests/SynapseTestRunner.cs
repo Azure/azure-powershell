@@ -78,7 +78,8 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                         {"Microsoft.Authorization", null},
                         {"Microsoft.EventHub", null},
                         {"Microsoft.Insights", null},
-                        {"Microsoft.OperationalInsights", null}
+                        {"Microsoft.OperationalInsights", null},
+                        {"Microsoft.Storage", null}
                     }
                 ).WithManagementClients(
                     GetSynapseClient

@@ -13,7 +13,7 @@ function Test-NewAzAksSimple
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
-        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "uJa7Q~pyzJpxnv7it0f0Co~SL8qQWFL2t45DW")
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "6wx8Q~6JrPOhO3Ycfoqj7K1iReTHJYQjoQGUKc2~")
 
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
@@ -21,6 +21,12 @@ function Test-NewAzAksSimple
         Assert-NotNull $cluster.DnsPrefix
         Assert-AreEqual 1 $cluster.AgentPoolProfiles.Length
         Assert-AreEqual 3 $cluster.AgentPoolProfiles[0].Count;
+        Assert-NotNull $cluster.AgentPoolProfiles[0].NodeImageVersion
+
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 3 $pools.Count
+        Assert-NotNull $pools.NodeImageVersion
+
         $cluster = $cluster | Set-AzAksCluster -NodeCount 2
         Assert-AreEqual 2 $cluster.AgentPoolProfiles[0].Count;
         $cluster | Import-AzAksCredential -Force
@@ -47,7 +53,7 @@ function Test-NewAzAksWithAcr
 
         New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $acrName -Sku Standard
                 
-        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "uJa7Q~pyzJpxnv7it0f0Co~SL8qQWFL2t45DW")
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xSc8Q~kVbSNvv5aqTbbAnXLieQsc~ZlEw2GbtdrX")
 
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject -AcrNameToAttach $acrName
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
@@ -80,7 +86,7 @@ function Test-NewAzAks
     $resourceGroupName = Get-RandomResourceGroupName
     $kubeClusterName = Get-RandomClusterName
     $location = "eastus"
-    $kubeVersion = "1.19.11"
+    $kubeVersion = "1.24.3"
     $nodeVmSize = "Standard_D2_v2"
     $maxPodCount = 25
     $nodeName = "defnode"
@@ -95,7 +101,7 @@ function Test-NewAzAks
     $loadBalancerSku = "Standard"
     $linuxAdminUser = "linuxuser"
     $dnsNamePrefix = "mypre"
-    $updatedKubeVersion = "1.19.11"
+    $updatedKubeVersion = "1.24.3"
 
     try
     {
@@ -145,7 +151,7 @@ function Test-NewAzAksByServicePrincipal
     $kubeClusterName = Get-RandomClusterName
     $location = "eastus"
     $ServicePrincipalId = "a6148f60-19b8-49b8-a5a5-54945aec926e"
-    $credObject = $(createTestCredential $ServicePrincipalId "uJa7Q~pyzJpxnv7it0f0Co~SL8qQWFL2t45DW")
+    $credObject = $(createTestCredential $ServicePrincipalId "xSc8Q~kVbSNvv5aqTbbAnXLieQsc~ZlEw2GbtdrX")
 
     try
     {
@@ -210,7 +216,7 @@ function Test-ResetAzureKubernetesServicePrincipal
     {
         New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
         
-        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "uJa7Q~pyzJpxnv7it0f0Co~SL8qQWFL2t45DW")
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xSc8Q~kVbSNvv5aqTbbAnXLieQsc~ZlEw2GbtdrX")
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject
         
         $newCred = $(createTestCredential "aa0f0dd4-d00c-4a4f-8d22-1f5ea397a8b2" "Acc7Q~FB5apzrf4yHFar~PtiJzZ_c2y0xGhTC")
@@ -229,13 +235,13 @@ function Test-UpgradeKubernetesVersion
     $kubeClusterName = Get-RandomClusterName
     $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
     $nodeVmSize = "Standard_D2_v2"
-    $kubeVersion = "1.23.3"
+    $kubeVersion = "1.24.3"
 
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
         
-        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xde7Q~bVRBoBzggfXn3Zw1uCqzRuLduEFPJXw")
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xSc8Q~kVbSNvv5aqTbbAnXLieQsc~ZlEw2GbtdrX")
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject -NodeVmSetType VirtualMachineScaleSets
         #New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -VmSetType VirtualMachineScaleSets
         Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -KubernetesVersion $kubeVersion -ControlPlaneOnly
@@ -262,7 +268,7 @@ function Test-LoadBalancer
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
         
-        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xde7Q~bVRBoBzggfXn3Zw1uCqzRuLduEFPJXw")
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xSc8Q~kVbSNvv5aqTbbAnXLieQsc~ZlEw2GbtdrX")
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject `
                          -LoadBalancerAllocatedOutboundPort 24 -LoadBalancerSku standard -LoadBalancerManagedOutboundIpCount $loadBalancerManagedOutboundIpCount -LoadBalancerIdleTimeoutInMinute 40
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
@@ -291,7 +297,7 @@ function Test-ApiServiceAccess
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
         
-        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xde7Q~bVRBoBzggfXn3Zw1uCqzRuLduEFPJXw")
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xSc8Q~kVbSNvv5aqTbbAnXLieQsc~ZlEw2GbtdrX")
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject `
                         -EnableApiServerAccessPrivateCluster
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
@@ -323,8 +329,8 @@ function Test-ManagedIdentity
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
         
-        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xde7Q~bVRBoBzggfXn3Zw1uCqzRuLduEFPJXw")
-        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $userAssignedkubeClusterName -ServicePrincipalIdAndSecret $credObject -EnableManagedIdentity -AssignIdentity '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/wyunchi/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity'
+        $credObject = $(createTestCredential "a6148f60-19b8-49b8-a5a5-54945aec926e" "xSc8Q~kVbSNvv5aqTbbAnXLieQsc~ZlEw2GbtdrX")
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $userAssignedkubeClusterName -ServicePrincipalIdAndSecret $credObject -EnableManagedIdentity -AssignIdentity '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/yantest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yanMI'
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $userAssignedkubeClusterName
         Assert-NotNull $cluster.identity
         Assert-AreEqual 'UserAssigned' $cluster.identity.Type
@@ -332,7 +338,7 @@ function Test-ManagedIdentity
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $setUserAssignedkubeClusterName -ServicePrincipalIdAndSecret $credObject  
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $setUserAssignedkubeClusterName
         Assert-Null $cluster.identity
-        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $setUserAssignedkubeClusterName -EnableManagedIdentity -AssignIdentity '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/wyunchi/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity'
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $setUserAssignedkubeClusterName -EnableManagedIdentity -AssignIdentity '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/yantest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/yanMI'
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $setUserAssignedkubeClusterName
         Assert-NotNull $cluster.identity
         Assert-AreEqual 'UserAssigned' $cluster.identity.Type
@@ -341,6 +347,47 @@ function Test-ManagedIdentity
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $systemAssignedkubeClusterName
         Assert-NotNull $cluster.identity
         Assert-AreEqual 'SystemAssigned' $cluster.identity.Type
+    }
+    finally
+    {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+function Test-OSSku
+{
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -NodeOsSKU "CBLMariner"
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 'default' $cluster.AgentPoolProfiles.Name
+        Assert-AreEqual 'Linux' $cluster.AgentPoolProfiles.OsType
+        Assert-AreEqual 'CBLMariner' $cluster.AgentPoolProfiles.OsSKU
+
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name "pool2" -OsType "Windows" -OsSKU "Windows2022" -Count 1 -VmSetType VirtualMachineScaleSets
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-AreEqualArray "Linux" ($pools | where {$_.Name -eq "default"}).OsType
+        Assert-AreEqualArray "CBLMariner" ($pools | where {$_.Name -eq "default"}).OsSKU
+        Assert-AreEqualArray "Windows" ($pools | where {$_.Name -eq "pool2"}).OsType
+        Assert-AreEqualArray "Windows2022" ($pools | where {$_.Name -eq "pool2"}).OsSKU
+
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-AreEqualArray "Linux" ($cluster.AgentPoolProfiles | where {$_.Name -eq "default"}).OsType
+        Assert-AreEqualArray "CBLMariner" ($cluster.AgentPoolProfiles | where {$_.Name -eq "default"}).OsSKU
+        Assert-AreEqualArray "Windows" ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).OsType
+        Assert-AreEqualArray "Windows2022" ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).OsSKU
+
+        $cluster | Remove-AzAksCluster -Force
     }
     finally
     {

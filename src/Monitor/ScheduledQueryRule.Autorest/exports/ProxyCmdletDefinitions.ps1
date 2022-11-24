@@ -41,7 +41,7 @@ INPUTOBJECT <IScheduledQueryRuleIdentity>: Identity Parameter
   [RuleName <String>]: The name of the rule.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule
+https://learn.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule
 #>
 function Get-AzScheduledQueryRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource])]
@@ -238,7 +238,7 @@ CRITERIONALLOF <ICondition[]>: A list of conditions to evaluate against the spec
   [Threshold <Double?>]: the criteria threshold value that activates the alert. Relevant and required only for rules of the kind LogAlert.
   [TimeAggregation <TimeAggregation?>]: Aggregation type. Relevant and required only for rules of the kind LogAlert.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule
+https://learn.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule
 #>
 function New-AzScheduledQueryRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource])]
@@ -551,7 +551,7 @@ INPUTOBJECT <IScheduledQueryRuleIdentity>: Identity Parameter
   [RuleName <String>]: The name of the rule.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule
+https://learn.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule
 #>
 function Remove-AzScheduledQueryRule {
 [OutputType([System.Boolean])]
@@ -755,7 +755,7 @@ INPUTOBJECT <IScheduledQueryRuleIdentity>: Identity Parameter
   [RuleName <String>]: The name of the rule.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule
+https://learn.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule
 #>
 function Update-AzScheduledQueryRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource])]
@@ -1060,7 +1060,7 @@ DIMENSION <IDimension[]>: List of Dimensions conditions.
   Operator <DimensionOperator>: Operator for dimension values
   Value <String[]>: List of dimension values
 .Link
-https://docs.microsoft.com/powershell/module/az.ScheduledQueryRule/new-AzScheduledQueryRuleConditionObject
+https://learn.microsoft.com/powershell/module/az.ScheduledQueryRule/new-AzScheduledQueryRuleConditionObject
 #>
 function New-AzScheduledQueryRuleConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Condition])]
@@ -1226,7 +1226,7 @@ New-AzScheduledQueryRuleDimensionObject -Name Computer -Operator Include -Value 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Dimension
 .Link
-https://docs.microsoft.com/powershell/module/az.ScheduledQueryRule/new-AzScheduledQueryRuleDimensionObject
+https://learn.microsoft.com/powershell/module/az.ScheduledQueryRule/new-AzScheduledQueryRuleDimensionObject
 #>
 function New-AzScheduledQueryRuleDimensionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Dimension])]

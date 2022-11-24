@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed CertificateString decoding issue in `Import-AzKeyVaultCertificate`
+* Shifted the location of key CVM release policy to GitHub [#19984]
+* Added fallback logic (reading default CVM policy from a local copy) if fetching default CVM Policy from GitHub failed.
 
 ## Version 4.9.0
 * Bumped API version to 2022-07-01

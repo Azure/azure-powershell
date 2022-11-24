@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bumped API version to 2022-09-01
+* Added parameter `NodeOsSKU` for `New-AzAksCluster` and parameter `OsSKU` for `New-AzAksNodePool`
+* Added parameter `Mode` for `New-AzAksNodePool` and `Update-AzAksNodePool`
+* Added property `NodeImageVersion` for the output of `Get-AzAksNodePool`[#19893]
+
+## Version 5.0.1
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
 
 ## Version 5.0.0
 * [Breaking Change] Removed the alias `Install-AzAksKubectl` of `Install-AzAksCliTool`.

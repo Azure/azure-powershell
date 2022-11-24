@@ -17,7 +17,7 @@ Creates an Azure Web App.
 ```
 New-AzWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <String>]
  [[-AppServicePlan] <String>] [-ContainerImageName <String>] [-EnableContainerContinuousDeployment] [-AsJob]
- [-GitRepositoryPath <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-GitRepositoryPath <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -375,6 +375,21 @@ Required: False
 Position: 4
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Tag
+Tags are name/value pairs that enable you to categorize resources
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: S1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

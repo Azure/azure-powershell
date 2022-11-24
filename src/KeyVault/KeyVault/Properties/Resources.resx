@@ -606,10 +606,13 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="PurgeManagedHsmWarningWhatIf" xml:space="preserve">
     <value>Purge managed HSM</value>
   </data>
-  <data name="FetchDefaultCVMPolicyFailed" xml:space="preserve">
+  <data name="FetchDefaultCVMPolicyFailedWithErrorMessage" xml:space="preserve">
     <value>Fetch default CVM Policy failed, {0}</value>
   </data>
   <data name="RecoverHsm" xml:space="preserve">
     <value>Recover HSM?</value>
+  </data>
+  <data name="FetchDefaultCVMPolicyFromLocal" xml:space="preserve">
+    <value>Fetching default CVM policy from remote failed because {0}. Trying to fetch default CVM policy from local backup copy.</value>
   </data>
 </root>
