@@ -198,9 +198,9 @@ function New-AzEventHubNamespaceV2{
             if($PSBoundParameters.ContainsKey('UserAssignedIdentityId')){
                 $identityHashTable = @{}
 
-		foreach ($resourceID in $UserAssignedIdentityId){
-		    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
-		}
+		        foreach ($resourceID in $UserAssignedIdentityId){
+		            $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
+		        }
 
                 $PSBoundParameters.Add("UserAssignedIdentity", $identityHashTable)
                 $null = $PSBoundParameters.Remove("UserAssignedIdentityId")
