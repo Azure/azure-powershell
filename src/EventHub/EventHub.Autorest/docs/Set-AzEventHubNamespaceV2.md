@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubnamespacev2
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubnamespacev2
 schema: 2.0.0
 ---
 
@@ -17,7 +17,7 @@ Updates an EventHub Namespace
 Set-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AlternateName <String>] [-DisableLocalAuth] [-EnableAutoInflate]
  [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
- [-MaximumThroughputUnits <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
  [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -27,7 +27,7 @@ Set-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-Subscript
 ```
 Set-AzEventHubNamespaceV2 -InputObject <IEventHubIdentity> [-AlternateName <String>] [-DisableLocalAuth]
  [-EnableAutoInflate] [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
- [-MaximumThroughputUnits <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
  [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -82,7 +82,7 @@ KeyVaultProperty                : {{
                                     "keyVersion": ""
                                   }}
 Location                        : North Europe
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit           : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
@@ -161,7 +161,7 @@ KeyVaultProperty                : {{
                                     "keyVersion": ""
                                   }}
 Location                        : North Europe
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit           : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
@@ -228,7 +228,7 @@ KeyVaultProperty                : {{
                                     "keyVersion": ""
                                   }}
 Location                        : North Europe
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit           : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
@@ -290,7 +290,7 @@ KeyVaultProperty                : {{
                                     "keyVersion": ""
                                   }}
 Location                        : North Europe
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit           : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
@@ -340,7 +340,7 @@ KafkaEnabled                    : True
 KeySource                       :
 KeyVaultProperty                :
 Location                        : North Europe
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit           : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
@@ -497,7 +497,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaximumThroughputUnits
+### -MaximumThroughputUnit
 Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.
 ( '0' if AutoInflateEnabled = true)
 

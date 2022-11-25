@@ -22,7 +22,7 @@ Creates an EventHub Namespace
 function New-AzEventHubNamespaceV2{
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
-	param(
+    param(
 
         [Parameter(Mandatory, HelpMessage = "The name of EventHub namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
@@ -98,7 +98,7 @@ function New-AzEventHubNamespaceV2{
         [Parameter(HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Int64]
-        ${MaximumThroughputUnits},#MaximumThroughputUnits
+        ${MaximumThroughputUnit},
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -184,7 +184,7 @@ function New-AzEventHubNamespaceV2{
         ${ProxyUseDefaultCredentials}
     )
     process{
-	try{
+        try{
        	    $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
             if($PSBoundParameters.ContainsKey('SkuName')){

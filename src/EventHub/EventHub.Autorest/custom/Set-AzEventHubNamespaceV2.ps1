@@ -22,7 +22,7 @@ Updates an EventHub Namespace
 function Set-AzEventHubNamespaceV2{
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
-	param(
+    param(
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
@@ -91,7 +91,7 @@ function Set-AzEventHubNamespaceV2{
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Int32]
         # Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)
-        ${MaximumThroughputUnits},
+        ${MaximumThroughputUnit},
 
         [Parameter(HelpMessage = "The minimum TLS version for the cluster to support, e.g. '1.2'")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -173,14 +173,14 @@ function Set-AzEventHubNamespaceV2{
         ${ProxyUseDefaultCredentials}
     )
     process{
-	try{
+        try{
             $hasAlternateName = $PSBoundParameters.Remove('AlternateName')
             $hasDisableLocalAuth = $PSBoundParameters.Remove('DisableLocalAuth')
             $hasKeyVaultProperty = $PSBoundParameters.Remove('KeyVaultProperty')
             $hasUserAssignedIdentityId = $PSBoundParameters.Remove('UserAssignedIdentityId')
             $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
             $hasEnableAutoInflate = $PSBoundParameters.Remove('EnableAutoInflate')
-            $hasMaximumThroughputUnits = $PSBoundParameters.Remove('MaximumThroughputUnits')
+            $hasMaximumThroughputUnit = $PSBoundParameters.Remove('MaximumThroughputUnit')
             $hasMinimumTlsVersion = $PSBoundParameters.Remove('MinimumTlsVersion')
             $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption') 
             $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
@@ -218,17 +218,17 @@ function Set-AzEventHubNamespaceV2{
             if ($hasUserAssignedIdentityId) {
                 $identityHashTable = @{}
 
-		foreach ($resourceID in $UserAssignedIdentityId){
-		    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
-		}
+                foreach ($resourceID in $UserAssignedIdentityId){
+                    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
+                }
 
                 $eventHubNamespace.UserAssignedIdentity = $identityHashTable
             }
             if ($hasEnableAutoInflate) {
                 $eventHubNamespace.EnableAutoInflate = $EnableAutoInflate
             }
-            if ($hasMaximumThroughputUnits) {
-                $eventHubNamespace.MaximumThroughputUnits = $MaximumThroughputUnits
+            if ($hasMaximumThroughputUnit) {
+                $eventHubNamespace.MaximumThroughputUnit = $MaximumThroughputUnit
             }
             if ($hasMinimumTlsVersion) {
                 $eventHubNamespace.MinimumTlsVersion = $MinimumTlsVersion
@@ -249,9 +249,9 @@ function Set-AzEventHubNamespaceV2{
             if ($PSCmdlet.ShouldProcess("EventHubNamespace $($eventHubNamespace.Name)", "Create or update")) {
                 Az.EventHub.private\New-AzEventHubNamespaceV2_CreateViaIdentity -InputObject $eventHubNamespace -Parameter $eventHubNamespace @PSBoundParameters
             }
-	}
-	catch{
-	    throw
-	}
+        }
+	    catch{
+	        throw
+	    }
     }
 }

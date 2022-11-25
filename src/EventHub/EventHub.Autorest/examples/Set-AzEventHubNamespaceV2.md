@@ -42,7 +42,7 @@ KeyVaultProperty                : {{
                                     "keyVersion": ""
                                   }}
 Location                        : North Europe
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit           : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
@@ -119,7 +119,7 @@ KeyVaultProperty                : {{
                                     "keyVersion": ""
                                   }}
 Location                        : North Europe
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit           : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
@@ -186,7 +186,7 @@ KeyVaultProperty                : {{
                                     "keyVersion": ""
                                   }}
 Location                        : North Europe
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit           : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
@@ -248,7 +248,7 @@ KeyVaultProperty                : {{
                                     "keyVersion": ""
                                   }}
 Location                        : North Europe
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit           : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
@@ -298,7 +298,7 @@ KafkaEnabled                    : True
 KeySource                       :
 KeyVaultProperty                :
 Location                        : North Europe
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit           : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace

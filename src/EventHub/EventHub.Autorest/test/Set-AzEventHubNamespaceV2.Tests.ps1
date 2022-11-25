@@ -20,7 +20,7 @@ function assertNamespaceUpdates{
     $expectedNamespace.SkuName | Should -Be $namespace.SkuName
     $expectedNamespace.SkuCapacity | Should -Be $namespace.SkuCapacity
     $expectedNamespace.Name | Should -Be $namespace.Name
-    $expectedNamespace.MaximumThroughputUnits | Should -Be $namespace.MaximumThroughputUnits
+    $expectedNamespace.MaximumThroughputUnit | Should -Be $namespace.MaximumThroughputUnit
     $expectedNamespace.MinimumTlsVersion | Should -Be $namespace.MinimumTlsVersion
     $expectedNamespace.Location | Should -Be $namespace.Location
     $expectedNamespace.EnableAutoInflate | Should -Be $namespace.EnableAutoInflate
@@ -109,22 +109,22 @@ Describe 'Set-AzEventHubNamespaceV2' {
     }
     It 'SetViaIdentityExpanded' {
         $expectedNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3
-        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -EnableAutoInflate:$false -MaximumThroughputUnits 0
+        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -EnableAutoInflate:$false -MaximumThroughputUnit 0
         $expectedNamespace.EnableAutoInflate = $false
-        $expectedNamespace.MaximumThroughputUnits = 0
+        $expectedNamespace.MaximumThroughputUnit = 0
         assertNamespaceUpdates $expectedNamespace $namespace
 
-        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -EnableAutoInflate:$true -MaximumThroughputUnits 18
+        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -EnableAutoInflate:$true -MaximumThroughputUnit 18
         $expectedNamespace.EnableAutoInflate = $true
-        $expectedNamespace.MaximumThroughputUnits = 18
+        $expectedNamespace.MaximumThroughputUnit = 18
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -SkuCapacity 12
         $expectedNamespace.SkuCapacity = 12
         assertNamespaceUpdates $expectedNamespace $namespace
 
-        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -MaximumThroughputUnits 25
-        $expectedNamespace.MaximumThroughputUnits = 25
+        $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -MaximumThroughputUnit 25
+        $expectedNamespace.MaximumThroughputUnit = 25
         assertNamespaceUpdates $expectedNamespace $namespace
 
         $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -MinimumTlsVersion 1.0

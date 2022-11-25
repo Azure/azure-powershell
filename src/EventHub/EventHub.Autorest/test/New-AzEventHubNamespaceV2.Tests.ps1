@@ -20,7 +20,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventHubNamespace.Name | Should -Be $env.namespaceV2
         $eventHubNamespace.SkuName | Should -Be Standard
         $eventHubNamespace.SkuCapacity | Should -Be 1
-        $eventHubNamespace.MaximumThroughputUnits | Should -Be 0
+        $eventHubNamespace.MaximumThroughputUnit | Should -Be 0
         $eventhubNamespace.MinimumTlsVersion | Should -Be "1.2"
         $eventhubNamespace.PublicNetworkAccess | Should -Be "Enabled"
         $eventHubNamespace.EnableAutoInflate | Should -Be $false
@@ -28,11 +28,11 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventHubNamespace.DisableLocalAuth | Should -Be $false
         $eventHubNamespace.KafkaEnabled | Should be $true
 
-        $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuCapacity 10 -MaximumThroughputUnits 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth -MinimumTlsVersion 1.1 -PublicNetworkAccess Disabled -ZoneRedundant
+        $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuCapacity 10 -MaximumThroughputUnit 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth -MinimumTlsVersion 1.1 -PublicNetworkAccess Disabled -ZoneRedundant
         $eventHubNamespace.Name | Should be $env.namespaceV3
         $eventHubNamespace.SkuCapacity | Should be 10
         $eventHubNamespace.SkuName | Should be Standard
-        $eventHubNamespace.MaximumThroughputUnits | Should be 18
+        $eventHubNamespace.MaximumThroughputUnit | Should be 18
         $eventHubNamespace.MinimumTlsVersion | Should be '1.1'
         $eventHubNamespace.Location | Should be "South Central Us"
         $eventHubNamespace.EnableAutoInflate | Should be $true
@@ -42,7 +42,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventHubNamespace.ZoneRedundant | Should -Be $true
 
         $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV4 -SkuName Premium -Location eastus -IdentityType SystemAssigned        
-        $eventhubNamespace.MaximumThroughputUnits | Should -Be 0
+        $eventhubNamespace.MaximumThroughputUnit | Should -Be 0
         $eventhubNamespace.Name | Should -Be $env.namespaceV4
         $eventhubNamespace.IdentityType | Should -Be SystemAssigned
         $eventhubNamespace.ZoneRedundant | Should -Be $true

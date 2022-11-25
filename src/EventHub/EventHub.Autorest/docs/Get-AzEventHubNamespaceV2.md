@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubnamespacev2
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubnamespacev2
 schema: 2.0.0
 ---
 
@@ -56,7 +56,7 @@ KafkaEnabled                    : True
 KeySource                       :
 KeyVaultProperty                :
 Location                        : South Central US
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit           : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace

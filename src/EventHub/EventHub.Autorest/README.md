@@ -198,18 +198,6 @@ directive:
   - where:
       verb: New
       subject: Namespace
-      parameter-name: MaximumThroughputUnit
-    set:
-      parameter-name: MaximumThroughputUnits
-  - where:
-      model-name: EhNamespace
-      property-name: MaximumThroughputUnit
-    set:
-      property-name: MaximumThroughputUnits
-
-  - where:
-      verb: New
-      subject: Namespace
       parameter-name: IdentityUserAssignedIdentity
     set:
       parameter-name: UserAssignedIdentity

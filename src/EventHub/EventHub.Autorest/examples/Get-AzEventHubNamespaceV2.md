@@ -15,7 +15,7 @@ KafkaEnabled                    : True
 KeySource                       :
 KeyVaultProperty                :
 Location                        : South Central US
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit           : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace

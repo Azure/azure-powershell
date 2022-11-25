@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubnamespacev2
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubnamespacev2
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Creates an EventHub Namespace
 New-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AlternateName <String>] [-ClusterArmId <String>] [-DisableLocalAuth]
  [-EnableAutoInflate] [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
- [-MaximumThroughputUnits <Int64>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-MaximumThroughputUnit <Int64>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-RequireInfrastructureEncryption] [-SkuCapacity <Int64>] [-SkuName <SkuName>] [-Tag <Hashtable>]
  [-UserAssignedIdentityId <String[]>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -61,7 +61,7 @@ KeyVaultProperty                : {{
                                     "keyVersion": ""
                                   }}
 Location                        : North Europe
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit          : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
@@ -109,7 +109,7 @@ KafkaEnabled                    : True
 KeySource                       :
 KeyVaultProperty                :
 Location                        : North Europe
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit           : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
@@ -138,7 +138,7 @@ Create an EventHub namespace with SystemAssigned identity.
 
 ### Example 3: Create a new Standard EventHub namespace with AutoInflate enabled
 ```powershell
-New-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuCapacity 10 -MaximumThroughputUnits 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth
+New-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuCapacity 10 -MaximumThroughputUnit 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth
 ```
 
 ```output
@@ -153,7 +153,7 @@ KafkaEnabled                    : True
 KeySource                       :
 KeyVaultProperty                :
 Location                        : South Central US
-MaximumThroughputUnits          : 0
+MaximumThroughputUnit           : 0
 MetricId                        : {subscriptionId}:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
@@ -318,7 +318,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaximumThroughputUnits
+### -MaximumThroughputUnit
 Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.
 ( '0' if AutoInflateEnabled = true)
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.EventHub/new-AzEventHubKeyVaultPropertiesObject
+online version: https://learn.microsoft.com/powershell/module/az.EventHub/new-AzEventHubKeyVaultPropertiesObject
 schema: 2.0.0
 ---
 
