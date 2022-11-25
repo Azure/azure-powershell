@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
     // https://stackoverflow.com/questions/57269726/x509certificate2-import-with-ncrypt-allow-plaintext-export-flag/57330499#57330499
     internal static class CertificateExportHelper
     {
-        internal static X509Certificate2 ImportExportable(byte[] pfxBytes, string password, bool machineScope = false)
+        internal static X509Certificate2 GetExportableCertificate(byte[] pfxBytes, string password, bool machineScope = false)
         {
             X509KeyStorageFlags flags = X509KeyStorageFlags.Exportable;
 

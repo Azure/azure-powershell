@@ -175,14 +175,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private static X509Certificate2 GetExportableCertificate(string fileName, SecureString pwd)
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                // cert.Get*PrivateKey().ExportParameter(true) doesn't work even cert is marked with X509KeyStorageFlags.Exportable on Windows and macOS 
-                return new X509Certificate2(fileName, pwd, X509KeyStorageFlags.Exportable);
+                // cert.Get*PrivateKey().ExportParameter(true) doesn't work even cert is marked with X509KeyStorageFlags.Exportable on Windows
+                return CertificateExportHelper.GetExportableCertificate(File.ReadAllBytes(fileName), pwd?.ConvertToString());
             }
             else
             {
-                return CertificateExportHelper.ImportExportable(File.ReadAllBytes(fileName), pwd?.ConvertToString());
+                return new X509Certificate2(fileName, pwd, X509KeyStorageFlags.Exportable);
             }
 
         }
