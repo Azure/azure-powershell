@@ -865,7 +865,7 @@ function Install-Dependent-Module{
 
         Write-VerboseLog ("Installing Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
 
-        Install-Module -Name $ModuleName  -RequiredVersion $ModuleVersion  -Force -AllowClobber
+        Install-Module -Name $ModuleName  -RequiredVersion $ModuleVersion  -Force -AllowClobber -Repository 'PSGallery'
         Import-Module -Name $ModuleName -RequiredVersion $ModuleVersion
         
         Write-VerboseLog ("Successfully imported Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
@@ -1507,8 +1507,8 @@ param(
     )
 
     $res = $true
-    $AgentUninstaller_LogFile = "ConnectedMachineAgentUninstallationLog.txt";
-    $AgentInstaller_Name      = "AzureConnectedMachineAgent.msi";
+    $AgentUninstaller_LogFile = $env:windir + '\Tasks\ArcForServers' + '\ConnectedMachineAgentUninstallationLog.txt';
+    $AgentInstaller_Name      = $env:windir + '\Tasks\ArcForServers' + '\AzureConnectedMachineAgent.msi';
     $AgentExecutable_Path     = $Env:Programfiles + '\AzureConnectedMachineAgent\azcmagent.exe'
 
     $clusterNodeNames = Invoke-Command -Session $Session -ScriptBlock { Get-ClusterNode } | ForEach-Object { ($_.Name + "." + $ClusterDNSSuffix) }
@@ -2236,6 +2236,13 @@ param(
             $clusterNodeSession = New-PSSession -ComputerName localhost
         }
 
+        # To be removed after ARM rollout to MC cloud is complete
+        if ( $EnvironmentName -eq $AzureChinaCloud)
+        {
+            Write-VerboseLog ("Overriding RP API version for MC cloud to 2022-09-01")
+            $RPAPIVersion = "2022-09-01"
+        }
+
         $msg = Print-FunctionParameters -Message "Register-AzStackHCI" -Parameters $PSBoundParameters
         Write-NodeEventLog -Message $msg  -EventID 9009 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
 
@@ -2517,20 +2524,29 @@ param(
 
                 $CreatingCloudResourceMessageProgress = $CreatingCloudResourceMessage -f $ResourceName
                 Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $CreatingCloudResourceMessageProgress -percentcomplete 60
-                $properties = [ResourceProperties]::new($Region, @{}, $Tag)
-                $payload = ConvertTo-Json -InputObject $properties
-                $resourceIdWithAPI = "{0}?api-version={1}" -f $resourceId, $RPAPIVersion
-                Write-VerboseLog ("$CreatingCloudResourceMessageProgress with properties : {0}" -f ($payload | Out-String))
-                Write-VerboseLog ("ResorceIdWithApi: $resourceIdWithAPI")
-                $response = Invoke-AzRestMethod -Path $resourceIdWithAPI -Method PUT -Payload $payload
-                if(-not(($response.StatusCode -ge 200) -and ($response.StatusCode -lt 300)))
+                if( ($EnvironmentName -eq $AzureCloud)  -or ($EnvironmentName -eq $AzureCanary) -or ($EnvironmentName -eq $AzurePPE) )
+                {                
+                    $properties = [ResourceProperties]::new($Region, @{}, $Tag)
+                    $payload = ConvertTo-Json -InputObject $properties
+                    $resourceIdWithAPI = "{0}?api-version={1}" -f $resourceId, $RPAPIVersion
+                    Write-VerboseLog ("$CreatingCloudResourceMessageProgress with properties : {0}" -f ($payload | Out-String))
+                    Write-VerboseLog ("ResorceIdWithApi: $resourceIdWithAPI")
+                    $response = Invoke-AzRestMethod -Path $resourceIdWithAPI -Method PUT -Payload $payload
+                    if(-not(($response.StatusCode -ge 200) -and ($response.StatusCode -lt 300)))
+                    {
+                        Write-ErrorLog -Message ("Failed to create ARM resource representing the cluster. Code: {0}, Details: {1}" -f $response.StatusCode, $response.Content)
+                        throw
+                    }
+                }
+                else
                 {
-                    Write-ErrorLog -Message ("Failed to create ARM resource representing the cluster. Code: {0}, Details: {1}" -f $response.StatusCode, $response.Content)
-                    throw
+                    $properties = @{}
+                    Write-VerboseLog ("$CreatingCloudResourceMessageProgress with properties : {0}" -f ($properties | Out-String))
+                    $resource = New-AzResource -ResourceId $resourceId -Location $Region -ApiVersion $RPAPIVersion -PropertyObject $properties -Tag $Tag -Force
                 }
                 $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
             }
-            if(($Null -eq $resource.Identity) -or ($resource.Identity.Type -ne "SystemAssigned"))
+            if((($Null -eq $resource.Identity) -or ($resource.Identity.Type -ne "SystemAssigned")) -and ( ($EnvironmentName -eq $AzureCloud)  -or ($EnvironmentName -eq $AzureCanary) -or ($EnvironmentName -eq $AzurePPE)))
             {
                 #we are here, if we are in repairregistration flow and resource might have been already created, we will check if MSI is not enabled, if it is not enabled, we will patch the resource again.
                 $RepairingCloudResourceMessageProgress = $RepairingCloudResourceMessage -f $ResourceName
@@ -3010,6 +3026,13 @@ param(
         else
         {
             $IsManagementNode = $True
+        }
+
+        # To be removed after ARM rollout to MC cloud is complete
+        if ( $EnvironmentName -eq $AzureChinaCloud)
+        {
+            Write-VerboseLog ("Overriding RP API version for MC cloud to 2022-09-01")
+            $RPAPIVersion = "2022-09-01"
         }
 
         Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $FetchingRegistrationState -percentcomplete 1
@@ -3569,6 +3592,13 @@ param(
         else
         {
             $isManagementNode = $true
+        }
+
+        # To be removed after ARM rollout to MC cloud is complete
+        if ( $EnvironmentName -eq $AzureChinaCloud)
+        {
+            Write-VerboseLog ("Overriding RP API version for MC cloud to 2022-09-01")
+            $RPAPIVersion = "2022-09-01"
         }
 
         Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $SetProgressStatusGathering -PercentComplete 5
