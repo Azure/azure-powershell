@@ -142,11 +142,9 @@ $PortalCanarySuffix = '?feature.armendpointprefix={0}'
 $PortalHCIResourceUrl = '#@{0}/resource/subscriptions/{1}/resourceGroups/{2}/providers/Microsoft.AzureStackHCI/clusters/{3}/overview'
 
 $Region_EASTUSEUAP = 'eastus2euap'
-$Region_CENTRALUSEUAP = 'centraluseuap'
 
 [hashtable] $ServiceEndpointsAzureCloud = @{
         $Region_EASTUSEUAP = 'https://canary.dp.stackhci.azure.com'
-        $Region_CENTRALUSEUAP = 'https://canary.dp.stackhci.azure.com'
         }
 
 $ServiceEndpointAzureCloudFrontDoor = "https://dp.stackhci.azure.com"
@@ -176,7 +174,7 @@ $AuthorityAzureGermanCloud = "https://login.microsoftonline.de"
 $BillingServiceApiScopeAzureGermanCloud = "https://azurestackhci-usage.azurewebsites.de/.default"
 $GraphServiceApiScopeAzureGermanCloud = "https://graph.cloudapi.de/.default"
 
-$RPAPIVersion = "2022-08-01-preview";
+$RPAPIVersion = "2022-10-01";
 $HCIArcAPIVersion = "2022-03-01"
 $HCIArcExtensionAPIVersion = "2021-09-01"
 $HCIArcInstanceName = "/arcSettings/default"
@@ -314,6 +312,7 @@ Function Write-ErrorLog{
 
 # Writes an error without the stack trace
 Function Write-ErrorMessage {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
         [Parameter(Mandatory=$False)]
@@ -2531,7 +2530,7 @@ param(
                 }
                 $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
             }
-            if(($Null -ne $resource.Identity) -and ($resource.Identity.Type -ne "SystemAssigned"))
+            if(($Null -eq $resource.Identity) -or ($resource.Identity.Type -ne "SystemAssigned"))
             {
                 #we are here, if we are in repairregistration flow and resource might have been already created, we will check if MSI is not enabled, if it is not enabled, we will patch the resource again.
                 $RepairingCloudResourceMessageProgress = $RepairingCloudResourceMessage -f $ResourceName
@@ -2694,14 +2693,14 @@ param(
                         }
                         else
                         {
-                            $serviceError = "Failed to create cluster group {0}." -f $ClusterAgentGroupName
+                            $serviceError = "Failed to create cluster resource {0} in group {1}." -f $ClusterAgentServiceName, $ClusterAgentGroupName
                             Write-ErrorLog -Message $serviceError -ErrorAction Continue
                             Write-NodeEventLog -Message $serviceError -EventID 9120 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                         }
                     }
                     else
                     {
-                        $serviceError = "Failed to create {0} cluster group for {1} service." -f $ClusterAgentGroupName, $ClusterAgentServiceName
+                        $serviceError = "Failed to create cluster group {0}." -f $ClusterAgentGroupName
                         Write-ErrorLog -Message $serviceError -ErrorAction Continue
                         Write-NodeEventLog -Message $serviceError -EventID 9120 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                     }
