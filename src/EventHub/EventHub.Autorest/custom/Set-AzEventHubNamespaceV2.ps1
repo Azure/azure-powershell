@@ -173,7 +173,7 @@ function Set-AzEventHubNamespaceV2{
         ${ProxyUseDefaultCredentials}
     )
     process{
-		try{
+	try{
             $hasAlternateName = $PSBoundParameters.Remove('AlternateName')
             $hasDisableLocalAuth = $PSBoundParameters.Remove('DisableLocalAuth')
             $hasKeyVaultProperty = $PSBoundParameters.Remove('KeyVaultProperty')
@@ -218,9 +218,9 @@ function Set-AzEventHubNamespaceV2{
             if ($hasUserAssignedIdentityId) {
                 $identityHashTable = @{}
 
-			    foreach ($resourceID in $UserAssignedIdentityId){
-				    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
-			    }
+		foreach ($resourceID in $UserAssignedIdentityId){
+		    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
+		}
 
                 $eventHubNamespace.UserAssignedIdentity = $identityHashTable
             }
@@ -249,9 +249,9 @@ function Set-AzEventHubNamespaceV2{
             if ($PSCmdlet.ShouldProcess("EventHubNamespace $($eventHubNamespace.Name)", "Create or update")) {
                 Az.EventHub.private\New-AzEventHubNamespaceV2_CreateViaIdentity -InputObject $eventHubNamespace -Parameter $eventHubNamespace @PSBoundParameters
             }
-		}
-		catch{
-			throw
-		}
 	}
+	catch{
+	    throw
+	}
+    }
 }
