@@ -112,6 +112,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
         public Hashtable NodePoolLabel { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The tags to be persisted on the agent pool virtual machine scale set.")]
+        public Hashtable NodePoolTags { get; set; }
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "SSH key file value or key file path. Defaults to {HOME}/.ssh/id_rsa.pub.")]

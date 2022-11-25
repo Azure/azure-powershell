@@ -203,6 +203,14 @@ namespace Microsoft.Azure.Commands.Aks
                     agentPool.NodeLabels.Add(key.ToString(), NodeLabels[key].ToString());
                 }
             }
+            if (this.IsParameterBound(c => c.Tags))
+            {
+                agentPool.Tags = new Dictionary<string, string>();
+                foreach (var key in Tags.Keys)
+                {
+                    agentPool.Tags.Add(key.ToString(), Tags[key].ToString());
+                }
+            }
 
             return agentPool;
         }

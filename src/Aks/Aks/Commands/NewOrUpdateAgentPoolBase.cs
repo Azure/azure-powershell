@@ -44,5 +44,8 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
         public Hashtable NodeLabels { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The tags to be persisted on the agent pool virtual machine scale set.")]
+        public Hashtable Tags { get; set; }
     }
 }

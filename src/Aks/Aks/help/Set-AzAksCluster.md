@@ -19,14 +19,14 @@ Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImag
  [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
  [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
  [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
- [-NodePoolLabel <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
- [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
- [-LoadBalancerOutboundIp <String[]>] [-LoadBalancerOutboundIpPrefix <String[]>]
- [-LoadBalancerIdleTimeoutInMinute <Int32>] [-ApiServerAccessAuthorizedIpRange <String[]>]
- [-EnableApiServerAccessPrivateCluster] [-ApiServerAccessPrivateDnsZone <String>]
- [-EnableApiServerAccessPrivateClusterPublicFQDN] [-FqdnSubdomain <String>] [-EnableManagedIdentity]
- [-AssignIdentity <String>] [-AutoUpgradeChannel <String>] [-DiskEncryptionSetID <String>]
- [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
+ [-NodePoolLabel <Hashtable>] [-NodePoolTags <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>]
+ [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
+ [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
+ [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
+ [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
+ [-ApiServerAccessPrivateDnsZone <String>] [-EnableApiServerAccessPrivateClusterPublicFQDN]
+ [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
+ [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
@@ -38,8 +38,8 @@ Set-AzAksCluster -InputObject <PSKubernetesCluster> [-NodePoolMode <String>] [-A
  [-NodeImageOnly] [-ControlPlaneOnly] [-Location <String>] [-LinuxProfileAdminUserName <String>]
  [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
  [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
- [-NodeVmSize <String>] [-NodePoolLabel <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>]
- [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
+ [-NodeVmSize <String>] [-NodePoolLabel <Hashtable>] [-NodePoolTags <Hashtable>] [-SshKeyValue <String>]
+ [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
  [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
  [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
  [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
@@ -57,14 +57,14 @@ Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImag
  [-Id] <String> [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
  [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
  [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
- [-NodePoolLabel <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
- [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
- [-LoadBalancerOutboundIp <String[]>] [-LoadBalancerOutboundIpPrefix <String[]>]
- [-LoadBalancerIdleTimeoutInMinute <Int32>] [-ApiServerAccessAuthorizedIpRange <String[]>]
- [-EnableApiServerAccessPrivateCluster] [-ApiServerAccessPrivateDnsZone <String>]
- [-EnableApiServerAccessPrivateClusterPublicFQDN] [-FqdnSubdomain <String>] [-EnableManagedIdentity]
- [-AssignIdentity <String>] [-AutoUpgradeChannel <String>] [-DiskEncryptionSetID <String>]
- [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
+ [-NodePoolLabel <Hashtable>] [-NodePoolTags <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>]
+ [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
+ [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
+ [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
+ [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
+ [-ApiServerAccessPrivateDnsZone <String>] [-EnableApiServerAccessPrivateClusterPublicFQDN]
+ [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
+ [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
@@ -675,6 +675,21 @@ NodePoolMode represents mode of an node pool.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodePoolTags
+The tags to be persisted on the agent pool virtual machine scale set.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

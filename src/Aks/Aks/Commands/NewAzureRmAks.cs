@@ -496,6 +496,14 @@ namespace Microsoft.Azure.Commands.Aks
                     defaultAgentPoolProfile.NodeLabels.Add(key.ToString(), NodePoolLabel[key].ToString());
                 }
             }
+            if (this.IsParameterBound(c => c.NodePoolTags))
+            {
+                defaultAgentPoolProfile.Tags = new Dictionary<string, string>();
+                foreach (var key in NodePoolTags.Keys)
+                {
+                    defaultAgentPoolProfile.Tags.Add(key.ToString(), NodePoolTags[key].ToString());
+                }
+            }
             if (this.IsParameterBound(c => c.AvailabilityZone))
             {
                 defaultAgentPoolProfile.AvailabilityZones = AvailabilityZone;

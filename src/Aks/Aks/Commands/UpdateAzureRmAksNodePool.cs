@@ -172,6 +172,14 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                             pool.NodeLabels.Add(key.ToString(), NodeLabels[key].ToString());
                         }
                     }
+                    if (this.IsParameterBound(c => c.Tags))
+                    {
+                        pool.Tags = new Dictionary<string, string>();
+                        foreach (var key in Tags.Keys)
+                        {
+                            pool.Tags.Add(key.ToString(), Tags[key].ToString());
+                        }
+                    }
 
                     var updatedPool = Client.AgentPools.CreateOrUpdate(ResourceGroupName, ClusterName, Name, pool);
                     WriteObject(PSMapper.Instance.Map<PSNodePool>(updatedPool));
