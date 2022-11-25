@@ -164,20 +164,20 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                         WriteObject(PSMapper.Instance.Map<PSNodePool>(upgradedPool));
                         return;
                     }
-                    if (this.IsParameterBound(c => c.NodeLabels))
+                    if (this.IsParameterBound(c => c.NodeLabel))
                     {
                         pool.NodeLabels = new Dictionary<string, string>();
-                        foreach (var key in NodeLabels.Keys)
+                        foreach (var key in NodeLabel.Keys)
                         {
-                            pool.NodeLabels.Add(key.ToString(), NodeLabels[key].ToString());
+                            pool.NodeLabels.Add(key.ToString(), NodeLabel[key].ToString());
                         }
                     }
-                    if (this.IsParameterBound(c => c.Tags))
+                    if (this.IsParameterBound(c => c.Tag))
                     {
                         pool.Tags = new Dictionary<string, string>();
-                        foreach (var key in Tags.Keys)
+                        foreach (var key in Tag.Keys)
                         {
-                            pool.Tags.Add(key.ToString(), Tags[key].ToString());
+                            pool.Tags.Add(key.ToString(), Tag[key].ToString());
                         }
                     }
 

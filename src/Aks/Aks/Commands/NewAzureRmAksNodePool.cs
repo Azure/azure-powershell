@@ -195,20 +195,20 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 agentPool.AvailabilityZones = AvailabilityZone;
             }
-            if (this.IsParameterBound(c => c.NodeLabels))
+            if (this.IsParameterBound(c => c.NodeLabel))
             {
                 agentPool.NodeLabels = new Dictionary<string, string>();
-                foreach (var key in NodeLabels.Keys)
+                foreach (var key in NodeLabel.Keys)
                 {
-                    agentPool.NodeLabels.Add(key.ToString(), NodeLabels[key].ToString());
+                    agentPool.NodeLabels.Add(key.ToString(), NodeLabel[key].ToString());
                 }
             }
-            if (this.IsParameterBound(c => c.Tags))
+            if (this.IsParameterBound(c => c.Tag))
             {
                 agentPool.Tags = new Dictionary<string, string>();
-                foreach (var key in Tags.Keys)
+                foreach (var key in Tag.Keys)
                 {
-                    agentPool.Tags.Add(key.ToString(), Tags[key].ToString());
+                    agentPool.Tags.Add(key.ToString(), Tag[key].ToString());
                 }
             }
 

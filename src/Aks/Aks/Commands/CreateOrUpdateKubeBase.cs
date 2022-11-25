@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Aks
         public Hashtable NodePoolLabel { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The tags to be persisted on the agent pool virtual machine scale set.")]
-        public Hashtable NodePoolTags { get; set; }
+        public Hashtable NodePoolTag { get; set; }
 
         [Parameter(
             Mandatory = false,

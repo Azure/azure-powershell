@@ -278,12 +278,12 @@ namespace Microsoft.Azure.Commands.Aks
                                     defaultAgentPoolProfile.NodeLabels.Add(key.ToString(), NodePoolLabel[key].ToString());
                                 }
                             }
-                            if (this.IsParameterBound(c => c.NodePoolTags))
+                            if (this.IsParameterBound(c => c.NodePoolTag))
                             {
                                 defaultAgentPoolProfile.Tags = new Dictionary<string, string>();
-                                foreach (var key in NodePoolTags.Keys)
+                                foreach (var key in NodePoolTag.Keys)
                                 {
-                                    defaultAgentPoolProfile.Tags.Add(key.ToString(), NodePoolTags[key].ToString());
+                                    defaultAgentPoolProfile.Tags.Add(key.ToString(), NodePoolTag[key].ToString());
                                 }
                             }
                         }
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Commands.Aks
                 this.IsParameterBound(c => c.NodeVmSize) || this.IsParameterBound(c => c.EnableNodeAutoScaling) ||
                 this.IsParameterBound(c => c.NodeMinCount) || this.IsParameterBound(c => c.NodeMaxCount) || 
                 this.IsParameterBound(c => c.NodePoolMode) || this.IsParameterBound(c => c.NodePoolLabel) ||
-                this.IsParameterBound(c => c.NodePoolTags);
+                this.IsParameterBound(c => c.NodePoolTag);
         }
     }
 }
