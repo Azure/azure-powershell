@@ -184,8 +184,8 @@ function New-AzEventHubNamespaceV2{
         ${ProxyUseDefaultCredentials}
     )
     process{
-		try{
-            $null = $PSBoundParameters.Remove('WhatIf')
+	try{
+       	    $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
             if($PSBoundParameters.ContainsKey('SkuName')){
                 $PSBoundParameters.Add('SkuTier', $SkuName)
@@ -198,9 +198,9 @@ function New-AzEventHubNamespaceV2{
             if($PSBoundParameters.ContainsKey('UserAssignedIdentityId')){
                 $identityHashTable = @{}
 
-			    foreach ($resourceID in $UserAssignedIdentityId){
-				    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
-			    }
+		foreach ($resourceID in $UserAssignedIdentityId){
+		    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
+		}
 
                 $PSBoundParameters.Add("UserAssignedIdentity", $identityHashTable)
                 $null = $PSBoundParameters.Remove("UserAssignedIdentityId")
@@ -208,9 +208,9 @@ function New-AzEventHubNamespaceV2{
             if ($PSCmdlet.ShouldProcess("EventHub Namespace $($Name)", "Create or update")) {
                 Az.EventHub.private\New-AzEventHubNamespaceV2_CreateExpanded @PSBoundParameters
             }
-		}
-		catch{
-			throw
-		}
 	}
+	catch{
+	    throw
+	}
+    }
 }
