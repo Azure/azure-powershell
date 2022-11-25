@@ -1,4 +1,3 @@
-
 # ----------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,27 +15,24 @@
 
 <#
 .Synopsis
-Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
+Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
+Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 .Description
-Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
+Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
+Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 .Example
 PS C:\> {{ Add code here }}
-
 {{ Add output here }}
 .Example
 PS C:\> {{ Add code here }}
-
 {{ Add output here }}
-
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
-
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
@@ -53,33 +49,43 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnprofile
+https://docs.microsoft.com/powershell/module/az.cdn/enable-azfrontdoorcdnprofilemanagedidentity
 #>
-function Update-AzFrontDoorCdnProfile {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile])]
-    [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Enable-AzFrontDoorCdnProfileManagedIdentity {
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
+    [OutputType([System.Boolean])]
+    [CmdletBinding(DefaultParameterSetName='Start', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-        [Alias('ProfileName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [System.String]
-        # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-        ${Name},
-    
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='Start', Mandatory)]
+        [Parameter(ParameterSetName='Start1', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
         # Name of the Resource group within the Azure subscription.
         ${ResourceGroupName},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='Start', Mandatory)]
+        [Parameter(ParameterSetName='Start1', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+        [System.String]
+        # Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+        ${ProfileName},
+
+        [Parameter(ParameterSetName='Start', Mandatory)]
+        [Parameter(ParameterSetName='Start1', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+        [System.String]
+        # Resource ID of the classic AFD.
+        ${ClassicResourceReferenceId},
+
+        [Parameter(ParameterSetName='Start', Mandatory)]
+        [Parameter(ParameterSetName='Start1', Mandatory)]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType])]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ManagedServiceIdentityType]
         # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
         ${IdentityType},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='Start1', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api40.IUserAssignedIdentities]))]
         [System.Collections.Hashtable]
@@ -87,35 +93,14 @@ function Update-AzFrontDoorCdnProfile {
         # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
         # The dictionary values can be empty objects ({}) in requests.
         ${IdentityUserAssignedIdentity},
-    
-        [Parameter(ParameterSetName='UpdateExpanded')]
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # Azure Subscription ID.
         ${SubscriptionId},
-    
-        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [System.Int32]
-        # Send and receive timeout on forwarding request to the origin.
-        # When timeout is reached, the request fails and returns.
-        ${OriginResponseTimeoutSecond},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileUpdateParametersTags]))]
-        [System.Collections.Hashtable]
-        # Profile tags
-        ${Tag},
-    
+
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -123,78 +108,140 @@ function Update-AzFrontDoorCdnProfile {
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command as a job
         ${AsJob},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-    
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
-    
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
-    
-    process {
-        if ($PSCmdlet.ParameterSetName -eq 'UpdateExpanded') {
-            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name}
-        } elseif ($PSCmdlet.ParameterSetName -eq 'UpdateViaIdentityExpanded') {
-            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -InputObject $InputObject
-        }else {
-            throw "Not supported ParameterSetName."
-        }
 
-        if($null -eq $frontDoorCdnProfile)
-        {
-            throw "Provided FrontDoorCdnProfile does not exist."
-        }else{
-            if(ISFrontDoorCdnProfile($frontDoorCdnProfile.SkuName)){
-                Az.Cdn.internal\Update-AzCdnProfile @PSBoundParameters
-            }else{
-                throw "Provided FrontDoorCdnProfile does not exist."
+    process {
+        if ($PSBoundParameters.ContainsKey('IdentityType')) {
+            $identityTypeLower = ${IdentityType}.ToString().ToLower()
+            Write-Debug("Before lower:" + ${IdentityType})
+            Write-Debug("ToLower:" + $identityTypeLower)
+            if($identityTypeLower -eq "none") {
+                Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower
+                return
+            }
+
+            # Validate the value of the IdentityType 
+            $validIdentityType = @("systemassigned", "userAssigned", "systemassigned, userAssigned", "userAssigned, systemassigned")
+            if($validIdentityType -NotContains $identityTypeLower) {
+                Throw "The Identity Type 'NotSpecified' is invalid. The supported types are 'SystemAssigned,UserAssigned,None'."
+            }
+
+            if(!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
+                throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor"'
+            }
+            else {
+                Import-Module -Name Az.FrontDoor
+            }
+
+            if(!(Get-Module -ListAvailable -Name Az.KeyVault)) {
+                throw 'Please install Az.KeyVault module by entering "Install-Module -Name Az.KeyVault"'
+            }
+            else {
+                Import-Module -Name Az.KeyVault
+            }
+
+            # 1. Get "principalId" from RP
+            if($identityTypeLower -eq "systemassigned") {
+                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower
+            }
+            else {
+                $profileIdentity = Update-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -IdentityType $identityTypeLower -IdentityUserAssignedIdentity ${IdentityUserAssignedIdentity}
+            }
+
+            $systemAssigendPrincipalIndentity = $profileIdentity.IdentityPrincipalId
+            $userAssignedPrincipalIndentity = $profileIdentity.IdentityUserAssignedIdentity.Values.PrincipalId
+
+            # 2. Grant Key Vault permission: Get all the BYOC key vaults of the fronted endpoint in the classic AFD.
+            $frontDoorName = ${ClassicResourceReferenceId}.split("/")[-1]
+            $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
+            $vaultArray = [System.Collections.ArrayList]@()
+            foreach ($info in $frontDoorInfos) {
+                if ($info.Vault) {
+                    $vaultName = $info.Vault.split("/")[-1]
+                    $vaultArray.Add($vaultName)
+                }
+            }
+
+            # Waiting for PrincipalIndentity could be found in Graph.
+            Start-Sleep -Seconds 5
+
+            # 3. Call Key Vault module: Grant key vault accsee policies
+            if ($identityTypeLower -eq "systemAssigned" ) {
+                foreach ($vault in $vaultArray) {
+                    Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $systemAssigendPrincipalIndentity -PermissionsToSecrets Get -PermissionsToCertificates Get
+                }
+
+            } elseif ($identityTypeLower -eq "userAssigned") {
+                foreach ($vault in $vaultArray) {
+                    foreach ($principal in $userAssignedPrincipalIndentity) {
+                        Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
+                    }
+                }
+            } else {
+                foreach ($vault in $vaultArray) {
+                    Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $systemAssigendPrincipalIndentity -PermissionsToSecrets Get -PermissionsToCertificates Get
+                    foreach ($principal in $userAssignedPrincipalIndentity) {
+                        Set-AzKeyVaultAccessPolicy -VaultName $vault -ObjectId $principal -PermissionsToSecrets Get -PermissionsToCertificates Get
+                    }
+                }
             }
         }
     }
 }
-    

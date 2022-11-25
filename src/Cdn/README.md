@@ -35,8 +35,8 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/ChenglongLiu/azure-rest-api-specs/blob/cdn-2022-11-01-preview/specification/cdn/resource-manager/Microsoft.Cdn/preview/2022-11-01-preview/afdx.json
-  - https://github.com/ChenglongLiu/azure-rest-api-specs/blob/cdn-2022-11-01-preview/specification/cdn/resource-manager/Microsoft.Cdn/preview/2022-11-01-preview/cdn.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2022-11-01-preview/afdx.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2022-11-01-preview/cdn.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -45,7 +45,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-branch: 20781a6d160ce5049d3a481ccac07b891700b7a3
+branch: 4903b1ed79e30f689d7c469cfa06734cfcd106d6
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -103,6 +103,12 @@ directive:
     - UrlRewriteAction
     - DeliveryRuleRequestHeaderAction
     - DeliveryRuleResponseHeaderAction
+    # Migration to AFDx
+    - MigrationParameters
+    - MigrationWebApplicationFirewallMapping
+    # Upgrade sku
+    - ProfileUpgradeParameters
+    - ProfileChangeSkuWafMapping
 
   - where:
       model-name: .*
@@ -148,7 +154,6 @@ directive:
 
   # Hide Cdn profile
   - where:
-      verb: ^(?:(?!Move).*)$
       subject: Profile
     hide: true
   - where:
@@ -159,6 +164,12 @@ directive:
     hide: true
   - where:
       subject: LogAnalytic(.*)
+    hide: true
+  - where:
+      subject: CanProfileMigrate
+    hide: true
+  - where:
+      subject: CommitProfileMigration
     hide: true
 
   # Rename

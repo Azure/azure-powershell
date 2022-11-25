@@ -23,6 +23,10 @@ Disable https delivery of the custom domain.
 ### [Enable-AzCdnCustomDomainCustomHttps](Enable-AzCdnCustomDomainCustomHttps.md)
 Enable https delivery of the custom domain.
 
+### [Enable-AzFrontDoorCdnProfileManagedIdentity](Enable-AzFrontDoorCdnProfileManagedIdentity.md)
+Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
+Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
+
 ### [Get-AzCdnCustomDomain](Get-AzCdnCustomDomain.md)
 Gets an existing custom domain within an endpoint.
 
@@ -100,16 +104,6 @@ Gets an existing security policy within a profile.
 Pre-loads a content to CDN.
 Available for Verizon Profiles.
 
-### [Invoke-AzCdnCanProfileMigrate](Invoke-AzCdnCanProfileMigrate.md)
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
-
-### [Invoke-AzCdnCommitProfileMigration](Invoke-AzCdnCommitProfileMigration.md)
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
-
-### [Move-AzCdnProfile](Move-AzCdnProfile.md)
-Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
-The change need to be committed after this.
-
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
 
@@ -179,6 +173,12 @@ Create an in-memory object for HealthProbeParameters.
 ### [New-AzCdnManagedHttpsParametersObject](New-AzCdnManagedHttpsParametersObject.md)
 Create an in-memory object for CdnManagedHttpsParameters.
 
+### [New-AzCdnMigrationParametersObject](New-AzCdnMigrationParametersObject.md)
+Create an in-memory object for MigrationParameters.
+
+### [New-AzCdnMigrationWebApplicationFirewallMappingObject](New-AzCdnMigrationWebApplicationFirewallMappingObject.md)
+Create an in-memory object for MigrationWebApplicationFirewallMapping.
+
 ### [New-AzCdnOrigin](New-AzCdnOrigin.md)
 Creates a new origin within the specified endpoint.
 
@@ -190,6 +190,12 @@ Create an in-memory object for OriginGroupOverrideAction.
 
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
+
+### [New-AzCdnProfileChangeSkuWafMappingObject](New-AzCdnProfileChangeSkuWafMappingObject.md)
+Create an in-memory object for ProfileChangeSkuWafMapping.
+
+### [New-AzCdnProfileUpgradeParametersObject](New-AzCdnProfileUpgradeParametersObject.md)
+Create an in-memory object for ProfileUpgradeParameters.
 
 ### [New-AzCdnResourceReferenceObject](New-AzCdnResourceReferenceObject.md)
 Create an in-memory object for ResourceReference.
@@ -394,6 +400,15 @@ Deletes an existing security policy within profile.
 ### [Start-AzCdnEndpoint](Start-AzCdnEndpoint.md)
 Starts an existing CDN endpoint that is on a stopped state.
 
+### [Start-AzFrontDoorCdnProfileMigrate](Start-AzFrontDoorCdnProfileMigrate.md)
+Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+
+### [Start-AzFrontDoorCdnProfilePrepareMigration](Start-AzFrontDoorCdnProfilePrepareMigration.md)
+Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
+MigrationWebApplicationFirewallMapping should be associated if the front door has WAF policy.
+MSI Identity should be associated if the frontdoor has Customer Certificates.
+The change need to be committed after this.
+
 ### [Stop-AzCdnEndpoint](Stop-AzCdnEndpoint.md)
 Stops an existing running CDN endpoint.
 
@@ -415,6 +430,9 @@ Validates the custom domain mapping to ensure it maps to the correct Azure Front
 ### [Test-AzFrontDoorCdnEndpointNameAvailability](Test-AzFrontDoorCdnEndpointNameAvailability.md)
 Check the availability of a resource name.
 This is needed for resources where name is globally unique, such as a afdx endpoint.
+
+### [Test-AzFrontDoorCdnProfileCanMigrateOrNot](Test-AzFrontDoorCdnProfileCanMigrateOrNot.md)
+Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
 
 ### [Test-AzFrontDoorCdnProfileHostNameAvailability](Test-AzFrontDoorCdnProfileHostNameAvailability.md)
 Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.

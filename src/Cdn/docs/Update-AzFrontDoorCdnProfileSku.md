@@ -19,6 +19,13 @@ Update-AzFrontDoorCdnProfileSku -InputObject <ICdnIdentity>
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### __AllParameterSets
+```
+Update-AzFrontDoorCdnProfileSku -ProfileName <String> -ResourceGroupName <String>
+ -ProfileUpgradeParameter <IProfileUpgradeParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### Upgrade
 ```
 Update-AzFrontDoorCdnProfileSku -ProfileName <String> -ResourceGroupName <String>
@@ -134,7 +141,7 @@ Name of the Azure Front Door Standard or Azure Front Door Premium which is uniqu
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -150,7 +157,7 @@ To construct, see NOTES section for PROFILEUPGRADEPARAMETER properties and creat
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileUpgradeParameters
-Parameter Sets: Upgrade, UpgradeViaIdentity
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -165,7 +172,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -180,7 +187,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
