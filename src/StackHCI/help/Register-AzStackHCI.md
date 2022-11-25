@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/register-azstackhci
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/register-azstackhci
 schema: 2.0.0
 ---
 
@@ -18,7 +18,7 @@ Register-AzStackHCI [-SubscriptionId] <String> [[-Region] <String>] [[-ResourceN
  [[-GraphAccessToken] <String>] [[-AccountId] <String>] [[-EnvironmentName] <String>]
  [[-ComputerName] <String>] [[-CertificateThumbprint] <String>] [[-Credential] <PSCredential>]
  [[-ArcServerResourceGroupName] <String>] [[-ArcSpnCredential] <PSCredential>] [-EnableAzureArcServer]
- [-IsWAC] [-RepairRegistration] [-UseDeviceAuthentication] [<CommonParameters>]
+ [-IsWAC] [-RepairRegistration] [-UseDeviceAuthentication] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -196,7 +196,8 @@ Accept wildcard characters: False
 ```
 
 ### -EnableAzureArcServer
-Specifying this parameter to $false will skip registering the cluster nodes with Arc for servers.
+EnableAzureArcServer needs to be specified $true in all the environments except AzureChinaCloud.
+Specifying this parameter to $false in environments except AzureChinaCloud will terminate the registration cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -377,6 +378,37 @@ Use device code authentication instead of an interactive browser prompt.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
