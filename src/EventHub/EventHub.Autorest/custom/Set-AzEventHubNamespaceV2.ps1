@@ -251,6 +251,7 @@ function Set-AzEventHubNamespaceV2{
             }
         }
         catch{
+            #throw exception
             throw
         }
     }
