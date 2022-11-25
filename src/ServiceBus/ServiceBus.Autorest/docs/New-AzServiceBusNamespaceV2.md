@@ -18,7 +18,7 @@ New-AzServiceBusNamespaceV2 -Name <String> -ResourceGroupName <String> -Location
  [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
  [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-RequireInfrastructureEncryption]
  [-SkuCapacity <Int32>] [-SkuName <SkuName>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>]
- [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+ [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -479,6 +479,37 @@ Enabling this property creates a Premium Service Bus Namespace in regions suppor
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

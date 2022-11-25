@@ -21,7 +21,7 @@ Creates a new ServiceBus namespace.
 
 function New-AzServiceBusNamespaceV2{
 	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace])]
-    [CmdletBinding(PositionalBinding = $false, ConfirmImpact = 'Medium')]
+    [CmdletBinding(PositionalBinding = $false,SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(Mandatory, HelpMessage = "The name of ServiceBusNamespace")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]

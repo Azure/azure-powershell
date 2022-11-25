@@ -21,7 +21,7 @@ Updates a ServiceBus namespace
 
 function Set-AzServiceBusNamespaceV2{
 	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace])]
-    [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false,SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of ServiceBusNamespace")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
