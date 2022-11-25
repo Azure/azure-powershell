@@ -20,8 +20,8 @@ Creates a new ServiceBus namespace.
 #>
 
 function New-AzServiceBusNamespaceV2{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace])]
-    [CmdletBinding(PositionalBinding = $false,SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace])]
+    [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(Mandatory, HelpMessage = "The name of ServiceBusNamespace")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
@@ -165,32 +165,32 @@ function New-AzServiceBusNamespaceV2{
         ${ProxyUseDefaultCredentials}
 	)
 	process{
-		try{
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
-            if($PSBoundParameters.ContainsKey('SkuName')){
-                $PSBoundParameters.Add('SkuTier', $SkuName)
-            }
+	    try{
+                $null = $PSBoundParameters.Remove('WhatIf')
+            	$null = $PSBoundParameters.Remove('Confirm')
+            	if($PSBoundParameters.ContainsKey('SkuName')){
+                	$PSBoundParameters.Add('SkuTier', $SkuName)
+            	}
 
-            if($PSBoundParameters.ContainsKey('KeyVaultProperty')){
-                $PSBoundParameters.Add('KeySource', 'Microsoft.KeyVault')
-            }
-            if($PSBoundParameters.ContainsKey('UserAssignedIdentityId')){
+            	if($PSBoundParameters.ContainsKey('KeyVaultProperty')){
+                	$PSBoundParameters.Add('KeySource', 'Microsoft.KeyVault')
+            	}
+            	if($PSBoundParameters.ContainsKey('UserAssignedIdentityId')){
                     $identityHashTable = @{}
 
-			        foreach ($resourceID in $UserAssignedIdentityId){
-				        $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.UserAssignedIdentity]::new())
-			        }
+		    foreach ($resourceID in $UserAssignedIdentityId){
+		        $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.UserAssignedIdentity]::new())
+	            }
 
                     $PSBoundParameters.Add("UserAssignedIdentity", $identityHashTable)
                     $null = $PSBoundParameters.Remove("UserAssignedIdentityId")
                 }
-            if ($PSCmdlet.ShouldProcess("ServiceBusNamespace $($serviceBusNamespace.Name)", "Create or update")) {
-                Az.ServiceBus.private\New-AzServiceBusNamespaceV2_CreateExpanded @PSBoundParameters
-            }
-		}
-		catch{
-			throw
-		}
-	}
+                if ($PSCmdlet.ShouldProcess("ServiceBusNamespace $($serviceBusNamespace.Name)", "Create or update")) {
+                    Az.ServiceBus.private\New-AzServiceBusNamespaceV2_CreateExpanded @PSBoundParameters
+                }
+	    }
+	    catch{
+		throw
+	    }
+        }
 }
