@@ -394,3 +394,76 @@ function Test-OSSku
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-NodeLabels {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+        # create aks cluster with default nodepool, labels: @{"someId"=123; "app"="test"}
+        $labels1 = @{"someId" = 123; "app" = "test" }
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -NodePoolLabel $labels1
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 1 $cluster.AgentPoolProfiles.Count
+        Assert-HashTableEquals $labels1 $cluster.AgentPoolProfiles[0].NodeLabels
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 1 $pools.Count
+        Assert-HashTableEquals $labels1 $pools[0].NodeLabels
+
+        # update aks cluster default nodepool, labels: @{"someId"=124; "app"="test"; "environment"="dev"}
+        $labels2 = @{"someId" = 124; "app" = "test"; "environment" = "dev" }
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodePoolLabel $labels2
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 1 $cluster.AgentPoolProfiles.Count
+        Assert-HashTableEquals $labels2 $cluster.AgentPoolProfiles[0].NodeLabels
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 1 $pools.Count
+        Assert-HashTableEquals $labels2 $pools[0].NodeLabels
+
+        # create a 2nd nodepool, labels: @{"someId"=125; "tier"="frontend"}
+        $labels3 = @{"someId" = 125; "tier" = "frontend" }
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name "pool2" -Count 1 -NodeLabels $labels3
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-HashTableEquals $labels2 ($cluster.AgentPoolProfiles | where {$_.Name -eq "default"}).NodeLabels
+        Assert-HashTableEquals $labels3 ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).NodeLabels
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-HashTableEquals $labels2 ($pools | where {$_.Name -eq "default"}).NodeLabels
+        Assert-HashTableEquals $labels3 ($pools | where {$_.Name -eq "pool2"}).NodeLabels
+
+        # update the 2nd nodepool, labels: @{"someId"=126; "app"="test"; "environment"="qa"}
+        $labels4 = @{"someId" = 126; "app" = "test"; "environment" = "qa" }
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeName "pool2" -NodePoolLabel $labels4
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-HashTableEquals $labels2 ($cluster.AgentPoolProfiles | where {$_.Name -eq "default"}).NodeLabels
+        Assert-HashTableEquals $labels4 ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).NodeLabels
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-HashTableEquals $labels2 ($pools | where {$_.Name -eq "default"}).NodeLabels
+        Assert-HashTableEquals $labels4 ($pools | where {$_.Name -eq "pool2"}).NodeLabels
+
+        # update the default nodepool, labels: @{"someId"=127; "tier"="frontend"; "environment"="qa"}
+        $labels5 = @{"someId" = 127; "tier" = "frontend"; "environment" = "qa" }
+        Update-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name "default" -NodeLabels $labels5
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-HashTableEquals $labels5 ($cluster.AgentPoolProfiles | where {$_.Name -eq "default"}).NodeLabels
+        Assert-HashTableEquals $labels4 ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).NodeLabels
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-HashTableEquals $labels5 ($pools | where {$_.Name -eq "default"}).NodeLabels
+        Assert-HashTableEquals $labels4 ($pools | where {$_.Name -eq "pool2"}).NodeLabels
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}

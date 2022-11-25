@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 using Microsoft.Azure.Commands.Aks.Models;
@@ -193,6 +194,14 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.AvailabilityZone))
             {
                 agentPool.AvailabilityZones = AvailabilityZone;
+            }
+            if (this.IsParameterBound(c => c.NodeLabels))
+            {
+                agentPool.NodeLabels = new Dictionary<string, string>();
+                foreach (var key in NodeLabels.Keys)
+                {
+                    agentPool.NodeLabels.Add(key.ToString(), NodeLabels[key].ToString());
+                }
             }
 
             return agentPool;

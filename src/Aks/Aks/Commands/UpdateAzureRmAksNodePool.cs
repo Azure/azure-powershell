@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
@@ -162,6 +163,14 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                         var upgradedPool = Client.AgentPools.UpgradeNodeImageVersion(ResourceGroupName, ClusterName, Name);
                         WriteObject(PSMapper.Instance.Map<PSNodePool>(upgradedPool));
                         return;
+                    }
+                    if (this.IsParameterBound(c => c.NodeLabels))
+                    {
+                        pool.NodeLabels = new Dictionary<string, string>();
+                        foreach (var key in NodeLabels.Keys)
+                        {
+                            pool.NodeLabels.Add(key.ToString(), NodeLabels[key].ToString());
+                        }
                     }
 
                     var updatedPool = Client.AgentPools.CreateOrUpdate(ResourceGroupName, ClusterName, Name, pool);

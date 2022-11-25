@@ -269,6 +269,15 @@ namespace Microsoft.Azure.Commands.Aks
                                 WriteVerbose(Resources.UpdatingNodePoolMode);
                                 defaultAgentPoolProfile.Mode = NodePoolMode;
                             }
+                            if (this.IsParameterBound(c => c.NodePoolLabel))
+                            {
+                                WriteVerbose(Resources.UpdatingNodePoolLabels);
+                                defaultAgentPoolProfile.NodeLabels = new Dictionary<string, string>();
+                                foreach (var key in NodePoolLabel.Keys)
+                                {
+                                    defaultAgentPoolProfile.NodeLabels.Add(key.ToString(), NodePoolLabel[key].ToString());
+                                }
+                            }
                         }
 
                         if (this.IsParameterBound(c => c.KubernetesVersion) && this.IsParameterBound(c => c.NodeImageOnly))
@@ -441,7 +450,7 @@ namespace Microsoft.Azure.Commands.Aks
             return this.IsParameterBound(c => c.NodeCount) || this.IsParameterBound(c => c.NodeOsDiskSize) ||
                 this.IsParameterBound(c => c.NodeVmSize) || this.IsParameterBound(c => c.EnableNodeAutoScaling) ||
                 this.IsParameterBound(c => c.NodeMinCount) || this.IsParameterBound(c => c.NodeMaxCount) || 
-                this.IsParameterBound(c => c.NodePoolMode);
+                this.IsParameterBound(c => c.NodePoolMode) || this.IsParameterBound(c => c.NodePoolLabel);
         }
     }
 }

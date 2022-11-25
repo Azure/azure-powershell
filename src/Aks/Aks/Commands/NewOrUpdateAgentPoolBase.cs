@@ -13,6 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Newtonsoft.Json;
+using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Aks
@@ -38,5 +41,8 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The pool mode")]
         [PSArgumentCompleter("System", "User")]
         public string Mode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
+        public Hashtable NodeLabels { get; set; }
     }
 }
