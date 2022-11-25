@@ -1,40 +1,41 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsinstance
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinstimeseriesdatabaseconnection
 schema: 2.0.0
 ---
 
-# Remove-AzDigitalTwinsInstance
+# Remove-AzDigitalTwinsTimeSeriesDatabaseConnection
 
 ## SYNOPSIS
-Delete a DigitalTwinsInstance.
+Delete a time series database connection.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDigitalTwinsTimeSeriesDatabaseConnection -Name <String> -ResourceGroupName <String>
+ -ResourceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDigitalTwinsTimeSeriesDatabaseConnection -InputObject <IDigitalTwinsIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a DigitalTwinsInstance.
+Delete a time series database connection.
 
 ## EXAMPLES
 
-### Example 1: Remove an AzDigitalTwinsInstance by name.
+### Example 1: Delete a time series database connection.
 ```powershell
-Remove-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
+Remove-AzDigitalTwinsTimeSeriesDatabaseConnection -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -Name azps-tsdc
 ```
 
-This command removes an AzDigitalTwinsInstance by name.
+Delete a time series database connection.
 
 ## PARAMETERS
 
@@ -81,6 +82,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of time series database connection.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: TimeSeriesDatabaseConnectionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -199,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection
 
 ## NOTES
 

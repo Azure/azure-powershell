@@ -1,53 +1,52 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsinstance
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsprivateendpointconnection
 schema: 2.0.0
 ---
 
-# New-AzDigitalTwinsInstance
+# New-AzDigitalTwinsPrivateEndpointConnection
 
 ## SYNOPSIS
-Create or update the metadata of a DigitalTwinsInstance.
-The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
+Update the status of a private endpoint connection with the given name.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> -Location <String>
- [-SubscriptionId <String>] [-IdentityType <DigitalTwinsIdentityType>]
- [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDigitalTwinsPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -ResourceName <String>
+ [-SubscriptionId <String>] [-GroupId <String[]>] [-PrivateLinkServiceConnectionStateActionsRequired <String>]
+ [-PrivateLinkServiceConnectionStateDescription <String>]
+ [-PrivateLinkServiceConnectionStateStatus <PrivateLinkServiceConnectionStatus>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> -Location <String>
- [-IdentityType <DigitalTwinsIdentityType>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDigitalTwinsPrivateEndpointConnection -InputObject <IDigitalTwinsIdentity> [-GroupId <String[]>]
+ [-PrivateLinkServiceConnectionStateActionsRequired <String>]
+ [-PrivateLinkServiceConnectionStateDescription <String>]
+ [-PrivateLinkServiceConnectionStateStatus <PrivateLinkServiceConnectionStatus>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update the metadata of a DigitalTwinsInstance.
-The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
+Update the status of a private endpoint connection with the given name.
 
 ## EXAMPLES
 
-### Example 1: Create or update the metadata of a DigitalTwinsInstance.
+### Example 1: Update the status of a private endpoint connection with the given name.
 ```powershell
-New-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -Location eastus -IdentityType 'SystemAssigned' -PublicNetworkAccess 'Enabled'
+New-AzDigitalTwinsPrivateEndpointConnection -Name "11c903a5-7b8a-4b86-812d-03f007dca6df" -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -PrivateLinkServiceConnectionStateStatus 'Approved' -PrivateLinkServiceConnectionStateDescription "Approved by johndoe@company.com."
 ```
 
 ```output
-Name                       Location ResourceGroupName
-----                       -------- -----------------
-azps-digitaltwins-instance eastus   azps_test_group
+Name                                 GroupId PrivateLinkServiceConnectionStateStatus ResourceGroupName
+----                                 ------- --------------------------------------- -----------------
+11c903a5-7b8a-4b86-812d-03f007dca6df {API}   Approved                                azps_test_group
 ```
 
-Create or update the metadata of a DigitalTwinsInstance.
-The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
+Update the status of a private endpoint connection with the given name.
 
 ## PARAMETERS
 
@@ -81,12 +80,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The type of Managed Identity used by the DigitalTwinsInstance.
-Only SystemAssigned is supported.
+### -GroupId
+The list of group ids for the private endpoint connection.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.DigitalTwinsIdentityType
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -113,13 +111,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The resource location.
+### -Name
+The name of the private endpoint connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: CreateExpanded
+Aliases: PrivateEndpointConnectionName
 
 Required: True
 Position: Named
@@ -143,12 +141,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateEndpointConnection
-The private endpoint connections.
-To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
+### -PrivateLinkServiceConnectionStateActionsRequired
+Actions required for a private endpoint connection.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -159,11 +156,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicNetworkAccess
-Public network access for the DigitalTwinsInstance.
+### -PrivateLinkServiceConnectionStateDescription
+The description for the current state of a private endpoint connection.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.PublicNetworkAccess
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkServiceConnectionStateStatus
+The status of a private endpoint connection.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.PrivateLinkServiceConnectionStatus
 Parameter Sets: (All)
 Aliases:
 
@@ -219,21 +231,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-The resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -274,7 +271,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription
+### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection
 
 ## NOTES
 
@@ -295,18 +292,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceName <String>]`: The name of the DigitalTwinsInstance.
   - `[SubscriptionId <String>]`: The subscription identifier.
   - `[TimeSeriesDatabaseConnectionName <String>]`: Name of time series database connection.
-
-`PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>`: The private endpoint connections.
-  - `[GroupId <String[]>]`: The list of group ids for the private endpoint connection.
-  - `[PrivateLinkServiceConnectionStateActionsRequired <String>]`: Actions required for a private endpoint connection.
-  - `[PrivateLinkServiceConnectionStateDescription <String>]`: The description for the current state of a private endpoint connection.
-  - `[PrivateLinkServiceConnectionStateStatus <PrivateLinkServiceConnectionStatus?>]`: The status of a private endpoint connection.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
 
 ## RELATED LINKS
 

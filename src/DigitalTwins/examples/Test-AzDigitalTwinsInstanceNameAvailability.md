@@ -1,28 +1,25 @@
-### Example 1: Check the name by location and name.
+### Example 1: Check if a DigitalTwinsInstance name is available.
 ```powershell
-Test-AzDigitalTwinsInstanceNameAvailability -Location eastus -name youriTestName
+Test-AzDigitalTwinsInstanceNameAvailability -Location westus2 -Name testName
 ```
 
 ```output
-Message                       NameAvailable Reason
--------                       ------------- ------
-'youriTestName' is available. True
+Message                  NameAvailable Reason
+-------                  ------------- ------
+'testName' is available. True
 ```
 
-Check the availability of the name by location and name.
+Check if a DigitalTwinsInstance name is available.
 
-### Example 2: Check the name by DigitalTwinsObject and CheckNameObject.
+### Example 2: Check if a DigitalTwinsInstance name is not available.
 ```powershell
-$getAzDT =Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest 
-$checkName = New-AzDigitalTwinsCheckNameRequestObject -name youriTestName
-Test-AzDigitalTwinsInstanceNameAvailability -InputObject $getAzDT -DigitalTwinsInstanceCheckName $checkName
+Test-AzDigitalTwinsInstanceNameAvailability -Location westus2 -Name !testName
 ```
 
 ```output
-Message                     NameAvailable Reason
--------                     ------------- ------
-'youriTestName' is available. True
+Message                                                                                                                                NameAvailable Reason
+-------                                                                                                                                ------------- ------
+'!testName' must be between 3 and 63 characters. Alphanumerics and hyphens are allowed. Value must start and end with an alphanumeric. False         Invalid
 ```
 
-Get A DigitalTwinsInstance and create a Requset Object to Test the availability of the name.
-
+Check if a DigitalTwinsInstance name is not available.
