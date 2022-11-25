@@ -20,7 +20,7 @@ Updates a ServiceBus namespace
 #>
 
 function Set-AzServiceBusNamespaceV2{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false,SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of ServiceBusNamespace")]
@@ -162,78 +162,77 @@ function Set-AzServiceBusNamespaceV2{
         ${ProxyUseDefaultCredentials}
 	)
 	process{
-		try{
-            $hasAlternateName = $PSBoundParameters.Remove('AlternateName')
-            $hasDisableLocalAuth = $PSBoundParameters.Remove('DisableLocalAuth')
-            $hasKeyVaultProperty = $PSBoundParameters.Remove('KeyVaultProperty')
-            $hasUserAssignedIdentityId = $PSBoundParameters.Remove('UserAssignedIdentityId')
-            $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
-            $hasMinimumTlsVersion = $PSBoundParameters.Remove('MinimumTlsVersion')
-            $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption')
-            $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
-            $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
-            $hasTag = $PSBoundParameters.Remove('Tag')
-            $hasDefaultProfile = $PSBoundParameters.Remove('DefaultProfile')
-            $hasAsJob = $PSBoundParameters.Remove('AsJob')
-            $null = $PSBoundParameters.Remove('WhatIf')
-            $null = $PSBoundParameters.Remove('Confirm')
-            $serviceBusNamespace = Get-AzServiceBusNamespaceV2 @PSBoundParameters
+	    try{
+                $hasAlternateName = $PSBoundParameters.Remove('AlternateName')
+                $hasDisableLocalAuth = $PSBoundParameters.Remove('DisableLocalAuth')
+                $hasKeyVaultProperty = $PSBoundParameters.Remove('KeyVaultProperty')
+                $hasUserAssignedIdentityId = $PSBoundParameters.Remove('UserAssignedIdentityId')
+                $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
+                $hasMinimumTlsVersion = $PSBoundParameters.Remove('MinimumTlsVersion')
+                $hasRequireInfrastructureEncryption = $PSBoundParameters.Remove('RequireInfrastructureEncryption')
+                $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
+                $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
+                $hasTag = $PSBoundParameters.Remove('Tag')
+                $hasDefaultProfile = $PSBoundParameters.Remove('DefaultProfile')
+                $hasAsJob = $PSBoundParameters.Remove('AsJob')
+                $null = $PSBoundParameters.Remove('WhatIf')
+                $null = $PSBoundParameters.Remove('Confirm')
+                $serviceBusNamespace = Get-AzServiceBusNamespaceV2 @PSBoundParameters
 
-            # 2. PUT
-            $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
+                # 2. PUT
+                $null = $PSBoundParameters.Remove('InputObject')
+                $null = $PSBoundParameters.Remove('ResourceGroupName')
+                $null = $PSBoundParameters.Remove('NamespaceName')
+                $null = $PSBoundParameters.Remove('Name')
+                $null = $PSBoundParameters.Remove('SubscriptionId')
 
-            if ($hasAlternateName) {
-                $serviceBusNamespace.AlternateName = $AlternateName
-            }
+                if ($hasAlternateName) {
+                    $serviceBusNamespace.AlternateName = $AlternateName
+                }
+                if ($hasDisableLocalAuth) {
+                    $serviceBusNamespace.DisableLocalAuth = $DisableLocalAuth
+                }
+                if ($hasKeyVaultProperty) {
+                    $serviceBusNamespace.KeyVaultProperty = $KeyVaultProperty
+                    $serviceBusNamespace.KeySource = 'Microsoft.KeyVault'
+                }
+                if ($hasIdentityType) {
+                    $serviceBusNamespace.IdentityType = $IdentityType
+                }
+                if($hasRequireInfrastructureEncryption){
+                    $serviceBusNamespace.RequireInfrastructureEncryption = $RequireInfrastructureEncryption
+                }
+                if ($hasUserAssignedIdentityId) {
+                    $identityHashTable = @{}
+	            
+		    foreach ($resourceID in $UserAssignedIdentityId){
+		        $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.UserAssignedIdentity]::new())
+	            }
+                    
+		    $serviceBusNamespace.UserAssignedIdentity = $identityHashTable
+               }
+               if ($hasMinimumTlsVersion) {
+                    $serviceBusNamespace.MinimumTlsVersion = $MinimumTlsVersion
+               }
+               if ($hasPublicNetworkAccess) {
+                    $serviceBusNamespace.PublicNetworkAccess = $PublicNetworkAccess
+               }
+               if ($hasSkuCapacity) {
+                    $serviceBusNamespace.SkuCapacity = $SkuCapacity
+               }
+               if ($hasTag) {
+                    $serviceBusNamespace.Tag = $Tag
+               }
+               if ($hasAsJob) {
+                    $PSBoundParameters.Add('AsJob', $true)
+               }
 
-            if ($hasDisableLocalAuth) {
-                $serviceBusNamespace.DisableLocalAuth = $DisableLocalAuth
-            }
-            if ($hasKeyVaultProperty) {
-                $serviceBusNamespace.KeyVaultProperty = $KeyVaultProperty
-                $serviceBusNamespace.KeySource = 'Microsoft.KeyVault'
-            }
-            if ($hasIdentityType) {
-                $serviceBusNamespace.IdentityType = $IdentityType
-            }
-            if($hasRequireInfrastructureEncryption){
-                $serviceBusNamespace.RequireInfrastructureEncryption = $RequireInfrastructureEncryption
-            }
-            if ($hasUserAssignedIdentityId) {
-                
-                $identityHashTable = @{}
-
-			    foreach ($resourceID in $UserAssignedIdentityId){
-				    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.UserAssignedIdentity]::new())
-			    }
-                $serviceBusNamespace.UserAssignedIdentity = $identityHashTable
-            }
-            if ($hasMinimumTlsVersion) {
-                $serviceBusNamespace.MinimumTlsVersion = $MinimumTlsVersion
-            }
-            if ($hasPublicNetworkAccess) {
-                $serviceBusNamespace.PublicNetworkAccess = $PublicNetworkAccess
-            }
-            if ($hasSkuCapacity) {
-                $serviceBusNamespace.SkuCapacity = $SkuCapacity
-            }
-            if ($hasTag) {
-                $serviceBusNamespace.Tag = $Tag
-            }
-            if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
-            }
-
-            if ($PSCmdlet.ShouldProcess("ServiceBusNamespace $($serviceBusNamespace.Name)", "Create or update")) {
-                Az.ServiceBus.private\New-AzServiceBusNamespaceV2_CreateViaIdentity -InputObject $serviceBusNamespace -Parameter $serviceBusNamespace @PSBoundParameters
-            }
-		}
-		catch{
-			throw
-		}
+               if ($PSCmdlet.ShouldProcess("ServiceBusNamespace $($serviceBusNamespace.Name)", "Create or update")) {
+                    Az.ServiceBus.private\New-AzServiceBusNamespaceV2_CreateViaIdentity -InputObject $serviceBusNamespace -Parameter $serviceBusNamespace @PSBoundParameters
+               }
 	}
+	catch{
+	    throw
+	}
+    }
 }
