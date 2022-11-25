@@ -56,7 +56,7 @@ Gets all the clusters in a RG
 
 ### Example 2: 
 ```powershell
-
+Get-AzStackHciCluster -Name myCluster -ResourceGroupName test-rg
 ```
 
 ```output
