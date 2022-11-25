@@ -250,8 +250,8 @@ function Set-AzEventHubNamespaceV2{
                 Az.EventHub.private\New-AzEventHubNamespaceV2_CreateViaIdentity -InputObject $eventHubNamespace -Parameter $eventHubNamespace @PSBoundParameters
             }
         }
-	    catch{
-	        throw
-	    }
+        catch{
+            throw
+        }
     }
 }
