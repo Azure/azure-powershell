@@ -41,6 +41,9 @@ Lists entities from groups or get entity from groups by key
 ### [Get-AzADGroupMember](Get-AzADGroupMember.md)
 Lists members from group.
 
+### [Get-AzADOrganization](Get-AzADOrganization.md)
+Retrieve a list of organization objects.
+
 ### [Get-AzADServicePrincipal](Get-AzADServicePrincipal.md)
 Lists entities from service principals or get entity from service principals by key
 
