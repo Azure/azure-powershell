@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 ConfigKeys.EnableTestCoverage,
                 "When enabled, the test framework will generate data during test run as a preliminary for the test coverage calculation",
                 false,
-                "Azure_PS_TestCoverage",
+                ConfigKeys.EnableTestCoverage,
                 new[] { AppliesTo.Az }));
 #endif
 
