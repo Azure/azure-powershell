@@ -34,10 +34,10 @@ Result: Success or Failed or Cancelled.
 ResourceId: Resource ID of the resource created in Azure.
 PortalResourceURL: Azure Portal Resource URL.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/register-azstackhci
+https://learn.microsoft.com/powershell/module/az.stackhci/register-azstackhci
 #>
 function Register-AzStackHCI {
-[CmdletBinding(PositionalBinding=$false)]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Position=0, Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
@@ -139,7 +139,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Specifying this parameter to $false will skip registering the cluster nodes with Arc for servers.
+    # EnableAzureArcServer needs to be specified $true in all the environments except AzureChinaCloud.
+    # Specifying this parameter to $false in environments except AzureChinaCloud will terminate the registration cmdlet.
     ${EnableAzureArcServer},
 
     [Parameter(Position=12)]
