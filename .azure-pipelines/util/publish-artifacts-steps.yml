@@ -3,8 +3,8 @@ parameters:
 
 steps:
 - task: PublishPipelineArtifact@0
-  displayName: 'Save ${{ parameters.artifactName }}'
+  displayName: 'Save ${{ parameters.artifactName }}-${{ System.JobAttempt }}'
   inputs:
-    artifactName: ${{ parameters.artifactName }}
+    artifactName: ${{ parameters.artifactName }}-${{ System.JobAttempt }}
     targetPath: artifacts
   condition: always()
