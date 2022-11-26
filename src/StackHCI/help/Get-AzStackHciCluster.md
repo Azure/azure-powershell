@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhcicluster
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcicluster
 schema: 2.0.0
 ---
 
@@ -56,7 +56,7 @@ Gets all the clusters in a RG
 
 ### Example 2: 
 ```powershell
-
+Get-AzStackHciCluster -ResourceGroupName test-rg -ClusterName myCluster
 ```
 
 ```output

@@ -32,7 +32,7 @@ IsRequired: True or False
 Result: Succeeded or Failed
 FailedNodes: List of nodes on which the test failed.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/test-azstackhciconnection
+https://learn.microsoft.com/powershell/module/az.stackhci/test-azstackhciconnection
 #>
 function Test-AzStackHCIConnection {
 [CmdletBinding(PositionalBinding=$false)]
