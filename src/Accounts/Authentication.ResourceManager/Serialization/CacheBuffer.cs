@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 // ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation

@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;

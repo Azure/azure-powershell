@@ -1,4 +1,4 @@
-﻿function Write-InstallationCheckToFile
+function Write-InstallationCheckToFile
 {
     Param($installationchecks)
     if (Get-Module AzureRM.Profile -ListAvailable -ErrorAction Ignore)

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Microsoft.Azure.Internal.Subscriptions.Models;
 
 namespace Microsoft.Azure.Commands.Profile.Models
