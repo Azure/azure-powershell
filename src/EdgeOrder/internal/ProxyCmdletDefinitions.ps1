@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderoperation
+https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderoperation
 #>
 function Get-AzEdgeOrderOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IOperation])]
