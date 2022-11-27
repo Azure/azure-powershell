@@ -48,7 +48,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubapplicationgroup
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubapplicationgroup
 #>
 function Get-AzEventHubApplicationGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup])]
@@ -229,7 +229,7 @@ Get-AzEventHubClusterNamespace -ResourceGroupName myResourceGroup -ClusterName D
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceIdContainer
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubclusternamespace
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubclusternamespace
 #>
 function Get-AzEventHubClusterNamespace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceIdContainer])]
@@ -391,7 +391,7 @@ Get-AzEventHubClustersAvailableRegion
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAvailableCluster
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubclustersavailableregion
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubclustersavailableregion
 #>
 function Get-AzEventHubClustersAvailableRegion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAvailableCluster])]
@@ -562,7 +562,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubcluster
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubcluster
 #>
 function Get-AzEventHubCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster])]
@@ -761,7 +761,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubconsumergroup
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubconsumergroup
 #>
 function Get-AzEventHubConsumerGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup])]
@@ -983,7 +983,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubgeodrconfiguration
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubgeodrconfiguration
 #>
 function Get-AzEventHubGeoDRConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery])]
@@ -1186,7 +1186,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubnetworkruleset
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubnetworkruleset
 #>
 function Get-AzEventHubNetworkRuleSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INetworkRuleSet], [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INetworkRuleSetListResult])]
@@ -1383,7 +1383,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubprivateendpointconnection
 #>
 function Get-AzEventHubPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection])]
@@ -1564,7 +1564,7 @@ Get-AzEventHubPrivateLink -ResourceGroupName myResourceGroup -NamespaceName myNa
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateLinkResourcesListResult
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubprivatelink
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubprivatelink
 #>
 function Get-AzEventHubPrivateLink {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateLinkResourcesListResult])]
@@ -1749,7 +1749,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubschemagroup
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubschemagroup
 #>
 function Get-AzEventHubSchemaGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ISchemaGroup])]
@@ -1966,7 +1966,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhub
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhub
 #>
 function Get-AzEventHub {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub])]
@@ -2169,7 +2169,7 @@ To create the parameters described below, construct a hash table containing the 
 POLICY <IApplicationGroupPolicy[]>: List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
   Name <String>: The Name of this policy
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubapplicationgroup
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubapplicationgroup
 #>
 function New-AzEventHubApplicationGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup])]
@@ -2362,7 +2362,7 @@ New-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myEventHubsCluste
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubcluster
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubcluster
 #>
 function New-AzEventHubCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster])]
@@ -2566,7 +2566,7 @@ New-AzEventHubConsumerGroup -Name myConsumerGroup -NamespaceName myNamespace -Re
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubconsumergroup
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubconsumergroup
 #>
 function New-AzEventHubConsumerGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup])]
@@ -2749,7 +2749,7 @@ New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGrou
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubgeodrconfiguration
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubgeodrconfiguration
 #>
 function New-AzEventHubGeoDRConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery])]
@@ -2935,7 +2935,7 @@ $schemaGroup = New-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -Nam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ISchemaGroup
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubschemagroup
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubschemagroup
 #>
 function New-AzEventHubSchemaGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ISchemaGroup])]
@@ -3127,7 +3127,7 @@ New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhub
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhub
 #>
 function New-AzEventHub {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub])]
@@ -3395,7 +3395,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubapplicationgroup
+https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubapplicationgroup
 #>
 function Remove-AzEventHubApplicationGroup {
 [OutputType([System.Boolean])]
@@ -3601,7 +3601,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubcluster
+https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubcluster
 #>
 function Remove-AzEventHubCluster {
 [OutputType([System.Boolean])]
@@ -3811,7 +3811,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubconsumergroup
+https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubconsumergroup
 #>
 function Remove-AzEventHubConsumerGroup {
 [OutputType([System.Boolean])]
@@ -4021,7 +4021,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubgeodrconfiguration
+https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubgeodrconfiguration
 #>
 function Remove-AzEventHubGeoDRConfiguration {
 [OutputType([System.Boolean])]
@@ -4226,7 +4226,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubprivateendpointconnection
 #>
 function Remove-AzEventHubPrivateEndpointConnection {
 [OutputType([System.Boolean])]
@@ -4442,7 +4442,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubschemagroup
+https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubschemagroup
 #>
 function Remove-AzEventHubSchemaGroup {
 [OutputType([System.Boolean])]
@@ -4646,7 +4646,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhub
+https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhub
 #>
 function Remove-AzEventHub {
 [OutputType([System.Boolean])]
@@ -4853,7 +4853,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/approve-azeventhubprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.eventhub/approve-azeventhubprivateendpointconnection
 #>
 function Approve-AzEventHubPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection])]
@@ -5071,7 +5071,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/deny-azeventhubprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.eventhub/deny-azeventhubprivateendpointconnection
 #>
 function Deny-AzEventHubPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection])]
@@ -5288,7 +5288,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubauthorizationrule
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubauthorizationrule
 #>
 function Get-AzEventHubAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule])]
@@ -5489,7 +5489,7 @@ Get-AzEventHubKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubkey
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubkey
 #>
 function Get-AzEventHubKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys])]
@@ -5686,7 +5686,7 @@ New-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubauthorizationrule
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubauthorizationrule
 #>
 function New-AzEventHubAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule])]
@@ -5880,7 +5880,7 @@ New-AzEventHubIPRuleConfig -IPMask 3.3.3.3 -Action Allow
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetIPRules
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubipruleconfig
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubipruleconfig
 #>
 function New-AzEventHubIPRuleConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetIPRules])]
@@ -5986,7 +5986,7 @@ New-AzEventHubKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubkey
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubkey
 #>
 function New-AzEventHubKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys])]
@@ -6187,7 +6187,7 @@ New-AzEventHubThrottlingPolicyConfig -Name t1 -RateLimitThreshold 10000 -MetricI
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IThrottlingPolicy
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubthrottlingpolicyconfig
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubthrottlingpolicyconfig
 #>
 function New-AzEventHubThrottlingPolicyConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IThrottlingPolicy])]
@@ -6297,7 +6297,7 @@ New-AzEventHubVirtualNetworkRuleConfig -SubnetId /subscriptions/subscriptionId/r
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubvirtualnetworkruleconfig
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubvirtualnetworkruleconfig
 #>
 function New-AzEventHubVirtualNetworkRuleConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules])]
@@ -6424,7 +6424,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubauthorizationrule
+https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubauthorizationrule
 #>
 function Remove-AzEventHubAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule])]
@@ -6648,7 +6648,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhub
+https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhub
 #>
 function Set-AzEventHub {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub])]
@@ -6943,7 +6943,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
 POLICY <IApplicationGroupPolicy[]>: List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
   Name <String>: The Name of this policy
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubapplicationgroup
+https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubapplicationgroup
 #>
 function Set-AzEventHubApplicationGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup])]
@@ -7176,7 +7176,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubauthorizationrule
+https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubauthorizationrule
 #>
 function Set-AzEventHubAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule])]
@@ -7409,7 +7409,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
 TAG <ITrackedResourceTags>: Resource tags.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubcluster
+https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubcluster
 #>
 function Set-AzEventHubCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster])]
@@ -7629,7 +7629,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubconsumergroup
+https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubconsumergroup
 #>
 function Set-AzEventHubConsumerGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup])]
@@ -7853,7 +7853,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubgeodrconfigurationbreakpair
+https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubgeodrconfigurationbreakpair
 #>
 function Set-AzEventHubGeoDRConfigurationBreakPair {
 [OutputType([System.Boolean])]
@@ -8062,7 +8062,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubgeodrconfigurationfailover
+https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubgeodrconfigurationfailover
 #>
 function Set-AzEventHubGeoDRConfigurationFailOver {
 [OutputType([System.Boolean])]
@@ -8288,7 +8288,7 @@ VIRTUALNETWORKRULE <INwRuleSetVirtualNetworkRules[]>: List of VirtualNetwork Rul
   [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Value that indicates whether to ignore missing Vnet Service Endpoint
   [SubnetId <String>]: Resource ID of Virtual Network Subnet
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubnetworkruleset
+https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubnetworkruleset
 #>
 function Set-AzEventHubNetworkRuleSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INetworkRuleSet])]
@@ -8506,7 +8506,7 @@ Test-AzEventHubName -NamespaceName myNamespace -ResourceGroupName myResourceGrou
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICheckNameAvailabilityResult
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/test-azeventhubname
+https://learn.microsoft.com/powershell/module/az.eventhub/test-azeventhubname
 #>
 function Test-AzEventHubName {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICheckNameAvailabilityResult])]

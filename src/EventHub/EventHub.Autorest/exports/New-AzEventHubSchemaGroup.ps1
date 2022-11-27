@@ -25,7 +25,7 @@ $schemaGroup = New-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -Nam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ISchemaGroup
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubschemagroup
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubschemagroup
 #>
 function New-AzEventHubSchemaGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ISchemaGroup])]
