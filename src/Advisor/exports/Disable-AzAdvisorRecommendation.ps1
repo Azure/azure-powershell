@@ -43,7 +43,7 @@ INPUTOBJECT <IAdvisorIdentity>: The powershell object type PsAzureAdvisorResourc
   [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/Disable-AzAdvisorRecommendation
+https://learn.microsoft.com/powershell/module/az.advisor/Disable-AzAdvisorRecommendation
 #>
 function Disable-AzAdvisorRecommendation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
