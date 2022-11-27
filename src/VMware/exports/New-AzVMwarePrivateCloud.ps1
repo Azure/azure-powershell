@@ -25,7 +25,7 @@ New-AzVMwarePrivateCloud -Name azps_test_cloud -ResourceGroupName azps_test_grou
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloud
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloud
 #>
 function New-AzVMwarePrivateCloud {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud])]
