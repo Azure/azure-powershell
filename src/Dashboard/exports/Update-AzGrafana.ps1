@@ -44,7 +44,7 @@ INPUTOBJECT <IDashboardIdentity>: Identity Parameter
 MONITORWORKSPACEINTEGRATION <IAzureMonitorWorkspaceIntegration[]>: The MonitorWorkspaceIntegration of Azure Managed Grafana.
   [AzureMonitorWorkspaceResourceId <String>]: The resource Id of the connected Azure Monitor Workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.dashboard/update-azgrafana
+https://learn.microsoft.com/powershell/module/az.dashboard/update-azgrafana
 #>
 function Update-AzGrafana {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana])]
