@@ -47,7 +47,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusdisasterrecoveryconfigauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusdisasterrecoveryconfigauthorizationrule
 #>
 function Get-AzServiceBusDisasterRecoveryConfigAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
@@ -204,7 +204,7 @@ Gets the primary and secondary connection strings for the namespace.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusdisasterrecoveryconfigkey
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusdisasterrecoveryconfigkey
 #>
 function Get-AzServiceBusDisasterRecoveryConfigKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
@@ -368,7 +368,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusnamespaceauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnamespaceauthorizationrule
 #>
 function Get-AzServiceBusNamespaceAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
@@ -518,7 +518,7 @@ Gets the primary and secondary connection strings for the namespace.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusnamespacekey
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnamespacekey
 #>
 function Get-AzServiceBusNamespaceKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
@@ -656,7 +656,7 @@ Lists all of the available ServiceBus REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusoperation
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusoperation
 #>
 function Get-AzServiceBusOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IOperation])]
@@ -785,7 +785,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusqueueauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusqueueauthorizationrule
 #>
 function Get-AzServiceBusQueueAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
@@ -942,7 +942,7 @@ Primary and secondary connection strings to the queue.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusqueuekey
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusqueuekey
 #>
 function Get-AzServiceBusQueueKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
@@ -1106,7 +1106,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebustopicauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebustopicauthorizationrule
 #>
 function Get-AzServiceBusTopicAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
@@ -1263,7 +1263,7 @@ Gets the primary and secondary connection strings for the topic.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebustopickey
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebustopickey
 #>
 function Get-AzServiceBusTopicKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
@@ -1427,7 +1427,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/invoke-azservicebusbreakdisasterrecoveryconfigpairing
+https://learn.microsoft.com/powershell/module/az.servicebus/invoke-azservicebusbreakdisasterrecoveryconfigpairing
 #>
 function Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing {
 [OutputType([System.Boolean])]
@@ -1604,7 +1604,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
 PARAMETER <IFailoverProperties>: Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
   [IsSafeFailover <Boolean?>]: Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/invoke-azservicebusfaildisasterrecoveryconfigover
+https://learn.microsoft.com/powershell/module/az.servicebus/invoke-azservicebusfaildisasterrecoveryconfigover
 #>
 function Invoke-AzServiceBusFailDisasterRecoveryConfigOver {
 [OutputType([System.Boolean])]
@@ -1808,7 +1808,7 @@ PARAMETER <IArmDisasterRecovery>: Single item in List or Get Alias(Disaster Reco
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusgeodrconfiguration
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusgeodrconfiguration
 #>
 function New-AzServiceBusGeoDRConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery])]
@@ -1968,7 +1968,7 @@ PARAMETER <ISbAuthorizationRule>: Description of a namespace authorization rule.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusnamespaceauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusnamespaceauthorizationrule
 #>
 function New-AzServiceBusNamespaceAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
@@ -2139,7 +2139,7 @@ PARAMETER <IRegenerateAccessKeyParameters>: Parameters supplied to the Regenerat
   KeyType <KeyType>: The access key to regenerate.
   [Key <String>]: Optional, if the key value provided, is reset for KeyType value or autogenerate Key value set for keyType
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusnamespacekey
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusnamespacekey
 #>
 function New-AzServiceBusNamespaceKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
@@ -2331,7 +2331,7 @@ VIRTUALNETWORKRULE <INwRuleSetVirtualNetworkRules[]>: List VirtualNetwork Rules
   [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Value that indicates whether to ignore missing VNet Service Endpoint
   [SubnetId <String>]: Resource ID of Virtual Network Subnet
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusnetworkruleset
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusnetworkruleset
 #>
 function New-AzServiceBusNetworkRuleSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSet])]
@@ -2549,7 +2549,7 @@ PARAMETER <IPrivateEndpointConnection>: Properties of the PrivateEndpointConnect
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusprivateendpointconnection
 #>
 function New-AzServiceBusPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection])]
@@ -2760,7 +2760,7 @@ PARAMETER <ISbAuthorizationRule>: Description of a namespace authorization rule.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueueauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueueauthorizationrule
 #>
 function New-AzServiceBusQueueAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
@@ -2937,7 +2937,7 @@ PARAMETER <IRegenerateAccessKeyParameters>: Parameters supplied to the Regenerat
   KeyType <KeyType>: The access key to regenerate.
   [Key <String>]: Optional, if the key value provided, is reset for KeyType value or autogenerate Key value set for keyType
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueuekey
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueuekey
 #>
 function New-AzServiceBusQueueKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
@@ -3134,7 +3134,7 @@ PARAMETER <ISbQueue>: Description of queue Resource.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueue
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueue
 #>
 function New-AzServiceBusQueue {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue])]
@@ -3305,7 +3305,7 @@ PARAMETER <IRule>: Description of Rule Resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [To <String>]: Address to send to.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusrule
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusrule
 #>
 function New-AzServiceBusRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule])]
@@ -3472,7 +3472,7 @@ PARAMETER <ISbSubscription>: Description of subscription resource.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebussubscription
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebussubscription
 #>
 function New-AzServiceBusSubscription {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription])]
@@ -3626,7 +3626,7 @@ PARAMETER <ISbAuthorizationRule>: Description of a namespace authorization rule.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebustopicauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebustopicauthorizationrule
 #>
 function New-AzServiceBusTopicAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
@@ -3803,7 +3803,7 @@ PARAMETER <IRegenerateAccessKeyParameters>: Parameters supplied to the Regenerat
   KeyType <KeyType>: The access key to regenerate.
   [Key <String>]: Optional, if the key value provided, is reset for KeyType value or autogenerate Key value set for keyType
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebustopickey
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebustopickey
 #>
 function New-AzServiceBusTopicKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
@@ -3993,7 +3993,7 @@ PARAMETER <ISbTopic>: Description of topic resource.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebustopic
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebustopic
 #>
 function New-AzServiceBusTopic {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic])]
@@ -4136,7 +4136,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusnamespaceauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusnamespaceauthorizationrule
 #>
 function Remove-AzServiceBusNamespaceAuthorizationRule {
 [OutputType([System.Boolean])]
@@ -4308,7 +4308,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusqueueauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusqueueauthorizationrule
 #>
 function Remove-AzServiceBusQueueAuthorizationRule {
 [OutputType([System.Boolean])]
@@ -4486,7 +4486,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebustopicauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebustopicauthorizationrule
 #>
 function Remove-AzServiceBusTopicAuthorizationRule {
 [OutputType([System.Boolean])]
@@ -4674,7 +4674,7 @@ PARAMETER <IMigrationConfigProperties>: Single item in List or Get Migration Con
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [TargetNamespace <String>]: Existing premium Namespace ARM Id name which has no entities, will be used for migration
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/start-azservicebusmigration
+https://learn.microsoft.com/powershell/module/az.servicebus/start-azservicebusmigration
 #>
 function Start-AzServiceBusMigration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties])]
@@ -4834,7 +4834,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
 PARAMETER <ICheckNameAvailability>: Description of a Check Name availability request properties.
   Name <String>: The Name to check the namespace name availability and The namespace name can contain only letters, numbers, and hyphens. The namespace must start with a letter, and it must end with a letter or number.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/test-azservicebusdisasterrecoveryconfignameavailability
+https://learn.microsoft.com/powershell/module/az.servicebus/test-azservicebusdisasterrecoveryconfignameavailability
 #>
 function Test-AzServiceBusDisasterRecoveryConfigNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult])]
@@ -5021,7 +5021,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
 PARAMETER <ICheckNameAvailability>: Description of a Check Name availability request properties.
   Name <String>: The Name to check the namespace name availability and The namespace name can contain only letters, numbers, and hyphens. The namespace must start with a letter, and it must end with a letter or number.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/test-azservicebusnamespacenameavailability
+https://learn.microsoft.com/powershell/module/az.servicebus/test-azservicebusnamespacenameavailability
 #>
 function Test-AzServiceBusNamespaceNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult])]

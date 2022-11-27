@@ -39,7 +39,7 @@ Unit               : Count
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISignalRServiceUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/get-azwebpubsubusage
+https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsubusage
 #>
 function Get-AzWebPubSubUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISignalRServiceUsage])]

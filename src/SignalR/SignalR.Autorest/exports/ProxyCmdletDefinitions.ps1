@@ -62,7 +62,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/get-azwebpubsubhub
+https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsubhub
 #>
 function Get-AzWebPubSubHub {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHub])]
@@ -236,7 +236,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/get-azwebpubsubkey
+https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsubkey
 #>
 function Get-AzWebPubSubKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys])]
@@ -395,7 +395,7 @@ Tier                 : Standard
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuList
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/get-azwebpubsubsku
+https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsubsku
 #>
 function Get-AzWebPubSubSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuList])]
@@ -536,7 +536,7 @@ Unit               : Count
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISignalRServiceUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/get-azwebpubsubusage
+https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsubusage
 #>
 function Get-AzWebPubSubUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISignalRServiceUsage])]
@@ -699,7 +699,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/get-azwebpubsub
+https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsub
 #>
 function Get-AzWebPubSub {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource])]
@@ -857,7 +857,7 @@ EVENTHANDLER <IEventHandler[]>: Event handler of a hub.
   [SystemEvent <String[]>]: Gets ot sets the list of system events. Valid values contain: 'connect', 'connected', 'disconnected'.
   [UserEventPattern <String>]: Gets or sets the matching pattern for event names.         There are 3 kind of patterns supported:             1. "*", it to matches any event name             2. Combine multiple events with ",", for example "event1,event2", it matches event "event1" and "event2"             3. The single event name, for example, "event1", it matches "event1"
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/new-azwebpubsubhub
+https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubhub
 #>
 function New-AzWebPubSubHub {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHub])]
@@ -1039,7 +1039,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/remove-azwebpubsubhub
+https://learn.microsoft.com/powershell/module/az.signalr/remove-azwebpubsubhub
 #>
 function Remove-AzWebPubSubHub {
 [OutputType([System.Boolean])]
@@ -1220,7 +1220,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/remove-azwebpubsub
+https://learn.microsoft.com/powershell/module/az.signalr/remove-azwebpubsub
 #>
 function Remove-AzWebPubSub {
 [OutputType([System.Boolean])]
@@ -1396,7 +1396,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/restart-azwebpubsub
+https://learn.microsoft.com/powershell/module/az.signalr/restart-azwebpubsub
 #>
 function Restart-AzWebPubSub {
 [OutputType([System.Boolean])]
@@ -1554,7 +1554,7 @@ True
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INameAvailability
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/test-azwebpubsubnameavailability
+https://learn.microsoft.com/powershell/module/az.signalr/test-azwebpubsubnameavailability
 #>
 function Test-AzWebPubSubNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INameAvailability])]
@@ -1744,7 +1744,7 @@ RESOURCELOGCATEGORY <IResourceLogCategory[]>: Gets or sets the list of category 
   [Enabled <String>]: Indicates whether or the resource log category is enabled.         Available values: true, false.         Case insensitive.
   [Name <String>]: Gets or sets the resource log category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/update-azwebpubsub
+https://learn.microsoft.com/powershell/module/az.signalr/update-azwebpubsub
 #>
 function Update-AzWebPubSub {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource])]
@@ -2090,7 +2090,7 @@ RESOURCELOGCATEGORY <IResourceLogCategory[]>: Gets or sets the list of category 
   [Enabled <String>]: Indicates whether or the resource log category is enabled.         Available values: true, false.         Case insensitive.
   [Name <String>]: Gets or sets the resource log category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/new-azwebpubsub
+https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsub
 #>
 function New-AzWebPubSub {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource])]
@@ -2394,7 +2394,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/new-azwebpubsubkey
+https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubkey
 #>
 function New-AzWebPubSubKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubKeys])]

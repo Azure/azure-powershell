@@ -42,7 +42,7 @@ EVENTHANDLER <IEventHandler[]>: Event handler of a hub.
   [SystemEvent <String[]>]: Gets ot sets the list of system events. Valid values contain: 'connect', 'connected', 'disconnected'.
   [UserEventPattern <String>]: Gets or sets the matching pattern for event names.         There are 3 kind of patterns supported:             1. "*", it to matches any event name             2. Combine multiple events with ",", for example "event1,event2", it matches event "event1" and "event2"             3. The single event name, for example, "event1", it matches "event1"
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/new-azwebpubsubhub
+https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubhub
 #>
 function New-AzWebPubSubHub {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHub])]

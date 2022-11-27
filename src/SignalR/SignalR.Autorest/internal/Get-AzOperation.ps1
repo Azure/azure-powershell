@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/get-azoperation
+https://learn.microsoft.com/powershell/module/az.signalr/get-azoperation
 #>
 function Get-AzOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperation])]

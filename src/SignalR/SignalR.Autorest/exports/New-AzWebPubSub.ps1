@@ -98,7 +98,7 @@ RESOURCELOGCATEGORY <IResourceLogCategory[]>: Gets or sets the list of category 
   [Enabled <String>]: Indicates whether or the resource log category is enabled.         Available values: true, false.         Case insensitive.
   [Name <String>]: Gets or sets the resource log category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/new-azwebpubsub
+https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsub
 #>
 function New-AzWebPubSub {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource])]

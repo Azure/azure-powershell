@@ -47,7 +47,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/complete-azservicebusmigration
+https://learn.microsoft.com/powershell/module/az.servicebus/complete-azservicebusmigration
 #>
 function Complete-AzServiceBusMigration {
 [OutputType([System.Boolean])]
@@ -243,7 +243,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusgeodrconfiguration
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusgeodrconfiguration
 #>
 function Get-AzServiceBusGeoDRConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery])]
@@ -443,7 +443,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusmigration
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusmigration
 #>
 function Get-AzServiceBusMigration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties])]
@@ -637,7 +637,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusnetworkruleset
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnetworkruleset
 #>
 function Get-AzServiceBusNetworkRuleSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSet])]
@@ -833,7 +833,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusprivateendpointconnection
 #>
 function Get-AzServiceBusPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection])]
@@ -1014,7 +1014,7 @@ Get-AzServiceBusPrivateLink -ResourceGroupName myResourceGroup -NamespaceName my
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateLinkResourcesListResult
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusprivatelink
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusprivatelink
 #>
 function Get-AzServiceBusPrivateLink {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateLinkResourcesListResult])]
@@ -1198,7 +1198,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusqueue
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusqueue
 #>
 function Get-AzServiceBusQueue {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue])]
@@ -1414,7 +1414,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusrule
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusrule
 #>
 function Get-AzServiceBusRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule])]
@@ -1644,7 +1644,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebussubscription
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebussubscription
 #>
 function Get-AzServiceBusSubscription {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription])]
@@ -1867,7 +1867,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebustopic
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebustopic
 #>
 function Get-AzServiceBusTopic {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic])]
@@ -2061,7 +2061,7 @@ New-AzServiceBusGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGr
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusgeodrconfiguration
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusgeodrconfiguration
 #>
 function New-AzServiceBusGeoDRConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery])]
@@ -2249,7 +2249,7 @@ New-AzServiceBusQueue -ResourceGroupName myResourceGroup -NamespaceName myNamesp
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueue
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueue
 #>
 function New-AzServiceBusQueue {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue])]
@@ -2526,7 +2526,7 @@ New-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespa
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusrule
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusrule
 #>
 function New-AzServiceBusRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule])]
@@ -2803,7 +2803,7 @@ New-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName m
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebussubscription
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebussubscription
 #>
 function New-AzServiceBusSubscription {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription])]
@@ -3079,7 +3079,7 @@ New-AzServiceBusTopic -ResourceGroupName myResourceGroup -NamespaceName myNamesp
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebustopic
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebustopic
 #>
 function New-AzServiceBusTopic {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic])]
@@ -3341,7 +3341,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusgeodrconfiguration
+https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusgeodrconfiguration
 #>
 function Remove-AzServiceBusGeoDRConfiguration {
 [OutputType([System.Boolean])]
@@ -3543,7 +3543,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusmigration
+https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusmigration
 #>
 function Remove-AzServiceBusMigration {
 [OutputType([System.Boolean])]
@@ -3739,7 +3739,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusprivateendpointconnection
 #>
 function Remove-AzServiceBusPrivateEndpointConnection {
 [OutputType([System.Boolean])]
@@ -3954,7 +3954,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusqueue
+https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusqueue
 #>
 function Remove-AzServiceBusQueue {
 [OutputType([System.Boolean])]
@@ -4157,7 +4157,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusrule
+https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusrule
 #>
 function Remove-AzServiceBusRule {
 [OutputType([System.Boolean])]
@@ -4372,7 +4372,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebussubscription
+https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebussubscription
 #>
 function Remove-AzServiceBusSubscription {
 [OutputType([System.Boolean])]
@@ -4581,7 +4581,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebustopic
+https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebustopic
 #>
 function Remove-AzServiceBusTopic {
 [OutputType([System.Boolean])]
@@ -4764,7 +4764,7 @@ Start-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName my
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/start-azservicebusmigration
+https://learn.microsoft.com/powershell/module/az.servicebus/start-azservicebusmigration
 #>
 function Start-AzServiceBusMigration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties])]
@@ -4970,7 +4970,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/stop-azservicebusmigration
+https://learn.microsoft.com/powershell/module/az.servicebus/stop-azservicebusmigration
 #>
 function Stop-AzServiceBusMigration {
 [OutputType([System.Boolean])]
@@ -5169,7 +5169,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/approve-azservicebusprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.servicebus/approve-azservicebusprivateendpointconnection
 #>
 function Approve-AzServiceBusPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection])]
@@ -5387,7 +5387,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/deny-azservicebusprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.servicebus/deny-azservicebusprivateendpointconnection
 #>
 function Deny-AzServiceBusPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection])]
@@ -5606,7 +5606,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusauthorizationrule
 #>
 function Get-AzServiceBusAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
@@ -5820,7 +5820,7 @@ Get-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespac
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebuskey
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebuskey
 #>
 function Get-AzServiceBusKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
@@ -6024,7 +6024,7 @@ New-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceN
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusauthorizationrule
 #>
 function New-AzServiceBusAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
@@ -6225,7 +6225,7 @@ New-AzServiceBusIPRuleConfig -IPMask 3.3.3.3 -Action Allow
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INwRuleSetIPRules
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusipruleconfig
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusipruleconfig
 #>
 function New-AzServiceBusIPRuleConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INwRuleSetIPRules])]
@@ -6333,7 +6333,7 @@ New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespac
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebuskey
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebuskey
 #>
 function New-AzServiceBusKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]
@@ -6541,7 +6541,7 @@ New-AzServiceBusVirtualNetworkRuleConfig -SubnetId /subscriptions/subscriptionId
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INwRuleSetVirtualNetworkRules
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusvirtualnetworkruleconfig
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusvirtualnetworkruleconfig
 #>
 function New-AzServiceBusVirtualNetworkRuleConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INwRuleSetVirtualNetworkRules])]
@@ -6667,7 +6667,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusauthorizationrule
 #>
 function Remove-AzServiceBusAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
@@ -6900,7 +6900,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/set-azservicebusauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusauthorizationrule
 #>
 function Set-AzServiceBusAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
@@ -7137,7 +7137,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/set-azservicebusgeodrconfigurationbreakpair
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusgeodrconfigurationbreakpair
 #>
 function Set-AzServiceBusGeoDRConfigurationBreakPair {
 [OutputType([System.Boolean])]
@@ -7345,7 +7345,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/set-azservicebusgeodrconfigurationfailover
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusgeodrconfigurationfailover
 #>
 function Set-AzServiceBusGeoDRConfigurationFailOver {
 [OutputType([System.Boolean])]
@@ -7570,7 +7570,7 @@ VIRTUALNETWORKRULE <INwRuleSetVirtualNetworkRules[]>: List of VirtualNetwork Rul
   [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Value that indicates whether to ignore missing VNet Service Endpoint
   [SubnetId <String>]: Resource ID of Virtual Network Subnet
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/set-azservicebusnetworkruleset
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusnetworkruleset
 #>
 function Set-AzServiceBusNetworkRuleSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSet])]
@@ -7809,7 +7809,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/set-azservicebusqueue
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusqueue
 #>
 function Set-AzServiceBusQueue {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue])]
@@ -8111,7 +8111,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/set-azservicebusrule
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebusrule
 #>
 function Set-AzServiceBusRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule])]
@@ -8429,7 +8429,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/set-azservicebussubscription
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebussubscription
 #>
 function Set-AzServiceBusSubscription {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription])]
@@ -8720,7 +8720,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/set-azservicebustopic
+https://learn.microsoft.com/powershell/module/az.servicebus/set-azservicebustopic
 #>
 function Set-AzServiceBusTopic {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic])]
@@ -8974,7 +8974,7 @@ Test-AzServiceBusName -NamespaceName myNamespace -ResourceGroupName myResourceGr
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/test-azservicebusname
+https://learn.microsoft.com/powershell/module/az.servicebus/test-azservicebusname
 #>
 function Test-AzServiceBusName {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult])]

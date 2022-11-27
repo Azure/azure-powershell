@@ -29,7 +29,7 @@ True
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INameAvailability
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/test-azwebpubsubnameavailability
+https://learn.microsoft.com/powershell/module/az.signalr/test-azwebpubsubnameavailability
 #>
 function Test-AzWebPubSubNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INameAvailability])]

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/restart-azwebpubsub
+online version: https://learn.microsoft.com/powershell/module/az.signalr/restart-azwebpubsub
 schema: 2.0.0
 ---
 
