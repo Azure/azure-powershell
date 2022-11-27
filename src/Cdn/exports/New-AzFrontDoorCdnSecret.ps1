@@ -34,7 +34,7 @@ To create the parameters described below, construct a hash table containing the 
 PARAMETER <ISecretParameters>: object which contains secret parameters
   Type <SecretType>: The type of the secret resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnsecret
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnsecret
 #>
 function New-AzFrontDoorCdnSecret {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecret])]
