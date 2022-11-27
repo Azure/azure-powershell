@@ -21,7 +21,7 @@ API to get the assigned vm for the user.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesuservm
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesuservm
 #>
 function Get-AzLabServicesUserVM_Get {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
