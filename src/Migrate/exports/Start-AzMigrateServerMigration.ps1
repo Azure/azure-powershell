@@ -34,7 +34,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which migrati
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
     InstanceType <String>: Gets the instance type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/start-azmigrateservermigration
+https://learn.microsoft.com/powershell/module/az.migrate/start-azmigrateservermigration
 #>
 function Start-AzMigrateServerMigration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
