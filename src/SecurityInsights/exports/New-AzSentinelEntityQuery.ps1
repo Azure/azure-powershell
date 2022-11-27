@@ -35,7 +35,7 @@ To create the parameters described below, construct a hash table containing the 
 ENTITIESFILTER <ActivityEntityQueriesPropertiesEntitiesFilter>: 
   [(Any) <String[]>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelentityquery
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelentityquery
 #>
 function New-AzSentinelEntityQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.CustomEntityQuery])]
