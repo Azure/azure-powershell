@@ -29,7 +29,7 @@ Invoke-AzCostManagementReservationDetailReport -BillingAccountId "00000000-0000-
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementreservationdetailreport
+https://learn.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementreservationdetailreport
 #>
 function Invoke-AzCostManagementReservationDetailReport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IOperationStatus])]

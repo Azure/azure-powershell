@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocationOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.customlocation/get-azcustomlocationoperation
+https://learn.microsoft.com/powershell/module/az.customlocation/get-azcustomlocationoperation
 #>
 function Get-AzCustomLocationOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocationOperation])]
@@ -137,7 +137,7 @@ eastus   azps_test_cluster arc
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation
 .Link
-https://docs.microsoft.com/powershell/module/az.customlocation/new-azcustomlocation
+https://learn.microsoft.com/powershell/module/az.customlocation/new-azcustomlocation
 #>
 function New-AzCustomLocation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation])]
@@ -357,7 +357,7 @@ INPUTOBJECT <ICustomLocationIdentity>: Identity Parameter
   [ResourceName <String>]: Custom Locations name.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.customlocation/update-azcustomlocation
+https://learn.microsoft.com/powershell/module/az.customlocation/update-azcustomlocation
 #>
 function Update-AzCustomLocation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation])]

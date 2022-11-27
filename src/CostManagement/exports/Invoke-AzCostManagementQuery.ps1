@@ -46,7 +46,7 @@ DATASETGROUPING <IQueryGrouping[]>: Array of group by expression to use in the q
   Name <String>: The name of the column to group.
   Type <QueryColumnType>: Has type of the column to group.
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementquery
+https://learn.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementquery
 #>
 function Invoke-AzCostManagementQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IQueryResult])]
