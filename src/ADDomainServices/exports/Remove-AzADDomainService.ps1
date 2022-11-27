@@ -40,7 +40,7 @@ INPUTOBJECT <IAdDomainServicesIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.addomainservices/remove-azaddomainservice
+https://learn.microsoft.com/powershell/module/az.addomainservices/remove-azaddomainservice
 #>
 function Remove-AzADDomainService {
 [OutputType([System.Boolean])]
