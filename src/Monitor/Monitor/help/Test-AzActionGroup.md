@@ -1,39 +1,33 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule
+online version: https://docs.microsoft.com/powershell/module/az.monitor/test-azactiongroup
 schema: 2.0.0
 ---
 
 # Test-AzActionGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sends test notifications
 
 ## SYNTAX
 
 ```
 Test-AzActionGroup -AlertType <String> -ResourceGroupName <String> -ActionGroupName <String>
- -Receivers <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]>
+ -Receiver <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This Test-AzActionGroup cmdlet send test notifications
 
 ## EXAMPLES
 
-### Example 1
+### Send Service Health alert test notifications to email
 ```powershell
-PS C:\> {{ Add example code here }}
+$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'test@test.example.com'
+Test-AzTestNotification -AlertType servicehealth -Receiver $email -ResourceGroupName "test-RG" -ActionGroupName "test-AG"
 ```
-
-{{ Add example description here }}
-
-## PARAMETERS
-
-### -ActionGroupName
-The optional action group name
 
 ```yaml
 Type: System.String
@@ -48,7 +42,8 @@ Accept wildcard characters: False
 ```
 
 ### -AlertType
-The required alert type name
+The required alert type name. The supported values are:
+servicehealth, metricstaticthreshold, metricsdynamicthreshold, logalertv2, smartalert, webtestalert, logalertv1numresult, logalertv1metricmeasurement, activitylog, resourcehealth, budget, actualcostbudget, forecastedbudget
 
 ```yaml
 Type: System.String
@@ -77,8 +72,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Receivers
-The list of receivers
+### -Receiver
+The required list of receivers
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]
@@ -93,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The optional resource group name
+The required resource group name
 
 ```yaml
 Type: System.String
@@ -106,6 +101,20 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -ActionGroupName
+The required action group name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.

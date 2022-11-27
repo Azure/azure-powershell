@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     /// <summary> Create new test notifications </summary>
     [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionGroup", DefaultParameterSetName = ByPropertyName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSTestNotificationDetailsResponse))]
-    public class NewAzureRmTestNotificationCommand : ManagementCmdletBase
+    public class TestAzureRmActionGroupCommand : ManagementCmdletBase
     {
         private const string ByPropertyName = "ByPropertyName";
         private const string CompleteState = "Complete";
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// Gets or sets the list of email receivers.
         /// </summary>
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = true, HelpMessage = "The list of receivers")]
-        public List<PSActionGroupReceiverBase> Receivers { get; set; }
+        public List<PSActionGroupReceiverBase> Receiver { get; set; }
 
         #endregion
 
@@ -90,15 +90,15 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
             }
 
             IList<EmailReceiver> emailReceivers =
-                this.Receivers.OfType<PSEmailReceiver>().
+                this.Receiver.OfType<PSEmailReceiver>().
                     Select(o => new EmailReceiver(name: o.Name, emailAddress: o.EmailAddress, useCommonAlertSchema: o.UseCommonAlertSchema)).ToList();
 
             IList<SmsReceiver> smsReceivers =
-                this.Receivers.OfType<PSSmsReceiver>().
+                this.Receiver.OfType<PSSmsReceiver>().
                     Select(o => new SmsReceiver(name: o.Name, countryCode: o.CountryCode, phoneNumber: o.PhoneNumber, status: TransitionHelpers.ConvertNamespace(o.Status))).ToList();
 
             IList<WebhookReceiver> webhookReceivers =
-                this.Receivers.OfType<PSWebhookReceiver>().
+                this.Receiver.OfType<PSWebhookReceiver>().
                     Select(o => new WebhookReceiver(
                                             name: o.Name,
                                             serviceUri: o.ServiceUri,
@@ -109,23 +109,23 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                                             tenantId: o.TenantId)).ToList();
 
             IList<ItsmReceiver> itsmReceivers =
-                this.Receivers.OfType<PSItsmReceiver>().
+                this.Receiver.OfType<PSItsmReceiver>().
                 Select(o => new ItsmReceiver(name: o.Name, workspaceId: o.WorkspaceId, connectionId: o.ConnectionId, ticketConfiguration: o.TicketConfiguration, region: o.Region)).ToList();
 
             IList<VoiceReceiver> voiceReceivers =
-                this.Receivers.OfType<PSVoiceReceiver>().
+                this.Receiver.OfType<PSVoiceReceiver>().
                     Select(o => new VoiceReceiver(name: o.Name, countryCode: o.CountryCode, phoneNumber: o.PhoneNumber)).ToList();
 
             IList<EventHubReceiver> eventHubReceivers =
-                this.Receivers.OfType<PSEventHubReceiver>().
+                this.Receiver.OfType<PSEventHubReceiver>().
                     Select(o => new EventHubReceiver(name: o.Name, subscriptionId: o.SubscriptionId, eventHubNameSpace: o.EventHubNameSpace, eventHubName: o.EventHubName, useCommonAlertSchema: o.UseCommonAlertSchema)).ToList();
 
             IList<ArmRoleReceiver> armRoleReceivers =
-                this.Receivers.OfType<PSArmRoleReceiver>().
+                this.Receiver.OfType<PSArmRoleReceiver>().
                     Select(o => new ArmRoleReceiver(name: o.Name, roleId: o.RoleId, useCommonAlertSchema: o.UseCommonAlertSchema)).ToList();
 
             IList<AzureFunctionReceiver> azureFunctionReceivers =
-                this.Receivers.OfType<PSAzureFunctionReceiver>().
+                this.Receiver.OfType<PSAzureFunctionReceiver>().
                     Select(o => new AzureFunctionReceiver(
                                                     name: o.Name,
                                                     functionName: o.FunctionName,
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                                                     useCommonAlertSchema: o.UseCommonAlertSchema)).ToList();
 
             IList<LogicAppReceiver> logicAppReceivers =
-                this.Receivers.OfType<PSLogicAppReceiver>().
+                this.Receiver.OfType<PSLogicAppReceiver>().
                     Select(o => new LogicAppReceiver(
                                                     name: o.Name,
                                                     resourceId: o.ResourceId,
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                                                     )).ToList();
 
             IList<AutomationRunbookReceiver> automationRunbookReceivers =
-                this.Receivers.OfType<PSAutomationRunbookReceiver>().
+                this.Receiver.OfType<PSAutomationRunbookReceiver>().
                     Select(o => new AutomationRunbookReceiver(
                                                     name: o.Name,
                                                     runbookName: o.RunbookName,
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                                                     )).ToList();
 
             IList<AzureAppPushReceiver> azureAppPushReceivers =
-              this.Receivers.OfType<PSAzureAppPushReceiver>().
+              this.Receiver.OfType<PSAzureAppPushReceiver>().
                   Select(o => new AzureAppPushReceiver(
                                                   name: o.Name,
                                                   emailAddress: o.EmailAddress

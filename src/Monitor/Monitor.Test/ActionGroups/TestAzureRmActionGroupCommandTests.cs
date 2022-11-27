@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
     using Moq;
     using Xunit;
 
-    public class SendTestNotificationsTests
+    public class TestAzureRmActionGroupCommandTests
     {
-        private readonly NewAzureRmTestNotificationCommand cmdlet;
+        private readonly TestAzureRmActionGroupCommand cmdlet;
         private readonly Mock<MonitorManagementClient> insightsManagementClientMock;
         private readonly Mock<IActionGroupsOperations> insightsOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
@@ -39,13 +39,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
         private AzureOperationResponse<TestNotificationDetailsResponse> getResponse;
         private TestNotificationDetailsResponse expectedGetResponseResult = ActionGroupsUtilities.CreateTestNotificationDetailsResponse();
 
-        public SendTestNotificationsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public TestAzureRmActionGroupCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
             insightsOperationsMock = new Mock<IActionGroupsOperations>();
             insightsManagementClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new NewAzureRmTestNotificationCommand
+            cmdlet = new TestAzureRmActionGroupCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 MonitorManagementClient = insightsManagementClientMock.Object
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             {
                 Headers = new ActionGroupsCreateNotificationsAtActionGroupResourceLevelHeaders()
                 {
-                    Location = "https://test.test.com/subscriptions/9d864cef-c8f3-4932-84ca-c2888126d793/resourceGroups/test-RG/providers/microsoft.insights/actionGroups/test-AG/notificationStatus/11000001469037?api-version=2022-06-01"
+                    Location = "https://test.test.com/subscriptions/5def922a-3ed4-49c1-b9fd-05ec533819a3/resourceGroups/test-RG/providers/microsoft.insights/actionGroups/test-AG/notificationStatus/11000001469037?api-version=2022-06-01"
                 }
             };
 
@@ -81,12 +81,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewTestNotificationCommandParametersProcessing()
+        public void TestNotificationCommandParametersProcessing()
         {
             cmdlet.ActionGroupName = "Test-AG";
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.AlertType = "servicehealth";
-            cmdlet.Receivers = new List<PSActionGroupReceiverBase>
+            cmdlet.Receiver = new List<PSActionGroupReceiverBase>
             {
                 new PSEmailReceiver(
                     ActionGroupsUtilities.CreateEmailReceiver(name: "email",emailAddress:"foo@email.com")),
@@ -98,13 +98,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
                     ActionGroupsUtilities.CreateEmailReceiver("email2", "email2@email2.com", false)),
 
                  new PSEventHubReceiver(
-                    ActionGroupsUtilities.CreateEventHubReceiver(name: "eventhub", subscriptionId:"9d864cef-c8f3-4932-84ca-c2888126d793", eventHubNameSpace:"eventhub1NameSpace", eventHubName:"testEventHubName")),
+                    ActionGroupsUtilities.CreateEventHubReceiver(name: "eventhub", subscriptionId:"5def922a-3ed4-49c1-b9fd-05ec533819a3", eventHubNameSpace:"eventhub1NameSpace", eventHubName:"testEventHubName")),
 
                  new PSEventHubReceiver(
-                    ActionGroupsUtilities.CreateEventHubReceiver("eventhub1", "9d864cef-c8f3-4932-84ca-c2888126d793", "eventhub1NameSpace1", "testEventHubName1", true)),
+                    ActionGroupsUtilities.CreateEventHubReceiver("eventhub1", "5def922a-3ed4-49c1-b9fd-05ec533819a3", "eventhub1NameSpace1", "testEventHubName1", true)),
 
                  new PSEventHubReceiver(
-                    ActionGroupsUtilities.CreateEventHubReceiver("eventhub2", "9d864cef-c8f3-4932-84ca-c2888126d793", "eventhub1NameSpace2", "testEventHubName2", false)),
+                    ActionGroupsUtilities.CreateEventHubReceiver("eventhub2", "5def922a-3ed4-49c1-b9fd-05ec533819a3", "eventhub1NameSpace2", "testEventHubName2", false)),
 
                 new PSSmsReceiver(
                     ActionGroupsUtilities.CreateSmsReceiver(name: "sms", phoneNumber: "4254251234")),
