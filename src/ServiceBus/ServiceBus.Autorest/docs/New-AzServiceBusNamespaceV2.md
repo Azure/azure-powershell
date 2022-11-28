@@ -28,10 +28,10 @@ Creates a new ServiceBus namespace.
 
 ### Example 1: Create a new ServiceBus namespace with UserAssignedIdentity Encryption
 ```powershell
-$id1 = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
-$id2 = "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
-$keyVaultProperty1 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key4 -KeyVaultUri https://{keyVaultName}.vault.azure.net/ -UserAssignedIdentity "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
-$keyVaultProperty2 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key5 -KeyVaultUri https://{keyVaultName}.vault.azure.net/ -UserAssignedIdentity "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$id1 = "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$id2 = "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
+$keyVaultProperty1 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key4 -KeyVaultUri https://testkeyvault.vault.azure.net/ -UserAssignedIdentity "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$keyVaultProperty2 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key5 -KeyVaultUri https://testkeyvault.vault.azure.net/ -UserAssignedIdentity "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
 New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityID $id1,$id2 -KeyVaultProperty $keyVaultProperty1,$keyVaultProperty2
 ```
 
@@ -39,31 +39,31 @@ New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 AlternateName                   :
 CreatedAt                       : 11/21/2022 5:15:41 AM
 DisableLocalAuth                : False
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/provide
+Id                              : /subscriptions/000000000000000/resourceGroups/myResourceGroup/provide
                                   rs/Microsoft.ServiceBus/namespaces/myNamespace
 IdentityType                    : UserAssigned
 KeySource                       : Microsoft.KeyVault
 KeyVaultProperty                : {{
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/reso
+                                      "userAssignedIdentity": "/subscriptions/000000000000000/reso
                                   urceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity
                                      "
                                     },
                                     "keyName": "key4",
-                                    "keyVaultUri": "https://keyVaultName.vault.azure.net",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net",
                                     "keyVersion": ""
                                   }, {
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/reso
+                                      "userAssignedIdentity": "/subscriptions/000000000000000/reso
                                   urceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity
                                      "
                                     },
                                     "keyName": "key5",
-                                    "keyVaultUri": "https://keyVaultName.vault.azure.net",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net",
                                     "keyVersion": ""
                                   }}
 Location                        : North Europe
-MetricId                        : {subscriptionId}:myNamespace
+MetricId                        : 000000000000000:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
 PrincipalId                     :
@@ -89,10 +89,10 @@ TenantId                        :
 Type                            : Microsoft.ServiceBus/Namespaces
 UpdatedAt                       : 11/21/2022 5:23:01 AM
 UserAssignedIdentity            : {
-                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/prov
+                                    "/subscriptions/000000000000000/resourceGroups/myResourceGroup/prov
                                   iders/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
                                     },
-                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/prov
+                                    "/subscriptions/000000000000000/resourceGroups/myResourceGroup/prov
                                   iders/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity": {
                                     }
                                   }
@@ -110,13 +110,13 @@ New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 AlternateName                   :
 CreatedAt                       : 11/21/2022 5:33:10 AM
 DisableLocalAuth                : False
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/provide
+Id                              : /subscriptions/000000000000000/resourceGroups/myResourceGroup/provide
                                   rs/Microsoft.ServiceBus/namespaces/myNamespace
 IdentityType                    : SystemAssigned
 KeySource                       :
 KeyVaultProperty                :
 Location                        : North Europe
-MetricId                        : {subscriptionId}:myNamespace
+MetricId                        : 000000000000000:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
 PrincipalId                     : 000000000000
@@ -157,12 +157,12 @@ New-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -
 AlternateName                   :
 CreatedAt                       : 11/18/2022 6:06:22 AM
 DisableLocalAuth                : True
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace
+Id                              : /subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace
 IdentityType                    :
 KeySource                       :
 KeyVaultProperty                :
 Location                        : South Central US
-MetricId                        : {subscriptionId}:myNamespace
+MetricId                        : 000000000000000:myNamespace
 MinimumTlsVersion               : 1.1
 Name                            : myNamespace
 PrincipalId                     :
