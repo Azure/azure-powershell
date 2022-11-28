@@ -22,7 +22,7 @@
 * Added error message in the command Register-AzStackHCI if Arc is not enabled.
 * Added default region confirmation prompt if the region is not mentioned in the command Register-AzStackHCI.
 * Added general logging improvements.
-* Added logic that Skipping the Arc SPN permission check in Register-AzStackHCI if a customer doesn't have the required permissions to read Arc SPN credential.
+* Added logic that skipping the Arc SPN permission check in Register-AzStackHCI if a customer doesn't have the required permissions to read Arc SPN credential.
 * Added deprecation message for the command Test-AzStackHCIConnection. Customers can use Invoke-AzStackHciConnectivityValidation from the module AzStackHCI.EnvironmentChecker for connectivity verification tests.
 
 ## Version 1.3.2
