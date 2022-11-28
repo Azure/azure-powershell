@@ -33,7 +33,7 @@ Supports $expand.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azaduserownedobject
+https://learn.microsoft.com/powershell/module/az.resources/get-azaduserownedobject
 #>
 function Get-AzADUserOwnedObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject])]

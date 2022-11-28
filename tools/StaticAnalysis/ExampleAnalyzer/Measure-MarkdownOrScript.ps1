@@ -76,6 +76,11 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
             if ((Get-Item -Path $_.FullName).Directory.Parent.Name -eq "netcoreapp3.1") {
                 continue
             }
+            # Skip Az.Tools.* modules as they may not comply with Az convention
+            if (($_.FullName -cmatch "Az\.Tools\.")) {
+                Write-Debug "Skipping $($_.FullName)"
+                continue
+            }
             Write-Output "Searching in file $($_.FullName) ..."
             if ((Get-Item -Path $_.FullName).Directory.Parent.Parent.Name -ne "src") {
                 $module = (Get-Item -Path $_.FullName).Directory.Parent.Parent.Name

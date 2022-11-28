@@ -41,7 +41,6 @@ using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.PowerShell.Common.Share.Survey;
@@ -426,7 +425,6 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty(AzureAccount.Property.CertificatePath, resolvedPath);
                 if (CertificatePassword != null)
                 {
-                    azureAccount.SetProperty(AzureAccount.Property.CertificatePassword, CertificatePassword.ConvertToString());
                     keyStore?.SaveKey(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, azureAccount.Id, Tenant), CertificatePassword);
                 }
             }
@@ -449,7 +447,6 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && password != null)
             {
-                azureAccount.SetProperty(AzureAccount.Property.ServicePrincipalSecret, password.ConvertToString());
                 keyStore?.SaveKey(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret
                     ,azureAccount.Id, Tenant), password);
                 if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
@@ -713,16 +710,23 @@ namespace Microsoft.Azure.Commands.Profile
                     WriteInitializationWarnings(Resources.FallbackContextSaveModeDueCacheCheckError.FormatInvariant(ex.Message));
                 }
 
-                if(!InitializeProfileProvider(autoSaveEnabled))
+                AzKeyStore keyStore = null;
+                //AzureSession.Instance.KeyStoreFile
+                keyStore = new AzKeyStore(AzureSession.Instance.ARMProfileDirectory, "keystore.cache", false, autoSaveEnabled);
+                AzKeyStore.RegisterJsonConverter(typeof(ServicePrincipalKey), typeof(ServicePrincipalKey).Name);
+                AzKeyStore.RegisterJsonConverter(typeof(SecureString), typeof(SecureString).Name, new SecureStringConverter());
+                AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore);
+
+                if (!InitializeProfileProvider(autoSaveEnabled))
                 {
                     AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
                     autoSaveEnabled = false;
                 }
 
-#pragma warning disable CS0618 // Type or member is obsolete
-                var keyStore = new AzKeyStore(AzureRmProfileProvider.Instance.Profile);
-#pragma warning restore CS0618 // Type or member is obsolete
-                AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore);
+                if (!keyStore.LoadStorage())
+                {
+                    WriteInitializationWarnings(Resources.KeyStoreLoadingError);
+                }
 
                 IAuthenticatorBuilder builder = null;
                 if (!AzureSession.Instance.TryGetComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, out builder))

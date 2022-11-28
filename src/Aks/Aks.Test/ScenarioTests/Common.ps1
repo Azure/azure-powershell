@@ -100,3 +100,28 @@ function Assert-Error
 
 	$Error.Clear()
 }
+
+function Assert-HashTableEquals {
+	param([HashTable] $expected, [HashTable] $actual, [string] $message)
+
+	if (!$message) {
+		$expectedStr = $expected | Out-String
+		$actualStr = $actual | Out-String
+		$message = "Assertion failed because '$expectedStr' does not match actual '$actualStr'"
+	}
+
+	if ($expected.Count -ne $actual.Count) {
+		throw $message
+	}
+
+	foreach ($key in $expected.Keys) {
+		if (-not $expected.ContainsKey($key)) {
+			throw $message
+		}
+		if ($expected[$key] -ne $actual[$key]) {
+			throw $message
+		}
+	}
+
+	return $true
+}

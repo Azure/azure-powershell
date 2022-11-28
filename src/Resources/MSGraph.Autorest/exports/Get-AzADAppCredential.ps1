@@ -35,7 +35,7 @@ To create the parameters described below, construct a hash table containing the 
 
 APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be used as pipeline input.
   [(Any) <Object>]: This indicates any property can be added to this object.
-  [DeletedDateTime <DateTime?>]: 
+  [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   [DisplayName <String>]: The name displayed in directory
   [AddIn <IMicrosoftGraphAddIn[]>]: Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Office 365 call the application in the context of a document the user is working on.
     [Id <String>]: 
@@ -69,7 +69,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
     [IsEnabled <Boolean?>]: When creating or updating an app role, this must be set to true (which is the default). To delete a role, this must first be set to false.  At that point, in a subsequent call, this role may be removed.
     [Value <String>]: Specifies the value to include in the roles claim in ID tokens and access tokens authenticating an assigned user or service principal. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
   [ApplicationTemplateId <String>]: Unique identifier of the applicationTemplate.
-  [CreatedOnBehalfOfDeletedDateTime <DateTime?>]: 
+  [CreatedOnBehalfOfDeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   [CreatedOnBehalfOfDisplayName <String>]: The name displayed in directory
   [Description <String>]: An optional description of the application. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
   [DisabledByMicrosoftStatus <String>]: Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, NOT).
@@ -82,12 +82,12 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
   [GroupMembershipClaim <String>]: Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
   [HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]: 
     [AppliesTo <IMicrosoftGraphDirectoryObject[]>]: 
-      [DeletedDateTime <DateTime?>]: 
+      [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
       [DisplayName <String>]: The name displayed in directory
     [Definition <String[]>]: A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
     [IsOrganizationDefault <Boolean?>]: If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
     [Description <String>]: Description for this policy.
-    [DeletedDateTime <DateTime?>]: 
+    [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
     [DisplayName <String>]: The name displayed in directory
   [IdentifierUri <String[]>]: The URIs that identify the application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. For more information, see Application Objects and Service Principal Objects. The any operator is required for filter expressions on multi-valued properties. Not nullable. Supports $filter (eq, ne, ge, le, startsWith).
   [Info <IMicrosoftGraphInformationalUrl>]: informationalUrl
@@ -148,14 +148,14 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
     [Definition <String[]>]: A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
     [IsOrganizationDefault <Boolean?>]: If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
     [Description <String>]: Description for this policy.
-    [DeletedDateTime <DateTime?>]: 
+    [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
     [DisplayName <String>]: The name displayed in directory
   [TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]: The tokenLifetimePolicies assigned to this application. Supports $expand.
     [AppliesTo <IMicrosoftGraphDirectoryObject[]>]: 
     [Definition <String[]>]: A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
     [IsOrganizationDefault <Boolean?>]: If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
     [Description <String>]: Description for this policy.
-    [DeletedDateTime <DateTime?>]: 
+    [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
     [DisplayName <String>]: The name displayed in directory
   [Web <IMicrosoftGraphWebApplication>]: webApplication
     [(Any) <Object>]: This indicates any property can be added to this object.
@@ -167,7 +167,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
     [LogoutUrl <String>]: Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
     [RedirectUri <String[]>]: Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadappcredential
+https://learn.microsoft.com/powershell/module/az.resources/get-azadappcredential
 #>
 function Get-AzADAppCredential {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]

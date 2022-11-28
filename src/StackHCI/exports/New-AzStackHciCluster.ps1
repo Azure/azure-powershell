@@ -27,7 +27,7 @@ New-AzStackHciCluster -Name "myCluster2" -ResourceGroupName "test-rg" -AadTenant
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/new-azstackhcicluster
+https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcicluster
 #>
 function New-AzStackHciCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster])]
