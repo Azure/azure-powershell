@@ -22,6 +22,7 @@
 * Enabled caching tokens when logging in with a service principal. This could reduce network traffic and improve performance.
 * Upgraded target framework of Microsoft.Identity.Client to net461 [#20189]
 * Stored `ServicePrincipalSecret` and `CertificatePassword` into `AzKeyStore`.
+* Updated the reference of Azure PowerShell Common to 1.3.65-preview.
 
 ## Version 2.10.3
 * Updated `Get-AzSubscription` to retrieve subscription by Id rather than listed all the subscriptions from server if subscription Id is provided. [#19115]
