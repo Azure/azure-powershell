@@ -45,7 +45,6 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2.10.3")]
 [assembly: AssemblyFileVersion("2.10.3")]
-// [assembly: AssemblyInformationalVersion("2.10.3")]
 #if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Authentication.Test")]
 #endif
