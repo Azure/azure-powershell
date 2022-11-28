@@ -44,7 +44,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveragent
+https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveragent
 #>
 function Get-AzStorageMoverAgent {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IAgent])]
@@ -244,7 +244,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverendpoint
 #>
 function Get-AzStorageMoverEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]
@@ -444,7 +444,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverjobdefinition
+https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverjobdefinition
 #>
 function Get-AzStorageMoverJobDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IJobDefinition])]
@@ -651,7 +651,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverjobrun
+https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverjobrun
 #>
 function Get-AzStorageMoverJobRun {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IJobRun])]
@@ -865,7 +865,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverproject
+https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverproject
 #>
 function Get-AzStorageMoverProject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IProject])]
@@ -1067,7 +1067,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/get-azstoragemover
+https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemover
 #>
 function Get-AzStorageMover {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IStorageMover])]
@@ -1264,7 +1264,7 @@ JOBDEFINITION <IJobDefinition>: The Job Definition resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [TargetSubpath <String>]: The subpath to use when writing to the target Endpoint.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverjobdefinition
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverjobdefinition
 #>
 function New-AzStorageMoverJobDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IJobDefinition])]
@@ -1505,7 +1505,7 @@ PROJECT <IProject>: The Project resource.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverproject
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverproject
 #>
 function New-AzStorageMoverProject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IProject])]
@@ -1706,7 +1706,7 @@ STORAGEMOVER <IStorageMover>: The Storage Mover resource, which is a container f
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/new-azstoragemover
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemover
 #>
 function New-AzStorageMover {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IStorageMover])]
@@ -1913,7 +1913,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoverendpoint
 #>
 function Remove-AzStorageMoverEndpoint {
 [OutputType([System.Boolean])]
@@ -2125,7 +2125,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoverjobdefinition
+https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoverjobdefinition
 #>
 function Remove-AzStorageMoverJobDefinition {
 [OutputType([System.Boolean])]
@@ -2343,7 +2343,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoverproject
+https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoverproject
 #>
 function Remove-AzStorageMoverProject {
 [OutputType([System.Boolean])]
@@ -2561,7 +2561,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/start-azstoragemoverjobdefinition
+https://learn.microsoft.com/powershell/module/az.storagemover/start-azstoragemoverjobdefinition
 #>
 function Start-AzStorageMoverJobDefinition {
 [OutputType([System.String])]
@@ -2760,7 +2760,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/stop-azstoragemoverjobdefinition
+https://learn.microsoft.com/powershell/module/az.storagemover/stop-azstoragemoverjobdefinition
 #>
 function Stop-AzStorageMoverJobDefinition {
 [OutputType([System.String])]
@@ -2964,7 +2964,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemoveragent
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoveragent
 #>
 function Update-AzStorageMoverAgent {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IAgent])]
@@ -3189,7 +3189,7 @@ JOBDEFINITION <IJobDefinitionUpdateParameters>: The Job Definition resource.
   [CopyMode <CopyMode?>]: Strategy to use for copy.
   [Description <String>]: A description for the Job Definition.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverjobdefinition
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverjobdefinition
 #>
 function Update-AzStorageMoverJobDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IJobDefinition])]
@@ -3434,7 +3434,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 PROJECT <IProjectUpdateParameters>: The Project resource.
   [Description <String>]: A description for the Project.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverproject
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverproject
 #>
 function Update-AzStorageMoverProject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IProject])]
@@ -3659,7 +3659,7 @@ STORAGEMOVER <IStorageMoverUpdateParameters>: The Storage Mover resource.
   [Tag <IStorageMoverUpdateParametersTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemover
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemover
 #>
 function Update-AzStorageMover {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IStorageMover])]
@@ -3863,7 +3863,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverendpoint
 #>
 function New-AzStorageMoverAzStorageContainerEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]
@@ -4054,7 +4054,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverendpoint
 #>
 function New-AzStorageMoverNfsEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]
@@ -4265,7 +4265,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/remove-azstoragemover
+https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemover
 #>
 function Remove-AzStorageMover {
 [OutputType([System.Boolean])]
@@ -4476,7 +4476,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoveragent
+https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoveragent
 #>
 function Unregister-AzStorageMoverAgent {
 [OutputType([System.Boolean])]
@@ -4695,7 +4695,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverendpoint
 #>
 function Update-AzStorageMoverAzStorageContainerEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]
@@ -4897,7 +4897,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverendpoint
 #>
 function Update-AzStorageMoverNfsEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]
