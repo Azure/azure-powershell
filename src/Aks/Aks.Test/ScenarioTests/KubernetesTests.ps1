@@ -488,3 +488,53 @@ function Test-NodeLabels-Tags {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-NodeTaints {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 1 $cluster.AgentPoolProfiles.Count
+        Assert-AreEqual 0 $cluster.AgentPoolProfiles[0].NodeTaints.Count
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 1 $pools.Count
+        Assert-AreEqual 0 $pools.NodeTaints.Count
+
+        # create a 2nd nodepool
+        $nodetains = @("sku=gpu:NoSchedule")
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name "pool2" -Count 1 -NodeTaint $nodetains
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-AreEqual 0 ($cluster.AgentPoolProfiles | where {$_.Name -eq "default"}).NodeTaints.Count
+        Assert-AreEqualArray $nodetains ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).NodeTaints
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-AreEqual 0 ($pools | where {$_.Name -eq "default"}).NodeTaints.Count
+        Assert-AreEqualArray $nodetains ($pools | where {$_.Name -eq "pool2"}).NodeTaints
+
+        # update the 2nd nodepool
+        $nodetains2 = @("CriticalAddonsOnly=true:NoSchedule")
+        Update-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name "pool2" -NodeTaint $nodetains2
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-AreEqual 0 ($cluster.AgentPoolProfiles | where {$_.Name -eq "default"}).NodeTaints.Count
+        Assert-AreEqualArray $nodetains2 ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).NodeTaints
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-AreEqual 0 ($pools | where {$_.Name -eq "default"}).NodeTaints.Count
+        Assert-AreEqualArray $nodetains2 ($pools | where {$_.Name -eq "pool2"}).NodeTaints
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}

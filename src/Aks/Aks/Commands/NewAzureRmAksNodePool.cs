@@ -211,6 +211,10 @@ namespace Microsoft.Azure.Commands.Aks
                     agentPool.Tags.Add(key.ToString(), Tag[key].ToString());
                 }
             }
+            if (this.IsParameterBound(c => c.NodeTaint))
+            {
+                agentPool.NodeTaints = NodeTaint;
+            }
 
             return agentPool;
         }

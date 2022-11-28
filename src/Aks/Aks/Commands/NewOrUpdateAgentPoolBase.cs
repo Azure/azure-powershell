@@ -47,5 +47,8 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "The tags to be persisted on the agent pool virtual machine scale set.")]
         public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The node taints added to new nodes during node pool create and scale")]
+        public string[] NodeTaint { get; set; }
     }
 }
