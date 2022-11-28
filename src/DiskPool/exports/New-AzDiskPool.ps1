@@ -33,7 +33,7 @@ disk-pool-1      eastus2euap Running   Succeeded         {3}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
+https://learn.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
 #>
 function New-AzDiskPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool])]
