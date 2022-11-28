@@ -3335,7 +3335,7 @@ param(
     FailedNodes: Node1inClus2, Node2inClus3
 #>
 function Test-AzStackHCIConnection{
-    [Obsolete("Test-AzStackhHCIConnection is deprecated. Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests. For more information, see https://review.learn.microsoft.com/en-us/azure-stack/hci/manage/use-environment-checker.")]
+    [Obsolete("Test-AzStackhHCIConnection is deprecated. Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests. For more information, see https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker.")]
 param(
     [Parameter(Mandatory = $false)]
     [string] $EnvironmentName = $AzureCloud,
