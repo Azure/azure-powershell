@@ -1,7 +1,7 @@
 ---
 external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/approve-azeventhubprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/approve-azeventhubprivateendpointconnection
 schema: 2.0.0
 ---
 

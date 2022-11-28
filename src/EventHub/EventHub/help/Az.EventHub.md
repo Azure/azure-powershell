@@ -53,6 +53,9 @@ Gets an EventHub SAS key
 ### [Get-AzEventHubNamespace](Get-AzEventHubNamespace.md)
 Gets the details of an Event Hubs namespace, or gets a list of all Event Hubs namespaces in the current Azure subscription.
 
+### [Get-AzEventHubNamespaceV2](Get-AzEventHubNamespaceV2.md)
+Gets the description of the specified namespace.
+
 ### [Get-AzEventHubNetworkRuleSet](Get-AzEventHubNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
 
@@ -95,8 +98,14 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHu
 ### [New-AzEventHubKey](New-AzEventHubKey.md)
 Regenerates an EventHub SAS key
 
+### [New-AzEventHubKeyVaultPropertiesObject](New-AzEventHubKeyVaultPropertiesObject.md)
+Create an in-memory object for KeyVaultProperties.
+
 ### [New-AzEventHubNamespace](New-AzEventHubNamespace.md)
 Creates an Event Hubs namespace.
+
+### [New-AzEventHubNamespaceV2](New-AzEventHubNamespaceV2.md)
+Creates an EventHub Namespace
 
 ### [New-AzEventHubSchemaGroup](New-AzEventHubSchemaGroup.md)
 
@@ -131,6 +140,10 @@ Remove a single IP rule to the NetworkRuleSet of the given Namespace
 
 ### [Remove-AzEventHubNamespace](Remove-AzEventHubNamespace.md)
 Removes the specified Event Hubs namespace.
+
+### [Remove-AzEventHubNamespaceV2](Remove-AzEventHubNamespaceV2.md)
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzEventHubNetworkRuleSet](Remove-AzEventHubNetworkRuleSet.md)
 Removes the NetworkRuleSet for the Given Namespace
@@ -168,6 +181,9 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 
 ### [Set-AzEventHubNamespace](Set-AzEventHubNamespace.md)
 Updates the specified Event Hubs namespace.
+
+### [Set-AzEventHubNamespaceV2](Set-AzEventHubNamespaceV2.md)
+Updates an EventHub Namespace
 
 ### [Set-AzEventHubNetworkRuleSet](Set-AzEventHubNetworkRuleSet.md)
 Sets an EventHub Namespace Network Rule Set
