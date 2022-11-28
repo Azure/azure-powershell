@@ -47,7 +47,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/complete-azservicebusmigration
+https://learn.microsoft.com/powershell/module/az.servicebus/complete-azservicebusmigration
 #>
 function Complete-AzServiceBusMigration {
 [OutputType([System.Boolean])]

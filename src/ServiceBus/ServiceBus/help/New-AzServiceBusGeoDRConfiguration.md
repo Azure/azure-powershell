@@ -1,7 +1,7 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusgeodrconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusgeodrconfiguration
 schema: 2.0.0
 ---
 

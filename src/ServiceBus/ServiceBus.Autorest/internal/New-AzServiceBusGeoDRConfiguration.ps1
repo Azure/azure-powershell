@@ -57,7 +57,7 @@ PARAMETER <IArmDisasterRecovery>: Single item in List or Get Alias(Disaster Reco
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusgeodrconfiguration
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusgeodrconfiguration
 #>
 function New-AzServiceBusGeoDRConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery])]
