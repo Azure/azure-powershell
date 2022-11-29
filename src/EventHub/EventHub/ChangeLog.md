@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added NamespaceV2 cmdlets for ServiceBus
 
 ## Version 3.1.0
 * Added readonly Status property in EventHub Namespace 
