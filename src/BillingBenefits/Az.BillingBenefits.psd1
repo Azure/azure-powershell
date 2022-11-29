@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.BillingBenefits.private.dll'
   FormatsToProcess = './Az.BillingBenefits.format.ps1xml'
-  FunctionsToExport = 'Get-AzBillingBenefitsReservationOrderAlias', 'Get-AzBillingBenefitsSavingPlan', 'Get-AzBillingBenefitsSavingsPlan', 'Get-AzBillingBenefitsSavingsPlanOrder', 'Get-AzBillingBenefitsSavingsPlanOrderAlias', 'Invoke-AzBillingBenefitsElevateSavingPlanOrder', 'New-AzBillingBenefitsReservationOrderAlias', 'New-AzBillingBenefitsSavingsPlanOrderAlias', 'Test-AzBillingBenefitsPurchase', 'Test-AzBillingBenefitsSavingPlanUpdate', 'Update-AzBillingBenefitsSavingsPlan', '*'
+  FunctionsToExport = 'Get-AzBillingBenefitsReservationOrderAlias', 'Get-AzBillingBenefitsSavingsPlan', 'Get-AzBillingBenefitsSavingsPlanOrder', 'Get-AzBillingBenefitsSavingsPlanOrderAlias', 'Invoke-AzBillingBenefitsElevateSavingPlanOrder', 'List-AzBillingBenefitsSavingsPlan', 'New-AzBillingBenefitsReservationOrderAlias', 'New-AzBillingBenefitsSavingsPlanOrderAlias', 'Test-AzBillingBenefitsPurchase', 'Test-AzBillingBenefitsSavingPlanUpdate', 'Update-AzBillingBenefitsSavingsPlan', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

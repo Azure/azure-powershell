@@ -59,4 +59,43 @@ subject-prefix: $(service-name)
 resourcegroup-append: true
 nested-object-to-string: true
   
+directive:
+  ### Rename Cmdlet names
+  - where:
+      verb: Get
+      subject: SavingPlan
+    set:
+      verb: List
+      subject: SavingsPlan
+
+  ### Rename property name
+
+  ###Rename parameter name  
+
+  ### Format output table
+  - where:
+      model-name: SavingsPlanModel
+    set:
+      format-table:
+        properties:
+          - DisplayName
+          - DisplayProvisioningState
+          - ExpiryDateTime
+          - PurchaseDateTime
+          - Term
+          - UserFriendlyAppliedScopeType
+          - AppliedScopePropertiesDisplayName
+          - SkuName1
+          - Amount
+          - CurrencyCode
+        labels:
+          DisplayName: Name
+          DisplayProvisioningState: Status
+          ExpiryDateTime: ExpiryDate
+          PurchaseDateTime: PurchaseDate
+          UserFriendlyAppliedScopeType: Scope
+          SkuName1: ProductName
+          Amount: CommitmentAmount
+          CurrencyCode: CommitmentCurrency
+          AppliedScopePropertiesDisplayName: AppliedScopeDisplayName
 ```

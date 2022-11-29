@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.BillingBenefits
-online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/get-azbillingbenefitssavingplan
+online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/list-azbillingbenefitssavingsplan
 schema: 2.0.0
 ---
 
-# Get-AzBillingBenefitsSavingPlan
+# List-AzBillingBenefitsSavingsPlan
 
 ## SYNOPSIS
 List savings plans.
@@ -13,7 +13,7 @@ List savings plans.
 ## SYNTAX
 
 ```
-Get-AzBillingBenefitsSavingPlan [-Filter <String>] [-Orderby <String>] [-RefreshSummary <String>]
+List-AzBillingBenefitsSavingsPlan [-Filter <String>] [-Orderby <String>] [-RefreshSummary <String>]
  [-SelectedState <String>] [-Skiptoken <Single>] [-Take <Single>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```

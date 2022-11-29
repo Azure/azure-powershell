@@ -14,9 +14,6 @@ Microsoft Azure PowerShell: BillingBenefits cmdlets
 ### [Get-AzBillingBenefitsReservationOrderAlias](Get-AzBillingBenefitsReservationOrderAlias.md)
 Get a reservation order alias.
 
-### [Get-AzBillingBenefitsSavingPlan](Get-AzBillingBenefitsSavingPlan.md)
-List savings plans.
-
 ### [Get-AzBillingBenefitsSavingsPlan](Get-AzBillingBenefitsSavingsPlan.md)
 Get savings plan.
 
@@ -28,6 +25,9 @@ Get a savings plan.
 
 ### [Invoke-AzBillingBenefitsElevateSavingPlanOrder](Invoke-AzBillingBenefitsElevateSavingPlanOrder.md)
 Elevate as owner on savings plan order based on billing permissions.
+
+### [List-AzBillingBenefitsSavingsPlan](List-AzBillingBenefitsSavingsPlan.md)
+List savings plans.
 
 ### [New-AzBillingBenefitsReservationOrderAlias](New-AzBillingBenefitsReservationOrderAlias.md)
 Create a reservation order alias.
