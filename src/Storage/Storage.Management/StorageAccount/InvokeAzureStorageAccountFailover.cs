@@ -59,6 +59,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The parameter is set to 'Planned' to indicate whether a Planned failover is requested.")]
+        [ValidateSet(AccountFailoverType.Planned)]
+        [ValidateNotNullOrEmpty]
+        public string FailoverType { get; set; }
+
         [Parameter(Mandatory = true,
             HelpMessage = "Storage account object",
             ValueFromPipeline = true,
@@ -98,10 +105,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         this.Name = InputObject.StorageAccountName;
                     }
 
-                    this.StorageClient.StorageAccounts.Failover(
+                    if (this.FailoverType != null)
+                    {
+                        this.StorageClient.StorageAccounts.Failover(
+                        this.ResourceGroupName,
+                        this.Name,
+                        ParseFailoverType(this.FailoverType));
+                    } 
+                    else
+                    {
+                        this.StorageClient.StorageAccounts.Failover(
                         this.ResourceGroupName,
                         this.Name);
-
+                    }
                     var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
 
                     WriteStorageAccount(storageAccount);

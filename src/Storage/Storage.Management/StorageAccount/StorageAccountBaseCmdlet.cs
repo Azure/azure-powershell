@@ -102,6 +102,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             internal const string StorageFileDataSmbShareOwner = "StorageFileDataSmbShareOwner";
         }
 
+        protected struct AccountFailoverType
+        {
+            internal const string Planned = "Planned";
+        }
+
         public IStorageManagementClient StorageClient
         {
             get
@@ -151,6 +156,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 accountEncryption.KeyVaultProperties = new KeyVaultProperties(keyName, keyVersion, keyVaultUri);
             }
             return accountEncryption;
+        }
+
+        protected static FailoverType ParseFailoverType(string failoverType)
+        {
+            if (!Enum.TryParse(failoverType, true, out FailoverType parsedFailoverType))
+            {
+                throw new ArgumentOutOfRangeException("FailoverType");
+            }
+            return parsedFailoverType;
         }
 
         protected void WriteStorageAccount(StorageModels.StorageAccount storageAccount)
