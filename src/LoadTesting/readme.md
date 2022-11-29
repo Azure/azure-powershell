@@ -30,85 +30,239 @@ For information on how to develop for `Az.LoadTesting`, see [how-to.md](how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: abd5d0016f12f6862cae88ef70f1333e84e20c07
+branch: 7d98899a9e242ef529368c9ba6d1686725a8b23b
 require:
   - $(this-folder)/../readme.azure.noprofile.md 
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/be6cd9ccfcb6ba08c1c206627026eabfbff31fc1/specification/loadtestservice/resource-manager/Microsoft.LoadTestService/stable/2022-12-01/loadtestservice.json
+  - $(repo)/specification/loadtestservice/resource-manager/Microsoft.LoadTestService/stable/2022-12-01/loadtestservice.json
 
-module-version: 0.1.0
 title: LoadTesting
+module-version: 0.1.0
 subject-prefix: ""
 
 resourcegroup-append: true
+nested-object-to-string: true
+inlining-threshold: 200
 
 directive:
+  - from: swagger-document
+    where: $.definitions.EncryptionProperties.properties.identity.properties.type
+    transform: >-
+      return {
+        "type": "string",
+        "enum": [
+          "SystemAssigned",
+          "UserAssigned"
+        ],
+        "x-ms-client-name": "IdentityType",
+        "x-ms-enum": {
+          "name": "EncryptionIdentityType",
+          "modelAsString": true
+        },
+        "description": "Managed identity type to use for accessing encryption key Url"
+      }
+
+  # https://stackoverflow.microsoft.com/questions/333196
   - where:
       subject: .*Quota.*
     remove: true
   - where:
-      parameter-name: .*Quota.*
-    remove: true
-  - where:
-      model-name: .*Quota.*
-    remove: true
-  - select: command
-    where:
       subject: .*OutboundNetworkDependencyEndpoint.*
     remove: true
-  - select: parameter
-    where:
-      parameter-name: .*OutboundNetworkDependencyEndpoint.*
-    remove: true
-  - select: model
-    where:
-      model-name: .*OutboundNetworkDependencyEndpoint.*
-    remove: true
+
+  # Changing the command name from LoadTest to Load (New-AzLoad)
   - select: command
     where:
       subject: LoadTest
     set:
-      subject: Load  
-      suppress-format: true
+      subject: Load
+
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^Update$|.*ViaIdentity$|.*ViaIdentityExpanded$
     remove: true
+
+  # Removing Set command
   - where:
       verb: Set
     remove: true
+  
+  # Renaming managed identity type parameter
   - where:
-      verb: New|Update
-      subject: Load
-      parameter-name: EncryptionKeyUrl
-    set:
-      parameter-name: EncryptionKey
-  - where:
-      verb: New|Update
-      subject: Load
-      parameter-name: IdentityResourceId
-    set:
-      parameter-name: EncryptionIdentity
-  - where:
-      verb: New|Update
-      subject: Load
-      parameter-name: PropertiesEncryptionIdentityType
-    hide: true
-  - where:
-      verb: New|Update
-      subject: Load
-      parameter-name: IdentityUserAssignedIdentity
-    set:
-      parameter-name: UserAssigned
-  - where:
-      verb: New
-      subject: Load
       parameter-name: ManagedServiceIdentityType
     set:
       parameter-name: IdentityType
+  
+  # Renaming user assigned identity parameter
   - where:
-      verb: Update
-      subject: Load
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: IdentityUserAssigned
+
+  # Renaming encryption key parameter
+  - where:
+      parameter-name: EncryptionKeyUrl
+    set:
+      parameter-name: EncryptionKey
+
+  # Renaming encryption identity type parameter
+  - where:
+      parameter-name: PropertiesEncryptionIdentityType
+    set:
+      parameter-name: EncryptionIdentityType
+
+  # Renaming encryption identity resource id parameter
+  - where:
+      parameter-name: IdentityResourceId
+    set:
+      parameter-name: EncryptionIdentityResourceId
+  - where:
       parameter-name: Type
     set:
       parameter-name: IdentityType
+
+  - where:
+      property-name: EncryptionKeyUrl
+    set:
+      property-name: EncryptionKey
+
+  # formatting the output
+  - where:
+      model-name: LoadTestResource
+    set:
+      suppress-format: true
+      # format-table:
+      #   properties:
+      #     - Name
+      #     - ResourceGroupName
+      #     - Location
+      #     - DataPlaneUri
+      #   labels:
+      #     ResourceGroupName: Resource group
+      #     DataPlaneUri: DataPlane URL
+  
+  # Hiding redundant SystemData property 
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api30.ISystemData SystemData', 'private Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api30.ISystemData SystemData');
+  
+  # Hiding description property
+  - where:
+      parameter-name: Description
+    hide: true
+
+  - from: swagger-document 
+    where: $.definitions.LoadTestProperties
+    transform: >-
+      return {
+        "description": "LoadTest resource properties.",
+        "type": "object",
+        "properties": {
+          "provisioningState": {
+            "description": "Resource provisioning state.",
+            "$ref": "#/definitions/ResourceState",
+            "readOnly": true
+          },
+          "dataPlaneURI": {
+            "description": "Resource data plane URI.",
+            "maxLength": 2083,
+            "type": "string",
+            "readOnly": true
+          },
+          "encryption": {
+            "description": "CMK Encryption property.",
+            "type": "object",
+            "$ref": "#/definitions/EncryptionProperties"
+          }
+        }
+      }
+
+  # Remove Azure-Async Operation from header
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}"].put
+    transform: >-
+      return {
+        "tags": [
+          "LoadTests"
+        ],
+        "description": "Create or update LoadTest resource.",
+        "operationId": "LoadTests_CreateOrUpdate",
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/LoadTestNameParameter"
+          },
+          {
+            "in": "body",
+            "name": "LoadTestResource",
+            "description": "LoadTest resource data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoadTestResource"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/LoadTestResource"
+            }
+          },
+          "201": {
+            "description": "Created -- LoadTest resource created",
+            "schema": {
+              "$ref": "#/definitions/LoadTestResource"
+            }
+          },
+          "default": {
+            "description": "Resource provider error response about the failure.",
+            "schema": {
+              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "LoadTests_CreateOrUpdate": {
+            "$ref": "./examples/LoadTests_CreateOrUpdate.json"
+          }
+        }
+      }
+
+  - where:
+      verb: New
+      subject: Load
+    hide: true
+
+  - where:
+      verb: Update
+      subject: Load
+    hide: true
+
+  - where:
+      verb: Get
+      subject: Load
+    hide: true
+
+  - where:
+      verb: Remove
+      subject: Load
+    hide: true
 ```
