@@ -1,4 +1,5 @@
 {
+  "ModuleName": "Az.TimeSeriesInsights",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

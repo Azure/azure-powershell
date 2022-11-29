@@ -1,4 +1,5 @@
 {
+  "ModuleName": "Az.SqlVirtualMachine",
   "ProcessedTypes": {},
   "Cmdlets": [
     {
