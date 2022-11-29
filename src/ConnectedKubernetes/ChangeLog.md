@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Only when the customer passes the "-AzureHybridBenefit" flag (both created and updated) will the letter of the law be prompted.
+* Added the logic that prompt legal information when users call the parameter "-AzureHybridBenefit" in `New-AzConnectedKubernetes` or `Update-AzConnectedKubernetes`.
 
 ## Version 0.6.0
 * Added a related legal clause that users need to agree to when using the cmdlet `New-AzConnectedKubernetes` in order to successfully create.
