@@ -1,40 +1,41 @@
 ---
 external help file:
 Module Name: Az.DigitalTwins
-online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsinstance
+online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsprivateendpointconnection
 schema: 2.0.0
 ---
 
-# Remove-AzDigitalTwinsInstance
+# Remove-AzDigitalTwinsPrivateEndpointConnection
 
 ## SYNOPSIS
-Delete a DigitalTwinsInstance.
+Delete private endpoint connection with the specified name.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDigitalTwinsPrivateEndpointConnection -Name <String> -ResourceGroupName <String>
+ -ResourceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDigitalTwinsPrivateEndpointConnection -InputObject <IDigitalTwinsIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a DigitalTwinsInstance.
+Delete private endpoint connection with the specified name.
 
 ## EXAMPLES
 
-### Example 1: Remove an AzDigitalTwinsInstance by name.
+### Example 1: Delete private endpoint connection with the specified name.
 ```powershell
-Remove-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
+Remove-AzDigitalTwinsPrivateEndpointConnection -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -Name "11c903a5-7b8a-4b86-812d-03f007dca6df"
 ```
 
-This command removes an AzDigitalTwinsInstance by name.
+Delete private endpoint connection with the specified name.
 
 ## PARAMETERS
 
@@ -81,6 +82,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the private endpoint connection.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: PrivateEndpointConnectionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -199,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription
+### System.Boolean
 
 ## NOTES
 
