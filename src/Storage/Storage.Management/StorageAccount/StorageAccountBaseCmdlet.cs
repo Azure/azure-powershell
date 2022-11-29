@@ -105,6 +105,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected struct AccountFailoverType
         {
             internal const string Planned = "Planned";
+            internal const string Unplanned = "Unplanned";
         }
 
         public IStorageManagementClient StorageClient
