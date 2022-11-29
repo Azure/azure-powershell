@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.SignalR-help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/restart-azwebpubsub
+online version: https://learn.microsoft.com/powershell/module/az.signalr/restart-azwebpubsub
 schema: 2.0.0
 ---
 
@@ -15,13 +15,13 @@ Operation to restart a resource.
 ### Restart (Default)
 ```
 Restart-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartViaIdentity
 ```
 Restart-AzWebPubSub -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,8 +34,6 @@ Operation to restart a resource.
 Restart-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps
 ```
 
-
-
 ### Example 2: Restart a Web PubSub resource with identity
 ```powershell
 $identity = @{ResourceGroupName = 'psdemo'
@@ -44,8 +42,6 @@ SubscriptionId = $(Get-AzContext).Subscription.Id }
 
 $identity | Restart-AzWebPubSub
 ```
-
-
 
 ## PARAMETERS
 
@@ -223,10 +219,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<IWebPubSubIdentity>`: Identity Parameter
+`INPUTOBJECT <IWebPubSubIdentity>`: Identity Parameter
+  - `[CertificateName <String>]`: Custom certificate name
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region
+  - `[Name <String>]`: Custom domain name.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   - `[ResourceName <String>]`: The name of the resource.
@@ -234,4 +232,3 @@ INPUTOBJECT `<IWebPubSubIdentity>`: Identity Parameter
   - `[SubscriptionId <String>]`: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-

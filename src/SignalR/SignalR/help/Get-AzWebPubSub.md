@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.SignalR-help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/get-azwebpubsub
+online version: https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsub
 schema: 2.0.0
 ---
 
@@ -23,15 +23,15 @@ Get-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <Str
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzWebPubSub -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzWebPubSub -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzWebPubSub -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,8 +51,6 @@ demo1               eastus        Standard_S1
 demo2               eastus        Free_F1
 ```
 
-
-
 ### Example 2: List all Web PubSub resources in a resource group
 ```powershell
 Get-AzWebPubSub -ResourceGroupName psdemo
@@ -64,8 +62,6 @@ Name       Location SkuName
 psdemo-wps eastus   Standard_S1
 ```
 
-
-
 ### Example 3: Get a specific Web PubSub resource
 ```powershell
 Get-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps
@@ -76,8 +72,6 @@ Name       Location SkuName
 ----       -------- -------
 psdemo-wps eastus   Standard_S1
 ```
-
-
 
 ### Example 4: Get a specific Web PubSub resource via identity object
 ```powershell
@@ -93,8 +87,6 @@ Name       Location SkuName
 ----       -------- -------
 psdemo-wps eastus   Standard_S1
 ```
-
-
 
 ## PARAMETERS
 
@@ -166,7 +158,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -185,7 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource
 
 ## NOTES
 
@@ -196,10 +188,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<IWebPubSubIdentity>`: Identity Parameter
+`INPUTOBJECT <IWebPubSubIdentity>`: Identity Parameter
+  - `[CertificateName <String>]`: Custom certificate name
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region
+  - `[Name <String>]`: Custom domain name.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   - `[ResourceName <String>]`: The name of the resource.
@@ -207,4 +201,3 @@ INPUTOBJECT `<IWebPubSubIdentity>`: Identity Parameter
   - `[SubscriptionId <String>]`: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-
