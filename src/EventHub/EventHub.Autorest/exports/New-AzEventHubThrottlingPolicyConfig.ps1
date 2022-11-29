@@ -25,7 +25,7 @@ New-AzEventHubThrottlingPolicyConfig -Name t1 -RateLimitThreshold 10000 -MetricI
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IThrottlingPolicy
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubthrottlingpolicyconfig
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubthrottlingpolicyconfig
 #>
 function New-AzEventHubThrottlingPolicyConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IThrottlingPolicy])]

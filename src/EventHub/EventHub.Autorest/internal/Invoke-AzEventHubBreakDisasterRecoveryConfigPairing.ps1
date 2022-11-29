@@ -48,7 +48,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/invoke-azeventhubbreakdisasterrecoveryconfigpairing
+https://learn.microsoft.com/powershell/module/az.eventhub/invoke-azeventhubbreakdisasterrecoveryconfigpairing
 #>
 function Invoke-AzEventHubBreakDisasterRecoveryConfigPairing {
 [OutputType([System.Boolean])]
