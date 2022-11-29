@@ -25,7 +25,7 @@ New-AzServiceBusIPRuleConfig -IPMask 3.3.3.3 -Action Allow
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INwRuleSetIPRules
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusipruleconfig
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusipruleconfig
 #>
 function New-AzServiceBusIPRuleConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INwRuleSetIPRules])]

@@ -30,7 +30,7 @@ Describe 'Remove-AzServiceBusAuthorizationRule' {
         $namespaceAuthRules.Count | Should -Be 3
     }
 
-    It 'RemoveExpandedTopic' {
+    It 'RemoveExpandedTopic'  {
         Remove-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule3
         { Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule3 } | Should -Throw
         $topicAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 
@@ -44,7 +44,7 @@ Describe 'Remove-AzServiceBusAuthorizationRule' {
         $queueAuthRules.Count | Should -Be 2
     }
 
-    It 'RemoveViaIdentityExpanded' {
+    It 'RemoveViaIdentityExpanded'   {
         $authRule = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule2
         Remove-AzServiceBusAuthorizationRule -InputObject $authRule
         { Get-AzServiceBusAuthorizationRule -InputObject $authRule } | Should -Throw

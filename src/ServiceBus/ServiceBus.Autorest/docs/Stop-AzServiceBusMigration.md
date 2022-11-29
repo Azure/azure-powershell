@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/powershell/module/az.servicebus/stop-azservicebusmigration
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/stop-azservicebusmigration
 schema: 2.0.0
 ---
 
