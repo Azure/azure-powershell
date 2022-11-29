@@ -123,7 +123,7 @@ Create an ServiceBus namespace with SystemAssigned identity.
 
 ### Example 3: Create a new Standard ServiceBus namespace with DisableLocalAuth enabled 
 ```powershell
-New-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -DisableLocalAuth
+New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -DisableLocalAuth
 ```
 
 ```output
