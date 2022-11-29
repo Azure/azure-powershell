@@ -8,12 +8,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
     using System;
 
+    /// <summary>Gets the details of an EventHub schema group.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzEventHubSchemaGroup_Get")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ISchemaGroup))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Gets the details of an EventHub schema group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
     public partial class GetAzEventHubSchemaGroup_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener
