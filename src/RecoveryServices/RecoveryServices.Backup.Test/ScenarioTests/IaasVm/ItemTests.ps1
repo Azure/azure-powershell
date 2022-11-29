@@ -23,6 +23,7 @@ function Test-AzureCrossZonalRestore
 	$targetVNetName = "hiagaNZPVNet"
 	$targetVNetRG = "hiagarg"
 	$targetSubnetName = "custom"
+	$recoveryPointId = "175071499837856" # latest vaultStandard recovery point
 
 	try
 	{	
@@ -31,10 +32,8 @@ function Test-AzureCrossZonalRestore
 		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM `
 			-VaultId $vault.ID -Name $vmName
 
-		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] `
-		       -StartDate (Get-Date).AddDays(-30).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() `
-			   -VaultId $vault.ID -Tier VaultStandard	
-
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -VaultId $vault.ID  -RecoveryPointId $recoveryPointId
+		
 		$restoreJobCZR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
 			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -TargetZoneNumber 2 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 		
