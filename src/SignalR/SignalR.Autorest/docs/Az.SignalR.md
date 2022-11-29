@@ -39,7 +39,7 @@ Create or update a resource.
 Create or update a custom certificate.
 
 ### [New-AzWebPubSubCustomDomain](New-AzWebPubSubCustomDomain.md)
-
+Create or update a custom domain.
 
 ### [New-AzWebPubSubEventHubEndpointObject](New-AzWebPubSubEventHubEndpointObject.md)
 Create an in-memory object for EventHubEndpoint.

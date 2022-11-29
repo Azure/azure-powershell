@@ -3,20 +3,12 @@
 $wps = Update-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
 -IdentityType SystemAssigned -LiveTraceEnabled true `
 -LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
+```
 
+```output
 Name       Location SkuName
 ----       -------- -------
 psdemo-wps eastus   Standard_S1
-
-$wps | Format-List
-
-DisableAadAuth               : False
-DisableLocalAuth             : False
-EnableTlsClientCert          : False
-ExternalIP                   : 20.62.134.186
-HostName                     : psdemo-wps.webpubsub.azure.com
-......
-Version                      : 1.0
 ```
 
 
