@@ -159,15 +159,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             return accountEncryption;
         }
 
-        protected static FailoverType ParseFailoverType(string failoverType)
-        {
-            if (!Enum.TryParse(failoverType, true, out FailoverType parsedFailoverType))
-            {
-                throw new ArgumentOutOfRangeException("FailoverType");
-            }
-            return parsedFailoverType;
-        }
-
         protected void WriteStorageAccount(StorageModels.StorageAccount storageAccount)
         {
             WriteObject(PSStorageAccount.Create(storageAccount, this.StorageClient));
