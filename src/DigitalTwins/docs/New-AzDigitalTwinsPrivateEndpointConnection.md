@@ -47,6 +47,7 @@ Name                                 GroupId PrivateLinkServiceConnectionStateSt
 ```
 
 Update the status of a private endpoint connection with the given name.
+Please Create a Private Endpoint in `Azure Digital Twins` -\> `Networking` -\> `Private endpoint connections`.
 
 ## PARAMETERS
 

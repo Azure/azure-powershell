@@ -18,6 +18,27 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+    
+    $testEvnDT = "test-digitaltwins-instance"
+    $testEvnEG = "test-dt-eg"
+    $testEvnEH = "test-dt-eh"
+    $testEvnSB = "test-dt-servicebus"
+    $env.Add("testEvnDT", $testEvnDT)
+    $env.Add("testEvnEG", $testEvnEG)
+    $env.Add("testEvnEH", $testEvnEH)
+    $env.Add("testEvnSB", $testEvnSB)
+
+    $dtInstanceName = RandomString -allChars $false -len 6
+    $env.Add("dtInstanceName", $dtInstanceName)
+
+    $env.Add("location", "eastus")
+    # Create the test group
+    write-host "start to create test group"
+    $resourceGroup = "testgroup-digitaltwins"
+    $env.Add("resourceGroup", $resourceGroup)
+
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -27,5 +48,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    # Remove-AzResourceGroup -Name $env.resourceGroup
 }
 
