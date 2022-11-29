@@ -14,6 +14,12 @@
 # is regenerated.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Create or update a custom domain.
+.Description
+Create or update a custom domain.
+#>
 function New-AzWebPubSubCustomDomain
 {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ICustomDomain])]
