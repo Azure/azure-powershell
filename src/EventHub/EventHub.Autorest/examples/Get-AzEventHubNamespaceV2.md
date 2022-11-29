@@ -9,14 +9,14 @@ ClusterArmId                    :
 CreatedAt                       : 11/17/2022 3:14:09 PM
 DisableLocalAuth                : True
 EnableAutoInflate               : True
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+Id                              : /subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
 IdentityType                    :
 KafkaEnabled                    : True
 KeySource                       :
 KeyVaultProperty                :
 Location                        : South Central US
 MaximumThroughputUnit           : 0
-MetricId                        : {subscriptionId}:myNamespace
+MetricId                        : 000000000000000:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
 PrincipalId                     : 000000000000000000

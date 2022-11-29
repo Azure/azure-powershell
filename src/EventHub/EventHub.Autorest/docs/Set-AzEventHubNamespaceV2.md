@@ -44,7 +44,7 @@ $eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGrou
 
 $identityId = $eventHubNamespace.UserAssignedIdentity.Keys
 
-$identityId += "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
+$identityId += "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
 
 Set-AzEventHubNamespaceV2 -InputObject $eventHubNamespace -UserAssignedIdentityId $identityId
 ```
@@ -55,35 +55,35 @@ ClusterArmId                    :
 CreatedAt                       : 11/17/2022 2:56:32 PM
 DisableLocalAuth                : False
 EnableAutoInflate               : False
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+Id                              : /subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
 IdentityType                    : UserAssigned
 KafkaEnabled                    : True
 KeySource                       : Microsoft.KeyVault
 KeyVaultProperty                : {{
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                      "userAssignedIdentity": "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key1",
-                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net/",
                                     "keyVersion": ""
                                   }, {
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                      "userAssignedIdentity": "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key2",
-                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net/",
                                     "keyVersion": ""
                                   }, {
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                      "userAssignedIdentity": "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key3",
-                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net/",
                                     "keyVersion": ""
                                   }}
 Location                        : North Europe
 MaximumThroughputUnit           : 0
-MetricId                        : {subscriptionId}:myNamespace
+MetricId                        : 000000000000000:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
 PrincipalId                     :
@@ -103,9 +103,9 @@ TenantId                        :
 Type                            : Microsoft.EventHub/Namespaces
 UpdatedAt                       : 11/17/2022 3:03:50 PM
 UserAssignedIdentity            : {
-                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
+                                    "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
                                     },
-                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity": {
+                                    "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity": {
                                     }
                                   }
 ZoneRedundant                   : True
@@ -121,7 +121,7 @@ keys from the hashtable, which would result in an array of strings which can the
 ```powershell
 $eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 
-$newKeyVaultProperty = New-AzEventHubKeyVaultPropertiesObject -KeyName key3 -KeyVaultUri https://{keyVaultName}.vault.azure.net/ -UserAssignedIdentity "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$newKeyVaultProperty = New-AzEventHubKeyVaultPropertiesObject -KeyName key3 -KeyVaultUri https://testkeyvault.vault.azure.net -UserAssignedIdentity "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
 
 $eventHubNamespace.KeyVaultProperty += $newKeyVaultProperty
 
@@ -134,35 +134,35 @@ ClusterArmId                    :
 CreatedAt                       : 11/17/2022 2:56:32 PM
 DisableLocalAuth                : False
 EnableAutoInflate               : False
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+Id                              : /subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
 IdentityType                    : UserAssigned
 KafkaEnabled                    : True
 KeySource                       : Microsoft.KeyVault
 KeyVaultProperty                : {{
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                      "userAssignedIdentity": "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key1",
-                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net",
                                     "keyVersion": ""
                                   }, {
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                      "userAssignedIdentity": "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key2",
-                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net",
                                     "keyVersion": ""
                                   }, {
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                      "userAssignedIdentity": "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key3",
-                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net",
                                     "keyVersion": ""
                                   }}
 Location                        : North Europe
 MaximumThroughputUnit           : 0
-MetricId                        : {subscriptionId}:myNamespace
+MetricId                        : 000000000000000:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
 PrincipalId                     :
@@ -182,9 +182,9 @@ TenantId                        :
 Type                            : Microsoft.EventHub/Namespaces
 UpdatedAt                       : 11/17/2022 3:03:50 PM
 UserAssignedIdentity            : {
-                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
+                                    "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
                                     },
-                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity": {
+                                    "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity": {
                                     }
                                   }
 ZoneRedundant                   : True
@@ -208,28 +208,28 @@ ClusterArmId                    :
 CreatedAt                       : 11/17/2022 2:56:32 PM
 DisableLocalAuth                : False
 EnableAutoInflate               : False
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+Id                              : /subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
 IdentityType                    : UserAssigned
 KafkaEnabled                    : True
 KeySource                       : Microsoft.KeyVault
 KeyVaultProperty                : {{
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                      "userAssignedIdentity": "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key1",
-                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net",
                                     "keyVersion": ""
                                   }, {
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                      "userAssignedIdentity": "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key2",
-                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net",
                                     "keyVersion": ""
                                   }}
 Location                        : North Europe
 MaximumThroughputUnit           : 0
-MetricId                        : {subscriptionId}:myNamespace
+MetricId                        : 000000000000000:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
 PrincipalId                     :
@@ -249,9 +249,9 @@ TenantId                        :
 Type                            : Microsoft.EventHub/Namespaces
 UpdatedAt                       : 11/17/2022 3:03:50 PM
 UserAssignedIdentity            : {
-                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
+                                    "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
                                     },
-                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity": {
+                                    "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity": {
                                     }
                                   }
 ZoneRedundant                   : True
@@ -270,28 +270,28 @@ ClusterArmId                    :
 CreatedAt                       : 11/17/2022 2:56:32 PM
 DisableLocalAuth                : False
 EnableAutoInflate               : False
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+Id                              : /subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
 IdentityType                    : UserAssigned
 KafkaEnabled                    : True
 KeySource                       : Microsoft.KeyVault
 KeyVaultProperty                : {{
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                      "userAssignedIdentity": "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key1",
-                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net",
                                     "keyVersion": ""
                                   }, {
                                     "identity": {
-                                      "userAssignedIdentity": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+                                      "userAssignedIdentity": "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
                                     },
                                     "keyName": "key2",
-                                    "keyVaultUri": "https://{keyVaultName}.vault.azure.net/",
+                                    "keyVaultUri": "https://testkeyvault.vault.azure.net",
                                     "keyVersion": ""
                                   }}
 Location                        : North Europe
 MaximumThroughputUnit           : 0
-MetricId                        : {subscriptionId}:myNamespace
+MetricId                        : 000000000000000:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
 PrincipalId                     :
@@ -311,9 +311,9 @@ TenantId                        :
 Type                            : Microsoft.EventHub/Namespaces
 UpdatedAt                       : 11/17/2022 3:03:50 PM
 UserAssignedIdentity            : {
-                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
+                                    "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity": {
                                     },
-                                    "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity": {
+                                    "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity": {
                                     }
                                   }
 ZoneRedundant                   : True
@@ -323,7 +323,7 @@ Sets `DisableLocalAuth` to true on an EventHub namespace `myNamespace`.
 
 ### Example 5: # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None.
 ```powershell
-$eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
 $eventHubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -IdentityType None -UserAssignedIdentityId:$null
 ```
 
@@ -333,7 +333,7 @@ ClusterArmId                    :
 CreatedAt                       : 11/21/2022 3:21:29 PM
 DisableLocalAuth                : False
 EnableAutoInflate               : False
-Id                              : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/provide
+Id                              : /subscriptions/000000000000000/resourceGroups/myResourceGroup/provide
                                   rs/Microsoft.EventHub/namespaces/myNamespace
 IdentityType                    :
 KafkaEnabled                    : True
@@ -341,7 +341,7 @@ KeySource                       :
 KeyVaultProperty                :
 Location                        : North Europe
 MaximumThroughputUnit           : 0
-MetricId                        : {subscriptionId}:myNamespace
+MetricId                        : 000000000000000:myNamespace
 MinimumTlsVersion               : 1.2
 Name                            : myNamespace
 PrincipalId                     :
