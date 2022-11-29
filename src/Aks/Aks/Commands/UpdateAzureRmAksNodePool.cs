@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                         pool.NodeTaints = NodeTaint;
                     }
 
-                    var updatedPool = Client.AgentPools.CreateOrUpdate(ResourceGroupName, ClusterName, Name, pool);
+                    var updatedPool = this.CreateOrUpdate(ResourceGroupName, ClusterName, Name, pool);
                     WriteObject(PSMapper.Instance.Map<PSNodePool>(updatedPool));
                 });
             }
