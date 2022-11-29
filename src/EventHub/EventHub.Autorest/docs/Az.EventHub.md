@@ -1,7 +1,7 @@
 ---
 Module Name: Az.EventHub
-Module Guid: c3f93fb7-6f6a-471a-9064-f4f38a883a47
-Download Help Link: https://docs.microsoft.com/powershell/module/az.eventhub
+Module Guid: 9e121baf-ee5e-4cb7-bb95-fff6bb4ee003
+Download Help Link: https://learn.microsoft.com/powershell/module/az.eventhub
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -44,6 +44,9 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 ### [Get-AzEventHubKey](Get-AzEventHubKey.md)
 Gets an EventHub SAS key
 
+### [Get-AzEventHubNamespaceV2](Get-AzEventHubNamespaceV2.md)
+Gets the description of the specified namespace.
+
 ### [Get-AzEventHubNetworkRuleSet](Get-AzEventHubNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
 
@@ -80,6 +83,12 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHu
 ### [New-AzEventHubKey](New-AzEventHubKey.md)
 Regenerates an EventHub SAS key
 
+### [New-AzEventHubKeyVaultPropertiesObject](New-AzEventHubKeyVaultPropertiesObject.md)
+Create an in-memory object for KeyVaultProperties.
+
+### [New-AzEventHubNamespaceV2](New-AzEventHubNamespaceV2.md)
+Creates an EventHub Namespace
+
 ### [New-AzEventHubSchemaGroup](New-AzEventHubSchemaGroup.md)
 
 
@@ -108,6 +117,10 @@ Deletes a consumer group from the specified Event Hub and resource group.
 ### [Remove-AzEventHubGeoDRConfiguration](Remove-AzEventHubGeoDRConfiguration.md)
 Deletes an Alias(Disaster Recovery configuration)
 
+### [Remove-AzEventHubNamespaceV2](Remove-AzEventHubNamespaceV2.md)
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
+
 ### [Remove-AzEventHubPrivateEndpointConnection](Remove-AzEventHubPrivateEndpointConnection.md)
 Deletes an existing namespace.
 This operation also removes all associated resources under the namespace.
@@ -135,6 +148,9 @@ This operation disables the Disaster Recovery and stops replicating changes from
 
 ### [Set-AzEventHubGeoDRConfigurationFailOver](Set-AzEventHubGeoDRConfigurationFailOver.md)
 Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
+
+### [Set-AzEventHubNamespaceV2](Set-AzEventHubNamespaceV2.md)
+Updates an EventHub Namespace
 
 ### [Set-AzEventHubNetworkRuleSet](Set-AzEventHubNetworkRuleSet.md)
 Sets an EventHub Namespace Network Rule Set
