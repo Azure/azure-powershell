@@ -113,10 +113,6 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Docker bridge cidr used for building Kubernetes network.")]
         public string DockerBridgeCidr { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
-
-        public Hashtable NodePoolLabel { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Aks custom headers used for building Kubernetes network.")]
 
         public Hashtable AksCustomHeader { get; set; }
@@ -498,6 +494,14 @@ namespace Microsoft.Azure.Commands.Aks
                 foreach (var key in NodePoolLabel.Keys)
                 {
                     defaultAgentPoolProfile.NodeLabels.Add(key.ToString(), NodePoolLabel[key].ToString());
+                }
+            }
+            if (this.IsParameterBound(c => c.NodePoolTag))
+            {
+                defaultAgentPoolProfile.Tags = new Dictionary<string, string>();
+                foreach (var key in NodePoolTag.Keys)
+                {
+                    defaultAgentPoolProfile.Tags.Add(key.ToString(), NodePoolTag[key].ToString());
                 }
             }
             if (this.IsParameterBound(c => c.AvailabilityZone))

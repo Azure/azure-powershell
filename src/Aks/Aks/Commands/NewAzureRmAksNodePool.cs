@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 using Microsoft.Azure.Commands.Aks.Models;
@@ -170,6 +171,10 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 agentPool.EnableAutoScaling = EnableAutoScaling.ToBool();
             }
+            if (this.IsParameterBound(c => c.Mode))
+            {
+                agentPool.Mode = Mode;
+            }
             if (EnableNodePublicIp.IsPresent)
             {
                 agentPool.EnableNodePublicIP = EnableNodePublicIp.ToBool();
@@ -189,6 +194,22 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.AvailabilityZone))
             {
                 agentPool.AvailabilityZones = AvailabilityZone;
+            }
+            if (this.IsParameterBound(c => c.NodeLabel))
+            {
+                agentPool.NodeLabels = new Dictionary<string, string>();
+                foreach (var key in NodeLabel.Keys)
+                {
+                    agentPool.NodeLabels.Add(key.ToString(), NodeLabel[key].ToString());
+                }
+            }
+            if (this.IsParameterBound(c => c.Tag))
+            {
+                agentPool.Tags = new Dictionary<string, string>();
+                foreach (var key in Tag.Keys)
+                {
+                    agentPool.Tags.Add(key.ToString(), Tag[key].ToString());
+                }
             }
 
             return agentPool;

@@ -1,7 +1,7 @@
 ---
 external help file: Az.Compute-help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azgalleryapplication
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azgalleryapplication
 schema: 2.0.0
 ---
 

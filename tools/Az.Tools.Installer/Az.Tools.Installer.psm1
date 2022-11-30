@@ -341,6 +341,7 @@ function Get-AzModuleFromRemote {
         if ($modules.Count -gt 1) {
             Throw "[$Invoker] You have multiple modules matched 'Az' in the registered reposistory $($modules.Repository). Please specify a single -Repository."
         }
+        $Repository = $modules.Repository
 
         $accountVersion = 0
         if (!$UseExactAccountVersion) {
@@ -365,16 +366,16 @@ function Get-AzModuleFromRemote {
                     elseif ($module.Keys -Contains 'RequiredVersion') {
                         $version = $module.RequiredVersion
                     }
-                    $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $version}
+                    $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $version; Repository = $Repository}
                 }
                 else {
-                    $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $accountVersion}
+                    $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $accountVersion; Repository = $Repository}
                 }
             }
             elseif (!$Name -or $Name -Contains $module.Name)
             {
                 if ($module.RequiredVersion) {
-                    $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $module.RequiredVersion}
+                    $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $module.RequiredVersion; Repository = $Repository}
                     $containValidModule = $true
                 }
             }

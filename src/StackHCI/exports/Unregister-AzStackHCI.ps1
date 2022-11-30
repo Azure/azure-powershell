@@ -34,7 +34,7 @@ Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Re
 PSCustomObject. Returns following Properties in PSCustomObject
 Result: Success or Failed or Cancelled.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/unregister-azstackhci
+https://learn.microsoft.com/powershell/module/az.stackhci/unregister-azstackhci
 #>
 function Unregister-AzStackHCI {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

@@ -91,6 +91,7 @@ function Update-AzModule {
             $findModuleParams.Add('Repository', $Repository)
         }
         $modulesToUpdate = Get-AzModuleFromRemote @findModuleParams
+        $Repository = $modulesToUpdate.Repository | Select-Object -First 1
         $moduleUpdateTable = $modulesToUpdate | Foreach-Object { [PSCustomObject]@{
             Name = $_.Name
             VersionBeforeUpdate = [Version] ($groupSet[$_.Name] | Select-Object -First 1)

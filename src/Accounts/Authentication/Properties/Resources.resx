@@ -373,4 +373,7 @@
   <data name="HelpMessageOfEnableDataCollection" xml:space="preserve">
     <value>When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience. For more information, see our privacy statement: https://aka.ms/privacy</value>
   </data>
+  <data name="StorageLockConflicts" xml:space="preserve">
+    <value>AzKeyStore is locked. Please try again after a while.</value>
+  </data>
 </root>

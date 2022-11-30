@@ -26,10 +26,37 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INSIGHTPROPERTY <IApplicationInsightsComponent>: An Application Insights component definition.
+  Location <String>: Resource location
+  Kind <String>: The kind of application that this component refers to, used to customize UI. This value is a freeform string, values should typically be one of the following: web, ios, other, store, java, phone.
+  [Tag <IComponentsResourceTags>]: Resource tags
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [ApplicationType <ApplicationType?>]: Type of application being monitored.
+  [DisableIPMasking <Boolean?>]: Disable IP masking.
+  [DisableLocalAuth <Boolean?>]: Disable Non-AAD based Auth.
+  [Etag <String>]: Resource etag
+  [FlowType <FlowType?>]: Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set to 'Bluefield' when creating/updating a component via the REST API.
+  [ForceCustomerStorageForProfiler <Boolean?>]: Force users to create their own storage account for profiler and debugger.
+  [HockeyAppId <String>]: The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.
+  [ImmediatePurgeDataOn30Day <Boolean?>]: Purge data immediately after 30 days.
+  [IngestionMode <IngestionMode?>]: Indicates the flow of the ingestion.
+  [PublicNetworkAccessForIngestion <PublicNetworkAccessType?>]: The network access type for accessing Application Insights ingestion.
+  [PublicNetworkAccessForQuery <PublicNetworkAccessType?>]: The network access type for accessing Application Insights query.
+  [RequestSource <RequestSource?>]: Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
+  [RetentionInDay <Int32?>]: Retention period in days.
+  [SamplingPercentage <Double?>]: Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
+  [WorkspaceResourceId <String>]: Resource Id of the log analytics workspace which the data will be ingested to. This property is required to create an application with this API version. Applications from older versions will not have this property.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsights
+https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsights
 #>
 function Set-AzApplicationInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent])]
@@ -56,45 +83,52 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent]
+    # An Application Insights component definition.
+    # To construct, see NOTES section for INSIGHTPROPERTY properties and create a hash table.
+    ${InsightProperty},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # The kind of application that this component refers to, used to customize UI.
     # This value is a freeform string, values should typically be one of the following: web, ios, other, store, java, phone.
     ${Kind},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # Resource location
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.ApplicationType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.ApplicationType]
     # Type of application being monitored.
     ${ApplicationType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Disable IP masking.
     ${DisableIPMasking},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Disable Non-AAD based Auth.
     ${DisableLocalAuth},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # Resource etag
     ${Etag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.FlowType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.FlowType]
@@ -102,46 +136,46 @@ param(
     # This is to be set to 'Bluefield' when creating/updating a component via the REST API.
     ${FlowType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Force users to create their own storage account for profiler and debugger.
     ${ForceCustomerStorageForProfiler},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.
     ${HockeyAppId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Purge data immediately after 30 days.
     ${ImmediatePurgeDataOn30Day},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.IngestionMode])]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.IngestionMode]
     # Indicates the flow of the ingestion.
     ${IngestionMode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType]
     # The network access type for accessing Application Insights ingestion.
     ${PublicNetworkAccessForIngestion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType]
     # The network access type for accessing Application Insights query.
     ${PublicNetworkAccessForQuery},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.RequestSource])]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.RequestSource]
@@ -149,26 +183,26 @@ param(
     # Customers using this API should set this to the default 'rest'.
     ${RequestSource},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Int32]
     # Retention period in days.
     ${RetentionInDay},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.Double]
     # Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
     ${SamplingPercentage},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IComponentsResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # Resource Id of the log analytics workspace which the data will be ingested to.
@@ -233,9 +267,10 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
+            Update = 'Az.ApplicationInsights.private\Set-AzApplicationInsights_Update';
             UpdateExpanded = 'Az.ApplicationInsights.private\Set-AzApplicationInsights_UpdateExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 

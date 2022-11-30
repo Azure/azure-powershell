@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Accounts credential management cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on account credential management, please visit the following: https://docs.microsoft.com/powershell/azure/authenticate-azureps'
+For more information on account credential management, please visit the following: https://learn.microsoft.com/powershell/azure/authenticate-azureps'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

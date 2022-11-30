@@ -97,7 +97,7 @@ You can use this cmdlet to modify the account type, update a customer domain, or
 
 
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName "Standard_RAGRS"
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName "Standard_RAGRS"
 ```
 
 This command sets the Storage account type to Standard_RAGRS.
@@ -108,7 +108,7 @@ This command sets the Storage account type to Standard_RAGRS.
 
 
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -CustomDomainName "www.contoso.com" -UseSubDomain $true
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -CustomDomainName "www.contoso.com" -UseSubDomain $true
 ```
 
 This command sets a custom domain for a Storage account.
@@ -119,7 +119,7 @@ This command sets a custom domain for a Storage account.
 
 
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AccessTier Cool
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AccessTier Cool
 ```
 
 The command sets the Access Tier value to be cool.
@@ -130,7 +130,7 @@ The command sets the Access Tier value to be cool.
 
 
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -CustomDomainName "www.domainname.com" -UseSubDomain $true -Tag @{tag0="value0";tag1="value1";tag2="value2"}
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -CustomDomainName "www.domainname.com" -UseSubDomain $true -Tag @{tag0="value0";tag1="value1";tag2="value2"}
 ```
 
 The command sets the custom domain and tags for a Storage account.
@@ -141,18 +141,18 @@ The command sets the custom domain and tags for a Storage account.
 
 
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AssignIdentity
-PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount"
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AssignIdentity
+PS C:\> $account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount"
 
-PS C:\>$keyVault = New-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyResourceGroup" -Location "EastUS2"
-PS C:\>$key = Add-AzKeyVaultKey -VaultName "MyKeyVault" -Name "MyKey" -Destination 'Software'
-PS C:\>Set-AzKeyVaultAccessPolicy -VaultName "MyKeyVault" -ObjectId $account.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+PS C:\> $keyVault = New-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyResourceGroup" -Location "EastUS2"
+PS C:\> $key = Add-AzKeyVaultKey -VaultName "MyKeyVault" -Name "MyKey" -Destination 'Software'
+PS C:\> Set-AzKeyVaultAccessPolicy -VaultName "MyKeyVault" -ObjectId $account.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
 
 # In case to enable key auto rotation, don't set KeyVersion
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
 
 # In case to enable key auto rotation after set keyvault proeprites with KeyVersion, can update account by set KeyVersion to empty
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion "" -KeyVaultUri $keyVault.VaultUri
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion "" -KeyVaultUri $keyVault.VaultUri
 ```
 
 This command set Encryption KeySource with a new created Keyvault.
@@ -164,7 +164,7 @@ If want to enable key auto rotation, don't set keyversion when set Keyvault prop
 
 
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -StorageEncryption
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -StorageEncryption
 ```
 
 This command set Encryption KeySource to "Microsoft.Storage"
@@ -175,7 +175,7 @@ This command set Encryption KeySource to "Microsoft.Storage"
 
 
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -NetworkRuleSet (@{bypass="Logging,Metrics";
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -NetworkRuleSet (@{bypass="Logging,Metrics";
     ipRules=(@{IPAddressOrRange="20.11.0.0/16";Action="allow"},
             @{IPAddressOrRange="10.0.0.0/7";Action="allow"});
     virtualNetworkRules=(@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"},
@@ -422,7 +422,7 @@ Enabled
 
 This command updates a Storage account by set PublicNetworkAccess as enabled.
 
-### Example 19: Update account level  mmutability policy
+### Example 19: Update account level immutability policy
 <!-- Skip: Output cannot be splitted from code -->
 
 

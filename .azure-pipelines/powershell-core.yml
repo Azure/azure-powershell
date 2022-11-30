@@ -17,6 +17,7 @@ variables:
   AnalysisTimeoutInMinutes: 120
   TestTimeoutInMinutes: 180
   BuildAzPredictor: false
+  EnableTestCoverage: true
   PowerShellPlatform: PowerShell Core
 
 trigger: none

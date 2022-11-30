@@ -20,7 +20,7 @@ HTTP Methods: GET (supported for all groups), POST (supported for security group
 Nullable.
 Supports $expand.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadgroupmember
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadgroupmember
 #>
 function Remove-AzADGroupMember {
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]

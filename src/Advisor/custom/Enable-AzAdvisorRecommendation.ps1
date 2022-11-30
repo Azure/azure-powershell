@@ -19,7 +19,7 @@ Enables Azure Advisor recommendation(s).
 .Description
 Enables Azure Advisor recommendation(s).
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/Enable-AzAdvisorRecommendation
+https://learn.microsoft.com/powershell/module/az.advisor/Enable-AzAdvisorRecommendation
 #>
 function Enable-AzAdvisorRecommendation{
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]

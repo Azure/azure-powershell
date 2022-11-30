@@ -48,7 +48,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azroleeligiblechildresource
+https://learn.microsoft.com/powershell/module/az.resources/get-azroleeligiblechildresource
 #>
 function Get-AzRoleEligibleChildResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IEligibleChildResource])]

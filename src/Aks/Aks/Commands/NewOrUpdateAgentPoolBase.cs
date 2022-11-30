@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Newtonsoft.Json;
+using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Aks
@@ -30,5 +34,18 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable auto-scaler")]
         public SwitchParameter EnableAutoScaling { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible values include: 'System', 'User'
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The pool mode")]
+        [PSArgumentCompleter("System", "User")]
+        public string Mode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
+        public Hashtable NodeLabel { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The tags to be persisted on the agent pool virtual machine scale set.")]
+        public Hashtable Tag { get; set; }
     }
 }

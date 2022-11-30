@@ -35,7 +35,7 @@ Describe 'New-AzServiceBusAuthorizationRule' {
         $listOfAuthRules.Count | Should -Be 3
     }
 
-    It 'NewExpandedTopic' {
+    It 'NewExpandedTopic'  {
         $authRule = New-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule3 -Rights @("Send")
         $authRule.Name | Should -Be "topicAuthRule3"
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup

@@ -29,7 +29,7 @@ Get-AzADGroup -ObjectId $id | Remove-AzADGroup
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadgroup
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadgroup
 #>
 function Remove-AzADGroup {
 [OutputType([System.Boolean])]

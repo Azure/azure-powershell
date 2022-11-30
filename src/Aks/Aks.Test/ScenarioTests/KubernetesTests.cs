@@ -80,12 +80,18 @@ namespace Commands.Aks.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ManagedIdentity");
         }
 
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestOsSku()
         {
             TestRunner.RunTestScript("Test-OSSku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNodeLabelsAndTags()
+        {
+            TestRunner.RunTestScript("Test-NodeLabels-Tags");
         }
     }
 }
