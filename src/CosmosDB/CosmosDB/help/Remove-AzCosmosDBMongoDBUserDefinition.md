@@ -37,7 +37,7 @@ The **Remove-AzCosmosDBMongoDBUserDefinition** cmdlet deletes an existing Cosmos
 
 ### Example 1
 ```powershell
-Remove-AzCosmosDBMongoDBUserDefinition -ResourceGroupName {rgName} -AccountName {accountName} -DatabaseName {dbName} -Id {userDefId}
+Remove-AzCosmosDBMongoDBUserDefinition -ResourceGroupName rgName -AccountName accountName -Id userDefId
 ```
 
 The cmdlet returns an object of type bool(when -PassThru is passed) which is true, if the delete was successful.
