@@ -12,6 +12,39 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzureCrossZonalRestore
+{
+	$location = "eastus"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiaga-zrs-vault"
+	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiagaNZP"
+	$saName = "hiagaeussa"
+	$targetVMName = "czr-pstest-vm"
+	$targetVNetName = "hiagaNZPVNet"
+	$targetVNetRG = "hiagarg"
+	$targetSubnetName = "custom"
+	$recoveryPointId = "175071499837856" # latest vaultStandard recovery point
+
+	try
+	{	
+		# Setup
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM `
+			-VaultId $vault.ID -Name $vmName
+
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -VaultId $vault.ID  -RecoveryPointId $recoveryPointId
+		
+		$restoreJobCZR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -TargetZoneNumber 2 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJobCZR.Status -eq "Completed" }
+	}
+	finally
+	{
+		Delete-VM $resourceGroupName $targetVMName
+	}
+}
+
 function Test-AzureMonitorAlerts
 {
 	$location = "centraluseuap"
