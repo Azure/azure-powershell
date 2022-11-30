@@ -16,12 +16,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
-        /// <summary>Read-only.</summary>
+        /// <summary>The unique idenfier for an entity. Read-only.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
-        public string Id { get => this._id; }
-
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEntityInternal.Id { get => this._id; set { {_id = value;} } }
+        public string Id { get => this._id; set => this._id = value; }
 
         /// <summary>Creates an new <see cref="MicrosoftGraphEntity" /> instance.</summary>
         public MicrosoftGraphEntity()
@@ -31,23 +28,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
     }
     /// entity
     public partial interface IMicrosoftGraphEntity :
-        Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IJsonSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>
     {
-        /// <summary>Read-only.</summary>
+        /// <summary>The unique idenfier for an entity. Read-only.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
-        ReadOnly = true,
-        Description = @"Read-only.",
+        ReadOnly = false,
+        Description = @"The unique idenfier for an entity. Read-only.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
-        string Id { get;  }
+        string Id { get; set; }
 
     }
     /// entity
     internal partial interface IMicrosoftGraphEntityInternal
 
     {
-        /// <summary>Read-only.</summary>
+        /// <summary>The unique idenfier for an entity. Read-only.</summary>
         string Id { get; set; }
 
     }

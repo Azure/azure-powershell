@@ -62,14 +62,14 @@ $Actions = 'insert', 'find'
   $Roles = New-AzCosmosDBMongoDBRole -Database test -Role roleName
 
 
-New-AzCosmosDBMongoDBRoleDefinition
-	-AccountName accountName 
-	-ResourceGroupName resourceGroupName 
-	-DatabaseName test
-	-Id id
-	-Type CustomRole
-	-RoleName roleName
-	-Privileges $Privilege
+New-AzCosmosDBMongoDBRoleDefinition `
+	-AccountName accountName `
+	-ResourceGroupName resourceGroupName `
+	-DatabaseName test `
+	-Id id `
+	-Type CustomRole `
+	-RoleName roleName `
+	-Privileges $Privilege `
 	-Roles $Roles
 ```
 
@@ -89,12 +89,12 @@ $Actions = 'insert', 'find'
 $PrivilegeResource = New-AzCosmosDBMongoDBPrivilegeResource -Database test -Collection test
 $Privilege = New-AzCosmosDBMongoDBPrivilege -PrivilegeResource $PrivilegeResource -Actions $Actions
 $Roles = New-AzCosmosDBMongoDBRole -Database test -Role roleName
-New-AzCosmosDBMongoDBRoleDefinition
-	-Id id
-	-Type CustomRole
-	-RoleName roleName
-	-Privileges $Privilege
-	-Roles $Roles
+New-AzCosmosDBMongoDBRoleDefinition `
+	-Id id `
+	-Type CustomRole `
+	-RoleName roleName `
+	-Privileges $Privilege `
+	-Roles $Roles `
 	-DatabaseAccountObject $DatabaseAccount
 ```
 

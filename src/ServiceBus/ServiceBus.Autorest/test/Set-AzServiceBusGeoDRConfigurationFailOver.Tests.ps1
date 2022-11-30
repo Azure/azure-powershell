@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzServiceBusGeoDRConfigur
 }
 
 Describe 'Set-AzServiceBusGeoDRConfigurationFailOver' {
-    It 'Fail' {
+    It 'Fail'  {
         Set-AzServiceBusGeoDRConfigurationFailOver -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace -Name $env.alias
         
         while($drConfig.ProvisioningState -ne "Succeeded"){

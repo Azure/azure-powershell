@@ -27,7 +27,7 @@ Test-AzEventHubName -NamespaceName myNamespace -ResourceGroupName myResourceGrou
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICheckNameAvailabilityResult
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/test-azeventhubname
+https://learn.microsoft.com/powershell/module/az.eventhub/test-azeventhubname
 #>
 function Test-AzEventHubName {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICheckNameAvailabilityResult])]

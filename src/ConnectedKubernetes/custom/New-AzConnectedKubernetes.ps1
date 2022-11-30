@@ -190,21 +190,23 @@ function New-AzConnectedKubernetes {
     )
 
     process {
-        if(!$AcceptEULA){
-            $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
-            try {
-                $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
-            } catch {
-                Write-Error "Get legal term failed."
-                throw
+        if($AzureHybridBenefit){
+            if(!$AcceptEULA){
+                $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
+                try {
+                    $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
+                } catch {
+                    Write-Error "Get legal term failed."
+                    throw
+                }
+                $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
+                if($confirmation -ine "Y"){
+                    Return
+                }
             }
-            $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
-            if($confirmation -ine "Y"){
-                Return
-            }
-        }else {
-            $null = $PSBoundParameters.Remove('AcceptEULA')
         }
+        $null = $PSBoundParameters.Remove('AcceptEULA')
+
 
         if ($PSBoundParameters.ContainsKey('KubeConfig')) {
             $Null = $PSBoundParameters.Remove('KubeConfig')

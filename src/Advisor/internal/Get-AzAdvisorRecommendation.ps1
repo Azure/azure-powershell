@@ -45,7 +45,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
   [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/get-azadvisorrecommendation
+https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorrecommendation
 #>
 function Get-AzAdvisorRecommendation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]

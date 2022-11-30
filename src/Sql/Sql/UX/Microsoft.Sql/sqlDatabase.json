@@ -87,34 +87,39 @@
        },
        {
           "name":"Suspend-AzSqlDatabase",
-          "description":"Restarts an Azure virtual machine.",
-          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{VMName}",
+          "description":"Suspends a SQL Data Warehouse database.",
+          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{ServerName}/databases",
           "confirmation":false,
           "help":{
              "learnMore":{
-                "url":"https://learn.microsoft.com/powershell/module/az.compute/restart-azvm"
+                "url":"https://learn.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase"
              },
              "parameterSets":[
                 {
                    "parameters":[
-                      "[-ResourceGroupName] <System.String>",
-                      "[-VMName] <System.String>"
+                     "[[-ResourceGroupName] <System.String>]",
+                     "[[-ServerName] <String>]",
+                     "[[-DatabaseName] <String>]"
                    ]
                 }
              ]
           },
           "examples":[
              {
-                "description":"Restarts an Azure virtual machine.",
+                "description":"Suspends a SQL Data Warehouse database.",
                 "parameters":[
-                   {
-                      "name":"-ResourceGroupName",
-                      "value":"[path.resourceGroupName]"
-                   },
-                   {
-                      "name":"-Name",
-                      "value":"[path.VMName]"
-                   }
+                  {
+                     "name":"-ResourceGroupName",
+                     "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-ServerName",
+                     "value":"[path.ServerName]"
+                  },
+                  {
+                    "name":"-DatabaseName",
+                    "value":"[path.DatabaseName]"
+                  }
                 ]
              }
           ]

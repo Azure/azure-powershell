@@ -45,7 +45,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/disconnect-azwvdusersession
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/disconnect-azwvdusersession
 #>
 function Disconnect-AzWvdUserSession {
 [OutputType([System.Boolean])]
@@ -262,7 +262,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 MSIXIMAGEURI <IMsixImageUri>: Represents URI referring to MSIX Image
   [Uri <String>]: URI to Image
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/expand-azwvdmsiximage
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/expand-azwvdmsiximage
 #>
 function Expand-AzWvdMsixImage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IExpandMsixImage])]
@@ -475,7 +475,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdapplicationgroup
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdapplicationgroup
 #>
 function Get-AzWvdApplicationGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroup])]
@@ -681,7 +681,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdapplication
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdapplication
 #>
 function Get-AzWvdApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplication])]
@@ -887,7 +887,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvddesktop
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvddesktop
 #>
 function Get-AzWvdDesktop {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IDesktop], [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IDesktopList])]
@@ -1088,7 +1088,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdhostpoolregistrationtoken
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdhostpoolregistrationtoken
 #>
 function Get-AzWvdHostPoolRegistrationToken {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IRegistrationInfo])]
@@ -1280,7 +1280,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdhostpool
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdhostpool
 #>
 function Get-AzWvdHostPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool])]
@@ -1478,7 +1478,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdmsixpackage
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdmsixpackage
 #>
 function Get-AzWvdMsixPackage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackage])]
@@ -1681,7 +1681,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdscalingplan
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdscalingplan
 #>
 function Get-AzWvdScalingPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IScalingPlan])]
@@ -1888,7 +1888,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhost
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhost
 #>
 function Get-AzWvdSessionHost {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHost])]
@@ -2069,7 +2069,7 @@ Get-AzWvdStartMenuItem -ResourceGroupName ResourceGroupName -ApplicationGroupNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IStartMenuItem
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdstartmenuitem
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdstartmenuitem
 #>
 function Get-AzWvdStartMenuItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IStartMenuItem])]
@@ -2255,7 +2255,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdusersession
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdusersession
 #>
 function Get-AzWvdUserSession {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IUserSession])]
@@ -2476,7 +2476,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdworkspace
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdworkspace
 #>
 function Get-AzWvdWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IWorkspace])]
@@ -2666,7 +2666,7 @@ New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroup
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdapplicationgroup
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdapplicationgroup
 #>
 function New-AzWvdApplicationGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroup])]
@@ -2982,7 +2982,7 @@ New-AzWvdApplication -ResourceGroupName ResourceGroupName `
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplication
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdapplication
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdapplication
 #>
 function New-AzWvdApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplication])]
@@ -3263,7 +3263,7 @@ New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdhostpool
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdhostpool
 #>
 function New-AzWvdHostPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool])]
@@ -3716,7 +3716,7 @@ PACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies.
   [MinVersion <String>]: Dependency version required.
   [Publisher <String>]: Name of dependency publisher.
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdmsixpackage
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdmsixpackage
 #>
 function New-AzWvdMsixPackage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackage])]
@@ -4028,7 +4028,7 @@ SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
   [RampUpMinimumHostsPct <Int32?>]: Minimum host percentage for ramp up period.
   [RampUpStartTime <DateTime?>]: Starting time for ramp up period.
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdscalingplan
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdscalingplan
 #>
 function New-AzWvdScalingPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IScalingPlan])]
@@ -4356,7 +4356,7 @@ New-AzWvdWorkspace -ResourceGroupName ResourceGroupName `
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IWorkspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdworkspace
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdworkspace
 #>
 function New-AzWvdWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IWorkspace])]
@@ -4664,7 +4664,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdapplicationgroup
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdapplicationgroup
 #>
 function Remove-AzWvdApplicationGroup {
 [OutputType([System.Boolean])]
@@ -4861,7 +4861,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdapplication
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdapplication
 #>
 function Remove-AzWvdApplication {
 [OutputType([System.Boolean])]
@@ -5065,7 +5065,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdhostpool
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdhostpool
 #>
 function Remove-AzWvdHostPool {
 [OutputType([System.Boolean])]
@@ -5268,7 +5268,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdmsixpackage
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdmsixpackage
 #>
 function Remove-AzWvdMsixPackage {
 [OutputType([System.Boolean])]
@@ -5471,7 +5471,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdscalingplan
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdscalingplan
 #>
 function Remove-AzWvdScalingPlan {
 [OutputType([System.Boolean])]
@@ -5668,7 +5668,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdsessionhost
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdsessionhost
 #>
 function Remove-AzWvdSessionHost {
 [OutputType([System.Boolean])]
@@ -5877,7 +5877,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdusersession
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdusersession
 #>
 function Remove-AzWvdUserSession {
 [OutputType([System.Boolean])]
@@ -6092,7 +6092,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdworkspace
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdworkspace
 #>
 function Remove-AzWvdWorkspace {
 [OutputType([System.Boolean])]
@@ -6294,7 +6294,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/send-azwvdusersessionmessage
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/send-azwvdusersessionmessage
 #>
 function Send-AzWvdUserSessionMessage {
 [OutputType([System.Boolean])]
@@ -6517,7 +6517,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdapplicationgroup
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdapplicationgroup
 #>
 function Update-AzWvdApplicationGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroup])]
@@ -6736,7 +6736,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdapplication
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdapplication
 #>
 function Update-AzWvdApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplication])]
@@ -7013,7 +7013,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvddesktop
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvddesktop
 #>
 function Update-AzWvdDesktop {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IDesktop])]
@@ -7237,7 +7237,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdhostpool
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdhostpool
 #>
 function Update-AzWvdHostPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool])]
@@ -7547,7 +7547,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdmsixpackage
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdmsixpackage
 #>
 function Update-AzWvdMsixPackage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackage])]
@@ -7826,7 +7826,7 @@ SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
   [RampUpMinimumHostsPct <Int32?>]: Minimum host percentage for ramp up period.
   [RampUpStartTime <DateTime?>]: Starting time for ramp up period.
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdscalingplan
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdscalingplan
 #>
 function Update-AzWvdScalingPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IScalingPlan])]
@@ -8074,7 +8074,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdsessionhost
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdsessionhost
 #>
 function Update-AzWvdSessionHost {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.ISessionHost])]
@@ -8287,7 +8287,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdworkspace
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdworkspace
 #>
 function Update-AzWvdWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IWorkspace])]
@@ -8484,7 +8484,7 @@ Get-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName Hos
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.RegistrationInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdregistrationinfo
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdregistrationinfo
 #>
 function Get-AzWvdRegistrationInfo {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.RegistrationInfo])]
@@ -8645,7 +8645,7 @@ New-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName Hos
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IRegistrationInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo
 #>
 function New-AzWvdRegistrationInfo {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IRegistrationInfo])]
@@ -8814,7 +8814,7 @@ Register-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/register-azwvdapplicationgroup
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/register-azwvdapplicationgroup
 #>
 function Register-AzWvdApplicationGroup {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
@@ -8978,7 +8978,7 @@ Remove the Windows virtual desktop registration info.
 Remove-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdregistrationinfo
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdregistrationinfo
 #>
 function Remove-AzWvdRegistrationInfo {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
@@ -9140,7 +9140,7 @@ Unregister-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/unregister-azwvdapplicationgroup
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/unregister-azwvdapplicationgroup
 #>
 function Unregister-AzWvdApplicationGroup {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

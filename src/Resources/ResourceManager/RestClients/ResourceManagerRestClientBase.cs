@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
     using System.Linq;
     using System.Net.Http;
     using System.Text;
+    using System.Text.RegularExpressions;
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
@@ -163,6 +164,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
             CancellationToken cancellationToken)
         {
             var contentString = content == null ? string.Empty : content.ToString();
+            // minify JOSN payload to avoid payload too large error
+            contentString = Regex.Replace(contentString, @"\r\n?|\n|\t| ", String.Empty);
             using (var httpContent = new StringContent(content: contentString, encoding: Encoding.UTF8, mediaType: "application/json"))
             using (var request = new HttpRequestMessage(method: httpMethod, requestUri: requestUri) { Content = httpContent })
             {
