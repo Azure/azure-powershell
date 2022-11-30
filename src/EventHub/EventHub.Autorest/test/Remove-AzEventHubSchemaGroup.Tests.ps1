@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEventHubSchemaGroup'
 }
 
 Describe 'Remove-AzEventHubSchemaGroup' {
-    It 'Delete' {
+    It 'Delete'  {
         Remove-AzEventHubSchemaGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.schemaGroup2
         { Get-AzEventHubSchemaGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.schemaGroup2 } | Should -Throw
     }

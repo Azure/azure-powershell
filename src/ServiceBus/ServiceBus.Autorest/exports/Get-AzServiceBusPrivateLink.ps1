@@ -25,7 +25,7 @@ Get-AzServiceBusPrivateLink -ResourceGroupName myResourceGroup -NamespaceName my
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateLinkResourcesListResult
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusprivatelink
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusprivatelink
 #>
 function Get-AzServiceBusPrivateLink {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateLinkResourcesListResult])]
