@@ -93,5 +93,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NodeLabels-Tags");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNodeTaints()
+        {
+            TestRunner.RunTestScript("Test-NodeTaints");
+        }
     }
 }
