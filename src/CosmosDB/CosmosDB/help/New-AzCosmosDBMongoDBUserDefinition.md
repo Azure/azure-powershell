@@ -66,15 +66,15 @@ In order to specify the Role Definition's Roles,  use the New-AzCosmosDBMongoDBR
 $Roles = New-AzCosmosDBMongoDBRole -Database test -Role roleName
 
 
-New-AzCosmosDBMongoDBUserDefinition
-	-AccountName accountName 
-	-ResourceGroupName resourceGroupName 
-	-DatabaseName 'test'
-	-UserName 'myName'
-	-Password 'pass'
-	-Id id
-	-Mechanisms 'SCRAM-SHA-256'
-	-CustomData 'test'
+New-AzCosmosDBMongoDBUserDefinition `
+	-AccountName accountName `
+	-ResourceGroupName resourceGroupName `
+	-DatabaseName 'test' `
+	-UserName 'myName' `
+	-Password 'pass' `
+	-Id id `
+	-Mechanisms 'SCRAM-SHA-256' `
+	-CustomData 'test' `
 	-Roles $Roles
 ```
 
@@ -95,12 +95,12 @@ $Actions = 'insert', 'find'
 $PrivilegeResource = New-AzCosmosDBMongoDBPrivilegeResource -Database test -Collection test
 $Privilege = New-AzCosmosDBMongoDBPrivilege -PrivilegeResource $PrivilegeResource -Actions $Actions
 $Roles = New-AzCosmosDBMongoDBRole -Database test -Role roleName
-New-AzCosmosDBMongoDBRoleDefinition
-	-Id id
-	-Type CustomRole
-	-RoleName roleName
-	-Privileges $Privilege
-	-Roles $Roles
+New-AzCosmosDBMongoDBRoleDefinition `
+	-Id id `
+	-Type CustomRole `
+	-RoleName roleName `
+	-Privileges $Privilege `
+	-Roles $Roles `
 	-DatabaseAccountObject $DatabaseAccount
 ```
 
