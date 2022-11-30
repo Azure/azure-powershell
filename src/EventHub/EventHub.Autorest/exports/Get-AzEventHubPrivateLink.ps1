@@ -25,7 +25,7 @@ Get-AzEventHubPrivateLink -ResourceGroupName myResourceGroup -NamespaceName myNa
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateLinkResourcesListResult
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubprivatelink
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubprivatelink
 #>
 function Get-AzEventHubPrivateLink {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateLinkResourcesListResult])]
