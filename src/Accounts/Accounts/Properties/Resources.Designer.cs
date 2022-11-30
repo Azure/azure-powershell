@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
                 return ResourceManager.GetString("KeyStoreLoadingError", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to {0} account in environment &apos;{1}&apos;.
         /// </summary>
@@ -1114,7 +1114,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The provided service principal secret will be included in the &apos;{0}&apos; file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections..
+        ///   Looks up a localized string similar to The provided service principal secret or certifcate password will be included in the &apos;{0}&apos; file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections..
         /// </summary>
         internal static string ServicePrincipalWarning {
             get {
