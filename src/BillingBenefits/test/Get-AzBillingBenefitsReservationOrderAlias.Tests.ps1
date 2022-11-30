@@ -14,12 +14,34 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzBillingBenefitsReservat
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+function ExecuteTestCases([object]$response) {
+    $response | Should -Not -Be $null
+    $response.Id | Should -Not -Be $null
+    $response.Name | Should -Be "PSRITest2"
+    $response.SkuName | Should -Be "Standard_B1ls"
+    $response.ProvisioningState | Should -Be "Created"
+    $response.Location | Should -Be "westus"
+    $response.Type | Should -Be "Microsoft.BillingBenefits/reservationOrderAliases"
+    $response.Term | Should -Be "P1Y"
+    $response.ReservedResourceType | Should -Be "VirtualMachines"
+    $response.DisplayName | Should -Not -Be $null
+    $response.ReservationOrderId | Should -Not -Be $null
+    $response.AppliedScopeType | Should -Be "Shared"
+    $response.BillingPlan | Should -Be "P1M"
+    $response.BillingScopeId | Should -Be "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47"
+}
+
 Describe 'Get-AzBillingBenefitsReservationOrderAlias' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $response = Get-AzBillingBenefitsReservationOrderAlias -Name "PSRITest2"
+        ExecuteTestCases($response)
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $identity = @{
+                        ReservationOrderAliasName = "PSRITest2"
+                    }
+        $response = Get-AzBillingBenefitsReservationOrderAlias -InputObject $identity
+        ExecuteTestCases($response)
     }
 }

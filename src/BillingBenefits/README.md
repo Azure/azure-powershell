@@ -70,7 +70,7 @@ directive:
 
   ### Rename property name
 
-  ###Rename parameter name  
+  ### Rename parameter name  
 
   ### Format output table
   - where:
@@ -98,4 +98,66 @@ directive:
           Amount: CommitmentAmount
           CurrencyCode: CommitmentCurrency
           AppliedScopePropertiesDisplayName: AppliedScopeDisplayName
+  - where:
+      model-name: SavingsPlanOrderModel
+    set:
+      format-table:
+        properties:
+          - Name
+          - SkuName
+          - ProvisioningState
+          - ExpiryDateTime
+          - Term
+          - BillingPlan
+        labels:
+          Name: OrderId
+          ProvisioningState: Status
+          ExpiryDateTime: ExpiryDate
+  - where:
+      model-name: SavingsPlanOrderAliasModel
+    set:
+      format-table:
+        properties:
+          - Name
+          - DisplayName
+          - Id
+          - Type
+          - SkuName
+          - CommitmentAmount
+          - CommitmentCurrencyCode
+          - CommitmentGrain
+          - SavingsPlanOrderId
+          - ProvisioningState
+          - BillingScopeId
+          - Term
+          - BillingPlan
+          - AppliedScopeType
+          - AppliedScopePropertyDisplayName
+          - AppliedScopePropertyManagementGroupId
+          - AppliedScopePropertyResourceGroupId
+          - AppliedScopePropertySubscriptionId
+          - AppliedScopePropertyTenantId
+  - where:
+      model-name: ReservationOrderAliasResponse
+    set:
+      format-table:
+        properties:
+          - Name
+          - DisplayName
+          - Id
+          - Type
+          - SkuName
+          - Location
+          - Term
+          - BillingPlan
+          - ReservedResourceType
+          - ReservationOrderId
+          - ProvisioningState
+          - BillingScopeId
+          - AppliedScopeType
+          - AppliedScopePropertyDisplayName
+          - AppliedScopePropertyManagementGroupId
+          - AppliedScopePropertyResourceGroupId
+          - AppliedScopePropertySubscriptionId
+          - AppliedScopePropertyTenantId
 ```
