@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzLoad
 
 ## SYNOPSIS
-Create or update LoadTest resource.
+Create a new Azure Load Testing resource.
 
 ## SYNTAX
 
@@ -20,31 +20,66 @@ New-AzLoad -Name <String> -ResourceGroupName <String> -Location <String> [-Subsc
 ```
 
 ## DESCRIPTION
-Create or update LoadTest resource.
+Creates a new Azure Load Testing resource in the resource group in the particular region.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an Azure Load Testing resource
 ```powershell
-{{ Add code here }}
+New-AzLoad -Name sampleres -ResourceGroupName sample-rg -Location eastus
 ```
 
 ```output
-{{ Add output here }}
+Name      Resource group Location DataPlane URL
+----      -------------- -------- -------------
+sampleres sample-rg      eastus   00000000-0000-0000-0000-000000000000.eastus.cnt-prod.loadtesting.azure.com
 ```
 
-{{ Add description here }}
+This command creates a new Azure Load Testing resource named sampleres in resource group named sample-rg and in the region East US.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create an Azure Load Testing resource with Managed Identity
 ```powershell
-{{ Add code here }}
+$userAssigned = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1" = @{}; "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2" = @{}}
+
+New-AzLoad -Name sampleres -ResourceGroupName sample-rg -Location eastus -IdentityType "SystemAssigned,UserAssigned" -IdentityUserAssigned $userAssigned
 ```
 
 ```output
-{{ Add output here }}
+Name      Resource group Location DataPlane URL
+----      -------------- -------- -------------
+sampleres sample-rg      eastus   00000000-0000-0000-0000-000000000000.eastus.cnt-prod.loadtesting.azure.com
 ```
 
-{{ Add description here }}
+This command creates a new Azure Load Testing resource named sampleres in resource group named sample-rg and in the region East US, with System-Assigned and 2 provided User-Assigned managed identities.
+
+### Example 3: Create an Azure Load Testing resource with Customer Managed key encryption
+```powershell
+$userAssigned = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1" = @{}}
+
+New-AzLoad -Name sampleres -ResourceGroupName sample-rg -Location eastus -IdentityType "SystemAssigned,UserAssigned" -IdentityUserAssigned $userAssigned -EncryptionIdentity "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1" -EncryptionKey "https://sample-akv.vault.azure.net/keys/cmk/2d1ccd5c50234ea2a0858fe148b69cde"
+```
+
+```output
+Name      Resource group Location DataPlane URL
+----      -------------- -------- -------------
+sampleres sample-rg      eastus   00000000-0000-0000-0000-000000000000.eastus.cnt-prod.loadtesting.azure.com
+```
+
+This command creates a new Azure Load Testing resource named sampleres in resource group named sample-rg and in the region East US, with the provided User-Assigned managed identity and uses the Encryption Identity to access the Encryption Key for CMK encryption.
+
+### Example 4: Create an Azure Load Testing resource with tags
+```powershell
+$tag = @{"key1" = "value1"; "key2" = "value2"}
+New-AzLoad -Name sampleres -ResourceGroupName sample-rg -Location eastus -Tag $tag
+```
+
+```output
+Name      Resource group Location DataPlane URL
+----      -------------- -------- -------------
+sampleres sample-rg      eastus   00000000-0000-0000-0000-000000000000.eastus.cnt-prod.loadtesting.azure.com
+```
+
+This command creates a new Azure Load Testing resource named sampleres in resource group named sample-rg and in the region East US with the provided tags.
 
 ## PARAMETERS
 
@@ -79,8 +114,8 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionIdentity
-Managed identity to use for accessing key encryption key Url.
-Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/\<resource group\>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId for User Assigned Identity and SystemAssigned for System Assigned Identity
+The managed identity for Customer-managed key settings defining which identity should be used to authenticate to Key Vault.
+Ex: '/subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/\<resource group\>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId' uses the given user-assigned managed identity.
 
 ```yaml
 Type: System.String
@@ -95,8 +130,8 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionKey
-key encryption key Url, versioned.
-Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
+Encryption key URL, versioned.
+Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78.
 
 ```yaml
 Type: System.String
@@ -111,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+Type of managed identity.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Support.ManagedServiceIdentityType
@@ -126,9 +161,10 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityUserAssigned
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
+The list of user assigned identities associated with the resource.
+The user identity will be ARM resource ids.
+The User Assigned Identity is a hashtable with keys in the form of an ARM resource id '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The values of the keys are empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -143,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The geo-location where the resource lives
+Location where the Azure Load Testing resource needs to be created.
 
 ```yaml
 Type: System.String
@@ -158,7 +194,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Load Test name.
+Name of the new Azure Load Testing resource.
 
 ```yaml
 Type: System.String
@@ -188,8 +224,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Name of the resource group.
 
 ```yaml
 Type: System.String
@@ -204,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+The ID of the subscription.
 
 ```yaml
 Type: System.String
@@ -219,7 +254,8 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+Key-value pairs in the form of a hash table set as tags on the server.
+For example: @{key0="value0";key1=$null;key2="value2"}.
 
 ```yaml
 Type: System.Collections.Hashtable

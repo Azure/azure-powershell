@@ -45,23 +45,6 @@ nested-object-to-string: true
 inlining-threshold: 200
 
 directive:
-  - from: swagger-document
-    where: $.definitions.EncryptionProperties.properties.identity.properties.type
-    transform: >-
-      return {
-        "type": "string",
-        "enum": [
-          "SystemAssigned",
-          "UserAssigned"
-        ],
-        "x-ms-client-name": "IdentityType",
-        "x-ms-enum": {
-          "name": "EncryptionIdentityType",
-          "modelAsString": true
-        },
-        "description": "Managed identity type to use for accessing encryption key Url"
-      }
-
   # https://stackoverflow.microsoft.com/questions/333196
   - where:
       subject: .*Quota.*
@@ -120,25 +103,40 @@ directive:
     set:
       parameter-name: IdentityType
 
+  # Renaming output variables
   - where:
       property-name: EncryptionKeyUrl
     set:
       property-name: EncryptionKey
+  
+  - where:
+      property-name: IdentityResourceId
+    set:
+      property-name: EncryptionIdentityResourceId
+
+  - where:
+      property-name: PropertiesEncryptionIdentityType
+    set:
+      property-name: EncryptionIdentityType
+
+  - where:
+      property-name: ManagedServiceIdentityType
+    set:
+      property-name: IdentityType
 
   # formatting the output
   - where:
       model-name: LoadTestResource
     set:
-      suppress-format: true
-      # format-table:
-      #   properties:
-      #     - Name
-      #     - ResourceGroupName
-      #     - Location
-      #     - DataPlaneUri
-      #   labels:
-      #     ResourceGroupName: Resource group
-      #     DataPlaneUri: DataPlane URL
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - Location
+          - DataPlaneUri
+        labels:
+          ResourceGroupName: Resource group
+          DataPlaneUri: DataPlane URL
   
   # Hiding redundant SystemData property 
   - from: source-file-csharp

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzLoad
 
 ## SYNOPSIS
-Get a LoadTest resource.
+Get the details of an Azure Load Testing resource.
 
 ## SYNTAX
 
@@ -30,31 +30,50 @@ Get-AzLoad -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultPro
 ```
 
 ## DESCRIPTION
-Get a LoadTest resource.
+Get the details of an Azure Load Testing resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all Azure Load Testing resources in a subscription
 ```powershell
-{{ Add code here }}
+Get-AzLoad
 ```
 
 ```output
-{{ Add output here }}
+Name       Resource group Location DataPlane URL
+----       -------------- -------- -------------
+sampleres  sample-rg      eastus   00000000-0000-0000-0000-000000000000.eastus.cnt-prod.loadtesting.azure.com
+sampleres1 sample-rg      eastus   00000000-0000-0000-0000-000000000001.eastus.cnt-prod.loadtesting.azure.com
 ```
 
-{{ Add description here }}
+This command lists all Azure Load Testing resources in the subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get all Azure Load Testing resources in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzLoad -ResourceGroupName sample-rg
 ```
 
 ```output
-{{ Add output here }}
+Name       Resource group Location DataPlane URL
+----       -------------- -------- -------------
+sampleres  sample-rg      eastus   00000000-0000-0000-0000-000000000000.eastus.cnt-prod.loadtesting.azure.com
+sampleres1 sample-rg      eastus   00000000-0000-0000-0000-000000000001.eastus.cnt-prod.loadtesting.azure.com
 ```
 
-{{ Add description here }}
+This command lists all Azure Load Testing resources in resource group named sample-rg.
+
+### Example 2: Get the details of an Azure Load Testing resource
+```powershell
+Get-AzLoad -Name sampleres -ResourceGroupName sample-rg
+```
+
+```output
+Name       Resource group Location DataPlane URL
+----       -------------- -------- -------------
+sampleres  sample-rg      eastus   00000000-0000-0000-0000-000000000000.eastus.cnt-prod.loadtesting.azure.com
+```
+
+This command gets the details of the Azure Load Testing resource named sampleres in resource group named sample-rg.
 
 ## PARAMETERS
 
@@ -74,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Load Test name.
+Name of the Azure Load Testing resource.
 
 ```yaml
 Type: System.String
@@ -89,8 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Name of the resource group.
 
 ```yaml
 Type: System.String
@@ -105,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+The ID of the subscription.
 
 ```yaml
 Type: System.String[]

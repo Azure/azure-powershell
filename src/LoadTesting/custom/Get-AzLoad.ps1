@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get a LoadTest resource.
+Get the details of an Azure Load Testing resource.
 .Description
-Get a LoadTest resource.
+Get the details of an Azure Load Testing resource.
 .Example
 {{ Add code here }}
 .Example
@@ -37,22 +37,21 @@ function Get-AzLoad {
         [Alias('LoadTestName')]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Path')]
         [System.String]
-        # Load Test name.
+        # Name of the Azure Load Testing resource.
         ${Name},
     
         [Parameter(ParameterSetName='Get', Mandatory)]
         [Parameter(ParameterSetName='List1', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Path')]
         [System.String]
-        # The name of the resource group.
-        # The name is case insensitive.
+        # Name of the resource group.
         ${ResourceGroupName},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String[]]
-        # The ID of the target subscription.
+        # The ID of the subscription.
         ${SubscriptionId},
     
         [Parameter()]
@@ -104,7 +103,12 @@ function Get-AzLoad {
     )
     
     process {
-        Az.LoadTesting.internal\Get-AzLoad @PSBoundParameters
+        try {
+            Az.LoadTesting.internal\Get-AzLoad @PSBoundParameters
+        }
+        catch {
+            throw
+        }
     }
 }
     

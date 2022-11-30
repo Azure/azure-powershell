@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create or update LoadTest resource.
+Create a new Azure Load Testing resource.
 .Description
-Create or update LoadTest resource.
+Creates a new Azure Load Testing resource in the resource group in the particular region.
 .Example
 {{ Add code here }}
 .Example
@@ -37,64 +37,63 @@ function New-AzLoad {
         [Alias('LoadTestName')]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Path')]
         [System.String]
-        # Load Test name.
+        # Name of the new Azure Load Testing resource.
         ${Name},
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Path')]
         [System.String]
-        # The name of the resource group.
-        # The name is case insensitive.
+        # Name of the resource group.
         ${ResourceGroupName},
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
-        # The ID of the target subscription.
+        # The ID of the subscription.
         ${SubscriptionId},
     
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
         [System.String]
-        # The geo-location where the resource lives
+        # Location where the Azure Load Testing resource needs to be created.
         ${Location},
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
         [System.String]
-        # Managed identity to use for accessing key encryption key Url.
-        # Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId for User Assigned Identity.
+        # The managed identity for Customer-managed key settings defining which identity should be used to authenticate to Key Vault.
+        # Ex: '/subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId' uses the given user-assigned managed identity.
         ${EncryptionIdentity},
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
         [System.String]
-        # key encryption key Url, versioned.
-        # Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
+        # Encryption key URL, versioned.
+        # Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78.
         ${EncryptionKey},
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Support.ManagedServiceIdentityType])]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Support.ManagedServiceIdentityType]
-        # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        # Type of managed identity.
         ${IdentityType},
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api50.IUserAssignedIdentities]))]
         [System.Collections.Hashtable]
-        # The set of user assigned identities associated with the resource.
-        # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        # The dictionary values can be empty objects ({}) in requests.
+        # The list of user assigned identities associated with the resource. The user identity will be ARM resource ids.
+        # The User Assigned Identity is a hashtable with keys in the form of an ARM resource id '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        # The values of the keys are empty objects ({}) in requests.
         ${IdentityUserAssigned},
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api30.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
-        # Resource tags.
+        # Key-value pairs in the form of a hash table set as tags on the server. For example: @{key0="value0";key1=$null;key2="value2"}. 
         ${Tag},
     
         [Parameter(ParameterSetName='CreateExpanded')]
@@ -171,7 +170,7 @@ function New-AzLoad {
                     if($PSBoundParameters['IdentityType'].ToString().ToLower() -eq 'none') {
                         $null = $PSBoundParameters.Add("IdentityType", 'UserAssigned')
                     }
-                    if($PSBoundParameters['IdentityType'].ToString().ToLower() -eq 'systemassigned') {
+                    elseif($PSBoundParameters['IdentityType'].ToString().ToLower() -eq 'systemassigned') {
                         $null = $PSBoundParameters.Add("IdentityType", 'SystemAssigned,UserAssigned')
                     }
                 }
@@ -181,7 +180,10 @@ function New-AzLoad {
 
                 # Update the User Assigned Identities
                 if ($PSBoundParameters.ContainsKey('IdentityUserAssigned')) {
-                    $null = $PSBoundParameters['IdentityUserAssigned'].Add($PSBoundParameters['EncryptionIdentityResourceId'], @{})
+                    if ($null -eq $PSBoundParameters['IdentityUserAssigned']){
+                        $PSBoundParameters['IdentityUserAssigned'] = @{}
+                    }
+                    $PSBoundParameters['IdentityUserAssigned'][$PSBoundParameters['EncryptionIdentityResourceId']] = @{}
                 }
                 else {
                     $null = $PSBoundParameters.Add("IdentityUserAssigned", @{ $PSBoundParameters['EncryptionIdentityResourceId'] = @{} })

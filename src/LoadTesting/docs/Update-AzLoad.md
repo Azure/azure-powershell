@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzLoad
 
 ## SYNOPSIS
-Update a loadtest resource.
+Update an Azure Load Testing resource.
 
 ## SYNTAX
 
@@ -20,31 +20,36 @@ Update-AzLoad -Name <String> -ResourceGroupName <String> [-SubscriptionId <Strin
 ```
 
 ## DESCRIPTION
-Update a loadtest resource.
+Updates an Azure Load Testing resource in a given resource group.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an Azure Load Testing resource with tags
 ```powershell
-{{ Add code here }}
+$tag = @{"key0" = "value0"}
+Update-AzLoad -Name sampleres -ResourceGroupName sample-rg -Tag $tag
 ```
 
 ```output
-{{ Add output here }}
+Name      Resource group Location DataPlane URL
+----      -------------- -------- -------------
+sampleres sample-rg      eastus   00000000-0000-0000-0000-000000000000.eastus.cnt-prod.loadtesting.azure.com
 ```
 
-{{ Add description here }}
+This command updates the Azure Load Testing resource named sampleres in resource group named sample-rg with the provided tags.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update an Azure Load Testing resource to use System-Assigned identity for CMK encryption
 ```powershell
-{{ Add code here }}
+New-AzLoad -Name sampleres -ResourceGroupName sample-rg -IdentityType "SystemAssigned" -EncryptionIdentity "SystemAssigned" -EncryptionKey "https://sample-akv.vault.azure.net/keys/cmk/2d1ccd5c50234ea2a0858fe148b69cde"
 ```
 
 ```output
-{{ Add output here }}
+Name      Resource group Location DataPlane URL
+----      -------------- -------- -------------
+sampleres sample-rg      eastus   00000000-0000-0000-0000-000000000000.eastus.cnt-prod.loadtesting.azure.com
 ```
 
-{{ Add description here }}
+This command updates the Azure Load Testing resource named sampleres in resource group named sample-rg, to use System-assigned identity for accessing the encryption key for CMK encryption.
 
 ## PARAMETERS
 
@@ -79,8 +84,9 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionIdentity
-Managed identity to use for accessing key encryption key Url.
-Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/\<resource group\>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId for User Assigned Identity and SystemAssigned for System Assigned Identity
+The managed identity for Customer-managed key settings defining which identity should be used to authenticate to Key Vault.
+
+Ex: 'SystemAssigned' uses system-assigned managed identity, whereas '/subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/\<resource group\>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId' uses the given user-assigned managed identity.
 
 ```yaml
 Type: System.String
@@ -95,8 +101,8 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionKey
-key encryption key Url, versioned.
-Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
+Encryption key URL, versioned.
+Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78.
 
 ```yaml
 Type: System.String
@@ -111,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+Type of managed identity.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Support.ManagedServiceIdentityType
@@ -126,9 +132,10 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityUserAssigned
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
+The list of user assigned identities associated with the resource.
+The user identity will be ARM resource ids.
+The User Assigned Identity is a hashtable with keys in the form of an ARM resource id '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The values of the keys can be empty objects ({}) to assign an identity.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -143,7 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Load Test name.
+Name of the Azure Load Testing resource.
 
 ```yaml
 Type: System.String
@@ -173,8 +180,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Name of the resource group.
 
 ```yaml
 Type: System.String
@@ -189,7 +195,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+The ID of the subscription.
 
 ```yaml
 Type: System.String
@@ -204,7 +210,8 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+Key-value pairs in the form of a hash table set as tags on the server.
+For example: @{key0="value0";key1=$null;key2="value2"}.
 
 ```yaml
 Type: System.Collections.Hashtable
