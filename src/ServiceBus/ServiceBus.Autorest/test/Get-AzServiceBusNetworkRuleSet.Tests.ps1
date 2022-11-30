@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceBusNetworkRuleSe
 }
 
 Describe 'Get-AzServiceBusNetworkRuleSet' {
-    It 'Get' {
+    It 'Get'  {
         $networkRuleSet = Get-AzServiceBusNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $networkRuleSet.PublicNetworkAccess | Should -Be "Enabled"
         $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $null
