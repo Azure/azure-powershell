@@ -180,8 +180,12 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                             pool.Tags.Add(key.ToString(), Tag[key].ToString());
                         }
                     }
+                    if (this.IsParameterBound(c => c.NodeTaint))
+                    {
+                        pool.NodeTaints = NodeTaint;
+                    }
 
-                    var updatedPool = Client.AgentPools.CreateOrUpdate(ResourceGroupName, ClusterName, Name, pool);
+                    var updatedPool = this.CreateOrUpdate(ResourceGroupName, ClusterName, Name, pool);
                     WriteObject(PSMapper.Instance.Map<PSNodePool>(updatedPool));
                 });
             }

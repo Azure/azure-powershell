@@ -15,7 +15,6 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
@@ -113,7 +112,7 @@ namespace Microsoft.Azure.Commands.Aks
                     ClusterName = ClusterObject.Name;
                 }
                 var agentPool = GetAgentPool();
-                var pool = Client.AgentPools.CreateOrUpdate(ResourceGroupName, ClusterName, Name, agentPool);
+                var pool = this.CreateOrUpdate(ResourceGroupName, ClusterName, Name, agentPool);
                 var psPool = PSMapper.Instance.Map<PSNodePool>(pool);
                 WriteObject(psPool);
             };
@@ -210,6 +209,10 @@ namespace Microsoft.Azure.Commands.Aks
                 {
                     agentPool.Tags.Add(key.ToString(), Tag[key].ToString());
                 }
+            }
+            if (this.IsParameterBound(c => c.NodeTaint))
+            {
+                agentPool.NodeTaints = NodeTaint;
             }
 
             return agentPool;
