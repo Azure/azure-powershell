@@ -24,12 +24,13 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-WindowsProfileAdminUserPassword <SecureString>] [-NetworkPlugin <String>] [-NetworkPolicy <String>]
  [-PodCidr <String>] [-ServiceCidr <String>] [-DnsServiceIP <String>] [-DockerBridgeCidr <String>]
  [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey] [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>]
- [-AvailabilityZone <String[]>] [-NodeResourceGroup <String>] [-ResourceGroupName] <String> [-Name] <String>
- [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>] [-LinuxProfileAdminUserName <String>]
- [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
- [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
- [-NodeVmSize <String>] [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>]
- [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
+ [-AvailabilityZone <String[]>] [-NodeResourceGroup <String>] [-EnableEncryptionAtHost]
+ [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
+ [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
+ [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
+ [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
+ [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>]
+ [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
  [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
  [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
  [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
@@ -307,6 +308,21 @@ Accept wildcard characters: False
 
 ### -EnableApiServerAccessPrivateClusterPublicFQDN
 Whether to create additional public FQDN for private cluster or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableEncryptionAtHost
+Whether to enable host based OS and data drive
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
