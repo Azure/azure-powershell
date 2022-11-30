@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzServiceBusTopic'))
 }
 
 Describe 'New-AzServiceBusTopic' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded'  {
         $topic1 = New-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name topic2 -DefaultMessageTimeToLive (New-TimeSpan -Days 365) -RequiresDuplicateDetection -AutoDeleteOnIdle (New-TimeSpan -Days 428 -Hours 3 -Minutes 11 -Seconds 2) -DuplicateDetectionHistoryTimeWindow (New-TimeSpan -Days 1 -Minutes 3 -Seconds 4) -EnableBatchedOperations -SupportOrdering -MaxMessageSizeInKilobytes 102400
         $topic1.Name | Should -Be "topic2"
         $topic1.ResourceGroupName | Should -Be $env.resourceGroup

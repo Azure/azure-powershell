@@ -131,9 +131,9 @@ directive:
       subject: GeoDRConfiguration
 
 # Remove namespace cmdlets
-  - where:
-      subject: Namespace
-    remove: true
+#  - where:
+#      subject: Namespace
+#    remove: true
 
 # Hide New-AzEventHubPrivateEndpointConnection
   - where:
@@ -145,6 +145,95 @@ directive:
       subject: PrivateLinkResource
     set:
       subject: PrivateLink
+
+# Renaming New-AzEventHubNamespace
+  - where:
+      verb: New
+      subject: Namespace
+      parameter-name: EncryptionRequireInfrastructureEncryption
+    set:
+      parameter-name: RequireInfrastructureEncryption
+  - where:
+      model-name: EhNamespace
+      property-name: EncryptionRequireInfrastructureEncryption
+    set:
+      property-name: RequireInfrastructureEncryption
+  
+  - where:
+      verb: New
+      subject: Namespace
+      parameter-name: EncryptionKeyVaultProperty
+    set:
+      parameter-name: KeyVaultProperty
+  - where:
+      model-name: EhNamespace
+      property-name: EncryptionKeyVaultProperty
+    set:
+      property-name: KeyVaultProperty
+
+  - where:
+      verb: New
+      subject: Namespace
+      parameter-name: IsAutoInflateEnabled
+    set:
+      parameter-name: EnableAutoInflate
+  - where:
+      model-name: EhNamespace
+      property-name: IsAutoInflateEnabled
+    set:
+      property-name: EnableAutoInflate
+  
+  - where:
+      verb: New
+      subject: Namespace
+      parameter-name: EncryptionKeySource
+    set:
+      parameter-name: KeySource
+  - where:
+      model-name: EhNamespace
+      property-name: EncryptionKeySource
+    set:
+      property-name: KeySource
+
+  - where:
+      verb: New
+      subject: Namespace
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
+  - where:
+      model-name: EhNamespace
+      property-name: IdentityUserAssignedIdentity
+    set:
+      property-name: UserAssignedIdentity
+
+  - where:
+      model-name: EhNamespace
+      property-name: IdentityPrincipalId
+    set:
+      property-name: PrincipalId
+
+  - where:
+      model-name: EhNamespace
+      property-name: IdentityTenantId
+    set:
+      property-name: TenantId
+  
+  - where:
+      subject: Namespace
+    set:
+      subject: NamespaceV2
+    
+  - where:
+      verb: New
+      subject: NamespaceV2
+    hide: true
+
+  - where:
+      model-name: KeyVaultProperties
+      property-name: IdentityUserAssignedIdentity
+    set:
+      property-name: UserAssignedIdentity
 
   - where:
       verb: Get
@@ -315,3 +404,6 @@ directive:
       model-name: (.*)
     set:
       suppress-format: true
+
+  - model-cmdlet:
+    - KeyVaultProperties
