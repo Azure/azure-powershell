@@ -1,45 +1,22 @@
 ---
 external help file:
 Module Name: Az.VoiceServices
-online version: https://learn.microsoft.com/powershell/module/az.voiceservices/new-azvoiceservicescommunicationgateway
+online version: https://learn.microsoft.com/powershell/module/az.voiceservices/new-azvoiceservicescommunicationsgateway
 schema: 2.0.0
 ---
 
-# New-AzVoiceServicesCommunicationGateway
+# New-AzVoiceServicesCommunicationsGateway
 
 ## SYNOPSIS
 Create a CommunicationsGateway
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzVoiceServicesCommunicationGateway -CommunicationsGatewayName <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>] [-ApiBridge <IAny>] [-Codec <TeamsCodecs[]>]
- [-E911Type <E911Type>] [-Platform <CommunicationsPlatform[]>] [-ServiceLocation <IServiceRegionProperties[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzVoiceServicesCommunicationGateway -CommunicationsGatewayName <String> -ResourceGroupName <String>
- -Resource <ICommunicationsGateway> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzVoiceServicesCommunicationGateway -InputObject <IVoiceServicesIdentity>
- -Resource <ICommunicationsGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzVoiceServicesCommunicationGateway -InputObject <IVoiceServicesIdentity> -Location <String>
- [-ApiBridge <IAny>] [-Codec <TeamsCodecs[]>] [-E911Type <E911Type>] [-Platform <CommunicationsPlatform[]>]
- [-ServiceLocation <IServiceRegionProperties[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVoiceServicesCommunicationsGateway -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-ApiBridge <Hashtable>] [-Codec <TeamsCodecs[]>] [-E911Type <E911Type>]
+ [-Platform <CommunicationsPlatform[]>] [-ServiceLocation <IServiceRegionProperties[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,8 +52,8 @@ Create a CommunicationsGateway
 Details of API bridge functionality, if required
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IAny
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -106,25 +83,10 @@ Voice codecs to support
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.TeamsCodecs[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CommunicationsGatewayName
-Unique identifier for this deployment
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,7 +113,7 @@ How to handle 911 calls
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.E911Type
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -161,28 +123,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Unique identifier for this deployment
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -212,7 +173,7 @@ What platforms to support
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.CommunicationsPlatform[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -222,29 +183,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-A CommunicationsGateway resource
-To construct, see NOTES section for RESOURCE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -260,7 +205,7 @@ To construct, see NOTES section for SERVICELOCATION properties and create a hash
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IServiceRegionProperties[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -275,7 +220,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -290,7 +235,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -336,10 +281,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway
-
-### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway
@@ -352,34 +293,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`INPUTOBJECT <IVoiceServicesIdentity>`: Identity Parameter
-  - `[CommunicationsGatewayName <String>]`: Unique identifier for this deployment
-  - `[ContactName <String>]`: Unique identifier for this contact
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TestLineName <String>]`: Unique identifier for this test line
-
-`RESOURCE <ICommunicationsGateway>`: A CommunicationsGateway resource
-  - `Location <String>`: The geo-location where the resource lives
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[ApiBridge <IAny>]`: Details of API bridge functionality, if required
-  - `[Codec <TeamsCodecs[]>]`: Voice codecs to support
-  - `[E911Type <E911Type?>]`: How to handle 911 calls
-  - `[Platform <CommunicationsPlatform[]>]`: What platforms to support
-  - `[RetryAfter <Int32?>]`: 
-  - `[ServiceLocation <IServiceRegionProperties[]>]`: The regions in which to deploy the resources needed for Teams Calling
-    - `Name <String>`: The name of the region in which the resources needed for Teams Calling will be deployed.
-    - `PrimaryRegionPropertyOperatorAddress <String[]>`: IP address to use to contact the operator network from this region
-    - `[PrimaryRegionPropertyEsrpAddress <String[]>]`: IP address to use to contact the ESRP from this region
 
 `SERVICELOCATION <IServiceRegionProperties[]>`: The regions in which to deploy the resources needed for Teams Calling
   - `Name <String>`: The name of the region in which the resources needed for Teams Calling will be deployed.

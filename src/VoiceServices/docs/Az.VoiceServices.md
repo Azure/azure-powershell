@@ -11,51 +11,42 @@ Locale: en-US
 Microsoft Azure PowerShell: VoiceServices cmdlets
 
 ## Az.VoiceServices Cmdlets
-### [Get-AzVoiceServicesCommunicationGateway](Get-AzVoiceServicesCommunicationGateway.md)
-List CommunicationsGateway resources by subscription ID
+### [Get-AzVoiceServicesCommunicationsContact](Get-AzVoiceServicesCommunicationsContact.md)
+Get a Contact
 
 ### [Get-AzVoiceServicesCommunicationsGateway](Get-AzVoiceServicesCommunicationsGateway.md)
 Get a CommunicationsGateway
 
-### [Get-AzVoiceServicesContact](Get-AzVoiceServicesContact.md)
-Get a Contact
-
-### [Get-AzVoiceServicesTestLine](Get-AzVoiceServicesTestLine.md)
+### [Get-AzVoiceServicesCommunicationsTestLine](Get-AzVoiceServicesCommunicationsTestLine.md)
 Get a TestLine
 
-### [New-AzVoiceServicesCommunicationGateway](New-AzVoiceServicesCommunicationGateway.md)
-Create a CommunicationsGateway
-
-### [New-AzVoiceServicesContact](New-AzVoiceServicesContact.md)
+### [New-AzVoiceServicesCommunicationsContact](New-AzVoiceServicesCommunicationsContact.md)
 Create a Contact
 
-### [New-AzVoiceServicesTestLine](New-AzVoiceServicesTestLine.md)
+### [New-AzVoiceServicesCommunicationsGateway](New-AzVoiceServicesCommunicationsGateway.md)
+Create a CommunicationsGateway
+
+### [New-AzVoiceServicesCommunicationsGatewayServiceRegionObject](New-AzVoiceServicesCommunicationsGatewayServiceRegionObject.md)
+Create an in-memory object for ServiceRegionProperties.
+
+### [New-AzVoiceServicesCommunicationsTestLine](New-AzVoiceServicesCommunicationsTestLine.md)
 Create a TestLine
+
+### [Remove-AzVoiceServicesCommunicationsContact](Remove-AzVoiceServicesCommunicationsContact.md)
+Delete a Contact
 
 ### [Remove-AzVoiceServicesCommunicationsGateway](Remove-AzVoiceServicesCommunicationsGateway.md)
 Delete a CommunicationsGateway
 
-### [Remove-AzVoiceServicesContact](Remove-AzVoiceServicesContact.md)
-Delete a Contact
-
-### [Remove-AzVoiceServicesTestLine](Remove-AzVoiceServicesTestLine.md)
+### [Remove-AzVoiceServicesCommunicationsTestLine](Remove-AzVoiceServicesCommunicationsTestLine.md)
 Delete a TestLine
 
-### [Set-AzVoiceServicesCommunicationGateway](Set-AzVoiceServicesCommunicationGateway.md)
-Create a CommunicationsGateway
-
-### [Set-AzVoiceServicesContact](Set-AzVoiceServicesContact.md)
-Create a Contact
-
-### [Set-AzVoiceServicesTestLine](Set-AzVoiceServicesTestLine.md)
-Create a TestLine
+### [Update-AzVoiceServicesCommunicationsContact](Update-AzVoiceServicesCommunicationsContact.md)
+Update a Contact
 
 ### [Update-AzVoiceServicesCommunicationsGateway](Update-AzVoiceServicesCommunicationsGateway.md)
 Update a CommunicationsGateway
 
-### [Update-AzVoiceServicesContact](Update-AzVoiceServicesContact.md)
-Update a Contact
-
-### [Update-AzVoiceServicesTestLine](Update-AzVoiceServicesTestLine.md)
+### [Update-AzVoiceServicesCommunicationsTestLine](Update-AzVoiceServicesCommunicationsTestLine.md)
 Update a TestLine
 

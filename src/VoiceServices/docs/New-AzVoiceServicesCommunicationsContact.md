@@ -1,30 +1,22 @@
 ---
 external help file:
 Module Name: Az.VoiceServices
-online version: https://learn.microsoft.com/powershell/module/az.voiceservices/set-azvoiceservicescontact
+online version: https://learn.microsoft.com/powershell/module/az.voiceservices/new-azvoiceservicescommunicationscontact
 schema: 2.0.0
 ---
 
-# Set-AzVoiceServicesContact
+# New-AzVoiceServicesCommunicationsContact
 
 ## SYNOPSIS
 Create a Contact
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Set-AzVoiceServicesContact -CommunicationsGatewayName <String> -Name <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>] [-Email <String>] [-PhoneNumber <String>]
- [-PropertiesContactName <String>] [-Role <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Set-AzVoiceServicesContact -CommunicationsGatewayName <String> -Name <String> -ResourceGroupName <String>
- -Resource <IContact> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzVoiceServicesCommunicationsContact -CommunicationsGatewayName <String> -Name <String>
+ -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>] [-Email <String>]
+ [-FullContactName <String>] [-PhoneNumber <String>] [-Role <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,7 +98,22 @@ Email address of contact
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FullContactName
+Full name of contact
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -121,7 +128,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -166,44 +173,13 @@ Telephone number of contact
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesContactName
-Full name of contact
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Resource
-A Contact resource
-To construct, see NOTES section for RESOURCE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -228,7 +204,7 @@ Job title of contact
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -258,7 +234,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -304,8 +280,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact
@@ -313,27 +287,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`RESOURCE <IContact>`: A Contact resource
-  - `Location <String>`: The geo-location where the resource lives
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[ContactName <String>]`: Full name of contact
-  - `[Email <String>]`: Email address of contact
-  - `[PhoneNumber <String>]`: Telephone number of contact
-  - `[RetryAfter <Int32?>]`: 
-  - `[Role <String>]`: Job title of contact
 
 ## RELATED LINKS
 

@@ -1,37 +1,37 @@
 ---
 external help file:
 Module Name: Az.VoiceServices
-online version: https://learn.microsoft.com/powershell/module/az.voiceservices/get-azvoiceservicescontact
+online version: https://learn.microsoft.com/powershell/module/az.voiceservices/get-azvoiceservicescommunicationstestline
 schema: 2.0.0
 ---
 
-# Get-AzVoiceServicesContact
+# Get-AzVoiceServicesCommunicationsTestLine
 
 ## SYNOPSIS
-Get a Contact
+Get a TestLine
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzVoiceServicesContact -CommunicationsGatewayName <String> -ResourceGroupName <String>
+Get-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzVoiceServicesContact -CommunicationsGatewayName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzVoiceServicesContact -InputObject <IVoiceServicesIdentity> [-DefaultProfile <PSObject>]
+Get-AzVoiceServicesCommunicationsTestLine -InputObject <IVoiceServicesIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a Contact
+Get a TestLine
 
 ## EXAMPLES
 
@@ -106,12 +106,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Unique identifier for this contact
+Unique identifier for this test line
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: ContactName
+Aliases: TestLineName
 
 Required: True
 Position: Named
@@ -160,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.IContact
+### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine
 
 ## NOTES
 

@@ -12,7 +12,13 @@ Get a CommunicationsGateway
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
+```
+Get-AzVoiceServicesCommunicationsGateway [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get
 ```
 Get-AzVoiceServicesCommunicationsGateway -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -22,6 +28,12 @@ Get-AzVoiceServicesCommunicationsGateway -Name <String> -ResourceGroupName <Stri
 ```
 Get-AzVoiceServicesCommunicationsGateway -InputObject <IVoiceServicesIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzVoiceServicesCommunicationsGateway -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +117,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -120,7 +132,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False

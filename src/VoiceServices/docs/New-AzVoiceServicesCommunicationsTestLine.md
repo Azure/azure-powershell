@@ -1,32 +1,26 @@
 ---
 external help file:
 Module Name: Az.VoiceServices
-online version: https://learn.microsoft.com/powershell/module/az.voiceservices/remove-azvoiceservicestestline
+online version: https://learn.microsoft.com/powershell/module/az.voiceservices/new-azvoiceservicescommunicationstestline
 schema: 2.0.0
 ---
 
-# Remove-AzVoiceServicesTestLine
+# New-AzVoiceServicesCommunicationsTestLine
 
 ## SYNOPSIS
-Delete a TestLine
+Create a TestLine
 
 ## SYNTAX
 
-### Delete (Default)
 ```
-Remove-AzVoiceServicesTestLine -CommunicationsGatewayName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzVoiceServicesTestLine -InputObject <IVoiceServicesIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVoiceServicesCommunicationsTestLine -CommunicationsGatewayName <String> -Name <String>
+ -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>] [-PhoneNumber <String>]
+ [-Purpose <TestLinePurpose>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a TestLine
+Create a TestLine
 
 ## EXAMPLES
 
@@ -74,7 +68,7 @@ Unique identifier for this deployment
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -99,19 +93,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -Location
+The geo-location where the resource lives
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
-Parameter Sets: DeleteViaIdentity
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -120,7 +113,7 @@ Unique identifier for this test line
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases: TestLineName
 
 Required: True
@@ -145,11 +138,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -PhoneNumber
+The phone number
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Purpose
+Purpose of this test line, e.g.
+automated or manual testing
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.TestLinePurpose
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +175,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -181,12 +190,27 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -227,28 +251,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IVoiceServicesIdentity
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ITestLine
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IVoiceServicesIdentity>`: Identity Parameter
-  - `[CommunicationsGatewayName <String>]`: Unique identifier for this deployment
-  - `[ContactName <String>]`: Unique identifier for this contact
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TestLineName <String>]`: Unique identifier for this test line
 
 ## RELATED LINKS
 

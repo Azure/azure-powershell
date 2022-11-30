@@ -1,31 +1,24 @@
 ---
 external help file:
 Module Name: Az.VoiceServices
-online version: https://learn.microsoft.com/powershell/module/az.voiceservices/get-azvoiceservicescommunicationgateway
+online version: https://learn.microsoft.com/powershell/module/az.VoiceServices/new-AzVoiceServicesCommunicationsGatewayServiceRegionObject
 schema: 2.0.0
 ---
 
-# Get-AzVoiceServicesCommunicationGateway
+# New-AzVoiceServicesCommunicationsGatewayServiceRegionObject
 
 ## SYNOPSIS
-List CommunicationsGateway resources by subscription ID
+Create an in-memory object for ServiceRegionProperties.
 
 ## SYNTAX
 
-### List (Default)
 ```
-Get-AzVoiceServicesCommunicationGateway [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzVoiceServicesCommunicationGateway -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzVoiceServicesCommunicationsGatewayServiceRegionObject -Name <String>
+ -PrimaryRegionOperatorAddress <String[]> [-PrimaryRegionEsrpAddress <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List CommunicationsGateway resources by subscription ID
+Create an in-memory object for ServiceRegionProperties.
 
 ## EXAMPLES
 
@@ -53,28 +46,12 @@ List CommunicationsGateway resources by subscription ID
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+The name of the region in which the resources needed for Teams Calling will be deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -84,8 +61,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-The ID of the target subscription.
+### -PrimaryRegionEsrpAddress
+IP address to use to contact the ESRP from this region.
 
 ```yaml
 Type: System.String[]
@@ -94,7 +71,22 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryRegionOperatorAddress
+IP address to use to contact the operator network from this region.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -106,7 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ICommunicationsGateway
+### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20221201Preview.ServiceRegionProperties
 
 ## NOTES
 

@@ -39,7 +39,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - C:\Users\v-diya\repository\azure-rest-api-specs-pr\specification\voiceservices\resource-manager\Microsoft.VoiceServices\preview\2022-12-01-preview\openapi.json
+  - \Users\aitest\Documents\LucasGitHub\AzurePowerShell\azure-rest-api-specs-pr\specification\voiceservices\resource-manager\Microsoft.VoiceServices\preview\2022-12-01-preview\openapi.json
 
 subject-prefix: $(service-name)
 
@@ -47,4 +47,52 @@ inlining-threshold: 100
 resourcegroup-append: true
 nested-object-to-string: true
 
+directive:
+  - from: swagger-document
+    where: $.definitions.ApiBridgeProperties
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": true,
+        "description": "Details of API bridge functionality."
+      }
+      
+  - where:
+      subject: CommunicationGateway
+    set:
+      subject: CommunicationsGateway
+
+  - where:
+      subject: Contact
+    set:
+      subject: CommunicationsContact
+
+  - where:
+      subject: TestLine
+    set:
+      subject: CommunicationsTestLine
+
+  - where:
+      verb: Set
+    remove: true
+
+  - where:
+      subject: ^CommunicationsGateway$|^CommunicationsContact$|^CommunicationsTestLine$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+    remove: true
+
+  - where:
+      subject: ^CommunicationsGateway$
+      parameter-name: CommunicationsGatewayName
+    set:
+      parameter-name: Name
+
+  - where:
+      parameter-name: PropertiesContactName
+    set:
+      parameter-name: FullContactName
+
+  # - model-cmdlet:
+    # - ServiceRegionProperties
 ```

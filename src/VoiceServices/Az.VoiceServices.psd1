@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.VoiceServices.private.dll'
   FormatsToProcess = './Az.VoiceServices.format.ps1xml'
-  FunctionsToExport = 'Get-AzVoiceServicesCommunicationGateway', 'Get-AzVoiceServicesCommunicationsGateway', 'Get-AzVoiceServicesContact', 'Get-AzVoiceServicesTestLine', 'New-AzVoiceServicesCommunicationGateway', 'New-AzVoiceServicesContact', 'New-AzVoiceServicesTestLine', 'Remove-AzVoiceServicesCommunicationsGateway', 'Remove-AzVoiceServicesContact', 'Remove-AzVoiceServicesTestLine', 'Set-AzVoiceServicesCommunicationGateway', 'Set-AzVoiceServicesContact', 'Set-AzVoiceServicesTestLine', 'Update-AzVoiceServicesCommunicationsGateway', 'Update-AzVoiceServicesContact', 'Update-AzVoiceServicesTestLine', '*'
+  FunctionsToExport = 'Get-AzVoiceServicesCommunicationsContact', 'Get-AzVoiceServicesCommunicationsGateway', 'Get-AzVoiceServicesCommunicationsTestLine', 'New-AzVoiceServicesCommunicationsContact', 'New-AzVoiceServicesCommunicationsGateway', 'New-AzVoiceServicesCommunicationsGatewayServiceRegionObject', 'New-AzVoiceServicesCommunicationsTestLine', 'Remove-AzVoiceServicesCommunicationsContact', 'Remove-AzVoiceServicesCommunicationsGateway', 'Remove-AzVoiceServicesCommunicationsTestLine', 'Update-AzVoiceServicesCommunicationsContact', 'Update-AzVoiceServicesCommunicationsGateway', 'Update-AzVoiceServicesCommunicationsTestLine', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
