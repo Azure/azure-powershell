@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for passing DiskEncryptionSetId for Cross region restore
 * Fixed the pagination bug in `Get-AzRecoveryServicesAsrProtectableItem` for the V2ARCM scenario.
 * Fixed `IncludeDiskId` property for `New-ASRReplicationProtectedItem` cmdlet of H2A
 
