@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.AnalysisServices",
+  "ModuleVersion": "1.1.4",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

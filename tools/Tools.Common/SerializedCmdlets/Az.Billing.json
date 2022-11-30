@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.Billing",
+  "ModuleVersion": "2.0.0",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

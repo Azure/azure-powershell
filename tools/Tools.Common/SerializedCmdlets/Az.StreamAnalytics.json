@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.StreamAnalytics",
+  "ModuleVersion": "2.0.0",
   "Cmdlets": [
     {
       "VerbName": "Get",

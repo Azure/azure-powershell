@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.ManagementPartner",
+  "ModuleVersion": "0.7.2",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

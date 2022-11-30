@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.ImportExport",
+  "ModuleVersion": "0.1.0",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

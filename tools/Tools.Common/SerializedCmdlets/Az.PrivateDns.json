@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.PrivateDns",
+  "ModuleVersion": "1.0.3",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

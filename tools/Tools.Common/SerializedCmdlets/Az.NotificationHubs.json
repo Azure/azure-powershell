@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.NotificationHubs",
+  "ModuleVersion": "1.1.1",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

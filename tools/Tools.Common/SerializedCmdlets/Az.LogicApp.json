@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.LogicApp",
+  "ModuleVersion": "1.5.0",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

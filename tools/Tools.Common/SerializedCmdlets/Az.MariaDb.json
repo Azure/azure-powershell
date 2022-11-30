@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.MariaDb",
+  "ModuleVersion": "0.2.0",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

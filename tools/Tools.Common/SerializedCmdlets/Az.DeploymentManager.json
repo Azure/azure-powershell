@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.DeploymentManager",
+  "ModuleVersion": "1.1.0",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

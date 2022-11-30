@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.DevSpaces",
+  "ModuleVersion": "0.7.3",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

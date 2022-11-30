@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.MixedReality",
+  "ModuleVersion": "0.1.4",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

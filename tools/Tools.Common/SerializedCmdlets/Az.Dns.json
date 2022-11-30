@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.Dns",
+  "ModuleVersion": "1.1.2",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

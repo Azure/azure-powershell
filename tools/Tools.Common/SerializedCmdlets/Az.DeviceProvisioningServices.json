@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.DeviceProvisioningServices",
+  "ModuleVersion": "0.10.0",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

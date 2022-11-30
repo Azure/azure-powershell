@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.MonitoringSolutions",
+  "ModuleVersion": "0.1.0",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

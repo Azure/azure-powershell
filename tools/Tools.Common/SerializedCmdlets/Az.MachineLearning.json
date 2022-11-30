@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.MachineLearning",
+  "ModuleVersion": "1.1.3",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

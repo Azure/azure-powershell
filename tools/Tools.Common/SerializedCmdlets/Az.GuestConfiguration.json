@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.GuestConfiguration",
+  "ModuleVersion": "0.11.0",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

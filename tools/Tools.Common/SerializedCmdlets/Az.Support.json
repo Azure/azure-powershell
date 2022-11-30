@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.Support",
+  "ModuleVersion": "1.0.0",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

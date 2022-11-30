@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.Maps",
+  "ModuleVersion": "0.8.0",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

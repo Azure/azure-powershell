@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.DevTestLabs",
+  "ModuleVersion": "1.0.2",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

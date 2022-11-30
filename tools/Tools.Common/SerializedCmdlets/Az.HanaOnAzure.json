@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.HanaOnAzure",
+  "ModuleVersion": "0.3.0",
   "ProcessedTypes": {},
   "Cmdlets": [
     {

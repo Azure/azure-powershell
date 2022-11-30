@@ -1,5 +1,6 @@
 {
   "ModuleName": "Az.DataLakeStore",
+  "ModuleVersion": "1.3.0",
   "ProcessedTypes": {},
   "Cmdlets": [
     {
