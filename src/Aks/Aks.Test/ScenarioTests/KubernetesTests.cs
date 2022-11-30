@@ -100,5 +100,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NodeTaints");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableEncryptionAtHost()
+        {
+            TestRunner.RunTestScript("Test-EnableEncryptionAtHost");
+        }
     }
 }
