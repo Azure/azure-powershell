@@ -711,8 +711,7 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
                 AzKeyStore keyStore = null;
-                //AzureSession.Instance.KeyStoreFile
-                keyStore = new AzKeyStore(AzureSession.Instance.ARMProfileDirectory, "keystore.cache", false, autoSaveEnabled);
+                keyStore = new AzKeyStore(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.KeyStoreFile, false, autoSaveEnabled);
                 AzKeyStore.RegisterJsonConverter(typeof(ServicePrincipalKey), typeof(ServicePrincipalKey).Name);
                 AzKeyStore.RegisterJsonConverter(typeof(SecureString), typeof(SecureString).Name, new SecureStringConverter());
                 AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore);

@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 Mode = ContextSaveMode.Process,
                 CacheFile = "msal.cache",
                 ContextFile = "AzureRmContext.json",
-                KeyStoreFile = "keystore.cache"
+                KeyStoreFile = "azkeystore.cache"
             };
 
             var settingsPath = Path.Combine(profileDirectory, settingsFile);
@@ -270,6 +270,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.ARMProfileFile = autoSave.ContextFile;
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = autoSave.CacheFile;
+            session.KeyStoreFile = autoSave.KeyStoreFile;
             autoSave.Settings.TryGetValue("InstallationId", out string installationId);
             session.ExtendedProperties.Add("InstallationId", installationId);
             InitializeConfigs(session, profilePath, writeWarning);
