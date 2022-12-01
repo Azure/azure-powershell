@@ -17,6 +17,9 @@ Get a reservation order alias.
 ### [Get-AzBillingBenefitsSavingsPlan](Get-AzBillingBenefitsSavingsPlan.md)
 Get savings plan.
 
+### [Get-AzBillingBenefitsSavingsPlanList](Get-AzBillingBenefitsSavingsPlanList.md)
+List savings plans.
+
 ### [Get-AzBillingBenefitsSavingsPlanOrder](Get-AzBillingBenefitsSavingsPlanOrder.md)
 Get a savings plan order.
 
@@ -26,8 +29,11 @@ Get a savings plan.
 ### [Invoke-AzBillingBenefitsElevateSavingPlanOrder](Invoke-AzBillingBenefitsElevateSavingPlanOrder.md)
 Elevate as owner on savings plan order based on billing permissions.
 
-### [List-AzBillingBenefitsSavingsPlan](List-AzBillingBenefitsSavingsPlan.md)
-List savings plans.
+### [Invoke-AzBillingBenefitsValidateSavingsPlanPurchase](Invoke-AzBillingBenefitsValidateSavingsPlanPurchase.md)
+Validate savings plan purchase.
+
+### [Invoke-AzBillingBenefitsValidateSavingsPlanUpdate](Invoke-AzBillingBenefitsValidateSavingsPlanUpdate.md)
+Validate savings plan patch.
 
 ### [New-AzBillingBenefitsReservationOrderAlias](New-AzBillingBenefitsReservationOrderAlias.md)
 Create a reservation order alias.
@@ -35,12 +41,6 @@ Create a reservation order alias.
 ### [New-AzBillingBenefitsSavingsPlanOrderAlias](New-AzBillingBenefitsSavingsPlanOrderAlias.md)
 Create a savings plan.
 Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2215851
-
-### [Test-AzBillingBenefitsPurchase](Test-AzBillingBenefitsPurchase.md)
-Validate savings plan purchase.
-
-### [Test-AzBillingBenefitsSavingPlanUpdate](Test-AzBillingBenefitsSavingPlanUpdate.md)
-Validate savings plan patch.
 
 ### [Update-AzBillingBenefitsSavingsPlan](Update-AzBillingBenefitsSavingsPlan.md)
 Update savings plan.

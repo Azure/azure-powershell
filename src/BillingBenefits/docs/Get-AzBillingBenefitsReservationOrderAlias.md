@@ -28,27 +28,35 @@ Get a reservation order alias.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a reservation order alias.
 ```powershell
-{{ Add code here }}
+Get-AzBillingBenefitsReservationOrderAlias -Name "PSRITest2"
 ```
 
 ```output
-{{ Add output here }}
+Name      DisplayName SkuName       Location Term BillingPlan ReservedResourceType ReservationOrderId
+----      ----------- -------       -------- ---- ----------- -------------------- ------------------
+PSRITest2 PSRITest2   Standard_B1ls westus   P1Y  P1M         VirtualMachines      /providers/Microsoft.Capacity/reservationOrders/8d5aacd0-f098-4202-8d4d-1e7cb8a3ac…
 ```
 
-{{ Add description here }}
+Get a reservation order alias.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a reservation order alias via identity.
 ```powershell
-{{ Add code here }}
+$identity = @{
+                        ReservationOrderAliasName = "PSRITest2"
+}
+
+$response = Get-AzBillingBenefitsReservationOrderAlias -InputObject $identity
 ```
 
 ```output
-{{ Add output here }}
+Name      DisplayName SkuName       Location Term BillingPlan ReservedResourceType ReservationOrderId
+----      ----------- -------       -------- ---- ----------- -------------------- ------------------
+PSRITest2 PSRITest2   Standard_B1ls westus   P1Y  P1M         VirtualMachines      /providers/Microsoft.Capacity/reservationOrders/8d5aacd0-f098-4202-8d4d-1e7cb8a3ac…
 ```
 
-{{ Add description here }}
+Get a reservation order alias via identity.
 
 ## PARAMETERS
 

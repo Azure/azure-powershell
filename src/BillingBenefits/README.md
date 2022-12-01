@@ -65,8 +65,20 @@ directive:
       verb: Get
       subject: SavingPlan
     set:
-      verb: List
-      subject: SavingsPlan
+      verb: Get
+      subject: SavingsPlanList
+  - where:
+      verb: Test
+      subject: Purchase
+    set:
+      verb: Invoke
+      subject: ValidateSavingsPlanPurchase
+  - where:
+      verb: Test
+      subject: SavingPlanUpdate
+    set:
+      verb: Invoke
+      subject: ValidateSavingsPlanUpdate
 
   ### Rename property name
 
@@ -160,4 +172,22 @@ directive:
           - AppliedScopePropertyResourceGroupId
           - AppliedScopePropertySubscriptionId
           - AppliedScopePropertyTenantId
+  - where:
+      model-name: RoleAssignmentEntity
+    set:
+      format-table:
+        properties:
+          - Id
+          - Name
+          - PrincipalId
+          - RoleDefinitionId
+          - Scope
+  - where:
+      model-name: SavingsPlanValidResponseProperty
+    set:
+      format-table:
+        properties:
+          - Valid
+          - ReasonCode
+          - Reason
 ```

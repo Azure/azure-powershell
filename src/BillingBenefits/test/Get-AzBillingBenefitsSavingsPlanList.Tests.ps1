@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'List-AzBillingBenefitsSavingsPlan'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzBillingBenefitsSavingsPlanList'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'List-AzBillingBenefitsSavingsPlan.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzBillingBenefitsSavingsPlanList.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,9 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'List-AzBillingBenefitsSavings
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'List-AzBillingBenefitsSavingsPlan' {
+Describe 'Get-AzBillingBenefitsSavingsPlanList' {
     It 'List' {
-        $response = List-AzBillingBenefitsSavingsPlan
+        $response = Get-AzBillingBenefitsSavingsPlanList
         $response | Should -Not -Be $null
         $response.Count | Should -BeGreaterThan 0
 
@@ -45,7 +45,7 @@ Describe 'List-AzBillingBenefitsSavingsPlan' {
     }
 
     It 'ListWithFiltering' {
-        $response = List-AzBillingBenefitsSavingsPlan
+        $response = Get-AzBillingBenefitsSavingsPlanList
         $response | Should -Not -Be $null
         $response.Count | Should -BeGreaterThan 0
 
@@ -58,7 +58,7 @@ Describe 'List-AzBillingBenefitsSavingsPlan' {
         $arr | Should -Contain "Single"
         $arr | Should -Contain "Shared"
 
-        $response1 = List-AzBillingBenefitsSavingsPlan -Filter "properties/userFriendlyAppliedScopeType eq 'Shared'"
+        $response1 = Get-AzBillingBenefitsSavingsPlanList -Filter "properties/userFriendlyAppliedScopeType eq 'Shared'"
         $arr1 = New-Object string[] $response1.Count
         for($i=0;$i -lt $response1.Count;$i++)
         { 

@@ -1,5 +1,5 @@
 {
-  "List-AzBillingBenefitsSavingsPlan+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlans?api-version=2022-11-01+1": {
+  "Get-AzBillingBenefitsSavingsPlanList+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlans?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlans?api-version=2022-11-01",
@@ -8,8 +8,8 @@
       "Headers": {
         "x-ms-unique-id": [ "1" ],
         "x-ms-client-request-id": [ "ea6a06ce-e4fa-4bd5-9288-b232a2a4e634" ],
-        "CommandName": [ "List-AzBillingBenefitsSavingsPlan" ],
-        "FullCommandName": [ "List-AzBillingBenefitsSavingsPlan_List" ],
+        "CommandName": [ "Get-AzBillingBenefitsSavingsPlanList" ],
+        "FullCommandName": [ "Get-AzBillingBenefitsSavingsPlanList_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.7", "Az.BillingBenefits/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
@@ -38,7 +38,7 @@
       "isContentBase64": false
     }
   },
-  "List-AzBillingBenefitsSavingsPlan+[NoContext]+ListWithFiltering+$GET+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlans?api-version=2022-11-01+1": {
+  "Get-AzBillingBenefitsSavingsPlanList+[NoContext]+ListWithFiltering+$GET+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlans?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlans?api-version=2022-11-01",
@@ -47,8 +47,8 @@
       "Headers": {
         "x-ms-unique-id": [ "2" ],
         "x-ms-client-request-id": [ "a5fd8d33-5716-49d4-ad50-bd83379b9c1f" ],
-        "CommandName": [ "List-AzBillingBenefitsSavingsPlan" ],
-        "FullCommandName": [ "List-AzBillingBenefitsSavingsPlan_List" ],
+        "CommandName": [ "Get-AzBillingBenefitsSavingsPlanList" ],
+        "FullCommandName": [ "Get-AzBillingBenefitsSavingsPlanList_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.7", "Az.BillingBenefits/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
@@ -77,7 +77,7 @@
       "isContentBase64": false
     }
   },
-  "List-AzBillingBenefitsSavingsPlan+[NoContext]+ListWithFiltering+$GET+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlans?api-version=2022-11-01\u0026$filter=properties%2FuserFriendlyAppliedScopeType eq %27Shared%27+2": {
+  "Get-AzBillingBenefitsSavingsPlanList+[NoContext]+ListWithFiltering+$GET+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlans?api-version=2022-11-01\u0026$filter=properties%2FuserFriendlyAppliedScopeType eq %27Shared%27+2": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlans?api-version=2022-11-01\u0026$filter=properties%2FuserFriendlyAppliedScopeType%20eq%20%27Shared%27",
@@ -86,8 +86,8 @@
       "Headers": {
         "x-ms-unique-id": [ "3" ],
         "x-ms-client-request-id": [ "3bceb903-fa19-4c69-ba23-bc866caae2ef" ],
-        "CommandName": [ "List-AzBillingBenefitsSavingsPlan" ],
-        "FullCommandName": [ "List-AzBillingBenefitsSavingsPlan_List" ],
+        "CommandName": [ "Get-AzBillingBenefitsSavingsPlanList" ],
+        "FullCommandName": [ "Get-AzBillingBenefitsSavingsPlanList_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.7", "Az.BillingBenefits/0.1.0" ],
         "Authorization": [ "[Filtered]" ]

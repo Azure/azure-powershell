@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.BillingBenefits
-online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/test-azbillingbenefitssavingplanupdate
+online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/invoke-azbillingbenefitsvalidatesavingsplanupdate
 schema: 2.0.0
 ---
 
-# Test-AzBillingBenefitsSavingPlanUpdate
+# Invoke-AzBillingBenefitsValidateSavingsPlanUpdate
 
 ## SYNOPSIS
 Validate savings plan patch.
@@ -14,28 +14,28 @@ Validate savings plan patch.
 
 ### ValidateExpanded (Default)
 ```
-Test-AzBillingBenefitsSavingPlanUpdate -SavingsPlanId <String> -SavingsPlanOrderId <String>
+Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -SavingsPlanId <String> -SavingsPlanOrderId <String>
  [-Benefit <ISavingsPlanUpdateRequestProperties[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Validate
 ```
-Test-AzBillingBenefitsSavingPlanUpdate -SavingsPlanId <String> -SavingsPlanOrderId <String>
+Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -SavingsPlanId <String> -SavingsPlanOrderId <String>
  -Body <ISavingsPlanUpdateValidateRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ValidateViaIdentity
 ```
-Test-AzBillingBenefitsSavingPlanUpdate -InputObject <IBillingBenefitsIdentity>
+Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -InputObject <IBillingBenefitsIdentity>
  -Body <ISavingsPlanUpdateValidateRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded
 ```
-Test-AzBillingBenefitsSavingPlanUpdate -InputObject <IBillingBenefitsIdentity>
+Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -InputObject <IBillingBenefitsIdentity>
  [-Benefit <ISavingsPlanUpdateRequestProperties[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -45,27 +45,25 @@ Validate savings plan patch.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Validate savings plan patch
 ```powershell
-{{ Add code here }}
+$model = @{
+    AppliedScopeType = "Single"
+    AppliedScopePropertiesSubscriptionId = "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47"
+}
+
+$models = @($model)
+
+$response = Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -SavingsPlanId "9fde2a72-776b-49fc-869c-dca8859d7d62" -SavingsPlanOrderId "d7ea1620-2bba-46e2-8434-11f31bfb984d" -Benefit $models
 ```
 
 ```output
-{{ Add output here }}
+Valid ReasonCode Reason
+----- ---------- ------
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Validate savings plan patch
 
 ## PARAMETERS
 

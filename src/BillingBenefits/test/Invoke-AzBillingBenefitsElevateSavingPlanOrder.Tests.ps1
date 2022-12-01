@@ -14,12 +14,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzBillingBenefitsEleva
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+function ExecuteTestCases([object]$response) {
+    $response | Should -Not -Be $null
+    $response.Id | Should -Not -Be $null
+    $response.PrincipalId | Should -Not -Be $null
+    $response.RoleDefinitionId | Should -Not -Be $null
+    $response.Scope | Should -Not -Be $null
+}
+
 Describe 'Invoke-AzBillingBenefitsElevateSavingPlanOrder' {
-    It 'Elevate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Elevate' {
+        $response = Invoke-AzBillingBenefitsElevateSavingPlanOrder -SavingsPlanOrderId "e0b1f446-5684-4fa6-a0c8-d394368eda11"
+        ExecuteTestCases($response)
     }
 
-    It 'ElevateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ElevateViaIdentity' {
+        $identity = @{
+            SavingsPlanOrderId = "e45905d2-9207-4f24-8549-f615c203b49b"
+        }
+        $response = Invoke-AzBillingBenefitsElevateSavingPlanOrder -InputObject $identity
+        ExecuteTestCases($response)
     }
 }

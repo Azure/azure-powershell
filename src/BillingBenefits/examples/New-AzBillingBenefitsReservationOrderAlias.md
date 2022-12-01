@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a reservation order alias.
 ```powershell
-{{ Add code here }}
+New-AzBillingBenefitsReservationOrderAlias -Name "PSRITest1" -AppliedScopeType "Shared" -BillingPlan "P1M" -BillingScopeId "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47" -SkuName "Standard_B1ls" -Location "westus" -Quantity 1 -ReservedResourceType 'VirtualMachines' -Term "P1Y" -DisplayName "PSRITest1"
+```
+Name      DisplayName SkuName       Location Term BillingPlan ReservedResourceType ReservationOrderId   ProvisioningState BillingScopeId                                      AppliedScopeType                 
+----      ----------- -------       -------- ---- ----------- -------------------- ------------------   ----------------- --------------                                      --------
+PSRITest1 PSRITest1   Standard_B1ls westus   P1Y  P1M         VirtualMachines      /providers/Micro...  Created           /subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47 Shared  
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create a reservation order alias.

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.BillingBenefits
-online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/test-azbillingbenefitspurchase
+online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/invoke-azbillingbenefitsvalidatesavingsplanpurchase
 schema: 2.0.0
 ---
 
-# Test-AzBillingBenefitsPurchase
+# Invoke-AzBillingBenefitsValidateSavingsPlanPurchase
 
 ## SYNOPSIS
 Validate savings plan purchase.
@@ -14,14 +14,14 @@ Validate savings plan purchase.
 
 ### ValidateExpanded (Default)
 ```
-Test-AzBillingBenefitsPurchase [-Benefit <ISavingsPlanOrderAliasModel[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzBillingBenefitsValidateSavingsPlanPurchase [-Benefit <ISavingsPlanOrderAliasModel[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Validate
 ```
-Test-AzBillingBenefitsPurchase -Body <ISavingsPlanPurchaseValidateRequest> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzBillingBenefitsValidateSavingsPlanPurchase -Body <ISavingsPlanPurchaseValidateRequest>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,27 +29,44 @@ Validate savings plan purchase.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Validate savings plan purchase(expended).
 ```powershell
-{{ Add code here }}
+$model = @{
+    SkuName = "Compute_Savings_Plan"
+    DisplayName = "MockName"
+    Term = "P1Y"
+    AppliedScopeType = "Shared"
+    BillingScopeId = "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47"
+    CommitmentGrain = "Hourly"
+    CommitmentAmount = 0.01
+    CommitmentCurrencyCode = "USD"
+}
+
+$models = @($model)
+
+Invoke-AzBillingBenefitsValidateSavingsPlanPurchase -Benefit $models
 ```
 
 ```output
-{{ Add output here }}
+Valid ReasonCode Reason
+----- ---------- ------
+True
 ```
 
-{{ Add description here }}
+Validate savings plan purchase(expended).
 
-### Example 2: {{ Add title here }}
+### Example 2: Validate savings plan purchase.
 ```powershell
-{{ Add code here }}
+Invoke-AzBillingBenefitsValidateSavingsPlanPurchase -Body $body
 ```
 
 ```output
-{{ Add output here }}
+Valid ReasonCode Reason
+----- ---------- ------
+True
 ```
 
-{{ Add description here }}
+Validate savings plan purchase.
 
 ## PARAMETERS
 
