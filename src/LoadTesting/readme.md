@@ -142,6 +142,10 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api30.ISystemData SystemData', 'private Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api30.ISystemData SystemData');
+
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('if ((null != property.Key && null != property.Value))', 'if ((null != property.Key))');
   
   # Hiding description property
   - where:

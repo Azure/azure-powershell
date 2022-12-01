@@ -135,7 +135,7 @@ Accept wildcard characters: False
 The list of user assigned identities associated with the resource.
 The user identity will be ARM resource ids.
 The User Assigned Identity is a hashtable with keys in the form of an ARM resource id '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The values of the keys can be empty objects ({}) to assign an identity.
+The values of the keys can be empty objects ({}) to assign an identity and $null to remove an existing identity.
 
 ```yaml
 Type: System.Collections.Hashtable
