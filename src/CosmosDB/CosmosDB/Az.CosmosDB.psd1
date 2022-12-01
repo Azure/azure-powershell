@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.9.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.CosmosDB.dll', 
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.CosmosDB.Sdk.dll', 
                'Azure.Security.KeyVault.Keys.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -184,7 +184,20 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzManagedCassandraDataCenter', 
                'Get-AzCosmosDbClientEncryptionKey', 
                'New-AzCosmosDbClientEncryptionKey', 
-               'Update-AzCosmosDbClientEncryptionKey'
+               'Update-AzCosmosDbClientEncryptionKey',
+               'New-AzCosmosDBMongoDBRoleDefinition',
+               'New-AzCosmosDBMongoDBPrivilegeResource',
+               'New-AzCosmosDBMongoDBPrivilege',
+               'New-AzCosmosDBMongoDBRole',
+               'Remove-AzCosmosDBMongoDBRoleDefinition',
+               'Update-AzCosmosDBMongoDBRoleDefinition',
+               'Get-AzCosmosDBMongoDBRoleDefinition',
+               'New-AzCosmosDBMongoDBUserDefinition',
+               'Update-AzCosmosDBMongoDBUserDefinition',
+               'Get-AzCosmosDBMongoDBUserDefinition',
+               'Remove-AzCosmosDBMongoDBUserDefinition',
+               'Get-AzCosmosDBService', 'New-AzCosmosDBService',
+               'Remove-AzCosmosDBService'
 
 # Variables to export from this module
 # VariablesToExport = @()
