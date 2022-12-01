@@ -66,16 +66,16 @@ In order to specify the Role Definition's Roles,  use the New-AzCosmosDBMongoDBR
 $Roles = New-AzCosmosDBMongoDBRole -Database test -Role roleName
 
 
-Update-AzCosmosDBMongoDBUserDefinition
-	-AccountName accountName 
-	-ResourceGroupName resourceGroupName 
-	-DatabaseName 'test'
-	-UserName 'myName'
-	-Password 'pass'
-	-Id id
-	-Mechanisms 'SCRAM-SHA-256'
-	-CustomData 'test'
-	-Roles $Roles
+Update-AzCosmosDBMongoDBUserDefinition `
+	-AccountName accountName `
+	-ResourceGroupName resourceGroupName `
+	-DatabaseName 'test' `
+	-UserName 'myName' `
+	-Password 'pass' `
+	-Id id `
+	-Mechanisms 'SCRAM-SHA-256' `
+	-CustomData 'test' `
+	-Roles $Roles 
 ```
 
 ```output
@@ -86,58 +86,6 @@ Mechanisms   : SCRAM-SHA-256
 DatabaseName : test
 CustomData   :
 Roles        : {Microsoft.Azure.Management.CosmosDB.Models.Role}
-```
-
-### Example 2: ParentObject
-```powershell
-$DatabaseAccount = Get-AzCosmosDBAccount -Name accountName -ResourceGroupName resourceGroupName
-$Actions = 'insert', 'find'
-$PrivilegeResource = New-AzCosmosDBMongoDBPrivilegeResource -Database test -Collection test
-$Privilege = New-AzCosmosDBMongoDBPrivilege -PrivilegeResource $PrivilegeResource -Actions $Actions
-$Roles = New-AzCosmosDBMongoDBRole -Database test -Role roleName
-Update-AzCosmosDBMongoDBRoleDefinition
-	-Id id
-	-Type CustomRole
-	-RoleName roleName
-	-Privileges $Privilege
-	-Roles $Roles
-	-DatabaseAccountObject $DatabaseAccount
-```
-
-```output
-Id           : /subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/mongodbRoleDefinitions/id
-RoleName     : roleName
-Type         : CustomRole
-DatabaseName : test
-Privileges   : {Microsoft.Azure.Management.CosmosDB.Models.Privilege}
-Roles        : {Microsoft.Azure.Management.CosmosDB.Models.Role, Microsoft.Azure.Management.CosmosDB.Models.Role}
-```
-
-### Example 3: InputtObject
-```powershell
-$DatabaseAccount = Get-AzCosmosDBAccount -Name accountName -ResourceGroupName resourceGroupName
-$Actions = 'insert', 'find'
-$PrivilegeResource = New-AzCosmosDBMongoDBPrivilegeResource -Database test -Collection test
-$Privilege = New-AzCosmosDBMongoDBPrivilege -PrivilegeResource $PrivilegeResource -Actions $Actions
-$Roles = New-AzCosmosDBMongoDBRole -Database test -Role roleName
-
-$UserDef = Get-AzCosmosDBMongoDBUserDefinition -AccountName accountName -ResourceGroupName resourceGroupName -Id id
-Update-AzCosmosDBMongoDBRoleDefinition
-	-Id id
-	-Type CustomRole
-	-RoleName roleName
-	-Privileges $Privilege
-	-Roles $Roles
-	-InputObject $UserDef
-```
-
-```output
-Id           : /subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/mongodbRoleDefinitions/id
-RoleName     : roleName
-Type         : CustomRole
-DatabaseName : test
-Privileges   : {Microsoft.Azure.Management.CosmosDB.Models.Privilege}
-Roles        : {Microsoft.Azure.Management.CosmosDB.Models.Role, Microsoft.Azure.Management.CosmosDB.Models.Role}
 ```
 
 ## PARAMETERS

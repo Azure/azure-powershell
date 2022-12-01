@@ -62,14 +62,14 @@ $Actions = 'insert', 'find'
   $Roles = New-AzCosmosDBMongoDBRole -Database test -Role roleName
 
 
-Update-AzCosmosDBMongoDBRoleDefinition
-	-AccountName accountName 
-	-ResourceGroupName resourceGroupName 
-	-DatabaseName test
-	-Id id
-	-Type CustomRole
-	-RoleName roleName
-	-Privileges $Privilege
+Update-AzCosmosDBMongoDBRoleDefinition `
+	-AccountName accountName `
+	-ResourceGroupName resourceGroupName `
+	-DatabaseName test `
+	-Id id `
+	-Type CustomRole `
+	-RoleName roleName `
+	-Privileges $Privilege `
 	-Roles $Roles
 ```
 
@@ -89,12 +89,12 @@ $Actions = 'insert', 'find'
 $PrivilegeResource = New-AzCosmosDBMongoDBPrivilegeResource -Database test -Collection test
 $Privilege = New-AzCosmosDBMongoDBPrivilege -PrivilegeResource $PrivilegeResource -Actions $Actions
 $Roles = New-AzCosmosDBMongoDBRole -Database test -Role roleName
-Update-AzCosmosDBMongoDBRoleDefinition
-	-Id id
-	-Type CustomRole
-	-RoleName roleName
-	-Privileges $Privilege
-	-Roles $Roles
+Update-AzCosmosDBMongoDBRoleDefinition `
+	-Id id `
+	-Type CustomRole `
+	-RoleName roleName `
+	-Privileges $Privilege `
+	-Roles $Roles `
 	-DatabaseAccountObject $DatabaseAccount
 ```
 
@@ -116,12 +116,12 @@ $Privilege = New-AzCosmosDBMongoDBPrivilege -PrivilegeResource $PrivilegeResourc
 $Roles = New-AzCosmosDBMongoDBRole -Database test -Role roleName
 $RoleDef = Get-AzCosmosDBMongoDBRoleDefinition -AccountName accountName -ResourceGroupName resourceGroupName -Id id
 
-Update-AzCosmosDBMongoDBRoleDefinition
-	-Id id
-	-Type CustomRole
-	-RoleName roleName
-	-Privileges $Privilege
-	-Roles $Roles
+Update-AzCosmosDBMongoDBRoleDefinition `
+	-Id id `
+	-Type CustomRole `
+	-RoleName roleName `
+	-Privileges $Privilege `
+	-Roles $Roles `
 	-InputObject $RoleDef
 ```
 

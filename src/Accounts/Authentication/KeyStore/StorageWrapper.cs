@@ -14,6 +14,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Identity.Client.Extensions.Msal;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
@@ -47,7 +48,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 storageProperties = new StorageCreationPropertiesBuilder(FileName, Directory)
                     .WithMacKeyChain(KeyChainServiceName + ".other_secrets", FileName)
-                    .WithLinuxUnprotectedFile();
+                    .WithLinuxKeyring(FileName, "default", "AzKeyStoreCache",
+                    new KeyValuePair<string, string>("AzureClientID", "Microsoft.Developer.Azure.PowerShell"),
+                    new KeyValuePair<string, string>("Microsoft.Developer.Azure.PowerShell", "1.0.0.0"));
                 _storage = Storage.Create(storageProperties.Build());
                 VerifyPersistence();
             }
