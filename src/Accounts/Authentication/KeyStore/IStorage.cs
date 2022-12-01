@@ -28,5 +28,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         void WriteData(byte[] data);
 
         Exception GetLastError();
+
+        string FileName { get; set; }
+        string Directory { get; set; }
+
+        bool IsProtected
+        {
+            get;
+        }
     }
 }
