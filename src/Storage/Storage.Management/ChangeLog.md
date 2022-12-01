@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+*Return ListBlobProperties in blob list result
+    - `Get-AzStorageBlob`
+
 * Supported MaxPageSize, Include, and Filter parameters for listing encryption scopes 
     - `Get-AzStorageEncryptionScope`
 * Supported excludePrefix, includeDeleted, and many new schema fields in Blob Inventory
