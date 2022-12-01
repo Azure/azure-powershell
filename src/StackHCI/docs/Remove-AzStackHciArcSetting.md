@@ -227,7 +227,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IStackHciIdentity>: Identity Parameter
+`INPUTOBJECT <IStackHciIdentity>`: Identity Parameter
   - `[ArcSettingName <String>]`: The name of the proxy resource holding details of HCI ArcSetting information.
   - `[ClusterName <String>]`: The name of the cluster.
   - `[ExtensionName <String>]`: The name of the machine extension.
