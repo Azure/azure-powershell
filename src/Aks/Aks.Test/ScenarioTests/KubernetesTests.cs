@@ -107,5 +107,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-EnableEncryptionAtHost");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableUltraSSD()
+        {
+            TestRunner.RunTestScript("Test-EnableUltraSSD");
+        }
     }
 }
