@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
 * Enabled system-assigned identity on HCI cluster resource registration and repair registration flow.
 * Added error message in the command Register-AzStackHCI if Arc is not enabled.
 * Added default region confirmation prompt if the region is not mentioned in the command Register-AzStackHCI.

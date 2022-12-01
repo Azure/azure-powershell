@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * Added NamespaceV2 cmdlets for ServiceBus.
 
 ## Version 2.0.0

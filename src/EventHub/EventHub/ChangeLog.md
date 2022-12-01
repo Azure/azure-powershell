@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.2.0
 * Added NamespaceV2 cmdlets for EventHub
 
 ## Version 3.1.0
