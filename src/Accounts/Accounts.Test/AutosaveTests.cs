@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new MockCommandRuntime();
             dataStore = new MemoryDataStore();
+            ResetState();
             keyStore = SetMockedAzKeyStore();
         }
 
