@@ -3104,13 +3104,13 @@ Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representin
 .Description
 Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and registers the on-premises cluster with Azure.
 .Example
-Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd"
+Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region "eastus"
 .Example
-Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ComputerName ClusterNode1
+Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ComputerName ClusterNode1 -Region "eastus"
 .Example
-Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG 
+Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG 
 .Example
-Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region westus -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region westus -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
 
 .Outputs
 PSCustomObject. Returns following Properties in PSCustomObject
@@ -3168,21 +3168,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the ARM access token.
-    # Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+    # Specifying this along with AccountId will avoid Azure interactive logon.
     ${ArmAccessToken},
 
     [Parameter(Position=7)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the Graph access token.
-    # Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+    # GraphAccessToken is deprecated.
     ${GraphAccessToken},
 
     [Parameter(Position=8)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the ARM access token.
-    # Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+    # Specifies the Account Id.
+    # Specifying this along with ArmAccessToken will avoid Azure interactive logon.
     ${AccountId},
 
     [Parameter(Position=9)]
@@ -3604,21 +3603,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the ARM access token.
-    # Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+    # Specifying this along with AccountId will avoid Azure interactive logon.
     ${ArmAccessToken},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the Graph access token.
-    # Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+    # GraphAccessToken is deprecated.
     ${GraphAccessToken},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the ARM access token.
-    # Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+    # Specifying this along with ArmAccessToken will avoid Azure interactive logon.
     ${AccountId},
 
     [Parameter()]
@@ -3719,8 +3717,16 @@ end {
 <#
 .Synopsis
 Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
+
+Note: Test-AzStackhHCIConnection is deprecated.
+Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests.
+For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/whats-new#new-azure-stack-hci-environment-checker-tool.
 .Description
 Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
+
+Note: Test-AzStackhHCIConnection is deprecated.
+Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests.
+For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/whats-new#new-azure-stack-hci-environment-checker-tool.
 .Example
 Test-AzStackHCIConnection
 .Example
@@ -3854,9 +3860,9 @@ Unregister-AzStackHCI
 .Example
 Unregister-AzStackHCI -ComputerName ClusterNode1
 .Example
-Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
+Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
 .Example
-Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
 
 .Outputs
 PSCustomObject. Returns following Properties in PSCustomObject
@@ -3897,21 +3903,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the ARM access token.
-    # Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+    # Specifying this along with AccountId will avoid Azure interactive logon.
     ${ArmAccessToken},
 
     [Parameter(Position=5)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the Graph access token.
-    # Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+    # GraphAccessToken is deprecated.
     ${GraphAccessToken},
 
     [Parameter(Position=6)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the ARM access token.
-    # Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+    # Specifies the AccoundId.
+    # Specifying this along with ArmAccessToken will avoid Azure interactive logon.
     ${AccountId},
 
     [Parameter(Position=7)]
