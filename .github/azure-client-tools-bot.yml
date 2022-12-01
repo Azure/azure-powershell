@@ -1,0 +1,11 @@
+pull_request:
+  azure_pipeline:
+    allow_list:
+      - "wyunchi-ms.azure-powershell - powershell-core"
+      - "wyunchi-ms.azure-powershell - windows-powershell"
+    result_path: "/PipelineResult/PipelineResult.json"
+  comment:
+    level_keys:
+      - "Module"
+      - "PhaseName"
+      - "Platform"
