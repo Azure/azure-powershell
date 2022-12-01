@@ -29,6 +29,7 @@
 * Added parameter `-NodeTaint` for `New-AzAksNodePool` and `Update-AzAksNodePool`
 * Added parameter `-AksCustomHeader` for `Set-AzAksCluster`, `New-AzAksNodePool` and `Update-AzAksNodePool`
 * Added parameter `-EnableEncryptionAtHost` for `New-AzAksCluster` and `New-AzAksNodePool`
+* Added parameter `-EnableUltraSSD` for `New-AzAksCluster` and `New-AzAksNodePool`
 
 ## Version 5.0.1
 * Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
