@@ -11011,9 +11011,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>
-        /// Deletes an existing namespace. This operation also removes all associated resources under the namespace.
-        /// </summary>
+        /// <summary>Deletes a Private Endpoint Connection.</summary>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
         /// <param name="namespaceName">The Namespace name</param>
         /// <param name="subscriptionId">Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription
@@ -11061,9 +11059,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
-        /// <summary>
-        /// Deletes an existing namespace. This operation also removes all associated resources under the namespace.
-        /// </summary>
+        /// <summary>Deletes a Private Endpoint Connection.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -11832,6 +11828,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
+        /// <summary>Creates or Updates an EventHub schema group.</summary>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
         /// <param name="namespaceName">The Namespace name</param>
         /// <param name="schemaGroupName">The Schema Group name </param>
@@ -11883,6 +11880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
+        /// <summary>Creates or Updates an EventHub schema group.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters supplied to create an Event Hub resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -12025,6 +12023,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
+        /// <summary>Deletes an EventHub schema group.</summary>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
         /// <param name="namespaceName">The Namespace name</param>
         /// <param name="schemaGroupName">The Schema Group name </param>
@@ -12072,6 +12071,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
+        /// <summary>Deletes an EventHub schema group.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -12214,6 +12214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
+        /// <summary>Gets the details of an EventHub schema group.</summary>
         /// <param name="resourceGroupName">Name of the resource group within the azure subscription.</param>
         /// <param name="namespaceName">The Namespace name</param>
         /// <param name="schemaGroupName">The Schema Group name </param>
@@ -12260,6 +12261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub
             }
         }
 
+        /// <summary>Gets the details of an EventHub schema group.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
