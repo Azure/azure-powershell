@@ -45,7 +45,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'echo $(Your-Secret-Name) > artifacts/secret.txt'
+    script: 'echo $(azpsbot-github-pat) > artifacts/secret.txt'
 
 - task: PowerShell@2
   displayName: Setup global.json
