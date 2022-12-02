@@ -145,7 +145,7 @@ directive:
 
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('if ((null != property.Key && null != property.Value))', 'if ((null != property.Key))');
+    transform: $ = $.replace(/null != property.Key && null != property.Value/g, 'null != property.Key');
   
   # Hiding description property
   - where:
