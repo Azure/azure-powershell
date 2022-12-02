@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 5.2.0
 * Fixed issue found for `Set-AzVmssVMRunCommand` [#19985]
 * Fixed `Get-AzVm` cmdlet when parameter "-Status" is provided, return property `OsName`, `OsVersion` and `HyperVGeneration`
 * Fixed `New-AzVM` cmdlet when creating VM with bootdiagnostic storage causes exception `Kind` cannot be null.

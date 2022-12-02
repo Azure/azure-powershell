@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.2.0
 * Added breaking change message for  `-SparkConfigFilePath`. It will be deprecated around the middle of December.
 * Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool configuration artifact by `-SparkCongifuration`. `-SparkCongifuration` is an alternative of parameter `-SparkConfigFilePath`.
 

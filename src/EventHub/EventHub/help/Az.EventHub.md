@@ -53,6 +53,9 @@ Gets an EventHub SAS key
 ### [Get-AzEventHubNamespace](Get-AzEventHubNamespace.md)
 Gets the details of an Event Hubs namespace, or gets a list of all Event Hubs namespaces in the current Azure subscription.
 
+### [Get-AzEventHubNamespaceV2](Get-AzEventHubNamespaceV2.md)
+Gets the description of the specified namespace.
+
 ### [Get-AzEventHubNetworkRuleSet](Get-AzEventHubNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
 
@@ -63,7 +66,7 @@ Gets a description for the specified Private Endpoint Connection name.
 Gets lists of resources that supports Privatelinks.
 
 ### [Get-AzEventHubSchemaGroup](Get-AzEventHubSchemaGroup.md)
-
+Gets the details of an EventHub schema group.
 
 ### [New-AzEventHub](New-AzEventHub.md)
 Creates or updates a new Event Hub as a nested resource within a Namespace.
@@ -95,11 +98,17 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHu
 ### [New-AzEventHubKey](New-AzEventHubKey.md)
 Regenerates an EventHub SAS key
 
+### [New-AzEventHubKeyVaultPropertiesObject](New-AzEventHubKeyVaultPropertiesObject.md)
+Create an in-memory object for KeyVaultProperties.
+
 ### [New-AzEventHubNamespace](New-AzEventHubNamespace.md)
 Creates an Event Hubs namespace.
 
-### [New-AzEventHubSchemaGroup](New-AzEventHubSchemaGroup.md)
+### [New-AzEventHubNamespaceV2](New-AzEventHubNamespaceV2.md)
+Creates an EventHub Namespace
 
+### [New-AzEventHubSchemaGroup](New-AzEventHubSchemaGroup.md)
+Creates or Updates an EventHub schema group.
 
 ### [New-AzEventHubThrottlingPolicyConfig](New-AzEventHubThrottlingPolicyConfig.md)
 Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup
@@ -132,15 +141,18 @@ Remove a single IP rule to the NetworkRuleSet of the given Namespace
 ### [Remove-AzEventHubNamespace](Remove-AzEventHubNamespace.md)
 Removes the specified Event Hubs namespace.
 
+### [Remove-AzEventHubNamespaceV2](Remove-AzEventHubNamespaceV2.md)
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
+
 ### [Remove-AzEventHubNetworkRuleSet](Remove-AzEventHubNetworkRuleSet.md)
 Removes the NetworkRuleSet for the Given Namespace
 
 ### [Remove-AzEventHubPrivateEndpointConnection](Remove-AzEventHubPrivateEndpointConnection.md)
-Deletes an existing namespace.
-This operation also removes all associated resources under the namespace.
+Deletes a Private Endpoint Connection.
 
 ### [Remove-AzEventHubSchemaGroup](Remove-AzEventHubSchemaGroup.md)
-
+Deletes an EventHub schema group.
 
 ### [Remove-AzEventHubVirtualNetworkRule](Remove-AzEventHubVirtualNetworkRule.md)
 Removes the single given VirtualNetworkRule for the NetworkRuleSet of the Namespace
@@ -168,6 +180,9 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 
 ### [Set-AzEventHubNamespace](Set-AzEventHubNamespace.md)
 Updates the specified Event Hubs namespace.
+
+### [Set-AzEventHubNamespaceV2](Set-AzEventHubNamespaceV2.md)
+Updates an EventHub Namespace
 
 ### [Set-AzEventHubNetworkRuleSet](Set-AzEventHubNetworkRuleSet.md)
 Sets an EventHub Namespace Network Rule Set

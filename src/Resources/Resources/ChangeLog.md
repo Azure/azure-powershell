@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.5.0
 * Added cmdlet `Get-AzADOrganization`
 * Fixed `Set-AzPolicySetDefinition` InternalServerError when the initiative is too large [#20238]
 

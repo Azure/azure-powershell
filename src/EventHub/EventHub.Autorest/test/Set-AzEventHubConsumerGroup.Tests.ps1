@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubConsumerGroup')
 }
 
 Describe 'Set-AzEventHubConsumerGroup' {
-    It 'SetExpanded' {
+    It 'SetExpanded'  {
         $consumerGroup = Set-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.consumerGroup -UserMetadata "Second Metadata"
         $consumerGroup.Name | Should -Be $env.consumerGroup
         $consumerGroup.ResourceGroupName | Should -Be $env.resourceGroup

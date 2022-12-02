@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 5.2.0
 * Added optional parameters `CustomBlockResponseStatusCode` and `CustomBlockResponseBody` parameter to `AzApplicationGatewayFirewallPolicySettings`
 * Added a new cmdlet to get the application gateway waf manifest and rules
     - `Get-AzApplicationGatewayWafDynamicManifest`

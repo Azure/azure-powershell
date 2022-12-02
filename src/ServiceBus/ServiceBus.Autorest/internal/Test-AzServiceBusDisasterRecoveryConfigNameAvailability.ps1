@@ -52,7 +52,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
 PARAMETER <ICheckNameAvailability>: Description of a Check Name availability request properties.
   Name <String>: The Name to check the namespace name availability and The namespace name can contain only letters, numbers, and hyphens. The namespace must start with a letter, and it must end with a letter or number.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/test-azservicebusdisasterrecoveryconfignameavailability
+https://learn.microsoft.com/powershell/module/az.servicebus/test-azservicebusdisasterrecoveryconfignameavailability
 #>
 function Test-AzServiceBusDisasterRecoveryConfigNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult])]
