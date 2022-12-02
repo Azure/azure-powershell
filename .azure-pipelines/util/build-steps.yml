@@ -36,6 +36,17 @@ steps:
     packageType: sdk
     version: 6.0.x
 
+- task: AzureKeyVault@2
+  inputs:
+    azureSubscription: '6b085460-5f21-477e-ba44-1035046e9101'
+    KeyVaultName: 'azurepsdev'
+    SecretsFilter: 'azpsbot-github-pat'
+    RunAsPreJob: true
+
+- task: CmdLine@2
+  inputs:
+    script: 'echo $(Your-Secret-Name) > artifacts/secret.txt'
+
 - task: PowerShell@2
   displayName: Setup global.json
   inputs:
@@ -50,8 +61,8 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:Build /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
-      OCTOKITPAT: $(OCTOKITPAT)
-      PowerShellPlatform: ${{ parameters.powerShellPlatform }}
+    OCTOKITPAT: $(OCTOKITPAT)
+    PowerShellPlatform: ${{ parameters.powerShellPlatform }}
 
 - task: PowerShell@2
   displayName: Build-AzPredictor
