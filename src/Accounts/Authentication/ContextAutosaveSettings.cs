@@ -52,12 +52,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public string CacheFile { get; set; }
 
         /// <summary>
-        /// The name of the keystore file
-        /// </summary>
-        public string KeyStoreFile { get; set; }
-
-
-        /// <summary>
         /// Extensible settings for autosave
         /// </summary>
         public IDictionary<string, string> Settings
