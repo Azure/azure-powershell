@@ -426,6 +426,10 @@ namespace Microsoft.Azure.Commands.Profile
                 if (CertificatePassword != null)
                 {
                     keyStore?.SaveKey(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, azureAccount.Id, Tenant), CertificatePassword);
+                    if (GetContextModificationScope() == ContextModificationScope.CurrentUser && !keyStore.IsProtected)
+                    {
+                        WriteWarning(string.Format(Resources.ServicePrincipalWarning, keyStore.FileName, keyStore.Directory));
+                    }
                 }
             }
 
@@ -449,11 +453,9 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 keyStore?.SaveKey(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret
                     ,azureAccount.Id, Tenant), password);
-                if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
+                if (GetContextModificationScope() == ContextModificationScope.CurrentUser && !keyStore.IsProtected)
                 {
-                    var file = AzureSession.Instance.ARMProfileFile;
-                    var directory = AzureSession.Instance.ARMProfileDirectory;
-                    WriteWarning(string.Format(Resources.ServicePrincipalWarning, file, directory));
+                    WriteWarning(string.Format(Resources.ServicePrincipalWarning, keyStore.FileName, keyStore.Directory));
                 }
             }
             if (azureAccount.Type == "ClientAssertion" && FederatedToken != null)
@@ -711,8 +713,8 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
                 AzKeyStore keyStore = null;
-                //AzureSession.Instance.KeyStoreFile
-                keyStore = new AzKeyStore(AzureSession.Instance.ARMProfileDirectory, "keystore.cache", false, autoSaveEnabled);
+                keyStore = new AzKeyStore(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.KeyStoreFile, false, autoSaveEnabled);
+                AzureSession.Instance.KeyStoreFile = keyStore.FileName;
                 AzKeyStore.RegisterJsonConverter(typeof(ServicePrincipalKey), typeof(ServicePrincipalKey).Name);
                 AzKeyStore.RegisterJsonConverter(typeof(SecureString), typeof(SecureString).Name, new SecureStringConverter());
                 AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => keyStore);
