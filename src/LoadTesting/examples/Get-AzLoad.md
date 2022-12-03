@@ -26,7 +26,7 @@ sampleres1 sample-rg      eastus   00000000-0000-0000-0000-000000000001.eastus.c
 
 This command lists all Azure Load Testing resources in resource group named sample-rg.
 
-### Example 2: Get the details of an Azure Load Testing resource
+### Example 3: Get the details of an Azure Load Testing resource
 ```powershell
 Get-AzLoad -Name sampleres -ResourceGroupName sample-rg
 ```
