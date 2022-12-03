@@ -18,7 +18,7 @@
 .Synopsis
 Create a new Azure Load Testing resource.
 .Description
-Creates a new Azure Load Testing resource in the resource group in the particular region.
+Creates a new Azure Load Testing resource in the resource group.
 .Example
 {{ Add code here }}
 .Example

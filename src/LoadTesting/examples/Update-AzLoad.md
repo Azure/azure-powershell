@@ -25,7 +25,7 @@ sampleres sample-rg      eastus   00000000-0000-0000-0000-000000000000.eastus.cn
 
 This command updates the Azure Load Testing resource named sampleres in resource group named sample-rg, to use System-assigned identity for accessing the encryption key for CMK encryption.
 
-### Example 2: Update an Azure Load Testing resource to remove an existing User-Assigned managed identity
+### Example 3: Update an Azure Load Testing resource to remove an existing User-Assigned managed identity
 ```powershell
 $userAssigned = @{"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1" = @{}; "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2" = $null}
 

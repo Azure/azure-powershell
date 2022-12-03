@@ -165,7 +165,7 @@ function Update-AzLoad {
                         $PSBoundParameters.Add('EncryptionIdentityResourceId', $null)
                     }
 
-                    # Update the identity type
+                    # Update the identity type only if the input does not contain the encryption identity type
                     if($PSBoundParameters.ContainsKey('IdentityType')) {
                         if($PSBoundParameters['IdentityType'].ToString().ToLower() -eq 'none') {
                             $PSBoundParameters['IdentityType'] = 'SystemAssigned'
@@ -174,15 +174,12 @@ function Update-AzLoad {
                             $PSBoundParameters['IdentityType'] = 'SystemAssigned,UserAssigned'
                         }
                     }
-                    else {
-                        $null = $PSBoundParameters.Add('IdentityType', 'SystemAssigned')
-                    }
                 }
                 else {
                     $null = $PSBoundParameters.Add("EncryptionIdentityResourceId", $PSBoundParameters['EncryptionIdentity'])
                     $null = $PSBoundParameters.Add("EncryptionIdentityType", 'UserAssigned')  
 
-                    # Update the identity type
+                    # Update the identity type only if the input does not contain the encryption identity type
                     if($PSBoundParameters.ContainsKey('IdentityType')) {
                         if($PSBoundParameters['IdentityType'].ToString().ToLower() -eq 'none') {
                             $PSBoundParameters['IdentityType'] = 'UserAssigned'
@@ -190,20 +187,16 @@ function Update-AzLoad {
                         if($PSBoundParameters['IdentityType'].ToString().ToLower() -eq 'systemassigned') {
                             $PSBoundParameters['IdentityType'] = 'SystemAssigned,UserAssigned'
                         }
-                    }
-                    else {
-                        $null = $PSBoundParameters.Add("IdentityType", 'UserAssigned')
-                    }
 
-                    # Update the User Assigned Identities
-                    if ($PSBoundParameters.ContainsKey('IdentityUserAssigned')) {
-                        if ($null -eq $PSBoundParameters['IdentityUserAssigned']) {
-                            $PSBoundParameters['IdentityUserAssigned'] = @{}
+                        if ($PSBoundParameters.ContainsKey('IdentityUserAssigned')) {
+                            if ($null -eq $PSBoundParameters['IdentityUserAssigned']) {
+                                $PSBoundParameters['IdentityUserAssigned'] = @{}
+                            }
+                            $PSBoundParameters['IdentityUserAssigned'][$PSBoundParameters['EncryptionIdentityResourceId']] = @{}
                         }
-                        $PSBoundParameters['IdentityUserAssigned'][$PSBoundParameters['EncryptionIdentityResourceId']] = @{}
-                    }
-                    else {
-                        $null = $PSBoundParameters.Add("IdentityUserAssigned", @{ $PSBoundParameters['EncryptionIdentityResourceId'] = @{} })
+                        else {
+                            $null = $PSBoundParameters.Add("IdentityUserAssigned", @{ $PSBoundParameters['EncryptionIdentityResourceId'] = @{} })
+                        }
                     }
                 }
                 $null = $PSBoundParameters.Remove('EncryptionIdentity')
