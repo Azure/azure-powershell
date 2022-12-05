@@ -51,7 +51,7 @@ STORAGEMOVER <IStorageMoverUpdateParameters>: The Storage Mover resource.
   [Tag <IStorageMoverUpdateParametersTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemover
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemover
 #>
 function Update-AzStorageMover {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IStorageMover])]

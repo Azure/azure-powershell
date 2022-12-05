@@ -22,6 +22,8 @@
     - `Invoke-AzStorageAccountFailover`
 * Supported TierToCold and TierToHot in Storage account management policy 
     - `Add-AzStorageAccountManagementPolicyAction`
+
+## Version 5.2.0
 * Supported MaxPageSize, Include, and Filter parameters for listing encryption scopes 
     - `Get-AzStorageEncryptionScope`
 * Supported excludePrefix, includeDeleted, and many new schema fields in Blob Inventory

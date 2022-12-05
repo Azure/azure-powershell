@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/remove-azwebpubsubhub
+online version: https://learn.microsoft.com/powershell/module/az.signalr/remove-azwebpubsubhub
 schema: 2.0.0
 ---
 
@@ -32,18 +32,18 @@ Delete a hub setting.
 
 ### Example 1: Remove a hub setting.
 ```powershell
-PS C:\>  Remove-AzWebPubSubHub -Name testHub -ResourceGroupName psdemo -ResourceName psdemo-wps
+Remove-AzWebPubSubHub -Name testHub -ResourceGroupName psdemo -ResourceName psdemo-wps
 ```
 
 
 
 ### Example 2: Remove a hub setting via identity.
 ```powershell
-PS C:\> $hubIdentity = @{HubName = 'testHub'
+$hubIdentity = @{HubName = 'testHub'
 ResourceGroupName='psdemo'
 ResourceName = 'psdemo-wps'
 SubscriptionId = $(Get-AzContext).Subscription.Id}
-PS C:\> $hubIdentity | Remove-AzWebPubSubHub
+$hubIdentity | Remove-AzWebPubSubHub
 ```
 
 The example first constructs a hash table standing for the hub identity.
@@ -103,7 +103,7 @@ The hub name.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: HubName
 
 Required: True
 Position: Named
@@ -240,10 +240,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+`INPUTOBJECT <IWebPubSubIdentity>`: Identity Parameter
+  - `[CertificateName <String>]`: Custom certificate name
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region
+  - `[Name <String>]`: Custom domain name.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   - `[ResourceName <String>]`: The name of the resource.

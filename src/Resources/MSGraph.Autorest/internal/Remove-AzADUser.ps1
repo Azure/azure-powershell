@@ -27,7 +27,7 @@ Get-AzADUser -UserPrincipalName $id | Remove-AzADUser
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azaduser
+https://learn.microsoft.com/powershell/module/az.resources/remove-azaduser
 #>
 function Remove-AzADUser {
 [OutputType([System.Boolean])]

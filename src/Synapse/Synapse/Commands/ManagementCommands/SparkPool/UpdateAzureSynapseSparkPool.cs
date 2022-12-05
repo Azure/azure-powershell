@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
@@ -138,9 +139,14 @@ namespace Microsoft.Azure.Commands.Synapse
             HelpMessage = HelpMessages.LibraryRequirementsFilePath)]
         public string LibraryRequirementsFilePath { get; set; }
 
+        [CmdletParameterBreakingChange("SparkConfigFilePath", ReplaceMentCmdletParameterName = "SparkConfiguration")]
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
            HelpMessage = HelpMessages.SparkConfigPropertiesFilePath)]
         public string SparkConfigFilePath { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+           HelpMessage = HelpMessages.SparkConfigurationResource)]
+        public PSSparkConfigurationResource SparkConfiguration { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
             HelpMessage = HelpMessages.PackageAction)]
@@ -276,6 +282,21 @@ namespace Microsoft.Azure.Commands.Synapse
                 {
                     existingSparkPool.CustomLibraries = existingSparkPool.CustomLibraries.Where(lib => !this.Package.Any(p => lib.Path.Equals(p.Path, System.StringComparison.OrdinalIgnoreCase))).ToList();
                 }
+            }
+
+            if (this.IsParameterBound(c => c.SparkConfiguration))
+            {
+                if (this.SparkConfiguration != null)
+                {
+                    existingSparkPool.SparkConfigProperties = new SparkConfigProperties()
+                    {
+                        Filename = SparkConfiguration.Name,
+                        ConfigurationType = ConfigurationType.Artifact,                       
+                        Content = Newtonsoft.Json.JsonConvert.SerializeObject(SparkConfiguration)
+                    };
+                }
+                else
+                    existingSparkPool.SparkConfigProperties = null;
             }
 
             bool? isForceApplySetting = false;

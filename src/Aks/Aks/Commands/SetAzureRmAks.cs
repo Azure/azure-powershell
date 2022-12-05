@@ -16,7 +16,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
@@ -31,10 +30,7 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
-using ResourceIdentityType = Microsoft.Azure.Management.ContainerService.Models.ResourceIdentityType;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -269,6 +265,23 @@ namespace Microsoft.Azure.Commands.Aks
                                 WriteVerbose(Resources.UpdatingNodePoolMode);
                                 defaultAgentPoolProfile.Mode = NodePoolMode;
                             }
+                            if (this.IsParameterBound(c => c.NodePoolLabel))
+                            {
+                                WriteVerbose(Resources.UpdatingNodePoolLabels);
+                                defaultAgentPoolProfile.NodeLabels = new Dictionary<string, string>();
+                                foreach (var key in NodePoolLabel.Keys)
+                                {
+                                    defaultAgentPoolProfile.NodeLabels.Add(key.ToString(), NodePoolLabel[key].ToString());
+                                }
+                            }
+                            if (this.IsParameterBound(c => c.NodePoolTag))
+                            {
+                                defaultAgentPoolProfile.Tags = new Dictionary<string, string>();
+                                foreach (var key in NodePoolTag.Keys)
+                                {
+                                    defaultAgentPoolProfile.Tags.Add(key.ToString(), NodePoolTag[key].ToString());
+                                }
+                            }
                         }
 
                         if (this.IsParameterBound(c => c.KubernetesVersion) && this.IsParameterBound(c => c.NodeImageOnly))
@@ -384,7 +397,7 @@ namespace Microsoft.Azure.Commands.Aks
                     }
                     SetIdentity(cluster);
 
-                    var kubeCluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, cluster);
+                    var kubeCluster = this.CreateOrUpdate(ResourceGroupName, Name, cluster);
 
                     if (this.IsParameterBound(c => c.DiskEncryptionSetID))
                     {
@@ -441,7 +454,8 @@ namespace Microsoft.Azure.Commands.Aks
             return this.IsParameterBound(c => c.NodeCount) || this.IsParameterBound(c => c.NodeOsDiskSize) ||
                 this.IsParameterBound(c => c.NodeVmSize) || this.IsParameterBound(c => c.EnableNodeAutoScaling) ||
                 this.IsParameterBound(c => c.NodeMinCount) || this.IsParameterBound(c => c.NodeMaxCount) || 
-                this.IsParameterBound(c => c.NodePoolMode);
+                this.IsParameterBound(c => c.NodePoolMode) || this.IsParameterBound(c => c.NodePoolLabel) ||
+                this.IsParameterBound(c => c.NodePoolTag);
         }
     }
 }

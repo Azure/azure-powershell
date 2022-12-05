@@ -35,5 +35,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public int RuleId { get; set; }
         public string Description { get; set; }
+        public string RuleIdString { get; set; }
+        public string State { get; set; }
+        public string Action { get; set; }
     }
 }
