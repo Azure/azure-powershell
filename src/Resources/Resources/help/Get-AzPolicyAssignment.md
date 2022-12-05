@@ -71,10 +71,10 @@ The second command gets all of the policy assignments that are assigned to the m
 ### Example 4: Get the scope, policy set definition identifier, and display name of all policy assignments formatted as a list
 
 ```powershell
-Get-AzPolicyAssignment | Select-Object -ExpandProperty properties | Select-Object Scope, PolicyDefinitionID, DisplayName | Format-List
+Get-AzPolicyAssignment | Select-Object -ExpandProperty properties | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
 ```
 
-This command is useful when you need to find the reader-friendly `DisplayName` property of an Azure
+This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
 Policy assignment.
 
 ## PARAMETERS
