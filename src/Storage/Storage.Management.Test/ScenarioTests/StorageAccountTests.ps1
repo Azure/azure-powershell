@@ -794,6 +794,52 @@ function Test-FailoverAzureStorageAccount
 
 <#
 .SYNOPSIS
+Test Invoke-AzStorageAccountFailoverPlanned
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-FailoverAzureStorageAccountPlanned
+{
+    $rgname = Get-StorageManagementTestResourceName;
+    try {
+        $stoname = 'stofailover' + $rgname
+        $stotype = 'Standard_RAGRS'
+        $kind = 'StorageV2'
+
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+
+        $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -IncludeGeoReplicationStats
+        Assert-AreEqual $stoname $account.StorageAccountName;
+        Assert-AreEqual $stotype $account.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $account.Location;
+        Assert-AreEqual $kind $account.Kind; 
+        $primaryLocation = $account.PrimaryLocation
+        $seconcaryLocation = $account.SecondaryLocation
+        
+        while ($account.GeoReplicationStats.CanFailover -ne $true) {
+            # sleep is needed for recording mode but commented out for playback mode to speed up the test 
+            # sleep 60 
+            $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -IncludeGeoReplicationStats
+        }
+        Assert-AreEqual $account.GeoReplicationStats.CanFailover $true
+        $job = Invoke-AzStorageAccountFailover -ResourceGroupName $rgname -Name $stoname -FailoverType "Planned" -Force -AsJob
+        $job | Wait-Job
+
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $seconcaryLocation $sto.PrimaryLocation
+        Assert-AreEqual $primaryLocation $sto.SecondaryLocation
+        Assert-AreEqual $stotype $sto.Sku.Name
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test New-AzStorageAccountFileStorage
 .DESCRIPTION
 Smoke[Broken]Test
