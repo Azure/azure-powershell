@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/new-azakscluster
+online version: https://learn.microsoft.com/powershell/module/az.aks/new-azakscluster
 schema: 2.0.0
 ---
 
@@ -23,23 +23,22 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-SubnetName <String>] [-EnableRbac] [-WindowsProfileAdminUserName <String>]
  [-WindowsProfileAdminUserPassword <SecureString>] [-NetworkPlugin <String>] [-NetworkPolicy <String>]
  [-PodCidr <String>] [-ServiceCidr <String>] [-DnsServiceIP <String>] [-DockerBridgeCidr <String>]
- [-NodePoolLabel <Hashtable>] [-AksCustomHeader <Hashtable>] [-LoadBalancerSku <String>] [-Force]
- [-GenerateSshKey] [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>] [-AvailabilityZone <String[]>]
- [-NodeResourceGroup <String>] [-ResourceGroupName] <String> [-Name] <String>
+ [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey] [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>]
+ [-AvailabilityZone <String[]>] [-NodeResourceGroup <String>] [-ResourceGroupName] <String> [-Name] <String>
  [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>] [-LinuxProfileAdminUserName <String>]
  [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
  [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
- [-NodeVmSize <String>] [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
- [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
- [-LoadBalancerOutboundIp <String[]>] [-LoadBalancerOutboundIpPrefix <String[]>]
- [-LoadBalancerIdleTimeoutInMinute <Int32>] [-ApiServerAccessAuthorizedIpRange <String[]>]
- [-EnableApiServerAccessPrivateCluster] [-ApiServerAccessPrivateDnsZone <String>]
- [-EnableApiServerAccessPrivateClusterPublicFQDN] [-FqdnSubdomain <String>] [-EnableManagedIdentity]
- [-AssignIdentity <String>] [-AutoUpgradeChannel <String>] [-DiskEncryptionSetID <String>]
- [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
+ [-NodeVmSize <String>] [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>]
+ [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
+ [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
+ [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
+ [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
+ [-ApiServerAccessPrivateDnsZone <String>] [-EnableApiServerAccessPrivateClusterPublicFQDN]
+ [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
+ [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -792,6 +791,21 @@ NodePoolMode represents mode of an node pool.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodePoolTag
+The tags to be persisted on the agent pool virtual machine scale set.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

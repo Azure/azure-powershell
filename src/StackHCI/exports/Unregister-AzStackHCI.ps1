@@ -26,15 +26,15 @@ Unregister-AzStackHCI
 .Example
 Unregister-AzStackHCI -ComputerName ClusterNode1
 .Example
-Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
+Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
 .Example
-Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
 
 .Outputs
 PSCustomObject. Returns following Properties in PSCustomObject
 Result: Success or Failed or Cancelled.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/unregister-azstackhci
+https://learn.microsoft.com/powershell/module/az.stackhci/unregister-azstackhci
 #>
 function Unregister-AzStackHCI {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
@@ -69,21 +69,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the ARM access token.
-    # Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+    # Specifying this along with AccountId will avoid Azure interactive logon.
     ${ArmAccessToken},
 
     [Parameter(Position=5)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the Graph access token.
-    # Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+    # GraphAccessToken is deprecated.
     ${GraphAccessToken},
 
     [Parameter(Position=6)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the ARM access token.
-    # Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+    # Specifies the AccoundId.
+    # Specifying this along with ArmAccessToken will avoid Azure interactive logon.
     ${AccountId},
 
     [Parameter(Position=7)]

@@ -27,7 +27,7 @@ Lists all of the available NetworkFunction Rest API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctionoperation
+https://learn.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctionoperation
 #>
 function Get-AzNetworkFunctionOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IOperation])]
@@ -176,7 +176,7 @@ PARAMETER <ICollectorPolicy>: Collector policy resource.
     [SourceType <SourceType?>]: Ingestion source type.
   [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctioncollectorpolicy
+https://learn.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctioncollectorpolicy
 #>
 function New-AzNetworkFunctionCollectorPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]
@@ -403,7 +403,7 @@ PARAMETER <IAzureTrafficCollector>: Azure Traffic Collector resource.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctiontrafficcollector
+https://learn.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctiontrafficcollector
 #>
 function New-AzNetworkFunctionTrafficCollector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector])]
@@ -611,7 +611,7 @@ PARAMETER <ICollectorPolicy>: Collector policy resource.
     [SourceType <SourceType?>]: Ingestion source type.
   [IngestionPolicyIngestionType <IngestionType?>]: The ingestion type.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctioncollectorpolicy
+https://learn.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctioncollectorpolicy
 #>
 function Set-AzNetworkFunctionCollectorPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]
@@ -821,7 +821,7 @@ PARAMETER <IAzureTrafficCollector>: Azure Traffic Collector resource.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctiontrafficcollector
+https://learn.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctiontrafficcollector
 #>
 function Set-AzNetworkFunctionTrafficCollector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector])]
@@ -1003,7 +1003,7 @@ PARAMETER <ITagsObject>: Tags object for patch operations.
   [Tag <ITagsObjectTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctioncollectorpolicytag
+https://learn.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctioncollectorpolicytag
 #>
 function Update-AzNetworkFunctionCollectorPolicyTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]
@@ -1172,7 +1172,7 @@ PARAMETER <ITagsObject>: Tags object for patch operations.
   [Tag <ITagsObjectTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctiontrafficcollectortag
+https://learn.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctiontrafficcollectortag
 #>
 function Update-AzNetworkFunctionTrafficCollectorTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector])]

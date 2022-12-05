@@ -31,7 +31,7 @@ Use this API to create or update the snoozed or dismissed status of a recommenda
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ISuppressionContract
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/new-azadvisorsuppression
+https://learn.microsoft.com/powershell/module/az.advisor/new-azadvisorsuppression
 #>
 function New-AzAdvisorSuppression {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ISuppressionContract])]

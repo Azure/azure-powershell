@@ -39,7 +39,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciextension
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciextension
 #>
 function Get-AzStackHciExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension])]

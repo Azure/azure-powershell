@@ -47,7 +47,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebusnamespaceauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusnamespaceauthorizationrule
 #>
 function Remove-AzServiceBusNamespaceAuthorizationRule {
 [OutputType([System.Boolean])]

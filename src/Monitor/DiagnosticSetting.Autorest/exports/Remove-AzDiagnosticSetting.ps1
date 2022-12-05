@@ -20,7 +20,7 @@ Deletes existing diagnostic settings for the specified resource.
 .Description
 Deletes existing diagnostic settings for the specified resource.
 .Example
-$subscriptionId = (Get-AzContext).SubscriptionId
+$subscriptionId = (Get-AzContext).Subscription.Id
 Remove-AzDiagnosticSetting -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001 -Name test-setting
 
 .Inputs

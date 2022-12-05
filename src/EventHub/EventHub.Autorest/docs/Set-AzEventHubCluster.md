@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubcluster
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubcluster
 schema: 2.0.0
 ---
 

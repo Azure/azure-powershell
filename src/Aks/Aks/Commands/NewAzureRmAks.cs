@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -28,7 +27,6 @@ using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -113,14 +111,6 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Docker bridge cidr used for building Kubernetes network.")]
         public string DockerBridgeCidr { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
-
-        public Hashtable NodePoolLabel { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Aks custom headers used for building Kubernetes network.")]
-
-        public Hashtable AksCustomHeader { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "The load balancer sku for the managed cluster.")]
         [PSArgumentCompleter("basic", "standard")]
         public string LoadBalancerSku { get; set; }
@@ -161,26 +151,8 @@ namespace Microsoft.Azure.Commands.Aks
                 var managedCluster = BuildNewCluster();
                 try
                 {
-                    ManagedCluster cluster;
-                    if (this.IsParameterBound(c => c.AksCustomHeader))
-                    {
-                        Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
-                        foreach (var key in AksCustomHeader.Keys)
-                        {
-                            List<string> values = new List<string>();
-                            foreach (var value in (object[])AksCustomHeader[key])
-                            {
-                                values.Add(value.ToString());
-                            }
-                            customHeaders.Add(key.ToString(), values);
-                        }
 
-                        cluster = Client.ManagedClusters.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, managedCluster, customHeaders).GetAwaiter().GetResult().Body;
-                    }
-                    else
-                    {
-                        cluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
-                    }
+                    var cluster = this.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
                     var psObj = PSMapper.Instance.Map<PSKubernetesCluster>(cluster);
 
                     if (this.IsParameterBound(c => c.AcrNameToAttach))
@@ -498,6 +470,14 @@ namespace Microsoft.Azure.Commands.Aks
                 foreach (var key in NodePoolLabel.Keys)
                 {
                     defaultAgentPoolProfile.NodeLabels.Add(key.ToString(), NodePoolLabel[key].ToString());
+                }
+            }
+            if (this.IsParameterBound(c => c.NodePoolTag))
+            {
+                defaultAgentPoolProfile.Tags = new Dictionary<string, string>();
+                foreach (var key in NodePoolTag.Keys)
+                {
+                    defaultAgentPoolProfile.Tags.Add(key.ToString(), NodePoolTag[key].ToString());
                 }
             }
             if (this.IsParameterBound(c => c.AvailabilityZone))
