@@ -19,9 +19,9 @@
 -->
 ## Upcoming Release
 * Supported Planned and Unplanned types in Storage account failover type 
-    - `Invoke-AzStorageAccountFailover`
+    - `Invoke-AzStorageAccountFailover`   
 * Supported TierToCold and TierToHot in Storage account management policy 
-    - `Add-AzStorageAccountManagementPolicyAction`  
+    - `Add-AzStorageAccountManagementPolicyAction`
 
 ## Version 5.2.0
 * Supported MaxPageSize, Include, and Filter parameters for listing encryption scopes 
