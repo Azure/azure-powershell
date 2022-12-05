@@ -199,12 +199,18 @@ If ($Build)
     Return
 }
 
-If (-Not $PSBoundParameters.ContainsKey("TargetModule"))
+$CIPlanPath = "$RepoArtifacts/PipelineResult/CIPlan.json"
+If (Test-Path $CIPlanPath)
 {
     $CIPlan = Get-Content $RepoArtifacts/PipelineResult/CIPlan.json | ConvertFrom-Json
 }
+ElseIf (-Not $PSBoundParameters.ContainsKey("TargetModule"))
+{
+    $TargetModule = Get-ChildItem "$RepoArtifacts/$Configuration" | ForEach-Object { $_.Name.Replace("Az.", "") } | Join-String -Separator ';'
+    $PSBoundParameters["TargetModule"] = $TargetModule
+}
 
-If ($Test -And $CIPlan.test.Length -Ne 0)
+If ($Test -And (($CIPlan.test.Length -Ne 0) -Or ($PSBoundParameters.ContainsKey("TargetModule"))))
 {
     dotnet test $RepoArtifacts/Azure.PowerShell.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $Configuration --framework $TestFramework --logger trx --results-directory $TestOutputDirectory
     Return
