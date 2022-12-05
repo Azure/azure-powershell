@@ -203,7 +203,7 @@ If ($Build)
 $CIPlanPath = "$RepoArtifacts/PipelineResult/CIPlan.json"
 If (Test-Path $CIPlanPath)
 {
-    $CIPlan = Get-Content $RepoArtifacts/PipelineResult/CIPlan.json | ConvertFrom-Json
+    $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
 }
 ElseIf (-Not $PSBoundParameters.ContainsKey("TargetModule"))
 {
