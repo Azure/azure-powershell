@@ -29,6 +29,10 @@
                    {
                       "name":"-ResourceGroupName",
                       "value":"[path.resourceGroupName]"
+                   },
+                   {
+                      "name":"-Name",
+                      "value":"[path.dataFactoryName]"
                    }
                 ]
              }
@@ -58,6 +62,10 @@
                   {
                      "name":"-ResourceGroupName",
                      "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-Name",
+                     "value":"[path.dataFactoryName]"
                   }
                ]
             }

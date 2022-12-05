@@ -47,4 +47,4 @@ GETTING STARTED
 
 SEE ALSO
 
-Azure PowerShell documentation: https://docs.microsoft.com/powershell/azure
+Azure PowerShell documentation: https://learn.microsoft.com/powershell/azure

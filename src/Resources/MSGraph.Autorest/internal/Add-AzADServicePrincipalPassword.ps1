@@ -51,7 +51,7 @@ PASSWORDCREDENTIAL <IMicrosoftGraphPasswordCredential>: passwordCredential
   [KeyId <String>]: The unique identifier for the password.
   [StartDateTime <DateTime?>]: The date and time at which the password becomes valid. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/add-azadserviceprincipalpassword
+https://learn.microsoft.com/powershell/module/az.resources/add-azadserviceprincipalpassword
 #>
 function Add-AzADServicePrincipalPassword {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]

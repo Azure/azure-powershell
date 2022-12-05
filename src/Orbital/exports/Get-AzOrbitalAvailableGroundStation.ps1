@@ -42,7 +42,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [SpacecraftName <String>]: Spacecraft ID.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/get-azorbitalavailablegroundstation
+https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalavailablegroundstation
 #>
 function Get-AzOrbitalAvailableGroundStation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableGroundStation])]

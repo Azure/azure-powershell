@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.databox/get-azdataboxoperation
+https://learn.microsoft.com/powershell/module/az.databox/get-azdataboxoperation
 #>
 function Get-AzDataBoxOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IOperation])]

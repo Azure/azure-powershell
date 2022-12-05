@@ -43,12 +43,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var authority = spParameters.Environment.ActiveDirectoryAuthority;
 
             var requestContext = new TokenRequestContext(scopes);
-            var tokenCachePersistenceOptions = spParameters.TokenCacheProvider.GetTokenCachePersistenceOptions();
+            // var tokenCachePersistenceOptions = spParameters.TokenCacheProvider.GetTokenCachePersistenceOptions();
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
 
             var options = new ClientCertificateCredentialOptions()
             {
-                TokenCachePersistenceOptions = tokenCachePersistenceOptions, // allows MSAL to cache access tokens
+                // commented due to https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/3218
+                // todo: investigate splitting user token cache and app token cache
+                // TokenCachePersistenceOptions = tokenCachePersistenceOptions, // allows MSAL to cache access tokens
                 AuthorityHost = new Uri(authority),
                 SendCertificateChain = spParameters.SendCertificateChain ?? default(bool)
             };
@@ -67,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 //Service principal with secret
                 var csOptions = new ClientSecretCredentialOptions()
                 {
-                    TokenCachePersistenceOptions = tokenCachePersistenceOptions, // allows MSAL to cache access tokens
+                    // TokenCachePersistenceOptions = tokenCachePersistenceOptions, // allows MSAL to cache access tokens
                     AuthorityHost = new Uri(authority)
                 };
                 tokenCredential = azureCredentialFactory.CreateClientSecretCredential(tenantId, spParameters.ApplicationId, spParameters.Secret, csOptions);

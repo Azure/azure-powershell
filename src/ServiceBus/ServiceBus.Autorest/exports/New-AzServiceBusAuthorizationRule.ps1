@@ -27,7 +27,7 @@ New-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceN
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusauthorizationrule
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusauthorizationrule
 #>
 function New-AzServiceBusAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
