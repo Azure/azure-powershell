@@ -37,7 +37,7 @@ BODY <IPaths1Idoj4GServiceprincipalsServiceprincipalIdMicrosoftGraphRemovepasswo
   [(Any) <Object>]: This indicates any property can be added to this object.
   [KeyId <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipalpassword
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipalpassword
 #>
 function Remove-AzADServicePrincipalPassword {
 [OutputType([System.Boolean])]

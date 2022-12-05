@@ -17,8 +17,16 @@
 <#
 .Synopsis
 Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
+
+Note: Test-AzStackhHCIConnection is deprecated.
+Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests.
+For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/whats-new#new-azure-stack-hci-environment-checker-tool.
 .Description
 Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
+
+Note: Test-AzStackhHCIConnection is deprecated.
+Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests.
+For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/whats-new#new-azure-stack-hci-environment-checker-tool.
 .Example
 Test-AzStackHCIConnection
 .Example
@@ -32,7 +40,7 @@ IsRequired: True or False
 Result: Succeeded or Failed
 FailedNodes: List of nodes on which the test failed.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/test-azstackhciconnection
+https://learn.microsoft.com/powershell/module/az.stackhci/test-azstackhciconnection
 #>
 function Test-AzStackHCIConnection {
 [CmdletBinding(PositionalBinding=$false)]

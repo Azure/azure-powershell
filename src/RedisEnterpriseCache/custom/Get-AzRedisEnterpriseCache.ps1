@@ -46,7 +46,7 @@ Central US  MyCache4 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.ICluster
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecache
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecache
 #>
 
 function Get-AzRedisEnterpriseCache {

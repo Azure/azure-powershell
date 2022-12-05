@@ -15,28 +15,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzServiceBusAuthorization
 }
 
 Describe 'Set-AzServiceBusAuthorizationRule' {
-    It 'SetExpandedNamespace' {
+    It 'SetExpandedNamespace'  {
         $authRule = Set-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule1 -Rights @("Send","Listen","Manage")
         $authRule.Name | Should -Be "namespaceAuthRule1"
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup
         $authRule.Rights.Count | Should -Be 3
     }
 
-    It 'SetExpandedQueue' {
+    It 'SetExpandedQueue'  {
         $authRule = Set-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule1 -Rights @("Send")
         $authRule.Name | Should -Be "queueAuthRule1"
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup
         $authRule.Rights.Count | Should -Be 1
     }
 
-    It 'SetExpandedTopic' {
+    It 'SetExpandedTopic'  {
         $authRule = Set-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule1 -Rights @("Listen")
         $authRule.Name | Should -Be "topicAuthRule1"
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup
         $authRule.Rights.Count | Should -Be 1
     }
 
-    It 'SetViaIdentityExpanded' {
+    It 'SetViaIdentityExpanded'  {
         $authRule = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule1
         $authRule = Set-AzServiceBusAuthorizationRule -InputObject $authRule -Rights @('Send')
         $authRule.Name | Should -Be "namespaceAuthRule1"

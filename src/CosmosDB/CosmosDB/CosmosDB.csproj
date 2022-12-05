@@ -7,7 +7,9 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
   <ItemGroup>
     <PackageReference Include="Azure.Security.KeyVault.Keys" Version="4.3.0" />
-    <PackageReference Include="Microsoft.Azure.Management.CosmosDB" Version="3.7.0-preview" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CosmosDB.Sdk\CosmosDB.Sdk.csproj" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
