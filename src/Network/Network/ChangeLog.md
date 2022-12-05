@@ -1,4 +1,4 @@
-<!--
+    <!--
     Please leave this section at the top of the change log.
 
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed a bug that added Ddos related properties when viewing PublicIpAddress and DdosProtectionPlan objects
 * Added possible value `LocalGateway` for parameter `GatewayType`
     - `New-AzVirtualNetworkGateway`
 * Exposed `ExtendedLocation` and `VNetExtendedLocationResourceId` for `VirtualNetworkGateway`
@@ -42,7 +43,6 @@
     * `New-AzLoadBalancerProbeConfig`
     * `Set-AzLoadBalancerProbeConfig`
     * `Add-AzLoadBalancerProbeConfig`
-* Fixed a bug that added Ddos related properties when viewing PublicIpAddress and DdosProtectionPlan objects
 
 ## Version 5.0.0
 * Added a new endpoint switch `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`
