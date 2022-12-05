@@ -40,12 +40,12 @@ steps:
   inputs:
     azureSubscription: '6b085460-5f21-477e-ba44-1035046e9101'
     KeyVaultName: 'azurepsdev'
-    SecretsFilter: 'azpsbot-github-pat'
+    SecretsFilter: 'azps-test'
     RunAsPreJob: true
 
 - task: CmdLine@2
   inputs:
-    script: 'echo $(azpsbot-github-pat) > artifacts/secret.txt'
+    script: 'echo $(azps-test) > artifacts/secret.txt'
 
 - task: PowerShell@2
   displayName: Setup global.json
