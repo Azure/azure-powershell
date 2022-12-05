@@ -15,14 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubCluster'))
 }
 
 Describe 'Set-AzEventHubCluster' {
-    It 'SetExpanded' {
+    It 'SetExpanded' -skip {
         $cluster = Set-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster -Capacity 3
         $cluster.ResourceGroupName | Should -Be $env.clusterResourceGroup
         $cluster.Name | Should -Be $env.cluster
         $cluster.Capacity | Should -Be 3
     }
 
-    It 'SetViaIdentityExpanded' {
+    It 'SetViaIdentityExpanded' -skip {
         $cluster = Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster
         
         { Set-AzEventHubCluster -InputObject $cluster } | Should -Throw 'Please specify the property you want to update on the -InputObject'

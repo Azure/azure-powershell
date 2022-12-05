@@ -21,7 +21,20 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
     $resourceGroup = "resourceGroupAutorest" + (RandomString -allChars $false -len 6)
     $namespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
+    $namespaceV2 = "namespaceV2" + (RandomString -allChars $false -len 6)
+    $namespaceV3 = "namespaceV3" + (RandomString -allChars $false -len 6)
+    $namespaceV4 = "namespaceV4" + (RandomString -allChars $false -len 6)
+    $namespaceV5 = "namespaceV5" + (RandomString -allChars $false -len 6)
+    $namespaceV6 = "namespaceV6" + (RandomString -allChars $false -len 6)
+    $namespaceV7 = "namespaceV7" + (RandomString -allChars $false -len 6)
+    $namespaceV8 = "namespaceV8" + (RandomString -allChars $false -len 6)
+    $namespaceV9 = "namespaceV9" + (RandomString -allChars $false -len 6)
+    #$msi1 = "msi1" + (RandomString -allChars $false -len 6)
+    #$msi2 = "msi2" + (RandomString -allChars $false -len 6)
     $standardNamespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
+    $systemAssignedNamespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
+    $keyVaultName = "keyVaultName" + (RandomString -allChars $false -len 6)
+    $keyVaultUri = "https://" + $keyVaultName + ".vault.azure.net/"
     $namespaceResourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.ServiceBus/namespaces/" + $namespaceName
     $primaryNamespaceName = "primaryNS" + (RandomString -allChars $false -len 6)
     $primaryNamespaceResourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.ServiceBus/namespaces/" + $primaryNamespaceName
@@ -38,7 +51,17 @@ function setupEnv() {
 
     $env.Add('resourceGroup', $resourceGroup)
     $env.Add('namespace', $namespaceName)
+    $env.Add("namespaceV2", $namespaceV2)
+    $env.Add("namespaceV3", $namespaceV3)
+    $env.Add("namespaceV4", $namespaceV4)
+    $env.Add("namespaceV5", $namespaceV5)
+    $env.Add("namespaceV6", $namespaceV6)
+    $env.Add("namespaceV7", $namespaceV7)
+    $env.Add("namespaceV8", $namespaceV8)
+    $env.Add("namespaceV9", $namespaceV9)
     $env.Add('standardNamespace', $standardNamespaceName)
+    $env.Add("systemAssignedNamespaceName", $systemAssignedNamespaceName)
+    $env.Add("keyVaultUri", $keyVaultUri)
     $env.Add('namespaceResourceId', $namespaceResourceId)
     $env.Add('primaryNamespace', $primaryNamespaceName)
     $env.Add('secondaryNamespace', $secondaryNamespaceName)
@@ -72,6 +95,7 @@ function setupEnv() {
     $serviceBusTemplate = Get-Content .\test\deployment-template\parameter.json | ConvertFrom-Json
     $serviceBusTemplate.parameters.namespace_name.value = $namespaceName
     $serviceBusTemplate.parameters.standard_namespace_name.value = $standardNamespaceName
+    $serviceBusTemplate.parameters.system_assigned_namespace_name.value = $systemAssignedNamespaceName
     $serviceBusTemplate.parameters.namespaceResourceId.value = $namespaceResourceId
     $serviceBusTemplate.parameters.peName1.value = $peName1
     $serviceBusTemplate.parameters.peName2.value = $peName2
@@ -86,10 +110,31 @@ function setupEnv() {
     Set-Content -Path .\test\deployment-template\DisasterRecoveryParameter.json -Value (ConvertTo-Json $serviceBusTemplate)
     $rg = New-AzResourceGroupDeployment -TemplateFile .\test\deployment-template\DisasterRecoveryTemplate.json -TemplateParameterFile .\test\deployment-template\DisasterRecoveryParameter.json -Name disasterRecoveryTemplate -ResourceGroupName $resourceGroup
 
+    #$resourceNames = Get-Content .\test\deployment-template\pre-created-resources\parameter.json | ConvertFrom-Json
+    #$env.Add("subnetId1", $resourceNames.parameters.virtualNetworkId.Value)
+    #$env.Add("subnetId2", $resourceNames.parameters.virtualNetworkId2.Value)
+    #$env.Add("subnetId3", $resourceNames.parameters.virtualNetworkId3.Value)
+
+     Write-Host -ForegroundColor Magenta "Deploying KeyVault ARM template"
+
+    $namespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -NamespaceName $env.systemAssignedNamespaceName
+    $keyVaultTemplate = Get-Content .\test\deployment-template\keyVaultParameter.json | ConvertFrom-Json
+    $keyVaultTemplate.parameters.key_Vault_Name.value = $keyVaultName
+    $keyVaultTemplate.parameters.tenant_id.value = $env.Tenant
+    $keyVaultTemplate.parameters.object_id.value = $namespace.PrincipalId
+    Set-Content -Path .\test\deployment-template\keyVaultParameter.json -Value (ConvertTo-Json $keyVaultTemplate)
+    $rg = New-AzResourceGroupDeployment -TemplateFile .\test\deployment-template\keyVaultTemplate.json -TemplateParameterFile .\test\deployment-template\keyVaultParameter.json -Name keyVaultTemplate -ResourceGroupName $resourceGroup
+    
+    Write-Host -ForegroundColor Magenta "Deployed KeyVault ARM template"
+
     $resourceNames = Get-Content .\test\deployment-template\pre-created-resources\parameter.json | ConvertFrom-Json
+    $env.Add("storageAccountId", $resourceNames.parameters.storageAccountId.Value)
+    $env.Add("blobContainer", $resourceNames.parameters.blobContainer.Value)
     $env.Add("subnetId1", $resourceNames.parameters.virtualNetworkId.Value)
     $env.Add("subnetId2", $resourceNames.parameters.virtualNetworkId2.Value)
     $env.Add("subnetId3", $resourceNames.parameters.virtualNetworkId3.Value)
+    $env.Add("msi1", $resourceNames.parameters.msi1.Value)
+    $env.Add("msi2", $resourceNames.parameters.msi2.Value)
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

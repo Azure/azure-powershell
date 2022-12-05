@@ -125,9 +125,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultPropertiesInternal)this).KeyVersion = (string) content.GetValueForProperty("KeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultPropertiesInternal)this).KeyVersion, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityUserAssignedIdentity"))
+            if (content.Contains("UserAssignedIdentity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultPropertiesInternal)this).IdentityUserAssignedIdentity = (string) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultPropertiesInternal)this).IdentityUserAssignedIdentity, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultPropertiesInternal)this).UserAssignedIdentity = (string) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultPropertiesInternal)this).UserAssignedIdentity, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -162,9 +162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultPropertiesInternal)this).KeyVersion = (string) content.GetValueForProperty("KeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultPropertiesInternal)this).KeyVersion, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityUserAssignedIdentity"))
+            if (content.Contains("UserAssignedIdentity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultPropertiesInternal)this).IdentityUserAssignedIdentity = (string) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultPropertiesInternal)this).IdentityUserAssignedIdentity, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultPropertiesInternal)this).UserAssignedIdentity = (string) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultPropertiesInternal)this).UserAssignedIdentity, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -15,6 +15,7 @@
 
 # Usage: 1. This script can be called by build.proj used in CI pipeline
 #        2. Can be used to do static analysis in local env. Such as: .\tools\ExecuteCIStep.ps1 -StaticAnalysisSignature -TargetModule "Accounts;Compute"
+#        3. Can run static analyis for all the module built in artifacts. Such as: .\tools\ExecuteCIStep.ps1 -StaticAnalysisSignature will run static analysis signature check for all the modules under artifacts/debug.
 Param(
     [Switch]
     $Build,
@@ -199,12 +200,18 @@ If ($Build)
     Return
 }
 
-If (-Not $PSBoundParameters.ContainsKey("TargetModule"))
+$CIPlanPath = "$RepoArtifacts/PipelineResult/CIPlan.json"
+If (Test-Path $CIPlanPath)
 {
-    $CIPlan = Get-Content $RepoArtifacts/PipelineResult/CIPlan.json | ConvertFrom-Json
+    $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
+}
+ElseIf (-Not $PSBoundParameters.ContainsKey("TargetModule"))
+{
+    $TargetModule = Get-ChildItem "$RepoArtifacts/$Configuration" | ForEach-Object { $_.Name.Replace("Az.", "") } | Join-String -Separator ';'
+    $PSBoundParameters["TargetModule"] = $TargetModule
 }
 
-If ($Test -And $CIPlan.test.Length -Ne 0)
+If ($Test -And (($CIPlan.test.Length -Ne 0) -Or ($PSBoundParameters.ContainsKey("TargetModule"))))
 {
     dotnet test $RepoArtifacts/Azure.PowerShell.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $Configuration --framework $TestFramework --logger trx --results-directory $TestOutputDirectory
     Return

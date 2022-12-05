@@ -153,13 +153,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).SkuTier = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuTier?) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).SkuTier, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuTier.CreateFrom);
             }
-            if (content.Contains("IdentityPrincipalId"))
+            if (content.Contains("PrincipalId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).PrincipalId, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityTenantId"))
+            if (content.Contains("TenantId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityTenantId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).TenantId, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
@@ -181,9 +181,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityType = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType?) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityType, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType.CreateFrom);
             }
-            if (content.Contains("IdentityUserAssignedIdentity"))
+            if (content.Contains("UserAssignedIdentity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("SystemDataCreatedByType"))
             {
@@ -249,17 +249,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).PublicNetworkAccess = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess?) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).PublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess.CreateFrom);
             }
-            if (content.Contains("EncryptionKeySource"))
+            if (content.Contains("KeySource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).EncryptionKeySource = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource?) content.GetValueForProperty("EncryptionKeySource",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).EncryptionKeySource, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).KeySource = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource?) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).KeySource, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource.CreateFrom);
             }
-            if (content.Contains("EncryptionKeyVaultProperty"))
+            if (content.Contains("KeyVaultProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).EncryptionKeyVaultProperty = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[]) content.GetValueForProperty("EncryptionKeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).EncryptionKeyVaultProperty, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.KeyVaultPropertiesTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).KeyVaultProperty = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[]) content.GetValueForProperty("KeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).KeyVaultProperty, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.KeyVaultPropertiesTypeConverter.ConvertFrom));
             }
-            if (content.Contains("EncryptionRequireInfrastructureEncryption"))
+            if (content.Contains("RequireInfrastructureEncryption"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).EncryptionRequireInfrastructureEncryption = (bool?) content.GetValueForProperty("EncryptionRequireInfrastructureEncryption",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).EncryptionRequireInfrastructureEncryption, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).RequireInfrastructureEncryption = (bool?) content.GetValueForProperty("RequireInfrastructureEncryption",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).RequireInfrastructureEncryption, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -322,13 +322,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).SkuTier = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuTier?) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).SkuTier, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuTier.CreateFrom);
             }
-            if (content.Contains("IdentityPrincipalId"))
+            if (content.Contains("PrincipalId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).PrincipalId, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityTenantId"))
+            if (content.Contains("TenantId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityTenantId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).TenantId, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
@@ -350,9 +350,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityType = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType?) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityType, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType.CreateFrom);
             }
-            if (content.Contains("IdentityUserAssignedIdentity"))
+            if (content.Contains("UserAssignedIdentity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("SystemDataCreatedByType"))
             {
@@ -418,17 +418,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).PublicNetworkAccess = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess?) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).PublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess.CreateFrom);
             }
-            if (content.Contains("EncryptionKeySource"))
+            if (content.Contains("KeySource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).EncryptionKeySource = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource?) content.GetValueForProperty("EncryptionKeySource",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).EncryptionKeySource, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).KeySource = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource?) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).KeySource, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource.CreateFrom);
             }
-            if (content.Contains("EncryptionKeyVaultProperty"))
+            if (content.Contains("KeyVaultProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).EncryptionKeyVaultProperty = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[]) content.GetValueForProperty("EncryptionKeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).EncryptionKeyVaultProperty, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.KeyVaultPropertiesTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).KeyVaultProperty = (Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[]) content.GetValueForProperty("KeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).KeyVaultProperty, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.KeyVaultPropertiesTypeConverter.ConvertFrom));
             }
-            if (content.Contains("EncryptionRequireInfrastructureEncryption"))
+            if (content.Contains("RequireInfrastructureEncryption"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).EncryptionRequireInfrastructureEncryption = (bool?) content.GetValueForProperty("EncryptionRequireInfrastructureEncryption",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).EncryptionRequireInfrastructureEncryption, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).RequireInfrastructureEncryption = (bool?) content.GetValueForProperty("RequireInfrastructureEncryption",((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal)this).RequireInfrastructureEncryption, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }
