@@ -122,7 +122,7 @@ $examplesFolder = Join-Path $PSScriptRoot 'examples'
 $null = New-Item -ItemType Directory -Force -Path $examplesFolder
 
 Write-Host -ForegroundColor Green 'Creating cmdlets for specified models...'
-$modelCmdlets = @()
+$modelCmdlets = @('KeyVaultProperties')
 if ($modelCmdlets.Count -gt 0) {
   . (Join-Path $PSScriptRoot 'create-model-cmdlets.ps1')
   CreateModelCmdlet($modelCmdlets)

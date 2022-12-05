@@ -27,7 +27,7 @@ New-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myEventHubsCluste
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubcluster
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubcluster
 #>
 function New-AzEventHubCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster])]

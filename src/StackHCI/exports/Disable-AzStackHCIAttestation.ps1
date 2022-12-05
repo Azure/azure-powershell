@@ -25,7 +25,7 @@ Disable-AzStackHCIAttestation -RemoveVM
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/disable-azstackhciattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/disable-azstackhciattestation
 #>
 function Disable-AzStackHCIAttestation {
 [OutputType([System.Management.Automation.PSObject])]

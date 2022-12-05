@@ -47,7 +47,7 @@ BODY <IPurchaseRequest>: .
   [Sku <String>]: 
   [Term <ReservationTerm?>]: Represent the term of Reservation.
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationquote
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationquote
 #>
 function Get-AzReservationQuote {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponseProperties])]

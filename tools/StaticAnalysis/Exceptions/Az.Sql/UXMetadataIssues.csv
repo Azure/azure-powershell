@@ -1,4 +1,0 @@
-"Module","Severity","ResourceType","SubResourceType","Command","Description"
-"Az.Sql","1","Microsoft.Sql","sqlDatabase","Suspend-AzSqlDatabase","Doc url is expect: https://learn.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase but get: https://learn.microsoft.com/powershell/module/az.compute/restart-azvm"
-"Az.Sql","2","Microsoft.Sql","sqlDatabase","Suspend-AzSqlDatabase","The path /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{VMName} doesn't contains the right resource tpye: Microsoft.Sql"
-"Az.Sql","1","Microsoft.Sql","sqlDatabase","Suspend-AzSqlDatabase","Cannot find the defination of parameter Name in example"

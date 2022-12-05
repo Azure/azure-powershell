@@ -45,7 +45,7 @@ INPUTOBJECT <IManagedServiceIdentity>: Identity Parameter
   [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
   [SubscriptionId <String>]: The Id of the Subscription to which the identity belongs.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/get-azfederatedidentitycredentials
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azfederatedidentitycredentials
 #>
 function Get-AzFederatedIdentityCredentials {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential])]
@@ -237,7 +237,7 @@ Get-AzSystemAssignedIdentity -Scope "/subscriptions/00000000-0000-0000-000000000
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.ISystemAssignedIdentity
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/get-azsystemassignedidentity
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azsystemassignedidentity
 #>
 function Get-AzSystemAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.ISystemAssignedIdentity])]
@@ -386,7 +386,7 @@ Get-AzUserAssignedIdentityAssociatedResource -ResourceGroupName azure-rg-test -N
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IAzureResource
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/get-azuserassignedidentityassociatedresource
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azuserassignedidentityassociatedresource
 #>
 function Get-AzUserAssignedIdentityAssociatedResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IAzureResource])]
@@ -599,7 +599,7 @@ INPUTOBJECT <IManagedServiceIdentity>: Identity Parameter
   [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
   [SubscriptionId <String>]: The Id of the Subscription to which the identity belongs.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/get-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azuserassignedidentity
 #>
 function Get-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IIdentity])]
@@ -778,7 +778,7 @@ New-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/new-azfederatedidentitycredentials
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/new-azfederatedidentitycredentials
 #>
 function New-AzFederatedIdentityCredentials {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential])]
@@ -968,7 +968,7 @@ New-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Lo
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IIdentity
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/new-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/new-azuserassignedidentity
 #>
 function New-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IIdentity])]
@@ -1158,7 +1158,7 @@ INPUTOBJECT <IManagedServiceIdentity>: Identity Parameter
   [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
   [SubscriptionId <String>]: The Id of the Subscription to which the identity belongs.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/remove-azfederatedidentitycredentials
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/remove-azfederatedidentitycredentials
 #>
 function Remove-AzFederatedIdentityCredentials {
 [OutputType([System.Boolean])]
@@ -1355,7 +1355,7 @@ INPUTOBJECT <IManagedServiceIdentity>: Identity Parameter
   [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
   [SubscriptionId <String>]: The Id of the Subscription to which the identity belongs.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/remove-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/remove-azuserassignedidentity
 #>
 function Remove-AzUserAssignedIdentity {
 [OutputType([System.Boolean])]
@@ -1548,7 +1548,7 @@ INPUTOBJECT <IManagedServiceIdentity>: Identity Parameter
   [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
   [SubscriptionId <String>]: The Id of the Subscription to which the identity belongs.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/update-azfederatedidentitycredentials
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/update-azfederatedidentitycredentials
 #>
 function Update-AzFederatedIdentityCredentials {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential])]
@@ -1762,7 +1762,7 @@ INPUTOBJECT <IManagedServiceIdentity>: Identity Parameter
   [Scope <String>]: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
   [SubscriptionId <String>]: The Id of the Subscription to which the identity belongs.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/update-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/update-azuserassignedidentity
 #>
 function Update-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IIdentity])]

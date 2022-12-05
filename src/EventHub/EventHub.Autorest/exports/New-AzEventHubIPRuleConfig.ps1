@@ -25,7 +25,7 @@ New-AzEventHubIPRuleConfig -IPMask 3.3.3.3 -Action Allow
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetIPRules
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubipruleconfig
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubipruleconfig
 #>
 function New-AzEventHubIPRuleConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetIPRules])]
