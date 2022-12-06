@@ -98,7 +98,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
 
 		[Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
+        	public SwitchParameter AsJob { get; set; }
+
+		[Parameter(Mandatory = false, HelpMessage = "Tags are name/value pairs that enable you to categorize resources")]
+		public Hashtable Tag { get; set; }
 
 		private Hashtable GetAppSettingsToUpdate()
 		{
@@ -181,7 +184,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
             }
 
             var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
-			var site = new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan==null?webApp.ServerFarmId : AppServicePlan, cloningInfo, AseName, AseResourceGroupName));
+	    var site = new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan==null?webApp.ServerFarmId : AppServicePlan, cloningInfo, AseName, AseResourceGroupName, (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag)));
 			UpdateConfigIfNeeded(site);
         }
     }

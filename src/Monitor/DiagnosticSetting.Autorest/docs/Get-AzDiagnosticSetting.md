@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting
 schema: 2.0.0
 ---
 
@@ -35,7 +35,7 @@ Gets the active diagnostic settings for the specified resource.
 
 ### Example 1: List diagnostic settings
 ```powershell
-$subscriptionId = (Get-AzContext).SubscriptionId
+$subscriptionId = (Get-AzContext).Subscription.Id
 Get-AzDiagnosticSetting -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001
 ```
 
@@ -43,7 +43,7 @@ List diagnostic settings for resource
 
 ### Example 2: Get diagnostic setting by name
 ```powershell
-$subscriptionId = (Get-AzContext).SubscriptionId
+$subscriptionId = (Get-AzContext).Subscription.Id
 Get-AzDiagnosticSetting -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001 -Name test-setting
 ```
 

@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -21,7 +20,6 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
-
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Aks.Utils;
@@ -29,11 +27,9 @@ using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
@@ -59,6 +55,10 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "NodePoolMode represents mode of an node pool.")]
         [PSArgumentCompleter("System", "User")]
         public string NodePoolMode { get; set; } = "System";
+
+        [Parameter(Mandatory = false, HelpMessage = "The default OS sku for the node pools.")]
+        [PSArgumentCompleter("Ubuntu", "CBLMariner")]
+        public string NodeOsSKU { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.")]
         [PSArgumentCompleter("Delete", "Deallocate")]
@@ -111,14 +111,6 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Docker bridge cidr used for building Kubernetes network.")]
         public string DockerBridgeCidr { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
-
-        public Hashtable NodePoolLabel { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Aks custom headers used for building Kubernetes network.")]
-
-        public Hashtable AksCustomHeader { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "The load balancer sku for the managed cluster.")]
         [PSArgumentCompleter("basic", "standard")]
         public string LoadBalancerSku { get; set; }
@@ -159,26 +151,8 @@ namespace Microsoft.Azure.Commands.Aks
                 var managedCluster = BuildNewCluster();
                 try
                 {
-                    ManagedCluster cluster;
-                    if (this.IsParameterBound(c => c.AksCustomHeader))
-                    {
-                        Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
-                        foreach (var key in AksCustomHeader.Keys)
-                        {
-                            List<string> values = new List<string>();
-                            foreach (var value in (object[])AksCustomHeader[key])
-                            {
-                                values.Add(value.ToString());
-                            }
-                            customHeaders.Add(key.ToString(), values);
-                        }
 
-                        cluster = Client.ManagedClusters.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, managedCluster, customHeaders).GetAwaiter().GetResult().Body;
-                    }
-                    else
-                    {
-                        cluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
-                    }
+                    var cluster = this.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
                     var psObj = PSMapper.Instance.Map<PSKubernetesCluster>(cluster);
 
                     if (this.IsParameterBound(c => c.AcrNameToAttach))
@@ -266,7 +240,11 @@ namespace Microsoft.Azure.Commands.Aks
 
         private string GenerateSshKeyValue()
         {
-            String generateSshKeyPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh", "id_rsa"); ;
+            String generateSshKeyFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh");
+            if (!Directory.Exists(generateSshKeyFolder)) {
+                Directory.CreateDirectory(generateSshKeyFolder);
+            }
+            String generateSshKeyPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh", "id_rsa");
             if (File.Exists(generateSshKeyPath))
             {
                 throw new AzPSArgumentException(
@@ -450,6 +428,10 @@ namespace Microsoft.Azure.Commands.Aks
                 type: NodeVmSetType ?? "VirtualMachineScaleSets",
                 vnetSubnetID: NodeVnetSubnetID);
             defaultAgentPoolProfile.OsType = "Linux";
+            if (this.IsParameterBound(c => c.NodeOsSKU))
+            {
+                defaultAgentPoolProfile.OsSKU = NodeOsSKU;
+            }
             if (this.IsParameterBound(c => c.NodeMaxPodCount))
             {
                 defaultAgentPoolProfile.MaxPods = NodeMaxPodCount;
@@ -488,6 +470,14 @@ namespace Microsoft.Azure.Commands.Aks
                 foreach (var key in NodePoolLabel.Keys)
                 {
                     defaultAgentPoolProfile.NodeLabels.Add(key.ToString(), NodePoolLabel[key].ToString());
+                }
+            }
+            if (this.IsParameterBound(c => c.NodePoolTag))
+            {
+                defaultAgentPoolProfile.Tags = new Dictionary<string, string>();
+                foreach (var key in NodePoolTag.Keys)
+                {
+                    defaultAgentPoolProfile.Tags.Add(key.ToString(), NodePoolTag[key].ToString());
                 }
             }
             if (this.IsParameterBound(c => c.AvailabilityZone))

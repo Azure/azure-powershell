@@ -61,7 +61,7 @@ OUTPUT <IOutput>: An output object, containing all information associated with t
   [SizeWindow <Single?>]: 
   [TimeWindow <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsoutput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsoutput
 #>
 function Test-AzStreamAnalyticsOutput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus])]

@@ -13,7 +13,8 @@ Update a network manager scope connection.
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerScopeConnection -InputObject <PSNetworkManagerScopeConnection> [-AsJob]
+Set-AzNetworkManagerScopeConnection
+ -InputObject <PSNetworkManagerScopeConnection> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,7 +29,6 @@ $scopeConnection = Get-AzNetworkManagerScopeConnection -ResourceGroupName "psRes
 $scopeConnection.description = "new description"
 Set-AzNetworkManagerScopeConnection -InputObject $scopeConnection
 ```
-
 ```output
 TenantId          : 72f988bf-86f1-41af-91ab-2d7cd011db47
 ResourceId        : /providers/Microsoft.Management/managementGroups/newMG
@@ -50,7 +50,6 @@ Name              : mgConnection
 Etag              :
 Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/scopeConnections/mgConnection
 ```
-
 Updates a scope connection description.
 
 ## PARAMETERS
@@ -59,7 +58,7 @@ Updates a scope connection description.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -89,7 +88,7 @@ Accept wildcard characters: False
 The NetworkManagerScopeConnection
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerScopeConnection
+Type: PSNetworkManagerScopeConnection
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +103,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -120,7 +119,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -147,7 +146,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzNetworkManagerScopeConnection](./Get-AzNetworkManagerScopeConnection.md)
 
 [New-AzNetworkManagerScopeConnection](./New-AzNetworkManagerScopeConnection.md)

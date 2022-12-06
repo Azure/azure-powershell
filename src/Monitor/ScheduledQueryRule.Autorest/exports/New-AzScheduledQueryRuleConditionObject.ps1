@@ -35,7 +35,7 @@ DIMENSION <IDimension[]>: List of Dimensions conditions.
   Operator <DimensionOperator>: Operator for dimension values
   Value <String[]>: List of dimension values
 .Link
-https://docs.microsoft.com/powershell/module/az.ScheduledQueryRule/new-AzScheduledQueryRuleConditionObject
+https://learn.microsoft.com/powershell/module/az.ScheduledQueryRule/new-AzScheduledQueryRuleConditionObject
 #>
 function New-AzScheduledQueryRuleConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Condition])]

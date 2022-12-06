@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
-
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
@@ -67,6 +67,10 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("Linux", "Windows")]
         public string OsType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "OsSKU to be used to specify os SKU. Choose from Ubuntu, CBLMariner, Windows2019, Windows2022. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.")]
+        [PSArgumentCompleter("Ubuntu", "CBLMariner", "Windows2019", "Windows2022")]
+        public string OsSKU { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes.")]
         public SwitchParameter EnableNodePublicIp { get; set; }
 
@@ -108,7 +112,7 @@ namespace Microsoft.Azure.Commands.Aks
                     ClusterName = ClusterObject.Name;
                 }
                 var agentPool = GetAgentPool();
-                var pool = Client.AgentPools.CreateOrUpdate(ResourceGroupName, ClusterName, Name, agentPool);
+                var pool = this.CreateOrUpdate(ResourceGroupName, ClusterName, Name, agentPool);
                 var psPool = PSMapper.Instance.Map<PSNodePool>(pool);
                 WriteObject(psPool);
             };
@@ -146,6 +150,10 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 agentPool.OsType = OsType;
             }
+            if (this.IsParameterBound(c => c.OsSKU))
+            {
+                agentPool.OsSKU = OsSKU;
+            }
             if (this.IsParameterBound(c => c.MaxPodCount))
             {
                 agentPool.MaxPods = MaxPodCount;
@@ -161,6 +169,10 @@ namespace Microsoft.Azure.Commands.Aks
             if (EnableAutoScaling.IsPresent)
             {
                 agentPool.EnableAutoScaling = EnableAutoScaling.ToBool();
+            }
+            if (this.IsParameterBound(c => c.Mode))
+            {
+                agentPool.Mode = Mode;
             }
             if (EnableNodePublicIp.IsPresent)
             {
@@ -181,6 +193,26 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.AvailabilityZone))
             {
                 agentPool.AvailabilityZones = AvailabilityZone;
+            }
+            if (this.IsParameterBound(c => c.NodeLabel))
+            {
+                agentPool.NodeLabels = new Dictionary<string, string>();
+                foreach (var key in NodeLabel.Keys)
+                {
+                    agentPool.NodeLabels.Add(key.ToString(), NodeLabel[key].ToString());
+                }
+            }
+            if (this.IsParameterBound(c => c.Tag))
+            {
+                agentPool.Tags = new Dictionary<string, string>();
+                foreach (var key in Tag.Keys)
+                {
+                    agentPool.Tags.Add(key.ToString(), Tag[key].ToString());
+                }
+            }
+            if (this.IsParameterBound(c => c.NodeTaint))
+            {
+                agentPool.NodeTaints = NodeTaint;
             }
 
             return agentPool;

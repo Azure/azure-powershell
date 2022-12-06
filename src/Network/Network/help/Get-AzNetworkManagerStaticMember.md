@@ -33,7 +33,6 @@ The **Get-AzNetworkManagerStaticMember** cmdlet gets a network manager static me
 ```powershell
 Get-AzNetworkManagerStaticMember  -Name "TestStaticMember" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -NetworkGroupName "TestNetworkGroup"
 ```
-
 ```output
 Name              : TestSM
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestNetworkGroup/staticMembers/TestStaticMember
@@ -43,14 +42,12 @@ Type              : Microsoft.Network/networkManagers/networkGroups/staticMember
 Etag              :
 ProvisioningState : Succeeded
 ```
-
 Gets a single static member.
 
 ### Example 2
 ```powershell
 Get-AzNetworkManagerStaticMember -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -NetworkGroupName "psNetworkGroup"
 ```
-
 ```output
 Name              : TestSM
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestNetworkGroup/staticMembers/TestSM
@@ -75,7 +72,7 @@ ProvisioningState : Succeeded
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -90,7 +87,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -102,7 +99,7 @@ Accept wildcard characters: True
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Expand
 Aliases: ResourceName
 
@@ -117,7 +114,7 @@ Accept wildcard characters: True
 The network manager group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +129,7 @@ Accept wildcard characters: True
 The network manager name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +144,7 @@ Accept wildcard characters: True
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

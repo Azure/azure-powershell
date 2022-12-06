@@ -19,7 +19,7 @@ Creates key credentials or password credentials for an service principal.
 .Description
 Creates key credentials or password credentials for an service principal.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadspcredential
+https://learn.microsoft.com/powershell/module/az.resources/new-azadspcredential
 #>
 
 function New-AzADSpCredential {

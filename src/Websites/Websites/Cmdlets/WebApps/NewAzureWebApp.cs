@@ -137,6 +137,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = false, HelpMessage = "Path to the GitHub repository containign the web application to deploy.", ParameterSetName = SimpleParameterSet)]
         public string GitRepositoryPath { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Tags are name/value pairs that enable you to categorize resources", ParameterSetName = SimpleParameterSet)]
+        public Hashtable Tag { get; set; }
+
         protected override void ProcessRecord()
         {
             try
@@ -386,7 +389,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 // If ContainerImageName is specified and appservice plan doesn’t exist (appServiceplan == null) we will try to create plan with windows container 
                 var farmStrategy = planRG.CreateServerFarmConfig(planResourceGroup, planName, appServiceplan == null && _cmdlet.ContainerImageName != null);
 
-                return rgStrategy.CreateSiteConfig(farmStrategy, _cmdlet.Name, this.GetNewConfig(appServiceplan));
+                return rgStrategy.CreateSiteConfig(farmStrategy, _cmdlet.Name, this.GetNewConfig(appServiceplan)
+                    , (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(_cmdlet.Tag));
             }
         }
 

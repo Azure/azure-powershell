@@ -717,6 +717,14 @@
                 <PropertyName>SharedKey</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>ExpressRouteGatewayBypass</Label>
+                <PropertyName>ExpressRouteGatewayBypass</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EnablePrivateLinkFastPath</Label>
+                <PropertyName>EnablePrivateLinkFastPath</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>ConnectionStatus</Label>
                 <PropertyName>ConnectionStatus</PropertyName>
               </ListItem>

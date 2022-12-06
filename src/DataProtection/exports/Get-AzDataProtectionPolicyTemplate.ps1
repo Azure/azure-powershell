@@ -25,7 +25,7 @@ Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDisk
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupPolicy
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionpolicytemplate
+https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionpolicytemplate
 #>
 function Get-AzDataProtectionPolicyTemplate {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupPolicy])]

@@ -1,7 +1,7 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/powershell/module/az.servicebus/start-azservicebusmigration
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/start-azservicebusmigration
 schema: 2.0.0
 ---
 

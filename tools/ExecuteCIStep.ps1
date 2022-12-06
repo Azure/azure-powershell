@@ -15,6 +15,7 @@
 
 # Usage: 1. This script can be called by build.proj used in CI pipeline
 #        2. Can be used to do static analysis in local env. Such as: .\tools\ExecuteCIStep.ps1 -StaticAnalysisSignature -TargetModule "Accounts;Compute"
+#        3. Can run static analyis for all the module built in artifacts. Such as: .\tools\ExecuteCIStep.ps1 -StaticAnalysisSignature will run static analysis signature check for all the modules under artifacts/debug.
 Param(
     [Switch]
     $Build,
@@ -29,6 +30,9 @@ Param(
     $Test,
 
     [Switch]
+    $StaticAnalysis,
+
+    [Switch]
     $StaticAnalysisBreakingChange,
 
     [Switch]
@@ -39,6 +43,9 @@ Param(
     
     [Switch]
     $StaticAnalysisHelp,
+
+    [Switch]
+    $StaticAnalysisUX,
 
     [String]
     $RepoArtifacts='artifacts',
@@ -81,7 +88,7 @@ If ($Build)
             $Detail = Join-String -Separator ": " -InputObject $Detail
             If ($Position.Contains("src"))
             {
-                $ModuleName = $Position.Replace("\", "/").Split("src/")[1].Split('/')[0]
+                $ModuleName = "Az." + $Position.Replace("\", "/").Split("src/")[1].Split('/')[0]
             }
             Else
             {
@@ -96,19 +103,136 @@ If ($Build)
                 "Detail" = $Detail
             }
         }
-        ConvertTo-Json -Depth 10 -InputObject $BuildResultArray | Out-File -FilePath "$RepoArtifacts/PipelineResult/Build.json"
+
+        #Region produce result.json for GitHub bot to comsume
+        If ($IsWindows)
+        {
+            $OS = "Windows"
+        }
+        ElseIf ($IsLinux)
+        {
+            $OS = "Linux"
+        }
+        ElseIf ($IsMacOS)
+        {
+            $OS = "MacOS"
+        }
+        Else
+        {
+            $OS = "Others"
+        }
+        $Platform = "$($Env:PowerShellPlatform) - $OS"
+        $Template = Get-Content "$PSScriptRoot/PipelineResultTemplate.json" | ConvertFrom-Json
+        $ModuleBuildInfoList = @()
+        $CIPlan = Get-Content "$RepoArtifacts/PipelineResult/CIPlan.json" | ConvertFrom-Json
+        ForEach ($ModuleName In $CIPlan.build)
+        {
+            $BuildResultOfModule = $BuildResultArray | Where-Object { $_.Module -Eq "Az.$ModuleName" }
+            If ($BuildResultOfModule.Length -Eq 0)
+            {
+                $ModuleBuildInfoList += @{
+                    Module = "Az.$ModuleName";
+                    Status = "Success";
+                    Content = "";
+                }
+            }
+            Else
+            {
+                $Content = "|Type|Code|Position|Detail|`n|---|---|---|---|`n"
+                ForEach ($BuildResult In $BuildResultOfModule)
+                {
+                    If ($BuildResult.Type -Eq "Error")
+                    {
+                        $ErrorTypeEmoji = "❌"
+                    }
+                    ElseIf ($BuildResult.Type -Eq "Warning")
+                    {
+                        $ErrorTypeEmoji = "⚠️"
+                    }
+                    $Content += "|$ErrorTypeEmoji|$($BuildResult.Code)|$($BuildResult.Position)|$($BuildResult.Detail)|`n"
+                }
+                $ModuleBuildInfoList += @{
+                    Module = "Az.$ModuleName";
+                    Status = "Failed";
+                    Content = $Content;
+                }
+            }
+        }
+        $BuildDetail = @{
+            Platform = $Platform;
+            Modules = $ModuleBuildInfoList;
+        }
+        If ($BuildResultArray.Length -Ne 0)
+        {
+            $BuildDetail.Status = "Failed"
+            $DependencyStepStatus = "Canceled"
+        }
+        Else
+        {
+            $BuildDetail.Status = "Success"
+            $DependencyStepStatus = "Running"
+        }
+        $Template.Build.Details += $BuildDetail
+
+        $DependencyStepList = $Template | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" }
+
+        ForEach ($DependencyStep In $DependencyStepList)
+        {
+            $ModuleInfoList = @()
+            ForEach ($ModuleName In $CIPlan.$DependencyStep)
+            {
+                $ModuleInfoList += @{
+                    Module = "Az.$ModuleName";
+                    Status = $DependencyStepStatus;
+                    Content = "";
+                }
+            }
+            $Detail = @{
+                Status = $DependencyStepStatus;
+                Modules = $ModuleInfoList;
+            }
+            $Template.$DependencyStep.Details += $Detail
+        }
+
+        ConvertTo-Json -Depth 10 -InputObject $Template | Out-File -FilePath "$RepoArtifacts/PipelineResult/PipelineResult.json"
+        #EndRegion
     }
     Return
 }
 
-If (-Not $PSBoundParameters.ContainsKey("TargetModule"))
+$CIPlanPath = "$RepoArtifacts/PipelineResult/CIPlan.json"
+If (Test-Path $CIPlanPath)
 {
-    $CIPlan = Get-Content $RepoArtifacts/PipelineResult/CIPlan.json | ConvertFrom-Json
+    $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
+}
+ElseIf (-Not $PSBoundParameters.ContainsKey("TargetModule"))
+{
+    $TargetModule = Get-ChildItem "$RepoArtifacts/$Configuration" | ForEach-Object { $_.Name.Replace("Az.", "") } | Join-String -Separator ';'
+    $PSBoundParameters["TargetModule"] = $TargetModule
 }
 
-If ($Test -And $CIPlan.test.Length -Ne 0)
+If ($Test -And (($CIPlan.test.Length -Ne 0) -Or ($PSBoundParameters.ContainsKey("TargetModule"))))
 {
     dotnet test $RepoArtifacts/Azure.PowerShell.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $Configuration --framework $TestFramework --logger trx --results-directory $TestOutputDirectory
+    Return
+}
+
+If ($StaticAnalysis)
+{
+    $Parameters = @{
+        RepoArtifacts = $RepoArtifacts;
+        StaticAnalysisOutputDirectory = $StaticAnalysisOutputDirectory;
+        Configuration = $Configuration;
+    }
+    If ($PSBoundParameters.ContainsKey("TargetModule"))
+    {
+        $Parameters["TargetModule"] = $TargetModule
+    }
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisBreakingChange @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisDependency @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisSignature @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisHelp @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters
     Return
 }
 
@@ -122,10 +246,13 @@ If ($StaticAnalysisBreakingChange)
     {
         $BreakingChangeCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.'breaking-change'
     }
-    dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers breaking-change -u -m $BreakingChangeCheckModuleList
+    If ("" -Ne $BreakingChangeCheckModuleList)
+    {
+        Write-Host "Running static analysis for breaking change..."
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers breaking-change -u -m $BreakingChangeCheckModuleList
+    }
     Return
 }
-
 If ($StaticAnalysisDependency)
 {
     If ($PSBoundParameters.ContainsKey("TargetModule"))
@@ -136,7 +263,12 @@ If ($StaticAnalysisDependency)
     {
         $DependencyCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.dependency
     }
-    dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers dependency -u -m $DependencyCheckModuleList
+    If ("" -Ne $DependencyCheckModuleList)
+    {
+        Write-Host "Running static analysis for dependency..."
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers dependency -u -m $DependencyCheckModuleList
+        .($PSScriptRoot + "/CheckAssemblies.ps1") -BuildConfig $Configuration
+    }
     Return
 }
 
@@ -150,7 +282,11 @@ If ($StaticAnalysisSignature)
     {
         $SignatureCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.signature
     }
-    dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers signature -u -m $SignatureCheckModuleList
+    If ("" -Ne $SignatureCheckModuleList)
+    {
+        Write-Host "Running static analysis for signature..."
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers signature -u -m $SignatureCheckModuleList
+    }
     Return
 }
 
@@ -164,6 +300,29 @@ If ($StaticAnalysisHelp)
     {
         $HelpCheckModuleList = Join-String -Separator ';' -InputObject $CIPlan.help
     }
-    dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers help -u -m $HelpCheckModuleList
+    If ("" -Ne $HelpCheckModuleList)
+    {
+        Write-Host "Running static analysis for help..."
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers help -u -m $HelpCheckModuleList
+    }
+    Return
+}
+
+If ($StaticAnalysisUX)
+{
+    If ($PSBoundParameters.ContainsKey("TargetModule"))
+    {
+        $UXModuleList = $TargetModule
+    }
+    Else
+    {
+        $UXModuleList = Join-String -Separator ';' -InputObject $CIPlan.ux
+    }
+    If ("" -Ne $UXModuleList)
+    {
+        Write-Host "Running static analysis for UX metadata..."
+        .("$PSScriptRoot/StaticAnalysis/UXMetadataAnalyzer/PrepareUXMetadata.ps1") -RepoArtifacts $RepoArtifacts -Configuration $Configuration
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers ux -u -m $UXModuleList
+    }
     Return
 }

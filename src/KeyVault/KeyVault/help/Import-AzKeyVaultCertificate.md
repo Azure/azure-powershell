@@ -23,8 +23,8 @@ Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> -FilePath <S
 ### ImportWithPrivateKeyFromString
 ```
 Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> -CertificateString <String>
- [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ContentType <String>] [-Password <SecureString>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ImportWithPrivateKeyFromCollection
@@ -79,6 +79,46 @@ The first command uses the ConvertTo-SecureString cmdlet to create a secure pass
 stores it in the $Password variable.
 The second command imports the certificate named ImportCert01 into the CosotosoKV01 key vault.
 
+### Example 2: Import a key vault certificate by CertificateString
+```powershell
+$Password = ConvertTo-SecureString -String "123" -AsPlainText -Force
+$Base64String = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("import.pfx"))
+Import-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "ImportCert01" -CertificateString $Base64String -Password $Password
+
+```
+
+```output
+Name        : importCert01
+Certificate : [Subject]
+                CN=contoso.com
+
+              [Issuer]
+                CN=contoso.com
+
+              [Serial Number]
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+              [Not Before]
+                2/8/2016 3:11:45 PM
+
+              [Not After]
+                8/8/2016 4:21:45 PM
+
+              [Thumbprint]
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Thumbprint  : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Tags        :
+Enabled     : True
+Created     : 2/8/2016 11:50:43 PM
+Updated     : 2/8/2016 11:50:43 PM
+```
+
+The first command uses the ConvertTo-SecureString cmdlet to create a secure password, and then
+stores it in the $Password variable.
+The second command reads a certificate as a Base64 encoded representation.
+The third command imports the certificate named ImportCert01 into the CosotosoKV01 key vault.
+
 ## PARAMETERS
 
 ### -CertificateCollection
@@ -105,6 +145,21 @@ Parameter Sets: ImportWithPrivateKeyFromString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContentType
+Specifies the type of the certificate to be imported. Regards certificate string as PFX format by default.
+
+```yaml
+Type: System.String
+Parameter Sets: ImportWithPrivateKeyFromString
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

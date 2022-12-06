@@ -1,7 +1,7 @@
 ---
 external help file: Az.DiagnosticSetting.psm1-help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/remove-azdiagnosticsetting
+online version: https://learn.microsoft.com/powershell/module/az.monitor/remove-azdiagnosticsetting
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Deletes existing diagnostic settings for the specified resource.
 
 ### Example 1: Remove DiagnosticSetting by name
 ```powershell
-$subscriptionId = (Get-AzContext).SubscriptionId
+$subscriptionId = (Get-AzContext).Subscription.Id
 Remove-AzDiagnosticSetting -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001 -Name test-setting
 ```
 

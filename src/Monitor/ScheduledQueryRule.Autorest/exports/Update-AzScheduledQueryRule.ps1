@@ -20,7 +20,7 @@ Update a scheduled query rule.
 .Description
 Update a scheduled query rule.
 .Example
-$subscriptionId=(Get-AzContext).SubscriptionId
+$subscriptionId=(Get-AzContext).Subscription.Id
 New-AzScheduledQueryRule -Name test-rule -ResourceGroupName test-group -Scope "/subscriptions/$subscriptionId/resourceGroups/test-group/providers/Microsoft.Compute/virtualMachines/test-vm" -ActionGroupResourceId "/subscriptions/$subscriptionId/resourceGroups/test-group/providers/microsoft.insights/actionGroups/test-action-group" -AutoMitigate:$false
 
 .Inputs
@@ -53,7 +53,7 @@ INPUTOBJECT <IScheduledQueryRuleIdentity>: Identity Parameter
   [RuleName <String>]: The name of the rule.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule
+https://learn.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule
 #>
 function Update-AzScheduledQueryRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource])]

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
 * Added `RequiredNsgRule` parameter in the `Update-AzDatabricksWorkspace`.
 
 ## Version 1.3.0

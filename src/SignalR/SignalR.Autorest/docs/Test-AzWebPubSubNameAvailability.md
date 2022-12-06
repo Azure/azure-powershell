@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/test-azwebpubsubnameavailability
+online version: https://learn.microsoft.com/powershell/module/az.signalr/test-azwebpubsubnameavailability
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Checks that the resource name is valid and is not already in use.
 
 ### Example 1: Check if the resource name "abc" is available in east US region.
 ```powershell
-PS C:\> Test-AzWebPubSubNameAvailability -Location eastus -Name abc
+Test-AzWebPubSubNameAvailability -Location eastus -Name abc
+```
 
+```output
 NameAvailable Reason Message
 ------------- ------ -------
 True
@@ -135,7 +137,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.INameAvailability
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.INameAvailability
 
 ## NOTES
 

@@ -66,8 +66,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = BlobRuleParameterSet,
             HelpMessage = "Specifies the fields and properties of the Blob object to be included in the inventory. Valid values include: " +
                             "Name, Creation-Time, Last-Modified, Content-Length, Content-MD5, BlobType, AccessTier, AccessTierChangeTime, Expiry-Time, hdi_isfolder, Owner, " +
-                            "Group, Permissions, Acl, Metadata, LastAccessTime, AccessTierInferred, Tags. 'Name' is a required schemafield. " + 
+                            "Group, Permissions, Acl, Metadata, LastAccessTime, AccessTierInferred, Tags, Etag, Content-Type, Content-Encoding, Content-Language, Content-CRC64, " +
+                            "Cache-Control, Content-Disposition, LeaseStatus, LeaseState, LeaseDuration, ServerEncrypted, Deleted, RemainingRetentionDays, ImmutabilityPolicyUntilDate" +
+                            "ImmutabilityPolicyMode, LegalHold, CopyId, CopyStatus, CopySource, CopyProgress, CopyCompletionTime, CopyStatusDescription, CustomerProvidedKeySha256 " +
+                            "RehydratePriority, ArchiveStatus, x-ms-blob-sequence-number, EncryptionScope, IncrementalCopy, DeletionId, DeletedTime, TagCount. " + 
+                            "'Name' is a required schemafield. " + 
                             "Schema field values 'Expiry-Time, hdi_isfolder, Owner, Group, Permissions, Acl' are valid only for Hns enabled accounts.'Tags' field is only valid for non Hns accounts." +
+                            "'Tags, TagCount' field is only valid for non Hns accounts. " + 
                             "If specify '-IncludeSnapshot', will include 'Snapshot'  in the inventory.  If specify '-IncludeBlobVersion', will include 'VersionId, 'IsCurrentVersion' in the inventory.")]
         [ValidateSet(BlobInventoryPolicyBlobSchemaField.Name,
             BlobInventoryPolicyBlobSchemaField.CreationTime,
@@ -87,6 +92,37 @@ namespace Microsoft.Azure.Commands.Management.Storage
             BlobInventoryPolicyBlobSchemaField.LastAccessTime,
             BlobInventoryPolicyBlobSchemaField.AccessTierInferred,
             BlobInventoryPolicyBlobSchemaField.Tags,
+            BlobInventoryPolicyBlobSchemaField.Etag,
+            BlobInventoryPolicyBlobSchemaField.ContentType,
+            BlobInventoryPolicyBlobSchemaField.ContentEncoding,
+            BlobInventoryPolicyBlobSchemaField.ContentLanguage,
+            BlobInventoryPolicyBlobSchemaField.ContentCRC64,
+            BlobInventoryPolicyBlobSchemaField.CacheControl,
+            BlobInventoryPolicyBlobSchemaField.ContentDisposition,
+            BlobInventoryPolicyBlobSchemaField.LeaseStatus,
+            BlobInventoryPolicyBlobSchemaField.LeaseState,
+            BlobInventoryPolicyBlobSchemaField.LeaseDuration,
+            BlobInventoryPolicyBlobSchemaField.ServerEncrypted,
+            BlobInventoryPolicyBlobSchemaField.Deleted,
+            BlobInventoryPolicyBlobSchemaField.RemainingRetentionDays,
+            BlobInventoryPolicyBlobSchemaField.ImmutabilityPolicyUntilDate,
+            BlobInventoryPolicyBlobSchemaField.ImmutabilityPolicyMode,
+            BlobInventoryPolicyBlobSchemaField.LegalHold,
+            BlobInventoryPolicyBlobSchemaField.CopyId,
+            BlobInventoryPolicyBlobSchemaField.CopyStatus,
+            BlobInventoryPolicyBlobSchemaField.CopySource,
+            BlobInventoryPolicyBlobSchemaField.CopyProgress,
+            BlobInventoryPolicyBlobSchemaField.CopyCompletionTime,
+            BlobInventoryPolicyBlobSchemaField.CopyStatusDescription,
+            BlobInventoryPolicyBlobSchemaField.CustomerProvidedKeySha256,
+            BlobInventoryPolicyBlobSchemaField.RehydratePriority,
+            BlobInventoryPolicyBlobSchemaField.ArchiveStatus,
+            BlobInventoryPolicyBlobSchemaField.xmsblobsequencenumber,
+            BlobInventoryPolicyBlobSchemaField.EncryptionScope,
+            BlobInventoryPolicyBlobSchemaField.IncrementalCopy,
+            BlobInventoryPolicyBlobSchemaField.DeletionId,
+            BlobInventoryPolicyBlobSchemaField.DeletedTime,
+            BlobInventoryPolicyBlobSchemaField.TagCount,
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string[] BlobSchemaField { get; set; }
@@ -94,8 +130,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = true,
             ParameterSetName = ContainerRuleParameterSet,
             HelpMessage = "Specifies the fields and properties of the container object to be included in the inventory. Valid values include: " +
-                            "Name, Last-Modified, Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold. " + 
-                            "'Name' is a required schemafield.")]
+                            "Name, Last-Modified, Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold, " +
+                            "Etag, DefaultEncryptionScope, DenyEncryptionScopeOverride, ImmutableStorageWithVersioningEnabled, Deleted, Version, " +
+                            "DeletedTime, RemainingRetentionDays. 'Name' is a required schemafield.")]
         [ValidateSet(BlobInventoryPolicyContainerSchemaField.Name,
             BlobInventoryPolicyContainerSchemaField.LastModified,
             BlobInventoryPolicyContainerSchemaField.Metadata,
@@ -105,6 +142,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             BlobInventoryPolicyContainerSchemaField.PublicAccess,
             BlobInventoryPolicyContainerSchemaField.HasImmutabilityPolicy,
             BlobInventoryPolicyContainerSchemaField.HasLegalHold,
+            BlobInventoryPolicyContainerSchemaField.Etag,
+            BlobInventoryPolicyContainerSchemaField.DefaultEncryptionScope,
+            BlobInventoryPolicyContainerSchemaField.DenyEncryptionScopeOverride,
+            BlobInventoryPolicyContainerSchemaField.ImmutableStorageWithVersioningEnabled,
+            BlobInventoryPolicyContainerSchemaField.Deleted,
+            BlobInventoryPolicyContainerSchemaField.Version,
+            BlobInventoryPolicyContainerSchemaField.DeletedTime,
+            BlobInventoryPolicyContainerSchemaField.RemainingRetentionDays,
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string[] ContainerSchemaField { get; set; }
@@ -120,31 +165,42 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public string[] BlobType { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Sets an array of strings for blob prefixes to be matched..")]
+            HelpMessage = "Sets an array of strings for blob prefixes to be matched.")]
         [ValidateNotNullOrEmpty]
         public string[] PrefixMatch { get; set; }
 
         [Parameter(Mandatory = false,
+            HelpMessage = "Sets an array of strings with maximum 10 blob prefixes to be excluded from the inventory.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ExcludePrefix { get; set; }
+
+        [Parameter(Mandatory = false,
             ParameterSetName = BlobRuleParameterSet,
-            HelpMessage = "The rule is disabled if set it.")]
+            HelpMessage = "Includes blob snapshots in blob inventory")]
         public SwitchParameter IncludeSnapshot { get; set; }
 
         [Parameter(Mandatory = false,
             ParameterSetName = BlobRuleParameterSet,
-            HelpMessage = "The rule is disabled if set it.")]
+            HelpMessage = "Includes blob versions in blob inventory.")]
         public SwitchParameter IncludeBlobVersion { get; set; }
+
+        [Parameter(Mandatory = false,
+            ParameterSetName = BlobRuleParameterSet,
+            HelpMessage = "Includes deleted blob in blob inventory. When include delete blob, for ContainerSchemaFields, must include 'Deleted, Version, DeletedTime and RemainingRetentionDays'. For BlobSchemaFields, on HNS enabled storage accounts, must include 'DeletionId, Deleted, DeletedTime and RemainingRetentionDays', and on Hns disabled accounts must include 'Deleted and RemainingRetentionDays', else they must be excluded.")]
+        public SwitchParameter IncludeDeleted { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             PSBlobInventoryPolicyDefinition definition = new PSBlobInventoryPolicyDefinition();
-            if (this.BlobType != null || this.PrefixMatch != null || this.IncludeSnapshot.IsPresent || this.IncludeBlobVersion.IsPresent)
+            if (this.BlobType != null || this.PrefixMatch != null || this.ExcludePrefix != null || this.IncludeSnapshot.IsPresent || this.IncludeBlobVersion.IsPresent || this.IncludeDeleted.IsPresent)
             {
                 definition.Filters = new PSBlobInventoryPolicyFilter()
                 {
                     BlobTypes = NormalizeStringArray<AzureBlobType>(this.BlobType),
-                    PrefixMatch = this.PrefixMatch
+                    PrefixMatch = this.PrefixMatch,
+                    ExcludePrefix = this.ExcludePrefix
                 };
                 if (this.IncludeBlobVersion.IsPresent)
                 {
@@ -153,6 +209,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 if (this.IncludeSnapshot.IsPresent)
                 {
                     definition.Filters.IncludeSnapshots = true;
+                }
+                if (this.IncludeDeleted.IsPresent)
+                {
+                    definition.Filters.IncludeDeleted = true;
                 }
             }
             definition.Format = NormalizeString<BlobInventoryPolicyRuleFormat>(this.Format);
@@ -218,6 +278,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             public const string PublicAccess = "PublicAccess";
             public const string HasImmutabilityPolicy = "HasImmutabilityPolicy";
             public const string HasLegalHold = "HasLegalHold";
+            public const string Etag = "Etag";
+            public const string DefaultEncryptionScope = "DefaultEncryptionScope";
+            public const string DenyEncryptionScopeOverride = "DenyEncryptionScopeOverride";
+            public const string ImmutableStorageWithVersioningEnabled = "ImmutableStorageWithVersioningEnabled";
+            public const string Deleted = "Deleted";
+            public const string Version = "Version";
+            public const string DeletedTime = "DeletedTime";
+            public const string RemainingRetentionDays = "RemainingRetentionDays";
         }
 
         protected struct BlobInventoryPolicyBlobSchemaField
@@ -243,6 +311,37 @@ namespace Microsoft.Azure.Commands.Management.Storage
             public const string LastAccessTime = "LastAccessTime";
             public const string AccessTierInferred = "AccessTierInferred";
             public const string Tags = "Tags";
+            public const string Etag = "Etag";
+            public const string ContentType = "Content-Type";
+            public const string ContentEncoding = "Content-Encoding";
+            public const string ContentLanguage = "Content-Language";
+            public const string ContentCRC64 = "Content-CRC64";
+            public const string CacheControl = "Cache-Control";
+            public const string ContentDisposition = "Content-Disposition";
+            public const string LeaseStatus = "LeaseStatus";
+            public const string LeaseState = "LeaseState";
+            public const string LeaseDuration = "LeaseDuration";
+            public const string ServerEncrypted = "ServerEncrypted";
+            public const string Deleted = "Deleted";
+            public const string RemainingRetentionDays = "RemainingRetentionDays";
+            public const string ImmutabilityPolicyUntilDate = "ImmutabilityPolicyUntilDate";
+            public const string ImmutabilityPolicyMode = "ImmutabilityPolicyMode";
+            public const string LegalHold = "LegalHold";
+            public const string CopyId = "CopyId";
+            public const string CopyStatus = "CopyStatus";
+            public const string CopySource = "CopySource";
+            public const string CopyProgress = "CopyProgress";
+            public const string CopyCompletionTime = "CopyCompletionTime";
+            public const string CopyStatusDescription = "CopyStatusDescription";
+            public const string CustomerProvidedKeySha256 = "CustomerProvidedKeySha256";
+            public const string RehydratePriority = "RehydratePriority";
+            public const string ArchiveStatus = "ArchiveStatus";
+            public const string xmsblobsequencenumber = "x-ms-blob-sequence-number";
+            public const string EncryptionScope = "EncryptionScope";
+            public const string IncrementalCopy = "IncrementalCopy";
+            public const string DeletionId = "DeletionId";
+            public const string DeletedTime = "DeletedTime";
+            public const string TagCount = "TagCount";
         }
 
         protected struct BlobInventoryPolicyRuleSchedule

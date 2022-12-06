@@ -27,7 +27,7 @@ Primary and secondary connection strings to the queue.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusqueuekey
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusqueuekey
 #>
 function Get-AzServiceBusQueueKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]

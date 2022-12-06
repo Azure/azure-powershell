@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
     public partial struct Kind :
         System.IEquatable<Kind>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind Azurebot = @"azurebot";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind Bot = @"bot";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind Designer = @"designer";

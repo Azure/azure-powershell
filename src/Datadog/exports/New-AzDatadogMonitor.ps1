@@ -28,7 +28,7 @@ eastus2euap Datadog-pwsh01 microsoft.Datadog/monitors
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogMonitorResource
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/new-azdatadogmonitor
+https://learn.microsoft.com/powershell/module/az.datadog/new-azdatadogmonitor
 #>
 function New-AzDatadogMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogMonitorResource])]

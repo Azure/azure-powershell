@@ -25,7 +25,7 @@ Get-AzDataProtectionOperation
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IClientDiscoveryValueForSingleApi
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionoperation
+https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionoperation
 #>
 function Get-AzDataProtectionOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IClientDiscoveryValueForSingleApi])]
