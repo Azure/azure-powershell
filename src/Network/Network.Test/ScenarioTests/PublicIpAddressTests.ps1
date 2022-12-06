@@ -660,12 +660,12 @@ function Test-PublicIpAddressCRUD-DdosProtection
       $ddpp = New-AzDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgname -Location $location
 
       # attach plan to pip
-      #$actual.DdosSettings.DdosProtectionPlan = New-Object Microsoft.Azure.Commands.Network.Models.PSResourceId
-      #$actual.DdosSettings.DdosProtectionPlan.Id = $ddpp.Id 
-      #$pip = Set-AzPublicIpAddress -PublicIpAddress $actual
+      $actual.DdosSettings.DdosProtectionPlan = New-Object Microsoft.Azure.Commands.Network.Models.PSResourceId
+      $actual.DdosSettings.DdosProtectionPlan.Id = $ddpp.Id 
+      $pip = Set-AzPublicIpAddress -PublicIpAddress $actual
 
-      #$pip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
-      #Assert-AreEqual $ddpp.Id $pip.DdosSettings.DdosProtectionPlan.Id
+      $pip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $ddpp.Id $pip.DdosSettings.DdosProtectionPlan.Id
 
       # Create Backend for Pip
       $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
