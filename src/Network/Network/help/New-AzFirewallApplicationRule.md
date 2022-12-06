@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Specifies the type of traffic to be filtered by this rule. The format is <protocol type>:<port>. 
+Specifies the type of traffic to be filtered by this rule. The format is <protocol `type>:<port>`. 
 For example, "http:80" or "https:443".
 Protocol is mandatory when TargetFqdn is used, but it cannot be used with FqdnTag. The supported protocols are HTTP and HTTPS.
 

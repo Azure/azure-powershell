@@ -1,0 +1,9 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ASIServicePrinicpal": {
+      "value": "24594c91-ddc1-4a89-8ef7-4ab3e6ffad84"
+    }
+  }
+}

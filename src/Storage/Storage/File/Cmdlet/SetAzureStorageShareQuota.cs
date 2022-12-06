@@ -19,10 +19,11 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Azure.Storage.Files.Shares;
+using Azure.Storage.Files.Shares.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [GenericBreakingChange("The returned share properties will be moved from CloudFileShare.Properties to ShareProperties.")]
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareQuota", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFileShare))]
     public class SetAzureStorageShareQuota : AzureStorageFileCmdletBase
     {
@@ -57,31 +58,43 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            CloudFileShare fileShare = null;
+            ShareClient share;
 
             switch (this.ParameterSetName)
             {
                 case Constants.ShareNameParameterSetName:
-                    fileShare = this.BuildFileShareObjectFromName(this.ShareName);
+                    NamingUtil.ValidateShareName(this.ShareName, false);
+                    share = Util.GetTrack2ShareReference(this.ShareName,
+                                (AzureStorageContext)this.Context,
+                                null,
+                                ClientOptions);
                     break;
 
                 case Constants.ShareParameterSetName:
-                    fileShare = this.Share;
+                    share = AzureStorageFileShare.GetTrack2FileShareClient(this.Share, (AzureStorageContext)this.Context, this.ClientOptions);
+
+                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
+                    if (this.Context == null)
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 default:
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
             }
 
-            this.Channel.FetchShareAttributes(fileShare, null, this.RequestOptions, this.OperationContext);
+            ShareProperties shareProperties = share.GetProperties(this.CmdletCancellationToken).Value;
 
-            if (fileShare.Properties.Quota != this.Quota)
+            if (shareProperties.QuotaInGB != this.Quota)
             {
-                fileShare.Properties.Quota = this.Quota;
-                this.Channel.SetShareProperties(fileShare, null, this.RequestOptions, this.OperationContext);
+                //fileShare.Properties.Quota = this.Quota;
+                //this.Channel.SetShareProperties(fileShare, null, this.RequestOptions, this.OperationContext);
+                share.SetQuota(this.Quota);
+                shareProperties = share.GetProperties(this.CmdletCancellationToken).Value;
             }
 
-            WriteObject( new AzureStorageFileShare(fileShare, this.Channel.StorageContext));
+            WriteObject( new AzureStorageFileShare(share, (AzureStorageContext)this.Context, shareProperties, ClientOptions));
         }
     }
 }

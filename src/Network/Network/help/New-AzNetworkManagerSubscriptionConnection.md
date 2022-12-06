@@ -178,8 +178,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-[Set-PSNetworkManagerConnection](./Set-PSNetworkManagerConnection.md)
+[Set-AzNetworkManagerManagementGroupConnection](./Set-AzNetworkManagerManagementGroupConnection.md)
 
-[Get-PSNetworkManagerConnection](./Get-PSNetworkManagerConnection.md)
+[Get-AzNetworkManagerManagementGroupConnection](./Get-AzNetworkManagerManagementGroupConnection.md)
 
-[Remove-PSNetworkManagerConnection](./Remove-PSNetworkManagerConnection.md)
+[Remove-AzNetworkManagerManagementGroupConnection](./Remove-AzNetworkManagerManagementGroupConnection.md)

@@ -45,14 +45,13 @@ function Get-SqlBlobAuditingTestEnvironmentParameters ($testSuffix)
 
 <#
 .SYNOPSIS
-Gets the values of the parameters used at the threat detection tests
+Gets the values of the parameters used for the Advanced Threat Protection tests
 #>
-function Get-SqlThreatDetectionTestEnvironmentParameters ($testSuffix)
+function Get-SqlAdvancedThreatProtectionTestEnvironmentParameters ($testSuffix)
 {
-	return @{ rgname = "sql-td-cmdlet-test-rg" +$testSuffix;
-			  serverName = "sql-td-cmdlet-server" +$testSuffix;
+	return @{ rgname = "sql-td-cmdlet-test-rg" + $testSuffix;
+			  serverName = "sql-td-cmdlet-server" + $testSuffix;
 			  databaseName = "sql-td-cmdlet-db" + $testSuffix;
-			  storageAccount = "tdcmdlets" +$testSuffix
 			  }
 }
 
@@ -111,22 +110,12 @@ function Create-BlobAuditingClassicTestEnvironment ($testSuffix, $location = "We
 
 <#
 .SYNOPSIS
-Creates the test environment needed to perform the Sql threat detecion tests
+Creates the test environment needed to perform the Sql Advanced Threat Protection tests
 #>
-function Create-ThreatDetectionTestEnvironment ($testSuffix, $location = "West Central US", $serverVersion = "12.0")
+function Create-AdvancedThreatProtectionTestEnvironment ($testSuffix, $location = "West Europe", $serverVersion = "12.0")
 {
-	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
-	Create-TestEnvironmentWithParams $params $location $serverVersion
-}
-
-<#
-.SYNOPSIS
-Creates the test environment needed to perform the Sql threat detecion tests with classic storage
-#>
-function Create-ThreatDetectionClassicTestEnvironment ($testSuffix, $location = "West Central US", $serverVersion = "12.0")
-{
-	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
-	Create-ClassicTestEnvironmentWithParams $params $location $serverVersion
+	$params = Get-SqlAdvancedThreatProtectionTestEnvironmentParameters $testSuffix
+	Create-BasicTestEnvironmentWithParams $params $location $serverVersion
 }
 
 <#
@@ -790,11 +779,11 @@ function Create-JobStepForTest ($j, $tg, $c, $ct)
 
 <#
 .SYNOPSIS
-Removes the test environment that was needed to perform the Sql threat detection tests
+Removes the test environment that was needed to perform the Sql Advanced Threat Protection tests
 #>
-function Remove-ThreatDetectionTestEnvironment ($testSuffix)
+function Remove-AdvancedThreatProtectionTestEnvironment ($testSuffix)
 {
-	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+	$params = Get-SqlAdvancedThreatProtectionTestEnvironmentParameters $testSuffix
 	Remove-AzResourceGroup -Name $params.rgname -Force
 }
 
@@ -1006,9 +995,7 @@ function Create-ManagedInstanceForTest ($resourceGroup, $vCore, $subnetId)
 
 	# The previous command keeps polling until managed instance becomes ready. However, it can happen that the managed instance
 	# becomes ready but the create operation is still in progress. Because of that, we should wait until the operation is completed.
-	if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-		Start-Sleep -s 30
-	}
+	Start-TestSleep -Seconds 30
 
 	return $managedInstance
 }

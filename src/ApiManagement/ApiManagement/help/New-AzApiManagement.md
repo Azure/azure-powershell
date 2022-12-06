@@ -16,7 +16,7 @@ Creates an API Management deployment.
 
 ```
 New-AzApiManagement -ResourceGroupName <String> -Name <String> -Location <String> -Organization <String>
- -AdminEmail <String> [-Sku <PsApiManagementSku>] [-Capacity <Int32>] [-VpnType <PsApiManagementVpnType>]
+ -AdminEmail <String> [-Sku <string>] [-Capacity <Int32>] [-VpnType <PsApiManagementVpnType>]
  [-VirtualNetwork <PsApiManagementVirtualNetwork>]
  [-Tag <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-AdditionalRegions <PsApiManagementRegion[]>]

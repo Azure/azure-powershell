@@ -35,12 +35,26 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
  [-SkipExtensionsOnOverprovisionedVMs] [-EncryptionAtHost] [-PlatformFaultDomainCount <Int32>]
  [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DiskControllerType <String>] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzVmss** cmdlet creates a Virtual Machine Scale Set (VMSS) in Azure.
-Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set VMSS and associated resources. Use the default parameter set (`DefaultParameter`) for more advanced scenarios when you need to precisely configure each component of the VMSS and each associated resource before creation.
+Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set VMSS and associated resources. <br> 
+
+Use the default parameter set (`DefaultParameter`) for more advanced scenarios when you need to precisely configure each component of the VMSS and each associated resource before creation. 
+For default parameter set, first use the **[New-AzVmssConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmss)** cmdlet to create a virtual machine scale set object. <br> <br>
+
+Then use the following cmdlets to set different properties of the virtual machine scale set object: <br>
+- **[Add-AzVmssNetworkInterfaceConfiguration](https://learn.microsoft.com/en-us/powershell/module/az.compute/add-azvmssnetworkinterfaceconfiguration)** to set the network profile.<br>
+- **[Set-AzVmssOsProfile](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmssosprofile)** to set the OS profile. <br>
+- **[Set-AzVmssStorageProfile](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmssstorageprofile)** to set the storage profile.<br>
+- **[Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku)** can also be used to find out available virtual machine sizes for your subscription and region.<br><br>
+
+See other cmdlets for virtual machine scale set [here](https://learn.microsoft.com/en-us/powershell/module/az.compute/#vm-scale-sets).<br>
+<br>
+See [Quickstart: Create a virtual machine scale set with Azure PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/quick-create-powershell) for tutorial.
 
 ## EXAMPLES
 
@@ -319,7 +333,17 @@ Accept wildcard characters: False
 ```
 
 ### -Credential
-The administrator credentials (username and password) for VMs in this Scale Set.
+The administrator credentials (username and password) for VMs in this Scale Set. <br><br>
+**Username** <br>
+**Restriction:** <br>
+Windows: Cannot contain special characters \/""[]:|<>+=;,?*@& or end in \".\" <br>
+Linux: Username must only contain letters, numbers, hyphens, and underscores and may not start with a hyphen or number. <br>
+**Disallowed values:** \"administrator\", \"admin\", \"user\", \"user1\", \"test\", \"user2\", \"test1\", \"user3\", \"admin1\", \"1\", \"123\", \"a\", \"actuser\", \"adm\", \"admin2\", \"aspnet\", \"backup\", \"console\", \"david\", \"guest\", \"john\", \"owner\", \"root\", \"server\", \"sql\", \"support\", \"support_388945a0\", \"sys\", \"test2\", \"test3\", \"user4\", \"user5\". <br>
+**Minimum-length:** 1  character <br>
+**Max-length:** 20 characters for Windows, 64 characters for Linux <br>
+**Password** <br>
+Must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character. <br>
+The value must be between 12 and 123 characters long.
 
 ```yaml
 Type: System.Management.Automation.PSCredential
@@ -378,8 +402,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DiskControllerType
+Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://docs.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://docs.microsoft.com/rest/api/compute/resourceskus/list) . <br> For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DomainNameLabel
-The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set. This is the first component of the domain name that is automatically assigned to the Scale Set. Automatically assigned Domain names use the form (<DomainNameLabel>.<Location>.cloudapp.azure.com). If no value is supplied, the default domain name label will be the concatenation of `<ScaleSetName>` and `<ResourceGroupName>`.
+The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set. This is the first component of the domain name that is automatically assigned to the Scale Set. Automatically assigned Domain names use the form (`<DomainNameLabel>.<Location>.cloudapp.azure.com`). If no value is supplied, the default domain name label will be the concatenation of `<ScaleSetName>` and `<ResourceGroupName>`.
 
 ```yaml
 Type: System.String
@@ -903,7 +942,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmSize
-The size of the VM instances in this scale set.  A default size (Standard_DS1_v2) will be used if no Size is specified.
+The size of the VM instances in this scale set. [Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region. A default size (Standard_DS1_v2) will be used if no Size is specified. 
 
 ```yaml
 Type: System.String

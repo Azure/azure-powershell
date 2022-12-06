@@ -1,2 +1,2 @@
 "Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
-"Automation","New-AzAutomationVariable","2","1","Invalid_Cmdlet","5000","1","Get-AzVM is not a valid command name.","Get-AzVM -Name 'VirtualMachine03'","Check the spell of Get-AzVM."
+"Az.Automation","New-AzAutomationVariable","2","1","Invalid_Cmdlet","5000","1","Get-AzVM is not a valid command name.","Get-AzVM -Name 'VirtualMachine03'","Check the spell of Get-AzVM."

@@ -46,7 +46,7 @@ DefaultAction       : Allow
 Id                  : /subscriptions/subscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/EventHub-Namespace-1375/networkRuleSets/default
 Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
 IpRules             : 
-VirtualNetworkRules : 
+VirtualNetworkRules :
 ```
 
 Deletes the NetworkRuleSet for the Given "Eventhub-Namespace1-1375" namespace 
@@ -69,10 +69,10 @@ DefaultAction       : Allow
 Id                  : /subscriptions/subscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/EventHub-Namespace-1375/networkRuleSets/default
 Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
 IpRules             : 
-VirtualNetworkRules : 
+VirtualNetworkRules :
 ```
-Deletes the NetworkRuleSet using ResourceId of the Namespace
 
+Deletes the NetworkRuleSet using ResourceId of the Namespace
 
 ## PARAMETERS
 
@@ -213,8 +213,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

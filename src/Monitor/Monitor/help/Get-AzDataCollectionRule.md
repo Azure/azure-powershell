@@ -14,34 +14,24 @@ Gets data collection rule(s).
 
 ### BySubscription (Default)
 ```
-Get-AzDataCollectionRule
-   [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
+Get-AzDataCollectionRule [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceGroup
 ```
-Get-AzDataCollectionRule
-   -ResourceGroupName <string>
-   [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
+Get-AzDataCollectionRule -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzDataCollectionRule
-   -ResourceGroupName <string>
-   -RuleName <string>
-   [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
+Get-AzDataCollectionRule -ResourceGroupName <String> -RuleName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzDataCollectionRule
-   -RuleId <string>
-   [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
+Get-AzDataCollectionRule -RuleId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -157,35 +147,8 @@ The resource group name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroup
+Parameter Sets: ByResourceGroup, ByName
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RuleName
-The name of the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases: Name
 
 Required: True
 Position: Named
@@ -201,6 +164,21 @@ The ID of the resource.
 Type: System.String
 Parameter Sets: ByResourceId
 Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RuleName
+The name of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: ByName
+Aliases: Name
 
 Required: True
 Position: Named

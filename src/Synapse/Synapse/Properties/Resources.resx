@@ -830,4 +830,7 @@ Failed: {2}.</value>
   <data name="SettingSynapseLinkConnection" xml:space="preserve">
     <value>Setting link connection '{0}' in workspace '{1}'.</value>
   </data>
+  <data name="FailedToValidateUserAssignedIdentityParameter" xml:space="preserve">
+    <value>-UserAssignedIdentityAction and -UserAssignedIdentityId must be specified at the same time or neither of them should be.</value>
+  </data>
 </root>

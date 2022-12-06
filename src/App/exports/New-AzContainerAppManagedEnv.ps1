@@ -29,7 +29,7 @@ New-AzContainerAppManagedEnv -EnvName azps-env -ResourceGroupName azpstest_gp -L
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IManagedEnvironment
 .Link
-https://docs.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenv
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenv
 #>
 function New-AzContainerAppManagedEnv {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IManagedEnvironment])]

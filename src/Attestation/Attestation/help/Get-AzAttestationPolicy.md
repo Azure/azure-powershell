@@ -39,7 +39,8 @@ The Get-AzAttestationPolicy cmdlet gets the policy from a tenant in Azure Attest
 ```powershell
 Get-AzAttestationPolicy -Name pshtest -ResourceGroupName psh-test-rg -Tee SgxEnclave
 ```
-```output                                                                                                                                                                                                                    
+
+```output
 Text       : version= 1.0;
              authorizationrules{
                  c:[type=="$is-debuggable"] => permit();
@@ -66,6 +67,7 @@ Gets the policy for Attestation Provider *pshtest* for Tee type *SgxEnclave*.
 ```powershell
 Get-AzAttestationPolicy -DefaultProvider -Location "UK South" -Tee SgxEnclave
 ```
+
 ```output
 Text       : version= 1.0;authorizationrules{c:[type=="$is-debuggable"] => permit();};issuancerules{c:[type=="$is-debuggable"] => issue(type="is-debuggable",
              value=c.value);c:[type=="$sgx-mrsigner"] => issue(type="sgx-mrsigner", value=c.value);c:[type=="$sgx-mrenclave"] => issue(type="sgx-mrenclave",

@@ -250,6 +250,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'AppliedScopesSameAsExisting'", "AppliedScopesSameAsExisting", global::System.Management.Automation.CompletionResultType.ParameterValue, "AppliedScopesSameAsExisting");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SelfServiceRefundNotSupported".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SelfServiceRefundNotSupported'", "SelfServiceRefundNotSupported", global::System.Management.Automation.CompletionResultType.ParameterValue, "SelfServiceRefundNotSupported");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "RefundLimitExceeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'RefundLimitExceeded'", "RefundLimitExceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "RefundLimitExceeded");
+            }
         }
     }
 }

@@ -55,6 +55,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAzureFirewallHubIpAddresses HubIPAddresses { get; set; }
 
+        public PSAzureFirewallIpPrefix LearnedIPPrefixes { get; set; }
+
         public string[] PrivateRange
         {
             get
@@ -79,7 +81,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string AllowActiveFTP { get; set; }
 
-        public string IdentifyTopFatFlow { get; set; }
+        public string EnableFatFlowLogging { get; set; }
+
+        public string EnableUDPLogOptimization { get; set; }
+
+        public string RouteServerId { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText

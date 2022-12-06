@@ -20,13 +20,9 @@ Delete a Public IP Block by id in a private cloud workload network.
 .Description
 Delete a Public IP Block by id in a private cloud workload network.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -177,6 +173,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkPublicIP_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkPublicIP_DeleteViaIdentity';
@@ -190,6 +187,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -198,15 +196,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

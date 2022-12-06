@@ -20,7 +20,7 @@ Updates a workspace.
 Updates a workspace.
 #>
 function Update-AzDatabricksWorkspace {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the workspace.")]
@@ -115,10 +115,19 @@ function Update-AzDatabricksWorkspace {
 
         [Parameter(HelpMessage = "Resource tags.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspaceUpdateTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspaceUpdateTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules]
+        # Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint.
+        # Supported values are 'AllRules' and 'NoAzureDatabricksRules'.
+        # 'NoAzureServiceRules' value is for internal use only.
+        ${RequiredNsgRule},
 
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -194,6 +203,7 @@ function Update-AzDatabricksWorkspace {
             $hasAmlWorkspaceId = $PSBoundParameters.Remove('AmlWorkspaceId')
             $hasSkuTier = $PSBoundParameters.Remove('SkuTier')
             $hasTag = $PSBoundParameters.Remove('Tag')
+            $hasRequiredNsgRule = $PSBoundParameters.Remove('RequiredNsgRule')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
@@ -247,6 +257,10 @@ function Update-AzDatabricksWorkspace {
 
             if ($hasTag) {
                 $workspace.Tag = $Tag
+            }
+
+            if ($hasRequiredNsgRule) {
+                $workspace.RequiredNsgRule = $RequiredNsgRule
             }
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)

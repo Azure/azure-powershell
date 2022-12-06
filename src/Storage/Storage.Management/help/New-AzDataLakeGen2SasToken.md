@@ -16,7 +16,7 @@ Generates a SAS token for Azure DatalakeGen2 item.
 ```
 New-AzDataLakeGen2SasToken [-FileSystem] <String> [-Path <String>] [-Permission <String>]
  [-Protocol <SasProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTimeOffset>]
- [-ExpiryTime <DateTimeOffset>] [-FullUri] [-Context <IStorageContext>]
+ [-ExpiryTime <DateTimeOffset>] [-EncryptionScope <String>] [-FullUri] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzDataLakeGen2SasToken [-FileSystem] <String> [-Path <String>] [-Permission 
 ```
 New-AzDataLakeGen2SasToken -InputObject <AzureDataLakeGen2Item> [-Permission <String>]
  [-Protocol <SasProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTimeOffset>]
- [-ExpiryTime <DateTimeOffset>] [-FullUri] [-Context <IStorageContext>]
+ [-ExpiryTime <DateTimeOffset>] [-EncryptionScope <String>] [-FullUri] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -40,12 +40,12 @@ New-AzDataLakeGen2SasToken -FileSystem "filesystem1" -Path "dir1/dir2" -Permissi
 
 This example generates a DatalakeGen2 SAS token with full permission.
 
-### Example 2: Generate a SAS token with specific StartTime, ExpireTime, Protocal, IPAddressOrRange, by pipeline a datalakegen2 item
+### Example 2: Generate a SAS token with specific StartTime, ExpireTime, Protocal, IPAddressOrRange, Encryption Scope, by pipeline a datalakegen2 item
 ```
-Get-AzDataLakeGen2Item -FileSystem test -Path "testdir/dir2" | New-AzDataLakeGen2SasToken -Permission rw -Protocol Https -IPAddressOrRange 10.0.0.0-12.10.0.0 -StartTime (Get-Date) -ExpiryTime (Get-Date).AddDays(6)
+Get-AzDataLakeGen2Item -FileSystem test -Path "testdir/dir2" | New-AzDataLakeGen2SasToken -Permission rw -Protocol Https -IPAddressOrRange 10.0.0.0-12.10.0.0 -StartTime (Get-Date) -ExpiryTime (Get-Date).AddDays(6) -EncryptionScope scopename
 ```
 
-This example generates a DatalakeGen2 SAS token by pipeline a datalake gen2 item, and with specific StartTime, ExpireTime, Protocal, IPAddressOrRange.
+This example generates a DatalakeGen2 SAS token by pipeline a datalake gen2 item, and with specific StartTime, ExpireTime, Protocal, IPAddressOrRange, Encryption Scope.
 
 ## PARAMETERS
 
@@ -71,6 +71,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionScope
+Encryption scope to use when sending requests authorized with this SAS URI.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

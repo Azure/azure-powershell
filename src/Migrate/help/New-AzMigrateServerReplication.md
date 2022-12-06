@@ -20,9 +20,9 @@ New-AzMigrateServerReplication -DiskType <String> -LicenseType <String> -Machine
  [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
  [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>]
- [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-VMWarerunasaccountID <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
+ [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
+ [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
@@ -33,9 +33,9 @@ New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -LicenseTy
  [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
  [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>]
- [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-VMWarerunasaccountID <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
+ [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
+ [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectDefaultUser
@@ -47,9 +47,9 @@ New-AzMigrateServerReplication -DiskType <String> -InputObject <IVMwareMachine> 
  [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
  [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>]
- [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-VMWarerunasaccountID <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
+ [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
+ [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectPowerUser
@@ -60,9 +60,9 @@ New-AzMigrateServerReplication -DiskToInclude <IVMwareCbtDiskInput[]> -InputObje
  [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-PerformAutoResync <String>]
  [-SqlServerLicenseType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>]
- [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-VMWarerunasaccountID <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
+ [-TestSubnetName <String>] [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
+ [-VMWarerunasaccountID <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -171,7 +171,7 @@ Specifies the tag to be used for disk creation.
 To construct, see NOTES section for DISKTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetDiskTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtEnableMigrationInputTargetDiskTags
 Parameter Sets: (All)
 Aliases:
 
@@ -187,7 +187,7 @@ Specifies the disks on the source server to be included for replication.
 To construct, see NOTES section for DISKTOINCLUDE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtDiskInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtDiskInput[]
 Parameter Sets: ByIdPowerUser, ByInputObjectPowerUser
 Aliases:
 
@@ -265,7 +265,7 @@ Specifies the tag to be used for NIC creation.
 To construct, see NOTES section for NICTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetNicTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtEnableMigrationInputTargetNicTags
 Parameter Sets: (All)
 Aliases:
 
@@ -427,7 +427,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetSubnetName
-Specifies the Subnet name within the destination Virtual Netowk to which the server needs to be migrated.
+Specifies the Subnet name within the destination Virtual Network to which the server needs to be migrated.
 
 ```yaml
 Type: System.String
@@ -471,12 +471,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TestNetworkId
+Specifies the Virtual Network id within the destination Azure subscription to which the server needs to be test migrated.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestSubnetName
+Specifies the Subnet name within the destination Virtual Network to which the server needs to be test migrated.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VMTag
 Specifies the tag to be used for VM creation.
 To construct, see NOTES section for VMTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetVmtags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtEnableMigrationInputTargetVmtags
 Parameter Sets: (All)
 Aliases:
 
@@ -509,7 +539,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob
 
 ## NOTES
 

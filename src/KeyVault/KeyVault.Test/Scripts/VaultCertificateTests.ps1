@@ -496,7 +496,7 @@ function Test_Add_AzureKeyVaultCertificate
         Assert-Null $certificateOperation.Information
         Assert-Null $certificateOperation.ErrorCode
         Assert-Null $certificateOperation.ErrorMessage
-        Start-Sleep -s 10
+        Start-TestSleep -Seconds 10
         $certificateOperation = Get-AzKeyVaultCertificateOperation $keyVault $certificateName
         $pollCount++
     }

@@ -47,11 +47,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 9a19506631005d0ff1e3f394c86a9ce10cf51910
+branch: ac6324d13863e8157f4b392ef0ceef1e86eea935
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/stable/2021-10-01/connectedClusters.json
+  - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2022-10-01-preview/connectedClusters.json
 
 title: ConnectedKubernetes
 module-version: 0.1.0

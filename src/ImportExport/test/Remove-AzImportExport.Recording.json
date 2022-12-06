@@ -1,8 +1,8 @@
 {
-  "Remove-AzImportExport+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2016-11-01+1": {
+  "Remove-AzImportExport+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2021-01-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2016-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2021-01-01",
       "Content": "{\n  \"properties\": {\n    \"returnAddress\": {\n      \"city\": \"Redmond\",\n      \"countryOrRegion\": \"USA\",\n      \"email\": \"test@contoso.com\",\n      \"phone\": \"4250000000\",\n      \"postalCode\": \"98008\",\n      \"recipientName\": \"Some name\",\n      \"stateOrProvince\": \"WA\",\n      \"streetAddress1\": \"Street1\"\n    },\n    \"backupDriveManifest\": true,\n    \"diagnosticsPath\": \"waimportexport\",\n    \"driveList\": [\n      {\n        \"bitLockerKey\": \"238810-662376-448998-450120-652806-203390-606320-483076\",\n        \"driveHeaderHash\": \"\",\n        \"driveId\": \"9CA995BC\",\n        \"manifestFile\": \"\\\\\\\\DriveManifest.xml\",\n        \"manifestHash\": \"109B21108597EF36D5785F08303F3638\"\n      }\n    ],\n    \"jobType\": \"Import\",\n    \"storageAccountId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ImportExportTest/providers/Microsoft.Storage/storageAccounts/teststorageforimport\"\n  },\n  \"location\": \"eastus\"\n}",
       "Headers": {
       },
@@ -33,10 +33,10 @@
       "Content": "{\"properties\":{\"storageAccountId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ImportExportTest/providers/Microsoft.Storage/storageAccounts/teststorageforimport\",\"jobType\":\"Import\",\"returnAddress\":{\"recipientName\":\"Some name\",\"streetAddress1\":\"Street1\",\"streetAddress2\":\"\",\"city\":\"Redmond\",\"stateOrProvince\":\"WA\",\"postalCode\":\"98008\",\"countryOrRegion\":\"USA\",\"phone\":\"4250000000\",\"email\":\"test@contoso.com\"},\"shippingInformation\":{\"recipientName\":\"Microsoft Azure Import/Export Service\",\"streetAddress1\":\"21625 Gresham Drive\",\"streetAddress2\":\"\",\"city\":\"Ashburn\",\"stateOrProvince\":\"VA\",\"postalCode\":\"20147\",\"countryOrRegion\":\"USA\",\"phone\":\"\"},\"diagnosticsPath\":\"waimportexport\",\"logLevel\":\"Error\",\"backupDriveManifest\":true,\"cancelRequested\":false,\"state\":\"Creating\",\"driveList\":[{\"driveId\":\"9CA995BC\",\"manifestFile\":\"\\\\\\\\DriveManifest.xml\",\"manifestHash\":\"109B21108597EF36D5785F08303F3638\",\"driveHeaderHash\":\"\",\"state\":\"Specified\"}],\"provisioningState\":\"Succeeded\",\"encryptionKey\":{\"kekType\":\"MicrosoftManaged\"}},\"identity\":{\"type\":\"None\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete\",\"name\":\"job-for-delete\",\"type\":\"Microsoft.ImportExport/jobs\",\"location\":\"eastus\"}"
     }
   },
-  "Remove-AzImportExport+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2016-11-01+2": {
+  "Remove-AzImportExport+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2021-01-01+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2016-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2021-01-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "33" ],
@@ -71,10 +71,10 @@
       "Content": null
     }
   },
-  "Remove-AzImportExport+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2016-11-01+1": {
+  "Remove-AzImportExport+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2021-01-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2016-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2021-01-01",
       "Content": "{\n  \"properties\": {\n    \"returnAddress\": {\n      \"city\": \"Redmond\",\n      \"countryOrRegion\": \"USA\",\n      \"email\": \"test@contoso.com\",\n      \"phone\": \"4250000000\",\n      \"postalCode\": \"98008\",\n      \"recipientName\": \"Some name\",\n      \"stateOrProvince\": \"WA\",\n      \"streetAddress1\": \"Street1\"\n    },\n    \"backupDriveManifest\": true,\n    \"diagnosticsPath\": \"waimportexport\",\n    \"driveList\": [\n      {\n        \"bitLockerKey\": \"238810-662376-448998-450120-652806-203390-606320-483076\",\n        \"driveHeaderHash\": \"\",\n        \"driveId\": \"9CA995BD\",\n        \"manifestFile\": \"\\\\\\\\DriveManifest.xml\",\n        \"manifestHash\": \"109B21108597EF36D5785F08303F3638\"\n      }\n    ],\n    \"jobType\": \"Import\",\n    \"storageAccountId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ImportExportTest/providers/Microsoft.Storage/storageAccounts/teststorageforimport\"\n  },\n  \"location\": \"eastus\"\n}",
       "Headers": {
       },
@@ -105,10 +105,10 @@
       "Content": "{\"properties\":{\"storageAccountId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ImportExportTest/providers/Microsoft.Storage/storageAccounts/teststorageforimport\",\"jobType\":\"Import\",\"returnAddress\":{\"recipientName\":\"Some name\",\"streetAddress1\":\"Street1\",\"streetAddress2\":\"\",\"city\":\"Redmond\",\"stateOrProvince\":\"WA\",\"postalCode\":\"98008\",\"countryOrRegion\":\"USA\",\"phone\":\"4250000000\",\"email\":\"test@contoso.com\"},\"shippingInformation\":{\"recipientName\":\"Microsoft Azure Import/Export Service\",\"streetAddress1\":\"21625 Gresham Drive\",\"streetAddress2\":\"\",\"city\":\"Ashburn\",\"stateOrProvince\":\"VA\",\"postalCode\":\"20147\",\"countryOrRegion\":\"USA\",\"phone\":\"\"},\"diagnosticsPath\":\"waimportexport\",\"logLevel\":\"Error\",\"backupDriveManifest\":true,\"cancelRequested\":false,\"state\":\"Creating\",\"driveList\":[{\"driveId\":\"9CA995BD\",\"manifestFile\":\"\\\\\\\\DriveManifest.xml\",\"manifestHash\":\"109B21108597EF36D5785F08303F3638\",\"driveHeaderHash\":\"\",\"state\":\"Specified\"}],\"provisioningState\":\"Succeeded\",\"encryptionKey\":{\"kekType\":\"MicrosoftManaged\"}},\"identity\":{\"type\":\"None\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete\",\"name\":\"job-for-delete\",\"type\":\"Microsoft.ImportExport/jobs\",\"location\":\"eastus\"}"
     }
   },
-  "Remove-AzImportExport+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2016-11-01+2": {
+  "Remove-AzImportExport+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2021-01-01+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2016-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ImportExportTest/providers/Microsoft.ImportExport/jobs/job-for-delete?api-version=2021-01-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "35" ],

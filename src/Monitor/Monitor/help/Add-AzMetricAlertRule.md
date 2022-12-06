@@ -9,7 +9,7 @@ schema: 2.0.0
 # Add-AzMetricAlertRule
 
 ## SYNOPSIS
-Adds or updates a metric-based alert rule.
+Adds or updates a claasic metric-based alert rule (already retired on public cloud). To create a new metric alert rule, use the [Add-AzMetricAlertRuleV2](./Add-AzMetricAlertRuleV2.md) cmdlet.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ This command creates a metric alert rule for a website.
 
 ### Example 2: Disable a rule
 ```powershell
-Add-AzMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup Default-Web-EastUS -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -MetricName "Requests" -TimeAggregationOperator Total 
+Add-AzMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup Default-Web-EastUS -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -MetricName "Requests" -TimeAggregationOperator Total
 ```
 
 ```output
@@ -331,8 +331,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Set-AzActivityLogAlert](./Set-AzActivityLogAlert.md)
 
 [Add-AzWebtestAlertRule](./Add-AzWebtestAlertRule.md)
 

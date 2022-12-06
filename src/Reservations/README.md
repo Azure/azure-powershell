@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 01f2d2fc146e00485ecd150fc42bb2ee2abc400b
+branch: 04efa7dde730c9eaa35bdab1681117d639522edb
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -117,6 +117,34 @@ directive:
       verb: Invoke
       subject-prefix: Reservation
       subject: Exchange
+  - where:
+      verb: Invoke
+      subject: CalculateRefund
+    set:
+      verb: Invoke
+      subject-prefix: Reservation
+      subject: CalculateRefund
+  - where:
+      verb: Invoke
+      subject: Return
+    set:
+      verb: Invoke
+      subject-prefix: Reservation
+      subject: Return
+  - where:
+      verb: Invoke
+      subject: ArchiveReservation
+    set:
+      verb: Invoke
+      subject-prefix: Reservation
+      subject: ArchiveReservation
+  - where:
+      verb: Invoke
+      subject: UnarchiveReservation
+    set:
+      verb: Invoke
+      subject-prefix: Reservation
+      subject: UnarchiveReservation
   - where:
       verb: Invoke
       subject: PurchaseReservationOrder
@@ -393,6 +421,14 @@ directive:
           - Type
           - Values
           - ReasonCode
+  - where:
+      model-name: CalculateRefundResponse
+    set:
+      suppress-format: true
+  - where:
+      model-name: RefundResponse
+    set:
+      suppress-format: true
           
   - no-inline:
     - Price

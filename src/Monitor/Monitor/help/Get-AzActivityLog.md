@@ -12,6 +12,12 @@ Retrieve Activity Log events.
 
 ## SYNTAX
 
+### GetBySubscription (Default)
+```
+Get-AzActivityLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
+ [-DetailedOutput] [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### GetByCorrelationId
 ```
 Get-AzActivityLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
@@ -38,12 +44,6 @@ Get-AzActivityLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String
 Get-AzActivityLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
  [-DetailedOutput] [-ResourceProvider] <String> [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
-```
-
-### GetBySubscription
-```
-Get-AzActivityLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

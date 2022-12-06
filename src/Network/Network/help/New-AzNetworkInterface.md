@@ -186,6 +186,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableTcpStateTracking
+Indicates whether to disable tcp state tracking.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DnsServer
 Specifies the DNS server for the network interface.
 

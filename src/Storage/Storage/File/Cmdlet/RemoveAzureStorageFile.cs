@@ -14,9 +14,11 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using global::Azure.Storage.Files.Shares;
     using Microsoft.Azure.Storage.File;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using System.Globalization;
     using System.Management.Automation;
 
@@ -87,25 +89,43 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-            string[] path = NamingUtil.ValidatePath(this.Path, true);
-            CloudFile fileToBeRemoved;
+            ShareFileClient fileToBeRemoved;
             switch (this.ParameterSetName)
             {
                 case Constants.FileParameterSetName:
-                    fileToBeRemoved = this.File;
+                    fileToBeRemoved = AzureStorageFile.GetTrack2FileClient(this.File, ClientOptions);
+
+                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
+                    if (this.Context == null)
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.File.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 case Constants.ShareNameParameterSetName:
-                    var share = this.BuildFileShareObjectFromName(this.ShareName);
-                    fileToBeRemoved = share.GetRootDirectoryReference().GetFileReferenceByPath(path);
+                    NamingUtil.ValidateShareName(this.ShareName, false);
+                    ShareServiceClient fileserviceClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, ClientOptions);
+                    fileToBeRemoved = fileserviceClient.GetShareClient(this.ShareName).GetRootDirectoryClient().GetFileClient(this.Path);
                     break;
 
                 case Constants.ShareParameterSetName:
-                    fileToBeRemoved = this.Share.GetRootDirectoryReference().GetFileReferenceByPath(path);
+                    fileToBeRemoved = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Share.GetRootDirectoryReference(), ClientOptions).GetFileClient(this.Path);
+
+                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
+                    if (this.Context == null)
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 case Constants.DirectoryParameterSetName:
-                    fileToBeRemoved = this.Directory.GetFileReferenceByPath(path);
+                    fileToBeRemoved = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Directory, ClientOptions).GetFileClient(this.Path);
+
+                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
+                    if (this.Context == null)
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Directory.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 default:
@@ -114,14 +134,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             this.RunTask(async taskId =>
             {
-                if (this.ShouldProcess(fileToBeRemoved.GetFullPath(), "Remove file"))
+                if (this.ShouldProcess(Util.GetSnapshotQualifiedUri(fileToBeRemoved.Uri), "Remove file"))
                 {
-                    await this.Channel.DeleteFileAsync(fileToBeRemoved, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                    await fileToBeRemoved.DeleteAsync(cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false);
                 }
 
                 if (this.PassThru)
                 {
-                    WriteCloudFileObject(taskId, this.Channel, fileToBeRemoved);
+                    OutputStream.WriteObject(taskId, new AzureStorageFile(fileToBeRemoved, (AzureStorageContext)this.Context, clientOptions: ClientOptions));
                 }
             });
         }

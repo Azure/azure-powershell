@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Id = linkConnectionResource?.Id;
             this.Name = linkConnectionResource?.Name;
             this.Type = linkConnectionResource?.Type;
-            this.Properties = linkConnectionResource?.Properties;
+            this.Properties = linkConnectionResource?.Properties != null? new PSLinkConnection(linkConnectionResource?.Properties) : null;
+            this.Description = linkConnectionResource?.Description;
         }
 
         public string WorkspaceName { get; set; }
@@ -35,6 +36,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string Type { get; set; }
 
-        public LinkConnection Properties { get; set; }
+        public PSLinkConnection Properties { get; set; }
+
+        public string Description { get; set; }
     }
 }

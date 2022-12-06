@@ -60,6 +60,8 @@ This command uses a blob name and wildcard to get a blob.
 
 ### Example 2: Get blobs in a container by using the pipeline
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>Get-AzStorageContainer -Name container* | Get-AzStorageBlob -IncludeDeleted
 
@@ -108,6 +110,8 @@ The final command uses the **Echo** command to display the total.
 
 ### Example 5: Get all blobs in a container include blob version
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>Get-AzStorageBlob -Container "containername"  -IncludeVersion 
 
@@ -126,6 +130,8 @@ This command gets all blobs in a container include blob version.
 
 ### Example 6: Get a single blob version
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Get-AzStorageBlob -Container "containername" -Blob blob2 -VersionId "2020-07-03T16:19:16.2883167Z" 
 
@@ -140,6 +146,8 @@ This command gets a single blobs verion with VersionId.
 
 ### Example 7: Get a single blob snapshot
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Get-AzStorageBlob -Container "containername" -Blob blob1 -SnapshotTime "2020-07-06T06:56:06.8588431Z"
 
@@ -154,6 +162,8 @@ This command gets a single blobs snapshot with SnapshotTime.
 
 ### Example 8: Get blob include blob tags
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $blobs = Get-AzStorageBlob -Container "containername" -IncludeTag
 
@@ -178,6 +188,8 @@ This command lists blobs from a container with blob tags, and show the tags of t
 
 ### Example 9: Get a single blob with blob tag condition
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Get-AzStorageBlob -Container "containername" -Blob testblob -TagCondition """tag1""='value1'"
 

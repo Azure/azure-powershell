@@ -26,6 +26,7 @@ Return quota for subscription by region
 ```powershell
 Test-AzVMwareLocationQuotaAvailability -Location centralus
 ```
+
 ```output
 Enabled
 -------

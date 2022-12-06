@@ -19,6 +19,13 @@ New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-EmailReceiver
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### NewEventHubReceiver
+```
+New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-EventHubReceiver]
+ -EventHubNameSpace <String> -EventHubName <String> -SubscriptionId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### NewSmsReceiver
 ```
 New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-SmsReceiver] [-CountryCode <String>]
@@ -300,6 +307,51 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EventHubName
+The EventHubName of the event hub receiver
+
+```yaml
+Type: System.String
+Parameter Sets: NewEventHubReceiver
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EventHubNameSpace
+The name space of the event hub receiver
+
+```yaml
+Type: System.String
+Parameter Sets: NewEventHubReceiver
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EventHubReceiver
+Create a event hub receiver
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: NewEventHubReceiver
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -FunctionAppResourceId
 the function app resourceId
 
@@ -534,6 +586,21 @@ Parameter Sets: NewSmsReceiver
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription id of the event hub receiver
+
+```yaml
+Type: System.String
+Parameter Sets: NewEventHubReceiver
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

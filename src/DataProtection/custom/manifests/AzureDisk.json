@@ -1,4 +1,7 @@
 ﻿{
+  "datasourcePermissions": [ "Disk Backup Reader" ],
+  "snapshotRGPermissions": [ "Disk Snapshot Contributor" ],
+  "keyVaultPermissions": [],
   "isProxyResource": false,
   "resourceType": "Microsoft.Compute/disks",
   "parentResourceType": "Microsoft.Compute/disks",

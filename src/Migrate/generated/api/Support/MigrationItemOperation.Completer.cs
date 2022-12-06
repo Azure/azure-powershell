@@ -46,6 +46,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'StartResync'", "StartResync", global::System.Management.Automation.CompletionResultType.ParameterValue, "StartResync");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "PauseReplication".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'PauseReplication'", "PauseReplication", global::System.Management.Automation.CompletionResultType.ParameterValue, "PauseReplication");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResumeReplication".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ResumeReplication'", "ResumeReplication", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResumeReplication");
+            }
         }
     }
 }

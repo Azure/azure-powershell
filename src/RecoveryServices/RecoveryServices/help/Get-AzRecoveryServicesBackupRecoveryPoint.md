@@ -50,7 +50,7 @@ Set the vault context by using the -VaultId parameter.
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $startDate = (Get-Date).AddDays(-7)
 $endDate = Get-Date
-$container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -FriendlyName "V2VM" -VaultId $vault.ID
+$container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -FriendlyName "V2VM" -VaultId $vault.ID
 $backupItem = Get-AzRecoveryServicesBackupItem -Container $container -WorkloadType AzureVM -VaultId $vault.ID
 $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupItem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -VaultId $vault.ID
 ```

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionoperation
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionoperation
 schema: 2.0.0
 ---
 
@@ -109,7 +109,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IClientDiscoveryValueForSingleApi
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IClientDiscoveryValueForSingleApi
 
 ## NOTES
 

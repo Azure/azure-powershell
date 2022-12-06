@@ -25,6 +25,7 @@ Create a in-memory object for AddonSrmProperties
 ```powershell
 New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
 ```
+
 ```output
 AddonType ProvisioningState LicenseKey
 --------- ----------------- ----------

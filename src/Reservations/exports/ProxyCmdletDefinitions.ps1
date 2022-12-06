@@ -42,7 +42,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationavailablescope
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationavailablescope
 #>
 function Get-AzReservationAvailableScope {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ISubscriptionScopeProperties])]
@@ -250,7 +250,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationcatalog
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationcatalog
 #>
 function Get-AzReservationCatalog {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICatalog])]
@@ -438,7 +438,7 @@ Get-AzReservationHistory -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a -Re
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationhistory
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationhistory
 #>
 function Get-AzReservationHistory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
@@ -601,7 +601,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationorderid
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationorderid
 #>
 function Get-AzReservationOrderId {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAppliedReservations])]
@@ -772,7 +772,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationorder
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationorder
 #>
 function Get-AzReservationOrder {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationOrderResponse])]
@@ -929,9 +929,9 @@ Calculate price for placing a `ReservationOrder`.
 .Description
 Calculate price for placing a `ReservationOrder`.
 .Example
-Get-AzReservationQuote -AppliedScopeType 'Shared' -BillingPlan 'Upfront' -billingScopeId '/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665' -DisplayName {your RI name} -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y'
+Get-AzReservationQuote -AppliedScopeType 'Shared' -BillingPlan 'Upfront' -billingScopeId '/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665' -DisplayName 'yourRIName' -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y'
 .Example
-Get-AzReservationQuote -AppliedScopeType 'Shared' -BillingPlan 'Monthly' -billingScopeId '/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665' -DisplayName {your RI name} -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y'
+Get-AzReservationQuote -AppliedScopeType 'Shared' -BillingPlan 'Monthly' -billingScopeId '/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665' -DisplayName 'yourRIName' -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest
@@ -956,7 +956,7 @@ BODY <IPurchaseRequest>: .
   [Sku <String>]: 
   [Term <ReservationTerm?>]: Represent the term of Reservation.
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationquote
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationquote
 #>
 function Get-AzReservationQuote {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponseProperties])]
@@ -1197,7 +1197,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservation
 #>
 function Get-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
@@ -1398,6 +1398,183 @@ end {
 
 <#
 .Synopsis
+Archiving a `Reservation` moves it to `Archived` state.
+.Description
+Archiving a `Reservation` moves it to `Archived` state.
+.Example
+Invoke-AzReservationArchiveReservation -ReservationId "50000000-aaaa-bbbb-cccc-100000000003" -ReservationOrderId "30000000-aaaa-bbbb-cccc-100000000003"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IReservationsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationOrderId <String>]: Order Id of the reservation
+  [SubscriptionId <String>]: Id of the subscription
+.Link
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationarchivereservation
+#>
+function Invoke-AzReservationArchiveReservation {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Archive', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Archive', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [System.String]
+    # Id of the Reservation Item
+    ${ReservationId},
+
+    [Parameter(ParameterSetName='Archive', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [System.String]
+    # Order Id of the reservation
+    ${ReservationOrderId},
+
+    [Parameter(ParameterSetName='ArchiveViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Reservations.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Archive = 'Az.Reservations.private\Invoke-AzReservationArchiveReservation_Archive';
+            ArchiveViaIdentity = 'Az.Reservations.private\Invoke-AzReservationArchiveReservation_ArchiveViaIdentity';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Reservations.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Calculates price for exchanging `Reservations` if there are no policy errors.\n
 .Description
 Calculates price for exchanging `Reservations` if there are no policy errors.\n
@@ -1488,7 +1665,7 @@ RESERVATIONSTOPURCHASE <IPurchaseRequest[]>: List of reservations that are being
   [Sku <String>]: 
   [Term <ReservationTerm?>]: Represent the term of Reservation.
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculateexchange
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculateexchange
 #>
 function Invoke-AzReservationCalculateExchange {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateExchangeOperationResultResponse])]
@@ -1654,6 +1831,226 @@ end {
 
 <#
 .Synopsis
+Calculate price for returning `Reservations` if there are no policy errors.\n
+.Description
+Calculate price for returning `Reservations` if there are no policy errors.\n
+.Example
+$orderId = "50000000-aaaa-bbbb-cccc-100000000003"
+$fullyQualifiedId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003"
+$fullyQualifiedOrderId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003"
+
+Invoke-AzReservationCalculateRefund -ReservationOrderId $orderId -ReservationToReturnQuantity 1 -ReservationToReturnReservationId $fullyQualifiedId  -Id $fullyQualifiedOrderId -Scope "Reservation"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundRequest
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <ICalculateRefundRequest>: .
+  [Id <String>]: Fully qualified identifier of the reservation order being returned
+  [ReservationToReturnQuantity <Int32?>]: Quantity to be returned. Must be greater than zero.
+  [ReservationToReturnReservationId <String>]: Fully qualified identifier of the Reservation being returned
+  [Scope <String>]: The scope of the refund, e.g. Reservation
+
+INPUTOBJECT <IReservationsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationOrderId <String>]: Order Id of the reservation
+  [SubscriptionId <String>]: Id of the subscription
+.Link
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculaterefund
+#>
+function Invoke-AzReservationCalculateRefund {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundResponse])]
+[CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Post', Mandatory)]
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [System.String]
+    # Order Id of the reservation
+    ${ReservationOrderId},
+
+    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundRequest]
+    # .
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Alias('ReservationId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully qualified identifier of the reservation order being returned
+    ${Id},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.Int32]
+    # Quantity to be returned.
+    # Must be greater than zero.
+    ${ReservationToReturnQuantity},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully qualified identifier of the Reservation being returned
+    ${ReservationToReturnReservationId},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # The scope of the refund, e.g.
+    # Reservation
+    ${Scope},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Reservations.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Post = 'Az.Reservations.private\Invoke-AzReservationCalculateRefund_Post';
+            PostExpanded = 'Az.Reservations.private\Invoke-AzReservationCalculateRefund_PostExpanded';
+            PostViaIdentity = 'Az.Reservations.private\Invoke-AzReservationCalculateRefund_PostViaIdentity';
+            PostViaIdentityExpanded = 'Az.Reservations.private\Invoke-AzReservationCalculateRefund_PostViaIdentityExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Reservations.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Returns one or more `Reservations` in exchange for one or more `Reservation` purchases.\n
 .Description
 Returns one or more `Reservations` in exchange for one or more `Reservation` purchases.\n
@@ -1672,7 +2069,7 @@ To create the parameters described below, construct a hash table containing the 
 BODY <IExchangeRequest>: Exchange request
   [SessionId <String>]: SessionId that was returned by CalculateExchange API.
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/invoke-azreservationexchange
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationexchange
 #>
 function Invoke-AzReservationExchange {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IExchangeOperationResultResponse])]
@@ -1828,6 +2225,410 @@ end {
 
 <#
 .Synopsis
+Return a reservation.
+.Description
+Return a reservation.
+.Example
+$orderId = "50000000-aaaa-bbbb-cccc-100000000003"
+$fullyQualifiedId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003"
+$fullyQualifiedOrderId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003"
+
+Invoke-AzReservationCalculateRefund -ReservationOrderId $orderId -ReservationToReturnQuantity 1 -ReservationToReturnReservationId $fullyQualifiedId  -Id $fullyQualifiedOrderId -Scope "Reservation"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundRequest
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IRefundRequest>: .
+  [ReservationToReturnQuantity <Int32?>]: Quantity to be returned. Must be greater than zero.
+  [ReservationToReturnReservationId <String>]: Fully qualified identifier of the Reservation being returned
+  [ReturnReason <String>]: The reason of returning the reservation
+  [Scope <String>]: The scope of the refund, e.g. Reservation
+  [SessionId <String>]: SessionId that was returned by CalculateRefund API.
+
+INPUTOBJECT <IReservationsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationOrderId <String>]: Order Id of the reservation
+  [SubscriptionId <String>]: Id of the subscription
+.Link
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationreturn
+#>
+function Invoke-AzReservationReturn {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse])]
+[CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Post', Mandatory)]
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [System.String]
+    # Order Id of the reservation
+    ${ReservationOrderId},
+
+    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundRequest]
+    # .
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.Int32]
+    # Quantity to be returned.
+    # Must be greater than zero.
+    ${ReservationToReturnQuantity},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully qualified identifier of the Reservation being returned
+    ${ReservationToReturnReservationId},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # The reason of returning the reservation
+    ${ReturnReason},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # The scope of the refund, e.g.
+    # Reservation
+    ${Scope},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # SessionId that was returned by CalculateRefund API.
+    ${SessionId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Reservations.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Post = 'Az.Reservations.private\Invoke-AzReservationReturn_Post';
+            PostExpanded = 'Az.Reservations.private\Invoke-AzReservationReturn_PostExpanded';
+            PostViaIdentity = 'Az.Reservations.private\Invoke-AzReservationReturn_PostViaIdentity';
+            PostViaIdentityExpanded = 'Az.Reservations.private\Invoke-AzReservationReturn_PostViaIdentityExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Reservations.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Unarchiving a `Reservation` moves it to the state it was before archiving.\n
+.Description
+Unarchiving a `Reservation` moves it to the state it was before archiving.\n
+.Example
+Invoke-AzReservationUnarchiveReservation -ReservationId "50000000-aaaa-bbbb-cccc-100000000003" -ReservationOrderId "30000000-aaaa-bbbb-cccc-100000000003"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IReservationsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationOrderId <String>]: Order Id of the reservation
+  [SubscriptionId <String>]: Id of the subscription
+.Link
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationunarchivereservation
+#>
+function Invoke-AzReservationUnarchiveReservation {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Unarchive', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Unarchive', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [System.String]
+    # Id of the Reservation Item
+    ${ReservationId},
+
+    [Parameter(ParameterSetName='Unarchive', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [System.String]
+    # Order Id of the reservation
+    ${ReservationOrderId},
+
+    [Parameter(ParameterSetName='UnarchiveViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Reservations.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Unarchive = 'Az.Reservations.private\Invoke-AzReservationUnarchiveReservation_Unarchive';
+            UnarchiveViaIdentity = 'Az.Reservations.private\Invoke-AzReservationUnarchiveReservation_UnarchiveViaIdentity';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Reservations.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Change directory (tenant) of `ReservationOrder` and all `Reservation` under it to specified tenant id
 .Description
 Change directory (tenant) of `ReservationOrder` and all `Reservation` under it to specified tenant id
@@ -1854,7 +2655,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/move-azreservationdirectory
+https://learn.microsoft.com/powershell/module/az.reservations/move-azreservationdirectory
 #>
 function Move-AzReservationDirectory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IChangeDirectoryResponse])]
@@ -2054,7 +2855,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/new-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/new-azreservation
 #>
 function New-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationOrderResponse])]
@@ -2320,13 +3121,13 @@ Updates the applied scopes of the `Reservation`.
 .Example
 Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -Name "testName"
 .Example
-Shared scope:
+# Shared scope:
 Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -AppliedScopeType "Shared"
 
-Single scope:
+# Single scope:
 Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -AppliedScopeType "Single" -AppliedScope "/subscriptions/30000000-aaaa-bbbb-cccc-200000000018"
 
-Single scope with resource group:
+# Single scope with resource group:
 Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -AppliedScopeType "Single" -AppliedScope "/subscriptions/30000000-aaaa-bbbb-cccc-200000000018/resourcegroups/{your resource group name}"
 
 .Inputs
@@ -2382,7 +3183,7 @@ RESERVATION <IPatch>: .
       [Sku <String>]: 
       [Term <ReservationTerm?>]: Represent the term of Reservation.
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/update-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/update-azreservation
 #>
 function Update-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
@@ -2617,7 +3418,7 @@ Merge-AzReservation -ReservationOrderId "79ebddac-4030-4296-ab93-1ad90f032058" -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/merge-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/merge-azreservation
 #>
 function Merge-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
@@ -2772,7 +3573,7 @@ Split-AzReservation -ReservationOrderId "c615c897-aaaa-4123-8527-c42cc0da41e0" -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/split-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/split-azreservation
 #>
 function Split-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]

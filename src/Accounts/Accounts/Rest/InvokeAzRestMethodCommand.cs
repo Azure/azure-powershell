@@ -250,6 +250,11 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 targetResourceIdKey = AzureEnvironment.Endpoint.DataLakeEndpointResourceId;
                 return env.DataLakeEndpointResourceId;
             }
+            if (HasSameEndpointSuffix(authority, env.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AzureAppConfigurationEndpointSuffix]))
+            {
+                targetResourceIdKey = AzureEnvironment.ExtendedEndpoint.AzureAppConfigurationEndpointResourceId;
+                return env.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AzureAppConfigurationEndpointResourceId];
+            }
             return null;
         }
 

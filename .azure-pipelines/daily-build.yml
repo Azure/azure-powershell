@@ -15,8 +15,7 @@ pr: none
 jobs:
 - job: DailyBuild
   timeoutInMinutes: 180
-  pool:
-    vmImage: 'windows-2019'
+  pool: pool-windows-2019
   steps:
   - task: PowerShell@2
     displayName: 'Initialization'
@@ -83,6 +82,7 @@ jobs:
       FolderPath: 'artifacts'
       Pattern: |
         Release/**/Microsoft*Azure*PowerShell*Cmdlets*.dll
+        Release/**/Microsoft.Azure.PowerShell.*.Sdk.dll
         Release/**/Az.*.private.dll
         Release/**/Microsoft.Azure.PowerShell.Authentication.dll
         Release/**/Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll

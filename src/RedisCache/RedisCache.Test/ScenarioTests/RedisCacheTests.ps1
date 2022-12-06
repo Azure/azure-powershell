@@ -33,7 +33,7 @@ function Test-RedisCache
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        Start-TestSleep 30000
+        Start-TestSleep -Seconds 30
         $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -161,7 +161,7 @@ function Test-RedisCachePipeline
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        Start-TestSleep 30000
+        Start-TestSleep -Seconds 30
         $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -176,7 +176,7 @@ function Test-RedisCachePipeline
     # Wait for update to complete
     for ($i = 0; $i -le 60; $i++)
     {
-        Start-TestSleep 30000
+        Start-TestSleep -Seconds 30
         $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -247,7 +247,7 @@ function Test-RedisCacheClustering
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        Start-TestSleep 30000
+        Start-TestSleep -Seconds 30
         $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -352,7 +352,7 @@ function Test-RedisCachePatchSchedules
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        Start-TestSleep 30000
+        Start-TestSleep -Seconds 30
         $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -513,7 +513,7 @@ function Test-ImportExportReboot
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        Start-TestSleep 30000
+        Start-TestSleep -Seconds 30
         $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -541,7 +541,7 @@ function Test-ImportExportReboot
     ############################# Tests ResetRMAzureRedisCache #############################
     $rebootType = "PrimaryNode"
     Reset-AzRedisCache -Name $cacheName -RebootType $rebootType -Force
-    Start-TestSleep 120000
+    Start-TestSleep -Seconds 120
 
     ############################# CleanUp #############################
     # Delete cache
@@ -578,7 +578,7 @@ function Test-DiagnosticOperations
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        Start-TestSleep 30000
+        Start-TestSleep -Seconds 30
         $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -633,7 +633,7 @@ function Test-GeoReplication
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        Start-TestSleep 30000
+        Start-TestSleep -Seconds 30
         $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName
         if (([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0) -and ([string]::Compare("succeeded", $cacheGet[1].ProvisioningState, $True) -eq 0))
         {
@@ -652,7 +652,7 @@ function Test-GeoReplication
     # Get single links and wait for creation to comeplte
     for ($i = 0; $i -le 60; $i++)
     {
-        Start-TestSleep 30000
+        Start-TestSleep -Seconds 30
         $linkGet = Get-AzRedisCacheLink -PrimaryServerName $cacheName1 -SecondaryServerName $cacheName2
         if ([string]::Compare("succeeded", $linkGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -691,7 +691,7 @@ function Test-GeoReplication
     # links should disappear in 5 min
     for ($i = 0; $i -le 10; $i++)
     {
-        Start-TestSleep 30000
+        Start-TestSleep -Seconds 30
         $linkGet1 = Get-AzRedisCacheLink -PrimaryServerName $cacheName1
         $linkGet2 = Get-AzRedisCacheLink -SecondaryServerName $cacheName2
         if (($linkGet1.Count -eq 0) -and ($linkGet2.Count -eq 0))
@@ -744,7 +744,7 @@ function Test-FirewallRule
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        Start-TestSleep 30000
+        Start-TestSleep -Seconds 30
         $cacheGet = Get-AzRedisCache -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -807,7 +807,7 @@ function Test-FirewallRule
     Assert-True {Remove-AzRedisCacheFirewallRule -Name $cacheName -RuleName $rule1 -PassThru} "Removing firewall rule 'ruleone' failed."
 
     # Verify that rule is deleted
-    Start-TestSleep 6000
+    Start-TestSleep -Seconds 6
     $allRulesGet = Get-AzRedisCacheFirewallRule -Name $cacheName
     Assert-AreEqual 2 $allRulesGet.Count
 
@@ -815,7 +815,7 @@ function Test-FirewallRule
     Get-AzRedisCacheFirewallRule -Name $cacheName | Remove-AzRedisCacheFirewallRule -PassThru
 
     # Verify that all rules are deleted
-    Start-TestSleep 6000
+    Start-TestSleep -Seconds 6
     $allRulesGet = Get-AzRedisCacheFirewallRule -Name $cacheName
     Assert-AreEqual 0 $allRulesGet.Count
 
@@ -859,7 +859,7 @@ function Test-Zones
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        Start-TestSleep 30000
+        Start-TestSleep -Seconds 30
         $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -921,7 +921,7 @@ function Test-ManagedIdentity
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        Start-TestSleep 30000
+        Start-TestSleep -Seconds 30
         $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -940,7 +940,7 @@ function Test-ManagedIdentity
     Assert-AreEqual 1 $cacheCreated.UserAssignedIdentity.Count
     Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test2")
 
-    Start-TestSleep 60000
+    Start-TestSleep -Seconds 60
     # Test removing user assigned identity
     $cacheCreated = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -IdentityType SystemAssigned
 
@@ -949,7 +949,7 @@ function Test-ManagedIdentity
     Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("TenantId")
     Assert-Null $cacheCreated.UserAssignedIdentity
 
-    Start-TestSleep 60000
+    Start-TestSleep -Seconds 60
     # Test removing system assigned identity
     $cacheCreated = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -IdentityType UserAssigned -UserAssignedIdentity "/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test2"
     
@@ -958,7 +958,7 @@ function Test-ManagedIdentity
     Assert-AreEqual 1 $cacheCreated.UserAssignedIdentity.Count
     Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/0ee2a145-4d40-44f4-b764-67b40274f1ac/resourceGroups/prn-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test2")
 
-    Start-TestSleep 60000
+    Start-TestSleep -Seconds 60
     # Test removing identity
     $cacheCreated = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -IdentityType None
 
@@ -971,17 +971,4 @@ function Test-ManagedIdentity
 
     # Delete resource group
     Remove-AzResourceGroup -Name $resourceGroupName -Force
-}
-
-
-<#
-.SYNOPSIS
-Sleeps but only during recording.
-#>
-function Start-TestSleep($milliseconds)
-{
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-    {
-        Start-Sleep -Milliseconds $milliseconds
-    }
 }

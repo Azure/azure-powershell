@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkFunction
-online version: https://docs.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctiontrafficcollector
+online version: https://learn.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctiontrafficcollector
 schema: 2.0.0
 ---
 
@@ -191,7 +191,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IAzureTrafficCollector
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector
 
 ## NOTES
 

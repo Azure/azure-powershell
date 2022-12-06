@@ -43,7 +43,7 @@ function Test-RemoveComputeNodes
         {
             throw [System.TimeoutException] "Timed out waiting for compute nodes to enter LeavingPool state"
         }
-        Start-TestSleep 1000
+        Start-TestSleep -Seconds 1
         $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -Select $select -BatchContext $context
     }
 }
@@ -140,7 +140,7 @@ function WaitForIdleComputeNode
         {
             throw [System.TimeoutException] "Timed out waiting for idle compute node"
         }
-        Start-TestSleep 5000
+        Start-TestSleep -Seconds 5
         $computeNode = Get-AzBatchComputeNode -Id $computeNodeId -PoolId $poolId -BatchContext $context -Select "id,state"
     }
 }

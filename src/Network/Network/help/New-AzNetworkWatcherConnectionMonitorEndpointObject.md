@@ -62,6 +62,12 @@ New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-AzureVMSS] 
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### AzureArcVM
+```
+New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-AzureArcVM] -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 New-AzNetworkWatcherConnectionMonitorEndpointObject cmdlet creates connection monitor endpoint.
 
@@ -285,6 +291,21 @@ Azure Virtual Machine Scale sets.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AzureVMSS
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureArcVM
+AzureArc VM endpoint switch
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureArcVM
 Aliases:
 
 Required: True

@@ -173,10 +173,10 @@ to the virtual hub but preserves the firewall's configuration. For changes to be
 The Allocate method assigns the virtual hub reference to the firewall. Again, for changes to be reflected in cloud,
 Set-AzFirewall must be called.
 
-### 13:	Identify Top Fat Flows on Azure Firewall
+### 13:	Enable Fat Flow Logging on Azure Firewall
 ```powershell
 $azFw = Get-AzFirewall -Name "ps184" -ResourceGroupName "ps774"
-$azFw.IdentifyTopFatFlow = $true
+$azFw.EnableFatFlowLogging = $true
 
 $azFw | Set-AzFirewall
 ```
@@ -192,7 +192,7 @@ $azFw | Set-AzFirewall
 		FirewallPolicy	                : null	
 		HubIPAddresses	                : null	
 		Id	                            : "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps774/providers/Microsoft.Network/azureFirewalls/ps184"	
-		IdentifyTopFatFlow	            : "true"	
+		EnableFatFlowLogging	            : "true"	
 		IpConfigurations	            : Count = 0	
 		IpConfigurationsText	        : "[]"	
 		Location	                    : "eastus"	
@@ -221,7 +221,7 @@ $azFw | Set-AzFirewall
 
 ```
 
-In this example, Identify Top Fat Flows is enabled on the Firewall.
+In this example, Enable Fat Flow Logging is enabled on the Firewall.
 
 ## PARAMETERS
 

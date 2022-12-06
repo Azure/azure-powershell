@@ -101,6 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ErrorResponseCode ReRateOnlyAllowedForEa = @"ReRateOnlyAllowedForEA";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ErrorResponseCode RefundLimitExceeded = @"RefundLimitExceeded";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ErrorResponseCode ReservationIdNotInReservationOrder = @"ReservationIdNotInReservationOrder";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ErrorResponseCode ReservationOrderCreationFailed = @"ReservationOrderCreationFailed";
@@ -114,6 +116,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ErrorResponseCode RiskCheckFailed = @"RiskCheckFailed";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ErrorResponseCode RoleAssignmentCreationFailed = @"RoleAssignmentCreationFailed";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ErrorResponseCode SelfServiceRefundNotSupported = @"SelfServiceRefundNotSupported";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ErrorResponseCode ServerTimeout = @"ServerTimeout";
 

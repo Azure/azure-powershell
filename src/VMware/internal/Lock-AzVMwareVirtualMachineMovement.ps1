@@ -20,13 +20,9 @@ Enable or disable DRS-driven VM movement restriction
 .Description
 Enable or disable DRS-driven VM movement restriction
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -183,6 +179,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             RestrictExpanded = 'Az.VMware.private\Lock-AzVMwareVirtualMachineMovement_RestrictExpanded';
             RestrictViaIdentityExpanded = 'Az.VMware.private\Lock-AzVMwareVirtualMachineMovement_RestrictViaIdentityExpanded';
@@ -196,6 +193,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -204,15 +202,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

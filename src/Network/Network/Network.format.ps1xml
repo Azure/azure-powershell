@@ -717,6 +717,14 @@
                 <PropertyName>SharedKey</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>ExpressRouteGatewayBypass</Label>
+                <PropertyName>ExpressRouteGatewayBypass</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EnablePrivateLinkFastPath</Label>
+                <PropertyName>EnablePrivateLinkFastPath</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>ConnectionStatus</Label>
                 <PropertyName>ConnectionStatus</PropertyName>
               </ListItem>
@@ -980,6 +988,10 @@
                 <Label>NatRules</Label>
                 <PropertyName>NatRulesText</PropertyName>
               </ListItem>
+			  <ListItem>
+				<Label>ExtendedLocation</Label>
+				<PropertyName>ExtendedLocationText</PropertyName>
+			  </ListItem>
               <ListItem>
                 <Label>EnableBgpRouteTranslationForNat</Label>
                 <PropertyName>EnableBgpRouteTranslationForNat</PropertyName>
@@ -1875,6 +1887,10 @@
               <ListItem>
                 <Label>VnetEncryptionSupported</Label>
                 <PropertyName>VnetEncryptionSupported</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DisableTcpStateTracking</Label>
+                <PropertyName>DisableTcpStateTracking</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>AuxiliaryMode</Label>

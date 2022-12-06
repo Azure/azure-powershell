@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 Assert.Equal(Guid.Empty.ToString(), subscription.Id);
                 Assert.NotNull(context.Environment);
                 Assert.Equal("testCloud", context.Environment.Name);
-                Assert.Equal(5, profile.EnvironmentTable.Count);
+                Assert.Equal(4, profile.EnvironmentTable.Count);
             }
             finally
             {
@@ -843,12 +843,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 .WithTenant(new AzureTenant { Id = Guid.NewGuid().ToString(), Directory = "contoso.cn" })
                 .WithSubscription(new AzureSubscription { Id = Guid.NewGuid().ToString(), Name = "Contoso Subscription 2" });
             profile.TryAddContext(context2, out contextName2);
-            string contextName3;
-            var context3 = (new AzureContext { Environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureGermanCloud] })
-                .WithAccount(new AzureAccount { Id = "user3@contoso.de" })
-                .WithTenant(new AzureTenant { Id = Guid.NewGuid().ToString(), Directory = "contoso.de" })
-                .WithSubscription(new AzureSubscription { Id = Guid.NewGuid().ToString(), Name = "Contoso Subscription 3" });
-            profile.TryAddContext(context3, out contextName3);
             profile.TrySetDefaultContext(context1);
             return profile;
         }

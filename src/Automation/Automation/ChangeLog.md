@@ -19,12 +19,22 @@
 -->
 ## Upcoming Release
 
+## Version 1.8.0
+* Added cmdlets for Hybrid Runbook Worker group management
+  * `Remove-AzAutomationHybridRunbookWorker`
+  * `Remove-AzAutomationHybridRunbookWorkerGroup`
+  * `Set-AzAutomationHybridRunbookWorkerGroup`
+  * `Get-AzAutomationHybridRunbookWorker`
+  * `Get-AzAutomationHybridRunbookWorkerGroup`
+  * `Move-AzAutomationHybridRunbookWorker`
+  * `New-AzAutomationHybridRunbookWorker`
+  * `New-AzAutomationHybridRunbookWorkerGroup`
+
 ## Version 1.7.4
 * Fixed bug: Export-AzAutomationRunbook no longer adds extra '\' to file names [#11101]
 * Fixed bug: Get-AzAutomationDscCompilationJobOutput returns complete summaries [#12322]
 * Fixed bug: Get-AzAutomationDscNode [#10404]
 * Fixed bug: Get-AzAutomationJob fails for some jobIds
-
 
 ## Version *
 * Added logic of returning error if insufficient user permissions are there for `GetAgentRegistrationInfo`

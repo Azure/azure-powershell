@@ -44,7 +44,7 @@ INPUTOBJECT <IAdDomainServicesIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.addomainservices/get-azaddomainservice
+https://learn.microsoft.com/powershell/module/az.addomainservices/get-azaddomainservice
 #>
 function Get-AzADDomainService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService])]
@@ -236,7 +236,7 @@ INPUTOBJECT <IAdDomainServicesIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.addomainservices/remove-azaddomainservice
+https://learn.microsoft.com/powershell/module/az.addomainservices/remove-azaddomainservice
 #>
 function Remove-AzADDomainService {
 [OutputType([System.Boolean])]
@@ -454,7 +454,7 @@ REPLICASET <IReplicaSet[]>: List of ReplicaSets
   [Location <String>]: Virtual network location
   [SubnetId <String>]: The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
 .Link
-https://docs.microsoft.com/powershell/module/az.addomainservices/update-azaddomainservice
+https://learn.microsoft.com/powershell/module/az.addomainservices/update-azaddomainservice
 #>
 function Update-AzADDomainService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService])]
@@ -815,7 +815,7 @@ REPLICASET <IReplicaSet[]>: List of ReplicaSets
   [Location <String>]: Virtual network location
   [SubnetId <String>]: The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
 .Link
-https://docs.microsoft.com/powershell/module/az.addomainservices/new-azaddomainservice
+https://learn.microsoft.com/powershell/module/az.addomainservices/new-azaddomainservice
 #>
 function New-AzADDomainService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService])]
@@ -1146,7 +1146,7 @@ New-AzADDomainServiceForestTrustObject -FriendlyName FriendlyNameTest
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ForestTrust
 .Link
-https://docs.microsoft.com/powershell/module/az.ADDomainService/new-AzADDomainServiceForestTrustObject
+https://learn.microsoft.com/powershell/module/az.ADDomainService/new-AzADDomainServiceForestTrustObject
 #>
 function New-AzADDomainServiceForestTrustObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ForestTrust])]
@@ -1268,7 +1268,7 @@ New-AzADDomainServiceReplicaSetObject -Location westus -SubnetId /subscriptions/
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ReplicaSet
 .Link
-https://docs.microsoft.com/powershell/module/az.ADDomainService/new-AzADDomainServiceReplicaSetObject
+https://learn.microsoft.com/powershell/module/az.ADDomainService/new-AzADDomainServiceReplicaSetObject
 #>
 function New-AzADDomainServiceReplicaSetObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ReplicaSet])]

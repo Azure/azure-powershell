@@ -20,13 +20,9 @@ Create or update a DNS zone by id in a private cloud workload network.
 .Description
 Create or update a DNS zone by id in a private cloud workload network.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -209,6 +205,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             UpdateExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkDnsZone_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkDnsZone_UpdateViaIdentityExpanded';
@@ -222,6 +219,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -230,15 +228,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

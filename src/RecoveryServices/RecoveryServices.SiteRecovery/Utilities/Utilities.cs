@@ -109,24 +109,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             return result;
         }
 
-        public static List<IPage<T>> GetNextPages<T>(
+        public static List<CustomPage<T>> GetNextPages<T>(
             Func<string, CancellationToken,
-            Task<AzureOperationResponse<IPage<T>>>> getNextPage,
-            string NextPageLink)
+            Task<AzureOperationResponse<CustomPage<T>>>> getNextPage,
+            string NextLink)
         {
-            var result = new List<IPage<T>>();
+            var result = new List<CustomPage<T>>();
 
-            while ((NextPageLink != null) &&
+            while ((NextLink != null) &&
                    (getNextPage != null))
             {
                 var page = getNextPage(
-                        NextPageLink,
+                        NextLink,
                         default(CancellationToken))
                     .GetAwaiter()
                     .GetResult()
                     .Body;
                 result.Add(page);
-                NextPageLink = page.NextPageLink;
+                NextLink = page.NextLink;
             }
 
             return result;
@@ -229,6 +229,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         public static List<T> IpageToList<T>(
             List<IPage<T>> pages)
+        {
+            var result = new List<T>();
+
+            foreach (var page in pages)
+            {
+                foreach (var item in page)
+                {
+                    result.Add(item);
+                }
+            }
+
+            return result;
+        }
+
+        public static List<T> IpageToList<T>(
+            List<CustomPage<T>> pages)
         {
             var result = new List<T>();
 

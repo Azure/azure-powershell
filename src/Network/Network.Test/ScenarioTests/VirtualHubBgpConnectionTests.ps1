@@ -45,7 +45,7 @@ function Test-VirtualHubBgpConnectionCRUD
         # Wait for Virtual Hub Routing State to become Provisioned or Failed
         while ($virtualHub.RoutingState -eq "Provisioning")
         {
-            Start-Sleep -s 30
+            Start-TestSleep -Seconds 30
             $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
         }
         Assert-AreEqual $virtualHub.RoutingState "Provisioned"

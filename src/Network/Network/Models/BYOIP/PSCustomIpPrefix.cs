@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public bool? ExpressRouteAdvertise { get; set; }
 
+        public string PrefixType { get; set; }
+
         [JsonIgnore]
         public string PublicIpPrefixesText
         {

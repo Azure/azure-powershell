@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             var pages = Utilities.GetNextPages(
                 this.ListNextWithHttpMessagesAsync<VMwareRunAsAccount>,
-                firstPage.NextPageLink);
+                firstPage.NextLink);
 
             pages.Insert(0, firstPage);
             return Utilities.IpageToList(pages);
@@ -149,20 +149,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets Azure Site Recovery discovered machine details.
         /// </summary>
         /// <param name="siteId">Site Id.</param>
+        /// <param name="friendlyName">The friendly name.</param>
         /// <returns>The list of discovered machines.</returns>
-        public List<VMwareMachine> GetAzureSiteRecoveryDiscoveredMachines(string siteId)
+        public List<VMwareMachine> GetAzureSiteRecoveryDiscoveredMachines(
+            string siteId,
+            string friendlyName = null)
         {
             var firstPage =
                 this.ListWithHttpMessagesAsync<VMwareMachine>(
                     siteId,
-                    nameof(PSAsrFabricDiscoveryEndpoints.machines))
+                    nameof(PSAsrFabricDiscoveryEndpoints.machines),
+                    friendlyName: friendlyName)
                 .GetAwaiter()
                 .GetResult()
                 .Body;
 
             var pages = Utilities.GetNextPages(
                 this.ListNextWithHttpMessagesAsync<VMwareMachine>,
-                firstPage.NextPageLink);
+                firstPage.NextLink);
 
             pages.Insert(0, firstPage);
             return Utilities.IpageToList(pages);
@@ -177,11 +181,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="siteId">The fabric discovery site Id.</param>
         /// <param name="httpMethodUri">The endpoint URI.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
+        /// <param name="friendlyName">The friendly name.</param>
         /// <returns>The Azure operation response.</returns>
-        private async Task<AzureOperationResponse<IPage<T>>> ListWithHttpMessagesAsync<T>(
+        private async Task<AzureOperationResponse<CustomPage<T>>> ListWithHttpMessagesAsync<T>(
             string siteId,
             string httpMethodUri,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default(CancellationToken),
+            string friendlyName = null)
         {
             if (string.IsNullOrEmpty(siteId))
             {
@@ -199,6 +205,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             // Construct URL
             var baseUrl = endPointUri.AbsoluteUri;
             var relativeUri = $"{siteId}/{httpMethodUri}?api-version={ApiVersion}";
+            if (!string.IsNullOrWhiteSpace(friendlyName))
+            {
+                relativeUri = @relativeUri + "&%24filter=Properties%2FDisplayName%20eq%20'" + friendlyName + "'";
+            }
+
             var uri = new Uri(
                 new Uri(baseUrl.TrimEnd('/')),
                 new Uri(relativeUri, UriKind.Relative));
@@ -213,7 +224,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             // Set Headers
             this.ClientRequestId =
                 Guid.NewGuid() + "-" +
-                DateTime.UtcNow.ToString(Constants.UtcDateTimeFormat) + 
+                DateTime.UtcNow.ToString(Constants.UtcDateTimeFormat) +
                 Constants.FabricDiscoveryClientRequestIdSuffix;
             httpRequest.Headers.TryAddWithoutValidation(HttpHeaders.ClientRequestId, this.ClientRequestId);
 
@@ -247,7 +258,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
 
             // Create Result
-            var result = new AzureOperationResponse<IPage<T>>
+            var result = new AzureOperationResponse<CustomPage<T>>
             {
                 Request = httpRequest,
                 Response = httpResponse
@@ -260,7 +271,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             try
             {
-                result.Body = SafeJsonConvert.DeserializeObject<Page<T>>(
+                result.Body = SafeJsonConvert.DeserializeObject<CustomPage<T>>(
                     responseContent,
                     this.DeserializationSettings);
             }
@@ -286,7 +297,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="nextPageLink">The next page link.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The Azure operation response.</returns>
-        private async Task<AzureOperationResponse<IPage<T>>> ListNextWithHttpMessagesAsync<T>(
+        private async Task<AzureOperationResponse<CustomPage<T>>> ListNextWithHttpMessagesAsync<T>(
             string nextPageLink,
             CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -340,7 +351,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
 
             // Create Result
-            var result = new AzureOperationResponse<IPage<T>>
+            var result = new AzureOperationResponse<CustomPage<T>>
             {
                 Request = httpRequest,
                 Response = httpResponse
@@ -353,7 +364,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             try
             {
-                result.Body = SafeJsonConvert.DeserializeObject<Page<T>>(
+                result.Body = SafeJsonConvert.DeserializeObject<CustomPage<T>>(
                     responseContent,
                     this.DeserializationSettings);
             }

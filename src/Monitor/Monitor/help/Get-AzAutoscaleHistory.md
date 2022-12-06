@@ -305,8 +305,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzAutoscaleSetting](./Add-AzAutoscaleSetting.md)
-
 [Get-AzAutoscaleSetting](./Get-AzAutoscaleSetting.md)
 
 [Remove-AzAutoscaleSetting](./Remove-AzAutoscaleSetting.md)

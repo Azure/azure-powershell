@@ -20,13 +20,9 @@ Get virtual network subnet usage for a given vNet resource id.
 .Description
 Get virtual network subnet usage for a given vNet resource id.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IVirtualNetworkSubnetUsageParameter
@@ -154,6 +150,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.MySql.private\Get-AzMySqlFlexibleServerVirtualNetworkSubnetUsage_Get';
             GetExpanded = 'Az.MySql.private\Get-AzMySqlFlexibleServerVirtualNetworkSubnetUsage_GetExpanded';
@@ -169,6 +166,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -177,15 +175,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -35,7 +35,7 @@ STORAGESETTING <IStorageSetting[]>: Storage Settings of the vault. Use New-AzDat
   [DatastoreType <StorageSettingStoreTypes?>]: Gets or sets the type of the datastore.
   [Type <StorageSettingTypes?>]: Gets or sets the type.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
+https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
 #>
 function New-AzDataProtectionBackupVault {
 [OutputType([PSObject])]
@@ -61,7 +61,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IStorageSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IStorageSetting[]]
     # Storage Settings of the vault.
     # Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
     # To construct, see NOTES section for STORAGESETTING properties and create a hash table.

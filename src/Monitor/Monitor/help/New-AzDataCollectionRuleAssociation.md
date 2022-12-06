@@ -14,30 +14,16 @@ Create data collection rule association.
 
 ### ByDataCollectionRuleId (Default)
 ```
-New-AzDataCollectionRuleAssociation
-   -TargetResourceId <string>
-   -AssociationName <string>
-   -RuleId <string>
-   [-Description <string>]
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+New-AzDataCollectionRuleAssociation -TargetResourceId <String> -AssociationName <String> -RuleId <String>
+ [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-New-AzDataCollectionRuleAssociation
-   -TargetResourceId <string>
-   -AssociationName <string>
-   -InputObject <PSDataCollectionRuleResource>
-   [-Description <string>]
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+New-AzDataCollectionRuleAssociation -TargetResourceId <String> -AssociationName <String>
+ [-Description <String>] -InputObject <PSDataCollectionRuleResource> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
-
 
 ## DESCRIPTION
 The **New-AzDataCollectionRuleAssociation** cmdlet creates a data collection rules association (DCRA).
@@ -86,6 +72,21 @@ This command creates a data collection rule association for given rule and targe
 
 ## PARAMETERS
 
+### -AssociationName
+The resource name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -101,33 +102,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetResourceId
-The resource ID to associate
+### -Description
+The resource description
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ResourceUri
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AssociationName
-The resource name
+### -InputObject
+PSDataCollectionRuleResource Object
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: Name
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
+Parameter Sets: ByInputObject
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -146,30 +147,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-PSDataCollectionRuleResource Object
-
-```yaml
-Type: System.String
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True
-Accept wildcard characters: False
-```
-
-### -Description
-The resource description
+### -TargetResourceId
+The resource ID to associate
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceUri
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

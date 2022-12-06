@@ -51,7 +51,7 @@ Set the vault context by using the -VaultId parameter.
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -FriendlyName "V2VM" -VaultId $vault.ID
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -FriendlyName "V2VM" -VaultId $vault.ID
 $BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureVM -VaultId $vault.ID
 ```
 
@@ -62,7 +62,7 @@ The second command gets the Backup item named V2VM in $Container, and then store
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -FriendlyName "StorageAccount1" -VaultId $vault.ID
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -FriendlyName "StorageAccount1" -VaultId $vault.ID
 $BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "FileShareName"
 ```
 

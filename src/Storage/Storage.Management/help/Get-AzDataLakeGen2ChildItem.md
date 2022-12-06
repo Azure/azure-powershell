@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataLakeGen2ChildItem
 
 ## SYNOPSIS
-Lists sub directorys and files from a directory or filesystem root.
+Lists sub directories and files from a directory or filesystem root.
 
 ## SYNTAX
 

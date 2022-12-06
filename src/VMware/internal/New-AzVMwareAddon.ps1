@@ -20,12 +20,8 @@ Create or update a addon in a private cloud
 .Description
 Create or update a addon in a private cloud
 .Example
-PS C:\> $data = New-AzVMwareAddonVrPropertiesObject -VrsCount 2
-PS C:\> New-AzVMwareAddon -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Property $data
-
-Name Type                               ResourceGroupName
----- ----                               -----------------
-vr   Microsoft.AVS/privateClouds/addons azps_test_group
+$data = New-AzVMwareAddonVrPropertiesObject -VrsCount 2
+New-AzVMwareAddon -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Property $data
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon
@@ -144,6 +140,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             CreateExpanded = 'Az.VMware.private\New-AzVMwareAddon_CreateExpanded';
         }
@@ -156,6 +153,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -164,15 +162,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

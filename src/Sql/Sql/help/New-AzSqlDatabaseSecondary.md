@@ -276,7 +276,7 @@ The secondary type of the database if it is a secondary.  Valid values are Geo a
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Named, Geo
+Accepted values: Named, Geo, Standby
 
 Required: False
 Position: Named

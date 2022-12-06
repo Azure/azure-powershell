@@ -20,9 +20,9 @@ Gives SKU recommendations for Azure SQL offerings
 .Description
 Gives SKU recommendations for Azure SQL offerings
 .Example
-PS C:\> Get-AzDataMigrationSkuRecommendation -DisplayResult
+Get-AzDataMigrationSkuRecommendation -DisplayResult
 .Example
-PS C:\> Get-AzDataMigrationSkuRecommendation -ConfigFilePath "C:\Users\user\document\config.json"
+Get-AzDataMigrationSkuRecommendation -ConfigFilePath "C:\Users\user\document\config.json"
 
 .Outputs
 System.Boolean
@@ -153,7 +153,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.DataProtection
 Module Guid: 0796af7c-0a7c-417f-8d0d-19f9179dac7a
-Download Help Link: https://docs.microsoft.com/powershell/module/az.dataprotection
+Download Help Link: https://learn.microsoft.com/powershell/module/az.dataprotection
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -24,7 +24,7 @@ Adds or removes schedule tag in an existing backup policy.
 Updates Backup schedule of an existing backup policy.
 
 ### [Find-AzDataProtectionRestorableTimeRange](Find-AzDataProtectionRestorableTimeRange.md)
-
+Finds the valid recovery point in time ranges for the restore.
 
 ### [Get-AzDataProtectionBackupInstance](Get-AzDataProtectionBackupInstance.md)
 Gets a backup instance with name in a backup vault
@@ -33,7 +33,7 @@ Gets a backup instance with name in a backup vault
 Gets a backup policy belonging to a backup vault
 
 ### [Get-AzDataProtectionBackupVault](Get-AzDataProtectionBackupVault.md)
-Returns resource collection belonging to a resource group.
+Returns resource collection belonging to a subscription.
 
 ### [Get-AzDataProtectionJob](Get-AzDataProtectionJob.md)
 Gets a job with id in a backup vault
@@ -101,6 +101,9 @@ Searches for Backup instances in Azure Resource Graph and retrieves the expected
 ### [Search-AzDataProtectionJobInAzGraph](Search-AzDataProtectionJobInAzGraph.md)
 Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entries
 
+### [Set-AzDataProtectionMSIPermission](Set-AzDataProtectionMSIPermission.md)
+Grants required permissions to the backup vault to configure backup
+
 ### [Start-AzDataProtectionBackupInstanceRestore](Start-AzDataProtectionBackupInstanceRestore.md)
 Triggers restore for a BackupInstance
 
@@ -112,6 +115,12 @@ This operation will stop backups for backup instance
 
 ### [Sync-AzDataProtectionBackupInstance](Sync-AzDataProtectionBackupInstance.md)
 Sync backup instance again in case of failure\r\nThis action will retry last failed operation and will bring backup instance to valid state
+
+### [Test-AzDataProtectionBackupInstanceReadiness](Test-AzDataProtectionBackupInstanceReadiness.md)
+Validate whether adhoc backup will be successful or not
+
+### [Test-AzDataProtectionBackupInstanceRestore](Test-AzDataProtectionBackupInstanceRestore.md)
+Validates if Restore can be triggered for a DataSource
 
 ### [Update-AzDataProtectionBackupInstanceAssociatedPolicy](Update-AzDataProtectionBackupInstanceAssociatedPolicy.md)
 Updates associated policy for a given backup instance

@@ -109,6 +109,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         public string LastBackupName { get; set; }
 
         /// <summary>
+        /// Gets or sets the last backup name
+        /// </summary>
+        public string StorageContainerIdentity { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlManagedDatabaseModel
         /// </summary>
         public AzureSqlManagedDatabaseModel()
@@ -146,6 +151,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
             LongTermRetentionBackupResourceId = database.LongTermRetentionBackupResourceId;
             AutoCompleteRestore = database.AutoCompleteRestore;
             LastBackupName = database.LastBackupName;
+            StorageContainerIdentity = database.StorageContainerIdentity;
         }
     }
 }

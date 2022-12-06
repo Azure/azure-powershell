@@ -20,11 +20,11 @@ Collect performance data for given SQL Server instance(s)
 .Description
 Collect performance data for given SQL Server instance(s)
 .Example
-PS C:\> Get-AzDataMigrationPerformanceDataCollection -SqlConnectionStrings "Data Source=AALAB03-2K8.REDMOND.CORP.MICROSOFT.COM;Initial Catalog=master;Integrated Security=False;User Id=dummyUserId;Password=dummyPassword" -NumberOfIterations 2
+Get-AzDataMigrationPerformanceDataCollection -SqlConnectionStrings "Data Source=AALAB03-2K8.REDMOND.CORP.MICROSOFT.COM;Initial Catalog=master;Integrated Security=False;User Id=dummyUserId;Password=dummyPassword" -NumberOfIterations 2
 .Example
-PS C:\> Get-AzDataMigrationAssessment -ConfigFilePath "C:\Users\user\document\config.json"
+Get-AzDataMigrationPerformanceDataCollection -ConfigFilePath "C:\Users\user\document\config.json"
 .Example
-PS C:\> Get-AzDataMigrationAssessment -ConfigFilePath "C:\Users\user\document\config.json" -Time 120
+Get-AzDataMigrationPerformanceDataCollection -ConfigFilePath "C:\Users\user\document\config.json" -Time 120
 
 .Outputs
 System.Boolean
@@ -96,7 +96,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

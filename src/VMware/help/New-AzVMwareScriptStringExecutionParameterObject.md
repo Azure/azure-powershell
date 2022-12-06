@@ -25,6 +25,7 @@ Create a in-memory object for ScriptStringExecutionParameter
 ```powershell
 New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_stringvalue -Value "stringValue"
 ```
+
 ```output
 Name                  Type   Value
 ----                  ----   -----

@@ -12,6 +12,39 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzureCrossZonalRestore
+{
+	$location = "eastus"
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiaga-zrs-vault"
+	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiagaNZP"
+	$saName = "hiagaeussa"
+	$targetVMName = "czr-pstest-vm"
+	$targetVNetName = "hiagaNZPVNet"
+	$targetVNetRG = "hiagarg"
+	$targetSubnetName = "custom"
+	$recoveryPointId = "175071499837856" # latest vaultStandard recovery point
+
+	try
+	{	
+		# Setup
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM `
+			-VaultId $vault.ID -Name $vmName
+
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -VaultId $vault.ID  -RecoveryPointId $recoveryPointId
+		
+		$restoreJobCZR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -TargetZoneNumber 2 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJobCZR.Status -eq "Completed" }
+	}
+	finally
+	{
+		Delete-VM $resourceGroupName $targetVMName
+	}
+}
+
 function Test-AzureMonitorAlerts
 {
 	$location = "centraluseuap"
@@ -196,7 +229,7 @@ function Test-AzureRSVaultCMK
 		$prop = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
 		Assert-True { $prop.encryptionProperties.UserAssignedIdentity -eq $vault.Identity.UserAssignedIdentities.Keys[0] }
 
-		Start-TestSleep 10000
+		Start-TestSleep -Seconds 10
 
 		# set and verify - CMK encryption property to system identity 	
 		Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $encryptionKeyId -VaultId $vault.ID -UseSystemAssignedIdentity $true
@@ -258,13 +291,13 @@ function Test-AzureVMCrossRegionRestore
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location 25
 
 		# waiting for service to reflect
-		Start-TestSleep 20000
+		Start-TestSleep -Seconds 20
 
 		# Enable CRR
 		Set-AzRecoveryServicesBackupProperty -Vault $vault -EnableCrossRegionRestore
 
 		# waiting for service to reflect
-		Start-TestSleep 30000
+		Start-TestSleep -Seconds 30
 
 		# Assert that the vault is now CRR enabled
 		$crr = Get-AzRecoveryServicesBackupProperty -Vault $vault
@@ -397,7 +430,6 @@ function Test-AzureVMGetItems
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
-			-Status Registered `
 			-FriendlyName $vm.Name
 		
 		# VARIATION-1: Get all items for container
@@ -519,7 +551,7 @@ function Test-AzureVMProtection
 		# $vault = Create-RecoveryServicesVault $resourceGroupName $location
 		
 		# Sleep to give the service time to add the default policy to the vault
-        Start-TestSleep 5000
+        Start-TestSleep -Seconds 5
 
 		# Enable protection
 		Enable-AzRecoveryServicesBackupProtection `
@@ -822,7 +854,7 @@ function Test-AzureVMSetVaultContext
 		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 
 		# Sleep to give the service time to add the default policy to the vault
-        Start-TestSleep 5000
+        Start-TestSleep -Seconds 5
 
 		Set-AzRecoveryServicesVaultContext -Vault $vault | Out-Null
 
@@ -841,8 +873,7 @@ function Test-AzureVMSetVaultContext
 			-ResourceGroupName $vm.ResourceGroupName;
 
 		# $container = Get-AzRecoveryServicesBackupContainer `
-		# 	-ContainerType AzureVM `
-		# 	-Status Registered;
+		# 	-ContainerType AzureVM;
 		# 
 		# $item = Get-AzRecoveryServicesBackupItem `
 		# 	-Container $container `

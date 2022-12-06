@@ -20,7 +20,7 @@ This operation will stop protection of a backup instance and data will be held f
 .Description
 This operation will stop protection of a backup instance and data will be held forever
 .Example
-PS C:\> Stop-AzDataProtectionBackupInstanceProtection -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
+Stop-AzDataProtectionBackupInstanceProtection -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -45,7 +45,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription Id.
   [VaultName <String>]: The name of the backup vault.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/stop-azdataprotectionbackupinstanceprotection
+https://learn.microsoft.com/powershell/module/az.dataprotection/stop-azdataprotectionbackupinstanceprotection
 #>
 function Stop-AzDataProtectionBackupInstanceProtection {
 [OutputType([System.Boolean])]

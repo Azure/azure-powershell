@@ -71,7 +71,7 @@ function Test-UpdateWithResourceIdParams($resourceId)
     # Setup
     $original = @{"key1"="value1"; "key2"="value2";}
     New-AzTag -ResourceId $resourceId -Tag $original
-    Start-Sleep -s 2
+    Start-TestSleep -Seconds 2
 
     try
     {
@@ -153,7 +153,7 @@ function Test-TagGetWithResourceIdParams($resourceId)
     # Setup
     $expected = @{"key1"="value1"; "key2"="value2";}
     New-AzTag -ResourceId $resourceId -Tag $expected
-    Start-Sleep -s 2
+    Start-TestSleep -Seconds 2
 
     try
     {
@@ -204,13 +204,13 @@ function Test-TagDeleteWithResourceIdParams($resourceId)
     # Setup
     $original = @{"key1"="value1"; "key2"="value2";}
     New-AzTag -ResourceId $resourceId -Tag $original
-    Start-Sleep -s 2
+    Start-TestSleep -Seconds 2
 
     try 
     {
         # Test
         Remove-AzTag -ResourceId $resourceId  
-        Start-Sleep -s 2
+        Start-TestSleep -Seconds 2
         $actual = Get-AzTag -ResourceId $resourceId
 
         # Assert

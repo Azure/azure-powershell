@@ -68,7 +68,6 @@ function Test-AzureFSGetJob
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 	}
 	finally
@@ -98,7 +97,6 @@ function Test-AzureFSWaitJob
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 	}
 	finally
@@ -124,7 +122,6 @@ function Test-AzureFSCancelJob
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 	}
 	finally

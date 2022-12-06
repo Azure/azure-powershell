@@ -84,6 +84,26 @@
                 "dependency": null,
                 "majorVersions": [
                     {
+                        "displayVersion": "18",
+                        "runtimeVersion": "Node|18",
+                        "supportedFunctionsExtensionVersions": [
+                            "~4"
+                        ],
+                        "isDefault": false,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "node"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": false,
+                            "linuxFxVersion": "Node|18"
+                        },
+                        "isPreview": true,
+                        "isDeprecated": false,
+                        "isHidden": false
+                    },
+                    {
                         "displayVersion": "16",
                         "runtimeVersion": "Node|16",
                         "supportedFunctionsExtensionVersions": [
@@ -99,7 +119,7 @@
                             "use32BitWorkerProcess": false,
                             "linuxFxVersion": "Node|16"
                         },
-                        "isPreview": true,
+                        "isPreview": false,
                         "isDeprecated": false,
                         "isHidden": false
                     },
@@ -275,6 +295,26 @@
                             "linuxFxVersion": "Java|11"
                         },
                         "isPreview": false,
+                        "isDeprecated": false,
+                        "isHidden": false
+                    },
+                    {
+                        "displayVersion": "17",
+                        "runtimeVersion": "Java|17",
+                        "supportedFunctionsExtensionVersions": [
+                            "~4"
+                        ],
+                        "isDefault": false,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "java"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": false,
+                            "linuxFxVersion": "Java|17"
+                        },
+                        "isPreview": true,
                         "isDeprecated": false,
                         "isHidden": false
                     }

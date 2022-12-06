@@ -2010,6 +2010,10 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>DisableTcpStateTracking</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>EnableIPForwarding</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -2043,6 +2047,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>EnableAcceleratedNetworking</PropertyName>
+              </TableColumnItem>
+			  <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>DisableTcpStateTracking</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>

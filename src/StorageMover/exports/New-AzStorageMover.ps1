@@ -43,7 +43,7 @@ STORAGEMOVER <IStorageMover>: The Storage Mover resource, which is a container f
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/new-azstoragemover
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemover
 #>
 function New-AzStorageMover {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IStorageMover])]
