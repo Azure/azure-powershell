@@ -1155,7 +1155,7 @@ Accept wildcard characters: False
 
 ### -Zone
 Specifies the zone of the virtual machine. Although it takes in an array of zones, virtual machines do not support multiple availability zones.
-The allowed value depend on the capabilities of the region. Allowed value will normally be 1,2, or 3. More information on [Azure availability zones](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview#availability-zones).
+The allowed value depends on the capabilities of the region. Allowed value will normally be 1, 2, or 3. More information on [Azure availability zones](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview#availability-zones).
 
 ```yaml
 Type: System.String[]
