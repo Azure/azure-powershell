@@ -132,7 +132,7 @@ pac130,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac131,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SqlVirtualMachine.1.1.0.nupkg;sourceType=sa]Az.SqlVirtualMachine,1.1.0
 pac132,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Ssh.0.1.0.nupkg;sourceType=sa]Az.Ssh,0.1.0
 pac133,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.1.4.0.nupkg;sourceType=sa]Az.StackHCI,1.4.0
-pac134,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.5.2.1.nupkg;sourceType=sa]Az.Storage,5.2.1
+pac134,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.5.2.0.nupkg;sourceType=sa]Az.Storage,5.2.0
 pac135,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageMover.0.1.0.nupkg;sourceType=sa]Az.StorageMover,0.1.0
 pac136,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageSync.1.7.0.nupkg;sourceType=sa]Az.StorageSync,1.7.0
 pac137,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StreamAnalytics.2.0.0.nupkg;sourceType=sa]Az.StreamAnalytics,2.0.0
