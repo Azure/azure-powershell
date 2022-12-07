@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a contact
 ```powershell
-{{ Add code here }}
+Update-AzVoiceServicesCommunicationsContact -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01 -Tag @{'key1'='value1'}
 ```
 
 ```output
-{{ Add output here }}
+Location      Name       SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      RetryAfter
+--------      ----       -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      ----------
+westcentralus gateway-01 12/7/2022 7:47:30 AM v-diya@microsoft.com User                    12/7/2022 8:34:33 AM     v-diya@microsoft.com     User                         lucas-communication-rg 
 ```
 
-{{ Add description here }}
+Update a contact.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a contact by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzVoiceServicesCommunicationsContact -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01 | Update-AzVoiceServicesCommunicationsContact -Tag @{'key1'='value1'}
 ```
 
 ```output
-{{ Add output here }}
+Location      Name       SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      RetryAfter
+--------      ----       -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      ----------
+westcentralus gateway-01 12/7/2022 7:47:30 AM v-diya@microsoft.com User                    12/7/2022 8:34:33 AM     v-diya@microsoft.com     User                         lucas-communication-rg 
 ```
 
-{{ Add description here }}
-
+Update a contact by pipeline.

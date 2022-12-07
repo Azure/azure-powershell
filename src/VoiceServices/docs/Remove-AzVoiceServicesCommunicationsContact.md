@@ -30,27 +30,19 @@ Delete a Contact
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a contact
 ```powershell
-{{ Add code here }}
+Remove-AzVoiceServicesCommunicationsContact -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01
 ```
 
-```output
-{{ Add output here }}
-```
+Delete a contact
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a contact by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzVoiceServicesCommunicationsContact -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01 | Remove-AzVoiceServicesCommunicationsContact
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete a contact by pipeline.
 
 ## PARAMETERS
 

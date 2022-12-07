@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a test line
 ```powershell
-{{ Add code here }}
+Remove-AzVoiceServicesCommunicationsTestLine -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name testline-01
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete a test line.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a test line by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzVoiceServicesCommunicationsTestLine -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name testline-01 | Remove-AzVoiceServicesCommunicationsTestLine
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete a test line by pipeline.
 

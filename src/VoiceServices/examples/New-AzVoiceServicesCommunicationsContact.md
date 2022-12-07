@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a contact for the communications gateway
 ```powershell
-{{ Add code here }}
+New-AzVoiceServicesCommunicationsContact -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01 -Location 'westcentralus' -PhoneNumber "+1-555-1234" -FullContactName "John Smith" -Email "johnsmith@example.com" -Role "Network Manager"
 ```
 
 ```output
-{{ Add output here }}
+Location      Name       SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      RetryAfter
+--------      ----       -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      ----------
+westcentralus gateway-01 12/7/2022 7:47:30 AM v-diya@microsoft.com User                    12/7/2022 7:47:30 AM     v-diya@microsoft.com     User                         lucas-communication-rg 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create a contact for the communications gateway

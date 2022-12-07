@@ -35,27 +35,44 @@ Get a Contact
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all contacts under the communications gateway
 ```powershell
-{{ Add code here }}
+Get-AzVoiceServicesCommunicationsContact -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01
 ```
 
 ```output
-{{ Add output here }}
+Location      Name       SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      RetryAfter
+--------      ----       -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      ----------
+westcentralus gateway-01 12/7/2022 7:47:30 AM v-diya@microsoft.com User                    12/7/2022 7:47:30 AM     v-diya@microsoft.com     User                         lucas-communication-rg 
 ```
 
-{{ Add description here }}
+List all contacts under the communications gateway.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a contact
 ```powershell
-{{ Add code here }}
+Get-AzVoiceServicesCommunicationsContact -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01
 ```
 
 ```output
-{{ Add output here }}
+Location      Name       SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      RetryAfter
+--------      ----       -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      ----------
+westcentralus gateway-01 12/7/2022 7:47:30 AM v-diya@microsoft.com User                    12/7/2022 7:47:30 AM     v-diya@microsoft.com     User                         lucas-communication-rg 
 ```
 
-{{ Add description here }}
+Get a contact.
+
+### Example 3: Get a contact by pipeline
+```powershell
+New-AzVoiceServicesCommunicationsContact -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01 -Location 'westcentralus' -PhoneNumber "+1-555-1234" -FullContactName "John Smith" -Email "johnsmith@example.com" -Role "Network Manager" | Get-AzVoiceServicesCommunicationsContact
+```
+
+```output
+Location      Name       SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      RetryAfter
+--------      ----       -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      ----------
+westcentralus gateway-01 12/7/2022 7:47:30 AM v-diya@microsoft.com User                    12/7/2022 7:47:30 AM     v-diya@microsoft.com     User                         lucas-communication-rg 
+```
+
+Get a contact by pipeline.
 
 ## PARAMETERS
 

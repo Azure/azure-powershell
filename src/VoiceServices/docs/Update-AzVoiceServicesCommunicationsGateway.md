@@ -30,27 +30,31 @@ Update a CommunicationsGateway
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a gateway
 ```powershell
-{{ Add code here }}
+Update-AzVoiceServicesCommunicationsGateway -ResourceGroupName lucas-communication-rg -Name vsc-gateway-pwsh01 -Tag @{'key1'='value1'}
 ```
 
 ```output
-{{ Add output here }}
+Location      Name               SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      RetryAfter
+--------      ----               -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      ----------
+westcentralus vsc-gateway-pwsh01 12/7/2022 7:09:45 AM v-diya@microsoft.com User                    12/7/2022 7:09:45 AM     v-diya@microsoft.com     User                         lucas-communication-rg 
 ```
 
-{{ Add description here }}
+Update a gateway.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a gateway by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzVoiceServicesCommunicationsGateway -ResourceGroupName lucas-communication-rg -Name vsc-gateway-pwsh01 | Update-AzVoiceServicesCommunicationsGateway -Tag @{'key1'='value1'}
 ```
 
 ```output
-{{ Add output here }}
+Location      Name               SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      RetryAfter
+--------      ----               -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      ----------
+westcentralus vsc-gateway-pwsh01 12/7/2022 7:09:45 AM v-diya@microsoft.com User                    12/7/2022 7:09:45 AM     v-diya@microsoft.com     User                         lucas-communication-rg 
 ```
 
-{{ Add description here }}
+Update a gateway by pipeline.
 
 ## PARAMETERS
 

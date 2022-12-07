@@ -30,27 +30,31 @@ Update a TestLine
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a testline
 ```powershell
-{{ Add code here }}
+Update-AzVoiceServicesCommunicationsTestLine -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name testline-01 -Tag @{'key1'='value1'}
 ```
 
 ```output
-{{ Add output here }}
+Location      Name        SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      RetryAfter
+--------      ----        -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      ----------
+westcentralus testline-01 12/7/2022 7:56:47 AM v-diya@microsoft.com User                    12/7/2022 8:47:44 AM     v-diya@microsoft.com     User                         lucas-communication-rg 
 ```
 
-{{ Add description here }}
+Update a testline.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a testline by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzVoiceServicesCommunicationsTestLine -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name testline-01 | Update-AzVoiceServicesCommunicationsTestLine -Tag @{'key1'='value1'}
 ```
 
 ```output
-{{ Add output here }}
+Location      Name        SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      RetryAfter
+--------      ----        -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      ----------
+westcentralus testline-01 12/7/2022 7:56:47 AM v-diya@microsoft.com User                    12/7/2022 8:47:44 AM     v-diya@microsoft.com     User                         lucas-communication-rg 
 ```
 
-{{ Add description here }}
+Update a testline by pipeline.
 
 ## PARAMETERS
 

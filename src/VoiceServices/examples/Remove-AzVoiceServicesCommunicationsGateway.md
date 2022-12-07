@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a gateway
 ```powershell
-{{ Add code here }}
+Remove-AzVoiceServicesCommunicationsGateway -ResourceGroupName lucas-communication-rg -Name vsc-gateway-pwsh01
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete a gateway.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a gateway by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzVoiceServicesCommunicationsGateway -ResourceGroupName lucas-communication-rg -Name vsc-gateway-pwsh01 | Remove-AzVoiceServicesCommunicationsGateway
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete a gateway by pipeline.
 
