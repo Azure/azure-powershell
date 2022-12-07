@@ -106,15 +106,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             string commandName = qos.CommandName;
             string sourceScript = qos.SourceScript;
 
+            Console.WriteLine("##[group]Beginning of a info test coverage info group");
+            Console.WriteLine($"##[debug]Module name: {moduleName}");
+            Console.WriteLine($"##[warning]Command name: {commandName}");
+            Console.WriteLine($"##[error]Source script: {sourceScript}");
+            Console.WriteLine("##[endgroup]");
+
             if (string.IsNullOrEmpty(moduleName) || string.IsNullOrEmpty(commandName) || ExcludedSource.Contains(sourceScript))
                 return;
 
-            var pattern = @"\\(?:artifacts\\Debug|src)\\(?:Az\.)?(?<ModuleName>[a-zA-Z]+)\\";
+            var pattern = Regex.Escape(@"[\|/](?:artifacts[\|/]Debug|src)[\|/](?:Az\.)?(?<ModuleName>[a-zA-Z]+)[\|/]");
             var match = Regex.Match(sourceScript, pattern, RegexOptions.IgnoreCase);
             var testingModuleName = $"Az.{match.Groups["ModuleName"].Value}";
+            Console.WriteLine($"##[section]Testing module name: {testingModuleName}");
             if (string.Compare(testingModuleName, moduleName, true) != 0)
                 return;
 
+            Console.WriteLine($"##[command]Test coverage root path: {s_testCoverageRootPath}");
             var csvFilePath = Path.Combine(s_testCoverageRootPath, $"{moduleName}.csv");
             StringBuilder csvData = new StringBuilder();
 
