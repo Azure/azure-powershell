@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Enabled AzKeyStore with keyring in Linux.
 
 ## Version 2.10.4
 * Enabled caching tokens when logging in with a client assertion. This fixed the incorrectly short lifespan of tokens.
