@@ -188,6 +188,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             PSADObject adObject = null;
             ODataQuery<RoleAssignmentFilter> odataQuery = null;
 
+            Boolean hasScope = !String.IsNullOrEmpty(options.Scope);
             if (options.ADObjectFilter?.HasFilter ?? false)
             {
                 if (string.IsNullOrEmpty(options.ADObjectFilter.Id) || options.ExpandPrincipalGroups || options.IncludeClassicAdministrators)
@@ -209,15 +210,35 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     }
 
                     principalId = adObject.Id.ToString();
-                    odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(principalId));
+                    if (!hasScope)
+                    {
+                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(principalId));
+                    }
+                    else
+                    {
+                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AtScope() && f.AssignedTo(principalId));
+                    }
                 }
                 else
                 {
                     principalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id.ToString() : options.ADObjectFilter.Id;
-                    odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
+                    if (!hasScope)
+                    {
+                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
+                    } 
+                    else
+                    {
+                        // https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-rest
+                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AtScope() && f.AssignedTo(principalId));
+                    }
+                    
                 }
             }
-
+            else if (hasScope)
+            {
+                // refer to https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-rest
+                odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AtScope());
+            }
             // list role assignments by principalId and scope first
             var tempResult = string.IsNullOrEmpty(options.Scope) ? 
                 AuthorizationManagementClient.RoleAssignments.ListForSubscription(odataQuery) :

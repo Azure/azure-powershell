@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed `Get-AzRoleAssignment` BadRequest when scope is '/' [#20323]
 
 ## Version 6.5.0
 * Added cmdlet `Get-AzADOrganization`
