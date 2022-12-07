@@ -239,6 +239,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 // refer to https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-rest
                 odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AtScope());
             }
+            // filter uses + as separator instead of ' '
+            odataQuery.Filter = odataQuery.Filter.Replace(" and ", "+and+").Replace(" eq ", "+eq+");
             // list role assignments by principalId and scope first
             var tempResult = string.IsNullOrEmpty(options.Scope) ? 
                 AuthorizationManagementClient.RoleAssignments.ListForSubscription(odataQuery) :
