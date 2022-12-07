@@ -187,8 +187,20 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             string principalId = null;
             PSADObject adObject = null;
             ODataQuery<RoleAssignmentFilter> odataQuery = null;
-
-            if (options.ADObjectFilter?.HasFilter ?? false)
+            // refer to https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-rest
+            if (!String.IsNullOrEmpty(options.Scope))
+            {
+                odataQuery = new ODataQuery<RoleAssignmentFilter>();
+                if (!string.IsNullOrEmpty(options.ADObjectFilter?.Id)) 
+                {
+                    odataQuery.Filter = "atScope()+and+assignedTo('" + options.ADObjectFilter.Id + "')";
+                }
+                else
+                {
+                    odataQuery.Filter = "atScope()";
+                }
+            }
+            else if (options.ADObjectFilter?.HasFilter ?? false)
             {
                 if (string.IsNullOrEmpty(options.ADObjectFilter.Id) || options.ExpandPrincipalGroups || options.IncludeClassicAdministrators)
                 {
