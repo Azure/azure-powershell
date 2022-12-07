@@ -76,16 +76,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             get => Storage.IsProtected;
         }
 
-        public string FileName
-        {
-            get => Storage.FileName;
-        }
-
-        public string Directory
-        {
-            get => Storage.Directory;
-        }
-
         public AzKeyStore()
         {
 

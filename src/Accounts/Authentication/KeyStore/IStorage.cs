@@ -29,9 +29,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         Exception GetLastError();
 
-        string FileName { get; set; }
-        string Directory { get; set; }
-
         bool IsProtected
         {
             get;

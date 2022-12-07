@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         private Storage _storage = null;
 
-        private bool isProtected;
+        private bool _protected;
         public bool IsProtected
         {
-            get => isProtected;
-            private set => isProtected = value;
+            get => _protected;
+            private set => _protected = value;
         }
 
         static ReaderWriterLockSlim storageLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
@@ -51,32 +51,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 throw new InvalidOperationException(Resources.StorageLockConflicts);
             }
-            string tempFileName = null;
             try
             {
-                tempFileName = $"{FileName}.cache";
-                storageProperties = new StorageCreationPropertiesBuilder(tempFileName, Directory)
+                storageProperties = new StorageCreationPropertiesBuilder(FileName, Directory)
                     .WithMacKeyChain(KeyChainServiceName + ".other_secrets", FileName)
                     .WithLinuxKeyring(FileName, "default", "AzKeyStoreCache",
                     new KeyValuePair<string, string>("AzureClientID", "Microsoft.Developer.Azure.PowerShell"),
                     new KeyValuePair<string, string>("Microsoft.Developer.Azure.PowerShell", "1.0.0.0"));
                 _storage = Storage.Create(storageProperties.Build());
                 VerifyPersistence();
-                isProtected = true;
+                _protected = true;
             }
             catch (Exception e)
             {
                 _lastError = e;
-                tempFileName = $"{FileName}.json";
-                storageProperties = new StorageCreationPropertiesBuilder(tempFileName, Directory).WithUnprotectedFile();
+                storageProperties = new StorageCreationPropertiesBuilder(FileName, Directory).WithUnprotectedFile();
                 _storage = Storage.Create(storageProperties.Build());
-                isProtected = false;
+                _protected = false;
             }
             finally
             {
                 storageLock.ExitWriteLock();
             }
-            FileName = tempFileName ?? FileName;
             return this;
         }
 
