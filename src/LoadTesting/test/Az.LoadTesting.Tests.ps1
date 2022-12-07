@@ -174,3 +174,14 @@ Describe 'Update-AzLoad' {
         $res.EncryptionKey | Should -Be $cmkKey
     }
 }
+
+Describe 'Remove-AzLoad' {
+    It 'Delete resource' {
+
+        $name = $env.loadTestResource1
+        Remove-AzLoad -Name $name -ResourceGroupName $env.resourceGroup
+
+        $name = $env.loadTestResource2
+        Remove-AzLoad -Name $name -ResourceGroupName $env.resourceGroup
+    }
+}
