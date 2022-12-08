@@ -104,25 +104,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #if DEBUG || TESTCOVERAGE
             string moduleName = qos.ModuleName;
             string commandName = qos.CommandName;
-            string sourceScript = qos.SourceScript;
+            string sourceScriptPath = qos.SourceScript;
+            string sourceScriptName = Path.GetFileName(sourceScriptPath);
 
-            Console.WriteLine("##[group]Beginning of a info test coverage info group");
-            Console.WriteLine($"##[debug]Module name: {moduleName}");
-            Console.WriteLine($"##[warning]Command name: {commandName}");
-            Console.WriteLine($"##[error]Source script: {sourceScript}");
-            Console.WriteLine("##[endgroup]");
-
-            if (string.IsNullOrEmpty(moduleName) || string.IsNullOrEmpty(commandName) || ExcludedSource.Contains(sourceScript))
+            if (string.IsNullOrEmpty(moduleName) || string.IsNullOrEmpty(commandName) || string.IsNullOrEmpty(sourceScriptName) || ExcludedSource.Contains(sourceScriptName))
                 return;
 
-            var pattern = Regex.Escape(@"[\|/](?:artifacts[\|/]Debug|src)[\|/](?:Az\.)?(?<ModuleName>[a-zA-Z]+)[\|/]");
-            var match = Regex.Match(sourceScript, pattern, RegexOptions.IgnoreCase);
+            var pattern = @"[/|\\](?:artifacts[/|\\]Debug|src)[/|\\](?:Az\.)?(?<ModuleName>[a-zA-Z]+)[/|\\]";
+            var match = Regex.Match(sourceScriptPath, pattern, RegexOptions.IgnoreCase);
             var testingModuleName = $"Az.{match.Groups["ModuleName"].Value}";
-            Console.WriteLine($"##[section]Testing module name: {testingModuleName}");
             if (string.Compare(testingModuleName, moduleName, true) != 0)
                 return;
 
-            Console.WriteLine($"##[command]Test coverage root path: {s_testCoverageRootPath}");
             var csvFilePath = Path.Combine(s_testCoverageRootPath, $"{moduleName}.csv");
             StringBuilder csvData = new StringBuilder();
 
@@ -136,7 +129,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 }
 
                 csvData.AppendLine();
-                var csvItem = GenerateCsvItem(commandName, qos.ParameterSetName, qos.Parameters, Path.GetFileName(sourceScript), qos.ScriptLineNumber, qos.IsSuccess);
+                var csvItem = GenerateCsvItem(commandName, qos.ParameterSetName, qos.Parameters, sourceScriptName, qos.ScriptLineNumber, qos.IsSuccess);
                 csvData.Append(csvItem);
 
                 File.AppendAllText(csvFilePath, csvData.ToString());
