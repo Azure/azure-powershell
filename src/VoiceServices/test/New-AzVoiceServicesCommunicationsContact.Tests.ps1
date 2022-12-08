@@ -15,7 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzVoiceServicesCommunicat
 }
 
 Describe 'New-AzVoiceServicesCommunicationsContact' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { 
+            New-AzVoiceServicesCommunicationsContact -ResourceGroupName $env.resourceGroup -CommunicationsGatewayName $env.gatewayName01 -Name $env.contactName02 -Location $env.location -PhoneNumber "+1-555-1234" -FullContactName "John Smith" -Email "johnsmith@example.com" -Role "Network Manager"
+            Get-AzVoiceServicesCommunicationsContact -ResourceGroupName $env.resourceGroup -CommunicationsGatewayName $env.gatewayName01
+            Get-AzVoiceServicesCommunicationsContact -ResourceGroupName $env.resourceGroup -CommunicationsGatewayName $env.gatewayName01 -Name $env.contactName02
+            Update-AzVoiceServicesCommunicationsContact -ResourceGroupName $env.resourceGroup -CommunicationsGatewayName $env.gatewayName01 -Name $env.contactName02 -Tag @{'key1'='value1'} 
+            Remove-AzVoiceServicesCommunicationsContact -ResourceGroupName $env.resourceGroup -CommunicationsGatewayName $env.gatewayName01 -Name $env.contactName02        
+        } | Should -Not -Throw
+    }
+    It 'CreateExpandedViaIdentity' {
+        { 
+            $contact = New-AzVoiceServicesCommunicationsContact -ResourceGroupName $env.resourceGroup -CommunicationsGatewayName $env.gatewayName01 -Name $env.contactName02 -Location $env.location -PhoneNumber "+1-555-1234" -FullContactName "John Smith" -Email "johnsmith@example.com" -Role "Network Manager"
+            Get-AzVoiceServicesCommunicationsContact -InputObject $contact
+            Update-AzVoiceServicesCommunicationsContact -InputObject $contact -Tag @{'key1'='value1'} 
+            Remove-AzVoiceServicesCommunicationsContact -InputObject $contact       
+        } | Should -Not -Throw
     }
 }

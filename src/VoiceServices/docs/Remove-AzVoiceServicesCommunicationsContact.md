@@ -35,7 +35,7 @@ Delete a Contact
 Remove-AzVoiceServicesCommunicationsContact -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01
 ```
 
-Delete a contact
+Delete a contact.
 
 ### Example 2: Delete a contact by pipeline
 ```powershell

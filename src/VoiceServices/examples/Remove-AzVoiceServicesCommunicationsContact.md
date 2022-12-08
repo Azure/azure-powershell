@@ -6,7 +6,7 @@ Remove-AzVoiceServicesCommunicationsContact -ResourceGroupName lucas-communicati
 ```output
 ```
 
-Delete a contact
+Delete a contact.
 
 ### Example 2: Delete a contact by pipeline
 ```powershell

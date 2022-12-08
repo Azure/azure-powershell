@@ -18,7 +18,24 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    # For any resources you created for test, you should add it to $env here.
+    # For any resources you created for test, you should add it to $env here.\
+    $env.location = 'westcentralus'
+    $env.resourceGroup = "voiceservices-rg" + (RandomString -allChars $false -len 6)
+    $env.gatewayName01 = "vsgateway-" + (RandomString -allChars $false -len 6)
+    $env.gatewayName02 = "vsgateway-" + (RandomString -allChars $false -len 6)
+    $env.gatewayName03 = "vsgateway-" + (RandomString -allChars $false -len 6)
+    $env.contactName02 = "contact-" + (RandomString -allChars $false -len 6)
+    $env.testlineName02 = "contact-" + (RandomString -allChars $false -len 6)
+
+    Write-Host "start to create test group"
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+
+    Write-Host "Create a communications gateway for test"
+    $region = @()
+    $region += New-AzVoiceServicesCommunicationsGatewayServiceRegionObject -Name useast -PrimaryRegionOperatorAddress '198.51.100.1'
+    $region += New-AzVoiceServicesCommunicationsGatewayServiceRegionObject -Name useast2 -PrimaryRegionOperatorAddress '198.51.100.2'
+    New-AzVoiceServicesCommunicationsGateway -ResourceGroupName $env.resourceGroup -Name $env.gatewayName01 -Location $env.location -Codec 'PCMA' -E911Type 'Standard' -Platform 'OperatorConnect' -ServiceLocation $region 
+   
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -27,5 +44,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

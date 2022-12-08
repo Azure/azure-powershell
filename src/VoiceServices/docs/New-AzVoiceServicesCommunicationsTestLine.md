@@ -35,7 +35,7 @@ Location      Name        SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCr
 westcentralus testline-01 12/7/2022 7:56:47 AM v-diya@microsoft.com User                    12/7/2022 7:56:47 AM     v-diya@microsoft.com     User                         lucas-communication-rg 
 ```
 
-Create a test line for the communications gateway
+Create a test line for the communications gateway.
 
 ## PARAMETERS
 
