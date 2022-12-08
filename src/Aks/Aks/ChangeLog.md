@@ -17,11 +17,9 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-
+## Upcoming Release
 * Added parameter `-EnableEncryptionAtHost` for `New-AzAksCluster` and `New-AzAksNodePool`
 * Added parameter `-EnableUltraSSD` for `New-AzAksCluster` and `New-AzAksNodePool`
-
-## Upcoming Release
 
 ## Version 5.1.0
 * Bumped API version to 2022-09-01
