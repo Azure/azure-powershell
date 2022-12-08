@@ -165,7 +165,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
         {
             var contentString = content == null ? string.Empty : content.ToString();
             // minify JOSN payload to avoid payload too large error
-            contentString = Regex.Replace(contentString, @"\r\n?|\n|\t| ", String.Empty);
+            var obj = JsonConvert.DeserializeObject(contentString);
+            contentString = JsonConvert.SerializeObject(obj);
+            
             using (var httpContent = new StringContent(content: contentString, encoding: Encoding.UTF8, mediaType: "application/json"))
             using (var request = new HttpRequestMessage(method: httpMethod, requestUri: requestUri) { Content = httpContent })
             {
