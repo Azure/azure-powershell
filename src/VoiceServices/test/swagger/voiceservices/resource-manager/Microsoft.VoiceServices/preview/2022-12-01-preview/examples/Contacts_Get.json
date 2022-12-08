@@ -1,0 +1,27 @@
+{
+  "operationId": "Contacts_Get",
+  "title": "GetContactResource",
+  "parameters": {
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "testrg",
+    "api-version": "2022-12-01-preview",
+    "contactName": "name2",
+    "communicationsGatewayName": "myname"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.VoiceService/communicationsGateway/myname/Contacts/name2",
+        "name": "name2",
+        "type": "Microsoft.Voiceservice/communicationsGateways/contacts",
+        "location": "useast",
+        "properties": {
+          "phoneNumber": "+1-555-1234",
+          "contactName": "John Smith",
+          "email": "johnsmith@example.com",
+          "role": "Network Manager"
+        }
+      }
+    }
+  }
+}

@@ -35,11 +35,17 @@ Delete a Contact
 Remove-AzVoiceServicesCommunicationsContact -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01
 ```
 
+```output
+```
+
 Delete a contact.
 
 ### Example 2: Delete a contact by pipeline
 ```powershell
 Get-AzVoiceServicesCommunicationsContact -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name gateway-01 | Remove-AzVoiceServicesCommunicationsContact
+```
+
+```output
 ```
 
 Delete a contact by pipeline.
@@ -234,7 +240,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IVoiceServicesIdentity>`: Identity Parameter
+INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
   - `[CommunicationsGatewayName <String>]`: Unique identifier for this deployment
   - `[ContactName <String>]`: Unique identifier for this contact
   - `[Id <String>]`: Resource identity path

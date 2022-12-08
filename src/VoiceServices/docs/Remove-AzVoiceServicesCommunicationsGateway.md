@@ -35,11 +35,17 @@ Delete a CommunicationsGateway
 Remove-AzVoiceServicesCommunicationsGateway -ResourceGroupName lucas-communication-rg -Name vsc-gateway-pwsh01
 ```
 
+```output
+```
+
 Delete a gateway.
 
 ### Example 2: Delete a gateway by pipeline
 ```powershell
 Get-AzVoiceServicesCommunicationsGateway -ResourceGroupName lucas-communication-rg -Name vsc-gateway-pwsh01 | Remove-AzVoiceServicesCommunicationsGateway
+```
+
+```output
 ```
 
 Delete a gateway by pipeline.
@@ -219,7 +225,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IVoiceServicesIdentity>`: Identity Parameter
+INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
   - `[CommunicationsGatewayName <String>]`: Unique identifier for this deployment
   - `[ContactName <String>]`: Unique identifier for this contact
   - `[Id <String>]`: Resource identity path
