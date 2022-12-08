@@ -334,7 +334,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-The correlationId of the query
+The startTime of the query
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
