@@ -131,7 +131,7 @@ function Get-AzApplicationInsights {
                     $pricingPlan = $resourceId | . Az.ApplicationInsights.internal\Get-AzApplicationInsightsComponentCurrentBillingFeature
                     $dailyCapStatus  = $resourceId | . Az.ApplicationInsights.internal\Get-AzApplicationInsightsComponentQuotaStatus
                 }
-                break
+                breakl
             }
             default {
                 if ($PSBoundParameters['Name']) {
@@ -146,9 +146,9 @@ function Get-AzApplicationInsights {
         }
 
         if ($full) {
-            $PSCmdlet.WriteObject([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan]::New($component, $pricingPlan, $dailyCapStatus))
+            $PSCmdlet.WriteObject([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan]::New($component, $pricingPlan, $dailyCapStatus), $true)
         } else {
-            $PSCmdlet.WriteObject($component)
+            $PSCmdlet.WriteObject($component, $true)
         }
     }
 }
