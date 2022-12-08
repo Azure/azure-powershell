@@ -216,9 +216,9 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='endpointName'>
             /// The name of the Traffic Manager endpoint to be deleted.
             /// </param>
-            public static DeleteOperationResult Delete(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName)
+            public static void Delete(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName)
             {
-                return operations.DeleteAsync(resourceGroupName, profileName, endpointType, endpointName).GetAwaiter().GetResult();
+                operations.DeleteAsync(resourceGroupName, profileName, endpointType, endpointName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -243,12 +243,9 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeleteOperationResult> DeleteAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, profileName, endpointType, endpointName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, profileName, endpointType, endpointName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }

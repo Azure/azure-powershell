@@ -85,9 +85,9 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static DeleteOperationResult Delete(this ITrafficManagerUserMetricsKeysOperations operations)
+            public static void Delete(this ITrafficManagerUserMetricsKeysOperations operations)
             {
-                return operations.DeleteAsync().GetAwaiter().GetResult();
+                operations.DeleteAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -99,12 +99,9 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeleteOperationResult> DeleteAsync(this ITrafficManagerUserMetricsKeysOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this ITrafficManagerUserMetricsKeysOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.DeleteWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }

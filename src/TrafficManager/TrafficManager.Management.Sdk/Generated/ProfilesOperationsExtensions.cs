@@ -225,9 +225,9 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='profileName'>
             /// The name of the Traffic Manager profile to be deleted.
             /// </param>
-            public static DeleteOperationResult Delete(this IProfilesOperations operations, string resourceGroupName, string profileName)
+            public static void Delete(this IProfilesOperations operations, string resourceGroupName, string profileName)
             {
-                return operations.DeleteAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
+                operations.DeleteAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -245,12 +245,9 @@ namespace Microsoft.Azure.Management.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeleteOperationResult> DeleteAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, profileName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, profileName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

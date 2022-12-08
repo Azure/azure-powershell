@@ -26,23 +26,24 @@ payload-flattening-threshold: 2
 ###
 ``` yaml
 directive:
-  #  where: $.definitions
-  #   transform: >
-  #     $.ProfileProperties.properties.maxReturn['x-nullable'] = true;
-  #     $.EndpointProperties.properties.minChildEndpoints['x-nullable'] = true;
-  #     $.EndpointProperties.properties.minChildEndpointsIPv4['x-nullable'] = true;
-  #     $.EndpointProperties.properties.minChildEndpointsIPv6['x-nullable'] = true;
-  # - from: trafficmanager.json
-  #   where: $.paths..parameters[?(@.name === "heatMapType")]
-  #   transform: >
-  #     $['x-ms-enum'] = {
-  #       "name": "HeatMapType",
-  #       "modelAsString": true
-  #     }
-  # - from: trafficmanager.json
-  #   where: $.paths..delete.responses["200"]
-  #   transform: >
-  #     delete $["schema"]
+  - from: trafficmanager.json
+    where: $.definitions
+    transform: >
+      $.ProfileProperties.properties.maxReturn['x-nullable'] = true;
+      $.EndpointProperties.properties.minChildEndpoints['x-nullable'] = true;
+      $.EndpointProperties.properties.minChildEndpointsIPv4['x-nullable'] = true;
+      $.EndpointProperties.properties.minChildEndpointsIPv6['x-nullable'] = true;
+  - from: trafficmanager.json
+    where: $.paths..parameters[?(@.name === "heatMapType")]
+    transform: >
+      $['x-ms-enum'] = {
+        "name": "HeatMapType",
+        "modelAsString": true
+      }
+  - from: trafficmanager.json
+    where: $.paths..delete.responses["200"]
+    transform: >
+      delete $["schema"]
   - from: trafficmanager.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}"]..parameters[2]
     transform:
