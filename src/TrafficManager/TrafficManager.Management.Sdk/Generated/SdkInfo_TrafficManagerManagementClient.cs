@@ -5,7 +5,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.TrafficManager
+namespace Microsoft.Azure.Management.TrafficManager
 {
   using System;
   using System.Collections.Generic;

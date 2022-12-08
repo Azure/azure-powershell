@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.TrafficManager.Models
+namespace Microsoft.Azure.Management.TrafficManager.Models
 {
     using System.Linq;
 

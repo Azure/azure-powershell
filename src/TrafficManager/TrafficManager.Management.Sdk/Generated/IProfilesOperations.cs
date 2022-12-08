@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.TrafficManager
+namespace Microsoft.Azure.Management.TrafficManager
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;

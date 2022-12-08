@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.TrafficManager
+namespace Microsoft.Azure.Management.TrafficManager
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
             /// The name of the Traffic Manager profile.
             /// </param>
             /// <param name='endpointType'>
-            /// The type of the Traffic Manager endpoint to be updated. Possible values
-            /// include: 'AzureEndpoints', 'ExternalEndpoints', 'NestedEndpoints'
+            /// The type of the Traffic Manager endpoint to be updated. Only
+            /// AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed here.
             /// </param>
             /// <param name='endpointName'>
             /// The name of the Traffic Manager endpoint to be updated.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             /// <param name='parameters'>
             /// The Traffic Manager endpoint parameters supplied to the Update operation.
             /// </param>
-            public static Endpoint Update(this IEndpointsOperations operations, string resourceGroupName, string profileName, EndpointType endpointType, string endpointName, Endpoint parameters)
+            public static Endpoint Update(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters)
             {
                 return operations.UpdateAsync(resourceGroupName, profileName, endpointType, endpointName, parameters).GetAwaiter().GetResult();
             }
@@ -61,8 +61,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
             /// The name of the Traffic Manager profile.
             /// </param>
             /// <param name='endpointType'>
-            /// The type of the Traffic Manager endpoint to be updated. Possible values
-            /// include: 'AzureEndpoints', 'ExternalEndpoints', 'NestedEndpoints'
+            /// The type of the Traffic Manager endpoint to be updated. Only
+            /// AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed here.
             /// </param>
             /// <param name='endpointName'>
             /// The name of the Traffic Manager endpoint to be updated.
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Endpoint> UpdateAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, EndpointType endpointType, string endpointName, Endpoint parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Endpoint> UpdateAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, profileName, endpointType, endpointName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -94,13 +94,13 @@ namespace Microsoft.Azure.Commands.TrafficManager
             /// The name of the Traffic Manager profile.
             /// </param>
             /// <param name='endpointType'>
-            /// The type of the Traffic Manager endpoint. Possible values include:
-            /// 'AzureEndpoints', 'ExternalEndpoints', 'NestedEndpoints'
+            /// The type of the Traffic Manager endpoint. Only AzureEndpoints,
+            /// ExternalEndpoints and NestedEndpoints are allowed here.
             /// </param>
             /// <param name='endpointName'>
             /// The name of the Traffic Manager endpoint.
             /// </param>
-            public static Endpoint Get(this IEndpointsOperations operations, string resourceGroupName, string profileName, EndpointType endpointType, string endpointName)
+            public static Endpoint Get(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName)
             {
                 return operations.GetAsync(resourceGroupName, profileName, endpointType, endpointName).GetAwaiter().GetResult();
             }
@@ -118,8 +118,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
             /// The name of the Traffic Manager profile.
             /// </param>
             /// <param name='endpointType'>
-            /// The type of the Traffic Manager endpoint. Possible values include:
-            /// 'AzureEndpoints', 'ExternalEndpoints', 'NestedEndpoints'
+            /// The type of the Traffic Manager endpoint. Only AzureEndpoints,
+            /// ExternalEndpoints and NestedEndpoints are allowed here.
             /// </param>
             /// <param name='endpointName'>
             /// The name of the Traffic Manager endpoint.
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Endpoint> GetAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, EndpointType endpointType, string endpointName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Endpoint> GetAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, profileName, endpointType, endpointName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -148,8 +148,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
             /// The name of the Traffic Manager profile.
             /// </param>
             /// <param name='endpointType'>
-            /// The type of the Traffic Manager endpoint to be created or updated. Possible
-            /// values include: 'AzureEndpoints', 'ExternalEndpoints', 'NestedEndpoints'
+            /// The type of the Traffic Manager endpoint to be created or updated. Only
+            /// AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed here.
             /// </param>
             /// <param name='endpointName'>
             /// The name of the Traffic Manager endpoint to be created or updated.
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             /// The Traffic Manager endpoint parameters supplied to the CreateOrUpdate
             /// operation.
             /// </param>
-            public static Endpoint CreateOrUpdate(this IEndpointsOperations operations, string resourceGroupName, string profileName, EndpointType endpointType, string endpointName, Endpoint parameters)
+            public static Endpoint CreateOrUpdate(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters)
             {
                 return operations.CreateOrUpdateAsync(resourceGroupName, profileName, endpointType, endpointName, parameters).GetAwaiter().GetResult();
             }
@@ -176,8 +176,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
             /// The name of the Traffic Manager profile.
             /// </param>
             /// <param name='endpointType'>
-            /// The type of the Traffic Manager endpoint to be created or updated. Possible
-            /// values include: 'AzureEndpoints', 'ExternalEndpoints', 'NestedEndpoints'
+            /// The type of the Traffic Manager endpoint to be created or updated. Only
+            /// AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed here.
             /// </param>
             /// <param name='endpointName'>
             /// The name of the Traffic Manager endpoint to be created or updated.
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Endpoint> CreateOrUpdateAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, EndpointType endpointType, string endpointName, Endpoint parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Endpoint> CreateOrUpdateAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, profileName, endpointType, endpointName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -210,13 +210,13 @@ namespace Microsoft.Azure.Commands.TrafficManager
             /// The name of the Traffic Manager profile.
             /// </param>
             /// <param name='endpointType'>
-            /// The type of the Traffic Manager endpoint to be deleted. Possible values
-            /// include: 'AzureEndpoints', 'ExternalEndpoints', 'NestedEndpoints'
+            /// The type of the Traffic Manager endpoint to be deleted. Only
+            /// AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed here.
             /// </param>
             /// <param name='endpointName'>
             /// The name of the Traffic Manager endpoint to be deleted.
             /// </param>
-            public static DeleteOperationResult Delete(this IEndpointsOperations operations, string resourceGroupName, string profileName, EndpointType endpointType, string endpointName)
+            public static DeleteOperationResult Delete(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName)
             {
                 return operations.DeleteAsync(resourceGroupName, profileName, endpointType, endpointName).GetAwaiter().GetResult();
             }
@@ -234,8 +234,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
             /// The name of the Traffic Manager profile.
             /// </param>
             /// <param name='endpointType'>
-            /// The type of the Traffic Manager endpoint to be deleted. Possible values
-            /// include: 'AzureEndpoints', 'ExternalEndpoints', 'NestedEndpoints'
+            /// The type of the Traffic Manager endpoint to be deleted. Only
+            /// AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed here.
             /// </param>
             /// <param name='endpointName'>
             /// The name of the Traffic Manager endpoint to be deleted.
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DeleteOperationResult> DeleteAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, EndpointType endpointType, string endpointName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DeleteOperationResult> DeleteAsync(this IEndpointsOperations operations, string resourceGroupName, string profileName, string endpointType, string endpointName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, profileName, endpointType, endpointName, null, cancellationToken).ConfigureAwait(false))
                 {

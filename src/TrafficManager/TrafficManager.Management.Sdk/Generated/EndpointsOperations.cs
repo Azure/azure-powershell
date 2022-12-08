@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.TrafficManager
+namespace Microsoft.Azure.Management.TrafficManager
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -60,8 +60,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// The name of the Traffic Manager profile.
         /// </param>
         /// <param name='endpointType'>
-        /// The type of the Traffic Manager endpoint to be updated. Possible values
-        /// include: 'AzureEndpoints', 'ExternalEndpoints', 'NestedEndpoints'
+        /// The type of the Traffic Manager endpoint to be updated. Only
+        /// AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed here.
         /// </param>
         /// <param name='endpointName'>
         /// The name of the Traffic Manager endpoint to be updated.
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Endpoint>> UpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, EndpointType endpointType, string endpointName, Endpoint parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Endpoint>> UpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -110,6 +110,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
             if (profileName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "profileName");
+            }
+            if (endpointType == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "endpointType");
             }
             if (endpointName == null)
             {
@@ -161,7 +165,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{profileName}", System.Uri.EscapeDataString(profileName));
-            _url = _url.Replace("{endpointType}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(endpointType, Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{endpointType}", System.Uri.EscapeDataString(endpointType));
             _url = _url.Replace("{endpointName}", System.Uri.EscapeDataString(endpointName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
@@ -310,8 +314,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// The name of the Traffic Manager profile.
         /// </param>
         /// <param name='endpointType'>
-        /// The type of the Traffic Manager endpoint. Possible values include:
-        /// 'AzureEndpoints', 'ExternalEndpoints', 'NestedEndpoints'
+        /// The type of the Traffic Manager endpoint. Only AzureEndpoints,
+        /// ExternalEndpoints and NestedEndpoints are allowed here.
         /// </param>
         /// <param name='endpointName'>
         /// The name of the Traffic Manager endpoint.
@@ -337,7 +341,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Endpoint>> GetWithHttpMessagesAsync(string resourceGroupName, string profileName, EndpointType endpointType, string endpointName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Endpoint>> GetWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -357,6 +361,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
             if (profileName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "profileName");
+            }
+            if (endpointType == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "endpointType");
             }
             if (endpointName == null)
             {
@@ -403,7 +411,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{profileName}", System.Uri.EscapeDataString(profileName));
-            _url = _url.Replace("{endpointType}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(endpointType, Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{endpointType}", System.Uri.EscapeDataString(endpointType));
             _url = _url.Replace("{endpointName}", System.Uri.EscapeDataString(endpointName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
@@ -546,8 +554,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// The name of the Traffic Manager profile.
         /// </param>
         /// <param name='endpointType'>
-        /// The type of the Traffic Manager endpoint to be created or updated. Possible
-        /// values include: 'AzureEndpoints', 'ExternalEndpoints', 'NestedEndpoints'
+        /// The type of the Traffic Manager endpoint to be created or updated. Only
+        /// AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed here.
         /// </param>
         /// <param name='endpointName'>
         /// The name of the Traffic Manager endpoint to be created or updated.
@@ -577,7 +585,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Endpoint>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, EndpointType endpointType, string endpointName, Endpoint parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Endpoint>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -597,6 +605,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
             if (profileName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "profileName");
+            }
+            if (endpointType == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "endpointType");
             }
             if (endpointName == null)
             {
@@ -648,7 +660,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{profileName}", System.Uri.EscapeDataString(profileName));
-            _url = _url.Replace("{endpointType}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(endpointType, Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{endpointType}", System.Uri.EscapeDataString(endpointType));
             _url = _url.Replace("{endpointName}", System.Uri.EscapeDataString(endpointName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
@@ -815,8 +827,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// The name of the Traffic Manager profile.
         /// </param>
         /// <param name='endpointType'>
-        /// The type of the Traffic Manager endpoint to be deleted. Possible values
-        /// include: 'AzureEndpoints', 'ExternalEndpoints', 'NestedEndpoints'
+        /// The type of the Traffic Manager endpoint to be deleted. Only
+        /// AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed here.
         /// </param>
         /// <param name='endpointName'>
         /// The name of the Traffic Manager endpoint to be deleted.
@@ -842,7 +854,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DeleteOperationResult>> DeleteWithHttpMessagesAsync(string resourceGroupName, string profileName, EndpointType endpointType, string endpointName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DeleteOperationResult>> DeleteWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -862,6 +874,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
             if (profileName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "profileName");
+            }
+            if (endpointType == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "endpointType");
             }
             if (endpointName == null)
             {
@@ -908,7 +924,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{profileName}", System.Uri.EscapeDataString(profileName));
-            _url = _url.Replace("{endpointType}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(endpointType, Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{endpointType}", System.Uri.EscapeDataString(endpointType));
             _url = _url.Replace("{endpointName}", System.Uri.EscapeDataString(endpointName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();

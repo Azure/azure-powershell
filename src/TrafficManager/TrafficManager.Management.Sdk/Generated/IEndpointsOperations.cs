@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.TrafficManager
+namespace Microsoft.Azure.Management.TrafficManager
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// The name of the Traffic Manager profile.
         /// </param>
         /// <param name='endpointType'>
-        /// The type of the Traffic Manager endpoint to be updated. Possible
-        /// values include: 'AzureEndpoints', 'ExternalEndpoints',
-        /// 'NestedEndpoints'
+        /// The type of the Traffic Manager endpoint to be updated. Only
+        /// AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed
+        /// here.
         /// </param>
         /// <param name='endpointName'>
         /// The name of the Traffic Manager endpoint to be updated.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Endpoint>> UpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, EndpointType endpointType, string endpointName, Endpoint parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Endpoint>> UpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a Traffic Manager endpoint.
         /// </summary>
@@ -70,8 +70,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// The name of the Traffic Manager profile.
         /// </param>
         /// <param name='endpointType'>
-        /// The type of the Traffic Manager endpoint. Possible values include:
-        /// 'AzureEndpoints', 'ExternalEndpoints', 'NestedEndpoints'
+        /// The type of the Traffic Manager endpoint. Only AzureEndpoints,
+        /// ExternalEndpoints and NestedEndpoints are allowed here.
         /// </param>
         /// <param name='endpointName'>
         /// The name of the Traffic Manager endpoint.
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Endpoint>> GetWithHttpMessagesAsync(string resourceGroupName, string profileName, EndpointType endpointType, string endpointName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Endpoint>> GetWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Create or update a Traffic Manager endpoint.
         /// </summary>
@@ -103,8 +103,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// </param>
         /// <param name='endpointType'>
         /// The type of the Traffic Manager endpoint to be created or updated.
-        /// Possible values include: 'AzureEndpoints', 'ExternalEndpoints',
-        /// 'NestedEndpoints'
+        /// Only AzureEndpoints, ExternalEndpoints and NestedEndpoints are
+        /// allowed here.
         /// </param>
         /// <param name='endpointName'>
         /// The name of the Traffic Manager endpoint to be created or updated.
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Endpoint>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, EndpointType endpointType, string endpointName, Endpoint parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Endpoint>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a Traffic Manager endpoint.
         /// </summary>
@@ -139,9 +139,9 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// The name of the Traffic Manager profile.
         /// </param>
         /// <param name='endpointType'>
-        /// The type of the Traffic Manager endpoint to be deleted. Possible
-        /// values include: 'AzureEndpoints', 'ExternalEndpoints',
-        /// 'NestedEndpoints'
+        /// The type of the Traffic Manager endpoint to be deleted. Only
+        /// AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed
+        /// here.
         /// </param>
         /// <param name='endpointName'>
         /// The name of the Traffic Manager endpoint to be deleted.
@@ -161,6 +161,6 @@ namespace Microsoft.Azure.Commands.TrafficManager
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DeleteOperationResult>> DeleteWithHttpMessagesAsync(string resourceGroupName, string profileName, EndpointType endpointType, string endpointName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DeleteOperationResult>> DeleteWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
