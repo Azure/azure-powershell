@@ -12,48 +12,38 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.AssemblyLoading;
+using System;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Reflection;
-using System.Runtime.Loader;
 
 namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
 {
     /// <summary>
-    /// Assembly load context of a service module.
-    /// The way of looking for assemblies is based on directory.
+    /// Assembly load context of the shared assemblies in Az.Accounts module.
+    /// Assemblies are provided by <see cref="ConditionalAssemblyProvider"/>.
     /// </summary>
-    internal class AzAssemblyLoadContext : AzAssemblyLoadContextBase
+    internal class AzSharedAssemblyLoadContext : AzAssemblyLoadContextBase
     {
-        private string AssemblyDirectory { get; set; }
-
-        private static readonly ConcurrentDictionary<string, AssemblyLoadContext> DependencyLoadContexts = new ConcurrentDictionary<string, AssemblyLoadContext>();
-
-        internal static AssemblyLoadContext GetForDirectory(string directoryPath)
-        {
-            return DependencyLoadContexts.GetOrAdd(directoryPath, path => path.Equals(AzSharedAssemblyLoadContext.Key) ? new AzSharedAssemblyLoadContext() : (AssemblyLoadContext)new AzAssemblyLoadContext(directoryPath));
-        }
-
         /// <summary>
-        /// Initialize an `AzAssemblyLoadContext` instance.
+        /// Key to get the shared ALC.
         /// </summary>
-        /// <param name="directory">Root directory to look for assembly.</param>
-        /// <returns></returns>
-        public AzAssemblyLoadContext(string directory) : base(directory)
+        public const string Key = nameof(AzSharedAssemblyLoadContext);
+
+        private ConcurrentDictionary<string, (string Path, Version Version)> _assemblies;
+
+        public AzSharedAssemblyLoadContext() : base(Key)
         {
-            AssemblyDirectory = directory;
+            _assemblies = new ConcurrentDictionary<string, (string, Version)>(ConditionalAssemblyProvider.GetAssemblies(), StringComparer.OrdinalIgnoreCase);
         }
 
         protected override Assembly LoadAfterCacheMiss(AssemblyName requestedAssemblyName)
         {
-            string assemblyFileName = $"{requestedAssemblyName.Name}.dll";
-
-            // Now try to load the assembly from the dependency directory
-            string dependencyAsmPath = Path.Join(AssemblyDirectory, assemblyFileName);
-            if (File.Exists(dependencyAsmPath))
+            if (_assemblies.TryGetValue(requestedAssemblyName.Name, out var assembly)
+                && File.Exists(assembly.Path))
             {
-                //Assembly.ReflectionOnlyLoadFrom
-                var loadedAssembly = LoadFromAssemblyPath(dependencyAsmPath);
+                var loadedAssembly = LoadFromAssemblyPath(assembly.Path);
                 var loadedAssemblyName = loadedAssembly.GetName();
                 if (IsAssemblyMatching(requestedAssemblyName, loadedAssemblyName))
                 {
@@ -61,7 +51,6 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
                 }
                 return loadedAssembly;
             }
-
             return null;
         }
     }
