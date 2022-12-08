@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public string EndpointLocation { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.")]
-        [LocationCompleter("Microsoft.Network/trafficmanagerprofiles")]
+        [ValidateSet(Constants.StatusEnabled, Constants.StatusDisabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string AlwaysServe { get; set; }
 
