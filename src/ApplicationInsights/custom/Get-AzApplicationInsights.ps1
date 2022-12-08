@@ -131,7 +131,7 @@ function Get-AzApplicationInsights {
                     $pricingPlan = $resourceId | . Az.ApplicationInsights.internal\Get-AzApplicationInsightsComponentCurrentBillingFeature
                     $dailyCapStatus  = $resourceId | . Az.ApplicationInsights.internal\Get-AzApplicationInsightsComponentQuotaStatus
                 }
-                breakl
+                break
             }
             default {
                 if ($PSBoundParameters['Name']) {
