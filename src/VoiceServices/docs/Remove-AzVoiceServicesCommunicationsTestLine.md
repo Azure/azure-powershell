@@ -32,14 +32,14 @@ Delete a TestLine
 
 ### Example 1: Delete a test line
 ```powershell
-Remove-AzVoiceServicesCommunicationsTestLine -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name testline-01
+Remove-AzVoiceServicesCommunicationsTestLine -ResourceGroupName vtest-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name testline-01
 ```
 
 Delete a test line.
 
 ### Example 2: Delete a test line by pipeline
 ```powershell
-Get-AzVoiceServicesCommunicationsTestLine -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name testline-01 | Remove-AzVoiceServicesCommunicationsTestLine
+Get-AzVoiceServicesCommunicationsTestLine -ResourceGroupName vtest-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name testline-01 | Remove-AzVoiceServicesCommunicationsTestLine
 ```
 
 Delete a test line by pipeline.
