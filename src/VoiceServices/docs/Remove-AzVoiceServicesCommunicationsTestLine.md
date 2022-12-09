@@ -35,17 +35,11 @@ Delete a TestLine
 Remove-AzVoiceServicesCommunicationsTestLine -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name testline-01
 ```
 
-```output
-```
-
 Delete a test line.
 
 ### Example 2: Delete a test line by pipeline
 ```powershell
 Get-AzVoiceServicesCommunicationsTestLine -ResourceGroupName lucas-communication-rg -CommunicationsGatewayName vsc-gateway-pwsh01 -Name testline-01 | Remove-AzVoiceServicesCommunicationsTestLine
-```
-
-```output
 ```
 
 Delete a test line by pipeline.
@@ -240,7 +234,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IVoiceServicesIdentity>: Identity Parameter
+`INPUTOBJECT <IVoiceServicesIdentity>`: Identity Parameter
   - `[CommunicationsGatewayName <String>]`: Unique identifier for this deployment
   - `[ContactName <String>]`: Unique identifier for this contact
   - `[Id <String>]`: Resource identity path
