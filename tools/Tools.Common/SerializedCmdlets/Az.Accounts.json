@@ -6901,7 +6901,7 @@
       "VerbName": "Get",
       "NounName": "AzContextAutosaveSetting",
       "Name": "Get-AzContextAutosaveSetting",
-      "ClassName": "Microsoft.Azure.Commands.Profile.Context.GetAzureRmContextAutosaveSetting",
+      "ClassName": "Microsoft.Azure.Commands.Profile.Context.GetzureRmContextAutosaveSetting",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
