@@ -97,6 +97,12 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Create node pool even if it already exists")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable host based OS and data drive")]
+        public SwitchParameter EnableEncryptionAtHost { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "whether to enable UltraSSD")]
+        public SwitchParameter EnableUltraSSD { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -213,6 +219,14 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.NodeTaint))
             {
                 agentPool.NodeTaints = NodeTaint;
+            }
+            if (EnableEncryptionAtHost.IsPresent)
+            {
+                agentPool.EnableEncryptionAtHost = EnableEncryptionAtHost.ToBool();
+            }
+            if (EnableUltraSSD.IsPresent)
+            {
+                agentPool.EnableUltraSSD = EnableUltraSSD.ToBool();
             }
 
             return agentPool;

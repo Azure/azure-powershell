@@ -137,6 +137,12 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The resource group containing agent pool.")]
         public string NodeResourceGroup { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable host based OS and data drive")]
+        public SwitchParameter EnableEncryptionAtHost { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "whether to enable UltraSSD")]
+        public SwitchParameter EnableUltraSSD { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -483,6 +489,14 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.AvailabilityZone))
             {
                 defaultAgentPoolProfile.AvailabilityZones = AvailabilityZone;
+            }
+            if (EnableEncryptionAtHost.IsPresent)
+            {
+                defaultAgentPoolProfile.EnableEncryptionAtHost = EnableEncryptionAtHost.ToBool();
+            }
+            if (EnableUltraSSD.IsPresent)
+            {
+                defaultAgentPoolProfile.EnableUltraSSD = EnableUltraSSD.ToBool();
             }
 
             defaultAgentPoolProfile.Mode = NodePoolMode;

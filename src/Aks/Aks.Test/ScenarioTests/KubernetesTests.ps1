@@ -538,3 +538,79 @@ function Test-NodeTaints {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-EnableEncryptionAtHost {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    # not all vmSize support EnableEncryptionAtHost. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption 
+    $nodeVmSize = "Standard_D2_v5"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -EnableEncryptionAtHost
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 1 $cluster.AgentPoolProfiles.Count
+        Assert-True {$cluster.AgentPoolProfiles[0].EnableEncryptionAtHost}
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 1 $pools.Count
+        Assert-True {$pools[0].EnableEncryptionAtHost}
+
+        # create a 2nd nodepool
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name "pool2" -VmSize $nodeVmSize -Count 1 -EnableEncryptionAtHost
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-True {$cluster.AgentPoolProfiles[0].EnableEncryptionAtHost}
+        Assert-True {$cluster.AgentPoolProfiles[1].EnableEncryptionAtHost}
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-True {$pools[0].EnableEncryptionAtHost}
+        Assert-True {$pools[1].EnableEncryptionAtHost}
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+function Test-EnableUltraSSD {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    # not all vmSize support EnableEncryptionAtHost. For more information, see: https://learn.microsoft.com/en-us/azure/virtual-machines/disks-enable-ultra-ssd?tabs=azure-portal
+    $nodeVmSize = "Standard_D2_v5"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -AvailabilityZone @(1,2, 3)  -EnableUltraSSD
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 1 $cluster.AgentPoolProfiles.Count
+        Assert-True {$cluster.AgentPoolProfiles[0].EnableUltraSSD}
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 1 $pools.Count
+        Assert-True {$pools[0].EnableUltraSSD}
+
+        # create a 2nd nodepool
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -VmSize $nodeVmSize -Count 1 -AvailabilityZone @(1,2, 3) -EnableUltraSSD
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-True {$cluster.AgentPoolProfiles[0].EnableUltraSSD}
+        Assert-True {$cluster.AgentPoolProfiles[1].EnableUltraSSD}
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-True {$pools[0].EnableUltraSSD}
+        Assert-True {$pools[1].EnableUltraSSD}
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
