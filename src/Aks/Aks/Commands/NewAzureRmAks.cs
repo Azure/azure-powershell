@@ -143,6 +143,12 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "whether to enable UltraSSD")]
         public SwitchParameter EnableUltraSSD { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The OS configuration of Linux agent nodes.")]
+        public LinuxOSConfig NodeLinuxOSConfig { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The Kubelet configuration on the agent pool nodes.")]
+        public KubeletConfig NodeKubeletConfig { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -497,6 +503,14 @@ namespace Microsoft.Azure.Commands.Aks
             if (EnableUltraSSD.IsPresent)
             {
                 defaultAgentPoolProfile.EnableUltraSSD = EnableUltraSSD.ToBool();
+            }
+            if (this.IsParameterBound(c => c.NodeLinuxOSConfig))
+            {
+                defaultAgentPoolProfile.LinuxOSConfig = NodeLinuxOSConfig;
+            }
+            if (this.IsParameterBound(c => c.NodeKubeletConfig))
+            {
+                defaultAgentPoolProfile.KubeletConfig = NodeKubeletConfig;
             }
 
             defaultAgentPoolProfile.Mode = NodePoolMode;
