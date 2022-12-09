@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Optimized the mechanism for assembly loading.
 * Enabled AzKeyStore with keyring in Linux.
 
 ## Version 2.10.4

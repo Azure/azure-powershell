@@ -29,6 +29,14 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
 
         private static readonly ConcurrentDictionary<string, AssemblyLoadContext> DependencyLoadContexts = new ConcurrentDictionary<string, AssemblyLoadContext>();
 
+        /// <summary>
+        /// Get an ALC for a certain directory that contains assemblies.
+        /// </summary>
+        /// <remarks>
+        /// There are two types of possible value for <paramref name="directoryPath"/>:
+        /// 1. <see cref="AzSharedAssemblyLoadContext.Key"/> which will create if not exist and return an ALC for shared libraries.
+        /// 2. A directory in a service module that contains the assemblies to be loaded into the ALC of the service module.
+        /// </remarks>
         internal static AssemblyLoadContext GetForDirectory(string directoryPath)
         {
             return DependencyLoadContexts.GetOrAdd(directoryPath, path => path.Equals(AzSharedAssemblyLoadContext.Key) ? new AzSharedAssemblyLoadContext() : (AssemblyLoadContext)new AzAssemblyLoadContext(directoryPath));

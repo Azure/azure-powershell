@@ -47,34 +47,30 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netcoreapp3.1", "Microsoft.Identity.Client.Extensions.Msal", "2.23.0.0").WithPowerShellCore(),
 
                 CreateAssembly("netstandard2.0", "Azure.Identity", "1.6.1.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Bcl.AsyncInterfaces", "1.0.0.0").WithPowerShellCore(),
-                CreateAssembly("netstandard2.0", "Microsoft.IdentityModel.Abstractions", "6.22.1.0").WithPowerShellCore(),
-                CreateAssembly("netstandard2.0", "System.Memory.Data", "1.0.2.0").WithPowerShellCore(),
-                CreateAssembly("netstandard2.0", "System.Text.Json", "4.0.1.2").WithPowerShellCore(),
-                CreateAssembly("netstandard2.0", "System.Buffers", "4.0.3.0").WithWindowsPowerShell(), // standard
-                CreateAssembly("netstandard2.0", "System.Memory", "4.0.1.1").WithWindowsPowerShell(), // standard
-                CreateAssembly("netstandard2.0", "System.Net.Http.WinHttpHandler", "4.0.2.0").WithWindowsPowerShell(), // standard
-                CreateAssembly("netstandard2.0", "System.Private.ServiceModel", "4.7.0.0").WithWindowsPowerShell(), //standard
-                CreateAssembly("netstandard2.0", "System.Security.AccessControl", "4.1.1.0").WithWindowsPowerShell(), //standard
-                CreateAssembly("netstandard2.0", "System.Security.Permissions", "4.0.1.0").WithWindowsPowerShell(), //standard
-                CreateAssembly("netstandard2.0", "System.Security.Principal.Windows", "4.1.1.0").WithWindowsPowerShell(),//standard
-                CreateAssembly("netstandard2.0", "System.ServiceModel.Primitives", "4.7.0.0").WithWindowsPowerShell(), //standard
-                CreateAssembly("netstandard2.0", "System.Threading.Tasks.Extensions", "4.2.0.1").WithWindowsPowerShell(), //standard
+                CreateAssembly("netstandard2.0", "Microsoft.Bcl.AsyncInterfaces", "1.0.0.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.IdentityModel.Abstractions", "6.22.1.0"),
+                CreateAssembly("netstandard2.0", "System.Memory.Data", "1.0.2.0"),
+                CreateAssembly("netstandard2.0", "System.Text.Json", "4.0.1.2"),
+                CreateAssembly("netstandard2.0", "System.Buffers", "4.0.3.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.Memory", "4.0.1.1").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.Net.Http.WinHttpHandler", "4.0.2.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.Private.ServiceModel", "4.7.0.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.Security.AccessControl", "4.1.1.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.Security.Permissions", "4.0.1.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.Security.Principal.Windows", "4.1.1.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.ServiceModel.Primitives", "4.7.0.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.Threading.Tasks.Extensions", "4.2.0.1").WithWindowsPowerShell(),
 
                 CreateAssembly("netfx", "Azure.Core", "1.25.0.0").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "Microsoft.Bcl.AsyncInterfaces", "1.1.1.0").WithWindowsPowerShell(), // can use standard?
                 CreateAssembly("netfx", "Microsoft.Identity.Client", "4.46.2.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "Microsoft.Identity.Client.Extensions.Msal", "2.23.0.0").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "Microsoft.IdentityModel.Abstractions", "6.22.1.0").WithWindowsPowerShell(), //can use standard?
-                CreateAssembly("netfx", "Newtonsoft.Json", "10.0.0.0").WithWindowsPowerShell(), //double check; 12.0.0
+                CreateAssembly("netfx", "Newtonsoft.Json", "12.0.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Diagnostics.DiagnosticSource", "4.0.4.0").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "System.Memory.Data", "1.0.2.0").WithWindowsPowerShell(), //can use standard?
                 CreateAssembly("netfx", "System.Numerics.Vectors", "4.1.4.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Reflection.DispatchProxy", "4.0.4.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Runtime.CompilerServices.Unsafe", "4.0.6.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Security.Cryptography.Cng", "4.3.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Text.Encodings.Web", "4.0.5.1").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "System.Text.Json", "4.0.1.2").WithWindowsPowerShell(), //can use standard?
                 CreateAssembly("netfx", "System.Xml.ReaderWriter", "4.1.0.0").WithWindowsPowerShell(),
                 #endregion
             };
