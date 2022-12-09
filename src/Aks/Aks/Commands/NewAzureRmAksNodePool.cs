@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
-
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
@@ -97,6 +97,12 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Create node pool even if it already exists")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable host based OS and data drive")]
+        public SwitchParameter EnableEncryptionAtHost { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "whether to enable UltraSSD")]
+        public SwitchParameter EnableUltraSSD { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -112,7 +118,7 @@ namespace Microsoft.Azure.Commands.Aks
                     ClusterName = ClusterObject.Name;
                 }
                 var agentPool = GetAgentPool();
-                var pool = Client.AgentPools.CreateOrUpdate(ResourceGroupName, ClusterName, Name, agentPool);
+                var pool = this.CreateOrUpdate(ResourceGroupName, ClusterName, Name, agentPool);
                 var psPool = PSMapper.Instance.Map<PSNodePool>(pool);
                 WriteObject(psPool);
             };
@@ -170,6 +176,10 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 agentPool.EnableAutoScaling = EnableAutoScaling.ToBool();
             }
+            if (this.IsParameterBound(c => c.Mode))
+            {
+                agentPool.Mode = Mode;
+            }
             if (EnableNodePublicIp.IsPresent)
             {
                 agentPool.EnableNodePublicIP = EnableNodePublicIp.ToBool();
@@ -189,6 +199,34 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.AvailabilityZone))
             {
                 agentPool.AvailabilityZones = AvailabilityZone;
+            }
+            if (this.IsParameterBound(c => c.NodeLabel))
+            {
+                agentPool.NodeLabels = new Dictionary<string, string>();
+                foreach (var key in NodeLabel.Keys)
+                {
+                    agentPool.NodeLabels.Add(key.ToString(), NodeLabel[key].ToString());
+                }
+            }
+            if (this.IsParameterBound(c => c.Tag))
+            {
+                agentPool.Tags = new Dictionary<string, string>();
+                foreach (var key in Tag.Keys)
+                {
+                    agentPool.Tags.Add(key.ToString(), Tag[key].ToString());
+                }
+            }
+            if (this.IsParameterBound(c => c.NodeTaint))
+            {
+                agentPool.NodeTaints = NodeTaint;
+            }
+            if (EnableEncryptionAtHost.IsPresent)
+            {
+                agentPool.EnableEncryptionAtHost = EnableEncryptionAtHost.ToBool();
+            }
+            if (EnableUltraSSD.IsPresent)
+            {
+                agentPool.EnableUltraSSD = EnableUltraSSD.ToBool();
             }
 
             return agentPool;

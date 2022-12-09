@@ -20,6 +20,13 @@
 
 ## Upcoming Release
 
+## Version 6.5.0
+* Added cmdlet `Get-AzADOrganization`
+* Fixed `Set-AzPolicySetDefinition` InternalServerError when the initiative is too large [#20238]
+
+## Version 6.4.1
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
 ## Version 6.4.0
 * Fixed parameter `Count` for
     - Get-AzADApplication

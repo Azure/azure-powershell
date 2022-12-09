@@ -12,6 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Aks.Commands;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.ContainerService;
+using Microsoft.Azure.Management.ContainerService.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
+using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Aks
@@ -30,5 +38,37 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable auto-scaler")]
         public SwitchParameter EnableAutoScaling { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible values include: 'System', 'User'
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The pool mode")]
+        [PSArgumentCompleter("System", "User")]
+        public string Mode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
+        public Hashtable NodeLabel { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The tags to be persisted on the agent pool virtual machine scale set.")]
+        public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The node taints added to new nodes during node pool create and scale")]
+        public string[] NodeTaint { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Aks custom headers")]
+        public Hashtable AksCustomHeader { get; set; }
+
+        private protected AgentPool CreateOrUpdate(string resourceGroupName, string resourceName, string agentPoolName, AgentPool parameters)
+        {
+            if (this.IsParameterBound(c => c.AksCustomHeader))
+            {
+                Dictionary<string, List<string>> customHeaders = Utilities.HashtableToDictionary(AksCustomHeader);
+                return Client.AgentPools.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, agentPoolName, parameters, customHeaders).GetAwaiter().GetResult().Body;
+            }
+            else
+            {
+                return Client.AgentPools.CreateOrUpdate(resourceGroupName, resourceName, agentPoolName, parameters);
+            }
+        }
     }
 }

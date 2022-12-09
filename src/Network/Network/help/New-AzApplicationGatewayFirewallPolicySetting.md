@@ -14,8 +14,8 @@ Creates a policy setting for the firewall policy
 
 ```
 New-AzApplicationGatewayFirewallPolicySetting [-Mode <String>] [-State <String>] [-DisableRequestBodyCheck]
- [-MaxRequestBodySizeInKb <Int32>] [-MaxFileUploadInMb <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-MaxRequestBodySizeInKb <Int32>] [-MaxFileUploadInMb <Int32>] [-CustomBlockResponseStatusCode <Int32>]
+ [-CustomBlockResponseBody <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,36 @@ The command creates a policy setting with state as $enabledState, mode as $enabl
 The new policySettings is stored to $condition.
 
 ## PARAMETERS
+
+### -CustomBlockResponseBody
+Custom Block Response Body in policy settings of the firewall policy.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomBlockResponseStatusCode
+Custom block response status code in policy settings of the firewall policy.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

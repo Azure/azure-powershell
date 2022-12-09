@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubAuthorizationRu
 }
 
 Describe 'Set-AzEventHubAuthorizationRule' {
-    It 'SetExpandedNamespace' {
+    It 'SetExpandedNamespace'  {
         $authRule = Set-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.authRule2 -Rights @("Listen")
         $authRule.Name | Should -Be $env.authRule2
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup

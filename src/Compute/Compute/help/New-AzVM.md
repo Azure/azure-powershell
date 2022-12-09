@@ -897,7 +897,7 @@ Accept wildcard characters: False
 ### -PublicIpSku
 Specifies public IP sku name
 
-Accpeted Values are "Basic" and "Standard"
+Accepted values are "Basic" and "Standard"
 
 ```yaml
 Type: System.String

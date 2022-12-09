@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubCluster'))
 }
 
 Describe 'New-AzEventHubCluster' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         # Create Self-Serve Cluster
         $cluster = New-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster -Location "eastasia" -SupportsScaling -Capacity 2
 

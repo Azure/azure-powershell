@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.7.0
+* Added the logic that prompt legal information when users call the parameter "-AzureHybridBenefit" in `New-AzConnectedKubernetes` or `Update-AzConnectedKubernetes`.
+
 ## Version 0.6.0
 * Added a related legal clause that users need to agree to when using the cmdlet `New-AzConnectedKubernetes` in order to successfully create.
 

@@ -19,6 +19,13 @@
 -->
 
 ## Upcoming Release
+* Enabled AzKeyStore with keyring in Linux.
+
+## Version 2.10.4
+* Enabled caching tokens when logging in with a client assertion. This fixed the incorrectly short lifespan of tokens.
+* Upgraded target framework of Microsoft.Identity.Client to net461 [#20189]
+* Stored `ServicePrincipalSecret` and `CertificatePassword` into `AzKeyStore`.
+* Updated the reference of Azure PowerShell Common to 1.3.67-preview.
 
 ## Version 2.10.3
 * Updated `Get-AzSubscription` to retrieve subscription by Id rather than listed all the subscriptions from server if subscription Id is provided. [#19115]

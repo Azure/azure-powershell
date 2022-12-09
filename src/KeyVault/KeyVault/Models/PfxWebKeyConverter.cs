@@ -12,16 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Helpers;
+
 using System;
 using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Track2Sdk = Azure.Security.KeyVault.Keys;
 using Track1Sdk = Microsoft.Azure.KeyVault.WebKey;
-using System.Collections.Generic;
-using System.Linq;
+using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -63,12 +66,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private Track1Sdk.JsonWebKey Convert(string pfxFileName, SecureString pfxPassword)
         {
-            X509Certificate2 certificate = new X509Certificate2(pfxFileName, pfxPassword, X509KeyStorageFlags.Exportable);
-
+            X509Certificate2 certificate = GetExportableCertificate(pfxFileName, pfxPassword);
             if (!certificate.HasPrivateKey)
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "pfx"));
 
-            var key = certificate.PrivateKey as RSA;
+            var key = certificate.GetRSAPrivateKey();
 
             if (key == null)
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "pfx"));
@@ -78,18 +80,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private Track2Sdk.JsonWebKey ConvertToTrack2SdkJsonWebKey(string pfxFileName, SecureString pfxPassword, WebKeyConverterExtraInfo extraInfo = null)
         {
-            X509Certificate2 certificate = new X509Certificate2(pfxFileName, pfxPassword, X509KeyStorageFlags.Exportable);
+            X509Certificate2 certificate = GetExportableCertificate(pfxFileName, pfxPassword);
 
             if (!certificate.HasPrivateKey)
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "pfx"));
 
-            var rsaKey = certificate.PrivateKey as RSA;
-            if (rsaKey != null)
-                return CreateTrack2SdkJWK(rsaKey, extraInfo);
+            var rsaKey = certificate.GetRSAPrivateKey();
 
-            var ecKey = certificate.PrivateKey as ECDsa;
+            if (rsaKey != null)
+            {
+                return CreateTrack2SdkJWK(rsaKey, extraInfo);
+            }
+
+            var ecKey = certificate.GetECDsaPrivateKey();
             if(ecKey != null)
+            {
                 return CreateTrack2SdkJWK(ecKey, extraInfo);
+            }
 
             // to do: support converting oct to jsonwebKey
 
@@ -146,7 +153,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("ecdSa");
             }
 
-            System.Security.Cryptography.ECParameters ecParameters = ecdSa.ExportParameters(true);
+            ECParameters ecParameters = ecdSa.ExportParameters(true);
             var webKey = new Track2Sdk.JsonWebKey(ecdSa, default, extraInfo?.KeyOps?.Select(op => new Track2Sdk.KeyOperation(op)))
             {
                 // note: Keyvault need distinguish EC and EC-HSM
@@ -164,6 +171,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         private static Track2Sdk.JsonWebKey CreateTrack2SdkJWK(Aes aes, WebKeyConverterExtraInfo extraInfo = null)
         {
             throw new NotImplementedException();
+        }
+
+        private static X509Certificate2 GetExportableCertificate(string fileName, SecureString pwd)
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                // cert.Get*PrivateKey().ExportParameter(true) doesn't work even cert is marked with X509KeyStorageFlags.Exportable on Windows
+                return CertificateExportHelper.GetExportableCertificate(File.ReadAllBytes(fileName), pwd?.ConvertToString());
+            }
+            else
+            {
+                return new X509Certificate2(fileName, pwd, X509KeyStorageFlags.Exportable);
+            }
+
         }
 
         private IWebKeyConverter next;

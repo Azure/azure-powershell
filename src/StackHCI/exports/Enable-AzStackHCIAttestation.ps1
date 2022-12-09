@@ -25,7 +25,7 @@ Enable-AzStackHCIAttestation -AddVM
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/enable-azstackhciattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/enable-azstackhciattestation
 #>
 function Enable-AzStackHCIAttestation {
 [OutputType([System.Management.Automation.PSObject])]

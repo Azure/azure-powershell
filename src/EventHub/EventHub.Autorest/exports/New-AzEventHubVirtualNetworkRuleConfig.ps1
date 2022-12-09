@@ -25,7 +25,7 @@ New-AzEventHubVirtualNetworkRuleConfig -SubnetId /subscriptions/subscriptionId/r
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubvirtualnetworkruleconfig
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubvirtualnetworkruleconfig
 #>
 function New-AzEventHubVirtualNetworkRuleConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules])]

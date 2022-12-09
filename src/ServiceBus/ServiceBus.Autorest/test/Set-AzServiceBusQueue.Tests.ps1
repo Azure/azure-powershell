@@ -74,7 +74,7 @@ Describe 'Set-AzServiceBusQueue' {
         $currentQueue = $updatedQueue
     }
 
-    It 'SetViaIdentityExpanded' {
+    It 'SetViaIdentityExpanded'  {
         $currentQueue = Get-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queue2
         
         $updatedQueue = Set-AzServiceBusQueue -InputObject $currentQueue -LockDuration (New-TimeSpan -Minutes 2)

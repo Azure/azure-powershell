@@ -34,7 +34,7 @@ To create the parameters described below, construct a hash table containing the 
 POLICY <IApplicationGroupPolicy[]>: List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
   Name <String>: The Name of this policy
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubapplicationgroup
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubapplicationgroup
 #>
 function New-AzEventHubApplicationGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup])]

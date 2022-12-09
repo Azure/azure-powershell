@@ -19,21 +19,22 @@ Returns a BotService specified by the parameters.
 .Description
 Returns a BotService specified by the parameters.
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/initialize-azbotservicepreparedeploy
+https://learn.microsoft.com/powershell/module/az.botservice/initialize-azbotservicepreparedeploy
 #>
 function Initialize-AzBotServicePrepareDeploy {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
         [System.String]
-        # The name of the Bot resource group in the user subscription.
+        # The path to prepare a resource.
         ${CodeDir},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
         [System.String]
+        # The project file name.
         ${ProjFileName},
     
         [Parameter()]
@@ -41,6 +42,7 @@ function Initialize-AzBotServicePrepareDeploy {
         [ValidateSet('C#', 'JavaScript', 'TypeScript')]
         [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Path')]
         [System.String]
+        # The language could be C#, JavaScript or TypeScript.
         ${Language} = 'C#',
     
         [Parameter()]
@@ -100,7 +102,7 @@ function Initialize-AzBotServicePrepareDeploy {
     
     process {
         try {
-            if ($Null -eq $CodeDir) {
+            if (!$CodeDir) {
                 $CodeDir = Resolve-Path -Path .
                 Write-Host "CodeDir not provided, defaulting to current working directory: $CodeDir."
             }

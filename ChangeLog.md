@@ -1,3 +1,142 @@
+## 9.2.0 - December 2022
+#### Az.Accounts
+* Enabled caching tokens when logging in with a client assertion. This fixed the incorrectly short lifespan of tokens.
+* Upgraded target framework of Microsoft.Identity.Client to net461 [#20189]
+* Stored 'ServicePrincipalSecret' and 'CertificatePassword' into 'AzKeyStore'.
+* Updated the reference of Azure PowerShell Common to 1.3.67-preview.
+
+#### Az.Aks
+* Bumped API version to 2022-09-01
+* Added parameter '-NodeOsSKU' for 'New-AzAksCluster' and parameter '-OsSKU' for 'New-AzAksNodePool'
+* Added parameter '-Mode' for 'New-AzAksNodePool' and 'Update-AzAksNodePool'
+* Added property '-NodeImageVersion' for the output of 'Get-AzAksNodePool'[#19893]
+* Added parameter '-NodePoolLabel' for 'Set-AzAksCluster', '-NodeLabel' for 'New-AzAksNodePool' and 'Update-AzAksNodePool'
+* Added parameter '-NodePoolTag' for 'New-AzAksCluster' and 'Set-AzAksCluster', '-Tag' for 'New-AzAksNodePool' and 'Update-AzAksNodePool'
+
+#### Az.ApplicationInsights
+* Supported Workbook function. Below is the new cmdlet
+    * 'Get-AzApplicationInsightsMyWorkbook'
+    * 'Get-AzApplicationInsightsWorkbook'
+    * 'Get-AzApplicationInsightsWorkbookRevision'
+    * 'Get-AzApplicationInsightsWorkbookTemplate'
+    * 'New-AzApplicationInsightsMyWorkbook'
+    * 'New-AzApplicationInsightsWorkbook'
+    * 'New-AzApplicationInsightsWorkbookTemplate'
+    * 'New-AzApplicationInsightsWorkbookTemplateGalleryObject'
+    * 'Remove-AzApplicationInsightsMyWorkbook'
+    * 'Remove-AzApplicationInsightsWorkbook'
+    * 'Remove-AzApplicationInsightsWorkbookTemplate'
+    * 'Update-AzApplicationInsightsMyWorkbook'
+    * 'Update-AzApplicationInsightsWorkbook'
+    * 'Update-AzApplicationInsightsWorkbookTemplate'
+
+#### Az.Compute
+* Fixed issue found for 'Set-AzVmssVMRunCommand' [#19985]
+* Fixed 'Get-AzVm' cmdlet when parameter '-Status' is provided, return property 'OsName', 'OsVersion' and 'HyperVGeneration'
+* Fixed 'New-AzVM' cmdlet when creating VM with bootdiagnostic storage causes exception 'Kind' cannot be null.
+
+#### Az.CosmosDB
+* Added support for Cosmos DB Service related cmdlets.
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 8.0.0
+
+#### Az.DataProtection
+* Fixed spacing issues in Set-AzDataProtectionMSIPermission.ps1
+
+#### Az.EventHub
+* Added NamespaceV2 cmdlets for EventHub
+
+#### Az.KeyVault
+* Fixed certificate export parameter issue in 'Add-AzKeyVaultKey' [#19623]
+* Fixed CertificateString decoding issue in 'Import-AzKeyVaultCertificate'
+* Shifted the location of key CVM release policy to GitHub [#19984]
+* Added fallback logic (reading default CVM policy from a local copy) if fetching default CVM Policy from GitHub failed.
+
+#### Az.Monitor
+* Fixed bug for 'New-AzActivityLogAlert' and 'Update-AzActivityLogAlert' [#19927]
+
+#### Az.Network
+* Added optional parameters 'CustomBlockResponseStatusCode' and 'CustomBlockResponseBody' parameter to 'AzApplicationGatewayFirewallPolicySettings'
+* Added a new cmdlet to get the application gateway waf manifest and rules
+    - 'Get-AzApplicationGatewayWafDynamicManifest'
+
+#### Az.RecoveryServices
+* Added support for passing DiskEncryptionSetId for Cross region restore
+* Fixed the pagination bug in 'Get-AzRecoveryServicesAsrProtectableItem' for the V2ARCM scenario.
+* Fixed 'IncludeDiskId' property for 'New-ASRReplicationProtectedItem' cmdlet of H2A
+
+#### Az.Resources
+* Added cmdlet 'Get-AzADOrganization'
+* Fixed 'Set-AzPolicySetDefinition' InternalServerError when the initiative is too large [#20238]
+
+#### Az.ServiceBus
+* Added NamespaceV2 cmdlets for ServiceBus.
+
+#### Az.SignalR
+* Updated to API version 2022-08-01-preview
+  - Added support for custom domain. Added new cmdlets New-AzWebPubSubCustomCertificate, Get-AzWebPubSubCustomCertificate, Remove-AzWebPubSubCustomCertificate, New-AzWebPubSubCustomDomain, Get-AzWebPubSubCustomDomain, Remove-AzWebPubSubCustomDomain.
+  - Added support for event listeners in hub settings. Added new cmdlets New-AzWebPubSubEventHubEndpointObject, New-AzWebPubSubEventNameFilterObject.
+
+#### Az.StackHCI
+* Enabled system-assigned identity on HCI cluster resource registration and repair registration flow.
+* Added error message in the command Register-AzStackHCI if Arc is not enabled.
+* Added default region confirmation prompt if the region is not mentioned in the command Register-AzStackHCI.
+* Added general logging improvements.
+* Added logic that skipping the Arc SPN permission check in Register-AzStackHCI if a customer doesn't have the required permissions to read Arc SPN credential.
+* Added deprecation message for the command Test-AzStackHCIConnection. Customers can use Invoke-AzStackHciConnectivityValidation from the module AzStackHCI.EnvironmentChecker for connectivity verification tests.
+
+#### Az.Storage
+* Supported MaxPageSize, Include, and Filter parameters for listing encryption scopes 
+    - 'Get-AzStorageEncryptionScope'
+* Supported excludePrefix, includeDeleted, and many new schema fields in Blob Inventory
+    - 'New-AzStorageBlobInventoryPolicyRule'
+
+#### Az.Synapse
+* Added breaking change message for  '-SparkConfigFilePath'. It will be deprecated around the middle of December.
+* Updated 'New-AzSynapseSparkPool' and 'Update-AzSynapseSparkPool' to support for setting spark pool configuration artifact by '-SparkCongifuration'. '-SparkCongifuration' is an alternative of parameter '-SparkConfigFilePath'.
+
+#### Az.Websites
+* Added Tag parameter for 'New-AzWebApp' and 'New-AzWebAppSlot'
+* Fixed 'Set-AzWebApp' and 'Set-AZWebAppSlot' to rethrow exception when Service Principal/User doesn't have permission to list web app configuration. [#19942]
+
+### Thanks to our community contributors
+* @Ajay1250, The example was using the wrong command (#20237)
+* Hiroshi Yoshioka (@hyoshioka0128), Typo "resouce"→"resource" (#20321)
+* Mats Estensen (@matsest), [Az.Tools.Installer]: Updates for a new minor/patch version (#20022)
+* Matthew Burleigh (@mburleigh), fix typos (#20020)
+* Mo Zaatar (@mzaatar), Change letter case in example of New-AzStorageBlobSASToken (#20018)
+* @patchin404, Updates Enable-AzCdnCustomDomainCustomHttps Doc (#20165)
+* Robin Malik (@robinmalik), Update New-AzADAppCredential.md (#20317)
+* @SherrySahni, container name not supported with upper case (#20012)
+* @sushil490023, Adding PS Cmdlets for Azure Automation Python3 operation (#19598)
+* Thomas Pike (@thwpike), Typo Fix (#20087)
+
+## 9.1.1 - November 2022
+#### Az.Aks
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
+#### Az.ApiManagement
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
+#### Az.Compute
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
+#### Az.Maintenance
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
+#### Az.Monitor
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
+#### Az.Network
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
+#### Az.RecoveryServices
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
+#### Az.Resources
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
 ## 9.1.0 - November 2022
 #### Az.Accounts
 * Updated 'Get-AzSubscription' to retrieve subscription by Id rather than listed all the subscriptions from server if subscription Id is provided. [#19115]
