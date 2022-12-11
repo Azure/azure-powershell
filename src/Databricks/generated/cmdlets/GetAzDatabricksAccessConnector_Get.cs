@@ -8,6 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Extensions;
     using System;
 
+
     /// <summary>Gets an azure databricks accessConnector.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}"
