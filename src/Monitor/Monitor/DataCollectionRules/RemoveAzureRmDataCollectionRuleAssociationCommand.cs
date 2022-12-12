@@ -14,6 +14,7 @@
 
 using System;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -77,18 +78,19 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            var oldValueToLower = string.Empty;
             switch (ParameterSetName)
             {
                 case ByName:
                     break;
                 case ByInputObject:
                     var dcra = new ResourceIdentifier(InputObject.Id);
-                    TargetResourceId = InputObject.Id.Replace("/providers/Microsoft.Insights/dataCollectionRuleAssociations/" + dcra.ResourceName, "");
+                    TargetResourceId = Regex.Replace(InputObject.Id, "/providers/Microsoft.Insights/dataCollectionRuleAssociations/" + dcra.ResourceName, "", RegexOptions.IgnoreCase);
                     AssociationName = InputObject.Name;
                     break;
                 case ByResourceId:
                     var dcraById = new ResourceIdentifier(AssociationId);
-                    TargetResourceId = AssociationId.Replace("/providers/Microsoft.Insights/dataCollectionRuleAssociations/" + dcraById.ResourceName, "");
+                    TargetResourceId = Regex.Replace(AssociationId, "/providers/Microsoft.Insights/dataCollectionRuleAssociations/" + dcraById.ResourceName, "", RegexOptions.IgnoreCase);
                     AssociationName = dcraById.ResourceName;
                     break;
                 default:
