@@ -104,7 +104,7 @@ Describe 'Get-AzLoad' {
     }
 }
 
-Describe 'Update-AzLoad' {
+Describe 'Update-AzLoad (Recorded)' {
     It 'Remove a Managed Identity' {
         $name = $env.loadTestResource1
         $userAssigned = @{$env.identityid1=@{};$env.identityid2=$null}
@@ -148,7 +148,9 @@ Describe 'Update-AzLoad' {
         $res.EncryptionIdentityResourceId | Should -Be $cmkIdentity
         $res.EncryptionKey | Should -Be $cmkKey
     }
+}
 
+Describe 'Update-AzLoad (LiveOnly)' -Tag 'LiveOnly' {
     It 'Update CMK identity' {
         $name = $env.loadTestResource2
         $identityType = "SystemAssigned, UserAssigned"
@@ -156,7 +158,9 @@ Describe 'Update-AzLoad' {
         $cmkIdentity = "SystemAssigned"
 
         $res = Get-AzLoad -Name $name -ResourceGroupName $env.resourceGroup
-        $null = Set-AzKeyVaultAccessPolicy -VaultName $env.pwshKeyVault -ResourceGroupName $env.resourceGroup -ObjectId $res.IdentityPrincipalId -PermissionsToKeys get,unwrapkey,wrapkey -BypassObjectIdValidation
+        Install-Module Az.KeyVault -RequiredVersion 2.0.0 -Force
+        Import-Module -Name Az.KeyVault
+        Set-AzKeyVaultAccessPolicy -VaultName $env.pwshKeyVault -ResourceGroupName $env.resourceGroup -ObjectId $res.IdentityPrincipalId -PermissionsToKeys get,unwrapkey,wrapkey -BypassObjectIdValidation
 
         $res = Update-AzLoad -Name $name -ResourceGroupName $env.resourceGroup -EncryptionIdentity $cmkIdentity
         $res.Name | Should -Be $name

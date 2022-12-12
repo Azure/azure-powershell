@@ -20,6 +20,7 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
 
+    Install-Module Az.KeyVault -RequiredVersion 2.0.0 -Force
     Import-Module -Name Az.KeyVault
     Import-Module -Name Az.ManagedServiceIdentity
 
