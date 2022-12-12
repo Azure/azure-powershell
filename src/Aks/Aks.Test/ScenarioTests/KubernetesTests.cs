@@ -121,5 +121,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-LinuxOSConfig");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMaxSurge()
+        {
+            TestRunner.RunTestScript("Test-MaxSurge");
+        }
     }
 }

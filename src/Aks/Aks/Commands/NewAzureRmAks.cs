@@ -31,6 +31,7 @@ using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -148,6 +149,9 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "The Kubelet configuration on the agent pool nodes.")]
         public KubeletConfig NodeKubeletConfig { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The maximum number or percentage of nodes that ar surged during upgrade.")]
+        public string NodeMaxSurge { get; set; }
 
         private AcsServicePrincipal acsServicePrincipal;
 
@@ -511,6 +515,10 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.NodeKubeletConfig))
             {
                 defaultAgentPoolProfile.KubeletConfig = NodeKubeletConfig;
+            }
+            if (this.IsParameterBound(c => c.NodeMaxSurge))
+            {
+                defaultAgentPoolProfile.UpgradeSettings = new AgentPoolUpgradeSettings(NodeMaxSurge);
             }
 
             defaultAgentPoolProfile.Mode = NodePoolMode;

@@ -677,3 +677,51 @@ function Test-LinuxOSConfig {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-MaxSurge {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -NodeMaxSurge 1
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 1 $cluster.AgentPoolProfiles.Count
+        Assert-AreEqual 1 $cluster.AgentPoolProfiles[0].UpgradeSettings.MaxSurge
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 1 $pools.Count
+        Assert-AreEqual 1 $pools[0].UpgradeSettings.MaxSurge
+
+        # create a 2nd nodepool
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -VmSize $nodeVmSize -Count 1 -MaxSurge "50%"
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-AreEqual 1 ($cluster.AgentPoolProfiles | where {$_.Name -eq "default"}).UpgradeSettings.MaxSurge
+        Assert-AreEqual "50%" ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).UpgradeSettings.MaxSurge
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-AreEqual 1 ($pools | where {$_.Name -eq "default"}).UpgradeSettings.MaxSurge
+        Assert-AreEqual "50%" ($pools | where {$_.Name -eq "pool2"}).UpgradeSettings.MaxSurge
+
+        # update the 2nd nodepool
+        Update-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -MaxSurge "100%"
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-AreEqual 1 ($cluster.AgentPoolProfiles | where {$_.Name -eq "default"}).UpgradeSettings.MaxSurge
+        Assert-AreEqual "100%" ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).UpgradeSettings.MaxSurge
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-AreEqual 1 ($pools | where {$_.Name -eq "default"}).UpgradeSettings.MaxSurge
+        Assert-AreEqual "100%" ($pools | where {$_.Name -eq "pool2"}).UpgradeSettings.MaxSurge
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}

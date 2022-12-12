@@ -109,6 +109,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The Kubelet configuration on the agent pool nodes.")]
         public KubeletConfig KubeletConfig { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The maximum number or percentage of nodes that ar surged during upgrade.")]
+        public string MaxSurge { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -241,6 +244,10 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.KubeletConfig))
             {
                 agentPool.KubeletConfig = KubeletConfig;
+            }
+            if (this.IsParameterBound(c => c.MaxSurge))
+            {
+                agentPool.UpgradeSettings = new AgentPoolUpgradeSettings(MaxSurge);
             }
 
             return agentPool;
