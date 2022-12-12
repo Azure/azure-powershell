@@ -136,6 +136,7 @@
 
 #### Az.Resources
 * Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+* Fix space being removed from Display Name parameter [#20407]
 
 ## 9.1.0 - November 2022
 #### Az.Accounts
