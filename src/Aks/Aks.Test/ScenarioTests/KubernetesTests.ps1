@@ -614,3 +614,66 @@ function Test-EnableUltraSSD {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-LinuxOSConfig {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+        # create aks cluster with default nodepool
+       $linuxOsConfigJsonStr = @'
+            {
+             "transparentHugePageEnabled": "madvise",
+             "transparentHugePageDefrag": "defer+madvise",
+             "swapFileSizeMB": 1500,
+             "sysctls": {
+              "netCoreSomaxconn": 163849,
+              "netIpv4TcpTwReuse": true,
+              "netIpv4IpLocalPortRange": "32000 60000"
+             }
+            }
+'@
+        $linuxOsConfig = [Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig] ($linuxOsConfigJsonStr | ConvertFrom-Json)
+        $kubeletConfigStr = @'
+            {
+             "failSwapOn": false
+            }
+'@
+        $kubeletConfig = [Microsoft.Azure.Management.ContainerService.Models.KubeletConfig] ($kubeletConfigStr | ConvertFrom-Json)
+
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -NodeLinuxOSConfig $linuxOsConfig -NodeKubeletConfig $kubeletConfig
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 1 $cluster.AgentPoolProfiles.Count
+        Assert-ObjectEquals $linuxOsConfig $cluster.AgentPoolProfiles[0].LinuxOSConfig
+        Assert-ObjectEquals $kubeletConfig $cluster.AgentPoolProfiles[0].KubeletConfig
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 1 $pools.Count
+        Assert-ObjectEquals $linuxOsConfig $pools[0].LinuxOSConfig
+        Assert-ObjectEquals $kubeletConfig $pools[0].KubeletConfig
+
+        # create a 2nd nodepool
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -VmSize $nodeVmSize -Count 1 -LinuxOSConfig $cluster.AgentPoolProfiles[0].LinuxOSConfig -KubeletConfig $cluster.AgentPoolProfiles[0].KubeletConfig
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-ObjectEquals $linuxOsConfig $cluster.AgentPoolProfiles[0].LinuxOSConfig
+        Assert-ObjectEquals $kubeletConfig $cluster.AgentPoolProfiles[0].KubeletConfig
+        Assert-ObjectEquals $linuxOsConfig $cluster.AgentPoolProfiles[1].LinuxOSConfig
+        Assert-ObjectEquals $kubeletConfig $cluster.AgentPoolProfiles[1].KubeletConfig
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-ObjectEquals $linuxOsConfig $pools[0].LinuxOSConfig
+        Assert-ObjectEquals $kubeletConfig $pools[0].KubeletConfig
+        Assert-ObjectEquals $linuxOsConfig $pools[1].LinuxOSConfig
+        Assert-ObjectEquals $kubeletConfig $pools[1].KubeletConfig
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
