@@ -78,7 +78,6 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            var oldValueToLower = string.Empty;
             switch (ParameterSetName)
             {
                 case ByName:
