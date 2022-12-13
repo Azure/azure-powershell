@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed bug for `Remove-AzDataCollectionRuleAssociation` [#20207]
 
 ## Version 4.3.0
 * Fixed bug for `New-AzActivityLogAlert` and `Update-AzActivityLogAlert` [#19927]
