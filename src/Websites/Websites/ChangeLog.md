@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Import-AzWebAppKeyVaultCertificate` to use certificate naming convention same as portal [#19592]
 
 ## Version 2.12.0
 * Added Tag parameter for `New-AzWebApp` and `New-AzWebAppSlot`
