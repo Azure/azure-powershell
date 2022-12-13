@@ -16,6 +16,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -48,7 +49,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         static TestCoverage()
         {
-
             var repoRootPath = ProbeRepoDirectory();
             if (!string.IsNullOrEmpty(repoRootPath))
             {
@@ -63,11 +63,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private static string ProbeRepoDirectory()
         {
-            string directoryPath = "..";
-            while (Directory.Exists(directoryPath) && (!Directory.Exists(Path.Combine(directoryPath, "src")) || !Directory.Exists(Path.Combine(directoryPath, "artifacts"))))
+            string directoryPath = Assembly.GetExecutingAssembly().Location;
+            do
             {
                 directoryPath = Path.Combine(directoryPath, "..");
-            }
+            } while (Directory.Exists(directoryPath) && (!Directory.Exists(Path.Combine(directoryPath, "src")) || !Directory.Exists(Path.Combine(directoryPath, "artifacts"))));
 
             string result = Directory.Exists(directoryPath) ? Path.GetFullPath(directoryPath) : null;
             return result;
