@@ -68,10 +68,12 @@ $excludedModules = @(
     "Az.WindowsIotServices"
 )
 
-if (-not (Test-Path -LiteralPath $testCoverageResultsDirectory -PathType Container)) {
+if (!(Test-Path -LiteralPath $testCoverageResultsDirectory -PathType Container)) {
     New-Item -Path $testCoverageRootDirectory -Name "Results" -ItemType Directory
 }
-Get-ChildItem -LiteralPath $testCoverageResultsDirectory -Filter "*.txt" | Remove-Item -Force
+else {
+    Get-ChildItem -LiteralPath $testCoverageResultsDirectory -Filter "*.txt" | Remove-Item -Force
+}
 
 $accountModuleName = "Az.Accounts"
 $accountModuleFullPath = Join-Path -Path $debugDirectory -ChildPath $accountModuleName | Join-Path -ChildPath "$accountModuleName.psd1"
@@ -86,18 +88,20 @@ $AzPSReportContent = [System.Text.StringBuilder]::new()
 
 $allModules = Get-ChildItem -LiteralPath $debugDirectory -Filter "Az.*" -Directory -Name
 foreach ($moduleName in $allModules) {
+    Write-Host "##[group]Start to analyze test coverage for the module '$moduleName'" -ForegroundColor Cyan
+
     if ($moduleName -in $excludedModules) {
+        Write-Warning "The module '$moduleName' has been excluded."
+        Write-Host "##[endgroup]" -ForegroundColor Cyan
         continue
     }
 
     $hasRawData = $true
 
-    Write-Host "##[group]Calculating test coverage for module $moduleName"
-    Write-Host "##[section]Start analyzing module $moduleName" -ForegroundColor Green
-
     $moduleCsvFullPath = Join-Path -Path $testCoverageRawDirectory -ChildPath "$moduleName.csv"
     if (!(Test-Path $moduleCsvFullPath)) {
-        [void]$AzPSReportContent.AppendLine("  Module name: $moduleName has no test raw data file found!")
+        Write-Warning "The module '$moduleName' has no test raw data generated."
+        [void]$AzPSReportContent.AppendLine("  The module '$moduleName' has no test raw data file found!")
         [void]$AzPSReportContent.AppendLine()
         $hasRawData = $false
     }
@@ -136,13 +140,15 @@ foreach ($moduleName in $allModules) {
     if ($hasRawData) {
         $rawCsv = Import-Csv -LiteralPath $moduleCsvFullPath | Select-Object * -Unique
 
-        Write-Host "##[section]Start calculating cmdlet ..." -ForegroundColor Green
+        Write-Host "##[section]Start to calculate cmdlets." -ForegroundColor Green
 
         $csvGroupByCmdlet = $rawCsv | Select-Object -ExpandProperty CommandName -Unique | Sort-Object CommandName
         $totalExecutedCmdletsCount = $csvGroupByCmdlet.Count
         $overallExecutedCmdletsCount += $totalExecutedCmdletsCount
 
-        Write-Host "##[section]Start calculating parameter set ..." -ForegroundColor Green
+        Write-Host "##[section]Finished calculating cmdlets." -ForegroundColor Green
+
+        Write-Host "##[section]Start to calculate parameter sets." -ForegroundColor Green
 
         $csvGroupByParameterSet = $rawCsv | Select-Object CommandName, ParameterSetName -Unique | Sort-Object CommandName, ParameterSetName | Group-Object CommandName
         $totalExecutedParameterSetsCount = ($csvGroupByParameterSet | Measure-Object -Property Count -Sum).Sum
@@ -161,7 +167,9 @@ foreach ($moduleName in $allModules) {
             [void]$AzPSModuleReportContent.AppendLine("  -->  $_")
         }
 
-        Write-Host "##[section]Start calculating parameter ..." -ForegroundColor Green
+        Write-Host "##[section]Finished calculating parameter sets." -ForegroundColor Green
+
+        Write-Host "##[section]Start to calculate parameters." -ForegroundColor Green
 
         $csvGroupByParameter = $rawCsv | Select-Object CommandName, ParameterSetName, Parameters -Unique | Sort-Object CommandName, ParameterSetName, Parameters | Group-Object CommandName, ParameterSetName
         $totalExecutedParametersCount = 0
@@ -173,6 +181,8 @@ foreach ($moduleName in $allModules) {
             $totalExecutedParametersCount += ($executedParams | Where-Object { $_ -and $_ -notin $psCommonParameters } | Select-Object -Unique).Count
         }
 
+        Write-Host "##[section]Finished calculating parameters." -ForegroundColor Green
+
         $AzPSModuleReportContent.ToString() | Out-File -LiteralPath ([System.IO.Path]::Combine($testCoverageResultsDirectory, "$moduleName.txt")) -NoNewline
 
         [void]$AzPSReportContent.AppendLine("  -->  By cmdlet: $(($totalExecutedCmdletsCount / $totalCmdletsCount).ToString("P0"))")
@@ -180,12 +190,9 @@ foreach ($moduleName in $allModules) {
         [void]$AzPSReportContent.AppendLine("  -->  By parameter: $(($totalExecutedParametersCount / $totalParametersCount).ToString("P0"))")
         [void]$AzPSReportContent.AppendLine()
     }
-    else {
-        Write-Host "##[warning]No test raw data file found!"
-    }
 
-    Write-Host "##[section]Finished analyzing module $moduleName" -ForegroundColor Green
-    Write-Host "##[endgroup]"
+    Write-Host "##[section]Successfully analyzed module '$moduleName'." -ForegroundColor Green
+    Write-Host "##[endgroup]" -ForegroundColor Cyan
     Write-Host
 }
 
