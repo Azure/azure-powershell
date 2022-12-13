@@ -286,23 +286,30 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetConfidentialVMSecurityType()
+        public void TestVirtualMachineScaleSetConfidentialVMSSSecurityType()
         {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMSecurityType");
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMSSSecurityType");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetConfidentialVMSecurityTypeDiskWithVMGuestState()
+        public void TestVirtualMachineScaleSetConfidentialVMSecurityTypeDiskWithVMGuestStatePMK()
         {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestState");
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetConfidentialVMSecurityTypeVMGuestStateOnly()
+        public void TestVirtualMachineScaleSetConfidentialVMSecurityTypeDiskWithVMGuestStateCMK()
         {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnly");
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStateCMK");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetConfidentialVMSecurityTypeVMGuestStateOnlyPMK()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK");
         }
     }
 }

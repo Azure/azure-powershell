@@ -3711,8 +3711,9 @@ function Test-VirtualMachineScaleSetPriorityMixPolicy
 <#
 .SYNOPSIS
 Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType VMGuestStateOnly. 
+Testing Set-AzVmssSecurityType. 
 #>
-function Test-VirtualMachineScaleSetConfidentialVMSecurityType
+function Test-VirtualMachineScaleSetConfidentialVMSSSecurityType
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
@@ -3721,12 +3722,9 @@ function Test-VirtualMachineScaleSetConfidentialVMSecurityType
     try
     {
         # Common
-        #$loc = "northeurope";
-        #$rgname = "adsandtest4";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         $vmssSize = "Standard_DC2as_v5"; 
-        #$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'windowsserver' -Skus '2022-datacenter-smalldisk-g2' -Version "latest";
         $PublisherName = "MicrosoftWindowsServer";
         $Offer = "WindowsServer";
         $SKU = '2022-datacenter-smalldisk-g2';
@@ -3745,7 +3743,7 @@ function Test-VirtualMachineScaleSetConfidentialVMSecurityType
         $subnetId = $vnet.Subnets[0].Id;
 
         # New VMSS Parameters
-        $vmssName = 'vmssnam';
+        $vmssName = 'vmss' + $rgname;
         $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 
         $adminUsername = 'usertest';
@@ -3797,7 +3795,7 @@ function Test-VirtualMachineScaleSetConfidentialVMSecurityType
 Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType DiskWithVMGuestState. 
 Working on this one, need Gallery. 
 #>
-function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestState
+function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
@@ -3945,10 +3943,208 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestState
 
 <#
 .SYNOPSIS
+Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType DiskWithVMGuestState. 
+Working on this one, need Gallery. 
+#>
+function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStateCMK
+{
+    # Setup
+    $rgname = "adsandcfvmss3";#Get-ComputeTestResourceName;
+    $loc = "northeurope";
+
+    try
+    {
+        # Common variables
+        $secureBoot = $true;
+        $vtpm = $true;
+        $vmssName = "vmss" + $rgname;
+
+        # VM variables
+        $vmName = "v" + $rgname;
+        $vmSize = "Standard_DC2as_v5";
+        $vmssSize = "Standard_DC2as_v5";
+        $password = Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force; 
+        $username = Get-ComputeTestResourceName;
+        $vmCred = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
+        $imagePublisher = "MicrosoftWindowsServer";
+        $imageOffer = "windowsserver";
+        $imageSku = "2022-datacenter-smalldisk-g2";
+        $imageVersion = "latest";
+        $osDiskSecurityType = "DiskwithVMGuestState";
+        $vmSecurityType = "ConfidentialVM";
+        $deployCMK = $true;
+        $storageType = "StandardSSD_LRS";
+
+        # Network variables
+        $NetworkName = $vmname + "-vnet";#[system.string]::concat($vmName, '-vnet');
+        $NICName = $vmName + "-nic";#[system.string]::concat($vmName, '-nic');
+        $SubnetName = $vmName + "-subnet";#[system.string]::concat($vmName, '-subnet');
+        $SubnetAddressPrefix = "10.0.0.0/24";
+        $VnetAddressPrefix = "10.0.0.0/16";
+
+        # Setup resource group
+        # New-AzResourceGroup -ResourceGroupName $rgName -Location $loc -Force;# -ErrorAction 'Stop' | Out-Null;
+
+        # CMK Key Vault Setup
+        $keyName = "k" + $rgName;
+        $desName = "des" + $rgname;
+        # This needs to be manually run for the test to be live recorded. 
+        <#
+        $rgname = "adsandcfvmss3";
+        $loc = "northeurope";
+        $keyVaultName = "kv" + $rgname;
+        $keyName = "k" + $rgname;
+        $desName = "des" + $rgname;
+        $cvmAgent = Get-AzADServicePrincipal -ApplicationId "bf7b6499-ff71-4aa2-97a4-f372087be7f0";
+        $kv = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $rgName -Location $loc -Sku "Premium" -EnablePurgeProtection -SoftDeleteRetentionInDays 7;
+        Set-AzKeyVaultAccessPolicy -ObjectId $cvmAgent.Id -VaultName $keyVaultName -ResourceGroupName $rgName -PermissionsToKeys "get","release";
+        Start-BitsTransfer -Source https://cvmprivatepreviewsa.blob.core.windows.net/cvmpublicpreviewcontainer/skr-policy.json -Destination ".\skr-policy.json";
+        $desKey = Add-AzKeyVaultKey -Name $keyName -VaultName $keyVaultName -KeyOps "wrapKey","unwrapKey" -KeyType "RSA-HSM" -Size 3072 `
+                        -Exportable -ReleasePolicyPath ".\skr-policy.json" -Destination "HSM";
+        
+        $desConfig = New-AzDiskEncryptionSetConfig -Location $loc -KeyUrl $desKey.Id -SourceVaultId $kv.ResourceId -IdentityType "SystemAssigned" `
+            -EncryptionType "ConfidentialVmEncryptedWithCustomerKey";
+        $des = New-AzDiskEncryptionSet -DiskEncryptionSet $desConfig -DiskEncryptionSetName $desName -ResourceGroupName $rgName;
+        $desIdentity = Get-AzADServicePrincipal -ObjectId $des.Identity.PrincipalId -ErrorAction 'SilentlyContinue';
+        Set-AzKeyVaultAccessPolicy -ObjectId $des.Identity.PrincipalId -ResourceGroupName $rgName -VaultName $keyVaultName -PermissionsToKeys "wrapKey","unwrapKey","get";
+        #>
+        # End CMK Key Vault Setup. 
+        $des = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $desName;
+
+        # Setup Network
+        $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
+        $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $rgName `
+            -Location $loc -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
+        $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgName `
+            -Location $loc -SubnetId $Vnet.Subnets[0].Id;
+
+        
+
+        # Setup CVM
+        $virtualMachine = New-AzVMConfig -VMName $vmName -VMSize $vmSize;
+        $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $vmName `
+                    -Credential $vmCred -ProvisionVMAgent -EnableAutoUpdate;
+        $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id;
+        $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName $imagePublisher `
+                    -Offer $imageOffer -Skus $imageSku -Version $imageVersion;
+
+
+        #$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" `
+        #            -CreateOption "FromImage" -SecurityEncryptionType $osDiskSecurityType;
+        $paramSetAzVmOsDisk = @{
+        VM = $virtualMachine
+        StorageAccountType = $storageType
+        CreateOption = "FromImage"
+        SecurityEncryptionType = $osDiskSecurityType
+        ErrorAction = 'Stop'
+        SecureVMDiskEncryptionSet = $des.Id
+        };
+        #$paramSetAzVmOsDisk.Add('SecureVMDiskEncryptionSet', $des.Id);
+        $VirtualMachine = Set-AzVMOSDisk @paramSetAzVmOsDisk;
+
+
+        $VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType;
+        $VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
+
+        New-AzVM -ResourceGroupName $rgName -Location $loc -VM $VirtualMachine;# | Out-Null;
+
+        $cvm = Get-AzVM -VMName $vmName -ResourceGroupName $rgName;#-ErrorAction 'Stop';
+
+        # Image Gallery variables
+        $galleryName = "rg" + $rgname;
+        $definitionName = "def"+$rgname;
+        $publisherName = "cvm01";
+        $versionName = "1.0.0";
+        $cvmEncryptionType = "EncryptedWithCmk";
+        $replicaCount = 1;
+        $storageAccountType = "Standard_LRS";
+        $osState = "Specialized";
+        $osType = "Windows";
+        $sourceImageId = $cvm.Id;
+
+        # Setup Image Gallery
+        New-AzGallery -ResourceGroupName $rgName -Name $galleryName -location $loc ;#-ErrorAction 'Stop' | Out-Null;
+
+        # Setup Image Definition
+        $SecurityTypeTable = @{Name='SecurityType';Value='ConfidentialVM'};
+        $features = @($SecurityTypeTable);
+        New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $definitionName `
+            -Feature $features -Publisher $imagePublisher -Offer $imageOffer -Sku $imageSku -location $loc `
+            -OsState $osState -OsType $osType -HyperVGeneration 'V2';# | Out-Null;
+
+        $galDefinition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $definitionName;
+
+        # Setup Image Version
+        $cvmOsDiskEncryption = @{CVMEncryptionType=$cvmEncryptionType; };
+        $cvmOsDiskEncryption.Add('CVMDiskEncryptionSetID', $des.Id);
+        $cvmEncryption = @{OSDiskImage = $cvmOsDiskEncryption};
+        $region = @{Name = $loc; ReplicaCount = $replicaCount; StorageAccountType = $storageAccountType; Encryption = $cvmEncryption};
+        $targetRegions = @($region);
+        Start-Sleep -Seconds 360;
+        New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $definitionName `
+            -Name $versionName -Location $loc -SourceImageId $sourceImageId -ReplicaCount $replicaCount `
+            -StorageAccountType $storageAccountType -TargetRegion $targetRegions;
+
+        $galVersion = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $definitionName;
+
+        $securityEncryptionType = "DiskWithVMGuestState";
+
+ 
+        # NRP vmss
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet2' + $rgname) -AddressPrefix $SubnetAddressPrefix;
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet2' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix $VnetAddressPrefix -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet2' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        $ipCfg = New-AzVmssIPConfig -Name 'test2' -SubnetId $subnetId;
+
+        # Vmss setup
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' -ImageReferenceId $galDefinition.Id`
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test2' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' -SecurityEncryptionType $securityEncryptionType -SecureVMDiskEncryptionSet $des.Id;
+
+
+        $vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $vmSecurityType;
+        $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
+
+        # DES on vmss?
+       #Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgname -VMScaleSetName $vmssName
+
+        # Create Vmss
+        $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+
+
+        # Validate
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
+        Assert-AreEqual $vmSecurityType $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType;
+
+        $vmssvms = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-NotNull $vmssvms;
+        $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId;
+        Assert-AreEqual $securityEncryptionType $vmssvm.StorageProfile.OsDIsk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
+
+        Assert-AreEqual $galVersion.PublishingProfile.TargetRegions.Encryption.OSDiskImage.SecurityProfile.ConfidentialVMEncryptionType $cvmEncryptionType;
+        # $galVersion.PublishingProfile.TargetRegions.Encryption.OSDiskImage.SecurityProfile.ConfidentialVMEncryptionType
+#EncryptedWithCmk
+#PS C:\repos\ps3\azure-powershell\artifacts\Debug\Az.Compute> $galVersion.PublishingProfile.TargetRegions.Encryption.OSDiskImage.SecurityProfile.SecureVMDiskEncryptionSetId
+#/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsandvmss24/providers/Microsoft.Compute/diskEncryptionSets/desadsandvmss24
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+
+
+<#
+.SYNOPSIS
 Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType VMGuestStateOnly. 
 Working on this one, need Gallery. 
 #>
-function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnly
+function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
@@ -3959,7 +4155,7 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnly
         # Common variables
         #$subscriptionId = "e37510d7-33b6-4676-886f-ee75bcc01871";
         #$tenantDomain = "microsoft.onmicrosoft.com";
-        $rgName = "adsandvmss19";
+        #$rgName = "adsandvmss34";
         $location = "NorthEurope";
         $loc = "NorthEurope";
         $secureBoot = $true;
@@ -3971,17 +4167,19 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnly
         $vmSize = "Standard_DC2as_v5";
         $vmssSize = "Standard_DC2as_v5";
 
-        $password = "Testing1234567";# Get-PasswordForVM
+        $password = Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force; 
         $username = "usertest";
         $vmCred = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
-
 
         $imagePublisher = "MicrosoftWindowsServer";
         $imageOffer = "windowsserver";
         $imageSku = "2022-datacenter-smalldisk-g2";
         $osDiskSecurityEncryptionType = "VMGuestStateOnly";
+        $osDiskSecurityType = $osDiskSecurityEncryptionType;
         $vmSecurityType = "ConfidentialVM";
+        $storageType = "StandardSSD_LRS";
+        
 
         # Network variables
         $NetworkName = [system.string]::concat($vmName, '-vnet');
@@ -3990,11 +4188,8 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnly
         $SubnetAddressPrefix = "10.0.0.0/24";
         $VnetAddressPrefix = "10.0.0.0/16";
 
-        # Connect Azure Subscription
-        #Connect-AzAccount -SubscriptionId $subscriptionId -Tenant $tenantDomain -ErrorAction 'Stop';
-
         # Setup resource group
-        New-AzResourceGroup -ResourceGroupName $rgName -Location $location -Force -ErrorAction 'Stop' | Out-Null;
+        New-AzResourceGroup -ResourceGroupName $rgName -Location $loc -Force -ErrorAction 'Stop' | Out-Null;
 
         # Setup Network
         $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
@@ -4004,16 +4199,23 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnly
             -Location $location -SubnetId $Vnet.Subnets[0].Id;
 
         # Setup CVM
-        $virtualMachine = New-AzVMConfig -VMName $vmName -VMSize $vmSize;
+        $virtualMachine = New-AzVMConfig -VMName $vmName -VMSize $vmSize
         $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $vmName `
-                    -Credential $vmCred -ProvisionVMAgent -EnableAutoUpdate;
-        $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id;
+                    -Credential $vmCred -ProvisionVMAgent -EnableAutoUpdate
+        $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
         $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName $imagePublisher `
-                    -Offer $imageOffer -Skus $imageSku -Version "latest";
-        $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" `
-                    -CreateOption "FromImage" -SecurityEncryptionType $osDiskSecurityEncryptionType;
+                    -Offer $imageOffer -Skus $imageSku -Version "latest"
+        $paramSetAzVmOsDisk = @{
+            VM = $virtualMachine
+            StorageAccountType = $storageType
+            CreateOption = "FromImage"
+            SecurityEncryptionType = $osDiskSecurityType
+            ErrorAction = 'Stop'
+        };
+        $VirtualMachine = Set-AzVMOSDisk @paramSetAzVmOsDisk;
         $VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType;
         $VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
+
 
         New-AzVM -ResourceGroupName $rgName -Location $location -VM $VirtualMachine | Out-Null;
 
@@ -4024,7 +4226,7 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnly
         $definitionName = "def"+$rgname;
         $publisherName = "cvm01";
         $versionName = "1.0.0";
-        $cvmEncryptionType = "EncryptedWithPmk"; # what other values are this? 
+        $cvmEncryptionType = "EncryptedVMGuestStateOnlyWithPmk"; # what other values are this? 
         $replicaCount = 1;
         $storageAccountType = "Standard_LRS";
         $osState = "Specialized";
@@ -4072,8 +4274,6 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnly
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
 
 
-
-
         $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' -ImageReferenceId $galDefinition.Id`
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' -SecurityEncryptionType $securityEncryptionType;
@@ -4095,7 +4295,7 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnly
         $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId;
         Assert-AreEqual $securityEncryptionType $vmssvm.StorageProfile.OsDIsk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
 
-
+        #$galVersion.PublishingProfile.TargetRegions.Encryption.OSDiskImage.SecurityProfile.ConfidentialVMEncryptionType
     }
     finally
     {

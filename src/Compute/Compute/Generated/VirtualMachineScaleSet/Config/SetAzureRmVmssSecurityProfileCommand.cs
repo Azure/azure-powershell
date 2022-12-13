@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
             }
+
             WriteObject(this.VirtualMachineScaleSet);
         }
 
