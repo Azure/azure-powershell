@@ -44,7 +44,7 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewAzAksWithAcr");
         }
-        
+
         [Fact(Skip = "Updating service principal profile is not allowed on MSI cluster.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResetAzureKubernetesServicePrincipal()
@@ -99,6 +99,27 @@ namespace Commands.Aks.Test.ScenarioTests
         public void TestNodeTaints()
         {
             TestRunner.RunTestScript("Test-NodeTaints");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableEncryptionAtHost()
+        {
+            TestRunner.RunTestScript("Test-EnableEncryptionAtHost");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableUltraSSD()
+        {
+            TestRunner.RunTestScript("Test-EnableUltraSSD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLinuxOSConfig()
+        {
+            TestRunner.RunTestScript("Test-LinuxOSConfig");
         }
     }
 }

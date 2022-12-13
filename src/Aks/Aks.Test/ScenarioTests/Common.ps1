@@ -115,11 +115,107 @@ function Assert-HashTableEquals {
 	}
 
 	foreach ($key in $expected.Keys) {
-		if (-not $expected.ContainsKey($key)) {
+		if (-not $actual.ContainsKey($key)) {
 			throw $message
 		}
 		if ($expected[$key] -ne $actual[$key]) {
 			throw $message
+		}
+	}
+
+	return $true
+}
+
+function Assert-ObjectEquals {
+	param($expected, $actual, [string] $message)
+
+	if (!$message) {
+		$expectedStr = $expected | Out-String
+		$actualStr = $actual | Out-String
+		$message = "Assertion failed because '$expectedStr' does not match actual '$actualStr'"
+	}
+
+	if ($expected -eq $null -and $actual -eq $null) {
+		return $true
+	}
+	
+	if ($expected -eq $null -and $actual -ne $null) {
+		if ($actual -is [string] -and $actual -eq "") {
+			return $true
+		}
+		else {
+			throw $message
+		}
+	}
+
+	if ($actual -eq $null -and $expected -ne $null) {
+		if ($expected -is [string] -and $expected -eq "") {
+			return $true
+		}
+		else {
+			throw $message
+		}
+	}
+
+	if ($expected.GetType() -ne $actual.GetType()) {
+		throw $message
+	}
+
+	if ($expected -eq $actual) {
+		return $true
+	}
+
+	if ( -not ($expected.GetType().IsClass) ) {
+		throw $message
+	}
+	if ($expected -is [string]) {
+		throw $message
+	}
+	if ($expected -is [array]) {
+		$expectedArray = [array]$expected
+		$actualArray = [array]$actual
+		if ($expectedArray.Count -ne $actualArray.Count) {
+			throw $message
+		}
+		For ($i = 0; $i -lt $expectedArray.Count; $i++) {
+			Assert-ObjectEquals $expectedArray[$i] $actualArray[$i]
+		}
+			 
+	}
+	elseif ($expected -is [hashtable]) {
+		$expectedHashTable = [hashtable]$expected
+		$actualHashTable = [hashtable]$actual
+		if ($expectedHashTable.Count -ne $actualHashTable.Count) {
+			throw $message
+		}
+		foreach ($key in $expectedHashTable.Keys) {
+			if (-not (Assert-ObjectEquals $expectedHashTable[$key] $actualHashTable[$key])) {
+				throw $message
+			}
+		}
+	}
+	else {
+		$expectedProperties = ($expected | Get-Member -MemberType Property).Name
+		$actualProperties = ($actual | Get-Member -MemberType Property).Name
+
+		if ($expectedProperties.Count -ne $actualProperties.Count) {
+			throw $message
+		}
+		if ($expectedProperties.Count -eq 0) {
+			return $true
+		}
+
+		foreach ($propertyName in $expectedProperties) {
+			if ($actualProperties.GetType().ToString() -eq "System.String") {
+				Write-Host $actualProperties
+			}
+			if (-not $actualProperties.Contains($propertyName)) {
+				throw $message
+			}
+
+			if ( -not (Assert-ObjectEquals $expected.$propertyName $actual.$propertyName)) {
+				throw $message
+			}
 		}
 	}
 
