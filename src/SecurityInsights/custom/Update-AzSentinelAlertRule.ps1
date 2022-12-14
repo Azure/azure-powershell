@@ -794,7 +794,7 @@ function Update-AzSentinelAlertRule {
                     $null = $PSBoundParameters.Remove('TriggerOperator')
                 }
 
-                If($PSBoundParameters['TriggerThreshold']){
+                If($PSBoundParameters['TriggerThreshold'] -ne $null){
                     $AlertRule.TriggerThreshold = $PSBoundParameters['TriggerThreshold']
                     $null = $PSBoundParameters.Remove('TriggerThreshold')
                 }
