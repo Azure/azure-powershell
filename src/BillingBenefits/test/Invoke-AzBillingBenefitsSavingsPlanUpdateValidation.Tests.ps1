@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzBillingBenefitsValidateSavingsPlanUpdate'))
+if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzBillingBenefitsSavingsPlanUpdateValidation'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzBillingBenefitsValidateSavingsPlanUpdate.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzBillingBenefitsSavingsPlanUpdateValidation.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -30,30 +30,30 @@ $identity = @{
     SavingsPlanId = "9fde2a72-776b-49fc-869c-dca8859d7d62"
 }
 
-Describe 'Invoke-AzBillingBenefitsValidateSavingsPlanUpdate' {
+Describe 'Invoke-AzBillingBenefitsSavingsPlanUpdateValidation' {
     It 'ValidateExpanded' {
-        $response = Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -SavingsPlanId "9fde2a72-776b-49fc-869c-dca8859d7d62" -SavingsPlanOrderId "d7ea1620-2bba-46e2-8434-11f31bfb984d" -Benefit $models
+        $response = Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -SavingsPlanId "9fde2a72-776b-49fc-869c-dca8859d7d62" -SavingsPlanOrderId "d7ea1620-2bba-46e2-8434-11f31bfb984d" -Benefit $models
         $response | Should -Not -Be $null
         $response.Valid | Should -Not -Be $null
         $response.Valid | Should -Be "True"
     }
 
     It 'Validate' {
-        $response = Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -SavingsPlanId "9fde2a72-776b-49fc-869c-dca8859d7d62" -SavingsPlanOrderId "d7ea1620-2bba-46e2-8434-11f31bfb984d" -Body $body
+        $response = Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -SavingsPlanId "9fde2a72-776b-49fc-869c-dca8859d7d62" -SavingsPlanOrderId "d7ea1620-2bba-46e2-8434-11f31bfb984d" -Body $body
         $response | Should -Not -Be $null
         $response.Valid | Should -Not -Be $null
         $response.Valid | Should -Be "True"
     }
 
     It 'ValidateViaIdentityExpanded' {
-        $response = Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -InputObject $identity -Benefit $models
+        $response = Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -InputObject $identity -Benefit $models
         $response | Should -Not -Be $null
         $response.Valid | Should -Not -Be $null
         $response.Valid | Should -Be "True"
     }
 
     It 'ValidateViaIdentity' {
-        $response = Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -InputObject $identity -Body $body
+        $response = Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -InputObject $identity -Body $body
         $response | Should -Not -Be $null
         $response.Valid | Should -Not -Be $null
         $response.Valid | Should -Be "True"

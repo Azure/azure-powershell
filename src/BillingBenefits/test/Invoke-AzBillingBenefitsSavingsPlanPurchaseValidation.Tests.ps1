@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzBillingBenefitsValidateSavingsPlanPurchase'))
+if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzBillingBenefitsValidateSavingsPlanPurchase.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -31,16 +31,16 @@ $body = @{
     Benefit = $models
 }
 
-Describe 'Invoke-AzBillingBenefitsValidateSavingsPlanPurchase' {
+Describe 'Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation' {
     It 'ValidateExpanded' {
-        $response = Invoke-AzBillingBenefitsValidateSavingsPlanPurchase -Benefit $models
+        $response = Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -Benefit $models
         $response | Should -Not -Be $null
         $response.Valid | Should -Not -Be $null
         $response.Valid | Should -Be "True"
     }
 
     It 'Validate' {
-        $response = Invoke-AzBillingBenefitsValidateSavingsPlanPurchase -Body $body
+        $response = Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -Body $body
         $response | Should -Not -Be $null
         $response.Valid | Should -Not -Be $null
         $response.Valid | Should -Be "True"

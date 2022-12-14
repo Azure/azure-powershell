@@ -1,3 +1,5 @@
+## EXAMPLES
+
 ### Example 1: Validate savings plan purchase(expended).
 ```powershell
 $model = @{
@@ -13,7 +15,7 @@ $model = @{
 
 $models = @($model)
 
-Invoke-AzBillingBenefitsValidateSavingsPlanPurchase -Benefit $models
+Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -Benefit $models
 ```
 
 ```output
@@ -26,7 +28,7 @@ Validate savings plan purchase(expended).
 
 ### Example 2: Validate savings plan purchase.
 ```powershell
-Invoke-AzBillingBenefitsValidateSavingsPlanPurchase -Body $body
+Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -Body $body
 ```
 
 ```output

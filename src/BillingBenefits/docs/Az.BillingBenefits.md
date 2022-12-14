@@ -29,10 +29,10 @@ Get a savings plan.
 ### [Invoke-AzBillingBenefitsElevateSavingPlanOrder](Invoke-AzBillingBenefitsElevateSavingPlanOrder.md)
 Elevate as owner on savings plan order based on billing permissions.
 
-### [Invoke-AzBillingBenefitsValidateSavingsPlanPurchase](Invoke-AzBillingBenefitsValidateSavingsPlanPurchase.md)
+### [Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation](Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation.md)
 Validate savings plan purchase.
 
-### [Invoke-AzBillingBenefitsValidateSavingsPlanUpdate](Invoke-AzBillingBenefitsValidateSavingsPlanUpdate.md)
+### [Invoke-AzBillingBenefitsSavingsPlanUpdateValidation](Invoke-AzBillingBenefitsSavingsPlanUpdateValidation.md)
 Validate savings plan patch.
 
 ### [New-AzBillingBenefitsReservationOrderAlias](New-AzBillingBenefitsReservationOrderAlias.md)

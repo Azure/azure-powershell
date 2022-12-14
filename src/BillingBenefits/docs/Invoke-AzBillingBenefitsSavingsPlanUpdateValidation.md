@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.BillingBenefits
-online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/invoke-azbillingbenefitsvalidatesavingsplanupdate
+online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/invoke-azbillingbenefitssavingsplanupdatevalidation
 schema: 2.0.0
 ---
 
-# Invoke-AzBillingBenefitsValidateSavingsPlanUpdate
+# Invoke-AzBillingBenefitsSavingsPlanUpdateValidation
 
 ## SYNOPSIS
 Validate savings plan patch.
@@ -14,28 +14,28 @@ Validate savings plan patch.
 
 ### ValidateExpanded (Default)
 ```
-Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -SavingsPlanId <String> -SavingsPlanOrderId <String>
+Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -SavingsPlanId <String> -SavingsPlanOrderId <String>
  [-Benefit <ISavingsPlanUpdateRequestProperties[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Validate
 ```
-Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -SavingsPlanId <String> -SavingsPlanOrderId <String>
+Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -SavingsPlanId <String> -SavingsPlanOrderId <String>
  -Body <ISavingsPlanUpdateValidateRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ValidateViaIdentity
 ```
-Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -InputObject <IBillingBenefitsIdentity>
+Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -InputObject <IBillingBenefitsIdentity>
  -Body <ISavingsPlanUpdateValidateRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded
 ```
-Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -InputObject <IBillingBenefitsIdentity>
+Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -InputObject <IBillingBenefitsIdentity>
  [-Benefit <ISavingsPlanUpdateRequestProperties[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -54,7 +54,7 @@ $model = @{
 
 $models = @($model)
 
-$response = Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -SavingsPlanId "9fde2a72-776b-49fc-869c-dca8859d7d62" -SavingsPlanOrderId "d7ea1620-2bba-46e2-8434-11f31bfb984d" -Benefit $models
+$response = Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -SavingsPlanId "9fde2a72-776b-49fc-869c-dca8859d7d62" -SavingsPlanOrderId "d7ea1620-2bba-46e2-8434-11f31bfb984d" -Benefit $models
 ```
 
 ```output

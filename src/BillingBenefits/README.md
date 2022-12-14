@@ -72,13 +72,13 @@ directive:
       subject: Purchase
     set:
       verb: Invoke
-      subject: ValidateSavingsPlanPurchase
+      subject: SavingsPlanPurchaseValidation
   - where:
       verb: Test
       subject: SavingPlanUpdate
     set:
       verb: Invoke
-      subject: ValidateSavingsPlanUpdate
+      subject: SavingsPlanUpdateValidation
 
   ### Rename property name
 

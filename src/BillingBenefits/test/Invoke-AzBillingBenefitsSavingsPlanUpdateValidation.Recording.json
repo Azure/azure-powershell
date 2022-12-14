@@ -1,5 +1,5 @@
 {
-  "Invoke-AzBillingBenefitsValidateSavingsPlanUpdate+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01+1": {
+  "Invoke-AzBillingBenefitsSavingsPlanUpdateValidation+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01",
@@ -36,7 +36,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzBillingBenefitsValidateSavingsPlanUpdate+[NoContext]+Validate+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01+1": {
+  "Invoke-AzBillingBenefitsSavingsPlanUpdateValidation+[NoContext]+Validate+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01",
@@ -73,7 +73,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzBillingBenefitsValidateSavingsPlanUpdate+[NoContext]+ValidateViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01+1": {
+  "Invoke-AzBillingBenefitsSavingsPlanUpdateValidation+[NoContext]+ValidateViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01",
@@ -110,7 +110,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzBillingBenefitsValidateSavingsPlanUpdate+[NoContext]+ValidateViaIdentity+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01+1": {
+  "Invoke-AzBillingBenefitsSavingsPlanUpdateValidation+[NoContext]+ValidateViaIdentity+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01",

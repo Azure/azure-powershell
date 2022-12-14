@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.BillingBenefits
-online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/invoke-azbillingbenefitsvalidatesavingsplanpurchase
+online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/invoke-azbillingbenefitssavingsplanpurchasevalidation
 schema: 2.0.0
 ---
 
-# Invoke-AzBillingBenefitsValidateSavingsPlanPurchase
+# Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation
 
 ## SYNOPSIS
 Validate savings plan purchase.
@@ -14,13 +14,13 @@ Validate savings plan purchase.
 
 ### ValidateExpanded (Default)
 ```
-Invoke-AzBillingBenefitsValidateSavingsPlanPurchase [-Benefit <ISavingsPlanOrderAliasModel[]>]
+Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation [-Benefit <ISavingsPlanOrderAliasModel[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Validate
 ```
-Invoke-AzBillingBenefitsValidateSavingsPlanPurchase -Body <ISavingsPlanPurchaseValidateRequest>
+Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -Body <ISavingsPlanPurchaseValidateRequest>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ $model = @{
 
 $models = @($model)
 
-Invoke-AzBillingBenefitsValidateSavingsPlanPurchase -Benefit $models
+Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -Benefit $models
 ```
 
 ```output
@@ -57,7 +57,7 @@ Validate savings plan purchase(expended).
 
 ### Example 2: Validate savings plan purchase.
 ```powershell
-Invoke-AzBillingBenefitsValidateSavingsPlanPurchase -Body $body
+Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation -Body $body
 ```
 
 ```output

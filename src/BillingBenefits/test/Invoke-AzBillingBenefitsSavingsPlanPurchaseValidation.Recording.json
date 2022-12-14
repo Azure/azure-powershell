@@ -1,5 +1,5 @@
 {
-  "Invoke-AzBillingBenefitsValidateSavingsPlanPurchase+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/validate?api-version=2022-11-01+1": {
+  "Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/validate?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/validate?api-version=2022-11-01",
@@ -38,7 +38,7 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzBillingBenefitsValidateSavingsPlanPurchase+[NoContext]+Validate+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/validate?api-version=2022-11-01+1": {
+  "Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation+[NoContext]+Validate+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/validate?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/validate?api-version=2022-11-01",

@@ -1,3 +1,5 @@
+## EXAMPLES
+
 ### Example 1: Validate savings plan patch
 ```powershell
 $model = @{
@@ -7,7 +9,7 @@ $model = @{
 
 $models = @($model)
 
-$response = Invoke-AzBillingBenefitsValidateSavingsPlanUpdate -SavingsPlanId "9fde2a72-776b-49fc-869c-dca8859d7d62" -SavingsPlanOrderId "d7ea1620-2bba-46e2-8434-11f31bfb984d" -Benefit $models
+$response = Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -SavingsPlanId "9fde2a72-776b-49fc-869c-dca8859d7d62" -SavingsPlanOrderId "d7ea1620-2bba-46e2-8434-11f31bfb984d" -Benefit $models
 ```
 
 ```output
