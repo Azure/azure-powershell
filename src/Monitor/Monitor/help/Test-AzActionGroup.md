@@ -12,6 +12,7 @@ Sends test notifications
 
 ## SYNTAX
 
+### ByPropertyName (Default)
 ```
 Test-AzActionGroup -AlertType <String> -ResourceGroupName <String> -ActionGroupName <String>
  -Receiver <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]>
@@ -40,6 +41,7 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+## PARAMETERS
 
 ### -AlertType
 The required alert type name. The supported values are:
@@ -115,6 +117,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
@@ -132,8 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
