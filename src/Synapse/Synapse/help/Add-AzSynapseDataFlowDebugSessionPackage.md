@@ -39,7 +39,7 @@ Stop-AzSynapseDataFlowDebugSession
 Add-AzSynapseDataFlowDebugSessionPackage -WorkspaceName ContosoWorkspace -PackageFile "D:\dataflowps\addpackage.json" -SessionId 3afb278e-ac5f-469f-a0b6-2f04c3ab59bc
 ```
 
-Add data flow package into debug session "3afb278e-ac5f-469f-a0b6-2f04c3ab59bc" under Synapse workspace "ContosoWorkspace". Pakcage file contains data flow debug resource, list of dataset debug resouce, list of linked service debug resource, debug setting and session ID. [-SessionId] parameter is optional, if it is specified, it will replace the existing sessionId property in the package file.  
+Add data flow package into debug session "3afb278e-ac5f-469f-a0b6-2f04c3ab59bc" under Synapse workspace "ContosoWorkspace". Pakcage file contains data flow debug resource, list of dataset debug resource, list of linked service debug resource, debug setting and session ID. [-SessionId] parameter is optional, if it is specified, it will replace the existing sessionId property in the package file.  
 
 ### Example 2
 ```powershell
