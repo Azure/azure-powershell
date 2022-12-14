@@ -112,6 +112,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The maximum number or percentage of nodes that ar surged during upgrade.")]
         public string MaxSurge { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The ID for Proximity Placement Group.")]
+        public string PPG { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -248,6 +251,10 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.MaxSurge))
             {
                 agentPool.UpgradeSettings = new AgentPoolUpgradeSettings(MaxSurge);
+            }
+            if (this.IsParameterBound(c => c.PPG))
+            {
+                agentPool.ProximityPlacementGroupID = PPG;
             }
 
             return agentPool;

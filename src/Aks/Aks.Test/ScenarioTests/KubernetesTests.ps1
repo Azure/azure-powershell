@@ -725,3 +725,42 @@ function Test-MaxSurge {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-PPG {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        $ppg = New-AzProximityPlacementGroup -Location $location -Name "test_ppg" -ResourceGroupName $resourceGroupName -ProximityPlacementGroupType Standard
+        
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -PPG $ppg.Id
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 1 $cluster.AgentPoolProfiles.Count
+        Assert-AreEqual $ppg.Id $cluster.AgentPoolProfiles[0].ProximityPlacementGroupID
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 1 $pools.Count
+        Assert-AreEqual $ppg.Id $pools[0].ProximityPlacementGroupID
+
+        # create a 2nd nodepool
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -VmSize $nodeVmSize -Count 1 -PPG $ppg.Id
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-AreEqual $ppg.Id $cluster.AgentPoolProfiles[0].ProximityPlacementGroupID
+        Assert-AreEqual $ppg.Id $cluster.AgentPoolProfiles[1].ProximityPlacementGroupID
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-AreEqual $ppg.Id $pools[0].ProximityPlacementGroupID
+        Assert-AreEqual $ppg.Id $pools[1].ProximityPlacementGroupID
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}

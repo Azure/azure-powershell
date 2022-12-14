@@ -128,5 +128,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-MaxSurge");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPPG()
+        {
+            TestRunner.RunTestScript("Test-PPG");
+        }
     }
 }

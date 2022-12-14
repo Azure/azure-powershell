@@ -19,7 +19,7 @@ New-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <Strin
  [-OsSKU <String>] [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>] [-ScaleSetPriority <String>]
  [-ScaleSetEvictionPolicy <String>] [-VmSetType <String>] [-AvailabilityZone <String[]>] [-Force]
  [-EnableEncryptionAtHost] [-EnableUltraSSD] [-LinuxOSConfig <LinuxOSConfig>] [-KubeletConfig <KubeletConfig>]
- [-MaxSurge <String>] [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>]
+ [-MaxSurge <String>] [-PPG <String>] [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>]
  [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>] [-NodeTaint <String[]>]
  [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
@@ -32,7 +32,7 @@ New-AzAksNodePool -Name <String> -ClusterObject <PSKubernetesCluster> [-Count <I
  [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>] [-ScaleSetPriority <String>]
  [-ScaleSetEvictionPolicy <String>] [-VmSetType <String>] [-AvailabilityZone <String[]>] [-Force]
  [-EnableEncryptionAtHost] [-EnableUltraSSD] [-LinuxOSConfig <LinuxOSConfig>] [-KubeletConfig <KubeletConfig>]
- [-MaxSurge <String>] [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>]
+ [-MaxSurge <String>] [-PPG <String>] [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>]
  [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>] [-NodeTaint <String[]>]
  [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
@@ -464,6 +464,21 @@ Accept wildcard characters: False
 OsType to be used to specify os type.
 Choose from Linux and Windows.
 Default to Linux.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PPG
+The ID for Proximity Placement Group.
 
 ```yaml
 Type: System.String
