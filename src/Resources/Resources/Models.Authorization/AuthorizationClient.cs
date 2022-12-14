@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Rest.Azure.OData;
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -187,20 +188,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             string principalId = null;
             PSADObject adObject = null;
             ODataQuery<RoleAssignmentFilter> odataQuery = null;
-            // refer to https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-rest
+            // Reference:
+            // https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-list-rest
             // https://learn.microsoft.com/en-us/azure/role-based-access-control/elevate-access-global-admin#elevate-access-for-a-global-administrator-1
-            // scope is path variable in REST API. When scope is '/', $filter=atScope() is required, or else it will throw BadRequest.
-            // $filter=atScope() to return all role assignments at or above the scope. or else it returns all role assignments at, above or below the scope for the specific scope.
-            //
-            // Known issue:
-            // Before change: This command will return all role assignments at, above or below the scope for the specific scope.
-            // After change: This command will return all role assignments at the scope for the specific scope.
-            // But Azure cli az role assignment list --scope will only return role assignments at the specific scope, --include-inherited will return the assignments above the scope
-            // In order to implement this feature, it needs to add a new parameter IncludeInherited.
-            Boolean hasScope = !string.IsNullOrEmpty(options.Scope);
+            // scope is path variable in REST API. When scope is '/', query '$filter=atScope()' is required, or else it will throw BadRequest.
+            Boolean isRootScope = "/".Equals(options.Scope);
             Boolean needsFilterPrincipalId = false;
-            // TODO: need add a new feature to it. 
-            Boolean includeInherited = false;
             if (options.ADObjectFilter?.HasFilter ?? false)
             {
                 if (string.IsNullOrEmpty(options.ADObjectFilter.Id) || options.ExpandPrincipalGroups || options.IncludeClassicAdministrators)
@@ -222,32 +215,33 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     }
 
                     principalId = adObject.Id.ToString();
-                    if (!hasScope)
+                    if (isRootScope)
                     {
-                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(principalId));
+                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => (f.AtScope() && f.AssignedTo(principalId)));
                     }
                     else
                     {
-                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => (f.AtScope() && f.AssignedTo(principalId)));
+                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(principalId));
                     }
                 }
                 else
                 {
                     principalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id.ToString() : options.ADObjectFilter.Id;
-                    if (!hasScope)
+                    if (isRootScope)
                     {
-                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
+                        // $filter = principalId + eq + '{objectId}' Lists role assignments for a specified user, group, or service principal.
+                        // If you use atScope() and principalId+eq + '{objectId}' together, it will throw exception because the API doesn't allow it.
+                        // objectId could represent a group, so can't use atScope() and assignedTo('{objectId}').
+                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AtScope());
+                        needsFilterPrincipalId = true;
                     } 
                     else
                     {
-                        // atScope() can't use with pricipalId eq {objectId} expression, Principal id could be group id.
-                        // Only pricipalId eq {objectId} can list role assignments for Group.
-                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AtScope());
-                        needsFilterPrincipalId = true;
+                        odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
                     }
                 }
             }
-            else if (hasScope)
+            else if (isRootScope)
             {
                 odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AtScope());
             }
@@ -271,11 +265,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             if (needsFilterPrincipalId)
             {
                 result = result.Where(r => r.ObjectId?.Equals(principalId, StringComparison.OrdinalIgnoreCase) ?? false).ToList();
-            }
-
-            if (!includeInherited && hasScope)
-            {
-                result = result.Where(r => r.Scope?.Equals(options.Scope, StringComparison.OrdinalIgnoreCase) ?? false).ToList();
             }
 
             if (options.IncludeClassicAdministrators)
