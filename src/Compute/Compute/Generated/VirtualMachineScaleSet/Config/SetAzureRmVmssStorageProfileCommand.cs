@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Sets the SecurityEncryptionType of the virtual machine scale set. possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey")]
+            HelpMessage = "Sets the SecurityEncryptionType of the virtual machine scale set. Possible values include: DiskWithVMGuestState, VMGuestStateOnly")]
         [PSArgumentCompleter("DiskWithVMGuestState", "VMGuestStateOnly")]
         public string SecurityEncryptionType { get; set; }
 
@@ -650,7 +650,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet.Id = this.SecureVMDiskEncryptionSet;
             }
-
             WriteObject(this.VirtualMachineScaleSet);
         }
     }
