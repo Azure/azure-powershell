@@ -3788,7 +3788,8 @@ function Test-VirtualMachineScaleSetConfidentialVMSSSecurityType
 
 <#
 .SYNOPSIS
-Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType DiskWithVMGuestState. 
+Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType DiskWithVMGuestState
+and Confidential VM reference image OS Disk security set to EncryptedWithPmk. 
 #>
 function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK
 {
@@ -3938,7 +3939,8 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK
 
 <#
 .SYNOPSIS
-Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType VMGuestStateOnly. 
+Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType VMGuestStateOnly
+and Confidential VM image reference OS Disk security set to VMGuestStateOnly. 
 #>
 function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK
 {
@@ -4097,8 +4099,8 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK
 
 <#
 .SYNOPSIS
-Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType DiskWithVMGuestState. 
-Working on this one, need Gallery. 
+Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType DiskWithVMGuestState
+and Confidential VM image reference OS Disk security type set to EncryptedWithCmk. 
 #>
 function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStateCMK
 {
