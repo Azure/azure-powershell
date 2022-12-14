@@ -27,7 +27,7 @@ This Test-AzActionGroup cmdlet send test notifications
 ### Send Service Health alert test notifications to email
 ```powershell
 $email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'test@test.example.com'
-Test-AzTestNotification -AlertType servicehealth -Receiver $email -ResourceGroupName "test-RG" -ActionGroupName "test-AG"
+Test-AzActionGroup -AlertType servicehealth -Receiver $email -ResourceGroupName "test-RG" -ActionGroupName "test-AG"
 ```
 
 ```yaml
