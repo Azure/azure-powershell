@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed issue introduced in previous fix for `Set-AzPolicySetDefinition` InternalServerError when the initiative is too large [#20238], which will remove space in value.
 
 ## Version 6.5.0
 * Added cmdlet `Get-AzADOrganization`

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Enabled AzKeyStore with keyring in Linux.
+* Fixed a typo in GetAzureRmContextAutosaveSetting.cs changing the cmdlet class name from GetzureRmContextAutosaveSetting to GetAzureRmContextAutosaveSetting
 
 ## Version 2.10.4
 * Enabled caching tokens when logging in with a client assertion. This fixed the incorrectly short lifespan of tokens.
