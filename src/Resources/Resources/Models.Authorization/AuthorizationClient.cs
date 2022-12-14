@@ -229,9 +229,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     principalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id.ToString() : options.ADObjectFilter.Id;
                     if (isRootScope)
                     {
-                        // $filter = principalId + eq + '{objectId}' Lists role assignments for a specified user, group, or service principal.
-                        // If you use atScope() and principalId+eq + '{objectId}' together, it will throw exception because the API doesn't allow it.
-                        // objectId could represent a group, so can't use atScope() and assignedTo('{objectId}').
+                        /* $filter = principalId + eq + '{objectId}' Lists role assignments for a specified user, group, or service principal.
+                         * If you use atScope() and principalId+eq + '{objectId}' together, it will throw exception because the API doesn't allow it.
+                         * objectId could represent a group, so can't use atScope() and assignedTo('{objectId}') as alternative,
+                         * must filter after the results return from server.
+                         */
                         odataQuery = new ODataQuery<RoleAssignmentFilter>(f => f.AtScope());
                         needsFilterPrincipalId = true;
                     } 
