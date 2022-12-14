@@ -3811,7 +3811,7 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK
 
         $password = Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force; 
-        $username = "usertest";
+        $username = Get-ComputeTestResourceName;
         $vmCred = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
 
 
@@ -3926,6 +3926,8 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK
         Assert-NotNull $vmssvms;
         $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId;
         Assert-AreEqual $securityEncryptionType $vmssvm.StorageProfile.OsDIsk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
+
+        Assert-AreEqual $cvmEncryptionType $galVersion.PublishingProfile.TargetRegions.Encryption.OSDiskImage.SecurityProfile.ConfidentialVMEncryptionType;
     }
     finally
     {
@@ -3962,7 +3964,7 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK
 
         $password = Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force; 
-        $username = "usertest";
+        $username = Get-ComputeTestResourceName;
         $vmCred = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
 
         $imagePublisher = "MicrosoftWindowsServer";
@@ -4073,7 +4075,7 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK
 
 
         $vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $vmSecurityType;
-        $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;#this is in fact required.
+        $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
 
         # Create Vmss
         $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
@@ -4088,7 +4090,7 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK
         $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId;
         Assert-AreEqual $securityEncryptionType $vmssvm.StorageProfile.OsDIsk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
 
-        #$galVersion.PublishingProfile.TargetRegions.Encryption.OSDiskImage.SecurityProfile.ConfidentialVMEncryptionType
+        Assert-AreEqual $cvmEncryptionType $galVersion.PublishingProfile.TargetRegions.Encryption.OSDiskImage.SecurityProfile.ConfidentialVMEncryptionType;
     }
     finally
     {
