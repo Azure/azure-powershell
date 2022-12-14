@@ -49,7 +49,7 @@ APPROLE <IMicrosoftGraphAppRole[]>: The roles exposed by the application which t
   [Value <String>]: Specifies the value to include in the roles claim in ID tokens and access tokens authenticating an assigned user or service principal. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
 
 APPROLEASSIGNEDTO <IMicrosoftGraphAppRoleAssignment[]>: App role assignments for this app or service, granted to users, groups, and other service principals.Supports $expand.
-  [DeletedDateTime <DateTime?>]: 
+  [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   [DisplayName <String>]: The name displayed in directory
   [AppRoleId <String>]: The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
   [PrincipalId <String>]: The unique identifier (id) for the user, group or service principal being granted the app role. Required on create.
@@ -57,7 +57,7 @@ APPROLEASSIGNEDTO <IMicrosoftGraphAppRoleAssignment[]>: App role assignments for
   [ResourceId <String>]: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
 
 APPROLEASSIGNMENT <IMicrosoftGraphAppRoleAssignment[]>: App role assignment for another app or service, granted to this service principal. Supports $expand.
-  [DeletedDateTime <DateTime?>]: 
+  [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   [DisplayName <String>]: The name displayed in directory
   [AppRoleId <String>]: The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
   [PrincipalId <String>]: The unique identifier (id) for the user, group or service principal being granted the app role. Required on create.
@@ -66,12 +66,12 @@ APPROLEASSIGNMENT <IMicrosoftGraphAppRoleAssignment[]>: App role assignment for 
 
 CLAIMSMAPPINGPOLICY <IMicrosoftGraphClaimsMappingPolicy[]>: The claimsMappingPolicies assigned to this service principal. Supports $expand.
   [AppliesTo <IMicrosoftGraphDirectoryObject[]>]: 
-    [DeletedDateTime <DateTime?>]: 
+    [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
     [DisplayName <String>]: The name displayed in directory
   [Definition <String[]>]: A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
   [IsOrganizationDefault <Boolean?>]: If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
   [Description <String>]: Description for this policy.
-  [DeletedDateTime <DateTime?>]: 
+  [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   [DisplayName <String>]: The name displayed in directory
 
 DELEGATEDPERMISSIONCLASSIFICATION <IMicrosoftGraphDelegatedPermissionClassification[]>: The permission classifications for delegated permissions exposed by the app that this service principal represents. Supports $expand.
@@ -80,7 +80,7 @@ DELEGATEDPERMISSIONCLASSIFICATION <IMicrosoftGraphDelegatedPermissionClassificat
   [PermissionName <String>]: The claim value (value) for the delegated permission listed in the publishedPermissionScopes collection of the servicePrincipal. Does not support $filter.
 
 ENDPOINT <IMicrosoftGraphEndpoint[]>: Endpoints available for discovery. Services like Sharepoint populate this property with a tenant specific SharePoint endpoints that other applications can discover and use in their experiences.
-  [DeletedDateTime <DateTime?>]: 
+  [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   [DisplayName <String>]: The name displayed in directory
 
 FEDERATEDIDENTITYCREDENTIALS <IMicrosoftGraphFederatedIdentityCredential[]>: .
@@ -92,12 +92,12 @@ FEDERATEDIDENTITYCREDENTIALS <IMicrosoftGraphFederatedIdentityCredential[]>: .
 
 HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.
   [AppliesTo <IMicrosoftGraphDirectoryObject[]>]: 
-    [DeletedDateTime <DateTime?>]: 
+    [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
     [DisplayName <String>]: The name displayed in directory
   [Definition <String[]>]: A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
   [IsOrganizationDefault <Boolean?>]: If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
   [Description <String>]: Description for this policy.
-  [DeletedDateTime <DateTime?>]: 
+  [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   [DisplayName <String>]: The name displayed in directory
 
 INFO <IMicrosoftGraphInformationalUrl>: informationalUrl
@@ -141,29 +141,29 @@ SAMLSINGLESIGNONSETTING <IMicrosoftGraphSamlSingleSignOnSettings>: samlSingleSig
 
 TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: The tokenIssuancePolicies assigned to this service principal. Supports $expand.
   [AppliesTo <IMicrosoftGraphDirectoryObject[]>]: 
-    [DeletedDateTime <DateTime?>]: 
+    [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
     [DisplayName <String>]: The name displayed in directory
   [Definition <String[]>]: A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
   [IsOrganizationDefault <Boolean?>]: If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
   [Description <String>]: Description for this policy.
-  [DeletedDateTime <DateTime?>]: 
+  [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   [DisplayName <String>]: The name displayed in directory
 
 TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePolicies assigned to this service principal. Supports $expand.
   [AppliesTo <IMicrosoftGraphDirectoryObject[]>]: 
-    [DeletedDateTime <DateTime?>]: 
+    [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
     [DisplayName <String>]: The name displayed in directory
   [Definition <String[]>]: A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
   [IsOrganizationDefault <Boolean?>]: If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
   [Description <String>]: Description for this policy.
-  [DeletedDateTime <DateTime?>]: 
+  [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   [DisplayName <String>]: The name displayed in directory
 
 TRANSITIVEMEMBEROF <IMicrosoftGraphDirectoryObject[]>: .
-  [DeletedDateTime <DateTime?>]: 
+  [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   [DisplayName <String>]: The name displayed in directory
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal
+https://learn.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal
 #>
 function New-AzADServicePrincipal {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal])]
@@ -282,7 +282,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
-    # .
+    # Date and time when this object was deleted.
+    # Always null when the object hasn't been deleted.
     ${DeletedDateTime},
 
     [Parameter()]

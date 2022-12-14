@@ -19,7 +19,7 @@ Deletes entity from service principal.
 .Description
 Deletes entity from service principal.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipal
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipal
 #>
 function Remove-AzADServicePrincipal {
 [OutputType([System.Boolean])]

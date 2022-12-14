@@ -15,33 +15,28 @@ Updates a VPN connection.
 ### ByVpnConnectionName (Default)
 ```
 Update-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
+ [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>]
  [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>]
- [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity <Boolean>]
- [-RoutingConfiguration <PSRoutingConfiguration>] [-VpnLinkConnectionMode <String>]
- [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-VpnLinkConnectionMode <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnConnectionResourceId
 ```
 Update-AzVpnConnection -ResourceId <String> [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>]
- [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>]
+ [-IpSecPolicy <PSIpsecPolicy>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>]
  [-UsePolicyBasedTrafficSelectors <Boolean>] [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>]
- [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>]
- [-VpnLinkConnectionMode <String>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-VpnLinkConnectionMode <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByVpnConnectionObject
 ```
 Update-AzVpnConnection -InputObject <PSVpnConnection> [-SharedKey <SecureString>]
- [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>]
+ [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-EnableBgp <Boolean>]
  [-UseLocalAzureIpAddress <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>]
- [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity <Boolean>]
- [-RoutingConfiguration <PSRoutingConfiguration>] [-VpnLinkConnectionMode <String>]
- [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VpnSiteLinkConnection <PSVpnSiteLinkConnection[]>] [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-VpnLinkConnectionMode <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -170,7 +165,7 @@ The connection is then updated to have a new shared key using the secure string 
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -185,7 +180,7 @@ Accept wildcard characters: False
 The bandwidth that needs to be handled by this connection in mbps.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -200,7 +195,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -215,7 +210,7 @@ Accept wildcard characters: False
 Enable BGP for this connection
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +225,7 @@ Accept wildcard characters: False
 Enable internet security for this connection
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -245,7 +240,7 @@ Accept wildcard characters: False
 The VpnConnection object to update.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVpnConnection
+Type: PSVpnConnection
 Parameter Sets: ByVpnConnectionObject
 Aliases: VpnConnection
 
@@ -260,97 +255,7 @@ Accept wildcard characters: False
 The bandwidth that needs to be handled by this connection in mbps.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByVpnConnectionName
-Aliases: ResourceName, VpnConnectionName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentResourceName
-The parent resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByVpnConnectionName
-Aliases: ParentVpnGatewayName, VpnGatewayName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByVpnConnectionName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The resource id of the VpnConnection object to delete.
-
-```yaml
-Type: System.String
-Parameter Sets: ByVpnConnectionResourceId
-Aliases: VpnConnectionId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RoutingConfiguration
-Routing configuration for this connection
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRoutingConfiguration
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SharedKey
-The shared key required to set this connection up.
-
-```yaml
-Type: System.Security.SecureString
+Type: PSIpsecPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -368,11 +273,100 @@ A list of Traffic Selector policies.
 Type: Microsoft.Azure.Commands.Network.Models.PSTrafficSelectorPolicy[]
 Parameter Sets: (All)
 Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The resource name.
+
+```yaml
+Type: String
+Parameter Sets: ByVpnConnectionName
+Aliases: ResourceName, VpnConnectionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentResourceName
+The parent resource name.
+
+```yaml
+Type: String
+Parameter Sets: ByVpnConnectionName
+Aliases: ParentVpnGatewayName, VpnGatewayName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name.
+
+```yaml
+Type: String
+Parameter Sets: ByVpnConnectionName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id of the VpnConnection object to delete.
+
+```yaml
+Type: String
+Parameter Sets: ByVpnConnectionResourceId
+Aliases: VpnConnectionId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RoutingConfiguration
+Routing configuration for this connection
+
+```yaml
+Type: PSRoutingConfiguration
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedKey
+The shared key required to set this connection up.
+
+```yaml
+Type: SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -380,7 +374,7 @@ Accept wildcard characters: False
 Use local azure ip address as source address while initiating connection.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -395,7 +389,22 @@ Accept wildcard characters: False
 Use policy based traffic selectors for this connection.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VpnSiteLinkConnection
+The list of VpnSiteLinkConnections that this VpnConnection needs to have.
+
+```yaml
+Type: PSVpnSiteLinkConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -413,26 +422,9 @@ The connection mode for all VpnSiteLinkConnections in this VpnConnection
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
 Required: False
 Position: Named
 Default value: Default
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VpnSiteLinkConnection
-The list of VpnSiteLinkConnections that this VpnConnection needs to have.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVpnSiteLinkConnection[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -440,7 +432,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -456,7 +448,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

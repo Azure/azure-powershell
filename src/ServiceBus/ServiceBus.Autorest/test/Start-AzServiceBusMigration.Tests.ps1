@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzServiceBusMigration')
 }
 
 Describe 'Start-AzServiceBusMigration' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded'  {
         $migrationConfig = Start-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace -PostMigrationName $env.postMigrationName -TargetNamespace $env.migrationSecondaryNamespaceResourceId
         $migrationConfig.Name | Should -Be $env.migrationPrimaryNamespace
         $migrationConfig.PostMigrationName | Should -Be $env.postMigrationName

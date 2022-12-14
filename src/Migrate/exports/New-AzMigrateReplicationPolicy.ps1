@@ -37,7 +37,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>: The ReplicationProviderSettings.
   InstanceType <String>: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
 #>
 function New-AzMigrateReplicationPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy])]

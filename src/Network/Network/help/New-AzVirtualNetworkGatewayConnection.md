@@ -23,8 +23,7 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -37,8 +36,7 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
  [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
  [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnablePrivateLinkFastPath] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,7 +48,6 @@ Creates the Site-to-Site VPN connection between the virtual network gateway and 
 ```powershell
 New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location $loc1 -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5'
 ```
-
 ### Example 2 Add/Update IngressNatRule/EgressNatRule to an existing virtual network gateway connection
 ```powershell
 $ingressnatrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName $RG1 -Name "natRule1" -ParentResourceName vnetgw1
@@ -58,7 +55,6 @@ $egressnatrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName $RG1 -Nam
 New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location $loc1 -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5' `
 -IngressNatRule $ingressnatrule -EgressNatRule $egressnatrule
 ```
-
 The first command gets a virtual network gateway natRule named natRule1 that's type is IngressSnat.
 The second command gets a virtual network gateway natRule named natRule2 that's type is EgressSnat.
 The third command creates this new virtual Network gateway connection with Ingress and Egress NatRules.
@@ -92,6 +88,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -202,8 +213,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EnablePrivateLinkFastPath
-Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (ExpressRouteGatewayBypass) must be enabled.
+### -ExpressRouteGatewayBypass
+Whether to use accelerated virtual network access by bypassing gateway
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -217,8 +228,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ExpressRouteGatewayBypass
-Whether to use accelerated virtual network access by bypassing gateway
+### -EnablePrivateLinkFastPath
+Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (ExpressRouteGatewayBypass) must be enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -486,21 +497,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

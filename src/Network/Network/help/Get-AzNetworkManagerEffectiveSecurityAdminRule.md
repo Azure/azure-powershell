@@ -27,7 +27,6 @@ The **Get-AzNetworkManagerEffectiveSecurityAdminRule** cmdlet lists NetworkManag
 ```powershell
 Get-AzNetworkManagerEffectiveSecurityAdminRule -VirtualNetworkName "TestVnet" -VirtualNetworkResourceGroupName "TestRG" -SkipToken "FakeSkipToken"
 ```
-
 ```output
 Value     : [
               {
@@ -93,7 +92,7 @@ Lists NetworkManager Effective Security Admin Rules applied on a virtual network
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -108,7 +107,7 @@ Accept wildcard characters: False
 SkipToken.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +122,7 @@ Accept wildcard characters: False
 The vnet name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -138,7 +137,7 @@ Accept wildcard characters: True
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

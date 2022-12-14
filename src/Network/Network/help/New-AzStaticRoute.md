@@ -12,9 +12,8 @@ Creates a StaticRoute object which can then be added to a RoutingConfiguration o
 
 ## SYNTAX
 
-```
-New-AzStaticRoute -Name <String> -AddressPrefix <String[]> -NextHopIpAddress <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```powershell
+New-AzStaticRoute -Name <String> -AddressPrefix <String[]> -NextHopIpAddress <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,26 +36,11 @@ The above command will create a StaticRoute object which can then be added to a 
 
 ## PARAMETERS
 
-### -AddressPrefix
-List of address prefixes.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -67,12 +51,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AddressPrefix
+List of address prefixes.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The route name.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: (all)
 Aliases:
 
 Required: True
@@ -86,7 +85,7 @@ Accept wildcard characters: False
 The next hop ip address.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

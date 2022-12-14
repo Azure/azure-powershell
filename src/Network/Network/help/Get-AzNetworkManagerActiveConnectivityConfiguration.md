@@ -13,8 +13,9 @@ Lists NetworkManager Active Connectivity Configurations in network manager.
 ## SYNTAX
 
 ```
-Get-AzNetworkManagerActiveConnectivityConfiguration -NetworkManagerName <String> -ResourceGroupName <String>
- [-Region <String[]>] [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkManagerActiveConnectivityConfiguration -NetworkManagerName <String>
+ -ResourceGroupName <String> [-Region <String[]>] [-SkipToken <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,9 +28,8 @@ The **Get-AzNetworkManagerActiveConnectivityConfiguration** cmdlet lists Network
 $regions = @("centraluseuap")  
 Get-AzNetworkManagerActiveConnectivityConfiguration -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -Region $regions -SkipToken "FakeSkipToken"
 ```
-
 ```output
-Value     : [
+ Value     : [
               {
                 "Region": "centraluseuap",
                 "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/connectivityConfigurations/TestConn",
@@ -71,9 +71,9 @@ Value     : [
                 ]
               }
             ]
-SkipToken :
-```
+SkipToken : 
 
+```
 Lists NetworkManager Active Connectivity Configurations in network manager for region centraluseuap.
 
 ## PARAMETERS
@@ -82,7 +82,7 @@ Lists NetworkManager Active Connectivity Configurations in network manager for r
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 The network manager name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +142,7 @@ Accept wildcard characters: True
 SkipToken.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

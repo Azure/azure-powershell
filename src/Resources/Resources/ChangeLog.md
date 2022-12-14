@@ -19,6 +19,16 @@
 -->
 
 ## Upcoming Release
+* Fixed issue introduced in previous fix for `Set-AzPolicySetDefinition` InternalServerError when the initiative is too large [#20238], which will remove space in value.
+
+## Version 6.5.0
+* Added cmdlet `Get-AzADOrganization`
+* Fixed `Set-AzPolicySetDefinition` InternalServerError when the initiative is too large [#20238]
+
+## Version 6.4.1
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
+## Version 6.4.0
 * Fixed parameter `Count` for
     - Get-AzADApplication
     - Get-AzADServicePrincipal
@@ -28,6 +38,7 @@
     - Get-AzADGroupMember
     - Remove-AzADGroupMember
 * Fixed a `NullReferenceException` when deploying a JSON template using Bicep extensibility
+* Added `-AsJob` to support running `Register-AzResourceProvider` as a Job
 
 ## Version 6.3.1
 * Fixed NullReferenceException issue in `New-AzRoleAssignment` [#19793]

@@ -29,9 +29,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterCreate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterCreate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -77,9 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ConnectedCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterCreate_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster body, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterCreate_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster body, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectedClusterDelete(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectedClusterDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -590,9 +590,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterGet(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterGet(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -634,9 +634,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -687,7 +687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -705,7 +705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ConnectedCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -761,9 +761,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -801,9 +801,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -852,7 +852,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -870,7 +870,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedClusterList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ConnectedClusterList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -923,9 +923,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -961,9 +961,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1009,7 +1009,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedClusterList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1027,7 +1027,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedClusterList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ConnectedClusterList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1081,9 +1081,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterListClusterUserCredential(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IListClusterUserCredentialProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ICredentialResults>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterListClusterUserCredential(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IListClusterUserCredentialProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ICredentialResults>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1130,9 +1130,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterListClusterUserCredentialViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IListClusterUserCredentialProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ICredentialResults>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterListClusterUserCredentialViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IListClusterUserCredentialProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ICredentialResults>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1190,7 +1190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterListClusterUserCredential_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ICredentialResults>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterListClusterUserCredential_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ICredentialResults>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1208,7 +1208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.CredentialResults.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.CredentialResults.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1241,7 +1241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterListClusterUserCredential_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IListClusterUserCredentialProperties body, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterListClusterUserCredential_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IListClusterUserCredentialProperties body, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1269,9 +1269,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterUpdate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterUpdate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedClusterPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1315,9 +1315,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ConnectedClusterUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ConnectedClusterUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedClusterPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1372,7 +1372,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1390,7 +1390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.ConnectedCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ConnectedCluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1423,7 +1423,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ConnectedClusterUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterPatch body, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ConnectedClusterUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedClusterPatch body, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1447,9 +1447,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsGet(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsGet(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1483,9 +1483,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-01";
+            var apiVersion = @"2022-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1528,7 +1528,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IOperationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1546,7 +1546,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.OperationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.OperationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:

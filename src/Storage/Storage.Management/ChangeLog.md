@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+*Return ListBlobProperties in blob list result
+    - `Get-AzStorageBlob`
+
+## Version 5.2.0
+* Supported MaxPageSize, Include, and Filter parameters for listing encryption scopes 
+    - `Get-AzStorageEncryptionScope`
+* Supported excludePrefix, includeDeleted, and many new schema fields in Blob Inventory
+    - `New-AzStorageBlobInventoryPolicyRule`
+
+## Version 5.1.0
 * Supported generate DataLakeGen2 Sas token with Encryption scope
     -  `New-AzDataLakeGen2SasToken`
 * Supported blob type conversions in sync blob copy
@@ -27,6 +37,9 @@
   * `Set-AzStorageAccount`
 * Supported find blobs in a container with a blob tag filter sql expression
   * `Get-AzStorageBlobByTag`
+* Migrated following Azure File dataplane cmdlets from 'Microsoft.Azure.Storage.File' to 'Azure.Storage.Files.Shares'
+  * `Get-AzStorageFileHandle`
+  * `Close-AzStorageFileHandle`
 
 ## Version 5.0.0
 * Migrated following Azure File dataplane cmdlets from 'Microsoft.Azure.Storage.File 11.2.2' to 'Azure.Storage.Files.Shares 12.10.0'

@@ -39,7 +39,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciarcsetting
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciarcsetting
 #>
 function Get-AzStackHciArcSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting])]
@@ -217,7 +217,7 @@ Get HCI cluster.
 .Example
 Get-AzStackHciCluster -ResourceGroupName test-rg
 .Example
-
+Get-AzStackHciCluster -ResourceGroupName test-rg -ClusterName myCluster
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
@@ -236,7 +236,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhcicluster
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcicluster
 #>
 function Get-AzStackHciCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster])]
@@ -426,7 +426,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciextension
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciextension
 #>
 function Get-AzStackHciExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension])]
@@ -614,7 +614,7 @@ New-AzStackHciArcSetting -ResourceGroupName "test-rg" -ClusterName "myCluster"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/new-azstackhciarcsetting
+https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhciarcsetting
 #>
 function New-AzStackHciArcSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting])]
@@ -818,7 +818,7 @@ New-AzStackHciCluster -Name "myCluster2" -ResourceGroupName "test-rg" -AadTenant
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/new-azstackhcicluster
+https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcicluster
 #>
 function New-AzStackHciCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster])]
@@ -1041,7 +1041,7 @@ New-AzStackHciExtension -ArcSettingName "default" -ClusterName "myCluster" -Name
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/new-azstackhciextension
+https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhciextension
 #>
 function New-AzStackHciExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension])]
@@ -1285,7 +1285,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/remove-azstackhciarcsetting
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciarcsetting
 #>
 function Remove-AzStackHciArcSetting {
 [OutputType([System.Boolean])]
@@ -1494,7 +1494,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/remove-azstackhcicluster
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcicluster
 #>
 function Remove-AzStackHciCluster {
 [OutputType([System.Boolean])]
@@ -1699,7 +1699,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/remove-azstackhciextension
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciextension
 #>
 function Remove-AzStackHciExtension {
 [OutputType([System.Boolean])]
@@ -1914,7 +1914,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/update-azstackhcicluster
+https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcicluster
 #>
 function Update-AzStackHciCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster])]
@@ -2124,7 +2124,7 @@ System.String[]
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/add-azstackhcivmattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/add-azstackhcivmattestation
 #>
 function Add-AzStackHCIVMAttestation {
 [OutputType([System.Management.Automation.PSObject])]
@@ -2242,7 +2242,7 @@ Disable-AzStackHCIAttestation -RemoveVM
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/disable-azstackhciattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/disable-azstackhciattestation
 #>
 function Disable-AzStackHCIAttestation {
 [OutputType([System.Management.Automation.PSObject])]
@@ -2361,7 +2361,7 @@ Disable-AzStackHCIRemoteSupport
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/disable-azstackhciremotesupport
+https://learn.microsoft.com/powershell/module/az.stackhci/disable-azstackhciremotesupport
 #>
 function Disable-AzStackHCIRemoteSupport {
 [OutputType([System.Boolean])]
@@ -2453,7 +2453,7 @@ Enable-AzStackHCIAttestation -AddVM
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/enable-azstackhciattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/enable-azstackhciattestation
 #>
 function Enable-AzStackHCIAttestation {
 [OutputType([System.Management.Automation.PSObject])]
@@ -2573,7 +2573,7 @@ Enable-AzStackHCIRemoteSupport -AccessLevel DiagnosticsRepair -ExpireInMinutes 1
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/enable-azstackhciremotesupport
+https://learn.microsoft.com/powershell/module/az.stackhci/enable-azstackhciremotesupport
 #>
 function Enable-AzStackHCIRemoteSupport {
 [OutputType([System.Boolean])]
@@ -2692,7 +2692,7 @@ Get-AzStackHCIRemoteSupportAccess -Cluster -IncludeExpired
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportaccess
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportaccess
 #>
 function Get-AzStackHCIRemoteSupportAccess {
 [OutputType([System.Boolean])]
@@ -2800,7 +2800,7 @@ Get-AzStackHCIRemoteSupportSessionHistory
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportsessionhistory
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportsessionhistory
 #>
 function Get-AzStackHCIRemoteSupportSessionHistory {
 [OutputType([System.Boolean])]
@@ -2919,7 +2919,7 @@ Get-AzStackHCIVMAttestation -Local
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmattestation
 #>
 function Get-AzStackHCIVMAttestation {
 [OutputType([System.Management.Automation.PSObject])]
@@ -3017,7 +3017,7 @@ Install-AzStackHCIRemoteSupport
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/install-azstackhciremotesupport
+https://learn.microsoft.com/powershell/module/az.stackhci/install-azstackhciremotesupport
 #>
 function Install-AzStackHCIRemoteSupport {
 [OutputType([System.Boolean])]
@@ -3104,13 +3104,13 @@ Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representin
 .Description
 Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and registers the on-premises cluster with Azure.
 .Example
-Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd"
+Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region "eastus"
 .Example
-Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ComputerName ClusterNode1
+Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ComputerName ClusterNode1 -Region "eastus"
 .Example
-Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG 
+Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG 
 .Example
-Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region westus -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region westus -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
 
 .Outputs
 PSCustomObject. Returns following Properties in PSCustomObject
@@ -3118,10 +3118,10 @@ Result: Success or Failed or Cancelled.
 ResourceId: Resource ID of the resource created in Azure.
 PortalResourceURL: Azure Portal Resource URL.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/register-azstackhci
+https://learn.microsoft.com/powershell/module/az.stackhci/register-azstackhci
 #>
 function Register-AzStackHCI {
-[CmdletBinding(PositionalBinding=$false)]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Position=0, Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
@@ -3168,21 +3168,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the ARM access token.
-    # Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+    # Specifying this along with AccountId will avoid Azure interactive logon.
     ${ArmAccessToken},
 
     [Parameter(Position=7)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the Graph access token.
-    # Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+    # GraphAccessToken is deprecated.
     ${GraphAccessToken},
 
     [Parameter(Position=8)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the ARM access token.
-    # Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+    # Specifies the Account Id.
+    # Specifying this along with ArmAccessToken will avoid Azure interactive logon.
     ${AccountId},
 
     [Parameter(Position=9)]
@@ -3223,7 +3222,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Specifying this parameter to $false will skip registering the cluster nodes with Arc for servers.
+    # EnableAzureArcServer needs to be specified $true in all the environments except AzureChinaCloud.
+    # Specifying this parameter to $false in environments except AzureChinaCloud will terminate the registration cmdlet.
     ${EnableAzureArcServer},
 
     [Parameter(Position=12)]
@@ -3339,7 +3339,7 @@ Remove-AzStackHCIRemoteSupport
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/remove-azstackhciremotesupport
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciremotesupport
 #>
 function Remove-AzStackHCIRemoteSupport {
 [OutputType([System.Boolean])]
@@ -3435,7 +3435,7 @@ System.String[]
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmattestation
 #>
 function Remove-AzStackHCIVMAttestation {
 [OutputType([System.Management.Automation.PSObject])]
@@ -3555,7 +3555,7 @@ Set-AzStackHCI -ComputerName ClusterNode1 -DiagnosticLevel Basic
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/set-azstackhci
+https://learn.microsoft.com/powershell/module/az.stackhci/set-azstackhci
 #>
 function Set-AzStackHCI {
 [OutputType([System.Management.Automation.PSObject])]
@@ -3603,21 +3603,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the ARM access token.
-    # Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+    # Specifying this along with AccountId will avoid Azure interactive logon.
     ${ArmAccessToken},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the Graph access token.
-    # Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+    # GraphAccessToken is deprecated.
     ${GraphAccessToken},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the ARM access token.
-    # Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+    # Specifying this along with ArmAccessToken will avoid Azure interactive logon.
     ${AccountId},
 
     [Parameter()]
@@ -3718,8 +3717,16 @@ end {
 <#
 .Synopsis
 Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
+
+Note: Test-AzStackhHCIConnection is deprecated.
+Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests.
+For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/whats-new#new-azure-stack-hci-environment-checker-tool.
 .Description
 Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
+
+Note: Test-AzStackhHCIConnection is deprecated.
+Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests.
+For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/whats-new#new-azure-stack-hci-environment-checker-tool.
 .Example
 Test-AzStackHCIConnection
 .Example
@@ -3733,7 +3740,7 @@ IsRequired: True or False
 Result: Succeeded or Failed
 FailedNodes: List of nodes on which the test failed.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/test-azstackhciconnection
+https://learn.microsoft.com/powershell/module/az.stackhci/test-azstackhciconnection
 #>
 function Test-AzStackHCIConnection {
 [CmdletBinding(PositionalBinding=$false)]
@@ -3853,15 +3860,15 @@ Unregister-AzStackHCI
 .Example
 Unregister-AzStackHCI -ComputerName ClusterNode1
 .Example
-Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
+Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
 .Example
-Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
 
 .Outputs
 PSCustomObject. Returns following Properties in PSCustomObject
 Result: Success or Failed or Cancelled.
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/unregister-azstackhci
+https://learn.microsoft.com/powershell/module/az.stackhci/unregister-azstackhci
 #>
 function Unregister-AzStackHCI {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
@@ -3896,21 +3903,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the ARM access token.
-    # Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+    # Specifying this along with AccountId will avoid Azure interactive logon.
     ${ArmAccessToken},
 
     [Parameter(Position=5)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the Graph access token.
-    # Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+    # GraphAccessToken is deprecated.
     ${GraphAccessToken},
 
     [Parameter(Position=6)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the ARM access token.
-    # Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+    # Specifies the AccoundId.
+    # Specifying this along with ArmAccessToken will avoid Azure interactive logon.
     ${AccountId},
 
     [Parameter(Position=7)]

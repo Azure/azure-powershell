@@ -25,7 +25,7 @@ Register-AzMigrateProjectTool -SubscriptionId xxx-xxx-xxx -ResourceGroupName Bug
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/register-azmigrateprojecttool
+https://learn.microsoft.com/powershell/module/az.migrate/register-azmigrateprojecttool
 #>
 function Register-AzMigrateProjectTool {
 [OutputType([System.Boolean])]

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Autoscale
 Module Guid: e83a8252-8dcb-4f34-8fbf-4ded92174cad
-Download Help Link: https://docs.microsoft.com/powershell/module/az.autoscale
+Download Help Link: https://learn.microsoft.com/powershell/module/az.autoscale
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -37,4 +37,8 @@ Create an in-memory object for WebhookNotification.
 
 ### [Remove-AzAutoscaleSetting](Remove-AzAutoscaleSetting.md)
 Deletes and autoscale setting
+
+### [Update-AzAutoscaleSetting](Update-AzAutoscaleSetting.md)
+Updates an existing AutoscaleSettingsResource.
+To update other fields use the CreateOrUpdate method.
 

@@ -3034,18 +3034,27 @@ function Test-VirtualMachineGetStatus
 
         $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname -Status;
 
+        Assert-True {$vm.OsName -like "*windows*"}
+        Assert-NotNullOrEmpty $vm.OsVersion
+        Assert-NotNullOrEmpty $vm.HyperVGeneration
         $a = $vm | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("Statuses");}
 
         $vms = Get-AzVM -ResourceGroupName $rgname -Status;
         Assert-AreEqual "VM running" ($vms | ? {$_.Name -eq $vmname}).PowerState;
+        Assert-True {($vms | ? {$_.Name -eq $vmname}).OsName -like "*windows*"}
+        Assert-NotNullOrEmpty ($vms | ? {$_.Name -eq $vmname}).OsVersion
+        Assert-NotNullOrEmpty ($vms | ? {$_.Name -eq $vmname}).HyperVGeneration
         $a = $vms | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("VM running")};
 
         $vms = Get-AzVM -Status;
         Assert-AreEqual "VM running" ($vms | ? {$_.Name -eq $vmname}).PowerState;
+        Assert-True {($vms | ? {$_.Name -eq $vmname}).OsName -like "*windows*"}
+        Assert-NotNullOrEmpty ($vms | ? {$_.Name -eq $vmname}).OsVersion
+        Assert-NotNullOrEmpty ($vms | ? {$_.Name -eq $vmname}).HyperVGeneration
         $a = $vms | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("VM running")};
@@ -3124,6 +3133,60 @@ function Test-VirtualMachineGetStatusWithHealhtExtension
 
         # Remove
         Remove-AzVM -Name $vmname -ResourceGroupName $rgname -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machines's Remove Extension.
+Description:
+This test creates a virtual machine and adds a vm health extension. It then removes the health Extension and tests Remove-AzVMExtension.
+#>
+function Test-VirtualMachineRemoveExtension
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+       # Common
+       $loc = Get-ComputeVMLocation;
+       $loc = $loc.Replace(' ', '');
+
+       New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+       # VM Profile & Hardware
+       $vmname = 'vm' + $rgname;
+
+       # OS & Image
+       $username = "admin01";
+       $password = $PLACEHOLDER | ConvertTo-SecureString -AsPlainText -Force;
+       $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password;
+       $domainNameLabel = "d" + $rgname;
+
+       # Virtual Machine
+       New-AzVM -ResourceGroupName $rgname -Location $loc -DomainNameLabel $domainNameLabel -Name $vmname -Credential $cred;
+
+       # Adding health extension on VM
+       $publicConfig = @{"protocol" = "http"; "port" = 80; "requestPath" = "/healthEndpoint"};
+       $extensionName = "myHealthExtension";
+       $extensionType = "ApplicationHealthWindows";
+       $publisher = "Microsoft.ManagedServices";
+       Set-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Publisher $publisher -Settings $publicConfig -ExtensionType $extensionType -ExtensionName $extensionName -Loc $loc -TypeHandlerVersion "1.0";
+
+       # Get VM
+       $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname -Status;
+
+       #Check for VmHealth Extension after removal
+       Remove-AzVMExtension -ResourceGroupName $rgname -Name $extensionName -VMName $vmname -Force;
+       Assert-ThrowsContains {
+            Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extensionName -Status; } `
+            "was not found";
     }
     finally
     {
@@ -6475,5 +6538,41 @@ function Test-ConfVMSetAzDiskEncryptionSetConfig
     {
         # Cleanup
         # Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzVM with Edgezone using Simple Parameter set
+#>
+function Test-VirtualMachineEdgeZoneSimpleParameterSet
+{
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmname = "v" + $rgname;
+        $edgezone = "microsoftmiami1";
+        $ConfirmPreference = "Low";
+
+        $user = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $domainNameLabel = "d" + $rgname;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -edgezone $edgezone -credential $cred -DomainNameLabel $domainNameLabel -Confirm:$false;
+
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-AreEqual $vm.ExtendedLocation.Name $EdgeZone;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $ResourceGroup;
     }
 }

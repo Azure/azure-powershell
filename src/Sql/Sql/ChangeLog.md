@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 4.1.0
+* Added new cmdlets for CRUD operations on SQL server IPv6 Firewall rules
+      `Get-AzSqlServerIpv6FirewallRule`
+      `New-AzSqlServerIpv6FirewallRule`
+      `Remove-AzSqlServerIpv6FirewallRule`
+      `Set-AzSqlServerIpv6FirewallRule`
+* StorageContainerSasToken parameter in the `Start-AzSqlInstanceDatabaseLogReplay` cmdlet is now optional
+
 ## Version 4.0.0
 * Added new fields to the `Get-AzSqlInstanceDatabaseLogReplay` cmdlet
 * Improved error handling in the `Stop-AzSqlInstanceDatabaseLogReplay` cmdlet

@@ -30,27 +30,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MonthToDate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MonthToDate", "MonthToDate", global::System.Management.Automation.CompletionResultType.ParameterValue, "MonthToDate");
+                yield return new global::System.Management.Automation.CompletionResult("'MonthToDate'", "MonthToDate", global::System.Management.Automation.CompletionResultType.ParameterValue, "MonthToDate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BillingMonthToDate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BillingMonthToDate", "BillingMonthToDate", global::System.Management.Automation.CompletionResultType.ParameterValue, "BillingMonthToDate");
+                yield return new global::System.Management.Automation.CompletionResult("'BillingMonthToDate'", "BillingMonthToDate", global::System.Management.Automation.CompletionResultType.ParameterValue, "BillingMonthToDate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TheLastMonth".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TheLastMonth", "TheLastMonth", global::System.Management.Automation.CompletionResultType.ParameterValue, "TheLastMonth");
+                yield return new global::System.Management.Automation.CompletionResult("'TheLastMonth'", "TheLastMonth", global::System.Management.Automation.CompletionResultType.ParameterValue, "TheLastMonth");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TheLastBillingMonth".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TheLastBillingMonth", "TheLastBillingMonth", global::System.Management.Automation.CompletionResultType.ParameterValue, "TheLastBillingMonth");
+                yield return new global::System.Management.Automation.CompletionResult("'TheLastBillingMonth'", "TheLastBillingMonth", global::System.Management.Automation.CompletionResultType.ParameterValue, "TheLastBillingMonth");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WeekToDate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WeekToDate", "WeekToDate", global::System.Management.Automation.CompletionResultType.ParameterValue, "WeekToDate");
+                yield return new global::System.Management.Automation.CompletionResult("'WeekToDate'", "WeekToDate", global::System.Management.Automation.CompletionResultType.ParameterValue, "WeekToDate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Custom".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Custom", "Custom", global::System.Management.Automation.CompletionResultType.ParameterValue, "Custom");
+                yield return new global::System.Management.Automation.CompletionResult("'Custom'", "Custom", global::System.Management.Automation.CompletionResultType.ParameterValue, "Custom");
             }
         }
     }

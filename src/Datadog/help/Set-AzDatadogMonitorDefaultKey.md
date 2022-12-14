@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Datadog
-online version: https://docs.microsoft.com/powershell/module/az.datadog/set-azdatadogmonitordefaultkey
+online version: https://learn.microsoft.com/powershell/module/az.datadog/set-azdatadogmonitordefaultkey
 schema: 2.0.0
 ---
 

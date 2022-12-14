@@ -50,6 +50,7 @@ Remove-AzVpnGatewayNatRule -ResourceGroupName $vpnGateway.ResourceGroupName -Par
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub,VpnGateway and NAT rule associated with that VpnGateway.
 Then it removes the NAT rule using the NAT rule name.
 
+
 ## PARAMETERS
 
 ### -DefaultProfile

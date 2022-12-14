@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedKubernetes
-online version: https://docs.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetes
+online version: https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetes
 schema: 2.0.0
 ---
 
@@ -40,37 +40,35 @@ Returns the properties of the specified connected cluster, including name, ident
 
 ## EXAMPLES
 
-### Example 1: Get all connected kubernetes under a subscription
+### Example 1: Get all connected kubernetes under a subscription.
 ```powershell
 Get-AzConnectedKubernetes
 ```
 
 ```output
-Location Name               ResourceGroupName
--------- ----               -----------------
-eastus   azps_test_cluster  azps_test_group
-eastus   azps_test_cluster1 azps_test_group
-eastus   azps_test_cluster2 azps_test_group
+Location Name                  ResourceGroupName
+-------- ----                  -----------------
+eastus   azps_test_cluster     azps_test_group
+eastus   azps_test_cluster_ahb azps_test_group
 ```
 
 This command gets all connected kubernetes under a subscription.
 
-### Example 2: Get all connected kubernetes under the resource group
+### Example 2: Get all connected kubernetes under the resource group.
 ```powershell
 Get-AzConnectedKubernetes -ResourceGroupName azps_test_group
 ```
 
 ```output
-Location Name               ResourceGroupName
--------- ----               -----------------
-eastus   azps_test_cluster  azps_test_group
-eastus   azps_test_cluster1 azps_test_group
-eastus   azps_test_cluster2 azps_test_group
+Location Name                  ResourceGroupName
+-------- ----                  -----------------
+eastus   azps_test_cluster     azps_test_group
+eastus   azps_test_cluster_ahb azps_test_group
 ```
 
 This command gets all connected kubernetes under the resource group.
 
-### Example 3: Get a connected kubernetes
+### Example 3: Get a connected kubernetes.
 ```powershell
 Get-AzConnectedKubernetes -ResourceGroupName azps_test_group -Name azps_test_cluster
 ```
@@ -83,16 +81,16 @@ eastus   azps_test_cluster azps_test_group
 
 This command gets a connected kubernetes.
 
-### Example 4: Get a connected kubernetes by object
+### Example 4: Get a connected kubernetes by object.
 ```powershell
-$conAks = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group
+$conAks = Get-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName azps_test_group
 Get-AzConnectedKubernetes -InputObject $conAks
 ```
 
 ```output
-Location Name              ResourceGroupName
--------- ----              -----------------
-eastus   azps_test_cluster azps_test_group
+Location Name                  ResourceGroupName
+-------- ----                  -----------------
+eastus   azps_test_cluster_ahb azps_test_group
 ```
 
 This command gets a connected kubernetes by object.
@@ -185,7 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster
 
 ## NOTES
 

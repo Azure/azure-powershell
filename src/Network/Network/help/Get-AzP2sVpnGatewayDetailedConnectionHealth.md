@@ -40,8 +40,6 @@ Please note that the SAS url provided should be one for the **blob** (file) that
 
 ### Example 1
 <!-- Skip: Output cannot be splitted from code -->
-
-
 ```powershell
 $blobSasUrl = New-AzStorageBlobSASToken -Container contp2stesting -Blob emptyfile.txt -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
 $blobSasUrl
@@ -58,7 +56,7 @@ The **Get-AzP2sVpnGatewayDetailedConnectionHealth** cmdlet enables you to get th
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -73,7 +71,7 @@ Accept wildcard characters: False
 The p2s vpn gateway object to be modified
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSP2SVpnGateway
+Type: PSP2SVpnGateway
 Parameter Sets: ByP2SVpnGatewayObject
 Aliases: P2SVpnGateway
 
@@ -88,7 +86,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByP2SVpnGatewayName
 Aliases: ResourceName
 
@@ -103,7 +101,7 @@ Accept wildcard characters: False
 OutputBlob Sas url to which the p2s vpn connection health will be written.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +116,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByP2SVpnGatewayName
 Aliases:
 
@@ -133,7 +131,7 @@ Accept wildcard characters: False
 The Azure resource ID of the P2SVpnGateway to be modified.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByP2SVpnGatewayResourceId
 Aliases:
 
@@ -148,7 +146,7 @@ Accept wildcard characters: False
 The list of P2S vpn user names to filter.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -160,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

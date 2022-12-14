@@ -16,8 +16,9 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Microsoft.Azure.Management.Network.Models;
+    using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
-    public class PSExtendedLocation
+    public class PSExtendedLocation : PSChildResource
     {
         public PSExtendedLocation()
         { }
@@ -30,8 +31,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             this.Type = extendedLocation.Type;
         }
 
-        public string Name { get; set; }
-
+        [Ps1Xml(Label = "Type", Target = ViewControl.Table)]
         public string Type { get; set; }
     }
 }

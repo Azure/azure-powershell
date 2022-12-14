@@ -33,7 +33,6 @@ The **Get-AzNetworkManagerScopeConnection** cmdlet gets one or more scope connec
 ```powershell
 Get-AzNetworkManagerScopeConnection -ResourceGroupName "TestResourceGroup" -NetworkManagerName "TestNM" -Name "testsc"
 ```
-
 ```output
 TenantId          : 00000000-0000-0000-0000-000000000000
 ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000
@@ -55,14 +54,12 @@ Name              : testsc
 Etag              :
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Network/networkManagers/TestNM/scopeConnections/testsc
 ```
-
 Get a specific scope connection on a network manager.
 
 ### Example 2: List scope connections
 ```powershell
-Get-AzNetworkManagerScopeConnection -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager"
+Get-AzNetworkManagerScopeConnection -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" 
 ```
-
 ```output
 TenantId          : 72f988bf-86f1-41af-91ab-2d7cd011db47
 ResourceId        : /subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884
@@ -111,7 +108,7 @@ Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resource
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -126,7 +123,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -138,7 +135,7 @@ Accept wildcard characters: True
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Expand
 Aliases: ResourceName
 
@@ -153,7 +150,7 @@ Accept wildcard characters: True
 The network manager name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +165,7 @@ Accept wildcard characters: True
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

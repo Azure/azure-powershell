@@ -43,7 +43,7 @@ INPUTOBJECT <IMonitorIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/update-azactivitylogalert
+https://learn.microsoft.com/powershell/module/az.monitor/update-azactivitylogalert
 #>
 function Update-AzActivityLogAlert {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource])]
@@ -141,7 +141,7 @@ function Update-AzActivityLogAlert {
 
     process {
         # changed type of parameter "-Enabled" from switch parameter to boolean
-        . Az.Monitor.internal\Update-AzActivityLogAlert @PSBoundParameters
+        . Az.ActivityLogAlert.internal\Update-AzActivityLogAlert @PSBoundParameters
     }
 
 }

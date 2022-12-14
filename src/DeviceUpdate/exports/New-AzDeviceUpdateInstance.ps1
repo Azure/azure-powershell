@@ -25,7 +25,7 @@ New-AzDeviceUpdateInstance -AccountName azpstest-account -Name azpstest-instance
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateinstance
+https://learn.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateinstance
 #>
 function New-AzDeviceUpdateInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance])]

@@ -39,7 +39,7 @@ The first command gets the application gateway named ApplicationGateway01 that b
 The applicationGateway
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Type: PSApplicationGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 Client authentication configuration settings
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayClientAuthConfiguration
+Type: PSApplicationGatewayClientAuthConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 The name of the SSL profile
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 SSL policy
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslPolicy
+Type: PSApplicationGatewaySslPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 The trusted client CA certificate chains
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayTrustedClientCertificate[]
+Type: PSApplicationGatewayTrustedClientCertificate[]
 Parameter Sets: (All)
 Aliases:
 

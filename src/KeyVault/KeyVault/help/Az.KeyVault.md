@@ -206,6 +206,9 @@ Recovers a previously deleted KeyVault-managed storage SAS definition.
 ### [Undo-AzKeyVaultRemoval](Undo-AzKeyVaultRemoval.md)
 Recovers a deleted key vault into an active state.
 
+### [Undo-AzKeyVaultManagedHsmRemoval](./Undo-AzKeyVaultManagedHsmRemoval.md)
+Recovers a deleted HSM into an active state.
+
 ### [Undo-AzKeyVaultSecretRemoval](Undo-AzKeyVaultSecretRemoval.md)
 Recovers a deleted secret in a key vault into an active state.
 

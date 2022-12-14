@@ -237,6 +237,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VirtualMachineRemoveExtension()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineRemoveExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGetHost()
         {
             TestRunner.RunTestScript("Test-VirtualMachineGetHost");
@@ -562,6 +569,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuestManual()
         {
             TestRunner.RunTestScript("Test-ManualConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineEdgeZoneSimpleParameterSet()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineEdgeZoneSimpleParameterSet");
         }
     }
 }

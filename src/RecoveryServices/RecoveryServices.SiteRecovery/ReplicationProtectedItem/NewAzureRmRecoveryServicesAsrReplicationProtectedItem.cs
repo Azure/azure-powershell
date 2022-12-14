@@ -179,8 +179,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [Parameter(ParameterSetName = VMwareToAzureWithDiskType)]
         [Parameter(ParameterSetName = VMwareToAzureParameterSet)]
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
         [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput)]
         [ValidateNotNullOrEmpty]
@@ -917,6 +915,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 providerSettings.TargetAzureV1ResourceGroupId = null;
                 providerSettings.TargetAzureV2ResourceGroupId =
                     this.RecoveryResourceGroupId;
+            }
+
+            if (this.IsParameterBound(c => c.IncludeDiskId))
+            {
+                List<string> disksToInclude = IncludeDiskId.ToList();
+                providerSettings.DisksToInclude = disksToInclude;
             }
 
             input.Properties.ProviderSpecificDetails = providerSettings;

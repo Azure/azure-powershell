@@ -60,7 +60,6 @@
           "project_card"
         ]
       },
-      "id": "Yfw63s4GP",
       "disabled": true
     },
     {
@@ -117,8 +116,7 @@
         "eventNames": [
           "issue_comment"
         ]
-      },
-      "id": "J-erFOrWRj"
+      }
     },
     {
       "taskType": "trigger",
@@ -162,8 +160,7 @@
           "issues",
           "project_card"
         ]
-      },
-      "id": "eMGaa1DW_a"
+      }
     },
     {
       "taskType": "trigger",
@@ -195,8 +192,7 @@
         "eventNames": [
           "issue_comment"
         ]
-      },
-      "id": "lQL-HFHgC-"
+      }
     },
     {
       "taskType": "scheduled",
@@ -290,8 +286,7 @@
             "parameters": {}
           }
         ]
-      },
-      "id": "zNQeHAGGIP"
+      }
     },
     {
       "taskType": "scheduled",
@@ -414,8 +409,7 @@
             }
           }
         ]
-      },
-      "id": "_iyKy9GMs-"
+      }
     },
     {
       "taskType": "trigger",
@@ -465,8 +459,7 @@
             }
           }
         ]
-      },
-      "id": "BusMvFw_R6"
+      }
     },
     {
       "taskType": "trigger",
@@ -569,8 +562,7 @@
             }
           }
         ]
-      },
-      "id": "4QFjTj6eNp"
+      }
     },
     {
       "taskType": "trigger",
@@ -632,8 +624,7 @@
             }
           }
         ]
-      },
-      "id": "Q39BEaAIMf"
+      }
     },
     {
       "taskType": "trigger",
@@ -677,7 +668,6 @@
           }
         ]
       },
-      "id": "WbNHKWTTJ",
       "disabled": true
     },
     {
@@ -817,8 +807,7 @@
             }
           }
         ]
-      },
-      "id": "vA-h5khhFb-"
+      }
     },
     {
       "taskType": "scheduled",
@@ -957,8 +946,7 @@
             }
           }
         ]
-      },
-      "id": "TTAkVRkEZ2e"
+      }
     },
     {
       "taskType": "trigger",
@@ -1042,7 +1030,6 @@
           }
         ]
       },
-      "id": "LTGHGRMlx",
       "disabled": true
     },
     {
@@ -2930,8 +2917,7 @@
         ],
         "replyTemplate": "Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.",
         "taskName": "Triage issues to the service team"
-      },
-      "id": "a8SY6xY6C"
+      }
     },
     {
       "taskType": "trigger",
@@ -3035,8 +3021,7 @@
           "respondToBotActions": false,
           "acceptRespondToBotActions": true
         }
-      },
-      "id": "bJBiZuZh2"
+      }
     },
     {
       "taskType": "trigger",
@@ -3139,8 +3124,7 @@
         "dangerZone": {
           "respondToBotActions": true
         }
-      },
-      "id": "lhAkwnF6k"
+      }
     },
     {
       "taskType": "trigger",
@@ -3188,8 +3172,7 @@
             }
           }
         ]
-      },
-      "id": "EpNlGCb54LYb41jHcJWTH"
+      }
     },
     {
       "taskType": "trigger",
@@ -3330,8 +3313,314 @@
           "respondToBotActions": true,
           "acceptRespondToBotActions": true
         }
-      },
-      "id": "FwMF5TeaoP6oWPGjvXmuH"
+      }
+    },
+    {
+      "taskType": "trigger",
+      "capabilityId": "IssueResponder",
+      "subCapability": "IssuesOnlyResponder",
+      "version": "1.0",
+      "config": {
+        "conditions": {
+          "operator": "and",
+          "operands": [
+            {
+              "name": "labelAdded",
+              "parameters": {
+                "label": "issue-addressed"
+              }
+            }
+          ]
+        },
+        "eventType": "issue",
+        "eventNames": [
+          "issues",
+          "project_card"
+        ],
+        "taskName": "[Resolve Workflow] Issue Addressed Label Applied",
+        "actions": [
+          {
+            "name": "addReply",
+            "parameters": {
+              "comment": "Hi @${issueAuthor}.  Thank you for opening this issue and giving us the opportunity to assist.  We believe that this has been addressed.  If you feel that further discussion is needed, please add a comment with the text “`/unresolve`” to remove the “issue-addressed” label and continue the conversation."
+            }
+          },
+          {
+            "name": "removeLabel",
+            "parameters": {
+              "label": "needs-triage"
+            }
+          },
+          {
+            "name": "removeLabel",
+            "parameters": {
+              "label": "needs-team-triage"
+            }
+          },
+          {
+            "name": "removeLabel",
+            "parameters": {
+              "label": "needs-team-attention"
+            }
+          },
+          {
+            "name": "removeLabel",
+            "parameters": {
+              "label": "needs-author-feedback"
+            }
+          },
+          {
+            "name": "removeLabel",
+            "parameters": {
+              "label": "no-recent-activity"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "taskType": "scheduled",
+      "capabilityId": "ScheduledSearch",
+      "subCapability": "ScheduledSearch",
+      "version": "1.1",
+      "config": {
+        "frequency": [
+          {
+            "weekDay": 0,
+            "hours": [
+              0,
+              6,
+              12,
+              18
+            ]
+          },
+          {
+            "weekDay": 1,
+            "hours": [
+              0,
+              6,
+              12,
+              18
+            ]
+          },
+          {
+            "weekDay": 2,
+            "hours": [
+              0,
+              6,
+              12,
+              18
+            ]
+          },
+          {
+            "weekDay": 3,
+            "hours": [
+              0,
+              6,
+              12,
+              18
+            ]
+          },
+          {
+            "weekDay": 4,
+            "hours": [
+              0,
+              6,
+              12,
+              18
+            ]
+          },
+          {
+            "weekDay": 5,
+            "hours": [
+              0,
+              6,
+              12,
+              18
+            ]
+          },
+          {
+            "weekDay": 6,
+            "hours": [
+              0,
+              6,
+              12,
+              18
+            ]
+          }
+        ],
+        "searchTerms": [
+          {
+            "name": "isIssue",
+            "parameters": {}
+          },
+          {
+            "name": "isOpen",
+            "parameters": {}
+          },
+          {
+            "name": "hasLabel",
+            "parameters": {
+              "label": "issue-addressed"
+            }
+          },
+          {
+            "name": "noActivitySince",
+            "parameters": {
+              "days": 7
+            }
+          }
+        ],
+        "taskName": "[Resolve Workflow] Close Addressed Issues",
+        "actions": [
+          {
+            "name": "addReply",
+            "parameters": {
+              "comment": "Hi @${issueAuthor}, since you haven’t asked that we “`/unresolve`” the issue, we’ll close this out. If you believe further discussion is needed, please add a comment “`/unresolve`” to reopen the issue."
+            }
+          },
+          {
+            "name": "closeIssue",
+            "parameters": {}
+          }
+        ]
+      }
+    },
+    {
+      "taskType": "trigger",
+      "capabilityId": "IssueResponder",
+      "subCapability": "IssueCommentResponder",
+      "version": "1.0",
+      "config": {
+        "conditions": {
+          "operator": "and",
+          "operands": [
+            {
+              "name": "hasLabel",
+              "parameters": {
+                "label": "issue-addressed"
+              }
+            },
+            {
+              "name": "commentContains",
+              "parameters": {
+                "commentPattern": "/unresolve"
+              }
+            },
+            {
+              "operator": "or",
+              "operands": [
+                {
+                  "name": "isActivitySender",
+                  "parameters": {
+                    "user": {
+                      "type": "author"
+                    }
+                  }
+                },
+                {
+                  "name": "activitySenderHasPermissions",
+                  "parameters": {
+                    "permissions": "admin"
+                  }
+                },
+                {
+                  "name": "activitySenderHasPermissions",
+                  "parameters": {
+                    "permissions": "write"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "eventType": "issue",
+        "eventNames": [
+          "issue_comment"
+        ],
+        "taskName": "[Resolve Workflow] Unresolve Command by Author",
+        "actions": [
+          {
+            "name": "reopenIssue",
+            "parameters": {}
+          },
+          {
+            "name": "removeLabel",
+            "parameters": {
+              "label": "issue-addressed"
+            }
+          },
+          {
+            "name": "addLabel",
+            "parameters": {
+              "label": "needs-team-attention"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "taskType": "trigger",
+      "capabilityId": "IssueResponder",
+      "subCapability": "IssueCommentResponder",
+      "version": "1.0",
+      "config": {
+        "conditions": {
+          "operator": "and",
+          "operands": [
+            {
+              "name": "hasLabel",
+              "parameters": {
+                "label": "issue-addressed"
+              }
+            },
+            {
+              "name": "commentContains",
+              "parameters": {
+                "commentPattern": "/unresolve"
+              }
+            },
+            {
+              "operator": "and",
+              "operands": [
+                {
+                  "name": "isActivitySender",
+                  "parameters": {
+                    "user": {
+                      "type": "author"
+                    }
+                  }
+                },
+                {
+                  "name": "activitySenderHasPermissions",
+                  "parameters": {
+                    "permissions": "admin"
+                  }
+                },
+                {
+                  "name": "activitySenderHasPermissions",
+                  "parameters": {
+                    "permissions": "write"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "eventType": "issue",
+        "eventNames": [
+          "issue_comment"
+        ],
+        "taskName": "[Resolve Workflow] Unresolve Command Without Permissions",
+        "actions": [
+          {
+            "name": "addReply",
+            "parameters": {
+              "comment": "Hi ${contextualAuthor}, only the original author of the issue can ask that it be unresolved.  Please open a new issue with your scenario and details if you would like to discuss this topic with the team."
+            }
+          }
+        ]
+      }
     }
   ],
   "userGroups": [
@@ -3345,10 +3634,6 @@
         "mksuni",
         "Bashar-MSFT"
       ],
-      "modifiedBy": {
-        "upn": "meharida@microsoft.com",
-        "timestamp": "2020-12-14T18:50:33.890Z"
-      },
       "assignmentSchemes": [
         {
           "target": "All",

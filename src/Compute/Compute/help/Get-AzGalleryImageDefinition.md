@@ -36,6 +36,12 @@ Get-AzGalleryImageDefinition [-ResourceId] <String> [-DefaultProfile <IAzureCont
  [<CommonParameters>]
 ```
 
+### ListCommunityGalleryParameterSet
+```
+Get-AzGalleryImageDefinition [-Location <String>] [-Community] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get or list gallery image definitions.
 
@@ -230,6 +236,21 @@ Get the gallery image definitions in gallery1.
 
 ## PARAMETERS
 
+### -Community
+List community galleries.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ListCommunityGalleryParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -299,6 +320,18 @@ Parameter Sets: SharedGalleryParameterSet, CommunityGalleryParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ListCommunityGalleryParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

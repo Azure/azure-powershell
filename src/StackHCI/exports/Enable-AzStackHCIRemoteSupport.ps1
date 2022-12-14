@@ -27,7 +27,7 @@ Enable-AzStackHCIRemoteSupport -AccessLevel DiagnosticsRepair -ExpireInMinutes 1
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/enable-azstackhciremotesupport
+https://learn.microsoft.com/powershell/module/az.stackhci/enable-azstackhciremotesupport
 #>
 function Enable-AzStackHCIRemoteSupport {
 [OutputType([System.Boolean])]

@@ -28,31 +28,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Monthly".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Monthly", "Monthly", global::System.Management.Automation.CompletionResultType.ParameterValue, "Monthly");
+                yield return new global::System.Management.Automation.CompletionResult("'Monthly'", "Monthly", global::System.Management.Automation.CompletionResultType.ParameterValue, "Monthly");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Quarterly".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Quarterly", "Quarterly", global::System.Management.Automation.CompletionResultType.ParameterValue, "Quarterly");
+                yield return new global::System.Management.Automation.CompletionResult("'Quarterly'", "Quarterly", global::System.Management.Automation.CompletionResultType.ParameterValue, "Quarterly");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Annually".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Annually", "Annually", global::System.Management.Automation.CompletionResultType.ParameterValue, "Annually");
+                yield return new global::System.Management.Automation.CompletionResult("'Annually'", "Annually", global::System.Management.Automation.CompletionResultType.ParameterValue, "Annually");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BillingMonth".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BillingMonth", "BillingMonth", global::System.Management.Automation.CompletionResultType.ParameterValue, "BillingMonth");
+                yield return new global::System.Management.Automation.CompletionResult("'BillingMonth'", "BillingMonth", global::System.Management.Automation.CompletionResultType.ParameterValue, "BillingMonth");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BillingQuarter".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BillingQuarter", "BillingQuarter", global::System.Management.Automation.CompletionResultType.ParameterValue, "BillingQuarter");
+                yield return new global::System.Management.Automation.CompletionResult("'BillingQuarter'", "BillingQuarter", global::System.Management.Automation.CompletionResultType.ParameterValue, "BillingQuarter");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BillingAnnual".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BillingAnnual", "BillingAnnual", global::System.Management.Automation.CompletionResultType.ParameterValue, "BillingAnnual");
+                yield return new global::System.Management.Automation.CompletionResult("'BillingAnnual'", "BillingAnnual", global::System.Management.Automation.CompletionResultType.ParameterValue, "BillingAnnual");
             }
         }
     }

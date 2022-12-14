@@ -1,7 +1,7 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
+online version: https://learn.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
 schema: 2.0.0
 ---
 

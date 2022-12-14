@@ -27,7 +27,7 @@ Get-AzMigrateRunAsAccount  -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBas
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigraterunasaccount
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigraterunasaccount
 #>
 function Get-AzMigrateRunAsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount])]
