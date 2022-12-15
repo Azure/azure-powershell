@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.TestFx
         {
             LoadDefaultEnvironmentEndpoints();
             string envNameString = ConnectionString.GetValue(ConnectionStringKeys.EnvironmentKey);
-            if (!string.IsNullOrEmpty(envNameString))
+            if (string.IsNullOrEmpty(envNameString))
             {
                 envNameString = nameof(TestEnvironmentName.Prod);
             }

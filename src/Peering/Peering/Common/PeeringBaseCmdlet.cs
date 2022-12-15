@@ -11,6 +11,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Track2ARM = Azure.ResourceManager;
+using Track2Identity = Azure.Identity;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 {
@@ -48,10 +50,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 if (this.peeringClient == null)
                 {
-                    this.peeringClient =
-                                           AzureSession.Instance.ClientFactory.CreateArmClient<PeeringManagementClient>(
-                                               this.DefaultProfile.DefaultContext,
-                                               AzureEnvironment.Endpoint.ResourceManager);
+                    this.peeringClient = AzureSession.Instance.ClientFactory.CreateArmClient<PeeringManagementClient>(
+                                            this.DefaultProfile.DefaultContext,
+                                            AzureEnvironment.Endpoint.ResourceManager);
                 }
                 // for testing.
                 // this.peeringClient.BaseUri = new Uri("https://secrets.wanrr-test.radar.core.azure-test.net");
@@ -59,6 +60,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             }
 
             set => this.peeringClient = value;
+        }
+
+        private Track2ARM.ArmClient _armClient;
+
+        public Track2ARM.ArmClient ArmClient
+        {
+            get
+            {
+                if (this._armClient == null)
+                {
+                    this._armClient = new Track2ARM.ArmClient(new Track2Identity.DefaultAzureCredential());
+                }
+
+                return this._armClient;
+            }
+
+            set => this._armClient = value;
         }
 
         /// <summary>
@@ -318,6 +336,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             try
             {
                 return PeeringResourceManagerProfile.Mapper.Map<PSCdnPeeringPrefix>(cdnPrefix);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new AzPSInvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+            }
+        }
+
+        /// <summary>
+        /// Convert to powershell unbilled prefix
+        /// </summary>
+        /// <param name="unbilledPrefix">
+        /// The cdn prefix.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PSUnbilledPrefix"/>.
+        /// </returns>
+        public PSUnbilledPrefix ToPSUnbilledPrefix(object unbilledPrefix)
+        {
+            try
+            {
+                return PeeringResourceManagerProfile.Mapper.Map<PSUnbilledPrefix>(unbilledPrefix);
             }
             catch (InvalidOperationException mapException)
             {

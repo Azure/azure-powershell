@@ -49,7 +49,6 @@ Get-AzPeeringRegisteredPrefix -ResourceGroupName $resourceGroupName -PeeringName
 
 Gets registered peering asn.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile

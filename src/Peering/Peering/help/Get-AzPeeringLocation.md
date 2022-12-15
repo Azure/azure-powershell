@@ -62,7 +62,7 @@ Its a long list of locations. Gets the all the Direct Peering Facilities.
 
 ### Example 2
 ```powershell
-Get-AzPeeringLocation -Kind Exchange -PeeringLocation "Honolulu" 
+Get-AzPeeringLocation -Kind Exchange -PeeringLocation "Honolulu"
 ```
 
 ```output
@@ -81,7 +81,7 @@ Gets the exchange peering location for Honolulu.
 
 ### Example 3
 ```powershell
-Get-AzPeeringLocation -Kind Exchange -PeeringDbFacilityId 71 
+Get-AzPeeringLocation -Kind Exchange -PeeringDbFacilityId 71
 ```
 
 ```output

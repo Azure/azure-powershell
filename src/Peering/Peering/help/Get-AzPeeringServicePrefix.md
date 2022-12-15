@@ -64,7 +64,7 @@ Gets the prefixes for a peering service based on piping commands.
 
 ### Example 2
 ```powershell
-Get-AzPeeringServicePrefix -ResourceId $peeringServicePrefixResourceId 
+Get-AzPeeringServicePrefix -ResourceId $peeringServicePrefixResourceId
 ```
 
 ```output
