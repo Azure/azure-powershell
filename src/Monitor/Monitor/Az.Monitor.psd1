@@ -114,7 +114,7 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'Get-AzAutoscaleHistory', 'Add-AzMetricAlertRule', 
                'Add-AzWebtestAlertRule', 'Get-AzAlertHistory', 'Get-AzAlertRule', 
                'New-AzAlertRuleEmail', 'New-AzAlertRuleWebhook', 
-               'Remove-AzAlertRule', 'New-AzActionGroupReceiver', 
+               'Remove-AzAlertRule', 'New-AzActionGroupReceiver', 'Test-AzActionGroup',
                'Set-AzActionGroup', 'Get-AzActionGroup', 'Remove-AzActionGroup', 
                'New-AzMetricFilter', 'Add-AzMetricAlertRuleV2', 
                'Get-AzMetricAlertRuleV2', 
