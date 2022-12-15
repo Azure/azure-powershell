@@ -13,18 +13,19 @@
 # ----------------------------------------------------------------------------------
 <#
 .SYNOPSIS
-GetCdnPeeringPrefixForLocation 
+GetLocationKindExchange 
 #>
-function Test-GetCdnPeeringPrefixForLocation {
-        $cdnPeeringPrefix = Get-AzPeeringCdnPeeringPrefix -PeeringLocation "Seattle"
-        Assert-NotNull $cdnPeeringPrefix
-        Assert-True { $cdnPeeringPrefix.Count -eq 8 }
+function Test-TestGetUnbilledPrefixesForCdnPeering {
+    $prefixes = Get-AzPeeringUnbilledPrefix -ResourceGroupName "Seattle" -Name "CdnPeering"
+    Assert-NotNull $prefixes
+    Assert-True { $prefixes.Count -ge 1 }
 }
+
 <#
 .SYNOPSIS
-GetCdnPeeringPrefixNonExistentLocation
+GetLocationKindDirect
 #>
-function Test-GetCdnPeeringPrefixNonExistentLocation {
-        $cdnPeeringPrefix = Get-AzPeeringCdnPeeringPrefix -PeeringLocation 'abcde'
-        Assert-Null $cdnPeeringPrefix
+function Test-TestGetUnbilledPrefixesForNonCdnPeering {
+    $prefixes = Get-AzPeeringUnbilledPrefix -ResourceGroupName "DemoRg" -Name "TestTmp"
+    Assert-Null $prefixes
 }

@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+	<PackageReference Update="Azure.Core" Version="1.26.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="SessionRecords\Microsoft.Azure.Commands.Peering.Test.ScenarioTests.RegisteredAsn\" />
     <Folder Include="SessionRecords\Microsoft.Azure.Commands.Peering.Test.ScenarioTests.RegisteredPrefix\" />
   </ItemGroup>
