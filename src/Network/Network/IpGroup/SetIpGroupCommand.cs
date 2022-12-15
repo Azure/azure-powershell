@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The IpGroup")]
         public PSIpGroup IpGroup { get; set; }
 
+        public SwitchParameter Force { get; set; }
+        
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -37,11 +39,24 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (!this.IsIpGroupsPresent(this.IpGroup.ResourceGroupName, this.IpGroup.Name))
+            var present = this.IsIpGroupsPresent(this.IpGroup.ResourceGroupName, this.IpGroup.Name);
+
+            if (!present)
             {
                 throw new System.ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.IpGroup.Name));
             }
 
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Properties.Resources.CreatingResourceMessage, this.IpGroup.Name),
+                Properties.Resources.CreatingResourceMessage,
+                this.IpGroup.Name,
+                () => WriteObject(this.SetIpGroups()),
+                () => present);
+        }
+        
+        private PSIpGroup SetIpGroups()
+        {
             // Map to the sdk object
             var ipGroupSdkObject = NetworkResourceManagerProfile.Mapper.Map<MNM.IpGroup>(this.IpGroup);
             ipGroupSdkObject.Tags = TagsConversionHelper.CreateTagDictionary(this.IpGroup.Tag, validate: true);
@@ -49,8 +64,7 @@ namespace Microsoft.Azure.Commands.Network
             // Execute the PUT IpGroups call
             this.IpGroupsClient.CreateOrUpdate(this.IpGroup.ResourceGroupName, this.IpGroup.Name, ipGroupSdkObject);
 
-            var getIpGroups = this.GetIpGroup(this.IpGroup.ResourceGroupName, this.IpGroup.Name);
-            WriteObject(getIpGroups);
+            return this.GetIpGroup(this.IpGroup.ResourceGroupName, this.IpGroup.Name);
         }
     }
 }
