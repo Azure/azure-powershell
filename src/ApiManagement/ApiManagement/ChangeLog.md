@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
 * Update description of ResourceId param 'New-AzApiManagementBackend' and 'Set-AzApiManagementBackend' cmdlet [#16868]
 
 ## Version 4.0.1
