@@ -18,6 +18,7 @@ New-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <Strin
  [-OsDiskSize <Int32>] [-VmSize <String>] [-VnetSubnetID <String>] [-MaxPodCount <Int32>] [-OsType <String>]
  [-OsSKU <String>] [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>] [-ScaleSetPriority <String>]
  [-ScaleSetEvictionPolicy <String>] [-VmSetType <String>] [-AvailabilityZone <String[]>] [-Force]
+ [-EnableEncryptionAtHost] [-EnableUltraSSD] [-LinuxOSConfig <LinuxOSConfig>] [-KubeletConfig <KubeletConfig>]
  [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>]
  [-NodeLabel <Hashtable>] [-Tag <Hashtable>] [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
@@ -30,6 +31,7 @@ New-AzAksNodePool -Name <String> -ClusterObject <PSKubernetesCluster> [-Count <I
  [-VmSize <String>] [-VnetSubnetID <String>] [-MaxPodCount <Int32>] [-OsType <String>] [-OsSKU <String>]
  [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>] [-ScaleSetPriority <String>]
  [-ScaleSetEvictionPolicy <String>] [-VmSetType <String>] [-AvailabilityZone <String[]>] [-Force]
+ [-EnableEncryptionAtHost] [-EnableUltraSSD] [-LinuxOSConfig <LinuxOSConfig>] [-KubeletConfig <KubeletConfig>]
  [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>]
  [-NodeLabel <Hashtable>] [-Tag <Hashtable>] [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
@@ -41,7 +43,7 @@ Create a new node pool in specified cluster.
 
 ## EXAMPLES
 
-### Create node pool with default parameters
+### Create a node pool with default parameters
 ```powershell
 New-AzAksNodePool -ResourceGroupName myResouceGroup -ClusterName myCluster -Name mydefault
 ```
@@ -51,6 +53,34 @@ New-AzAksNodePool -ResourceGroupName myResouceGroup -ClusterName myCluster -Name
 $cred = ConvertTo-SecureString -AsPlainText "Password!!123" -Force
 New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets
 New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name win1 -OsType Windows -VmSetType VirtualMachineScaleSets
+```
+
+### Create a node pool with LinuxOSConfig and KubeletConfig.
+When you create an AKS node pool, you can specify the kubelet and OS configurations. The type of `LinuxOSConfig` and `KubeletConfig` must be `Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig` and `Microsoft.Azure.Management.ContainerService.Models.KubeletConfig` respectively.
+
+
+```powershell
+$linuxOsConfigJsonStr = @'
+            {
+             "transparentHugePageEnabled": "madvise",
+             "transparentHugePageDefrag": "defer+madvise",
+             "swapFileSizeMB": 1500,
+             "sysctls": {
+              "netCoreSomaxconn": 163849,
+              "netIpv4TcpTwReuse": true,
+              "netIpv4IpLocalPortRange": "32000 60000"
+             }
+            }
+'@
+$linuxOsConfig = [Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig] ($linuxOsConfigJsonStr | ConvertFrom-Json)
+$kubeletConfigStr = @'
+            {
+             "failSwapOn": false
+            }
+'@
+$kubeletConfig = [Microsoft.Azure.Management.ContainerService.Models.KubeletConfig] ($kubeletConfigStr | ConvertFrom-Json)
+
+New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -Name mypool -LinuxOSConfig $linuxOsConfig -KubeletConfig $kubeletConfig
 ```
 
 ## PARAMETERS
@@ -160,8 +190,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableEncryptionAtHost
+Whether to enable host based OS and data drive
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableNodePublicIp
 Whether to enable public IP for nodes.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableUltraSSD
+whether to enable UltraSSD
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -190,11 +250,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KubeletConfig
+The Kubelet configuration on the agent pool nodes.
+
+```yaml
+Type: Microsoft.Azure.Management.ContainerService.Models.KubeletConfig
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KubernetesVersion
 The version of Kubernetes to use for creating the cluster.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LinuxOSConfig
+The OS configuration of Linux agent nodes.
+
+```yaml
+Type: Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig
 Parameter Sets: (All)
 Aliases:
 

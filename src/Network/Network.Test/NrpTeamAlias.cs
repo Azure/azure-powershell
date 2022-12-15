@@ -18,22 +18,24 @@ namespace Commands.Network.Test
     {
         // Below is the list of aliases to contact on test behavior
 
+        // Azure PowerShell Team
+        public const string azdevxps = "azdevxps";
+
         // Virtual Appliance dev team
         // First part of ApplicationGateway tests
         public const string nvadev = "nvadev";
+
         // Second part of ApplicationGateway tests
         public const string nvadev_subset1 = "nvadev_subset1";
 
-        // SDN NRP Dev Team
-        public const string sdnnrp = "sdnnrp";
+        //Azure Firewall dev team
+        public const string azurefirewall = "azurefirewall";
 
-        // Pankaj's Team
-        public const string pgtm = "pgtm";
+        // Azure Network Billing and Telemetry team
+        public const string billingandtelemetry = "azurenetworkbilling";
 
-        // Windows Azure SLB Dev Team
-        public const string slbdev = "slbdev";
-        // Azure PowerShell Team
-        public const string azdevxps = "azdevxps";
+        // Azure Bastion dev team
+        public const string bastion = "bastion";
 
         // Brooklyn FTEs
         // Split into subsets due to tests' long running time
@@ -50,28 +52,34 @@ namespace Commands.Network.Test
         // Third part of VirtualNetworkGatewayConnection tests
         public const string brooklynft_subset5 = "brooklynft_subset5";
 
-        // Azure Network Analytics Dev Team
-        public const string netanalyticsdev = "netanalyticsdev";
+        // Ddos team
+        public const string ddos = "ddosdev";
 
-        // Windows Azure NRP dev team
-        public const string wanrpdev = "wanrpdev";
-
-        //Azure NRP Firewall dev team
-        public const string azurefirewall = "azurefirewall";
-
-        // Azure NRP bastion dev team
-        public const string bastion = "bastion";
+        // Express Route Team
+        public const string exrdev = "exrdev";
 
         // Azure Network IPAM dev team
         public const string ipam = "ipamdev";
 
-        // Azure Network Billing and Telemetry team
-        public const string billingandtelemetry = "azurenetworkbilling";
+        // Azure Network Analytics Dev Team
+        public const string netanalyticsdev = "netanalyticsdev";
+
+        // Azure NSM Dev Team
+        public const string nsmdev = "nsmdev";
+
+        // Azure Private Endpoint and Private Link Dev Team
+        public const string plcpdev = "plcpdev";
+
+        // RNM Dev Team
+        public const string rnmdev = "rnmdev";
+
+        // Windows Azure SLB Dev Team
+        public const string slbdev = "slbdev";
+
+        // Windows Azure NRP dev team
+        public const string wanrpdev = "wanrpdev";
 
         // Virtual WAN team
         public const string virtualwan = "routeservicedev";
-
-        // Ddos team
-        public const string ddos = "ddosdev";
     }
 }

@@ -67,7 +67,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelalertrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelalertrule
 #>
 function Update-AzSentinelAlertRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAlertRule])]

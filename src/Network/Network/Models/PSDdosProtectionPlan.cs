@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string PublicIpAddressesText
+        public string PublicIPAddressesText
         {
             get { return JsonConvert.SerializeObject(PublicIPAddresses, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
