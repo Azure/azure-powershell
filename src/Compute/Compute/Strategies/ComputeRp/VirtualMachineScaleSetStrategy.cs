@@ -70,7 +70,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string userData,
             string imageReferenceId,
             Dictionary<string, List<string>> auxAuthHeader,
-            string diskControllerType
+            string diskControllerType,
+            bool? enableVtpm = null,
+            bool? enableSecureBoot = null,
+            string securityType = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -95,7 +98,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         PlatformFaultDomainCount = platformFaultDomainCount,
                         VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                         {
-                            SecurityProfile = (encryptionAtHost == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHost) : null,
+                            SecurityProfile = (encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null)
+                            ? new SecurityProfile
+                            {
+                                EncryptionAtHost = encryptionAtHost,
+                                UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
+                                SecurityType = securityType,
+                            } : null,
                             OsProfile = new VirtualMachineScaleSetOSProfile
                             {
                                 ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
@@ -196,7 +205,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             int? platformFaultDomainCount,
             string edgeZone,
             string orchestrationMode,
-            string capacityReservationId
+            string capacityReservationId,
+            bool? enableVtpm = null,
+            bool? enableSecureBoot = null,
+            string securityType = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -216,7 +228,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     PlatformFaultDomainCount = platformFaultDomainCount,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
-                        SecurityProfile = (encryptionAtHost == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHost) : null,
+                        SecurityProfile = (encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null)
+                        ? new SecurityProfile
+                        {
+                            EncryptionAtHost = encryptionAtHost,
+                            UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
+                            SecurityType = securityType,
+                        } : null,
                         OsProfile = new VirtualMachineScaleSetOSProfile
                         {
                             ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
