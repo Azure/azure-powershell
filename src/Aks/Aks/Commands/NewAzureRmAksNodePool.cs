@@ -78,7 +78,8 @@ namespace Microsoft.Azure.Commands.Aks
         public string NodePublicIPPrefixID { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.")]
-        [PSArgumentCompleter("Low", "Regular")]
+
+        [PSArgumentCompleter("Low", "Regular", "Spot")]
         public string ScaleSetPriority { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.")]
@@ -114,6 +115,9 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "The ID for Proximity Placement Group.")]
         public string PPG { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The max price (in US Dollars) you are willing to pay for spot instances. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand.")]
+        public double? SpotMaxPrice { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -255,6 +259,10 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.PPG))
             {
                 agentPool.ProximityPlacementGroupID = PPG;
+            }
+            if (this.IsParameterBound(c => c.SpotMaxPrice))
+            {
+                agentPool.SpotMaxPrice = SpotMaxPrice;
             }
 
             return agentPool;

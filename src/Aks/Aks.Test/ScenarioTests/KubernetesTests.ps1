@@ -764,3 +764,42 @@ function Test-PPG {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-Spot {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1
+
+        # create a 2nd nodepool
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -VmSize $nodeVmSize -Count 1 -ScaleSetPriority Spot -SpotMaxPrice 0.577
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-AreEqual "Spot" ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).scaleSetPriority
+        Assert-AreEqual "Delete" ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).scaleSetEvictionPolicy
+        Assert-AreEqual 0.57699 ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).spotMaxPrice
+        Assert-AreEqual "spot" ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).nodeLabels["kubernetes.azure.com/scalesetpriority"]
+        Assert-AreEqual 1 ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).nodeTaints.Count
+        Assert-AreEqual "kubernetes.azure.com/scalesetpriority=spot:NoSchedule" ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).nodeTaints[0]
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-AreEqual "Spot" ($pools | where {$_.Name -eq "pool2"}).scaleSetPriority
+        Assert-AreEqual "Delete" ($pools | where {$_.Name -eq "pool2"}).scaleSetEvictionPolicy
+        Assert-AreEqual 0.57699 ($pools | where {$_.Name -eq "pool2"}).spotMaxPrice
+        Assert-AreEqual "spot" ($pools | where {$_.Name -eq "pool2"}).nodeLabels["kubernetes.azure.com/scalesetpriority"]
+        Assert-AreEqual 1 ($pools | where {$_.Name -eq "pool2"}).nodeTaints.Count
+        Assert-AreEqual "kubernetes.azure.com/scalesetpriority=spot:NoSchedule" ($pools | where {$_.Name -eq "pool2"}).nodeTaints[0]
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
