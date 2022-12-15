@@ -25,7 +25,7 @@ Gets all incident related entities.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentEntitiesResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidententity
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidententity
 #>
 function Get-AzSentinelIncidentEntity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentEntitiesResponse])]

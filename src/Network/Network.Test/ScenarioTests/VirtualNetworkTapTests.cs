@@ -39,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkTapCRUDUsingIpConfig()
         {
             TestRunner.RunTestScript(string.Format("Test-VirtualNetworkTapCRUDUsingIpConfig"));

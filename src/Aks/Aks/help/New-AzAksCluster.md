@@ -24,18 +24,20 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-WindowsProfileAdminUserPassword <SecureString>] [-NetworkPlugin <String>] [-NetworkPolicy <String>]
  [-PodCidr <String>] [-ServiceCidr <String>] [-DnsServiceIP <String>] [-DockerBridgeCidr <String>]
  [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey] [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>]
- [-AvailabilityZone <String[]>] [-NodeResourceGroup <String>] [-ResourceGroupName] <String> [-Name] <String>
- [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>] [-LinuxProfileAdminUserName <String>]
- [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
- [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
- [-NodeVmSize <String>] [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>]
- [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
- [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
- [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
- [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
- [-ApiServerAccessPrivateDnsZone <String>] [-EnableApiServerAccessPrivateClusterPublicFQDN]
- [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
- [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
+ [-AvailabilityZone <String[]>] [-NodeResourceGroup <String>] [-EnableEncryptionAtHost] [-EnableUltraSSD]
+ [-NodeLinuxOSConfig <LinuxOSConfig>] [-NodeKubeletConfig <KubeletConfig>] [-ResourceGroupName] <String>
+ [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>]
+ [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>] [-KubernetesVersion <String>]
+ [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling]
+ [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>] [-NodePoolLabel <Hashtable>]
+ [-NodePoolTag <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
+ [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
+ [-LoadBalancerOutboundIp <String[]>] [-LoadBalancerOutboundIpPrefix <String[]>]
+ [-LoadBalancerIdleTimeoutInMinute <Int32>] [-ApiServerAccessAuthorizedIpRange <String[]>]
+ [-EnableApiServerAccessPrivateCluster] [-ApiServerAccessPrivateDnsZone <String>]
+ [-EnableApiServerAccessPrivateClusterPublicFQDN] [-FqdnSubdomain <String>] [-EnableManagedIdentity]
+ [-AssignIdentity <String>] [-AutoUpgradeChannel <String>] [-DiskEncryptionSetID <String>]
+ [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
  [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
@@ -47,7 +49,7 @@ Create a new Azure Kubernetes Service(AKS) cluster.
 
 ## EXAMPLES
 
-### New an AKS with default params.
+### Create an AKS with default params.
 
 ```powershell
 New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster
@@ -61,6 +63,34 @@ To create Windows Server container on an AKS, you must specify at least four fol
 $cred = ConvertTo-SecureString -AsPlainText "Password!!123" -Force
 New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets
 New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name win1 -OsType Windows -VmSetType VirtualMachineScaleSets
+```
+
+### Create an AKS cluster with LinuxOSConfig and KubeletConfig.
+When you create an AKS cluster, you can specify the kubelet and OS configurations. The type of `NodeLinuxOSConfig` and `NodeKubeletConfig` must be `Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig` and `Microsoft.Azure.Management.ContainerService.Models.KubeletConfig` respectively.
+
+
+```powershell
+$linuxOsConfigJsonStr = @'
+            {
+             "transparentHugePageEnabled": "madvise",
+             "transparentHugePageDefrag": "defer+madvise",
+             "swapFileSizeMB": 1500,
+             "sysctls": {
+              "netCoreSomaxconn": 163849,
+              "netIpv4TcpTwReuse": true,
+              "netIpv4IpLocalPortRange": "32000 60000"
+             }
+            }
+'@
+$linuxOsConfig = [Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig] ($linuxOsConfigJsonStr | ConvertFrom-Json)
+$kubeletConfigStr = @'
+            {
+             "failSwapOn": false
+            }
+'@
+$kubeletConfig = [Microsoft.Azure.Management.ContainerService.Models.KubeletConfig] ($kubeletConfigStr | ConvertFrom-Json)
+
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeLinuxOSConfig $linuxOsConfig -NodeKubeletConfig $kubeletConfig
 ```
 
 ## PARAMETERS
@@ -320,6 +350,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableEncryptionAtHost
+Whether to enable host based OS and data drive
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableManagedIdentity
 Using a managed identity to manage cluster resource group.
 
@@ -367,6 +412,21 @@ Accept wildcard characters: False
 
 ### -EnableRbac
 Whether to enable Kubernetes Role-Based Access
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableUltraSSD
+whether to enable UltraSSD
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -671,6 +731,36 @@ The default number of nodes for the node pools.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeKubeletConfig
+The Kubelet configuration on the agent pool nodes.
+
+```yaml
+Type: Microsoft.Azure.Management.ContainerService.Models.KubeletConfig
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodeLinuxOSConfig
+The OS configuration of Linux agent nodes.
+
+```yaml
+Type: Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig
 Parameter Sets: (All)
 Aliases:
 
