@@ -71,6 +71,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             int? vCPUsAvailable = null,
             int? vCPUsPerCore = null,
             string imageReferenceId = null,
+            bool? enableVtpm = null,
+            bool? enableSecureBoot = null,
+            string securityType = null,
             Dictionary<string, List<string>> auxAuthHeader = null,
             string diskControllerType = null,
             Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null
@@ -136,7 +139,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Priority = priority,
                         EvictionPolicy = evictionPolicy,
                         BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                        SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null,
+                        SecurityProfile = (encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType != null)
+                    ? new SecurityProfile
+                    {
+                        EncryptionAtHost = encryptionAtHostPresent,
+                        UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
+                        SecurityType = securityType,
+                    } : null,
                         CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                         {
                             CapacityReservationGroup = new SubResource(capacityReservationGroupId)
@@ -181,6 +190,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             AdditionalCapabilities additionalCapabilities = null,
             int? vCPUsAvailable = null,
             int? vCPUsPerCore = null,
+            bool? enableVtpm = null,
+            bool? enableSecureBoot = null,
+            string securityType = null,
             Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null
             )
             => Strategy.CreateResourceConfig(
@@ -227,7 +239,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null,
+                    SecurityProfile = (encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType != null)
+                    ? new SecurityProfile
+                    {
+                        EncryptionAtHost = encryptionAtHostPresent,
+                        UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
+                        SecurityType = securityType,
+                    } : null,
                     CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                     {
                         CapacityReservationGroup = new SubResource(capacityReservationGroupId)
