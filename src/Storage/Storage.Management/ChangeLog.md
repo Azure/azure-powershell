@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+*Return ListBlobProperties in blob list result
+    - `Get-AzStorageBlob`
+
+## Version 5.2.0
+* Supported MaxPageSize, Include, and Filter parameters for listing encryption scopes 
+    - `Get-AzStorageEncryptionScope`
+* Supported excludePrefix, includeDeleted, and many new schema fields in Blob Inventory
+    - `New-AzStorageBlobInventoryPolicyRule`
 
 ## Version 5.1.0
 * Supported generate DataLakeGen2 Sas token with Encryption scope

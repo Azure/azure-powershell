@@ -19,6 +19,15 @@
 --->
 
 ## Upcoming Release
+* Fixed a bug that added Ddos related properties when viewing PublicIpAddress and DdosProtectionPlan objects
+
+## Version 5.2.0
+* Added optional parameters `CustomBlockResponseStatusCode` and `CustomBlockResponseBody` parameter to `AzApplicationGatewayFirewallPolicySettings`
+* Added a new cmdlet to get the application gateway waf manifest and rules
+    - `Get-AzApplicationGatewayWafDynamicManifest`
+
+## Version 5.1.2
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
 
 ## Version 5.1.1
 * Fixed bug with New-AzCustomIpPrefix

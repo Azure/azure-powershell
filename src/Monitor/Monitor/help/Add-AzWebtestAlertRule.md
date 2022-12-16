@@ -9,7 +9,8 @@ schema: 2.0.0
 # Add-AzWebtestAlertRule
 
 ## SYNOPSIS
-Adds or updates a webtest alert rule.
+Adds or updates a classic webtest alert rule (already retired on public cloud).
+To create a new webtest alert rule, use the [Add-AzMetricAlertRuleV2](./Add-AzMetricAlertRuleV2.md) cmdlet, passing a criteria object for webtest (created via the [New-AzMetricAlertRuleV2Criteria](./New-AzMetricAlertRuleV2Criteria.md) cmdlet with a "-WebTest" criteria type).
 
 ## SYNTAX
 

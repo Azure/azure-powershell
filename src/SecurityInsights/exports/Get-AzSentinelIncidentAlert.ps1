@@ -25,7 +25,7 @@ Gets all incident alerts.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISecurityAlert
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentalert
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentalert
 #>
 function Get-AzSentinelIncidentAlert {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISecurityAlert])]

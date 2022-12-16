@@ -49,7 +49,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/get-azgalleryapplicationversion
+https://learn.microsoft.com/powershell/module/az.compute/get-azgalleryapplicationversion
 #>
 function Get-AzGalleryApplicationVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
@@ -269,7 +269,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/get-azgalleryapplication
+https://learn.microsoft.com/powershell/module/az.compute/get-azgalleryapplication
 #>
 function Get-AzGalleryApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
@@ -472,7 +472,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/remove-azgalleryapplicationversion
+https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryapplicationversion
 #>
 function Remove-AzGalleryApplicationVersion {
 [OutputType([System.Boolean])]
@@ -695,7 +695,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/remove-azgalleryapplication
+https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryapplication
 #>
 function Remove-AzGalleryApplication {
 [OutputType([System.Boolean])]
@@ -912,7 +912,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/remove-azvmruncommand
+https://learn.microsoft.com/powershell/module/az.compute/remove-azvmruncommand
 #>
 function Remove-AzVMRunCommand {
 [OutputType([System.Boolean])]
@@ -1128,7 +1128,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/remove-azvmssvmruncommand
+https://learn.microsoft.com/powershell/module/az.compute/remove-azvmssvmruncommand
 #>
 function Remove-AzVmssVMRunCommand {
 [OutputType([System.Boolean])]
@@ -1323,7 +1323,17 @@ The operation to create or update the run command.
 .Description
 The operation to create or update the run command.
 .Example
-Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand' 
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceScriptUri "https://myst.blob.core.windows.net/mycontainer/myscript.ps1?sp=r&st=2022-10-27T21:02:35Z&se=2022-10-28T05:02:35Z&spr=https&sv=2021-06-08&sr=b&sig=0I%2FIiYayRwHasfasasfdasdfasdeTsQjLnpZjA%3D"
+.Example
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1"
+.Example
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunCommand2 -Location EastUS2EUAP -SourceScript "id; echo HelloWorld"
+.Example
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceCommandId DisableWindowsUpdate
+.Example
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunCommand3 -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -OutputBlobUri "https://vivst.blob.core.windows.net/vivcontainer/output.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5hasfadsfasdF4jIkRJra4S5FlEo%3D" -ErrorBlobUri "https://vivst.blob.core.windows.net/vivcontainer/error.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5h%asfasdfgdT%2F4jasfasdf5FlEo%3D"
+.Example
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -RunAsUser myusername -RunAsPassword mypassword
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand
@@ -1340,7 +1350,7 @@ PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the scr
   Name <String>: The run command parameter name.
   Value <String>: The run command parameter value.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/set-azvmruncommand
+https://learn.microsoft.com/powershell/module/az.compute/set-azvmruncommand
 #>
 function Set-AzVMRunCommand {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand])]
@@ -1605,7 +1615,17 @@ The operation to create or update the VMSS VM run command.
 .Description
 The operation to create or update the VMSS VM run command.
 .Example
-Set-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname
+Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 0 -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceScriptUri "https://myst.blob.core.windows.net/mycontainer/myscript.ps1?sp=r&st=2022-10-27T21:02:35Z&se=2022-10-28T05:02:35Z&spr=https&sv=2021-06-08&sr=b&sig=0I%2FIiYayRwHasfasasfdasdfasdeTsQjLnpZjA%3D"
+.Example
+Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 0 -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1"
+.Example
+Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSSL -InstanceId 1 -RunCommandName MyRunCommand2 -Location EastUS2EUAP -SourceScript "id; echo HelloWorld"
+.Example
+Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 0 -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceCommandId DisableWindowsUpdate
+.Example
+Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 1 -RunCommandName MyRunCommand3 -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -OutputBlobUri "https://vivst.blob.core.windows.net/vivcontainer/output.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5hasfadsfasdF4jIkRJra4S5FlEo%3D" -ErrorBlobUri "https://vivst.blob.core.windows.net/vivcontainer/error.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5h%asfasdfgdT%2F4jasfasdf5FlEo%3D"
+.Example
+Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 1 -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -RunAsUser myusername -RunAsPassword mypassword
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand
@@ -1622,7 +1642,7 @@ PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the scr
   Name <String>: The run command parameter name.
   Value <String>: The run command parameter value.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvmruncommand
+https://learn.microsoft.com/powershell/module/az.compute/set-azvmssvmruncommand
 #>
 function Set-AzVmssVMRunCommand {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand])]
@@ -1920,7 +1940,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryapplication
+https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplication
 #>
 function Update-AzGalleryApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
@@ -2125,7 +2145,7 @@ New-AzGalleryApplication -ResourceGroupName $rgName -Location EastUS -GalleryNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
+https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
 #>
 function New-AzGalleryApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
@@ -2363,7 +2383,7 @@ TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is go
   [SecurityProfileSecureVMDiskEncryptionSetId <String>]: secure VM disk encryption set id
   [StorageAccountType <StorageAccountType?>]: Specifies the storage account type to be used to store the image. This property is not updatable.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryapplicationversion
+https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplicationversion
 #>
 function New-AzGalleryApplicationVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
@@ -2693,7 +2713,7 @@ TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is go
   [SecurityProfileSecureVMDiskEncryptionSetId <String>]: secure VM disk encryption set id
   [StorageAccountType <StorageAccountType?>]: Specifies the storage account type to be used to store the image. This property is not updatable.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
+https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
 #>
 function Update-AzGalleryApplicationVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]

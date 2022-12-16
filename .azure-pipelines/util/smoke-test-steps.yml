@@ -1,25 +1,24 @@
-
 parameters:
-- name: name
-  default: ''
-- name: vmImage
-  default: ''
-- name: psVersion
-  default: ''
+  name: ''
+  psVersion: ''
+  agentPoolName: ''
+  agentPoolVMImage: ''
+  netCoreVersion: ''
 
 jobs:
 - job: ${{ parameters.name }}
   timeoutInMinutes: 180
   pool:
-    vmImage: ${{ parameters.vmImage }}
+    name: ${{ parameters.agentPoolName }}
+    vmImage: ${{ parameters.agentPoolVMImage }}
 
   steps:
   - task: UseDotNet@2
-    condition: ne(variables['NetCoreVersion'], '')
-    displayName: 'Prepare .NET Core $(NetCoreVersion)'
+    condition: ne(variables['netCoreVersion'], '')
+    displayName: 'Prepare .NET Core ${{ parameters.netCoreVersion }}'
     inputs:
       packageType: sdk
-      version: $(NetCoreVersion)
+      version: ${{ parameters.netCoreVersion }}
     
   - task: PowerShell@2
     displayName: Prepare Powershell ${{ parameters.psVersion }}

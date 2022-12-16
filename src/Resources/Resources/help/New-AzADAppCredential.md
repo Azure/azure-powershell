@@ -1,7 +1,7 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azadappcredential
 schema: 2.0.0
 ---
 
@@ -122,28 +122,30 @@ Creates key credentials or password credentials for an application.
 
 ## EXAMPLES
 
-### Example 1: Create key credentials for application
+### Example 1: Create key credentials for an application
+
 ```powershell
-# ObjectId is the string representation of a GUID for directory object, application, in Azure AD.
-$Id = "00000000-0000-0000-0000-000000000000"
-# $cert is Base64 encoded content of certificate
-$credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
-                                 -Property @{'Key' = $cert;
-                                 'Usage'       = 'Verify';
-                                 'Type'        = 'AsymmetricX509Cert'
-                                 }
-New-AzADAppCredential -ObjectId $Id -KeyCredentials $credential
+# $ObjectId should be the the 'Object ID' GUID associated with the Azure app registration.
+# $CertificateThumbprint should be the thumbprint of the certificate.
+# $Cert is the base64 encoded content of the certificate.
+$ObjectId = "00000000-0000-0000-0000-000000000000"
+$Credential = New-Object -TypeName `
+  "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
+  -Property @{'Key' = $Cert;
+  'Usage'       = 'Verify';
+  'Type'        = 'AsymmetricX509Cert'
+}
+New-AzADAppCredential -ObjectId $ObjectId -KeyCredentials $Credential -CustomKeyIdentifier $CertificateThumbprint
 ```
 
-Create key credentials for application with object Id $Id
+### Example 2: Create password credentials for an application
 
-### Example 2: Create password credentials for application
 ```powershell
-# ApplicationId is AppId of Application object which is different from directory id in Azure AD.
-Get-AzADApplication -ApplicationId $appId | New-AzADAppCredential -StartDate $startDate -EndDate $endDate
+# $ApplicationId` should be the the 'Application ID' GUID associated with the Azure app registration.
+$ApplicationId = "00000000-0000-0000-0000-000000000000"
+Get-AzADApplication -ApplicationId $ApplicationId | New-AzADAppCredential -StartDate $startDate -EndDate $endDate
 ```
 
-Create password credentials for application
 
 ## PARAMETERS
 
@@ -374,7 +376,7 @@ To create the parameters described below, construct a hash table containing the 
 
 `APPLICATIONOBJECT <IMicrosoftGraphApplication>`: The application object, could be used as pipeline input.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[DeletedDateTime <DateTime?>]`: 
+  - `[DeletedDateTime <DateTime?>]`: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   - `[DisplayName <String>]`: The name displayed in directory
   - `[AddIn <IMicrosoftGraphAddIn[]>]`: Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Office 365 call the application in the context of a document the user is working on.
     - `[Id <String>]`: 
@@ -408,7 +410,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[IsEnabled <Boolean?>]`: When creating or updating an app role, this must be set to true (which is the default). To delete a role, this must first be set to false.  At that point, in a subsequent call, this role may be removed.
     - `[Value <String>]`: Specifies the value to include in the roles claim in ID tokens and access tokens authenticating an assigned user or service principal. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
   - `[ApplicationTemplateId <String>]`: Unique identifier of the applicationTemplate.
-  - `[CreatedOnBehalfOfDeletedDateTime <DateTime?>]`: 
+  - `[CreatedOnBehalfOfDeletedDateTime <DateTime?>]`: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   - `[CreatedOnBehalfOfDisplayName <String>]`: The name displayed in directory
   - `[Description <String>]`: An optional description of the application. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
   - `[DisabledByMicrosoftStatus <String>]`: Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, NOT).
@@ -421,12 +423,12 @@ To create the parameters described below, construct a hash table containing the 
   - `[GroupMembershipClaim <String>]`: Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
   - `[HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]`: 
     - `[AppliesTo <IMicrosoftGraphDirectoryObject[]>]`: 
-      - `[DeletedDateTime <DateTime?>]`: 
+      - `[DeletedDateTime <DateTime?>]`: Date and time when this object was deleted. Always null when the object hasn't been deleted.
       - `[DisplayName <String>]`: The name displayed in directory
     - `[Definition <String[]>]`: A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
     - `[IsOrganizationDefault <Boolean?>]`: If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
     - `[Description <String>]`: Description for this policy.
-    - `[DeletedDateTime <DateTime?>]`: 
+    - `[DeletedDateTime <DateTime?>]`: Date and time when this object was deleted. Always null when the object hasn't been deleted.
     - `[DisplayName <String>]`: The name displayed in directory
   - `[IdentifierUri <String[]>]`: The URIs that identify the application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. For more information, see Application Objects and Service Principal Objects. The any operator is required for filter expressions on multi-valued properties. Not nullable. Supports $filter (eq, ne, ge, le, startsWith).
   - `[Info <IMicrosoftGraphInformationalUrl>]`: informationalUrl
@@ -487,14 +489,14 @@ To create the parameters described below, construct a hash table containing the 
     - `[Definition <String[]>]`: A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
     - `[IsOrganizationDefault <Boolean?>]`: If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
     - `[Description <String>]`: Description for this policy.
-    - `[DeletedDateTime <DateTime?>]`: 
+    - `[DeletedDateTime <DateTime?>]`: Date and time when this object was deleted. Always null when the object hasn't been deleted.
     - `[DisplayName <String>]`: The name displayed in directory
   - `[TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]`: The tokenLifetimePolicies assigned to this application. Supports $expand.
     - `[AppliesTo <IMicrosoftGraphDirectoryObject[]>]`: 
     - `[Definition <String[]>]`: A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
     - `[IsOrganizationDefault <Boolean?>]`: If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
     - `[Description <String>]`: Description for this policy.
-    - `[DeletedDateTime <DateTime?>]`: 
+    - `[DeletedDateTime <DateTime?>]`: Date and time when this object was deleted. Always null when the object hasn't been deleted.
     - `[DisplayName <String>]`: The name displayed in directory
   - `[Web <IMicrosoftGraphWebApplication>]`: webApplication
     - `[(Any) <Object>]`: This indicates any property can be added to this object.

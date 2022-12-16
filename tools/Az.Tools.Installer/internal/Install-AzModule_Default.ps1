@@ -17,7 +17,6 @@ function Install-AzModule_Default {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess)]
     param(
         [Parameter(ValueFromPipelineByPropertyName = $true, Position = 0)]
-        #[ValidateNotNullOrEmpty()]
         [string[]]
         ${Name},
 
@@ -81,6 +80,7 @@ function Install-AzModule_Default {
 
         $modules = @()
         $modules += Get-AzModuleFromRemote @findModuleParams | Sort-Object -Property Name
+        $Repository = $modules.Repository | Select-Object -First 1
 
         if($Name) {
             $moduleExcluded = $Name | Where-Object {!$modules -or $modules.Name -NotContains $_}

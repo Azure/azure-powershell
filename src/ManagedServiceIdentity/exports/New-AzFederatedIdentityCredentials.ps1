@@ -30,7 +30,7 @@ New-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential
 .Link
-https://docs.microsoft.com/powershell/module/az.managedserviceidentity/new-azfederatedidentitycredentials
+https://learn.microsoft.com/powershell/module/az.managedserviceidentity/new-azfederatedidentitycredentials
 #>
 function New-AzFederatedIdentityCredentials {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential])]
