@@ -142,5 +142,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-Spot");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableFIPS()
+        {
+            TestRunner.RunTestScript("Test-EnableFIPS");
+        }
     }
 }
