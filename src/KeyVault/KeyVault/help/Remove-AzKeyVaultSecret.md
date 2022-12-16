@@ -102,7 +102,7 @@ This example removes a secret named `secureSecret` in azure key vault `test-kv` 
 Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -InRemovedState
 ```
 
-This command premoves the secret named FinanceSecret from the key vault named Contoso permanently.
+This command removes the secret named FinanceSecret from the key vault named Contoso permanently.
 Executing this cmdlet requires the 'purge' permission, which must have been previously and explicitly granted to the user for this key vault.
 
 ## PARAMETERS
