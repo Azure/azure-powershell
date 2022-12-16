@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Fixed bug for `Remove-AzDataCollectionRuleAssociation` [#20207]
+* Added support for test notifications cmdlets
+  * `Test-AzActionGroup`
 * Fixed start time parameter description of `Get-AzActivityLog` [#20409]
 
 ## Version 4.3.0

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed for `Update-AzSentinelAlertRule` fails when using `-TriggerThreshold 0` [#20417]
 
 ## Version 3.0.0
 * Changed `Az.SecurityInsights` to autorest-based module
