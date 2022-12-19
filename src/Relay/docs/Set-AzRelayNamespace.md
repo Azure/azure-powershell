@@ -8,18 +8,29 @@ schema: 2.0.0
 # Set-AzRelayNamespace
 
 ## SYNOPSIS
-Create Azure Relay namespace.
+Creates or updates a namespace.
+Once created, this namespace's resource manifest is immutable.
+This operation is idempotent.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-Set-AzRelayNamespace -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+Set-AzRelayNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-SkuTier <SkuTier>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzRelayNamespace -Name <String> -ResourceGroupName <String> -InputObject <IRelayUpdateParameters>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create Azure Relay namespace.
+Creates or updates a namespace.
+Once created, this namespace's resource manifest is immutable.
+This operation is idempotent.
 
 ## EXAMPLES
 
@@ -47,21 +58,6 @@ Create Azure Relay namespace.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -77,18 +73,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Resource location.
+### -InputObject
+Description of a namespace resource.
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IRelayUpdateParameters
+Parameter Sets: Update
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -107,28 +104,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PublicNetworkAccess
 This determines if traffic is allowed over public network.
 By default it is enabled.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.PublicNetworkAccess
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -158,7 +140,7 @@ The tier of this SKU.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.SkuTier
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -189,7 +171,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -235,6 +217,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IRelayUpdateParameters
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IRelayNamespace
@@ -247,6 +231,23 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+
+`INPUTOBJECT <IRelayUpdateParameters>`: Description of a namespace resource.
+  - `[Tag <IResourceNamespacePatchTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[PrivateEndpointConnection <IPrivateEndpointConnection[]>]`: List of private endpoint connections.
+    - `[PrivateEndpointId <String>]`: The ARM identifier for Private Endpoint.
+    - `[PrivateLinkServiceConnectionStateDescription <String>]`: Description of the connection state.
+    - `[PrivateLinkServiceConnectionStateStatus <PrivateLinkConnectionStatus?>]`: Status of the connection.
+    - `[ProvisioningState <EndPointProvisioningState?>]`: Provisioning state of the Private Endpoint Connection.
+    - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+    - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+    - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+    - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+    - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+    - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+  - `[PublicNetworkAccess <PublicNetworkAccess?>]`: This determines if traffic is allowed over public network. By default it is enabled.
+  - `[SkuTier <SkuTier?>]`: The tier of this SKU.
 
 `PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>`: List of private endpoint connections.
   - `[PrivateEndpointId <String>]`: The ARM identifier for Private Endpoint.

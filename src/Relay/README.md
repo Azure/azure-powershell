@@ -127,6 +127,22 @@ directive:
      subject: PrivateEndpointConnection|PrivateLinkResource
     remove: true
   - where:
+      verb: Set
+      subject: ^Namespace$
+    remove: true
+
+  - where:
+      verb: Set
+      subject: ^NamespaceNetworkRuleSet$
+    remove: true
+
+  - where:
+      verb: Update
+      subject: ^Namespace$
+    set:
+      verb: Set
+
+  - where:
       verb: Test
       subject: NamespaceNameAvailability
     set:
@@ -161,7 +177,7 @@ directive:
 
   - where:
       subject: ^Namespace$
-      variant: ^Update$|^UpdateViaIdentity$
+      variant: ^UpdateViaIdentityExpanded$|^UpdateViaIdentity$
     remove: true
   
   - where:
@@ -219,7 +235,13 @@ directive:
       parameter-name: Namespace
 
   - where:
-      subject: ^HybridConnection$
+      subject: ^HybridConnection$|^AuthorizationRule$
+      parameter-name: Parameter
+    set:
+      parameter-name: InputObject
+
+  - where:
+      subject: ^Namespace$
       parameter-name: Parameter
     set:
       parameter-name: InputObject

@@ -22,22 +22,22 @@ Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupNa
 ### Update
 ```
 Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
- -Parameter <IAuthorizationRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -InputObject <IAuthorizationRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update1
 ```
 Set-AzRelayAuthorizationRule -HybridConnection <String> -Name <String> -Namespace <String>
- -ResourceGroupName <String> -Parameter <IAuthorizationRule> [-SubscriptionId <String>]
+ -ResourceGroupName <String> -InputObject <IAuthorizationRule> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update2
 ```
 Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String> -WcfRelay <String>
- -Parameter <IAuthorizationRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -InputObject <IAuthorizationRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
@@ -113,6 +113,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Single item in a List or Get AuthorizationRule operation
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+Parameter Sets: Update, Update1, Update2
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The authorization rule name.
 
@@ -140,22 +156,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Parameter
-Single item in a List or Get AuthorizationRule operation
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
-Parameter Sets: Update, Update1, Update2
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -271,7 +271,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`PARAMETER <IAuthorizationRule>`: Single item in a List or Get AuthorizationRule operation
+`INPUTOBJECT <IAuthorizationRule>`: Single item in a List or Get AuthorizationRule operation
   - `[Rights <AccessRights[]>]`: The rights associated with the rule.
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.

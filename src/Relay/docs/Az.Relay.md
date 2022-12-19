@@ -73,10 +73,9 @@ Creates or updates a service hybrid connection.
 This operation is idempotent.
 
 ### [Set-AzRelayNamespace](Set-AzRelayNamespace.md)
-Create Azure Relay namespace.
-
-### [Set-AzRelayNamespaceNetworkRuleSet](Set-AzRelayNamespaceNetworkRuleSet.md)
-Create or update NetworkRuleSet for a Namespace.
+Creates or updates a namespace.
+Once created, this namespace's resource manifest is immutable.
+This operation is idempotent.
 
 ### [Set-AzWcfRelay](Set-AzWcfRelay.md)
 Creates or updates a WCF relay.
@@ -84,9 +83,4 @@ This operation is idempotent.
 
 ### [Test-AzRelayName](Test-AzRelayName.md)
 Check the specified namespace name availability.
-
-### [Update-AzRelayNamespace](Update-AzRelayNamespace.md)
-Creates or updates a namespace.
-Once created, this namespace's resource manifest is immutable.
-This operation is idempotent.
 
