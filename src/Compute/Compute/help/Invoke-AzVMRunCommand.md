@@ -260,4 +260,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+This command leaves a copy of every script that it runs on the Linux VM it runs against each time it is invoked.
+Those files are under the path **/var/lib/waagent/run-command/download/*n*/** on the VM, where n is a number from 0 upwards (if there is a download still there from a previous run, the next number is used for this run).
+Any commandline arguments passed in this invocation are added into the script in plaintext as exported variables and may be visible at runtime.
+The path above is, however, only accessible with root privileges.
+
 ## RELATED LINKS
