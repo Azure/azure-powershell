@@ -43,6 +43,85 @@ nested-object-to-string: true
 inlining-threshold: 50
 
 directive:
+  # Namespace Authorization Rule
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}"].put.operationId
+    transform: return "AuthorizationRule_CreateOrUpdate"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}"].get.operationId
+    transform: return "AuthorizationRule_Get"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules].get.operationId
+    transform: return "AuthorizationRule_List"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}"].delete.operationId
+    transform: return "AuthorizationRule_Delete"
+
+  # HybridConnections Authorization Rule
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}"].put.operationId
+    transform: return "AuthorizationRule_CreateOrUpdate"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}"].get.operationId
+    transform: return "AuthorizationRule_Get"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules"].get.operationId
+    transform: return "AuthorizationRule_List"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}"].delete.operationId
+    transform: return "AuthorizationRule_Delete"
+
+# WcfRelays Authorization Rule
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}"].put.operationId
+    transform: return "AuthorizationRule_CreateOrUpdate"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}"].get.operationId
+    transform: return "AuthorizationRule_Get"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules"].get.operationId
+    transform: return "AuthorizationRule_List"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}"].delete.operationId
+    transform: return "AuthorizationRule_Delete"
+
+  # Merge Namepsace,HybridConnections, WcfRelays Api 
+  # Namespace key
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/regenerateKeys"].post.operationId
+    transform: return "Key_RegenerateKeys"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/listKeys"].post.operationId
+    transform: return "Key_ListKeys"
+
+  # HybridConnections Key
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/regenerateKeys"].post.operationId
+    transform: return "Key_RegenerateKeys"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/listKeys"].post.operationId
+    transform: return "Key_ListKeys"
+
+  # WcfRelays Key
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}/regenerateKeys"].post.operationId
+    transform: return "Key_RegenerateKeys"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules/{authorizationRuleName}/listKeys"].post.operationId
+    transform: return "Key_ListKeys"
+
   # Remove cmdlet, Private link related resource should be ignored. 
   - where:
      subject: PrivateEndpointConnection|PrivateLinkResource
@@ -59,14 +138,25 @@ directive:
       subject: Relay
 
   - where:
-      subject: ^WcfRelayKey$
-    set:
-      subject-prefix: Wcf
-      subject: RelayKey
+      verb: New
+      subject: ^Namespace$|^HybridConnection$|^Relay$|^NamespaceNetworkRuleSet$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
 
   - where:
-      subject: ^Namespace$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      subject: ^Key$
+      variant: ^Regenerate$|^RegenerateViaIdentityExpanded$|^RegenerateViaIdentity$|^Regenerate1$|^RegenerateViaIdentityExpanded1$|^RegenerateViaIdentity1$|^Regenerate2$|^RegenerateViaIdentityExpanded2$|^RegenerateViaIdentity2$
+    remove: true
+
+  - where:
+      subject: ^AuthorizationRule$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Create1|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^Create2|^CreateViaIdentity2$|^CreateViaIdentityExpanded2$
+    remove: true
+
+  - where:
+      verb: Test
+      subject: ^Name$
+      variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
 
   - where:
@@ -79,6 +169,97 @@ directive:
       parameter-name: PrivateEndpointConnection
     hide: true
 
+  - where:
+      verb: Test
+      subject: ^Name$
+      parameter-name: Name
+    set:
+      parameter-name: Namespace
+
+  - where:
+      subject: ^AuthorizationRule$|^Key$
+      parameter-name: NamespaceName
+    set:
+      parameter-name: Namespace
+
+  - where:
+      subject: ^AuthorizationRule$|^Key$
+      parameter-name: HybridConnectionName
+    set:
+      parameter-name: HybridConnection
+
+  - where:
+      subject: ^AuthorizationRule$|^Key$
+      parameter-name: RelayName
+    set:
+      parameter-name: WcfRelay
+
+  - where:
+      subject: ^Key$
+      parameter-name: AuthorizationRuleName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ^Key$
+      parameter-name: KeyType
+    set:
+      parameter-name: RegenerateKey
+
+  - where:
+      subject: ^Key$
+      parameter-name: Key
+    set:
+      parameter-name: KeyValue
+
+  - where:
+      subject: ^HybridConnection$
+      parameter-name: NamespaceName
+    set:
+      parameter-name: Namespace
+
+  - where:
+      subject: ^HybridConnection$
+      parameter-name: Parameter
+    set:
+      parameter-name: InputObject
+
+  - where:
+      subject-prefix: Wcf
+      subject: ^Relay$
+      parameter-name: NamespaceName
+    set:
+      parameter-name: Namespace
+
+  - where:
+      subject-prefix: Wcf
+      subject: ^Relay$
+      parameter-name: RelayName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject-prefix: Wcf
+      subject: ^Relay$
+      parameter-name: Parameter
+    set:
+      parameter-name: InputObject
+
+  - where:
+      subject-prefix: Wcf
+      subject: ^Relay$
+      parameter-name: RelayType
+    set:
+      parameter-name: WcfRelayType
+
+  - where:
+      verb: Get|Remove
+      subject: ^AuthorizationRule$
+    hide: true
+
+  # - model-cmdlet:
+  #   - NwRuleSetIPRules
+    
   - where:
       model-name: RelayNamespace
     set:

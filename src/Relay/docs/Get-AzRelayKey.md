@@ -1,26 +1,37 @@
 ---
 external help file:
 Module Name: Az.Relay
-online version: https://learn.microsoft.com/powershell/module/az.relay/new-azrelaynamespacenetworkruleset
+online version: https://learn.microsoft.com/powershell/module/az.relay/get-azrelaykey
 schema: 2.0.0
 ---
 
-# New-AzRelayNamespaceNetworkRuleSet
+# Get-AzRelayKey
 
 ## SYNOPSIS
-Create or update NetworkRuleSet for a Namespace.
+Primary and secondary connection strings to the namespace.
 
 ## SYNTAX
 
+### List (Default)
 ```
-New-AzRelayNamespaceNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultAction <DefaultAction>] [-IPRule <INwRuleSetIPRules[]>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzRelayKey -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzRelayKey -HybridConnection <String> -Name <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### List2
+```
+Get-AzRelayKey -Name <String> -Namespace <String> -ResourceGroupName <String> -WcfRelay <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update NetworkRuleSet for a Namespace.
+Primary and secondary connection strings to the namespace.
 
 ## EXAMPLES
 
@@ -48,21 +59,6 @@ Create or update NetworkRuleSet for a Namespace.
 
 ## PARAMETERS
 
-### -DefaultAction
-Default Action for Network Rule Set
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.DefaultAction
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -78,24 +74,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IPRule
-List of IpRules
-To construct, see NOTES section for IPRULE properties and create a hash table.
+### -HybridConnection
+The hybrid connection name.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INwRuleSetIPRules[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: List1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The namespace name
+### -Name
+The authorization rule name.
 
 ```yaml
 Type: System.String
@@ -109,16 +104,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicNetworkAccess
-This determines if traffic is allowed over public network.
-By default it is enabled
+### -Namespace
+The namespace name
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -145,13 +139,28 @@ Subscription credentials which uniquely identify the Microsoft Azure subscriptio
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WcfRelay
+The relay name.
+
+```yaml
+Type: System.String
+Parameter Sets: List2
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -194,20 +203,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAccessKeys
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`IPRULE <INwRuleSetIPRules[]>`: List of IpRules
-  - `[Action <NetworkRuleIPAction?>]`: The IP Filter Action
-  - `[IPMask <String>]`: IP Mask
 
 ## RELATED LINKS
 

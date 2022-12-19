@@ -14,13 +14,13 @@ Returns the description for the specified hybrid connection.
 
 ### List (Default)
 ```
-Get-AzRelayHybridConnection -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzRelayHybridConnection -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzRelayHybridConnection -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+Get-AzRelayHybridConnection -Name <String> -Namespace <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -104,7 +104,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
+### -Namespace
 The namespace name
 
 ```yaml

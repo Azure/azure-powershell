@@ -1,34 +1,61 @@
 ---
 external help file:
 Module Name: Az.Relay
-online version: https://learn.microsoft.com/powershell/module/az.relay/set-azwcfrelay
+online version: https://learn.microsoft.com/powershell/module/az.relay/set-azrelayauthorizationrule
 schema: 2.0.0
 ---
 
-# Set-AzWcfRelay
+# Set-AzRelayAuthorizationRule
 
 ## SYNOPSIS
-Creates or updates a WCF relay.
-This operation is idempotent.
+Creates or updates an authorization rule for a namespace.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Set-AzWcfRelay -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-RequiresClientAuthorization] [-RequiresTransportSecurity] [-UserMetadata <String>]
- [-WcfRelayType <Relaytype>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzWcfRelay -Name <String> -Namespace <String> -ResourceGroupName <String> -InputObject <IWcfRelay>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
+ -Parameter <IAuthorizationRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Update1
+```
+Set-AzRelayAuthorizationRule -HybridConnection <String> -Name <String> -Namespace <String>
+ -ResourceGroupName <String> -Parameter <IAuthorizationRule> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update2
+```
+Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String> -WcfRelay <String>
+ -Parameter <IAuthorizationRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateExpanded1
+```
+Set-AzRelayAuthorizationRule -HybridConnection <String> -Name <String> -Namespace <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Rights <AccessRights[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpanded2
+```
+Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String> -WcfRelay <String>
+ [-SubscriptionId <String>] [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a WCF relay.
-This operation is idempotent.
+Creates or updates an authorization rule for a namespace.
 
 ## EXAMPLES
 
@@ -71,29 +98,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Description of the WCF relay resource.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -HybridConnection
+The hybrid connection name.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay
-Parameter Sets: Update
+Type: System.String
+Parameter Sets: Update1, UpdateExpanded1
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-The relay name.
+The authorization rule name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: AuthorizationRuleName
 
 Required: True
 Position: Named
@@ -117,33 +143,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RequiresClientAuthorization
-Returns true if client authorization is needed for this relay; otherwise, false.
+### -Parameter
+Single item in a List or Get AuthorizationRule operation
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+Parameter Sets: Update, Update1, Update2
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RequiresTransportSecurity
-Returns true if transport security is needed for this relay; otherwise, false.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -156,6 +168,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Rights
+The rights associated with the rule.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights[]
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateExpanded2
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -178,32 +205,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UserMetadata
-The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint.
-For example, it can be used to store descriptive data, such as list of teams and their contact information.
-Also, user-defined configuration settings can be stored.
+### -WcfRelay
+The relay name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Update2, UpdateExpanded2
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WcfRelayType
-WCF relay type.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.Relaytype
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -246,11 +256,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
 
 ## NOTES
 
@@ -261,17 +271,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IWcfRelay>`: Description of the WCF relay resource.
-  - `[RelayType <Relaytype?>]`: WCF relay type.
-  - `[RequiresClientAuthorization <Boolean?>]`: Returns true if client authorization is needed for this relay; otherwise, false.
-  - `[RequiresTransportSecurity <Boolean?>]`: Returns true if transport security is needed for this relay; otherwise, false.
+`PARAMETER <IAuthorizationRule>`: Single item in a List or Get AuthorizationRule operation
+  - `[Rights <AccessRights[]>]`: The rights associated with the rule.
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
   - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
   - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
   - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
   - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[UserMetadata <String>]`: The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint. For example, it can be used to store descriptive data, such as list of teams and their contact information. Also, user-defined configuration settings can be stored.
 
 ## RELATED LINKS
 

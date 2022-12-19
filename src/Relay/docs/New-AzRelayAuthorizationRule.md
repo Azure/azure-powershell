@@ -1,26 +1,40 @@
 ---
 external help file:
 Module Name: Az.Relay
-online version: https://learn.microsoft.com/powershell/module/az.relay/new-azrelaynamespacenetworkruleset
+online version: https://learn.microsoft.com/powershell/module/az.relay/new-azrelayauthorizationrule
 schema: 2.0.0
 ---
 
-# New-AzRelayNamespaceNetworkRuleSet
+# New-AzRelayAuthorizationRule
 
 ## SYNOPSIS
-Create or update NetworkRuleSet for a Namespace.
+Creates or updates an authorization rule for a namespace.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzRelayNamespaceNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultAction <DefaultAction>] [-IPRule <INwRuleSetIPRules[]>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+New-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateExpanded1
+```
+New-AzRelayAuthorizationRule -HybridConnection <String> -Name <String> -Namespace <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Rights <AccessRights[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpanded2
+```
+New-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String> -WcfRelay <String>
+ [-SubscriptionId <String>] [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update NetworkRuleSet for a Namespace.
+Creates or updates an authorization rule for a namespace.
 
 ## EXAMPLES
 
@@ -48,21 +62,6 @@ Create or update NetworkRuleSet for a Namespace.
 
 ## PARAMETERS
 
-### -DefaultAction
-Default Action for Network Rule Set
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.DefaultAction
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -78,28 +77,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IPRule
-List of IpRules
-To construct, see NOTES section for IPRULE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INwRuleSetIPRules[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NamespaceName
-The namespace name
+### -HybridConnection
+The hybrid connection name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: True
@@ -109,16 +92,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicNetworkAccess
-This determines if traffic is allowed over public network.
-By default it is enabled
+### -Name
+The authorization rule name.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.PublicNetworkAccess
+Type: System.String
+Parameter Sets: (All)
+Aliases: AuthorizationRuleName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Namespace
+The namespace name
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -140,6 +137,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Rights
+The rights associated with the rule.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Subscription credentials which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -152,6 +164,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WcfRelay
+The relay name.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded2
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -194,20 +221,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`IPRULE <INwRuleSetIPRules[]>`: List of IpRules
-  - `[Action <NetworkRuleIPAction?>]`: The IP Filter Action
-  - `[IPMask <String>]`: IP Mask
 
 ## RELATED LINKS
 

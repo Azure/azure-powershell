@@ -14,8 +14,8 @@ Deletes a WCF relay.
 
 ### Delete (Default)
 ```
-Remove-AzWcfRelay -NamespaceName <String> -RelayName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWcfRelay -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -84,7 +84,22 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
+### -Name
+The relay name.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Namespace
 The namespace name
 
 ```yaml
@@ -108,21 +123,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RelayName
-The relay name.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

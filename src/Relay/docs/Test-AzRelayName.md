@@ -12,27 +12,8 @@ Check the specified namespace name availability.
 
 ## SYNTAX
 
-### CheckExpanded (Default)
 ```
-Test-AzRelayName -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Check
-```
-Test-AzRelayName -Parameter <ICheckNameAvailability> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentity
-```
-Test-AzRelayName -InputObject <IRelayIdentity> -Parameter <ICheckNameAvailability>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentityExpanded
-```
-Test-AzRelayName -InputObject <IRelayIdentity> -Name <String> [-DefaultProfile <PSObject>] [-Confirm]
+Test-AzRelayName -Namespace <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -80,30 +61,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
-Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
+### -Namespace
 The namespace name to check for availability.
 The namespace name can contain only letters, numbers, and hyphens.
 The namespace must start with a letter, and it must end with a letter or number.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -113,29 +78,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Description of the check name availability request properties.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.ICheckNameAvailability
-Parameter Sets: Check, CheckViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 Subscription credentials which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -181,10 +130,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.ICheckNameAvailability
-
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.ICheckNameAvailabilityResult
@@ -192,25 +137,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IRelayIdentity>`: Identity Parameter
-  - `[AuthorizationRuleName <String>]`: The authorization rule name.
-  - `[HybridConnectionName <String>]`: The hybrid connection name.
-  - `[Id <String>]`: Resource identity path
-  - `[NamespaceName <String>]`: The namespace name
-  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
-  - `[PrivateLinkResourceName <String>]`: The PrivateLinkResource name
-  - `[RelayName <String>]`: The relay name.
-  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
-  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-`PARAMETER <ICheckNameAvailability>`: Description of the check name availability request properties.
-  - `Name <String>`: The namespace name to check for availability. The namespace name can contain only letters, numbers, and hyphens. The namespace must start with a letter, and it must end with a letter or number.
 
 ## RELATED LINKS
 

@@ -14,7 +14,7 @@ Deletes a hybrid connection.
 
 ### Delete (Default)
 ```
-Remove-AzRelayHybridConnection -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+Remove-AzRelayHybridConnection -Name <String> -Namespace <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -99,7 +99,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
+### -Namespace
 The namespace name
 
 ```yaml

@@ -1,36 +1,60 @@
 ---
 external help file:
 Module Name: Az.Relay
-online version: https://learn.microsoft.com/powershell/module/az.relay/get-azwcfrelay
+online version: https://learn.microsoft.com/powershell/module/az.relay/get-azrelayauthorizationrule
 schema: 2.0.0
 ---
 
-# Get-AzWcfRelay
+# Get-AzRelayAuthorizationRule
 
 ## SYNOPSIS
-Returns the description for the specified WCF relay.
+Authorization rule for a namespace by name.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzWcfRelay -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzRelayAuthorizationRule -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzWcfRelay -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+Get-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzRelayAuthorizationRule -HybridConnection <String> -Name <String> -Namespace <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get2
+```
+Get-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String> -WcfRelay <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzWcfRelay -InputObject <IRelayIdentity> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+Get-AzRelayAuthorizationRule -InputObject <IRelayIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzRelayAuthorizationRule -HybridConnection <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List2
+```
+Get-AzRelayAuthorizationRule -Namespace <String> -ResourceGroupName <String> -WcfRelay <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the description for the specified WCF relay.
+Authorization rule for a namespace by name.
 
 ## EXAMPLES
 
@@ -73,6 +97,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HybridConnection
+The hybrid connection name.
+
+```yaml
+Type: System.String
+Parameter Sets: Get1, List1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -90,12 +129,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The relay name.
+The authorization rule name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases:
+Parameter Sets: Get, Get1, Get2
+Aliases: AuthorizationRuleName
 
 Required: True
 Position: Named
@@ -109,25 +148,10 @@ The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, Get1, Get2, List, List1, List2
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Get, GetViaIdentity
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -139,7 +163,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, Get1, Get2, List, List1, List2
 Aliases:
 
 Required: True
@@ -155,12 +179,27 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get, Get1, Get2, List, List1, List2
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WcfRelay
+The relay name.
+
+```yaml
+Type: System.String
+Parameter Sets: Get2, List2
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -174,7 +213,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
 
 ## NOTES
 
