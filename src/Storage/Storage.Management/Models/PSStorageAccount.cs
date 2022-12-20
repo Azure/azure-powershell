@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.StorageAccountSkuConversionStatus = storageAccount.StorageAccountSkuConversionStatus is null ? null : new PSStorageAccountSkuConversionStatus(storageAccount.StorageAccountSkuConversionStatus);
             this.EnableSftp = storageAccount.IsSftpEnabled;
             this.EnableLocalUser = storageAccount.IsLocalUserEnabled;
+            this.AllowedCopyScope = storageAccount.AllowedCopyScope;
         }
         public bool? AllowCrossTenantReplication { get; set; }
 
@@ -160,6 +161,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSExtendedLocation ExtendedLocation { get; set; }
 
         public string PublicNetworkAccess { get; set; }
+
+        public string AllowedCopyScope { get; set; }
 
         public PSImmutableStorageAccount ImmutableStorageWithVersioning { get; set; }
         public PSStorageAccountSkuConversionStatus StorageAccountSkuConversionStatus { get; set; }

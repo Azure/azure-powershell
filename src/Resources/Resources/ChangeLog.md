@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.5.1
 * Fixed issue introduced in previous fix for `Set-AzPolicySetDefinition` InternalServerError when the initiative is too large [#20238], which will remove space in value.
 * Fixed `Get-AzRoleAssignment` BadRequest when scope is '/' [#20323]
 
