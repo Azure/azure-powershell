@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/powershell/module/az.alertsmanagement/set-azactionrule
+online version: https://learn.microsoft.com/powershell/module/az.alertsmanagement/set-azactionrule
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create or update an alert processing rule.
 
 ### BySimplifiedFormatSuppressionAlertProcessingRule (Default)
 ```
-Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>] -AlertProcessingRuleRuleType <String> 
+Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>] -AlertProcessingRuleType <String> 
  -Scope <System.Collections.Generic.List`1[System.String]> -Enabled <String> [-Tag <Hashtable>] 
  [-FilterSeverity <String>] [-FilterMonitorService <String>] [-FilterMonitorCondition <String>] [-FilterTargetResourceType <String>] 
  [-FilterTargetResource <String>] [-FilterTargetResourceGroup <String>] [-FilterAlertRuleId <String>] [-FilterAlertRuleNam <String>]
@@ -29,7 +29,7 @@ Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Descripti
 
 ### BySimplifiedFormatActionGroupAlertProcessingRule 
 ```
-Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>] -AlertProcessingRuleRuleType <String> 
+Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Description <String>] -AlertProcessingRuleType <String> 
  -Scope <System.Collections.Generic.List`1[System.String]> -Enabled <String> [-Tag <Hashtable>] 
  [-FilterSeverity <String>] [-FilterMonitorService <String>] [-FilterMonitorCondition <String>] [-FilterTargetResourceType <String>] 
  [-FilterTargetResource <String>] [-FilterTargetResourceGroup <String>] [-FilterAlertRuleId <String>] [-FilterAlertRuleName <String>]

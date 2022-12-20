@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://docs.microsoft.com/powershell/module/az.databox/update-azdataboxjob
+online version: https://learn.microsoft.com/powershell/module/az.databox/update-azdataboxjob
 schema: 2.0.0
 ---
 

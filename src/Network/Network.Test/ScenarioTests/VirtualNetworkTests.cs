@@ -28,7 +28,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkCRUD()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkCRUD");
@@ -36,7 +36,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkCRUDWithDDoSProtection()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkCRUDWithDDoSProtection");
@@ -44,7 +44,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkSubnetCRUD()
         {
             TestRunner.RunTestScript("Test-subnetCRUD");
@@ -52,7 +52,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "Authentication failed for auxiliary token: The '1' auxiliary tokens contains duplicates which are from the same tenant.")]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkBgpCommunitiesCRUD()
         {
             TestRunner.RunTestScript("Test-bgpCommunitiesCRUD");
@@ -60,7 +60,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkSubnetDelegationCRUD()
         {
             TestRunner.RunTestScript("Test-subnetDelegationCRUD");
@@ -68,7 +68,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkSubnetNetworkSecurityGroupCRUD()
         {
             TestRunner.RunTestScript("Test-subnetNetworkSecurityGroupCRUD");
@@ -76,7 +76,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkSubnetRouteTableCRUD()
         {
             TestRunner.RunTestScript("Test-subnetRouteTableCRUD");
@@ -84,7 +84,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkMultiPrefixSubnetCRUD()
         {
             TestRunner.RunTestScript("Test-multiPrefixSubnetCRUD");
@@ -92,7 +92,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "'The '1' auxiliary tokens are either not application token(s) or are from the application(s) ... which are different from the application of primary identity <...>.' StatusCode: 401; ReasonPhrase: Unauthorized.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkPeeringCRUD()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkPeeringCRUD");
@@ -100,7 +100,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip ="We need to update the way tokens are aquired, as of now aquiring tokens for multiple tenants is broken")]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestMultiTenantVNetPCRUD()
         {
             //this test is special, it requires 2 vnets, one of them created in a tenant other than the current context
@@ -116,7 +116,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "test is timing out , ahmed salma to fix")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestResourceNavigationLinksOnSubnetCRUD()
         {
             TestRunner.RunTestScript("Test-ResourceNavigationLinksCRUD");
@@ -124,7 +124,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkUsage()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkUsage");
@@ -132,7 +132,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkSubnetServiceEndpoint()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkSubnetServiceEndpoint");
@@ -140,7 +140,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkSubnetServiceEndpointPolicies()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkSubnetServiceEndpointPolicies");
@@ -148,7 +148,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkCRUDFlowTimeout()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkCRUD-FlowTimeout");
@@ -156,7 +156,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkPeeringSyncCRUD()
         {
             TestRunner.RunTestScript("Test-SyncVirtualNetworkPeeringCRUD");
@@ -164,7 +164,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkInEdgeZone()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkInEdgeZone");
@@ -172,7 +172,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkEdgeZone()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkEdgeZone");
@@ -180,7 +180,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestVirtualNetworkEncryption()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkEncryption");

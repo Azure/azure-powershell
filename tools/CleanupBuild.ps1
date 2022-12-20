@@ -77,7 +77,9 @@ foreach($RMPath in $resourceManagerPaths)
 
         $acceptedDlls = @(
             # netcoreapp, can't be in RequiredAssemblies, but we need to pack it
-            "Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext.dll"
+            "Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext.dll",
+            # customized AutoMapper
+            "Microsoft.Azure.PowerShell.AutoMapper.dll"
         )
 
         # NestedModule Assemblies may have a folder path, just getting the dll name alone

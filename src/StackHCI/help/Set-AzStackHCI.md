@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/set-azstackhci
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/set-azstackhci
 schema: 2.0.0
 ---
 
@@ -50,7 +50,7 @@ Invoking from the management node to set the diagnostic level to Basic
 
 ### -AccountId
 Specifies the ARM access token.
-Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+Specifying this along with ArmAccessToken will avoid Azure interactive logon.
 
 ```yaml
 Type: System.String
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 
 ### -ArmAccessToken
 Specifies the ARM access token.
-Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+Specifying this along with AccountId will avoid Azure interactive logon.
 
 ```yaml
 Type: System.String
@@ -175,8 +175,7 @@ Accept wildcard characters: False
 ```
 
 ### -GraphAccessToken
-Specifies the Graph access token.
-Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+GraphAccessToken is deprecated.
 
 ```yaml
 Type: System.String

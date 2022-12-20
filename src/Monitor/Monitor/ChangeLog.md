@@ -19,6 +19,16 @@
 -->
 
 ## Upcoming Release
+* Fixed bug for `Remove-AzDataCollectionRuleAssociation` [#20207]
+* Added support for test notifications cmdlets
+  * `Test-AzActionGroup`
+* Fixed start time parameter description of `Get-AzActivityLog` [#20409]
+
+## Version 4.3.0
+* Fixed bug for `New-AzActivityLogAlert` and `Update-AzActivityLogAlert` [#19927]
+
+## Version 4.2.1
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
 
 ## Version 4.2.0
 * [Breaking Change] Upgraded API version for ActivityLogAlert from 2017-04-01 to 2020-10-01, affected cmdlets:

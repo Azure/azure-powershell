@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
             switch (ParameterSetName)
             {
                 case ParameterSet1Name:
-                    WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
+                    WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot, false));
                     location = WebApp.Location;
                     tags = WebApp.Tags;
                     var parameters = new HashSet<string>(MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);

@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestVirtualRouterCRUDMinimalParameters()
         {
             TestRunner.RunTestScript(string.Format("Test-VirtualRouterCRUD"));
@@ -35,7 +35,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestVirtualRouterPeerCRUD()
         {
             TestRunner.RunTestScript(string.Format("Test-VirtualRouterPeerCRUD"));
@@ -43,7 +43,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestVirtualRouterPeerRoutes()
         {
             TestRunner.RunTestScript(string.Format("Test-VirtualRouterPeerRoutes"));

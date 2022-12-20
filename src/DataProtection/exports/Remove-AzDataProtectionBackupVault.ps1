@@ -45,7 +45,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription Id.
   [VaultName <String>]: The name of the backup vault.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionbackupvault
+https://learn.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionbackupvault
 #>
 function Remove-AzDataProtectionBackupVault {
 [OutputType([System.Boolean])]

@@ -51,6 +51,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 
 input-file:
+  - ../OpenApiSpecs/v1.0/Identity.DirectoryManagement.yml
   - ../OpenApiSpecs/v1.0/Applications.yml
   - ../OpenApiSpecs/v1.0/Groups.yml
   - ../OpenApiSpecs/beta/Groups.yml
@@ -191,7 +192,10 @@ directive:
   - where:
       subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|GroupGraphRefMember$|grouprefmember$
     hide: true
-
+  - where:
+      subject: organization
+      verb: New
+    hide: true
   - where:
       subject: ^group$
       verb: ^Update$

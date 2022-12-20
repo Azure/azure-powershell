@@ -34,7 +34,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdenti
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsfunction
+https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsfunction
 #>
 function Test-AzStreamAnalyticsFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus])]

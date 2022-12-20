@@ -20,7 +20,7 @@ Creates or updates subscription diagnostic settings for the specified resource.
 .Description
 Creates or updates subscription diagnostic settings for the specified resource.
 .Example
-$subscriptionId = (Get-AzContext).SubscriptionId
+$subscriptionId = (Get-AzContext).Subscription.Id
 $log = @()
 $log += New-AzDiagnosticSettingSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
 New-AzSubscriptionDiagnosticSetting -Name test-setting -WorkspaceId /subscriptions/$subscriptionId/resourcegroups/test-rg-name/providers/microsoft.operationalinsights/workspaces/test-workspace -Log $log
@@ -37,7 +37,7 @@ LOG <ISubscriptionLogSettings[]>: The list of logs settings.
   [Category <String>]: Name of a Subscription Diagnostic Log category for a resource type this setting is applied to.
   [CategoryGroup <String>]: Name of a Subscription Diagnostic Log category group for a resource type this setting is applied to.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/new-azsubscriptiondiagnosticsetting
+https://learn.microsoft.com/powershell/module/az.monitor/new-azsubscriptiondiagnosticsetting
 #>
 function New-AzSubscriptionDiagnosticSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource])]

@@ -23,7 +23,7 @@ Create an in-memory object for CheckNameAvailabilityRequest.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.CheckNameAvailabilityRequest
 .Link
-https://docs.microsoft.com/powershell/module/az.DeviceUpdate/new-AzDeviceUpdateCheckNameAvailabilityRequestObject
+https://learn.microsoft.com/powershell/module/az.DeviceUpdate/new-AzDeviceUpdateCheckNameAvailabilityRequestObject
 #>
 function New-AzDeviceUpdateCheckNameAvailabilityRequestObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.CheckNameAvailabilityRequest')]

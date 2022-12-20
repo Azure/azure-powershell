@@ -73,7 +73,7 @@ PARAMETER <ISbQueue>: Description of queue Resource.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueue
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueue
 #>
 function New-AzServiceBusQueue {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue])]

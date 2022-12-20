@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/set-azakscluster
+online version: https://learn.microsoft.com/powershell/module/az.aks/set-azakscluster
 schema: 2.0.0
 ---
 
@@ -19,17 +19,17 @@ Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImag
  [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
  [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
  [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
- [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
- [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
- [-LoadBalancerOutboundIp <String[]>] [-LoadBalancerOutboundIpPrefix <String[]>]
- [-LoadBalancerIdleTimeoutInMinute <Int32>] [-ApiServerAccessAuthorizedIpRange <String[]>]
- [-EnableApiServerAccessPrivateCluster] [-ApiServerAccessPrivateDnsZone <String>]
- [-EnableApiServerAccessPrivateClusterPublicFQDN] [-FqdnSubdomain <String>] [-EnableManagedIdentity]
- [-AssignIdentity <String>] [-AutoUpgradeChannel <String>] [-DiskEncryptionSetID <String>]
- [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
+ [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>]
+ [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
+ [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
+ [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
+ [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
+ [-ApiServerAccessPrivateDnsZone <String>] [-EnableApiServerAccessPrivateClusterPublicFQDN]
+ [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
+ [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -38,17 +38,17 @@ Set-AzAksCluster -InputObject <PSKubernetesCluster> [-NodePoolMode <String>] [-A
  [-NodeImageOnly] [-ControlPlaneOnly] [-Location <String>] [-LinuxProfileAdminUserName <String>]
  [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
  [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
- [-NodeVmSize <String>] [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
- [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
- [-LoadBalancerOutboundIp <String[]>] [-LoadBalancerOutboundIpPrefix <String[]>]
- [-LoadBalancerIdleTimeoutInMinute <Int32>] [-ApiServerAccessAuthorizedIpRange <String[]>]
- [-EnableApiServerAccessPrivateCluster] [-ApiServerAccessPrivateDnsZone <String>]
- [-EnableApiServerAccessPrivateClusterPublicFQDN] [-FqdnSubdomain <String>] [-EnableManagedIdentity]
- [-AssignIdentity <String>] [-AutoUpgradeChannel <String>] [-DiskEncryptionSetID <String>]
- [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
+ [-NodeVmSize <String>] [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>]
+ [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
+ [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
+ [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
+ [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
+ [-ApiServerAccessPrivateDnsZone <String>] [-EnableApiServerAccessPrivateClusterPublicFQDN]
+ [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
+ [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
@@ -57,17 +57,17 @@ Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImag
  [-Id] <String> [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
  [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
  [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
- [-SshKeyValue <String>] [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>]
- [-LoadBalancerAllocatedOutboundPort <Int32>] [-LoadBalancerManagedOutboundIpCount <Int32>]
- [-LoadBalancerOutboundIp <String[]>] [-LoadBalancerOutboundIpPrefix <String[]>]
- [-LoadBalancerIdleTimeoutInMinute <Int32>] [-ApiServerAccessAuthorizedIpRange <String[]>]
- [-EnableApiServerAccessPrivateCluster] [-ApiServerAccessPrivateDnsZone <String>]
- [-EnableApiServerAccessPrivateClusterPublicFQDN] [-FqdnSubdomain <String>] [-EnableManagedIdentity]
- [-AssignIdentity <String>] [-AutoUpgradeChannel <String>] [-DiskEncryptionSetID <String>]
- [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
+ [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>]
+ [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
+ [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
+ [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
+ [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
+ [-ApiServerAccessPrivateDnsZone <String>] [-EnableApiServerAccessPrivateClusterPublicFQDN]
+ [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
+ [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,6 +104,21 @@ Disable the 'acrpull' role assignment to the ACR specified by name or resource I
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AksCustomHeader
+Aks custom headers used for building Kubernetes network.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -655,11 +670,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NodePoolLabel
+Node pool labels used for building Kubernetes network.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodePoolMode
 NodePoolMode represents mode of an node pool.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NodePoolTag
+The tags to be persisted on the agent pool virtual machine scale set.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

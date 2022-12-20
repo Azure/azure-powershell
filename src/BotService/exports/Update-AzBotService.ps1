@@ -28,7 +28,7 @@ Update-AzBotService -InputObject $getAzbot -kind sdk
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
+Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,16 +36,17 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
   [ChannelName <ChannelName?>]: The name of the Channel resource.
-  [ConnectionName <String>]: The name of the Bot Service Connection Setting resource
+  [ConnectionName <String>]: The name of the Bot Service Connection Setting resource.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
   [ResourceGroupName <String>]: The name of the Bot resource group in the user subscription.
   [ResourceName <String>]: The name of the Bot resource.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.botservice/update-azbotservice
+https://learn.microsoft.com/powershell/module/az.botservice/update-azbotservice
 #>
 function Update-AzBotService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -77,6 +78,26 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesAllSettings]))]
+    [System.Collections.Hashtable]
+    # Contains resource all settings defined as key/value pairs.
+    ${AllSetting},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # The hint (e.g.
+    # keyVault secret resourceId) on how to fetch the app secret
+    ${AppPasswordHint},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # The CMK Url
+    ${CmekKeyVaultUrl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The description of the bot
     ${Description},
@@ -101,6 +122,12 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
+    ${DisableLocalAuth},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
     # The Name of the bot
     ${DisplayName},
@@ -122,6 +149,18 @@ param(
     [System.String]
     # The Icon Url of the bot
     ${IconUrl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether Cmek is enabled
+    ${IsCmekEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether the bot is streaming supported
+    ${IsStreamingSupported},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind])]
@@ -153,8 +192,66 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
     [System.String]
+    # The bot's manifest url
+    ${ManifestUrl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
     # Microsoft App Id for the bot
     ${MsaAppId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Microsoft App Managed Identity Resource Id for the bot
+    ${MsaAppMsiResourceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Microsoft App Tenant Id for the bot
+    ${MsaAppTenantId},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType]
+    # Microsoft App Type for the bot
+    ${MsaAppType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # The hint to browser (e.g.
+    # protocol handler) on how to open the bot for authoring
+    ${OpenWithHint},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesParameters]))]
+    [System.Collections.Hashtable]
+    # Contains resource parameters defined as key/value pairs.
+    ${Parameter},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess]
+    # Whether the bot is in an isolated network
+    ${PublicNetworkAccess},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # Publishing credentials of the resource
+    ${PublishingCredentials},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # The channel schema transformation version for the bot
+    ${SchemaTransformationVersion},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName])]
@@ -165,10 +262,22 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceTags]))]
+    [System.String]
+    # The storage resourceId for the bot
+    ${StorageResourceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IResourceTags]))]
     [System.Collections.Hashtable]
     # Contains resource tags defined as key/value pairs.
     ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.BotService.Category('Body')]
+    [System.String]
+    # The Tenant Id for the bot
+    ${TenantId},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

@@ -119,6 +119,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             {
                                 Id = imageReferenceId
                             }),
+                            OsDisk = new OSDisk(
+                                createOption: DiskCreateOptionTypes.FromImage,
+                                deleteOption: osDiskDeleteOption),
                             DataDisks = DataDiskStrategy.CreateDataDisks(
                                 imageAndOsType?.DataDiskLuns, dataDisks, dataDiskDeleteOption),
                             DiskControllerType = diskControllerType

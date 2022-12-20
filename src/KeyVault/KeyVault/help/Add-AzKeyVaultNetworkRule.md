@@ -45,7 +45,7 @@ Please note that any IP range inside `10.0.0.0-10.255.255.255` (private IP addre
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" -ServiceEndpoint Microsoft.KeyVault 
 $virtualNetwork = New-AzVirtualNetwork -Name myVNet -ResourceGroupName myRG -Location westus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
 $myNetworkResId = (Get-AzVirtualNetwork -Name myVNet -ResourceGroupName myRG).Subnets[0].Id
-Add-AzKeyVaultNetworkRule -VaultName myvault -IpAddressRange "10.0.1.0/24" -VirtualNetworkResourceId $myNetworkResId -PassThru
+Add-AzKeyVaultNetworkRule -VaultName myvault -IpAddressRange "124.56.78.0/24" -VirtualNetworkResourceId $myNetworkResId -PassThru
 ```
 
 ```output
@@ -80,7 +80,7 @@ Access Policies                  :
 Network Rule Set                 :
                                    Default Action                             : Allow
                                    Bypass                                     : AzureServices
-                                   IP Rules                                   : 10.0.1.0/24
+                                   IP Rules                                   : 124.56.78.0/24
                                    Virtual Network Rules                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-
                                    xxxxxxxxxxxxx/resourcegroups/myRG/providers/microsoft.network/virtualnetworks/myvn
                                    et/subnets/frontendsubnet

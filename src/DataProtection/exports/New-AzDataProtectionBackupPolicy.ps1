@@ -72,7 +72,7 @@ POLICY <IBackupPolicy>: Policy Request Object
     [BackupParameterObjectType <String>]: Type of the specific object - used for deserializing
     [IsDefault <Boolean?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackuppolicy
+https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackuppolicy
 #>
 function New-AzDataProtectionBackupPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBaseBackupPolicyResource])]

@@ -35,28 +35,28 @@ directive:
     transform: $.name = "ResourceIdentityTypeForCommonTypes"
   - from: swagger-document
     where: $.definitions.ManagedClusterAgentPoolProfileProperties.properties.orchestratorVersion
-    transform: $["description"] = $["description"].replaceAll("<", "(");
+    transform: $["description"] = $["description"].replace(/</g, "(");
   - from: swagger-document
     where: $.definitions.ManagedClusterAgentPoolProfileProperties.properties.orchestratorVersion
-    transform: $["description"] = $["description"].replaceAll(">", ")");
+    transform: $["description"] = $["description"].replace(/>/g, ")");
   - from: swagger-document
     where: $.definitions.ManagedClusterAgentPoolProfileProperties.properties.currentOrchestratorVersion
-    transform: $["description"] = $["description"].replaceAll("<", "(");
+    transform: $["description"] = $["description"].replace(/</g, "(");
   - from: swagger-document
     where: $.definitions.ManagedClusterAgentPoolProfileProperties.properties.currentOrchestratorVersion
-    transform: $["description"] = $["description"].replaceAll(">", ")");
+    transform: $["description"] = $["description"].replace(/>/g, ")");
   - from: swagger-document
     where: $.definitions.ManagedClusterProperties.properties.kubernetesVersion
-    transform: $["description"] = $["description"].replaceAll("<", "(");
+    transform: $["description"] = $["description"].replace(/</g, "(");
   - from: swagger-document
     where: $.definitions.ManagedClusterProperties.properties.kubernetesVersion
-    transform: $["description"] = $["description"].replaceAll(">", ")");
+    transform: $["description"] = $["description"].replace(/>/g, ")");
   - from: swagger-document
     where: $.definitions.ManagedClusterProperties.properties.currentKubernetesVersion
-    transform: $["description"] = $["description"].replaceAll("<", "(");
+    transform: $["description"] = $["description"].replace(/</g, "(");
   - from: swagger-document
     where: $.definitions.ManagedClusterProperties.properties.currentKubernetesVersion
-    transform: $["description"] = $["description"].replaceAll(">", ")");
+    transform: $["description"] = $["description"].replace(/>/g, ")");
 
 output-folder: Generated
 namespace: Microsoft.Azure.Management.ContainerService

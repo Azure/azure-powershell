@@ -27,7 +27,7 @@ New-AzConnectedKubernetes -ClusterName azps_test_cluster1 -ResourceGroupName azp
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
+https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
 #>
 function New-AzConnectedKubernetes {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster])]
@@ -125,6 +125,11 @@ function New-AzConnectedKubernetes {
         ${Tag},
 
         [Parameter()]
+        [System.Management.Automation.SwitchParameter]
+        # Accept EULA of ConnectedKubernetes, legal term will pop up without this parameter provided
+        ${AcceptEULA},
+
+        [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Azure')]
@@ -185,6 +190,24 @@ function New-AzConnectedKubernetes {
     )
 
     process {
+        if($AzureHybridBenefit){
+            if(!$AcceptEULA){
+                $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
+                try {
+                    $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
+                } catch {
+                    Write-Error "Get legal term failed."
+                    throw
+                }
+                $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
+                if($confirmation -ine "Y"){
+                    Return
+                }
+            }
+        }
+        $null = $PSBoundParameters.Remove('AcceptEULA')
+
+
         if ($PSBoundParameters.ContainsKey('KubeConfig')) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         } elseif (Test-Path Env:KUBECONFIG) {

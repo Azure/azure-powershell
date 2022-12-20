@@ -1,16 +1,16 @@
 $rg = "mo-resources-eus"
 $aa = "mo-aaa-eus2"
 $azureVMIdsW = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01",
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01",
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02"
     )
 
 $azureVMIdsL = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01",
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-02"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01",
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-02"
     )
 
-$nonAzurecomputers = @("server-01", "server-02")
+$nonAzurecomputers = @("server-01")
 
 <#
 WaitForProvisioningState
@@ -304,7 +304,7 @@ function Test-GetAllSoftwareUpdateMachineRuns {
     $runs = Get-AzAutomationSoftwareUpdateMachineRun  -ResourceGroupName $rg `
                                                            -AutomationAccountName $aa
     
-    Assert-AreEqual $runs.Count 20 "Get software update configurations machine runs didn't return expected number of items $($runs.Count)" 
+    Assert-AreEqual $runs.Count 6 "Get software update configurations machine runs didn't return expected number of items $($runs.Count)" 
 }
 
 <#
@@ -313,11 +313,11 @@ Test-GetAllSoftwareUpdateMachineRunsWithFilters
 function Test-GetAllSoftwareUpdateMachineRunsWithFilters {
     $runs = Get-AzAutomationSoftwareUpdateMachineRun  -ResourceGroupName $rg `
                                                            -AutomationAccountName $aa `
-                                                           -SoftwareUpdateRunId 0ba88dce-b361-4b15-b70a-4f99c98a0f1a `
+                                                           -SoftwareUpdateRunId 7f077575-3905-4608-843e-5651884ffea1 `
                                                            -Status Succeeded `
                                                            -TargetComputer $azureVMIdsW[0]
 
-    Assert-AreEqual $runs.Count 1 "Get software update configurations machine runs with filters didn't return expected number of items"
+    Assert-AreEqual $runs.Count 1 "Get software update configurations machine runs with filters didn't return expected number of items $($runs.Count)"
 }
 
 <#
@@ -433,7 +433,7 @@ function Test-CreateWindowsIncludeKbNumbersSoftwareUpdateConfiguration() {
     $aa = "mo-aaa-eus2"
 	$rg = "mo-resources-eus"
     $azureVMIdsW = @(
-	   "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01"
+	   "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01"
 	)
 
     $name = "mo-monthly-01"
@@ -482,7 +482,7 @@ function Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration() {
     $aa = "mo-aaa-eus2"
 	$rg = "mo-resources-eus"
     $azureVMIdsL = @(
-	   "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01"
+	   "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01"
 	)
 
     $name = "mo-monthly-02"
@@ -528,8 +528,8 @@ Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithAllOption
 #>
 function Test-CreateLinuxSoftwareUpdateConfigurationWithRebootSetting {
 	$azureVMIdsLinux = @(
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01",
-        "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-compute/providers/Microsoft.Compute/virtualMachines/mo-vm-l-02"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01",
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-02"
     )
 
     $name = "linx-suc-reboot"
