@@ -149,6 +149,12 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The Kubelet configuration on the agent pool nodes.")]
         public KubeletConfig NodeKubeletConfig { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The maximum number or percentage of nodes that ar surged during upgrade.")]
+        public string NodeMaxSurge { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The ID for Proximity Placement Group.")]
+        public string PPG { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -511,6 +517,14 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.NodeKubeletConfig))
             {
                 defaultAgentPoolProfile.KubeletConfig = NodeKubeletConfig;
+            }
+            if (this.IsParameterBound(c => c.NodeMaxSurge))
+            {
+                defaultAgentPoolProfile.UpgradeSettings = new AgentPoolUpgradeSettings(NodeMaxSurge);
+            }
+            if (this.IsParameterBound(c => c.PPG))
+            {
+                defaultAgentPoolProfile.ProximityPlacementGroupID = PPG;
             }
 
             defaultAgentPoolProfile.Mode = NodePoolMode;

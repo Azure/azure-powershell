@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 * Fixed a bug that added Ddos related properties when viewing PublicIpAddress and DdosProtectionPlan objects
-* Add samples for retrieving Private Link IP Configuration using 'New-AzApplicationGatewayPrivateLinkIpConfiguration' with fix [#20440]
+* Added samples for retrieving Private Link IP Configuration using 'New-AzApplicationGatewayPrivateLinkIpConfiguration' with fix [#20440]
 
 ## Version 5.2.0
 * Added optional parameters `CustomBlockResponseStatusCode` and `CustomBlockResponseBody` parameter to `AzApplicationGatewayFirewallPolicySettings`
