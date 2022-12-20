@@ -25,16 +25,16 @@ Get-AzPeeringUnbilledPrefix [-ResourceId] <String> [-DefaultProfile <IAzureConte
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Lists the unbilled prefixes for a Peering.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>  Get-AzPeeringUnbilledPrefix -ResourceGroupName $resourceGroupName -Name $peeringName
 ```
 
-{{ Add example description here }}
+Lists the unbilled prefixes for a Peering.
 
 ## PARAMETERS
 
