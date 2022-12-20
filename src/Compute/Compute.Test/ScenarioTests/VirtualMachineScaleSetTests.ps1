@@ -3889,6 +3889,7 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK
         $cvmEncryption = @{OSDiskImage = $cvmOsDiskEncryption};
         $region = @{Name = $loc; ReplicaCount = $replicaCount; StorageAccountType = $storageAccountType; Encryption = $cvmEncryption};
         $targetRegions = @($region);
+        Start-Sleep -Seconds 360;
         New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $definitionName `
             -Name $versionName -Location $loc -SourceImageId $sourceImageId -ReplicaCount $replicaCount `
             -StorageAccountType $storageAccountType -TargetRegion $targetRegions;
