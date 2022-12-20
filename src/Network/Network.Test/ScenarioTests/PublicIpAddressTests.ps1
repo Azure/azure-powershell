@@ -667,27 +667,6 @@ function Test-PublicIpAddressCRUD-DdosProtection
       $pip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $ddpp.Id $pip.DdosSettings.DdosProtectionPlan.Id
 
-      # Create Backend for Pip
-      $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
-      $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $rgname -Location $location -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet      
-
-      $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
-      $VirtualMachine = New-AzVM -ResourceGroupName $rgname -Name MyVm -Credential $Credential
-      
-      $NIC = Get-AzNetworkInterface -Name MyVm -ResourceGroupName $rgname
-      $NIC | Set-AzNetworkInterfaceIpConfig -Name MyVm -PublicIPAddress $expected -Subnet $SingleSubnet
-      $NIC | Set-AzNetworkInterface
-
-      # Get DDoS Protection Status
-      $pip = Get-AzPublicIpAddressDdosProtectionStatus -PublicIpAddress $expected
-      Assert-AreEqual "true" $pip.IsWorkloadProtected
-
-      #$actual.DdosSettings.DdosProtectionPlan = $null
-      #$pip = Set-AzPublicIpAddress -PublicIpAddress $actual
-
-      $result = Get-AzVirtualNetworkDdosProtectionStatus -ResourceGroupName $rgname -VirtualNetworkName "MyVm"
-      Assert-AreEqual "true" $result[0].IsWorkloadProtected
-
       # delete
       $delete = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
       Assert-AreEqual true $delete
