@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added `DdosProtectionPlan` property in `AzPublicIpAddress`
+* Updated mapping in `AzPublicIpAddress` to always show/create DdosSettings
 * Fixed a bug that added Ddos related properties when viewing PublicIpAddress and DdosProtectionPlan objects
 
 ## Version 5.2.0
