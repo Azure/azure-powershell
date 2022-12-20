@@ -77,7 +77,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public override void Execute()
         {
             base.Execute();
-            this.WriteObject("Abhisehk Unbilled Prefixes");
             try
             {
                 if (string.Equals(this.ParameterSetName, Constants.ParameterSetNameByResourceId))
@@ -106,24 +105,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             try
             {
                 var subscriptionId = this.DefaultProfile.DefaultContext.Subscription.Id;
-                this.WriteObject(new string[] {"subid", subscriptionId, this.ResourceGroupName, this.Name }, true);
-
                 var resourceId = Track2Peering.PeeringResource.CreateResourceIdentifier(subscriptionId, ResourceGroupName, Name);
-
-                this.WriteObject(new string[] { "resourceId", resourceId.ToString() });
                 var peeringResourceClient = Track2Peering.PeeringExtensions.GetPeeringResource(this.ArmClient, resourceId);
-                this.WriteObject(new string[] { "peeringClient success" });
-
                 var list = peeringResourceClient.GetRpUnbilledPrefixes();
-                System.Threading.Thread.Sleep(1000);
-                this.WriteObject(new string[] { "peeringClient.listRpUnbilledPrefixes success" });
 
                 if (list != null)
                 {
                     this.WriteObject(list, true);
                     return list.Select(this.ToPSUnbilledPrefix).ToList();
                 }
-                this.WriteObject(new string[] { "list null" });
                 return list;
             }
             catch (Exception ex)
