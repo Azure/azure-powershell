@@ -613,19 +613,10 @@ function Test-PublicIpAddressCRUD-DdosProtection
     $rgname = Get-ResourceGroupName
     $rname = Get-ResourceName
     $domainNameLabel = Get-ResourceName
-    $ddosProtectionPlanName = Get-ResourceName
-
-    $rglocation = "southcentralus"
+    $ddosProtectionPlanName = Get-ResourceName  
+    $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
-    $location = "southcentralus"
-
-    $NetworkName = "MyNet"
-    $NICName = "MyNIC"
-    $SubnetName = "MySubnet"
-    $SubnetAddressPrefix = "10.0.0.0/24"
-    $VnetAddressPrefix = "10.0.0.0/16"
-    $VMLocalAdminUser = "LocalAdminUser"
-    $VMLocalAdminSecurePassword = ConvertTo-SecureString "12%jhdhd772" -AsPlainText -Force
+    $location = Get-ProviderLocation $resourceTypeParent
 
     try 
      {
