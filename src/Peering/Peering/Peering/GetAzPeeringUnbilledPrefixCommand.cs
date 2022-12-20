@@ -111,7 +111,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 
                 if (list != null)
                 {
-                    this.WriteObject(list, true);
                     return list.Select(this.ToPSUnbilledPrefix).ToList();
                 }
                 return list;
