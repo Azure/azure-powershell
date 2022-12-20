@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new properties `CurrentNodeCommunicationMode` (read only) and `TargetCommunicationMode` of type `NodeCommunicationMode` to `PSCloudPool`.
+  - Valid values for `NodeCommunicationMode`: Default, Classic, Simplified
+  - When the `PSCloudPool` is updated with a new `TargetCommunicationMode` value, the Batch service will attempt to update the pool to the new value the next time the pool is resized down to zero compute nodes and back up.
+* `PSPrivateLinkServiceConnectionState`'s `ActionRequired` property required has been renamed to `ActionsRequired`. The old property has been marked as obsolete, and now just returns the new property. This should not impact existing consumers.
 
 ## Version 3.2.1
 * Fixed a bug wherein creating a new JobSchedule does not properly submit Output Files.
