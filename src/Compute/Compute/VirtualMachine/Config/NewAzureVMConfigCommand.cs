@@ -185,6 +185,28 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
         public int vCPUCountPerCore { get; set; }
 
+        [Parameter(
+           HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. <br> Default: UefiSettings will not be enabled unless this property is set.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        public string SecurityType { get; set; }
+
+        [Parameter(
+           HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableVtpm { get; set; } = null;
+
+        [Parameter(
+           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableSecureBoot { get; set; } = null;
+
         public override void ExecuteCmdlet()
         {
             var vm = new PSVirtualMachine
@@ -341,6 +363,50 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.IsParameterBound(c => c.PlatformFaultDomain))
             {
                 vm.PlatformFaultDomain = this.PlatformFaultDomain;
+            }
+
+            if (this.IsParameterBound(c => c.SecurityType))
+            {
+                if (vm.SecurityProfile == null)
+                {
+                    vm.SecurityProfile = new SecurityProfile();
+                }
+                if (vm.SecurityProfile.UefiSettings == null)
+                {
+                    vm.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vm.SecurityProfile.SecurityType = this.SecurityType;
+                if (vm.SecurityProfile.SecurityType == "TrustedLaunch" || vm.SecurityProfile.SecurityType == "ConfidentialVM")
+                {
+                    vm.SecurityProfile.UefiSettings.VTpmEnabled = vm.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
+                    vm.SecurityProfile.UefiSettings.SecureBootEnabled = vm.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
+                }
+            }
+
+            if (this.IsParameterBound(c => c.EnableVtpm))
+            {
+                if (vm.SecurityProfile == null)
+                {
+                    vm.SecurityProfile = new SecurityProfile();
+                }
+                if (vm.SecurityProfile.UefiSettings == null)
+                {
+                    vm.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vm.SecurityProfile.UefiSettings.VTpmEnabled = this.EnableVtpm;
+            }
+
+            if (this.IsParameterBound(c => c.EnableSecureBoot))
+            {
+                if (vm.SecurityProfile == null)
+                {
+                    vm.SecurityProfile = new SecurityProfile();
+                }
+                if (vm.SecurityProfile.UefiSettings == null)
+                {
+                    vm.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vm.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
             }
 
             WriteObject(vm);

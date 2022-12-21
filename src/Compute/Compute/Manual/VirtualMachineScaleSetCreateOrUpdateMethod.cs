@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "Win2012R2Datacenter",
             "Win2012Datacenter",
             "Win2008R2SP1",
-            "Win10")]
+            "Win10",
+            "Win2016DataCenterGenSecond")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
@@ -224,6 +225,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         const int FirstPortRangeStart = 50000;
 
+        [Parameter(
+           ParameterSetName = SimpleParameterSet,
+           HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. <br> Default: UefiSettings will not be enabled unless this property is set.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        public string SecurityType { get; set; }
+
+        [Parameter(
+         ParameterSetName = SimpleParameterSet,
+         HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine.",
+         ValueFromPipelineByPropertyName = true,
+         Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableVtpm { get; set; } = null;
+
+        [Parameter(
+           ParameterSetName = SimpleParameterSet,
+           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableSecureBoot { get; set; } = null;
+
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
         {
             NewAzureRmVmss _cmdlet { get; }
@@ -362,6 +388,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                 }
 
+                if (_cmdlet.IsParameterBound(c => c.SecurityType) && (_cmdlet.SecurityType == "TrustedLaunch" || _cmdlet.SecurityType == "ConfidentialVM"))
+                {
+                    _cmdlet.SecurityType = _cmdlet.SecurityType;
+                    _cmdlet.EnableVtpm = _cmdlet.EnableVtpm == null ? true : _cmdlet.EnableVtpm;
+                    _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot == null ? true : _cmdlet.EnableSecureBoot;
+                }
+
                 Dictionary<string, List<string>> auxAuthHeader = null;
                 if (!string.IsNullOrEmpty(_cmdlet.ImageReferenceId))
                 {
@@ -415,7 +448,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     userData: _cmdlet.IsParameterBound(c => c.UserData) ? _cmdlet.UserData : null,
                     imageReferenceId: _cmdlet.IsParameterBound(c => c.ImageReferenceId) ? _cmdlet.ImageReferenceId : null,
                     auxAuthHeader: auxAuthHeader,
-                    diskControllerType: _cmdlet.DiskControllerType
+                    diskControllerType: _cmdlet.DiskControllerType,
+                    securityType: _cmdlet.SecurityType,
+                    enableVtpm: _cmdlet.EnableVtpm,
+                    enableSecureBoot: _cmdlet.EnableSecureBoot
                     );
             }
 
@@ -499,6 +535,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                 }
 
+                if (_cmdlet.IsParameterBound(c => c.SecurityType) && (_cmdlet.SecurityType == "TrustedLaunch" || _cmdlet.SecurityType == "ConfidentialVM"))
+                {
+                    _cmdlet.SecurityType = _cmdlet.SecurityType;
+                    _cmdlet.EnableVtpm = _cmdlet.EnableVtpm == null ? true : _cmdlet.EnableVtpm;
+                    _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot == null ? true : _cmdlet.EnableSecureBoot;
+                }
+
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
 
                 var networkSecurityGroup = noZones
@@ -537,7 +580,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     platformFaultDomainCount: platformFaultDomainCountFlexibleDefault,
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
-                    capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null
+                    capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
+                    securityType: _cmdlet.SecurityType,
+                    enableVtpm: _cmdlet.EnableVtpm,
+                    enableSecureBoot: _cmdlet.EnableSecureBoot
                     );
             }
 
