@@ -15,10 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzWcfRelay'))
 }
 
 Describe 'Set-AzWcfRelay' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'Update' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

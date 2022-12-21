@@ -13,14 +13,6 @@ This operation is idempotent.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
-```
-Set-AzWcfRelay -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-RequiresClientAuthorization] [-RequiresTransportSecurity] [-UserMetadata <String>]
- [-WcfRelayType <Relaytype>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
 ```
 Set-AzWcfRelay -Name <String> -Namespace <String> -ResourceGroupName <String> -InputObject <IWcfRelay>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -32,27 +24,37 @@ This operation is idempotent.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Updates the description for the WcfRelay in the specified Relay namespace
 ```powershell
-{{ Add code here }}
+$wcf = Get-AzWcfRelay -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name wcf-01
+$wcf.UserMetadata = "User Date"
+Set-AzWcfRelay -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name wcf-01 -InputObject $wcf | fl
 ```
 
 ```output
-{{ Add output here }}
+CreatedAt                    : 1/1/0001 12:00:00 AM
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-relay-rg/providers/Microsoft.Relay/namespaces/namespace-pwsh01/wcfRela
+                               ys/wcf-01
+IsDynamic                    : 
+ListenerCount                : 
+Location                     : 
+Name                         : wcf-01
+RelayType                    : NetTcp
+RequiresClientAuthorization  : False
+RequiresTransportSecurity    : False
+ResourceGroupName            : lucas-relay-rg
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.Relay/namespaces/wcfrelays
+UpdatedAt                    : 1/1/0001 12:00:00 AM
+UserMetadata                 : User Date
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates the description for the WcfRelay in the specified Relay namespace.
 
 ## PARAMETERS
 
@@ -77,7 +79,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IWcfRelay
-Parameter Sets: Update
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -117,36 +119,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RequiresClientAuthorization
-Returns true if client authorization is needed for this relay; otherwise, false.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RequiresTransportSecurity
-Returns true if transport security is needed for this relay; otherwise, false.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the Resource group within the Azure subscription.
 
@@ -174,38 +146,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserMetadata
-The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint.
-For example, it can be used to store descriptive data, such as list of teams and their contact information.
-Also, user-defined configuration settings can be stored.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WcfRelayType
-WCF relay type.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.Relaytype
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

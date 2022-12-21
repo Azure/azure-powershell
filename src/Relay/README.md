@@ -126,10 +126,6 @@ directive:
   - where:
      subject: PrivateEndpointConnection|PrivateLinkResource
     remove: true
-  - where:
-      verb: Set
-      subject: ^Namespace$
-    remove: true
 
   - where:
       verb: Set
@@ -137,10 +133,9 @@ directive:
     remove: true
 
   - where:
-      verb: Update
-      subject: ^Namespace$
-    set:
       verb: Set
+      subject: ^Namespace$
+    remove: true
 
   - where:
       verb: Test
@@ -155,10 +150,27 @@ directive:
 
   - where:
       verb: New
-      subject: ^Namespace$|^HybridConnection$|^Relay$|^NamespaceNetworkRuleSet$
+      subject: ^Namespace$|^NamespaceNetworkRuleSet$
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
+  - where:
+      verb: Update
+      subject: ^Namespace$
+      variant: ^Update$|^UpdateViaIdentity$
+    remove: true
+  # Hide for change Update verb to Set.
+  - where:
+      verb: Update
+      subject: ^Namespace$
+    hide: true
+    
+  - where:
+      verb: New
+      subject: ^HybridConnection$|^Relay$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+    
   - where:
       subject: ^Key$
       variant: ^Regenerate$|^RegenerateViaIdentityExpanded$|^RegenerateViaIdentity$|^Regenerate1$|^RegenerateViaIdentityExpanded1$|^RegenerateViaIdentity1$|^Regenerate2$|^RegenerateViaIdentityExpanded2$|^RegenerateViaIdentity2$
@@ -166,7 +178,13 @@ directive:
 
   - where:
       subject: ^AuthorizationRule$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Create1|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^Create2|^CreateViaIdentity2$|^CreateViaIdentityExpanded2$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Create1$|^^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^Create2$|^^CreateViaIdentity2$|^CreateViaIdentityExpanded2$
+    remove: true
+
+  - where:
+      verb: Set
+      subject: ^Relay$
+      variant: ^UpdateExpanded$
     remove: true
 
   - where:
@@ -175,11 +193,6 @@ directive:
       variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
 
-  - where:
-      subject: ^Namespace$
-      variant: ^UpdateViaIdentityExpanded$|^UpdateViaIdentity$
-    remove: true
-  
   - where:
       subject: ^Namespace$
       parameter-name: PrivateEndpointConnection
@@ -235,13 +248,47 @@ directive:
       parameter-name: Namespace
 
   - where:
-      subject: ^HybridConnection$|^AuthorizationRule$
+      verb: New|Set
+      subject: ^HybridConnection$
       parameter-name: Parameter
     set:
       parameter-name: InputObject
 
   - where:
-      subject: ^Namespace$
+      verb: Set
+      varinat: ^UpdateExpanded$
+      subject: ^HybridConnection$
+      parameter-name: RequiresClientAuthorization
+    hide: true
+
+  - where:
+      verb: New|Set
+      subject: ^Relay$
+      parameter-name: Parameter
+    set:
+      parameter-name: InputObject
+
+  - where:
+      verb: Set
+      subject: ^Relay$
+      parameter-name: RequiresClientAuthorization
+    hide: true
+
+  - where:
+      verb: Set
+      subject: ^Relay$
+      parameter-name: RequiresTransportSecurity
+    hide: true
+
+  - where:
+      verb: Set
+      subject: ^Relay$
+      parameter-name: WcfRelayType
+    hide: true
+
+  - where:
+      verb: Set
+      subject: ^AuthorizationRule$
       parameter-name: Parameter
     set:
       parameter-name: InputObject
@@ -259,13 +306,6 @@ directive:
       parameter-name: RelayName
     set:
       parameter-name: Name
-
-  - where:
-      subject-prefix: Wcf
-      subject: ^Relay$
-      parameter-name: Parameter
-    set:
-      parameter-name: InputObject
 
   - where:
       subject-prefix: Wcf

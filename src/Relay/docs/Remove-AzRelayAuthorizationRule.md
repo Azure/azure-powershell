@@ -43,27 +43,33 @@ Deletes a namespace authorization rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove an authorization rule description of the Relay namespace
 ```powershell
-{{ Add code here }}
+Remove-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name authRule-03
 ```
 
-```output
-{{ Add output here }}
-```
+This cmdlet removes an authorization rule description of the Relay namespace.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove an authorization rule description of the Hybrid Connection
 ```powershell
-{{ Add code here }}
+Remove-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -HybridConnection connection-01 -Name authRule-01
 ```
 
-```output
-{{ Add output here }}
+This cmdlet removes an authorization rule description of the Hybrid Connection.
+
+### Example 3: Remove an authorization rule description of the Wcf Relay
+```powershell
+Remove-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-02 -Name authRule-01
 ```
 
-{{ Add description here }}
+This cmdlet removes an authorization rule description of the Wcf Relay.
+
+### Example 4: Remove authorization rule by pipeline
+```powershell
+Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-02 | Remove-AzRelayAuthorizationRule
+```
+
+This cmdlet removes authorization rule by pipeline.
 
 ## PARAMETERS
 

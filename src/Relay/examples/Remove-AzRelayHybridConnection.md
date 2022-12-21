@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Removes the HybridConnection from the specified HybridConnection namespace
 ```powershell
-{{ Add code here }}
+Remove-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes the HybridConnection from the specified HybridConnection namespace.
 
-### Example 2: {{ Add title here }}
+### Example 2: Removes the HybridConnection from the specified HybridConnection namespace by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01 | Remove-AzRelayHybridConnection
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+This command removes the HybridConnection from the specified HybridConnection namespace by pipeline.

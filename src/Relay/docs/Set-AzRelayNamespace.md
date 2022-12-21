@@ -21,10 +21,11 @@ Set-AzRelayNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentityExpanded
 ```
-Set-AzRelayNamespace -Name <String> -ResourceGroupName <String> -InputObject <IRelayUpdateParameters>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzRelayNamespace -InputObject <IRelayIdentity> [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,27 +35,31 @@ This operation is idempotent.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Updates a Relay namespace
 ```powershell
-{{ Add code here }}
+Set-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 -Tag @{'k'='v'}
 ```
 
 ```output
-{{ Add output here }}
+Name             ResourceGroupName Location Status     SkuName  ServiceBusEndpoint
+----             ----------------- -------- ------     -------  ------------------
+namespace-pwsh01 lucas-relay-rg    East US  Activating Standard https://namespace-pwsh01.servicebus.windows.net:443/
 ```
 
-{{ Add description here }}
+This cmdlet updates a Relay namespace.
 
-### Example 2: {{ Add title here }}
+### Example 2: Updates a Relay namespace by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 | Set-AzRelayNamespace -Tag @{'k'='v'}
 ```
 
 ```output
-{{ Add output here }}
+Name             ResourceGroupName Location Status     SkuName  ServiceBusEndpoint
+----             ----------------- -------- ------     -------  ------------------
+namespace-pwsh01 lucas-relay-rg    East US  Activating Standard https://namespace-pwsh01.servicebus.windows.net:443/
 ```
 
-{{ Add description here }}
+This cmdlet updates a Relay namespace by pipeline.
 
 ## PARAMETERS
 
@@ -74,12 +79,12 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Description of a namespace resource.
+Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IRelayUpdateParameters
-Parameter Sets: Update
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -94,7 +99,7 @@ The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: NamespaceName
 
 Required: True
@@ -110,7 +115,7 @@ By default it is enabled.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.PublicNetworkAccess
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -125,7 +130,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -140,7 +145,7 @@ The tier of this SKU.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.SkuTier
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -156,7 +161,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -171,7 +176,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -217,7 +222,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IRelayUpdateParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
 
 ## OUTPUTS
 
@@ -232,34 +237,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IRelayUpdateParameters>`: Description of a namespace resource.
-  - `[Tag <IResourceNamespacePatchTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[PrivateEndpointConnection <IPrivateEndpointConnection[]>]`: List of private endpoint connections.
-    - `[PrivateEndpointId <String>]`: The ARM identifier for Private Endpoint.
-    - `[PrivateLinkServiceConnectionStateDescription <String>]`: Description of the connection state.
-    - `[PrivateLinkServiceConnectionStateStatus <PrivateLinkConnectionStatus?>]`: Status of the connection.
-    - `[ProvisioningState <EndPointProvisioningState?>]`: Provisioning state of the Private Endpoint Connection.
-    - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-    - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-    - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-    - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-    - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-    - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[PublicNetworkAccess <PublicNetworkAccess?>]`: This determines if traffic is allowed over public network. By default it is enabled.
-  - `[SkuTier <SkuTier?>]`: The tier of this SKU.
-
-`PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>`: List of private endpoint connections.
-  - `[PrivateEndpointId <String>]`: The ARM identifier for Private Endpoint.
-  - `[PrivateLinkServiceConnectionStateDescription <String>]`: Description of the connection state.
-  - `[PrivateLinkServiceConnectionStateStatus <PrivateLinkConnectionStatus?>]`: Status of the connection.
-  - `[ProvisioningState <EndPointProvisioningState?>]`: Provisioning state of the Private Endpoint Connection.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+`INPUTOBJECT <IRelayIdentity>`: Identity Parameter
+  - `[AuthorizationRuleName <String>]`: The authorization rule name.
+  - `[HybridConnectionName <String>]`: The hybrid connection name.
+  - `[Id <String>]`: Resource identity path
+  - `[NamespaceName <String>]`: The namespace name
+  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
+  - `[PrivateLinkResourceName <String>]`: The PrivateLinkResource name
+  - `[RelayName <String>]`: The relay name.
+  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
+  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
 

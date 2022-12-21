@@ -31,27 +31,19 @@ This operation also removes all associated resources under the namespace.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a relay namespace
 ```powershell
-{{ Add code here }}
+Remove-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01
 ```
 
-```output
-{{ Add output here }}
-```
+This cmdlet removes a relay namespace.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a relay namespace by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 | Remove-AzRelayNamespace
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet removes a relay namespace by pipeline.
 
 ## PARAMETERS
 

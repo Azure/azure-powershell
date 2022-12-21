@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates a new Relay namespace
 ```powershell
-{{ Add code here }}
+New-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 -Location eastus
 ```
 
 ```output
-{{ Add output here }}
+New-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 -Location eastus
+
+Name             ResourceGroupName Location Status SkuName  ServiceBusEndpoint
+----             ----------------- -------- ------ -------  ------------------
+namespace-pwsh01 lucas-relay-rg    East US  Active Standard https://namespace-pwsh01.servicebus.windows.net:443/
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+The cmdlet creates a new Relay namespace. Once created, the namespace resource manifest is immutable.

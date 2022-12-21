@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Updates a Relay namespace
 ```powershell
-{{ Add code here }}
+Set-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 -Tag @{'k'='v'}
 ```
 
 ```output
-{{ Add output here }}
+Name             ResourceGroupName Location Status     SkuName  ServiceBusEndpoint
+----             ----------------- -------- ------     -------  ------------------
+namespace-pwsh01 lucas-relay-rg    East US  Activating Standard https://namespace-pwsh01.servicebus.windows.net:443/
 ```
 
-{{ Add description here }}
+This cmdlet updates a Relay namespace.
 
-### Example 2: {{ Add title here }}
+### Example 2: Updates a Relay namespace by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 | Set-AzRelayNamespace -Tag @{'k'='v'}
 ```
 
 ```output
-{{ Add output here }}
+Name             ResourceGroupName Location Status     SkuName  ServiceBusEndpoint
+----             ----------------- -------- ------     -------  ------------------
+namespace-pwsh01 lucas-relay-rg    East US  Activating Standard https://namespace-pwsh01.servicebus.windows.net:443/
 ```
 
-{{ Add description here }}
-
+This cmdlet updates a Relay namespace by pipeline.

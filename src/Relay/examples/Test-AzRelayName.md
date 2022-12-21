@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Check the specified namespace name availability
 ```powershell
-{{ Add code here }}
+Test-AzRelayName -Namespace 'relaynamespace-01'
 ```
 
 ```output
-{{ Add output here }}
+Message NameAvailable Reason
+------- ------------- ------
+        True          None
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet checks the specified namespace name availability.

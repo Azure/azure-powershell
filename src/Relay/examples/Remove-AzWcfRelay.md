@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Wcf Relay
 ```powershell
-{{ Add code here }}
+Remove-AzWcfRelay -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name wcf-02
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This cmdlet removes a Wcf Relay.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a Wcf Relay by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzWcfRelay -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name wcf-03 | Remove-AzWcfRelay
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+This cmdlet removes a Wcf Relay by pipeline.

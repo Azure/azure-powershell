@@ -16,8 +16,8 @@ This operation is idempotent.
 ### UpdateExpanded (Default)
 ```
 Set-AzRelayHybridConnection -Name <String> -Namespace <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-RequiresClientAuthorization] [-UserMetadata <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update
@@ -33,27 +33,62 @@ This operation is idempotent.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Updates the specified HybridConnection with a new description in the specified namespace.
 ```powershell
-{{ Add code here }}
+Set-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01 -UserMetadata "Test UserMetadata updated" | fl
 ```
 
 ```output
-{{ Add output here }}
+CreatedAt                    : 1/1/0001 12:00:00 AM
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-relay-rg/providers/Microsoft.Relay/namespaces/namespace-pwsh01/hybridc
+                               onnections/connection-01
+ListenerCount                : 0
+Location                     : eastus
+Name                         : connection-01
+RequiresClientAuthorization  : True
+ResourceGroupName            : lucas-relay-rg
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.Relay/namespaces/hybridconnections
+UpdatedAt                    : 1/1/0001 12:00:00 AM
+UserMetadata                 : Test UserMetadata updated
 ```
 
-{{ Add description here }}
+This command updates the specified HybridConnection with a new description in the specified namespace.
+This example updates the UserMetadata property with new value.
 
-### Example 2: {{ Add title here }}
+### Example 2: Updates a HybridConnection in the specified Relay namespace
 ```powershell
-{{ Add code here }}
+$connection = Get-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01
+$connection.UserMetadata = "testHybirdConnection"
+Set-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01 -InputObject $connection                                                                     
 ```
 
 ```output
-{{ Add output here }}
+CreatedAt                    : 1/1/0001 12:00:00 AM
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-relay-rg/providers/Microsoft.Relay/namespaces/namespace-pwsh01/hybridc
+                               onnections/connection-01
+ListenerCount                : 0
+Location                     : eastus
+Name                         : connection-01
+RequiresClientAuthorization  : True
+ResourceGroupName            : lucas-relay-rg
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.Relay/namespaces/hybridconnections
+UpdatedAt                    : 1/1/0001 12:00:00 AM
+UserMetadata                 : Test UserMetadata updated
 ```
 
-{{ Add description here }}
+This command updates a HybridConnection in the specified Relay namespace.
 
 ## PARAMETERS
 
@@ -112,21 +147,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RequiresClientAuthorization
-Returns true if client authorization is needed for this hybrid connection; otherwise, false.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
