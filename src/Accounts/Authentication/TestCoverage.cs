@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Shared.Config;
+using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -41,35 +42,37 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             "AzureRM.Storage.ps1"
         };
 
-
-        private static readonly string s_testCoverageRootPath;
+        private static readonly string s_testCoveragePath;
 
         private static readonly ReaderWriterLockSlim s_lock = new ReaderWriterLockSlim();
 
         static TestCoverage()
         {
-            var repoRootPath = ProbeRepoDirectory();
-            if (!string.IsNullOrEmpty(repoRootPath))
+            string testCoverageRootPath = null;
+            if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager))
             {
-                s_testCoverageRootPath = Path.Combine(repoRootPath, "artifacts", "TestCoverageAnalysis", "Raw");
-                DirectoryInfo rawDir = new DirectoryInfo(s_testCoverageRootPath);
-                if (!rawDir.Exists)
-                {
-                    Directory.CreateDirectory(s_testCoverageRootPath);
-                }
+                testCoverageRootPath = configManager.GetConfigValue<string>(ConfigKeys.TestCoverageLocation);
             }
+            if (string.IsNullOrEmpty(testCoverageRootPath))
+            {
+                testCoverageRootPath = GetFallbackLocation();
+            }
+
+            s_testCoveragePath = Path.Combine(testCoverageRootPath, "TestCoverageAnalysis", "Raw");
+            DirectoryInfo rawDir = new DirectoryInfo(s_testCoveragePath);
+            if (!rawDir.Exists)
+            {
+                Directory.CreateDirectory(s_testCoveragePath);
+            }
+
+            Console.WriteLine($"Test coverage data location: ${s_testCoveragePath}");
         }
 
-        private static string ProbeRepoDirectory()
+        private static string GetFallbackLocation()
         {
-            string directoryPath = Assembly.GetExecutingAssembly().Location;
-            do
-            {
-                directoryPath = Path.Combine(directoryPath, "..");
-            } while (Directory.Exists(directoryPath) && (!Directory.Exists(Path.Combine(directoryPath, "src")) || !Directory.Exists(Path.Combine(directoryPath, "artifacts"))));
-
-            string result = Directory.Exists(directoryPath) ? Path.GetFullPath(directoryPath) : null;
-            return result;
+            var profilePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            var azurePath = Path.Combine(profilePath, ".azure");
+            return azurePath;
         }
 
         private string GenerateCsvHeader()
@@ -109,13 +112,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             if (string.IsNullOrEmpty(moduleName) || string.IsNullOrEmpty(commandName) || string.IsNullOrEmpty(sourceScriptName) || ExcludedSource.Contains(sourceScriptName))
                 return;
 
-            var pattern = @"[/|\\](?:artifacts[/|\\]Debug|src)[/|\\](?:Az\.)?(?<ModuleName>[a-zA-Z]+)[/|\\]";
+            var pattern = @"[\\|\/](?:artifacts[\\|\/]Debug|src)[\\|\/](?:Az\.)?(?<ModuleName>[a-zA-Z]+)[\\|\/]";
             var match = Regex.Match(sourceScriptPath, pattern, RegexOptions.IgnoreCase);
             var testingModuleName = $"Az.{match.Groups["ModuleName"].Value}";
             if (string.Compare(testingModuleName, moduleName, true) != 0)
                 return;
 
-            var csvFilePath = Path.Combine(s_testCoverageRootPath, $"{moduleName}.csv");
+            var csvFilePath = Path.Combine(s_testCoveragePath, $"{moduleName}.csv");
             StringBuilder csvData = new StringBuilder();
 
             s_lock.EnterWriteLock();

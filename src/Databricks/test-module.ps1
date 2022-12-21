@@ -40,7 +40,7 @@ $requireResourceModule = (($baseName -ne "Resources") -and ($Record.IsPresent -o
 if ($requireResourceModule)
 {
   # Load the latest Az.Accounts installed
-  Import-Module ($PSScriptRoot | Split-Path | Join-Path -ChildPath "Az.Accounts" | Join-Path -ChildPath "Az.Accounts.psd1") -Force
+  Import-Module -Name Az.Accounts -RequiredVersion (Get-Module -Name Az.Accounts -ListAvailable | Sort-Object -Property Version -Descending)[0].Version
   $resourceModulePSD = Get-Item -Path (Join-Path $HOME '.PSSharedModules\Resources\Az.Resources.TestSupport.psd1')
   Import-Module -Name $resourceModulePSD.FullName
 }
