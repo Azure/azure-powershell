@@ -31,6 +31,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private const string CsvHeaderParameters = "Parameters";
         private const string CsvHeaderSourceScript = "SourceScript";
         private const string CsvHeaderScriptLineNumber = "LineNumber";
+        private const string CsvHeaderStartDateTime = "StartDateTime";
+        private const string CsvHeaderEndDateTime = "EndDateTime";
         private const string CsvHeaderIsSuccess = "IsSuccess";
         private const string Delimiter = ",";
 
@@ -83,12 +85,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                          .Append(CsvHeaderParameters).Append(Delimiter)
                          .Append(CsvHeaderSourceScript).Append(Delimiter)
                          .Append(CsvHeaderScriptLineNumber).Append(Delimiter)
+                         .Append(CsvHeaderStartDateTime).Append(Delimiter)
+                         .Append(CsvHeaderEndDateTime).Append(Delimiter)
                          .Append(CsvHeaderIsSuccess);
 
             return headerBuilder.ToString();
         }
 
-        private string GenerateCsvItem(string commandName, string parameterSetName, string parameters, string sourceScript, int scriptLineNumber, bool isSuccess)
+        private string GenerateCsvItem(string commandName, string parameterSetName, string parameters, string sourceScript, int scriptLineNumber, string startDateTime, string endDateTime, bool isSuccess)
         {
             StringBuilder itemBuilder = new StringBuilder();
             itemBuilder.Append(commandName).Append(Delimiter)
@@ -96,6 +100,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                        .Append(parameters).Append(Delimiter)
                        .Append(sourceScript).Append(Delimiter)
                        .Append(scriptLineNumber).Append(Delimiter)
+                       .Append(startDateTime).Append(Delimiter)
+                       .Append(endDateTime).Append(Delimiter)
                        .Append(isSuccess.ToString().ToLowerInvariant());
 
             return itemBuilder.ToString();
@@ -131,7 +137,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 }
 
                 csvData.AppendLine();
-                var csvItem = GenerateCsvItem(commandName, qos.ParameterSetName, qos.Parameters, sourceScriptName, qos.ScriptLineNumber, qos.IsSuccess);
+                var csvItem = GenerateCsvItem(commandName, qos.ParameterSetName, qos.Parameters, sourceScriptName, qos.ScriptLineNumber, qos.StartTime.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss"), qos.EndTime.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss"), qos.IsSuccess);
                 csvData.Append(csvItem);
 
                 File.AppendAllText(csvFilePath, csvData.ToString());
