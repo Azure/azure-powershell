@@ -117,7 +117,7 @@ Accept wildcard characters: False
 
 ### -Name
 The name of the service.
-You must not use any of the following reserved strings - `default`, `requested` or `service`
+You must not use any of the following reserved strings - 'default', 'requested' or 'service'
 
 ```yaml
 Type: System.String
@@ -251,7 +251,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[PacketCoreControlPlaneName <String>]`: The name of the packet core control plane.
   - `[PacketCoreDataPlaneName <String>]`: The name of the packet core data plane.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ServiceName <String>]`: The name of the service. You must not use any of the following reserved strings - `default`, `requested` or `service`
+  - `[ServiceName <String>]`: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
   - `[SimGroupName <String>]`: The name of the SIM Group.
   - `[SimName <String>]`: The name of the SIM.
   - `[SimPolicyName <String>]`: The name of the SIM policy.

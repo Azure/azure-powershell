@@ -35,27 +35,31 @@ Gets information about the specified service.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List information about the specified service by MobileNetwork Name.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkService -MobileNetworkName azps-mn -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Location Name            ResourceGroupName ProvisioningState Precedence MaximumBitRateDownlink MaximumBitRateUplink QoPolicyAllocationAndRetentionPriorityLevel QoPolicyFiveQi
+-------- ----            ----------------- ----------------- ---------- ---------------------- -------------------- ------------------------------------------- --------------
+eastus   azps-mn-service azps_test_group   Succeeded         0          1 Gbps                 500 Mbps             9                                           9
 ```
 
-{{ Add description here }}
+List information about the specified service by MobileNetwork Name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about the specified service.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkService -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -Name azps-mn-service
 ```
 
 ```output
-{{ Add output here }}
+Location Name            ResourceGroupName ProvisioningState Precedence MaximumBitRateDownlink MaximumBitRateUplink QoPolicyAllocationAndRetentionPriorityLevel QoPolicyFiveQi
+-------- ----            ----------------- ----------------- ---------- ---------------------- -------------------- ------------------------------------------- --------------
+eastus   azps-mn-service azps_test_group   Succeeded         0          1 Gbps                 500 Mbps             9                                           9
 ```
 
-{{ Add description here }}
+Get information about the specified service.
 
 ## PARAMETERS
 
@@ -107,7 +111,7 @@ Accept wildcard characters: False
 
 ### -Name
 The name of the service.
-You must not use any of the following reserved strings - `default`, `requested` or `service`
+You must not use any of the following reserved strings - 'default', 'requested' or 'service'
 
 ```yaml
 Type: System.String
@@ -180,7 +184,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[PacketCoreControlPlaneName <String>]`: The name of the packet core control plane.
   - `[PacketCoreDataPlaneName <String>]`: The name of the packet core data plane.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ServiceName <String>]`: The name of the service. You must not use any of the following reserved strings - `default`, `requested` or `service`
+  - `[ServiceName <String>]`: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
   - `[SimGroupName <String>]`: The name of the SIM Group.
   - `[SimName <String>]`: The name of the SIM.
   - `[SimPolicyName <String>]`: The name of the SIM policy.

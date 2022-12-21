@@ -36,7 +36,7 @@ function New-AzMobileNetworkPccRuleConfigurationObject {
         [Parameter(HelpMessage="Uplink bit rate.")]
         [string]
         $GuaranteedBitRateUplink,
-        [Parameter(Mandatory, HelpMessage="The name of the rule. This must be unique within the parent service. You must not use any of the following reserved strings - `default`, `requested` or `service`.")]
+        [Parameter(Mandatory, HelpMessage="The name of the rule. This must be unique within the parent service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'.")]
         [string]
         $RuleName,
         [Parameter(Mandatory, HelpMessage="A precedence value that is used to decide between data flow policy rules when identifying the QoS values to use for a particular SIM. A lower value means a higher priority. This value should be unique among all data flow policy rules configured in the mobile network.")]

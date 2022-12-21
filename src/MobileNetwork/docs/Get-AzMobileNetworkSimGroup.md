@@ -40,27 +40,44 @@ Gets information about the specified SIM group.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get information about the specified SIM group by Sub.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkSimGroup
 ```
 
 ```output
-{{ Add output here }}
+Location Name             ResourceGroupName ProvisioningState IdentityType
+-------- ----             ----------------- ----------------- ------------
+eastus   azps-mn-simgroup azps_test_group   Succeeded         UserAssigned
 ```
 
-{{ Add description here }}
+Get information about the specified SIM group by Sub.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about the specified SIM group by ResourceGroup.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkSimGroup -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Location Name             ResourceGroupName ProvisioningState IdentityType
+-------- ----             ----------------- ----------------- ------------
+eastus   azps-mn-simgroup azps_test_group   Succeeded         UserAssigned
 ```
 
-{{ Add description here }}
+Get information about the specified SIM group by ResourceGroup.
+
+### Example 3: Get information about the specified SIM group.
+```powershell
+Get-AzMobileNetworkSimGroup -ResourceGroupName azps_test_group -Name azps-mn-simgroup
+```
+
+```output
+Location Name             ResourceGroupName ProvisioningState IdentityType
+-------- ----             ----------------- ----------------- ------------
+eastus   azps-mn-simgroup azps_test_group   Succeeded         UserAssigned
+```
+
+Get information about the specified SIM group.
 
 ## PARAMETERS
 
@@ -169,7 +186,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[PacketCoreControlPlaneName <String>]`: The name of the packet core control plane.
   - `[PacketCoreDataPlaneName <String>]`: The name of the packet core data plane.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ServiceName <String>]`: The name of the service. You must not use any of the following reserved strings - `default`, `requested` or `service`
+  - `[ServiceName <String>]`: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
   - `[SimGroupName <String>]`: The name of the SIM Group.
   - `[SimName <String>]`: The name of the SIM.
   - `[SimPolicyName <String>]`: The name of the SIM policy.

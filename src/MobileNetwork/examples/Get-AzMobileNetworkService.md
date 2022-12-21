@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List information about the specified service by MobileNetwork Name.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkService -MobileNetworkName azps-mn -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Location Name            ResourceGroupName ProvisioningState Precedence MaximumBitRateDownlink MaximumBitRateUplink QoPolicyAllocationAndRetentionPriorityLevel QoPolicyFiveQi
+-------- ----            ----------------- ----------------- ---------- ---------------------- -------------------- ------------------------------------------- --------------
+eastus   azps-mn-service azps_test_group   Succeeded         0          1 Gbps                 500 Mbps             9                                           9
 ```
 
-{{ Add description here }}
+List information about the specified service by MobileNetwork Name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about the specified service.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkService -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -Name azps-mn-service
 ```
 
 ```output
-{{ Add output here }}
+Location Name            ResourceGroupName ProvisioningState Precedence MaximumBitRateDownlink MaximumBitRateUplink QoPolicyAllocationAndRetentionPriorityLevel QoPolicyFiveQi
+-------- ----            ----------------- ----------------- ---------- ---------------------- -------------------- ------------------------------------------- --------------
+eastus   azps-mn-service azps_test_group   Succeeded         0          1 Gbps                 500 Mbps             9                                           9
 ```
 
-{{ Add description here }}
-
+Get information about the specified service.

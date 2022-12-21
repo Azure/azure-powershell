@@ -22,27 +22,18 @@ Create an in-memory object for ServiceDataFlowTemplate.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ServiceDataFlowTemplate.
 ```powershell
-{{ Add code here }}
+New-AzMobileNetworkServiceDataFlowTemplateObject -Direction "Bidirectional" -Protocol "255" -RemoteIPList "any" -TemplateName azps-mn-flow-template
 ```
 
 ```output
-{{ Add output here }}
+Direction     Port Protocol RemoteIPList TemplateName
+---------     ---- -------- ------------ ------------
+Bidirectional      {255}    {any}        azps-mn-flow-template
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for ServiceDataFlowTemplate.
 
 ## PARAMETERS
 
@@ -103,7 +94,7 @@ Accept wildcard characters: False
 
 ### -RemoteIPList
 The remote IP address(es) to which UEs will connect for this flow.
-If you want to allow connections on any IP address, use the value ny.
+If you want to allow connections on any IP address, use the value 'any'.
 Otherwise, you must provide each of the remote IP addresses to which the packet core instance will connect for this flow.
 You must provide each IP address in CIDR notation, including the netmask (for example, 192.0.2.54/24).
 
@@ -122,7 +113,7 @@ Accept wildcard characters: False
 ### -TemplateName
 The name of the data flow template.
 This must be unique within the parent data flow policy rule.
-You must not use any of the following reserved strings - default, equested or service.
+You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
 
 ```yaml
 Type: System.String

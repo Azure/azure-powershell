@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates or updates a mobile network.
 ```powershell
-{{ Add code here }}
+New-AzMobileNetwork -Name azps-mn -ResourceGroupName azps_test_group -Location eastus -PublicLandMobileNetworkIdentifierMcc 001 -PublicLandMobileNetworkIdentifierMnc 01 -Tag @{"china"="move"}
 ```
 
 ```output
-{{ Add output here }}
+Location Name    ResourceGroupName PublicLandMobileNetworkIdentifierMcc PublicLandMobileNetworkIdentifierMnc
+-------- ----    ----------------- ------------------------------------ ------------------------------------
+eastus   azps-mn azps_test_group   001                                  01
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates or updates a mobile network.

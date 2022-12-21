@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List information about the specified SIM policy by MobileNetwork Name.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkSimPolicy -MobileNetworkName azps-mn -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Location Name              ResourceGroupName ProvisioningState RegistrationTimer UeAmbrDownlink UeAmbrUplink
+-------- ----              ----------------- ----------------- ----------------- -------------- ------------
+eastus   azps-mn-simpolicy azps_test_group   Succeeded         3240              1 Gbps         500 Mbps
 ```
 
-{{ Add description here }}
+List information about the specified SIM policy by MobileNetwork Name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about the specified SIM policy.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkSimPolicy -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -Name azps-mn-simpolicy
 ```
 
 ```output
-{{ Add output here }}
+Location Name              ResourceGroupName ProvisioningState RegistrationTimer UeAmbrDownlink UeAmbrUplink
+-------- ----              ----------------- ----------------- ----------------- -------------- ------------
+eastus   azps-mn-simpolicy azps_test_group   Succeeded         3240              1 Gbps         500 Mbps
 ```
 
-{{ Add description here }}
-
+Get information about the specified SIM policy.

@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List information about the specified network slice by MobileNetwork Name.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkSlice -MobileNetworkName azps-mn -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Location Name          ResourceGroupName ProvisioningState SnssaiSst SnssaiSd
+-------- ----          ----------------- ----------------- --------- --------
+eastus   azps-mn-slice azps_test_group   Succeeded         1         1abcde
 ```
 
-{{ Add description here }}
+List information about the specified network slice by MobileNetwork Name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about the specified network slice.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkSlice -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -SliceName azps-mn-slice
 ```
 
 ```output
-{{ Add output here }}
+Location Name          ResourceGroupName ProvisioningState SnssaiSst SnssaiSd
+-------- ----          ----------------- ----------------- --------- --------
+eastus   azps-mn-slice azps_test_group   Succeeded         1         1abcde
 ```
 
-{{ Add description here }}
-
+Get information about the specified network slice.

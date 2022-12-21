@@ -1,22 +1,38 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get information about the specified SIM group by Sub.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkSimGroup
 ```
 
 ```output
-{{ Add output here }}
+Location Name             ResourceGroupName ProvisioningState IdentityType
+-------- ----             ----------------- ----------------- ------------
+eastus   azps-mn-simgroup azps_test_group   Succeeded         UserAssigned
 ```
 
-{{ Add description here }}
+Get information about the specified SIM group by Sub.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about the specified SIM group by ResourceGroup.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkSimGroup -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Location Name             ResourceGroupName ProvisioningState IdentityType
+-------- ----             ----------------- ----------------- ------------
+eastus   azps-mn-simgroup azps_test_group   Succeeded         UserAssigned
 ```
 
-{{ Add description here }}
+Get information about the specified SIM group by ResourceGroup.
 
+### Example 3: Get information about the specified SIM group.
+```powershell
+Get-AzMobileNetworkSimGroup -ResourceGroupName azps_test_group -Name azps-mn-simgroup
+```
+
+```output
+Location Name             ResourceGroupName ProvisioningState IdentityType
+-------- ----             ----------------- ----------------- ------------
+eastus   azps-mn-simgroup azps_test_group   Succeeded         UserAssigned
+```
+
+Get information about the specified SIM group.

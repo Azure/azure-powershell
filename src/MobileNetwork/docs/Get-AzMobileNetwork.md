@@ -39,27 +39,46 @@ Gets information about the specified mobile network.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List information about the specified mobile network by Sub.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetwork
 ```
 
 ```output
-{{ Add output here }}
+Location Name     ResourceGroupName PublicLandMobileNetworkIdentifierMcc PublicLandMobileNetworkIdentifierMnc
+-------- ----     ----------------- ------------------------------------ ------------------------------------
+eastus   azps-mn  azps_test_group   001                                  01
+eastus   azps-mn2 azps_test_group   001                                  01
 ```
 
-{{ Add description here }}
+List information about the specified mobile network by Sub.
 
-### Example 2: {{ Add title here }}
+### Example 2: List information about the specified mobile network by ResourceGroup.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetwork -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Location Name     ResourceGroupName PublicLandMobileNetworkIdentifierMcc PublicLandMobileNetworkIdentifierMnc
+-------- ----     ----------------- ------------------------------------ ------------------------------------
+eastus   azps-mn  azps_test_group   001                                  01
+eastus   azps-mn2 azps_test_group   001                                  01
 ```
 
-{{ Add description here }}
+List information about the specified mobile network by ResourceGroup.
+
+### Example 3: Get information about the specified mobile network.
+```powershell
+Get-AzMobileNetwork -ResourceGroupName azps_test_group -Name azps-mn
+```
+
+```output
+Location Name    ResourceGroupName PublicLandMobileNetworkIdentifierMcc PublicLandMobileNetworkIdentifierMnc
+-------- ----    ----------------- ------------------------------------ ------------------------------------
+eastus   azps-mn azps_test_group   001                                  01
+```
+
+Get information about the specified mobile network.
 
 ## PARAMETERS
 
@@ -168,7 +187,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[PacketCoreControlPlaneName <String>]`: The name of the packet core control plane.
   - `[PacketCoreDataPlaneName <String>]`: The name of the packet core data plane.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ServiceName <String>]`: The name of the service. You must not use any of the following reserved strings - `default`, `requested` or `service`
+  - `[ServiceName <String>]`: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
   - `[SimGroupName <String>]`: The name of the SIM Group.
   - `[SimName <String>]`: The name of the SIM.
   - `[SimPolicyName <String>]`: The name of the SIM policy.

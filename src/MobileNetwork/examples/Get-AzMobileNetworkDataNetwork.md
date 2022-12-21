@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List information about the specified data network by MobileNetwork Name.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Location Name                ResourceGroupName ProvisioningState
+-------- ----                ----------------- -----------------
+eastus   azps-mn-datanetwork azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
+List information about the specified data network by MobileNetwork Name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about the specified data network.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -Name azps-mn-datanetwork
 ```
 
 ```output
-{{ Add output here }}
+Location Name                ResourceGroupName ProvisioningState
+-------- ----                ----------------- -----------------
+eastus   azps-mn-datanetwork azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
-
+Get information about the specified data network.

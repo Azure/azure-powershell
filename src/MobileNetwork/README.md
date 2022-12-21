@@ -65,6 +65,19 @@ directive:
     where: $.definitions
     transform: delete $.PduSessionTypeRm
 
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\`default\`/g, "'default'")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\`requested\`/g, "'requested'")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\`service\`/g, "'service'")
+  - from: swagger-document
+    where: $
+    transform: return $.replace(/\`any\`/g, "'any'")
+
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^BulkViaIdentity$|^Bulk$|^Collect$|^CollectViaIdentity$
     remove: true
@@ -149,15 +162,90 @@ directive:
       verb: Revoke
 
   # The following are commented out and their generated cmdlets may be renamed and custom logic
-#   - model-cmdlet:
-#       - SimNameAndEncryptedProperties
-#       - SimNameAndProperties
-#       - SliceConfiguration
-#       - DataNetworkConfiguration
-#       - ServiceResourceId
-#       - SiteResourceId
-#       - SimStaticIPProperties
-#       - PccRuleConfiguration
-#       - ServiceDataFlowTemplate
+  # - model-cmdlet:
+  #     - SimNameAndEncryptedProperties
+  #     - SimNameAndProperties
+  #     - SliceConfiguration
+  #     - DataNetworkConfiguration
+  #     - ServiceResourceId
+  #     - SiteResourceId
+  #     - SimStaticIPProperties
+  #     - PccRuleConfiguration
+  #     - ServiceDataFlowTemplate
 
+  - where:
+      model-name: MobileNetwork
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+          - PublicLandMobileNetworkIdentifierMcc
+          - PublicLandMobileNetworkIdentifierMnc
+  - where:
+      model-name: Site
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+  - where:
+      model-name: Slice
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - SnssaiSst
+          - SnssaiSd
+  - where:
+      model-name: Service
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - Precedence
+          - MaximumBitRateDownlink
+          - MaximumBitRateUplink
+          - QoPolicyAllocationAndRetentionPriorityLevel
+          - QoPolicyFiveQi
+  - where:
+      model-name: DataNetwork
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+  - where:
+      model-name: SimPolicy
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - RegistrationTimer
+          - UeAmbrDownlink
+          - UeAmbrUplink
+  - where:
+      model-name: SimGroup
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - IdentityType
 ```

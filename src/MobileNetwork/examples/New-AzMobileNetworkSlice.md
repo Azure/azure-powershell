@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates or updates a network slice.
 ```powershell
-{{ Add code here }}
+New-AzMobileNetworkSlice -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -SliceName azps-mn-slice -Location eastus -SnssaiSst 1 -SnssaiSd "1abcde"
 ```
 
 ```output
-{{ Add output here }}
+Location Name          ResourceGroupName ProvisioningState SnssaiSst SnssaiSd
+-------- ----          ----------------- ----------------- --------- --------
+eastus   azps-mn-slice azps_test_group   Succeeded         1         1abcde
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates or updates a network slice.
+Must be created in the same location as its parent mobile network.

@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates or updates a data network.
 ```powershell
-{{ Add code here }}
+New-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -Name azps-mn-datanetwork -ResourceGroupName azps_test_group -Location eastus
 ```
 
 ```output
-{{ Add output here }}
+Location Name                ResourceGroupName ProvisioningState
+-------- ----                ----------------- -----------------
+eastus   azps-mn-datanetwork azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates or updates a data network.
+Must be created in the same location as its parent mobile network.
