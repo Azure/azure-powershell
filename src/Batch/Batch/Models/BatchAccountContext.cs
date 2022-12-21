@@ -179,6 +179,16 @@ namespace Microsoft.Azure.Commands.Batch
             }
         }
 
+        /// <summary>
+        /// Gets the encryption configuration for the Batch account.
+        /// </summary>
+        /// <remarks>
+        /// Configures how customer data is encrypted inside the Batch account.
+        /// By default, accounts are encrypted using a Microsoft managed key.
+        /// For additional control, a customer-managed key can be used instead.
+        /// </remarks>
+        public EncryptionProperties Encryption { get; private set; }
+
         internal bool HasKeys
         {
             get { return !string.IsNullOrEmpty(PrimaryAccountKey) || !string.IsNullOrEmpty(SecondaryAccountKey);  }

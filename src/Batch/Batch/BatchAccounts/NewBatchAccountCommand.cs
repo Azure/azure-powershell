@@ -69,6 +69,9 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Mandatory = false, HelpMessage = "An array containing user assigned identities associated with the BatchAccount. This parameter is only used when IdentityType is set to UserAssigned.")]
         public string[] IdentityId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "\"Configures how customer data is encrypted inside the Batch account.\r\nBy default, accounts are encrypted using a Microsoft managed key.\r\nFor additional control, a customer-managed key can be used instead.\"")]
+        public EncryptionProperties Encryption { get; set; }
+
         protected override void ExecuteCmdletImpl()
         {
             Dictionary<string, UserAssignedIdentities> identityDictionary = null;
@@ -90,7 +93,8 @@ namespace Microsoft.Azure.Commands.Batch
                 KeyVaultUrl = this.KeyVaultUrl,
                 Tags = this.Tag,
                 PublicNetworkAccess = this.PublicNetworkAccess,
-                Identity = new BatchAccountIdentity(IdentityType, null, null, identityDictionary)
+                Identity = new BatchAccountIdentity(IdentityType, null, null, identityDictionary),
+                Encryption = this.Encryption
             };
 
             BatchAccountContext context = BatchClient.CreateAccount(parameters);
