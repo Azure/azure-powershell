@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Fixed a bug that added Ddos related properties when viewing PublicIpAddress and DdosProtectionPlan objects
+* Fixed a Bug for Set-AzIpGroup cmdlet to support the -whatif parameter
 
 ## Version 5.2.0
 * Added optional parameters `CustomBlockResponseStatusCode` and `CustomBlockResponseBody` parameter to `AzApplicationGatewayFirewallPolicySettings`

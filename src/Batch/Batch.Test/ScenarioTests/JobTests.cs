@@ -65,9 +65,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string taskId = "taskId-1";
             PSCloudJob completedJob = null;
             TestRunner.RunTestScript(
+                null,
                 mockContext =>
                 {
                     context = new ScenarioTestContext();
+                },
+                () =>
+                {
                     completedJob = ScenarioTestHelpers.WaitForJobCompletion(this, context, jobId, taskId);
                     AssertJobIsCompleteDueToTaskFailure(completedJob);
                     ScenarioTestHelpers.DeleteJob(this, context, jobId);
