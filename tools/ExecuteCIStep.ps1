@@ -26,6 +26,9 @@ Param(
     [Switch]
     $GenerateDocumentationFile,
 
+    [string]
+    $EnableTestCoverage,
+
     [Switch]
     $Test,
 
@@ -37,10 +40,10 @@ Param(
 
     [Switch]
     $StaticAnalysisDependency,
-    
+
     [Switch]
     $StaticAnalysisSignature,
-    
+
     [Switch]
     $StaticAnalysisHelp,
 
@@ -70,14 +73,17 @@ $ErrorActionPreference = 'Stop'
 If ($Build)
 {
     $LogFile = "$RepoArtifacts/Build.Log"
+    $buildCmdResult = "dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -fl '/flp1:logFile=$LogFile;verbosity=quiet'"
     If ($GenerateDocumentationFile)
     {
-        dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -fl "/flp1:logFile=$LogFile;verbosity=quiet"
+        $buildCmdResult += " -p:GenerateDocumentationFile=false"
     }
-    Else
+    if ($EnableTestCoverage -eq "true")
     {
-        dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -p:GenerateDocumentationFile=false -fl "/flp1:logFile=$LogFile;verbosity=quiet"
+        $buildCmdResult += " -p:TestCoverage=TESTCOVERAGE"
     }
+    Invoke-Expression -Command $buildCmdResult
+
     If (Test-Path -Path "$RepoArtifacts/PipelineResult")
     {
         $LogContent = Get-Content $LogFile

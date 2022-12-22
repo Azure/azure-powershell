@@ -24,7 +24,7 @@
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>
     <AssemblyOriginatorKeyFile>$(RepoSrc)MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
-    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN;$(TestCoverage)</DefineConstants>
   </PropertyGroup>
 
   <!-- Resources -->
