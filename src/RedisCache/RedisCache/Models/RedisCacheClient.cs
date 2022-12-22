@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                 parameters.MinimumTlsVersion = MinimumTlsVersion;
             }
 
-            RedisResource response = _client.Redis.Update(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
+            RedisResource response = _client.Redis.BeginUpdate(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
             return response;
         }
 
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         internal void RemoveLinkedServer(string resourceGroupName, string cacheName, string linkedCacheName)
         {
-            _client.LinkedServer.Delete(resourceGroupName, cacheName, linkedCacheName);
+            _client.LinkedServer.BeginDelete(resourceGroupName, cacheName, linkedCacheName);
         }
     }
 }
