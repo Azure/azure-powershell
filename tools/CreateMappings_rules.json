@@ -782,5 +782,9 @@
   {
     "alias": "Automanage",
     "module": "Automanage"
+  },
+  {
+    "alias": "VoiceServices",
+    "module": "VoiceServices"
   }
 ]

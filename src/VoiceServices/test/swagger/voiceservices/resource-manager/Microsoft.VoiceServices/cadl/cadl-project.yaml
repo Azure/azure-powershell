@@ -1,0 +1,6 @@
+emitters:
+  "@azure-tools/cadl-autorest":
+    azure-resource-provider-folder: ./swagger/VoiceServices/resource-manager
+    examples-directory: ./examples
+  "@azure-tools/cadl-providerhub-controller":
+    code-kind: model
