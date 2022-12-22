@@ -882,7 +882,8 @@ namespace Microsoft.Azure.Commands.Network
                 return new PSNetworkWatcherConnectionMonitorTcpConfiguration()
                 {
                     Port = testConfiguration.TcpConfiguration.Port,
-                    DisableTraceRoute = testConfiguration.TcpConfiguration.DisableTraceRoute
+                    DisableTraceRoute = testConfiguration.TcpConfiguration.DisableTraceRoute,
+                    DestinationPortBehavior = testConfiguration.TcpConfiguration.DestinationPortBehavior
                 };
             }
 
