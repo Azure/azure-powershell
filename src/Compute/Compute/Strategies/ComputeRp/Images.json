@@ -91,12 +91,6 @@
       "offer": "WindowsServer",
       "sku": "2016-datacenter-gensecond",
       "version": "latest"
-    },
-    "Win2016DataCenterGenSecond": {
-      "publisher": "MicrosoftWindowsServer",
-      "offer": "WindowsServer",
-      "sku": "2016-datacenter-gensecond",
-      "version": "latest"
     }
   }
 }

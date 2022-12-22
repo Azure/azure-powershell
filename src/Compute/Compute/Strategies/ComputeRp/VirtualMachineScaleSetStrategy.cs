@@ -73,7 +73,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string diskControllerType,
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
-            string securityType = null
+            string securityType = null,
+            VirtualMachineScaleSetOSDisk osDisk = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -124,7 +125,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 }),
                                 DataDisks = DataDiskStrategy.CreateVmssDataDisks(
                                     imageAndOsType?.DataDiskLuns, dataDisks),
-                                DiskControllerType = diskControllerType
+                                DiskControllerType = diskControllerType,
+                                OsDisk = osDisk == null ? null : osDisk
                             },
                             NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                             {

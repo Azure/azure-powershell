@@ -250,6 +250,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [ValidateNotNullOrEmpty]
         public bool? EnableSecureBoot { get; set; } = null;
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the SecurityEncryptionType of the virtual machine scale set. Possible values include: DiskWithVMGuestState, VMGuestStateOnly")]
+        [PSArgumentCompleter("DiskWithVMGuestState", "VMGuestStateOnly")]
+        public string SecurityEncryptionType { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ResourceId of the disk encryption set to use for enabling encryption at rest.")]
+        public string SecureVMDiskEncryptionSet { get; set; }
+
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
         {
             NewAzureRmVmss _cmdlet { get; }
@@ -395,6 +408,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot == null ? true : _cmdlet.EnableSecureBoot;
                 }
 
+                VirtualMachineScaleSetOSDisk vOsDisk = null;
+                if (_cmdlet.IsParameterBound(c => c.SecurityEncryptionType))
+                {
+                    if (vOsDisk == null)
+                    {
+                        vOsDisk = new VirtualMachineScaleSetOSDisk();
+                    }
+                    if (vOsDisk.ManagedDisk == null)
+                    {
+                        vOsDisk.ManagedDisk = new VirtualMachineScaleSetManagedDiskParameters();
+                    }
+                    if (vOsDisk.ManagedDisk.SecurityProfile == null)
+                    {
+                        vOsDisk.ManagedDisk.SecurityProfile = new VMDiskSecurityProfile();
+                    }
+                    vOsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType = _cmdlet.SecurityEncryptionType;
+                }
+
                 Dictionary<string, List<string>> auxAuthHeader = null;
                 if (!string.IsNullOrEmpty(_cmdlet.ImageReferenceId))
                 {
@@ -451,7 +482,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     diskControllerType: _cmdlet.DiskControllerType,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
-                    enableSecureBoot: _cmdlet.EnableSecureBoot
+                    enableSecureBoot: _cmdlet.EnableSecureBoot,
+                    osDisk : vOsDisk
                     );
             }
 
