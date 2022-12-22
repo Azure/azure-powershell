@@ -3763,7 +3763,7 @@ function Test-VirtualMachineScaleSetConfidentialVMSSSecurityType
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
             -ImageReferencePublisher $imgRef.PublisherName;
 
-        # Requirements for the Guest Attestation defaulting behavior.  
+        # Confidential Vmss required parameters 
         $vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
         $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
 
@@ -3912,7 +3912,7 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' -SecurityEncryptionType $securityEncryptionType;
 
-
+        # Confidential Vmss required parameters
         $vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $vmSecurityType;
         $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
 
@@ -4009,7 +4009,7 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK
         $VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType;
         $VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
 
-
+        # Create CVM to be used as an Image reference
         New-AzVM -ResourceGroupName $rgName -Location $loc -VM $VirtualMachine | Out-Null;
 
         $cvm = Get-AzVM -VMName $vmName -ResourceGroupName $rgName -ErrorAction 'Stop';
@@ -4057,8 +4057,7 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK
 
         $securityEncryptionType = "VMGuestStateOnly";
 
- 
-        # NRP vmss
+        # NRP Vmss Setup
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
@@ -4066,12 +4065,12 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK
 
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
 
-
+        # Vmss Setup
         $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' -ImageReferenceId $galDefinition.Id`
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' -SecurityEncryptionType $securityEncryptionType;
 
-
+        # Confidential Vmss required parameters
         $vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $vmSecurityType;
         $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
 
@@ -4201,7 +4200,7 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStateCMK
         $VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType;
         $VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
 
-        # Create CVM
+        # Create CVM to be used as Image reference
         New-AzVM -ResourceGroupName $rgName -Location $loc -VM $VirtualMachine;
 
         $cvm = Get-AzVM -VMName $vmName -ResourceGroupName $rgName;
@@ -4258,7 +4257,7 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStateCMK
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test2' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' -SecurityEncryptionType $securityEncryptionType -SecureVMDiskEncryptionSet $des.Id;
 
-
+        # Confidential Vmss required parameters
         $vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $vmSecurityType;
         $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
 
