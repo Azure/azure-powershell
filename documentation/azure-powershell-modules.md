@@ -154,7 +154,7 @@ Synapse Analytics                     | `Az.Synapse`                            
 Time Series Insights                  | `Az.TimeSeriesInsights`                 | [![TimeSeriesInsights]][TimeSeriesInsightsGallery]
 Traffic Manager                       | `Az.TrafficManager`                     | [![TrafficManager]][TrafficManagerGallery]
 Azure VMware Solution                 | `Az.VMware`                             | [![VMware]][VMwareGallery]
-Azure Voice Services                  | `Az.VoiceServices`                      | [![VoiceServices]][VMwareGallery]
+Voice Services                        | `Az.VoiceServices`                      | [![VoiceServices]][VMwareGallery]
 Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery]
 Windows Iot Services                  | `Az.WindowsIotServices`                 | [![WindowsIotServices]][WindowsIotServicesGallery]
 
