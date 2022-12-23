@@ -3805,7 +3805,7 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK
         $vmssName = "vmss" + $rgname;
 
         # VM variables
-        $vmName = "vmnam";#+ $rgname;
+        $vmName = "vmnam";
         $vmSize = "Standard_DC2as_v5";
         $vmssSize = "Standard_DC2as_v5";
 
@@ -3902,7 +3902,6 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK
         # NRP vmss
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix $SubnetAddressPrefix;
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix $VnetAddressPrefix -Subnet $subnet;
-        #    $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
 
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
