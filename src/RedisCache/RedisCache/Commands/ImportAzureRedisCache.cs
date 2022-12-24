@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         public string Format { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS.")]
+        [PSArgumentCompleter("SAS", "ManagedIdentity")]
         public string PreferredDataArchiveAuthMethod { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
