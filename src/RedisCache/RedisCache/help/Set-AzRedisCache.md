@@ -87,7 +87,7 @@ This cmdlet disables RDB backup data persistence for Azure Cache for Redis. You 
 
 ### Example 3: Modify Azure Cache for Redis - If you want to add data persistence after azure redis cache created.
 ```powershell
-Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
+Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=mySuffix"; "rdb-backup-frequency" = "30"}
 ```
 
 ```output
@@ -147,7 +147,7 @@ Set-AzRedisCache -Name "MyCache" -RedisConfiguration @{"rdb-backup-frequency" = 
 ### Example 5: Modify Azure Cache for Redis - If you want to change AOF back up data persistence to RDB back up.
 
 ```powershell
-Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"aof-backup-enabled"= "false"; "rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
+Set-AzRedisCache -Name "MyCache"  -RedisConfiguration @{"aof-backup-enabled"= "false"; "rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=mySuffix"; "rdb-backup-frequency" = "30"}
 ```
 
 ```output
@@ -416,6 +416,10 @@ Configures the number of databases.
 This property can be configured only at cache creation.
 Standard and Premium tiers.
 For more information, see Manage Azure Redis Cache with Azure PowerShellhttp://go.microsoft.com/fwlink/?LinkId=800051 (http://go.microsoft.com/fwlink/?LinkId=800051).
+- preferred-data-archive-auth-method
+Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS
+- preferred-data-persistence-auth-method
+Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -430,7 +434,7 @@ Accept wildcard characters: False
 ```
 
 ### -RedisVersion
-Redis version. Valid values: 4, 6
+Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'.
 
 ```yaml
 Type: System.String
