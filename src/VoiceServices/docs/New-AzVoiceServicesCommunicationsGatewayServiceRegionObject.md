@@ -24,7 +24,7 @@ Create an in-memory object for ServiceRegionProperties.
 
 ### Example 1: Create an in-memory object for ServiceRegionProperties
 ```powershell
-region = @()
+$region = @()
 $region += New-AzVoiceServicesCommunicationsGatewayServiceRegionObject -Name useast -PrimaryRegionOperatorAddress '198.51.100.1'
 $region += New-AzVoiceServicesCommunicationsGatewayServiceRegionObject -Name useast2 -PrimaryRegionOperatorAddress '198.51.100.2'
 
