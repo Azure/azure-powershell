@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added `DdosProtectionPlan` property in `AzPublicIpAddress`
+* Updated mapping in `AzPublicIpAddress` to always show/create DdosSettings
+* Fixed a bug that added Ddos related properties when viewing PublicIpAddress and DdosProtectionPlan objects
+* Fixed a Bug for Set-AzIpGroup cmdlet to support the -whatif parameter
+* Fixed a Bug for `Add-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerProbeConfig`, `Add-AzLoadBalancerBackendAddressPoolConfig`, `Set-AzLoadBalancer`, `New-AzLoadBalancerRuleConfig`, `Remove-AzLoadBalancerInboundNatRuleConfig` cmdlets to support the `-whatif` parameter. Fix [#20416]
 
 ## Version 5.2.0
 * Added optional parameters `CustomBlockResponseStatusCode` and `CustomBlockResponseBody` parameter to `AzApplicationGatewayFirewallPolicySettings`
