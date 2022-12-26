@@ -20,5 +20,8 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProtectionMode { get; set; }
+
+        public PSResourceId DdosProtectionPlan { get; set; }
+
     }
 }

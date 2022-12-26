@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Removed the image `Win2008R2SP1` from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.
 
 ## Version 5.2.0
 * Fixed issue found for `Set-AzVmssVMRunCommand` [#19985]
