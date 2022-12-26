@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated description of ResourceId param 'New-AzApiManagementBackend' and 'Set-AzApiManagementBackend' cmdlet [#16868]
 * Fixed Path mandatory bug 'Import-AzureApiManagementApi' cmdlet [#17991]
 
 ## Version 4.0.1
