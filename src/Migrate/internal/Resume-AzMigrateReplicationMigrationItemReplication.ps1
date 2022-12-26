@@ -34,7 +34,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICDETAIL <IResumeReplicationProviderSpecificInput>: The provider specific input for resume replication.
   InstanceType <String>: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/resume-azmigratereplicationmigrationitemreplication
+https://learn.microsoft.com/powershell/module/az.migrate/resume-azmigratereplicationmigrationitemreplication
 #>
 function Resume-AzMigrateReplicationMigrationItemReplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem])]

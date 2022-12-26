@@ -48,7 +48,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubauthorizationrule
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubauthorizationrule
 #>
 function Get-AzEventHubAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule])]
@@ -226,7 +226,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubdisasterrecoveryconfigauthorizationrule
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubdisasterrecoveryconfigauthorizationrule
 #>
 function Get-AzEventHubDisasterRecoveryConfigAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule])]
@@ -383,7 +383,7 @@ Gets the primary and secondary connection strings for the Namespace.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubdisasterrecoveryconfigkey
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubdisasterrecoveryconfigkey
 #>
 function Get-AzEventHubDisasterRecoveryConfigKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys])]
@@ -527,7 +527,7 @@ Get-AzEventHubKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubkey
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubkey
 #>
 function Get-AzEventHubKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys])]
@@ -692,7 +692,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubnamespaceauthorizationrule
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubnamespaceauthorizationrule
 #>
 function Get-AzEventHubNamespaceAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule])]
@@ -842,7 +842,7 @@ Gets the primary and secondary connection strings for the Namespace.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubnamespacekey
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubnamespacekey
 #>
 function Get-AzEventHubNamespaceKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys])]
@@ -980,7 +980,7 @@ Lists all of the available Event Hub REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhuboperation
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhuboperation
 #>
 function Get-AzEventHubOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IOperation])]
@@ -1110,7 +1110,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/invoke-azeventhubbreakdisasterrecoveryconfigpairing
+https://learn.microsoft.com/powershell/module/az.eventhub/invoke-azeventhubbreakdisasterrecoveryconfigpairing
 #>
 function Invoke-AzEventHubBreakDisasterRecoveryConfigPairing {
 [OutputType([System.Boolean])]
@@ -1283,7 +1283,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/invoke-azeventhubfaildisasterrecoveryconfigover
+https://learn.microsoft.com/powershell/module/az.eventhub/invoke-azeventhubfaildisasterrecoveryconfigover
 #>
 function Invoke-AzEventHubFailDisasterRecoveryConfigOver {
 [OutputType([System.Boolean])]
@@ -1470,7 +1470,7 @@ PARAMETER <IApplicationGroup>: The Application Group object
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubapplicationgroup
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubapplicationgroup
 #>
 function New-AzEventHubApplicationGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup])]
@@ -1627,7 +1627,7 @@ PARAMETER <IAuthorizationRule>: Single item in a List or Get AuthorizationRule o
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubauthorizationrule
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubauthorizationrule
 #>
 function New-AzEventHubAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule])]
@@ -1830,7 +1830,7 @@ PARAMETER <ICluster>: Single Event Hubs Cluster resource in List or Get operatio
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubcluster
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubcluster
 #>
 function New-AzEventHubCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster])]
@@ -1995,7 +1995,7 @@ PARAMETER <IConsumerGroup>: Single item in List or Get Consumer group operation
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [UserMetadata <String>]: User Metadata is a placeholder to store user-defined string data with maximum length 1024. e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubconsumergroup
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubconsumergroup
 #>
 function New-AzEventHubConsumerGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup])]
@@ -2149,7 +2149,7 @@ PARAMETER <IArmDisasterRecovery>: Single item in List or Get Alias(Disaster Reco
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubgeodrconfiguration
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubgeodrconfiguration
 #>
 function New-AzEventHubGeoDRConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery])]
@@ -2288,7 +2288,7 @@ PARAMETER <IRegenerateAccessKeyParameters>: Parameters supplied to the Regenerat
   KeyType <KeyType>: The access key to regenerate.
   [Key <String>]: Optional, if the key value provided, is set for KeyType or autogenerated Key value set for keyType
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubkey
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubkey
 #>
 function New-AzEventHubKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys])]
@@ -2471,7 +2471,7 @@ PARAMETER <IAuthorizationRule>: Single item in a List or Get AuthorizationRule o
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubnamespaceauthorizationrule
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubnamespaceauthorizationrule
 #>
 function New-AzEventHubNamespaceAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule])]
@@ -2642,7 +2642,7 @@ PARAMETER <IRegenerateAccessKeyParameters>: Parameters supplied to the Regenerat
   KeyType <KeyType>: The access key to regenerate.
   [Key <String>]: Optional, if the key value provided, is set for KeyType or autogenerated Key value set for keyType
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubnamespacekey
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubnamespacekey
 #>
 function New-AzEventHubNamespaceKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys])]
@@ -2776,6 +2776,396 @@ end {
 
 <#
 .Synopsis
+Creates or updates a namespace.
+Once created, this namespace's resource manifest is immutable.
+This operation is idempotent.
+.Description
+Creates or updates a namespace.
+Once created, this namespace's resource manifest is immutable.
+This operation is idempotent.
+.Example
+$keyVaultProperty1 = New-AzEventHubKeyVaultPropertiesObject -KeyName key1 -KeyVaultUri https://testkeyvault.vault.azure.net -UserAssignedIdentity "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$keyVaultProperty2 = New-AzEventHubKeyVaultPropertiesObject -KeyName key2 -KeyVaultUri https://testkeyvault.vault.azure.net -UserAssignedIdentity "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
+
+New-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity","/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity" -KeyVaultProperty $keyVaultProperty1,$keyVaultProperty2
+.Example
+New-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType SystemAssigned
+.Example
+New-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuCapacity 10 -MaximumThroughputUnit 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IEventHubIdentity>: Identity Parameter
+  [Alias <String>]: The Disaster Recovery configuration name
+  [ApplicationGroupName <String>]: The Application Group name 
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Event Hubs Cluster.
+  [ConsumerGroupName <String>]: The consumer group name
+  [EventHubName <String>]: The Event Hub name
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The Namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
+  [SchemaGroupName <String>]: The Schema Group name 
+  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+KEYVAULTPROPERTY <IKeyVaultProperties[]>: Properties of KeyVault
+  [KeyName <String>]: Name of the Key from KeyVault
+  [KeyVaultUri <String>]: Uri of KeyVault
+  [KeyVersion <String>]: Key Version
+  [UserAssignedIdentity <String>]: ARM ID of user Identity selected for encryption
+
+PARAMETER <IEhNamespace>: Single Namespace item in List or Get Operation
+  [Location <String>]: Resource location.
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [AlternateName <String>]: Alternate name specified when alias and namespace names are same.
+  [ClusterArmId <String>]: Cluster ARM ID of the Namespace.
+  [DisableLocalAuth <Boolean?>]: This property disables SAS authentication for the Event Hubs namespace.
+  [EnableAutoInflate <Boolean?>]: Value that indicates whether AutoInflate is enabled for eventhub namespace.
+  [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
+  [KafkaEnabled <Boolean?>]: Value that indicates whether Kafka is enabled for eventhub namespace.
+  [KeySource <KeySource?>]: Enumerates the possible value of keySource for Encryption
+  [KeyVaultProperty <IKeyVaultProperties[]>]: Properties of KeyVault
+    [KeyName <String>]: Name of the Key from KeyVault
+    [KeyVaultUri <String>]: Uri of KeyVault
+    [KeyVersion <String>]: Key Version
+    [UserAssignedIdentity <String>]: ARM ID of user Identity selected for encryption
+  [MaximumThroughputUnit <Int32?>]: Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)
+  [MinimumTlsVersion <TlsVersion?>]: The minimum TLS version for the cluster to support, e.g. '1.2'
+  [PrivateEndpointConnection <IPrivateEndpointConnection[]>]: List of private endpoint connections.
+    [ConnectionState <PrivateLinkConnectionStatus?>]: Status of the connection.
+    [Description <String>]: Description of the connection state.
+    [PrivateEndpointId <String>]: The ARM identifier for Private Endpoint.
+    [ProvisioningState <EndPointProvisioningState?>]: Provisioning state of the Private Endpoint Connection.
+    [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+    [SystemDataCreatedBy <String>]: The identity that created the resource.
+    [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+    [SystemDataLastModifiedAt <DateTime?>]: The type of identity that last modified the resource.
+    [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+    [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [PublicNetworkAccess <PublicNetworkAccess?>]: This determines if traffic is allowed over public network. By default it is enabled.
+  [RequireInfrastructureEncryption <Boolean?>]: Enable Infrastructure Encryption (Double Encryption)
+  [SkuCapacity <Int32?>]: The Event Hubs throughput units for Basic or Standard tiers, where value should be 0 to 20 throughput units. The Event Hubs premium units for Premium tier, where value should be 0 to 10 premium units.
+  [SkuName <SkuName?>]: Name of this SKU.
+  [SkuTier <SkuTier?>]: The billing tier of this particular SKU.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The type of identity that last modified the resource.
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [UserAssignedIdentity <IIdentityUserAssignedIdentities>]: Properties for User Assigned Identities
+    [(Any) <IUserAssignedIdentity>]: This indicates any property can be added to this object.
+  [ZoneRedundant <Boolean?>]: Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
+
+PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: List of private endpoint connections.
+  [ConnectionState <PrivateLinkConnectionStatus?>]: Status of the connection.
+  [Description <String>]: Description of the connection state.
+  [PrivateEndpointId <String>]: The ARM identifier for Private Endpoint.
+  [ProvisioningState <EndPointProvisioningState?>]: Provisioning state of the Private Endpoint Connection.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The type of identity that last modified the resource.
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+.Link
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubnamespacev2
+#>
+function New-AzEventHubNamespaceV2 {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Alias('NamespaceName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [System.String]
+    # The Namespace name
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [System.String]
+    # Name of the resource group within the azure subscription.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Subscription credentials that uniquely identify a Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Alternate name specified when alias and namespace names are same.
+    ${AlternateName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Cluster ARM ID of the Namespace.
+    ${ClusterArmId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # This property disables SAS authentication for the Event Hubs namespace.
+    ${DisableLocalAuth},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether AutoInflate is enabled for eventhub namespace.
+    ${EnableAutoInflate},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType]
+    # Type of managed service identity.
+    ${IdentityType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Value that indicates whether Kafka is enabled for eventhub namespace.
+    ${KafkaEnabled},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource]
+    # Enumerates the possible value of keySource for Encryption
+    ${KeySource},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties[]]
+    # Properties of KeyVault
+    # To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
+    ${KeyVaultProperty},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Resource location.
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.Int32]
+    # Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.
+    # ( '0' if AutoInflateEnabled = true)
+    ${MaximumThroughputUnit},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.TlsVersion])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.TlsVersion]
+    # The minimum TLS version for the cluster to support, e.g.
+    # '1.2'
+    ${MinimumTlsVersion},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection[]]
+    # List of private endpoint connections.
+    # To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
+    ${PrivateEndpointConnection},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess]
+    # This determines if traffic is allowed over public network.
+    # By default it is enabled.
+    ${PublicNetworkAccess},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable Infrastructure Encryption (Double Encryption)
+    ${RequireInfrastructureEncryption},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.Int32]
+    # The Event Hubs throughput units for Basic or Standard tiers, where value should be 0 to 20 throughput units.
+    # The Event Hubs premium units for Premium tier, where value should be 0 to 10 premium units.
+    ${SkuCapacity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SkuName])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SkuName]
+    # Name of this SKU.
+    ${SkuName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SkuTier]
+    # The billing tier of this particular SKU.
+    ${SkuTier},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # Properties for User Assigned Identities
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
+    ${ZoneRedundant},
+
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace]
+    # Single Namespace item in List or Get Operation
+    # To construct, see NOTES section for PARAMETER properties and create a hash table.
+    ${Parameter},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.EventHub.private\New-AzEventHubNamespaceV2_CreateExpanded';
+            CreateViaIdentity = 'Az.EventHub.private\New-AzEventHubNamespaceV2_CreateViaIdentity';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Create or update NetworkRuleSet for a Namespace.
 .Description
 Create or update NetworkRuleSet for a Namespace.
@@ -2835,7 +3225,7 @@ VIRTUALNETWORKRULE <INwRuleSetVirtualNetworkRules[]>: List VirtualNetwork Rules
   [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Value that indicates whether to ignore missing Vnet Service Endpoint
   [SubnetId <String>]: Resource ID of Virtual Network Subnet
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubnetworkruleset
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubnetworkruleset
 #>
 function New-AzEventHubNetworkRuleSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INetworkRuleSet])]
@@ -3055,7 +3445,7 @@ PARAMETER <IPrivateEndpointConnection>: Properties of the PrivateEndpointConnect
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubprivateendpointconnection
 #>
 function New-AzEventHubPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection])]
@@ -3224,9 +3614,9 @@ end {
 
 <#
 .Synopsis
-
+Creates or Updates an EventHub schema group.
 .Description
-
+Creates or Updates an EventHub schema group.
 .Example
 $schemaGroup = New-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name mySchemaGroup -SchemaCompatibility Backward -SchemaType Avro
 
@@ -3268,7 +3658,7 @@ PARAMETER <ISchemaGroup>: Single item in List or Get Schema Group operation
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubschemagroup
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubschemagroup
 #>
 function New-AzEventHubSchemaGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ISchemaGroup])]
@@ -3437,7 +3827,7 @@ PARAMETER <IEventhub>: Single item in List or Get Event Hub operation
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhub
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhub
 #>
 function New-AzEventHub {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub])]
@@ -3581,7 +3971,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubauthorizationrule
+https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubauthorizationrule
 #>
 function Remove-AzEventHubAuthorizationRule {
 [OutputType([System.Boolean])]
@@ -3760,7 +4150,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubnamespaceauthorizationrule
+https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubnamespaceauthorizationrule
 #>
 function Remove-AzEventHubNamespaceAuthorizationRule {
 [OutputType([System.Boolean])]
@@ -3938,7 +4328,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
 PARAMETER <ICheckNameAvailabilityParameter>: Parameter supplied to check Namespace name availability operation 
   Name <String>: Name to check the namespace name availability
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/test-azeventhubdisasterrecoveryconfignameavailability
+https://learn.microsoft.com/powershell/module/az.eventhub/test-azeventhubdisasterrecoveryconfignameavailability
 #>
 function Test-AzEventHubDisasterRecoveryConfigNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICheckNameAvailabilityResult])]
@@ -4125,7 +4515,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
 PARAMETER <ICheckNameAvailabilityParameter>: Parameter supplied to check Namespace name availability operation 
   Name <String>: Name to check the namespace name availability
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/test-azeventhubnamespacenameavailability
+https://learn.microsoft.com/powershell/module/az.eventhub/test-azeventhubnamespacenameavailability
 #>
 function Test-AzEventHubNamespaceNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICheckNameAvailabilityResult])]

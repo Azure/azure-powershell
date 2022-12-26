@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support
 {
 
-    /// <summary>The kind of WebTest that this web test watches. Choices are ping and multistep.</summary>
+    /// <summary>
+    /// The kind of WebTest that this web test watches. Choices are ping, multistep and standard.
+    /// </summary>
     public partial class WebTestKindTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

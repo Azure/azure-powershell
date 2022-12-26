@@ -61,21 +61,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExclusionManagedRuleSet
-List of Exclusion Managed ruleSets.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MatchVariable
 The variable to be excluded.
 
@@ -117,6 +102,21 @@ Aliases:
 Accepted values: Equals, Contains, StartsWith, EndsWith, EqualsAny
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExclusionManagedRuleSet
+List of Exclusion Managed ruleSets.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

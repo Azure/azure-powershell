@@ -45,7 +45,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription Id.
   [VaultName <String>]: The name of the backup vault.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/stop-azdataprotectionbackupinstanceprotection
+https://learn.microsoft.com/powershell/module/az.dataprotection/stop-azdataprotectionbackupinstanceprotection
 #>
 function Stop-AzDataProtectionBackupInstanceProtection {
 [OutputType([System.Boolean])]

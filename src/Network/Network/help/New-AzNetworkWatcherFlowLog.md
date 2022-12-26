@@ -104,7 +104,6 @@ FlowAnalyticsConfiguration : {
                                }
                              }
 ```
-
 ### Example 2
 ```powershell
 New-AzNetworkWatcherFlowLog -Location eastus -Name pstest -TargetResourceId /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/MyFlowLog/providers/Microsoft.Network/networkSecurityGroups/MyNSG -StorageId /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/FlowLogsV2Demo/providers/Microsoft.Storage/storageAccounts/MyStorage -Enabled $false -EnableTrafficAnalytics:$false
@@ -137,16 +136,14 @@ FlowAnalyticsConfiguration : {
                                }
                              }
 ```
-
 If you want to disable flowLog resource for which TrafficAnalytics is configured, it is necessary to disable TrafficAnalytics as well. It can be done like in the example 2.
-
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -161,7 +158,7 @@ Accept wildcard characters: False
 Flag to enable/disable flow logging.
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -176,7 +173,7 @@ Accept wildcard characters: False
 Flag to enable/disable retention.
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +188,7 @@ Accept wildcard characters: False
 Flag to enable/disable TrafficAnalytics
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: SetByResourceWithTA, SetByNameWithTA, SetByLocationWithTA
 Aliases:
 
@@ -206,7 +203,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -222,7 +219,7 @@ The file type of flow log.
 The only supported value now is 'JSON'.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -237,7 +234,7 @@ Accept wildcard characters: False
 The version (revision) of the flow log.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -252,7 +249,7 @@ Accept wildcard characters: False
 Location of the network watcher.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByLocation, SetByLocationWithTA
 Aliases:
 
@@ -267,7 +264,7 @@ Accept wildcard characters: False
 The flow log name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: FlowLogName
 
@@ -282,7 +279,7 @@ Accept wildcard characters: False
 The network watcher resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
+Type: PSNetworkWatcher
 Parameter Sets: SetByResource, SetByResourceWithTA
 Aliases:
 
@@ -297,7 +294,7 @@ Accept wildcard characters: False
 The name of network watcher.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByName, SetByNameWithTA
 Aliases:
 
@@ -312,7 +309,7 @@ Accept wildcard characters: False
 The name of the network watcher resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByName, SetByNameWithTA
 Aliases:
 
@@ -327,7 +324,7 @@ Accept wildcard characters: False
 Number of days to retain flow log records.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -342,7 +339,7 @@ Accept wildcard characters: False
 ID of the storage account which is used to store the flow log.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -357,7 +354,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -372,7 +369,7 @@ Accept wildcard characters: False
 ID of network security group to which flow log will be applied.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -387,7 +384,7 @@ Accept wildcard characters: False
 The interval in minutes which would decide how frequently TA service should do flow analytics.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: SetByResourceWithTA, SetByNameWithTA, SetByLocationWithTA
 Aliases:
 
@@ -402,7 +399,7 @@ Accept wildcard characters: False
 Resource Id of the attached workspace.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceWithTA, SetByNameWithTA, SetByLocationWithTA
 Aliases:
 
@@ -417,7 +414,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -433,7 +430,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

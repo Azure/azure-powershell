@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.network/disconne
 schema: 2.0.0
 ---
 
-# Disconnect-AzP2SVpnGatewayVpnConnection
+# Disconnect-AzP2sVpnGatewayVpnConnection
 
 ## SYNOPSIS
 Disconnect given connected vpn client connections with a given p2s vpn gateway
@@ -14,20 +14,18 @@ Disconnect given connected vpn client connections with a given p2s vpn gateway
 
 ### ByP2SVpnGatewayName (Default)
 ```
-Disconnect-AzP2SVpnGatewayVpnConnection -ResourceGroupName <String> -Name <String> -VpnConnectionId <String[]>
- [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByP2SVpnGatewayResourceId
-```
-Disconnect-AzP2SVpnGatewayVpnConnection -ResourceId <String> -VpnConnectionId <String[]> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Disconnect-AzP2sVpnGatewayVpnConnection -Name <String> -ResourceGroupName <String>
+ -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayObject
 ```
-Disconnect-AzP2SVpnGatewayVpnConnection -InputObject <PSP2SVpnGateway> -VpnConnectionId <String[]> [-AsJob]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Disconnect-AzP2sVpnGatewayVpnConnection -InputObject <PSP2SVpnGateway> -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
+```
+
+### ByP2SVpnGatewayResourceId
+```
+Disconnect-AzP2sVpnGatewayVpnConnection -ResourceId <String> -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,36 +69,6 @@ P2SConnectionConfigurations    : [
 
 ## PARAMETERS
 
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 The p2s vpn gateway object to be modified
 
@@ -120,26 +88,26 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByP2SVpnGatewayName
-Aliases: ResourceName, P2SVpnGatewayName
+Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns an object representing the item on which this operation is being performed.
+### -VpnConnectionId
+Vpn Connection Ida
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: VpnConnectionId
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -150,7 +118,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByP2SVpnGatewayName
 Aliases:
 
@@ -167,7 +135,7 @@ P2s Virtual network gateway resource Id
 ```yaml
 Type: System.String
 Parameter Sets: ByP2SVpnGatewayResourceId
-Aliases:
+Aliases: ResourceId
 
 Required: True
 Position: Named
@@ -176,53 +144,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VpnConnectionId
-Vpn Connection Ida
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

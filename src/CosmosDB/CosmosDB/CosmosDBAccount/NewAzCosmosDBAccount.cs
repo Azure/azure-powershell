@@ -61,6 +61,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public PSLocation[] LocationObject { get; set; }
 
+        // As of 03082022, using this list only for Mongo Accounts >= 3.6
+        [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string[] Capabilities { get; set; }
+
         public override void ExecuteCmdlet()
         {
             DatabaseAccountGetResults databaseAccountGetResults = null;
@@ -186,12 +191,29 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 if (ApiKind.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
                 {
+                    bool isServerVersion32 = false;
+
                     if (ServerVersion != null)
                     {
                         databaseAccountCreateUpdateParameters.ApiProperties = new ApiProperties
                         {
                             ServerVersion = ServerVersion
                         };
+
+                        isServerVersion32 = String.Equals("3.2", ServerVersion);
+                    }
+
+                    // Add Mongo Capabilities for ServerVersion > 3.2
+                    if (!isServerVersion32 && Capabilities != null && Capabilities.Length > 0)
+                    {
+                        List<Capability> capabilitiesList = new List<Capability>();
+
+                        foreach (string capability in Capabilities)
+                        {
+                            capabilitiesList.Add(new Capability { Name = capability });
+                        }
+
+                        databaseAccountCreateUpdateParameters.Capabilities = capabilitiesList;
                     }
                 }
                 else

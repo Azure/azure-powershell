@@ -27,7 +27,7 @@ Lists all the supported operations for the Azure Storage Mover REST API.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveroperation
+https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveroperation
 #>
 function Get-AzStorageMoverOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20.IOperation])]

@@ -76,12 +76,12 @@ FEDERATEDIDENTITYCREDENTIALS <IMicrosoftGraphFederatedIdentityCredential[]>: Fed
 
 HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: .
   [AppliesTo <IMicrosoftGraphDirectoryObject[]>]: 
-    [DeletedDateTime <DateTime?>]: 
+    [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
     [DisplayName <String>]: The name displayed in directory
   [Definition <String[]>]: A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
   [IsOrganizationDefault <Boolean?>]: If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
   [Description <String>]: Description for this policy.
-  [DeletedDateTime <DateTime?>]: 
+  [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   [DisplayName <String>]: The name displayed in directory
 
 INFO <IMicrosoftGraphInformationalUrl>: informationalUrl
@@ -139,22 +139,22 @@ SPA <IMicrosoftGraphSpaApplication>: spaApplication
 
 TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: .
   [AppliesTo <IMicrosoftGraphDirectoryObject[]>]: 
-    [DeletedDateTime <DateTime?>]: 
+    [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
     [DisplayName <String>]: The name displayed in directory
   [Definition <String[]>]: A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
   [IsOrganizationDefault <Boolean?>]: If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
   [Description <String>]: Description for this policy.
-  [DeletedDateTime <DateTime?>]: 
+  [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   [DisplayName <String>]: The name displayed in directory
 
 TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePolicies assigned to this application. Supports $expand.
   [AppliesTo <IMicrosoftGraphDirectoryObject[]>]: 
-    [DeletedDateTime <DateTime?>]: 
+    [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
     [DisplayName <String>]: The name displayed in directory
   [Definition <String[]>]: A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
   [IsOrganizationDefault <Boolean?>]: If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
   [Description <String>]: Description for this policy.
-  [DeletedDateTime <DateTime?>]: 
+  [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   [DisplayName <String>]: The name displayed in directory
 
 WEB <IMicrosoftGraphWebApplication>: webApplication
@@ -167,7 +167,7 @@ WEB <IMicrosoftGraphWebApplication>: webApplication
   [LogoutUrl <String>]: Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
   [RedirectUri <String[]>]: Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/update-azadapplication
+https://learn.microsoft.com/powershell/module/az.resources/update-azadapplication
 #>
 function Update-AzADApplication {
 [OutputType([System.Boolean])]
@@ -222,7 +222,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
-    # .
+    # Date and time when this object was deleted.
+    # Always null when the object hasn't been deleted.
     ${CreatedOnBehalfOfDeletedDateTime},
 
     [Parameter()]
@@ -234,7 +235,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
-    # .
+    # Date and time when this object was deleted.
+    # Always null when the object hasn't been deleted.
     ${DeletedDateTime},
 
     [Parameter()]

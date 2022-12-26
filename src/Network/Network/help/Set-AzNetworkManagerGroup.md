@@ -13,8 +13,9 @@ Updates a network manager group.
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerGroup -InputObject <PSNetworkManagerGroup> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzNetworkManagerGroup
+ -InputObject <PSNetworkManagerGroup> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +29,6 @@ $networkGroup = Get-AzNetworkManagerGroup  -Name "psNetworkGroup" -NetworkManage
 $networkGroup.description = "new description"
 Set-AzNetworkManagerGroup -InputObject $networkGroup
 ```
-
 ```output
 MemberType        :
 DisplayName       :
@@ -48,7 +48,6 @@ Name              : psNetworkGroup
 Etag              :
 Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup
 ```
-
 Updates a network manager group decription.
 
 ## PARAMETERS
@@ -57,7 +56,7 @@ Updates a network manager group decription.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -87,7 +86,7 @@ Accept wildcard characters: False
 The Network Group
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerGroup
+Type: PSNetworkManagerGroup
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +101,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -118,7 +117,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

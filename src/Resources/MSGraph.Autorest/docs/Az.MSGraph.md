@@ -1,7 +1,7 @@
 ---
 Module Name: Az.MSGraph
 Module Guid: 9c1e9bcf-5175-4d03-99c7-a7f2f7040f46
-Download Help Link: https://docs.microsoft.com/powershell/module/az.msgraph
+Download Help Link: https://learn.microsoft.com/powershell/module/az.msgraph
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -34,6 +34,9 @@ Lists entities from groups or get entity from groups by key
 
 ### [Get-AzADGroupMember](Get-AzADGroupMember.md)
 Lists members from group.
+
+### [Get-AzADOrganization](Get-AzADOrganization.md)
+Retrieve a list of organization objects.
 
 ### [Get-AzADServicePrincipal](Get-AzADServicePrincipal.md)
 Lists entities from service principals or get entity from service principals by key

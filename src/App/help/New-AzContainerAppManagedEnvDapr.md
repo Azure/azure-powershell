@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvdapr
+online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvdapr
 schema: 2.0.0
 ---
 
@@ -275,12 +275,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-METADATA <IDaprMetadata[]>: Component metadata
+`METADATA <IDaprMetadata[]>`: Component metadata
   - `[Name <String>]`: Metadata property name.
   - `[SecretRef <String>]`: Name of the Dapr Component secret from which to pull the metadata property value.
   - `[Value <String>]`: Metadata property value.
 
-SECRET <ISecret[]>: Collection of secrets used by a Dapr component
+`SECRET <ISecret[]>`: Collection of secrets used by a Dapr component
   - `[Name <String>]`: Secret Name.
   - `[Value <String>]`: Secret Value.
 

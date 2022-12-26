@@ -43,7 +43,7 @@ New-AzRoleAssignmentScheduleRequest -Name $guid -Scope $scope -ExpirationDuratio
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentScheduleRequest
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignmentschedulerequest
+https://learn.microsoft.com/powershell/module/az.resources/new-azroleassignmentschedulerequest
 #>
 function New-AzRoleAssignmentScheduleRequest {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentScheduleRequest])]

@@ -114,7 +114,9 @@ Add means to add user assigned managed identities for workspace, Remove means to
 
         public const string LibraryRequirementsFilePath = "Environment configuration file (\"PIP freeze\" output).";
 
-        public const string SparkConfigPropertiesFilePath = "Spark pool properties configuration file.";
+        public const string SparkConfigPropertiesFilePath = "[Deprecated] Spark pool properties configuration file. This parameter is deprecated, please use \"-SparkConfiguration\" instead.";
+
+        public const string SparkConfigurationResource = "Apache Spark configuration. When a job is submitted to the pool, the properties specified in the selected configuration will be referenced.";
 
         public const string Batch = "Indicates Spark batch.";
 
@@ -496,6 +498,10 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string EncryptionKeyName = "The workspace encryption key name.";
 
         public const string EncryptionKeyIdentifier = "Key identifier should be in the format of: https://{keyvaultname}.vault.azure.net/keys/{keyname}.";
+
+        public const string UserAssignedIdentityInEncryption = "User assigned identity resource Id used in Workspace Encryption";
+
+        public const string UseSystemAssignedIdentityInEncryption = "specifying whether to use system assigned identity in Workspace Encryption or not";
 
         public const string WorkspaceKeyName = "The name of the workspace key.";
 

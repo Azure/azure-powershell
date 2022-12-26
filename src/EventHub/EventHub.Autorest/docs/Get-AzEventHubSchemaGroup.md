@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubschemagroup
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubschemagroup
 schema: 2.0.0
 ---
 
 # Get-AzEventHubSchemaGroup
 
 ## SYNOPSIS
-
+Gets the details of an EventHub schema group.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Get-AzEventHubSchemaGroup -InputObject <IEventHubIdentity> [-DefaultProfile <PSO
 ```
 
 ## DESCRIPTION
-
+Gets the details of an EventHub schema group.
 
 ## EXAMPLES
 

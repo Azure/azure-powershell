@@ -420,6 +420,7 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         private void ProcessDirectory(string directoryPath)
         {
+            directoryPath = System.IO.Path.GetFullPath(directoryPath);
             var savedDirectory = Directory.GetCurrentDirectory();
             Directory.SetCurrentDirectory(directoryPath);
             var moduleAlcAssemblySet = LoadModuleAclAssembly(directoryPath);

@@ -63,7 +63,7 @@ BACKUPINSTANCE <IBackupInstance>: Backup Instance
   [FriendlyName <String>]: Gets or sets the Backup Instance friendly name.
   [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancereadiness
+https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancereadiness
 #>
 function Test-AzDataProtectionBackupInstanceReadiness {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IOperationJobExtendedInfo])]

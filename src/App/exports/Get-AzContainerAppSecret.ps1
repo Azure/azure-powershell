@@ -25,7 +25,7 @@ Get-AzContainerAppSecret -ContainerAppName azps-containerapp -ResourceGroupName 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerAppSecret
 .Link
-https://docs.microsoft.com/powershell/module/az.app/get-azcontainerappsecret
+https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappsecret
 #>
 function Get-AzContainerAppSecret {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerAppSecret])]

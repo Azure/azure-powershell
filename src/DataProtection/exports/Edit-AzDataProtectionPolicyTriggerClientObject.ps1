@@ -51,7 +51,7 @@ POLICY <IBackupPolicy>: Backup Policy object.
     [BackupParameterObjectType <String>]: Type of the specific object - used for deserializing
     [IsDefault <Boolean?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/edit-azdataprotectionpolicytriggerclientobject
+https://learn.microsoft.com/powershell/module/az.dataprotection/edit-azdataprotectionpolicytriggerclientobject
 #>
 function Edit-AzDataProtectionPolicyTriggerClientObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupPolicy])]

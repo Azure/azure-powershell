@@ -12,29 +12,24 @@ Updates a routing intent resource associated with a VirtualHub.
 
 ## SYNTAX
 
-### ByRoutingInctentName (Default)
-```
-Set-AzRoutingIntent -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+### ByRoutingIntentName (Default)
+```powershell
+Set-AzRoutingIntent -ResourceGroupName <String> -ParentResourceName <String> -Name <String> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
-```
-Set-AzRoutingIntent -Name <String> -ParentObject <PSVirtualHub> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByRoutingInctentObject
-```
-Set-AzRoutingIntent -InputObject <PSRoutingIntent> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```powershell
+Set-AzRoutingIntent -Name <String> -ParentObject <PSVirtualHub> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByRoutingInctentResourceId
+### ByRoutingIntentObject
+```powershell
+Set-AzRoutingIntent -InputObject <PSRoutingIntent> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
-Set-AzRoutingIntent -ResourceId <String> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+### ByRoutingIntentResourceId
+```powershell
+Set-AzRoutingIntent -ResourceId <String> [-RoutingPolicy <PSRoutingPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +55,7 @@ $policy1 = New-AzRoutingPolicy -Name "PrivateTraffic" -Destination @("PrivateTra
 New-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingIntent" -RoutingPolicy @($policy1)
 
 $policy2 = New-AzRoutingPolicy -Name "PublicTraffic" -Destination @("Internet") -NextHop $firewall.Id
-Set-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingIntent" -RoutingPolicy @($policy2)
+Set-AzRoutingIntent -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRoutingIntent" -RoutingPolicy @($policy2) 
 ```
 
 ```output
@@ -80,6 +75,7 @@ RoutingPoliciesText : [
 Name                : testRoutingIntent
 Etag                : W/"etag"
 Id                  : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/routingIntent/testRoutingIntent
+
 ```
 
 This command deletes the hub RoutingPolicy table of the virtual hub.
@@ -90,7 +86,7 @@ This command deletes the hub RoutingPolicy table of the virtual hub.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +101,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -120,9 +116,9 @@ Accept wildcard characters: False
 The RoutingIntent resource to Set.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRoutingIntent
-Parameter Sets: ByRoutingInctentObject
-Aliases: RoutingIntent
+Type: PSRoutingIntent
+Parameter Sets: ByRoutingIntentObject
+Aliases: RoutingIntent, RoutingPolicyTable
 
 Required: True
 Position: Named
@@ -135,9 +131,9 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByRoutingInctentName, ByVirtualHubObject
-Aliases: ResourceName, RoutingIntentName, RouteTableName
+Type: String
+Parameter Sets: ByRoutingIntentName, ByVirtualHubObject
+Aliases: ResourceName, RoutingIntentName
 
 Required: True
 Position: Named
@@ -150,14 +146,14 @@ Accept wildcard characters: False
 The parent virtual hub object of this resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
+Type: PSVirtualHub
 Parameter Sets: ByVirtualHubObject
-Aliases: VirtualHub, ParentVirtualHub
+Aliases: ParentVirtualHub, VirtualHub
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -165,8 +161,8 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByRoutingInctentName
+Type: String
+Parameter Sets: ByRoutingIntentName
 Aliases: VirtualHubName, ParentVirtualHubName
 
 Required: True
@@ -180,8 +176,8 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByRoutingInctentName
+Type: String
+Parameter Sets: ByRoutingIntentName
 Aliases:
 
 Required: True
@@ -195,8 +191,8 @@ Accept wildcard characters: False
 The resource id of the RoutingIntent resource to Set.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByRoutingInctentResourceId
+Type: String
+Parameter Sets: ByRoutingIntentResourceId
 Aliases: RoutingIntentId
 
 Required: True
@@ -210,9 +206,9 @@ Accept wildcard characters: False
 The list of RoutingPolicies to update in this routing intent reesource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRoutingPolicy[]
+Type: PSRoutingPolicy[]
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceName, RoutingIntentName
 
 Required: False
 Position: Named
@@ -225,7 +221,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -241,7 +237,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -15,55 +15,49 @@ Create a new Azure Firewall Policy Application Rule
 ### SourceAddressAndTargetFqdn (Default)
 ```
 New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- -TargetFqdn <String[]> -Protocol <String[]> [-TerminateTLS] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -TargetFqdn <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SourceAddressAndFqdnTag
 ```
 New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- -FqdnTag <String[]> [-TerminateTLS] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -FqdnTag <String[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SourceAddressAndWebCategory
 ```
 New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- -WebCategory <String[]> -Protocol <String[]> [-TerminateTLS] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -WebCategory <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SourceAddressAndTargetUrl
 ```
 New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- -Protocol <String[]> -TargetUrl <String[]> [-TerminateTLS] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### SourceIpGroupAndTargetFqdn
-```
-New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
- -TargetFqdn <String[]> -Protocol <String[]> [-TerminateTLS] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### SourceIpGroupAndFqdnTag
-```
-New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
- -FqdnTag <String[]> [-TerminateTLS] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### SourceIpGroupAndWebCategory
-```
-New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
- -FqdnTag <String[]> -WebCategory <String[]> -Protocol <String[]> [-TerminateTLS]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -TargetUrl <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SourceIpGroupAndTargetUrl
 ```
 New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
- -Protocol <String[]> -TargetUrl <String[]> [-TerminateTLS] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -TargetUrl <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SourceIpGroupAndTargetFqdn
+```
+New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
+ -TargetFqdn <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SourceIpGroupAndFqdnTag
+```
+New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
+ -FqdnTag <String[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SourceIpGroupAndWebCategory
+```
+New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
+ -WebCategory <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,7 +116,7 @@ The FQDN Tags of the rule
 
 ```yaml
 Type: System.String[]
-Parameter Sets: SourceAddressAndFqdnTag, SourceIpGroupAndFqdnTag, SourceIpGroupAndWebCategory
+Parameter Sets: SourceAddressAndFqdnTag, SourceIpGroupAndFqdnTag
 Aliases:
 
 Required: True
@@ -152,7 +146,7 @@ The protocols of the rule
 
 ```yaml
 Type: System.String[]
-Parameter Sets: SourceAddressAndTargetFqdn, SourceAddressAndWebCategory, SourceAddressAndTargetUrl, SourceIpGroupAndTargetFqdn, SourceIpGroupAndWebCategory, SourceIpGroupAndTargetUrl
+Parameter Sets: SourceAddressAndTargetFqdn, SourceAddressAndWebCategory, SourceIpGroupAndTargetFqdn, SourceIpGroupAndWebCategory
 Aliases:
 
 Required: True
@@ -167,7 +161,7 @@ The source addresses of the rule
 
 ```yaml
 Type: System.String[]
-Parameter Sets: SourceAddressAndTargetFqdn, SourceAddressAndFqdnTag, SourceAddressAndWebCategory, SourceAddressAndTargetUrl
+Parameter Sets: SourceAddressAndTargetFqdn, SourceAddressAndFqdnTag, SourceAddressAndWebCategory
 Aliases:
 
 Required: True
@@ -182,7 +176,7 @@ The source ipgroups of the rule
 
 ```yaml
 Type: System.String[]
-Parameter Sets: SourceIpGroupAndTargetFqdn, SourceIpGroupAndFqdnTag, SourceIpGroupAndWebCategory, SourceIpGroupAndTargetUrl
+Parameter Sets: SourceIpGroupAndTargetFqdn, SourceIpGroupAndFqdnTag, SourceIpGroupAndWebCategory
 Aliases:
 
 Required: True
@@ -198,6 +192,21 @@ The target FQDNs of the rule
 ```yaml
 Type: System.String[]
 Parameter Sets: SourceAddressAndTargetFqdn, SourceIpGroupAndTargetFqdn
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WebCategory
+The Web Categories of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: SourceAddressAndWebCategory, SourceIpGroupAndWebCategory
 Aliases:
 
 Required: True
@@ -226,26 +235,11 @@ Accept wildcard characters: False
 Indicates terminating TLS
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WebCategory
-The Web Categories of the rule
-
-```yaml
-Type: System.String[]
-Parameter Sets: SourceAddressAndWebCategory, SourceIpGroupAndWebCategory
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

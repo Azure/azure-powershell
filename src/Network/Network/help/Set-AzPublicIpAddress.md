@@ -58,7 +58,6 @@ First command gets the public IP address resource with name $publicIPName in the
     Set-AzPublicIPAddress command updates the public IP address resource with the 
     updated object. DomainNameLabel & Fqdn are modified as expected.
     
-
 ### 3: Change DNS domain label of a public IP address
 ```powershell
 $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
@@ -124,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

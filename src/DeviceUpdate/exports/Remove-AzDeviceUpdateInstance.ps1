@@ -43,7 +43,7 @@ INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/remove-azdeviceupdateinstance
+https://learn.microsoft.com/powershell/module/az.deviceupdate/remove-azdeviceupdateinstance
 #>
 function Remove-AzDeviceUpdateInstance {
 [OutputType([System.Boolean])]

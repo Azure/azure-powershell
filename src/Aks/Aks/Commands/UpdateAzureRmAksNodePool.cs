@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
@@ -73,6 +74,9 @@ namespace Microsoft.Azure.Commands.Aks.Commands
 
         [Parameter(Mandatory = false, HelpMessage = "Update node pool without prompt")]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The maximum number or percentage of nodes that ar surged during upgrade.")]
+        public string MaxSurge { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -139,6 +143,10 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                     {
                         pool.EnableAutoScaling = EnableAutoScaling.ToBool();
                     }
+                    if (this.IsParameterBound(c => c.Mode))
+                    {
+                        pool.Mode = Mode;
+                    }
                     if (this.IsParameterBound(c => c.NodeCount))
                     {
                         pool.Count = NodeCount;
@@ -159,8 +167,32 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                         WriteObject(PSMapper.Instance.Map<PSNodePool>(upgradedPool));
                         return;
                     }
+                    if (this.IsParameterBound(c => c.NodeLabel))
+                    {
+                        pool.NodeLabels = new Dictionary<string, string>();
+                        foreach (var key in NodeLabel.Keys)
+                        {
+                            pool.NodeLabels.Add(key.ToString(), NodeLabel[key].ToString());
+                        }
+                    }
+                    if (this.IsParameterBound(c => c.Tag))
+                    {
+                        pool.Tags = new Dictionary<string, string>();
+                        foreach (var key in Tag.Keys)
+                        {
+                            pool.Tags.Add(key.ToString(), Tag[key].ToString());
+                        }
+                    }
+                    if (this.IsParameterBound(c => c.NodeTaint))
+                    {
+                        pool.NodeTaints = NodeTaint;
+                    }
+                    if (this.IsParameterBound(c => c.MaxSurge))
+                    {
+                        pool.UpgradeSettings = new AgentPoolUpgradeSettings(MaxSurge);
+                    }
 
-                    var updatedPool = Client.AgentPools.CreateOrUpdate(ResourceGroupName, ClusterName, Name, pool);
+                    var updatedPool = this.CreateOrUpdate(ResourceGroupName, ClusterName, Name, pool);
                     WriteObject(PSMapper.Instance.Map<PSNodePool>(updatedPool));
                 });
             }

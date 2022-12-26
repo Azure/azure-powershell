@@ -15,58 +15,58 @@ Updates connection monitor resource.
 ### SetByName (Default)
 ```
 Set-AzNetworkWatcherConnectionMonitor -NetworkWatcherName <String> -ResourceGroupName <String> -Name <String>
- -SourceResourceId <String> [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>]
+ -SourceResourceId <String> -MonitoringIntervalInSeconds <Int32> [-SourcePort <Int32>]
  [-DestinationResourceId <String>] -DestinationPort <Int32> [-DestinationAddress <String>] [-ConfigureOnly]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 Set-AzNetworkWatcherConnectionMonitor -NetworkWatcher <PSNetworkWatcher> -Name <String>
- -SourceResourceId <String> [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>]
+ -SourceResourceId <String> -MonitoringIntervalInSeconds <Int32> [-SourcePort <Int32>]
  [-DestinationResourceId <String>] -DestinationPort <Int32> [-DestinationAddress <String>] [-ConfigureOnly]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetByResourceV2
 ```
 Set-AzNetworkWatcherConnectionMonitor -NetworkWatcher <PSNetworkWatcher> -Name <String>
- -TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>
- [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>]
+ [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>] [-Force]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByNameV2
 ```
 Set-AzNetworkWatcherConnectionMonitor -NetworkWatcherName <String> -ResourceGroupName <String> -Name <String>
- -TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>
- [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>]
+ [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>] [-Force]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByLocation
 ```
 Set-AzNetworkWatcherConnectionMonitor -Location <String> -Name <String> -SourceResourceId <String>
- [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-DestinationResourceId <String>]
- -DestinationPort <Int32> [-DestinationAddress <String>] [-ConfigureOnly] [-Tag <Hashtable>] [-AsJob]
+ -MonitoringIntervalInSeconds <Int32> [-SourcePort <Int32>] [-DestinationResourceId <String>]
+ -DestinationPort <Int32> [-DestinationAddress <String>] [-ConfigureOnly] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByLocationV2
 ```
 Set-AzNetworkWatcherConnectionMonitor -Location <String> -Name <String>
- -TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>
- [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>]
+ [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>] [-Force]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Set-AzNetworkWatcherConnectionMonitor -ResourceId <String> -SourceResourceId <String>
- [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-DestinationResourceId <String>]
- -DestinationPort <Int32> [-DestinationAddress <String>] [-ConfigureOnly] [-Tag <Hashtable>] [-AsJob]
+ -MonitoringIntervalInSeconds <Int32> [-SourcePort <Int32>] [-DestinationResourceId <String>]
+ -DestinationPort <Int32> [-DestinationAddress <String>] [-ConfigureOnly] -Tag <Hashtable> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -74,13 +74,13 @@ Set-AzNetworkWatcherConnectionMonitor -ResourceId <String> -SourceResourceId <St
 ```
 Set-AzNetworkWatcherConnectionMonitor -ResourceId <String>
  -TestGroup <PSNetworkWatcherConnectionMonitorTestGroupObject[]>
- [-Output <PSNetworkWatcherConnectionMonitorOutputObject[]>] [-Note <String>] [-Tag <Hashtable>] [-AsJob]
+ -Output <PSNetworkWatcherConnectionMonitorOutputObject[]> -Note <String> -Tag <Hashtable> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObject
 ```
-Set-AzNetworkWatcherConnectionMonitor -InputObject <PSConnectionMonitorResult> [-AsJob]
+Set-AzNetworkWatcherConnectionMonitor -InputObject <PSConnectionMonitorResult> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -147,10 +147,22 @@ Configure connection monitor, but do not start it
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SetByName, SetByResource, SetByLocation, SetByResourceId
+Parameter Sets: SetByName, SetByResource, SetByLocation
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -204,7 +216,19 @@ The destination port used by connection monitor.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: SetByName, SetByResource, SetByLocation, SetByResourceId
+Parameter Sets: SetByName, SetByResource, SetByLocation
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Int32
+Parameter Sets: SetByResourceId
 Aliases:
 
 Required: True
@@ -219,7 +243,34 @@ The ID of the resource used as the destination by connection monitor.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByName, SetByResource, SetByLocation, SetByResourceId
+Parameter Sets: SetByName, SetByResource, SetByLocation
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Do not ask for confirmation if you want to overwrite a resource
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -264,10 +315,22 @@ Monitoring interval in seconds. Default value is 60 seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: SetByName, SetByResource, SetByLocation, SetByResourceId
+Parameter Sets: SetByName, SetByResource, SetByLocation
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -285,7 +348,7 @@ Aliases: ConnectionMonitorName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -300,7 +363,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -315,7 +378,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -324,13 +387,25 @@ Notes associated with connection monitor.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceV2, SetByNameV2, SetByLocationV2, SetByResourceIdV2
+Parameter Sets: SetByResourceV2, SetByNameV2, SetByLocationV2
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceIdV2
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -339,13 +414,25 @@ Describes a connection monitor output destinations.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorOutputObject[]
-Parameter Sets: SetByResourceV2, SetByNameV2, SetByLocationV2, SetByResourceIdV2
+Parameter Sets: SetByResourceV2, SetByNameV2, SetByLocationV2
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorOutputObject[]
+Parameter Sets: SetByResourceIdV2
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -360,7 +447,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -384,7 +471,19 @@ The source port used by connection monitor.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: SetByName, SetByResource, SetByLocation, SetByResourceId
+Parameter Sets: SetByName, SetByResource, SetByLocation
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Int32
+Parameter Sets: SetByResourceId
 Aliases:
 
 Required: False
@@ -399,7 +498,19 @@ The ID of the resource used as the source by connection monitor.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByName, SetByResource, SetByLocation, SetByResourceId
+Parameter Sets: SetByName, SetByResource, SetByLocation
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
 Aliases:
 
 Required: True
@@ -414,13 +525,25 @@ A hashtable which represents resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: SetByName, SetByResource, SetByResourceV2, SetByNameV2, SetByLocation, SetByLocationV2, SetByResourceId, SetByResourceIdV2
+Parameter Sets: SetByName, SetByResource, SetByResourceV2, SetByNameV2, SetByLocation, SetByLocationV2
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: SetByResourceId, SetByResourceIdV2
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -432,10 +555,10 @@ Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherConnectionMonitorT
 Parameter Sets: SetByResourceV2, SetByNameV2, SetByLocationV2
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -447,7 +570,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

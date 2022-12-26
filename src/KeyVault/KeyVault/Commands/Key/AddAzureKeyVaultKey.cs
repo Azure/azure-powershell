@@ -28,6 +28,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
+using System.Reflection;
 using System.Security;
 using Track2Sdk = Azure.Security.KeyVault.Keys;
 
@@ -73,10 +74,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #region Constants 
 
-        private const string DefaultCVMPolicyUrl = "https://cvmprivatepreviewsa.blob.core.windows.net/cvmpublicpreviewcontainer/skr-policy.json";
-        
+        private const string DefaultCVMPolicyUrl = "https://raw.githubusercontent.com/Azure/confidential-computing-cvm/main/cvm_deployment/key/skr-policy.json";
+        private const string DefaultCVMPolicyPath = "Microsoft.Azure.Commands.KeyVault.Resources.skr-policy.json";
+
         #endregion
-        
+
         #region Input Parameter Definitions
 
         /// <summary>
@@ -445,22 +447,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (this.UseDefaultCVMPolicy.IsPresent)
             {
-                try
+                ReleasePolicy = new PSKeyReleasePolicy()
                 {
-                    using (var client = new HttpClient())
-                    {
-                        ReleasePolicy = new PSKeyReleasePolicy()
-                        {
-                            PolicyContent = client.GetStringAsync(DefaultCVMPolicyUrl).ConfigureAwait(true).GetAwaiter().GetResult(),
-                            Immutable = this.Immutable.IsPresent
-                        };
-                    }
-                }
-                catch(Exception e)
-                {
-                    // Swallow exception to fetch default policy
-                    WriteWarning(string.Format(Resources.FetchDefaultCVMPolicyFailed, e.Message));
-                }
+                    PolicyContent = GetDefaultCVMPolicy(),
+                    Immutable = this.Immutable.IsPresent
+                };
             }
 
             if(this.IsParameterBound(c => c.ReleasePolicyPath))
@@ -628,6 +619,37 @@ namespace Microsoft.Azure.Commands.KeyVault
             };
 
             return converterChain.ConvertToTrack2SdkKeyFromFile(keyFile, KeyFilePassword, converterExtraInfo);
+        }
+        
+        private string GetDefaultCVMPolicy()
+        {
+            string defaultCVMPolicy = null;
+
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    defaultCVMPolicy = client.GetStringAsync(DefaultCVMPolicyUrl).ConfigureAwait(true).GetAwaiter().GetResult();
+                }
+
+            }
+            catch (Exception e)
+            {
+                WriteWarning(string.Format(Resources.FetchDefaultCVMPolicyFromLocal, e.Message));
+                try
+                {
+                    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(DefaultCVMPolicyPath))
+                    using (var reader = new StreamReader(stream))
+                    {
+                        defaultCVMPolicy = reader.ReadToEnd();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new AzPSArgumentException(string.Format(Resources.FetchDefaultCVMPolicyFailedWithErrorMessage, ex.Message), nameof(UseDefaultCVMPolicy));
+                };
+            }
+            return defaultCVMPolicy;
         }
     }
 }

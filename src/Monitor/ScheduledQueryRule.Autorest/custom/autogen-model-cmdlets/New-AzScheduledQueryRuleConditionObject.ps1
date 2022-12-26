@@ -23,7 +23,7 @@ Create an in-memory object for Condition.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Condition
 .Link
-https://docs.microsoft.com/powershell/module/az.ScheduledQueryRule/new-AzScheduledQueryRuleConditionObject
+https://learn.microsoft.com/powershell/module/az.ScheduledQueryRule/new-AzScheduledQueryRuleConditionObject
 #>
 function New-AzScheduledQueryRuleConditionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Condition')]

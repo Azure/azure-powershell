@@ -12,13 +12,13 @@ List routes learned by a specific route server peer
 
 ## SYNTAX
 
-### RouteServerNPeerNameParameterSet (Default)
+### RouteServerPeerNameParameterSet (Default)
 ```
 Get-AzRouteServerPeerLearnedRoute -ResourceGroupName <String> -RouteServerName <String> -PeerName <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### RouteServerNPeerInputObjectParameterSet
+### RouteServerPeerObjectParameterSet
 ```
 Get-AzRouteServerPeerLearnedRoute -InputObject <PSRouteServerPeer> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -49,7 +49,6 @@ Run cmdlet in the background
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
 Required: False
 Position: Named
 Default value: None
@@ -64,7 +63,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
 Required: False
 Position: Named
 Default value: None
@@ -77,9 +75,8 @@ The route server peer input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRouteServerPeer
-Parameter Sets: RouteServerNPeerInputObjectParameterSet
+Parameter Sets: RouteServerPeerObjectParameterSet
 Aliases:
-
 Required: True
 Position: Named
 Default value: None
@@ -92,9 +89,8 @@ Route server peer name
 
 ```yaml
 Type: System.String
-Parameter Sets: RouteServerNPeerNameParameterSet
+Parameter Sets: RouteServerPeerNameParameterSet
 Aliases: ResourceName
-
 Required: True
 Position: Named
 Default value: None
@@ -107,9 +103,8 @@ Route server peer resource group's name
 
 ```yaml
 Type: System.String
-Parameter Sets: RouteServerNPeerNameParameterSet
+Parameter Sets: RouteServerPeerNameParameterSet
 Aliases:
-
 Required: True
 Position: Named
 Default value: None
@@ -122,9 +117,8 @@ Route server name
 
 ```yaml
 Type: System.String
-Parameter Sets: RouteServerNPeerNameParameterSet
+Parameter Sets: RouteServerPeerNameParameterSet
 Aliases:
-
 Required: True
 Position: Named
 Default value: None
@@ -146,7 +140,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Network.Models.PSPeerRoute
 
 ## NOTES
-
-## RELATED LINKS
 
 ## RELATED LINKS

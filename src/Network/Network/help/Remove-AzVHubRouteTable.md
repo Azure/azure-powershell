@@ -13,27 +13,23 @@ Delete a hub route table resource associated with a VirtualHub.
 ## SYNTAX
 
 ### ByVHubRouteTableName (Default)
-```
-Remove-AzVHubRouteTable -ResourceGroupName <String> -ParentResourceName <String> -Name <String> [-AsJob]
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```powershell
+Remove-AzVHubRouteTable -ResourceGroupName <String> -ParentResourceName <String> -Name <String> [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
-```
-Remove-AzVHubRouteTable -Name <String> -ParentObject <PSVirtualHub> [-AsJob] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```powershell
+Remove-AzVHubRouteTable -Name <String> -VirtualHub <PSVirtualHub> [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVHubRouteTableObject
-```
-Remove-AzVHubRouteTable -InputObject <PSVHubRouteTable> [-AsJob] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```powershell
+Remove-AzVHubRouteTable [-InputObject <PSVHubRouteTable>] [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVHubRouteTableResourceId
-```
-Remove-AzVHubRouteTable -ResourceId <String> [-AsJob] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```powershell
+Remove-AzVHubRouteTable -ResourceId <String> [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +51,7 @@ This command deletes the hub route table of the virtual hub.
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -85,7 +81,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +96,7 @@ Accept wildcard characters: False
 The vhubroutetable resource to remove.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVHubRouteTable
+Type: PSVHubRouteTable
 Parameter Sets: ByVHubRouteTableObject
 Aliases: VHubRouteTable, RouteTable
 
@@ -115,9 +111,9 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVHubRouteTableName, ByVirtualHubObject
-Aliases: ResourceName, VHubRouteTableName, RouteTableName
+Aliases: ResourceName, VHubRouteTableName
 
 Required: True
 Position: Named
@@ -130,14 +126,14 @@ Accept wildcard characters: False
 The parent virtual hub object of this resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
+Type: PSVirtualHub
 Parameter Sets: ByVirtualHubObject
-Aliases: VirtualHub, ParentVirtualHub
+Aliases: ParentVirtualHub, VirtualHub
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -145,7 +141,7 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVHubRouteTableName
 Aliases: VirtualHubName, ParentVirtualHubName
 
@@ -160,7 +156,7 @@ Accept wildcard characters: False
 Returns an object representing the item on which this operation is being performed.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +171,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVHubRouteTableName
 Aliases:
 
@@ -190,9 +186,9 @@ Accept wildcard characters: False
 The resource id of the vhubroutetable resource to remove.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVHubRouteTableResourceId
-Aliases: VHubRouteTableId, RouteTableId
+Aliases: VHubRouteTableId
 
 Required: True
 Position: Named
@@ -205,7 +201,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -221,7 +217,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

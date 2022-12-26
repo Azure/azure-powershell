@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/new-azsubscriptiondiagnosticsetting
+online version: https://learn.microsoft.com/powershell/module/az.monitor/new-azsubscriptiondiagnosticsetting
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ Creates or updates subscription diagnostic settings for the specified resource.
 
 ### Example 1: Create diagnostic setting for current subscription
 ```powershell
-$subscriptionId = (Get-AzContext).SubscriptionId
+$subscriptionId = (Get-AzContext).Subscription.Id
 $log = @()
 $log += New-AzDiagnosticSettingSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
 New-AzSubscriptionDiagnosticSetting -Name test-setting -WorkspaceId /subscriptions/$subscriptionId/resourcegroups/test-rg-name/providers/microsoft.operationalinsights/workspaces/test-workspace -Log $log

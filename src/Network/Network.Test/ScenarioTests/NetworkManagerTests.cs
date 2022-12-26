@@ -29,7 +29,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
         public void TestNetworkManagerCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkManagerCRUD");
@@ -37,7 +37,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
         public void TestNetworkManagerGroupCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkManagerGroupCRUD");
@@ -45,7 +45,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
         public void TestNetworkManagerStaticMemberCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkManagerStaticMemberCRUD");
@@ -53,7 +53,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
         public void TestNetworkManagerConnectivityConfigurationCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkManagerConnectivityConfigurationCRUD");
@@ -61,7 +61,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
         public void NetworkManagerSecurityAdminRuleCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkManagerSecurityAdminRuleCRUD");
@@ -69,7 +69,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
         public void NetworkManagerScopeConnectionCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkManagerScopeConnectionCRUD");
@@ -77,7 +77,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
         public void NetworkManagerSubcriptionConnectionCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkManagerSubscriptionConnectionCRUD");
@@ -85,7 +85,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
         public void NetworkManagerManagementGroupConnectionCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkManagerManagementGroupConnectionCRUD");
@@ -93,7 +93,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
         public void NetworkManagerResourceMinimumParameterCreate()
         {
             TestRunner.RunTestScript("Test-NetworkManagerResourceMinimumParameterCreate");

@@ -1125,6 +1125,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanently removing IPv6 Firewall Rule &apos;{0}&apos; for Azure Sql Database Server &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlServerIpv6FirewallRuleDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerIpv6FirewallRuleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the IPv6 Firewall Rule &apos;{0}&apos; for Azure Sql Database Server  &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlServerIpv6FirewallRuleWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerIpv6FirewallRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Permanently removing allowed FQDN &apos;{0}&apos; from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server &apos;{1}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlServerOutboundFirewallRuleDescription {
@@ -1400,6 +1418,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string ServerFirewallRuleNameExists {
             get {
                 return ResourceManager.GetString("ServerFirewallRuleNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IPv6 Firewall Rule with name: &apos;{0}&apos; does not exist for server &apos;{1}&apos;..
+        /// </summary>
+        internal static string ServerIpv6FirewallRuleNameDoesNotExist {
+            get {
+                return ResourceManager.GetString("ServerIpv6FirewallRuleNameDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IPv6 Firewall Rule with name: &apos;{0}&apos; already exists for server &apos;{1}&apos;..
+        /// </summary>
+        internal static string ServerIpv6FirewallRuleNameExists {
+            get {
+                return ResourceManager.GetString("ServerIpv6FirewallRuleNameExists", resourceCulture);
             }
         }
         

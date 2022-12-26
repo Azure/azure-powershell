@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.2
 * Updated api version to 2022-11-01
 * Added new cmdlet: `Update-AzNetworkFunctionCollectorPolicyTag`
 

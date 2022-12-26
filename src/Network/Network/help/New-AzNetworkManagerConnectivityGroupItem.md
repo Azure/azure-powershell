@@ -25,29 +25,25 @@ The **New-AzNetworkManagerConnectivityGroupItem** cmdlet creates a connectivity 
 ### Example 1
 ```powershell
 $networkGroupId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup"
-New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroupId -UseHubGateway -GroupConnectivity "None" -IsGlobal
+New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroupId -UseHubGateway -GroupConnectivity "None" -IsGlobal 
 ```
-
 ```output
 NetworkGroupId                                                                                                                                           UseHubGateway IsGlobal GroupConnectivity
 --------------                                                                                                                                           ------------- -------- -----------------
 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup True          True     None
 ```
-
 Creates a connectivity group item using hub as gateway.
 
 ### Example 2
 ```powershell
 $networkGroupId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup"
-New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroupId -GroupConnectivity "DirectlyConnected"
+New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroupId -GroupConnectivity "DirectlyConnected" 
 ```
-
 ```output
 NetworkGroupId                                                                                                                                           UseHubGateway IsGlobal GroupConnectivity
 --------------                                                                                                                                           ------------- -------- -----------------
 /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup False         False    DirectlyConnected
 ```
-
 Creates a connectivity group item with direct connectivity.
 
 ## PARAMETERS
@@ -56,7 +52,7 @@ Creates a connectivity group item with direct connectivity.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -71,7 +67,7 @@ Accept wildcard characters: False
 Group Connectivity.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, DirectlyConnected
@@ -87,7 +83,7 @@ Accept wildcard characters: False
 IsGlobal flag
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +98,7 @@ Accept wildcard characters: False
 Network Group Id
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +113,7 @@ Accept wildcard characters: False
 Use hub gateway flag
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -144,5 +140,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [New-AzNetworkManagerConnectivityConfiguration](./New-AzNetworkManagerConnectivityConfiguration.md)

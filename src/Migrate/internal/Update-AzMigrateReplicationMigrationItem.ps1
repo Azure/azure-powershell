@@ -34,7 +34,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICDETAIL <IUpdateMigrationItemProviderSpecificInput>: The provider specific input to update migration item.
   InstanceType <String>: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/update-azmigratereplicationmigrationitem
+https://learn.microsoft.com/powershell/module/az.migrate/update-azmigratereplicationmigrationitem
 #>
 function Update-AzMigrateReplicationMigrationItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem])]

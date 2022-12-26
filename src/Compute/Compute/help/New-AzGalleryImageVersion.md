@@ -156,19 +156,17 @@ $galleryImageVersionName = "1.0.0"
 $location = "eastus"
 
 $sourceImageId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/virtualMachines/myVM"
-$diskEncryptionSetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/diskEncryptionSets/cvmDiskEncryptionSet"
+$replicaCount = 1
+$storageAccountType = "Standard_ZRS"
 
-$cvmOsDiskEncryption = @{CVMEncryptionType=EncryptedWithCmk; CVMDiskEncryptionSetID=$diskEncryptionSetId}
-
-$cvmDataDiskEncryption_lun0 = @{DiskEncryptionSetId = $diskEncryptionSetId ; Lun = 0}
-$cvmDataDiskEncryption = @($cvmDataDiskEncryption_lun0)
-
-$cvmEncryption = @{OSDiskImage = $cvmOsDiskEncryption; DataDiskImages = $cvmDataDiskEncryption}
-$region_eastus = @{Name = 'East US';ReplicaCount = 3;StorageAccountType = 'Standard_LRS'; Encryption = $cvmEncryption}
+$region_eastus = @{Name = 'East US';ReplicaCount = 3;StorageAccountType = 'Standard_LRS'}
+$region_westus = @{Name = 'West US'}
 $region_ukwest = @{Name = 'UK West';ReplicaCount = 2}
-$targetRegions = @($region_eastus, $region_ukwest)
+$region_southcentralus = @{Name = 'South Central US';StorageAccountType = 'Standard_LRS'}
 
-New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId -ReplicaCount 1 -StorageAccountType "Standard_ZRS" -TargetRegion $targetRegions
+$targetRegions = @($region_eastus, $region_westus, $region_ukwest, $region_southcentralus)
+
+New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId -ReplicaCount 1 -StorageAccountType $storageAccountType -TargetRegion $targetRegions
 ```
 
 Create an image version in four regions. In this example, the global replica count is 1 and the global storage account type is Standard_ZRS. East US will have 3 replicas, each stored on Standard_LRS account storage. West US will inherit from global settings and have 1 replica stored on Standard_ZRS. UK West will have a replica count of 2 stored on Standard_ZRS. South Central US will have one replica stored on Standard_LRS.
@@ -234,6 +232,33 @@ New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -
 ```
 
 This example has the end-of-life date for image version set to August 2, 2024 at mignight UTC. End-of-life dates can be specified for both the image definitions and image versions. Image versions can still be used after the end-of-life dates.
+
+### Example 13: Create an image version for Confidential VM
+
+```powershell
+$rgName = "myResourceGroup"
+$galleryName = "myGallery"
+$galleryImageDefinitionName = "cvmImage"
+$galleryImageVersionName = "1.0.0"
+$location = "North Europe"
+
+$sourceImageId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/virtualMachines/myVM"
+$cvmDiskEncryptionSetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/diskEncryptionSets/cvmDiskEncryptionSet"
+$dataDiskEncryptionSetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/diskEncryptionSets/dataDiskEncryptionSet"
+
+$cvmOsDiskEncryption = @{CVMEncryptionType='EncryptedWithCmk'; CVMDiskEncryptionSetID=$cvmDiskEncryptionSetId}
+
+$cvmDataDiskEncryption_lun0 = @{DiskEncryptionSetId = $dataDiskEncryptionSetId ; Lun = 0}
+$cvmDataDiskEncryption = @($cvmDataDiskEncryption_lun0)
+
+$cvmEncryption = @{OSDiskImage = $cvmOsDiskEncryption; DataDiskImages = $cvmDataDiskEncryption}
+$region_northEurope = @{Name = 'NorthEurope';ReplicaCount = 3;StorageAccountType = 'Standard_LRS'; Encryption = $cvmEncryption}
+$targetRegions = @($region_northEurope)
+
+New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId -ReplicaCount 1 -StorageAccountType "Standard_LRS" -TargetRegion $targetRegions
+```
+
+In this example, Confidential VM (CVM) Image with Customer Managed Key (CMK) is created under Image definition which supports ConfidentialVM security type.
 
 ## PARAMETERS
 

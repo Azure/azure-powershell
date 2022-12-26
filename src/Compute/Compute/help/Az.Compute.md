@@ -234,7 +234,7 @@ Gets the properties of a VMSS virtual machine.
 Shows the disk encryption status of VMs in a VM scale set.
 
 ### [Get-AzVmssVMRunCommand](Get-AzVmssVMRunCommand.md)
-Gets a specific Run Command or a list of Run Commands for a VM in VM scale set. 
+The operation to get the VMSS VM run command.
 
 ### [Get-AzVMUsage](Get-AzVMUsage.md)
 Gets the virtual machine core count usage for a location.
@@ -576,7 +576,7 @@ Sets the disk encryption key properties on a snapshot update object.
 Sets the key encryption key properties on a snapshot update object.
 
 ### [Set-AzVM](Set-AzVM.md)
-Marks a virtual machine as generalized.
+This cmdlet can be used to do the followings: reapply or redeploy a virtual machine, mark a virtual machine as generalized, simulate eviction to a spot virtual machine.
 
 ### [Set-AzVMAccessExtension](Set-AzVMAccessExtension.md)
 Adds the VMAccess extension to a virtual machine.

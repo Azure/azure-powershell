@@ -27,7 +27,7 @@ Get-AzADAppFederatedCredential -ApplicationObjectId $appObjectId -FederatedCrede
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadappfederatedcredential
+https://learn.microsoft.com/powershell/module/az.resources/get-azadappfederatedcredential
 #>
 function Get-AzADAppFederatedCredential {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential])]

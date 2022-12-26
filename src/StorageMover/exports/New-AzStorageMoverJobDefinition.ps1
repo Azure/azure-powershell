@@ -46,7 +46,7 @@ JOBDEFINITION <IJobDefinition>: The Job Definition resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [TargetSubpath <String>]: The subpath to use when writing to the target Endpoint.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverjobdefinition
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverjobdefinition
 #>
 function New-AzStorageMoverJobDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IJobDefinition])]

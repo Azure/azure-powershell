@@ -14,7 +14,8 @@ Lists Deployment Status in a network manager.
 
 ```
 Get-AzNetworkManagerDeploymentStatus -NetworkManagerName <String> -ResourceGroupName <String>
- [-Region <String[]>] [-DeploymentType <String[]>] [-SkipToken <String>]
+ [-Region <String[]>]
+ [-DeploymentType <String[]>] [-SkipToken <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -29,7 +30,6 @@ $regions = @("centraluseuap")
 $DeploymentTypes = @("SecurityAdmin")  
 Get-AzNetworkManagerDeploymentStatus -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -region $regions -skipToken "FakeSkipToken" -DeploymentType $DeploymentTypes
 ```
-
 ```output
 Value     : [
               {
@@ -44,8 +44,8 @@ Value     : [
               }
             ]
 SkipToken :
-```
 
+```
 Lists Deployment Status of SecurityAdmin configurations in region centraluseuap for a network manager.
 
 ## PARAMETERS
@@ -54,7 +54,7 @@ Lists Deployment Status of SecurityAdmin configurations in region centraluseuap 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 List of deploymentTypes.
 
 ```yaml
-Type: System.String[]
+Type: System.String[]	
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 The networkManager name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: True
 List of regions.
 
 ```yaml
-Type: System.String[]
+Type: System.String[]	
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +129,7 @@ Accept wildcard characters: True
 SkipToken.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
