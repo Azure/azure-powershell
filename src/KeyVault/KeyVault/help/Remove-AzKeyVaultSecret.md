@@ -87,7 +87,7 @@ Register-SecretVault -Name AzKeyVault -ModuleName Az.KeyVault -VaultParameters @
 # Set secret for vault AzKeyVault
 $secure = ConvertTo-SecureString -String "Password" -AsPlainText -Force
 Set-Secret -Vault AzKeyVault -Name secureSecret -SecureStringSecret $secure 
-Remove-Secret -Vault AzKeyVault	-Name secureSecret
+Remove-Secret -Vault AzKeyVault -Name secureSecret
 ```
 
 ```output
@@ -97,7 +97,7 @@ None
 This example removes a secret named `secureSecret` in azure key vault `test-kv` by command `Remove-Secret` in module `Microsoft.PowerShell.SecretManagement`.
 
 
-### Example 3: Purge deleted secret from the key vault permanently
+### Example 4: Purge deleted secret from the key vault permanently
 ```powershell
 Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -InRemovedState
 ```
