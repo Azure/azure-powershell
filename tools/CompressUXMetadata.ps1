@@ -11,14 +11,10 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-# Move the UX metadata files under modules to the artifacts folder for veridation. Merge the metadata file if the module is hybrid and both have metadata for the same sub resource type.
-
-Param(
-    [String]
-    $RepoArtifacts='artifacts'
-)
+# Move the UX metadata files under modules to the artifacts folder and compress them into a zip file.
 
 $RootPath = "$PSScriptRoot/.."
+$RepoArtifacts = 'artifacts'
 $UXMetadataFolder = "$RootPath/$RepoArtifacts/UX"
 If (-Not (Test-Path -Path $UXMetadataFolder))
 {
@@ -30,7 +26,6 @@ Else
 }
 
 $Modules = Get-ChildItem -Path "$RootPath/src" -Exclude "lib" -Directory | ForEach-Object { $_.BaseName }
-Write-Host $Modules
 ForEach ($ModuleName In $Modules)
 {
     $SourceFolder = "$RootPath/src/$ModuleName"
@@ -40,15 +35,10 @@ ForEach ($ModuleName In $Modules)
         Continue
     }
 
-    $UXFolderPath = "$UXMetadataFolder/$ModuleName"
-    If (-Not (Test-Path -Path $UXFolderPath))
-    {
-        New-Item -ItemType Directory -Path $UXFolderPath
-    }
     ForEach ($MetadataFile In $MetadataFileArray)
     {
         $ResourceType = [System.IO.Path]::GetFileName([System.IO.Path]::GetDirectoryName($MetadataFile))
-        $ResourceTypeFolder = "$UXFolderPath/$ResourceType"
+        $ResourceTypeFolder = "$UXMetadataFolder/$ResourceType"
         If (-Not (Test-Path -Path $ResourceTypeFolder))
         {
             New-Item -ItemType Directory -Path $ResourceTypeFolder
@@ -61,7 +51,7 @@ ForEach ($ModuleName In $Modules)
         }
         Else
         {
-            #Merge the json files for the same sub resource type in hybrid module
+            #Merge the json files for the same resource type in hybrid module
             $Metadata1 = Get-Content -Path $TargetPath | ConvertFrom-Json
             $Metadata2 = Get-Content -Path $MetadataFile | ConvertFrom-Json
             $Metadata1.commands += $Metadata2.commands
