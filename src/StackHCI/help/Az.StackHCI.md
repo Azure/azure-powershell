@@ -80,9 +80,7 @@ Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud
 ### [Test-AzStackHCIConnection](Test-AzStackHCIConnection.md)
 Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
 
-Note: Test-AzStackhHCIConnection is deprecated.
-Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests.
-For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/whats-new#new-azure-stack-hci-environment-checker-tool.
+Note: Test-AzStackhHCIConnection is deprecated; instead use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests. For more info, see [Assess your environment for deployment readiness](/azure-stack/hci/manage/use-environment-checker).
 
 ### [Unregister-AzStackHCI](Unregister-AzStackHCI.md)
 Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and unregisters the on-premises cluster with Azure.
