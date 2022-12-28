@@ -1,9 +1,19 @@
-[cmdletbinding()]
+[cmdletbinding(DefaultParameterSetName = 'PowerShell')]
 param(
   [string]
-  [Parameter(Mandatory = $false, Position = 0)]
-  $requiredPsVersion
+  [Parameter(Mandatory = $false, ParameterSetName = 'PowerShell', Position = 0)]
+  [Parameter(Mandatory = $false, ParameterSetName = 'PowerShellPreview', Position = 0)]
+  $requiredPsVersion,
+  [string]
+  [Parameter(Mandatory = $true, ParameterSetName = 'PowerShellPreview')]
+  $AgentOS,
+  [string]
+  [AllowNull()]
+  [Parameter(Mandatory = $true, ParameterSetName = 'PowerShellPreview')]
+  $PowerShellPath
 )
+
+Write-Host ${env:PowerShellPath}
 
 function Install-PowerShell {
   param (
@@ -13,18 +23,23 @@ function Install-PowerShell {
   )
   
   $windowsPowershellVersion = "5.1.14"
-
   # Prepare powershell
   if ($requiredPsVersion -ne $windowsPowershellVersion) {
     Write-Host "Installing PS $requiredPsVersion..."
-    dotnet --version
-    dotnet new tool-manifest --force
-    if('latest' -eq $requiredPsVersion){
-      dotnet tool install PowerShell
-    }else {
-      dotnet tool install PowerShell --version $requiredPsVersion 
+    if ('preview' -eq $requiredPsVersion) {
+      Write-Host "PowerShell preview package has been extracted to $PowerShellPath."
+    } else {
+      dotnet --version
+      dotnet new tool-manifest --force
+      if ( 'latest' -eq $requiredPsVersion ) {
+        dotnet tool install PowerShell
+      }
+      else {
+        dotnet tool install PowerShell --version $requiredPsVersion 
+      }
+      dotnet tool list
     }
-    dotnet tool list
+    
   }else {
     Write-Host "Powershell", $requiredPsVersion, "has been installed"
   }
@@ -36,7 +51,13 @@ function Install-PowerShell {
   }else{
     $command = "Install-Module -Repository PSGallery -Name PowerShellGet -Scope CurrentUser -AllowClobber -Force `
     Exit"
-    dotnet tool run pwsh -c $command
+    if ('preview' -eq $requiredPsVersion) {
+      # Change the mode of 'pwsh' to 'rwxr-xr-x' to allow execution
+      if ($AgentOS -ne "Windows_NT") { chmod 755 "$PowerShellPath/pwsh" }
+      . "$PowerShellPath/pwsh" -c $command
+    } else {
+      dotnet tool run pwsh -c $command
+    }
   }
 }
 
