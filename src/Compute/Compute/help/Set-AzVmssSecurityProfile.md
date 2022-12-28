@@ -69,11 +69,11 @@ The second command sets the SecurityType enum to "TrustedLaunch".
     $vmssIPName = <IP Name>
     $vmssNICName = <NIC Name>
     $computerNamePrefix = <Name Prefix>
-    $ipCfg = New-AzVmssIPConfig -Name $vmssIPName -SubnetId $subnetId
+    $ipCfg = New-AzVmssIpConfig -Name $vmssIPName -SubnetId $subnetId
 
     $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
         | Add-AzVmssNetworkInterfaceConfiguration -Name $vmssNICName -Primary $true -IPConfiguration $ipCfg `
-        | Set-AzVmssOSProfile -ComputerNamePrefix $computerNamePrefix -AdminUsername $adminUsername -AdminPassword $adminPassword `
+        | Set-AzVmssOsProfile -ComputerNamePrefix $computerNamePrefix -AdminUsername $adminUsername -AdminPassword $adminPassword `
         | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' -SecurityEncryptionType $securityEncryptionType `
           -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
           -ImageReferencePublisher $imgRef.PublisherName
@@ -141,8 +141,8 @@ The second command sets the SecurityType enum to "TrustedLaunch".
             -Offer $imageOffer -Skus $imageSku -Version $imageVersion
     $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" `
             -CreateOption "FromImage" -SecurityEncryptionType $osDiskSecurityType
-    $VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType
-    $VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true
+    $VirtualMachine = Set-AzVMSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType
+    $VirtualMachine = Set-AzVMUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true
 
     New-AzVM -ResourceGroupName $rgName -Location $loc -VM $VirtualMachine
 
@@ -200,7 +200,7 @@ The second command sets the SecurityType enum to "TrustedLaunch".
     $vmssIPName = <IP Name>
     $vmssNICName = <NIC Name>
 
-    $ipCfg = New-AzVmssIPConfig -Name $vmssIPName -SubnetId $subnetId
+    $ipCfg = New-AzVmssIpConfig -Name $vmssIPName -SubnetId $subnetId
 
     # Vmss setup
     $securityEncryptionType = "DiskWithVMGuestState"
@@ -219,8 +219,8 @@ The second command sets the SecurityType enum to "TrustedLaunch".
     $vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName
     # Verify the Vmss SecurityType at $vmssGet.VirtualMAchineProfile.SecurityProfile.SecurityType
 
-    $vmssvms = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName
-    $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId
+    $vmssvms = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName
+    $vmssvm = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId
     # Verify the SecurityEncryptionType at $vmssvm.StorageProfile.OsDIsk.ManagedDisk.SecurityProfile.SecurityEncryptionType
 ```
 
@@ -240,9 +240,9 @@ The second command sets the SecurityType enum to "TrustedLaunch".
     $vmName = "v" + $rgname;
     $vmSize = "Standard_DC2as_v5";
     $vmssSize = "Standard_DC2as_v5";
-    $password = Get-PasswordForVM;
+    $password = <Password>;
     $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force; 
-    $username = Get-ComputeTestResourceName;
+    $username = <Username>;
     $vmCred = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
     $imagePublisher = "MicrosoftWindowsServer";
     $imageOffer = "windowsserver";
@@ -304,8 +304,8 @@ The second command sets the SecurityType enum to "TrustedLaunch".
     };
     $VirtualMachine = Set-AzVMOSDisk @paramSetAzVmOsDisk;
 
-    $VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType;
-    $VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
+    $VirtualMachine = Set-AzVMSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType;
+    $VirtualMachine = Set-AzVMUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
 
     # Create CVM to be used as Image reference
     New-AzVM -ResourceGroupName $rgName -Location $loc -VM $VirtualMachine;
@@ -362,7 +362,7 @@ The second command sets the SecurityType enum to "TrustedLaunch".
 
     $vmssIPName = <IP Name>
     $vmssNICName = <NIC Name>
-    $ipCfg = New-AzVmssIPConfig -Name $vmssIPName -SubnetId $subnetId;
+    $ipCfg = New-AzVmssIpConfig -Name $vmssIPName -SubnetId $subnetId;
 
     # Vmss setup
     $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' -ImageReferenceId $galDefinition.Id`
@@ -380,8 +380,8 @@ The second command sets the SecurityType enum to "TrustedLaunch".
     $vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
     # Verify Vmss SecurityType at $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType;
 
-    $vmssvms = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-    $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId;
+    $vmssvms = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+    $vmssvm = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId;
     # Verify the SEcurityEncryptionType at $vmssvm.StorageProfile.OsDIsk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
 
     # Verify the Gallery Version encyrption at $galVersion.PublishingProfile.TargetRegions.Encryption.OSDiskImage.SecurityProfile.ConfidentialVMEncryptionType $cvmEncryptionType;
