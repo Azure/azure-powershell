@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.2
+* Updated api version to 2022-11-01
+* Added new cmdlet: `Update-AzNetworkFunctionCollectorPolicyTag`
+
 ## Version 0.1.1
 * Made Collector policy a tracked resource (added location property to create and update cmdlet and made it mandatory)
 * Changed prefix of cmdlets from "AzureTrafficCollector" to "TrafficCollector"

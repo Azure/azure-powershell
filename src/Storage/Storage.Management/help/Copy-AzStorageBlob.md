@@ -15,22 +15,22 @@ Copy a blob synchronously.
 ### ContainerName (Default)
 ```
 Copy-AzStorageBlob [-SrcBlob] <String> -SrcContainer <String> -DestContainer <String> [-DestBlob <String>]
- [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-EncryptionScope <String>]
- [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob] [-TagCondition <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DestBlobType <String>] [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>]
+ [-EncryptionScope <String>] [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob]
+ [-TagCondition <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstance
 ```
 Copy-AzStorageBlob [-BlobBaseClient <BlobBaseClient>] -DestContainer <String> [-DestBlob <String>]
- [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-EncryptionScope <String>]
- [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob] [-TagCondition <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DestBlobType <String>] [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>]
+ [-EncryptionScope <String>] [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob]
+ [-TagCondition <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UriPipeline
 ```
-Copy-AzStorageBlob -AbsoluteUri <String> -DestContainer <String> -DestBlob <String>
+Copy-AzStorageBlob -AbsoluteUri <String> -DestContainer <String> -DestBlob <String> [-DestBlobType <String>]
  [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-EncryptionScope <String>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob] [-TagCondition <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -70,6 +70,12 @@ C:\PS> $blob = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob $blobnam
 ```
 
 This command update a block blob encryption scope by copy it to itself with a new encryption scope.
+
+### Example 5: Copy a blob to a new append blob 
+```
+C:\PS> $srcBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName  -Context $ctx 
+C:\PS> $destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "srcblobname" -DestContainer "destcontainername" -DestBlob "destblobname" -DestBlobType "Append" -DestContext $destCtx
+```
 
 ## PARAMETERS
 
@@ -181,6 +187,22 @@ Parameter Sets: UriPipeline
 Aliases: DestinationBlob
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestBlobType
+Destination blob type
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Block, Page, Append
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

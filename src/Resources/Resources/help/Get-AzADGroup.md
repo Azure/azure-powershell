@@ -1,7 +1,7 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadgroup
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azadgroup
 schema: 2.0.0
 ---
 
@@ -14,14 +14,8 @@ Lists entities from groups or get entity from groups by key
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzADGroup [-Expand <String[]>] [-Select <String[]>] [-Filter <String>] [-Orderby <String[]>]
+Get-AzADGroup [-Count] [-Expand <String[]>] [-Select <String[]>] [-Filter <String>] [-Orderby <String[]>]
  [-Search <String>] [-ConsistencyLevel <String>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzADGroup [-Count] [-Expand <String[]>] [-Select <String[]>] [-ConsistencyLevel <String>] [-AppendSelected]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -115,7 +109,7 @@ Include count of items
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List
+Parameter Sets: EmptyParameterSet
 Aliases:
 
 Required: False

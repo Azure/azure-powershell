@@ -30,12 +30,12 @@ class AnalysisOutput{
     [int]$Example
     [string]$Line
     [string]$RuleName
-    [int]$ProblemID
+    [int]$ProblemId
     [int]$Severity
     [string]$Description
     [string]$Extent
     [String]$Remediation
-} 
+}
 
 <#
     .SYNOPSIS
@@ -59,18 +59,18 @@ function Get-ExamplesDetailsFromMd {
     $indexOfParameters = $fileContent.IndexOf($PARAMETERS_HEADING)
     if($indexOfExamples -eq -1){
         $RuleName = "MissingExamplesHeading"
-        $ProblemID = 5060
+        $ProblemId = 5060
         $Description = "'## EXAMPLES' is missing."
         $Remediation = "Mark '## EXAMPLES' for your reference docs."
-        $errors += Set-AnalysisOutput $Module $Cmdlet 0 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+        $errors += Set-AnalysisOutput $Module $Cmdlet 0 0 $RuleName $ProblemId $missingSeverity $Description $Extent $Remediation
         return
     }
     if($indexOfParameters -eq -1){
         $RuleName = "MissingParametersHeading"
-        $ProblemID = 5061
+        $ProblemId = 5061
         $Description = "'## PARAMETERS' is missing."
         $Remediation = "Mark '## PARAMETERS' for your reference docs."
-        $errors += Set-AnalysisOutput $Module $Cmdlet 0 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+        $errors += Set-AnalysisOutput $Module $Cmdlet 0 0 $RuleName $ProblemId $missingSeverity $Description $Extent $Remediation
         return
     }
 
@@ -84,10 +84,10 @@ function Get-ExamplesDetailsFromMd {
             if(!$firstExample -and $needRecord){
                 if(!$codeBlockComplete -or !$outputBlockComplete -or !$otherTypeBlockComplete){
                     $RuleName = "BlockIdentifiersNotMatched"
-                    $ProblemID = 5064
+                    $ProblemId = 5064
                     $Description = "The start and end identifiers of the code block do not match."
                     $Remediation = "Please check whether the start or end identifier (triple backticks) of the code block is missing."
-                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemId $missingSeverity $Description $Extent $Remediation
                     if(!$codeBlockComplete){
                         $exampleCodes = "#BlockIdentifiersNotMatched"
                     }
@@ -127,10 +127,10 @@ function Get-ExamplesDetailsFromMd {
                 $blockType = ($exampleLine -split "``````")[1]
                 if($blockType -notin $blockTypeList){
                     $RuleName = "BlockTypeUnsupported"
-                    $ProblemID = 5062
+                    $ProblemId = 5062
                     $Description = "The language identifier $blockType is not supported."
                     $Remediation = "Please check the spelling or contact Azure PowerShell team."
-                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemId $missingSeverity $Description $Extent $Remediation
                 }
                 $otherTypeBlockComplete = $false
             }
@@ -143,10 +143,10 @@ function Get-ExamplesDetailsFromMd {
                     }
                     else{
                         $RuleName = "UnclearBlockType"
-                        $ProblemID = 5063
+                        $ProblemId = 5063
                         $Description = "The code blocks are missing language identifiers."
                         $Remediation = "The type of the code block needs to be clearly indicated with 'powershell' or 'output'."
-                        $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+                        $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemId $missingSeverity $Description $Extent $Remediation
                         $otherTypeBlockComplete = $false
                     }
                 }
@@ -180,7 +180,7 @@ function Get-ExamplesDetailsFromMd {
             else{
                 # Find descriptions
                 if($exampleLine.Trim() -ne ""){
-                   $exampleDescriptions += $exampleLine 
+                   $exampleDescriptions += $exampleLine
                 }
             }
         }
@@ -188,10 +188,10 @@ function Get-ExamplesDetailsFromMd {
     if($needRecord){
         if(!$codeBlockComplete -or !$outputBlockComplete -or !$otherTypeBlockComplete){
             $RuleName = "BlockIdentifiersNotMatched"
-            $ProblemID = 5064
+            $ProblemId = 5064
             $Description = "The start and end identifiers of the code block do not match."
             $Remediation = "Please check whether the start or end identifier (triple backticks) of the code block is missing."
-            $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+            $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemId $missingSeverity $Description $Extent $Remediation
             if(!$codeBlockComplete){
                 $exampleCodes = "#BlockIdentifiersNotMatched"
             }
@@ -273,9 +273,9 @@ function Measure-SectionMissingAndOutputScript {
     if($missingSynopsis -ne 0){
         $Description = "Synopsis is missing."
         $RuleName = "MissingSynopsis"
-        $ProblemID = 5040
+        $ProblemId = 5040
         $Remediation = "Add Synopsis. Remove any placeholders."
-        $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNum $exampleLine $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+        $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNum $exampleLine $RuleName $ProblemId $missingSeverity $Description $Extent $Remediation
     }
 
     # If Description section exists
@@ -294,9 +294,9 @@ function Measure-SectionMissingAndOutputScript {
     if($missingDescription -ne 0){
         $Description = "Description is missing."
         $RuleName = "MissingDescription"
-        $ProblemID = 5041
+        $ProblemId = 5041
         $Remediation = "Add Description. Remove any placeholders."
-        $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNum $exampleLine $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+        $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNum $exampleLine $RuleName $ProblemId $missingSeverity $Description $Extent $Remediation
     }
 
     # If no examples
@@ -304,9 +304,9 @@ function Measure-SectionMissingAndOutputScript {
         if($fileContent -notmatch "<!-- Aladdin Generated Example -->" -and $fileContent -notmatch "<!-- Skip.*-->"){
             $Description = "Example is missing."
             $RuleName = "MissingExample"
-            $ProblemID = 5042
+            $ProblemId = 5042
             $Remediation = "Add Example. Remove any placeholders."
-            $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNum $exampleLine $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+            $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNum $exampleLine $RuleName $ProblemId $missingSeverity $Description $Extent $Remediation
         }
     }
     else {
@@ -322,38 +322,38 @@ function Measure-SectionMissingAndOutputScript {
                 {$exampleDetails.Title -eq "" -or $missingExampleTitle -ne 0} {
                     $Description = "Title of the example is missing."
                     $RuleName = "MissingExampleTitle"
-                    $ProblemID = 5043
+                    $ProblemId = 5043
                     $Remediation = "Add title for the example. Remove any placeholders."
-                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleDetails.Num $exampleLine $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleDetails.Num $exampleLine $RuleName $ProblemId $missingSeverity $Description $Extent $Remediation
                 }
                 {$exampleDetails.Codes.Count -eq 0 -or $exampleDetails.Codes.Trim().Length -eq 0 -or $missingExampleCode -ne 0} {
                     $missingExampleCode = 1
                     $Description = "Code of the example is missing."
                     $RuleName = "MissingExampleCode"
-                    $ProblemID = 5044
+                    $ProblemId = 5044
                     $Remediation = "Add code for the example. Remove any placeholders."
-                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleDetails.Num $exampleLine $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleDetails.Num $exampleLine $RuleName $ProblemId $missingSeverity $Description $Extent $Remediation
                 }
                 {($exampleDetails.OutputBlock -and ($exampleDetails.Outputs.Count -eq 0 -or $exampleDetails.Outputs.Trim().Length -eq 0)) -or $missingExampleOutput -ne 0} {
                     $Description = "Output of the example is missing."
                     $RuleName = "MissingExampleOutput"
-                    $ProblemID = 5045
+                    $ProblemId = 5045
                     $Remediation = "Add output for the example. Remove any placeholders."
-                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleDetails.Num $exampleLine $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleDetails.Num $exampleLine $RuleName $ProblemId $missingSeverity $Description $Extent $Remediation
                 }
                 {$exampleDetails.Description -eq "" -or $missingExampleDescription -ne 0} {
                     $Description = "Description of the example is missing."
                     $RuleName = "MissingExampleDescription"
-                    $ProblemID = 5046
+                    $ProblemId = 5046
                     $Remediation = "Add description for the example. Remove any placeholders."
-                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleDetails.Num $exampleLine $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleDetails.Num $exampleLine $RuleName $ProblemId $missingSeverity $Description $Extent $Remediation
                 }
                 {$needDeleting -ne 0}{
                     $Description = "The prompt of example need to be deleted."
                     $RuleName = "NeedDeleting"
-                    $ProblemID = 5050
+                    $ProblemId = 5050
                     $Remediation = "Delete the prompt of example."
-                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleDetails.Num $exampleLine $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleDetails.Num $exampleLine $RuleName $ProblemId $missingSeverity $Description $Extent $Remediation
                     $exampleCodes = $exampleCodes | ForEach-Object{ $_ -replace "^([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*"}
                 }
             }
@@ -381,7 +381,7 @@ function Measure-SectionMissingAndOutputScript {
 
 <#
     .SYNOPSIS
-    Merge the example codes or scripts into one PowerShell script and generate the code map. 
+    Merge the example codes or scripts into one PowerShell script and generate the code map.
 #>
 function Merge-Contents {
     param(
@@ -420,7 +420,7 @@ function Merge-Contents {
 
 <#
     .SYNOPSIS
-    Merge PowerShell scripts into one and generate the code map. 
+    Merge PowerShell scripts into one and generate the code map.
 #>
 function Merge-Scripts {
     param(
@@ -435,7 +435,7 @@ function Merge-Scripts {
             $fileName = (Get-Item -Path $_.FullName).Name
             $scriptContent = Get-Content $_
             ($tempCodeMap, $TotalLine) = Merge-Contents -Content $scriptContent -Module $fileName -TotalLine $TotalLine -TempScriptPath $TempScriptPath
-            $codeMap += $tempCodeMap  
+            $codeMap += $tempCodeMap
         }
     }
     return $codeMap
@@ -452,19 +452,19 @@ function Set-AnalysisOutput {
         [int]$Example,
         [string]$Line,
         [string]$RuleName,
-        [int]$ProblemID,
+        [int]$ProblemId,
         [int]$Severity,
         [string]$Description,
         [string]$Extent,
         [String]$Remediation
     )
     $result = [AnalysisOutput]@{
-        Module = $Module
+        Module = EnsureModuleName($Module)
         Cmdlet = $Cmdlet
         Example = $Example
         Line = $Line
         RuleName = $RuleName
-        ProblemID = $ProblemID
+        ProblemId = $ProblemId
         Severity = $Severity
         Description = $Description
         Extent = $Extent
@@ -491,7 +491,7 @@ function Get-ScriptAnalyzerResult {
     if (!(Test-Path $ScriptPath -PathType Leaf)) {
         throw "Cannot find cached script file '$ScriptPath'."
     }
-    
+
     # Invoke PSScriptAnalyzer : input scriptblock, output error set in $result with property: RuleName, Message, Extent
     if ($null -eq $RulePaths) {
         $analysisResults = Invoke-ScriptAnalyzer -Path $ScriptPath -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
@@ -516,7 +516,7 @@ function Get-ScriptAnalyzerResult {
         $locationMessage = $CodeMap[$analysisResult.Line - 1]
         if($analysisResult.RuleSuppressionID -ge 5000 -and $analysisResult.RuleSuppressionID -le 5199){
             $result = [AnalysisOutput]@{
-                Module = $locationMessage.Module
+                Module = EnsureModuleName($locationMessage.Module)
                 Cmdlet = $locationMessage.Cmdlet
                 Example = $locationMessage.Example
                 Line = $locationMessage.Line
@@ -524,13 +524,13 @@ function Get-ScriptAnalyzerResult {
                 Description = ($analysisResult.Message -split "#@#")[0] -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 Severity = $Severity
                 Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace "`n"," " -replace "`r"," "
-                ProblemID = $analysisResult.RuleSuppressionID
+                ProblemId = $analysisResult.RuleSuppressionID
                 Remediation = ($analysisResult.Message -split "#@#")[1] -replace "`"","`'" -replace "`n"," " -replace "`r"," "
             }
         }
         else{
             $result = [AnalysisOutput]@{
-                Module = $locationMessage.Module
+                Module = EnsureModuleName($locationMessage.Module)
                 Cmdlet = $locationMessage.Cmdlet
                 Example = $locationMessage.Example
                 Line = $locationMessage.Line
@@ -538,11 +538,11 @@ function Get-ScriptAnalyzerResult {
                 Description = $analysisResult.Message -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 Severity = $Severity
                 Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace "`n"," " -replace "`r"," "
-                ProblemID = 5200
+                ProblemId = 5200
                 Remediation = "Unexpected Error. Please check [Trouble Shotting for Unexpected Errors in Example Issues](https://github.com/Azure/azure-powershell/blob/main/documentation/Debugging-StaticAnalysis-Errors.md#Troubleshotting-Example-Issues) for more details."
             }
         }
-        $errors += $result 
+        $errors += $result
     }
     # Except records in allow list
     $errors = Get-RecordsNotInAllowList $errors
@@ -564,7 +564,7 @@ function Get-NonExceptionRecord{
     $errors = @()
     foreach($record in $records){
         $needAdd = $true
-        $exceptionPath = Join-Path -Path $exceptionPaths -ChildPath "Az.$($record.Module)" -AdditionalChildPath "ExampleIssues.csv"
+        $exceptionPath = Join-Path -Path $exceptionPaths -ChildPath (EnsureModuleName($record.Module)) -AdditionalChildPath "ExampleIssues.csv"
         if(Test-Path -Path $exceptionPath){
             $exceptionContents = Import-Csv -Path $exceptionPath
             foreach($exceptionContent in $exceptionContents) {
@@ -605,4 +605,17 @@ function Get-RecordsNotInAllowList{
         }
         return $true
     }
+}
+
+<#
+.SYNOPSIS
+Prepend "Az." to $moduleName if it doesn't already have one.
+#>
+function EnsureModuleName {
+    param([string]$moduleName)
+    if (-not [System.String]::IsNullOrEmpty($moduleName) -and -not $moduleName.StartsWith("Az."))
+    {
+        return "Az.$moduleName"
+    }
+    return $moduleName
 }

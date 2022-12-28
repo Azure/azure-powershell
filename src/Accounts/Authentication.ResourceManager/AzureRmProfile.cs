@@ -25,6 +25,7 @@ using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
+using Microsoft.WindowsAzure.Commands.Common;
 
 using Newtonsoft.Json;
 
@@ -205,13 +206,37 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     EnvironmentTable[environment.Key] = environment.Value;
                 }
 
+                AzKeyStore keystore = null;
+                AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out keystore);
+
                 foreach (var context in profile.Contexts)
                 {
-                    this.Contexts.Add(context.Key, context.Value);
+                    this.Contexts.Add(context.Key, MigrateSecretToKeyStore(context.Value, keystore));
                 }
 
                 DefaultContextKey = profile.DefaultContextKey ?? (profile.Contexts.Any() ? null : "Default");
             }
+        }
+
+        private IAzureContext MigrateSecretToKeyStore(IAzureContext context, AzKeyStore keystore)
+        {
+            if (keystore != null)
+            {
+                var account = context.Account;
+                if (account.IsPropertySet(AzureAccount.Property.ServicePrincipalSecret))
+                {
+                    keystore?.SaveKey(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, account.GetTenants().First())
+                        , account.ExtendedProperties.GetProperty(AzureAccount.Property.ServicePrincipalSecret).ConvertToSecureString());
+                    account.ExtendedProperties.Remove(AzureAccount.Property.ServicePrincipalSecret);
+                }
+                if (account.IsPropertySet(AzureAccount.Property.CertificatePassword))
+                {
+                    keystore?.SaveKey(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, account.GetTenants().First())
+    , account.ExtendedProperties.GetProperty(AzureAccount.Property.CertificatePassword).ConvertToSecureString());
+                    account.ExtendedProperties.Remove(AzureAccount.Property.CertificatePassword);
+                }
+            }
+            return context;
         }
 
         private void LoadImpl(string contents)
@@ -311,6 +336,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     // so that previous data is overwritten
                     provider.Stream.SetLength(provider.Stream.Position);
                 }
+
+                AzKeyStore keystore = null;
+                AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out keystore);
+                keystore?.Flush();
             }
             finally
             {

@@ -20,10 +20,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IUserAssignedIdentityProperties Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentityProperties()); set => this._identity = value; }
 
-        /// <summary>ARM ID of user Identity selected for encryption</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IUserAssignedIdentityPropertiesInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IUserAssignedIdentityPropertiesInternal)Identity).UserAssignedIdentity = value ?? null; }
-
         /// <summary>Backing field for <see cref="KeyName" /> property.</summary>
         private string _keyName;
 
@@ -48,6 +44,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IUserAssignedIdentityProperties Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultPropertiesInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentityProperties()); set { {_identity = value;} } }
 
+        /// <summary>ARM ID of user Identity selected for encryption</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
+        public string UserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IUserAssignedIdentityPropertiesInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IUserAssignedIdentityPropertiesInternal)Identity).UserAssignedIdentity = value ?? null; }
+
         /// <summary>Creates an new <see cref="KeyVaultProperties" /> instance.</summary>
         public KeyVaultProperties()
         {
@@ -58,14 +58,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
     public partial interface IKeyVaultProperties :
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IJsonSerializable
     {
-        /// <summary>ARM ID of user Identity selected for encryption</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"ARM ID of user Identity selected for encryption",
-        SerializedName = @"userAssignedIdentity",
-        PossibleTypes = new [] { typeof(string) })]
-        string IdentityUserAssignedIdentity { get; set; }
         /// <summary>Name of the Key from KeyVault</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
@@ -90,6 +82,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         SerializedName = @"keyVersion",
         PossibleTypes = new [] { typeof(string) })]
         string KeyVersion { get; set; }
+        /// <summary>ARM ID of user Identity selected for encryption</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"ARM ID of user Identity selected for encryption",
+        SerializedName = @"userAssignedIdentity",
+        PossibleTypes = new [] { typeof(string) })]
+        string UserAssignedIdentity { get; set; }
 
     }
     /// Properties to configure keyVault Properties
@@ -97,14 +97,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
 
     {
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IUserAssignedIdentityProperties Identity { get; set; }
-        /// <summary>ARM ID of user Identity selected for encryption</summary>
-        string IdentityUserAssignedIdentity { get; set; }
         /// <summary>Name of the Key from KeyVault</summary>
         string KeyName { get; set; }
         /// <summary>Uri of KeyVault</summary>
         string KeyVaultUri { get; set; }
         /// <summary>Key Version</summary>
         string KeyVersion { get; set; }
+        /// <summary>ARM ID of user Identity selected for encryption</summary>
+        string UserAssignedIdentity { get; set; }
 
     }
 }

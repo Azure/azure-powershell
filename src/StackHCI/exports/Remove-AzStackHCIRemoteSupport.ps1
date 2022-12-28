@@ -25,7 +25,7 @@ Remove-AzStackHCIRemoteSupport
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/remove-azstackhciremotesupport
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciremotesupport
 #>
 function Remove-AzStackHCIRemoteSupport {
 [OutputType([System.Boolean])]

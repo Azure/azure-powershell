@@ -373,6 +373,5 @@ function Test-GetFailureScenarios {
         }
     catch {
         Assert-AreEqual $_.FullyQualifiedErrorId "Microsoft.Azure.Commands.Automation.Cmdlet.GetAzureAutomationWebhook"
-        Assert-True { $_.CategoryInfo -match "ResourceNotFoundException" }
     }
 }

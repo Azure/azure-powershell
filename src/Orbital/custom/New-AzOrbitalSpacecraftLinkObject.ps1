@@ -23,7 +23,7 @@ Create an in-memory object for SpacecraftLink.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftLink
 .Link
-https://docs.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalSpacecraftLinkObject
+https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalSpacecraftLinkObject
 #>
 function New-AzOrbitalSpacecraftLinkObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftLink')]

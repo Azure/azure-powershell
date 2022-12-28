@@ -19,8 +19,22 @@
 -->
 ## Upcoming Release
 
-## Version 5.7.0
-* [Breaking Change] Added fix for Enable-AzRecoveryServicesBackupProtection cmdlet. Resolved the null refrence issue by making policy a mandatory parameter.
+## Version 6.1.2
+* Added support for passing DiskEncryptionSetId for Cross region restore
+* Fixed the pagination bug in `Get-AzRecoveryServicesAsrProtectableItem` for the V2ARCM scenario.
+* Fixed `IncludeDiskId` property for `New-ASRReplicationProtectedItem` cmdlet of H2A
+
+## Version 6.1.1
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
+## Version 6.1.0
+* Added support for cross zonal restore for ZRS vaults for non-ZonePinned VM
+* Fixed bug with Update-AzRecoveryServicesAsrProtectionContainerMapping
+* Added new scenarios: EZ-to-AZ, EZ-to-AZ, EZ-to-EZ
+* Removed `VmName` from non A2A scenarios of `New-AzRecoveryServicesAsrReplicationProtectedItem` as it is not applicable
+
+## Version 6.0.0
+* [Breaking Change] Added fix for Enable-AzRecoveryServicesBackupProtection cmdlet. Resolved the null reference issue by making policy a mandatory parameter.
 * [Breaking Change] Removed status filter from Get-AzRecoveryServicesBackupContainer command
 * Added SubTasks Duration for IaasVM job
 

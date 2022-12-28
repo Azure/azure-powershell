@@ -51,7 +51,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsdefaultfunctiondefinition
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsdefaultfunctiondefinition
 #>
 function Get-AzStreamAnalyticsDefaultFunctionDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction])]
@@ -231,7 +231,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsoperation
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsoperation
 #>
 function Get-AzStreamAnalyticsOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOperation])]
@@ -398,7 +398,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsfunction
+https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsfunction
 #>
 function New-AzStreamAnalyticsFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction])]
@@ -645,7 +645,7 @@ PROPERTY <IInputProperties>: The properties that are associated with an input. R
   [Serialization <ISerialization>]: Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
     Type <EventSerializationType>: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput
 #>
 function New-AzStreamAnalyticsInput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput])]
@@ -950,7 +950,7 @@ STREAMINGJOB <IStreamingJob>: A streaming job object, containing all information
   [StreamingUnit <Int32?>]: Specifies the number of streaming units that the streaming job uses.
   [TransformationETag <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob
+https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob
 #>
 function New-AzStreamAnalyticsJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob])]
@@ -1412,7 +1412,7 @@ OUTPUT <IOutput>: An output object, containing all information associated with t
   [SizeWindow <Single?>]: 
   [TimeWindow <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput
 #>
 function New-AzStreamAnalyticsOutput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput])]
@@ -1675,7 +1675,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsfunction
+https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsfunction
 #>
 function Test-AzStreamAnalyticsFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus])]
@@ -1913,7 +1913,7 @@ PROPERTY <IInputProperties>: The properties that are associated with an input. R
   [Serialization <ISerialization>]: Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
     Type <EventSerializationType>: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsinput
 #>
 function Test-AzStreamAnalyticsInput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus])]
@@ -2138,7 +2138,7 @@ OUTPUT <IOutput>: An output object, containing all information associated with t
   [SizeWindow <Single?>]: 
   [TimeWindow <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsoutput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/test-azstreamanalyticsoutput
 #>
 function Test-AzStreamAnalyticsOutput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus])]
@@ -2406,7 +2406,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsfunction
+https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsfunction
 #>
 function Update-AzStreamAnalyticsFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction])]
@@ -2650,7 +2650,7 @@ PROPERTY <IInputProperties>: The properties that are associated with an input. R
   [Serialization <ISerialization>]: Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
     Type <EventSerializationType>: Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsinput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsinput
 #>
 function Update-AzStreamAnalyticsInput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IInput])]
@@ -2958,7 +2958,7 @@ STREAMINGJOB <IStreamingJob>: A streaming job object, containing all information
   [StreamingUnit <Int32?>]: Specifies the number of streaming units that the streaming job uses.
   [TransformationETag <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsjob
+https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsjob
 #>
 function Update-AzStreamAnalyticsJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob])]
@@ -3411,7 +3411,7 @@ OUTPUT <IOutput>: An output object, containing all information associated with t
   [SizeWindow <Single?>]: 
   [TimeWindow <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsoutput
+https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsoutput
 #>
 function Update-AzStreamAnalyticsOutput {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput])]

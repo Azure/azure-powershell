@@ -25,7 +25,7 @@ Sync-AzDataProtectionBackupInstance -ResourceGroupName "rgName" -SubscriptionId 
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/sync-azdataprotectionbackupinstance
+https://learn.microsoft.com/powershell/module/az.dataprotection/sync-azdataprotectionbackupinstance
 #>
 function Sync-AzDataProtectionBackupInstance {
 [OutputType([System.Boolean])]

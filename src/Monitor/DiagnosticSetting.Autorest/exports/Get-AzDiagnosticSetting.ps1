@@ -20,10 +20,10 @@ Gets the active diagnostic settings for the specified resource.
 .Description
 Gets the active diagnostic settings for the specified resource.
 .Example
-$subscriptionId = (Get-AzContext).SubscriptionId
+$subscriptionId = (Get-AzContext).Subscription.Id
 Get-AzDiagnosticSetting -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001
 .Example
-$subscriptionId = (Get-AzContext).SubscriptionId
+$subscriptionId = (Get-AzContext).Subscription.Id
 Get-AzDiagnosticSetting -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001 -Name test-setting
 
 .Inputs
@@ -41,7 +41,7 @@ INPUTOBJECT <IDiagnosticSettingIdentity>: Identity Parameter
   [ResourceUri <String>]: The identifier of the resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting
+https://learn.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting
 #>
 function Get-AzDiagnosticSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource])]

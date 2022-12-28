@@ -79,6 +79,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public KeyVaultAndSecretReference DiskEncryptionKey { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public KeyVaultAndKeyReference KeyEncryptionKey { get; set; }
@@ -131,6 +137,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // Encryption
             Encryption vEncryption = null;
 
+            // ExtendedLocation
+            ExtendedLocation vExtendedLocation = null;
+
             // Sku
             SnapshotSku vSku = null;
 
@@ -143,6 +152,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vEncryptionSettingsCollection = new EncryptionSettingsCollection();
                 }
                 vEncryptionSettingsCollection.Enabled = (bool) this.EncryptionSettingsEnabled;
+            }
+
+            if (this.IsParameterBound(c => c.EdgeZone))
+            {
+                vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
             }
 
             if (this.IsParameterBound(c => c.DiskEncryptionKey))

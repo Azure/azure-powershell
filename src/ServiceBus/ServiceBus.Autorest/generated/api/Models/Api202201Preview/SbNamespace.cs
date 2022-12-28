@@ -32,18 +32,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public bool? DisableLocalAuth { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).DisableLocalAuth; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).DisableLocalAuth = value ?? default(bool); }
 
-        /// <summary>Enumerates the possible value of keySource for Encryption</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource? EncryptionKeySource { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).EncryptionKeySource; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).EncryptionKeySource = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource)""); }
-
-        /// <summary>Properties of KeyVault</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[] EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).EncryptionKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).EncryptionKeyVaultProperty = value ?? null /* arrayOf */; }
-
-        /// <summary>Enable Infrastructure Encryption (Double Encryption)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public bool? EncryptionRequireInfrastructureEncryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).EncryptionRequireInfrastructureEncryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).EncryptionRequireInfrastructureEncryption = value ?? default(bool); }
-
         /// <summary>Resource Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api10.IResourceInternal)__trackedResource).Id; }
@@ -55,21 +43,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.Identity()); set => this._identity = value; }
 
-        /// <summary>ObjectId from the KeyVault</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).PrincipalId; }
-
-        /// <summary>TenantId from the KeyVault</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).TenantId; }
-
         /// <summary>Type of managed service identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType? IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).Type = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType)""); }
 
-        /// <summary>Properties for User Assigned Identities</summary>
+        /// <summary>Enumerates the possible value of keySource for Encryption</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource? KeySource { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).EncryptionKeySource; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).EncryptionKeySource = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource)""); }
+
+        /// <summary>Properties of KeyVault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[] KeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).EncryptionKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).EncryptionKeyVaultProperty = value ?? null /* arrayOf */; }
 
         /// <summary>The Geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
@@ -97,14 +81,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentity Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.Identity()); set { {_identity = value;} } }
 
-        /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).PrincipalId = value; }
-
-        /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).TenantId = value; }
-
         /// <summary>Internal Acessors for MetricId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal.MetricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).MetricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).MetricId = value; }
+
+        /// <summary>Internal Acessors for PrincipalId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).PrincipalId = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceProperties Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.SbNamespaceProperties()); set { {_property = value;} } }
@@ -124,6 +105,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api10.ISystemData Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api10.SystemData()); set { {_systemData = value;} } }
 
+        /// <summary>Internal Acessors for TenantId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).TenantId = value; }
+
         /// <summary>Internal Acessors for UpdatedAt</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespaceInternal.UpdatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).UpdatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).UpdatedAt = value; }
 
@@ -134,6 +118,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         /// <summary>Resource name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api10.IResourceInternal)__trackedResource).Name; }
+
+        /// <summary>ObjectId from the KeyVault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
+        public string PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).PrincipalId; }
 
         /// <summary>List of private endpoint connections.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
@@ -155,6 +143,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess? PublicNetworkAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).PublicNetworkAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).PublicNetworkAccess = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess)""); }
+
+        /// <summary>Enable Infrastructure Encryption (Double Encryption)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
+        public bool? RequireInfrastructureEncryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).EncryptionRequireInfrastructureEncryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).EncryptionRequireInfrastructureEncryption = value ?? default(bool); }
 
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
@@ -224,6 +216,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
         public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api10.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api10.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api10.ITrackedResourceInternal)__trackedResource).Tag = value ?? null /* model class */; }
 
+        /// <summary>TenantId from the KeyVault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
+        public string TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).TenantId; }
+
         /// <summary>Resource type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api10.IResourceInternal)__trackedResource).Type; }
@@ -231,6 +227,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         /// <summary>The time the namespace was updated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public global::System.DateTime? UpdatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespacePropertiesInternal)Property).UpdatedAt; }
+
+        /// <summary>Properties for User Assigned Identities</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities UserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
 
         /// <summary>
         /// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
@@ -285,46 +285,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         SerializedName = @"disableLocalAuth",
         PossibleTypes = new [] { typeof(bool) })]
         bool? DisableLocalAuth { get; set; }
-        /// <summary>Enumerates the possible value of keySource for Encryption</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Enumerates the possible value of keySource for Encryption",
-        SerializedName = @"keySource",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource? EncryptionKeySource { get; set; }
-        /// <summary>Properties of KeyVault</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Properties of KeyVault",
-        SerializedName = @"keyVaultProperties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[] EncryptionKeyVaultProperty { get; set; }
-        /// <summary>Enable Infrastructure Encryption (Double Encryption)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Enable Infrastructure Encryption (Double Encryption)",
-        SerializedName = @"requireInfrastructureEncryption",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? EncryptionRequireInfrastructureEncryption { get; set; }
-        /// <summary>ObjectId from the KeyVault</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Description = @"ObjectId from the KeyVault",
-        SerializedName = @"principalId",
-        PossibleTypes = new [] { typeof(string) })]
-        string IdentityPrincipalId { get;  }
-        /// <summary>TenantId from the KeyVault</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Description = @"TenantId from the KeyVault",
-        SerializedName = @"tenantId",
-        PossibleTypes = new [] { typeof(string) })]
-        string IdentityTenantId { get;  }
         /// <summary>Type of managed service identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
@@ -333,14 +293,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType) })]
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType? IdentityType { get; set; }
-        /// <summary>Properties for User Assigned Identities</summary>
+        /// <summary>Enumerates the possible value of keySource for Encryption</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Properties for User Assigned Identities",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        Description = @"Enumerates the possible value of keySource for Encryption",
+        SerializedName = @"keySource",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource? KeySource { get; set; }
+        /// <summary>Properties of KeyVault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Properties of KeyVault",
+        SerializedName = @"keyVaultProperties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[] KeyVaultProperty { get; set; }
         /// <summary>Identifier for Azure Insights metrics</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
@@ -357,6 +325,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         SerializedName = @"minimumTlsVersion",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.TlsVersion) })]
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.TlsVersion? MinimumTlsVersion { get; set; }
+        /// <summary>ObjectId from the KeyVault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"ObjectId from the KeyVault",
+        SerializedName = @"principalId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrincipalId { get;  }
         /// <summary>List of private endpoint connections.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
@@ -383,6 +359,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess) })]
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess? PublicNetworkAccess { get; set; }
+        /// <summary>Enable Infrastructure Encryption (Double Encryption)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Enable Infrastructure Encryption (Double Encryption)",
+        SerializedName = @"requireInfrastructureEncryption",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? RequireInfrastructureEncryption { get; set; }
         /// <summary>Endpoint you can use to perform Service Bus operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
@@ -473,6 +457,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         SerializedName = @"lastModifiedByType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.CreatedByType) })]
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.CreatedByType? SystemDataLastModifiedByType { get; set; }
+        /// <summary>TenantId from the KeyVault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"TenantId from the KeyVault",
+        SerializedName = @"tenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        string TenantId { get;  }
         /// <summary>The time the namespace was updated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
@@ -481,6 +473,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         SerializedName = @"updatedAt",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? UpdatedAt { get;  }
+        /// <summary>Properties for User Assigned Identities</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Properties for User Assigned Identities",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities UserAssignedIdentity { get; set; }
         /// <summary>
         /// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
         /// </summary>
@@ -505,26 +505,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         bool? DisableLocalAuth { get; set; }
         /// <summary>Properties of BYOK Encryption description</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IEncryption Encryption { get; set; }
-        /// <summary>Enumerates the possible value of keySource for Encryption</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource? EncryptionKeySource { get; set; }
-        /// <summary>Properties of KeyVault</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[] EncryptionKeyVaultProperty { get; set; }
-        /// <summary>Enable Infrastructure Encryption (Double Encryption)</summary>
-        bool? EncryptionRequireInfrastructureEncryption { get; set; }
         /// <summary>Properties of BYOK Identity description</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentity Identity { get; set; }
-        /// <summary>ObjectId from the KeyVault</summary>
-        string IdentityPrincipalId { get; set; }
-        /// <summary>TenantId from the KeyVault</summary>
-        string IdentityTenantId { get; set; }
         /// <summary>Type of managed service identity.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.ManagedServiceIdentityType? IdentityType { get; set; }
-        /// <summary>Properties for User Assigned Identities</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        /// <summary>Enumerates the possible value of keySource for Encryption</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeySource? KeySource { get; set; }
+        /// <summary>Properties of KeyVault</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[] KeyVaultProperty { get; set; }
         /// <summary>Identifier for Azure Insights metrics</summary>
         string MetricId { get; set; }
         /// <summary>The minimum TLS version for the cluster to support, e.g. '1.2'</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.TlsVersion? MinimumTlsVersion { get; set; }
+        /// <summary>ObjectId from the KeyVault</summary>
+        string PrincipalId { get; set; }
         /// <summary>List of private endpoint connections.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection[] PrivateEndpointConnection { get; set; }
         /// <summary>Properties of the namespace.</summary>
@@ -535,6 +529,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         /// This determines if traffic is allowed over public network. By default it is enabled.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.PublicNetworkAccess? PublicNetworkAccess { get; set; }
+        /// <summary>Enable Infrastructure Encryption (Double Encryption)</summary>
+        bool? RequireInfrastructureEncryption { get; set; }
         /// <summary>Endpoint you can use to perform Service Bus operations.</summary>
         string ServiceBusEndpoint { get; set; }
         /// <summary>Properties of SKU</summary>
@@ -563,8 +559,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview
         string SystemDataLastModifiedBy { get; set; }
         /// <summary>The type of identity that last modified the resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.CreatedByType? SystemDataLastModifiedByType { get; set; }
+        /// <summary>TenantId from the KeyVault</summary>
+        string TenantId { get; set; }
         /// <summary>The time the namespace was updated.</summary>
         global::System.DateTime? UpdatedAt { get; set; }
+        /// <summary>Properties for User Assigned Identities</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities UserAssignedIdentity { get; set; }
         /// <summary>
         /// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
         /// </summary>

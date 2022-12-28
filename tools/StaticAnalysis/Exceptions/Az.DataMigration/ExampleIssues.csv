@@ -1,2 +1,2 @@
 "Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
-"DataMigration","New-AzDataMigrationLoginsMigration","1","1","Unbinded_Expression","5014","1","New-AzDataMigrationLoginsMigration 'loginname2' is not explicitly assigned to a parameter.","'loginname2'","Assign 'loginname2' explicitly to the parameter."
+"Az.DataMigration","New-AzDataMigrationLoginsMigration","1","1","Unbinded_Expression","5014","1","New-AzDataMigrationLoginsMigration 'loginname2' is not explicitly assigned to a parameter.","'loginname2'","Assign 'loginname2' explicitly to the parameter."

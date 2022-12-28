@@ -19,17 +19,20 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using global::Azure;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Files.Shares.Models;
+    using Microsoft.Azure.Documents.Partitioning;
+    using Microsoft.Azure.Storage.DataMovement;
     using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.Azure.Storage.DataMovement;
     using System;
+    using System.Runtime.InteropServices;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;
-    using System.Runtime.InteropServices;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
     [OutputType(typeof(AzureStorageFile))]
@@ -203,21 +206,61 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             fileToBeDownloaded.GetFullPath(), targetFile),
                         Resources.PrepareDownloadingFile);
 
-                    await DataMovementTransferHelper.DoTransfer(() =>
+                    // If not Oauth, use DMlib
+                    if (!(this.Channel != null && this.Channel.StorageContext != null && this.Channel.StorageContext.StorageAccount != null && this.Channel.StorageContext.StorageAccount.Credentials.IsToken))
                     {
-                        return this.TransferManager.DownloadAsync(
-                            fileToBeDownloaded,
-                            targetFile,
-                            new DownloadOptions
+                        await DataMovementTransferHelper.DoTransfer(() =>
+                        {
+                            return this.TransferManager.DownloadAsync(
+                                fileToBeDownloaded,
+                                targetFile,
+                                new DownloadOptions
+                                {
+                                    DisableContentMD5Validation = !this.CheckMd5,
+                                    PreserveSMBAttributes = context is null ? false : context.PreserveSMBAttribute.IsPresent
+                                },
+                                this.GetTransferContext(progressRecord, fileToBeDownloaded.Properties.Length),
+                                CmdletCancellationToken);
+                        },
+                            progressRecord,
+                            this.OutputStream).ConfigureAwait(false);
+                    }
+                    else // Track2 SDK 
+                    {
+                        ShareFileClient fileClientToDownload = AzureStorageFile.GetTrack2FileClient(fileToBeDownloaded, this.ClientOptions);
+                        if (!System.IO.File.Exists(targetFile) || ConfirmOverwrite(fileClientToDownload, targetFile))
+                        {
+                            //Prepare progress Handler
+                            IProgress<long> progressHandler = new Progress<long>((finishedBytes) =>
                             {
-                                DisableContentMD5Validation = !this.CheckMd5,
-                                PreserveSMBAttributes = context is null ? false : context.PreserveSMBAttribute.IsPresent
-                            },
-                            this.GetTransferContext(progressRecord, fileToBeDownloaded.Properties.Length),
-                            CmdletCancellationToken);
-                    },
-                        progressRecord,
-                        this.OutputStream).ConfigureAwait(false);
+                                if (progressRecord != null)
+                                {
+                                    // Size of the source file might be 0, when it is, directly treat the progress as 100 percent.
+                                    progressRecord.PercentComplete = (fileToBeDownloaded.Properties.Length == 0) ? 100 : (int)(finishedBytes * 100 / fileToBeDownloaded.Properties.Length);
+                                    progressRecord.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, progressRecord.PercentComplete);
+                                    this.OutputStream.WriteProgress(progressRecord);
+                                }
+                            });
+
+                            using (FileStream stream = System.IO.File.OpenWrite(targetFile))
+                            {
+                                stream.SetLength(0);
+                                long contentLenLeft = fileToBeDownloaded.Properties.Length;
+                                long downloadOffset = 0;
+                                ShareFileDownloadOptions downloadOptions = new ShareFileDownloadOptions();
+                                while (contentLenLeft > 0)
+                                {
+                                    long contentSize = contentLenLeft < size4MB ? contentLenLeft : size4MB;
+                                    downloadOptions.Range = new HttpRange(downloadOffset, contentSize);
+                                    ShareFileDownloadInfo download = fileClientToDownload.Download(downloadOptions, cancellationToken: this.CmdletCancellationToken);
+                                    download.Content.CopyTo(stream);
+                                    downloadOffset += contentSize;
+                                    contentLenLeft -= contentSize;
+                                    progressHandler.Report(downloadOffset);
+                                }
+                            }
+                        }
+                    }
 
                     if (this.PassThru)
                     {

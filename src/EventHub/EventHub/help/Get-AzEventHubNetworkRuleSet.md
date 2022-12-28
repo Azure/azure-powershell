@@ -1,7 +1,7 @@
 ---
 external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubnetworkruleset
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubnetworkruleset
 schema: 2.0.0
 ---
 

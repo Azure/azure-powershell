@@ -30,19 +30,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WeekToDate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WeekToDate", "WeekToDate", global::System.Management.Automation.CompletionResultType.ParameterValue, "WeekToDate");
+                yield return new global::System.Management.Automation.CompletionResult("'WeekToDate'", "WeekToDate", global::System.Management.Automation.CompletionResultType.ParameterValue, "WeekToDate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "MonthToDate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("MonthToDate", "MonthToDate", global::System.Management.Automation.CompletionResultType.ParameterValue, "MonthToDate");
+                yield return new global::System.Management.Automation.CompletionResult("'MonthToDate'", "MonthToDate", global::System.Management.Automation.CompletionResultType.ParameterValue, "MonthToDate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "YearToDate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("YearToDate", "YearToDate", global::System.Management.Automation.CompletionResultType.ParameterValue, "YearToDate");
+                yield return new global::System.Management.Automation.CompletionResult("'YearToDate'", "YearToDate", global::System.Management.Automation.CompletionResultType.ParameterValue, "YearToDate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Custom".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Custom", "Custom", global::System.Management.Automation.CompletionResultType.ParameterValue, "Custom");
+                yield return new global::System.Management.Automation.CompletionResult("'Custom'", "Custom", global::System.Management.Automation.CompletionResultType.ParameterValue, "Custom");
             }
         }
     }

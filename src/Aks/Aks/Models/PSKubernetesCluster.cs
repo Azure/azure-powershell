@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 using Newtonsoft.Json;
@@ -65,11 +66,25 @@ namespace Microsoft.Azure.Commands.Aks.Models
             LinuxProfile = linuxProfile;
             ServicePrincipalProfile = servicePrincipalProfile;
         }
-
         /// <summary>
         /// Gets the Power State of the cluster.
         /// </summary>
         public PSPowerState PowerState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the managed cluster SKU.
+        /// </summary>
+        public ManagedClusterSKU Sku { get; set; }
+
+        /// <summary>
+        /// Gets or sets the extended location of the Virtual Machine.
+        /// </summary>
+        public ExtendedLocation ExtendedLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity of the managed cluster, if configured.
+        /// </summary>
+        public PSManagedClusterIdentity Identity { get; set; }
 
         /// <summary>
         /// Gets the current deployment or provisioning state, which only
@@ -87,6 +102,11 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// managed cluster.
         /// </summary>
         public string KubernetesVersion { get; set; }
+
+        /// <summary>
+        /// Gets the version of Kubernetes the Managed Cluster is running.
+        /// </summary>
+        public string CurrentKubernetesVersion { get; private set; }
 
         /// <summary>
         /// Gets or sets DNS prefix specified when creating the managed
@@ -122,10 +142,23 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public IList<PSContainerServiceAgentPoolProfile> AgentPoolProfiles { get; set; }
 
         /// <summary>
+        /// Gets or sets profile for Linux VMs in the container service
+        /// cluster.
+        /// </summary>
+        public PSContainerServiceLinuxProfile LinuxProfile { get; set; }
+
+        /// <summary>
         /// Gets or sets profile for Windows VMs in the container service
         /// cluster.
         /// </summary>
         public PSManagedClusterWindowsProfile WindowsProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets information about a service principal identity for the
+        /// cluster to use for manipulating Azure APIs. Either secret or
+        /// keyVaultSecretRef must be specified.
+        /// </summary>
+        public PSContainerServiceServicePrincipalProfile ServicePrincipalProfile { get; set; }
 
         /// <summary>
         /// Gets or sets profile of managed cluster add-on.
@@ -138,7 +171,12 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public PSManagedClusterPodIdentityProfile PodIdentityProfile { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the resource group containing agent pool
+        /// Gets or sets the OIDC issuer profile of the Managed Cluster.
+        /// </summary>
+        public ManagedClusterOIDCIssuerProfile OidcIssuerProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group containing agent pool
         /// nodes.
         /// </summary>
         public string NodeResourceGroup { get; set; }
@@ -150,13 +188,14 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public bool? EnableRBAC { get; set; }
 
         /// <summary>
-        /// Gets or sets (PREVIEW) Whether to enable Kubernetes Pod security
-        /// policy.
+        /// Gets or sets (DEPRECATING) Whether to enable Kubernetes pod
+        /// security policy (preview). This feature is set for removal on
+        /// October 15th, 2020. Learn more at aka.ms/aks/azpodpolicy.
         /// </summary>
         public bool? EnablePodSecurityPolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets profile of network configuration.
+        /// Gets or sets the network configuration profile.
         /// </summary>
         public PSContainerServiceNetworkProfile NetworkProfile { get; set; }
 
@@ -164,27 +203,28 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// Gets or sets profile of Azure Active Directory configuration.
         /// </summary>
         public PSManagedClusterAadProfile AadProfile { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the auto upgrade configuration.
         /// </summary>
         public PSManagedClusterAutoUpgradeProfile AutoUpgradeProfile { get; set; }
 
         /// <summary>
-        /// Gets or sets parameters to be applied to the cluster-autoscaler when enabled
+        /// Gets or sets parameters to be applied to the cluster-autoscaler
+        /// when enabled
         /// </summary>
-        public PSManagedClusterAutoScalerProfile AutoScalerProfile;
+        public ManagedClusterPropertiesAutoScalerProfile AutoScalerProfile { get; set; }
 
         /// <summary>
-        /// Gets or sets the Resource ID of the disk encryption set to use for enabling encryption
-        /// at rest.
-        /// </summary>
-        public string DiskEncryptionSetID { get; set; }
-
-        /// <summary>
-        /// Gets or sets access profile for managed cluster API server.
+        /// Gets or sets the access profile for managed cluster API server.
         /// </summary>
         public PSManagedClusterAPIServerAccessProfile ApiServerAccessProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Resource ID of the disk encryption set to use for
+        /// enabling encryption at rest.
+        /// </summary>
+        public string DiskEncryptionSetID { get; set; }
 
         /// <summary>
         /// Gets or sets identities associated with the cluster.
@@ -192,7 +232,13 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public IDictionary<string, PSManagedClusterPropertiesIdentityProfile> IdentityProfile { get; set; }
 
         /// <summary>
-        /// Gets or sets if local accounts should be disabled on the Managed Cluster.
+        /// Gets or sets private link resources associated with the cluster.
+        /// </summary>
+        public IList<PrivateLinkResource> PrivateLinkResources { get; set; }
+
+        /// <summary>
+        /// Gets or sets if local accounts should be disabled on the Managed
+        /// Cluster.
         /// </summary>
         public bool? DisableLocalAccounts { get; set; }
 
@@ -202,23 +248,19 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public PSManagedClusterHTTPProxyConfig HttpProxyConfig { get; set; }
 
         /// <summary>
-        /// Gets or sets the identity of the managed cluster, if configured.
+        /// Gets or sets security profile for the managed cluster.
         /// </summary>
-        public PSManagedClusterIdentity Identity { get; set; }
-
-
-        /// <summary>
-        /// Gets or sets profile for Linux VMs in the container service
-        /// cluster.
-        /// </summary>
-        public PSContainerServiceLinuxProfile LinuxProfile { get; set; }
+        public ManagedClusterSecurityProfile SecurityProfile { get; set; }
 
         /// <summary>
-        /// Gets or sets information about a service principal identity for the
-        /// cluster to use for manipulating Azure APIs. Either secret or
-        /// keyVaultSecretRef must be specified.
+        /// Gets or sets storage profile for the managed cluster.
         /// </summary>
-        public PSContainerServiceServicePrincipalProfile ServicePrincipalProfile { get; set; }
+        public ManagedClusterStorageProfile StorageProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets publicNetworkAccess of the managedCluster
+        /// </summary>
+        public string PublicNetworkAccess { get; set; }
 
         /// <summary>
         /// Gets the ResourceGroupName from ResourceId.

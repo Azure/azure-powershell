@@ -108,7 +108,7 @@ SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
   [RampUpMinimumHostsPct <Int32?>]: Minimum host percentage for ramp up period.
   [RampUpStartTime <DateTime?>]: Starting time for ramp up period.
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdscalingplan
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdscalingplan
 #>
 function Update-AzWvdScalingPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IScalingPlan])]

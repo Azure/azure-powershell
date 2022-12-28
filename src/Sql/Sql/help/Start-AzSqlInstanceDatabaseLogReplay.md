@@ -53,14 +53,21 @@ Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -Insta
 This command will create new managed database and will start restoring backups from the given container until Complete-AzSqlInstanceDatabaseLogReplay is called with the last backup wanted.
 
 ### Example 3
-
-Starts a Log Replay service with container identity specified.
-
 ```powershell
 Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "ManagedDatabaseName" `
-	-StorageContainerIdentity ManagedIdentity -StorageContainerUri "https://test.blob.core.windows.net/testing" `
+	-StorageContainerIdentity ManagedIdentity -StorageContainerUri "https://test.blob.core.windows.net/testing"
+```
+
+Starts a Log Replay service with container identity specified as ManagedIdentity. In this case there is no need to specify StorageContainerSasToken parameter.
+
+### Example 4
+```powershell
+Start-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "ManagedDatabaseName" `
+	-StorageContainerIdentity SharedAccessSignature -StorageContainerUri "https://test.blob.core.windows.net/testing" `
 	-StorageContainerSasToken "sv=2019-02-02&ss=b&srt=sco&sp=rl&se=2023-12-02T00:09:14Z&st=2019-11-25T16:09:14Z&spr=https&sig=92kAe4QYmXaht%2Fgjocqwerqwer41s%3D"
 ```
+
+Starts a Log Replay service with container identity specified as SharedAccessSignature. StorageContainerSasToken parameter is required.
 
 ## PARAMETERS
 

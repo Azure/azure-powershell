@@ -191,10 +191,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     PathHttpHeaders pathHttpHeaders = SetDatalakegen2ItemProperties(dirClient, BlobProperties, setToServer: false);
                     IDictionary<string, string> metadata = SetDatalakegen2ItemMetaData(dirClient, BlobMetadata, setToServer: false);
 
-                    dirClient.Create(pathHttpHeaders, 
-                        metadata, 
-                        this.Permission, 
-                        this.Umask != null ? DataLakeModels.PathPermissions.ParseSymbolicPermissions(this.Umask).ToOctalPermissions() : null);
+                    DataLakePathCreateOptions createOptions = new DataLakePathCreateOptions()
+                    {
+                        HttpHeaders = pathHttpHeaders,
+                        Metadata = metadata,
+                        AccessOptions = new DataLakeAccessOptions()
+                        {
+                            Permissions = this.Permission,
+                            Umask = this.Umask != null ? DataLakeModels.PathPermissions.ParseSymbolicPermissions(this.Umask).ToOctalPermissions() : null
+                        }
+                    };
+
+                    dirClient.Create(createOptions, this.CmdletCancellationToken);
 
                     WriteDataLakeGen2Item(localChannel, dirClient);
                 }

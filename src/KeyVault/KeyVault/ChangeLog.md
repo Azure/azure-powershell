@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 4.9.1
+* Fixed certificate export parameter issue in `Add-AzKeyVaultKey` [#19623]
+* Fixed CertificateString decoding issue in `Import-AzKeyVaultCertificate`
+* Shifted the location of key CVM release policy to GitHub [#19984]
+* Added fallback logic (reading default CVM policy from a local copy) if fetching default CVM Policy from GitHub failed.
+
+## Version 4.9.0
+* Bumped API version to 2022-07-01
+* Added `Undo-AzKeyVaultManagedHsm` to recover deleted managed HSM
+
 ## Version 4.8.0
 * Fixed the exception content swallowed issue when exception.Response is null [#19531]
 * Added the existing parameters `Exportable`, `Immutable`, `UseDefaultCVMPolicy`, and `ReleasePolicyPath`

@@ -83,7 +83,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the Subnet name within the destination Virtual Netowk to which the server needs to be migrated.
+    # Specifies the Subnet name within the destination Virtual Network to which the server needs to be migrated.
     ${TargetSubnetName},
 
     [Parameter(Mandatory)]
@@ -120,6 +120,18 @@ param(
     [System.String]
     # Specifies if Azure Hybrid benefit for SQL Server is applicable for the server to be migrated.
     ${SqlServerLicenseType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Virtual Network id within the destination Azure subscription to which the server needs to be test migrated.
+    ${TestNetworkId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Subnet name within the destination Virtual Network to which the server needs to be test migrated.
+    ${TestSubnetName},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

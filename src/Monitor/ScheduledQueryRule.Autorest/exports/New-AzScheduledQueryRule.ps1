@@ -20,7 +20,7 @@ Creates or updates a scheduled query rule.
 .Description
 Creates or updates a scheduled query rule.
 .Example
-$subscriptionId=(Get-AzContext).SubscriptionId
+$subscriptionId=(Get-AzContext).Subscription.Id
 $dimension = New-AzScheduledQueryRuleDimensionObject -Name Computer -Operator Include -Value *
 $condition=New-AzScheduledQueryRuleConditionObject -Dimension $dimension -Query "Perf | where ObjectName == `"Processor`" and CounterName == `"% Processor Time`" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer" -TimeAggregation "Average" -MetricMeasureColumn "AggregatedValue" -Operator "GreaterThan" -Threshold "70" -FailingPeriodNumberOfEvaluationPeriod 1 -FailingPeriodMinFailingPeriodsToAlert 1
 New-AzScheduledQueryRule -Name test-rule -ResourceGroupName test-group -Location eastus -DisplayName test-rule -Scope "/subscriptions/$subscriptionId/resourceGroups/test-group/providers/Microsoft.Compute/virtualMachines/test-vm" -Severity 4 -WindowSize ([System.TimeSpan]::New(0,10,0)) -EvaluationFrequency ([System.TimeSpan]::New(0,5,0)) -CriterionAllOf $condition
@@ -47,7 +47,7 @@ CRITERIONALLOF <ICondition[]>: A list of conditions to evaluate against the spec
   [Threshold <Double?>]: the criteria threshold value that activates the alert. Relevant and required only for rules of the kind LogAlert.
   [TimeAggregation <TimeAggregation?>]: Aggregation type. Relevant and required only for rules of the kind LogAlert.
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule
+https://learn.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule
 #>
 function New-AzScheduledQueryRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource])]

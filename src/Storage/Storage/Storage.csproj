@@ -13,21 +13,17 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.Data.Tables" Version="12.2.0" />
-    <PackageReference Include="Azure.Storage.Blobs" Version="12.12.0" />
-    <PackageReference Include="Azure.Storage.Files.DataLake" Version="12.10.0" />
-    <PackageReference Include="Azure.Storage.Files.Shares" Version="12.10.0" />
-    <PackageReference Include="Azure.Storage.Queues" Version="12.10.0" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.14.0" />
+    <PackageReference Include="Azure.Storage.Files.DataLake" Version="12.12.0" />
+    <PackageReference Include="Azure.Storage.Files.Shares" Version="12.12.0" />
+    <PackageReference Include="Azure.Storage.Queues" Version="12.12.0" />
     <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="1.0.8" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
     <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.2.2" />
     <PackageReference Include="Microsoft.Azure.Storage.File" Version="11.2.2" />
     <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="11.2.2" />
   </ItemGroup>
-  <Target Name="CopyFiles" AfterTargets="Build">
-    <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
-    <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)\NetCoreAssemblies" />
-  </Target>
-    <ItemGroup>
+  <ItemGroup>
     <Reference Include="Microsoft.Azure.Storage.DataMovement">
       <HintPath>$(RepoSrc)lib\Microsoft.Azure.Storage.DataMovement.dll</HintPath>
     </Reference>

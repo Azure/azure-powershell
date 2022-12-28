@@ -4806,7 +4806,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.494\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.498\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -7500,7 +7500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.494\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.498\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -11569,6 +11569,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
             }
         }
 
+        /// <summary>Finds the valid recovery point in time ranges for the restore.</summary>
         /// <param name="subscriptionId">The subscription Id.</param>
         /// <param name="resourceGroupName">The name of the resource group where the backup vault is present.</param>
         /// <param name="vaultName">The name of the backup vault.</param>
@@ -11620,6 +11621,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection
             }
         }
 
+        /// <summary>Finds the valid recovery point in time ranges for the restore.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Request body for operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>

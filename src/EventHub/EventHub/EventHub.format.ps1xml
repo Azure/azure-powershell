@@ -39,8 +39,7 @@
 								<PropertyName>ProvisioningState</PropertyName>
 							</ListItem>
 							<ListItem>
-								<Label>Status</Label>
-								<ScriptBlock>"Active"</ScriptBlock>
+								<PropertyName>Status</PropertyName>
 							</ListItem>
 							<ListItem>
 								<PropertyName>CreatedAt</PropertyName>

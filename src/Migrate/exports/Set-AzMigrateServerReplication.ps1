@@ -104,6 +104,12 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
+    # Updates the Virtual Network id within the destination Azure subscription to which the server needs to be test migrated.
+    ${TestNetworkId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
     # Updates the Resource Group id within the destination Azure subscription to which the server needs to be migrated.
     ${TargetResourceGroupID},
 

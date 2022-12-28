@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestNetworkSecurityGroupCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkSecurityGroupCRUD");
@@ -35,7 +35,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestNetworkSecurityGroupSecurityRuleCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkSecurityGroup-SecurityRuleCRUD");
@@ -43,7 +43,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestNetworkSecurityGroupMultiValuedRules()
         {
             TestRunner.RunTestScript("Test-NetworkSecurityGroup-MultiValuedRules");
@@ -51,7 +51,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestNetworkSecurityRuleArgumentValidation()
         {
             TestRunner.RunTestScript("Test-NetworkSecurityRule-ArgumentValidation");

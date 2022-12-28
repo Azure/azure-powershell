@@ -49,7 +49,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/get-azgalleryapplicationversion
+https://learn.microsoft.com/powershell/module/az.compute/get-azgalleryapplicationversion
 #>
 function Get-AzGalleryApplicationVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
@@ -269,7 +269,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/get-azgalleryapplication
+https://learn.microsoft.com/powershell/module/az.compute/get-azgalleryapplication
 #>
 function Get-AzGalleryApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
@@ -441,223 +441,6 @@ end {
 
 <#
 .Synopsis
-The operation to get the VMSS VM run command.
-.Description
-The operation to get the VMSS VM run command.
-.Example
-Get-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname
-.Example
-Get-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname  -VMScaleSetName $vmssname
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IComputeIdentity>: Identity Parameter
-  [CommandId <String>]: The command id.
-  [GalleryApplicationName <String>]: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
-  [GalleryApplicationVersionName <String>]: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
-  [GalleryImageName <String>]: The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
-  [GalleryImageVersionName <String>]: The name of the gallery image version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
-  [GalleryName <String>]: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
-  [Id <String>]: Resource identity path
-  [InstanceId <String>]: The instance ID of the virtual machine.
-  [Location <String>]: The location upon which run commands is queried.
-  [ResourceGroupName <String>]: The name of the resource group.
-  [RunCommandName <String>]: The name of the virtual machine run command.
-  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-  [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
-  [VMScaleSetName <String>]: The name of the VM scale set.
-.Link
-https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvmruncommand
-#>
-function Get-AzVmssVMRunCommand {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
-    [System.String]
-    # The instance ID of the virtual machine.
-    ${InstanceId},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
-    [System.String]
-    # The name of the virtual machine run command.
-    ${RunCommandName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # Subscription credentials which uniquely identify Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
-    [System.String]
-    # The name of the VM scale set.
-    ${VMScaleSetName},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Query')]
-    [System.String]
-    # The expand expression to apply on the operation.
-    ${Expand},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Compute.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Get = 'Az.Compute.private\Get-AzVmssVMRunCommand_Get';
-            GetViaIdentity = 'Az.Compute.private\Get-AzVmssVMRunCommand_GetViaIdentity';
-            List = 'Az.Compute.private\Get-AzVmssVMRunCommand_List';
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Compute.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Delete a gallery Application Version.
 .Description
 Delete a gallery Application Version.
@@ -689,7 +472,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/remove-azgalleryapplicationversion
+https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryapplicationversion
 #>
 function Remove-AzGalleryApplicationVersion {
 [OutputType([System.Boolean])]
@@ -912,7 +695,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/remove-azgalleryapplication
+https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryapplication
 #>
 function Remove-AzGalleryApplication {
 [OutputType([System.Boolean])]
@@ -1129,7 +912,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/remove-azvmruncommand
+https://learn.microsoft.com/powershell/module/az.compute/remove-azvmruncommand
 #>
 function Remove-AzVMRunCommand {
 [OutputType([System.Boolean])]
@@ -1345,7 +1128,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/remove-azvmssvmruncommand
+https://learn.microsoft.com/powershell/module/az.compute/remove-azvmssvmruncommand
 #>
 function Remove-AzVmssVMRunCommand {
 [OutputType([System.Boolean])]
@@ -1540,7 +1323,17 @@ The operation to create or update the run command.
 .Description
 The operation to create or update the run command.
 .Example
-Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand' 
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceScriptUri "https://myst.blob.core.windows.net/mycontainer/myscript.ps1?sp=r&st=2022-10-27T21:02:35Z&se=2022-10-28T05:02:35Z&spr=https&sv=2021-06-08&sr=b&sig=0I%2FIiYayRwHasfasasfdasdfasdeTsQjLnpZjA%3D"
+.Example
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1"
+.Example
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunCommand2 -Location EastUS2EUAP -SourceScript "id; echo HelloWorld"
+.Example
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceCommandId DisableWindowsUpdate
+.Example
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunCommand3 -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -OutputBlobUri "https://vivst.blob.core.windows.net/vivcontainer/output.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5hasfadsfasdF4jIkRJra4S5FlEo%3D" -ErrorBlobUri "https://vivst.blob.core.windows.net/vivcontainer/error.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5h%asfasdfgdT%2F4jasfasdf5FlEo%3D"
+.Example
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -RunAsUser myusername -RunAsPassword mypassword
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand
@@ -1557,7 +1350,7 @@ PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the scr
   Name <String>: The run command parameter name.
   Value <String>: The run command parameter value.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/set-azvmruncommand
+https://learn.microsoft.com/powershell/module/az.compute/set-azvmruncommand
 #>
 function Set-AzVMRunCommand {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand])]
@@ -1642,19 +1435,19 @@ param(
     # Specifies the user account on the VM when executing the run command.
     ${RunAsUser},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies a commandId of predefined built-in script.
     ${SourceCommandId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the script content to be executed on the VM.
     ${SourceScript},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the script download location.
@@ -1672,6 +1465,11 @@ param(
     [System.Int32]
     # The timeout in seconds to execute the run command.
     ${TimeoutInSecond},
+
+    [Parameter(ParameterSetName='ScriptLocalPath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    ${ScriptLocalPath},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1760,8 +1558,9 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.Compute.private\Set-AzVMRunCommand_UpdateExpanded';
+            ScriptLocalPath = 'Az.Compute.custom\Set-AzVMRunCommand_ScriptLocalPath';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'ScriptLocalPath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -1816,7 +1615,17 @@ The operation to create or update the VMSS VM run command.
 .Description
 The operation to create or update the VMSS VM run command.
 .Example
-Set-AzVmssVMRunCommand -InstanceId 3 -ResourceGroupName $rgname -RunCommandName "first" -VMScaleSetName $vmssname
+Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 0 -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceScriptUri "https://myst.blob.core.windows.net/mycontainer/myscript.ps1?sp=r&st=2022-10-27T21:02:35Z&se=2022-10-28T05:02:35Z&spr=https&sv=2021-06-08&sr=b&sig=0I%2FIiYayRwHasfasasfdasdfasdeTsQjLnpZjA%3D"
+.Example
+Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 0 -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1"
+.Example
+Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSSL -InstanceId 1 -RunCommandName MyRunCommand2 -Location EastUS2EUAP -SourceScript "id; echo HelloWorld"
+.Example
+Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 0 -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceCommandId DisableWindowsUpdate
+.Example
+Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 1 -RunCommandName MyRunCommand3 -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -OutputBlobUri "https://vivst.blob.core.windows.net/vivcontainer/output.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5hasfadsfasdF4jIkRJra4S5FlEo%3D" -ErrorBlobUri "https://vivst.blob.core.windows.net/vivcontainer/error.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5h%asfasdfgdT%2F4jasfasdf5FlEo%3D"
+.Example
+Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 1 -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -RunAsUser myusername -RunAsPassword mypassword
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand
@@ -1833,7 +1642,7 @@ PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the scr
   Name <String>: The run command parameter name.
   Value <String>: The run command parameter value.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvmruncommand
+https://learn.microsoft.com/powershell/module/az.compute/set-azvmssvmruncommand
 #>
 function Set-AzVmssVMRunCommand {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand])]
@@ -1924,19 +1733,19 @@ param(
     # Specifies the user account on the VM when executing the run command.
     ${RunAsUser},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies a commandId of predefined built-in script.
     ${SourceCommandId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the script content to be executed on the VM.
     ${SourceScript},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the script download location.
@@ -1954,6 +1763,11 @@ param(
     [System.Int32]
     # The timeout in seconds to execute the run command.
     ${TimeoutInSecond},
+
+    [Parameter(ParameterSetName='ScriptLocalPath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    ${ScriptLocalPath},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2042,8 +1856,9 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.Compute.private\Set-AzVmssVMRunCommand_UpdateExpanded';
+            ScriptLocalPath = 'Az.Compute.custom\Set-AzVmssVMRunCommand_ScriptLocalPath';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'ScriptLocalPath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -2125,7 +1940,7 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine where the run command should be created or updated.
   [VMScaleSetName <String>]: The name of the VM scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryapplication
+https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplication
 #>
 function Update-AzGalleryApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
@@ -2330,7 +2145,7 @@ New-AzGalleryApplication -ResourceGroupName $rgName -Location EastUS -GalleryNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
+https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplication
 #>
 function New-AzGalleryApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
@@ -2547,7 +2362,7 @@ $SASToken = New-AzStorageBlobSASToken -Context $ctx -Container $containerName -b
 $storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
 $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
 $SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
-$SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + "?" +$SASToken 
+$SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + $SASToken 
 New-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -Install "powershell -command 'Expand-Archive -Path package.zip -DestinationPath C:\\package\'" -Remove "del C:\\package" 
 
 .Outputs
@@ -2568,7 +2383,7 @@ TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is go
   [SecurityProfileSecureVMDiskEncryptionSetId <String>]: secure VM disk encryption set id
   [StorageAccountType <StorageAccountType?>]: Specifies the storage account type to be used to store the image. This property is not updatable.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryapplicationversion
+https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryapplicationversion
 #>
 function New-AzGalleryApplicationVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
@@ -2860,7 +2675,7 @@ $storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
 $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
 $SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
 $SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + "?" +$SASToken 
-Update-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -ReplicaCount 3 
+Update-AzGalleryApplicationVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -ReplicaCount 3 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
@@ -2898,7 +2713,7 @@ TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is go
   [SecurityProfileSecureVMDiskEncryptionSetId <String>]: secure VM disk encryption set id
   [StorageAccountType <StorageAccountType?>]: Specifies the storage account type to be used to store the image. This property is not updatable.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
+https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
 #>
 function Update-AzGalleryApplicationVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]

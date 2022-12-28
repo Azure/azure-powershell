@@ -25,7 +25,7 @@ Get-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVM
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateproject
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateproject
 #>
 function Get-AzMigrateProject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject])]
@@ -189,7 +189,7 @@ Get-AzMigrateReplicationFabric -ResourceGroupName azmigratepwshtestasr13072020 -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationfabric
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationfabric
 #>
 function Get-AzMigrateReplicationFabric {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric])]
@@ -365,7 +365,7 @@ Get-AzMigrateReplicationPolicy -ResourceGroupName azmigratepwshtestasr13072020 -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationpolicy
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationpolicy
 #>
 function Get-AzMigrateReplicationPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy])]
@@ -533,7 +533,7 @@ Get-AzMigrateReplicationProtectionContainerMapping -ResourceGroupName azmigratep
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainermapping
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainermapping
 #>
 function Get-AzMigrateReplicationProtectionContainerMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping])]
@@ -718,7 +718,7 @@ Get-AzMigrateReplicationProtectionContainer -ResourceGroupName azmigratepwshtest
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainer
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainer
 #>
 function Get-AzMigrateReplicationProtectionContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer])]
@@ -894,7 +894,7 @@ Get-AzMigrateReplicationRecoveryServicesProvider -ResourceGroupName azmigratepws
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationrecoveryservicesprovider
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationrecoveryservicesprovider
 #>
 function Get-AzMigrateReplicationRecoveryServicesProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider])]
@@ -1070,7 +1070,7 @@ Get-AzMigrateRunAsAccount  -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBas
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigraterunasaccount
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigraterunasaccount
 #>
 function Get-AzMigrateRunAsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount])]
@@ -1239,7 +1239,7 @@ Get-AzMigrateSite -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMwar
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratesite
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratesite
 #>
 function Get-AzMigrateSite {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite])]
@@ -1402,7 +1402,7 @@ Get-AzMigrateSolution -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSV
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratesolution
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratesolution
 #>
 function Get-AzMigrateSolution {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution])]
@@ -1582,7 +1582,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>: The ReplicationProviderSettings.
   InstanceType <String>: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
 #>
 function New-AzMigrateReplicationPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy])]
@@ -1784,7 +1784,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICINPUT <IReplicationProviderSpecificContainerMappingInput>: Provider specific input for pairing.
   InstanceType <String>: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationprotectioncontainermapping
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationprotectioncontainermapping
 #>
 function New-AzMigrateReplicationProtectionContainerMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping])]
@@ -1994,7 +1994,7 @@ Register-AzMigrateProjectTool -SubscriptionId xxx-xxx-xxx -ResourceGroupName Bug
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/register-azmigrateprojecttool
+https://learn.microsoft.com/powershell/module/az.migrate/register-azmigrateprojecttool
 #>
 function Register-AzMigrateProjectTool {
 [OutputType([System.Boolean])]
@@ -2170,7 +2170,7 @@ Remove-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAV
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/remove-azmigrateproject
+https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigrateproject
 #>
 function Remove-AzMigrateProject {
 [OutputType([System.Boolean])]
@@ -2982,6 +2982,8 @@ Initialises the infrastructure for the migrate project.
 The Initialize-AzMigrateReplicationInfrastructure cmdlet initialises the infrastructure for the migrate project.
 .Example
 Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName TestRG -ProjectName TestProject -TargetRegion centralus
+.Example
+Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName "TestRG" -ProjectName "TestPEProject" -TargetRegion "centraluseuap" -Scenario "agentlessVMware" -CacheStorageAccountId "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/singhabh-rg/providers/Microsoft.Storage/storageAccounts/singhabhstoragepe1"
 
 .Outputs
 System.Boolean
@@ -3019,6 +3021,12 @@ param(
     [System.String]
     # Specifies the target Azure region for server migrations.
     ${TargetRegion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Storage Account Id to be used for private endpoint scenario.
+    ${CacheStorageAccountId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
@@ -3317,7 +3325,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the IP within the destination subnet to be used for the NIC.
-    ${TargetNicIP}
+    ${TargetNicIP},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Subnet name for the NIC in the destination Virtual Network to which the server needs to be test migrated.
+    ${TestNicSubnet},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the IP within the destination test subnet to be used for the NIC.
+    ${TestNicIP}
 )
 
 begin {
@@ -3601,7 +3621,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the Subnet name within the destination Virtual Netowk to which the server needs to be migrated.
+    # Specifies the Subnet name within the destination Virtual Network to which the server needs to be migrated.
     ${TargetSubnetName},
 
     [Parameter(Mandatory)]
@@ -3638,6 +3658,18 @@ param(
     [System.String]
     # Specifies if Azure Hybrid benefit for SQL Server is applicable for the server to be migrated.
     ${SqlServerLicenseType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Virtual Network id within the destination Azure subscription to which the server needs to be test migrated.
+    ${TestNetworkId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Subnet name within the destination Virtual Network to which the server needs to be test migrated.
+    ${TestSubnetName},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -3821,6 +3853,111 @@ begin {
         }
         if (('ByIdDefaultUser', 'ByIdPowerUser', 'ByInputObjectPowerUser', 'ByInputObjectDefaultUser') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Creates an object to update NIC properties of a test migrating server.
+.Description
+The New-AzMigrateTestNicMapping cmdlet creates a mapping of the source NIC attached to the server to be test migrated.
+This object is provided as an input to the Start-AzMigrateTestMigration cmdlet to update the NIC and its properties for a test migrating server.
+.Example
+New-AzMigrateTestNicMapping -NicID a2399354-653a-464e-a567-d30ef5467a31 -TestNicSubnet subnet1
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput
+.Link
+https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratetestnicmapping
+#>
+function New-AzMigrateTestNicMapping {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput])]
+[CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the ID of the NIC to be updated.
+    ${NicID},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the Subnet name for the NIC in the destination Virtual Network to which the server needs to be test migrated.
+    ${TestNicSubnet}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            VMwareCbt = 'Az.Migrate.custom\New-AzMigrateTestNicMapping';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4421,7 +4558,7 @@ Updates disk mapping
 .Description
 The Set-AzMigrateDiskMapping cmdlet updates a mapping of the source disk attached to the server to be migrated
 .Example
-Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1"
+Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1" -IsOSDisk "True"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtUpdateDiskInput
@@ -4438,11 +4575,18 @@ param(
     # Specifies the disk ID of the disk attached to the discovered server to be migrated.
     ${DiskID},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the name of the managed disk to be created.
-    ${DiskName}
+    ${DiskName},
+
+    [Parameter()]
+    [ArgumentCompleter({ "true" , "false" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies whether the disk contains the Operating System for the source server to be migrated.
+    ${IsOSDisk}
 )
 
 begin {
@@ -4605,6 +4749,12 @@ param(
     [System.String]
     # Updates the Virtual Network id within the destination Azure subscription to which the server needs to be migrated.
     ${TargetNetworkId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Updates the Virtual Network id within the destination Azure subscription to which the server needs to be test migrated.
+    ${TestNetworkId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -5049,6 +5199,16 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the tes
   [Location <String>]: Resource Location
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
     InstanceType <String>: Gets the instance type.
+
+NICTOUPDATE <IVMwareCbtNicInput[]>: Updates the NIC for the Azure VM to be created.
+  IsPrimaryNic <String>: A value indicating whether this is the primary NIC.
+  NicId <String>: The NIC Id.
+  [IsSelectedForMigration <String>]: A value indicating whether this NIC is selected for migration.
+  [TargetNicName <String>]: Target NIC name.
+  [TargetStaticIPAddress <String>]: The static IP address.
+  [TargetSubnetName <String>]: Target subnet name.
+  [TestStaticIPAddress <String>]: The test static IP address.
+  [TestSubnetName <String>]: The test subnet name.
 .Link
 https://docs.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
 #>
@@ -5068,6 +5228,13 @@ param(
     # Specifies the replicating server for which the test migration needs to be initiated.
     # The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
     ${TargetObjectID},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput[]]
+    # Updates the NIC for the Azure VM to be created.
+    # To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
+    ${NicToUpdate},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

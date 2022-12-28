@@ -26,7 +26,7 @@ Describe 'Deny-AzEventHubPrivateEndpointConnection' {
         $firstPrivateEndpoint.Description | Should -Be ""
     }
 
-    It 'SetViaIdentityExpanded' {
+    It 'SetViaIdentityExpanded'  {
         $secondPrivateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $privateEndpoint[1].Name
 
         $secondPrivateEndpoint = Deny-AzEventHubPrivateEndpointConnection -InputObject $secondPrivateEndpoint -Description "Bye"

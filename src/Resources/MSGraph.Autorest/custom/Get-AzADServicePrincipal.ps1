@@ -19,7 +19,7 @@ Lists entities from service principals or get entity from service principals by 
 .Description
 Lists entities from service principals or get entity from service principals by key
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal
+https://learn.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal
 #>
 function Get-AzADServicePrincipal {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal])]
@@ -72,7 +72,7 @@ param(
     # Select properties to be returned
     ${Select},
 
-    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.Management.Automation.SwitchParameter]
     # Include count of items

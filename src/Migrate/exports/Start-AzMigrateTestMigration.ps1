@@ -36,6 +36,16 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the tes
   [Location <String>]: Resource Location
   [ProviderSpecificDetail <IMigrationProviderSpecificSettings>]: The migration provider custom settings.
     InstanceType <String>: Gets the instance type.
+
+NICTOUPDATE <IVMwareCbtNicInput[]>: Updates the NIC for the Azure VM to be created.
+  IsPrimaryNic <String>: A value indicating whether this is the primary NIC.
+  NicId <String>: The NIC Id.
+  [IsSelectedForMigration <String>]: A value indicating whether this NIC is selected for migration.
+  [TargetNicName <String>]: Target NIC name.
+  [TargetStaticIPAddress <String>]: The static IP address.
+  [TargetSubnetName <String>]: Target subnet name.
+  [TestStaticIPAddress <String>]: The test static IP address.
+  [TestSubnetName <String>]: The test subnet name.
 .Link
 https://docs.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
 #>
@@ -55,6 +65,13 @@ param(
     # Specifies the replicating server for which the test migration needs to be initiated.
     # The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
     ${TargetObjectID},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput[]]
+    # Updates the NIC for the Azure VM to be created.
+    # To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
+    ${NicToUpdate},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

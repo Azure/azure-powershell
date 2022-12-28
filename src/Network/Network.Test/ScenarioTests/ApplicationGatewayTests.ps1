@@ -54,6 +54,25 @@ function Test-AvailableWafRuleSets
 	Assert-NotNull $result.Value[0].RuleGroups[0].Rules[0].RuleId
 }
 
+function Test-WafDynamicManifest
+{
+	$location = "westus";
+	$result = Get-AzApplicationGatewayWafDynamicManifest -Location $location
+	# need to add the correct path - alon
+	Assert-NotNull $result
+	Assert-NotNull $result.defaultRuleSetType
+	Assert-NotNull $result.defaultRuleSetVersion
+	Assert-NotNull $result.availableRuleSets[0].RuleSetType
+	Assert-NotNull $result.availableRuleSets[0].RuleSetVersion
+	Assert-NotNull $result.availableRuleSets[0].tiers[0]
+	Assert-NotNull $result.availableRuleSets[0].RuleGroups
+	Assert-True { $result.availableRuleSets[0].RuleGroups.Count -gt 0 }
+	Assert-NotNull $result.availableRuleSets[0].RuleGroups[0].RuleGroupName
+	Assert-NotNull $result.availableRuleSets[0].RuleGroups[0].Rules
+	Assert-True { $result.availableRuleSets[0].RuleGroups[0].Rules.Count -gt 0 }
+	Assert-NotNull $result.availableRuleSets[0].RuleGroups[0].Rules[0].RuleId
+}
+
 <#
 .SYNOPSIS
 Application gateway tests
@@ -4263,6 +4282,94 @@ function Test-ApplicationGatewayFirewallPolicyWithUppercaseTransform
 		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
 		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
 		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+function Test-ApplicationGatewayFirewallPolicyWithCustomBlockResponse
+{
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+
+	$rgname = Get-ResourceGroupName
+	$wafPolicy = Get-ResourceName
+
+	try
+	{
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+
+		# Test both status and body are present
+		$customBlockResponseBody = "Sorry! Forbidden"
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70 -CustomBlockResponseStatusCode 405 -CustomBlockResponseBody $customBlockResponseBody
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
+	
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+
+		Assert-AreEqual $policySettings.FileUploadLimitInMb $policy.PolicySettings.FileUploadLimitInMb 
+		Assert-AreEqual $policySettings.MaxRequestBodySizeInKb $policy.PolicySettings.MaxRequestBodySizeInKb 
+		Assert-AreEqual $policySettings.RequestBodyCheck $policy.PolicySettings.RequestBodyCheck 
+		Assert-AreEqual $policySettings.Mode $policy.PolicySettings.Mode 
+		Assert-AreEqual $policySettings.State $policy.PolicySettings.State 
+		Assert-AreEqual $policySettings.CustomBlockResponseStatusCode $policy.CustomBlockResponseStatusCode
+		Assert-AreEqual $customBlockResponseBody $policy.CustomBlockResponseBody
+
+		# test status code alone present
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70 -CustomBlockResponseStatusCode 405
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+		Set-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -ManagedRule $managedRule -PolicySetting $policySettings
+	
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+
+		# Check firewall policy
+		Assert-AreEqual $policySettings.FileUploadLimitInMb $policy.PolicySettings.FileUploadLimitInMb 
+		Assert-AreEqual $policySettings.MaxRequestBodySizeInKb $policy.PolicySettings.MaxRequestBodySizeInKb 
+		Assert-AreEqual $policySettings.RequestBodyCheck $policy.PolicySettings.RequestBodyCheck 
+		Assert-AreEqual $policySettings.Mode $policy.PolicySettings.Mode 
+		Assert-AreEqual $policySettings.State $policy.PolicySettings.State 
+		Assert-AreEqual $policySettings.CustomBlockResponseStatusCode $policy.CustomBlockResponseStatusCode
+		Assert-Null 	$policy.CustomBlockResponseBody
+
+		# test body alone present 
+		$customBlockResponseBody = "Sorry! Forbidden. You can't access"
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70 -CustomBlockResponseBody $customBlockResponseBody
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+		Set-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -ManagedRule $managedRule -PolicySetting $policySettings
+	
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+
+		# Check firewall policy
+		Assert-AreEqual $policySettings.FileUploadLimitInMb $policy.PolicySettings.FileUploadLimitInMb 
+		Assert-AreEqual $policySettings.MaxRequestBodySizeInKb $policy.PolicySettings.MaxRequestBodySizeInKb 
+		Assert-AreEqual $policySettings.RequestBodyCheck $policy.PolicySettings.RequestBodyCheck 
+		Assert-AreEqual $policySettings.Mode $policy.PolicySettings.Mode 
+		Assert-AreEqual $policySettings.State $policy.PolicySettings.State 
+		Assert-Null 	$policy.CustomBlockResponseStatusCode
+		Assert-AreEqual $customBlockResponseBody $policy.CustomBlockResponseBody 
+
+		# test both are not present
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+		Set-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -ManagedRule $managedRule -PolicySetting $policySettings
+	
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+
+		# Check firewall policy
+		Assert-AreEqual $policySettings.FileUploadLimitInMb $policy.PolicySettings.FileUploadLimitInMb 
+		Assert-AreEqual $policySettings.MaxRequestBodySizeInKb $policy.PolicySettings.MaxRequestBodySizeInKb 
+		Assert-AreEqual $policySettings.RequestBodyCheck $policy.PolicySettings.RequestBodyCheck 
+		Assert-AreEqual $policySettings.Mode $policy.PolicySettings.Mode 
+		Assert-AreEqual $policySettings.State $policy.PolicySettings.State 
+		Assert-Null 	$policy.CustomBlockResponseStatusCode
+		Assert-Null 	$policy.CustomBlockResponseBody
 	}
 	finally
 	{
