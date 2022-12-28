@@ -4,7 +4,7 @@ parameters:
   agentPoolName: ''
   agentPoolVMImage: ''
   netCoreVersion: ''
-  PowerShellPath: ''
+  PowerShellPath: '$(Build.SourcesDirectory)/ps_preview'
 
 jobs:
 - job: ${{ parameters.name }}

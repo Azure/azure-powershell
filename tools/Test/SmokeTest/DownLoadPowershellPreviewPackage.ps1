@@ -17,8 +17,6 @@ param(
   $DownloadURLPrefix = 'https://github.com/PowerShell/PowerShell/releases/download'
 )
 
-$ExtractDestination = Join-Path $DowanloadDir "ps_preview"
-
 switch ($AgentOS) {
         "Windows_NT" { $OS = "win" }
         "Linux" { $OS = "linux" }
@@ -51,4 +49,3 @@ Write-Verbose "About to download package from '$DownloadURL' to '$DowanloadDir'"
 $PackagePath = Join-Path -Path $DowanloadDir -ChildPath $PackageName
 
 Invoke-WebRequest -Uri $DownloadURL -OutFile $PackagePath
-Write-Host "##vso[task.setvariable variable=PowerShellPath]$ExtractDestination"
