@@ -7,7 +7,7 @@ param(
   [Parameter(Mandatory = $true)]
   $script,
   [string]
-  [AllowNull()]
+  [AllowEmptyString()]
   [Parameter(Mandatory = $false)]
   $PowerShellPath,
   [string]

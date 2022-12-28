@@ -7,7 +7,7 @@ param(
   [Parameter(Mandatory = $false)]
   $AgentOS,
   [string]
-  [AllowNull()]
+  [AllowEmptyString()]
   [Parameter(Mandatory = $false)]
   $PowerShellPath
 )
