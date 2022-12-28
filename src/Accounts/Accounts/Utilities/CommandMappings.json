@@ -3262,6 +3262,7 @@
       "New-AzAlertRuleWebhook": {},
       "Remove-AzAlertRule": {},
       "New-AzActionGroupReceiver": {},
+      "Test-AzActionGroup": {},
       "Set-AzActionGroup": {},
       "Get-AzActionGroup": {},
       "Remove-AzActionGroup": {},

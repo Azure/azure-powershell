@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for arc extensions which depend on HCI cluster's IMDS endpoints.
 
 ## Version 1.4.0
 * Enabled system-assigned identity on HCI cluster resource registration and repair registration flow.
