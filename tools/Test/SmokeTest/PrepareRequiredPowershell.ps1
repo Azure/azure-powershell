@@ -1,19 +1,16 @@
-[cmdletbinding(DefaultParameterSetName = 'PowerShell')]
+[cmdletbinding()]
 param(
   [string]
-  [Parameter(Mandatory = $false, ParameterSetName = 'PowerShell', Position = 0)]
-  [Parameter(Mandatory = $false, ParameterSetName = 'PowerShellPreview', Position = 0)]
+  [Parameter(Mandatory = $false)]
   $requiredPsVersion,
   [string]
-  [Parameter(Mandatory = $true, ParameterSetName = 'PowerShellPreview')]
+  [Parameter(Mandatory = $false)]
   $AgentOS,
   [string]
   [AllowNull()]
-  [Parameter(Mandatory = $true, ParameterSetName = 'PowerShellPreview')]
+  [Parameter(Mandatory = $false)]
   $PowerShellPath
 )
-
-Write-Host ${env:PowerShellPath}
 
 function Install-PowerShell {
   param (

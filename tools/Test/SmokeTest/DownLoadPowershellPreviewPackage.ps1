@@ -8,7 +8,13 @@ param(
   $AgentOS,
   [string]
   [Parameter(Mandatory = $true)]
-  $AgentAarchitecture
+  $AgentAarchitecture,
+  [string]
+  [Parameter(Mandatory = $false)]
+  $PreviewVersionMetadata = 'https://raw.githubusercontent.com/PowerShell/PowerShell/master/tools/metadata.json',
+  [string]
+  [Parameter(Mandatory = $false)]
+  $DownloadURLPrefix = 'https://github.com/PowerShell/PowerShell/releases/download'
 )
 
 $ExtractDestination = Join-Path $DowanloadDir "ps_preview"
@@ -28,7 +34,7 @@ switch ($AgentAarchitecture) {
  }
 
 # Fetch the recent PowerShell preview release version from github file.
-$Metadata = Invoke-RestMethod https://raw.githubusercontent.com/PowerShell/PowerShell/master/tools/metadata.json
+$Metadata = Invoke-RestMethod $PreviewVersionMetadata
 # Remove the beginning 'v' from PreviewReleaseTag.
 # Eg. Change from 'v7.4.0-preview.1' to '7.4.0-preview.1'.
 $Release = $Metadata.PreviewReleaseTag -replace '^v'
@@ -40,7 +46,7 @@ if ($OS -eq "win") {
 }
 
 $null = New-Item -ItemType Directory -Path $DowanloadDir -ErrorAction SilentlyContinue
-$DownloadURL = "https://github.com/PowerShell/PowerShell/releases/download/v${Release}/${PackageName}"
+$DownloadURL = "$DownloadPrefix/v${Release}/${PackageName}"
 Write-Verbose "About to download package from '$DownloadURL' to '$DowanloadDir'" -Verbose
 $PackagePath = Join-Path -Path $DowanloadDir -ChildPath $PackageName
 

@@ -1,18 +1,17 @@
-[cmdletbinding(DefaultParameterSetName = 'PowerShell')]
+[cmdletbinding()]
 param(
   [string]
-  [Parameter(Mandatory = $true, ParameterSetName = 'PowerShell', Position = 0)]
-  [Parameter(Mandatory = $false, ParameterSetName = 'PowerShellPreview', Position = 0)]
+  [Parameter(Mandatory = $true)]
   $requiredPsVersion,
   [string]
-  [Parameter(Mandatory = $true, ParameterSetName = 'PowerShell', Position = 1)]
-  [Parameter(Mandatory = $true, ParameterSetName = 'PowerShellPreview', Position = 1)]
+  [Parameter(Mandatory = $true)]
   $script,
   [string]
-  [Parameter(Mandatory = $true, ParameterSetName = 'PowerShellPreview')]
+  [AllowNull()]
+  [Parameter(Mandatory = $false)]
   $PowerShellPath,
   [string]
-  [Parameter(Mandatory = $true, ParameterSetName = 'PowerShellPreview')]
+  [Parameter(Mandatory = $false)]
   $AgentOS
 )
 
@@ -27,6 +26,7 @@ if($requiredPsVersion -eq $windowsPowershellVersion){
                   $script `
                   Exit"
     if ($requiredPsVersion -eq "preview") {
+      # Change the mode of 'pwsh' to 'rwxr-xr-x' to allow execution
       if ( $AgentOS -ne $IsWinEnv) { chmod 755 "$PowerShellPath/pwsh" }
       . "$PowerShellPath/pwsh" -Command $command
     } else {
