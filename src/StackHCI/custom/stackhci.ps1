@@ -1219,7 +1219,7 @@ param(
         }
         catch
         {
-            Write-VerboseLog ("Exception occurred in establishing new PSSession to node $clusNode.Name . ErrorMessage : " + $_.Exception.Message)
+            Write-VerboseLog ("Exception occurred in establishing new PSSession to node $($clusNode.Name). ErrorMessage : " + $_.Exception.Message)
             Write-VerboseLog ($_)
             $NewCertificateFailedNodes.Add($clusNode.Name) | Out-Null
             $SetCertificateFailedNodes.Add($clusNode.Name) | Out-Null
@@ -1232,7 +1232,7 @@ param(
 
         if(($nodeBuildNumber -lt $GAOSBuildNumber) -or (($nodeBuildNumber -eq $GAOSBuildNumber) -and ($nodeUBR -lt $GAOSUBR)))
         {
-            Write-VerboseLog ("$clusNode.Name does not have latest build number UBR: $nodeUBR, BuildNumber: $nodeBuildNumber")
+            Write-VerboseLog ("$($clusNode.Name) does not have latest build number UBR: $nodeUBR, BuildNumber: $nodeBuildNumber")
             $OSNotLatestOnNodes.Add($clusNode.Name) | Out-Null
             continue
         }
@@ -1321,7 +1321,7 @@ param(
         }
         catch
         {
-            Write-VerboseLog ("Exception occurred in establishing new PSSession to node $clusNode.Name . ErrorMessage : " + $_.Exception.Message)
+            Write-VerboseLog ("Exception occurred in establishing new PSSession to node $($clusNode.Name). ErrorMessage : " + $_.Exception.Message)
             Write-VerboseLog ($_)
             $NewCertificateFailedNodes.Add($clusNode.Name) | Out-Null
             $SetCertificateFailedNodes.Add($clusNode.Name) | Out-Null
@@ -2660,6 +2660,48 @@ param(
 
             Invoke-Command -Session $clusterNodeSession -ScriptBlock { Set-AzureStackHCIRegistration @Using:RegistrationParams }
 
+            # Add custom IMDS registry entry
+            Write-VerboseLog ("Configuring CustomIMDSHostAddress on each node.")
+            foreach ($clusNode in $clusterNodes)
+            {
+                $nodeSession = $null
+                try
+                {
+                    if($null -eq $Credential)
+                    {
+                        $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix)
+                    }
+                    else
+                    {
+                        $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix) -Credential $Credential
+                    }
+                }
+                catch
+                {
+                    Write-VerboseLog ("Exception occurred in establishing new PSSession to $($clusNode.Name). ErrorMessage : " + $_.Exception.Message)
+                    Write-VerboseLog ($_)
+                    Write-WarnLog ("Could not configure CustomIMDSHostAddress for node: $($clusNode.Name)")
+                    continue
+                }
+                Write-VerboseLog ("Configuring CustomIMDSHostAddress on $($clusNode.Name)")
+                $customImdsScript = { try{ $customImdsRegKey = Get-Item 'HKLM:\Software\Microsoft\Windows Azure\CurrentVersion\IMDS' -ErrorAction Stop } catch{ $customImdsRegKey = New-Item 'HKLM:\Software\Microsoft\Windows Azure\CurrentVersion\IMDS' -Force -ErrorAction Stop } $customImdsRegKey | New-ItemProperty -Name "CustomIMDSHostAddress" -Value "http://127.0.0.1:42542" -Force -ErrorAction Stop | Out-Null }
+                try
+                {
+                    Invoke-Command -Session $nodeSession -ScriptBlock $customImdsScript
+                }
+                catch
+                {
+                    Write-VerboseLog ("Exception occurred while setting custom IMDS host on $($clusNode.Name). ErrorMessage : " + $_.Exception.Message)
+                    Write-VerboseLog ($_)
+                    Write-WarnLog ("Could not configure CustomIMDSHostAddress for node: $($clusNode.Name)")
+                }
+                
+                if($null -ne $nodeSession)
+                {
+                    Remove-PSSession $nodeSession -ErrorAction Ignore | Out-Null
+                }
+            }
+
             if ($isCloudManagementSupported -eq $true)
             {
                 Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $ConfiguringCloudManagementMessage -percentcomplete 91
@@ -2744,6 +2786,8 @@ param(
                 if ($null -eq $serviceError)
                 {
                     $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyClusterAgentStatus -Value ([OperationStatus]::Success)
+                    # Perform a Sync on successful agent setup.
+                    Invoke-Command -Session $clusterNodeSession -ScriptBlock { Sync-AzureStackHCI -ErrorAction Ignore}
                 }
                 else
                 {
@@ -2778,7 +2822,7 @@ param(
                 }
                 catch
                 {
-                    Write-VerboseLog ("Exception occurred in establishing new PSSession to $clusNode.Name . ErrorMessage : " + $_.Exception.Message)
+                    Write-VerboseLog ("Exception occurred in establishing new PSSession to $($clusNode.Name). ErrorMessage : " + $_.Exception.Message)
                     Write-VerboseLog ($_)
                     $ArcCmdletsAbsentOnNodes.Add($clusNode.Name) | Out-Null
                     continue
