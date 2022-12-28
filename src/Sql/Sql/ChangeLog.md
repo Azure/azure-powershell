@@ -18,10 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-Added a parameter named UseIdentity for 
-Set-AzSqlServerAudit, Set-AzSqlDatabaseAudit, Set-AzSqlServerMSSupportAudit
-
-Added `isManagedIdentityInUse` parameter for `Get-AzSqlServerMSSupportAudit`
+* Added a parameter named `UseIdentity` for `Set-AzSqlServerAudit`, `Set-AzSqlDatabaseAudit`, `Set-AzSqlServerMSSupportAudit`
+* Added `IsManagedIdentityInUse` parameter for `Get-AzSqlServerMSSupportAudit`
 
 ## Version 4.1.0
 * Added new cmdlets for CRUD operations on SQL server IPv6 Firewall rules
