@@ -74,6 +74,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Alias("ResourceId")]
         public string Id { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The parameters to be applied to the cluster-autoscaler.")]
+        public ManagedClusterPropertiesAutoScalerProfile AutoScalerProfile { get; set; }
+
         private ManagedCluster BuildNewCluster()
         {
             BeforeBuildNewCluster();
@@ -394,6 +397,10 @@ namespace Microsoft.Azure.Commands.Aks
                     if (this.IsParameterBound(c => c.FqdnSubdomain))
                     {
                         cluster.FqdnSubdomain = FqdnSubdomain;
+                    }
+                    if (this.IsParameterBound(c => c.AutoScalerProfile))
+                    {
+                        cluster.AutoScalerProfile = AutoScalerProfile;
                     }
                     SetIdentity(cluster);
 

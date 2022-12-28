@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable host based OS and data drive")]
         public SwitchParameter EnableEncryptionAtHost { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "whether to enable UltraSSD")]
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable UltraSSD")]
         public SwitchParameter EnableUltraSSD { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The OS configuration of Linux agent nodes.")]
@@ -154,6 +154,12 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "The ID for Proximity Placement Group.")]
         public string PPG { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to use a FIPS-enabled OS.")]
+        public SwitchParameter EnableFIPS { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The parameters to be applied to the cluster-autoscaler.")]
+        public ManagedClusterPropertiesAutoScalerProfile AutoScalerProfile { get; set; }
 
         private AcsServicePrincipal acsServicePrincipal;
 
@@ -387,6 +393,10 @@ namespace Microsoft.Azure.Commands.Aks
             //{
             //    managedCluster.EnablePodSecurityPolicy = EnablePodSecurityPolicy;
             //}
+            if (this.IsParameterBound(c => c.AutoScalerProfile))
+            {
+                managedCluster.AutoScalerProfile = AutoScalerProfile;
+            }
 
             return managedCluster;
         }
@@ -525,6 +535,10 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.PPG))
             {
                 defaultAgentPoolProfile.ProximityPlacementGroupID = PPG;
+            }
+            if (EnableFIPS.IsPresent)
+            {
+                defaultAgentPoolProfile.EnableFIPS = EnableFIPS.ToBool();
             }
 
             defaultAgentPoolProfile.Mode = NodePoolMode;

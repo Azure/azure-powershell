@@ -119,6 +119,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The max price (in US Dollars) you are willing to pay for spot instances. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand.")]
         public double? SpotMaxPrice { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether to use a FIPS-enabled OS")]
+        public SwitchParameter EnableFIPS { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -263,6 +266,10 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.SpotMaxPrice))
             {
                 agentPool.SpotMaxPrice = SpotMaxPrice;
+            }
+            if (EnableFIPS.IsPresent)
+            {
+                agentPool.EnableFIPS = EnableFIPS.ToBool();
             }
 
             return agentPool;

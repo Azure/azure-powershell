@@ -19,7 +19,7 @@ New-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <Strin
  [-OsSKU <String>] [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>] [-ScaleSetPriority <String>]
  [-ScaleSetEvictionPolicy <String>] [-VmSetType <String>] [-AvailabilityZone <String[]>] [-Force]
  [-EnableEncryptionAtHost] [-EnableUltraSSD] [-LinuxOSConfig <LinuxOSConfig>] [-KubeletConfig <KubeletConfig>]
- [-MaxSurge <String>] [-PPG <String>] [-SpotMaxPrice <Double>] [-KubernetesVersion <String>]
+ [-MaxSurge <String>] [-PPG <String>] [-SpotMaxPrice <Double>] [-EnableFIPS] [-KubernetesVersion <String>]
  [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>]
  [-Tag <Hashtable>] [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
@@ -33,7 +33,7 @@ New-AzAksNodePool -Name <String> -ClusterObject <PSKubernetesCluster> [-Count <I
  [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>] [-ScaleSetPriority <String>]
  [-ScaleSetEvictionPolicy <String>] [-VmSetType <String>] [-AvailabilityZone <String[]>] [-Force]
  [-EnableEncryptionAtHost] [-EnableUltraSSD] [-LinuxOSConfig <LinuxOSConfig>] [-KubeletConfig <KubeletConfig>]
- [-MaxSurge <String>] [-PPG <String>] [-SpotMaxPrice <Double>] [-KubernetesVersion <String>]
+ [-MaxSurge <String>] [-PPG <String>] [-SpotMaxPrice <Double>] [-EnableFIPS] [-KubernetesVersion <String>]
  [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>]
  [-Tag <Hashtable>] [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
@@ -194,6 +194,21 @@ Accept wildcard characters: False
 
 ### -EnableEncryptionAtHost
 Whether to enable host based OS and data drive
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableFIPS
+Whether to use a FIPS-enabled OS
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
