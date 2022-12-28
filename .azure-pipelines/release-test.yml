@@ -32,7 +32,7 @@ parameters:
   type: string
   default: 6.0.x
 - name: netCoreVersion_7
-  displayName: .NET Version
+  displayName: .NET Version 7
   type: string
   default: 7.0.x
 
