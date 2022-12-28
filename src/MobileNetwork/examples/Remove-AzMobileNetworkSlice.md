@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes the specified network slice.
 ```powershell
-{{ Add code here }}
+Remove-AzMobileNetworkSlice -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -SliceName azps-mn-slice
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Deletes the specified network slice.

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Updates service tags.
 ```powershell
-{{ Add code here }}
+Update-AzMobileNetworkService -MobileNetworkName azps-mn -ServiceName azps-mn-service -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here }}
+Location Name            ResourceGroupName ProvisioningState Precedence MaximumBitRateDownlink MaximumBitRateUplink QoPolicyAllocationAndRetentionPriorityLevel QoPolicyFiveQi
+-------- ----            ----------------- ----------------- ---------- ---------------------- -------------------- ------------------------------------------- --------------
+eastus   azps-mn-service azps_test_group   Succeeded         0          1 Gbps                 500 Mbps             9                                           9
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Updates service tags.

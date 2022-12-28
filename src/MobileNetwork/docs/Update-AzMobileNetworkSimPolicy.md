@@ -30,27 +30,18 @@ Updates SIM policy tags.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Updates SIM policy tags.
 ```powershell
-{{ Add code here }}
+Update-AzMobileNetworkSimPolicy -MobileNetworkName azps-mn -SimPolicyName azps-mn-simpolicy -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here }}
+Location Name              ResourceGroupName ProvisioningState RegistrationTimer UeAmbrDownlink UeAmbrUplink
+-------- ----              ----------------- ----------------- ----------------- -------------- ------------
+eastus   azps-mn-simpolicy azps_test_group   Succeeded         3240              1 Gbps         500 Mbps
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Updates SIM policy tags.
 
 ## PARAMETERS
 

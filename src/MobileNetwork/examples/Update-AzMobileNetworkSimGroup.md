@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Updates SIM group tags.
 ```powershell
-{{ Add code here }}
+Update-AzMobileNetworkSimGroup -SimGroupName azps-mn-simgroup -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here }}
+Location Name             ResourceGroupName ProvisioningState IdentityType
+-------- ----             ----------------- ----------------- ------------
+eastus   azps-mn-simgroup azps_test_group   Succeeded         UserAssigned
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Updates SIM group tags.

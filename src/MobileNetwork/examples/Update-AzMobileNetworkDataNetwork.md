@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Updates data network tags.
 ```powershell
-{{ Add code here }}
+Update-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -DataNetworkName azps-mn-datanetwork -ResourceGroupName azps_test_group -Tag @{"abc"="`12"}
 ```
 
 ```output
-{{ Add output here }}
+Location Name                ResourceGroupName ProvisioningState
+-------- ----                ----------------- -----------------
+eastus   azps-mn-datanetwork azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Updates data network tags.

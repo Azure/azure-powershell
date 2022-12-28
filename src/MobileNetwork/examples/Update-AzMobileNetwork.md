@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Updates mobile network tags.
 ```powershell
-{{ Add code here }}
+Update-AzMobileNetwork -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -Tag @{"123"="abc"}
 ```
 
 ```output
-{{ Add output here }}
+Location Name    ResourceGroupName PublicLandMobileNetworkIdentifierMcc PublicLandMobileNetworkIdentifierMnc
+-------- ----    ----------------- ------------------------------------ ------------------------------------
+eastus   azps-mn azps_test_group   001                                  01
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Updates mobile network tags.
