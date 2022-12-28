@@ -5,6 +5,9 @@ parameters:
   agentPoolVMImage: ''
   netCoreVersion: ''
 
+variables:
+  PowerShellPath: null
+
 jobs:
 - job: ${{ parameters.name }}
   timeoutInMinutes: 180
