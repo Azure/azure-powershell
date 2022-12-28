@@ -46,9 +46,9 @@ if ($OS -eq "win") {
 }
 
 $null = New-Item -ItemType Directory -Path $DowanloadDir -ErrorAction SilentlyContinue
-$DownloadURL = "$DownloadPrefix/v${Release}/${PackageName}"
+$DownloadURL = "$DownloadURLPrefix/v${Release}/${PackageName}"
 Write-Verbose "About to download package from '$DownloadURL' to '$DowanloadDir'" -Verbose
 $PackagePath = Join-Path -Path $DowanloadDir -ChildPath $PackageName
 
-Invoke-WebRequest -Uri $downloadURL -OutFile $PackagePath
+Invoke-WebRequest -Uri $DownloadURL -OutFile $PackagePath
 Write-Host "##vso[task.setvariable variable=PowerShellPath]$ExtractDestination"
