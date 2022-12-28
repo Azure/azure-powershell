@@ -26,7 +26,7 @@ if($requiredPsVersion -eq $windowsPowershellVersion){
     $command = "`$PSVersionTable `
                   $script `
                   Exit"
-    if($requiredPsVersion -eq "preview"){
+    if ($requiredPsVersion -eq "preview") {
       if ( $AgentOS -ne $IsWinEnv) { chmod 755 "$PowerShellPath/pwsh" }
       . "$PowerShellPath/pwsh" -Command $command
     } else {
