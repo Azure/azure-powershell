@@ -25,6 +25,8 @@
 * Added parameter `-NodeMaxSurge` for `New-AzAksCluster`, `-MaxSurge` for `New-AzAksNodePool` and `Update-AzAksNodePool`
 * Added parameter `-PPG` for `New-AzAksCluster` and `New-AzAksNodePool`
 * Added parameter `-SpotMaxPrice` for `New-AzAksNodePool`
+* Added parameter `-EnableFIPS` for `New-AzAksCluster` and `New-AzAksNodePool`
+* Added parameter `-AutoScalerProfile` for `New-AzAksCluster` and `Set-AzAksCluster`
 
 ## Version 5.1.0
 * Bumped API version to 2022-09-01
