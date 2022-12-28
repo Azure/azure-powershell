@@ -239,3 +239,6 @@ src/DataFactory/DataFactoryV2.Test/SessionRecords/Microsoft.Azure.Commands.DataF
 
 # GitHub codespaces
 .venv
+
+# Visual studio live unit testing config
+*.lutconfig
