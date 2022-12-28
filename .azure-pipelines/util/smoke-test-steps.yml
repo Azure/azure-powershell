@@ -6,7 +6,7 @@ parameters:
   netCoreVersion: ''
 
 variables:
-  PowerShellPath: null
+  PowerShellPath: ''
 
 jobs:
 - job: ${{ parameters.name }}
