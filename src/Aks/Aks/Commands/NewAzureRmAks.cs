@@ -155,8 +155,11 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The ID for Proximity Placement Group.")]
         public string PPG { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Whether to use a FIPS-enabled OS")]
+        [Parameter(Mandatory = false, HelpMessage = "Whether to use a FIPS-enabled OS.")]
         public SwitchParameter EnableFIPS { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The parameters to be applied to the cluster-autoscaler.")]
+        public ManagedClusterPropertiesAutoScalerProfile AutoScalerProfile { get; set; }
 
         private AcsServicePrincipal acsServicePrincipal;
 
@@ -390,6 +393,10 @@ namespace Microsoft.Azure.Commands.Aks
             //{
             //    managedCluster.EnablePodSecurityPolicy = EnablePodSecurityPolicy;
             //}
+            if (this.IsParameterBound(c => c.AutoScalerProfile))
+            {
+                managedCluster.AutoScalerProfile = AutoScalerProfile;
+            }
 
             return managedCluster;
         }

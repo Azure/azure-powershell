@@ -26,12 +26,13 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey] [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>]
  [-AvailabilityZone <String[]>] [-NodeResourceGroup <String>] [-EnableEncryptionAtHost] [-EnableUltraSSD]
  [-NodeLinuxOSConfig <LinuxOSConfig>] [-NodeKubeletConfig <KubeletConfig>] [-NodeMaxSurge <String>]
- [-PPG <String>] [-EnableFIPS] [-ResourceGroupName] <String> [-Name] <String>
- [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>] [-LinuxProfileAdminUserName <String>]
- [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
- [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
- [-NodeVmSize <String>] [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>]
- [-AcrNameToAttach <String>] [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
+ [-PPG <String>] [-EnableFIPS] [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>]
+ [-ResourceGroupName] <String> [-Name] <String> [[-ServicePrincipalIdAndSecret] <PSCredential>]
+ [-Location <String>] [-LinuxProfileAdminUserName <String>] [-DnsNamePrefix <String>]
+ [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>] [-NodeMaxCount <Int32>]
+ [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>] [-NodeVmSize <String>]
+ [-NodePoolLabel <Hashtable>] [-NodePoolTag <Hashtable>] [-SshKeyValue <String>] [-AcrNameToAttach <String>]
+ [-AsJob] [-Tag <Hashtable>] [-LoadBalancerAllocatedOutboundPort <Int32>]
  [-LoadBalancerManagedOutboundIpCount <Int32>] [-LoadBalancerOutboundIp <String[]>]
  [-LoadBalancerOutboundIpPrefix <String[]>] [-LoadBalancerIdleTimeoutInMinute <Int32>]
  [-ApiServerAccessAuthorizedIpRange <String[]>] [-EnableApiServerAccessPrivateCluster]
@@ -91,6 +92,19 @@ $kubeletConfigStr = @'
 $kubeletConfig = [Microsoft.Azure.Management.ContainerService.Models.KubeletConfig] ($kubeletConfigStr | ConvertFrom-Json)
 
 New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeLinuxOSConfig $linuxOsConfig -NodeKubeletConfig $kubeletConfig
+```
+
+### Create an AKS cluster with AutoScalerProfile.
+When you create an AKS cluster, you can configure granular details of the cluster autoscaler by changing the default values in the cluster-wide autoscaler profile.
+
+```powershell
+$AutoScalerProfile=@{
+    ScanInterval="30s"
+    Expander="least-waste"
+}
+$AutoScalerProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile]$AutoScalerProfile
+
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -AutoScalerProfile $AutoScalerProfile
 ```
 
 ## PARAMETERS
@@ -190,6 +204,21 @@ ResourceId of user assign managed identity for cluster.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoScalerProfile
+The parameters to be applied to the cluster-autoscaler.
+
+```yaml
+Type: Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile
 Parameter Sets: (All)
 Aliases:
 

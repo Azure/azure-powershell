@@ -842,3 +842,57 @@ function Test-EnableFIPS {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-AutoScalerProfile {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        # create aks cluster with default nodepool
+        $aksParameters=@{
+	        ResourceGroupName = $resourceGroupName
+	        Name = $kubeClusterName
+	        NodeVmSize = $nodeVmSize
+	        NodeMinCount = 1
+	        NodeMaxCount = 3
+        }
+        $AutoScalerProfile=@{
+            ScanInterval="30s"
+            Expander="least-waste"
+            MaxTotalUnreadyPercentage="50"
+            NewPodScaleUpDelay="800s"
+        }
+        $AutoScalerProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile]$AutoScalerProfile
+        New-AzAksCluster @aksParameters -EnableNodeAutoScaling -AutoScalerProfile $AutoScalerProfile
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual "30s" $cluster.AutoScalerProfile.ScanInterval
+        Assert-AreEqual "least-waste" $cluster.AutoScalerProfile.Expander
+        Assert-AreEqual "50" $cluster.AutoScalerProfile.MaxTotalUnreadyPercentage
+        Assert-AreEqual "800s" $cluster.AutoScalerProfile.NewPodScaleUpDelay
+
+        # update aks cluster
+        $AutoScalerProfile2=@{
+            ScanInterval="40s"
+            Expander="most-pods"
+            MaxTotalUnreadyPercentage="45"
+            NewPodScaleUpDelay="600s"
+        }
+        $AutoScalerProfile2=[Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile]$AutoScalerProfile2
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AutoScalerProfile $AutoScalerProfile2
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual "40s" $cluster.AutoScalerProfile.ScanInterval
+        Assert-AreEqual "most-pods" $cluster.AutoScalerProfile.Expander
+        Assert-AreEqual "45" $cluster.AutoScalerProfile.MaxTotalUnreadyPercentage
+        Assert-AreEqual "600s" $cluster.AutoScalerProfile.NewPodScaleUpDelay
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
