@@ -79,6 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [Parameter(
             Mandatory = false,
             HelpMessage = AuditingHelpMessages.UseIdentityMessage)]
+        [ValidateSet(SecurityConstants.True, SecurityConstants.False, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public String UseIdentity { get; set; }
 
