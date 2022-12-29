@@ -82,5 +82,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         //     via the CopyStart operation.
         public double? CompletionPercent { get; set; }
         public string DataAccessAuthMode { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets contains the security related information for the resource.
+        public DiskSecurityProfile SecurityProfile { get; set; }
     }
 }
