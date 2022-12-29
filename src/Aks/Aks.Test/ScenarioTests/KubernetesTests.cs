@@ -156,5 +156,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AutoScalerProfile");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGpuInstanceProfile()
+        {
+            TestRunner.RunTestScript("Test-GpuInstanceProfile");
+        }
     }
 }

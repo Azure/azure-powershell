@@ -161,6 +161,12 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The parameters to be applied to the cluster-autoscaler.")]
         public ManagedClusterPropertiesAutoScalerProfile AutoScalerProfile { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The gPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU")]
+        [PSArgumentCompleter("MIG1g", "MIG2g", "MIG3g", "MIG4g", "MIG7g")]
+        public string GpuInstanceProfile { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -538,7 +544,11 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (EnableFIPS.IsPresent)
             {
-                defaultAgentPoolProfile.EnableFIPS = EnableFIPS.ToBool();
+                defaultAgentPoolProfile.EnableFIPS = EnableFIPS.ToBool(); 
+            }
+            if (this.IsParameterBound(c => c.GpuInstanceProfile))
+            {
+                defaultAgentPoolProfile.GpuInstanceProfile = GpuInstanceProfile;
             }
 
             defaultAgentPoolProfile.Mode = NodePoolMode;
