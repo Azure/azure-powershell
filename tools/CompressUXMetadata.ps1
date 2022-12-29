@@ -25,7 +25,7 @@ Else
     Get-ChildItem $UXMetadataFolder | Remove-Item -Force -Recurse
 }
 
-$Modules = Get-ChildItem -Path "$RootPath/src" -Exclude "lib" -Directory | ForEach-Object { $_.BaseName }
+$Modules = Get-ChildItem -Path "$RootPath/src" -Directory | ForEach-Object { $_.BaseName }
 ForEach ($ModuleName In $Modules)
 {
     $SourceFolder = "$RootPath/src/$ModuleName"

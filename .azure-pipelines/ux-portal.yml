@@ -2,7 +2,7 @@
 # Multi-job configuration must be converted to matrix strategy: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml#multi-job-configuration
 parameters: 
 - name: AzurePowerShellVersion
-  displayName: Azure PowerShell Version
+  displayName: Azure PowerShell Version(like 9.0.0)
   type: string
 - name: IsLatestVersion
   displayName: IsLatestVersion
@@ -37,7 +37,7 @@ jobs:
           Set-AzStorageBlobContent -Container $(StorageBlobContainerName) -Context $context -File "azps-latest.zip" -Blob "$(StorageBlobFolder)/azps-latest.zip" -Force
         }
         $zipFile = "${{ parameters.AzurePowerShellVersion }}.zip"
-        Copy-Item "UX.zip" -Destination $zipFile
+        Move-Item "UX.zip" -Destination $zipFile
         Set-AzStorageBlobContent -Container $(StorageBlobContainerName) -Context $context -File $zipFile -Blob "$(StorageBlobFolder)/$zipFile" -Force
       azurePowerShellVersion: LatestVersion
       pwsh: true
