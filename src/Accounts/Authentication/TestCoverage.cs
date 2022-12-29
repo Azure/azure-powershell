@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private static string GetFallbackLocation()
         {
             var profilePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            var azurePath = Path.Combine(profilePath, ".azure");
+            var azurePath = Path.Combine(profilePath, ".Azure");
             return azurePath;
         }
 
