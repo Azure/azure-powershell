@@ -146,6 +146,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
@@ -153,6 +154,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         [Alias("Name")]
         public string VMScaleSetName { get; set; }
