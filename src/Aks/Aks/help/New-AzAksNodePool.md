@@ -268,7 +268,7 @@ Accept wildcard characters: False
 ```
 
 ### -GpuInstanceProfile
-The gPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU
+The GpuInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.
 
 ```yaml
 Type: System.String
