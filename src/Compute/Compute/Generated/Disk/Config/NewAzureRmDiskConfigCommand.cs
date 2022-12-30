@@ -138,7 +138,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk. Possible values are: Empty, Attach, FromImage, Import, Copy, Restore, Upload, CopyStart")]
+            HelpMessage = "Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk. Possible values are: Empty, Attach, FromImage, Import, Copy, Restore, Upload, CopyStart, ImportSecure, UploadPreparedSecure")]
+        [PSArgumentCompleter("Empty", "Attach", "FromImage", "Import", "Copy", "Restore", "Upload", "CopyStart", "ImportSecure", "UploadPreparedSecure")]
         public string CreateOption { get; set; }
 
         [Parameter(
