@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The gPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU")]
+            HelpMessage = "The GpuInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.")]
         [PSArgumentCompleter("MIG1g", "MIG2g", "MIG3g", "MIG4g", "MIG7g")]
         public string GpuInstanceProfile { get; set; }
 
