@@ -130,7 +130,7 @@ function Test-WithUserAssignedIdentity() {
     {
 		$loc = Get-LocationForNewExtension
 		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_E4s_v3 -stotype Premium_LRS
-		$ident = Create-IdentityForNewExtension -ResourceGroupName $rgname -TestName "Test-WithUserAssignedIdentity"
+		$ident = Create-IdentityForNewExtension -ResourceGroupName $rgname -TestName "Test-WithUserAssignedIdentity" -location $loc
 	
 		Remove-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name
 		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vm.Name
@@ -1221,9 +1221,9 @@ function Get-LocationForNewExtension {
 	return $loc
 }
 
-function Create-IdentityForNewExtension($ResourceGroupName, $TestName) {
+function Create-IdentityForNewExtension($ResourceGroupName, $TestName, $location) {
     $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($TestName, "crptestps");
-	$ident = New-AzUserAssignedIdentity -ResourceGroupName $ResourceGroupName -Name $assetName
+	$ident = New-AzUserAssignedIdentity -ResourceGroupName $ResourceGroupName -Name $assetName -Location $location
 
 	return $ident
 }
@@ -1394,17 +1394,17 @@ function Is-LinuxImageType($imageType) {
 
 function Get-LinuxImage($imageType) {
 
-	if ($imageType -eq "RHEL 7") {
-		return Create-ComputeVMImageObject 'RedHat' 'RHEL' '7.7' 'latest';
-	} elseif ($imageType -eq "RHEL 8") {
-		return Create-ComputeVMImageObject 'RedHat' 'RHEL' '8' 'latest';
-	} elseif ($imageType -eq "SLES 12") {
-		return Create-ComputeVMImageObject 'SUSE' 'SLES' '12-SP4' 'latest';
-	} elseif ($imageType -eq "SLES 15") {
-		return Create-ComputeVMImageObject 'SUSE' 'sles-15-sp1' 'gen1' 'latest';
-	} else {
-		return Create-ComputeVMImageObject 'SUSE' 'SLES' '12-SP4' 'latest';
-	}
+    if ($imageType -eq "RHEL 7") {
+        return Create-ComputeVMImageObject 'RedHat' 'rhel-byos' 'rhel-lvm77' 'latest';
+    } elseif ($imageType -eq "RHEL 8") {
+        return Create-ComputeVMImageObject 'RedHat' 'rhel-byos' 'rhel-lvm86' 'latest';
+    } elseif ($imageType -eq "SLES 12") {
+        return Create-ComputeVMImageObject 'SUSE' 'sles-12-sp5-byos' 'gen1' 'latest';
+    } elseif ($imageType -eq "SLES 15") {
+        return Create-ComputeVMImageObject 'SUSE' 'sles-15-sp1' 'gen1' 'latest';
+    } else {
+        return Create-ComputeVMImageObject 'SUSE' 'sles-12-sp5-byos' 'gen1' 'latest';
+    }
 }
 
 function Get-WindowsImage($imageType) {
@@ -1430,3 +1430,27 @@ function GetWrongTestResult($TestResult, $searchFor, $level)
 
     return $result
 }
+
+
+# test
+function Test-ExtensionTest
+{
+    Write-Verbose "Test: VM Extension with proxy and debug mode"
+	$rgname = Get-CustomResourceGroupName
+	try
+    {
+		$loc = Get-LocationForNewExtension
+		$vm = Create-AdvancedVM -rgname $rgname -loc $loc -useMD -vmsize Standard_E4s_v3 -stotype Premium_LRS
+	
+		Write-Verbose "`tInstalling new extension"
+		Set-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vm.Name -InstallNewExtension -IsTest
+
+        $extension = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vm.Name
+        $nul = Assert-NotNull $extension
+        $nul = Assert-NotNull $extension.PublicSettings
+	}
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }

@@ -540,5 +540,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 Assert.True(nok.Count == nokCount);
             }
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExtensionTest()
+        {
+            TestRunner.RunTestScript("Test-ExtensionTest");
+        }
+
     }
 }
