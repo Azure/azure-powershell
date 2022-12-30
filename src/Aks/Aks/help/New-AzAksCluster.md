@@ -27,7 +27,7 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-AvailabilityZone <String[]>] [-NodeResourceGroup <String>] [-EnableEncryptionAtHost] [-EnableUltraSSD]
  [-NodeLinuxOSConfig <LinuxOSConfig>] [-NodeKubeletConfig <KubeletConfig>] [-NodeMaxSurge <String>]
  [-PPG <String>] [-EnableFIPS] [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>]
- [-GpuInstanceProfile <String>] [-ResourceGroupName] <String> [-Name] <String>
+ [-GpuInstanceProfile <String>] [-EnableUptimeSLA] [-ResourceGroupName] <String> [-Name] <String>
  [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>] [-LinuxProfileAdminUserName <String>]
  [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
  [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
@@ -471,6 +471,21 @@ Accept wildcard characters: False
 
 ### -EnableUltraSSD
 whether to enable UltraSSD
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableUptimeSLA
+Whether to use use Uptime SLA.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -167,6 +167,9 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("MIG1g", "MIG2g", "MIG3g", "MIG4g", "MIG7g")]
         public string GpuInstanceProfile { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether to use use Uptime SLA.")]
+        public SwitchParameter EnableUptimeSLA { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -402,6 +405,17 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.AutoScalerProfile))
             {
                 managedCluster.AutoScalerProfile = AutoScalerProfile;
+            }
+            if (this.IsParameterBound(c => c.EnableUptimeSLA))
+            {
+                if (EnableUptimeSLA.ToBool())
+                {
+                    managedCluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Paid");
+                }
+                else
+                {
+                    managedCluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Free");
+                }
             }
 
             return managedCluster;

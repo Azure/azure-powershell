@@ -897,7 +897,6 @@ function Test-AutoScalerProfile {
     }
 }
 
-
 function Test-GpuInstanceProfile {
     # Setup
     $resourceGroupName = Get-RandomResourceGroupName
@@ -927,6 +926,40 @@ function Test-GpuInstanceProfile {
         Assert-AreEqual 2 $pools.Count
         Assert-AreEqual "MIG1g" ($pools | where {$_.Name -eq "default"}).GpuInstanceProfile
         Assert-AreEqual "MIG3g" ($pools | where {$_.Name -eq "pool2"}).GpuInstanceProfile
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+
+function Test-EnableUptimeSLA {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1 -EnableUptimeSLA
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual "Basic" $cluster.Sku.Name
+        Assert-AreEqual "Paid" $cluster.Sku.Tier
+
+        # create a 2nd nodepool
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -EnableUptimeSLA:$false
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual "Basic" $cluster.Sku.Name
+        Assert-AreEqual "Free" $cluster.Sku.Tier
+
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -EnableUptimeSLA
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual "Basic" $cluster.Sku.Name
+        Assert-AreEqual "Paid" $cluster.Sku.Tier
 
         $cluster | Remove-AzAksCluster -Force
     }
