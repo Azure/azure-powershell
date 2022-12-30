@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Models
             {
                 foreach (string tag in property.Tags)
                 {
-                    PSTagAttributeBase newTag = new PSTagAttributeBase(tag, property.Digest, property.CreatedOn.ToString(), property.LastUpdatedOn.ToString(), false ,new ChangeableAttributes(property.CanDelete, property.CanWrite, property.CanList, property.CanRead));
+                    PSTagAttributeBase newTag = new PSTagAttributeBase(tag, property.Digest, property.CreatedOn.ToString(), property.LastUpdatedOn.ToString(),null ,new ChangeableAttributes(property.CanDelete, property.CanWrite, property.CanList, property.CanRead));
                     Tags.Add(newTag);
                 }
                 this.ImageName = property.RepositoryName;

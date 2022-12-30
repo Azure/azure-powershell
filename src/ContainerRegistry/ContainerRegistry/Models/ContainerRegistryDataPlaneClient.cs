@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         private const string _refreshTokenKey = "AcrRefreshToken";
 
         private AzureContainerRegistryClient _client;
-        Track2.ContainerRegistryClient _client2;
+        private Track2.ContainerRegistryClient _client2;
         private Track2TokenCredential _credential;
         private string _accessToken = default(string);
         private string _endPoint;
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                         _context, AzureEnvironment.ExtendedEndpoint.ContainerRegistryEndpointResourceId));
             _client2 = new Track2.ContainerRegistryClient(new Uri(_https + _endPoint), _credential, new Track2.ContainerRegistryClientOptions()
             {
-                Audience = Track2.ContainerRegistryAudience.AzureResourceManagerPublicCloud
+                Audience = _context.Environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.ContainerRegistryEndpointResourceId]
             });
         }
 
