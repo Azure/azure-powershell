@@ -1,0 +1,387 @@
+{
+  "AzMobileNetwork+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"publicLandMobileNetworkIdentifier\": {\r\n      \"mcc\": \"001\",\r\n      \"mnc\": \"01\"\r\n    }\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "144" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"620052f4-0000-0100-0000-63aec10e0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "688fd0bb-30fe-4396-96b0-7ad84f289865" ],
+        "x-ms-request-id": [ "544ec21e-dab1-4d3d-aa53-e834ee33eff3" ],
+        "x-ms-build-version": [ "1.0.1" ],
+        "x-ms-correlation-request-id": [ "2d80443a-3a0f-4351-acfe-1decbd315b28" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221230T104431Z:2d80443a-3a0f-4351-acfe-1decbd315b28" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 30 Dec 2022 10:44:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "639" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1\",\"name\":\"test-mn1\",\"type\":\"microsoft.mobilenetwork/mobilenetworks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-30T10:44:29.6595221Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-30T10:44:29.6595221Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"publicLandMobileNetworkIdentifier\":{\"mcc\":\"001\",\"mnc\":\"01\"},\"serviceKey\":\"25c18891-c78c-4387-9a5b-608d9224378f\"}}"
+    }
+  },
+  "AzMobileNetwork+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "0683da23-3454-4abf-8780-02adfb17a58c" ],
+        "CommandName": [ "New-AzMobileNetwork" ],
+        "FullCommandName": [ "New-AzMobileNetwork_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"620052f4-0000-0100-0000-63aec10e0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "6651a84c-c875-4f2c-a284-dd7f5d47e0a3" ],
+        "x-ms-correlation-request-id": [ "b95f086a-700d-4b13-b2b5-1663fe447b68" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221230T104502Z:b95f086a-700d-4b13-b2b5-1663fe447b68" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 30 Dec 2022 10:45:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "639" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1\",\"name\":\"test-mn1\",\"type\":\"microsoft.mobilenetwork/mobilenetworks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-30T10:44:29.6595221Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-30T10:44:29.6595221Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"publicLandMobileNetworkIdentifier\":{\"mcc\":\"001\",\"mnc\":\"01\"},\"serviceKey\":\"25c18891-c78c-4387-9a5b-608d9224378f\"}}"
+    }
+  },
+  "AzMobileNetwork+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "0683da23-3454-4abf-8780-02adfb17a58c" ],
+        "CommandName": [ "New-AzMobileNetwork" ],
+        "FullCommandName": [ "New-AzMobileNetwork_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"620052f4-0000-0100-0000-63aec10e0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "9c64f46e-e9f1-4ef7-93f3-db6b3be47da6" ],
+        "x-ms-correlation-request-id": [ "496ea991-41f3-4b4c-9af2-0544a7e65e71" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221230T104503Z:496ea991-41f3-4b4c-9af2-0544a7e65e71" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 30 Dec 2022 10:45:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "639" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1\",\"name\":\"test-mn1\",\"type\":\"microsoft.mobilenetwork/mobilenetworks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-30T10:44:29.6595221Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-30T10:44:29.6595221Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"publicLandMobileNetworkIdentifier\":{\"mcc\":\"001\",\"mnc\":\"01\"},\"serviceKey\":\"25c18891-c78c-4387-9a5b-608d9224378f\"}}"
+    }
+  },
+  "AzMobileNetwork+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MobileNetwork/mobileNetworks?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MobileNetwork/mobileNetworks?api-version=2022-11-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "447bfc34-f6a2-4b73-a816-48075c6ef4cf" ],
+        "CommandName": [ "Get-AzMobileNetwork" ],
+        "FullCommandName": [ "Get-AzMobileNetwork_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "53942548-ce46-4655-8a00-db4fc701f6ce", "ef303057-fbcb-4860-9c42-84b4526d9236", "5cbc2c67-0a47-470b-9d89-1d4fdfc3420b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "d428247f-b808-48c5-8210-af422f1ab2d3" ],
+        "x-ms-correlation-request-id": [ "d428247f-b808-48c5-8210-af422f1ab2d3" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221230T104504Z:d428247f-b808-48c5-8210-af422f1ab2d3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 30 Dec 2022 10:45:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "2595" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn2\",\"name\":\"azps-mn2\",\"type\":\"microsoft.mobilenetwork/mobilenetworks\",\"location\":\"eastus\",\"tags\":{\"123\":\"abc\",\"china\":\"move\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-19T01:23:08.1136158Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-19T01:23:08.1136158Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"publicLandMobileNetworkIdentifier\":{\"mcc\":\"001\",\"mnc\":\"01\"},\"serviceKey\":\"21912a0d-87d0-4804-a5db-9b49cb520650\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\",\"name\":\"test-mn2\",\"type\":\"microsoft.mobilenetwork/mobilenetworks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-30T10:09:14.588678Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-30T10:09:14.588678Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"publicLandMobileNetworkIdentifier\":{\"mcc\":\"001\",\"mnc\":\"01\"},\"serviceKey\":\"03974b80-8080-44b2-978a-ea6438f2200d\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3\",\"name\":\"test-mn3\",\"type\":\"microsoft.mobilenetwork/mobilenetworks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-30T10:09:49.510763Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-30T10:09:49.510763Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"publicLandMobileNetworkIdentifier\":{\"mcc\":\"001\",\"mnc\":\"01\"},\"serviceKey\":\"99c3ffab-8bda-4c61-ad8d-8258bca0ecbe\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1\",\"name\":\"test-mn1\",\"type\":\"microsoft.mobilenetwork/mobilenetworks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-30T10:44:29.6595221Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-30T10:44:29.6595221Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"publicLandMobileNetworkIdentifier\":{\"mcc\":\"001\",\"mnc\":\"01\"},\"serviceKey\":\"25c18891-c78c-4387-9a5b-608d9224378f\"}}]}"
+    }
+  },
+  "AzMobileNetwork+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "ef4e7d61-0c7b-4b6a-9e73-de78927e3f3d" ],
+        "CommandName": [ "Get-AzMobileNetwork" ],
+        "FullCommandName": [ "Get-AzMobileNetwork_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"620052f4-0000-0100-0000-63aec10e0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "1a815b68-c44d-4e11-bb9a-577db9ccefb5" ],
+        "x-ms-correlation-request-id": [ "4ac76274-5d11-4ae2-8ede-13f306e6f0f8" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221230T104505Z:4ac76274-5d11-4ae2-8ede-13f306e6f0f8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 30 Dec 2022 10:45:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "639" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1\",\"name\":\"test-mn1\",\"type\":\"microsoft.mobilenetwork/mobilenetworks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-30T10:44:29.6595221Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-30T10:44:29.6595221Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"publicLandMobileNetworkIdentifier\":{\"mcc\":\"001\",\"mnc\":\"01\"},\"serviceKey\":\"25c18891-c78c-4387-9a5b-608d9224378f\"}}"
+    }
+  },
+  "AzMobileNetwork+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks?api-version=2022-11-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "e41d9a56-da5c-40dc-b138-50db51d79364" ],
+        "CommandName": [ "Get-AzMobileNetwork" ],
+        "FullCommandName": [ "Get-AzMobileNetwork_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "2fa7ebd8-fed3-4db2-b44c-23ffe3dc94f3", "ae7d906f-c76d-4218-834d-5e9f3eccfa26", "4a4ab094-852a-4424-ad4c-b73c6067d1b5" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "12935817-1839-4524-8ab6-940eb46baa8b" ],
+        "x-ms-correlation-request-id": [ "12935817-1839-4524-8ab6-940eb46baa8b" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221230T104505Z:12935817-1839-4524-8ab6-940eb46baa8b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 30 Dec 2022 10:45:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "1927" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn2\",\"name\":\"test-mn2\",\"type\":\"microsoft.mobilenetwork/mobilenetworks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-30T10:09:14.588678Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-30T10:09:14.588678Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"publicLandMobileNetworkIdentifier\":{\"mcc\":\"001\",\"mnc\":\"01\"},\"serviceKey\":\"03974b80-8080-44b2-978a-ea6438f2200d\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3\",\"name\":\"test-mn3\",\"type\":\"microsoft.mobilenetwork/mobilenetworks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-30T10:09:49.510763Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-30T10:09:49.510763Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"publicLandMobileNetworkIdentifier\":{\"mcc\":\"001\",\"mnc\":\"01\"},\"serviceKey\":\"99c3ffab-8bda-4c61-ad8d-8258bca0ecbe\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1\",\"name\":\"test-mn1\",\"type\":\"microsoft.mobilenetwork/mobilenetworks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-30T10:44:29.6595221Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-30T10:44:29.6595221Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"publicLandMobileNetworkIdentifier\":{\"mcc\":\"001\",\"mnc\":\"01\"},\"serviceKey\":\"25c18891-c78c-4387-9a5b-608d9224378f\"}}]}"
+    }
+  },
+  "AzMobileNetwork+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"123\": \"abc\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "40" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"62003cf5-0000-0100-0000-63aec1320000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "6e735a66-c306-4ad6-bdc4-93ecb9793c74" ],
+        "x-ms-correlation-request-id": [ "a241f071-177a-4d58-b6b4-d51025801ef6" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221230T104507Z:a241f071-177a-4d58-b6b4-d51025801ef6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 30 Dec 2022 10:45:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "660" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1\",\"name\":\"test-mn1\",\"type\":\"microsoft.mobilenetwork/mobilenetworks\",\"location\":\"eastus\",\"tags\":{\"123\":\"abc\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-30T10:44:29.6595221Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-30T10:45:05.9600846Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"publicLandMobileNetworkIdentifier\":{\"mcc\":\"001\",\"mnc\":\"01\"},\"serviceKey\":\"25c18891-c78c-4387-9a5b-608d9224378f\"}}"
+    }
+  },
+  "AzMobileNetwork+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "2796ca85-6037-47af-b38f-563210083cf0" ],
+        "CommandName": [ "Get-AzMobileNetwork" ],
+        "FullCommandName": [ "Get-AzMobileNetwork_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"62003cf5-0000-0100-0000-63aec1320000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "3339f293-71dc-46e2-8f56-68219981b8bf" ],
+        "x-ms-correlation-request-id": [ "7619a9dc-0bff-495e-8a10-653f4789ec71" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221230T104507Z:7619a9dc-0bff-495e-8a10-653f4789ec71" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 30 Dec 2022 10:45:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "660" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1\",\"name\":\"test-mn1\",\"type\":\"microsoft.mobilenetwork/mobilenetworks\",\"location\":\"eastus\",\"tags\":{\"123\":\"abc\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-30T10:44:29.6595221Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-30T10:45:05.9600846Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"publicLandMobileNetworkIdentifier\":{\"mcc\":\"001\",\"mnc\":\"01\"},\"serviceKey\":\"25c18891-c78c-4387-9a5b-608d9224378f\"}}"
+    }
+  },
+  "AzMobileNetwork+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"123\": \"abc\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "40" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"620052f5-0000-0100-0000-63aec1350000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "03343919-26d9-4d81-8c41-02985e5a8cd3" ],
+        "x-ms-correlation-request-id": [ "3fb34a53-9178-4bd3-a8cb-5b7d3a39a5c5" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221230T104509Z:3fb34a53-9178-4bd3-a8cb-5b7d3a39a5c5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 30 Dec 2022 10:45:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "660" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1\",\"name\":\"test-mn1\",\"type\":\"microsoft.mobilenetwork/mobilenetworks\",\"location\":\"eastus\",\"tags\":{\"123\":\"abc\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-30T10:44:29.6595221Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-30T10:45:08.4146191Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"publicLandMobileNetworkIdentifier\":{\"mcc\":\"001\",\"mnc\":\"01\"},\"serviceKey\":\"25c18891-c78c-4387-9a5b-608d9224378f\"}}"
+    }
+  },
+  "AzMobileNetwork+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn1?api-version=2022-11-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "7a121623-4ef4-4801-9e31-4366eda1699d" ],
+        "CommandName": [ "Remove-AzMobileNetwork" ],
+        "FullCommandName": [ "Remove-AzMobileNetwork_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "60306381-20de-45dd-baa0-8d626f418a7b" ],
+        "x-ms-request-id": [ "b7a5f259-66fe-4be9-9fbd-8f200b809daa" ],
+        "x-ms-build-version": [ "1.0.1" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "bd86af6a-4e92-44cb-a754-210232ef33d8" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221230T104513Z:bd86af6a-4e92-44cb-a754-210232ef33d8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 30 Dec 2022 10:45:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  }
+}

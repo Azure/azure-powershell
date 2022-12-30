@@ -228,7 +228,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IMobileNetworkIdentity>`: Identity Parameter
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   - `[AttachedDataNetworkName <String>]`: The name of the attached data network.
   - `[DataNetworkName <String>]`: The name of the data network.
   - `[Id <String>]`: Resource identity path
@@ -245,7 +245,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VersionName <String>]`: The name of the packet core control plane version.
 
-`SIM <ISimNameAndProperties[]>`: A list of SIMs to upload.
+SIM <ISimNameAndProperties[]>: A list of SIMs to upload.
   - `InternationalMobileSubscriberIdentity <String>`: The international mobile subscriber identity (IMSI) for the SIM.
   - `Name <String>`: The name of the SIM.
   - `[AuthenticationKey <String>]`: The Ki value for the SIM.
