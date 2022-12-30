@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -57,7 +58,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
             if (string.IsNullOrEmpty(testCoverageRootPath))
             {
-                testCoverageRootPath = GetFallbackLocation();
+                testCoverageRootPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                    Resources.AzureDirectoryName);
             }
 
             s_testCoveragePath = Path.Combine(testCoverageRootPath, "TestCoverageAnalysis", "Raw");
@@ -68,13 +71,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             Console.WriteLine($"Test coverage data location: ${s_testCoveragePath}");
-        }
-
-        private static string GetFallbackLocation()
-        {
-            var profilePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            var azurePath = Path.Combine(profilePath, ".Azure");
-            return azurePath;
         }
 
         private string GenerateCsvHeader()
