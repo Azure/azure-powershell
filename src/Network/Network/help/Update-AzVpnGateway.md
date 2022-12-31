@@ -116,7 +116,6 @@ $gw.BgpSettings.BgpPeeringAddresses[1].CustomBgpIpAddresses=$null
 $gw.BgpSettings.BgpPeeringAddresses
 Update-AzVpnGateway -InputObject $gw
 ```
-
 The above example will update the Virtual WAN VPN Gateway to use the default BgpPeeringAddress.
 
 ### Example 4

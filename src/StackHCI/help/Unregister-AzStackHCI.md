@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/unregister-azstackhci
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/unregister-azstackhci
 schema: 2.0.0
 ---
 
@@ -51,7 +51,7 @@ Invoking from the management node
 
 ### Example 3: 
 ```powershell
-Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
+Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
 ```
 
 ```output
@@ -62,7 +62,7 @@ Invoking from WAC
 
 ### Example 4: 
 ```powershell
-Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
 ```
 
 ```output
@@ -74,8 +74,8 @@ Invoking with all the parameters
 ## PARAMETERS
 
 ### -AccountId
-Specifies the ARM access token.
-Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+Specifies the AccoundId.
+Specifying this along with ArmAccessToken will avoid Azure interactive logon.
 
 ```yaml
 Type: System.String
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 
 ### -ArmAccessToken
 Specifies the ARM access token.
-Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+Specifying this along with AccountId will avoid Azure interactive logon.
 
 ```yaml
 Type: System.String
@@ -184,8 +184,7 @@ Accept wildcard characters: False
 ```
 
 ### -GraphAccessToken
-Specifies the Graph access token.
-Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+GraphAccessToken is deprecated.
 
 ```yaml
 Type: System.String

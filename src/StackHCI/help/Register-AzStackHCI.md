@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/register-azstackhci
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/register-azstackhci
 schema: 2.0.0
 ---
 
@@ -18,7 +18,7 @@ Register-AzStackHCI [-SubscriptionId] <String> [[-Region] <String>] [[-ResourceN
  [[-GraphAccessToken] <String>] [[-AccountId] <String>] [[-EnvironmentName] <String>]
  [[-ComputerName] <String>] [[-CertificateThumbprint] <String>] [[-Credential] <PSCredential>]
  [[-ArcServerResourceGroupName] <String>] [[-ArcSpnCredential] <PSCredential>] [-EnableAzureArcServer]
- [-IsWAC] [-RepairRegistration] [-UseDeviceAuthentication] [<CommonParameters>]
+ [-IsWAC] [-RepairRegistration] [-UseDeviceAuthentication] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,7 @@ Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representin
 
 ### Example 1:
 ```powershell
-Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd"
+Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region "eastus"
 ```
 
 ```output
@@ -42,7 +42,7 @@ Invoking on one of the cluster node.
 
 ### Example 2: 
 ```powershell
-Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ComputerName ClusterNode1
+Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ComputerName ClusterNode1 -Region "eastus"
 ```
 
 ```output
@@ -56,7 +56,7 @@ Invoking from the management node.
 
 ### Example 3: 
 ```powershell
-Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG 
+Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG 
 ```
 
 ```output
@@ -70,7 +70,7 @@ Invoking from WAC.
 
 ### Example 4: 
 ```powershell
-Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region westus -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region westus -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
 ```
 
 ```output
@@ -85,8 +85,8 @@ Invoking with all the parameters.
 ## PARAMETERS
 
 ### -AccountId
-Specifies the ARM access token.
-Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+Specifies the Account Id.
+Specifying this along with ArmAccessToken will avoid Azure interactive logon.
 
 ```yaml
 Type: System.String
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 
 ### -ArmAccessToken
 Specifies the ARM access token.
-Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+Specifying this along with AccountId will avoid Azure interactive logon.
 
 ```yaml
 Type: System.String
@@ -196,7 +196,8 @@ Accept wildcard characters: False
 ```
 
 ### -EnableAzureArcServer
-Specifying this parameter to $false will skip registering the cluster nodes with Arc for servers.
+EnableAzureArcServer needs to be specified $true in all the environments except AzureChinaCloud.
+Specifying this parameter to $false in environments except AzureChinaCloud will terminate the registration cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -228,8 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -GraphAccessToken
-Specifies the Graph access token.
-Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+GraphAccessToken is deprecated.
 
 ```yaml
 Type: System.String
@@ -377,6 +377,37 @@ Use device code authentication instead of an interactive browser prompt.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

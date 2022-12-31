@@ -1,7 +1,7 @@
 ---
 external help file: Az.Autoscale.psm1-help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleWebhookNotificationObject
+online version: https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleWebhookNotificationObject
 schema: 2.0.0
 ---
 

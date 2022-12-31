@@ -1,0 +1,52 @@
+{
+  "resourceType": "managedClusters/agentPools",
+  "apiVersion": "2021-05-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.aks/#kubernetes-service"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAksNodePool",
+      "description": "Gets the details of the agent pool by managed cluster and resource group.",
+      "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
+      "help":{
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.aks/get-azaksnodepool"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+            "description": "Get the agentpool in the managed cluster and resource group..",
+            "parameters": [
+                {
+                    "name": "-ResourceGroupName",
+                    "value": "[path.resourceGroupName]"
+                },
+                {
+                    "name": "-ClusterName",
+                    "value": "[path.clusterName]"
+                },
+                {
+                    "name": "-Name",
+                    "value": "[path.agentPoolName]"
+                },
+                {
+                    "name": "-SubscriptionId",
+                    "value": "[path.subscriptionId]"
+                }
+            ]
+        }
+      ]
+    }
+  ]
+}

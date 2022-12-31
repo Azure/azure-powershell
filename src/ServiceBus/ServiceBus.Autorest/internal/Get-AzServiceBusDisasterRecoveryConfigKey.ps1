@@ -27,7 +27,7 @@ Gets the primary and secondary connection strings for the namespace.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusdisasterrecoveryconfigkey
+https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusdisasterrecoveryconfigkey
 #>
 function Get-AzServiceBusDisasterRecoveryConfigKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]

@@ -11,7 +11,7 @@ Lists members from group.
 .Description
 Lists members from group.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadgroupmember
+https://learn.microsoft.com/powershell/module/az.resources/get-azadgroupmember
 #>
 
 function Get-AzADGroupMember {

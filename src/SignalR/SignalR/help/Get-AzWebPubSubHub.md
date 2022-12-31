@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.SignalR-help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/get-azwebpubsubhub
+online version: https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsubhub
 schema: 2.0.0
 ---
 
@@ -46,8 +46,6 @@ testHub  deny
 testHub2 deny
 ```
 
-
-
 ### Example 2: Get a Web PubSub hub setting.
 ```powershell
 Get-AzWebPubSubHub -Name testHub -ResourceGroupName psdemo -ResourceName psdemo-wps
@@ -58,8 +56,6 @@ Name    AnonymousConnectPolicy
 ----    ----------------------
 testHub deny
 ```
-
-
 
 ### Example 3: Get a Web PubSub hub setting via identity.
 ```powershell
@@ -75,8 +71,6 @@ Name    AnonymousConnectPolicy
 ----    ----------------------
 testHub deny
 ```
-
-
 
 ## PARAMETERS
 
@@ -117,7 +111,7 @@ The hub name.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: HubName
 
 Required: True
 Position: Named
@@ -132,7 +126,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -147,7 +141,7 @@ The name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -163,7 +157,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -182,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHub
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubHub
 
 ## NOTES
 
@@ -193,10 +187,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<IWebPubSubIdentity>`: Identity Parameter
+`INPUTOBJECT <IWebPubSubIdentity>`: Identity Parameter
+  - `[CertificateName <String>]`: Custom certificate name
   - `[HubName <String>]`: The hub name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: the region
+  - `[Name <String>]`: Custom domain name.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   - `[ResourceName <String>]`: The name of the resource.
@@ -204,4 +200,3 @@ INPUTOBJECT `<IWebPubSubIdentity>`: Identity Parameter
   - `[SubscriptionId <String>]`: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-

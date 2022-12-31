@@ -2461,10 +2461,19 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Failover request can be triggered for a storage account in case of
-        /// availability issues. The failover occurs from the storage account's primary
-        /// cluster to secondary cluster for RA-GRS accounts. The secondary cluster
-        /// will become primary after failover.
+        /// A failover request can be triggered for a storage account in the event a
+        /// primary endpoint becomes unavailable for any reason. The failover occurs
+        /// from the storage account's primary cluster to the secondary cluster for
+        /// RA-GRS accounts. The secondary cluster will become primary after failover
+        /// and the account is converted to LRS. In the case of a Planned Failover, the
+        /// primary and secondary clusters are swapped after failover and the account
+        /// remains geo-replicated. Failover should continue to be used in the event of
+        /// availability issues as Planned failover is only available while the primary
+        /// and secondary endpoints are available. The primary use case of a Planned
+        /// Failover is disaster recovery testing drills. This type of failover is
+        /// invoked by setting FailoverType parameter to 'Planned'. Learn more about
+        /// the failover options here-
+        /// https://learn.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The name is
@@ -2475,16 +2484,20 @@ namespace Microsoft.Azure.Management.Storage
         /// Storage account names must be between 3 and 24 characters in length and use
         /// numbers and lower-case letters only.
         /// </param>
+        /// <param name='failoverType'>
+        /// The parameter is set to 'Planned' to indicate whether a Planned failover is
+        /// requested. Possible values include: 'Planned'
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> FailoverWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> FailoverWithHttpMessagesAsync(string resourceGroupName, string accountName, FailoverType? failoverType = default(FailoverType?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginFailoverWithHttpMessagesAsync(resourceGroupName, accountName, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginFailoverWithHttpMessagesAsync(resourceGroupName, accountName, failoverType, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -3056,10 +3069,19 @@ namespace Microsoft.Azure.Management.Storage
         }
 
         /// <summary>
-        /// Failover request can be triggered for a storage account in case of
-        /// availability issues. The failover occurs from the storage account's primary
-        /// cluster to secondary cluster for RA-GRS accounts. The secondary cluster
-        /// will become primary after failover.
+        /// A failover request can be triggered for a storage account in the event a
+        /// primary endpoint becomes unavailable for any reason. The failover occurs
+        /// from the storage account's primary cluster to the secondary cluster for
+        /// RA-GRS accounts. The secondary cluster will become primary after failover
+        /// and the account is converted to LRS. In the case of a Planned Failover, the
+        /// primary and secondary clusters are swapped after failover and the account
+        /// remains geo-replicated. Failover should continue to be used in the event of
+        /// availability issues as Planned failover is only available while the primary
+        /// and secondary endpoints are available. The primary use case of a Planned
+        /// Failover is disaster recovery testing drills. This type of failover is
+        /// invoked by setting FailoverType parameter to 'Planned'. Learn more about
+        /// the failover options here-
+        /// https://learn.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group within the user's subscription. The name is
@@ -3069,6 +3091,10 @@ namespace Microsoft.Azure.Management.Storage
         /// The name of the storage account within the specified resource group.
         /// Storage account names must be between 3 and 24 characters in length and use
         /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='failoverType'>
+        /// The parameter is set to 'Planned' to indicate whether a Planned failover is
+        /// requested. Possible values include: 'Planned'
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3088,7 +3114,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginFailoverWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginFailoverWithHttpMessagesAsync(string resourceGroupName, string accountName, FailoverType? failoverType = default(FailoverType?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -3155,6 +3181,7 @@ namespace Microsoft.Azure.Management.Storage
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("accountName", accountName);
+                tracingParameters.Add("failoverType", failoverType);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginFailover", tracingParameters);
             }
@@ -3168,6 +3195,10 @@ namespace Microsoft.Azure.Management.Storage
             if (Client.ApiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+            }
+            if (failoverType != null)
+            {
+                _queryParameters.Add(string.Format("failoverType={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(failoverType, Client.SerializationSettings).Trim('"'))));
             }
             if (_queryParameters.Count > 0)
             {

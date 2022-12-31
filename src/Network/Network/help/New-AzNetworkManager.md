@@ -15,7 +15,7 @@ Creates a network manager.
 ```
 New-AzNetworkManager -Name <String> -ResourceGroupName <String> -Location <String> [-Description <String>]
  [-Tag <Hashtable>] -NetworkManagerScope <PSNetworkManagerScopes>
- -NetworkManagerScopeAccess <NetworkManagerScopeAccessType[]> [-Force] [-AsJob]
+ -NetworkManagerScopeAccess <String[]> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,6 @@ $scope = New-AzNetworkManagerScope -Subscription $subscriptions -ManagementGroup
 $access  = @("Connectivity")
 New-AzNetworkManager -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location "westus"
 ```
-
 ```output
 Location                        : westus
 Tag                             : {}
@@ -67,7 +66,6 @@ Name                            : psNetworkManager
 Etag                            :
 Id                              : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
 ```
-
 Creates a network manager with connectivity access in West US, with a subscription and management group in scope.
 
 ### Example 2: Creates a security admin network manager.
@@ -77,7 +75,6 @@ $scope = New-AzNetworkManagerScope -Subscription $subscriptions
 $access  = @("SecurityAdmin")
 New-AzNetworkManager -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location "westus"
 ```
-
 ```output
 Location                        : westus
 Tag                             : {}
@@ -110,7 +107,6 @@ Etag                            :
 Id                              : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/pr
                                   oviders/Microsoft.Network/networkManagers/psNetworkManager
 ```
-
 Creates a network manager with security administrator access in West US, with a subscription in scope.
 
 ## PARAMETERS
@@ -119,7 +115,7 @@ Creates a network manager with security administrator access in West US, with a 
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +130,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -149,7 +145,7 @@ Accept wildcard characters: False
 Description.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -164,7 +160,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -179,7 +175,7 @@ Accept wildcard characters: False
 location.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -194,7 +190,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -209,7 +205,7 @@ Accept wildcard characters: False
 Network Manager Scope
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerScopes
+Type: PSNetworkManagerScopes
 Parameter Sets: (All)
 Aliases:
 
@@ -224,7 +220,7 @@ Accept wildcard characters: False
 Network Manager Scope Access.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.NewAzNetworkManagerCommand+NetworkManagerScopeAccessType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: SecurityAdmin, Connectivity
@@ -240,7 +236,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -255,7 +251,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -270,7 +266,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -286,7 +282,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -317,7 +313,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [New-AzNetworkManagerScope](./New-AzNetworkManagerScope.md)
 
 [Get-AzNetworkManager](./Get-AzNetworkManager.md)

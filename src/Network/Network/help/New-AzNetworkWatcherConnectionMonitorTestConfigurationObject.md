@@ -53,9 +53,8 @@ ProtocolConfiguration : {
 SuccessThreshold      : {
                           "ChecksFailedPercent": 20,
                           "RoundTripTimeMs": 30
-                        }
+                        } 
 ```
-
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -288,6 +288,9 @@ namespace Microsoft.Azure.Commands.Compute
                                 psItem.PowerState = InfoNotAvailable;
                             }
                             psItem.MaintenanceRedeployStatus = psstate.MaintenanceRedeployStatus;
+                            psItem.OsName = psstate.OsName;
+                            psItem.OsVersion = psstate.OsVersion;
+                            psItem.HyperVGeneration = psstate.HyperVGeneration;
                         }
                     }
                     psItem.DisplayHint = this.DisplayHint;

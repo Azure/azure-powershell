@@ -15,8 +15,7 @@ pr: none
 jobs:
 - job: DailyBuild
   timeoutInMinutes: 180
-  pool:
-    vmImage: 'windows-2019'
+  pool: pool-windows-2019
   steps:
   - task: PowerShell@2
     displayName: 'Initialization'

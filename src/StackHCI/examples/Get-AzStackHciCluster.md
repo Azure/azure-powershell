@@ -14,6 +14,7 @@ westeurope myCluster2 test-rg
 Gets all the clusters in a RG 
 
 ### Example 2: 
+```powershell
 Get-AzStackHciCluster -ResourceGroupName test-rg -ClusterName myCluster
 ```
 

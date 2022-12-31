@@ -12,7 +12,7 @@ Deletes an Azure SecurityPartnerProvider.
 
 ## SYNTAX
 
-### SecurityPartnerProviderNameParameterSet (Default)
+### SecurityPartnerProviderNameParameterSet
 ```
 Remove-AzSecurityPartnerProvider -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -46,7 +46,7 @@ Remove-AzSecurityPartnerProvider -ResourceGroupName securityPartnerProviderRG -N
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 Returns an object representing the item on which this operation is being performed.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SecurityPartnerProviderNameParameterSet
 Aliases:
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 The securityPartnerProvider resource Id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SecurityPartnerProviderResourceIdParameterSet
 Aliases:
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 The securityPartnerProvider input object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSSecurityPartnerProvider
+Type: PSSecurityPartnerProvider
 Parameter Sets: SecurityPartnerProviderInputObjectParameterSet
 Aliases:
 
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -182,7 +182,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -1,7 +1,7 @@
 ---
 external help file: Az.DiagnosticSetting.psm1-help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsettingcategory
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsettingcategory
 schema: 2.0.0
 ---
 
@@ -36,7 +36,7 @@ Gets the diagnostic settings category for the specified resource.
 
 ### Example 1: List supported diagnostic setting categories
 ```powershell
-$subscriptionId = (Get-AzContext).SubscriptionId
+$subscriptionId = (Get-AzContext).Subscription.Id
 Get-AzDiagnosticSettingCategory -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001
 ```
 

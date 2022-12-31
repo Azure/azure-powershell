@@ -25,7 +25,7 @@ Get-AzReservationHistory -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a -Re
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationhistory
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationhistory
 #>
 function Get-AzReservationHistory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]

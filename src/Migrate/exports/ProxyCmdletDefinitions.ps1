@@ -25,7 +25,7 @@ Get-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVM
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateproject
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateproject
 #>
 function Get-AzMigrateProject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IMigrateProject])]
@@ -189,7 +189,7 @@ Get-AzMigrateReplicationFabric -ResourceGroupName azmigratepwshtestasr13072020 -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationfabric
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationfabric
 #>
 function Get-AzMigrateReplicationFabric {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric])]
@@ -365,7 +365,7 @@ Get-AzMigrateReplicationPolicy -ResourceGroupName azmigratepwshtestasr13072020 -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationpolicy
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationpolicy
 #>
 function Get-AzMigrateReplicationPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy])]
@@ -533,7 +533,7 @@ Get-AzMigrateReplicationProtectionContainerMapping -ResourceGroupName azmigratep
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainermapping
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainermapping
 #>
 function Get-AzMigrateReplicationProtectionContainerMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping])]
@@ -718,7 +718,7 @@ Get-AzMigrateReplicationProtectionContainer -ResourceGroupName azmigratepwshtest
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainer
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainer
 #>
 function Get-AzMigrateReplicationProtectionContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainer])]
@@ -894,7 +894,7 @@ Get-AzMigrateReplicationRecoveryServicesProvider -ResourceGroupName azmigratepws
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationrecoveryservicesprovider
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationrecoveryservicesprovider
 #>
 function Get-AzMigrateReplicationRecoveryServicesProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider])]
@@ -1070,7 +1070,7 @@ Get-AzMigrateRunAsAccount  -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBas
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigraterunasaccount
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigraterunasaccount
 #>
 function Get-AzMigrateRunAsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount])]
@@ -1239,7 +1239,7 @@ Get-AzMigrateSite -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMwar
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratesite
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratesite
 #>
 function Get-AzMigrateSite {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite])]
@@ -1402,7 +1402,7 @@ Get-AzMigrateSolution -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSV
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratesolution
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratesolution
 #>
 function Get-AzMigrateSolution {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution])]
@@ -1582,7 +1582,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>: The ReplicationProviderSettings.
   InstanceType <String>: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
 #>
 function New-AzMigrateReplicationPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy])]
@@ -1784,7 +1784,7 @@ To create the parameters described below, construct a hash table containing the 
 PROVIDERSPECIFICINPUT <IReplicationProviderSpecificContainerMappingInput>: Provider specific input for pairing.
   InstanceType <String>: The class type.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationprotectioncontainermapping
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationprotectioncontainermapping
 #>
 function New-AzMigrateReplicationProtectionContainerMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IProtectionContainerMapping])]
@@ -1994,7 +1994,7 @@ Register-AzMigrateProjectTool -SubscriptionId xxx-xxx-xxx -ResourceGroupName Bug
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/register-azmigrateprojecttool
+https://learn.microsoft.com/powershell/module/az.migrate/register-azmigrateprojecttool
 #>
 function Register-AzMigrateProjectTool {
 [OutputType([System.Boolean])]
@@ -2170,7 +2170,7 @@ Remove-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAV
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/remove-azmigrateproject
+https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigrateproject
 #>
 function Remove-AzMigrateProject {
 [OutputType([System.Boolean])]

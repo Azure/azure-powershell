@@ -6,6 +6,10 @@
       "defaultValue": "AutomatedPSTesting",
       "type": "String"
     },
+    "system_assigned_namespace_name": {
+      "defaultValue": "AutomatedPSTesting",
+      "type": "String"
+    },
     "namespace_auth_rule_name": {
       "defaultValue": "namespaceAuthRule",
       "type": "String"
@@ -46,7 +50,6 @@
     "eventHubAuthRuleResourceName": "[concat(parameters('namespace_name'), '/', parameters('eventhub_name'), '/', parameters('eventhub_auth_rule_name'))]",
     "schemaGroupResourceName": "[concat(parameters('namespace_name'), '/', parameters('schema_group_name'))]",
     "rootAuthRuleResourceName": "[concat(parameters('namespace_name'), '/RootManageSharedAccessKey')]",
-    "defaultNetworkRuleResourceName": "[concat(parameters('namespace_name'), '/default')]",
     "consumerGroupResourceName": "[concat(parameters('namespace_name'), '/', parameters('eventhub_name'),'/$Default')]"
   },
   "resources": [
@@ -59,6 +62,29 @@
         "name": "Premium",
         "tier": "Premium",
         "capacity": 1
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": true,
+        "isAutoInflateEnabled": false,
+        "maximumThroughputUnits": 0,
+        "kafkaEnabled": true
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('system_assigned_namespace_name')]",
+      "location": "eastus",
+      "sku": {
+        "name": "Premium",
+        "tier": "Premium",
+        "capacity": 1
+      },
+      "identity": {
+        "type": "SystemAssigned"
       },
       "properties": {
         "minimumTlsVersion": "1.2",
@@ -97,7 +123,8 @@
       "name": "[variables('authRuleResourceName')]",
       "location": "eastus",
       "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]",
+        "[resourceId('Microsoft.EventHub/namespaces/AuthorizationRules', parameters('namespace_name'), 'RootManageSharedAccessKey')]"
       ],
       "properties": {
         "rights": [
@@ -138,21 +165,6 @@
       }
     },
     {
-      "type": "Microsoft.EventHub/namespaces/networkRuleSets",
-      "apiVersion": "2022-01-01-preview",
-      "name": "[variables('defaultNetworkRuleResourceName')]",
-      "location": "eastus",
-      "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
-      ],
-      "properties": {
-        "publicNetworkAccess": "Enabled",
-        "defaultAction": "Allow",
-        "virtualNetworkRules": [],
-        "ipRules": []
-      }
-    },
-    {
       "type": "Microsoft.EventHub/namespaces/schemagroups",
       "apiVersion": "2022-01-01-preview",
       "name": "[variables('schemaGroupResourceName')]",
@@ -182,17 +194,6 @@
           "Send"
         ]
       }
-    },
-    {
-      "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
-      "apiVersion": "2022-01-01-preview",
-      "name": "[variables('consumerGroupResourceName')]",
-      "location": "eastus",
-      "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespace_name'), parameters('eventhub_name'))]",
-        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
-      ],
-      "properties": {}
     },
     {
       "type": "Microsoft.Network/privateEndpoints",

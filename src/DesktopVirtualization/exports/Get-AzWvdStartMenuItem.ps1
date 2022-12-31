@@ -25,7 +25,7 @@ Get-AzWvdStartMenuItem -ResourceGroupName ResourceGroupName -ApplicationGroupNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IStartMenuItem
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdstartmenuitem
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdstartmenuitem
 #>
 function Get-AzWvdStartMenuItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IStartMenuItem])]

@@ -153,6 +153,19 @@ namespace Microsoft.Azure.Management.Storage
         /// group. Storage account names must be between 3 and 24 characters in
         /// length and use numbers and lower-case letters only.
         /// </param>
+        /// <param name='maxpagesize'>
+        /// Optional, specifies the maximum number of encryption scopes that
+        /// will be included in the list response.
+        /// </param>
+        /// <param name='filter'>
+        /// Optional. When specified, only encryption scope names starting with
+        /// the filter will be listed.
+        /// </param>
+        /// <param name='include'>
+        /// Optional, when specified, will list encryption scopes with the
+        /// specific state. Defaults to All. Possible values include: 'All',
+        /// 'Enabled', 'Disabled'
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -168,7 +181,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<EncryptionScope>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<EncryptionScope>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, int? maxpagesize = default(int?), string filter = default(string), string include = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all the encryption scopes available under the specified
         /// storage account.

@@ -3034,18 +3034,27 @@ function Test-VirtualMachineGetStatus
 
         $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname -Status;
 
+        Assert-True {$vm.OsName -like "*windows*"}
+        Assert-NotNullOrEmpty $vm.OsVersion
+        Assert-NotNullOrEmpty $vm.HyperVGeneration
         $a = $vm | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("Statuses");}
 
         $vms = Get-AzVM -ResourceGroupName $rgname -Status;
         Assert-AreEqual "VM running" ($vms | ? {$_.Name -eq $vmname}).PowerState;
+        Assert-True {($vms | ? {$_.Name -eq $vmname}).OsName -like "*windows*"}
+        Assert-NotNullOrEmpty ($vms | ? {$_.Name -eq $vmname}).OsVersion
+        Assert-NotNullOrEmpty ($vms | ? {$_.Name -eq $vmname}).HyperVGeneration
         $a = $vms | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("VM running")};
 
         $vms = Get-AzVM -Status;
         Assert-AreEqual "VM running" ($vms | ? {$_.Name -eq $vmname}).PowerState;
+        Assert-True {($vms | ? {$_.Name -eq $vmname}).OsName -like "*windows*"}
+        Assert-NotNullOrEmpty ($vms | ? {$_.Name -eq $vmname}).OsVersion
+        Assert-NotNullOrEmpty ($vms | ? {$_.Name -eq $vmname}).HyperVGeneration
         $a = $vms | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("VM running")};
@@ -6529,5 +6538,41 @@ function Test-ConfVMSetAzDiskEncryptionSetConfig
     {
         # Cleanup
         # Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzVM with Edgezone using Simple Parameter set
+#>
+function Test-VirtualMachineEdgeZoneSimpleParameterSet
+{
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmname = "v" + $rgname;
+        $edgezone = "microsoftmiami1";
+        $ConfirmPreference = "Low";
+
+        $user = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $domainNameLabel = "d" + $rgname;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -edgezone $edgezone -credential $cred -DomainNameLabel $domainNameLabel -Confirm:$false;
+
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-AreEqual $vm.ExtendedLocation.Name $EdgeZone;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $ResourceGroup;
     }
 }

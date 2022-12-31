@@ -20,6 +20,19 @@
 
 -->
 ## Upcoming Release
+* Removed the image `Win2008R2SP1` from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.
+
+## Version 5.2.0
+* Fixed issue found for `Set-AzVmssVMRunCommand` [#19985]
+* Fixed `Get-AzVm` cmdlet when parameter "-Status" is provided, return property `OsName`, `OsVersion` and `HyperVGeneration`
+* Fixed `New-AzVM` cmdlet when creating VM with bootdiagnostic storage causes exception `Kind` cannot be null.
+
+## Version 5.1.1
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
+## Version 5.1.0
+* Fixed EdgeZone does not pass to VM for `New-AzVM` "SimpleParameterSet" [#18978] 
+* Added 'ScriptFilePath' parameter set for `Set-AzVMRunCommand` and `Set-AzVmssVMRunCommand` to allow users to pass in the path of the file that has the run command script
 * Added `-AsJob` optional parameter to `Remove-AzVMExtension` cmdlet.
 * Added `-EdgeZone` optional parameter for `Get-AzComputeResourceSku` and `New-AzSnapshotUpdateConfig` cmdlets.
 * Added Disk Delete Optional parameters `OsDisk Deletion Option` and `Delete Option` to the `Set-AzVmssStorageProfile` (OS Disk) and `Add-AzVmssDataDisk` (Data Disk)
@@ -29,6 +42,7 @@
 * Improved cmdlet description for `Set-AzVM` and added examples.
 * Updated property mapping for parameter `Encryption` of `New-AzGalleryImageVersion`
 * Updated list format to display all VmssVmRunCommand properties for `Get-AzVmssVmRunCommand`
+* Updated `Get-AzGallery`, `New-AzGallery`, `Update-AzGallery`, `Get-AzGalleryImageDefinition`, `Get-AzGalleryImageVersion`, `New-AzVm` and `New-AzVmss` to support community galleries
 
 ## Version 5.0.0
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.

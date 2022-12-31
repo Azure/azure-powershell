@@ -47,7 +47,7 @@ Templates
 {Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplat…
 ```
 
-The following JSON represents the actual templates set. 
+The following JSON represents the actual templates set.
 
  `
 {
@@ -247,4 +247,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[How to use splatting to pass parameters to commands in PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_splatting?view=powershell-7)
+[How to use splatting to pass parameters to commands in PowerShell](/powershell/module/microsoft.powershell.core/about/about_splatting)

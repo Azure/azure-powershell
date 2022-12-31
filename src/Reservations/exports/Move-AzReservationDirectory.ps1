@@ -42,7 +42,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/move-azreservationdirectory
+https://learn.microsoft.com/powershell/module/az.reservations/move-azreservationdirectory
 #>
 function Move-AzReservationDirectory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IChangeDirectoryResponse])]

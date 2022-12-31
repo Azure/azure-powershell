@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancerbackendaddresspool
+online version:https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancerbackendaddresspool
 schema: 2.0.0
 ---
 
@@ -12,7 +12,7 @@ Get-AzLoadBalancerBackendAddressPool retrieves one or more backend address pools
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
+### GetByNameParameterSet
 ```
 Get-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -45,7 +45,6 @@ $lb = Get-AzLoadBalancer -ResourceGroupName $resourceGroup -Name $loadBalancerNa
 ## Get all backends under loadbalancer
 $lb | Get-AzLoadBalancerBackendAddressPool
 ```
-
 ### Example 2
 ```powershell
 #Get specific backend from loadbalancer
@@ -64,7 +63,7 @@ Get-AzLoadBalancerBackendAddressPool -ResourceId $backendPool1.Id
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -79,7 +78,7 @@ Accept wildcard characters: False
 {{ Fill LoadBalancer Description }}
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Type: PSLoadBalancer
 Parameter Sets: GetByParentObjectParameterSet
 Aliases:
 
@@ -94,7 +93,7 @@ Accept wildcard characters: False
 The name of the load balancer.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -109,7 +108,7 @@ Accept wildcard characters: False
 The name of the backend address pool.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByNameParameterSet, GetByParentObjectParameterSet
 Aliases:
 
@@ -124,7 +123,7 @@ Accept wildcard characters: False
 The resource group name of the load balancer.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -138,7 +137,7 @@ Accept wildcard characters: False
 ### -ResourceId
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 

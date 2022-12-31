@@ -42,7 +42,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationavailablescope
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationavailablescope
 #>
 function Get-AzReservationAvailableScope {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ISubscriptionScopeProperties])]
@@ -250,7 +250,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationcatalog
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationcatalog
 #>
 function Get-AzReservationCatalog {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICatalog])]
@@ -438,7 +438,7 @@ Get-AzReservationHistory -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a -Re
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationhistory
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationhistory
 #>
 function Get-AzReservationHistory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
@@ -601,7 +601,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationorderid
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationorderid
 #>
 function Get-AzReservationOrderId {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAppliedReservations])]
@@ -772,7 +772,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationorder
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationorder
 #>
 function Get-AzReservationOrder {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationOrderResponse])]
@@ -956,7 +956,7 @@ BODY <IPurchaseRequest>: .
   [Sku <String>]: 
   [Term <ReservationTerm?>]: Represent the term of Reservation.
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationquote
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationquote
 #>
 function Get-AzReservationQuote {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponseProperties])]
@@ -1197,7 +1197,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/get-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/get-azreservation
 #>
 function Get-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
@@ -1419,7 +1419,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/invoke-azreservationarchivereservation
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationarchivereservation
 #>
 function Invoke-AzReservationArchiveReservation {
 [OutputType([System.Boolean])]
@@ -1665,7 +1665,7 @@ RESERVATIONSTOPURCHASE <IPurchaseRequest[]>: List of reservations that are being
   [Sku <String>]: 
   [Term <ReservationTerm?>]: Represent the term of Reservation.
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculateexchange
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculateexchange
 #>
 function Invoke-AzReservationCalculateExchange {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateExchangeOperationResultResponse])]
@@ -1864,7 +1864,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculaterefund
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculaterefund
 #>
 function Invoke-AzReservationCalculateRefund {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundResponse])]
@@ -2069,7 +2069,7 @@ To create the parameters described below, construct a hash table containing the 
 BODY <IExchangeRequest>: Exchange request
   [SessionId <String>]: SessionId that was returned by CalculateExchange API.
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/invoke-azreservationexchange
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationexchange
 #>
 function Invoke-AzReservationExchange {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IExchangeOperationResultResponse])]
@@ -2259,7 +2259,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/invoke-azreservationreturn
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationreturn
 #>
 function Invoke-AzReservationReturn {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse])]
@@ -2473,7 +2473,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/invoke-azreservationunarchivereservation
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationunarchivereservation
 #>
 function Invoke-AzReservationUnarchiveReservation {
 [OutputType([System.Boolean])]
@@ -2655,7 +2655,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/move-azreservationdirectory
+https://learn.microsoft.com/powershell/module/az.reservations/move-azreservationdirectory
 #>
 function Move-AzReservationDirectory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IChangeDirectoryResponse])]
@@ -2855,7 +2855,7 @@ INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/new-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/new-azreservation
 #>
 function New-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationOrderResponse])]
@@ -3183,7 +3183,7 @@ RESERVATION <IPatch>: .
       [Sku <String>]: 
       [Term <ReservationTerm?>]: Represent the term of Reservation.
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/update-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/update-azreservation
 #>
 function Update-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
@@ -3418,7 +3418,7 @@ Merge-AzReservation -ReservationOrderId "79ebddac-4030-4296-ab93-1ad90f032058" -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/merge-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/merge-azreservation
 #>
 function Merge-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
@@ -3573,7 +3573,7 @@ Split-AzReservation -ReservationOrderId "c615c897-aaaa-4123-8527-c42cc0da41e0" -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/split-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/split-azreservation
 #>
 function Split-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]

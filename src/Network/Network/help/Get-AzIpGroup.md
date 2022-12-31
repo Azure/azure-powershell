@@ -12,9 +12,9 @@ Get an Azure IpGroup
 
 ## SYNTAX
 
-### IpGroupNameParameterSet (Default)
+### IpGroupNameParameterSet
 ```
-Get-AzIpGroup [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzIpGroup -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ Get-AzIpGroup -ResourceId $ipGroupId
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The name of the ipgroup.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: IpGroupNameParameterSet
 Aliases: ResourceName
 
@@ -68,29 +68,29 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
 The resource group name of the ipgroup.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: IpGroupNameParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceId
 ResourceId of the ipgroup.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: IpGroupResourceIdParameterSet
 Aliases:
 

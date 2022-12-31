@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/powershell/module/az.databricks/get-azdatabricksaccessconnector
+online version: https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksaccessconnector
 schema: 2.0.0
 ---
 
