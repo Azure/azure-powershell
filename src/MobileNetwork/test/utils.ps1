@@ -38,8 +38,8 @@ function setupEnv() {
     $env.Add("testService", $testService)
     $env.Add("testSimPolicy", $testSimPolicy)
 
-    $env.Add("location", "eastus")
     write-host "start to create test group"
+    $env.Add("location", "eastus")
     $resourceGroup = "testgroup-mobilenetwork"
     $env.Add("resourceGroup", $resourceGroup)
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
@@ -55,7 +55,8 @@ function setupEnv() {
     New-AzMobileNetworkService -MobileNetworkName $env.testNetwork2 -Name $env.testService -ResourceGroupName $env.resourceGroup -Location $env.location -PccRule $PccRule -ServicePrecedence 0 -MaximumBitRateDownlink "1 Gbps" -MaximumBitRateUplink "500 Mbps" -ServiceQoPolicyAllocationAndRetentionPriorityLevel 9 -ServiceQoPolicyFiveQi 9 -ServiceQoPolicyPreemptionCapability 'MayPreempt' -ServiceQoPolicyPreemptionVulnerability 'Preemptable'
 
     New-AzMobileNetworkSlice -MobileNetworkName $env.testNetwork2 -ResourceGroupName $env.resourceGroup -SliceName $env.testSlice -Location $env.location -SnssaiSst 1 -SnssaiSd "1abcde"
-    For any resources you created for test, you should add it to $env here.
+    
+    # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
