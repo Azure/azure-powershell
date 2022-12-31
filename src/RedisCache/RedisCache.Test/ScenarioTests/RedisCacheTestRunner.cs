@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
                 {
                     helper.RMProfileModule,
                     helper.GetRMModulePath("Az.RedisCache.psd1"),
-                    helper.GetRMModulePath("Az.Storage.psd1"),
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>(),
