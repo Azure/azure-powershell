@@ -42,7 +42,7 @@ SECRET <ISecret[]>: Collection of secrets used by a Dapr component
   [Name <String>]: Secret Name.
   [Value <String>]: Secret Value.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvdapr
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvdapr
 #>
 function New-AzContainerAppManagedEnvDapr {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDaprComponent])]

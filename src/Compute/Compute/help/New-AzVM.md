@@ -26,8 +26,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
  [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DiskControllerType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -146,7 +146,7 @@ $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -Computer
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
 $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -SourceImageUri $SourceImageUri -Caching $OSDiskCaching -CreateOption $OSCreateOption -Windows
 
-New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
+New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose -Zone @("1")
 ```
 
 This example takes an existing sys-prepped, generalized custom operating system image and attaches a data disk to it, provisions a new network, deploys the VHD, and runs it.
@@ -407,6 +407,8 @@ Linux: Username must only contain letters, numbers, hyphens, and underscores and
 **Password** <br>
 Must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character. <br>
 The value must be between 12 and 123 characters long.
+
+
 ```yaml
 Type: System.Management.Automation.PSCredential
 Parameter Sets: SimpleParameterSet
@@ -491,6 +493,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DiskControllerType
+Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://docs.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://docs.microsoft.com/rest/api/compute/resourceskus/list) . <br> For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -647,7 +664,7 @@ Accept wildcard characters: False
 ```
 
 ### -Image
-The friendly image name upon which the VM will be built.  These include: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Win2008R2SP1, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
+The friendly image name upon which the VM will be built.  These include: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
 
 ```yaml
 Type: System.String
@@ -880,7 +897,7 @@ Accept wildcard characters: False
 ### -PublicIpSku
 Specifies public IP sku name
 
-Accpeted Values are "Basic" and "Standard"
+Accepted values are "Basic" and "Standard"
 
 ```yaml
 Type: System.String
@@ -1137,7 +1154,8 @@ Accept wildcard characters: False
 ```
 
 ### -Zone
-Specifies the zone list of the virtual machine.
+Specifies the zone of the virtual machine. Although it takes in an array of zones, virtual machines do not support multiple availability zones.
+The allowed value depends on the capabilities of the region. Allowed value will normally be 1, 2, or 3. More information on [Azure availability zones](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview#availability-zones).
 
 ```yaml
 Type: System.String[]

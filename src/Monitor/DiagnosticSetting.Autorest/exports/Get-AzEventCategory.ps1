@@ -27,7 +27,7 @@ Get-AzEventCategory
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ILocalizableString
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/get-azeventcategory
+https://learn.microsoft.com/powershell/module/az.monitor/get-azeventcategory
 #>
 function Get-AzEventCategory {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ILocalizableString])]

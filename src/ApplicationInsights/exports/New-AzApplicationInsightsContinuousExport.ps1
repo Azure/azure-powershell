@@ -24,12 +24,12 @@ $sastoken = New-AzStorageContainerSASToken -Name testcontainer -Context $context
 $sasuri = "https://teststorageaccount.blob.core.windows.net/testcontainer" + $sastoken
 New-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" `
 -DocumentType "Request","Trace", "Custom Event" -StorageAccountId "/subscriptions/50359d91-7b9d-4823-85af-eb298a61ba96/resourceGroups/testgroup/providers/Microsoft.Storage/storageAccounts/teststorageaccount" -StorageLocation sourcecentralus `
--StorageSASUri $sasuri
+-StorageSASUri $sasuri -DestinationType Blob
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport
 #>
 function New-AzApplicationInsightsContinuousExport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration])]

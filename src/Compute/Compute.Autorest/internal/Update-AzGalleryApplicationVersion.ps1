@@ -26,7 +26,7 @@ $storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
 $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
 $SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
 $SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + "?" +$SASToken 
-Update-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -ReplicaCount 3 
+Update-AzGalleryApplicationVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -ReplicaCount 3 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
@@ -77,7 +77,7 @@ TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is go
   [SecurityProfileSecureVMDiskEncryptionSetId <String>]: secure VM disk encryption set id
   [StorageAccountType <StorageAccountType?>]: Specifies the storage account type to be used to store the image. This property is not updatable.
 .Link
-https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
+https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
 #>
 function Update-AzGalleryApplicationVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]

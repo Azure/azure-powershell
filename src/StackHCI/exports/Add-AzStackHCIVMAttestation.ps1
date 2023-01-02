@@ -31,7 +31,7 @@ System.String[]
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/add-azstackhcivmattestation
+https://learn.microsoft.com/powershell/module/az.stackhci/add-azstackhcivmattestation
 #>
 function Add-AzStackHCIVMAttestation {
 [OutputType([System.Management.Automation.PSObject])]

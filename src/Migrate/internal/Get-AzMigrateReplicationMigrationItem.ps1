@@ -27,7 +27,7 @@ Gets the details of a migration item.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationmigrationitem
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationmigrationitem
 #>
 function Get-AzMigrateReplicationMigrationItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem])]

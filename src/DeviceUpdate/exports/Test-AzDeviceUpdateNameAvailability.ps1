@@ -50,7 +50,7 @@ REQUEST <ICheckNameAvailabilityRequest>: The check availability request body.
   [Name <String>]: The name of the resource for which availability needs to be checked.
   [Type <String>]: The resource type.
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/test-azdeviceupdatenameavailability
+https://learn.microsoft.com/powershell/module/az.deviceupdate/test-azdeviceupdatenameavailability
 #>
 function Test-AzDeviceUpdateNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ICheckNameAvailabilityResponse])]

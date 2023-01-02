@@ -35,7 +35,8 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
  [-SkipExtensionsOnOverprovisionedVMs] [-EncryptionAtHost] [-PlatformFaultDomainCount <Int32>]
  [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DiskControllerType <String>] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +88,7 @@ $RGName = "rgkyvms";
 New-AzResourceGroup -Name $RGName -Location $LOC -Force;
 
 # SRP
-$STOName = "STO" + $RGName;
+$STOName = "sto" + $RGName;
 $STOType = "Standard_GRS";
 New-AzStorageAccount -ResourceGroupName $RGName -Name $STOName -Location $LOC -Type $STOType;
 $STOAccount = Get-AzStorageAccount -ResourceGroupName $RGName -Name $STOName;
@@ -98,8 +99,8 @@ $VNet = New-AzVirtualNetwork -Force -Name ("vnet" + $RGName) -ResourceGroupName 
 $VNet = Get-AzVirtualNetwork -Name ('vnet' + $RGName) -ResourceGroupName $RGName;
 $SubNetId = $VNet.Subnets[0].Id;
 
-$PubIP = New-AzPublicIpAddress -Force -Name ("PubIP" + $RGName) -ResourceGroupName $RGName -Location $LOC -AllocationMethod Dynamic -DomainNameLabel ("PubIP" + $RGName);
-$PubIP = Get-AzPublicIpAddress -Name ("PubIP"  + $RGName) -ResourceGroupName $RGName;
+$PubIP = New-AzPublicIpAddress -Force -Name ("pubip" + $RGName) -ResourceGroupName $RGName -Location $LOC -AllocationMethod Dynamic -DomainNameLabel ("pubip" + $RGName);
+$PubIP = Get-AzPublicIpAddress -Name ("pubip"  + $RGName) -ResourceGroupName $RGName;
 
 # Create LoadBalancer
 $FrontendName = "fe" + $RGName
@@ -113,7 +114,7 @@ $Frontend = New-AzLoadBalancerFrontendIpConfig -Name $FrontendName -PublicIpAddr
 $BackendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $BackendAddressPoolName
 $Probe = New-AzLoadBalancerProbeConfig -Name $ProbeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
 $InboundNatPool = New-AzLoadBalancerInboundNatPoolConfig -Name $InboundNatPoolName  -FrontendIPConfigurationId `
-    $Frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3362 -BackendPort 3370;
+    $Frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3367 -BackendPort 3370;
 $LBRule = New-AzLoadBalancerRuleConfig -Name $LBRuleName `
     -FrontendIPConfiguration $Frontend -BackendAddressPool $BackendAddressPool `
     -Probe $Probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 `
@@ -124,7 +125,7 @@ $ActualLb = New-AzLoadBalancer -Name $LBName -ResourceGroupName $RGName -Locatio
 $ExpectedLb = Get-AzLoadBalancer -Name $LBName -ResourceGroupName $RGName
 
 # New VMSS Parameters
-$VMSSName = "VMSS" + $RGName;
+$VMSSName = "vmss" + $RGName;
 
 $AdminUsername = "Admin01";
 $AdminPassword = "p4ssw0rd@123" + $RGName;
@@ -134,7 +135,7 @@ $Offer         = "WindowsServer"
 $Sku           = "2012-R2-Datacenter"
 $Version       = "latest"
 
-$VHDContainer = "https://" + $STOName + ".blob.core.contoso.net/" + $VMSSName;
+$VHDContainer = "https://" + $STOName + ".blob.core.windows.net/" + $VMSSName;
 
 $ExtName = "CSETest";
 $Publisher = "Microsoft.Compute";
@@ -398,6 +399,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DiskControllerType
+Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://docs.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://docs.microsoft.com/rest/api/compute/resourceskus/list) . <br> For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -96,7 +96,8 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/e8c0c73d5f11f9f2b7cde8e1ac33638bb3c5695d/specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/EndpointCertificates.json
   - https://github.com/Azure/azure-rest-api-specs/blob/e8c0c73d5f11f9f2b7cde8e1ac33638bb3c5695d/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseSensitivityLabels.json
   - https://github.com/Azure/azure-rest-api-specs/blob/e8c0c73d5f11f9f2b7cde8e1ac33638bb3c5695d/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SensitivityLabels.json
-  - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/sql/resource-manager/Microsoft.Sql/preview/2022-02-01-preview/Databases.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/e8c0c73d5f11f9f2b7cde8e1ac33638bb3c5695d/specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/5a4f7662cba770d045d500894a5565c176453cb3/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/Databases.json
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/sql/resource-manager/Microsoft.Sql/preview/2022-02-01-preview/ManagedDatabaseRestoreDetails.json
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/sql/resource-manager/Microsoft.Sql/preview/2022-02-01-preview/ManagedDatabases.json
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/sql/resource-manager/Microsoft.Sql/preview/2022-02-01-preview/ReplicationLinks.json

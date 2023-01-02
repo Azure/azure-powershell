@@ -1,7 +1,7 @@
 ---
 Module Name: Az.SecurityInsights
-Module Guid: 3a0e09d6-7b89-4078-a565-5db26e7455b8
-Download Help Link: https://docs.microsoft.com/powershell/module/az.securityinsights
+Module Guid: 453d4fb9-65ec-4cf1-8358-6a0fbd995d19
+Download Help Link: https://learn.microsoft.com/powershell/module/az.securityinsights
 Help Version: 1.0.0.0
 Locale: en-US
 ---

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/set-azdataprotectionmsipermission
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/set-azdataprotectionmsipermission
 schema: 2.0.0
 ---
 

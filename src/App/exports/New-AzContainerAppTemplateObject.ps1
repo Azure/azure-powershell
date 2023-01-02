@@ -20,7 +20,11 @@ Create an in-memory object for Container.
 .Description
 Create an in-memory object for Container.
 .Example
-New-AzContainerAppTemplateObject -Name azps-containerapp -Image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest -Probe $probe -ResourceCpu 2.0 -ResourceMemory 4.0Gi
+$containerAppHttpHeader = New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
+$probeArray = @()
+$probeArray += New-AzContainerAppProbeObject -HttpGetPath "/health01" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
+$probeArray += New-AzContainerAppProbeObject -HttpGetPath "/health02" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
+New-AzContainerAppTemplateObject -Name azps-containerapp -Image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest -Probe $probeArray -ResourceCpu 2.0 -ResourceMemory 4.0Gi
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container
@@ -56,7 +60,7 @@ VOLUMEMOUNT <IVolumeMount[]>: Container volume mounts.
   [MountPath <String>]: Path within the container at which the volume should be mounted.Must not contain ':'.
   [VolumeName <String>]: This must match the Name of a Volume.
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerapptemplateobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerapptemplateobject
 #>
 function New-AzContainerAppTemplateObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container])]

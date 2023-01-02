@@ -27,7 +27,7 @@ Method to get machine.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratemachine
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratemachine
 #>
 function Get-AzMigrateMachine {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine])]

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/powershell/module/az.servicebus/complete-azservicebusmigration
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/complete-azservicebusmigration
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ CompleteMigration operation will fail when entity migration is in-progress.
 
 ### Example 1: Complete migration from standard to premium servicebus namespace
 ```powershell
-Complete-AzServiceBusMigration -ResourceGroupName myResourceGroup myNamespace
+Complete-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
 Completes migration to premium namespace.

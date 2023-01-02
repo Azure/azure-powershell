@@ -79,7 +79,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsfunction
+https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsfunction
 #>
 function Update-AzStreamAnalyticsFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction])]

@@ -18,8 +18,9 @@ Modifies a Storage account.
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity] [-UserAssignedIdentityId <String>]
- [-KeyVaultUserAssignedIdentityId <String>] [-IdentityType <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-UpgradeToStorageV2] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
+ [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
+ [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AllowBlobPublicAccess <Boolean>]
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
@@ -35,8 +36,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> [-KeyVersion <String>]
  -KeyVaultUri <String> [-AssignIdentity] [-UserAssignedIdentityId <String>]
- [-KeyVaultUserAssignedIdentityId <String>] [-IdentityType <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-UpgradeToStorageV2] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
+ [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
+ [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AllowBlobPublicAccess <Boolean>]
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
@@ -51,16 +53,16 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
- [-KeyVaultUserAssignedIdentityId <String>] [-IdentityType <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-UpgradeToStorageV2] [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>]
- [-PublishInternetEndpoint <Boolean>] [-EnableAzureActiveDirectoryKerberosForFile <Boolean>]
- [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryDomainGuid <String>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
- [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
- [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-EnableLargeFileShare]
+ [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
+ [-EnableAzureActiveDirectoryKerberosForFile <Boolean>] [-ActiveDirectoryDomainName <String>]
+ [-ActiveDirectoryDomainGuid <String>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
+ [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
+ [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
+ [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -68,19 +70,19 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
- [-KeyVaultUserAssignedIdentityId <String>] [-IdentityType <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-UpgradeToStorageV2] [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>]
- [-PublishInternetEndpoint <Boolean>] -EnableActiveDirectoryDomainServicesForFile <Boolean>
- [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryNetBiosDomainName <String>]
- [-ActiveDirectoryForestName <String>] [-ActiveDirectoryDomainGuid <String>]
- [-ActiveDirectoryDomainSid <String>] [-ActiveDirectoryAzureStorageSid <String>]
- [-ActiveDirectorySamAccountName <String>] [-ActiveDirectoryAccountType <String>]
- [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
- [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
- [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
- [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyVaultUserAssignedIdentityId <String>] [-KeyVaultFederatedClientId <String>] [-IdentityType <String>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-EnableLargeFileShare]
+ [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>]
+ -EnableActiveDirectoryDomainServicesForFile <Boolean> [-ActiveDirectoryDomainName <String>]
+ [-ActiveDirectoryNetBiosDomainName <String>] [-ActiveDirectoryForestName <String>]
+ [-ActiveDirectoryDomainGuid <String>] [-ActiveDirectoryDomainSid <String>]
+ [-ActiveDirectoryAzureStorageSid <String>] [-ActiveDirectorySamAccountName <String>]
+ [-ActiveDirectoryAccountType <String>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
+ [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>]
+ [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>]
+ [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>]
+ [-EnableLocalUser <Boolean>] [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,62 +92,90 @@ You can use this cmdlet to modify the account type, update a customer domain, or
 ## EXAMPLES
 
 ### Example 1: Set the Storage account type
+<!-- Skip: Output cannot be splitted from code -->
+
+
+
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName "Standard_RAGRS"
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName "Standard_RAGRS"
 ```
 
 This command sets the Storage account type to Standard_RAGRS.
 
 ### Example 2: Set a custom domain for a Storage account
+<!-- Skip: Output cannot be splitted from code -->
+
+
+
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -CustomDomainName "www.contoso.com" -UseSubDomain $true
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -CustomDomainName "www.contoso.com" -UseSubDomain $true
 ```
 
 This command sets a custom domain for a Storage account.
 
 ### Example 3: Set the access tier value
+<!-- Skip: Output cannot be splitted from code -->
+
+
+
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AccessTier Cool
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AccessTier Cool
 ```
 
 The command sets the Access Tier value to be cool.
 
 ### Example 4: Set the custom domain and tags
+<!-- Skip: Output cannot be splitted from code -->
+
+
+
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -CustomDomainName "www.domainname.com" -UseSubDomain $true -Tag @{tag0="value0";tag1="value1";tag2="value2"}
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -CustomDomainName "www.domainname.com" -UseSubDomain $true -Tag @{tag0="value0";tag1="value1";tag2="value2"}
 ```
 
 The command sets the custom domain and tags for a Storage account.
 
 ### Example 5: Set Encryption KeySource to Keyvault
-```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AssignIdentity
-PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount"
+<!-- Skip: Output cannot be splitted from code -->
 
-PS C:\>$keyVault = New-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyResourceGroup" -Location "EastUS2"
-PS C:\>$key = Add-AzKeyVaultKey -VaultName "MyKeyVault" -Name "MyKey" -Destination 'Software'
-PS C:\>Set-AzKeyVaultAccessPolicy -VaultName "MyKeyVault" -ObjectId $account.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+
+
+```
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AssignIdentity
+PS C:\> $account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount"
+
+PS C:\> $keyVault = New-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyResourceGroup" -Location "EastUS2"
+PS C:\> $key = Add-AzKeyVaultKey -VaultName "MyKeyVault" -Name "MyKey" -Destination 'Software'
+PS C:\> Set-AzKeyVaultAccessPolicy -VaultName "MyKeyVault" -ObjectId $account.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
 
 # In case to enable key auto rotation, don't set KeyVersion
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
 
 # In case to enable key auto rotation after set keyvault proeprites with KeyVersion, can update account by set KeyVersion to empty
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion "" -KeyVaultUri $keyVault.VaultUri
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion "" -KeyVaultUri $keyVault.VaultUri
 ```
 
 This command set Encryption KeySource with a new created Keyvault.
 If want to enable key auto rotation, don't set keyversion when set Keyvault properties for the first time, or clean up it by set keyvault properties again with keyversion as empty.
 
 ### Example 6: Set Encryption KeySource to "Microsoft.Storage"
+<!-- Skip: Output cannot be splitted from code -->
+
+
+
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -StorageEncryption
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -StorageEncryption
 ```
 
 This command set Encryption KeySource to "Microsoft.Storage"
 
 ### Example 7: Set NetworkRuleSet property of a Storage account with JSON
+<!-- Skip: Output cannot be splitted from code -->
+
+
+
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -NetworkRuleSet (@{bypass="Logging,Metrics";
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -NetworkRuleSet (@{bypass="Logging,Metrics";
     ipRules=(@{IPAddressOrRange="20.11.0.0/16";Action="allow"},
             @{IPAddressOrRange="10.0.0.0/7";Action="allow"});
     virtualNetworkRules=(@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"},
@@ -156,6 +186,10 @@ PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorag
 This command sets NetworkRuleSet property of a Storage account with JSON
 
 ### Example 8: Get NetworkRuleSet property from a Storage account, and set it to another Storage account
+<!-- Skip: Output cannot be splitted from code -->
+
+
+
 ```
 PS C:\> $networkRuleSet = (Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount").NetworkRuleSet 
 PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount2" -NetworkRuleSet $networkRuleSet
@@ -164,6 +198,10 @@ PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystora
 This first command gets NetworkRuleSet property from a Storage account, and the second command sets it to another Storage account 
 
 ### Example 9: Upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account
+<!-- Skip: Output cannot be splitted from code -->
+
+
+
 ```
 PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -UpgradeToStorageV2
 ```
@@ -384,7 +422,7 @@ Enabled
 
 This command updates a Storage account by set PublicNetworkAccess as enabled.
 
-### Example 19: Update account level  mmutability policy
+### Example 19: Update account level immutability policy
 <!-- Skip: Output cannot be splitted from code -->
 
 
@@ -421,6 +459,32 @@ True
 
 This command updates a Storage account by enable Sftp and localuser. 
 To run the command succssfully, the Storage account should already enable Hierarchical Namespace.
+
+### Example 21: Update a Storage account with Keyvault from another tenant (access Keyvault with FederatedClientId)
+<!-- Skip: Output cannot be splitted from code -->
+
+
+```powershell
+# create Storage account with Keyvault encryption (access Keyvault with FederatedClientId), then show properties
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  `
+                -KeyVaultUri $keyVault.VaultUri -KeyName $keyname -KeyVaultUserAssignedIdentityId $useridentityId -KeyVaultFederatedClientId $federatedClientId
+
+PS C:\> $account.Encryption.EncryptionIdentity
+
+EncryptionUserAssignedIdentity                                                                                                      EncryptionFederatedIdentityClientId                                                                                                                 
+------------------------------                                                                                                      ----------------------------------- 
+/subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserid ********-****-****-****-************
+
+PS C:\> $account.Encryption.KeyVaultProperties
+
+KeyName                       : wrappingKey
+KeyVersion                    : 
+KeyVaultUri                   : https://mykeyvault.vault.azure.net:443
+CurrentVersionedKeyIdentifier : https://mykeyvault.vault.azure.net/keys/wrappingKey/8e74036e0d534e58b3bd84b319e31d8f
+LastKeyRotationTimestamp      : 3/3/2022 2:07:34 AM
+```
+
+This command updates a storage account with Keyvault from another tenant (access Keyvault with FederatedClientId).
 
 ## PARAMETERS
 
@@ -913,6 +977,21 @@ If KeyName, KeyVersion, and KeyVaultUri are all set, KeySource will be set to Mi
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: KeyvaultEncryption
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultFederatedClientId
+Set ClientId of the multi-tenant application to be used in conjunction with the user-assigned identity for cross-tenant customer-managed-keys server-side encryption on the storage account.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False

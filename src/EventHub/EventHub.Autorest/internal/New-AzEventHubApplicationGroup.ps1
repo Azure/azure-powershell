@@ -62,7 +62,7 @@ PARAMETER <IApplicationGroup>: The Application Group object
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubapplicationgroup
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubapplicationgroup
 #>
 function New-AzEventHubApplicationGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup])]

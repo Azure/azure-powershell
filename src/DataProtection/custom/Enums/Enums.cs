@@ -13,7 +13,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
     public enum StorageSettingType
     {
         GeoRedundant = 0,
-        LocallyRedundant
+        LocallyRedundant,
+        ZoneRedundant
     }
 
     public enum DataStoreType

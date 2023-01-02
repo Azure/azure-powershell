@@ -408,6 +408,11 @@
     "alias": "Active Directory"
   },
   {
+    "regex": "ManagedApplication",
+    "group": "Resources",
+    "alias": "Managed Applications"
+  },
+  {
     "regex": "Resources",
     "group": "Resources",
     "alias": "Resources"
@@ -774,5 +779,13 @@
   {
     "alias": "ElasticSan",
     "module": "ElasticSan"
+  },
+  {
+    "alias": "SSH",
+    "module": "Ssh"
+  },
+  {
+    "alias": "Automanage",
+    "module": "Automanage"
   }
 ]

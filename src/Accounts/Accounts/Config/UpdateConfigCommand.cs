@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.PowerShell.Common.Config;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,7 +26,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
     [Cmdlet("Update", AzureRMConstants.AzureRMPrefix + "Config", SupportsShouldProcess = true)]
     [OutputType(typeof(PSConfig))]
-    [CmdletPreview(PreviewMessage)]
     public class UpdateConfigCommand : ConfigCommandBase, IDynamicParameters
     {
         private const string ProcessMessage = "Update the configs that apply to \"{0}\" by the following keys: {1}.";

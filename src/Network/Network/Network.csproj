@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
 
   <PropertyGroup>
     <PsModuleName>Network</PsModuleName>
@@ -13,8 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="24.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="25.0.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.AutoMapper" Version="6.2.2" />
   </ItemGroup>
 
   <ItemGroup>

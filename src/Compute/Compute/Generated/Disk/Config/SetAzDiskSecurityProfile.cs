@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -42,9 +43,16 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Gets or sets possible values include: TrustedLaunch")]
-        [PSArgumentCompleter("TrustedLaunch")]
+            HelpMessage = "Gets or sets the SecurityType property. Possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey")]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM_DiskEncryptedWithCustomerKey", "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey",
+            "ConfidentialVM_DiskEncryptedWithPlatformKey")]
         public string SecurityType { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ResourceId of the disk encryption set to use for enabling encryption at rest.")]
+        public string SecureVMDiskEncryptionSet { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -62,6 +70,15 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             this.Disk.SecurityProfile.SecurityType = SecurityType;
+
+            if (this.IsParameterBound(c => c.SecureVMDiskEncryptionSet))
+            {
+                if (this.Disk.SecurityProfile == null)
+                {
+                    this.Disk.SecurityProfile = new DiskSecurityProfile();
+                }
+                this.Disk.SecurityProfile.SecureVMDiskEncryptionSetId = this.SecureVMDiskEncryptionSet;
+            }
 
             WriteObject(this.Disk);
         }

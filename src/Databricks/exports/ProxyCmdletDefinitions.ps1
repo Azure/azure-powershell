@@ -47,7 +47,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/get-azdatabricksaccessconnector
+https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksaccessconnector
 #>
 function Get-AzDatabricksAccessConnector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IAccessConnector])]
@@ -226,7 +226,7 @@ Get-AzDatabricksOutboundNetworkDependenciesEndpoint -ResourceGroupName "databric
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOutboundEnvironmentEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/get-azdatabricksoutboundnetworkdependenciesendpoint
+https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksoutboundnetworkdependenciesendpoint
 #>
 function Get-AzDatabricksOutboundNetworkDependenciesEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOutboundEnvironmentEndpoint])]
@@ -408,7 +408,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/get-azdatabricksvnetpeering
+https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksvnetpeering
 #>
 function Get-AzDatabricksVNetPeering {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering])]
@@ -615,7 +615,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/get-azdatabricksworkspace
+https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksworkspace
 #>
 function Get-AzDatabricksWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace])]
@@ -791,7 +791,7 @@ New-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name da
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IAccessConnector
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksaccessconnector
+https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksaccessconnector
 #>
 function New-AzDatabricksAccessConnector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IAccessConnector])]
@@ -985,7 +985,7 @@ New-AzDatabricksVNetPeering -Name vnetpeering-t01 -WorkspaceName databricks-test
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksvnetpeering
+https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksvnetpeering
 #>
 function New-AzDatabricksVNetPeering {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering])]
@@ -1236,7 +1236,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/remove-azdatabricksaccessconnector
+https://learn.microsoft.com/powershell/module/az.databricks/remove-azdatabricksaccessconnector
 #>
 function Remove-AzDatabricksAccessConnector {
 [OutputType([System.Boolean])]
@@ -1442,7 +1442,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/remove-azdatabricksvnetpeering
+https://learn.microsoft.com/powershell/module/az.databricks/remove-azdatabricksvnetpeering
 #>
 function Remove-AzDatabricksVNetPeering {
 [OutputType([System.Boolean])]
@@ -1655,7 +1655,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/remove-azdatabricksworkspace
+https://learn.microsoft.com/powershell/module/az.databricks/remove-azdatabricksworkspace
 #>
 function Remove-AzDatabricksWorkspace {
 [OutputType([System.Boolean])]
@@ -1862,7 +1862,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/update-azdatabricksaccessconnector
+https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksaccessconnector
 #>
 function Update-AzDatabricksAccessConnector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IAccessConnector])]
@@ -2061,14 +2061,14 @@ $networkSecurityGroup = New-AzNetworkSecurityGroup -ResourceGroupName databricks
 $privSubnet = New-AzVirtualNetworkSubnetConfig -Name priv-sub -AddressPrefix "10.0.1.0/24" -NetworkSecurityGroup $networkSecurityGroup -Delegation $dlg
 $pubSubnet = New-AzVirtualNetworkSubnetConfig -Name pub-sub  -AddressPrefix "10.0.2.0/24" -NetworkSecurityGroup $networkSecurityGroup -Delegation $dlg
 $testVN = New-AzVirtualNetwork -Name testvn -ResourceGroupName databricks-rg-rqb2yo -Location eastus -AddressPrefix "10.0.0.0/16" -Subnet $privSubnet,$pubSubnet
-New-AzDatabricksWorkspace -Name workspace3miaeb-with-custom-vn -ResourceGroupName databricks-rg-rqb2yo -Location eastus -VirtualNetworkId $testVN.Id -PrivateSubnetName $privSubnet.Name -PublicSubnetName $privSubnet.Name -Sku standard
+New-AzDatabricksWorkspace -Name workspace3miaeb-with-custom-vn -ResourceGroupName databricks-rg-rqb2yo -Location eastus -VirtualNetworkId $testVN.Id -PrivateSubnetName $privSubnet.Name -PublicSubnetName $pubSubnet.Name -Sku standard
 .Example
 New-AzDatabricksWorkspace -Name workspace3miaeb -ResourceGroupName databricks-rg-rqb2yo -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
+https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
 #>
 function New-AzDatabricksWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace])]
@@ -2419,7 +2419,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity parameter.
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/update-azdatabricksvnetpeering
+https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksvnetpeering
 #>
 function Update-AzDatabricksVNetPeering {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IVirtualNetworkPeering])]
@@ -2641,6 +2641,8 @@ Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name works
 Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -EncryptionKeySource 'Microsoft.KeyVault' -EncryptionKeyVaultUri https://keyvalult-j3kube.vault.azure.net/ -EncryptionKeyName key-p3bjsf -EncryptionKeyVersion 853999da89714fb4a1408681945135fd
 .Example
 Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -EncryptionKeySource 'Default'
+.Example
+Update-AzDatabricksWorkspace -ResourceGroupName lucas-rg-test -Name databricks-t01 -RequiredNsgRule 'NoAzureDatabricksRules'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -2661,7 +2663,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity parameter.
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/update-azdatabricksworkspace
+https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksworkspace
 #>
 function Update-AzDatabricksWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace])]
@@ -2764,6 +2766,15 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules]
+    # Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint.
+    # Supported values are 'AllRules' and 'NoAzureDatabricksRules'.
+    # 'NoAzureServiceRules' value is for internal use only.
+    ${RequiredNsgRule},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

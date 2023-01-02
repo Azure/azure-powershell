@@ -717,6 +717,14 @@
                 <PropertyName>SharedKey</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>ExpressRouteGatewayBypass</Label>
+                <PropertyName>ExpressRouteGatewayBypass</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EnablePrivateLinkFastPath</Label>
+                <PropertyName>EnablePrivateLinkFastPath</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>ConnectionStatus</Label>
                 <PropertyName>ConnectionStatus</PropertyName>
               </ListItem>
@@ -975,10 +983,14 @@
               <ListItem>
                 <Label>CustomRoutes</Label>
                 <PropertyName>CustomRoutesText</PropertyName>
-              </ListItem>			  
+              </ListItem>       
               <ListItem>
                 <Label>NatRules</Label>
                 <PropertyName>NatRulesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>EnableBgpRouteTranslationForNat</Label>
@@ -1565,6 +1577,10 @@
               <ListItem>
                 <Label>DnsSettings</Label>
                 <PropertyName>DnsSettingsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DdosSettings</Label>
+                <PropertyName>DdosSettingsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Zones</Label>
@@ -4077,6 +4093,10 @@
                 <Label>VirtualNetworks</Label>
                 <PropertyName>VirtualNetworksText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>PublicIPAddresses</Label>
+                <PropertyName>PublicIPAddressesText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -5349,19 +5369,19 @@
                 <Label>ExtendedLocation</Label>
                 <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
-			  <ListItem>
-				<Label>ApplicationSecurityGroups</Label>
-				<PropertyName>ApplicationSecurityGroupsText</PropertyName>
-			  </ListItem>
-			  <ListItem>
-				<Label>IpConfigurations</Label>
-				<PropertyName>IpConfigurationsText</PropertyName>
-			  </ListItem>
-			  <ListItem>
-				<Label>CustomNetworkInterfaceName</Label>
-				<PropertyName>CustomNetworkInterfaceName</PropertyName>
-			  </ListItem>
-			</ListItems>
+              <ListItem>
+                <Label>ApplicationSecurityGroups</Label>
+                <PropertyName>ApplicationSecurityGroupsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IpConfigurations</Label>
+                <PropertyName>IpConfigurationsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CustomNetworkInterfaceName</Label>
+                <PropertyName>CustomNetworkInterfaceName</PropertyName>
+              </ListItem>
+            </ListItems>
           </ListEntry>
         </ListEntries>
       </ListControl>

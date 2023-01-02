@@ -20,7 +20,7 @@ Creates or updates the incident.
 .Description
 Creates or updates the incident.
 .Example
-Update-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434" -OwnerAssignedTo "user@mydomain.local"
+Update-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434" -OwnerAssignedTo "user@mydomain.local"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -58,7 +58,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
 LABEL <IIncidentLabel[]>: List of labels relevant to this incident
   LabelName <String>: The name of the label
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincident
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincident
 #>
 function Update-AzSentinelIncident {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident])]

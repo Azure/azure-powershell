@@ -6,8 +6,11 @@ $ErrorActionPreference = 'Stop'
 
 $GAOSBuildNumber = 17784
 $GAOSUBR = 1374
+
 $V2OSBuildNumber = 20348
 $V2OSUBR = 288
+
+$22H2BuildNumber = 20349
 
 #region User visible strings
 
@@ -31,6 +34,7 @@ $ResourceExistsInDifferentRegionError = "There is already an Azure Stack HCI res
 $ArcCmdletsNotAvailableError = "Azure Arc integration isn't available for the version of Azure Stack HCI installed on node(s) {0} yet. Check the documentation for details. You may need to install an update or join the Preview channel."
 $ArcRegistrationDisableInProgressError = "Unregister of Azure Arc integration is in progress. Try Unregister-AzStackHCI to finish unregistration and then try Register-AzStackHCI again."
 $ArcIntegrationNotAvailableForCloudError = "Azure Arc integration is not available in {0}. Specify '-EnableAzureArcServer:`$false' in Register-AzStackHCI Cmdlet to register without Arc integration."
+$ArcNeedsToBeEnabledError = "Azure Arc for servers integration can't be disabled. Skip the parameter '-EnableAzureArcServer' or Specify '-EnableAzureArcServer:`$true' in Register-AzStackHCI Cmdlet to register."
 $ArcResourceGroupExists = "Arc resource group {0} already exists. Please delete the resource group for cluster registration."
 $ArcAADAppCreationMessage= "Creating AAD application for onboarding ARC"
 $FetchingRegistrationState = "Checking whether the cluster is already registered"
@@ -44,8 +48,11 @@ $LoggingInToAzureMessage = "Logging in to Azure"
 $RegisterAzureStackRPMessage = "Registering Microsoft.AzureStackHCI provider to Subscription"
 $CreatingResourceGroupMessage = "Creating Azure Resource Group {0}"
 $CreatingCloudResourceMessage = "Creating Azure Resource {0} representing Azure Stack HCI by calling Microsoft.AzureStackHCI provider"
+$RepairingCloudResourceMessage = "Repairing Azure Resource {0} representing Azure Stack HCI by calling Microsoft.AzureStackHCI provider"
 $GettingCertificateMessage = "Getting new certificate from on-premises cluster to use as application credential"
 $AddAppCredentialMessage = "Adding certificate as application credential for the Azure AD application {0}"
+$DefaultRegionPromptMessage = "Using default region : {0}. The 'default' region might not meet Schrems II requirements."
+$ResourceGroupRegionPromptMessage = "Defaulting to ResourceGroup's region : {0}. The 'default' region might not meet Schrems II requirements."
 $RegisterAndSyncMetadataMessage = "Registering Azure Stack HCI cluster and syncing cluster census information from the on-premises cluster to the cloud"
 $UnregisterHCIUsageMessage = "Unregistering Azure Stack HCI cluster and cleaning up registration state on the on-premises cluster"
 $DeletingCloudResourceMessage = "Deleting Azure resource with ID {0} representing the Azure Stack HCI cluster"
@@ -102,6 +109,12 @@ $DisablingIMDSOnNode = "Disabling AzureStack HCI IMDS Attestation on {0}"
 $RemovingVmImdsFromNode = "Removing AzureStack HCI IMDS Attestation from guests on {0}"
 $AttestationNotEnabled = "The IMDS Service on {0} needs to be activated. This is required before guests can be configured. Run Enable-AzStackHCIAttestation cmdlet."
 $ErrorAddingAllVMs = "Did not add all guests. Try running Add-AzStackHCIVMAttestation on each node manually."
+
+$SetupCloudManagementActivityName = "Cloud Management configuration..."
+$ConfiguringCloudManagementMessage = "Configuring Cloud Management agent."
+$ConfiguringCloudManagementClusterSvc = "Creating Cloud Management cluster resource."
+$StartingCloudManagementMessage = "Starting Cloud Management agent."
+
 $MaskString = "XXXXXXX"
 #endregion
 
@@ -131,7 +144,7 @@ $PortalHCIResourceUrl = '#@{0}/resource/subscriptions/{1}/resourceGroups/{2}/pro
 $Region_EASTUSEUAP = 'eastus2euap'
 
 [hashtable] $ServiceEndpointsAzureCloud = @{
-        $Region_EASTUSEUAP = 'https://canary.dp.stackhci.azure.com';
+        $Region_EASTUSEUAP = 'https://canary.dp.stackhci.azure.com'
         }
 
 $ServiceEndpointAzureCloudFrontDoor = "https://dp.stackhci.azure.com"
@@ -161,7 +174,7 @@ $AuthorityAzureGermanCloud = "https://login.microsoftonline.de"
 $BillingServiceApiScopeAzureGermanCloud = "https://azurestackhci-usage.azurewebsites.de/.default"
 $GraphServiceApiScopeAzureGermanCloud = "https://graph.cloudapi.de/.default"
 
-$RPAPIVersion = "2022-03-01";
+$RPAPIVersion = "2022-10-01";
 $HCIArcAPIVersion = "2022-03-01"
 $HCIArcExtensionAPIVersion = "2021-09-01"
 $HCIArcInstanceName = "/arcSettings/default"
@@ -176,6 +189,8 @@ $OutputPropertyEndpointTested = "EndpointTested"
 $OutputPropertyIsRequired = "IsRequired"
 $OutputPropertyFailedNodes = "FailedNodes"
 $OutputPropertyErrorDetail = "ErrorDetail"
+$OutputPropertyClusterAgentStatus = "ClusterAgentStatus"
+$OutputPropertyClusterAgentError = "ClusterAgentError"
 
 $ConnectionTestToAzureHCIServiceName = "Connect to Azure Stack HCI Service"
 
@@ -200,6 +215,12 @@ $ClusterScheduledTaskReadyState = "Ready"
 
 $ArcSettingsDisableInProgressState = "DisableInProgress"
 
+# Cluster Agent Service Names
+$ClusterAgentServiceName = "HciClusterAgentSvc"
+$ClusterAgentGroupName = "Cloud Management"
+
+$AzAccountsModuleVersion="2.10.2"
+$AzResourcesModuleVersion="6.2.0"
 
 Function Write-Log {
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
@@ -289,6 +310,38 @@ Function Write-ErrorLog{
     Write-Error @PSBoundParameters
 }
 
+# Writes an error without the stack trace
+Function Write-ErrorMessage {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$False)]
+        [string]
+        $Message,
+        [Parameter(Mandatory=$False)]
+        [string]
+        $Category,
+        [Parameter(Mandatory=$False)]
+        [Exception]
+        $Exception
+    )
+
+    if($PSBoundParameters["Exception"] -and $PSBoundParameters["Message"])
+    {
+        $ErrorLogMessageWithException = "{0}  Exception: {1}"
+        Write-Log -Level "ERROR" -Message ($ErrorLogMessageWithException -f ($PSBoundParameters["Message"], $PSBoundParameters["Exception"]))
+    }elseif($PSBoundParameters["Message"])
+    {
+        Write-Log -Level "ERROR" -Message $PSBoundParameters["Message"]
+    } elseif($PSBoundParameters["Exception"])
+    {
+        Write-Log -Level "ERROR" -Message $PSBoundParameters["Exception"]
+    }
+
+    Write-Error @PSBoundParameters -ErrorAction SilentlyContinue
+    $Host.UI.WriteErrorLine($Message)
+}
+
 Function Write-NodeEventLog{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
@@ -331,10 +384,10 @@ Function Write-NodeEventLog{
         {
             $session = New-PSSession -ComputerName localhost
         }
-        $sourceExists = Invoke-Command -Session $session -ScriptBlock {[System.Diagnostics.EventLog]::SourceExists("$using:sourceName") }
+        $sourceExists = Invoke-Command -Session $session -ScriptBlock {Get-EventLog -LogName Application -Source $using:sourceName -Newest 1 -ErrorAction SilentlyContinue }
         if(-not $sourceExists)
         {
-            Invoke-Command -Session $session -ScriptBlock { New-EventLog -LogName Application -Source $using:sourceName }
+            Invoke-Command -Session $session -ScriptBlock { New-EventLog -LogName Application -Source $using:sourceName -ErrorAction SilentlyContinue}
         }    
         $levelStr = $Level.ToString()
         Invoke-Command -Session $session -ScriptBlock { Write-EventLog -LogName Application -Source $using:sourceName -EventId $using:EventID -EntryType $using:levelStr -Message $using:Message }
@@ -381,8 +434,8 @@ $registerArcScript = {
     {
         # Params for Enable-AzureStackHCIArcIntegration 
         $AgentInstaller_WebLink                  = 'https://aka.ms/AzureConnectedMachineAgent'
-        $AgentInstaller_Name                     = 'AzureConnectedMachineAgent.msi'
-        $AgentInstaller_LogFile                  = 'ConnectedMachineAgentInstallationLog.txt'
+        $AgentInstaller_Name                     =  $env:windir + '\Tasks\ArcForServers' + '\AzureConnectedMachineAgent.msi'
+        $AgentInstaller_LogFile                  =  $env:windir + '\Tasks\ArcForServers' +'\ConnectedMachineAgentInstallationLog.txt'
         $AgentExecutable_Path                    =  $Env:Programfiles + '\AzureConnectedMachineAgent\azcmagent.exe'
 
         $DebugPreference = 'Continue'
@@ -403,10 +456,10 @@ $registerArcScript = {
         $LogFileName = $LogFileDir + '\RegisterArc_' + $datestring + '.log'
     
         Start-Transcript -LiteralPath $LogFileName -Append | Out-Null
-        $sourceExists = [System.Diagnostics.EventLog]::SourceExists('HCI Registration')
+        $sourceExists = Get-EventLog -LogName Application -Source 'HCI Registration' -Newest 1 -ErrorAction SilentlyContinue
         if(-not $sourceExists)
         {
-            New-EventLog -LogName Application -Source 'HCI Registration'
+            New-EventLog -LogName Application -Source 'HCI Registration' -ErrorAction SilentlyContinue
         }
         Write-Information 'Triggering Arc For Servers registration cmdlet'
         $arcStatus = Get-AzureStackHCIArcIntegration
@@ -450,7 +503,7 @@ $registerArcScript = {
         Write-Error -Exception $_.Exception -Category OperationStopped
         # Get script line number, offset and Command that resulted in exception. Write-ErrorLog with the exception above does not write this info.
         $positionMessage = $_.InvocationInfo.PositionMessage
-        Write-EventLog -LogName Application -Source "HCI Registration" -EventId 9116 -EntryType "Warning" -Message "Failed Arc For Servers registration: $positionMessage"
+        Write-EventLog -LogName Application -Source 'HCI Registration' -EventId 9116 -EntryType 'Warning' -Message 'Failed Arc For Servers registration: '+$positionMessage
         Write-Error ('Exception occurred in RegisterArcScript : ' + $positionMessage) -Category OperationStopped
     }
     finally
@@ -789,6 +842,36 @@ param(
     return "/Subscriptions/" + $SubscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.AzureStackHCI/clusters/" + $ResourceName
 }
 
+function Install-Dependent-Module{
+    param(
+    [string] $ModuleName,
+    [string] $ModuleVersion
+    )
+    try
+    {
+        Import-Module -Name $ModuleName -RequiredVersion $ModuleVersion -ErrorAction Stop
+        Write-VerboseLog ("Found required Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
+    }
+    catch
+    {
+        try
+        {
+            Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
+        }
+        catch
+        {
+            Install-PackageProvider NuGet -Force | Out-Null
+        }
+
+        Write-VerboseLog ("Installing Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
+
+        Install-Module -Name $ModuleName  -RequiredVersion $ModuleVersion  -Force -AllowClobber -Repository 'PSGallery'
+        Import-Module -Name $ModuleName -RequiredVersion $ModuleVersion
+        
+        Write-VerboseLog ("Successfully imported Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
+    }
+}
+
 function Azure-Login{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
@@ -805,24 +888,8 @@ param(
 
     Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -status $InstallAzResourcesMessage -percentcomplete 10
 
-    try
-    {
-        Import-Module -Name Az.Resources -ErrorAction Stop
-    }
-    catch
-    {
-        try
-        {
-            Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
-        }
-        catch
-        {
-            Install-PackageProvider NuGet -Force | Out-Null
-        }
-
-        Install-Module -Name Az.Resources -Force -AllowClobber
-        Import-Module -Name Az.Resources
-    }
+    Install-Dependent-Module -ModuleName "Az.Accounts" -ModuleVersion $AzAccountsModuleVersion
+    Install-Dependent-Module -ModuleName "Az.Resources" -ModuleVersion $AzResourcesModuleVersion
     Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -status $LoggingInToAzureMessage -percentcomplete 30
 
     if($EnvironmentName -eq $AzurePPE)
@@ -1152,7 +1219,7 @@ param(
         }
         catch
         {
-            Write-VerboseLog ("Exception occurred in establishing new PSSession to node $clusNode.Name . ErrorMessage : " + $_.Exception.Message)
+            Write-VerboseLog ("Exception occurred in establishing new PSSession to node $($clusNode.Name). ErrorMessage : " + $_.Exception.Message)
             Write-VerboseLog ($_)
             $NewCertificateFailedNodes.Add($clusNode.Name) | Out-Null
             $SetCertificateFailedNodes.Add($clusNode.Name) | Out-Null
@@ -1165,7 +1232,7 @@ param(
 
         if(($nodeBuildNumber -lt $GAOSBuildNumber) -or (($nodeBuildNumber -eq $GAOSBuildNumber) -and ($nodeUBR -lt $GAOSUBR)))
         {
-            Write-VerboseLog ("$clusNode.Name does not have latest build number UBR: $nodeUBR, BuildNumber: $nodeBuildNumber")
+            Write-VerboseLog ("$($clusNode.Name) does not have latest build number UBR: $nodeUBR, BuildNumber: $nodeBuildNumber")
             $OSNotLatestOnNodes.Add($clusNode.Name) | Out-Null
             continue
         }
@@ -1254,7 +1321,7 @@ param(
         }
         catch
         {
-            Write-VerboseLog ("Exception occurred in establishing new PSSession to node $clusNode.Name . ErrorMessage : " + $_.Exception.Message)
+            Write-VerboseLog ("Exception occurred in establishing new PSSession to node $($clusNode.Name). ErrorMessage : " + $_.Exception.Message)
             Write-VerboseLog ($_)
             $NewCertificateFailedNodes.Add($clusNode.Name) | Out-Null
             $SetCertificateFailedNodes.Add($clusNode.Name) | Out-Null
@@ -1440,8 +1507,8 @@ param(
     )
 
     $res = $true
-    $AgentUninstaller_LogFile = "ConnectedMachineAgentUninstallationLog.txt";
-    $AgentInstaller_Name      = "AzureConnectedMachineAgent.msi";
+    $AgentUninstaller_LogFile = $env:windir + '\Tasks\ArcForServers' + '\ConnectedMachineAgentUninstallationLog.txt';
+    $AgentInstaller_Name      = $env:windir + '\Tasks\ArcForServers' + '\AzureConnectedMachineAgent.msi';
     $AgentExecutable_Path     = $Env:Programfiles + '\AzureConnectedMachineAgent\azcmagent.exe'
 
     $clusterNodeNames = Invoke-Command -Session $Session -ScriptBlock { Get-ClusterNode } | ForEach-Object { ($_.Name + "." + $ClusterDNSSuffix) }
@@ -1548,14 +1615,21 @@ param(
         $AppId = $ArcSpnCredential.UserName
         $Secret = $ArcSpnCredential.GetNetworkCredential().Password
         Write-VerboseLog ("ARC Spn and password provided")
-        $arcSPN = Retry-Command -ScriptBlock { Get-AzADServicePrincipal -ApplicationId  $AppId } -RetryIfNullOutput $false
-        $rolesPresent = Verify-arcSPNRoles -arcSPNObjectID $arcSPN.Id
-        if(-not $rolesPresent)
-        {
-            Write-VerboseLog ("Supplied ARC SPN: $($arcSPN.ID)  does not have required roles:$AzureConnectedMachineOnboardingRole and $AzureConnectedMachineResourceAdministratorRole. Aborting arc onboarding.")
-            return [ErrorDetail]::ArcPermissionsMissing
-        }
+        $arcSPN = Retry-Command -ScriptBlock { Get-AzADServicePrincipal -ApplicationId  $AppId -ErrorAction SilentlyContinue } -RetryIfNullOutput $false
 
+        if(-Not [string]::IsNullOrEmpty($arcSPN)) # $arcSPN will be null if a user has registered using ArmAccessToken and AccountId
+        {
+            $rolesPresent = Verify-arcSPNRoles -arcSPNObjectID $arcSPN.Id
+            if(-not $rolesPresent)
+            {
+                Write-VerboseLog ("Supplied ARC SPN: $($arcSPN.ID)  does not have required roles:$AzureConnectedMachineOnboardingRole and $AzureConnectedMachineResourceAdministratorRole. Aborting arc onboarding.")
+                return [ErrorDetail]::ArcPermissionsMissing
+            }
+        }
+        else
+        {
+            Write-VerboseLog "Unable to fetch ArcSpnCredential role assignments. Continuing without checking role assignments."
+        }
     }
     else
     {
@@ -1915,6 +1989,26 @@ param(
     return $disabled
 }
 
+class Identity {
+    [string] $type = "SystemAssigned"
+}
+class ResourceProperties {
+    [string] $location
+    [object] $properties
+    [System.Collections.Hashtable] $tags
+    [Identity] $identity = [Identity]::new()
+    ResourceProperties (
+        [string] $location,
+        [object] $properties,
+        [System.Collections.Hashtable] $tags
+    )
+    {
+        $this.location = $location
+        $this.properties = $properties
+        $this.tags = $tags
+    }
+}
+
 enum OperationStatus {
     Unused;
     Failed;
@@ -1960,13 +2054,13 @@ enum ErrorDetail {
     Specifies the Azure Resource Group name. If not specified <LocalClusterName>-rg will be used as resource group name.
 
     .PARAMETER ArmAccessToken
-    Specifies the ARM access token. Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+    Specifies the ARM access token. Specifying this along with AccountId will avoid Azure interactive logon.
 
     .PARAMETER GraphAccessToken
-    Specifies the Graph access token. Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+    GraphAccessToken is deprecated.
 
     .PARAMETER AccountId
-    Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+    Specifies the Account Id. Specifying this along with ArmAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
     Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
@@ -1984,7 +2078,7 @@ enum ErrorDetail {
     Use device code authentication instead of an interactive browser prompt.
     
     .PARAMETER EnableAzureArcServer
-    Specifying this parameter to $false will skip registering the cluster nodes with Arc for servers.
+    EnableAzureArcServer needs to be specified $true in all the environments except AzureChinaCloud. Specifying this parameter to $false in environments except AzureChinaCloud will terminate the registration cmdlet.
 
     .PARAMETER Credential
     Specifies the credential for the ComputerName. Default is the current user executing the Cmdlet.
@@ -2006,33 +2100,34 @@ enum ErrorDetail {
 
     .EXAMPLE
     Invoking on one of the cluster node.
-    C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd"
+    C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region "eastus"
     Result: Success
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster1-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster1
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster1-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster1/overview
 
     .EXAMPLE
     Invoking from the management node
-    C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ComputerName ClusterNode1
+    C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ComputerName ClusterNode1 -Region "eastus"
     Result: Success
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster2-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster2
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCICluster2-rg/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster2/overview
 
     .EXAMPLE
     Invoking from WAC
-    C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG
+    C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG
     Result: Success
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCIRG/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster3
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/DemoHCIRG/providers/Microsoft.AzureStackHCI/clusters/DemoHCICluster3/overview
 
     .EXAMPLE
     Invoking with all the parameters
-    C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region westus -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+    C:\PS>Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region westus -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
     Result: Success
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciClusterRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciClusterRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1/overview
 #>
 function Register-AzStackHCI{
+[CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]
 param(
     [Parameter(Mandatory = $true)]
     [string] $SubscriptionId,
@@ -2140,7 +2235,14 @@ param(
         {
             $clusterNodeSession = New-PSSession -ComputerName localhost
         }
-        
+
+        # To be removed after ARM rollout to MC cloud is complete
+        if ( $EnvironmentName -eq $AzureChinaCloud)
+        {
+            Write-VerboseLog ("Overriding RP API version for MC cloud to 2022-09-01")
+            $RPAPIVersion = "2022-09-01"
+        }
+
         $msg = Print-FunctionParameters -Message "Register-AzStackHCI" -Parameters $PSBoundParameters
         Write-NodeEventLog -Message $msg  -EventID 9009 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
 
@@ -2233,6 +2335,16 @@ param(
         EnvironmentName: $EnvironmentName CertificateThumbprint: $CertificateThumbprint `
         RepairRegistration: $RepairRegistration EnableAzureArcServer: $EnableAzureArcServer IsWAC: $IsWAC"
         Write-NodeEventLog -Message $registrationBeginMsgPIIScrubbed -EventID 9001 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+
+        if(($EnableAzureArcServer -eq $false) -and ($EnvironmentName -ne $AzureChinaCloud))
+        {
+            Write-ErrorMessage -Message $ArcNeedsToBeEnabledError
+            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+            Write-Output $registrationOutput | Format-List
+            Write-NodeEventLog -Message $ArcNeedsToBeEnabledError -EventID 9122 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+            return
+        }
+
         if(($EnvironmentName -eq $AzureChinaCloud) -and ($EnableAzureArcServer -eq $true))
         {
             $ArcNotAvailableMessage = $ArcIntegrationNotAvailableForCloudError -f $EnvironmentName
@@ -2283,7 +2395,16 @@ param(
                 if([string]::IsNullOrEmpty($Region))
                 {
                     $Region = Get-DefaultRegion -EnvironmentName $EnvironmentName
-                    Write-VerboseLog ("using default region : $Region , since region is not specified")
+
+                    if($PSCmdlet.ShouldProcess("Using default region : $Region.", $DefaultRegionPromptMessage -f $Region, "Are you sure you want to perform this action?"))
+                    {
+                        Write-WarnLog("Using default region : $Region. The 'default' region might not meet Schrems II requirements.")
+                        Write-VerboseLog ("Using default region : $Region , since region is not specified")                        
+                    }
+                    else
+                    {
+                        return
+                    }
                 }
             }
             else
@@ -2292,7 +2413,16 @@ param(
                 if([string]::IsNullOrEmpty($Region))
                 {
                     $Region = $resGroup.Location
-                    Write-VerboseLog ("defaulting to ResourceGroup's region: $Region")
+
+                    if($PSCmdlet.ShouldProcess("Defaulting to ResourceGroup's region : $Region.", $ResourceGroupRegionPromptMessage -f $Region, "Are you sure you want to perform this action?"))
+                    {
+                        Write-WarnLog("Defaulting to ResourceGroup's region : $Region. The 'default' region might not meet Schrems II requirements.")
+                        Write-VerboseLog ("Defaulting to ResourceGroup's region : $Region , since region is not specified")                        
+                    }
+                    else
+                    {
+                        return
+                    }
                 }
             }
             if(-not [string]::IsNullOrEmpty($ArcServerResourceGroupName))
@@ -2369,12 +2499,22 @@ param(
                 return
             }
 
+            # Check if OS version is 22H2 or newer
+            $osVersionDetectoid       = { $displayVersion = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").DisplayVersion; $buildNumber = (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber; New-Object -TypeName PSObject -Property @{'DisplayVersion'=$displayVersion; 'BuildNumber'=$buildNumber} }
+            $cloudManagementDetectoid = { $cloudManagementSvc = Get-Item -Path ("{0}\System32\azshci\{1}.exe" -f $env:SystemRoot, $Using:ClusterAgentServiceName) -ErrorAction SilentlyContinue; $cloudManagementSvc -ne $null }
 
-            if($resource -eq $Null)
+            $osVersionInfo            = Invoke-Command -Session $clusterNodeSession -ScriptBlock $osVersionDetectoid
+            $cloudManagementCapable   = Invoke-Command -Session $clusterNodeSession -ScriptBlock $cloudManagementDetectoid
+            Write-VerboseLog ("Display Version: {0}, Build Number: {1}, Cloud Management capable: {2}" -f $osVersionInfo.DisplayVersion, $osVersionInfo.BuildNumber, $cloudManagementCapable)
+
+            $isCloudManagementSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $22H2BuildNumber) -and ($cloudManagementCapable -eq $true)
+            Write-VerboseLog ("Cloud Management supported: {0}" -f $isCloudManagementSupported)
+
+            if($Null -eq $resource)
             {
                 # Create new HCI resource by calling RP
 
-                if($resGroup -eq $Null)
+                if($Null -eq $resGroup)
                 {
                      $CreatingResourceGroupMessageProgress = $CreatingResourceGroupMessage -f $ResourceGroupName
                      Write-VerboseLog ("$CreatingResourceGroupMessageProgress")
@@ -2384,18 +2524,61 @@ param(
 
                 $CreatingCloudResourceMessageProgress = $CreatingCloudResourceMessage -f $ResourceName
                 Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $CreatingCloudResourceMessageProgress -percentcomplete 60
-                $properties = @{}
-                Write-VerboseLog ("$CreatingCloudResourceMessageProgress with properties : {0}" -f ($properties | Out-String))
-                $resource = New-AzResource -ResourceId $resourceId -Location $Region -ApiVersion $RPAPIVersion -PropertyObject $properties -Tag $Tag -Force
+                if( ($EnvironmentName -eq $AzureCloud)  -or ($EnvironmentName -eq $AzureCanary) -or ($EnvironmentName -eq $AzurePPE) )
+                {                
+                    $properties = [ResourceProperties]::new($Region, @{}, $Tag)
+                    $payload = ConvertTo-Json -InputObject $properties
+                    $resourceIdWithAPI = "{0}?api-version={1}" -f $resourceId, $RPAPIVersion
+                    Write-VerboseLog ("$CreatingCloudResourceMessageProgress with properties : {0}" -f ($payload | Out-String))
+                    Write-VerboseLog ("ResorceIdWithApi: $resourceIdWithAPI")
+                    $response = Invoke-AzRestMethod -Path $resourceIdWithAPI -Method PUT -Payload $payload
+                    if(-not(($response.StatusCode -ge 200) -and ($response.StatusCode -lt 300)))
+                    {
+                        Write-ErrorLog -Message ("Failed to create ARM resource representing the cluster. Code: {0}, Details: {1}" -f $response.StatusCode, $response.Content)
+                        throw
+                    }
+                }
+                else
+                {
+                    $properties = @{}
+                    Write-VerboseLog ("$CreatingCloudResourceMessageProgress with properties : {0}" -f ($properties | Out-String))
+                    $resource = New-AzResource -ResourceId $resourceId -Location $Region -ApiVersion $RPAPIVersion -PropertyObject $properties -Tag $Tag -Force
+                }
+                $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
+            }
+            if((($Null -eq $resource.Identity) -or ($resource.Identity.Type -ne "SystemAssigned")) -and ( ($EnvironmentName -eq $AzureCloud)  -or ($EnvironmentName -eq $AzureCanary) -or ($EnvironmentName -eq $AzurePPE)))
+            {
+                #we are here, if we are in repairregistration flow and resource might have been already created, we will check if MSI is not enabled, if it is not enabled, we will patch the resource again.
+                $RepairingCloudResourceMessageProgress = $RepairingCloudResourceMessage -f $ResourceName
+                Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $RepairingCloudResourceMessageProgress -percentcomplete 60
+                Write-VerboseLog ("Enabling SystemAssignedIdentity on : $resourceId")
+                $properties = New-Object -TypeName PSObject
+                $properties | Add-Member -MemberType NoteProperty -Name "identity" -Value $([Identity]::new())
+                if ($Tag.Count -ne 0)
+                {
+                    $properties | Add-Member -MemberType NoteProperty -Name "tags" -Value $Tag
+                }
+                $payload = ConvertTo-Json -InputObject $properties
+                $resourceIdWithAPI = "{0}?api-version={1}" -f $resourceId, $RPAPIVersion
+                Write-VerboseLog ("$CloudResourceMessageProgress with properties : {0}" -f ($payload | Out-String))
+                Write-VerboseLog ("ResorceIdWithApi: $resourceIdWithAPI")
+                $response = Invoke-AzRestMethod -Path $resourceIdWithAPI -Method PATCH -Payload $payload
+                if(-not(($response.StatusCode -ge 200) -and ($response.StatusCode -lt 300)))
+                {
+                    Write-ErrorLog -Message ("Failed to repair ARM resource representing the cluster. Code: {0}, Details: {1}" -f $response.StatusCode, $response.Content)
+                    throw
+                }
+                $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
             }
 
             if($resource.Properties.aadApplicationObjectId -eq $Null)
             {
                 # create cluster identity by calling HCI RP
-                $clusterIdentity =  Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $resourceId -ApiVersion $RPAPIVersion -Action createClusterIdentity -Force }
+                $clusterIdentity = Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $resourceId -ApiVersion $RPAPIVersion -Action createClusterIdentity -Force }
                 # Get cluster again for identity details
                 $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
             }
+
             $serviceEndpoint = $resource.properties.serviceEndpoint
             $appId = $resource.Properties.aadClientId
             $cloudId = $resource.Properties.cloudId 
@@ -2476,12 +2659,149 @@ param(
                                     }
 
             Invoke-Command -Session $clusterNodeSession -ScriptBlock { Set-AzureStackHCIRegistration @Using:RegistrationParams }
+
+            # Add custom IMDS registry entry
+            Write-VerboseLog ("Configuring CustomIMDSHostAddress on each node.")
+            foreach ($clusNode in $clusterNodes)
+            {
+                $nodeSession = $null
+                try
+                {
+                    if($null -eq $Credential)
+                    {
+                        $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix)
+                    }
+                    else
+                    {
+                        $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix) -Credential $Credential
+                    }
+                }
+                catch
+                {
+                    Write-VerboseLog ("Exception occurred in establishing new PSSession to $($clusNode.Name). ErrorMessage : " + $_.Exception.Message)
+                    Write-VerboseLog ($_)
+                    Write-WarnLog ("Could not configure CustomIMDSHostAddress for node: $($clusNode.Name)")
+                    continue
+                }
+                Write-VerboseLog ("Configuring CustomIMDSHostAddress on $($clusNode.Name)")
+                $customImdsScript = { try{ $customImdsRegKey = Get-Item 'HKLM:\Software\Microsoft\Windows Azure\CurrentVersion\IMDS' -ErrorAction Stop } catch{ $customImdsRegKey = New-Item 'HKLM:\Software\Microsoft\Windows Azure\CurrentVersion\IMDS' -Force -ErrorAction Stop } $customImdsRegKey | New-ItemProperty -Name "CustomIMDSHostAddress" -Value "http://127.0.0.1:42542" -Force -ErrorAction Stop | Out-Null }
+                try
+                {
+                    Invoke-Command -Session $nodeSession -ScriptBlock $customImdsScript
+                }
+                catch
+                {
+                    Write-VerboseLog ("Exception occurred while setting custom IMDS host on $($clusNode.Name). ErrorMessage : " + $_.Exception.Message)
+                    Write-VerboseLog ($_)
+                    Write-WarnLog ("Could not configure CustomIMDSHostAddress for node: $($clusNode.Name)")
+                }
+                
+                if($null -ne $nodeSession)
+                {
+                    Remove-PSSession $nodeSession -ErrorAction Ignore | Out-Null
+                }
+            }
+
+            if ($isCloudManagementSupported -eq $true)
+            {
+                Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $ConfiguringCloudManagementMessage -percentcomplete 91
+                Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementMessage -percentcomplete 10
+                Write-VerboseLog ("$ConfiguringCloudManagementMessage")
+                # Start Cluster Agent Servce as Clustered Role
+                $service = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-Service -Name $using:ClusterAgentServiceName -ErrorAction Ignore }
+                
+                $serviceError = $null
+                if ($null -eq $service)
+                {
+                    $serviceError = "{0} service doesn't exist." -f $ClusterAgentServiceName
+                    Write-ErrorLog -Message $serviceError -ErrorAction Continue
+                    Write-NodeEventLog -Message $serviceError -EventID 9119 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                }
+                else
+                {
+                    # Run agent service as cluster resource
+                    Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementClusterSvc -percentcomplete 20
+
+                    $displayName = $service.DisplayName
+                    Write-VerboseLog ("Found Cloud Management Agent: $displayName")
+                    $group = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterGroup -Name $using:ClusterAgentGroupName -ErrorAction Ignore }
+                    if ($null -eq $group)
+                    {
+                        Write-VerboseLog ("Creating Cloud Management cluster group: $ClusterAgentGroupName")
+                        $group = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Add-ClusterGroup -Name $using:ClusterAgentGroupName -ErrorAction Ignore }
+                    }
+                    if ($null -ne $group)
+                    {
+                        Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementClusterSvc -percentcomplete 40
+                        Write-VerboseLog ("Cloud Management cluster group: $($group | Format-List | Out-String)")
+                        $svcResource = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterResource -Name $using:displayName -ErrorAction Ignore }
+                        if ($null -eq $svcResource)
+                        {
+                            Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementClusterSvc -percentcomplete 60
+                            Write-VerboseLog ("Creating cluster resource for Cloud Management agent")
+                            $svcResource = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Add-ClusterResource -Name $using:displayName -ResourceType "Generic Service" -Group $using:ClusterAgentGroupName -ErrorAction Ignore }
+                        }
+                        if ($null -ne $svcResource)
+                        {
+                            Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementClusterSvc -percentcomplete 80
+                            Write-VerboseLog ("Cloud Management cluster resource: $($svcResource | Format-List | Out-String)")
+                            Write-VerboseLog ("Setting cluster resource parameter ServiceName = $ClusterAgentServiceName")
+                            Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterResource -Name $using:displayName -ErrorAction Ignore | Set-ClusterParameter -Name ServiceName -Value $using:ClusterAgentServiceName -ErrorAction Ignore }
+                            $group = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterGroup -Name $using:ClusterAgentGroupName -ErrorAction Ignore }
+                        }
+                        else
+                        {
+                            $serviceError = "Failed to create cluster resource {0} in group {1}." -f $ClusterAgentServiceName, $ClusterAgentGroupName
+                            Write-ErrorLog -Message $serviceError -ErrorAction Continue
+                            Write-NodeEventLog -Message $serviceError -EventID 9120 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                        }
+                    }
+                    else
+                    {
+                        $serviceError = "Failed to create cluster group {0}." -f $ClusterAgentGroupName
+                        Write-ErrorLog -Message $serviceError -ErrorAction Continue
+                        Write-NodeEventLog -Message $serviceError -EventID 9120 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                    }
+
+                    Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $StartingCloudManagementMessage -percentcomplete 90
+                    if ($null -ne $group -and $group.State -ne "Online")
+                    {
+                        Write-VerboseLog ("Cloud Management cluster resource: $($svcResource | Format-List |Out-String)")
+                        Write-VerboseLog ("Starting Cluster Group $ClusterAgentGroupName")
+                        $group = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Start-ClusterGroup -Name $using:ClusterAgentGroupName -ErrorAction Ignore }
+                        if ($group.State -ne "Online")
+                        {
+                            $serviceError = "Failed to start {0} clustered role." -f $ClusterAgentGroupName
+                            Write-ErrorLog -Message $serviceError -ErrorAction Continue
+                            Write-NodeEventLog -Message $serviceError -EventID 9121 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                        }
+                    }
+                }
+
+                Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -Completed
+                Write-VerboseLog ("Cloud Management group: $($group | Format-List | Out-String)")
+                Write-VerboseLog ("Cloud Management resource: $($svcResource | Format-List | Out-String)")
+                Write-VerboseLog ("Cloud Management agent setup complete")
+
+                if ($null -eq $serviceError)
+                {
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyClusterAgentStatus -Value ([OperationStatus]::Success)
+                    # Perform a Sync on successful agent setup.
+                    Invoke-Command -Session $clusterNodeSession -ScriptBlock { Sync-AzureStackHCI -ErrorAction Ignore}
+                }
+                else
+                {
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyClusterAgentStatus -Value ([OperationStatus]::Failed)
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyClusterAgentError -Value $serviceError
+                }
+            }
+
             $operationStatus = [OperationStatus]::Success
         }
 
         if ( $EnableAzureArcServer -eq $true )
         {
-            Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $RegisterArcMessage -percentcomplete 91
+            Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $RegisterArcMessage -percentcomplete 93
             Write-VerboseLog ("$RegisterArcMessage")
             $ArcCmdletsAbsentOnNodes = [System.Collections.ArrayList]::new()
 
@@ -2502,7 +2822,7 @@ param(
                 }
                 catch
                 {
-                    Write-VerboseLog ("Exception occurred in establishing new PSSession to $clusNode.Name . ErrorMessage : " + $_.Exception.Message)
+                    Write-VerboseLog ("Exception occurred in establishing new PSSession to $($clusNode.Name). ErrorMessage : " + $_.Exception.Message)
                     Write-VerboseLog ($_)
                     $ArcCmdletsAbsentOnNodes.Add($clusNode.Name) | Out-Null
                     continue
@@ -2638,13 +2958,13 @@ param(
     Specifies the Azure Resource Group name. If not specified <LocalClusterName>-rg will be used as resource group name.
 
     .PARAMETER ArmAccessToken
-    Specifies the ARM access token. Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+    Specifies the ARM access token. Specifying this along with AccountId will avoid Azure interactive logon.
 
     .PARAMETER GraphAccessToken
-    Specifies the Graph access token. Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+    GraphAccessToken is deprecated.
 
     .PARAMETER AccountId
-    Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+    Specifies the AccoundId. Specifying this along with ArmAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
     Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
@@ -2680,12 +3000,12 @@ param(
 
     .EXAMPLE
     Invoking from WAC
-    C:\PS>Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -GraphAccessToken acyee..rerrer -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
+    C:\PS>Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -AccountId user1@corp1.com -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG -Confirm:$False
     Result: Success
 
     .EXAMPLE
     Invoking with all the parameters
-    C:\PS>Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -GraphAccessToken acee..rerrer -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
+    C:\PS>Unregister-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciClusterRG -ArmAccessToken eerrer..ere= -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
     Result: Success
 #>
 function Unregister-AzStackHCI{
@@ -2750,6 +3070,13 @@ param(
         else
         {
             $IsManagementNode = $True
+        }
+
+        # To be removed after ARM rollout to MC cloud is complete
+        if ( $EnvironmentName -eq $AzureChinaCloud)
+        {
+            Write-VerboseLog ("Overriding RP API version for MC cloud to 2022-09-01")
+            $RPAPIVersion = "2022-09-01"
         }
 
         Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $FetchingRegistrationState -percentcomplete 1
@@ -2862,6 +3189,9 @@ param(
 
             Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $UnregisterHCIUsageMessage -percentcomplete 45
         
+            # Stop cluster agent service
+            Invoke-Command -Session $clusterNodeSession -ScriptBlock { Remove-ClusterGroup -Name $using:ClusterAgentGroupName -RemoveResources -ErrorAction Ignore -Force | Out-Null }
+
             if($RegContext.RegistrationStatus -eq [RegistrationStatus]::Registered)
             {
 
@@ -3009,7 +3339,8 @@ param(
 
 <#
     .Description
-    Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
+    Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI. 
+    Note: Test-AzStackhHCIConnection is deprecated. Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests. For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/whats-new#new-azure-stack-hci-environment-checker-tool.
 
     .PARAMETER EnvironmentName
     Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
@@ -3049,6 +3380,7 @@ param(
     FailedNodes: Node1inClus2, Node2inClus3
 #>
 function Test-AzStackHCIConnection{
+    [Obsolete("Test-AzStackhHCIConnection is deprecated. Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests. For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/whats-new#new-azure-stack-hci-environment-checker-tool.")]
 param(
     [Parameter(Mandatory = $false)]
     [string] $EnvironmentName = $AzureCloud,
@@ -3100,7 +3432,7 @@ param(
         {
             $Region = Normalize-RegionName -Region $Region
 
-            if($Region -eq $Region_EASTUSEUAP)
+            if(($Region -eq $Region_EASTUSEUAP) -or ($Region -eq $Region_CENTRALUSEUAP))
             {
                 $ServiceEndpointAzureCloud = $ServiceEndpointsAzureCloud[$Region]
             }
@@ -3206,13 +3538,13 @@ param(
     Specifies the Azure TenantId.
 
     .PARAMETER ArmAccessToken
-    Specifies the ARM access token. Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+    Specifies the ARM access token. Specifying this along with AccountId will avoid Azure interactive logon.
 
     .PARAMETER GraphAccessToken
-    Specifies the Graph access token. Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+    GraphAccessToken is deprecated.
 
     .PARAMETER AccountId
-    Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+    Specifies the ARM access token. Specifying this along with ArmAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
     Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
@@ -3305,6 +3637,13 @@ param(
         else
         {
             $isManagementNode = $true
+        }
+
+        # To be removed after ARM rollout to MC cloud is complete
+        if ( $EnvironmentName -eq $AzureChinaCloud)
+        {
+            Write-VerboseLog ("Overriding RP API version for MC cloud to 2022-09-01")
+            $RPAPIVersion = "2022-09-01"
         }
 
         Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $SetProgressStatusGathering -PercentComplete 5
@@ -3423,23 +3762,8 @@ param(
         }
         else 
         {
-            try
-            {
-                Import-Module -Name Az.Resources -ErrorAction Stop
-            }
-            catch
-            {
-                try
-                {
-                    Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
-                }
-                catch
-                {
-                    Install-PackageProvider NuGet -Force | Out-Null
-                }
-                Install-Module -Name Az.Resources -Force -AllowClobber
-                Import-Module -Name Az.Resources
-            }    
+            Install-Dependent-Module -ModuleName "Az.Accounts" -ModuleVersion $AzAccountsModuleVersion
+            Install-Dependent-Module -ModuleName "Az.Resources" -ModuleVersion $AzResourcesModuleVersion
         }
 
         $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ApiVersion $RPAPIVersion -ErrorAction Stop
@@ -4885,11 +5209,12 @@ function Install-DeployModule {
         $ModuleName
     )
 
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstallModule" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
     if(Get-Module | Where-Object { $_.Name -eq $ModuleName }){
-        Write-Host "$ModuleName is loaded already ..."
+        Write-InfoLog("$ModuleName is loaded already ...")
     }
     else{
-        Write-Host "$ModuleName is not loaded, downloading ..."
+        Write-InfoLog("$ModuleName is not loaded, downloading...")
 
         # Download Remote Support Deployment module from storage
         Invoke-DeploymentModuleDownload
@@ -4916,8 +5241,15 @@ function Install-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType([Boolean])]
     param()
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
-    Microsoft.AzureStack.Deployment.RemoteSupport\Install-RemoteSupport
+
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstall" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
+    if(Assert-IsObservabilityStackPresent){
+        Write-InfoLog("Install-AzStackHCIRemoteSupport is not available.")
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Install-RemoteSupport
+    }
 }
 
 <#
@@ -4936,8 +5268,15 @@ function Remove-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType([Boolean])]
     param()
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
-    Microsoft.AzureStack.Deployment.RemoteSupport\Remove-RemoteSupport
+
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportRemove" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
+    if(Assert-IsObservabilityStackPresent){
+        Write-InfoLog("Remove-AzStackHCIRemoteSupport is not available.")
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Remove-RemoteSupport
+    }
 }
 
 <#
@@ -4988,9 +5327,14 @@ function Enable-AzStackHCIRemoteSupport{
         $AgreeToRemoteSupportConsent
     )
 
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
-
-    Microsoft.AzureStack.Deployment.RemoteSupport\Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
+    if(Assert-IsObservabilityStackPresent){
+        Import-Module DiagnosticsInitializer -Verbose -Force
+        Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
+    }
 }
 
 <#
@@ -5011,9 +5355,14 @@ function Disable-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType([Boolean])]
     param()
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
-
-    Microsoft.AzureStack.Deployment.RemoteSupport\Disable-RemoteSupport
+    if(Assert-IsObservabilityStackPresent){
+        Import-Module DiagnosticsInitializer -Verbose -Force
+        Disable-RemoteSupport
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Disable-RemoteSupport
+    }
 }
 
 <#
@@ -5048,9 +5397,52 @@ function Get-AzStackHCIRemoteSupportAccess{
         $IncludeExpired
     )
 
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+    if(Assert-IsObservabilityStackPresent){
+        Import-Module DiagnosticsInitializer -Verbose -Force
+        Get-RemoteSupportAccess -IncludeExpired:$IncludeExpired
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Get-RemoteSupportAccess -Cluster:$Cluster -IncludeExpired:$IncludeExpired
+    }
+}
 
-    Microsoft.AzureStack.Deployment.RemoteSupport\Get-RemoteSupportAccess -Cluster:$Cluster -IncludeExpired:$IncludeExpired
+<#
+.SYNOPSIS
+    Gets if Observability Remote Support Service exists. 
+
+.DESCRIPTION
+    Gets if Observability Remote Support Service exists to determine module to import.
+
+.PARAMETER 
+
+.EXAMPLE
+    The example below returns whether environment is HCI or not.
+    PS C:\> Assert-IsObservabilityStackPresent
+
+.NOTES
+#>
+function Assert-IsObservabilityStackPresent{
+    [OutputType([Boolean])]
+    param()
+
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportObsStackPresent" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
+    try{
+        $obsService = Get-Service -Name "*Observability RemoteSupportAgent*" -ErrorAction SilentlyContinue
+        $deviceType = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\AzureStack" -ErrorAction SilentlyContinue).DeviceType
+        if($obsService -or $deviceType -eq "AzureEdge"){
+            Write-InfoLog("AzureStack device type is AzureEdge.")
+            return $true
+        }
+        else{
+            Write-InfoLog("AzureStack device type is not AzureEdge.")
+            return $false
+        }
+    }
+    catch{
+        Write-Error "Failed while getting Observability Remote Support service."
+        return $false
+    }
 }
 
 <#
@@ -5078,7 +5470,6 @@ function Get-AzStackHCIRemoteSupportAccess{
     PS C:\> Get-AzStackHCIRemoteSupportSessionHistory
 
 .NOTES
-
 #>
 function Get-AzStackHCIRemoteSupportSessionHistory{
     [OutputType([Boolean])]
@@ -5096,9 +5487,14 @@ function Get-AzStackHCIRemoteSupportSessionHistory{
         $FromDate = (Get-Date).AddDays(-7)
     )
 
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
-
-    Microsoft.AzureStack.Deployment.RemoteSupport\Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
+    if(Assert-IsObservabilityStackPresent){
+        Import-Module DiagnosticsInitializer -Verbose -Force
+        Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
+    }
 }
 
 # Export-ModuleMember -Function Register-AzStackHCI

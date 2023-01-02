@@ -16,11 +16,9 @@
 
 <#
 .Synopsis
-Deletes an existing namespace.
-This operation also removes all associated resources under the namespace.
+Deletes a Private Endpoint Connection.
 .Description
-Deletes an existing namespace.
-This operation also removes all associated resources under the namespace.
+Deletes a Private Endpoint Connection.
 .Example
 Remove-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
 
@@ -48,7 +46,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [SchemaGroupName <String>]: The Schema Group name 
   [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubprivateendpointconnection
 #>
 function Remove-AzEventHubPrivateEndpointConnection {
 [OutputType([System.Boolean])]

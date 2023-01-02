@@ -27,7 +27,7 @@ Expands an entity.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityExpandResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/expand-azsentinelentity
+https://learn.microsoft.com/powershell/module/az.securityinsights/expand-azsentinelentity
 #>
 function Expand-AzSentinelEntity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityExpandResponse])]

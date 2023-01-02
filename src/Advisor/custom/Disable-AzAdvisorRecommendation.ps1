@@ -19,7 +19,7 @@ Disable an Azure Advisor recommendation.
 .Description
 Disable an Azure Advisor recommendation.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/Disable-AzAdvisorRecommendation
+https://learn.microsoft.com/powershell/module/az.advisor/Disable-AzAdvisorRecommendation
 #>
 function Disable-AzAdvisorRecommendation{
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
@@ -43,7 +43,6 @@ param(
     [Parameter(ParameterSetName='InputObjectParameterSet',  HelpMessage="Days to disable.")]
     [Parameter(ParameterSetName='IdParameterSet',  HelpMessage="Days to disable.")]
     [Parameter(ParameterSetName='NameParameterSet',  HelpMessage="Days to disable.")]
-    [ValidateRange("Positive")]
     ${Day},
 
 

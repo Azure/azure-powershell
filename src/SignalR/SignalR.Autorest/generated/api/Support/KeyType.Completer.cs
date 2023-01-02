@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support
 {
 
-    /// <summary>
-    /// The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive).
-    /// </summary>
+    /// <summary>The type of access key.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyTypeTypeConverter))]
     public partial struct KeyType :
         System.Management.Automation.IArgumentCompleter

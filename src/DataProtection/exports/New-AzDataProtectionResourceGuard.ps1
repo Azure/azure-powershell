@@ -25,7 +25,7 @@ New-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IResourceGuardResource
 .Link
-https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionresourceguard
+https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionresourceguard
 #>
 function New-AzDataProtectionResourceGuard {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IResourceGuardResource])]

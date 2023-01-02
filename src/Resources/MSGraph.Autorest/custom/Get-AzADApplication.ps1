@@ -19,7 +19,7 @@ Lists entities from applications or get entity from applications by key
 .Description
 Lists entities from applications or get entity from applications by key
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadapplication
+https://learn.microsoft.com/powershell/module/az.resources/get-azadapplication
 #>
 function Get-AzADApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
@@ -71,7 +71,7 @@ param(
     # Select properties to be returned
     ${Select},
 
-    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
     [System.Management.Automation.SwitchParameter]
     # Include count of items

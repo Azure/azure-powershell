@@ -1,7 +1,7 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadapplication
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azadapplication
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Lists entities from applications or get entity from applications by key
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzADApplication [-Select <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
+Get-AzADApplication [-Select <String[]>] [-Count] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
  [-ConsistencyLevel <String>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -53,12 +53,6 @@ Get-AzADApplication [-Select <String[]>] -ApplicationId <Guid> [-First <UInt64>]
 ```
 Get-AzADApplication [-Select <String[]>] -IdentifierUri <String> [-First <UInt64>] [-Skip <UInt64>]
  [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzADApplication [-Select <String[]>] [-Count] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,7 +155,7 @@ Include count of items
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List
+Parameter Sets: EmptyParameterSet
 Aliases:
 
 Required: False

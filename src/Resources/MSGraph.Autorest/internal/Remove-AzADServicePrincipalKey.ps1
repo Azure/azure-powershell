@@ -38,7 +38,7 @@ BODY <IPaths1UhuhlbServiceprincipalsServiceprincipalIdMicrosoftGraphRemovekeyPos
   [KeyId <String>]: 
   [Proof <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipalkey
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipalkey
 #>
 function Remove-AzADServicePrincipalKey {
 [OutputType([System.Boolean])]

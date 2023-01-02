@@ -44,7 +44,7 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewAzAksWithAcr");
         }
-        
+
         [Fact(Skip = "Updating service principal profile is not allowed on MSI cluster.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResetAzureKubernetesServicePrincipal()
@@ -78,6 +78,97 @@ namespace Commands.Aks.Test.ScenarioTests
         public void TestManagedIdentity()
         {
             TestRunner.RunTestScript("Test-ManagedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestOsSku()
+        {
+            TestRunner.RunTestScript("Test-OSSku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNodeLabelsAndTags()
+        {
+            TestRunner.RunTestScript("Test-NodeLabels-Tags");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNodeTaints()
+        {
+            TestRunner.RunTestScript("Test-NodeTaints");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableEncryptionAtHost()
+        {
+            TestRunner.RunTestScript("Test-EnableEncryptionAtHost");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableUltraSSD()
+        {
+            TestRunner.RunTestScript("Test-EnableUltraSSD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLinuxOSConfig()
+        {
+            TestRunner.RunTestScript("Test-LinuxOSConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMaxSurge()
+        {
+            TestRunner.RunTestScript("Test-MaxSurge");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPPG()
+        {
+            TestRunner.RunTestScript("Test-PPG");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSpot()
+        {
+            TestRunner.RunTestScript("Test-Spot");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableFIPS()
+        {
+            TestRunner.RunTestScript("Test-EnableFIPS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAutoScalerProfile()
+        {
+            TestRunner.RunTestScript("Test-AutoScalerProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGpuInstanceProfile()
+        {
+            TestRunner.RunTestScript("Test-GpuInstanceProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableUptimeSLA()
+        {
+            TestRunner.RunTestScript("Test-EnableUptimeSLA");
         }
     }
 }

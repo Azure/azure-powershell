@@ -1,0 +1,159 @@
+{
+  "Remove-AzAutomanageConfigProfile+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/confpro-pwsh01?api-version=2022-05-04+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/confpro-pwsh01?api-version=2022-05-04",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"configuration\": {\r\n      \"VMInsights/Enable\": \"true\",\r\n      \"Antimalware/Enable\": \"false\",\r\n      \"ChangeTrackingAndInventory/Enable\": \"true\",\r\n      \"GuestConfiguration/Enable\": \"true\",\r\n      \"UpdateManagement/Enable\": \"true\",\r\n      \"LogAnalytics/Enable\": \"true\",\r\n      \"AzureSecurityCenter/Enable\": \"true\",\r\n      \"BootDiagnostics/Enable\": \"true\",\r\n      \"Backup/Enable\": \"false\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "452" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:a4d240dc-d543-4b4e-a019-0a571290b85d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "da8eb0d4-da29-4137-a88f-3113370fdb4c" ],
+        "x-ms-correlation-request-id": [ "da8eb0d4-da29-4137-a88f-3113370fdb4c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221008T085920Z:da8eb0d4-da29-4137-a88f-3113370fdb4c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 08 Oct 2022 08:59:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "748" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/confpro-pwsh01\",\"name\":\"confpro-pwsh01\",\"type\":\"Microsoft.Automanage/configurationProfiles\",\"location\":\"eastus\",\"properties\":{\"configuration\":{\"VMInsights/Enable\":\"true\",\"Antimalware/Enable\":\"false\",\"ChangeTrackingAndInventory/Enable\":\"true\",\"GuestConfiguration/Enable\":\"true\",\"UpdateManagement/Enable\":\"true\",\"LogAnalytics/Enable\":\"true\",\"AzureSecurityCenter/Enable\":\"true\",\"BootDiagnostics/Enable\":\"true\",\"Backup/Enable\":\"false\"}},\"systemData\":{\"createdAt\":\"0001-01-01T00:00:00+00:00\",\"lastModifiedAt\":\"2022-10-08T08:59:19.3351828+00:00\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzAutomanageConfigProfile+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/confpro-pwsh01?api-version=2022-05-04+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/confpro-pwsh01?api-version=2022-05-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "d5243cfe-9593-4e19-9fcd-09bb66c8f3e8" ],
+        "CommandName": [ "Remove-AzAutomanageConfigProfile" ],
+        "FullCommandName": [ "Remove-AzAutomanageConfigProfile_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.Automanage/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:a4d240dc-d543-4b4e-a019-0a571290b85d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "b07bbe0b-e335-4acb-b540-803e61e30347" ],
+        "x-ms-correlation-request-id": [ "b07bbe0b-e335-4acb-b540-803e61e30347" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221008T085926Z:b07bbe0b-e335-4acb-b540-803e61e30347" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 08 Oct 2022 08:59:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzAutomanageConfigProfile+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/confpro-pwsh01?api-version=2022-05-04+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/confpro-pwsh01?api-version=2022-05-04",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"configuration\": {\r\n      \"VMInsights/Enable\": \"true\",\r\n      \"Antimalware/Enable\": \"false\",\r\n      \"ChangeTrackingAndInventory/Enable\": \"true\",\r\n      \"GuestConfiguration/Enable\": \"true\",\r\n      \"UpdateManagement/Enable\": \"true\",\r\n      \"LogAnalytics/Enable\": \"true\",\r\n      \"AzureSecurityCenter/Enable\": \"true\",\r\n      \"BootDiagnostics/Enable\": \"true\",\r\n      \"Backup/Enable\": \"false\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "452" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/confpro-pwsh01" ],
+        "Request-Context": [ "appId=cid-v1:a4d240dc-d543-4b4e-a019-0a571290b85d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "04319b2c-2957-4d46-8073-11e341afbf78" ],
+        "x-ms-correlation-request-id": [ "04319b2c-2957-4d46-8073-11e341afbf78" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221008T085930Z:04319b2c-2957-4d46-8073-11e341afbf78" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 08 Oct 2022 08:59:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "812" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/confpro-pwsh01\",\"name\":\"confpro-pwsh01\",\"type\":\"Microsoft.Automanage/configurationProfiles\",\"location\":\"eastus\",\"properties\":{\"configuration\":{\"VMInsights/Enable\":\"true\",\"Antimalware/Enable\":\"false\",\"ChangeTrackingAndInventory/Enable\":\"true\",\"GuestConfiguration/Enable\":\"true\",\"UpdateManagement/Enable\":\"true\",\"LogAnalytics/Enable\":\"true\",\"AzureSecurityCenter/Enable\":\"true\",\"BootDiagnostics/Enable\":\"true\",\"Backup/Enable\":\"false\"}},\"systemData\":{\"createdAt\":\"2022-10-08T08:59:28.699423+00:00\",\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-10-08T08:59:28.699423+00:00\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzAutomanageConfigProfile+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/confpro-pwsh01?api-version=2022-05-04+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/confpro-pwsh01?api-version=2022-05-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "532ac5bb-6671-4365-8adc-68fea5e33da5" ],
+        "CommandName": [ "Remove-AzAutomanageConfigProfile" ],
+        "FullCommandName": [ "Remove-AzAutomanageConfigProfile_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.Automanage/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:a4d240dc-d543-4b4e-a019-0a571290b85d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "fdfc270f-ae2d-4456-b070-e57f07fc353a" ],
+        "x-ms-correlation-request-id": [ "fdfc270f-ae2d-4456-b070-e57f07fc353a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221008T085932Z:fdfc270f-ae2d-4456-b070-e57f07fc353a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 08 Oct 2022 08:59:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}
