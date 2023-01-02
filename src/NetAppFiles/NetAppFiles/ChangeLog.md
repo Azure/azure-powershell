@@ -20,7 +20,7 @@
 ## Upcoming Release
 * Added cmdlet `Reset-AzNetAppFilesVolumeCifsPassword`
 * Added cmdlet `Get-AzNetAppFilesVolumeReplications` and `Restore-AzNetAppFilesVolume`
-* Added cmdLet `Get-AzNetAppFilesVolumeQuotaRule`, `Get-AzNetAppFilesVolumeQuotaRule`, `New-AzNetAppFilesVolumeQuotaRule`, `Set-AzNetAppFilesVolumeQuotaRule` and `Remove-AzNetAppFilesVolumeQuotaRule`
+* Added cmdLet `Get-AzNetAppFilesVolumeQuotaRule`, `Get-AzNetAppFilesVolumeQuotaRule`, `New-AzNetAppFilesVolumeQuotaRule`, `Update-AzNetAppFilesVolumeQuotaRule` and `Remove-AzNetAppFilesVolumeQuotaRule`
 * Added cmdLet `Update-NetAppFilesAccountCredential`
 * Added properties `Identity`, `Encryption` and `DisableShowmount` to `PSNetAppFilesAccount`
 * Added properties `Encrypted` and `Zones`, `DeleteBaseSnapshot`, `KeyVaultPrivateEndpointResourceId`,`SmbAccessBasedEnumeration`, `SmbNonBrowsable`, `EncryptionKeySource`, `VolumeSpecName` to `PSNetAppFilesVolume`
