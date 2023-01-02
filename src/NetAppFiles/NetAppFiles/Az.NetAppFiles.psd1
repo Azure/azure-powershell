@@ -76,7 +76,7 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount', 
                'Remove-AzNetAppFilesAccount', 'Set-AzNetAppFilesAccount', 
-               'Update-AzNetAppFilesAccount', 'Get-AzNetAppFilesPool', 
+               'Update-AzNetAppFilesAccount', 'Get-AzNetAppFilesPool', 'Update-NetAppFilesAccountCredential',
                'New-AzNetAppFilesPool', 'Update-AzNetAppFilesPool', 
                'Set-AzNetAppFilesPool', 'Remove-AzNetAppFilesPool', 
                'Get-AzNetAppFilesVolume', 'New-AzNetAppFilesVolume', 
@@ -87,8 +87,8 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
                'Get-AzNetAppFilesReplicationStatus', 
                'Suspend-AzNetAppFilesReplication', 
                'Remove-AzNetAppFilesReplication', 
-               'Initialize-AzNetAppFilesReplication', 
-               'Resume-AzNetAppFilesReplication', 'Restore-AzNetAppFilesVolume', 
+               'Initialize-AzNetAppFilesReplication', 'Restore-AzNetAppFilesReplication',
+               'Resume-AzNetAppFilesReplication', 'Get-AzNetAppFilesVolumeReplication', 'Restore-AzNetAppFilesVolume',
                'Set-AzNetAppFilesVolumePool', 'New-AzNetAppFilesSnapshotPolicy', 
                'Set-AzNetAppFilesSnapshotPolicy', 
                'Get-AzNetAppFilesSnapshotPolicy', 
@@ -110,20 +110,23 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
                'New-AzNetAppFilesVolumeGroup', 'Get-AzNetAppFilesVolumeGroup', 
                'Remove-AzNetAppFilesVolumeGroup', 
                'New-AzNetAppFilesExportPolicyRuleObject', 
-               'New-AzNetAppFilesExportPolicyObject'
+               'New-AzNetAppFilesExportPolicyObject',
+               'Reset-AzNetAppFilesVolumeCifsPassword',
+               'Get-AzNetAppFilesVolumeReplication',
+               'Get-AzNetAppFilesVolumeQuotaRule', 'New-AzNetAppFilesVolumeQuotaRule', 'Update-AzNetAppFilesVolumeQuotaRule', 'Remove-AzNetAppFilesVolumeQuotaRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount', 
-               'Set-AnfAccount', 'Update-AnfAccount', 'Get-AnfPool', 'New-AnfPool', 
-               'Set-AnfPool', 'Update-AnfPool', 'Remove-AnfPool', 'Get-AnfVolume', 
-               'New-AnfVolume', 'Remove-AnfVolume', 'Update-AnfVolume', 
+               'Set-AnfAccount', 'Update-AnfAccount', 'Update-AnfAccountCredential',
+               'Get-AnfPool', 'New-AnfPool', 'Set-AnfPool', 'Update-AnfPool', 'Remove-AnfPool', 
+               'Get-AnfVolume', 'New-AnfVolume', 'Remove-AnfVolume', 'Update-AnfVolume', 
                'Get-AnfSnapshot', 'New-AnfSnapshot', 'Remove-AnfSnapshot', 
                'Restore-AnfSnapshotFile', 'Approve-AnfReplication', 
                'Get-AnfReplicationStatus', 'Suspend-AnfReplication', 
-               'Remove-AnfReplication', 'Resume-AnfReplication', 'Restore-AnfVolume', 
+               'Remove-AnfReplication', 'Resume-AnfReplication', 'Restore-AnfReplication', 'Get-AnfVolumeReplication', 'Restore-AnfVolume', 
                'Initialize-AnfReplication', 'Set-AnfVolumePool', 
                'Get-AnfSnapshotPolicy', 'New-AnfSnapshotPolicy', 
                'Set-AnfSnapshotPolicy', 'Remove-AnfSnapshotPolicy', 
@@ -134,10 +137,14 @@ AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount',
                'Get-AnfVolumeBackupStatus', 'Get-AnfVolumeRestoreStatus', 
                'Get-AnfActiveDirectory', 'New-AnfActiveDirectory', 
                'Remove-AnfActiveDirectory', 'Update-AnfActiveDirectory', 
-               'Get-AnfQuotaLimit', 'Get-AnfSubvolume', 'Get-AnfSubvolumeMetadata', 
-               'New-AnfSubvolume', 'Set-AnfSubvolume', 'Remove-AnfSubvolume', 
-               'Update-AnfSubvolume', 'Get-AnfVolumeGroup', 'New-AnfVolumeGroup', 
-               'Remove-AnfVolumeGroup'
+               'Get-AnfQuotaLimit', 
+               'Get-AnfSubvolume', 'Get-AnfSubvolumeMetadata', 'New-AnfSubvolume', 'Set-AnfSubvolume', 'Remove-AnfSubvolume', 
+               'Update-AnfSubvolume', 
+               'Get-AnfVolumeGroup', 'New-AnfVolumeGroup', 
+               'Remove-AnfVolumeGroup',
+               'Reset-AnfVolumeCifsPassword', 
+               'Get-AnfVolumeReplication',
+               'Get-AnfVolumeQuotaRule', 'Get-AnfVolumeQuotaRule', 'New-AnfVolumeQuotaRule', 'Update-AnfVolumeQuotaRule', 'Remove-AnfVolumeQuotaRule'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
