@@ -165,6 +165,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 SecondaryType = model.Database.SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.Database.MaintenanceConfigurationId, _subscription.Id),
                 IsLedgerOn = model.Database.EnableLedger,
+                PreferredEnclaveType = model.Database.PreferredEnclaveType,
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);

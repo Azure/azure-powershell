@@ -10,6 +10,7 @@ variables:
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
   EnableTestCoverage: true
+  TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
   PowerShellPlatform: Windows PowerShell
 
 trigger: none

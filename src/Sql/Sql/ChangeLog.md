@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Added a parameter named `UseIdentity` for `Set-AzSqlServerAudit`, `Set-AzSqlDatabaseAudit`, `Set-AzSqlServerMSSupportAudit`
 * Added `IsManagedIdentityInUse` parameter for `Get-AzSqlServerMSSupportAudit`
+* Added `PreferredEnclaveType` parameter to `NewAzureSqlDatabase`, `GetAzureSqlDatabase` and `SetAzureSqlDatabase` cmdlet
 
 ## Version 4.1.0
 * Added new cmdlets for CRUD operations on SQL server IPv6 Firewall rules
