@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Sql.Models;
 
@@ -221,6 +222,26 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public DateTime? ResumedDate { get; set; }
 
         /// <summary>
+        /// Gets or sets the identity of the database.
+        /// </summary>
+        public DatabaseIdentity Identity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption protector
+        /// </summary>
+        public string EncryptionProtector { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of AKV keys
+        /// </summary>
+        public IDictionary<string, DatabaseKey> Keys { get; set; }
+
+        /// <summary>
+        /// Gets or sets a federated client id to use in xtcmk scenario
+        /// </summary>
+        public Guid? FederatedClientId { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -339,6 +360,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             EnableLedger = database.IsLedgerOn;
             PausedDate = database.PausedDate;
             ResumedDate = database.ResumedDate;
+            Keys = database.Keys;
+            EncryptionProtector = database.EncryptionProtector;
+            Identity = database.Identity;
+            FederatedClientId = database.FederatedClientId;
         }
 
         /// <summary>

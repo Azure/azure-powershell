@@ -116,6 +116,16 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         }
 
         /// <summary>
+        /// Revalidates encryption protector for the server.
+        /// </summary>
+        /// <param name="resourceGroupName">Resource group of the server</param>
+        /// <param name="serverName">Name of the server</param>
+        public void RevalidateEncryptionProtector(string resourceGroupName, string serverName)
+        {
+            Communicator.RevalidateEncryptionProtector(resourceGroupName, serverName);
+        }
+
+        /// <summary>
         /// Convert a Management.Sql.LegacySdk.Models.TransparentDataEncryption to AzureSqlDatabaseTransparentDataEncryptionModel
         /// </summary>
         /// <param name="resourceGroup">The resource group the server is in</param>

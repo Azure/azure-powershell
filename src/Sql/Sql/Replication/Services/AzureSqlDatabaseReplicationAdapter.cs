@@ -148,7 +148,11 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                 },
                 LicenseType = model.LicenseType,
                 RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
-                ZoneRedundant = model.ZoneRedundant
+                ZoneRedundant = model.ZoneRedundant,
+                Identity = model.Identity,
+                Keys = model.Keys,
+                EncryptionProtector = model.EncryptionProtector,
+                FederatedClientId = model.FederatedClientId
             });
 
             return CreateDatabaseCopyModelFromResponse(model.CopyResourceGroupName, model.CopyServerName, model.ResourceGroupName,
@@ -276,6 +280,10 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                 SecondaryType = model.SecondaryType,
                 HighAvailabilityReplicaCount = model.HighAvailabilityReplicaCount,
                 ZoneRedundant = model.ZoneRedundant,
+                Identity = model.Identity,
+                Keys = model.Keys,
+                EncryptionProtector = model.EncryptionProtector,
+                FederatedClientId = model.FederatedClientId,
             });
 
             return GetLink(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.PartnerResourceGroupName, model.PartnerServerName);

@@ -71,6 +71,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             return GetCurrentSqlClient().Databases.Get(resourceGroupName, serverName, databaseName);
         }
 
+        public void RevalidateDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
+        {
+
+        }
+
         /// <summary>
         /// Gets the Azure Sql Database expanded additional details.
         /// </summary>

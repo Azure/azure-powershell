@@ -594,7 +594,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 LicenseType = model.LicenseType,
                 RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
                 ZoneRedundant = model.ZoneRedundant,
-                Tags = model.Tags
+                Tags = model.Tags,
+                Identity = model.Identity,
+                Keys = model.Keys,
+                EncryptionProtector = model.EncryptionProtector,
+                FederatedClientId = model.FederatedClientId
             };
             
             // check if restore operation is cross subscription or same subscription

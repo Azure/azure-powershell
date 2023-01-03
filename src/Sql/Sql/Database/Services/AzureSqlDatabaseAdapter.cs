@@ -79,6 +79,17 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         }
 
         /// <summary>
+        /// Revalidates database transparent data encryption protector.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database</param>
+        internal void RevalidateDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
+        {
+            Communicator.RevalidateDatabaseEncryptionProtector(resourceGroupName, serverName, databaseName);
+        }
+
+        /// <summary>
         /// Gets an Azure Sql Database by name with additional information.
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
@@ -165,6 +176,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 SecondaryType = model.Database.SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.Database.MaintenanceConfigurationId, _subscription.Id),
                 IsLedgerOn = model.Database.EnableLedger,
+                Identity = model.Database.Identity,
+                Keys = model.Database.Keys,
+                EncryptionProtector = model.Database.EncryptionProtector,
+                FederatedClientId = model.Database.FederatedClientId
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);

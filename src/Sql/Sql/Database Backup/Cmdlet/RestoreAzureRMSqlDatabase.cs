@@ -302,6 +302,22 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             HelpMessage = "The tags to associate with the Azure Sql Database")]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "The encryption protector key for SQL Database.")]
+        public string EncryptionProtector { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of user assigned identity for the SQL Database.")]
+        public List<string> UserAssignedIdentityId { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of AKV keys for the SQL Database.")]
+        public List<string> Keys { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]
+        public Guid? FederatedClientId { get; set; }
+
         protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
 
         /// <summary>
@@ -382,6 +398,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 RequestedBackupStorageRedundancy = BackupStorageRedundancy,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
+                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.UserAssignedIdentityId, null),
+                Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.Keys),
+                EncryptionProtector = this.EncryptionProtector,
+                FederatedClientId = this.FederatedClientId,
             };
 
             if (ParameterSetName == FromPointInTimeBackupWithVcoreSetName || ParameterSetName == FromDeletedDatabaseBackupWithVcoreSetName ||

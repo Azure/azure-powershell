@@ -86,6 +86,14 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         }
 
         /// <summary>
+        /// Revalidates Azure Sql Server Transparent Data Encryption Protector
+        /// </summary>
+        public void RevalidateEncryptionProtector(string resourceGroupName, string serverName)
+        {
+            GetCurrentSqlClient().EncryptionProtectors.BeginRevalidate(resourceGroupName, serverName);
+        }
+
+        /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>

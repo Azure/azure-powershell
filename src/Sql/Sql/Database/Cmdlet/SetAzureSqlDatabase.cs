@@ -24,6 +24,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Globalization;
+using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -257,6 +259,26 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The Maintenance configuration id for the SQL Database.")]
         public string MaintenanceConfigurationId { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "The encryption protector key for SQL Database.")]
+        public string EncryptionProtector { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of user assigned identity for the SQL Database.")]
+        public List<string> UserAssignedIdentityId { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of AKV keys for the SQL Database.")]
+        public List<string> Keys { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of AKV keys to remove from the SQL Database.")]
+        public List<string> KeysToRemove { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]
+        public Guid? FederatedClientId { get; set; }
+
         /// <summary>
         /// Overriding to add warning message
         /// </summary>
@@ -311,6 +333,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 RequestedBackupStorageRedundancy = BackupStorageRedundancy,
                 SecondaryType = SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationId,
+                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.UserAssignedIdentityId, model.FirstOrDefault().Identity),
+                EncryptionProtector = this.EncryptionProtector ?? model.FirstOrDefault().EncryptionProtector,
+                FederatedClientId = this.FederatedClientId ?? model.FirstOrDefault().FederatedClientId,
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
@@ -321,6 +346,26 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Family = database.Family,
                 Capacity = database.Capacity
             };
+
+            // DB level CMK keys
+            //
+            if (this.Keys != null && this.Keys.Any())
+            {
+                if (model.FirstOrDefault()?.Keys.Count > 0)
+                {
+                    foreach (string akvKey in Keys)
+                    {
+                        if (!model.FirstOrDefault().Keys.ContainsKey(akvKey))
+                        {
+                            model.FirstOrDefault().Keys.Add(akvKey, new DatabaseKey());
+                        }
+                    }
+                }
+                else
+                {
+                    newDbModel.Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.Keys);
+                }
+            }
 
             // check if current db is serverless
             string databaseCurrentComputeModel = database.CurrentServiceObjectiveName.Contains("_S_") ? DatabaseComputeModel.Serverless : DatabaseComputeModel.Provisioned;
