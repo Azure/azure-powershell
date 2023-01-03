@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         private const string _refreshTokenKey = "AcrRefreshToken";
 
         private AzureContainerRegistryClient _client;
-        private Track2.ContainerRegistryClient _client2;
+        private Track2.ContainerRegistryClient _track2Client;
         private Track2TokenCredential _credential;
         private string _accessToken = default(string);
         private string _endPoint;
