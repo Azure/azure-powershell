@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
         public const string Enabled = "Enabled";
         public const string Disabled = "Disabled";
+        public const string True = "TRUE";
+        public const string False = "FALSE";
 
         // Masking functions
         public const string NoMasking = "NoMasking";
