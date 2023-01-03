@@ -34,7 +34,7 @@ To create the parameters described below, construct a hash table containing the 
 NOTIFICATIONSETTINGRECIPIENT <IRecipient[]>: Gets or sets list of notified recipients for new requests
   [PrincipalId <String>]: Principal ID
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/set-azmarketplaceprivatestore
+https://learn.microsoft.com/powershell/module/az.marketplace/set-azmarketplaceprivatestore
 #>
 function Set-AzMarketplacePrivateStore {
 [OutputType([System.Boolean])]
