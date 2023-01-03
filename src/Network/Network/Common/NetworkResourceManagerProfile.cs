@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.DdosSettings,
                         opt => opt.MapFrom(src =>
-                            (src.DdosSettings ?? new MNM.DdosSettings()))
+                            ((src.Sku.Name != MNM.PublicIPAddressSkuName.Basic && src.DdosSettings == null) ? new MNM.DdosSettings() : null))
                     );
                 cfg.CreateMap<MNM.IpTag, CNM.PSPublicIpTag>();
                 cfg.CreateMap<MNM.PublicIPAddressSku, CNM.PSPublicIpAddressSku>();
