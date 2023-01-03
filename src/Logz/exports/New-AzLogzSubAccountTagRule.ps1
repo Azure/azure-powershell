@@ -38,7 +38,7 @@ LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for cap
   [Name <String>]: The name (also known as the key) of the tag.
   [Value <String>]: The value of the tag.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/new-azlogzsubaccounttagrule
+https://learn.microsoft.com/powershell/module/az.logz/new-azlogzsubaccounttagrule
 #>
 function New-AzLogzSubAccountTagRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRules])]

@@ -27,7 +27,7 @@ Lists all of the available Azure Machine Learning Workspaces REST API operations
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IAmlOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceoperation
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceoperation
 #>
 function Get-AzMLWorkspaceOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IAmlOperation])]
