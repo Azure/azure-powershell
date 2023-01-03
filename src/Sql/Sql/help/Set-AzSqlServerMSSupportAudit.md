@@ -17,16 +17,16 @@ Changes the Microsoft support operations auditing settings of an Azure SQL serve
 ```
 Set-AzSqlServerMSSupportAudit [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
  [-EventHubTargetState <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>]
- [-LogAnalyticsTargetState <String>] [-WorkspaceResourceId <String>] [-PassThru] [-ResourceGroupName] <String>
- [-ServerName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-LogAnalyticsTargetState <String>] [-WorkspaceResourceId <String>] [-PassThru] [-UseIdentity <String>]
+ [-ResourceGroupName] <String> [-ServerName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServerObjectParameterSet
 ```
 Set-AzSqlServerMSSupportAudit [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
  [-EventHubTargetState <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>]
- [-LogAnalyticsTargetState <String>] [-WorkspaceResourceId <String>] [-PassThru]
+ [-LogAnalyticsTargetState <String>] [-WorkspaceResourceId <String>] [-PassThru] [-UseIdentity <String>]
  -ServerObject <AzureSqlServerModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -255,6 +255,21 @@ Accept wildcard characters: False
 
 ### -StorageAccountResourceId
 The storage account resource id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseIdentity
+Indicates whether to use managed identity or not. It is required when you want to use managed identity while target storage is not behind firewall.
 
 ```yaml
 Type: System.String

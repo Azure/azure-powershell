@@ -25,7 +25,7 @@ Get-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName Hos
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.RegistrationInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdregistrationinfo
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdregistrationinfo
 #>
 function Get-AzWvdRegistrationInfo {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.RegistrationInfo])]

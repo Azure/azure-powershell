@@ -239,6 +239,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public SwitchParameter EnableLedger { get; set; }
 
         /// <summary>
+        /// Gets or sets the preferred enclave type requested on the database.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The preferred enclave type for the Azure Sql database. Possible values are Default and VBS.")]
+        [PSArgumentCompleter(
+            "Default",
+            "VBS")]
+        public string PreferredEnclaveType { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -323,6 +333,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 SecondaryType = SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationId,
                 EnableLedger = this.IsParameterBound(p => p.EnableLedger) ? EnableLedger.ToBool() : (bool?)null,
+                PreferredEnclaveType = this.PreferredEnclaveType,
             };
 
             if (ParameterSetName == DtuDatabaseParameterSet)

@@ -20,7 +20,7 @@ Get Insights and Activities for an entity.
 .Description
 Get Insights and Activities for an entity.
 .Example
- Get-AzSentinelEntityAcivity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
+ Get-AzSentinelEntityActivity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId"
 .Example
  $Entity = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "4ebb68f3-a435-fac0-d3b6-94712d246f0a"
  $Entity | Get-AzSentinelEntityActivity
@@ -28,7 +28,7 @@ Get Insights and Activities for an entity.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQueryItem
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityactivity
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityactivity
 #>
 function Get-AzSentinelEntityActivity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQueryItem])]

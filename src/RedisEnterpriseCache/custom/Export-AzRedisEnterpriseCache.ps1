@@ -24,7 +24,7 @@ PS C:\> Export-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGrou
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/export-azredisenterprisecache
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/export-azredisenterprisecache
 #>
 function Export-AzRedisEnterpriseCache {
     [Alias('Export-AzRedisEnterpriseCacheDatabase')]

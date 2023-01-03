@@ -25,7 +25,7 @@ Get-AzEventHubClustersAvailableRegion
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAvailableCluster
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubclustersavailableregion
+https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubclustersavailableregion
 #>
 function Get-AzEventHubClustersAvailableRegion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAvailableCluster])]

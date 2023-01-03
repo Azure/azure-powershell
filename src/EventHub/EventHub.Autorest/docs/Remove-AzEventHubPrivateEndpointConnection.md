@@ -1,15 +1,14 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubprivateendpointconnection
 schema: 2.0.0
 ---
 
 # Remove-AzEventHubPrivateEndpointConnection
 
 ## SYNOPSIS
-Deletes an existing namespace.
-This operation also removes all associated resources under the namespace.
+Deletes a Private Endpoint Connection.
 
 ## SYNTAX
 
@@ -27,8 +26,7 @@ Remove-AzEventHubPrivateEndpointConnection -InputObject <IEventHubIdentity> [-De
 ```
 
 ## DESCRIPTION
-Deletes an existing namespace.
-This operation also removes all associated resources under the namespace.
+Deletes a Private Endpoint Connection.
 
 ## EXAMPLES
 

@@ -64,7 +64,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticscluster
+https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticscluster
 #>
 function Get-AzStreamAnalyticsCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.ICluster])]

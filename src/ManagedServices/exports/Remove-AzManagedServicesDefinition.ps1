@@ -39,7 +39,7 @@ INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
   [RegistrationDefinitionId <String>]: The GUID of the registration definition.
   [Scope <String>]: The scope of the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/remove-azmanagedservicesdefinition
+https://learn.microsoft.com/powershell/module/az.managedservices/remove-azmanagedservicesdefinition
 #>
 function Remove-AzManagedServicesDefinition {
 [OutputType([System.Boolean])]

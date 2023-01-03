@@ -39,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestApplicationSecurityGroupCRUDMinimalParameters()
         {
             TestRunner.RunTestScript("Test-ApplicationSecurityGroupCRUDMinimalParameters");
@@ -47,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestApplicationSecurityGroupCRUDAllParameters()
         {
             TestRunner.RunTestScript("Test-ApplicationSecurityGroupCRUDAllParameters");

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Aks
 Module Guid: 15fbef14-845a-48e1-a35b-d8e8b910ae27
-Download Help Link: https://docs.microsoft.com/powershell/module/az.aks
+Download Help Link: https://learn.microsoft.com/powershell/module/az.aks
 Help Version: 1.0.0.0
 Locale: en-US
 ---
