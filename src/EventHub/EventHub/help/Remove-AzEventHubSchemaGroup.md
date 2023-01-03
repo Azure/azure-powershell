@@ -1,13 +1,14 @@
 ---
 external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubschemagroup
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubschemagroup
 schema: 2.0.0
 ---
 
 # Remove-AzEventHubSchemaGroup
 
 ## SYNOPSIS
+Deletes an EventHub schema group.
 
 ## SYNTAX
 
@@ -24,6 +25,7 @@ Remove-AzEventHubSchemaGroup -InputObject <IEventHubIdentity> [-DefaultProfile <
 ```
 
 ## DESCRIPTION
+Deletes an EventHub schema group.
 
 ## EXAMPLES
 

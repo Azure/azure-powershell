@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Orbital
-online version: https://docs.microsoft.com/powershell/module/az.orbital/get-azorbitalspacecraftcontact
+online version: https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalspacecraftcontact
 schema: 2.0.0
 ---
 

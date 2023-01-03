@@ -13,8 +13,7 @@
   },
   "variables": {
     "authRuleResourceName": "[concat(parameters('namespace_name'), '/', 'authRule1')]",
-    "rootAuthRuleResourceName": "[concat(parameters('namespace_name'), '/RootManageSharedAccessKey')]",
-    "defaultNetworkRuleResourceName": "[concat(parameters('namespace_name'), '/default')]"
+    "rootAuthRuleResourceName": "[concat(parameters('namespace_name'), '/RootManageSharedAccessKey')]"
   },
   "resources": [
     {
@@ -43,7 +42,8 @@
       "name": "[variables('authRuleResourceName')]",
       "location": "eastus",
       "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]",
+        "[resourceId('Microsoft.EventHub/namespaces/AuthorizationRules', parameters('namespace_name'), 'RootManageSharedAccessKey')]"
       ],
       "properties": {
         "rights": [
@@ -67,21 +67,6 @@
           "Manage",
           "Send"
         ]
-      }
-    },
-    {
-      "type": "Microsoft.EventHub/namespaces/networkRuleSets",
-      "apiVersion": "2022-01-01-preview",
-      "name": "[variables('defaultNetworkRuleResourceName')]",
-      "location": "eastus",
-      "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
-      ],
-      "properties": {
-        "publicNetworkAccess": "Enabled",
-        "defaultAction": "Allow",
-        "virtualNetworkRules": [],
-        "ipRules": []
       }
     },
     {

@@ -28,7 +28,7 @@ West Central US sac-ps-test01 Microsoft.StreamAnalytics/clusters
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.ICluster
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticscluster
+https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticscluster
 #>
 function New-AzStreamAnalyticsCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.ICluster])]

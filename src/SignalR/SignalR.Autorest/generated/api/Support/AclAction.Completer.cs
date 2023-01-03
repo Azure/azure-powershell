@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support
 {
 
-    /// <summary>Default action when no other rule matches</summary>
+    /// <summary>Azure Networking ACL Action.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclActionTypeConverter))]
     public partial struct AclAction :
         System.Management.Automation.IArgumentCompleter

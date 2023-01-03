@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Orbital
-online version: https://docs.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraft
+online version: https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraft
 schema: 2.0.0
 ---
 

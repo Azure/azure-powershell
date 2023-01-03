@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.SignalR-help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/get-azwebpubsubsku
+online version: https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsubsku
 schema: 2.0.0
 ---
 
@@ -127,11 +127,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuList
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ISkuList
 
 ## NOTES
 
 ALIASES
 
 ## RELATED LINKS
-

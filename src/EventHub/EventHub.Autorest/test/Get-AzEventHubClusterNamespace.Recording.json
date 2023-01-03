@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "44" ],
-        "x-ms-client-request-id": [ "b9491f53-7ead-47e2-9a1b-06feac6f0618" ],
+        "x-ms-unique-id": [ "43" ],
+        "x-ms-client-request-id": [ "9248e6b3-f7dc-43bb-b3d1-02c86ab15b23" ],
         "CommandName": [ "Get-AzEventHubClusterNamespace" ],
         "FullCommandName": [ "Get-AzEventHubClusterNamespace_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,15 +22,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "2b14aa55-3649-4621-a3c0-c1e621e97e12_M7CH3_M7CH3" ],
+        "x-ms-request-id": [ "612c11ba-47be-4c43-ac1f-998f449a2176_M8CH3_M8CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11961" ],
-        "x-ms-correlation-request-id": [ "82a74ae2-6449-4902-bdb6-9aeb9f69cc13" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220926T105130Z:82a74ae2-6449-4902-bdb6-9aeb9f69cc13" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11954" ],
+        "x-ms-correlation-request-id": [ "09e43615-c6e2-49cb-9e0b-826bec5fd1df" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20221125T102844Z:09e43615-c6e2-49cb-9e0b-826bec5fd1df" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 26 Sep 2022 10:51:29 GMT" ]
+        "Date": [ "Fri, 25 Nov 2022 10:28:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "332" ],

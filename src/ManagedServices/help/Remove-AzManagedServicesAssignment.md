@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ManagedServices
-online version: https://docs.microsoft.com/powershell/module/az.managedservices/remove-azmanagedservicesassignment
+online version: https://learn.microsoft.com/powershell/module/az.managedservices/remove-azmanagedservicesassignment
 schema: 2.0.0
 ---
 

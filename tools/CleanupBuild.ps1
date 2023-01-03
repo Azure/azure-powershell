@@ -111,6 +111,9 @@ foreach($RMPath in $resourceManagerPaths)
 
         Write-Host "Removing redundant dlls in $($RMFolder.Name)"
         $removedDlls = Get-ChildItem -Path $RMFolder.FullName -Filter "*.dll" -Recurse | where { $acceptedDlls -notcontains $_.Name -and !$_.FullName.Contains("Assemblies") }
+        # do not remove lib dlls (for example Az.Accounts/lib/netcoreapp2.1/Azure.Core.dll)
+        $libPattern = [System.IO.Path]::DirectorySeparatorChar + "lib" + [System.IO.Path]::DirectorySeparatorChar;
+        $removedDlls = $removedDlls | Where-Object { -not $_.FullName.Contains($libPattern) }
         $removedDlls | % { Write-Host "Removing $($_.Name)"; Remove-Item $_.FullName -Force }
 
         Write-Host "Removing scripts and psd1 in $($RMFolder.FullName)"

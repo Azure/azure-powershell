@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHub'))
 }
 
 Describe 'Get-AzEventHub' {
-    It 'List' {
+    It 'List'  {
         $listOfEventHubs = Get-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $listOfEventHubs.Count | Should -Be 1
     }
@@ -27,7 +27,7 @@ Describe 'Get-AzEventHub' {
         $eventHub.PartitionCount | Should -Be 1
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity'  {
         $eventHub = Get-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.eventHub
 
         $eventHub = Get-AzEventHub -InputObject $eventHub
