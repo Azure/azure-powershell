@@ -85,39 +85,41 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-
-            var existingProbe = this.LoadBalancer.Probes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-            if (existingProbe != null)
+            if (ShouldProcess(this.LoadBalancer.Name, "Adding load balancer probe configuration"))
             {
-                throw new ArgumentException("Probe with the specified name already exists");
+                var existingProbe = this.LoadBalancer.Probes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+                if (existingProbe != null)
+                {
+                    throw new ArgumentException("Probe with the specified name already exists");
+                }
+
+                // Probes
+                if (this.LoadBalancer.Probes == null)
+                {
+                    this.LoadBalancer.Probes = new List<PSProbe>();
+                }
+
+                var vProbes = new PSProbe();
+
+                vProbes.Protocol = this.Protocol;
+                vProbes.Port = this.Port;
+                vProbes.IntervalInSeconds = this.IntervalInSeconds;
+                vProbes.NumberOfProbes = this.ProbeCount;
+                vProbes.ProbeThreshold = this.ProbeThreshold;
+                vProbes.RequestPath = this.RequestPath;
+                vProbes.Name = this.Name;
+                var generatedId = string.Format(
+                    "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
+                    this.LoadBalancer.ResourceGroupName,
+                    this.LoadBalancer.Name,
+                    "Probes",
+                    this.Name);
+                vProbes.Id = generatedId;
+
+                this.LoadBalancer.Probes.Add(vProbes);
+                WriteObject(this.LoadBalancer, true);
             }
-
-            // Probes
-            if (this.LoadBalancer.Probes == null)
-            {
-                this.LoadBalancer.Probes = new List<PSProbe>();
-            }
-
-            var vProbes = new PSProbe();
-
-            vProbes.Protocol = this.Protocol;
-            vProbes.Port = this.Port;
-            vProbes.IntervalInSeconds = this.IntervalInSeconds;
-            vProbes.NumberOfProbes = this.ProbeCount;
-            vProbes.ProbeThreshold = this.ProbeThreshold;
-            vProbes.RequestPath = this.RequestPath;
-            vProbes.Name = this.Name;
-            var generatedId = string.Format(
-                "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
-                this.NetworkClient.NetworkManagementClient.SubscriptionId,
-                this.LoadBalancer.ResourceGroupName,
-                this.LoadBalancer.Name,
-                "Probes",
-                this.Name);
-            vProbes.Id = generatedId;
-
-            this.LoadBalancer.Probes.Add(vProbes);
-            WriteObject(this.LoadBalancer, true);
         }
     }
 }

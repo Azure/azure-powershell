@@ -29,7 +29,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceCRUD");
@@ -37,7 +37,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceCRUDUsingId()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceCRUDUsingId");
@@ -45,7 +45,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceCRUDStaticAllocation()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceCRUDStaticAllocation");
@@ -53,7 +53,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceNoPublicIpAddress()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceNoPublicIpAddress");
@@ -61,7 +61,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceSet()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceSet");
@@ -69,7 +69,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceIDns()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceIDns");
@@ -77,7 +77,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceEnableIPForwarding()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceEnableIPForwarding");
@@ -85,7 +85,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceExpandResource()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceExpandResource");
@@ -93,7 +93,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceIpv6()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceIpv6");
@@ -101,7 +101,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceWithIpConfiguration()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceWithIpConfiguration");
@@ -109,7 +109,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceWithAcceleratedNetworking()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceWithAcceleratedNetworking");
@@ -117,7 +117,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceWithDisableTcpStateTracking()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceWithDisableTcpStateTracking");
@@ -125,7 +125,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceTapConfigurationCRUD()
         {
             TestRunner.RunTestScript(string.Format("Test-NetworkInterfaceTapConfigurationCRUD"));
@@ -133,7 +133,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceVmss()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceVmss");
@@ -141,7 +141,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceInEdgeZone()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceInEdgeZone");

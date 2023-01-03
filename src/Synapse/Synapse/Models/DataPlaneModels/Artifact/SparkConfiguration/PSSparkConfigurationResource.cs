@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Analytics.Synapse.Artifacts.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -27,9 +28,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.WorkspaceName = workspaceName;
             this.Properties = sparkConfiguration?.Properties != null? new PSSparkConfiguration(sparkConfiguration.Properties) : null;
         }
-
+        
         public string WorkspaceName { get; set; }
 
+        [JsonProperty(PropertyName = "properties")]
         public PSSparkConfiguration Properties { get; set; }
     }
 }

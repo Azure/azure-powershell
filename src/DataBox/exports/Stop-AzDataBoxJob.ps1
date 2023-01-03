@@ -30,7 +30,7 @@ Powershell10 WestUS   Cancelled ImportToAzure DataBox UserAssigned NonScheduled 
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.databox/stop-azdataboxjob
+https://learn.microsoft.com/powershell/module/az.databox/stop-azdataboxjob
 #>
 function Stop-AzDataBoxJob {
 [OutputType([System.Boolean])]

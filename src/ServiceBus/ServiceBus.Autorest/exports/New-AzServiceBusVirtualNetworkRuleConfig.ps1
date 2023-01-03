@@ -25,7 +25,7 @@ New-AzServiceBusVirtualNetworkRuleConfig -SubnetId /subscriptions/subscriptionId
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INwRuleSetVirtualNetworkRules
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusvirtualnetworkruleconfig
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusvirtualnetworkruleconfig
 #>
 function New-AzServiceBusVirtualNetworkRuleConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INwRuleSetVirtualNetworkRules])]

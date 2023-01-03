@@ -31,7 +31,7 @@ Deletes existing diagnostic settings for the specified resource.
 
 ### Example 1: Remove DiagnosticSetting by name
 ```powershell
-$subscriptionId = (Get-AzContext).SubscriptionId
+$subscriptionId = (Get-AzContext).Subscription.Id
 Remove-AzDiagnosticSetting -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001 -Name test-setting
 ```
 

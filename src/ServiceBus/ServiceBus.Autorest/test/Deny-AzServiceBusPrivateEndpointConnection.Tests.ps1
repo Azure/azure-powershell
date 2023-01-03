@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deny-AzServiceBusPrivateEndpo
 Describe 'Deny-AzServiceBusPrivateEndpointConnection' {
     $privateEndpoint = Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
 
-    It 'SetExpanded' {
+    It 'SetExpanded'  {
         $privateEndpoint[0].ConnectionState | Should -Be "Approved"
         $privateEndpoint[0].Description | Should -Be ""
         

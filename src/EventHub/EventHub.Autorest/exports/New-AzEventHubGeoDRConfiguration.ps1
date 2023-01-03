@@ -25,7 +25,7 @@ New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGrou
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubgeodrconfiguration
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubgeodrconfiguration
 #>
 function New-AzEventHubGeoDRConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery])]

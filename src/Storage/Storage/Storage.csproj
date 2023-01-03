@@ -23,11 +23,7 @@
     <PackageReference Include="Microsoft.Azure.Storage.File" Version="11.2.2" />
     <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="11.2.2" />
   </ItemGroup>
-  <Target Name="CopyFiles" AfterTargets="Build">
-    <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
-    <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)\NetCoreAssemblies" />
-  </Target>
-    <ItemGroup>
+  <ItemGroup>
     <Reference Include="Microsoft.Azure.Storage.DataMovement">
       <HintPath>$(RepoSrc)lib\Microsoft.Azure.Storage.DataMovement.dll</HintPath>
     </Reference>
