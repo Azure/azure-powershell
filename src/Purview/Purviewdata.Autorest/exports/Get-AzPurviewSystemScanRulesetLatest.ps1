@@ -33,7 +33,7 @@ Version           : 4
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanrulesetlatest
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewsystemscanrulesetlatest
 #>
 function Get-AzPurviewSystemScanRulesetLatest {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset])]

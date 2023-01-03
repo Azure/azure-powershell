@@ -45,7 +45,7 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The subscription identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewprivateendpointconnection
 #>
 function Remove-AzPurviewPrivateEndpointConnection {
 [OutputType([System.Boolean])]

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: F7EF35E3-BC53-43D9-A71E-0B4316260A08
-online version: https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseAudit
+online version: https://learn.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseAudit
 schema: 2.0.0
 ---
 
@@ -19,8 +19,9 @@ Set-AzSqlDatabaseAudit [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <
  [-PredicateExpression <String>] [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
  [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-EventHubTargetState <String>]
  [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
- [-WorkspaceResourceId <String>] [-PassThru] [-ResourceGroupName] <String> [-ServerName] <String>
- [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WorkspaceResourceId <String>] [-PassThru] [-UseIdentity <String>] [-ResourceGroupName] <String>
+ [-ServerName] <String> [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DatabaseObjectParameterSet
@@ -29,7 +30,7 @@ Set-AzSqlDatabaseAudit [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <
  [-PredicateExpression <String>] [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
  [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-EventHubTargetState <String>]
  [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
- [-WorkspaceResourceId <String>] [-PassThru] -DatabaseObject <AzureSqlDatabaseModel>
+ [-WorkspaceResourceId <String>] [-PassThru] [-UseIdentity <String>] -DatabaseObject <AzureSqlDatabaseModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -371,6 +372,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Primary, Secondary
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseIdentity
+Indicates whether to use managed identity or not. It is required when you want to use managed identity while target storage is not behind firewall.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

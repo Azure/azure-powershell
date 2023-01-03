@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/start-azwebappslotcontinuouswebjob
+online version: https://learn.microsoft.com/powershell/module/az.websites/start-azwebappslotcontinuouswebjob
 schema: 2.0.0
 ---
 

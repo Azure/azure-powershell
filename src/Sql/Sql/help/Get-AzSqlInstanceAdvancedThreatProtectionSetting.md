@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlInstanceAdvancedThreatProtectionSetting
+online version: https://learn.microsoft.com/powershell/module/az.sql/Get-AzSqlInstanceAdvancedThreatProtectionSetting
 schema: 2.0.0
 ---
 
