@@ -24,6 +24,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using BlueprintManagement = Microsoft.Azure.Management.Blueprint;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Blueprint.Common
 {
@@ -273,12 +274,35 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         public IEnumerable<PSArtifact> ListArtifacts(string scope, string blueprintName, string version)
         {
             var list = new List<PSArtifact>();
+            var artifactList = new List<Artifact>();
+            string nextPageLink = null;
 
-            var artifacts = string.IsNullOrEmpty(version)
-                ? blueprintManagementClient.Artifacts.List(scope, blueprintName)
-                : blueprintManagementClient.PublishedArtifacts.List(scope, blueprintName, version);
+            if (string.IsNullOrEmpty(version))
+            {
+                do
+                {
+                    var artifacts = string.IsNullOrEmpty(nextPageLink)
+                        ? blueprintManagementClient.Artifacts.List(scope, blueprintName)
+                        : blueprintManagementClient.Artifacts.ListNext(nextPageLink);
 
-            foreach (var artifact in artifacts)
+                    artifactList.AddRange(artifacts.AsEnumerable());
+                    nextPageLink = artifacts.NextPageLink;
+                } while (nextPageLink != null);
+            } else
+            {
+                do
+                {
+                    var artifacts = string.IsNullOrEmpty(nextPageLink)
+                        ? blueprintManagementClient.PublishedArtifacts.List(scope, blueprintName, version)
+                        : blueprintManagementClient.PublishedArtifacts.ListNext(nextPageLink);
+
+                    artifactList.AddRange(artifacts.AsEnumerable());
+                    nextPageLink = artifacts.NextPageLink;
+                } while (nextPageLink != null);
+
+            }
+
+            foreach (var artifact in artifactList)
             {
                 switch (artifact)
                 {
