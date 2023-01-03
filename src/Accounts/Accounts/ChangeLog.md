@@ -21,7 +21,7 @@
 ## Upcoming Release
 * Optimized the mechanism for assembly loading.
 * Enabled AzKeyStore with keyring in Linux.
-* Fixed a typo in GetAzureRmContextAutosaveSetting.cs changing the cmdlet class name from GetzureRmContextAutosaveSetting to GetAzureRmContextAutosaveSetting
+* Fixed a typo in GetAzureRmContextAutosaveSetting.cs changing the cmdlet class name to GetAzureRmContextAutosaveSetting
 * Removed survey on error message in `Resolve-AzError`. [#20398]
 
 ## Version 2.10.4
