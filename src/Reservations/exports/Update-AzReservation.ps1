@@ -84,7 +84,7 @@ RESERVATION <IPatch>: .
       [Sku <String>]: 
       [Term <ReservationTerm?>]: Represent the term of Reservation.
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/update-azreservation
+https://learn.microsoft.com/powershell/module/az.reservations/update-azreservation
 #>
 function Update-AzReservation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]

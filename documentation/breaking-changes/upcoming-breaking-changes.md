@@ -1213,6 +1213,20 @@
   - `-InputObject`
     - Alias RegisteredServer is invalid and preserved for compatibility. Alias ServerEndpoint should be used instead
 
+## Az.Synapse
+
+### `New-AzSynapseSparkPool`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-SparkConfigFilePath`
+    - The parameter : 'SparkConfigFilePath' is being replaced by parameter : 'SparkConfiguration'.
+
+### `Update-AzSynapseSparkPool`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-SparkConfigFilePath`
+    - The parameter : 'SparkConfigFilePath' is being replaced by parameter : 'SparkConfiguration'.
+
 ## Az.Websites
 
 ### `New-AzWebAppContainerPSSession`

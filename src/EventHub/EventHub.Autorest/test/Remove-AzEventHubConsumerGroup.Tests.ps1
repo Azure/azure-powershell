@@ -21,7 +21,7 @@ Describe 'Remove-AzEventHubConsumerGroup' {
         { Get-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name consumerGroup } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity'  {
         $consumerGroup = New-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name consumerGroup
         Remove-AzEventHubConsumerGroup -InputObject $consumerGroup
         { Get-AzEventHubConsumerGroup -InputObject $consumerGroup } | Should -Throw

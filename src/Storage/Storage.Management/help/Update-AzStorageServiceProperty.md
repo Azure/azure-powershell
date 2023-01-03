@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/update-azstorageserviceproperty
+online version: https://learn.microsoft.com/powershell/module/az.storage/update-azstorageserviceproperty
 schema: 2.0.0
 ---
 

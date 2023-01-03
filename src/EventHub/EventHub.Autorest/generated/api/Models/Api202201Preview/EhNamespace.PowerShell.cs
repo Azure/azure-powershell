@@ -150,13 +150,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("IdentityPrincipalId"))
+            if (content.Contains("PrincipalId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).PrincipalId, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityTenantId"))
+            if (content.Contains("TenantId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityTenantId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).TenantId, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
@@ -174,9 +174,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityType = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType?) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityType, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType.CreateFrom);
             }
-            if (content.Contains("IdentityUserAssignedIdentity"))
+            if (content.Contains("UserAssignedIdentity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("SystemDataCreatedByType"))
             {
@@ -226,9 +226,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).MetricId = (string) content.GetValueForProperty("MetricId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).MetricId, global::System.Convert.ToString);
             }
-            if (content.Contains("IsAutoInflateEnabled"))
+            if (content.Contains("EnableAutoInflate"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IsAutoInflateEnabled = (bool?) content.GetValueForProperty("IsAutoInflateEnabled",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IsAutoInflateEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EnableAutoInflate = (bool?) content.GetValueForProperty("EnableAutoInflate",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EnableAutoInflate, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("PublicNetworkAccess"))
             {
@@ -258,17 +258,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).AlternateName = (string) content.GetValueForProperty("AlternateName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).AlternateName, global::System.Convert.ToString);
             }
-            if (content.Contains("EncryptionKeySource"))
+            if (content.Contains("KeySource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EncryptionKeySource = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource?) content.GetValueForProperty("EncryptionKeySource",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EncryptionKeySource, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).KeySource = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource?) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).KeySource, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource.CreateFrom);
             }
-            if (content.Contains("EncryptionKeyVaultProperty"))
+            if (content.Contains("KeyVaultProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EncryptionKeyVaultProperty = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties[]) content.GetValueForProperty("EncryptionKeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EncryptionKeyVaultProperty, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.KeyVaultPropertiesTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).KeyVaultProperty = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties[]) content.GetValueForProperty("KeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).KeyVaultProperty, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.KeyVaultPropertiesTypeConverter.ConvertFrom));
             }
-            if (content.Contains("EncryptionRequireInfrastructureEncryption"))
+            if (content.Contains("RequireInfrastructureEncryption"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EncryptionRequireInfrastructureEncryption = (bool?) content.GetValueForProperty("EncryptionRequireInfrastructureEncryption",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EncryptionRequireInfrastructureEncryption, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).RequireInfrastructureEncryption = (bool?) content.GetValueForProperty("RequireInfrastructureEncryption",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).RequireInfrastructureEncryption, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -335,13 +335,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("IdentityPrincipalId"))
+            if (content.Contains("PrincipalId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).PrincipalId, global::System.Convert.ToString);
             }
-            if (content.Contains("IdentityTenantId"))
+            if (content.Contains("TenantId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityTenantId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).TenantId, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {
@@ -359,9 +359,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityType = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType?) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityType, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType.CreateFrom);
             }
-            if (content.Contains("IdentityUserAssignedIdentity"))
+            if (content.Contains("UserAssignedIdentity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("SystemDataCreatedByType"))
             {
@@ -411,9 +411,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).MetricId = (string) content.GetValueForProperty("MetricId",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).MetricId, global::System.Convert.ToString);
             }
-            if (content.Contains("IsAutoInflateEnabled"))
+            if (content.Contains("EnableAutoInflate"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IsAutoInflateEnabled = (bool?) content.GetValueForProperty("IsAutoInflateEnabled",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).IsAutoInflateEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EnableAutoInflate = (bool?) content.GetValueForProperty("EnableAutoInflate",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EnableAutoInflate, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("PublicNetworkAccess"))
             {
@@ -443,17 +443,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).AlternateName = (string) content.GetValueForProperty("AlternateName",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).AlternateName, global::System.Convert.ToString);
             }
-            if (content.Contains("EncryptionKeySource"))
+            if (content.Contains("KeySource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EncryptionKeySource = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource?) content.GetValueForProperty("EncryptionKeySource",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EncryptionKeySource, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).KeySource = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource?) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).KeySource, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource.CreateFrom);
             }
-            if (content.Contains("EncryptionKeyVaultProperty"))
+            if (content.Contains("KeyVaultProperty"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EncryptionKeyVaultProperty = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties[]) content.GetValueForProperty("EncryptionKeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EncryptionKeyVaultProperty, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.KeyVaultPropertiesTypeConverter.ConvertFrom));
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).KeyVaultProperty = (Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties[]) content.GetValueForProperty("KeyVaultProperty",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).KeyVaultProperty, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.KeyVaultPropertiesTypeConverter.ConvertFrom));
             }
-            if (content.Contains("EncryptionRequireInfrastructureEncryption"))
+            if (content.Contains("RequireInfrastructureEncryption"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EncryptionRequireInfrastructureEncryption = (bool?) content.GetValueForProperty("EncryptionRequireInfrastructureEncryption",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).EncryptionRequireInfrastructureEncryption, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).RequireInfrastructureEncryption = (bool?) content.GetValueForProperty("RequireInfrastructureEncryption",((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal)this).RequireInfrastructureEncryption, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

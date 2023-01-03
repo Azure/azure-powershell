@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support
 {
 
-    /// <summary>
-    /// Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-    /// </summary>
+    /// <summary>The incoming request type to the service</summary>
     public partial struct WebPubSubRequestType :
         System.IEquatable<WebPubSubRequestType>
     {
@@ -60,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support
             return this._value;
         }
 
-        /// <summary>Creates an instance of the <see cref="WebPubSubRequestType" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="WebPubSubRequestType"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private WebPubSubRequestType(string underlyingValue)
         {
@@ -84,8 +82,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support
         }
 
         /// <summary>Overriding != operator for enum WebPubSubRequestType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType e1, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType e2)
         {
@@ -93,8 +91,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support
         }
 
         /// <summary>Overriding == operator for enum WebPubSubRequestType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType e1, Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType e2)
         {

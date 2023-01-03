@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/WebPubSub/{resourceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzWebPubSub_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Description(@"Operation to update an exiting resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Generated]
     public partial class UpdateAzWebPubSub_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
@@ -32,6 +32,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>A class represent a resource.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.WebPubSubResource();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -66,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         Description = @"DisableLocalAuthEnable or disable aad authWhen set as true, connection with AuthType=aad won't work.",
         SerializedName = @"disableAadAuth",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter DisableAadAuth { get => ParametersBody.DisableAadAuth ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.DisableAadAuth = value; }
+        public global::System.Management.Automation.SwitchParameter DisableAadAuth { get => _parametersBody.DisableAadAuth ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.DisableAadAuth = value; }
 
         /// <summary>
         /// DisableLocalAuthEnable or disable local auth with AccessKeyWhen set as true, connection with AccessKey=xxx won't work.
@@ -79,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         Description = @"DisableLocalAuthEnable or disable local auth with AccessKeyWhen set as true, connection with AccessKey=xxx won't work.",
         SerializedName = @"disableLocalAuth",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter DisableLocalAuth { get => ParametersBody.DisableLocalAuth ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.DisableLocalAuth = value; }
+        public global::System.Management.Automation.SwitchParameter DisableLocalAuth { get => _parametersBody.DisableLocalAuth ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.DisableLocalAuth = value; }
 
         /// <summary>Request client certificate during TLS handshake if enabled</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Request client certificate during TLS handshake if enabled")]
@@ -90,7 +93,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         Description = @"Request client certificate during TLS handshake if enabled",
         SerializedName = @"clientCertEnabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter EnableTlsClientCert { get => ParametersBody.EnableTlsClientCert ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.EnableTlsClientCert = value; }
+        public global::System.Management.Automation.SwitchParameter EnableTlsClientCert { get => _parametersBody.EnableTlsClientCert ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.EnableTlsClientCert = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -104,17 +107,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
-        /// <summary>Represent the identity type: systemAssigned, userAssigned, None</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Represent the identity type: systemAssigned, userAssigned, None")]
+        /// <summary>Represents the identity type: systemAssigned, userAssigned, None</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Represents the identity type: systemAssigned, userAssigned, None")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Represent the identity type: systemAssigned, userAssigned, None",
+        Description = @"Represents the identity type: systemAssigned, userAssigned, None",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType IdentityType { get => ParametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType)""); set => ParametersBody.IdentityType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType IdentityType { get => _parametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType)""); set => _parametersBody.IdentityType = value; }
 
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity _inputObject;
@@ -136,8 +139,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         ReadOnly = false,
         Description = @"Gets or sets the list of category configurations.",
         SerializedName = @"categories",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[] LiveTraceCategory { get => ParametersBody.LiveTraceCategory ?? null /* arrayOf */; set => ParametersBody.LiveTraceCategory = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ILiveTraceCategory) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ILiveTraceCategory[] LiveTraceCategory { get => _parametersBody.LiveTraceCategory ?? null /* arrayOf */; set => _parametersBody.LiveTraceCategory = value; }
 
         /// <summary>
         /// Indicates whether or not enable live trace.When it's set to true, live trace client can connect to the service.Otherwise,
@@ -152,7 +155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         Description = @"Indicates whether or not enable live trace.When it's set to true, live trace client can connect to the service.Otherwise, live trace client can't connect to the service, so that you are unable to receive any log, no matter what you configure in ""categories"".Available values: true, false.Case insensitive.",
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(string) })]
-        public string LiveTraceEnabled { get => ParametersBody.LiveTraceEnabled ?? null; set => ParametersBody.LiveTraceEnabled = value; }
+        public string LiveTraceEnabled { get => _parametersBody.LiveTraceEnabled ?? null; set => _parametersBody.LiveTraceEnabled = value; }
 
         /// <summary>
         /// The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
@@ -166,27 +169,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.DoNotExport]
-        public string Location { get => ParametersBody.Location ?? null; set => ParametersBody.Location = value; }
+        public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
-        /// <summary>Default action when no other rule matches</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Default action when no other rule matches")]
+        /// <summary>Azure Networking ACL Action.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure Networking ACL Action.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Default action when no other rule matches",
+        Description = @"Azure Networking ACL Action.",
         SerializedName = @"defaultAction",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction))]
-        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction NetworkAcLDefaultAction { get => ParametersBody.NetworkAcLDefaultAction ?? ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction)""); set => ParametersBody.NetworkAcLDefaultAction = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction NetworkAcLDefaultAction { get => _parametersBody.NetworkAcLDefaultAction ?? ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction)""); set => _parametersBody.NetworkAcLDefaultAction = value; }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -195,12 +198,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
-
-        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.WebPubSubResource();
-
-        /// <summary>A class represent a resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.HttpPipeline" /> that the remote call will use.
@@ -216,8 +213,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         ReadOnly = false,
         Description = @"ACLs for requests from private endpoints",
         SerializedName = @"privateEndpoints",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[] PrivateEndpointAcl { get => ParametersBody.PrivateEndpointAcl ?? null /* arrayOf */; set => ParametersBody.PrivateEndpointAcl = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IPrivateEndpointAcl) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IPrivateEndpointAcl[] PrivateEndpointAcl { get => _parametersBody.PrivateEndpointAcl ?? null /* arrayOf */; set => _parametersBody.PrivateEndpointAcl = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -247,7 +244,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         Description = @"Enable or disable public network access. Default to ""Enabled"".When it's Enabled, network ACLs still apply.When it's Disabled, public network access is always disabled no matter what you set in network ACLs.",
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(string) })]
-        public string PublicNetworkAccess { get => ParametersBody.PublicNetworkAccess ?? null; set => ParametersBody.PublicNetworkAccess = value; }
+        public string PublicNetworkAccess { get => _parametersBody.PublicNetworkAccess ?? null; set => _parametersBody.PublicNetworkAccess = value; }
 
         /// <summary>
         /// Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
@@ -262,7 +259,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         SerializedName = @"allow",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[] PublicNetworkAllow { get => ParametersBody.PublicNetworkAllow ?? null /* arrayOf */; set => ParametersBody.PublicNetworkAllow = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[] PublicNetworkAllow { get => _parametersBody.PublicNetworkAllow ?? null /* arrayOf */; set => _parametersBody.PublicNetworkAllow = value; }
 
         /// <summary>
         /// Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
@@ -277,7 +274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         SerializedName = @"deny",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[] PublicNetworkDeny { get => ParametersBody.PublicNetworkDeny ?? null /* arrayOf */; set => ParametersBody.PublicNetworkDeny = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[] PublicNetworkDeny { get => _parametersBody.PublicNetworkDeny ?? null /* arrayOf */; set => _parametersBody.PublicNetworkDeny = value; }
 
         /// <summary>Gets or sets the list of category configurations.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -288,33 +285,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         ReadOnly = false,
         Description = @"Gets or sets the list of category configurations.",
         SerializedName = @"categories",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[] ResourceLogCategory { get => ParametersBody.ResourceLogCategory ?? null /* arrayOf */; set => ParametersBody.ResourceLogCategory = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IResourceLogCategory) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IResourceLogCategory[] ResourceLogCategory { get => _parametersBody.ResourceLogCategory ?? null /* arrayOf */; set => _parametersBody.ResourceLogCategory = value; }
 
         /// <summary>
-        /// Optional, integer. The unit count of the resource. 1 by default.If present, following values are allowed: Free: 1 Standard:
-        /// 1,2,5,10,20,50,100
+        /// Optional, integer. The unit count of the resource. 1 by default.If present, following values are allowed: Free: 1; Standard:
+        /// 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Optional, integer. The unit count of the resource. 1 by default.If present, following values are allowed: Free: 1 Standard: 1,2,5,10,20,50,100")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Optional, integer. The unit count of the resource. 1 by default.If present, following values are allowed: Free: 1; Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Optional, integer. The unit count of the resource. 1 by default.If present, following values are allowed: Free: 1 Standard: 1,2,5,10,20,50,100",
+        Description = @"Optional, integer. The unit count of the resource. 1 by default.If present, following values are allowed: Free: 1; Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;",
         SerializedName = @"capacity",
         PossibleTypes = new [] { typeof(int) })]
-        public int SkuCapacity { get => ParametersBody.SkuCapacity ?? default(int); set => ParametersBody.SkuCapacity = value; }
+        public int SkuCapacity { get => _parametersBody.SkuCapacity ?? default(int); set => _parametersBody.SkuCapacity = value; }
 
-        /// <summary>The name of the SKU. Required.Allowed values: Standard_S1, Free_F1</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the SKU. Required.Allowed values: Standard_S1, Free_F1")]
+        /// <summary>The name of the SKU. Required.Allowed values: Standard_S1, Free_F1, Premium_P1</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the SKU. Required.Allowed values: Standard_S1, Free_F1, Premium_P1")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the SKU. Required.Allowed values: Standard_S1, Free_F1",
+        Description = @"The name of the SKU. Required.Allowed values: Standard_S1, Free_F1, Premium_P1",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuName { get => ParametersBody.SkuName ?? null; set => ParametersBody.SkuName = value; }
+        public string SkuName { get => _parametersBody.SkuName ?? null; set => _parametersBody.SkuName = value; }
 
         /// <summary>
         /// Optional tier of this particular SKU. 'Standard' or 'Free'. `Basic` is deprecated, use `Standard` instead.
@@ -328,7 +325,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier))]
-        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier SkuTier { get => ParametersBody.SkuTier ?? ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier)""); set => ParametersBody.SkuTier = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier SkuTier { get => _parametersBody.SkuTier ?? ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier)""); set => _parametersBody.SkuTier = value; }
 
         /// <summary>
         /// Tags of the service which is a list of key value pairs that describe the resource.
@@ -341,8 +338,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         ReadOnly = false,
         Description = @"Tags of the service which is a list of key value pairs that describe the resource.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ITrackedResourceTags Tag { get => ParametersBody.Tag ?? null /* object */; set => ParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ITrackedResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>Get or set the user assigned identities</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -353,16 +350,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         ReadOnly = false,
         Description = @"Get or set the user assigned identities",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentityUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentityUserAssignedIdentities UserAssignedIdentity { get => ParametersBody.UserAssignedIdentity ?? null /* object */; set => ParametersBody.UserAssignedIdentity = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IManagedIdentityUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IManagedIdentityUserAssignedIdentities UserAssignedIdentity { get => _parametersBody.UserAssignedIdentity ?? null /* object */; set => _parametersBody.UserAssignedIdentity = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -373,18 +370,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource">Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -410,14 +412,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.ParametersBody = this.ParametersBody;
+            clone._parametersBody = this._parametersBody;
             return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -550,7 +552,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -567,7 +568,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.WebPubSubUpdateViaIdentity(InputObject.Id, ParametersBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.WebPubSubUpdateViaIdentity(InputObject.Id, _parametersBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -584,13 +585,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.WebPubSubUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ResourceName ?? null, ParametersBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.WebPubSubUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ResourceName ?? null, _parametersBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=ParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_parametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -621,8 +622,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -644,14 +645,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -661,12 +662,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource">Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -678,7 +679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource
                 WriteObject((await response));
             }
         }

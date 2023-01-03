@@ -23,7 +23,7 @@ Create an in-memory object for ContactProfileLink.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink
 .Link
-https://docs.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkObject
+https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkObject
 #>
 function New-AzOrbitalContactProfileLinkObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink')]

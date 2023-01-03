@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SecurityInsights
-online version: https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
+online version: https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
 schema: 2.0.0
 ---
 
@@ -136,11 +136,11 @@ Creates or updates the data connector.
 
 ### Example 1: Enable a data connector.
 ```powershell
-New-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All  -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
+New-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All  -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
 ```
 
 This command enables the Threat Intelligence data connector
-s
+
 ## PARAMETERS
 
 ### -Alerts
