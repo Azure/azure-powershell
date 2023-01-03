@@ -43,7 +43,7 @@ INPUTOBJECT <IDashboardIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The workspace name of Azure Managed Grafana.
 .Link
-https://docs.microsoft.com/powershell/module/az.dashboard/get-azgrafana
+https://learn.microsoft.com/powershell/module/az.dashboard/get-azgrafana
 #>
 function Get-AzGrafana {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana])]
@@ -235,7 +235,7 @@ INPUTOBJECT <IDashboardIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The workspace name of Azure Managed Grafana.
 .Link
-https://docs.microsoft.com/powershell/module/az.dashboard/remove-azgrafana
+https://learn.microsoft.com/powershell/module/az.dashboard/remove-azgrafana
 #>
 function Remove-AzGrafana {
 [OutputType([System.Boolean])]
@@ -443,7 +443,7 @@ INPUTOBJECT <IDashboardIdentity>: Identity Parameter
 MONITORWORKSPACEINTEGRATION <IAzureMonitorWorkspaceIntegration[]>: The MonitorWorkspaceIntegration of Azure Managed Grafana.
   [AzureMonitorWorkspaceResourceId <String>]: The resource Id of the connected Azure Monitor Workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.dashboard/update-azgrafana
+https://learn.microsoft.com/powershell/module/az.dashboard/update-azgrafana
 #>
 function Update-AzGrafana {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana])]
@@ -682,7 +682,7 @@ To create the parameters described below, construct a hash table containing the 
 MONITORWORKSPACEINTEGRATION <IAzureMonitorWorkspaceIntegration[]>: The MonitorWorkspaceIntegration of Azure Managed Grafana.
   [AzureMonitorWorkspaceResourceId <String>]: The resource Id of the connected Azure Monitor Workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.dashboard/new-azgrafana
+https://learn.microsoft.com/powershell/module/az.dashboard/new-azgrafana
 #>
 function New-AzGrafana {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana])]
@@ -935,7 +935,7 @@ New-AzGrafanaMonitorWorkspaceIntegrationObject -AzureMonitorWorkspaceResourceId 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.AzureMonitorWorkspaceIntegration
 .Link
-https://docs.microsoft.com/powershell/module/az.dashboard/new-azgrafanamonitorworkspaceintegrationobject
+https://learn.microsoft.com/powershell/module/az.dashboard/new-azgrafanamonitorworkspaceintegrationobject
 #>
 function New-AzGrafanaMonitorWorkspaceIntegrationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.AzureMonitorWorkspaceIntegration])]

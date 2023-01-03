@@ -38,7 +38,7 @@ PROPERTY <IPrivateEndpointConnection>: The Private Endpoint Connection resource.
   [PrivateLinkServiceConnectionStateDescription <String>]: The reason for approval/rejection of the connection.
   [PrivateLinkServiceConnectionStateStatus <PrivateEndpointServiceConnectionStatus?>]: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/set-azredisenterprisecacheprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/set-azredisenterprisecacheprivateendpointconnection
 #>
 function Set-AzRedisEnterpriseCachePrivateEndpointConnection {
 [OutputType([System.Boolean])]

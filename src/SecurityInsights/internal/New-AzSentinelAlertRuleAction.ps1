@@ -44,7 +44,7 @@ ACTION <IActionRequest>: Action for alert rule.
   [LogicAppResourceId <String>]: Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
   [TriggerUri <String>]: Logic App Callback URL for this specific workflow.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertruleaction
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertruleaction
 #>
 function New-AzSentinelAlertRuleAction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse])]

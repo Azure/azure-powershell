@@ -19,23 +19,18 @@ param(
 
 function Get-PreloadAssemblies{
     param(
+        [Parameter(Mandatory)]
+        [string] $BuildFolder,
         [Parameter(Mandatory=$True)]
         [string] $ModuleFolder
     )
-
-    if($PSEdition -eq 'Core') {
-        $preloadFolderName = @("NetCoreAssemblies", "AzSharedAlcAssemblies")
-    } else {
-        $preloadFolderName = "PreloadAssemblies"
-    }
-    $preloadFolderName | ForEach-Object {
-        $preloadAssemblies = @()
-        $preloadFolder = [System.IO.Path]::Combine($ModuleFolder, $_)
-        if(Test-Path $preloadFolder){
-            $preloadAssemblies = (Get-ChildItem $preloadFolder -Filter "*.dll").Name | ForEach-Object { $_ -replace ".dll", ""}
-        }
-        $preloadAssemblies
-    }
+    Write-Host "Getting preload assemblies in $BuildFolder for $ModuleFolder"
+    Add-Type -Path ([System.IO.Path]::Combine($BuildFolder, "Az.Accounts", "Microsoft.Azure.PowerShell.AssemblyLoading.dll"))
+    $assemblyRootPath = [System.IO.Path]::Combine($BuildFolder, "Az.Accounts", "lib")
+    $conditionalAssemblyContext = [Microsoft.Azure.PowerShell.AssemblyLoading.ConditionalAssemblyContext]::new($Host.Version)
+    [Microsoft.Azure.PowerShell.AssemblyLoading.ConditionalAssemblyProvider]::Initialize($assemblyRootPath, $conditionalAssemblyContext)
+    $assemblyDict = [Microsoft.Azure.PowerShell.AssemblyLoading.ConditionalAssemblyProvider]::GetAssemblies()
+    return $assemblyDict.Keys
 }
 
 $ProjectPaths = @( "$PSScriptRoot\..\artifacts\$BuildConfig" )
@@ -66,7 +61,7 @@ foreach ($ModuleManifest in $ModuleManifestFiles) {
         $LoadedAssemblies += $ModuleMetadata.RequiredAssemblies
     }
 
-    $LoadedAssemblies += Get-PreloadAssemblies $ModuleManifest.Directory
+    $LoadedAssemblies += Get-PreloadAssemblies -BuildFolder "$PSScriptRoot\..\artifacts\$BuildConfig" -ModuleFolder $ModuleManifest.Directory
     $LoadedAssemblies += $ModuleMetadata.NestedModules
 
     if ($ModuleMetadata.RequiredModules) {
@@ -87,7 +82,7 @@ foreach ($ModuleManifest in $ModuleManifestFiles) {
                 }
                 $LoadedAssemblies += $ModuleMetadata.NestedModules
             }
-            $LoadedAssemblies += Get-PreloadAssemblies $RequiredModuleManifest.Directory
+            $LoadedAssemblies += Get-PreloadAssemblies -BuildFolder "$PSScriptRoot\..\artifacts\$BuildConfig" -ModuleFolder $RequiredModuleManifest.Directory
         }
     }
 

@@ -24,8 +24,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
     public abstract class ConfigCommandBase : AzureRMCmdlet
     {
-        public const string PreviewMessage = "The cmdlet group \"AzConfig\" is in preview. Feedback is welcome: https://aka.ms/azpsissue";
-
         private readonly RuntimeDefinedParameterDictionary _dynamicParameters = new RuntimeDefinedParameterDictionary();
 
         protected IConfigManager ConfigManager { get; }

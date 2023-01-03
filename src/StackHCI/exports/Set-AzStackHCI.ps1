@@ -75,21 +75,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the ARM access token.
-    # Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+    # Specifying this along with AccountId will avoid Azure interactive logon.
     ${ArmAccessToken},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the Graph access token.
-    # Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+    # GraphAccessToken is deprecated.
     ${GraphAccessToken},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the ARM access token.
-    # Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+    # Specifying this along with ArmAccessToken will avoid Azure interactive logon.
     ${AccountId},
 
     [Parameter()]

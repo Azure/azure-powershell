@@ -8,15 +8,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
     using System;
 
-    /// <summary>
-    /// Deletes an existing namespace. This operation also removes all associated resources under the namespace.
-    /// </summary>
+    /// <summary>Deletes a Private Endpoint Connection.</summary>
     /// <remarks>
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzEventHubPrivateEndpointConnection_DeleteViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Deletes an existing namespace. This operation also removes all associated resources under the namespace.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Deletes a Private Endpoint Connection.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
     public partial class RemoveAzEventHubPrivateEndpointConnection_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener

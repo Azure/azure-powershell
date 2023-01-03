@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceBusSubscription'
 
 Describe 'Get-AzServiceBusSubscription' {
     $sub = Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription1
-    
-    It 'List' {
+     
+    It 'List'  {
         $listOfSubscriptions = Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1
         $listOfSubscriptions.Count | Should -Be 1
     }
