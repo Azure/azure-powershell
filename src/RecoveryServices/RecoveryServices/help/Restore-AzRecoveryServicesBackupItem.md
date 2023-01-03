@@ -303,7 +303,7 @@ $restoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -Rehydr
 
 Here we filter the recovery points present in the VaultArchive tier and trigger a restore with rehydration priority and rehydration duration.
 
-### Example 10: CZR restore example
+### Example 10: Cross zonal restore for non-ZonePinned VM in a ZRS vault
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"

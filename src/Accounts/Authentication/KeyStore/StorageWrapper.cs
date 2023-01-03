@@ -14,6 +14,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Identity.Client.Extensions.Msal;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
@@ -28,6 +29,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         private Exception _lastError;
 
         private Storage _storage = null;
+
+        private bool _protected;
+        public bool IsProtected
+        {
+            get => _protected;
+            private set => _protected = value;
+        }
 
         static ReaderWriterLockSlim storageLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
 
@@ -47,16 +55,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 storageProperties = new StorageCreationPropertiesBuilder(FileName, Directory)
                     .WithMacKeyChain(KeyChainServiceName + ".other_secrets", FileName)
-                    .WithLinuxUnprotectedFile();
+                    .WithLinuxKeyring(FileName, "default", "AzKeyStoreCache",
+                    new KeyValuePair<string, string>("AzureClientID", "Microsoft.Developer.Azure.PowerShell"),
+                    new KeyValuePair<string, string>("Microsoft.Developer.Azure.PowerShell", "1.0.0.0"));
                 _storage = Storage.Create(storageProperties.Build());
                 VerifyPersistence();
+                _protected = true;
             }
-            catch (MsalCachePersistenceException e)
+            catch (Exception e)
             {
                 _lastError = e;
-                _storage.Clear();
                 storageProperties = new StorageCreationPropertiesBuilder(FileName, Directory).WithUnprotectedFile();
                 _storage = Storage.Create(storageProperties.Build());
+                _protected = false;
             }
             finally
             {

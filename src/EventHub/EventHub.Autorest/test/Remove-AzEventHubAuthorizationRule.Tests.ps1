@@ -38,12 +38,12 @@ Describe 'Remove-AzEventHubAuthorizationRule' {
         { Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule1 } | Should -Throw
     }
 
-    It 'RemoveExpandedEntity' {
+    It 'RemoveExpandedEntity'  {
         Remove-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name entityAuthRule1
         { Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name entityAuthRule1 } | Should -Throw
     }
 
-    It 'RemoveViaIdentityExpanded' {
+    It 'RemoveViaIdentityExpanded'  {
         Remove-AzEventHubAuthorizationRule -InputObject $namespaceAuthRule
         { Get-AzEventHubAuthorizationRule -InputObject $namespaceAuthRule } | Should -Throw
 

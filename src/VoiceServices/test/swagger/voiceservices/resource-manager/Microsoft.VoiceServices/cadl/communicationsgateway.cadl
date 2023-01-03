@@ -1,0 +1,196 @@
+// Definitions for the CommunicationsGateway resource and child resources
+
+import "@cadl-lang/openapi";
+import "@cadl-lang/rest";
+import "@azure-tools/cadl-providerhub";
+import "@azure-tools/cadl-autorest";
+import "@azure-tools/cadl-azure-core";
+import "@azure-tools/cadl-azure-resource-manager";
+
+namespace Microsoft.VoiceServices;
+
+using Cadl.Http;
+using Cadl.Rest;
+using Azure.ResourceManager;
+
+@doc("A TestLine resource")
+@parentResource(CommunicationsGateway)
+model TestLine is TrackedResource<TestLineProperties> {
+  @pattern("^[a-zA-Z0-9-]{3,24}$")
+  @key("testLineName")
+  @segment("testLines")
+  @doc("Unique identifier for this test line")
+  @visibility("Read")
+  @path
+  name: string;
+}
+
+@doc("The purpose of the TestLine resource.")
+enum TestLinePurpose {
+  Manual,
+  Automated,
+}
+
+@doc("Details of the TestLine resource.")
+model TestLineProperties is ResourceProperties {
+  @doc("The phone number")
+  @visibility("read", "write", "create")
+  phoneNumber: string;
+  @doc("Purpose of this test line, e.g. automated or manual testing")
+  @visibility("read", "write", "create")
+  purpose: TestLinePurpose;
+}
+
+@armResourceOperations
+interface TestLines extends ResourceRead<TestLine>, ResourceCreate<TestLine>, ResourceDelete<TestLine>, ResourceListByParent<TestLine>, ResourceUpdateNoProperties<TestLine> {}
+
+@doc("A Contact resource")
+@parentResource(CommunicationsGateway)
+model Contact is TrackedResource<ContactProperties> {
+  @pattern("^[a-zA-Z0-9-]{3,24}$")
+  @key("contactName")
+  @segment("contacts")
+  @doc("Unique identifier for this contact")
+  @visibility("Read")
+  @path
+  name: string;
+}
+
+@doc("Details of the Contact resource.")
+model ContactProperties is ResourceProperties {
+  @doc("Full name of contact")
+  @visibility("read", "write", "create")
+  contactName: string;
+  @doc("Telephone number of contact")
+  @visibility("read", "write", "create")
+  phoneNumber: string;
+  @doc("Email address of contact")
+  @visibility("read", "write", "create")
+  email: string;
+  @doc("Job title of contact")
+  @visibility("read", "write", "create")
+  role: string;
+}
+
+@armResourceOperations
+interface Contacts extends ResourceRead<Contact>, ResourceCreate<Contact>, ResourceDelete<Contact>, ResourceListByParent<Contact>, ResourceUpdateNoProperties<Contact> {}
+
+@doc("A CommunicationsGateway resource")
+model CommunicationsGateway is TrackedResource<CommunicationsGatewayProperties> {
+  @pattern("^[a-zA-Z0-9-]{3,24}$")
+  @key("communicationsGatewayName")
+  @segment("communicationsGateways")
+  @doc("Unique identifier for this deployment")
+  @visibility("Read")
+  @path
+  name: string;
+}
+
+@doc("The status of the current CommunicationsGateway resource.")
+enum Status {
+  @doc("The resource has been created or updated, but the CommunicationsGateway service has not yet been updated to reflect the changes.")
+  ChangePending,
+  @doc("The CommunicationsGateway service is up and running with the parameters specified in the resource.")
+  Complete,
+}
+
+@doc("The method for terminating emergency calls to the PSTN.")
+@knownValues(E911TypeValues)
+model E911Type is string {}
+enum E911TypeValues {
+  @doc("Emergency calls are not handled different from other calls")
+  Standard,
+  @doc("Emergency calls are routed directly to the ESRP")
+  DirectToEsrp
+}
+
+@doc("The voice codecs expected for communication with Teams.")
+@knownValues(TeamsCodecsValues)
+model TeamsCodecs is string {}
+enum TeamsCodecsValues {
+	PCMA,
+	PCMU,
+	G722,
+	G722_2,
+	SILK_8,
+	SILK_16
+}
+
+@doc("How this deployment connects back to the operator network")
+@knownValues(ConnectivityValues)
+model Connectivity is string {}
+enum ConnectivityValues {
+  @doc("This deployment connects to the operator network using a Public IP address, e.g. when using MAPS")
+  PublicAddress
+}
+
+@doc("The service region configuration needed for Teams Callings.")
+model ServiceRegionProperties {
+	@doc("The name of the region in which the resources needed for Teams Calling will be deployed.")
+	@visibility("read", "create")
+	name: string;
+
+	@doc("The configuration used in this region as primary, and other regions as backup.")
+	@visibility("read", "write", "create")
+	primaryRegionProperties: PrimaryRegionProperties;
+}
+
+@doc("The configuration used in this region as primary, and other regions as backup.")
+model PrimaryRegionProperties {
+	@doc("IP address to use to contact the operator network from this region")
+	@visibility("read", "write", "create")
+	operatorAddresses: string[];
+
+	@doc("IP address to use to contact the ESRP from this region")
+	@visibility("read", "write", "create")
+	esrpAddresses?: string[];
+}
+
+@doc("Available platform types.")
+@knownValues(CommunicationsPlatformValues)
+model CommunicationsPlatform is string {}
+enum CommunicationsPlatformValues {
+	OperatorConnect,
+	TeamsPhoneMobile
+}
+
+// Currently empty, with presence indicating that this feature should be enabled.
+// This is expected to include more properties in future, hence being an object.
+@doc("Details of API bridge functionality.")
+model ApiBridgeProperties {}
+
+@doc("Details of the CommunicationsGateway resource.")
+model CommunicationsGatewayProperties is ResourceProperties {
+  @doc("The current status of the deployment.")
+  @visibility("read") status?: Status;
+
+  @doc("The regions in which to deploy the resources needed for Teams Calling")
+  @OpenAPI.extension("x-ms-identifiers", ["name"])
+  @visibility("read", "write", "create")
+  serviceLocations: ServiceRegionProperties[];
+
+  @doc("How to connect back to the operator network, e.g. MAPS")
+  @visibility("read", "create")
+  connectivity: Connectivity;
+
+  @doc("Voice codecs to support")
+  @visibility("read", "write", "create")
+  codecs: TeamsCodecs[];
+  
+  @doc("How to handle 911 calls")
+  @visibility("read", "write", "create")
+  e911Type: E911Type;
+
+  @doc("What platforms to support")
+  @visibility("read", "write", "create")
+  // Can be set once we get a cald release with this decorator
+  // @minItems(1)
+  platforms: CommunicationsPlatform[];
+
+  @doc("Details of API bridge functionality, if required")
+  @visibility("read", "write", "create")
+  apiBridge?: ApiBridgeProperties;
+}
+
+@armResourceOperations
+interface CommunicationsGateways extends ResourceRead<CommunicationsGateway>, ResourceCreate<CommunicationsGateway>, ResourceDelete<CommunicationsGateway>, ResourceListBySubscription<CommunicationsGateway>, ResourceListByParent<CommunicationsGateway>, ResourceUpdateNoProperties<CommunicationsGateway> {}

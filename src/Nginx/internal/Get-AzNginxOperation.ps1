@@ -27,7 +27,7 @@ List all operations provided by Nginx.NginxPlus for the 2022-08-01 api version.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IOperationResult
 .Link
-https://docs.microsoft.com/powershell/module/az.nginx/get-aznginxoperation
+https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxoperation
 #>
 function Get-AzNginxOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IOperationResult])]
