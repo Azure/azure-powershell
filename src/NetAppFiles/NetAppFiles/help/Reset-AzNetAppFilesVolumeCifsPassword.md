@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/reset-aznetappfilesvolumecifspassword
 schema: 2.0.0
 ---
 
 # Reset-AzNetAppFilesVolumeCifsPassword
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Reset the Cifs password for the volume
 
 ## SYNTAX
 
@@ -38,16 +38,16 @@ Reset-AzNetAppFilesVolumeCifsPassword -InputObject <PSNetAppFilesVolume> [-PassT
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Reset Cifs password from volume
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Reset-AzNetAppFilesVolumeCifsPassword -ResourceGroupName "MyRG" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume"
 ```
 
-{{ Add example description here }}
+This command  resets the Cifs password for the volume MyVolume
 
 ## PARAMETERS
 

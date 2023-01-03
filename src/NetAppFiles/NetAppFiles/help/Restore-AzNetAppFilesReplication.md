@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/restore-aznetappfilesreplication
 schema: 2.0.0
 ---
 
 # Restore-AzNetAppFilesReplication
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Restore (Re-establish) the specified replication for the volume
 
 ## SYNTAX
 
@@ -32,16 +32,16 @@ Restore-AzNetAppFilesReplication -SourceVolumeId <String> -InputObject <PSNetApp
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Restore (Re-establish) a previously deleted replication between 2 volumes that have a common ad-hoc or policy-based snapshots
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Restore-AzNetAppFilesSnapshotFile -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyVolume" --SourceVolumeId "volumeResourceId"
 ```
 
-{{ Add example description here }}
+This command Restores the replication for the volumes 
 
 ## PARAMETERS
 

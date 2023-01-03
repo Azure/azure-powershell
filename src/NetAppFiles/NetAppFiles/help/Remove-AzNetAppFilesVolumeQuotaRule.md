@@ -47,7 +47,7 @@ The **Remove-AzNetAppFilesVolumeQuotaRule** cmdlet deletes an empty ANF VolumeQu
 Remove-AzNetAppFilesVolumeQuotaRule -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -VolumeName "MyAnfVolume" -Name "MyVolumeQuotaRuleName"
 ```
 
-{{ Add example description here }}
+The **Remove-AzNetAppFilesVolumeGroup** cmdlet deletes an empty ANF VolumeQuotaRule.
 
 ## PARAMETERS
 
