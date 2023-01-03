@@ -76,7 +76,7 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount', 
                'Remove-AzNetAppFilesAccount', 'Set-AzNetAppFilesAccount', 
-               'Update-AzNetAppFilesAccount', 'Get-AzNetAppFilesPool', 'Update-NetAppFilesAccountCredential',
+               'Update-AzNetAppFilesAccount', 'Get-AzNetAppFilesPool', 'Update-AzNetAppFilesAccountCredential',
                'New-AzNetAppFilesPool', 'Update-AzNetAppFilesPool', 
                'Set-AzNetAppFilesPool', 'Remove-AzNetAppFilesPool', 
                'Get-AzNetAppFilesVolume', 'New-AzNetAppFilesVolume', 
