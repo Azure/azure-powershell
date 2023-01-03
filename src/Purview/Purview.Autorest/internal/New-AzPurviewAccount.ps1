@@ -25,7 +25,7 @@ New-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Location eastus -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewaccount
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewaccount
 #>
 function New-AzPurviewAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount])]
