@@ -25,7 +25,7 @@ New-AzMigrateDiskMapping -DiskID a -DiskType Standard -IsOSDisk 'true'
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtDiskInput
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 #>
 function New-AzMigrateDiskMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtDiskInput])]

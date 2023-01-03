@@ -304,6 +304,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public int RegularPriorityPercentage { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the gallery image resource id for vmss deployment. This can be fetched from the gallery image GET call.")]
+        [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
+        public string ImageReferenceId { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -742,6 +748,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vPriorityMixPolicy = new PriorityMixPolicy();
                 }
                 vPriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
+            }
+
+            if (this.IsParameterBound(c => c.ImageReferenceId))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile == null)
+                {
+                    vVirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile.ImageReference == null)
+                {
+                    vVirtualMachineProfile.StorageProfile.ImageReference = new ImageReference();
+                }
+                vVirtualMachineProfile.StorageProfile.ImageReference.Id = this.ImageReferenceId;
             }
 
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet

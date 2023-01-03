@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             dynamicPolicy.StorageEndpoint = GetStorageAccountEndpoint(storageAccountName);
             dynamicPolicy.StorageAccountSubscriptionId = storageAccountSubscriptionId;
 
-            if (AzureCommunicator.IsStorageAccountInVNet(model.StorageAccountResourceId))
+            if (AzureCommunicator.IsStorageAccountInVNet(model.StorageAccountResourceId) || model.UseIdentity == BoolType.True)
             {
                 Guid? principalId = Communicator.AssignServerIdentityIfNotAssigned(model.ResourceGroupName, model.ServerName);
                 AzureCommunicator.AssignRoleForServerIdentityOnStorageIfNotAssigned(model.StorageAccountResourceId, principalId.Value, RoleAssignmentId);

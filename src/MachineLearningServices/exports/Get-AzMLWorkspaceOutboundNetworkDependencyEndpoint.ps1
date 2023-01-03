@@ -25,7 +25,7 @@ Get-AzMLWorkspaceOutboundNetworkDependencyEndpoint -ResourceGroupName ml-rg-test
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IFqdnEndpoints
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceoutboundnetworkdependencyendpoint
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceoutboundnetworkdependencyendpoint
 #>
 function Get-AzMLWorkspaceOutboundNetworkDependencyEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IFqdnEndpoints])]

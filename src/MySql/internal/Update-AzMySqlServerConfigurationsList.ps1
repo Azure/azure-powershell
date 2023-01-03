@@ -53,7 +53,7 @@ VALUE <IConfigurationListResult>: A list of server configurations.
     [Source <String>]: Source of the configuration.
     [Value <String>]: Value of the configuration.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlserverconfigurationslist
+https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlserverconfigurationslist
 #>
 function Update-AzMySqlServerConfigurationsList {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration])]

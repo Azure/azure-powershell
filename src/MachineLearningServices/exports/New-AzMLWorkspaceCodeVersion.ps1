@@ -25,7 +25,7 @@ New-AzMLWorkspaceCodeVersion -ResourceGroupName ml-rg-test -WorkspaceName mlwork
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ICodeVersion
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecodeversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecodeversion
 #>
 function New-AzMLWorkspaceCodeVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ICodeVersion])]
