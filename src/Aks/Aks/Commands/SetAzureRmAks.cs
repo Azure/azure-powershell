@@ -74,6 +74,12 @@ namespace Microsoft.Azure.Commands.Aks
         [Alias("ResourceId")]
         public string Id { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The parameters to be applied to the cluster-autoscaler.")]
+        public ManagedClusterPropertiesAutoScalerProfile AutoScalerProfile { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to use use Uptime SLA.")]
+        public SwitchParameter EnableUptimeSLA { get; set; }
+
         private ManagedCluster BuildNewCluster()
         {
             BeforeBuildNewCluster();
@@ -395,6 +401,21 @@ namespace Microsoft.Azure.Commands.Aks
                     {
                         cluster.FqdnSubdomain = FqdnSubdomain;
                     }
+                    if (this.IsParameterBound(c => c.AutoScalerProfile))
+                    {
+                        cluster.AutoScalerProfile = AutoScalerProfile;
+                    }
+                    if (this.IsParameterBound(c => c.EnableUptimeSLA))
+                    {
+                        if (EnableUptimeSLA.ToBool())
+                        {
+                            cluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Paid");
+                        }
+                        else
+                        {
+                            cluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Free");
+                        }
+                    }
                     SetIdentity(cluster);
 
                     var kubeCluster = this.CreateOrUpdate(ResourceGroupName, Name, cluster);
@@ -407,7 +428,6 @@ namespace Microsoft.Azure.Commands.Aks
                     {
                         cluster.DisableLocalAccounts = DisableLocalAccount;
                     }
-
                     WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(kubeCluster));
                 });
             }

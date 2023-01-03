@@ -27,7 +27,7 @@ Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName "TestRG" -Proje
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
+https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigratereplicationinfrastructure
 #>
 function Initialize-AzMigrateReplicationInfrastructure {
 [OutputType([System.Boolean])]

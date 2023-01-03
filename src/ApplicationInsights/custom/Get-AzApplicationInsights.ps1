@@ -146,9 +146,9 @@ function Get-AzApplicationInsights {
         }
 
         if ($full) {
-            $PSCmdlet.WriteObject([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan]::New($component, $pricingPlan, $dailyCapStatus))
+            $PSCmdlet.WriteObject([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.PSApplicationInsightsComponentWithPricingPlan]::New($component, $pricingPlan, $dailyCapStatus), $true)
         } else {
-            $PSCmdlet.WriteObject($component)
+            $PSCmdlet.WriteObject($component, $true)
         }
     }
 }

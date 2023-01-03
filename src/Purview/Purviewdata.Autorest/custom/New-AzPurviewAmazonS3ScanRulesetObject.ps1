@@ -23,7 +23,7 @@ Create an in-memory object for AmazonS3ScanRuleset.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3ScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3ScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonS3ScanRulesetObject
 #>
 function New-AzPurviewAmazonS3ScanRulesetObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3ScanRuleset')]

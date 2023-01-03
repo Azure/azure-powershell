@@ -25,7 +25,7 @@ New-AzVMwareCloudLink -Name azps_test_cloudlink -PrivateCloudName azps_test_clou
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudLink
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwarecloudlink
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwarecloudlink
 #>
 function New-AzVMwareCloudLink {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudLink])]

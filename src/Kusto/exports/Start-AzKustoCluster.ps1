@@ -47,7 +47,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/start-azkustocluster
+https://learn.microsoft.com/powershell/module/az.kusto/start-azkustocluster
 #>
 function Start-AzKustoCluster {
 [OutputType([System.Boolean])]

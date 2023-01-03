@@ -42,7 +42,7 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The subscription identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/add-azpurviewaccountrootcollectionadmin
+https://learn.microsoft.com/powershell/module/az.purview/add-azpurviewaccountrootcollectionadmin
 #>
 function Add-AzPurviewAccountRootCollectionAdmin {
 [OutputType([System.Boolean])]
@@ -192,7 +192,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewoperation
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewoperation
 #>
 function Get-AzPurviewOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IOperation])]
@@ -314,7 +314,7 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The subscription identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewprivateendpointconnection
 #>
 function Get-AzPurviewPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection])]
@@ -483,7 +483,7 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The subscription identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewprivatelinkresource
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewprivatelinkresource
 #>
 function Get-AzPurviewPrivateLinkResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateLinkResource])]
@@ -625,7 +625,7 @@ New-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Location eastus -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewaccount
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewaccount
 #>
 function New-AzPurviewAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount])]
@@ -815,7 +815,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewprivateendpointconnection
 #>
 function New-AzPurviewPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection])]
@@ -1003,7 +1003,7 @@ INPUTOBJECT <IPurviewIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The subscription identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewprivateendpointconnection
 #>
 function Remove-AzPurviewPrivateEndpointConnection {
 [OutputType([System.Boolean])]
@@ -1160,7 +1160,7 @@ Set-AzPurviewDefaultAccount -AccountName test-pa -ResourceGroupName test-rg -Sco
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/set-azpurviewdefaultaccount
+https://learn.microsoft.com/powershell/module/az.purview/set-azpurviewdefaultaccount
 #>
 function Set-AzPurviewDefaultAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload])]
@@ -1310,7 +1310,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/set-azpurviewprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.purview/set-azpurviewprivateendpointconnection
 #>
 function Set-AzPurviewPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IPrivateEndpointConnection])]
@@ -1478,7 +1478,7 @@ Test-AzPurviewAccountNameAvailability -Name test-pa -Type Tenant
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ICheckNameAvailabilityResult
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/test-azpurviewaccountnameavailability
+https://learn.microsoft.com/powershell/module/az.purview/test-azpurviewaccountnameavailability
 #>
 function Test-AzPurviewAccountNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ICheckNameAvailabilityResult])]

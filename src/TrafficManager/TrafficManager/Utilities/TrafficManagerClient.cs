@@ -105,6 +105,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             string targetResourceId,
             string target,
             string endpointStatus,
+            string alwaysServe,
             uint? weight,
             uint? priority,
             string endpointLocation,
@@ -134,6 +135,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                     Target = target,
                     TargetResourceId = targetResourceId,
                     Weight = weight,
+                    AlwaysServe = alwaysServe,
                     Subnets = subnetMapping?.Select(ipAddressRange => ipAddressRange.ToSDKSubnetMapping()).ToList(),
                     CustomHeaders = customHeaders?.Select(customHeader => customHeader.ToSDKEndpointPropertiesCustomHeadersItem()).ToList()
                 });
@@ -361,6 +363,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 Target = sdkEndpoint.Target,
                 TargetResourceId = sdkEndpoint.TargetResourceId,
                 Weight = (uint?)sdkEndpoint.Weight,
+                AlwaysServe = sdkEndpoint.AlwaysServe,
                 SubnetMapping = sdkEndpoint.Subnets?.Select(ipAddressRange =>
                     TrafficManagerIpAddressRange.FromSDKSubnetMapping(ipAddressRange)).ToList(),
                 CustomHeaders = sdkEndpoint.CustomHeaders?.Select(customHeader =>

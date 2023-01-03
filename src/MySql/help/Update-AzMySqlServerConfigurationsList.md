@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlserverconfigurationslist
+online version: https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlserverconfigurationslist
 schema: 2.0.0
 ---
 
