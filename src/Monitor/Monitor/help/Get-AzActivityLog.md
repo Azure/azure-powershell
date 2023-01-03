@@ -25,18 +25,18 @@ Get-AzActivityLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String
  [<CommonParameters>]
 ```
 
-### GetByResourceId
-```
-Get-AzActivityLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-ResourceId] <String> [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
 ### GetByResourceGroup
 ```
 Get-AzActivityLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
  [-DetailedOutput] [-ResourceGroupName] <String> [-MaxRecord <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### GetByResourceId
+```
+Get-AzActivityLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
+ [-DetailedOutput] [-ResourceId] <String> [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByResourceProvider
@@ -334,7 +334,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-The correlationId of the query
+The startTime of the query
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]

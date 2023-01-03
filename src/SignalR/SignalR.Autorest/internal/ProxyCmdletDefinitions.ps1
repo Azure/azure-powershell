@@ -20,21 +20,17 @@ Lists all of the available REST API operations of the Microsoft.SignalRService p
 .Description
 Lists all of the available REST API operations of the Microsoft.SignalRService provider.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/get-azoperation
+https://learn.microsoft.com/powershell/module/az.signalr/get-azoperation
 #>
 function Get-AzOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -92,6 +88,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.SignalR.private\Get-AzOperation_List';
         }
@@ -101,6 +98,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -109,17 +107,188 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create or update a custom domain.
+.Description
+Create or update a custom domain.
+.Example
+$cert = Get-AzWebPubSubCustomCertificate -Name mycustomcert -ResourceGroupName rg -ResourceName wps
+New-AzWebPubSubCustomDomain -Name mydomain -ResourceGroupName rg -ResourceName wps -DomainName wps.manual-test.dev.signalr.azure.com -CustomCertificateId $cert.Id
+
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubcustomdomain
+#>
+function New-AzWebPubSubCustomDomain {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [System.String]
+    # Custom domain name.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [System.String]
+    # The name of the resource group that contains the resource.
+    # You can obtain this value from the Azure Resource Manager API or the portal.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [System.String]
+    # The name of the resource.
+    ${ResourceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Gets subscription Id which uniquely identify the Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # The custom domain name.
+    ${DomainName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # Resource ID.
+    ${CustomCertificateId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.SignalR.private\New-AzWebPubSubCustomDomain_CreateExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
         throw
     }
 }
 
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -130,20 +299,10 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 Regenerate the access key for the resource.
 PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 .Example
-PS C:\>  New-AzWebPubSubKey  -ResourceGroupName psdemo -ResourceName psdemo-wps -KeyType 'Primary' | Format-List
-
-PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
-PrimaryKey                : ********
-SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
-SecondaryKey              : ********
+New-AzWebPubSubKey  -ResourceGroupName psdemo -ResourceName psdemo-wps -KeyType 'Primary' | Format-List
 .Example
-PS C:\>  $wps = Get-AzWebPubSub -Name psdemo-wps -ResourceGroupName psdemo
-PS C:\> $wps | New-AzWebPubSubKey -KeyType Primary | Format-List
-
-PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
-PrimaryKey                : ********
-SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
-SecondaryKey              : ********
+$wps = Get-AzWebPubSub -Name psdemo-wps -ResourceGroupName psdemo
+$wps | New-AzWebPubSubKey -KeyType Primary | Format-List
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
@@ -155,16 +314,18 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+  [CertificateName <String>]: Custom certificate name
   [HubName <String>]: The hub name.
   [Id <String>]: Resource identity path
   [Location <String>]: the region
+  [Name <String>]: Custom domain name.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
   [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   [ResourceName <String>]: The name of the resource.
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/new-azwebpubsubkey
+https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubkey
 #>
 function New-AzWebPubSubKey {
 [OutputType([System.Boolean])]
@@ -202,7 +363,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType])]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType]
-    # Must be either 'primary', 'secondary' or 'salt'(case-insensitive).
+    # The type of access key.
     ${KeyType},
 
     [Parameter()]
@@ -278,6 +439,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             RegenerateExpanded = 'Az.SignalR.private\New-AzWebPubSubKey_RegenerateExpanded';
             RegenerateViaIdentityExpanded = 'Az.SignalR.private\New-AzWebPubSubKey_RegenerateViaIdentityExpanded';
@@ -291,6 +453,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -299,17 +462,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -318,66 +484,14 @@ Create or update a resource.
 .Description
 Create or update a resource.
 .Example
-PS C:\> New-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps -Location eastus -SkuName Standard_S1
-
-Name                Location      SkuName
-----                --------      -------
-psdemo-wps          eastus        Standard_S1
+New-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps -Location eastus -SkuName Standard_S1
 .Example
-PS C:\> $wps = New-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
+$wps = New-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
 -Location eastus -SkuName Standard_S1 -IdentityType SystemAssigned -LiveTraceEnabled true `
 -LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
 
-Name                Location      SkuName
-----                --------      -------
-psdemo-wps          eastus        Standard_S1
-
-PS C:\> $wps | format-list
-
-DisableAadAuth               : False
-DisableLocalAuth             : False
-EnableTlsClientCert          : False
-ExternalIP                   : 20.62.134.186
-HostName                     : psdemo-wps.webpubsub.azure.com
-Id                           : /subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/psdemo/providers/Micr
-                               osoft.SignalRService/WebPubSub/psdemo-wps
-IdentityPrincipalId          :
-IdentityTenantId             :
-IdentityType                 :
-LiveTraceCategory            :
-LiveTraceEnabled             : true
-Location                     : eastus
-Name                         : psdemo-wps
-NetworkAcLDefaultAction      : Deny
-PrivateEndpointAcl           : {}
-PrivateEndpointConnection    : {}
-ProvisioningState            : Succeeded
-PublicNetworkAccess          : Enabled
-PublicNetworkAllow           : {ServerConnection, ClientConnection, RESTAPI, Trace}
-PublicNetworkDeny            :
-PublicPort                   : 443
-ResourceLogCategory          :
-ServerPort                   : 443
-SharedPrivateLinkResource    : {}
-SkuCapacity                  : 1
-SkuFamily                    :
-SkuName                      : Standard_S1
-SkuSize                      : S1
-SkuTier                      : Standard
-SystemDataCreatedAt          : 2021-10-11 9:02:37 AM
-SystemDataCreatedBy          : testuser@microsoft.com
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 2021-10-12 7:21:58 AM
-SystemDataLastModifiedBy     : testuser@microsoft.com
-SystemDataLastModifiedByType : User
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.TrackedResourceTags
-Type                         : Microsoft.SignalRService/WebPubSub
-UserAssignedIdentity         : Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ManagedIdentityUserAssig
-                               nedIdentities
-Version                      : 1.0
-
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -396,10 +510,10 @@ RESOURCELOGCATEGORY <IResourceLogCategory[]>: Gets or sets the list of category 
   [Enabled <String>]: Indicates whether or the resource log category is enabled.         Available values: true, false.         Case insensitive.
   [Name <String>]: Gets or sets the resource log category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/new-azwebpubsub
+https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsub
 #>
 function New-AzWebPubSub {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -446,13 +560,13 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType]
-    # Represent the identity type: systemAssigned, userAssigned, None
+    # Represents the identity type: systemAssigned, userAssigned, None
     ${IdentityType},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ILiveTraceCategory[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ILiveTraceCategory[]]
     # Gets or sets the list of category configurations.
     # To construct, see NOTES section for LIVETRACECATEGORY properties and create a hash table.
     ${LiveTraceCategory},
@@ -475,13 +589,13 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction])]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction]
-    # Default action when no other rule matches
+    # Azure Networking ACL Action.
     ${NetworkAcLDefaultAction},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IPrivateEndpointAcl[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IPrivateEndpointAcl[]]
     # ACLs for requests from private endpoints
     # To construct, see NOTES section for PRIVATEENDPOINTACL properties and create a hash table.
     ${PrivateEndpointAcl},
@@ -514,7 +628,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IResourceLogCategory[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IResourceLogCategory[]]
     # Gets or sets the list of category configurations.
     # To construct, see NOTES section for RESOURCELOGCATEGORY properties and create a hash table.
     ${ResourceLogCategory},
@@ -524,14 +638,14 @@ param(
     [System.Int32]
     # Optional, integer.
     # The unit count of the resource.
-    # 1 by default.If present, following values are allowed: Free: 1 Standard: 1,2,5,10,20,50,100
+    # 1 by default.If present, following values are allowed: Free: 1; Standard: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
     ${SkuCapacity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.String]
     # The name of the SKU.
-    # Required.Allowed values: Standard_S1, Free_F1
+    # Required.Allowed values: Standard_S1, Free_F1, Premium_P1
     ${SkuName},
 
     [Parameter()]
@@ -545,14 +659,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Tags of the service which is a list of key value pairs that describe the resource.
     ${Tag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IManagedIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IManagedIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # Get or set the user assigned identities
     ${UserAssignedIdentity},
@@ -624,6 +738,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             CreateExpanded = 'Az.SignalR.private\New-AzWebPubSub_CreateExpanded';
         }
@@ -636,6 +751,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -644,15 +760,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

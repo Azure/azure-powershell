@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsesparkpool
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsesparkpool
 schema: 2.0.0
 ---
 
@@ -17,8 +17,9 @@ Creates a Synapse Analytics Spark pool.
 New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Tag <Hashtable>]
  -NodeSize <String> -AutoScaleMinNodeCount <Int32> -AutoScaleMaxNodeCount <Int32> [-EnableAutoPause]
  [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>]
- [-MaxExecutorCount <Int32>] -SparkVersion <String> [-SparkConfigFilePath <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MaxExecutorCount <Int32>] -SparkVersion <String> [-SparkConfigFilePath <String>]
+ [-SparkConfiguration <PSSparkConfigurationResource>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByNameAndDisableAutoScaleParameterSet
@@ -26,8 +27,8 @@ New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Na
 New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Tag <Hashtable>]
  -NodeCount <Int32> -NodeSize <String> [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>]
  [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>]
- -SparkVersion <String> [-SparkConfigFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SparkVersion <String> [-SparkConfigFilePath <String>] [-SparkConfiguration <PSSparkConfigurationResource>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectAndEnableAutoScaleParameterSet
@@ -35,8 +36,9 @@ New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Na
 New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
  -NodeSize <String> -AutoScaleMinNodeCount <Int32> -AutoScaleMaxNodeCount <Int32> [-EnableAutoPause]
  [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>]
- [-MaxExecutorCount <Int32>] -SparkVersion <String> [-SparkConfigFilePath <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MaxExecutorCount <Int32>] -SparkVersion <String> [-SparkConfigFilePath <String>]
+ [-SparkConfiguration <PSSparkConfigurationResource>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectAndDisableAutoScaleParameterSet
@@ -44,8 +46,8 @@ New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Ta
 New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
  -NodeCount <Int32> -NodeSize <String> [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>]
  [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>]
- -SparkVersion <String> [-SparkConfigFilePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SparkVersion <String> [-SparkConfigFilePath <String>] [-SparkConfiguration <PSSparkConfigurationResource>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,10 +78,11 @@ This command creates an Azure Synapse Analytics Spark pool with dynamic executor
 
 ### Example 4
 ```powershell
-New-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -NodeCount 3 -SparkVersion 2.4 -NodeSize Small -SparkConfigFilePath "c:\sparkproperties.txt"
+$config = Get-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContosoSparkConfig1
+New-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -NodeCount 3 -SparkVersion 2.4 -NodeSize Small -SparkConfiguration $config
 ```
 
-This command creates an Azure Synapse Analytics Spark pool  and upload a spark configuration file.
+This command creates an Azure Synapse Analytics Spark pool and specify a Spark configuration for Spark pool.
 
 ### Example 5
 ```powershell
@@ -299,10 +302,25 @@ Accept wildcard characters: False
 ```
 
 ### -SparkConfigFilePath
-Spark pool properties configuration file.
+[Deprecated] Spark pool properties configuration file. This parameter is deprecated, please use "-SparkConfiguration" instead.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SparkConfiguration
+Apache Spark configuration. When a job is submitted to the pool, the properties specified in the selected configuration will be referenced.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSparkConfigurationResource
 Parameter Sets: (All)
 Aliases:
 

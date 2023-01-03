@@ -28,7 +28,7 @@ New-AzOrbitalSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azp
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraftcontact
+https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraftcontact
 #>
 function New-AzOrbitalSpacecraftContact {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact])]

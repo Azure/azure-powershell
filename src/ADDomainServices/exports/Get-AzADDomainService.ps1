@@ -44,7 +44,7 @@ INPUTOBJECT <IAdDomainServicesIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group within the user's subscription. The name is case insensitive.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.addomainservices/get-azaddomainservice
+https://learn.microsoft.com/powershell/module/az.addomainservices/get-azaddomainservice
 #>
 function Get-AzADDomainService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService])]

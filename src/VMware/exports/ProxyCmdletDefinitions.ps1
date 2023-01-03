@@ -60,7 +60,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareauthorization
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareauthorization
 #>
 function Get-AzVMwareAuthorization {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IExpressRouteAuthorization])]
@@ -276,7 +276,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwarecloudlink
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarecloudlink
 #>
 function Get-AzVMwareCloudLink {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudLink])]
@@ -492,7 +492,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwarecluster
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarecluster
 #>
 function Get-AzVMwareCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICluster])]
@@ -708,7 +708,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwaredatastore
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwaredatastore
 #>
 function Get-AzVMwareDatastore {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastore])]
@@ -931,7 +931,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareglobalreachconnection
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareglobalreachconnection
 #>
 function Get-AzVMwareGlobalReachConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IGlobalReachConnection])]
@@ -1147,7 +1147,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareplacementpolicy
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareplacementpolicy
 #>
 function Get-AzVMwarePlacementPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicy])]
@@ -1335,7 +1335,7 @@ Get-AzVMwarePrivateCloudAdminCredential -PrivateCloudName azps_test_cloud -Resou
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAdminCredentials
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloudadmincredential
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloudadmincredential
 #>
 function Get-AzVMwarePrivateCloudAdminCredential {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAdminCredentials])]
@@ -1534,7 +1534,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloud
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloud
 #>
 function Get-AzVMwarePrivateCloud {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud])]
@@ -1745,7 +1745,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwarevirtualmachine
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarevirtualmachine
 #>
 function Get-AzVMwareVirtualMachine {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVirtualMachine])]
@@ -1933,7 +1933,7 @@ New-AzVMwareAuthorization -Name azps_test_authorization -PrivateCloudName azps_t
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IExpressRouteAuthorization
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareauthorization
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareauthorization
 #>
 function New-AzVMwareAuthorization {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IExpressRouteAuthorization])]
@@ -2114,7 +2114,7 @@ New-AzVMwareCloudLink -Name azps_test_cloudlink -PrivateCloudName azps_test_clou
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudLink
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwarecloudlink
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwarecloudlink
 #>
 function New-AzVMwareCloudLink {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudLink])]
@@ -2301,7 +2301,7 @@ New-AzVMwareCluster -Name azps_test_cluster -PrivateCloudName azps_test_cloud -R
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICluster
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwarecluster
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwarecluster
 #>
 function New-AzVMwareCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICluster])]
@@ -2501,7 +2501,7 @@ New-AzVMwareDatastore -ClusterName azps_test_cluster -Name azps_test_datastore -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastore
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwaredatastore
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwaredatastore
 #>
 function New-AzVMwareDatastore {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastore])]
@@ -2713,7 +2713,7 @@ New-AzVMwareGlobalReachConnection -Name azps_test_grc -PrivateCloudName azps_tes
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IGlobalReachConnection
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareglobalreachconnection
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareglobalreachconnection
 #>
 function New-AzVMwareGlobalReachConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IGlobalReachConnection])]
@@ -2925,7 +2925,7 @@ PROPERTY <IPlacementPolicyProperties>: placement policy properties
   [DisplayName <String>]: Display name of the placement policy
   [State <PlacementPolicyState?>]: Whether the placement policy is enabled or disabled
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareplacementpolicy
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareplacementpolicy
 #>
 function New-AzVMwarePlacementPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicy])]
@@ -3152,7 +3152,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloudnsxtpassword
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloudnsxtpassword
 #>
 function New-AzVMwarePrivateCloudNsxtPassword {
 [OutputType([System.Boolean])]
@@ -3373,7 +3373,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloudvcenterpassword
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloudvcenterpassword
 #>
 function New-AzVMwarePrivateCloudVcenterPassword {
 [OutputType([System.Boolean])]
@@ -3598,7 +3598,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareauthorization
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareauthorization
 #>
 function Remove-AzVMwareAuthorization {
 [OutputType([System.Boolean])]
@@ -3830,7 +3830,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwarecloudlink
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwarecloudlink
 #>
 function Remove-AzVMwareCloudLink {
 [OutputType([System.Boolean])]
@@ -4062,7 +4062,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwarecluster
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwarecluster
 #>
 function Remove-AzVMwareCluster {
 [OutputType([System.Boolean])]
@@ -4292,7 +4292,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwaredatastore
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwaredatastore
 #>
 function Remove-AzVMwareDatastore {
 [OutputType([System.Boolean])]
@@ -4530,7 +4530,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareglobalreachconnection
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareglobalreachconnection
 #>
 function Remove-AzVMwareGlobalReachConnection {
 [OutputType([System.Boolean])]
@@ -4762,7 +4762,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareplacementpolicy
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareplacementpolicy
 #>
 function Remove-AzVMwarePlacementPolicy {
 [OutputType([System.Boolean])]
@@ -4963,7 +4963,7 @@ Test-AzVMwareLocationQuotaAvailability -Location centralus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IQuota
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/test-azvmwarelocationquotaavailability
+https://learn.microsoft.com/powershell/module/az.vmware/test-azvmwarelocationquotaavailability
 #>
 function Test-AzVMwareLocationQuotaAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IQuota])]
@@ -5118,7 +5118,7 @@ Test-AzVMwareLocationTrialAvailability -Location westcentralus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ITrial
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/test-azvmwarelocationtrialavailability
+https://learn.microsoft.com/powershell/module/az.vmware/test-azvmwarelocationtrialavailability
 #>
 function Test-AzVMwareLocationTrialAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ITrial])]
@@ -5308,7 +5308,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/update-azvmwarecluster
+https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwarecluster
 #>
 function Update-AzVMwareCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICluster])]
@@ -5545,7 +5545,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/update-azvmwareplacementpolicy
+https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareplacementpolicy
 #>
 function Update-AzVMwarePlacementPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicy])]
@@ -5808,7 +5808,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/update-azvmwareprivatecloud
+https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareprivatecloud
 #>
 function Update-AzVMwarePrivateCloud {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud])]
@@ -6114,7 +6114,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareaddon
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareaddon
 #>
 function Get-AzVMwareAddon {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon])]
@@ -6303,7 +6303,7 @@ To create the parameters described below, construct a hash table containing the 
 PROPERTY <IAddonProperties>: The properties of an addon resource
   AddonType <AddonType>: The type of private cloud addon
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareaddon
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareaddon
 #>
 function New-AzVMwareAddon {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon])]
@@ -6484,7 +6484,7 @@ New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonSrmProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonSrmPropertiesObject
+https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonSrmPropertiesObject
 #>
 function New-AzVMwareAddonSrmPropertiesObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonSrmProperties])]
@@ -6582,7 +6582,7 @@ New-AzVMwareAddonVrPropertiesObject -VrsCount 2
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonVrProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonVrPropertiesObject
+https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonVrPropertiesObject
 #>
 function New-AzVMwareAddonVrPropertiesObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonVrProperties])]
@@ -6680,7 +6680,7 @@ New-AzVMwarePrivateCloud -Name azps_test_cloud -ResourceGroupName azps_test_grou
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloud
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloud
 #>
 function New-AzVMwarePrivateCloud {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud])]
@@ -6912,7 +6912,7 @@ New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PsCredentialExecutionParameter
 .Link
-https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwarePSCredentialExecutionParameterObject
+https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwarePSCredentialExecutionParameterObject
 #>
 function New-AzVMwarePSCredentialExecutionParameterObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PSCredentialExecutionParameter])]
@@ -7022,7 +7022,7 @@ New-AzVMwareScriptSecureStringExecutionParameterObject -Name azps_test_secureval
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptSecureStringExecutionParameter
 .Link
-https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptSecureStringExecutionParameterObject
+https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptSecureStringExecutionParameterObject
 #>
 function New-AzVMwareScriptSecureStringExecutionParameterObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptSecureStringExecutionParameter])]
@@ -7126,7 +7126,7 @@ New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_stringvalue -Va
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptStringExecutionParameter
 .Link
-https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptStringExecutionParameterObject
+https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptStringExecutionParameterObject
 #>
 function New-AzVMwareScriptStringExecutionParameterObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptStringExecutionParameter])]
@@ -7230,7 +7230,7 @@ New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType 'AntiAffinity' -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VMHostPlacementPolicyProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwareVmHostPlacementPolicyPropertiesObject
+https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareVmHostPlacementPolicyPropertiesObject
 #>
 function New-AzVMwareVmHostPlacementPolicyPropertiesObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VmHostPlacementPolicyProperties])]
@@ -7361,7 +7361,7 @@ New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType 'Affinity' -Type 'Vm
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VMPlacementPolicyProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwareVMPlacementPolicyPropertiesObject
+https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareVMPlacementPolicyPropertiesObject
 #>
 function New-AzVMwareVMPlacementPolicyPropertiesObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VMPlacementPolicyProperties])]
@@ -7523,7 +7523,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareaddon
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareaddon
 #>
 function Remove-AzVMwareAddon {
 [OutputType([System.Boolean])]
@@ -7755,7 +7755,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareprivatecloud
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareprivatecloud
 #>
 function Remove-AzVMwarePrivateCloud {
 [OutputType([System.Boolean])]

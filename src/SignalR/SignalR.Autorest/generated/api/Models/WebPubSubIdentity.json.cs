@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         partial void AfterFromJson(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonObject json);
 
         /// <summary>
-        /// <c>AfterToJson</c> will be called after the json erialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonObject"
+        /// <c>AfterToJson</c> will be called after the json serialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonObject"
         /// /> before it is returned. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="container">The JSON container that the serialization result will be placed in.</param>
@@ -29,7 +29,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         /// <summary>
         /// <c>BeforeFromJson</c> will be called before the json deserialization has commenced, allowing complete customization of
         /// the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name= "returnNow" />
+        /// output parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="json">The JsonNode that should be deserialized into this object.</param>
@@ -41,7 +42,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         /// <summary>
         /// <c>BeforeToJson</c> will be called before the json serialization has commenced, allowing complete customization of the
         /// object before it is serialized.
-        /// If you wish to disable the default serialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default serialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="container">The JSON container that the serialization result will be placed in.</param>
@@ -85,6 +87,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
             AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
             AddIf( null != (((object)this._resourceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString(this._resourceName.ToString()) : null, "resourceName" ,container.Add );
+            AddIf( null != (((object)this._certificateName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString(this._certificateName.ToString()) : null, "certificateName" ,container.Add );
+            AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
             AddIf( null != (((object)this._hubName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString(this._hubName.ToString()) : null, "hubName" ,container.Add );
             AddIf( null != (((object)this._privateEndpointConnectionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString(this._privateEndpointConnectionName.ToString()) : null, "privateEndpointConnectionName" ,container.Add );
             AddIf( null != (((object)this._sharedPrivateLinkResourceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString(this._sharedPrivateLinkResourceName.ToString()) : null, "sharedPrivateLinkResourceName" ,container.Add );
@@ -109,6 +113,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
             {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
             {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
             {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)ResourceName;}
+            {_certificateName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("certificateName"), out var __jsonCertificateName) ? (string)__jsonCertificateName : (string)CertificateName;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
             {_hubName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("hubName"), out var __jsonHubName) ? (string)__jsonHubName : (string)HubName;}
             {_privateEndpointConnectionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("privateEndpointConnectionName"), out var __jsonPrivateEndpointConnectionName) ? (string)__jsonPrivateEndpointConnectionName : (string)PrivateEndpointConnectionName;}
             {_sharedPrivateLinkResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Json.JsonString>("sharedPrivateLinkResourceName"), out var __jsonSharedPrivateLinkResourceName) ? (string)__jsonSharedPrivateLinkResourceName : (string)SharedPrivateLinkResourceName;}
