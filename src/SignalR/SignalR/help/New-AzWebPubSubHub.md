@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.SignalR-help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/powershell/module/az.signalr/new-azwebpubsubhub
+online version: https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubhub
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create or update a hub setting.
 ## SYNTAX
 
 ```
-New-AzWebPubSubHub -Name <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-AnonymousConnectPolicy <String>] [-EventHandler <IEventHandler[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzWebPubSubHub -Name <String> -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+ [-AnonymousConnectPolicy <String>] [-EventHandler <IEventHandler[]>] [-EventListener <IEventListener[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,9 +23,10 @@ Create or update a hub setting.
 
 ## EXAMPLES
 
-### Example 1: Create a hub setting
+### Example 1: Add two event handlers for a hub
 ```powershell
-$eventHandler = @{UrlTemplate = 'http://example.com/api/{hub}/connect/{event}' ; AuthType = 'None' ; SystemEvent = 'connect' ; }
+$eventHandler = @{UrlTemplate = 'http://example.com/api/{hub}/connect/{event}' ; AuthType = 'None' ; SystemEvent = 'connect' ; } ,
+        @{ UrlTemplate = 'http://example.com/api/{hub}/userevent/{event}' ; AuthType = 'None' ; UserEventPattern = '*' }
 
 New-AzWebPubSubHub -Name testHub -ResourceGroupName psdemo -ResourceName psdemo-wps -EventHandler $eventHandler
 ```
@@ -37,6 +38,30 @@ testHub deny
 ```
 
 The example first creates a list of hash tables containing two event handler settings, one for system events and the other for user events.
+Then it creates a hub with the event handlers.
+
+### Example 2: Add two event listeners for a hub
+```powershell
+$eventListeners =
+@{
+    Endpoint = $(New-AzWebPubSubEventHubEndpointObject -EventHubName connectivityHub -FullyQualifiedNamespace example.servicebus.windows.net);
+    Filter = $(New-AzWebPubSubEventNameFilterObject -SystemEvent connected, disconnected)
+},
+@{
+    Endpoint = $(New-AzWebPubSubEventHubEndpointObject -EventHubName messageHub -FullyQualifiedNamespace example.servicebus.windows.net);
+    Filter = $(New-AzWebPubSubEventNameFilterObject -UserEventPattern *)
+}
+
+$hub = New-AzWebPubSubHub -Name hub2 -ResourceGroupName rg -ResourceName psdemo -EventListener $eventListeners
+```
+
+```output
+Name    AnonymousConnectPolicy
+----    ----------------------
+hub2 deny
+```
+
+The example first creates a list of hash tables containing two event listener settings, one for system events and the other for user events.
 Then it creates a hub with the event handlers.
 
 ## PARAMETERS
@@ -92,7 +117,24 @@ Event handler of a hub.
 To construct, see NOTES section for EVENTHANDLER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IEventHandler[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IEventHandler[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EventListener
+Event listener settings for forwarding your client events to listeners.Event listener is transparent to Web PubSub clients, and it doesn't return any result to clients nor interrupt the lifetime of clients.One event can be sent to multiple listeners, as long as it matches the filters in those listeners.
+The order of the array elements doesn't matter.Maximum count of event listeners among all hubs is 10.
+To construct, see NOTES section for EVENTLISTENER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IEventListener[]
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +151,7 @@ The hub name.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: HubName
 
 Required: True
 Position: Named
@@ -218,7 +260,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.IWebPubSubHub
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubHub
 
 ## NOTES
 
@@ -229,12 +271,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-EVENTHANDLER <IEventHandler[]>: Event handler of a hub.
+`EVENTHANDLER <IEventHandler[]>`: Event handler of a hub.
   - `UrlTemplate <String>`: Gets or sets the EventHandler URL template. You can use a predefined parameter {hub} and {event} inside the template, the value of the EventHandler URL is dynamically calculated when the client request comes in.         For example, UrlTemplate can be `http://example.com/api/{hub}/{event}`. The host part can't contains parameters.
-  - `[AuthType <UpstreamAuthType?>]`: Gets or sets the type of auth. None or ManagedIdentity is supported now.
+  - `[AuthType <UpstreamAuthType?>]`: Upstream auth type enum.
   - `[ManagedIdentityResource <String>]`: The Resource indicating the App ID URI of the target resource.         It also appears in the aud (audience) claim of the issued token.
   - `[SystemEvent <String[]>]`: Gets ot sets the list of system events. Valid values contain: 'connect', 'connected', 'disconnected'.
-  - `[UserEventPattern <String>]`: Gets or sets the matching pattern for event names.         There are 3 kind of patterns supported:             1. "*", it to matches any event name             2. Combine multiple events with ",", for example "event1,event2", it matches event "event1" and "event2"             3. The single event name, for example, "event1", it matches "event1"
+  - `[UserEventPattern <String>]`: Gets or sets the matching pattern for event names.         There are 3 kinds of patterns supported:             1. "*", it matches any event name             2. Combine multiple events with ",", for example "event1,event2", it matches event "event1" and "event2"             3. A single event name, for example, "event1", it matches "event1"
+
+`EVENTLISTENER <IEventListener[]>`: Event listener settings for forwarding your client events to listeners.Event listener is transparent to Web PubSub clients, and it doesn't return any result to clients nor interrupt the lifetime of clients.One event can be sent to multiple listeners, as long as it matches the filters in those listeners. The order of the array elements doesn't matter.Maximum count of event listeners among all hubs is 10.
+  - `Endpoint <IEventListenerEndpoint>`: An endpoint specifying where Web PubSub should send events to.
+  - `Filter <IEventListenerFilter>`: A base class for event filter which determines whether an event should be sent to an event listener.
 
 ## RELATED LINKS
-

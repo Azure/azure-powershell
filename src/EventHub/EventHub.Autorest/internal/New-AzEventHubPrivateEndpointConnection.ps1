@@ -62,7 +62,7 @@ PARAMETER <IPrivateEndpointConnection>: Properties of the PrivateEndpointConnect
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubprivateendpointconnection
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubprivateendpointconnection
 #>
 function New-AzEventHubPrivateEndpointConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection])]

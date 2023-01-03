@@ -163,6 +163,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
             CancellationToken cancellationToken)
         {
             var contentString = content == null ? string.Empty : content.ToString();
+            // minify JOSN payload to avoid payload too large error
+            if (!string.IsNullOrEmpty(contentString))
+            {
+                try
+                {
+                    var obj = JsonConvert.DeserializeObject(contentString);
+                    contentString = JsonConvert.SerializeObject(obj, Formatting.None);
+                }
+                catch
+                {
+                    // leave contentString as it is
+                }
+            }
             using (var httpContent = new StringContent(content: contentString, encoding: Encoding.UTF8, mediaType: "application/json"))
             using (var request = new HttpRequestMessage(method: httpMethod, requestUri: requestUri) { Content = httpContent })
             {

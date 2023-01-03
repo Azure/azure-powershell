@@ -71,6 +71,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             set => _storage = value;
         }
 
+        public bool IsProtected
+        {
+            get => Storage.IsProtected;
+        }
+
         public AzKeyStore()
         {
 
@@ -150,6 +155,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public void ClearCache()
         {
             _credentials.Clear();
+        }
+
+        public void Clear()
+        {
+            ClearCache();
+            Storage.Clear();
         }
 
         public void Flush()

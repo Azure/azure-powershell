@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ServiceBus
 Module Guid: f73d11ef-c690-49f3-8c2c-9000e0e4fe69
-Download Help Link: https://docs.microsoft.com/powershell/module/az.servicebus
+Download Help Link: https://learn.microsoft.com/powershell/module/az.servicebus
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -32,6 +32,9 @@ Gets the SASKey of a ServiceBus namespace, queue or topic.
 
 ### [Get-AzServiceBusMigration](Get-AzServiceBusMigration.md)
 Retrieves Migration Config
+
+### [Get-AzServiceBusNamespaceV2](Get-AzServiceBusNamespaceV2.md)
+Gets a description for the specified namespace.
 
 ### [Get-AzServiceBusNetworkRuleSet](Get-AzServiceBusNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
@@ -66,6 +69,12 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzService
 ### [New-AzServiceBusKey](New-AzServiceBusKey.md)
 Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 
+### [New-AzServiceBusKeyVaultPropertiesObject](New-AzServiceBusKeyVaultPropertiesObject.md)
+Create an in-memory object for KeyVaultProperties.
+
+### [New-AzServiceBusNamespaceV2](New-AzServiceBusNamespaceV2.md)
+Creates a new ServiceBus namespace.
+
 ### [New-AzServiceBusQueue](New-AzServiceBusQueue.md)
 Creates or updates a Service Bus queue.
 This operation is idempotent.
@@ -91,6 +100,10 @@ Deletes an Alias(Disaster Recovery configuration)
 ### [Remove-AzServiceBusMigration](Remove-AzServiceBusMigration.md)
 Deletes a MigrationConfiguration
 
+### [Remove-AzServiceBusNamespaceV2](Remove-AzServiceBusNamespaceV2.md)
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
+
 ### [Remove-AzServiceBusPrivateEndpointConnection](Remove-AzServiceBusPrivateEndpointConnection.md)
 Deletes an existing Private Endpoint Connection.
 
@@ -114,6 +127,9 @@ This operation disables the Disaster Recovery and stops replicating changes from
 
 ### [Set-AzServiceBusGeoDRConfigurationFailOver](Set-AzServiceBusGeoDRConfigurationFailOver.md)
 Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
+
+### [Set-AzServiceBusNamespaceV2](Set-AzServiceBusNamespaceV2.md)
+Updates a ServiceBus namespace
 
 ### [Set-AzServiceBusNetworkRuleSet](Set-AzServiceBusNetworkRuleSet.md)
 Updates the NetworkRuleSet of a ServiceBus namespace

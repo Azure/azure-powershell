@@ -57,7 +57,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelsetting
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelsetting
 #>
 function Remove-AzSentinelSetting {
 [OutputType([System.Boolean])]

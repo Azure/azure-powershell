@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestApplicationSecurityGroupCRUD()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupCRUD"));
@@ -35,7 +35,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestApplicationSecurityGroupCollections()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupCollections"));
@@ -43,7 +43,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestApplicationSecurityGroupInNewSecurityRule()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInNewSecurityRule"));
@@ -52,7 +52,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestApplicationSecurityGroupInAddedSecurityRule()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInAddedSecurityRule"));
@@ -61,7 +61,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestApplicationSecurityGroupInSetSecurityRule()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInSetSecurityRule"));
@@ -70,7 +70,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestApplicationSecurityGroupInNewNetworkInterface()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInNewNetworkInterface"));
@@ -78,7 +78,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestApplicationSecurityGroupInNewNetworkInterfaceIpConfig()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig"));
@@ -87,7 +87,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestApplicationSecurityGroupInAddedNetworkInterfaceIpConfig()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig"));

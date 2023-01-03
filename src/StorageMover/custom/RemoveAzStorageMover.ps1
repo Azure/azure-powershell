@@ -1,4 +1,4 @@
-﻿
+
 # ----------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,7 +42,7 @@ INPUTOBJECT<IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName<String>]: The name of the Storage Mover resource.
   [SubscriptionId<String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/remove-azstoragemover
+https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemover
 #>
 function Remove-AzStorageMover {
     [OutputType([System.Boolean])]

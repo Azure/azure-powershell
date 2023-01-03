@@ -52,7 +52,7 @@ LINK <IContactProfileLink[]>: Links of the Contact Profile. Describes RF links, 
   [EirpdBw <Single?>]: Effective Isotropic Radiated Power (EIRP) in dBW. It is the required EIRP by the customer. Not used yet.
   [GainOverTemperature <Single?>]: Gain To Noise Temperature in db/K. It is the required G/T by the customer. Not used yet.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/new-azorbitalcontactprofile
+https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalcontactprofile
 #>
 function New-AzOrbitalContactProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile])]

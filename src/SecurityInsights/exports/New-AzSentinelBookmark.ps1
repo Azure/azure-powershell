@@ -58,7 +58,7 @@ BOOKMARK <IBookmark>: Represents a bookmark in Azure Security Insights.
   [Updated <DateTime?>]: The last time the bookmark was updated
   [UpdatedByObjectId <String>]: The object id of the user.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelbookmark
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelbookmark
 #>
 function New-AzSentinelBookmark {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark])]
