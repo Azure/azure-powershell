@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             Mandatory = false,            
             HelpMessage = "Size of quota in KiBs")]
         [ValidateNotNullOrEmpty]
-        public int QuotaSizeInKiBs { get; set; }
+        public int QuotaSize { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 
             var volumeQuotaRulePatchBody = new Management.NetApp.Models.VolumeQuotaRulePatch()
             {
-                QuotaSizeInKiBs = QuotaSizeInKiBs,
+                QuotaSizeInKiBs = QuotaSize,
                 QuotaTarget = QuotaTarget,
                 QuotaType = QuotaType,
                 //tags are missing in swagger uncomment when added

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             {
                 ResourceGroupName = new ResourceIdentifier(volumeQuotaRule.Id).ResourceGroupName,                
                 ProvisioningState = volumeQuotaRule.ProvisioningState.ToString(),
-                QuotaSizeInKiBs = volumeQuotaRule.QuotaSizeInKiBs,
+                QuotaSize = volumeQuotaRule.QuotaSizeInKiBs,
                 QuotaTarget = volumeQuotaRule.QuotaTarget,
                 QuotaType = volumeQuotaRule.QuotaType
             };

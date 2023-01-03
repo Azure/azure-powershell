@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             Mandatory = true,            
             HelpMessage = "Size of quota in KiBs")]
         [ValidateNotNullOrEmpty]
-        public int QuotaSizeInKiBs { get; set; }
+        public int QuotaSize { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             var volumeQuotaRuleBody = new Management.NetApp.Models.VolumeQuotaRule()
             {
                 Location = Location,
-                QuotaSizeInKiBs = QuotaSizeInKiBs,
+                QuotaSizeInKiBs = QuotaSize,
                 QuotaTarget = QuotaTarget ?? "",
                 QuotaType = QuotaType,
                 Tags = tagPairs

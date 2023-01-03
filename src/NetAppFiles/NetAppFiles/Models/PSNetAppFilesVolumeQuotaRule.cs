@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <summary>
         /// Gets or sets size of quota
         /// </summary>        
-        public long? QuotaSizeInKiBs { get; set; }
+        public long? QuotaSize { get; set; }
 
         /// <summary>
         /// Gets or sets quotaType

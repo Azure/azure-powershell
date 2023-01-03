@@ -73,7 +73,7 @@ function Test-VolumeQuotaRuleCrud
         Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
 
         # create first quota rule and check
-        $retrievedQuotaRule = New-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $volQuotaRuleName1  -QuotaType $quotaRuleType -QuotaSizeInKiBs $quotaRuleSize 
+        $retrievedQuotaRule = New-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $volQuotaRuleName1  -QuotaType $quotaRuleType -QuotaSize $quotaRuleSize 
         Assert-AreEqual $quotaRuleType $retrievedQuotaRule.QuotaType
         
         # get first quotaRule and check
@@ -81,11 +81,11 @@ function Test-VolumeQuotaRuleCrud
         Assert-AreEqual $quotaRuleType $getQuotaRule.QuotaType
 
         # Update quotaRule and check
-        $updatedSubvolume = Update-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $volQuotaRuleName1 -QuotaSizeInKiBs $quotaRuleSize2
-        Assert-AreEqual $quotaRuleSize2 $updatedSubvolume.QuotaSizeInKiBs
+        $updatedSubvolume = Update-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $volQuotaRuleName1 -QuotaSize $quotaRuleSize2
+        Assert-AreEqual $quotaRuleSize2 $updatedSubvolume.QuotaSize
         
         # create second quotaRule and check
-        $retrievedQuotaRule = New-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $volQuotaRuleName2  -QuotaType $quotaRuleType2 -QuotaSizeInKiBs $quotaRuleSize
+        $retrievedQuotaRule = New-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $volQuotaRuleName2  -QuotaType $quotaRuleType2 -QuotaSize $quotaRuleSize
         Assert-AreEqual $quotaRuleType2 $retrievedQuotaRule.QuotaType
         
         # get list and check

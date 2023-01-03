@@ -15,14 +15,14 @@ Creates a new Azure NetApp Files (ANF) Volume Quota Rule.
 ### ByFieldsParameterSet (Default)
 ```
 New-AzNetAppFilesVolumeQuotaRule -ResourceGroupName <String> -Location <String> -AccountName <String>
- -PoolName <String> -VolumeName <String> -Name <String> [-Tag <Hashtable>] -QuotaSizeInKiBs <Int32>
+ -PoolName <String> -VolumeName <String> -Name <String> [-Tag <Hashtable>] -QuotaSize <Int32>
  -QuotaType <String> [-QuotaTarget <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-New-AzNetAppFilesVolumeQuotaRule -Name <String> [-Tag <Hashtable>] -QuotaSizeInKiBs <Int32> -QuotaType <String>
+New-AzNetAppFilesVolumeQuotaRule -Name <String> [-Tag <Hashtable>] -QuotaSize <Int32> -QuotaType <String>
  [-QuotaTarget <String>] -VolumeObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ The **New-AzNetAppFilesVolumeQuotaRule** cmdlet creates an ANF Volume Quota Rule
 
 ### Example 1
 ```powershell
-New-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfVolumeQuotaRule" -QuotaType "DefaultGroupQuota" -QuotaSizeInKiBs 100006 
+New-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume" -Name "MyAnfVolumeQuotaRule" -QuotaType "DefaultGroupQuota" -QuotaSize 100006 
 ```
 
 This command creates the new ANF VolumeQuotaRule "MyAnfVolumeQuotaRule" of type DefaultGroupQuota for the volume "MyAnfVolume" using the QuotaSize 100006
@@ -116,7 +116,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -QuotaSizeInKiBs
+### -QuotaSize
 Size of quota in KiBs
 
 ```yaml

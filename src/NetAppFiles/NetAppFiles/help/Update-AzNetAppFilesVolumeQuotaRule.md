@@ -15,27 +15,27 @@ Updates an Azure NetApp Files (ANF) volume quota rule according to the optional 
 ### ByFieldsParameterSet (Default)
 ```
 Update-AzNetAppFilesVolumeQuotaRule -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -VolumeName <String> -Name <String> [-Tag <Hashtable>] [-QuotaSizeInKiBs <Int32>] [-QuotaType <String>]
+ -VolumeName <String> -Name <String> [-Tag <Hashtable>] [-QuotaSize <Int32>] [-QuotaType <String>]
  [-QuotaTarget <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Update-AzNetAppFilesVolumeQuotaRule -Name <String> [-Tag <Hashtable>] [-QuotaSizeInKiBs <Int32>]
+Update-AzNetAppFilesVolumeQuotaRule -Name <String> [-Tag <Hashtable>] [-QuotaSize <Int32>]
  [-QuotaType <String>] [-QuotaTarget <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzNetAppFilesVolumeQuotaRule -Name <String> [-Tag <Hashtable>] [-QuotaSizeInKiBs <Int32>]
+Update-AzNetAppFilesVolumeQuotaRule -Name <String> [-Tag <Hashtable>] [-QuotaSize <Int32>]
  [-QuotaType <String>] [-QuotaTarget <String>] -VolumeObject <PSNetAppFilesVolume>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzNetAppFilesVolumeQuotaRule -Name <String> [-Tag <Hashtable>] [-QuotaSizeInKiBs <Int32>]
+Update-AzNetAppFilesVolumeQuotaRule -Name <String> [-Tag <Hashtable>] [-QuotaSize <Int32>]
  [-QuotaType <String>] [-QuotaTarget <String>] -InputObject <PSNetAppFilesBackup>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -47,7 +47,7 @@ The **Update-AzNetAppFilesVolumeQuotaRule** cmdlet updates an ANF volume quota r
 
 ### Example 1
 ```powershell
-Update-AzNetAppFilesVolumeQuotaRule -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -VolumeName "MyAnfVolume" -Name "MyVolumeQuotaRuleName" -QuotaSizeInKiBs 100006
+Update-AzNetAppFilesVolumeQuotaRule -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -VolumeName "MyAnfVolume" -Name "MyVolumeQuotaRuleName" -QuotaSize 100006
 ```
 
 This command updates the ANF volume quota rule "MyVolumeQuotaRuleName" with the new quota size. 
@@ -129,7 +129,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -QuotaSizeInKiBs
+### -QuotaSize
 Size of quota in KiBs
 
 ```yaml
