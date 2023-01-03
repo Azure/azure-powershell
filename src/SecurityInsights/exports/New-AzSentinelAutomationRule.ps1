@@ -72,7 +72,7 @@ AUTOMATIONRULE <IAutomationRule>: Represents an automation rule.
   [TriggeringLogicExpirationTimeUtc <DateTime?>]: Determines when the automation rule should automatically expire and be disabled.
   [TriggeringLogicIsEnabled <Boolean?>]: Determines whether the automation rule is enabled or disabled.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelautomationrule
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelautomationrule
 #>
 function New-AzSentinelAutomationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule])]

@@ -46,7 +46,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
 .Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticscluster
+https://learn.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticscluster
 #>
 function Remove-AzStreamAnalyticsCluster {
 [OutputType([System.Boolean])]

@@ -83,6 +83,11 @@ namespace Microsoft.Azure.Commands.Profile.Context
                     profile.TrySetDefaultContext(defaultContext);
                     result = true;
                 }
+                if (AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keyStore))
+                {
+                    keyStore?.Clear();
+                }
+
             }
 
             AzureSession.Instance.RaiseContextClearedEvent();

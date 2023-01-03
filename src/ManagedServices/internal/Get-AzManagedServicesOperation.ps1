@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesoperation
+https://learn.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesoperation
 #>
 function Get-AzManagedServicesOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IOperation])]

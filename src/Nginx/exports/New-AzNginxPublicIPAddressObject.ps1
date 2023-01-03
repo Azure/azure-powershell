@@ -25,7 +25,7 @@ New-AzNginxPublicIPAddressObject -Id /subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxPublicIPAddress
 .Link
-https://docs.microsoft.com/powershell/module/az.Nginx/new-AzNginxPublicIPAddressObject
+https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxPublicIPAddressObject
 #>
 function New-AzNginxPublicIPAddressObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxPublicIPAddress])]

@@ -27,7 +27,7 @@ List all available API operations provided by Microsoft.Dashboard.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.dashboard/get-azgrafanaoperation
+https://learn.microsoft.com/powershell/module/az.dashboard/get-azgrafanaoperation
 #>
 function Get-AzGrafanaOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IOperation])]

@@ -27,7 +27,7 @@ Creates or updates diagnostic settings for the specified resource.
 
 ### Example 1: Create diagnostic setting
 ```powershell
-$subscriptionId = (Get-AzContext).SubscriptionId
+$subscriptionId = (Get-AzContext).Subscription.Id
 $metric = @()
 $log = @()
 $metric += New-AzDiagnosticSettingMetricSettingsObject -Enabled $true -Category AllMetrics -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
@@ -39,7 +39,7 @@ Create diagnostic setting for resource with log analytics workspace as destinati
 
 ### Example 2: Create diagnostic setting for all supported categories
 ```powershell
-$subscriptionId = (Get-AzContext).SubscriptionId
+$subscriptionId = (Get-AzContext).Subscription.Id
 $metric = @()
 $log = @()
 $categories = Get-AzDiagnosticSettingCategory -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001

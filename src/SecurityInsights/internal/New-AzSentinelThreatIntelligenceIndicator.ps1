@@ -103,7 +103,7 @@ THREATINTELLIGENCEPROPERTY <IThreatIntelligenceIndicatorModelForRequestBody>: Th
   [ValidFrom <String>]: Valid from
   [ValidUntil <String>]: Valid until
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelthreatintelligenceindicator
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelthreatintelligenceindicator
 #>
 function New-AzSentinelThreatIntelligenceIndicator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceInformation])]

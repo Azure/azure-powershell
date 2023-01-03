@@ -27,7 +27,7 @@ Expand an bookmark
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmarkExpandResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/expand-azsentinelbookmark
+https://learn.microsoft.com/powershell/module/az.securityinsights/expand-azsentinelbookmark
 #>
 function Expand-AzSentinelBookmark {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmarkExpandResponse])]

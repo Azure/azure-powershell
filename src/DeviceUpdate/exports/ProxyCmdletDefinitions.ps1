@@ -45,7 +45,7 @@ INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/get-azdeviceupdateaccount
+https://learn.microsoft.com/powershell/module/az.deviceupdate/get-azdeviceupdateaccount
 #>
 function Get-AzDeviceUpdateAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IAccount])]
@@ -238,7 +238,7 @@ INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/get-azdeviceupdateinstance
+https://learn.microsoft.com/powershell/module/az.deviceupdate/get-azdeviceupdateinstance
 #>
 function Get-AzDeviceUpdateInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance])]
@@ -434,7 +434,7 @@ PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: List of private endpoi
   [PrivateLinkServiceConnectionStateDescription <String>]: The reason for approval/rejection of the connection.
   [PrivateLinkServiceConnectionStateStatus <PrivateEndpointServiceConnectionStatus?>]: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateaccount
+https://learn.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateaccount
 #>
 function New-AzDeviceUpdateAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IAccount])]
@@ -677,7 +677,7 @@ INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/remove-azdeviceupdateaccount
+https://learn.microsoft.com/powershell/module/az.deviceupdate/remove-azdeviceupdateaccount
 #>
 function Remove-AzDeviceUpdateAccount {
 [OutputType([System.Boolean])]
@@ -883,7 +883,7 @@ INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/remove-azdeviceupdateinstance
+https://learn.microsoft.com/powershell/module/az.deviceupdate/remove-azdeviceupdateinstance
 #>
 function Remove-AzDeviceUpdateInstance {
 [OutputType([System.Boolean])]
@@ -1102,7 +1102,7 @@ REQUEST <ICheckNameAvailabilityRequest>: The check availability request body.
   [Name <String>]: The name of the resource for which availability needs to be checked.
   [Type <String>]: The resource type.
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/test-azdeviceupdatenameavailability
+https://learn.microsoft.com/powershell/module/az.deviceupdate/test-azdeviceupdatenameavailability
 #>
 function Test-AzDeviceUpdateNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ICheckNameAvailabilityResponse])]
@@ -1303,7 +1303,7 @@ INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/update-azdeviceupdateaccount
+https://learn.microsoft.com/powershell/module/az.deviceupdate/update-azdeviceupdateaccount
 #>
 function Update-AzDeviceUpdateAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IAccount])]
@@ -1533,7 +1533,7 @@ INPUTOBJECT <IDeviceUpdateIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The resource group name.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/update-azdeviceupdateinstance
+https://learn.microsoft.com/powershell/module/az.deviceupdate/update-azdeviceupdateinstance
 #>
 function Update-AzDeviceUpdateInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance])]
@@ -1717,7 +1717,7 @@ New-AzDeviceUpdateCheckNameAvailabilityRequestObject -Name azpstest-account -Typ
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.CheckNameAvailabilityRequest
 .Link
-https://docs.microsoft.com/powershell/module/az.DeviceUpdate/new-AzDeviceUpdateCheckNameAvailabilityRequestObject
+https://learn.microsoft.com/powershell/module/az.DeviceUpdate/new-AzDeviceUpdateCheckNameAvailabilityRequestObject
 #>
 function New-AzDeviceUpdateCheckNameAvailabilityRequestObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.CheckNameAvailabilityRequest])]
@@ -1821,7 +1821,7 @@ New-AzDeviceUpdateInstance -AccountName azpstest-account -Name azpstest-instance
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance
 .Link
-https://docs.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateinstance
+https://learn.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateinstance
 #>
 function New-AzDeviceUpdateInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance])]
