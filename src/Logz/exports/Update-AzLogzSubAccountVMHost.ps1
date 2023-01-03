@@ -38,7 +38,7 @@ VMRESOURCE <IVMResources[]>: Request of a list vm host update operation.
   [AgentVersion <String>]: Version of the Logz agent installed on the VM.
   [Id <String>]: Request of a list vm host update operation.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/update-azlogzsubaccountvmhost
+https://learn.microsoft.com/powershell/module/az.logz/update-azlogzsubaccountvmhost
 #>
 function Update-AzLogzSubAccountVMHost {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources])]

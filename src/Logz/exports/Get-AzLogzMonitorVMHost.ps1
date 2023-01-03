@@ -29,7 +29,7 @@ AgentVersion Id
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitorvmhost
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitorvmhost
 #>
 function Get-AzLogzMonitorVMHost {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources])]

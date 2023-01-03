@@ -51,7 +51,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
 PARAMETER <IVirtualNetworkSubnetUsageParameter>: Virtual network subnet usage parameter
   [VirtualNetworkResourceId <String>]: Virtual network resource id.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleservervirtualnetworksubnetusage
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleservervirtualnetworksubnetusage
 #>
 function Get-AzMySqlFlexibleServerVirtualNetworkSubnetUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IDelegatedSubnetUsage])]

@@ -25,7 +25,7 @@ Get-AzMixedRealityObjectAnchorsAccountKey -AccountName azpstestanchorsaccount-ob
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityobjectanchorsaccountkey
+https://learn.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityobjectanchorsaccountkey
 #>
 function Get-AzMixedRealityObjectAnchorsAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys])]
@@ -205,7 +205,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityobjectanchorsaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityobjectanchorsaccount
 #>
 function Get-AzMixedRealityObjectAnchorsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IObjectAnchorsAccount])]
@@ -381,7 +381,7 @@ Get-AzMixedRealityRemoteRenderingAccountKey -AccountName azpstestrenderingaccoun
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityremoterenderingaccountkey
+https://learn.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityremoterenderingaccountkey
 #>
 function Get-AzMixedRealityRemoteRenderingAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys])]
@@ -561,7 +561,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityremoterenderingaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityremoterenderingaccount
 #>
 function Get-AzMixedRealityRemoteRenderingAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IRemoteRenderingAccount])]
@@ -737,7 +737,7 @@ Get-AzMixedRealitySpatialAnchorsAccountKey -AccountName azpstestanchorsaccount -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityspatialanchorsaccountkey
+https://learn.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityspatialanchorsaccountkey
 #>
 function Get-AzMixedRealitySpatialAnchorsAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys])]
@@ -917,7 +917,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityspatialanchorsaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityspatialanchorsaccount
 #>
 function Get-AzMixedRealitySpatialAnchorsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount])]
@@ -1106,7 +1106,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityobjectanchorsaccountkey
+https://learn.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityobjectanchorsaccountkey
 #>
 function New-AzMixedRealityObjectAnchorsAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys])]
@@ -1283,7 +1283,7 @@ New-AzMixedRealityObjectAnchorsAccount -Name azpstestanchorsaccount-object -Reso
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IObjectAnchorsAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityobjectanchorsaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityobjectanchorsaccount
 #>
 function New-AzMixedRealityObjectAnchorsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IObjectAnchorsAccount])]
@@ -1562,7 +1562,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityremoterenderingaccountkey
+https://learn.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityremoterenderingaccountkey
 #>
 function New-AzMixedRealityRemoteRenderingAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys])]
@@ -1739,7 +1739,7 @@ New-AzMixedRealityRemoteRenderingAccount -Name azpstestrenderingaccount -Resourc
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IRemoteRenderingAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityremoterenderingaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityremoterenderingaccount
 #>
 function New-AzMixedRealityRemoteRenderingAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IRemoteRenderingAccount])]
@@ -2018,7 +2018,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityspatialanchorsaccountkey
+https://learn.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityspatialanchorsaccountkey
 #>
 function New-AzMixedRealitySpatialAnchorsAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys])]
@@ -2195,7 +2195,7 @@ New-AzMixedRealitySpatialAnchorsAccount -Name azpstestanchorsaccount -ResourceGr
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityspatialanchorsaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityspatialanchorsaccount
 #>
 function New-AzMixedRealitySpatialAnchorsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount])]
@@ -2474,7 +2474,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/remove-azmixedrealityobjectanchorsaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/remove-azmixedrealityobjectanchorsaccount
 #>
 function Remove-AzMixedRealityObjectAnchorsAccount {
 [OutputType([System.Boolean])]
@@ -2664,7 +2664,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/remove-azmixedrealityremoterenderingaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/remove-azmixedrealityremoterenderingaccount
 #>
 function Remove-AzMixedRealityRemoteRenderingAccount {
 [OutputType([System.Boolean])]
@@ -2854,7 +2854,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/remove-azmixedrealityspatialanchorsaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/remove-azmixedrealityspatialanchorsaccount
 #>
 function Remove-AzMixedRealitySpatialAnchorsAccount {
 [OutputType([System.Boolean])]
@@ -3048,7 +3048,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/test-azmixedrealitynameavailability
+https://learn.microsoft.com/powershell/module/az.mixedreality/test-azmixedrealitynameavailability
 #>
 function Test-AzMixedRealityNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ICheckNameAvailabilityResponse])]
@@ -3238,7 +3238,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/update-azmixedrealityobjectanchorsaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/update-azmixedrealityobjectanchorsaccount
 #>
 function Update-AzMixedRealityObjectAnchorsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IObjectAnchorsAccount])]
@@ -3525,7 +3525,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/update-azmixedrealityremoterenderingaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/update-azmixedrealityremoterenderingaccount
 #>
 function Update-AzMixedRealityRemoteRenderingAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IRemoteRenderingAccount])]
@@ -3812,7 +3812,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/update-azmixedrealityspatialanchorsaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/update-azmixedrealityspatialanchorsaccount
 #>
 function Update-AzMixedRealitySpatialAnchorsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount])]

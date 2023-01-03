@@ -25,7 +25,7 @@ Get-AzMLServiceQuota -Location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceQuota
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlservicequota
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlservicequota
 #>
 function Get-AzMLServiceQuota {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceQuota])]
@@ -180,7 +180,7 @@ Get-AzMLServiceUsage -Location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlserviceusage
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlserviceusage
 #>
 function Get-AzMLServiceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IUsage])]
@@ -335,7 +335,7 @@ Get-AzMLServiceVMSize -Location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IVirtualMachineSize
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlservicevmsize
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlservicevmsize
 #>
 function Get-AzMLServiceVMSize {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IVirtualMachineSize])]
@@ -513,7 +513,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacebatchdeployment
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacebatchdeployment
 #>
 function Get-AzMLWorkspaceBatchDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeployment])]
@@ -741,7 +741,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacebatchendpoint
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacebatchendpoint
 #>
 function Get-AzMLWorkspaceBatchEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchEndpoint])]
@@ -954,7 +954,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecodeversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecodeversion
 #>
 function Get-AzMLWorkspaceCodeVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ICodeVersion])]
@@ -1161,7 +1161,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecomponentcontainer
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecomponentcontainer
 #>
 function Get-AzMLWorkspaceComponentContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentContainer])]
@@ -1377,7 +1377,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecomponentversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecomponentversion
 #>
 function Get-AzMLWorkspaceComponentVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentVersion])]
@@ -1589,7 +1589,7 @@ Get-AzMLWorkspaceComputeKey -ResourceGroupName ml-rg-test -WorkspaceName mlworks
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeType
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecomputekey
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecomputekey
 #>
 function Get-AzMLWorkspaceComputeKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeType])]
@@ -1757,7 +1757,7 @@ Get-AzMLWorkspaceComputeNode -ResourceGroupName ml-rg-test -WorkspaceName mlwork
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IAmlComputeNodeInformation
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecomputenode
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecomputenode
 #>
 function Get-AzMLWorkspaceComputeNode {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IAmlComputeNodeInformation])]
@@ -1950,7 +1950,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecompute
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecompute
 #>
 function Get-AzMLWorkspaceCompute {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResource])]
@@ -2160,7 +2160,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceconnection
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceconnection
 #>
 function Get-AzMLWorkspaceConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspaceConnectionPropertiesV2BasicResource])]
@@ -2375,7 +2375,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacedatacontainer
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacedatacontainer
 #>
 function Get-AzMLWorkspaceDataContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDataContainer])]
@@ -2568,7 +2568,7 @@ Get-AzMLWorkspaceDatastoreSecret  -ResourceGroupName ml-rg-test -WorkspaceName m
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SecretsType
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacedatastoresecret
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacedatastoresecret
 #>
 function Get-AzMLWorkspaceDatastoreSecret {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SecretsType])]
@@ -2759,7 +2759,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacedatastore
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacedatastore
 #>
 function Get-AzMLWorkspaceDatastore {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDatastore])]
@@ -3005,7 +3005,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacedataversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacedataversion
 #>
 function Get-AzMLWorkspaceDataVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDataVersionBase])]
@@ -3248,7 +3248,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceenvironmentcontainer
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceenvironmentcontainer
 #>
 function Get-AzMLWorkspaceEnvironmentContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEnvironmentContainer])]
@@ -3465,7 +3465,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceenvironmentversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceenvironmentversion
 #>
 function Get-AzMLWorkspaceEnvironmentVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEnvironmentVersion])]
@@ -3679,7 +3679,7 @@ Get-AzMLWorkspaceFeature  -ResourceGroupName ml-rg-test -Name mlworkspace-portal
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IAmlUserFeature
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacefeature
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacefeature
 #>
 function Get-AzMLWorkspaceFeature {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IAmlUserFeature])]
@@ -3864,7 +3864,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacejob
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacejob
 #>
 function Get-AzMLWorkspaceJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBase])]
@@ -4072,7 +4072,7 @@ Get-AzMLWorkspaceKey  -ResourceGroupName ml-rg-test -Name mlworkspace-cli01
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IListWorkspaceKeysResult
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacekey
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacekey
 #>
 function Get-AzMLWorkspaceKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IListWorkspaceKeysResult])]
@@ -4257,7 +4257,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacemodelcontainer
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacemodelcontainer
 #>
 function Get-AzMLWorkspaceModelContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IModelContainer])]
@@ -4480,7 +4480,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacemodelversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacemodelversion
 #>
 function Get-AzMLWorkspaceModelVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IModelVersion])]
@@ -4727,7 +4727,7 @@ Get-AzMLWorkspaceNotebookAccessToken -ResourceGroupName ml-rg-test -WorkspaceNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.INotebookAccessTokenResult
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacenotebookaccesstoken
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacenotebookaccesstoken
 #>
 function Get-AzMLWorkspaceNotebookAccessToken {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.INotebookAccessTokenResult])]
@@ -4889,7 +4889,7 @@ Get-AzMLWorkspaceNotebookKey  -ResourceGroupName ml-rg-test -WorkspaceName mlwor
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IListNotebookKeysResult
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacenotebookkey
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacenotebookkey
 #>
 function Get-AzMLWorkspaceNotebookKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IListNotebookKeysResult])]
@@ -5051,7 +5051,7 @@ Get-AzMLWorkspaceOnlineDeploymentLog -ResourceGroupName ml-rg-test -WorkspaceNam
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlinedeploymentlog
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlinedeploymentlog
 #>
 function Get-AzMLWorkspaceOnlineDeploymentLog {
 [OutputType([System.String])]
@@ -5238,7 +5238,7 @@ Get-AzMLWorkspaceOnlineDeploymentSku -ResourceGroupName ml-rg-test -WorkspaceNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISkuResource
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlinedeploymentsku
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlinedeploymentsku
 #>
 function Get-AzMLWorkspaceOnlineDeploymentSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISkuResource])]
@@ -5447,7 +5447,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlinedeployment
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlinedeployment
 #>
 function Get-AzMLWorkspaceOnlineDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineDeployment])]
@@ -5652,7 +5652,7 @@ Get-AzMLWorkspaceOnlineEndpointKey -ResourceGroupName ml-rg-test -WorkspaceName 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEndpointAuthKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlineendpointkey
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlineendpointkey
 #>
 function Get-AzMLWorkspaceOnlineEndpointKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEndpointAuthKeys])]
@@ -5841,7 +5841,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlineendpointtoken
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlineendpointtoken
 #>
 function Get-AzMLWorkspaceOnlineEndpointToken {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEndpointAuthToken])]
@@ -6040,7 +6040,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlineendpoint
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlineendpoint
 #>
 function Get-AzMLWorkspaceOnlineEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint])]
@@ -6262,7 +6262,7 @@ Get-AzMLWorkspaceOutboundNetworkDependencyEndpoint -ResourceGroupName ml-rg-test
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IFqdnEndpoints
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceoutboundnetworkdependencyendpoint
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceoutboundnetworkdependencyendpoint
 #>
 function Get-AzMLWorkspaceOutboundNetworkDependencyEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IFqdnEndpoints])]
@@ -6424,7 +6424,7 @@ Get-AzMLWorkspaceStorageAccountKey -ResourceGroupName ml-rg-test -Name mlworkspa
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacestorageaccountkey
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacestorageaccountkey
 #>
 function Get-AzMLWorkspaceStorageAccountKey {
 [OutputType([System.String])]
@@ -6611,7 +6611,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspace
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspace
 #>
 function Get-AzMLWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace])]
@@ -6818,7 +6818,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/invoke-azmlworkspacediagnose
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/invoke-azmlworkspacediagnose
 #>
 function Invoke-AzMLWorkspaceDiagnose {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDiagnoseResponseResultValue])]
@@ -7086,7 +7086,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/invoke-azmlworkspacenotebook
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/invoke-azmlworkspacenotebook
 #>
 function Invoke-AzMLWorkspaceNotebook {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.INotebookResourceInfo])]
@@ -7272,7 +7272,7 @@ New-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName ml
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeployment
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacebatchdeployment
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacebatchdeployment
 #>
 function New-AzMLWorkspaceBatchDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeployment])]
@@ -7652,7 +7652,7 @@ New-AzMLWorkspaceBatchEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlwo
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacebatchendpoint
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacebatchendpoint
 #>
 function New-AzMLWorkspaceBatchEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchEndpoint])]
@@ -7942,7 +7942,7 @@ New-AzMLWorkspaceCodeVersion -ResourceGroupName ml-rg-test -WorkspaceName mlwork
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ICodeVersion
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecodeversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecodeversion
 #>
 function New-AzMLWorkspaceCodeVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ICodeVersion])]
@@ -8157,7 +8157,7 @@ New-AzMLWorkspaceComponentContainer -ResourceGroupName ml-rg-test -WorkspaceName
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentContainer
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecomponentcontainer
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecomponentcontainer
 #>
 function New-AzMLWorkspaceComponentContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentContainer])]
@@ -8362,7 +8362,7 @@ New-AzMLWorkspaceComponentVersion -ResourceGroupName ml-rg-test -WorkspaceName m
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentVersion
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecomponentversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecomponentversion
 #>
 function New-AzMLWorkspaceComponentVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentVersion])]
@@ -8607,7 +8607,7 @@ COMPUTE <ICompute>: Compute properties
   [DisableLocalAuth <Boolean?>]: Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
   [ResourceId <String>]: ARM resource id of the underlying compute
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecompute
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecompute
 #>
 function New-AzMLWorkspaceCompute {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResource])]
@@ -8859,7 +8859,7 @@ New-AzMLWorkspaceConnection -ResourceGroupName ml-rg-test -WorkspaceName mlworks
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspaceConnectionPropertiesV2BasicResource
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceconnection
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceconnection
 #>
 function New-AzMLWorkspaceConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspaceConnectionPropertiesV2BasicResource])]
@@ -9060,7 +9060,7 @@ New-AzMLWorkspaceDataContainer -ResourceGroupName ml-rg-test -WorkspaceName mlwo
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDataContainer
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatacontainer
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatacontainer
 #>
 function New-AzMLWorkspaceDataContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDataContainer])]
@@ -9291,7 +9291,7 @@ DATASTORE <IDatastoreProperties>: [Required] Additional attributes of the entity
   [Tag <IResourceBaseTags>]: Tag dictionary. Tags can be added, removed, and updated.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastore
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastore
 #>
 function New-AzMLWorkspaceDatastore {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDatastore])]
@@ -9472,7 +9472,7 @@ New-AzMLWorkspaceDataVersion  -ResourceGroupName ml-rg-test -WorkspaceName mlwor
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDataVersionBase
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedataversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedataversion
 #>
 function New-AzMLWorkspaceDataVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDataVersionBase])]
@@ -9693,7 +9693,7 @@ New-AzMLWorkspaceEnvironmentVersion -ResourceGroupName ml-rg-test -WorkspaceName
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEnvironmentVersion
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceenvironmentversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceenvironmentversion
 #>
 function New-AzMLWorkspaceEnvironmentVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEnvironmentVersion])]
@@ -9999,7 +9999,7 @@ JOB <IJobBaseProperties>: [Required] Additional attributes of the entity.
   [Service <IJobBaseServices>]: List of JobEndpoints.         For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
     [(Any) <IJobService>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacejob
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacejob
 #>
 function New-AzMLWorkspaceJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBase])]
@@ -10175,7 +10175,7 @@ New-AzMLWorkspaceModelContainer -ResourceGroupName ml-rg-test -WorkspaceName mlw
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IModelContainer
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacemodelcontainer
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacemodelcontainer
 #>
 function New-AzMLWorkspaceModelContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IModelContainer])]
@@ -10371,7 +10371,7 @@ New-AzMLWorkspaceModelVersion  -ResourceGroupName ml-rg-test -WorkspaceName mlwo
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IModelVersion
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacemodelversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacemodelversion
 #>
 function New-AzMLWorkspaceModelVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IModelVersion])]
@@ -10610,7 +10610,7 @@ New-AzMLWorkspaceOnlineDeployment -ResourceGroupName ml-rg-test -WorkspaceName m
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineDeployment
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlinedeployment
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlinedeployment
 #>
 function New-AzMLWorkspaceOnlineDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineDeployment])]
@@ -11024,7 +11024,7 @@ New-AzMLWorkspaceOnlineEndpointKey -ResourceGroupName ml-rg-test -WorkspaceName 
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlineendpointkey
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlineendpointkey
 #>
 function New-AzMLWorkspaceOnlineEndpointKey {
 [OutputType([System.Boolean])]
@@ -11224,7 +11224,7 @@ New-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlw
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlineendpoint
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlineendpoint
 #>
 function New-AzMLWorkspaceOnlineEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint])]
@@ -11533,7 +11533,7 @@ SHAREDPRIVATELINKRESOURCE <ISharedPrivateLinkResource[]>: The list of shared pri
   [RequestMessage <String>]: Request message.
   [Status <PrivateEndpointServiceConnectionStatus?>]: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspace
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspace
 #>
 function New-AzMLWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace])]
@@ -11922,7 +11922,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacebatchdeployment
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacebatchdeployment
 #>
 function Remove-AzMLWorkspaceBatchDeployment {
 [OutputType([System.Boolean])]
@@ -12145,7 +12145,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacebatchendpoint
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacebatchendpoint
 #>
 function Remove-AzMLWorkspaceBatchEndpoint {
 [OutputType([System.Boolean])]
@@ -12362,7 +12362,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacecodeversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacecodeversion
 #>
 function Remove-AzMLWorkspaceCodeVersion {
 [OutputType([System.Boolean])]
@@ -12575,7 +12575,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacecomponentcontainer
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacecomponentcontainer
 #>
 function Remove-AzMLWorkspaceComponentContainer {
 [OutputType([System.Boolean])]
@@ -12780,7 +12780,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacecomponentversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacecomponentversion
 #>
 function Remove-AzMLWorkspaceComponentVersion {
 [OutputType([System.Boolean])]
@@ -12991,7 +12991,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacecompute
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacecompute
 #>
 function Remove-AzMLWorkspaceCompute {
 [OutputType([System.Boolean])]
@@ -13216,7 +13216,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceconnection
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceconnection
 #>
 function Remove-AzMLWorkspaceConnection {
 [OutputType([System.Boolean])]
@@ -13421,7 +13421,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacedatacontainer
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacedatacontainer
 #>
 function Remove-AzMLWorkspaceDataContainer {
 [OutputType([System.Boolean])]
@@ -13626,7 +13626,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacedatastore
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacedatastore
 #>
 function Remove-AzMLWorkspaceDatastore {
 [OutputType([System.Boolean])]
@@ -13831,7 +13831,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacedataversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacedataversion
 #>
 function Remove-AzMLWorkspaceDataVersion {
 [OutputType([System.Boolean])]
@@ -14042,7 +14042,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceenvironmentcontainer
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceenvironmentcontainer
 #>
 function Remove-AzMLWorkspaceEnvironmentContainer {
 [OutputType([System.Boolean])]
@@ -14248,7 +14248,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceenvironmentversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceenvironmentversion
 #>
 function Remove-AzMLWorkspaceEnvironmentVersion {
 [OutputType([System.Boolean])]
@@ -14461,7 +14461,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacejob
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacejob
 #>
 function Remove-AzMLWorkspaceJob {
 [OutputType([System.Boolean])]
@@ -14679,7 +14679,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacemodelcontainer
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacemodelcontainer
 #>
 function Remove-AzMLWorkspaceModelContainer {
 [OutputType([System.Boolean])]
@@ -14885,7 +14885,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacemodelversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacemodelversion
 #>
 function Remove-AzMLWorkspaceModelVersion {
 [OutputType([System.Boolean])]
@@ -15098,7 +15098,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceonlinedeployment
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceonlinedeployment
 #>
 function Remove-AzMLWorkspaceOnlineDeployment {
 [OutputType([System.Boolean])]
@@ -15321,7 +15321,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceonlineendpoint
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceonlineendpoint
 #>
 function Remove-AzMLWorkspaceOnlineEndpoint {
 [OutputType([System.Boolean])]
@@ -15538,7 +15538,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspace
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspace
 #>
 function Remove-AzMLWorkspace {
 [OutputType([System.Boolean])]
@@ -15750,7 +15750,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/restart-azmlworkspacecompute
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/restart-azmlworkspacecompute
 #>
 function Restart-AzMLWorkspaceCompute {
 [OutputType([System.Boolean])]
@@ -15968,7 +15968,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/start-azmlworkspacecompute
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/start-azmlworkspacecompute
 #>
 function Start-AzMLWorkspaceCompute {
 [OutputType([System.Boolean])]
@@ -16186,7 +16186,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/stop-azmlworkspacecompute
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/stop-azmlworkspacecompute
 #>
 function Stop-AzMLWorkspaceCompute {
 [OutputType([System.Boolean])]
@@ -16404,7 +16404,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/stop-azmlworkspacejob
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/stop-azmlworkspacejob
 #>
 function Stop-AzMLWorkspaceJob {
 [OutputType([System.Boolean])]
@@ -16624,7 +16624,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/sync-azmlworkspacekey
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/sync-azmlworkspacekey
 #>
 function Sync-AzMLWorkspaceKey {
 [OutputType([System.Boolean])]
@@ -16841,7 +16841,7 @@ VALUE <IQuotaBaseProperties[]>: The list for update quota.
   [Type <String>]: Specifies the resource type.
   [Unit <QuotaUnit?>]: An enum describing the unit of quota measurement.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/update-azmlservicequota
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/update-azmlservicequota
 #>
 function Update-AzMLServiceQuota {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IUpdateWorkspaceQuotasResult])]
@@ -17041,7 +17041,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspacebatchdeployment
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspacebatchdeployment
 #>
 function Update-AzMLWorkspaceBatchDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeployment])]
@@ -17271,7 +17271,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspacebatchendpoint
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspacebatchendpoint
 #>
 function Update-AzMLWorkspaceBatchEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchEndpoint])]
@@ -17509,7 +17509,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspacecompute
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspacecompute
 #>
 function Update-AzMLWorkspaceCompute {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResource])]
@@ -17740,7 +17740,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspaceonlinedeployment
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspaceonlinedeployment
 #>
 function Update-AzMLWorkspaceOnlineDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineDeployment])]
@@ -17999,7 +17999,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspaceonlineendpoint
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspaceonlineendpoint
 #>
 function Update-AzMLWorkspaceOnlineEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpoint])]
@@ -18233,7 +18233,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspace
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspace
 #>
 function Update-AzMLWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace])]
@@ -18523,7 +18523,7 @@ New-AzMLWorkspaceAksObject -Description "aks compute"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Aks
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceAksObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceAksObject
 #>
 function New-AzMLWorkspaceAksObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Aks])]
@@ -18735,7 +18735,7 @@ New-AzMLWorkspaceAmlComputeObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AmlCompute
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceAmlComputeObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceAmlComputeObject
 #>
 function New-AzMLWorkspaceAmlComputeObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AmlCompute])]
@@ -18987,7 +18987,7 @@ SERVICEPROPERTY <IJobServiceProperties>: Additional properties to set on the end
 TAG <IResourceBaseTags>: Tag dictionary. Tags can be added, removed, and updated.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceCommandJobObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceCommandJobObject
 #>
 function New-AzMLWorkspaceCommandJobObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CommandJob])]
@@ -19240,7 +19240,7 @@ SCHEDULECOMPUTESTARTSTOP <IComputeStartStopSchedule[]>: The list of compute star
   [ScheduleProvisioningStatus <ScheduleProvisioningState?>]: 
   [ScheduleStatus <ScheduleStatus?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceComputeInstanceObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceComputeInstanceObject
 #>
 function New-AzMLWorkspaceComputeInstanceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeInstance])]
@@ -19503,7 +19503,7 @@ New-AzMLWorkspaceComputeStartStopScheduleObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeStartStopSchedule
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceComputeStartStopScheduleObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceComputeStartStopScheduleObject
 #>
 function New-AzMLWorkspaceComputeStartStopScheduleObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeStartStopSchedule])]
@@ -19619,7 +19619,7 @@ New-AzMLWorkspaceCustomModelJobInputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CustomModelJobInput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceCustomModelJobInputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceCustomModelJobInputObject
 #>
 function New-AzMLWorkspaceCustomModelJobInputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CustomModelJobInput])]
@@ -19737,7 +19737,7 @@ New-AzMLWorkspaceCustomModelJobOutputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CustomModelJobOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceCustomModelJobOutputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceCustomModelJobOutputObject
 #>
 function New-AzMLWorkspaceCustomModelJobOutputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CustomModelJobOutput])]
@@ -19855,7 +19855,7 @@ New-AzMLWorkspaceDatabricksObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Databricks
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatabricksObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatabricksObject
 #>
 function New-AzMLWorkspaceDatabricksObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Databricks])]
@@ -19977,7 +19977,7 @@ New-AzMLWorkspaceDataFactoryObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.DataFactory
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDataFactoryObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDataFactoryObject
 #>
 function New-AzMLWorkspaceDataFactoryObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.DataFactory])]
@@ -20087,7 +20087,7 @@ New-AzMLWorkspaceDataLakeAnalyticsObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.DataLakeAnalytics
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDataLakeAnalyticsObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDataLakeAnalyticsObject
 #>
 function New-AzMLWorkspaceDataLakeAnalyticsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.DataLakeAnalytics])]
@@ -20216,7 +20216,7 @@ PROPERTY <IResourceBaseProperties>: The asset property dictionary.
 TAG <IResourceBaseTags>: Tag dictionary. Tags can be added, removed, and updated.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreBlobObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreBlobObject
 #>
 function New-AzMLWorkspaceDatastoreBlobObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureBlobDatastore])]
@@ -20367,7 +20367,7 @@ New-AzMLWorkspaceDatastoreCredentialObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CertificateDatastoreCredentials
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreCredentialObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreCredentialObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CertificateDatastoreCredentials])]
@@ -20508,7 +20508,7 @@ PROPERTY <IResourceBaseProperties>: The asset property dictionary.
 TAG <IResourceBaseTags>: Tag dictionary. Tags can be added, removed, and updated.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreDataLakeGen1Object
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreDataLakeGen1Object
 #>
 function New-AzMLWorkspaceDatastoreDataLakeGen1Object {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureDataLakeGen1Datastore])]
@@ -20654,7 +20654,7 @@ PROPERTY <IResourceBaseProperties>: The asset property dictionary.
 TAG <IResourceBaseTags>: Tag dictionary. Tags can be added, removed, and updated.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreDataLakeGen2Object
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreDataLakeGen2Object
 #>
 function New-AzMLWorkspaceDatastoreDataLakeGen2Object {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureDataLakeGen2Datastore])]
@@ -20815,7 +20815,7 @@ PROPERTY <IResourceBaseProperties>: The asset property dictionary.
 TAG <IResourceBaseTags>: Tag dictionary. Tags can be added, removed, and updated.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreFileObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreFileObject
 #>
 function New-AzMLWorkspaceDatastoreFileObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureFileDatastore])]
@@ -20959,7 +20959,7 @@ New-AzMLWorkspaceDatastoreKeyCredentialObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AccountKeyDatastoreCredentials
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/New-AzMLWorkspaceDatastoreKeyCredentialObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/New-AzMLWorkspaceDatastoreKeyCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreKeyCredentialObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AccountKeyDatastoreCredentials])]
@@ -21057,7 +21057,7 @@ New-AzMLWorkspaceDatastoreNoneCredentialObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.NoneDatastoreCredentials
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreNoneCredentialObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreNoneCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreNoneCredentialObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.NoneDatastoreCredentials])]
@@ -21149,7 +21149,7 @@ New-AzMLWorkspaceDatastoreSasCredentialObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SasDatastoreCredentials
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreSasCredentialObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreSasCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreSasCredentialObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SasDatastoreCredentials])]
@@ -21247,7 +21247,7 @@ New-AzMLWorkspaceDatastoreServicePrincipalCredentialObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ServicePrincipalDatastoreCredentials
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreServicePrincipalCredentialObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreServicePrincipalCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreServicePrincipalCredentialObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ServicePrincipalDatastoreCredentials])]
@@ -21369,7 +21369,7 @@ New-AzMLWorkspaceHDInsightObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.HdInsight
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceHDInsightObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceHDInsightObject
 #>
 function New-AzMLWorkspaceHDInsightObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.HDInsight])]
@@ -21522,7 +21522,7 @@ To create the parameters described below, construct a hash table containing the 
 PROPERTY <IJobServiceProperties>: Additional properties to set on the endpoint.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceJobServiceObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceJobServiceObject
 #>
 function New-AzMLWorkspaceJobServiceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.JobService])]
@@ -21639,7 +21639,7 @@ New-AzMLWorkspaceKubernetesObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Kubernetes
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceKubernetesObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceKubernetesObject
 #>
 function New-AzMLWorkspaceKubernetesObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Kubernetes])]
@@ -21809,7 +21809,7 @@ New-AzMLWorkspaceLiteralJobInputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.LiteralJobInput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceLiteralJobInputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceLiteralJobInputObject
 #>
 function New-AzMLWorkspaceLiteralJobInputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.LiteralJobInput])]
@@ -21920,7 +21920,7 @@ New-AzMLWorkspaceMLFlowModelJobInputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MlFlowModelJobInput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceMLFlowModelJobInputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceMLFlowModelJobInputObject
 #>
 function New-AzMLWorkspaceMLFlowModelJobInputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MLFlowModelJobInput])]
@@ -22038,7 +22038,7 @@ New-AzMLWorkspaceMLFlowModelJobOutputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MlFlowModelJobOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceMLFlowModelJobOutputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceMLFlowModelJobOutputObject
 #>
 function New-AzMLWorkspaceMLFlowModelJobOutputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MLFlowModelJobOutput])]
@@ -22156,7 +22156,7 @@ New-AzMLWorkspaceMLTableJobInputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MlTableJobInput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceMLTableJobInputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceMLTableJobInputObject
 #>
 function New-AzMLWorkspaceMLTableJobInputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MLTableJobInput])]
@@ -22274,7 +22274,7 @@ New-AzMLWorkspaceMLTableJobOutputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MlTableJobOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceMLTableJobOutputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceMLTableJobOutputObject
 #>
 function New-AzMLWorkspaceMLTableJobOutputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MLTableJobOutput])]
@@ -22431,7 +22431,7 @@ SERVICEPROPERTY <IJobServiceProperties>: Additional properties to set on the end
 TAG <IResourceBaseTags>: Tag dictionary. Tags can be added, removed, and updated.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspacePipelineJobObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspacePipelineJobObject
 #>
 function New-AzMLWorkspacePipelineJobObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.PipelineJob])]
@@ -22628,7 +22628,7 @@ New-AzMLWorkspaceQuotaPropertiesObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.QuotaBaseProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceQuotaPropertiesObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceQuotaPropertiesObject
 #>
 function New-AzMLWorkspaceQuotaPropertiesObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.QuotaBaseProperties])]
@@ -22745,7 +22745,7 @@ New-AzMLWorkspaceSharedPrivateLinkResourceObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SharedPrivateLinkResource
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceSharedPrivateLinkResourceObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceSharedPrivateLinkResourceObject
 #>
 function New-AzMLWorkspaceSharedPrivateLinkResourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SharedPrivateLinkResource])]
@@ -22910,7 +22910,7 @@ TAG <IResourceBaseTags>: Tag dictionary. Tags can be added, removed, and updated
 TRIALENVIRONMENTVARIABLE <ITrialComponentEnvironmentVariables>: Environment variables included in the job.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceSweepJobObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceSweepJobObject
 #>
 function New-AzMLWorkspaceSweepJobObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SweepJob])]
@@ -23218,7 +23218,7 @@ New-AzMLWorkspaceSynapseSparkObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SynapseSpark
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceSynapseSparkObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceSynapseSparkObject
 #>
 function New-AzMLWorkspaceSynapseSparkObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SynapseSpark])]
@@ -23403,7 +23403,7 @@ New-AzMLWorkspaceTritonModelJobInputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.TritonModelJobInput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceTritonModelJobInputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceTritonModelJobInputObject
 #>
 function New-AzMLWorkspaceTritonModelJobInputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.TritonModelJobInput])]
@@ -23521,7 +23521,7 @@ New-AzMLWorkspaceTritonModelJobOutputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.TritonModelJobOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceTritonModelJobOutputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceTritonModelJobOutputObject
 #>
 function New-AzMLWorkspaceTritonModelJobOutputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.TritonModelJobOutput])]
@@ -23639,7 +23639,7 @@ New-AzMLWorkspaceUriFileJobInputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.UriFileJobInput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceUriFileJobInputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceUriFileJobInputObject
 #>
 function New-AzMLWorkspaceUriFileJobInputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.UriFileJobInput])]
@@ -23757,7 +23757,7 @@ New-AzMLWorkspaceUriFileJobOutputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.UriFileJobOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceUriFileJobOutputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceUriFileJobOutputObject
 #>
 function New-AzMLWorkspaceUriFileJobOutputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.UriFileJobOutput])]
@@ -23875,7 +23875,7 @@ New-AzMLWorkspaceUriFolderJobInputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.UriFolderJobInput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceUriFolderJobInputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceUriFolderJobInputObject
 #>
 function New-AzMLWorkspaceUriFolderJobInputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.UriFolderJobInput])]
@@ -23993,7 +23993,7 @@ New-AzMLWorkspaceUriFolderJobOutputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.UriFolderJobOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceUriFolderJobOutputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceUriFolderJobOutputObject
 #>
 function New-AzMLWorkspaceUriFolderJobOutputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.UriFolderJobOutput])]
@@ -24111,7 +24111,7 @@ New-AzMLWorkspaceVirtualMachineObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.VirtualMachine
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceVirtualMachineObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceVirtualMachineObject
 #>
 function New-AzMLWorkspaceVirtualMachineObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.VirtualMachine])]

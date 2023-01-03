@@ -25,7 +25,7 @@ New-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb0
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteCustomDomainOverviewArmResource
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebappcustomdomain
+https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebappcustomdomain
 #>
 function New-AzStaticWebAppCustomDomain {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteCustomDomainOverviewArmResource])]
