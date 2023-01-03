@@ -154,6 +154,7 @@ Synapse Analytics                     | `Az.Synapse`                            
 Time Series Insights                  | `Az.TimeSeriesInsights`                 | [![TimeSeriesInsights]][TimeSeriesInsightsGallery]
 Traffic Manager                       | `Az.TrafficManager`                     | [![TrafficManager]][TrafficManagerGallery]
 Azure VMware Solution                 | `Az.VMware`                             | [![VMware]][VMwareGallery]
+Voice Services                        | `Az.VoiceServices`                      | [![VoiceServices]][VMwareGallery]
 Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery]
 Windows Iot Services                  | `Az.WindowsIotServices`                 | [![WindowsIotServices]][WindowsIotServicesGallery]
 
@@ -305,6 +306,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [TimeSeriesInsights]:         https://img.shields.io/powershellgallery/v/Az.TimeSeriesInsights.svg?style=flat-square&label=Az.TimeSeriesInsights
 [TrafficManager]:             https://img.shields.io/powershellgallery/v/Az.TrafficManager.svg?style=flat-square&label=Az.TrafficManager
 [VMware]:                     https://img.shields.io/powershellgallery/v/Az.VMware.svg?style=flat-square&label=Az.VMware
+[VoiceServices]:              https://img.shields.io/powershellgallery/v/Az.VoiceServices.svg?style=flat-square&label=Az.VoiceServices
 [Websites]:                   https://img.shields.io/powershellgallery/v/Az.Websites.svg?style=flat-square&label=Az.Websites
 [WindowsIotServices]:         https://img.shields.io/powershellgallery/v/Az.WindowsIotServices.svg?style=flat-square&label=Az.WindowsIotServices
 
@@ -454,5 +456,6 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [TimeSeriesInsightsGallery]:         https://www.powershellgallery.com/packages/Az.TimeSeriesInsights/
 [TrafficManagerGallery]:             https://www.powershellgallery.com/packages/Az.TrafficManager/
 [VMwareGallery]:                     https://www.powershellgallery.com/packages/Az.VMware/
+[VoiceServices]:                     https://www.powershellgallery.com/packages/Az.VoiceServices/
 [WebsitesGallery]:                   https://www.powershellgallery.com/packages/Az.Websites/
 [WindowsIotServicesGallery]:         https://www.powershellgallery.com/packages/Az.WindowsIotServices/

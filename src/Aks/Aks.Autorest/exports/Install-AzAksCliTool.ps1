@@ -27,7 +27,7 @@ Install-AzAksCliTool -KubectlInstallVersion "v1.25.0" -KubectlInstallDestination
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.aks/install-azaksclitool
+https://learn.microsoft.com/powershell/module/az.aks/install-azaksclitool
 #>
 function Install-AzAksCliTool {
 [OutputType([System.Boolean])]

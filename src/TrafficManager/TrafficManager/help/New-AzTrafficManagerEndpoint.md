@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.TrafficManager.dll-Help.xml
 Module Name: Az.TrafficManager
 ms.assetid: A7A908A1-7326-4725-A3F9-4D05E40C5F73
@@ -16,7 +16,8 @@ Creates an endpoint in a Traffic Manager profile.
 ```
 New-AzTrafficManagerEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <String> -Type <String>
  [-TargetResourceId <String>] [-Target <String>] -EndpointStatus <String> [-Weight <UInt32>]
- [-Priority <UInt32>] [-EndpointLocation <String>] [-MinChildEndpoints <UInt32>] [-MinChildEndpointsIPv4 <UInt32>] [-MinChildEndpointsIPv6 <UInt32>]
+ [-Priority <UInt32>] [-EndpointLocation <String>] [-AlwaysServe <String>] [-MinChildEndpoints <UInt32>]
+ [-MinChildEndpointsIPv4 <UInt32>] [-MinChildEndpointsIPv6 <UInt32>]
  [-GeoMapping <System.Collections.Generic.List`1[System.String]>]
  [-SubnetMapping <System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]>]
  [-CustomHeader <System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]>]
@@ -48,6 +49,22 @@ The Azure endpoint points to the Azure Web App whose Azure Resource Manager ID i
 The command does not specify the *EndpointLocation* parameter because the Web App resource supplies the location.
 
 ## PARAMETERS
+
+### -AlwaysServe
+If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CustomHeader
 List of custom header name and value pairs for probe requests.
@@ -140,9 +157,33 @@ Accept wildcard characters: False
 Specify an Azure region name.
 For a full list of Azure regions, see Azure Regionshttp://azure.microsoft.com/regions/ (http://azure.microsoft.com/regions/).
 
+```yaml
+Type: System.Nullable`1[System.UInt32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MinChildEndpointsIPv4
 The minimum number of IPv4 (DNS record type A) endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available.
 Only applicable to endpoint of type 'NestedEndpoints'.
+
+```yaml
+Type: System.Nullable`1[System.UInt32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -MinChildEndpointsIPv6
 The minimum number of IPv6 (DNS record type AAAA) endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available.
@@ -318,7 +359,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

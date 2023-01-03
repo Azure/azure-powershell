@@ -27,7 +27,7 @@ Lists all of the available RP operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/get-azdatabricksoperation
+https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksoperation
 #>
 function Get-AzDatabricksOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IOperation])]

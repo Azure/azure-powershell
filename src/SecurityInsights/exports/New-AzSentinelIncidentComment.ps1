@@ -20,7 +20,7 @@ Creates or updates the incident comment.
 .Description
 Creates or updates the incident comment.
 .Example
- New-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Message "IncidentCommentGoesHere"
+ New-AzSentinelIncidentComment -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Message "IncidentCommentGoesHere"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment
@@ -45,7 +45,7 @@ INCIDENTCOMMENT <IIncidentComment>: Represents an incident comment
   [AuthorUserPrincipalName <String>]: The user principal name of the client.
   [Message <String>]: The comment message
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincidentcomment
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincidentcomment
 #>
 function New-AzSentinelIncidentComment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment])]

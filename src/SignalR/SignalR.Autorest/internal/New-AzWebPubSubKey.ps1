@@ -22,20 +22,10 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 Regenerate the access key for the resource.
 PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 .Example
-PS C:\>  New-AzWebPubSubKey  -ResourceGroupName psdemo -ResourceName psdemo-wps -KeyType 'Primary' | Format-List
-
-PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
-PrimaryKey                : ********
-SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
-SecondaryKey              : ********
+New-AzWebPubSubKey  -ResourceGroupName psdemo -ResourceName psdemo-wps -KeyType 'Primary' | Format-List
 .Example
-PS C:\>  $wps = Get-AzWebPubSub -Name psdemo-wps -ResourceGroupName psdemo
-PS C:\> $wps | New-AzWebPubSubKey -KeyType Primary | Format-List
-
-PrimaryConnectionString   : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
-PrimaryKey                : ********
-SecondaryConnectionString : Endpoint=https://psdemo-wps.webpubsub.azure.com;AccessKey=********;Version=1.0;
-SecondaryKey              : ********
+$wps = Get-AzWebPubSub -Name psdemo-wps -ResourceGroupName psdemo
+$wps | New-AzWebPubSubKey -KeyType Primary | Format-List
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
@@ -47,16 +37,18 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+  [CertificateName <String>]: Custom certificate name
   [HubName <String>]: The hub name.
   [Id <String>]: Resource identity path
   [Location <String>]: the region
+  [Name <String>]: Custom domain name.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
   [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   [ResourceName <String>]: The name of the resource.
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.signalr/new-azwebpubsubkey
+https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubkey
 #>
 function New-AzWebPubSubKey {
 [OutputType([System.Boolean])]
@@ -94,7 +86,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType])]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType]
-    # Must be either 'primary', 'secondary' or 'salt'(case-insensitive).
+    # The type of access key.
     ${KeyType},
 
     [Parameter()]
@@ -170,6 +162,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             RegenerateExpanded = 'Az.SignalR.private\New-AzWebPubSubKey_RegenerateExpanded';
             RegenerateViaIdentityExpanded = 'Az.SignalR.private\New-AzWebPubSubKey_RegenerateViaIdentityExpanded';
@@ -183,6 +176,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -191,15 +185,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             storageMocker.Setup(f => f.Create()).Returns(storageMocker.Object);
             storageMocker.Setup(f => f.ReadData()).Returns(new byte[0]);
             storageMocker.Setup(f => f.WriteData(It.IsAny<byte[]>())).Callback((byte[] s) => { });
-            var keyStore = new AzKeyStore(AzureSession.Instance.ARMProfileDirectory, "keystore.cache", false, false, storageMocker.Object);
+            var keyStore = new AzKeyStore(AzureSession.Instance.ARMProfileDirectory, "azkeystore", false, false, storageMocker.Object);
             return keyStore;
         }
 
