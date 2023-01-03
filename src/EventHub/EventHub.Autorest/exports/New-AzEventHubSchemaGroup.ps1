@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-
+Creates or Updates an EventHub schema group.
 .Description
-
+Creates or Updates an EventHub schema group.
 .Example
 $schemaGroup = New-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name mySchemaGroup -SchemaCompatibility Backward -SchemaType Avro
 

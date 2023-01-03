@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added enrich example for the cmdlet `New-AzContainerAppScaleRuleObject`.[#20334]
 
 ## Version 0.1.0
 * First preview release for module Az.App

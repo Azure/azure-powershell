@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: F20A5FD3-6EC3-4EFE-988C-75F8583961A4
-online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstorageblobcontent
+online version: https://learn.microsoft.com/powershell/module/az.storage/set-azstorageblobcontent
 schema: 2.0.0
 ---
 

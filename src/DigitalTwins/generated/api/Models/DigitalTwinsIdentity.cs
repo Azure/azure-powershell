@@ -33,12 +33,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Origin(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
+        /// <summary>Backing field for <see cref="PrivateEndpointConnectionName" /> property.</summary>
+        private string _privateEndpointConnectionName;
+
+        /// <summary>The name of the private endpoint connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Origin(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.PropertyOrigin.Owned)]
+        public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
         /// <summary>The name of the resource group that contains the DigitalTwinsInstance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Origin(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="ResourceId" /> property.</summary>
+        private string _resourceId;
+
+        /// <summary>The name of the private link resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Origin(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.PropertyOrigin.Owned)]
+        public string ResourceId { get => this._resourceId; set => this._resourceId = value; }
 
         /// <summary>Backing field for <see cref="ResourceName" /> property.</summary>
         private string _resourceName;
@@ -53,6 +67,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         /// <summary>The subscription identifier.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Origin(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
+        /// <summary>Backing field for <see cref="TimeSeriesDatabaseConnectionName" /> property.</summary>
+        private string _timeSeriesDatabaseConnectionName;
+
+        /// <summary>Name of time series database connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Origin(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.PropertyOrigin.Owned)]
+        public string TimeSeriesDatabaseConnectionName { get => this._timeSeriesDatabaseConnectionName; set => this._timeSeriesDatabaseConnectionName = value; }
 
         /// <summary>Creates an new <see cref="DigitalTwinsIdentity" /> instance.</summary>
         public DigitalTwinsIdentity()
@@ -87,6 +108,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
+        /// <summary>The name of the private endpoint connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the private endpoint connection.",
+        SerializedName = @"privateEndpointConnectionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateEndpointConnectionName { get; set; }
         /// <summary>The name of the resource group that contains the DigitalTwinsInstance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
         Required = false,
@@ -95,6 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>The name of the private link resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the private link resource.",
+        SerializedName = @"resourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceId { get; set; }
         /// <summary>The name of the DigitalTwinsInstance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
         Required = false,
@@ -111,6 +148,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
+        /// <summary>Name of time series database connection.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of time series database connection.",
+        SerializedName = @"timeSeriesDatabaseConnectionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string TimeSeriesDatabaseConnectionName { get; set; }
 
     }
     internal partial interface IDigitalTwinsIdentityInternal
@@ -122,12 +167,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models
         string Id { get; set; }
         /// <summary>Location of DigitalTwinsInstance.</summary>
         string Location { get; set; }
+        /// <summary>The name of the private endpoint connection.</summary>
+        string PrivateEndpointConnectionName { get; set; }
         /// <summary>The name of the resource group that contains the DigitalTwinsInstance.</summary>
         string ResourceGroupName { get; set; }
+        /// <summary>The name of the private link resource.</summary>
+        string ResourceId { get; set; }
         /// <summary>The name of the DigitalTwinsInstance.</summary>
         string ResourceName { get; set; }
         /// <summary>The subscription identifier.</summary>
         string SubscriptionId { get; set; }
+        /// <summary>Name of time series database connection.</summary>
+        string TimeSeriesDatabaseConnectionName { get; set; }
 
     }
 }

@@ -8,6 +8,7 @@ schema: 2.0.0
 # New-AzEventHubSchemaGroup
 
 ## SYNOPSIS
+Creates or Updates an EventHub schema group.
 
 ## SYNTAX
 
@@ -18,6 +19,7 @@ New-AzEventHubSchemaGroup -Name <String> -NamespaceName <String> -ResourceGroupN
 ```
 
 ## DESCRIPTION
+Creates or Updates an EventHub schema group.
 
 ## EXAMPLES
 

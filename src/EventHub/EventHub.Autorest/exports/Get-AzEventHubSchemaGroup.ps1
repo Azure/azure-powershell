@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-
+Gets the details of an EventHub schema group.
 .Description
-
+Gets the details of an EventHub schema group.
 .Example
 Get-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name mySchemaGroup
 .Example

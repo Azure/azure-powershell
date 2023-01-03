@@ -25,7 +25,7 @@ Get-AzPurviewAccountKey -AccountName test-pa -ResourceGroupName test-rg
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewaccountkey
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewaccountkey
 #>
 function Get-AzPurviewAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccessKeys])]

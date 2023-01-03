@@ -42,7 +42,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [SpacecraftName <String>]: Spacecraft ID.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/remove-azorbitalspacecraft
+https://learn.microsoft.com/powershell/module/az.orbital/remove-azorbitalspacecraft
 #>
 function Remove-AzOrbitalSpacecraft {
 [OutputType([System.Boolean])]

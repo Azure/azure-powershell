@@ -45,7 +45,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdapplication
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdapplication
 #>
 function Remove-AzWvdApplication {
 [OutputType([System.Boolean])]

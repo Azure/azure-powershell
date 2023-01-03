@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-
+Deletes an EventHub schema group.
 .Description
-
+Deletes an EventHub schema group.
 .Example
 Remove-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name mySchemaGroup
 

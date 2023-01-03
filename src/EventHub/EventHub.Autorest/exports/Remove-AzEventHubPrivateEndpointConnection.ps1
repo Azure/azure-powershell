@@ -16,11 +16,9 @@
 
 <#
 .Synopsis
-Deletes an existing namespace.
-This operation also removes all associated resources under the namespace.
+Deletes a Private Endpoint Connection.
 .Description
-Deletes an existing namespace.
-This operation also removes all associated resources under the namespace.
+Deletes a Private Endpoint Connection.
 .Example
 Remove-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
 

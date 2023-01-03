@@ -25,7 +25,7 @@ New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprMetadata
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappdaprmetadataobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappdaprmetadataobject
 #>
 function New-AzContainerAppDaprMetadataObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprMetadata])]

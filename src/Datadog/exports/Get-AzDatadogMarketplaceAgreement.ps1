@@ -29,7 +29,7 @@ Datadog     Microsoft.Datadog/agreements
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogAgreementResource
 .Link
-https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogmarketplaceagreement
+https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmarketplaceagreement
 #>
 function Get-AzDatadogMarketplaceAgreement {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.IDatadogAgreementResource])]

@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-AzEventHubSchemaGroup
 
 ## SYNOPSIS
+Gets the details of an EventHub schema group.
 
 ## SYNTAX
 
@@ -29,6 +30,7 @@ Get-AzEventHubSchemaGroup -InputObject <IEventHubIdentity> [-DefaultProfile <PSO
 ```
 
 ## DESCRIPTION
+Gets the details of an EventHub schema group.
 
 ## EXAMPLES
 

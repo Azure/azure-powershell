@@ -8,8 +8,7 @@ schema: 2.0.0
 # Remove-AzEventHubPrivateEndpointConnection
 
 ## SYNOPSIS
-Deletes an existing namespace.
-This operation also removes all associated resources under the namespace.
+Deletes a Private Endpoint Connection.
 
 ## SYNTAX
 
@@ -27,8 +26,7 @@ Remove-AzEventHubPrivateEndpointConnection -InputObject <IEventHubIdentity> [-De
 ```
 
 ## DESCRIPTION
-Deletes an existing namespace.
-This operation also removes all associated resources under the namespace.
+Deletes a Private Endpoint Connection.
 
 ## EXAMPLES
 
