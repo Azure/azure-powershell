@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.2.0
+* Added NamespaceV2 cmdlets for EventHub
+
 ## Version 3.1.0
 * Added readonly Status property in EventHub Namespace 
 

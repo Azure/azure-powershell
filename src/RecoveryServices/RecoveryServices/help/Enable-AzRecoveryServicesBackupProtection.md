@@ -77,7 +77,7 @@ Enables backup for an item with a specified Backup protection policy or resumes 
 
 
 ```powershell
-Enable-AzRecoveryServicesBackupProtection -Item $Item -Policy $Pol -VaultId $vault
+Enable-AzRecoveryServicesBackupProtection  -ResourceGroupName $ResourceGroupName -Item $Item -Policy $Pol -VaultId $vault
 ```
 
 ## PARAMETERS

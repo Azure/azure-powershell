@@ -1,4 +1,4 @@
-﻿
+
 # ----------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -51,7 +51,7 @@ INPUTOBJECT<IStorageMoverIdentity>: Identity Parameter
   [SubscriptionId<String>]: The ID of the target subscription.
 
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverendpoint
 #>
 function Update-AzStorageMoverAzStorageContainerEndpoint {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubapplicationgroup
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubapplicationgroup
 schema: 2.0.0
 ---
 

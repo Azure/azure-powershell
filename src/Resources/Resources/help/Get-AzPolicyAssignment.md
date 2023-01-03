@@ -68,6 +68,15 @@ Get-AzPolicyAssignment -Scope '/providers/Microsoft.Management/managementgroups/
 The first command specifies the ID of the management group to query.
 The second command gets all of the policy assignments that are assigned to the management group with ID 'myManagementGroup'.
 
+### Example 4: Get the scope, policy set definition identifier, and display name of all policy assignments formatted as a list
+
+```powershell
+Get-AzPolicyAssignment | Select-Object -ExpandProperty properties | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
+```
+
+This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
+Policy assignment.
+
 ## PARAMETERS
 
 ### -ApiVersion

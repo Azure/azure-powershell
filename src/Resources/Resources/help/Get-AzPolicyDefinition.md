@@ -84,10 +84,19 @@ This command gets all built-in policy definitions from the subscription with ID 
 
 ### Example 5: Get policy definitions from a given category
 ```powershell
-Get-AzPolicyDefinition | Where-Object {$_.Properties.metadata.category -eq "Virtual Machine"}
+Get-AzPolicyDefinition | Where-Object {$_.Properties.metadata.category -eq 'Tags'}
 ```
 
-This command gets all policy definitions in category "Virtual Machine".
+This command gets all policy definitions in the category **Tags**.
+
+### Example 6: Get the display name, description, policy type, and metadata of all policy definitions formatted as a list
+
+```powershell
+Get-AzPolicyDefinition | Select-Object -ExpandProperty properties | Select-Object -Property DisplayName, Description, PolicyType, Metadata | Format-List
+```
+
+This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
+Policy definition. You can parse the **Metadata** property to discover the policy definition's version number and category assignment.
 
 ## PARAMETERS
 
