@@ -112,7 +112,7 @@ LABPLAN <LabPlan>:
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/remove-azlabserviceslab
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabserviceslab
 #>
 function Remove-AzLabServicesLab {
 [OutputType([System.Boolean])]

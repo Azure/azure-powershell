@@ -18,9 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-*Return ListBlobProperties in blob list result
+* Return ListBlobProperties in blob list result
     - `Get-AzStorageBlob`
-*Output AllowedCopyScope in get account result
+* Output AllowedCopyScope in get account result
     - `Get-AzStorageAccount`
 
 ## Version 5.2.0

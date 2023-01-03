@@ -20,7 +20,9 @@ Create an in-memory object for ScaleRule.
 .Description
 Create an in-memory object for ScaleRule.
 .Example
-New-AzContainerAppScaleRuleObject -Name scaleRuleName -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
+$scaleRule = @()
+$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName1 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
+$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName2 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule
@@ -47,7 +49,7 @@ HTTPAUTH <IScaleRuleAuth[]>: Authentication secrets for the custom scale rule.
 HTTPMETADATA <IHttpScaleRuleMetadata>: Metadata properties to describe http scale rule.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappscaleruleobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappscaleruleobject
 #>
 function New-AzContainerAppScaleRuleObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule])]

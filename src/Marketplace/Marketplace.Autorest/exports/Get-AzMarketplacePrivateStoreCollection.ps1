@@ -47,7 +47,7 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
   [PrivateStoreId <String>]: The store ID - must use the tenant ID
   [RequestApprovalId <String>]: The request approval ID to get create or update
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorecollection
+https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorecollection
 #>
 function Get-AzMarketplacePrivateStoreCollection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection], [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsList])]

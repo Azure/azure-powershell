@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azstaticwebappuser
+online version: https://learn.microsoft.com/powershell/module/az.websites/remove-azstaticwebappuser
 schema: 2.0.0
 ---
 

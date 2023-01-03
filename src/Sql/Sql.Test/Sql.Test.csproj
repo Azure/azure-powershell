@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <PsModuleName>Sql</PsModuleName>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
