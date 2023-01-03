@@ -25,7 +25,7 @@ New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonSrmProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonSrmPropertiesObject
+https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonSrmPropertiesObject
 #>
 function New-AzVMwareAddonSrmPropertiesObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonSrmProperties])]
