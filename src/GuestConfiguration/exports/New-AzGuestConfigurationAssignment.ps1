@@ -42,7 +42,7 @@ GUESTCONFIGURATIONPROTECTEDPARAMETER <IConfigurationParameter[]>: The protected 
 LATESTASSIGNMENTREPORTRESOURCE <IAssignmentReportResource[]>: The list of resources for which guest configuration assignment compliance is checked.
   [Reason <IAssignmentReportResourceComplianceReason[]>]: Compliance reason and reason code for a resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.guestconfiguration/new-azguestconfigurationassignment
+https://learn.microsoft.com/powershell/module/az.guestconfiguration/new-azguestconfigurationassignment
 #>
 function New-AzGuestConfigurationAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment])]
