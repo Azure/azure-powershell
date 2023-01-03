@@ -38,7 +38,7 @@ Restore (Re-establish) a previously deleted replication between 2 volumes that h
 
 ### Example 1
 ```powershell
-Restore-AzNetAppFilesSnapshotFile -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyVolume" --SourceVolumeId "volumeResourceId"
+Restore-AzNetAppFilesReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyVolume" -SourceVolumeId "volumeResourceId"
 ```
 
 This command Restores the replication for the volumes 
