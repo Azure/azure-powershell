@@ -92,7 +92,7 @@ testscope1    Disabled   Microsoft.Keyvault https://keyvalutname.vault.azure.net
 testscope2    Disabled   Microsoft.Storage
 ```
 This command lists all disabled encryption scopes with names starting with "test" of a Storage account. 
-The parameter "Filter" specifies the prefix of the encryption scopes listed, and it should be in format of �startswith(name, {prefixValue})�.
+The parameter "Filter" specifies the prefix of the encryption scopes listed, and it should be in format of "startswith(name, {prefixValue})".
 
 ## PARAMETERS
 
