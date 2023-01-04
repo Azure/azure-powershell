@@ -1,67 +1,77 @@
 {
-    "resourceType":"subscriptionsResourcegroups",
-    "apiVersion":"2021-04-01",
-    "learnMore":{
-       "url":"https://learn.microsoft.com/powershell/module/az.resources/#resources"
-    },
-    "commands":[
-       {
-          "name":"Get-AzResourceGroup",
-          "description":"Gets resource groups.",
-          "path":"/subscriptions/{subscriptionId}/resourceGroups/{name}",
-          "confirmation":false,
-          "help":{
-             "learnMore":{
-                "url":"https://learn.microsoft.com/powershell/module/az.resources/get-azresourcegroup"
-             },
-             "parameterSets":[
-                {
-                   "parameters":[
-                      "[[-Name] <String>]"
-                   ]
-                }
-             ]
-          },
-          "examples":[
-             {
-                "description":"Gets resource groups.",
-                "parameters":[
-                   {
-                      "name":"-Name",
-                      "value":"[path.name]"
-                   }
-                ]
-             }
-          ]
-       },
-       {
-         "name":"Remove-AzResourceGroup",
-         "description":"Removes a resource group.",
-         "path":"/subscriptions/{subscriptionId}/resourceGroups/{name}",
-         "confirmation":false,
-         "help":{
-            "learnMore":{
-               "url":"https://learn.microsoft.com/powershell/module/az.resources/remove-azresourcegroup"
-            },
-            "parameterSets":[
-               {
-                  "parameters":[
-                     "[[-Name] <String>]"
-                  ]
-               }
+  "resourceType": "subscriptionsResourcegroups",
+  "apiVersion": "2021-04-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resources/#resources"
+  },
+  "commands": [
+    {
+      "name": "Get-AzResourceGroup",
+      "description": "Gets resource groups.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
+      "confirmation": false,
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resources/get-azresourcegroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "[-SubscriptionId <String[]>]"
             ]
-         },
-         "examples":[
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets resource groups.",
+          "parameters": [
             {
-               "description":"Removes a resource group.",
-               "parameters":[
-                  {
-                     "name":"-Name",
-                     "value":"[path.name]"
-                  }
-               ]
+              "name": "-SubscriptionId",
+              "value": "[path.subscriptionId]"
+            },
+            {
+              "name": "-Name",
+              "value": "[path.resourceGroupName]"
             }
-         ]
-      }
-    ]
- }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzResourceGroup",
+      "description": "Removes a resource group.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
+      "confirmation": false,
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resources/remove-azresourcegroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Removes a resource group.",
+          "parameters": [
+            {
+              "name": "-SubscriptionId",
+              "value": "[path.subscriptionId]"
+            },
+            {
+              "name": "-Name",
+              "value": "[path.resourceGroupName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

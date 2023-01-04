@@ -20,9 +20,7 @@
                      "-GroupName <String>",
                      "-Name <String>",
                      "-ResourceGroupName <String>",
-                     "[-SubscriptionId <String>]",
-                     "[-WhatIf]",
-                     "[-Confirm]"
+                     "[-SubscriptionId <String>]"
                   ]
                }
             ]

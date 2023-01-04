@@ -17,8 +17,9 @@
                 "parameterSets": [
                     {
                         "parameters": [
-                            "[-Name <String>]",
-                            "[-ResourceGroupName <String>]"
+                            "-Name <String>",
+                            "-ResourceGroupName <String>",
+                            "[-SubscriptionId <String[]>]"
                         ]
                     }
                 ]
@@ -34,6 +35,10 @@
                         {
                             "name": "-Name",
                             "value": "[path.name]"
+                        },
+                        {
+                            "name":"-SubscriptionId",
+                            "value":"[path.subscriptionId]"
                         }
                     ]
                 }
@@ -51,8 +56,9 @@
                 "parameterSets": [
                     {
                         "parameters": [
-                            "[-Name <String>]",
-                            "[-ResourceGroupName <String>]"
+                            "-Name <String>",
+                            "-ResourceGroupName <String>",
+                            "[-SubscriptionId <String[]>]"
                         ]
                     }
                 ]
@@ -68,6 +74,10 @@
                         {
                             "name": "-Name",
                             "value": "[path.name]"
+                        },
+                        {
+                            "name":"-SubscriptionId",
+                            "value":"[path.subscriptionId]"
                         }
                     ]
                 }

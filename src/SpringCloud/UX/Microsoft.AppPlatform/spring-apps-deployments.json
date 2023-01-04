@@ -27,7 +27,7 @@
         },
         "examples": [
           {
-              "description": "Get Spring Cloud App Deploymeng by name.",
+              "description": "Get Spring Cloud App Deployment by name.",
               "parameters": [
                   {
                       "name": "-ResourceGroupName",

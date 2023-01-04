@@ -1,75 +1,87 @@
 {
-    "resourceType":"factories",
-    "apiVersion":"2018-06-01",
-    "learnMore":{
-       "url":"https://learn.microsoft.com/powershell/module/az.datafactory/#datafactory"
-    },
-    "commands":[
-       {
-          "name":"Get-AzDataFactoryV2",
-          "description":"Gets information about Data Factory.",
-          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{dataFactoryName}",
-          "confirmation":false,
-          "help":{
-             "learnMore":{
-                "url":"https://learn.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2"
-             },
-             "parameterSets":[
-               {
-                  "parameters":[
-                     "[[-ResourceGroupName] <System.String>]"
-                  ]
-               }
-             ]
-          },
-          "examples":[
-             {
-                "description":"Gets information about Data Factory.",
-                "parameters":[
-                   {
-                      "name":"-ResourceGroupName",
-                      "value":"[path.resourceGroupName]"
-                   },
-                   {
-                      "name":"-Name",
-                      "value":"[path.dataFactoryName]"
-                   }
-                ]
-             }
-          ]
-       },
-       {
-         "name":"Remove-AzDataFactoryV2",
-         "description":"Removes a data factory.",
-         "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{dataFactoryName}",
-         "confirmation":false,
-         "help":{
-            "learnMore":{
-               "url":"https://learn.microsoft.com/powershell/module/az.datafactory/remove-azdatafactoryv2"
-            },
-            "parameterSets":[
-              {
-                 "parameters":[
-                    "[[-ResourceGroupName] <System.String>]"
-                 ]
-              }
+  "resourceType": "factories",
+  "apiVersion": "2018-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.datafactory/#datafactory"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDataFactoryV2",
+      "description": "Gets information about Data Factory.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{dataFactoryName}",
+      "confirmation": false,
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datafactory/get-azdatafactoryv2"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
             ]
-         },
-         "examples":[
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about Data Factory.",
+          "parameters": [
             {
-               "description":"Removes a data factory.",
-               "parameters":[
-                  {
-                     "name":"-ResourceGroupName",
-                     "value":"[path.resourceGroupName]"
-                  },
-                  {
-                     "name":"-Name",
-                     "value":"[path.dataFactoryName]"
-                  }
-               ]
+              "name": "-ResourceGroupName",
+              "value": "[path.resourceGroupName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[path.dataFactoryName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[path.subscriptionId]"
             }
-         ]
-      }
-    ]
- }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDataFactoryV2",
+      "description": "Removes a data factory.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{dataFactoryName}",
+      "confirmation": false,
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datafactory/remove-azdatafactoryv2"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Removes a data factory.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[path.resourceGroupName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[path.dataFactoryName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

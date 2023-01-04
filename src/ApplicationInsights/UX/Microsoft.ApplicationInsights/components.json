@@ -1,24 +1,24 @@
 {
-  "resourceType": "disks",
-  "apiVersion": "2022-07-02",
+  "resourceType": "components",
+  "apiVersion": "2020-02-02",
   "learnMore": {
-    "url": "https://learn.microsoft.com/powershell/module/az.compute/#compute"
+    "url": "https://learn.microsoft.com/powershell/module/az.applicationinsights/#applicationinsights"
   },
   "commands": [
     {
-      "name": "Get-AzDisk",
-      "description": "Gets the properties of a Managed disk.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}",
+      "name": "Get-AzApplicationInsights",
+      "description": "Returns an Application Insights component.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.insights/components/{name}",
       "confirmation": false,
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.compute/get-azdisk"
+          "url": "https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights"
         },
         "parameterSets": [
           {
             "parameters": [
               "-ResourceGroupName <String>",
-              "-DiskName <String>",
+              "-Name <String>",
               "[-SubscriptionId <String[]>]"
             ]
           }
@@ -26,15 +26,15 @@
       },
       "examples": [
         {
-          "description": "Gets the properties of a Managed disk.",
+          "description": "Returns an Application Insights component.",
           "parameters": [
             {
               "name": "-ResourceGroupName",
               "value": "[path.resourceGroupName]"
             },
             {
-              "name": "-DiskName",
-              "value": "[path.diskName]"
+              "name": "-Name",
+              "value": "[path.name]"
             },
             {
               "name": "-SubscriptionId",
@@ -45,19 +45,19 @@
       ]
     },
     {
-      "name": "Remove-AzDisk",
-      "description": "Removes a disk.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}",
+      "name": "Remove-AzApplicationInsights",
+      "description": "Deletes an Application Insights component.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.insights/components/{name}",
       "confirmation": false,
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.compute/remove-azdisk"
+          "url": "https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsights"
         },
         "parameterSets": [
           {
             "parameters": [
               "-ResourceGroupName <String>",
-              "-DiskName <String>",
+              "-Name <String>",
               "[-SubscriptionId <String[]>]"
             ]
           }
@@ -65,15 +65,15 @@
       },
       "examples": [
         {
-          "description": "Removes a disk.",
+          "description": "Deletes an Application Insights component.",
           "parameters": [
             {
               "name": "-ResourceGroupName",
               "value": "[path.resourceGroupName]"
             },
             {
-              "name": "-DiskName",
-              "value": "[path.diskName]"
+              "name": "-Name",
+              "value": "[path.name]"
             },
             {
               "name": "-SubscriptionId",

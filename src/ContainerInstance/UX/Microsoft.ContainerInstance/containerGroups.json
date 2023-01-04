@@ -35,6 +35,10 @@
                   {
                      "name":"-ResourceGroupName",
                      "value":"[path.resourceGroupName]"
+                  },
+                  {
+                     "name":"-Name",
+                     "value":"[path.containerGroupName]"
                   }
                ]
             }
@@ -54,11 +58,7 @@
                   "parameters":[
                      "[-SubscriptionId <String>]",
                      "-ResourceGroupName <String>",
-                     "-Name <String>",
-                     "[-NoWait]",
-                     "[-PassThru]",
-                     "[-WhatIf]",
-                     "[-Confirm]"
+                     "-Name <String>"
                   ]
                }
             ]
@@ -70,7 +70,7 @@
                   {
                      "name":"-SubscriptionId",
                      "value":"[path.subscriptionId]"
-                  },                  
+                  },
                   {
                      "name":"-ResourceGroupName",
                      "value":"[path.resourceGroupName]"
@@ -97,11 +97,7 @@
                   "parameters":[
                      "[-SubscriptionId <String>]",
                      "-ResourceGroupName <String>",
-                     "-Name <String>",
-                     "[-NoWait]",
-                     "[-PassThru]",
-                     "[-WhatIf]",
-                     "[-Confirm]"
+                     "-Name <String>"
                   ]
                }
             ]
@@ -140,10 +136,7 @@
                   "parameters":[
                      "[-SubscriptionId <String>]",
                      "-ResourceGroupName <String>",
-                     "-Name <String>",
-                     "[-PassThru]",
-                     "[-WhatIf]",
-                     "[-Confirm]"
+                     "-Name <String>"
                   ]
                }
             ]
