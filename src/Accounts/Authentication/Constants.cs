@@ -16,6 +16,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public static class Constants
     {
+        // public const string PowerShellClientId = "04b07795-8ddb-461a-bbee-02f9e1bf7b46"; // azure cli
+        public const string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2"; // azure powershell
+
         public const string DefaultMsiAccountIdPrefix = "MSI@";
 
         /// <summary>

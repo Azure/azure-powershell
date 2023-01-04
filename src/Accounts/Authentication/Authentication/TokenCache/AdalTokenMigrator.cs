@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
 {
     public class AdalTokenMigrator
     {
-        protected const string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
+        protected const string PowerShellClientId = Constants.PowerShellClientId;
         private const string TenantsString = "Tenants";
 
         private byte[] AdalToken { get; set; }
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
                     }
                     catch (Exception)
                     {
-                        //TODO: 
+                        //TODO:
                     }
                     finally
                     {

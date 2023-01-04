@@ -24,6 +24,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Identity.Client;
+using Microsoft.Identity.Client.Broker;
 using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public abstract class PowerShellTokenCacheProvider
     {
         public const string PowerShellTokenCacheProviderKey = "PowerShellTokenCacheProviderKey";
-        protected const string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
+        protected const string PowerShellClientId = Constants.PowerShellClientId;
         private static readonly string CommonTenant = "organizations";
 
         protected byte[] _tokenCacheDataToFlush;
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public IEnumerable<IAccount> ListAccounts(string authority = null)
         {
-            TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Calling GetAccountsAsync on {0}", authority ?? "AzureCloud"));
+            TracingAdapter.Information(string.Format("[PowerShellTokenCacheProvider] Calling GetAccountsAsync on {0}", authority ?? "AzureCloud"));
 
             return CreatePublicClient(authority: authority)
                     .GetAccountsAsync()
@@ -164,7 +165,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public virtual IPublicClientApplication CreatePublicClient(string authority = null)
         {
-            var builder = PublicClientApplicationBuilder.Create(PowerShellClientId);
+            var builder = PublicClientApplicationBuilder.Create(PowerShellClientId).WithBrokerPreview();
 
             if(!string.IsNullOrEmpty(authority))
             {
