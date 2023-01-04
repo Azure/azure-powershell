@@ -1044,95 +1044,14 @@
               "Service Attention",
               "AAD"
             ],
-            "mentionees": [
-              "adamedx"
-            ]
+            "mentionees": "adamed (Azure Cli route to jiasli)"
           },
           {
             "labels": [
               "Service Attention",
-              "AKS"
+              "ACS"
             ],
-            "mentionees": [
-              "andyliuliming"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Alerts Management"
-            ],
-            "mentionees": [
-              "liadtal",
-              "yairgil"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ARM"
-            ],
-            "mentionees": [
-              "josephkwchan",
-              "jennyhunter-msft"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ARM - Templates"
-            ],
-            "mentionees": [
-              "satyavel",
-              "apclouds"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ARM - Tags"
-            ],
-            "mentionees": [
-              "rthorn17"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ARM - Core"
-            ],
-            "mentionees": [
-              "josephkwchan",
-              "jennyhunter-msft"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ARM - Managed Applications"
-            ],
-            "mentionees": [
-              "MSEvanhi"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ARM - Service Catalog"
-            ],
-            "mentionees": [
-              "MSEvanhi"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ARM - RBAC"
-            ],
-            "mentionees": [
-              "LizMS",
-              "cbrooksmsft"
-            ]
+            "mentionees": "sacheu"
           },
           {
             "labels": [
@@ -1141,7 +1060,24 @@
             ],
             "mentionees": [
               "mojayara",
-              "Prasanna-Padmanabhan"
+              "prasank"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "AKS"
+            ],
+            "mentionees": "andliu"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Alerts Management"
+            ],
+            "mentionees": [
+              "lital",
+              "yagil"
             ]
           },
           {
@@ -1152,7 +1088,7 @@
             "mentionees": [
               "athipp",
               "taiwu",
-              "minghan"
+              "miteh"
             ]
           },
           {
@@ -1161,17 +1097,8 @@
               "API Management"
             ],
             "mentionees": [
-              "adrianhall",
-              "KedarJoshi"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Application Insights"
-            ],
-            "mentionees": [
-              "azmonapplicationinsights"
+              "adhal",
+              "kjoshi"
             ]
           },
           {
@@ -1179,31 +1106,74 @@
               "Service Attention",
               "App Services"
             ],
+            "mentionees": "naveeda"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Application Insights"
+            ],
+            "mentionees": "azmonAIgithub"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "ARM"
+            ],
             "mentionees": [
-              "antcp",
-              "AzureAppServiceCLI"
+              "jochan",
+              "jehunte"
             ]
           },
           {
             "labels": [
               "Service Attention",
-              "App Configuration"
+              "ARM - Core"
             ],
             "mentionees": [
-              "shenmuxiaosen",
-              "avanigupta"
+              "jochan",
+              "jehunte"
             ]
           },
           {
             "labels": [
               "Service Attention",
-              "ARO"
+              "ARM - Managed Applications"
+            ],
+            "mentionees": "evanhi"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "ARM - RBAC"
             ],
             "mentionees": [
-              "mjudeikis",
-              "jim-minter",
-              "julienstroheker",
-              "amanohar"
+              "elkim",
+              "cbrooks"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "ARM - Service Catalog"
+            ],
+            "mentionees": "evanhi"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "ARM - Tags"
+            ],
+            "mentionees": "rithorn"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "ARM - Templates"
+            ],
+            "mentionees": [
+              "satyavel",
+              "angperez"
             ]
           },
           {
@@ -1212,7 +1182,9 @@
               "Attestation"
             ],
             "mentionees": [
-              "anilba06"
+              "anilba",
+              "prarao",
+              "sidttak"
             ]
           },
           {
@@ -1221,8 +1193,8 @@
               "Authorization"
             ],
             "mentionees": [
-              "darshanhs90",
-              "AshishGargMicrosoft"
+              "hahosake",
+              "ashigarg"
             ]
           },
           {
@@ -1231,7 +1203,8 @@
               "Automation"
             ],
             "mentionees": [
-              "jaspkaur28"
+              "jaspkaur",
+              "omabdull"
             ]
           },
           {
@@ -1240,9 +1213,21 @@
               "AVS"
             ],
             "mentionees": [
-              "divka78",
+              "dikamath",
               "amitchat",
-              "aishu"
+              "airaghav",
+              "robhosle"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Azure Arc enabled servers"
+            ],
+            "mentionees": [
+              "ryanpu",
+              "edyoung",
+              "hybridrpft"
             ]
           },
           {
@@ -1250,12 +1235,14 @@
               "Service Attention",
               "Azure Stack"
             ],
-            "mentionees": [
-              "sijuman",
-              "sarathys",
-              "bganapa",
-              "rakku-ms"
-            ]
+            "mentionees": "sijuman"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Azure.Spring - Cosmos"
+            ],
+            "mentionees": "kuthapar"
           },
           {
             "labels": [
@@ -1263,13 +1250,13 @@
               "Batch"
             ],
             "mentionees": [
-              "mksuni",
-              "bgklein",
-              "mscurrell",
-              "dpwatrous",
-              "gingi",
-              "paterasMSFT",
-              "cRui861"
+              "brklein",
+              "markscu",
+              "sumuth",
+              "dawatrou",
+              "shpaster",
+              "mipatera",
+              "rechen"
             ]
           },
           {
@@ -1278,7 +1265,8 @@
               "BatchAI"
             ],
             "mentionees": [
-              "matthchr"
+              "matthchr",
+              "daryls"
             ]
           },
           {
@@ -1286,9 +1274,7 @@
               "Service Attention",
               "Billing"
             ],
-            "mentionees": [
-              "cabbpt"
-            ]
+            "mentionees": "ramkd"
           },
           {
             "labels": [
@@ -1296,8 +1282,8 @@
               "Blueprint"
             ],
             "mentionees": [
-              "alex-frankel",
-              "filizt"
+              "alfran",
+              "fitopata"
             ]
           },
           {
@@ -1305,37 +1291,14 @@
               "Service Attention",
               "Bot Service"
             ],
-            "mentionees": [
-              "sgellock"
-            ]
+            "mentionees": "sgellock"
           },
           {
             "labels": [
               "Service Attention",
               "Cloud Shell"
             ],
-            "mentionees": [
-              "maertendMSFT"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Cognitive - Text Analytics"
-            ],
-            "mentionees": [
-              "assafi"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Cognitive - Form Recognizer"
-            ],
-            "mentionees": [
-              "ctstone",
-              "anrothMSFT"
-            ]
+            "mentionees": "damaerte"
           },
           {
             "labels": [
@@ -1343,18 +1306,18 @@
               "Cognitive - Anomaly Detector"
             ],
             "mentionees": [
-              "yingqunpku",
+              "quying",
               "bowgong"
             ]
           },
           {
             "labels": [
               "Service Attention",
-              "Cognitive - Custom Vision"
+              "Cognitive - Bing"
             ],
             "mentionees": [
-              "areddish",
-              "tburns10"
+              "jabhal",
+              "abew"
             ]
           },
           {
@@ -1364,8 +1327,25 @@
             ],
             "mentionees": [
               "ryogok",
-              "TFR258",
-              "tburns10"
+              "threis",
+              "tburns"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Content Moderator"
+            ],
+            "mentionees": "suraks"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - Custom Vision"
+            ],
+            "mentionees": [
+              "areddish",
+              "tburns"
             ]
           },
           {
@@ -1374,38 +1354,36 @@
               "Cognitive - Face"
             ],
             "mentionees": [
-              "JinyuID",
-              "dipidoo",
-              "SteveMSFT"
+              "jinyuli",
+              "pradiphe",
+              "sbowles"
             ]
           },
           {
             "labels": [
               "Service Attention",
-              "Cognitive - QnA Maker"
+              "Cognitive - Form Recognizer"
             ],
             "mentionees": [
-              "bingisbestest",
-              "nerajput1607"
+              "chstone",
+              "anroth"
             ]
           },
           {
             "labels": [
               "Service Attention",
-              "Cognitive - Translator"
+              "Cognitive - Immersive Reader"
             ],
-            "mentionees": [
-              "swmachan"
-            ]
+            "mentionees": "metan"
           },
           {
             "labels": [
               "Service Attention",
-              "Cognitive - Speech"
+              "Cognitive - Ink Recognizer"
             ],
             "mentionees": [
-              "robch",
-              "oscholz"
+              "dparish",
+              "olduroja"
             ]
           },
           {
@@ -1421,157 +1399,162 @@
           {
             "labels": [
               "Service Attention",
-              "Cognitive - Content Moderator"
+              "Cognitive - Mgmt"
             ],
-            "mentionees": [
-              "swiftarrow11"
-            ]
+            "mentionees": "yuanyang"
           },
           {
             "labels": [
               "Service Attention",
               "Cognitive - Personalizer"
             ],
+            "mentionees": "dwmukh"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cognitive - QnA Maker"
+            ],
             "mentionees": [
-              "dwaijam"
+              "anduggal",
+              "nerajput"
             ]
           },
           {
             "labels": [
               "Service Attention",
-              "Cognitive - Immersive Reader"
+              "Cognitive - Speech"
             ],
             "mentionees": [
-              "metanMSFT"
+              "robch",
+              "oliversc"
             ]
           },
           {
             "labels": [
               "Service Attention",
-              "Cognitive - Ink Recognizer"
+              "Cognitive - Text Analytics"
             ],
-            "mentionees": [
-              "olduroja"
-            ]
+            "mentionees": "assafi"
           },
           {
             "labels": [
               "Service Attention",
-              "Cognitive - Bing"
+              "Cognitive - Translator"
             ],
-            "mentionees": [
-              "jaggerbodas-ms",
-              "arwong"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Cognitive - Mgmt"
-            ],
-            "mentionees": [
-              "yangyuan"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Commerce"
-            ],
-            "mentionees": [
-              "ms-premp",
-              "qiaozha"
-            ]
+            "mentionees": "swmachan"
           },
           {
             "labels": [
               "Service Attention",
               "Compute"
             ],
-            "mentionees": [
-              "Drewm3",
-              "avirishuv",
-              "vaibhav-agar",
-              "amjads1"
-            ]
+            "mentionees": "drewm"
           },
           {
             "labels": [
               "Service Attention",
               "Compute - Extensions"
             ],
-            "mentionees": [
-              "Drewm3",
-              "amjads1"
-            ]
+            "mentionees": "drewm"
           },
           {
             "labels": [
               "Service Attention",
               "Compute - Images"
             ],
-            "mentionees": [
-              "Drewm3",
-              "vaibhav-agar"
-            ]
+            "mentionees": "drewm"
           },
           {
             "labels": [
               "Service Attention",
               "Compute - Managed Disks"
             ],
-            "mentionees": [
-              "Drewm3",
-              "vaibhav-agar"
-            ]
+            "mentionees": "drewm"
           },
           {
             "labels": [
               "Service Attention",
               "Compute - RDFE"
             ],
-            "mentionees": [
-              "Drewm3",
-              "avirishuv"
-            ]
+            "mentionees": "drewm"
           },
           {
             "labels": [
               "Service Attention",
               "Compute - VM"
             ],
-            "mentionees": [
-              "Drewm3",
-              "avirishuv"
-            ]
+            "mentionees": "drewm"
           },
           {
             "labels": [
               "Service Attention",
               "Compute - VMSS"
             ],
-            "mentionees": [
-              "Drewm3",
-              "avirishuv"
-            ]
+            "mentionees": "drewm"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Confidential Ledger"
+            ],
+            "mentionees": "lynshi"
           },
           {
             "labels": [
               "Service Attention",
               "Connected Kubernetes"
             ],
-            "mentionees": [
-              "akashkeshari"
-            ]
+            "mentionees": "akkeshar"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Consumption"
+            ],
+            "mentionees": "prprak"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Consumption- RIandShowBack"
+            ],
+            "mentionees": "ccmshowbackdevs"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Consumption-Budget"
+            ],
+            "mentionees": "bafscew"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Consumption-Consumption"
+            ],
+            "mentionees": "bafscew"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Consumption-UsageDetailsandExport"
+            ],
+            "mentionees": "acmxclouddev"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Container App"
+            ],
+            "mentionees": "CALCHA"
           },
           {
             "labels": [
               "Service Attention",
               "Container Instances"
             ],
-            "mentionees": [
-              "macolso"
-            ]
+            "mentionees": "dekapur"
           },
           {
             "labels": [
@@ -1579,8 +1562,8 @@
               "Container Registry"
             ],
             "mentionees": [
-              "toddysm",
-              "northtyphoon"
+              "memladen",
+              "bindu"
             ]
           },
           {
@@ -1589,9 +1572,9 @@
               "Container Service"
             ],
             "mentionees": [
-              "qike-ms",
-              "jwilder",
-              "thomas1206",
+              "qike",
+              "jawilder",
+              "huishao",
               "seanmck"
             ]
           },
@@ -1600,19 +1583,35 @@
               "Service Attention",
               "Cosmos"
             ],
-            "mentionees": [
-              "Wmengmsft",
-              "MehaKaushik"
-            ]
+            "mentionees": "pjohari"
           },
           {
             "labels": [
               "Service Attention",
-              "Customer Insights"
+              "Cost Management"
             ],
-            "mentionees": [
-              "shefymk"
-            ]
+            "mentionees": "prprak"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cost Management-Budget"
+            ],
+            "mentionees": "bafscew"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cost Management-RIandShowBack"
+            ],
+            "mentionees": "ccmshowbackdevs"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Cost Management-UsageDetailsAndExport"
+            ],
+            "mentionees": "acmxclouddev"
           },
           {
             "labels": [
@@ -1621,7 +1620,17 @@
             ],
             "mentionees": [
               "manoharp",
-              "MSEvanhi"
+              "evanhi"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Customer Insights"
+            ],
+            "mentionees": [
+              "shefym",
+              "wimohabb"
             ]
           },
           {
@@ -1629,17 +1638,82 @@
               "Service Attention",
               "CycleCloud"
             ],
-            "mentionees": [
-              "adriankjohnson"
-            ]
+            "mentionees": "adjohnso"
           },
           {
             "labels": [
               "Service Attention",
               "Data Bricks"
             ],
+            "mentionees": "arindamc"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Catalog"
+            ],
+            "mentionees": "anilma"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Factory"
+            ],
             "mentionees": [
-              "arindamc"
+              "Yandong Zhang",
+              "Binlu Wang"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Lake"
+            ],
+            "mentionees": "sumameh"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Lake Analytics"
+            ],
+            "mentionees": "dongwwa"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Lake Storage Gen1"
+            ],
+            "mentionees": "sumameh"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Lake Storage Gen2"
+            ],
+            "mentionees": "sumameh"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Lake Store"
+            ],
+            "mentionees": "sumameh"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Migration"
+            ],
+            "mentionees": "russg"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Data Share"
+            ],
+            "mentionees": [
+              "rajarrar",
+              "jife"
             ]
           },
           {
@@ -1648,10 +1722,10 @@
               "DataBox"
             ],
             "mentionees": [
-              "tmvishwajit",
-              "matdickson",
+              "vishwam",
+              "matd",
               "manuaery",
-              "madhurinms"
+              "madhn"
             ]
           },
           {
@@ -1660,105 +1734,11 @@
               "DataBox Edge"
             ],
             "mentionees": [
-              "a-t-mason",
-              "ganzee",
+              "chethang",
+              "yoshenoy",
+              "ganeshk",
+              "amason",
               "manuaery"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Data Catalog"
-            ],
-            "mentionees": [
-              "ingave"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Data Factory"
-            ],
-            "mentionees": [
-              "Jingshu923",
-              "zhangyd2015",
-              "Frey-Wang"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Data Lake"
-            ],
-            "mentionees": [
-              "sumantmehtams"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Data Lake Storage Gen1"
-            ],
-            "mentionees": [
-              "sumantmehtams"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Data Lake Storage Gen2"
-            ],
-            "mentionees": [
-              "sumantmehtams"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Data Lake Analytics"
-            ],
-            "mentionees": [
-              "idear1203"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Data Lake Store"
-            ],
-            "mentionees": [
-              "sumantmehtams"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Data Migration"
-            ],
-            "mentionees": [
-              "radjaram",
-              "kavitham10"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Data Share"
-            ],
-            "mentionees": [
-              "raedJarrar",
-              "jifems"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "DevOps"
-            ],
-            "mentionees": [
-              "narula0781",
-              "ashishonce",
-              "romil07"
             ]
           },
           {
@@ -1767,9 +1747,26 @@
               "Dev Spaces"
             ],
             "mentionees": [
-              "yuzorMa",
+              "yuvalm",
               "johnsta",
-              "greenie-msft"
+              "nigreenf"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Device Provisioning Service"
+            ],
+            "mentionees": "nberdy"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "DevOps"
+            ],
+            "mentionees": [
+              "Anjali Vashist",
+              "Harjun Reddy Musukula"
             ]
           },
           {
@@ -1778,16 +1775,8 @@
               "Devtestlab"
             ],
             "mentionees": [
-              "Tanmayeekamath"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Device Provisioning Service"
-            ],
-            "mentionees": [
-              "nberdy"
+              "clauder",
+              "takamath"
             ]
           },
           {
@@ -1796,8 +1785,8 @@
               "Digital Twins"
             ],
             "mentionees": [
-              "sourabhguha",
-              "inesk-vt"
+              "sguha",
+              "inesk"
             ]
           },
           {
@@ -1805,18 +1794,14 @@
               "Service Attention",
               "Event Grid"
             ],
-            "mentionees": [
-              "Saglodha"
-            ]
+            "mentionees": "jafernan"
           },
           {
             "labels": [
               "Service Attention",
               "Event Hubs"
             ],
-            "mentionees": [
-              "jfggdl"
-            ]
+            "mentionees": "saglodha"
           },
           {
             "labels": [
@@ -1824,8 +1809,8 @@
               "Functions"
             ],
             "mentionees": [
-              "ahmedelnably",
-              "fabiocav"
+              "shinardi",
+              "frangom"
             ]
           },
           {
@@ -1834,8 +1819,8 @@
               "Graph.Microsoft"
             ],
             "mentionees": [
-              "dkershaw10",
-              "baywet"
+              "dkershaw",
+              "vibiret"
             ]
           },
           {
@@ -1844,9 +1829,16 @@
               "Guest Configuration"
             ],
             "mentionees": [
-              "mgreenegit",
-              "vivlingaiah"
+              "vivekl",
+              "migreene"
             ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "HardwareSecurityModules"
+            ],
+            "mentionees": "kapjain"
           },
           {
             "labels": [
@@ -1854,8 +1846,8 @@
               "HDInsight"
             ],
             "mentionees": [
-              "aim-for-better",
-              "idear1203",
+              "zhezhou",
+              "dongwwa",
               "deshriva"
             ]
           },
@@ -1874,8 +1866,37 @@
               "Service Attention",
               "Import Export"
             ],
+            "mentionees": "madhn"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Intune"
+            ],
+            "mentionees": "dipaks"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "IotCentral"
+            ],
+            "mentionees": "iliel"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "IotDPS"
+            ],
+            "mentionees": "iliel"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "IotHub"
+            ],
             "mentionees": [
-              "madhurinms"
+              "rmanda",
+              ""
             ]
           },
           {
@@ -1884,9 +1905,9 @@
               "KeyVault"
             ],
             "mentionees": [
-              "RandalliLama",
-              "schaabs",
-              "jlichwa"
+              "rrandall",
+              "sschaab",
+              "jalichwa"
             ]
           },
           {
@@ -1894,22 +1915,7 @@
               "Service Attention",
               "Kubernetes Configuration"
             ],
-            "mentionees": [
-              "NarayanThiru"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Azure Data Explorer"
-            ],
-            "mentionees": [
-              "ilayrn",
-              "orhasban",
-              "zoharHenMicrosoft",
-              "sagivf",
-              "Aviv-Yaniv"
-            ]
+            "mentionees": "nanthi"
           },
           {
             "labels": [
@@ -1917,7 +1923,8 @@
               "Lab Services"
             ],
             "mentionees": [
-              "Tanmayeekamath"
+              "clauder",
+              "takamath"
             ]
           },
           {
@@ -1925,27 +1932,14 @@
               "Service Attention",
               "Logic App"
             ],
-            "mentionees": [
-              "Azure/azure-logicapps-team"
-            ]
+            "mentionees": "Wagner Silveira"
           },
           {
             "labels": [
               "Service Attention",
               "LOUIS"
             ],
-            "mentionees": [
-              "minamnmik"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Managed Identity"
-            ],
-            "mentionees": [
-              "varunkch"
-            ]
+            "mentionees": "minamik"
           },
           {
             "labels": [
@@ -1953,7 +1947,8 @@
               "Machine Learning"
             ],
             "mentionees": [
-              "azureml-github"
+              "deepamu",
+              "sindhub"
             ]
           },
           {
@@ -1962,7 +1957,8 @@
               "Machine Learning Compute"
             ],
             "mentionees": [
-              "azureml-github"
+              "deepamu",
+              "sindhub"
             ]
           },
           {
@@ -1970,64 +1966,49 @@
               "Service Attention",
               "Machine Learning Experimentation"
             ],
-            "mentionees": [
-              "aashishb"
-            ]
+            "mentionees": "aashishb"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Managed Identity"
+            ],
+            "mentionees": "vakuma"
           },
           {
             "labels": [
               "Service Attention",
               "Managed Services"
             ],
-            "mentionees": [
-              "Lighthouse-Azure"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "MariaDB"
-            ],
-            "mentionees": [
-              "ambhatna",
-              "savjani"
-            ]
+            "mentionees": "azurelighthouse"
           },
           {
             "labels": [
               "Service Attention",
               "Marketplace Ordering"
             ],
-            "mentionees": [
-              "prbansa"
-            ]
+            "mentionees": "prbansa"
           },
           {
             "labels": [
               "Service Attention",
               "Media Services"
             ],
-            "mentionees": [
-              "akucer"
-            ]
+            "mentionees": "akucer"
           },
           {
             "labels": [
               "Service Attention",
               "Migrate"
             ],
-            "mentionees": [
-              "shijojoy"
-            ]
+            "mentionees": "shijoy"
           },
           {
             "labels": [
               "Service Attention",
               "Mobile Engagement"
             ],
-            "mentionees": [
-              "kpiteira"
-            ]
+            "mentionees": "kapiteir"
           },
           {
             "labels": [
@@ -2035,53 +2016,8 @@
               "Monitor"
             ],
             "mentionees": [
-              "SameergMS",
-              "dadunl"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Monitor - Autoscale"
-            ],
-            "mentionees": [
-              "AzMonEssential"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Monitor - ActivityLogs"
-            ],
-            "mentionees": [
-              "AzMonEssential"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Monitor - Metrics"
-            ],
-            "mentionees": [
-              "AzMonEssential"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Monitor - Diagnostic Settings"
-            ],
-            "mentionees": [
-              "AzMonEssential"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Monitor - Alerts"
-            ],
-            "mentionees": [
-              "AzmonAlerts"
+              "sameerg",
+              "v-Dadunl"
             ]
           },
           {
@@ -2089,55 +2025,70 @@
               "Service Attention",
               "Monitor - ActionGroups"
             ],
-            "mentionees": [
-              "AzmonActionG"
-            ]
+            "mentionees": "azmonAGgithub"
           },
           {
             "labels": [
               "Service Attention",
-              "Monitor - LogAnalytics"
+              "Monitor - ActivityLogs"
             ],
-            "mentionees": [
-              "AzmonLogA"
-            ]
+            "mentionees": "azmonessentialgithub"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Monitor - Alerts"
+            ],
+            "mentionees": "azmonALERTgithub"
           },
           {
             "labels": [
               "Service Attention",
               "Monitor - ApplicationInsights"
             ],
-            "mentionees": [
-              "azmonapplicationinsights"
-            ]
+            "mentionees": "azmonAIgithub"
           },
           {
             "labels": [
               "Service Attention",
-              "MySQL"
+              "Monitor - Autoscale"
             ],
-            "mentionees": [
-              "ambhatna",
-              "savjani"
-            ]
+            "mentionees": "azmonessentialgithub"
           },
           {
             "labels": [
               "Service Attention",
-              "Network"
+              "Monitor - Diagnostic Settings"
             ],
-            "mentionees": [
-              "aznetsuppgithub"
-            ]
+            "mentionees": "azmonessentialgithub"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Monitor - LogAnalytics"
+            ],
+            "mentionees": "azmonLAgithub"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Monitor - Metrics"
+            ],
+            "mentionees": "azmonessentialgithub"
           },
           {
             "labels": [
               "Service Attention",
               "Network - Application Gateway"
             ],
-            "mentionees": [
-              "appgwsuppgithub"
-            ]
+            "mentionees": "surmb"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Bastion"
+            ],
+            "mentionees": "charwen"
           },
           {
             "labels": [
@@ -2145,7 +2096,8 @@
               "Network - CDN"
             ],
             "mentionees": [
-              "cdnfdsuppgithub"
+              "bzhan",
+              "luxue"
             ]
           },
           {
@@ -2153,54 +2105,49 @@
               "Service Attention",
               "Network - DDOS Protection"
             ],
-            "mentionees": [
-              "ddossuppgithub"
-            ]
+            "mentionees": "anupmavi"
           },
           {
             "labels": [
               "Service Attention",
-              "Network - ExpressRoute"
+              "Network - DNS"
             ],
-            "mentionees": [
-              "exrsuppgithub"
-            ]
+            "mentionees": "jonbeck"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - ExpressRoutes"
+            ],
+            "mentionees": "mialdrid"
           },
           {
             "labels": [
               "Service Attention",
               "Network - Firewall"
             ],
-            "mentionees": [
-              "fwsuppgithub"
-            ]
+            "mentionees": "yairt"
           },
           {
             "labels": [
               "Service Attention",
               "Network - Front Door"
             ],
-            "mentionees": [
-              "cdnfdsuppgithub"
-            ]
+            "mentionees": "magattus"
           },
           {
             "labels": [
               "Service Attention",
               "Network - Load Balancer"
             ],
-            "mentionees": [
-              "slbsupportgithub"
-            ]
+            "mentionees": "irenehua"
           },
           {
             "labels": [
               "Service Attention",
-              "Network - Virtual Network NAT"
+              "Network - Network Virtual Appliance"
             ],
-            "mentionees": [
-              "vnetsuppgithub"
-            ]
+            "mentionees": "scottnap"
           },
           {
             "labels": [
@@ -2208,35 +2155,51 @@
               "Network - Network Watcher"
             ],
             "mentionees": [
-              "netwatchsuppgithub"
+              "shtripa",
+              "kumaam"
             ]
           },
           {
             "labels": [
               "Service Attention",
-              "Network - DNS"
+              "Network - Private Link"
             ],
-            "mentionees": [
-              "dnssuppgithub"
-            ]
+            "mentionees": "ivapplyr"
           },
           {
             "labels": [
               "Service Attention",
               "Network - Traffic Manager"
             ],
-            "mentionees": [
-              "tmsuppgithub"
-            ]
+            "mentionees": "rohink"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Virtual Network"
+            ],
+            "mentionees": "aldomel"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Virtual Network NAT"
+            ],
+            "mentionees": "chkuhtz"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Network - Virtual WAN"
+            ],
+            "mentionees": "reyandap"
           },
           {
             "labels": [
               "Service Attention",
               "Network - VPN Gateway"
             ],
-            "mentionees": [
-              "vpngwsuppgithub"
-            ]
+            "mentionees": "radwiv"
           },
           {
             "labels": [
@@ -2244,7 +2207,8 @@
               "Notification Hub"
             ],
             "mentionees": [
-              "tjsomasundaram"
+              "thsomasu",
+              "mokhan"
             ]
           },
           {
@@ -2253,7 +2217,8 @@
               "Operational Insights"
             ],
             "mentionees": [
-              "AzmonLogA"
+              "olegan",
+              "yossiy"
             ]
           },
           {
@@ -2261,31 +2226,21 @@
               "Service Attention",
               "Policy"
             ],
-            "mentionees": [
-              "aperezcloud",
-              "kenieva"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Policy Insights"
-            ],
-            "mentionees": [
-              "kenieva"
-            ]
+            "mentionees": "angperez"
           },
           {
             "labels": [
               "Service Attention",
               "PostgreSQL"
             ],
-            "mentionees": [
-              "sunilagarwal",
-              "lfittl-msft",
-              "sr-msft",
-              "niklarin"
-            ]
+            "mentionees": "postgrestechnicalpm"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "PowerBI"
+            ],
+            "mentionees": "corembed"
           },
           {
             "labels": [
@@ -2293,17 +2248,8 @@
               "Recovery Services Backup"
             ],
             "mentionees": [
-              "pvrk",
-              "adityabalaji-msft"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Recovery Services Site-Recovery"
-            ],
-            "mentionees": [
-              "Sharmistha-Rai"
+              "srinathv",
+              "pullabhk"
             ]
           },
           {
@@ -2312,7 +2258,8 @@
               "Redis Cache"
             ],
             "mentionees": [
-              "yegu-ms"
+              "shariqhashmi",
+              "kyteegar"
             ]
           },
           {
@@ -2320,18 +2267,14 @@
               "Service Attention",
               "Relay"
             ],
-            "mentionees": [
-              "jfggdl"
-            ]
+            "mentionees": "jafernan"
           },
           {
             "labels": [
               "Service Attention",
               "Reservations"
             ],
-            "mentionees": [
-              "corquiri"
-            ]
+            "mentionees": "rishi.kaps"
           },
           {
             "labels": [
@@ -2339,8 +2282,8 @@
               "Resource Authorization"
             ],
             "mentionees": [
-              "darshanhs90",
-              "AshishGargMicrosoft"
+              "hahosake",
+              "ashigarg"
             ]
           },
           {
@@ -2348,26 +2291,30 @@
               "Service Attention",
               "Resource Graph"
             ],
-            "mentionees": [
-              "chiragg4u"
-            ]
+            "mentionees": "chgupta"
           },
           {
             "labels": [
               "Service Attention",
               "Resource Health"
             ],
-            "mentionees": [
-              "stephbaron"
-            ]
+            "mentionees": "stbaron"
           },
           {
             "labels": [
               "Service Attention",
               "Scheduler"
             ],
+            "mentionees": "deli"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Schema Registry"
+            ],
             "mentionees": [
-              "derek1ee"
+              "alzimmer",
+              "arerlend"
             ]
           },
           {
@@ -2376,10 +2323,10 @@
               "Search"
             ],
             "mentionees": [
-              "brjohnstmsft",
-              "bleroy",
-              "tjacobhi",
-              "markheff",
+              "beleroy",
+              "brjohnst",
+              "thhill",
+              "maheff",
               "miwelsh"
             ]
           },
@@ -2388,39 +2335,28 @@
               "Service Attention",
               "Security"
             ],
-            "mentionees": [
-              "chlahav"
-            ]
+            "mentionees": "chlahav"
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "SecurityInsights"
+            ],
+            "mentionees": "amirkeren"
           },
           {
             "labels": [
               "Service Attention",
               "Service Bus"
             ],
-            "mentionees": [
-              "Saglodha"
-            ]
+            "mentionees": "saglodha"
           },
           {
             "labels": [
               "Service Attention",
-              "Service Fabric"
+              "Service Map"
             ],
-            "mentionees": [
-              "QingChenmsft",
-              "vaishnavk",
-              "juhacket"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Schema Registry"
-            ],
-            "mentionees": [
-              "arerlend",
-              "alzimmermsft"
-            ]
+            "mentionees": "dalubash"
           },
           {
             "labels": [
@@ -2428,80 +2364,8 @@
               "SignalR"
             ],
             "mentionees": [
-              "sffamily",
-              "chenkennt"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "SQL"
-            ],
-            "mentionees": [
-              "azureSQLGitHub"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "SQL - VM"
-            ],
-            "mentionees": [
-              "azureSQLGitHub"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "SQL - Backup & Restore"
-            ],
-            "mentionees": [
-              "azureSQLGitHub"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "SQL - Data Security"
-            ],
-            "mentionees": [
-              "azureSQLGitHub"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "SQL - Elastic Jobs"
-            ],
-            "mentionees": [
-              "azureSQLGitHub"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "SQL - Managed Instance"
-            ],
-            "mentionees": [
-              "azureSQLGitHub"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "SQL - Replication & Failover"
-            ],
-            "mentionees": [
-              "azureSQLGitHub"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Storage"
-            ],
-            "mentionees": [
-              "xgithubtriage"
+              "kenchen",
+              "zhshang"
             ]
           },
           {
@@ -2510,10 +2374,12 @@
               "Storsimple"
             ],
             "mentionees": [
-              "anoobbacker",
-              "ganzee",
+              "ganeshk",
+              "chethang",
+              "kupa",
+              "anbacker",
               "manuaery",
-              "patelkunal"
+              "stevgodd"
             ]
           },
           {
@@ -2521,69 +2387,35 @@
               "Service Attention",
               "Stream Analytics"
             ],
-            "mentionees": [
-              "atpham256"
-            ]
+            "mentionees": "anpham"
           },
           {
             "labels": [
               "Service Attention",
               "Subscription"
             ],
-            "mentionees": [
-              "anuragdalmia",
-              "shilpigautam",
-              "ramaganesan-rg"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Support"
-            ],
-            "mentionees": [
-              "shahbj79",
-              "mit2nil",
-              "aygoya",
-              "ganganarayanan"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Synapse"
-            ],
-            "mentionees": [
-              "wonner",
-              "yanjungao718"
-            ]
+            "mentionees": "andalmaia"
           },
           {
             "labels": [
               "Service Attention",
               "Tables"
             ],
-            "mentionees": [
-              "klaaslanghout"
-            ]
+            "mentionees": "klaasl"
           },
           {
             "labels": [
               "Service Attention",
               "TimeseriesInsights"
             ],
-            "mentionees": [
-              "Shipra1Mishra"
-            ]
+            "mentionees": "shmishr"
           },
           {
             "labels": [
               "Service Attention",
               "vFXT"
             ],
-            "mentionees": [
-              "zhusijia26"
-            ]
+            "mentionees": "siz"
           },
           {
             "labels": [
@@ -2591,327 +2423,8 @@
               "Web Apps"
             ],
             "mentionees": [
-              "AzureAppServiceCLI",
+              "ant-cli@microsoft.com",
               "antcp"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Network - Virtual Network"
-            ],
-            "mentionees": [
-              "vnetsuppgithub"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Network - Virtual WAN"
-            ],
-            "mentionees": [
-              "vwansuppgithub"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Network - Network Virtual Appliance"
-            ],
-            "mentionees": [
-              "nvasuppgithub"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Network - Bastion"
-            ],
-            "mentionees": [
-              "bastionsuppgithub"
-            ]
-          },
-          {
-            "labels": [
-              "Azure.Spring - Cosmos"
-            ],
-            "mentionees": [
-              "kushagraThapar"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Network - Private Link"
-            ],
-            "mentionees": [
-              "privlinksuppgithub"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Azure Arc enabled servers"
-            ],
-            "mentionees": [
-              "rpsqrd",
-              "edyoung"
-            ]
-          },
-          {
-            "labels": [
-              "Service Atention",
-              "SecurityInsights"
-            ],
-            "mentionees": [
-              "amirkeren"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "IoT/CLI"
-            ],
-            "mentionees": [
-              "Azure/azure-iot-cli-triage"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ACS"
-            ],
-            "mentionees": [
-              "acsdevx-msft"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ML-AutoML"
-            ],
-            "mentionees": [
-              "Aniththa"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ML-Hyperdrive"
-            ],
-            "mentionees": [
-              "Aniththa"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ML-Compute"
-            ],
-            "mentionees": [
-              "nishankgu"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ML-Core UI"
-            ],
-            "mentionees": [
-              "abeomor"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ML-Data4ML"
-            ],
-            "mentionees": [
-              "SturgeonMi"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ML-Designer"
-            ],
-            "mentionees": [
-              "alainli0928"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ML-Data Labeling"
-            ],
-            "mentionees": [
-              "kvijaykannan"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ML-Inference"
-            ],
-            "mentionees": [
-              "shivanissambare"
-            ]
-          },
-          {
-            "labels": [
-              "ML-MLOps",
-              "Service Attention"
-            ],
-            "mentionees": [
-              "lostmygithubaccount"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ML-Pipelines"
-            ],
-            "mentionees": [
-              "shbijlan"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ML-Responsible AI"
-            ],
-            "mentionees": [
-              "minthigpen"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ML-Reinforcement Learning"
-            ],
-            "mentionees": [
-              "keijik"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ML-Training"
-            ],
-            "mentionees": [
-              "lostmygithubaccount"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "ML-Workspace Management"
-            ],
-            "mentionees": [
-              "rastala"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Cost Management - Budget"
-            ],
-            "mentionees": [
-              "ccmaxpcrew"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Cost Management - Query"
-            ],
-            "mentionees": [
-              "ccmixpdevs"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Consumption - Query"
-            ],
-            "mentionees": [
-              "ccmixpdevs"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Cost Management - Billing"
-            ],
-            "mentionees": [
-              "ccmbpxpcrew"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Consumption - Billing"
-            ],
-            "mentionees": [
-              "ccmbpxpcrew"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Cost Management - UsageDetailsAndExport"
-            ],
-            "mentionees": [
-              "TiagoCrewGitHubIssues"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Consumption - UsageDetailsAndExport"
-            ],
-            "mentionees": [
-              "TiagoCrewGitHubIssues"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Cost Management - RIandShowBack"
-            ],
-            "mentionees": [
-              "ccmshowbackdevs"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Consumption - RIandShowBack"
-            ],
-            "mentionees": [
-              "ccmshowbackdevs"
-            ]
-          },
-          {
-            "mentionees": [
-              "@cijothomas",
-              "@reyang",
-              "@rajkumar-rangaraj",
-              "@TimothyMothra",
-              "@vishweshbankwar"
-            ],
-            "labels": [
-              "Monitor - Exporter",
-              "Service Attention"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Consumption - Budget"
-            ],
-            "mentionees": [
-              "ccmaxpcrew"
             ]
           }
         ],
