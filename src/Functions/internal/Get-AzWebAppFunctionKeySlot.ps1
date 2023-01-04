@@ -27,7 +27,7 @@ Get function keys for a function in a web site, or a deployment slot.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappfunctionkeyslot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappfunctionkeyslot
 #>
 function Get-AzWebAppFunctionKeySlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]

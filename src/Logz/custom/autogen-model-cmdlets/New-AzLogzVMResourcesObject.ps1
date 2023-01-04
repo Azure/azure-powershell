@@ -23,7 +23,7 @@ Create a in-memory object for VMResources
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.VMResources
 .Link
-https://docs.microsoft.com/powershell/module/az.Logz/new-AzLogzVMResourcesObject
+https://learn.microsoft.com/powershell/module/az.Logz/new-AzLogzVMResourcesObject
 #>
 function New-AzLogzVMResourcesObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.VMResources')]

@@ -46,7 +46,7 @@ INPUTOBJECT <IGuestConfigurationIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VmssName <String>]: The name of the virtual machine scale set.
 .Link
-https://docs.microsoft.com/powershell/module/az.guestconfiguration/remove-azguestconfigurationassignment
+https://learn.microsoft.com/powershell/module/az.guestconfiguration/remove-azguestconfigurationassignment
 #>
 function Remove-AzGuestConfigurationAssignment {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment])]

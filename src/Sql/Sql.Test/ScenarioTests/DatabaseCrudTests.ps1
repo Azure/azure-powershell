@@ -406,6 +406,45 @@ function Test-CreateDatabaseWithGeoZoneBackupStorageRedundancy
 
 <#
 	.SYNOPSIS
+	Tests creating a database with preferred enclave type.
+#>
+function Test-CreateDatabaseWithPreferredEnclaveType
+{
+	# Setup
+	$location = "eastus2euap"
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		# Create database with PreferredEnclaveType as Default
+		$databaseName = Get-DatabaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -PreferredEnclaveType Default -Force
+		Assert-AreEqual Default $db.PreferredEnclaveType
+
+		# Create database with PreferredEnclaveType as VBS
+		$databaseName = Get-DatabaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -PreferredEnclaveType VBS -Force
+		Assert-AreEqual VBS $db.PreferredEnclaveType
+
+		# Create database with VCore parameter along with PreferredEnclaveType as Default
+		$databaseName = Get-DatabaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen5 -Edition GeneralPurpose -PreferredEnclaveType Default -Force
+		Assert-AreEqual Default $db.PreferredEnclaveType
+
+		# Create database with VCore parameter along with PreferredEnclaveType as VBS
+		$databaseName = Get-DatabaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen5 -Edition GeneralPurpose -PreferredEnclaveType VBS -Force
+		Assert-AreEqual VBS $db.PreferredEnclaveType
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests updating a database
 #>
 function Test-UpdateDatabase
@@ -995,6 +1034,38 @@ function Test-GetDatabaseWithMaintenanceConfigurationId
 		$gdb2 = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db2.DatabaseName
 		Assert-AreEqual $gdb2.DatabaseName $db2.DatabaseName
 		Assert-AreEqual $mId.ToLower() $gdb2.MaintenanceConfigurationId.ToLower()
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests Getting a database with preferred enclave type
+#>
+function Test-GetDatabaseWithPreferredEnclaveType ($location = "eastus2euap")
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		# Create with preferred enclave type as Default
+		$databaseName = Get-DatabaseName
+		$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -PreferredEnclaveType Default -Force
+		$gdb1 = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName
+		Assert-AreEqual $db1.DatabaseName $gdb1.DatabaseName
+		Assert-AreEqual	Default $gdb1.PreferredEnclaveType
+
+		# Create with preferred enclave type as VBS
+		$databaseName = Get-DatabaseName
+		$db2 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -PreferredEnclaveType VBS -Force
+		$gdb2 = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db2.DatabaseName
+		Assert-AreEqual $db2.DatabaseName $gdb2.DatabaseName
+		Assert-AreEqual	VBS $gdb2.PreferredEnclaveType
 	}
 	finally
 	{

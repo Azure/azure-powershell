@@ -36,7 +36,7 @@ SHAREDPRIVATELINKRESOURCE <ISharedPrivateLinkResource[]>: The list of shared pri
   [RequestMessage <String>]: Request message.
   [Status <PrivateEndpointServiceConnectionStatus?>]: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspace
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspace
 #>
 function New-AzMLWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace])]

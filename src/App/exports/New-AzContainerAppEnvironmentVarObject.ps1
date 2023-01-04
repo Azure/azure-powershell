@@ -25,7 +25,7 @@ New-AzContainerAppEnvironmentVarObject -Name "envVarName" -SecretRef "facebook-s
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.EnvironmentVar
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappenvironmentvarobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappenvironmentvarobject
 #>
 function New-AzContainerAppEnvironmentVarObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.EnvironmentVar])]

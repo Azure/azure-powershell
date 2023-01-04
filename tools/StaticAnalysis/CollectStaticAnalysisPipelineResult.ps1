@@ -93,9 +93,17 @@ ForEach ($Step In $Steps)
             $ModuleName = $ModuleInfo.Module
 
             $ErrorIssues = $Issues | Where-Object { $_.Module -Eq $ModuleName -And $_.Severity -Lt 2 }
+            $WaringIssues = $Issues | Where-Object { $_.Module -Eq $ModuleName -And $_.Severity -Ge 2 }
             If ($ErrorIssues.Length -Eq 0)
             {
-                $ModuleInfo.Status = "Success"
+                If ($WaringIssues.Length -Eq 0)
+                {
+                    $ModuleInfo.Status = "Succeeded"
+                }
+                Else
+                {
+                    $ModuleInfo.Status = "Warning"
+                }
             }
             Else
             {
@@ -140,15 +148,6 @@ ForEach ($Step In $Steps)
                 }
                 $ModuleInfo.Content = $Content
             }
-        }
-            
-        If (($Issues | Where-Object {  $_.Severity -Lt 2 }).Length -Eq 0)
-        {
-            $Details.Status = "Success"
-        }
-        Else
-        {
-            $Details.Status = "Failed"
         }
     }
 }
