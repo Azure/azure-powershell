@@ -79,7 +79,7 @@ This is the preferred option for recording tests because it works with both .NET
 
 ```powershell
 Set-TestEnvironment -ServicePrincipalId <servicePrincipalId> -ServicePrincipalSecret `
-("testpassword" | ConvertTo-SecureString -AsPlainText -Force) -SubscriptionId <subscriptionId> -TenantId <tenantId> -RecordMode "Record"
+"testpassword" -SubscriptionId <subscriptionId> -TenantId <tenantId> -RecordMode "Record"
 ```
 
 ### Manually Set Environment Variables
