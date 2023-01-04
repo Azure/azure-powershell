@@ -1,11 +1,11 @@
 ﻿# Invoke-Pester C:\Users\weiwei\Desktop\PSH_Script\PSHTest\dataplane.ps1 -Show All -Strict -ExcludeTagFilter "Preview" 
 
 BeforeAll {
-    Import-Module D:\code\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1 
-    Import-Module D:\code\azure-powershell\artifacts\Debug\Az.Storage\Az.Storage.psd1 
+   # Import-Module D:\code\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1 
+   # Import-Module D:\code\azure-powershell\artifacts\Debug\Az.Storage\Az.Storage.psd1 
 
     # Modify the path to your own
-    Import-Module D:\code\azure-powershell\src\Storage\RegressionTests\utils.ps1
+    Import-Module $PSScriptRoot\utils.ps1
 
     [xml]$config = Get-Content D:\code\azure-powershell\src\Storage\RegressionTests\config.xml
     $globalNode = $config.SelectSingleNode("config/section[@id='global']")
@@ -41,17 +41,17 @@ Describe "Management plan test" {
 
         $accountNameBasic = $accountName + "basic"
 
-        $account = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountNameBasic -SkuName Standard_GRS -Location "eastus2euap" -Kind StorageV2  -EnableHierarchicalNamespace $true -EnableHttpsTrafficOnly $true -AllowCrossTenantReplication $false -PublicNetworkAccess Disabled # -AllowedCopyScope AAD
+        $account = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountNameBasic -SkuName Standard_GRS -Location "westus" -Kind StorageV2  -EnableHierarchicalNamespace $true -EnableHttpsTrafficOnly $true -AllowCrossTenantReplication $false -PublicNetworkAccess Disabled  -AllowedCopyScope AAD
         $account.ResourceGroupName | should -Be $rgname
         $account.StorageAccountName | should -Be $accountNameBasic
         $account.Sku.Name | should -Be "Standard_GRS"
-        $account.Location | should -Be "eastus2euap"
+        $account.Location | should -Be "westus"
         $account.EnableHierarchicalNamespace | should -Be $true
         $account.EnableHttpsTrafficOnly | should -Be $true
         $account.Kind | should -Be "StorageV2"
         $account.AllowCrossTenantReplication | should -Be $false
         $account.PublicNetworkAccess | should -Be Disabled
-        # $account.AllowedCopyScope | should -Be AAD
+        $account.AllowedCopyScope | should -Be AAD
         
         $result = Get-AzStorageAccountNameAvailability -Name $accountNameBasic 
         $result.NameAvailable | should -Be $false
@@ -59,11 +59,13 @@ Describe "Management plan test" {
         $account = Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountNameBasic |  Set-AzStorageAccount   -EnableHttpsTrafficOnly $false -AccessTier cool -Force 
         $account.EnableHttpsTrafficOnly | should -Be $false
         $account.AccessTier | should -Be "Cool"
-        $account = Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountNameBasic |  Set-AzStorageAccount   -UpgradeToStorageV2 -PublicNetworkAccess Enabled
+        $account = Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountNameBasic |  Set-AzStorageAccount   -UpgradeToStorageV2 -PublicNetworkAccess Enabled -AllowedCopyScope PrivateLink
         $account.Kind | should -Be "StorageV2"
+        $account.AllowedCopyScope | should -Be PrivateLink
         $account = Get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountNameBasic -IncludeGeoReplicationStats
         ($account.GeoReplicationStats -eq $null) | should -Be $false
         $account.PublicNetworkAccess | should -Be Enabled
+        $account.AllowedCopyScope | should -Be PrivateLink
 
         Remove-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountNameBasic -Force -AsJob
 
@@ -674,7 +676,7 @@ Describe "Management plan test" {
 
         $accountNameEncryp = $accountName + "ska"
 
-        $account = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountNameEncryp -SkuName Standard_LRS -Location 'East US 2 EUAP' -Kind StorageV2  -EncryptionKeyTypeForTable Account -EncryptionKeyTypeForQueue Account -AllowSharedKeyAccess $false
+        $account = New-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountNameEncryp -SkuName Standard_LRS -Location 'westus' -Kind StorageV2  -EncryptionKeyTypeForTable Account -EncryptionKeyTypeForQueue Account -AllowSharedKeyAccess $false
         $account.Encryption.Services.Queue.Keytype | should -be "account"
         $account.Encryption.Services.Table.Keytype | should -be "account"
         $account.AllowSharedKeyAccess | Should -be $false
@@ -1148,7 +1150,7 @@ Describe "Management plan test" {
 
         $rgname = $globalNode.resourceGroupName
         $accountNamePITR = $accountName + "pitr"
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $accountNamePITR -SkuName Standard_LRS -Location eastus2euap
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $accountNamePITR -SkuName Standard_LRS -Location westus
         Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $accountNamePITR -RetentionDays 5
         Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $accountNamePITR -EnableChangeFeed $true -IsVersioningEnabled $true
         Enable-AzStorageBlobRestorePolicy -ResourceGroupName $rgname -StorageAccountName $accountNamePITR -RestoreDays 4 -PassThru
@@ -2147,11 +2149,11 @@ Describe "Management plan test" {
          
         $vnet1 = $testNode.nfsv3.vnet
         # Commands to create a vnet 
-        # New-AzVirtualNetwork -ResourceGroupName $rgname -Location "eastus2euap" -AddressPrefix 10.0.0.0/24 -Name "vnet1" 
+        # New-AzVirtualNetwork -ResourceGroupName $rgname -Location "westus" -AddressPrefix 10.0.0.0/24 -Name "vnet1" 
         # $n = Get-AzVirtualNetwork -ResourceGroupName $rgname -Name "vnet1" | Add-AzVirtualNetworkSubnetConfig -Name "subnet1" -AddressPrefix "10.0.0.0/28" -ServiceEndpoint "Microsoft.Storage"  | Set-AzVirtualNetwork 
 
         $accountNameNfsv3 = $accountName + "nfsv3"
-        $a = New-AzStorageAccount -ResourceGroupName $rgname -Name $accountNameNfsv3 -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableNfsV3 $true -EnableHierarchicalNamespace $true -EnableHttpsTrafficOnly $false `
+        $a = New-AzStorageAccount -ResourceGroupName $rgname -Name $accountNameNfsv3 -SkuName Standard_LRS  -Location westus -Kind StorageV2 -EnableNfsV3 $true -EnableHierarchicalNamespace $true -EnableHttpsTrafficOnly $false `
                 -NetworkRuleSet (@{bypass="Logging,Metrics";virtualNetworkRules=(@{VirtualNetworkResourceId="$vnet1";Action="allow"});defaultAction="deny"})   
         $a.EnableNfsV3 | should -BeTrue
 
@@ -2333,7 +2335,7 @@ Describe "Management plan test" {
         $Error.Clear()
         
         # Create account
-        $a = New-AzStorageAccount -ResourceGroupName $rgname -Name $accountNameHns -SkuName Standard_LRS -Location centraluseuap -Kind StorageV2 # -EnableHierarchicalNamespace $true 
+        $a = New-AzStorageAccount -ResourceGroupName $rgname -Name $accountNameHns -SkuName Standard_LRS -Location westus -Kind StorageV2 # -EnableHierarchicalNamespace $true 
         $a.EnableHierarchicalNamespace | should -be $null
 
         # Validation
@@ -2344,7 +2346,7 @@ Describe "Management plan test" {
 
         # stop upgrade (will fail)
         Stop-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName $rgname -Name $accountNameHns -Force -PassThru -ErrorAction SilentlyContinue        
-        $error[0].Exception.Message | should -Be "Hns migration for the account: $($accountName) is not found."
+        $error[0].Exception.Message | should -Be "Hns migration for the account: $($accountNameHns) is not found."
         $error.Count | should -be 1
         $error.Clear()
 
@@ -2407,7 +2409,7 @@ Describe "Management plan test" {
         $Error.Clear()
         $accountNameVLW = $testNode.SelectSingleNode("accountName[@id='1']").'#text' ## e.g. “testaccount”
 
-        $ctx = (Get-AzStorageAccount -ResourceGroupName $rgname -Name $accountName).Context
+        $ctx = (Get-AzStorageAccount -ResourceGroupName $rgname -Name $accountNameVLW).Context
         $containerNameVLW = "vlwtest"
         $containerNameVLW2 = "vlwtestmigration2"
         $localSrcFile = "C:\temp\testfile_10240K_0" 

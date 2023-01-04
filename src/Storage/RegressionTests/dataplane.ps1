@@ -2,7 +2,7 @@
 
 BeforeAll {
     # Modify the path to your own
-    Import-Module D:\code\azure-powershell\src\Storage\RegressionTests\utils.ps1
+    Import-Module $PSScriptRoot\utils.ps1
 
     [xml]$config = Get-Content D:\code\azure-powershell\src\Storage\RegressionTests\config.xml
     $globalNode = $config.SelectSingleNode("config/section[@id='global']")
@@ -181,9 +181,13 @@ Describe "dataplane test" {
         $sas = New-AzStorageBlobSASToken -container $containerName -Blob test.txt -Permission w -Context $ctx
         $ctxsas = New-AzStorageContext -StorageAccountName $ctx.StorageAccountName -SasToken $sas.Substring(1)
         $bs = Get-AzStorageBlob -Container $containerName -Context $ctx
+        $bs[0].ListBlobProperties | should -Not -Be $null
+        $bs[0].ListBlobProperties.Properties | should -Not -Be $null
+        $bs[0].ListBlobProperties.Properties.BlobType | should -Not -Be $null
         $bs[0].BlobProperties | should -Not -Be $null
         $b = Get-AzStorageBlob -Container $containerName -Blob $bs[0].Name -Context $ctx
         $b.BlobProperties | should -Not -Be $null
+        $b.ListBlobProperties | should -Be $null
 
         #copy with oauth 
         # cross account     

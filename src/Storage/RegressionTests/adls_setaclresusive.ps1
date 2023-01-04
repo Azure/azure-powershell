@@ -4,15 +4,36 @@ function ResetFileToFail
 {
     # Reset the file to make it failure in set acl resusive
     # New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path dir0/dir1/file1 -Source $localSrcFile -Force  | Update-AzDataLakeGen2Item -Permission rwxr-x---
-    New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path dir0/dir2/file4 -Source $localSrcFile -Force  | Update-AzDataLakeGen2Item -Permission rwxr-x---
-    $blob = Get-AzStorageBlob -Container $filesystemName -blob dir0/dir2/file4 -Context $ctx 
-    $leaseID = $blob.ICloudBlob.AcquireLease($null, $null);
+    $blob = Get-AzStorageBlob -Container $filesystemName -blob dir0/dir2/file4 -Context $ctx    
+    if ($blob.BlobProperties.LeaseStatus -eq "Unlocked")
+    {
+        New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path dir0/dir2/file4 -Source $localSrcFile -Force  | Update-AzDataLakeGen2Item -Permission rwxr-x---
+        $blob = Get-AzStorageBlob -Container $filesystemName -blob dir0/dir2/file4 -Context $ctx     
+        $leaseID = $blob.ICloudBlob.AcquireLease($timespan, $leaseID)
+    }
+}
+
+function ResetFileToSuccess
+{
+    # Reset the file to make it success in set acl resusive
+    $blob = Get-AzStorageBlob -Container $filesystemName -blob dir0/dir2/file4 -Context $ctx    
+
+    if (($blob.BlobProperties.LeaseStatus -eq "Locked"))# -and ($blob.BlobProperties.LeaseDuration -eq "Fixed"))
+    {
+        $ac = New-Object -TypeName "Microsoft.Azure.Storage.AccessCondition"
+        $ac.LeaseId = $leaseID
+        $blob.ICloudBlob.ReleaseLease($ac)
+        
+        # sleep 1
+        # $blob = Get-AzStorageBlob -Container $filesystemName -blob dir0/dir2/file4 -Context $ctx  
+    }
+    New-AzDataLakeGen2Item -Context $ctx2 -FileSystem $filesystemName -Path dir0/dir2/file4 -Source $localSrcFile -Force  | Update-AzDataLakeGen2Item -Permission rwxr-x---  | Out-Null
 }
 
 
 BeforeAll {
     # Modify the path to your own
-    Import-Module D:\code\azure-powershell\src\Storage\RegressionTests\utils.ps1
+    Import-Module $PSScriptRoot\utils.ps1
     
     [xml]$config = Get-Content D:\code\azure-powershell\src\Storage\RegressionTests\config.xml
     $globalNode = $config.SelectSingleNode("config/section[@id='global']")
@@ -31,6 +52,9 @@ BeforeAll {
     $filesystemName = "adlstest2"
     $localSrcFile = "C:\temp\testfile_1K_0" #The file needs to exist before tests, and should be 512 bytes aligned
     $id = $globalNode.applicationId
+
+    # for lease blob to make set acl recusive fail
+    $timespan = New-Object -TypeName System.TimeSpan -ArgumentList 150000000
     $leaseID = $testNode.leaseId
 
 
@@ -187,6 +211,8 @@ Describe "Set DataLakeGen2 Acl Recursive" {
         $TotalFilesSuccess = 0
         $totalFailure = 0
         $FailedEntries = New-Object System.Collections.Generic.List[System.Object]
+        
+        ResetFileToFail
         do
         {
             if ($ContinueOnFailure)
@@ -224,6 +250,8 @@ Describe "Set DataLakeGen2 Acl Recursive" {
         $token | should -BeNullOrEmpty
         $FailedEntries.Count | should -Be 1
 
+        ResetFileToSuccess
+
         $Error.Count | should -be 0
     }
 
@@ -239,7 +267,7 @@ Describe "Set DataLakeGen2 Acl Recursive" {
         $result.FailedEntries.Count | Should -Be 1 
         # Resume: fix the permission issue and continue set ACL recusive
         # New-AzDataLakeGen2Item -Context $ctx2 -FileSystem $filesystemName -Path dir0/dir1/file1 -Source $localSrcFile -Force  | Update-AzDataLakeGen2Item -Permission rwxr-x--- 
-        New-AzDataLakeGen2Item -Context $ctx2 -FileSystem $filesystemName -Path dir0/dir2/file4 -Source $localSrcFile -Force  | Update-AzDataLakeGen2Item -Permission rwxr-x---  | Out-Null
+        ResetFileToSuccess
         $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 3 -ContinuationToken $result.ContinuationToken
         ($result.ContinuationToken -eq $null) | should -Be $true
         $result.TotalFailureCount | should -Be 0
@@ -258,8 +286,7 @@ Describe "Set DataLakeGen2 Acl Recursive" {
         $result.TotalFailureCount | should -Be 1
         $result.FailedEntries.Count | Should -Be 1 
         # Resume: fix the permission issue and continue set ACL recusive
-        # New-AzDataLakeGen2Item -Context $ctx2 -FileSystem $filesystemName -Path dir0/dir1/file1 -Source $localSrcFile -Force  | Update-AzDataLakeGen2Item -Permission rwxr-x--- 
-        New-AzDataLakeGen2Item -Context $ctx2 -FileSystem $filesystemName -Path dir0/dir2/file4 -Source $localSrcFile -Force  | Update-AzDataLakeGen2Item -Permission rwxr-x---
+        ResetFileToSuccess
         $result = Update-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl2 -BatchSize 3  -ContinuationToken $result.ContinuationToken
         ($result.ContinuationToken -eq $null) | should -Be $true
         $result.TotalFailureCount | should -Be 0
@@ -278,8 +305,7 @@ Describe "Set DataLakeGen2 Acl Recursive" {
         $result.TotalFailureCount | should -Be 1
         $result.FailedEntries.Count | Should -Be 1 
         # Resume: fix the permission issue and continue set ACL recusive
-        # New-AzDataLakeGen2Item -Context $ctx2 -FileSystem $filesystemName -Path dir0/dir1/file1 -Source $localSrcFile -Force  | Update-AzDataLakeGen2Item -Permission rwxr-x--- 
-        New-AzDataLakeGen2Item -Context $ctx2 -FileSystem $filesystemName -Path dir0/dir2/file4 -Source $localSrcFile -Force  | Update-AzDataLakeGen2Item -Permission rwxr-x---
+        ResetFileToSuccess
         $result = Remove-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl2 -BatchSize 20  -ContinuationToken $result.ContinuationToken
         ($result.ContinuationToken -eq $null) | should -Be $true
         $result.TotalFailureCount | should -Be 0
@@ -302,7 +328,7 @@ Describe "Set DataLakeGen2 Acl Recursive" {
         foreach ($path in $result.FailedEntries.Name)
         {
             # fix failed entry 
-            New-AzDataLakeGen2Item -Context $ctx2 -FileSystem $filesystemName -Path $path -Source $localSrcFile -Force # | Update-AzDataLakeGen2Item -Permission rwxr-x---
+            ResetFileToSuccess
             #setACL again
             $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path $path -Acl $acl1
             $result.ContinuationToken | should -BeNullOrEmpty
@@ -333,7 +359,7 @@ Describe "Set DataLakeGen2 Acl Recursive" {
         foreach ($path in $result.FailedEntries.Name)
         {
             # fix failed entry
-            New-AzDataLakeGen2Item -Context $ctx2 -FileSystem $filesystemName -Path $path -Source $localSrcFile -Force  | Update-AzDataLakeGen2Item -Permission rwxr-x---
+            ResetFileToSuccess
             #setACL again
             $result = Update-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path $path -Acl $acl2
             $result.ContinuationToken | should -BeNullOrEmpty
@@ -364,7 +390,7 @@ Describe "Set DataLakeGen2 Acl Recursive" {
         foreach ($path in $result.FailedEntries.Name)
         {
             # fix failed entry
-            New-AzDataLakeGen2Item -Context $ctx2 -FileSystem $filesystemName -Path $path -Source $localSrcFile -Force  | Update-AzDataLakeGen2Item -Permission rwxr-x---
+            ResetFileToSuccess
             #setACL again
             $result = Remove-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path $path -Acl $acl2
             $result.ContinuationToken | should -BeNullOrEmpty

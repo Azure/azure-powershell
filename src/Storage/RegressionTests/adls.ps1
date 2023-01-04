@@ -3,7 +3,7 @@
 
 BeforeAll {
     # Modify the path to your own
-    Import-Module D:\code\azure-powershell\src\Storage\RegressionTests\utils.ps1
+    Import-Module $PSScriptRoot\utils.ps1
 
     [xml]$config = Get-Content D:\code\azure-powershell\src\Storage\RegressionTests\config.xml
     $globalNode = $config.SelectSingleNode("config/section[@id='global']")
