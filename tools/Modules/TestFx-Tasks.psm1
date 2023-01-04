@@ -97,7 +97,7 @@
                 $Retries++;
             }
             
-            $credentials.ServicePrincipal = $NewServicePrincipal.ApplicationId
+            $credentials.ServicePrincipal = $NewServicePrincipal.AppId
             $ServicePrincipalSecret = $NewServicePrincipal.Secret
             $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($ServicePrincipalSecret)
             $UnsecurePassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
@@ -110,7 +110,7 @@
             {
                 throw "Service Principal secret required for existing Service Principal."
             }
-            $credentials.ServicePrincipal = $existingServicePrincipal.ApplicationId
+            $credentials.ServicePrincipal = $existingServicePrincipal.AppId
             $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($ServicePrincipalSecret)
             $UnsecurePassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
             $credentials.ServicePrincipalSecret = $UnsecurePassword
