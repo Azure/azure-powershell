@@ -13,8 +13,18 @@ Modifies an Automation account.
 
 ## SYNTAX
 
+### AutomationServicesEncryption (Default)
 ```
 Set-AzAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Plan <String>] [-Tags <IDictionary>]
+ [-AssignSystemIdentity] [-AssignUserIdentity <String[]>] [-AutomationServicesEncryption]
+ [-DisablePublicNetworkAccess] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### KeyVaultEncryption
+```
+Set-AzAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Plan <String>] [-Tags <IDictionary>]
+ [-AssignSystemIdentity] [-AssignUserIdentity <String[]>] [-KeyVaultEncryption] -KeyName <String>
+ -KeyVersion <String> -KeyVaultUri <String> [-UserIdentityEncryption <String>] [-DisablePublicNetworkAccess]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -42,6 +52,51 @@ This command changes the plan to Basic for the Automation account named Automati
 
 ## PARAMETERS
 
+### -AssignSystemIdentity
+Generate and assign a new System Identity for this automation account
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssignUserIdentity
+Assign the User Assigned Identities to this automation account
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutomationServicesEncryption
+Whether to set Automation Account KeySource to Microsoft.Automation or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AutomationServicesEncryption
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -51,6 +106,81 @@ Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisablePublicNetworkAccess
+Whether to disable traffic on the non-ARM endpoints (Webhook/Agent) from the public internet
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyName
+CMK KeyName
+
+```yaml
+Type: System.String
+Parameter Sets: KeyVaultEncryption
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultEncryption
+Whether to set Automation Account KeySource to Microsoft.KeyVault(enable CMK) or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: KeyVaultEncryption
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultUri
+CMK KeyVaultUri
+
+```yaml
+Type: System.String
+Parameter Sets: KeyVaultEncryption
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVersion
+CMK KeyVersion
+
+```yaml
+Type: System.String
+Parameter Sets: KeyVaultEncryption
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,6 +249,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserIdentityEncryption
+User Assigned Identity used for encryption
+
+```yaml
+Type: System.String
+Parameter Sets: KeyVaultEncryption
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
