@@ -34,7 +34,7 @@
                 },
                 {
                     "name": "-ClusterName",
-                    "value": "[path.clusterName]"
+                    "value": "[path.resourceName]"
                 },
                 {
                     "name": "-Name",
@@ -50,4 +50,3 @@
     }
   ]
 }
-

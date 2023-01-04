@@ -227,11 +227,15 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                 issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, commandName, 1, description);
             }
 
-            #region
+            #region valiate the parameters in path
             var regex = new Regex(@"\{\w+\}");
             var parametersFromHttpPath = regex.Matches(command.Path).Select(x => x.Value.TrimStart('{').TrimEnd('}')).ToList();
             foreach (string parameterFromHttpPath in parametersFromHttpPath)
             {
+                if (parameterFromHttpPath.Equals("subscriptionId", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    continue;
+                }
                 bool isParameterContainsInExample = example.Parameters.Any(x => x.Value.Equals(string.Format("[path.{0}]", parameterFromHttpPath), StringComparison.CurrentCultureIgnoreCase));
                 if (!isParameterContainsInExample)
                 {
