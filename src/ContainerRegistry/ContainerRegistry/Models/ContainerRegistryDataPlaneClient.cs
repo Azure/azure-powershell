@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             _client.LoginUri = _https + _endPoint;
             _credential = new Track2TokenCredential(new DataServiceCredential(AzureSession.Instance.AuthenticationFactory,
                         _context, AzureEnvironment.ExtendedEndpoint.ContainerRegistryEndpointResourceId));
-            _client2 = new Track2.ContainerRegistryClient(new Uri(_https + _endPoint), _credential, new Track2.ContainerRegistryClientOptions()
+            _track2Client = new Track2.ContainerRegistryClient(new Uri(_https + _endPoint), _credential, new Track2.ContainerRegistryClientOptions()
             {
                 Audience = _context.Environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.ContainerRegistryEndpointResourceId]
             });
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public PSTagList ListTag(string repository)
         {
-            ContainerRepository image = _client2.GetRepository(repository);
+            ContainerRepository image = _track2Client.GetRepository(repository);
 
             Pageable<ArtifactManifestProperties> properties = image.GetAllManifestProperties();
 
