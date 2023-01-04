@@ -23,10 +23,10 @@ Param(
     [String]
     $BuildAction='build',
 
-    [Switch]
+    [String]
     $GenerateDocumentationFile,
 
-    [string]
+    [String]
     $EnableTestCoverage,
 
     [Switch]
@@ -74,7 +74,7 @@ If ($Build)
 {
     $LogFile = "$RepoArtifacts/Build.Log"
     $buildCmdResult = "dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -fl '/flp1:logFile=$LogFile;verbosity=quiet'"
-    If ($GenerateDocumentationFile)
+    If ($GenerateDocumentationFile -eq "false")
     {
         $buildCmdResult += " -p:GenerateDocumentationFile=false"
     }
