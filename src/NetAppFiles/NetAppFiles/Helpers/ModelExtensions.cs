@@ -98,6 +98,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Etag = netAppAccount.Etag,
                 ActiveDirectories = (netAppAccount.ActiveDirectories != null) ? netAppAccount.ActiveDirectories.ConvertToPs(resourceGroupName, netAppAccount.Name) : null,
                 ProvisioningState = netAppAccount.ProvisioningState,
+                Identity = netAppAccount.Identity.ConvertToPs(),
                 SystemData =  netAppAccount.SystemData?.ToPsSystemData()
             };
         }
@@ -356,6 +357,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 SystemData = volume.SystemData?.ToPsSystemData(),
                 MaximumNumberOfFiles = volume.MaximumNumberOfFiles,
                 EnableSubvolumes = volume.EnableSubvolumes,
+                Encrypted = volume.Encrypted,
+                Zones = volume.Zones,
+                KeyVaultPrivateEndpointResourceId = volume.KeyVaultPrivateEndpointResourceId,
+                DeleteBaseSnapshot = volume.DeleteBaseSnapshot,
+                SmbAccessBasedEnumeration = volume.SmbAccessBasedEnumeration,
+                SmbNonBrowsable = volume.SmbNonBrowsable,
+                EncryptionKeySource = volume.EncryptionKeySource,
+                VolumeSpecName = volume.VolumeSpecName
             };
         }
 
