@@ -27,7 +27,7 @@ Get-AzMLWorkspaceKey  -ResourceGroupName ml-rg-test -Name mlworkspace-cli01
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IListWorkspaceKeysResult
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacekey
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacekey
 #>
 function Get-AzMLWorkspaceKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IListWorkspaceKeysResult])]

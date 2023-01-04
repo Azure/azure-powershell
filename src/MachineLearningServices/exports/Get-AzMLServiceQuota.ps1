@@ -25,7 +25,7 @@ Get-AzMLServiceQuota -Location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceQuota
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlservicequota
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlservicequota
 #>
 function Get-AzMLServiceQuota {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceQuota])]
