@@ -245,8 +245,10 @@ namespace Common.Authentication.Test
             AzureSession.Instance.DataStore = mock.Object;
             try
             {
+#pragma warning disable CS0436 // Type conflicts with imported type. ConfigKeys.cs is included in the referenced projects.
                 Assert.True(AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var manager)
                     && manager.GetConfigValue<bool>(ConfigKeys.EnableDataCollection));
+#pragma warning restore CS0436 // Type conflicts with imported type
             }
             finally
             {
