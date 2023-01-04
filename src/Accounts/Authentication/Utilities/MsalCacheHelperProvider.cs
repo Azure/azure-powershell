@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         private static MsalCacheHelper MsalCacheHelper;
         private static object ObjectLock = new object();
-        protected const string PowerShellClientId = Constants.PowerShellClientId;
 
         public static MsalCacheHelper GetCacheHelper()
         {

@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             SharedTokenCacheCredentialOptions options =
                 new SharedTokenCacheCredentialBrokerOptions(tokenCacheProvider.GetTokenCachePersistenceOptions());
             options.EnableGuestTenantAuthentication = true;
-            options.ClientId = AuthenticationHelpers.PowerShellClientId;
+            options.ClientId = Constants.PowerShellClientId;
             options.Username = silentParameters.UserId;
             options.AuthorityHost = new Uri(authority);
             options.TenantId = tenantId;

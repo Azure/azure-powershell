@@ -23,12 +23,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// </summary>
     public class AdalConfiguration
     {
-        //
-        // These constants define the default values to use for AD authentication
-        // against RDFE
-        //
-        public const string PowerShellClientId = Constants.PowerShellClientId;
-
         public static readonly Uri PowerShellRedirectUri = new Uri("urn:ietf:wg:oauth:2.0:oob");
 
         // ID for site to pass to enable EBD (email-based differentiation)
@@ -50,7 +44,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public AdalConfiguration()
         {
-            ClientId = PowerShellClientId;
+            ClientId = Constants.PowerShellClientId;
             ClientRedirectUri = PowerShellRedirectUri;
             ValidateAuthority = true;
             AdEndpoint = string.Empty;

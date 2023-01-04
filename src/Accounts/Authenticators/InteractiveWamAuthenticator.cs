@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var tokenCacheProvider = interactiveParameters.TokenCacheProvider;
             var resource = interactiveParameters.Environment.GetEndpoint(interactiveParameters.ResourceId) ?? interactiveParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
-            var clientId = AuthenticationHelpers.PowerShellClientId;
+            var clientId = Constants.PowerShellClientId;
 
             var requestContext = new TokenRequestContext(scopes);
             var authority = interactiveParameters.Environment.ActiveDirectoryAuthority;

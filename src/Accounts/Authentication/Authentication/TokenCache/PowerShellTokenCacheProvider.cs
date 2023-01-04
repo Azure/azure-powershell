@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public abstract class PowerShellTokenCacheProvider
     {
         public const string PowerShellTokenCacheProviderKey = "PowerShellTokenCacheProviderKey";
-        protected const string PowerShellClientId = Constants.PowerShellClientId;
         private static readonly string CommonTenant = "organizations";
 
         protected byte[] _tokenCacheDataToFlush;
@@ -165,7 +164,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public virtual IPublicClientApplication CreatePublicClient(string authority = null)
         {
-            var builder = PublicClientApplicationBuilder.Create(PowerShellClientId).WithBrokerPreview();
+            var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId).WithBrokerPreview();
 
             if(!string.IsNullOrEmpty(authority))
             {
