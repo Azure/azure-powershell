@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Maintenance
                     if (this.PostTask != null)
                     {
                         configuration.InstallPatches = configuration.InstallPatches ?? new InputPatchConfiguration();
-                        configuration.InstallPatches.PostTask = JsonConvert.DeserializeObject<List<TaskProperties>>(this.PostTask);
+                        configuration.InstallPatches.PreTasks = JsonConvert.DeserializeObject<List<TaskProperties>>(this.PostTask);
                     }
 
                     var result = MaintenanceConfigurationsClient.CreateOrUpdate(resourceGroupName, resourceName, configuration);
