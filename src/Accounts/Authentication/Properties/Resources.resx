@@ -376,4 +376,11 @@
   <data name="StorageLockConflicts" xml:space="preserve">
     <value>AzKeyStore is locked. Please try again after a while.</value>
   </data>
+  <data name="SwitchLoginMethodWarning" xml:space="preserve">
+    <value>You may need to login again after updating "{0}".</value>
+    <comment>0 = key of the config</comment>
+  </data>
+  <data name="HelpMessageOfEnableWamLogin" xml:space="preserve">
+    <value>[Preview] When enabled, Web Account Manager (WAM) will be the default interactive login experience. It will fall back to using the browser if the platform does not support WAM. Note that this feature is under preview. Microsoft Account (MSA) is currently not supported. Feel free to reach out to Azure PowerShell team if you have any feedbacks: https://aka.ms/azpsissue</value>
+  </data>
 </root>
