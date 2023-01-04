@@ -300,7 +300,7 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
     Write-Host "Please visit https://github.com/Azure/azure-powershell/blob/master/documentation/testing-docs/using-azure-test-framework.md" -ForegroundColor Yellow
 }
 
-Function Print-ConnectionString([string]$subId, [string]$tenantId, [string]$spn, [string]$spnSecret, [string]$recordMode, [string]$targetEnvironment)
+Function Print-ConnectionString([string]$subId, [string]$tenantId, [string]$spnId, [string]$spnSecret, [string]$recordMode, [string]$targetEnvironment)
 {
     if([string]::IsNullOrEmpty($subId) -eq $false)
     {
@@ -314,10 +314,10 @@ Function Print-ConnectionString([string]$subId, [string]$tenantId, [string]$spn,
         Write-Host $tenantId";" -NoNewline
     }
 
-    if([string]::IsNullOrEmpty($spn) -eq $false)
+    if([string]::IsNullOrEmpty($spnId) -eq $false)
     {
         Write-Host "ServicePrincipal=" -ForegroundColor Green -NoNewline
-        Write-Host $spn";" -NoNewline
+        Write-Host $spnId";" -NoNewline
     }
 
     if([string]::IsNullOrEmpty($spnSecret) -eq $false)
