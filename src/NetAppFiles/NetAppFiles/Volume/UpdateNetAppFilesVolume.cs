@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Maximum throughput in Mibps that can be achieved by this volume, this will be accepted as input only for manual qosType volume")]
+            HelpMessage = "Maximum throughput in MiB/s that can be achieved by this volume and this will be accepted as input only for manual qosType volume")]
         public double? ThroughputMibps { get; set; }
 
         [Parameter(
@@ -149,6 +149,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.")]
         public string UnixPermission { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether Cool Access(tiering) is enabled for the volume (default false).")]
+        public SwitchParameter CoolAccess { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the number of days after which data that is not accessed by clients will be tiered (minimum 7, maximum 63).")]
+        public int? CoolnessPeriod { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -236,7 +246,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 IsDefaultQuotaEnabled = IsDefaultQuotaEnabled,
                 DefaultUserQuotaInKiBs = DefaultUserQuotaInKiB,
                 DefaultGroupQuotaInKiBs = DefaultGroupQuotaInKiB,
-                UnixPermissions = UnixPermission
+                UnixPermissions = UnixPermission,
+                CoolAccess = CoolAccess,
+                CoolnessPeriod = CoolnessPeriod,
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))

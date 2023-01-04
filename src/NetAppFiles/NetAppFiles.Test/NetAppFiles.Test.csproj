@@ -12,11 +12,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="25.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.NetApp" Version="1.16.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\NetAppFiles\NetAppFiles.csproj" />
+	<ProjectReference Include="..\NetAppFiles.Management.Sdk\NetAppFiles.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>
