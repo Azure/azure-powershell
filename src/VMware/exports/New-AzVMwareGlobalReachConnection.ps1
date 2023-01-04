@@ -25,7 +25,7 @@ New-AzVMwareGlobalReachConnection -Name azps_test_grc -PrivateCloudName azps_tes
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IGlobalReachConnection
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareglobalreachconnection
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareglobalreachconnection
 #>
 function New-AzVMwareGlobalReachConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IGlobalReachConnection])]

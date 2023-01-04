@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 176294FA-BB08-4A63-AD45-1E6C6D67A5D8
-online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstoragesharequota
+online version: https://learn.microsoft.com/powershell/module/az.storage/set-azstoragesharequota
 schema: 2.0.0
 ---
 

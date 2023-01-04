@@ -25,7 +25,7 @@ Test-AzVMwareLocationTrialAvailability -Location westcentralus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ITrial
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/test-azvmwarelocationtrialavailability
+https://learn.microsoft.com/powershell/module/az.vmware/test-azvmwarelocationtrialavailability
 #>
 function Test-AzVMwareLocationTrialAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ITrial])]

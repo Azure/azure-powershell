@@ -39,7 +39,7 @@ PAYLOAD <IBulkCollectionsPayload>: Bulk collections action properties
   [Action <String>]: Action to perform (For example: EnableCollections, DisableCollections)
   [CollectionId <String[]>]: collection ids list that the action is performed on
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/set-azmarketplacebulkprivatestorecollectionaction
+https://learn.microsoft.com/powershell/module/az.marketplace/set-azmarketplacebulkprivatestorecollectionaction
 #>
 function Set-AzMarketplaceBulkPrivateStoreCollectionAction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsResponse])]

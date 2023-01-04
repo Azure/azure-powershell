@@ -54,7 +54,7 @@ TERMS <IAgreementTerms>: Terms properties for provided Publisher/Offer/Plan tupl
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms
+https://learn.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms
 #>
 function Set-AzMarketplaceTerms {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms])]

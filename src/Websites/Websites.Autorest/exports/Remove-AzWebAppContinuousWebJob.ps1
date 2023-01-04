@@ -51,7 +51,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/remove-azwebappcontinuouswebjob
+https://learn.microsoft.com/powershell/module/az.websites/remove-azwebappcontinuouswebjob
 #>
 function Remove-AzWebAppContinuousWebJob {
 [OutputType([System.Boolean])]

@@ -23,7 +23,7 @@ Resets a lab virtual machine password.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/reset-azlabservicesvmpassword
+https://learn.microsoft.com/powershell/module/az.labservices/reset-azlabservicesvmpassword
 #>
 function Reset-AzLabServicesVMPassword_Reset {
     [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]

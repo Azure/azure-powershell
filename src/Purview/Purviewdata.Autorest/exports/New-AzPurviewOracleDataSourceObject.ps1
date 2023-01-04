@@ -38,7 +38,7 @@ Service                  : xe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewOracleDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewOracleDataSourceObject
 #>
 function New-AzPurviewOracleDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource])]

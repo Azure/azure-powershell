@@ -29,7 +29,7 @@ westus2  Lab Name
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/update-azlabserviceslab
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabserviceslab
 #>
 function Update-AzLabServicesLab {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
