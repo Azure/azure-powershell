@@ -23,11 +23,9 @@
 * Added `DdosProtectionPlan` property in `AzPublicIpAddress`
 * Updated mapping in `AzPublicIpAddress` to always show/create DdosSettings
 * Fixed a bug that added Ddos related properties when viewing PublicIpAddress and DdosProtectionPlan objects
-* Fixed a Bug for Set-AzIpGroup cmdlet to support the -whatif parameter
-* Fixed a Bug for `Add-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerProbeConfig`, `Add-AzLoadBalancerBackendAddressPoolConfig`, `Set-AzLoadBalancer`, `New-AzLoadBalancerRuleConfig`, `Remove-AzLoadBalancerInboundNatRuleConfig` cmdlets to support the `-whatif` parameter. Fix [#20416]
-* Fixed a bug for DestinationPortBehavior in `Get-AzNetworkWatcherConnectionMonitor` powershell command by adding this properties to get the DestinationPortBehavior information. Fix [#15996](https://github.com/Azure/azure-powershell/issues/15996)
 * Fixed a Bug for Set-AzIpGroup cmdlet to support the `-WhatIf` parameter
 * Fixed a Bug for `Add-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerProbeConfig`, `Add-AzLoadBalancerBackendAddressPoolConfig`, `Set-AzLoadBalancer`, `New-AzLoadBalancerRuleConfig`, `Remove-AzLoadBalancerInboundNatRuleConfig` cmdlets to support the `-WhatIf` parameter. Fix [#20416]
+* Fixed a bug for DestinationPortBehavior in `Get-AzNetworkWatcherConnectionMonitor`, `New-AzNetworkWatcherConnectionMonitor` powershell command by adding this properties to get and set the DestinationPortBehavior information. Fix [#15996](https://github.com/Azure/azure-powershell/issues/15996)
 
 ## Version 5.2.0
 * Added optional parameters `CustomBlockResponseStatusCode` and `CustomBlockResponseBody` parameter to `AzApplicationGatewayFirewallPolicySettings`
