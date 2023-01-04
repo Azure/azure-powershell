@@ -224,22 +224,7 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
 		[string]$DataLakeAnalyticsJobAndCatalogServiceUri
     )
 
-    $formattedConnStr = [string]::Format("SubscriptionId={0};HttpRecorderMode={1};Environment={2}", $SubscriptionId, $RecordMode, $TargetEnvironment)
-
-    if([string]::IsNullOrEmpty($TenantId) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";TenantId={0}"), $TenantId)
-    }
-
-    if([string]::IsNullOrEmpty($ServicePrincipalId) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";ServicePrincipal={0}"), $ServicePrincipalId)
-    }
-
-    if([string]::IsNullOrEmpty($ServicePrincipalSecret) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";ServicePrincipalSecret={0}"), $ServicePrincipalSecret)
-    }
+    $formattedConnStr = [string]::Format("SubscriptionId={0};TenantId={1};ServicePrincipal={2};ServicePrincipalSecret={3};HttpRecorderMode={4};Environment={5}", $SubscriptionId, $TenantId, $ServicePrincipalId, $ServicePrincipalSecret, $RecordMode, $TargetEnvironment)
 
 	#Uris
 	if([string]::IsNullOrEmpty($ResourceManagementUri) -eq $false)
@@ -298,7 +283,7 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
     }
 
     Write-Host "Below connection string is ready to be set"
-    Print-ConnectionString $SubscriptionId $TenantId $ServicePrincipal $ServicePrincipalSecret $RecordMode $TargetEnvironment
+    Print-ConnectionString $SubscriptionId $TenantId $ServicePrincipalId $ServicePrincipalSecret $RecordMode $TargetEnvironment
 
     #Set connection string to Environment variable
     $env:TEST_CSM_ORGID_AUTHENTICATION=$formattedConnStr
@@ -315,7 +300,7 @@ This cmdlet will only prompt you for Subscription and Tenant information, rest a
     Write-Host "Please visit https://github.com/Azure/azure-powershell/blob/master/documentation/testing-docs/using-azure-test-framework.md" -ForegroundColor Yellow
 }
 
-Function Print-ConnectionString([string]$uid, [string]$subId, [string]$aadTenant, [string]$spn, [string]$spnSecret, [string]$recordMode, [string]$targetEnvironment)
+Function Print-ConnectionString([string]$subId, [string]$tenantId, [string]$spn, [string]$spnSecret, [string]$recordMode, [string]$targetEnvironment)
 {
     if([string]::IsNullOrEmpty($subId) -eq $false)
     {
@@ -323,10 +308,10 @@ Function Print-ConnectionString([string]$uid, [string]$subId, [string]$aadTenant
         Write-Host $subId";" -NoNewline 
     }
 
-    if([string]::IsNullOrEmpty($aadTenant) -eq $false)
+    if([string]::IsNullOrEmpty($tenantId) -eq $false)
     {
         Write-Host "TenantId=" -ForegroundColor Green -NoNewline
-        Write-Host $aadTenant";" -NoNewline
+        Write-Host $tenantId";" -NoNewline
     }
 
     if([string]::IsNullOrEmpty($spn) -eq $false)
