@@ -275,31 +275,25 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         {
             var list = new List<PSArtifact>();
             var artifactList = new List<Artifact>();
-            string nextPageLink = null;
 
             if (string.IsNullOrEmpty(version))
             {
-                do
+                var artifacts = blueprintManagementClient.Artifacts.List(scope, blueprintName);
+                artifactList.AddRange(artifacts.AsEnumerable());
+                while (!string.IsNullOrEmpty(artifacts.NextPageLink))
                 {
-                    var artifacts = string.IsNullOrEmpty(nextPageLink)
-                        ? blueprintManagementClient.Artifacts.List(scope, blueprintName)
-                        : blueprintManagementClient.Artifacts.ListNext(nextPageLink);
-
+                    artifacts = blueprintManagementClient.Artifacts.ListNext(artifacts.NextPageLink);
                     artifactList.AddRange(artifacts.AsEnumerable());
-                    nextPageLink = artifacts.NextPageLink;
-                } while (nextPageLink != null);
+                }
             } else
             {
-                do
+                var artifacts = blueprintManagementClient.PublishedArtifacts.List(scope, blueprintName, version);
+                artifactList.AddRange(artifacts.AsEnumerable());
+                while (!string.IsNullOrEmpty(artifacts.NextPageLink))
                 {
-                    var artifacts = string.IsNullOrEmpty(nextPageLink)
-                        ? blueprintManagementClient.PublishedArtifacts.List(scope, blueprintName, version)
-                        : blueprintManagementClient.PublishedArtifacts.ListNext(nextPageLink);
-
+                    artifacts = blueprintManagementClient.PublishedArtifacts.ListNext(artifacts.NextPageLink);
                     artifactList.AddRange(artifacts.AsEnumerable());
-                    nextPageLink = artifacts.NextPageLink;
-                } while (nextPageLink != null);
-
+                }
             }
 
             foreach (var artifact in artifactList)
