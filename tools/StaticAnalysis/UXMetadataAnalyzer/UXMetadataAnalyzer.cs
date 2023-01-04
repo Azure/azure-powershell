@@ -89,7 +89,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                                                                         !ModuleFilter.IsAzureStackModule(s) && Directory.Exists(Path.GetFullPath(s))))
             {
                 SharedAssemblyLoader.Load(baseDirectory);
-                var probingDirectories = new List<string> {baseDirectory};
+                var probingDirectories = new List<string> { baseDirectory };
 
                 // Add current directory for probing
                 probingDirectories.AddRange(Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)));
@@ -139,11 +139,11 @@ namespace StaticAnalysis.UXMetadataAnalyzer
         private void ValidateMetadata(string moduleName, string resourceType, string subResourceType, string UXMetadataContent, ModuleMetadata moduleMetadata, ReportLogger<UXMetadataIssue> issueLogger)
         {
             UXMetadata UXMetadata = JsonConvert.DeserializeObject<UXMetadata>(UXMetadataContent);
-            
+
             foreach (UXMetadataCommand command in UXMetadata.Commands)
             {
                 string expectLearnUrl = string.Format("https://learn.microsoft.com/powershell/module/{0}/{1}", moduleName, command.Name).ToLower();
-                
+
                 if (!expectLearnUrl.Equals(command.Help.LearnMore.Url, StringComparison.OrdinalIgnoreCase))
                 {
                     string description = string.Format("Doc url is expect: {0} but get: {1}", expectLearnUrl, command.Help.LearnMore.Url);
@@ -165,14 +165,15 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                 {
                     foreach (UXMetadataCommandExample example in command.Examples)
                     {
-                        ValidateExample(moduleName, resourceType, subResourceType, command.Name, cmdletMetadata, example, issueLogger);
+                        ValidateExample(moduleName, resourceType, subResourceType, command, cmdletMetadata, example, issueLogger);
                     }
                 }
             }
         }
 
-        private void ValidateExample(string moduleName, string resourceType, string subResourceType, string commandName, CmdletMetadata cmdletMetadata, UXMetadataCommandExample example, ReportLogger<UXMetadataIssue> issueLogger)
+        private void ValidateExample(string moduleName, string resourceType, string subResourceType, UXMetadataCommand command, CmdletMetadata cmdletMetadata, UXMetadataCommandExample example, ReportLogger<UXMetadataIssue> issueLogger)
         {
+            string commandName = command.Name;
             List<string> parameterListConvertedFromAlias = example.Parameters.Select(x =>
             {
                 string parameterNameInExample = x.Name.Trim('-');
@@ -225,6 +226,20 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                 string description = string.Format("Cannot find a matched parameter set for example of {0}", commandName);
                 issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, commandName, 1, description);
             }
+
+            #region
+            var regex = new Regex(@"\{\w+\}");
+            var parametersFromHttpPath = regex.Matches(command.Path).Select(x => x.Value.TrimStart('{').TrimEnd('}')).ToList();
+            foreach (string parameterFromHttpPath in parametersFromHttpPath)
+            {
+                bool isParameterContainsInExample = example.Parameters.Any(x => x.Value.Equals(string.Format("[path.{0}]", parameterFromHttpPath), StringComparison.CurrentCultureIgnoreCase));
+                if (!isParameterContainsInExample)
+                {
+                    string description = string.Format("{0} is defined in path but cannot find in example", parameterFromHttpPath);
+                    issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, commandName, 1, description);
+                }
+            }
+            #endregion
         }
 
         private bool IsExampleMatchParameterSet(HashSet<string> parametersInExample, ParameterSetMetadata parameterSetMetadata)
