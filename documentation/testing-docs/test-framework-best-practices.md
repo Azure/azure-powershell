@@ -12,7 +12,7 @@ The article [Using Test Framework](https://github.com/Azure/azure-powershell/blo
 
 ## Encourage writing PowerShell code for all test cases
 
-In order to maximally stimulate the real scenarios, we highly recommand writing all test cases using PowerShell script. In addition, this can help expose as more issues as possible at the first time. Any C# code sending backend requests or running with the test script may result in hiding issues for Azure PowerShell cmdlets.
+In order to maximally stimulate the real scenarios, we highly recommand writing all test cases using PowerShell script. In addition, this can help expose as more issues as possible at the first time. Any C# code sending backend requests or running with the test script may result in hiding issues in Azure PowerShell cmdlets.
 
 
 
@@ -24,7 +24,7 @@ If a resource has a hard-coded name in the test case, the next time when this te
 
 ## Use Start-TestSleep instead of Start-Sleep
 
-Sometimes when recording a test scenario, sleeping until all the resources to be ready is crucial. However, in playback mode, waiting for such period of time is meaningless. **Start-TestSleep** function was born to resolve this scenario. In record mode, it will wait for specified time while in playback mode, no time will elapse for waiting. Invoke **Start-TestSleep** whenever you think **Start-Sleep** is necessary.
+Sometimes when recording a test scenario, sleeping until all the resources to be ready is crucial. However, in playback mode, waiting for such period of time is meaningless. **Start-TestSleep** function was born to resolve this problem. In record mode, it will wait for specified time while in playback mode, no time will elapse for waiting. Invoke **Start-TestSleep** whenever you think **Start-Sleep** is necessary.
 
 
 
@@ -54,7 +54,7 @@ As mentioned above, they don't recommand writing C# code in the test. If you mus
 
 ## Consider passing parameters setUp, contextAction, tearDown to RunTestScript method for individual test case
 
-Except for above delegates that apply to all the test cases, test framework also provides fine granularity that only take effect on specified test case. You can consider passing following delegates as parameters to the method RunTestScript.
+Except for above delegates that apply to all the test cases, test framework also provides fine granularity that only take effect on specified test case. You can consider passing following delegates as parameters to the method **RunTestScript**.
 
 - **setUp**: Invoked before mock context is initialized (same as WithInitAction)
 
@@ -66,10 +66,10 @@ Except for above delegates that apply to all the test cases, test framework also
 
 ## Consider using method WithManagementClients if you have special logic for service client
 
-In most of the scenarios, a service client initialized with all default values is enough for test. If you have to customize the service client object with properties other than the default values, you can consider implementing the delegate method **WithManagementClients** in the TestRunner. The object initialized in this method won't be re-populated with the default property values.
+In most of the scenarios, a service client initialized with all default values is enough. If you have to customize the service client object with properties other than the default values, you can consider implementing the delegate method **WithManagementClients** in the TestRunner. The object initialized in this method won't be re-populated.
 
 
 
 ## After recording all test cases, change the test mode from Record to Playback and execute all tests again
 
-All test cases run successfully in record mode does not mean they will also succeed in playback mode because it may have something wrong in the recorded json files. In addition, in the CI for Azure PowerShell repo, we only run all the tests in playback mode after submitting a new PR. So running the test cases again in playback mode is a good practice to confirm it would also pass in the CI.
+All test cases run successfully in record mode does not mean they will also succeed in playback mode because it may have something wrong in the recorded json files. In addition, in the CI for Azure PowerShell repo, we only run tests in playback mode after submitting a new PR. So running the test cases again in playback mode is a good practice to confirm it would also pass in the CI.
