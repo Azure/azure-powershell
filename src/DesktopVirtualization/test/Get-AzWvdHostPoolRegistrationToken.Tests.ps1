@@ -15,7 +15,7 @@ Describe 'Get-AzWvdHostPoolRegistrationToken' {
     It 'Retrieve' {
         New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                         -ResourceGroupName $env.ResourceGroup `
-                        -Name 'HostPoolPowershellContained1' `
+                        -Name $env.HostPool `
                         -Location $env.Location `
                         -HostPoolType 'Shared' `
                         -LoadBalancerType 'DepthFirst' `
@@ -32,8 +32,12 @@ Describe 'Get-AzWvdHostPoolRegistrationToken' {
         
         $regToken = Get-AzWvdHostPoolRegistrationToken -SubscriptionId $env.SubscriptionId `
             -ResourceGroupName $env.ResourceGroup `
-            -HostPoolName 'HostPoolPowershellContained1' `
+            -HostPoolName $env.HostPool `
         
-        $regToken.Token | Should -Be 'token'
+        $regToken.Token | Should -not -BeNullOrEmpty
+
+        $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                            -ResourceGroupName $env.ResourceGroup `
+                            -Name $env.HostPool
     }
 }

@@ -16,7 +16,7 @@ Describe 'Send-AzWvdUserSessionMessage' {
         Send-AzWvdUserSessionMessage -SubscriptionId $env.SubscriptionId `
                                      -ResourceGroupName $env.ResourceGroup `
                                      -HostPoolName 'HostPoolPowershell1' `
-                                     -SessionHostName 'PowershellVM-1.wvdarmtest1.net' `
+                                     -SessionHostName 'PwshVM-0' `
                                      -UserSessionId 4 `
                                      -MessageBody 'apple' `
                                      -MessageTitle 'title'

@@ -23,7 +23,7 @@ Describe 'Register-AzWvdApplicationGroup' {
 
         $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'HostPoolPowershellContained1' `
+                            -Name $env.HostPool `
                             -Location $env.Location `
                             -HostPoolType 'Shared' `
                             -LoadBalancerType 'DepthFirst' `
@@ -40,30 +40,30 @@ Describe 'Register-AzWvdApplicationGroup' {
         
         $applicationGroup = New-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'ApplicationGroupPowershell1' `
+                            -Name $env.DesktopApplicationGroup `
                             -Location $env.Location `
                             -FriendlyName 'fri' `
                             -Description 'des' `
-                            -HostPoolArmPath '/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1' `
-                            -ApplicationGroupType 'RemoteApp'
+                            -HostPoolArmPath $env.HostPoolArmPath `
+                            -ApplicationGroupType 'Desktop'
 
         Register-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                                         -ResourceGroupName $env.ResourceGroup `
                                         -WorkspaceName 'WorkspacePowershell1' `
-                                        -ApplicationGroupPath '/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupPowershell1'
+                                        -ApplicationGroupPath $env.DesktopApplicationGroupPath
         
         $workspace = Get-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
                                         -ResourceGroupName $env.ResourceGroup `
                                         -Name 'WorkspacePowershell1'
-            $workspace.ApplicationGroupReference[0] | Should -Be '/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupPowershell1'
+        $workspace.ApplicationGroupReference[0] | Should -Be $env.DesktopApplicationGroupPath
         
         $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'ApplicationGroupPowershell1'
+                            -Name $env.DesktopApplicationGroup
 
         $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'HostPoolPowershellContained1'
+                            -Name $env.HostPool
         
         $workspace = Remove-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
                                             -ResourceGroupName $env.ResourceGroup `

@@ -15,7 +15,7 @@ Describe 'Update-AzWvdHostPool' {
     It 'Update' {
         $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'HostPoolPowershellContained1' `
+                            -Name $env.HostPool `
                             -Location $env.Location `
                             -HostPoolType 'Pooled' `
                             -LoadBalancerType 'DepthFirst' `
@@ -29,12 +29,8 @@ Describe 'Update-AzWvdHostPool' {
                             -Ring $null `
                             -ValidationEnvironment:$false `
                             -PreferredAppGroupType 'RailApplications' `
-                            -SsoClientId 'https://domain/name' `
-                            -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
-                            -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
-                            -SsoSecretType 'SharedKeyInKeyVault' `
                             -StartVMOnConnect:$false
-            $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
+            $hostPool.Name | Should -Be $env.HostPool
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              
             $hostPool.LoadBalancerType | Should -Be 'DepthFirst'
@@ -49,15 +45,11 @@ Describe 'Update-AzWvdHostPool' {
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
             $hostPool.PreferredAppGroupType | Should -Be 'RailApplications'
-            $hostPool.SsoClientId | Should -Be 'https://domain/name'
-            $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
-            $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
-            $hostPool.SsoSecretType | Should -Be 'SharedKeyInKeyVault'
             $hostPool.StartVMOnConnect | Should -Be $false
 
         $hostPool = Update-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'HostPoolPowershellContained1' `
+                            -Name $env.HostPool `
                             -LoadBalancerType 'BreadthFirst' `
                             -Description 'des2' `
                             -FriendlyName 'fri2' `
@@ -67,12 +59,8 @@ Describe 'Update-AzWvdHostPool' {
                             -Ring $null `
                             -ValidationEnvironment:$false `
                             -PreferredAppGroupType 'Desktop' `
-                            -SsoClientId 'https://domain/name2' `
-                            -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert2' `
-                            -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs2' `
-                            -SsoSecretType 'CertificateInKeyVault' `
                             -StartVMOnConnect:$false
-            $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
+            $hostPool.Name | Should -Be $env.HostPool
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              
             $hostPool.LoadBalancerType | Should -Be 'BreadthFirst'
@@ -86,16 +74,12 @@ Describe 'Update-AzWvdHostPool' {
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false3
             $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
-            $hostPool.SsoClientId | Should -Be 'https://domain/name2'
-            $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert2'
-            $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs2'
-            $hostPool.SsoSecretType | Should -Be 'CertificateInKeyVault'
             $hostPool.StartVMOnConnect | Should -Be $false
 
         $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'HostPoolPowershellContained1'
-            $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
+                            -Name $env.HostPool
+            $hostPool.Name | Should -Be $env.HostPool
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              
             $hostPool.LoadBalancerType | Should -Be 'BreadthFirst'
@@ -109,14 +93,10 @@ Describe 'Update-AzWvdHostPool' {
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
             $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
-            $hostPool.SsoClientId | Should -Be 'https://domain/name2'
-            $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert2'
-            $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs2'
-            $hostPool.SsoSecretType | Should -Be 'CertificateInKeyVault'
             $hostPool.StartVMOnConnect | Should -Be $false
 
         $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'HostPoolPowershellContained1'
+                            -Name $env.HostPool
     }
 }

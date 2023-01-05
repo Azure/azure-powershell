@@ -16,19 +16,19 @@ Describe 'Get-AzWvdUserSession' {
         $userSession = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
                                 -HostPoolName 'HostPoolPowershell1' `
-                                -SessionHostName 'PowershellVM-1.wvdarmtest1.net' `
+                                -SessionHostName 'PwshVM-1' `
                                 -Id 2
-            $userSession.Name | Should -Be 'HostPoolPowershell1/PowershellVM-1.wvdarmtest1.net/2'
+            $userSession.Name | Should -Be 'HostPoolPowershell1/PwshVM-1/2'
     }
 
     It 'List' {
         $userSessions = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
                                 -HostPoolName 'HostPoolPowershell1' `
-                                -SessionHostName 'PowershellVM-1.wvdarmtest1.net' `
+                                -SessionHostName 'PwshVM-1' `
                                 | Sort-Object -Property Name
-            $userSessions[0].Name | Should -Be 'HostPoolPowershell1/PowershellVM-1.wvdarmtest1.net/2'
-            $userSessions[1].Name | Should -Be 'HostPoolPowershell1/PowershellVM-1.wvdarmtest1.net/3'
+            $userSessions[0].Name | Should -Be 'HostPoolPowershell1/PwshVM-1/2'
+            $userSessions[1].Name | Should -Be 'HostPoolPowershell1/PwshVM-1/3'
     }
 
     It 'List host pool Level' {
@@ -36,8 +36,8 @@ Describe 'Get-AzWvdUserSession' {
                                 -ResourceGroupName $env.ResourceGroup `
                                 -HostPoolName 'HostPoolPowershell1' `
                                 | Sort-Object -Property Name
-            $userSessions[0].Name | Should -Be 'HostPoolPowershell1/PowershellVM-1.wvdarmtest1.net/2'
-            $userSessions[1].Name | Should -Be 'HostPoolPowershell1/PowershellVM-1.wvdarmtest1.net/3'
-            $userSessions[2].Name | Should -Be 'HostPoolPowershell1/PowershellVM-1.wvdarmtest1.net/4'
+            $userSessions[0].Name | Should -Be 'HostPoolPowershell1/PwshVM-1/2'
+            $userSessions[1].Name | Should -Be 'HostPoolPowershell1/PwshVM-1/3'
+            $userSessions[2].Name | Should -Be 'HostPoolPowershell1/PwshVM-1/4'
     }
 }

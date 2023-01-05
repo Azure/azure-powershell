@@ -15,7 +15,7 @@ Describe 'Update-AzWvdApplicationGroup' {
     It 'Update' {
         $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'HostPoolPowershellContained1' `
+                            -Name $env.HostPool `
                             -Location $env.Location `
                             -HostPoolType 'Shared' `
                             -LoadBalancerType 'DepthFirst' `
@@ -32,47 +32,47 @@ Describe 'Update-AzWvdApplicationGroup' {
         
         $applicationGroup = New-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'ApplicationGroupPowershell1' `
+                            -Name $env.RemoteApplicationGroup `
                             -Location $env.Location `
                             -FriendlyName 'fri' `
                             -Description 'des' `
-                            -HostPoolArmPath '/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1' `
+                            -HostPoolArmPath $env.HostPoolArmPath `
                             -ApplicationGroupType 'RemoteApp'
-            $applicationGroup.Name | Should -Be 'ApplicationGroupPowershell1'
+            $applicationGroup.Name | Should -Be $env.RemoteApplicationGroup
             $applicationGroup.Location | Should -Be $env.Location
             $applicationGroup.FriendlyName | Should -Be 'fri'
             $applicationGroup.Description | Should -Be 'des'
-            $applicationGroup.HostPoolArmPath | Should -Be '/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1'
+            $applicationGroup.HostPoolArmPath | Should -Be $env.HostPoolArmPath
             $applicationGroup.ApplicationGroupType | Should -Be 'RemoteApp'
 
         $applicationGroup = Update-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'ApplicationGroupPowershell1' `
+                            -Name $env.RemoteApplicationGroup `
                             -FriendlyName 'fri' `
                             -Description 'des'
-            $applicationGroup.Name | Should -Be 'ApplicationGroupPowershell1'
+            $applicationGroup.Name | Should -Be $env.RemoteApplicationGroup
             $applicationGroup.Location | Should -Be $env.Location
             $applicationGroup.FriendlyName | Should -Be 'fri'
             $applicationGroup.Description | Should -Be 'des'
-            $applicationGroup.HostPoolArmPath | Should -Be '/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1'
+            $applicationGroup.HostPoolArmPath | Should -Be $env.HostPoolArmPath
             $applicationGroup.ApplicationGroupType | Should -Be 'RemoteApp'
 
         $applicationGroup = Get-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'ApplicationGroupPowershell1'
-            $applicationGroup.Name | Should -Be 'ApplicationGroupPowershell1'
+                            -Name $env.RemoteApplicationGroup
+            $applicationGroup.Name | Should -Be $env.RemoteApplicationGroup
             $applicationGroup.Location | Should -Be $env.Location
             $applicationGroup.FriendlyName | Should -Be 'fri'
             $applicationGroup.Description | Should -Be 'des'
-            $applicationGroup.HostPoolArmPath | Should -Be '/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellContained1'
+            $applicationGroup.HostPoolArmPath | Should -Be $env.HostPoolArmPath
             $applicationGroup.ApplicationGroupType | Should -Be 'RemoteApp'
 
         $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'ApplicationGroupPowershell1'
+                            -Name $env.RemoteApplicationGroup
 
-        $hostPool = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
+        $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'HostPoolPowershellContained1'
+                            -Name $env.HostPool
     }
 }

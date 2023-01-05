@@ -16,8 +16,8 @@ Describe 'Get-AzWvdSessionHost' {
         $sessionHost = Get-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
                             -HostPoolName 'HostPoolPowershell1' `
-                            -Name 'PowershellVM-0.wvdarmtest1.net'
-            $sessionHost.Name | Should -Be 'HostPoolPowershell1/PowershellVM-0.wvdarmtest1.net'
+                            -Name 'PwshVM-0'
+            $sessionHost.Name | Should -Be 'HostPoolPowershell1/PwshVM-0'
     }
 
     It 'List' {
@@ -26,7 +26,7 @@ Describe 'Get-AzWvdSessionHost' {
                             -HostPoolName 'HostPoolPowershell1' `
                             | Sort-Object -Property Name 
         
-            $sessionHosts[0].Name | Should -Be 'HostPoolPowershell1/PowershellVM-0.wvdarmtest1.net'
-            $sessionHosts[1].Name | Should -Be 'HostPoolPowershell1/PowershellVM-1.wvdarmtest1.net'
+            $sessionHosts[0].Name | Should -Be 'HostPoolPowershell1/PwshVM-0'
+            $sessionHosts[1].Name | Should -Be 'HostPoolPowershell1/PwshVM-1'
     }
 }

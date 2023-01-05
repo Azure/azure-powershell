@@ -16,15 +16,15 @@ Describe 'Disconnect-AzWvdUserSession' {
         Disconnect-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
                                 -HostPoolName 'HostPoolPowershell1' `
-                                -SessionHostName 'PowershellVM-1.wvdarmtest1.net' `
+                                -SessionHostName 'PwshVM-0' `
                                 -Id 2
         
         $userSession = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
                                 -HostPoolName 'HostPoolPowershell1' `
-                                -SessionHostName 'PowershellVM-1.wvdarmtest1.net' `
+                                -SessionHostName 'PwshVM-0' `
                                 -Id 2
-            $userSession.Name | Should -Be 'HostPoolPowershell1/PowershellVM-1.wvdarmtest1.net/2'
+            $userSession.Name | Should -Be 'HostPoolPowershell1/PwshVM-0/2'
             $userSession.SessionState | Should -Be 'Disconnected'
     }
 }

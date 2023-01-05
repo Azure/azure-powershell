@@ -16,27 +16,27 @@ Describe 'Update-AzWvdSessionHost' {
         $sessionHost = Update-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
                             -HostPoolName 'HostPoolPowershell1' `
-                            -Name 'PowershellVM-0.wvdarmtest1.net' `
+                            -Name 'PwshVM-0' `
                             -AllowNewSession:$false
 
         $sessionHost = Get-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
                             -HostPoolName 'HostPoolPowershell1' `
-                            -Name 'PowershellVM-0.wvdarmtest1.net'
-            $sessionHost.Name | Should -Be 'HostPoolPowershell1/PowershellVM-0.wvdarmtest1.net'
+                            -Name 'PwshVM-0'
+            $sessionHost.Name | Should -Be 'HostPoolPowershell1/PwshVM-0'
             $sessionHost.AllowNewSession | Should -Be $false
 
         $sessionHost = Update-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
                             -HostPoolName 'HostPoolPowershell1' `
-                            -Name 'PowershellVM-0.wvdarmtest1.net' `
+                            -Name 'PwshVM-0' `
                             -AllowNewSession:$true
 
         $sessionHost = Get-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
                             -HostPoolName 'HostPoolPowershell1' `
-                            -Name 'PowershellVM-0.wvdarmtest1.net'
-            $sessionHost.Name | Should -Be 'HostPoolPowershell1/PowershellVM-0.wvdarmtest1.net'
+                            -Name 'PwshVM-0'
+            $sessionHost.Name | Should -Be 'HostPoolPowershell1/PwshVM-0'
             $sessionHost.AllowNewSession | Should -Be $true
     }
 }

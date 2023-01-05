@@ -16,14 +16,14 @@ Describe 'Remove-AzWvdUserSession' {
         Remove-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
                                     -ResourceGroupName $env.ResourceGroup `
                                     -HostPoolName 'HostPoolPowershell1' `
-                                    -SessionHostName 'PowershellVM-1.wvdarmtest1.net' `
+                                    -SessionHostName 'PwshVM-1' `
                                     -Id 4
 
         try {
             $userSession = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
                                 -HostPoolName 'HostPoolPowershell1' `
-                                -SessionHostName 'PowershellVM-1.wvdarmtest1.net' `
+                                -SessionHostName 'PwshVM-1' `
                                 -Id 4
             throw "Get should have failed."
         } catch {

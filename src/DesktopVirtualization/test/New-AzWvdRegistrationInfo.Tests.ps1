@@ -15,7 +15,7 @@ Describe 'New-AzWvdRegistrationInfo' {
     It 'Create new RegistrationInfo' {
         $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'HostPoolPowershellContained1' `
+                            -Name $env.HostPool `
                             -Location $env.Location `
                             -HostPoolType 'Shared' `
                             -LoadBalancerType 'DepthFirst' `
@@ -33,8 +33,12 @@ Describe 'New-AzWvdRegistrationInfo' {
         $newDate = $(($date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
         $regInfo = New-AzWvdRegistrationInfo -SubscriptionId $env.SubscriptionId `
                                     -ResourceGroupName $env.ResourceGroup `
-                                    -HostPoolName 'HostPoolPowershellContained1' `
+                                    -HostPoolName $env.HostPool `
                                     -ExpirationTime $newDate
             $regInfo.Token | Should -Not -BeNullOrEmpty
+
+        $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                            -ResourceGroupName $env.ResourceGroup `
+                            -Name $env.HostPool
     }
 }
