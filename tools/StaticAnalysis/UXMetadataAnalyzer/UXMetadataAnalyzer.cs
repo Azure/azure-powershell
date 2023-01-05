@@ -21,9 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Management.Automation.Runspaces;
 using System.Reflection;
-using System.Security.AccessControl;
 using System.Text.RegularExpressions;
 
 using Tools.Common.Issues;
