@@ -86,6 +86,6 @@
                                   "offer":  "WindowsServer",
                                   "sku":  "2016-datacenter-gensecond",
                                   "version":  "latest"
-                                },    
+                                }   
                 }
 }
