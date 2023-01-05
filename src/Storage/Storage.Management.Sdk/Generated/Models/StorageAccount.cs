@@ -141,10 +141,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="defaultToOAuthAuthentication">A boolean flag which
         /// indicates whether the default authentication is OAuth or not. The
         /// default interpretation is false for this property.</param>
-        /// <param name="publicNetworkAccess">Allow or disallow public network
-        /// access to Storage Account. Value is optional but if passed in, must
-        /// be 'Enabled' or 'Disabled'. Possible values include: 'Enabled',
-        /// 'Disabled'</param>
+        /// <param name="publicNetworkAccess">Allow, disallow, or let Network
+        /// Security Perimeter configuration to evaluate public network access
+        /// to Storage Account. Value is optional but if passed in, must be
+        /// 'Enabled', 'Disabled' or 'SecuredByPerimeter'. Possible values
+        /// include: 'Enabled', 'Disabled', 'SecuredByPerimeter'</param>
         /// <param name="immutableStorageWithVersioning">The property is
         /// immutable and can only be set to true at the account creation time.
         /// When set to true, it enables object level immutability for all the
@@ -479,9 +480,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         public bool? DefaultToOAuthAuthentication { get; set; }
 
         /// <summary>
-        /// Gets or sets allow or disallow public network access to Storage
-        /// Account. Value is optional but if passed in, must be 'Enabled' or
-        /// 'Disabled'. Possible values include: 'Enabled', 'Disabled'
+        /// Gets or sets allow, disallow, or let Network Security Perimeter
+        /// configuration to evaluate public network access to Storage Account.
+        /// Value is optional but if passed in, must be 'Enabled', 'Disabled'
+        /// or 'SecuredByPerimeter'. Possible values include: 'Enabled',
+        /// 'Disabled', 'SecuredByPerimeter'
         /// </summary>
         [JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public string PublicNetworkAccess { get; set; }

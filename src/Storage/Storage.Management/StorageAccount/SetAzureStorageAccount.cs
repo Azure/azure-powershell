@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public string DefaultSharePermission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Allow or disallow public network access to Storage Account.Possible values include: 'Enabled', 'Disabled'.")]
-        [PSArgumentCompleter("Enabled", "Disabled")]
+        [PSArgumentCompleter("Enabled", "Disabled", "SecuredByPerimeter")]
         [ValidateNotNullOrEmpty]
         public string PublicNetworkAccess { get; set; }
 
