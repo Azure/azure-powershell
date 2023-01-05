@@ -80,7 +80,12 @@ function Install-AzModule_Default {
 
         $modules = @()
         $modules += Get-AzModuleFromRemote @findModuleParams | Sort-Object -Property Name
-        $Repository = $modules.Repository | Select-Object -First 1
+        if ($modules) {
+            $Repository = $modules.Repository | Select-Object -First 1
+        }
+        else {
+            $Repository = (Get-PSRepository | Select-Object -Property Name)
+        }
 
         if($Name) {
             $moduleExcluded = $Name | Where-Object {!$modules -or $modules.Name -NotContains $_}

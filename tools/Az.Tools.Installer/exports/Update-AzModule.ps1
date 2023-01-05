@@ -91,7 +91,12 @@ function Update-AzModule {
             $findModuleParams.Add('Repository', $Repository)
         }
         $modulesToUpdate = Get-AzModuleFromRemote @findModuleParams
-        $Repository = $modulesToUpdate.Repository | Select-Object -First 1
+        if ($modulesToUpdate) {
+            $Repository = $modulesToUpdate.Repository | Select-Object -First 1
+        }
+        else {
+            $Repository = (Get-PSRepository | Select-Object -Property Name)
+        }
         $moduleUpdateTable = $modulesToUpdate | Foreach-Object { [PSCustomObject]@{
             Name = $_.Name
             VersionBeforeUpdate = [Version] ($groupSet[$_.Name] | Select-Object -First 1)
@@ -120,7 +125,7 @@ function Update-AzModule {
 
             if ($WhatIfPreference) {
                 $module = $null
-                foreach($module in $moduleUpdateTable) {
+                foreach ($module in $moduleUpdateTable) {
                     Write-Host "WhatIf: Will update $($module.Name) from $($module.VersionBeforeUpdate) to $($module.VersionUpdate)."
                 }
             }
