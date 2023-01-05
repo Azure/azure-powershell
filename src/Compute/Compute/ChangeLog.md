@@ -24,7 +24,6 @@
 * Configured flags `-EnableSecureBoot` and `-EnableVtpm` to default to True for TrustedLaunch,ConfidentialVM SecurityType to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
 * Removed the image `Win2008R2SP1` from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.
 
-
 ## Version 5.2.0
 * Fixed issue found for `Set-AzVmssVMRunCommand` [#19985]
 * Fixed `Get-AzVm` cmdlet when parameter "-Status" is provided, return property `OsName`, `OsVersion` and `HyperVGeneration`
