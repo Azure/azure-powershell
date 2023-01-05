@@ -3597,7 +3597,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3919658b-68ae-4509-8c17-6a2238340ae7/resourceGroups/PowerShellTest-10/providers/Microsoft.Cache/Redis/redisteam010\",\r\n  \"location\": \"East US\",\r\n  \"name\": \"redisteam010\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"6.0\",\r\n    \"sku\": {\r\n      \"name\": \"Standard\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"instances\": [\r\n      {\r\n        \"sslPort\": 15000,\r\n        \"isMaster\": false,\r\n        \"isPrimary\": false\r\n      },\r\n      {\r\n        \"sslPort\": 15001,\r\n        \"isMaster\": false,\r\n        \"isPrimary\": false\r\n      }\r\n    ],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"125\",\r\n      \"maxfragmentationmemory-reserved\": \"125\",\r\n      \"maxmemory-delta\": \"125\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"Sanitized\",\r\n      \"secondaryKey\": \"Sanitized\"\r\n    },\r\n    \"hostName\": \"redisteam010.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380,\r\n    \"linkedServers\": []\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"principalId\": \"78589003-d84e-43ff-a278-5c189b25cdfe\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/3919658b-68ae-4509-8c17-6a2238340ae7/resourcegroups/tolani-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-uami\": {\r\n        \"principalId\": \"1588532d-e046-4901-8b35-2d071681f000\",\r\n        \"clientId\": \"78058a3e-8861-46fe-89e3-9387eca26d6a\"\r\n      },\r\n      \"/subscriptions/3919658b-68ae-4509-8c17-6a2238340ae7/resourcegroups/tolani-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-uami2\": {\r\n        \"principalId\": \"7e92ddc1-fb75-42ae-ad6f-b440d234d82c\",\r\n        \"clientId\": \"7fae01ac-1b16-49cd-816f-acb13de1a1f8\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3919658b-68ae-4509-8c17-6a2238340ae7/resourceGroups/PowerShellTest-10/providers/Microsoft.Cache/Redis/redisteam010\",\r\n  \"location\": \"East US\",\r\n  \"name\": \"redisteam010\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"6.0\",\r\n    \"sku\": {\r\n      \"name\": \"Standard\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"instances\": [\r\n      {\r\n        \"sslPort\": 15000,\r\n        \"isMaster\": false,\r\n        \"isPrimary\": false\r\n      },\r\n      {\r\n        \"sslPort\": 15001,\r\n        \"isMaster\": false,\r\n        \"isPrimary\": false\r\n      }\r\n    ],\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"125\",\r\n      \"maxfragmentationmemory-reserved\": \"125\",\r\n      \"maxmemory-delta\": \"125\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"***\",\r\n      \"secondaryKey\": \"***\"\r\n    },\r\n    \"hostName\": \"redisteam010.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380,\r\n    \"linkedServers\": []\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"principalId\": \"78589003-d84e-43ff-a278-5c189b25cdfe\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/3919658b-68ae-4509-8c17-6a2238340ae7/resourcegroups/tolani-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-uami\": {\r\n        \"principalId\": \"1588532d-e046-4901-8b35-2d071681f000\",\r\n        \"clientId\": \"78058a3e-8861-46fe-89e3-9387eca26d6a\"\r\n      },\r\n      \"/subscriptions/3919658b-68ae-4509-8c17-6a2238340ae7/resourcegroups/tolani-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-uami2\": {\r\n        \"principalId\": \"7e92ddc1-fb75-42ae-ad6f-b440d234d82c\",\r\n        \"clientId\": \"7fae01ac-1b16-49cd-816f-acb13de1a1f8\"\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -3663,7 +3663,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"Sanitized\",\r\n  \"secondaryKey\": \"Sanitized\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"***\",\r\n  \"secondaryKey\": \"***\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -3729,7 +3729,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"Sanitized\",\r\n  \"secondaryKey\": \"Sanitized\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"***\",\r\n  \"secondaryKey\": \"***\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -3795,7 +3795,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"Sanitized\",\r\n  \"secondaryKey\": \"Sanitized\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"***\",\r\n  \"secondaryKey\": \"***\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -3861,7 +3861,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"Sanitized\",\r\n  \"secondaryKey\": \"Sanitized\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"***\",\r\n  \"secondaryKey\": \"***\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -3927,7 +3927,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"Sanitized\",\r\n  \"secondaryKey\": \"Sanitized\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"***\",\r\n  \"secondaryKey\": \"***\"\r\n}",
       "StatusCode": 200
     },
     {

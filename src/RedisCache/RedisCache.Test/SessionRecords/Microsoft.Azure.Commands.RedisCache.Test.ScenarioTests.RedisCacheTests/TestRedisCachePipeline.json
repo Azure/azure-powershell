@@ -2889,7 +2889,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3919658b-68ae-4509-8c17-6a2238340ae7/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/redisteam002\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"redisteam002\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"6.0\",\r\n    \"sku\": {\r\n      \"name\": \"Standard\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"instances\": [\r\n      {\r\n        \"sslPort\": 15000,\r\n        \"nonSslPort\": 13000,\r\n        \"isMaster\": false,\r\n        \"isPrimary\": false\r\n      },\r\n      {\r\n        \"sslPort\": 15001,\r\n        \"nonSslPort\": 13001,\r\n        \"isMaster\": false,\r\n        \"isPrimary\": false\r\n      }\r\n    ],\r\n    \"minimumTlsVersion\": \"1.2\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"125\",\r\n      \"maxfragmentationmemory-reserved\": \"125\",\r\n      \"maxmemory-delta\": \"125\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"Sanitized\",\r\n      \"secondaryKey\": \"Sanitized\"\r\n    },\r\n    \"hostName\": \"redisteam002.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380,\r\n    \"linkedServers\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3919658b-68ae-4509-8c17-6a2238340ae7/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/redisteam002\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"redisteam002\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"6.0\",\r\n    \"sku\": {\r\n      \"name\": \"Standard\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"instances\": [\r\n      {\r\n        \"sslPort\": 15000,\r\n        \"nonSslPort\": 13000,\r\n        \"isMaster\": false,\r\n        \"isPrimary\": false\r\n      },\r\n      {\r\n        \"sslPort\": 15001,\r\n        \"nonSslPort\": 13001,\r\n        \"isMaster\": false,\r\n        \"isPrimary\": false\r\n      }\r\n    ],\r\n    \"minimumTlsVersion\": \"1.2\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"125\",\r\n      \"maxfragmentationmemory-reserved\": \"125\",\r\n      \"maxmemory-delta\": \"125\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"***\",\r\n      \"secondaryKey\": \"***\"\r\n    },\r\n    \"hostName\": \"redisteam002.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380,\r\n    \"linkedServers\": []\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -2955,7 +2955,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"Sanitized\",\r\n  \"secondaryKey\": \"Sanitized\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"***\",\r\n  \"secondaryKey\": \"***\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -3021,7 +3021,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"Sanitized\",\r\n  \"secondaryKey\": \"Sanitized\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"***\",\r\n  \"secondaryKey\": \"***\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -3087,7 +3087,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"Sanitized\",\r\n  \"secondaryKey\": \"Sanitized\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"***\",\r\n  \"secondaryKey\": \"***\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -3153,7 +3153,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"Sanitized2\",\r\n  \"secondaryKey\": \"Sanitized\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"***2\",\r\n  \"secondaryKey\": \"***\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -3361,7 +3361,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"Sanitized\",\r\n  \"secondaryKey\": \"Sanitized\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"***\",\r\n  \"secondaryKey\": \"***\"\r\n}",
       "StatusCode": 200
     },
     {
