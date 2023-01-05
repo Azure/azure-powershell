@@ -249,7 +249,6 @@ namespace Microsoft.Azure.Commands.Compute
             "Win2008R2SP1",
             "Win10",
             "Win2016DataCenterGenSecond")]
-            "Win10")]
  
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
