@@ -25,7 +25,7 @@ Get-AzMLServiceVMSize -Location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IVirtualMachineSize
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlservicevmsize
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlservicevmsize
 #>
 function Get-AzMLServiceVMSize {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IVirtualMachineSize])]

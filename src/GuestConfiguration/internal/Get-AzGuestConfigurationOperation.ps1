@@ -27,7 +27,7 @@ Lists all of the available GuestConfiguration REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationoperation
+https://learn.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationoperation
 #>
 function Get-AzGuestConfigurationOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20180630Preview.IOperation])]

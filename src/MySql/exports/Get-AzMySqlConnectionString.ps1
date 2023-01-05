@@ -60,7 +60,7 @@ INPUTOBJECT <IServer>: The server for the connection string.
   [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlconnectionstring
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlconnectionstring
 #>
 function Get-AzMySqlConnectionString {
 [OutputType([System.String])]

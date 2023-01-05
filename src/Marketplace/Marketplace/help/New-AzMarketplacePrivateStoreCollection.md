@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://docs.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollection
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollection
 schema: 2.0.0
 ---
 

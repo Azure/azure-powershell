@@ -251,6 +251,21 @@ Account                     SubscriptionName TenantId                        Env
 xxxxxxxx-xxxx-xxxx-xxxxxxxx Subscription1    yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy AzureCloud
 ```
 
+### Example 10: Connect interactively using WAM
+
+This example demonstrates how to enable the config for WAM (Web Account Manager) and use it to connect to Azure.
+
+```powershell
+Update-AzConfig -EnableLoginByWam $true
+Connect-AzAccount
+```
+
+```Output
+Account                     SubscriptionName TenantId                        Environment
+-------                     ---------------- --------                        -----------
+xxxxxxxx-xxxx-xxxx-xxxxxxxx Subscription1    yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy AzureCloud
+```
+
 ## PARAMETERS
 
 ### -AccessToken

@@ -19,4 +19,9 @@
     <WarningsAsErrors />
   </PropertyGroup>
 
+  <!-- include shared source code -->
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)shared\*.cs" />
+  </ItemGroup>
+
 </Project>

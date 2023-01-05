@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version: https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightprivatelinkconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightprivatelinkconfiguration
 schema: 2.0.0
 ---
 

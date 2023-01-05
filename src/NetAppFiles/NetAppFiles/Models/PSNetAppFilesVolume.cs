@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
@@ -58,6 +59,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// A unique read-only string that changes whenever the resource is updated.
         /// </remarks>
         public string Etag { get; set; }
+
+        /// <summary>
+        /// Gets or sets availability Zone
+        /// </summary>
+        public IList<string> Zones { get; set; }
 
         /// <summary>
         /// Gets azure lifecycle management
@@ -188,10 +194,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets ThroughputMibps
         /// </summary>
         /// <remarks>
-        ///  Maximum throughput in Mibps that can be achieved by this volume
+        ///  Maximum throughput in MiB/s that can be achieved by this volume and this will be accepted as input only for manual qosType volume
         /// </remarks>
         public double? ThroughputMibps { get; set; }
-
 
         /// <summary>
         /// Gets or sets KerberosEnabled
@@ -216,6 +221,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         ///  Enables continuously available share property for SMB volume. Only applicable for SMB volume
         /// </remarks>
         public bool? SmbContinuouslyAvailable { get; set; }
+
+        /// <summary>
+        /// Gets or sets encryption Key Source. Possible values are:
+        /// 'Microsoft.NetApp'
+        /// </summary>
+        public string EncryptionKeySource { get; set; }
 
         /// <summary>
         /// Gets or sets LdapEnabled
@@ -352,11 +363,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string T2Network { get; set; }
 
         /// <summary>
-        /// Gets or sets PlacementRules
+        /// Gets or sets volume spec name is the application specific
+        /// designation or identifier for the particular volume in a volume
+        /// group for e.g. data, log
         /// </summary>
-        /// <value>
-        /// Application specific placement rules for the particular volume.
-        /// </value>
+        public string VolumeSpecName { get; set; }
+
+        /// <summary>
+        /// Gets or sets volume placement rules
+        /// </summary>
+        /// <remarks>
+        /// Application specific placement rules for the particular volume
+        /// </remarks>
         public IList<PSKeyValuePairs> PlacementRules { get; set; }
 
         /// <summary>
@@ -383,5 +401,48 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// 'Disabled'
         /// </value>
         public string EnableSubvolumes { get; set; }
+
+        /// <summary>
+        /// Gets or sets Encrypted
+        /// </summary>
+        /// <value>
+        /// Gets specifies if the volume is encrypted or not. Only available on
+        /// volumes created or updated after 2022-01-01.
+        /// </value>
+        public bool? Encrypted { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource ID of private endpoint for KeyVault. It
+        /// must reside in the same VNET as the volume. Only applicable if
+        /// encryptionKeySource = 'Microsoft.KeyVault'.
+        /// </summary>
+        public string KeyVaultPrivateEndpointResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets if enabled (true) the snapshot the volume was created
+        /// from will be automatically deleted after the volume create
+        /// operation has finished.  Defaults to false
+        /// </summary>        
+        public bool? DeleteBaseSnapshot { get; set; }
+
+        /// <summary>
+        /// Gets or sets smbAccessBasedEnumeration
+        /// </summary>
+        /// <remarks>
+        /// Enables access based enumeration share property for SMB Shares.
+        /// Only applicable for SMB/DualProtocol volume. Possible values
+        /// include: 'Disabled', 'Enabled'
+        /// </remarks>        
+        public string SmbAccessBasedEnumeration { get; set; }
+
+        /// <summary>
+        /// Gets or sets smbNonBrowsable
+        /// </summary>
+        /// <remarks>
+        /// Enables non browsable property for SMB Shares. Only applicable for
+        /// SMB/DualProtocol volume. Possible values include: 'Disabled',
+        /// 'Enabled'
+        /// </remarks>        
+        public string SmbNonBrowsable { get; set; }
     }
 }
