@@ -235,7 +235,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
 
             #region valiate the parameters in path
             var httpPathParameterRegex = new Regex(@"\{\w+\}");
-            var parametersFromHttpPath = httpPathParameterRegex.Matches(command.Path).Select(x => x.Value.TrimStart('{').TrimEnd('}')).ToHashSet();
+            HashSet<string> parametersFromHttpPath = new HashSet<string>(httpPathParameterRegex.Matches(command.Path).Select(x => x.Value.TrimStart('{').TrimEnd('}')), StringComparer.OrdinalIgnoreCase);
             ValidateParametersDefinedInPathContainsInExample(context, parametersFromHttpPath, example, issueLogger);
             ValidateParametersInExampleDefinedInPath(context, parametersFromHttpPath, example, issueLogger);
             #endregion
