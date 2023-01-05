@@ -54,8 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "Win2008R2SP1",
             "Win10",
             "Win2016DataCenterGenSecond")]
-            "Win10")]
-      
+     
         [Parameter(
            ParameterSetName = SimpleParameterSet,
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. <br> Default: UefiSettings will not be enabled unless this property is set.",
