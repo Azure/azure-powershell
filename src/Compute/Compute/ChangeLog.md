@@ -21,6 +21,8 @@
 -->
 ## Upcoming Release
 * Removed the image `Win2008R2SP1` from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.
+* Updated Compute PS to use the new .Net SDK version 59.0.0. This includes an approved breaking change for a non-functional feature. 
+  - The type of the property `Source` of type `Microsoft.Azure.Management.Compute.Models.GalleryDataDiskImage`, `Microsoft.Azure.Management.Compute.Models.GalleryOSDiskImage`, and `Microsoft.Azure.Management.Compute.Models.GalleryImageVersionStorageProfile` has changed from `Microsoft.Azure.Management.Compute.Models.GalleryArtifactVersionSource` to `Microsoft.Azure.Management.Compute.Models.GalleryDiskImageSource`.
 
 ## Version 5.2.0
 * Fixed issue found for `Set-AzVmssVMRunCommand` [#19985]
