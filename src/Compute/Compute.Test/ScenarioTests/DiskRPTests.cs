@@ -170,5 +170,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SnapshotTrustedLaunchSecurityProfile");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskImportSecureUploadPreparedSecure()
+        {
+            TestRunner.RunTestScript("Test-DiskImportSecureUploadPreparedSecure");
+        }
     }
 }

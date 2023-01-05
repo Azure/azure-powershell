@@ -1678,6 +1678,80 @@ function Test-SnapshotTrustedLaunchSecurityProfile
 {
     $rgname = Get-ComputeTestResourceName;
 	$loc = 'northeurope';
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # VM Profile & Hardware
+        
+        $vmname = 'vm' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+
+        $vnetname = "myVnet";
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "slb" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $OSDiskName = $vmname + "-osdisk";
+        $NICName = $vmname+ "-nic";
+        $NSGName = $vmname + "-NSG";
+        $VMSize = "Standard_DS2_v2";
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2022-datacenter-smalldisk-g2";
+        $securityType = "TrustedLaunch";
+        $secureboot = $true;
+        $vtpm = $true;
+
+        # Create a Trusted Launch VM
+        $password = Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = Get-ComputeTestResourceName;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+
+        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+
+        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+        # Create Trusted Launch VM
+        $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize;
+        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred;
+        Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
+        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+        $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType;
+        $vmConfig = Set-AzVmUefi -VM $vmConfig -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
+
+        New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig ;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
+
+        # Create Snapshot from TL VM
+        $snapshotName = “sn” + $rgname;
+        $snapshot =  New-AzSnapshotConfig -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id -Location $loc -CreateOption copy;
+        $snapshotObj = New-AzSnapshot -Snapshot $snapshot -SnapshotName $snapshotName -ResourceGroupName $rgname;
+        $snapshotObj = Get-AzSnapshot -ResourceGroupName $rgname -Name $snapshotName;
+
+        Assert-NotNull $snapshotObj.SecurityProfile;
+        Assert-AreEqual $snapshotObj.SecurityProfile.SecurityType $securityType;
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname;
+	}
+}
+
+<#
+.SYNOPSIS
+Test the new disk CreateOption values of ImportSecure and UploadPreparedSecure
+#>
+function Test-DiskImportSecureUploadPreparedSecure
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = 'northeurope';
     #$snapLoc = 'Central US';
 
 	try
