@@ -18,9 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* `Export-AzRedisCache` has a new optional parameter `PreferredDataArchiveAuthMethod` 
-* `Import-AzRedisCache` has a new optional parameter `PreferredDataArchiveAuthMethod` 
-* `Get-AzRedisCacheLink` and `New-AzRedisCacheLink` will show 4 additional properties for a geo replication link: `PrimaryHostName`, `GeoReplicatedPrimaryHostName`, `ServerRole` and `LinkedRedisCacheLocation`. 
+* Added optional parameter `PreferredDataArchiveAuthMethod` in `Export-AzRedisCache`  
+* Added optional parameter `PreferredDataArchiveAuthMethod` in `Import-AzRedisCache`  
+* Added 4 additional properties for a geo replication link: `PrimaryHostName`, `GeoReplicatedPrimaryHostName`, `ServerRole`, and `LinkedRedisCacheLocation`in `Get-AzRedisCacheLink` and `New-AzRedisCacheLink` 
+
 ## Version 1.6.0
 * Added `IdentityType` and `UserAssignedIdentity` parameter in `New-AzRedisCache` and `Set-AzRedisCache` cmdlets.
     - It is used to assign and modify the Identity of Azure Cache for Redis.
