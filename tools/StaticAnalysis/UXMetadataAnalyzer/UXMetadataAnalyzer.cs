@@ -260,7 +260,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
 
         private void ValidateParametersInExampleDefinedInPath(IssueLoggerContext context, HashSet<string> parametersFromHttpPath, UXMetadataCommandExample example, ReportLogger<UXMetadataIssue> issueLogger)
         {
-            var exampleParameterPathRegex = new Regex(@"path\.\w+");
+            var exampleParameterPathRegex = new Regex(@"path\.([\w]+)");
             foreach (string parameterInExample in example.Parameters.Select(x => x.Value))
             {
                 var match = exampleParameterPathRegex.Match(parameterInExample);
