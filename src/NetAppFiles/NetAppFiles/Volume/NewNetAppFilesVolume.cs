@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using Microsoft.Azure.Management.NetApp.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -85,7 +86,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The maximum storage quota allowed for a file system in bytes")]
+            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 500 GiB, 500 GiB for large volumes. Upper limit is 100TiB. Specified in bytes.")]
         [ValidateNotNullOrEmpty]
         public long UsageThreshold { get; set; }
 
@@ -185,7 +186,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Maximum throughput in Mibps that can be achieved by this volume, this will be accepted as input only for manual qosType volume")]
+            HelpMessage = "Maximum throughput in MiB/s that can be achieved by this volume, this will be accepted as input only for manual qosType volume")]
         public double? ThroughputMibps { get; set; }
 
         [Parameter(
@@ -283,6 +284,39 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "A list of Availability Zones")]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values are: 'Microsoft.NetApp, Microsoft.KeyVault'")]
+        [PSArgumentCompleter("Microsoft.NetApp", "Microsoft.KeyVault")]
+        public string EncryptionKeySource { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'")]
+        public string KeyVaultPrivateEndpointResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false")]
+        public SwitchParameter DeleteBaseSnapshot { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume")]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        public string SmbAccessBasedEnumeration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume")]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        public string SmbNonBrowsable { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -364,8 +398,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 VolumeSpecName = VolumeSpecName,
                 PlacementRules = PlacementRule?.ToPlacementKeyValuePairs(),
                 EnableSubvolumes = EnableSubvolume.IsPresent ? EnableSubvolumes.Enabled : EnableSubvolumes.Disabled,
+                EncryptionKeySource = EncryptionKeySource,
+                KeyVaultPrivateEndpointResourceId = KeyVaultPrivateEndpointResourceId,
+                DeleteBaseSnapshot = DeleteBaseSnapshot,
+                SmbAccessBasedEnumeration = SmbAccessBasedEnumeration,
+                SmbNonBrowsable = SmbNonBrowsable
             };
-
+            if (this.Zone != null)
+            {
+                volumeBody.Zones = this.Zone?.ToList();
+            }
             if (ShouldProcess(PoolName, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, Name)))
             {
                 var anfVolume = AzureNetAppFilesManagementClient.Volumes.CreateOrUpdate(volumeBody, ResourceGroupName, AccountName, PoolName, Name);
