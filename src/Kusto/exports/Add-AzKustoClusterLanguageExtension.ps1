@@ -50,7 +50,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 VALUE <ILanguageExtension[]>: The list of language extensions.
   [Name <LanguageExtensionName?>]: The language extension name.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/add-azkustoclusterlanguageextension
+https://learn.microsoft.com/powershell/module/az.kusto/add-azkustoclusterlanguageextension
 #>
 function Add-AzKustoClusterLanguageExtension {
 [OutputType([System.Boolean])]

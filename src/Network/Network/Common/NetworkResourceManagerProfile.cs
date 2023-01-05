@@ -407,7 +407,11 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.ExtendedLocation,
                         opt => opt.MapFrom(src =>
-                            (src.ExtendedLocation == null ? null : new PSExtendedLocation(src.ExtendedLocation.Name)))
+                            src.ExtendedLocation == null ? null : new PSExtendedLocation(src.ExtendedLocation.Name)))
+                    .ForMember(
+                        dest => dest.DdosSettings,
+                        opt => opt.MapFrom(src =>
+                            (src.DdosSettings ?? new MNM.DdosSettings()))
                     );
                 cfg.CreateMap<MNM.IpTag, CNM.PSPublicIpTag>();
                 cfg.CreateMap<MNM.PublicIPAddressSku, CNM.PSPublicIpAddressSku>();

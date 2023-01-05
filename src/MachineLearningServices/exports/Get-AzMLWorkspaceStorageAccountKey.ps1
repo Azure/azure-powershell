@@ -25,7 +25,7 @@ Get-AzMLWorkspaceStorageAccountKey -ResourceGroupName ml-rg-test -Name mlworkspa
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacestorageaccountkey
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacestorageaccountkey
 #>
 function Get-AzMLWorkspaceStorageAccountKey {
 [OutputType([System.String])]

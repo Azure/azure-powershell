@@ -252,9 +252,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 }
                             }
 
-
-
-
                             var psObject = new PSVirtualMachineScaleSet();
                             ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
                             WriteObject(psObject);

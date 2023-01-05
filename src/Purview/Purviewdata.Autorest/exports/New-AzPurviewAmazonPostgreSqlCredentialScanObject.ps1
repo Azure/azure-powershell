@@ -45,7 +45,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlCredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonPostgreSqlCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonPostgreSqlCredentialScanObject
 #>
 function New-AzPurviewAmazonPostgreSqlCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlCredentialScan])]

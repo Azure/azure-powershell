@@ -27,7 +27,7 @@ List all the performance tiers at specified location in a given subscription.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPerformanceTierProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqllocationbasedperformancetier
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqllocationbasedperformancetier
 #>
 function Get-AzMySqlLocationBasedPerformanceTier {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPerformanceTierProperties])]

@@ -35,7 +35,7 @@ ACCEPTEDAUDIENCE <IAcceptedAudiences[]>: The cluster's accepted audiences.
 TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>: The cluster's external tenants.
   [Value <String>]: GUID representing an external tenant.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/new-azkustocluster
+https://learn.microsoft.com/powershell/module/az.kusto/new-azkustocluster
 #>
 function New-AzKustoCluster {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster])]

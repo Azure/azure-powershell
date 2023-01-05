@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqllocationbasedperformancetier
+https://learn.microsoft.com/powershell/module/az.postgresql/get-azpostgresqllocationbasedperformancetier
 #>
 function Get-AzPostgreSqlLocationBasedPerformanceTier {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IPerformanceTierProperties])]
