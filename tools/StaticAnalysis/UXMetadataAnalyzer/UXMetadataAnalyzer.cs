@@ -228,8 +228,8 @@ namespace StaticAnalysis.UXMetadataAnalyzer
             }
 
             #region valiate the parameters in path
-            var regex = new Regex(@"\{\w+\}");
-            var parametersFromHttpPath = regex.Matches(command.Path).Select(x => x.Value.TrimStart('{').TrimEnd('}')).ToList();
+            var httpPathParameterRegex = new Regex(@"\{\w+\}");
+            var parametersFromHttpPath = httpPathParameterRegex.Matches(command.Path).Select(x => x.Value.TrimStart('{').TrimEnd('}')).ToHashSet();
             foreach (string parameterFromHttpPath in parametersFromHttpPath)
             {
                 if (parameterFromHttpPath.Equals("subscriptionId", StringComparison.CurrentCultureIgnoreCase))
@@ -241,6 +241,20 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                 {
                     string description = string.Format("{0} is defined in path but cannot find in example", parameterFromHttpPath);
                     issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, commandName, 1, description);
+                }
+            }
+            var exampleParameterPathRegex = new Regex(@"path\.\w+");
+            foreach (string parameterInExample in example.Parameters.Select(x => x.Value))
+            {
+                var match = exampleParameterPathRegex.Match(parameterInExample);
+                if (match.Success)
+                {
+                    var parameterName = match.Groups[1].Value;
+                    if (!parametersFromHttpPath.Contains(parameterName))
+                    {
+                        string description = string.Format("{0} is defined in example but cannot find in http path", parameterName);
+                        issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, commandName, 1, description);
+                    }
                 }
             }
             #endregion
