@@ -94,9 +94,7 @@ function Update-AzModule {
         if ($modulesToUpdate) {
             $Repository = $modulesToUpdate.Repository | Select-Object -First 1
         }
-        else {
-            $Repository = (Get-PSRepository | Select-Object -Property Name)
-        }
+
         $moduleUpdateTable = $modulesToUpdate | Foreach-Object { [PSCustomObject]@{
             Name = $_.Name
             VersionBeforeUpdate = [Version] ($groupSet[$_.Name] | Select-Object -First 1)

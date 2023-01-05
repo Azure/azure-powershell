@@ -83,14 +83,12 @@ function Install-AzModule_Default {
         if ($modules) {
             $Repository = $modules.Repository | Select-Object -First 1
         }
-        else {
-            $Repository = (Get-PSRepository | Select-Object -Property Name)
-        }
 
         if($Name) {
             $moduleExcluded = $Name | Where-Object {!$modules -or $modules.Name -NotContains $_}
             if ($moduleExcluded) {
                 $azVersion = if ($RequiredAzVersion) {$RequiredAzVersion} else {"Latest"}
+                $Repository = if ($Repository) {$Repository} else {'the registered repositories'}
                 Write-Error "[$Invoker] The following specified modules:$moduleExcluded cannot be found in $Repository with the $azVersion version."
             }
         }
