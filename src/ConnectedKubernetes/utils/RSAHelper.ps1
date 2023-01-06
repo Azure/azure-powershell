@@ -1,10 +1,11 @@
 function ExportRSAPrivateKeyBase64{
     param(
         [Parameter(Mandatory)]
-        [System.Security.Cryptography.RSAParameters]
-        $RSAParams
+        [System.Security.Cryptography.RSA]
+        $RSA
     )
     process{
+        $RSAParams = $RSA.ExportParameters(1)
         [byte]$Sequence = 0x30 
         [byte[]]$Version =(0x00)
         $stream = [System.IO.MemoryStream]::new()
@@ -49,14 +50,11 @@ function ExportRSAPrivateKeyBase64{
 function ExportRSAPublicKeyBase64{
     param(
         [Parameter(Mandatory)]
-        [System.Security.Cryptography.RSAParameters]
-        $RSAParams
+        [System.Security.Cryptography.RSA]
+        $RSA
     )
-    # RSAPublicKey ::= SEQUENCE {
-    #       modulus           INTEGER,  -- n
-    #       publicExponent    INTEGER   -- e
-    #   }
     process{
+        $RSAParams = $RSA.ExportParameters(0)
         [byte]$Sequence = 0x30 
         $stream = [System.IO.MemoryStream]::new()
         $writer = [System.IO.BinaryWriter]::new($stream)

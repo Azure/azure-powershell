@@ -350,9 +350,14 @@ function New-AzConnectedKubernetes {
 
         $RSA = [System.Security.Cryptography.RSA]::Create(4096)
         if ($PSVersionTable.PSVersion.Major -eq 5) {
+            try {
             . "$PSScriptRoot/../utils/RSAHelper.ps1"
-            $AgentPublicKey = ExportRSAPublicKeyBase64($RSA.ExportParameters(0))
-            $AgentPrivateKey = ExportRSAPrivateKeyBase64($RSA.ExportParameters(1))
+            $AgentPublicKey = ExportRSAPublicKeyBase64($RSA)
+            $AgentPrivateKey = ExportRSAPrivateKeyBase64($RSA)
+            } catch {
+                Write-Error "Unable to generate RSA keys"
+                throw
+            }
         } else {
             $AgentPublicKey = [System.Convert]::ToBase64String($RSA.ExportRSAPublicKey())
             $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + [System.Convert]::ToBase64String($RSA.ExportRSAPrivateKey()) + "`n-----END RSA PRIVATE KEY-----"	  
