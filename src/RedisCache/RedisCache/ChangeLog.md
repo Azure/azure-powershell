@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.0
 * Added optional parameter `PreferredDataArchiveAuthMethod` in `Export-AzRedisCache`  
 * Added optional parameter `PreferredDataArchiveAuthMethod` in `Import-AzRedisCache`  
 * Added 4 additional properties for a geo replication link: `PrimaryHostName`, `GeoReplicatedPrimaryHostName`, `ServerRole`, and `LinkedRedisCacheLocation`in `Get-AzRedisCacheLink` and `New-AzRedisCacheLink` 

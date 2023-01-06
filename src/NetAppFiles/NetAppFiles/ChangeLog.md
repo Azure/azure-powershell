@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.11.0
 * Added cmdlet `Reset-AzNetAppFilesVolumeCifsPassword`
 * Added cmdlet `Get-AzNetAppFilesVolumeReplications` and `Restore-AzNetAppFilesVolume`
 * Added cmdLet `Get-AzNetAppFilesVolumeQuotaRule`, `Get-AzNetAppFilesVolumeQuotaRule`, `New-AzNetAppFilesVolumeQuotaRule`, `Update-AzNetAppFilesVolumeQuotaRule` and `Remove-AzNetAppFilesVolumeQuotaRule`

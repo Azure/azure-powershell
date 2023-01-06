@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 5.3.0
 * Removed the image `Win2008R2SP1` from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.
 * Fixed a bug for creating Linux VM's from SIG/Community Gallery Images
 * Added `ImageReferenceId` string parameter to the `New-AzVmssConfig` cmdlet. This allows gallery image references to be added for the Confidential VM feature.
