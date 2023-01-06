@@ -349,8 +349,14 @@ function New-AzConnectedKubernetes {
         #Endregion
 
         $RSA = [System.Security.Cryptography.RSA]::Create(4096)
-        $AgentPublicKey = [System.Convert]::ToBase64String($RSA.ExportRSAPublicKey())
-        $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + [System.Convert]::ToBase64String($RSA.ExportRSAPrivateKey()) + "`n-----END RSA PRIVATE KEY-----"
+        if ($PSVersionTable.PSVersion.Major -eq 5) {
+            . "$PSScriptRoot/../utils/RSAHelper.ps1"
+            $AgentPublicKey = ExportRSAPublicKeyBase64($RSA.ExportParameters(0))
+            $AgentPrivateKey = ExportRSAPrivateKeyBase64($RSA.ExportParameters(1))
+        } else {
+            $AgentPublicKey = [System.Convert]::ToBase64String($RSA.ExportRSAPublicKey())
+            $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + [System.Convert]::ToBase64String($RSA.ExportRSAPrivateKey()) + "`n-----END RSA PRIVATE KEY-----"	  
+        }
         
         $HelmChartPath = Join-Path -Path $ChartExportPath -ChildPath 'azure-arc-k8sagents'
         if (Test-Path Env:HELMCHART) {
