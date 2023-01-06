@@ -24,29 +24,6 @@ function Test-DotNet
     }
 }
 
-function Preload-Assembly {
-    param (
-        [string]
-        $AssemblyDirectory
-    )
-    if($PSEdition -eq 'Desktop' -and (Test-Path $AssemblyDirectory -ErrorAction Ignore))
-    {
-        try
-        {
-            Get-ChildItem -ErrorAction Stop -Path $AssemblyDirectory -Filter "*.dll" | ForEach-Object {
-                try
-                {
-                    Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
-                }
-                catch {
-                    Write-Verbose $_
-                }
-            }
-        }
-        catch {}
-    }
-}
-
 if (%ISAZMODULE% -and ($PSEdition -eq 'Desktop'))
 {
     if ($PSVersionTable.PSVersion -lt [Version]'5.1')

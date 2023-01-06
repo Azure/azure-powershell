@@ -7,4 +7,10 @@
   <Target Name="AddAccountsPsm1Dependency" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug' And '$(BuildingForLiveUnitTesting)' != 'true'">
     <Exec Command="pwsh -NonInteractive -NoLogo -NoProfile -Command &quot;. '$(OutDir)../../../tools/AddModulePsm1Dependency.ps1' -ModuleFolder '$(OutDir)' -IgnorePwshVersion &quot;" />
   </Target>
+  <Target Name="CopyScriptToPreloadAssemblies" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
+    <ItemGroup>
+      <PreloadAssembliesForDebug Include="$(RepoSrc)Accounts/Accounts/StartupScripts/PreloadAssembliesForDebug.ps1" />
+    </ItemGroup>
+    <Copy SourceFiles="@(PreloadAssembliesForDebug)" DestinationFolder="$(RepoArtifacts)$(Configuration)/Az.Accounts/StartupScripts/" />
+  </Target>
 </Project>
