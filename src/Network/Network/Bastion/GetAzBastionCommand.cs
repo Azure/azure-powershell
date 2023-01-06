@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             {
                 WriteObject(this.GetBastion(this.ResourceGroupName, this.Name));
             }
-            else if ((ParameterSetName.Equals(BastionParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase)))
+            else if (ParameterSetName.Equals(BastionParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                 this.Name = parsedResourceId.ResourceName;

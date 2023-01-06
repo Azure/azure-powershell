@@ -6900,6 +6900,22 @@
                 <Label>Scale Units</Label>
                 <PropertyName>ScaleUnit</PropertyName>
               </ListItem>
+			  <ListItem>
+		        <Label>Copy/Paste</Label>
+				<PropertyName>DisableCopyPaste</PropertyName>
+			  </ListItem>
+			  <ListItem>
+				<Label>Native Client</Label>
+				<PropertyName>EnableTunneling</PropertyName>
+			  </ListItem>
+			  <ListItem>
+				<Label>IP Connect</Label>
+				<PropertyName>EnableIpConnect</PropertyName>
+			  </ListItem>
+			  <ListItem>
+				<Label>Shareable Link</Label>
+				<PropertyName>EnableShareableLink</PropertyName>
+			  </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

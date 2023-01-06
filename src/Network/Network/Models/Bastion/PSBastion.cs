@@ -20,11 +20,39 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
     using Newtonsoft.Json;
     using System.Linq;
+    using MNM = Management.Network.Models;
 
     public class PSBastion : PSTopLevelResource
     {
         private const string BastionSubnetName = "AzureBastionSubnet";
         private const string BastionIpConfigurationName = "IpConf";
+        public const int MinimumScaleUnits = 2;
+        public const int MaximumScaleUnits = 50;
+
+        public PSBastion()
+        {
+            this.Sku = new PSBastionSku();
+            this.ScaleUnit = 2;
+            //this.EnableKerberos = false;
+            this.DisableCopyPaste = false;
+            this.EnableTunneling = false;
+            this.EnableIpConnect = false;
+            this.EnableShareableLink = false;
+        }
+
+        public PSBastion(string name, string rgName, string location, string sku = null)
+        {
+            this.Name = name;
+            this.ResourceGroupName = rgName;
+            this.Location = location;
+            this.Sku = new PSBastionSku(sku);
+            this.ScaleUnit = 2;
+            //this.EnableKerberos = false;
+            this.DisableCopyPaste = false;
+            this.EnableTunneling = false;
+            this.EnableIpConnect = false;
+            this.EnableShareableLink = false;
+        }
 
         public List<PSBastionIPConfiguration> IpConfigurations { get; set; }
 
@@ -37,6 +65,21 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "Scale Units", Target = ViewControl.List)]
         public int? ScaleUnit { get; set; }
+
+        [Ps1Xml(Label = "Kerberos", Target = ViewControl.List)]
+        public bool? EnableKerberos { get; set; }
+
+        [Ps1Xml(Label = "Copy and Paste", Target = ViewControl.List)]
+        public bool? DisableCopyPaste { get; set; }
+
+        [Ps1Xml(Label = "Native Client Support", Target = ViewControl.List)]
+        public bool? EnableTunneling { get; set; }
+
+        [Ps1Xml(Label = "IP Connect", Target = ViewControl.List)]
+        public bool? EnableIpConnect { get; set; }
+
+        [Ps1Xml(Label = "Shareable Link", Target = ViewControl.List)]
+        public bool? EnableShareableLink { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText
@@ -89,6 +132,16 @@ namespace Microsoft.Azure.Commands.Network.Models
         public void Deallocate()
         {
             this.IpConfigurations = new List<PSBastionIPConfiguration>();
+        }
+
+        public bool IsBasic()
+        {
+            return string.Equals(this.Sku.Name, MNM.BastionHostSkuName.Basic);
+        }
+
+        public bool IsStandard()
+        {
+            return string.Equals(this.Sku.Name, MNM.BastionHostSkuName.Standard);
         }
     }
 }

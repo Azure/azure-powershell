@@ -8,13 +8,13 @@
         [Ps1Xml(Target = ViewControl.List)]
         public string Name { get; set; }
 
-        public PSBastionSku()
+        public PSBastionSku(string skuName = null)
         {
-            this.Name = MNM.BastionHostSkuName.Basic;
-        }
+            if (string.IsNullOrEmpty(skuName) || string.IsNullOrWhiteSpace(skuName))
+            {
+                this.Name = MNM.BastionHostSkuName.Basic;
+            }
 
-        public PSBastionSku(string skuName)
-        {
             this.Name = skuName;
         }
     }
