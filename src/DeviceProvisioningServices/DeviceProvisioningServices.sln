@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.19
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -21,6 +21,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IotHub", "..\IotHub\IotHub\IotHub.csproj", "{7F81FF1A-8216-4F21-BC14-53BA42FC6478}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{D244CDD7-846F-42E5-964B-46704CBDBD7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +66,10 @@ Global
 		{7F81FF1A-8216-4F21-BC14-53BA42FC6478}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F81FF1A-8216-4F21-BC14-53BA42FC6478}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F81FF1A-8216-4F21-BC14-53BA42FC6478}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D244CDD7-846F-42E5-964B-46704CBDBD7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D244CDD7-846F-42E5-964B-46704CBDBD7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D244CDD7-846F-42E5-964B-46704CBDBD7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D244CDD7-846F-42E5-964B-46704CBDBD7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

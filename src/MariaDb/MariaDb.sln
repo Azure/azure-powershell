@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -11,6 +11,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{59E8F6B8-8F0E-403F-B88B-9736DBC396D9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.MariaDb", "Az.MariaDb.csproj", "{196BF370-A25F-4863-B729-048BEE3E4626}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{FD15DB31-08CD-42D2-9007-B1008DC5940B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{196BF370-A25F-4863-B729-048BEE3E4626}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{196BF370-A25F-4863-B729-048BEE3E4626}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{196BF370-A25F-4863-B729-048BEE3E4626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD15DB31-08CD-42D2-9007-B1008DC5940B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD15DB31-08CD-42D2-9007-B1008DC5940B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD15DB31-08CD-42D2-9007-B1008DC5940B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD15DB31-08CD-42D2-9007-B1008DC5940B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

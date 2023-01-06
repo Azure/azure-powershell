@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -33,6 +33,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage", "..\Storage\Storage\Storage.csproj", "{A2591FA5-BF93-4358-9097-E6D58FE1DDC4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management", "..\Storage\Storage.Management\Storage.Management.csproj", "{3D03EFA7-4C10-480E-89E3-C2FDF0580AB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{5ED6A8C9-959C-4C2A-B89D-0653DDD0AF5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -100,6 +102,10 @@ Global
 		{7574F7DB-D5C3-42BD-97EE-40AE999BFFE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7574F7DB-D5C3-42BD-97EE-40AE999BFFE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7574F7DB-D5C3-42BD-97EE-40AE999BFFE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ED6A8C9-959C-4C2A-B89D-0653DDD0AF5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ED6A8C9-959C-4C2A-B89D-0653DDD0AF5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ED6A8C9-959C-4C2A-B89D-0653DDD0AF5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ED6A8C9-959C-4C2A-B89D-0653DDD0AF5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

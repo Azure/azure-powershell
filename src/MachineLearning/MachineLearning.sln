@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.MSGraph", "..\Resources\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Authorization", "..\Resources\Authorization.Autorest\Az.Authorization.csproj", "{A7222924-718D-4435-B51F-834C605179E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{09FF2562-2716-45FB-B79B-08545B5D9FAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{A7222924-718D-4435-B51F-834C605179E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7222924-718D-4435-B51F-834C605179E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7222924-718D-4435-B51F-834C605179E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09FF2562-2716-45FB-B79B-08545B5D9FAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09FF2562-2716-45FB-B79B-08545B5D9FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09FF2562-2716-45FB-B79B-08545B5D9FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09FF2562-2716-45FB-B79B-08545B5D9FAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

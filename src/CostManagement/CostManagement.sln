@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.CostManagement", "Az.CostManagement.csproj", "{CF9911A5-DC11-4745-B6C3-98E546E8FD52}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{4467879D-AB06-4A44-B88D-70FD00D3D70D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{CF9911A5-DC11-4745-B6C3-98E546E8FD52}.Release|x64.Build.0 = Release|Any CPU
 		{CF9911A5-DC11-4745-B6C3-98E546E8FD52}.Release|x86.ActiveCfg = Release|Any CPU
 		{CF9911A5-DC11-4745-B6C3-98E546E8FD52}.Release|x86.Build.0 = Release|Any CPU
+		{4467879D-AB06-4A44-B88D-70FD00D3D70D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4467879D-AB06-4A44-B88D-70FD00D3D70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4467879D-AB06-4A44-B88D-70FD00D3D70D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4467879D-AB06-4A44-B88D-70FD00D3D70D}.Debug|x64.Build.0 = Debug|Any CPU
+		{4467879D-AB06-4A44-B88D-70FD00D3D70D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4467879D-AB06-4A44-B88D-70FD00D3D70D}.Debug|x86.Build.0 = Debug|Any CPU
+		{4467879D-AB06-4A44-B88D-70FD00D3D70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4467879D-AB06-4A44-B88D-70FD00D3D70D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4467879D-AB06-4A44-B88D-70FD00D3D70D}.Release|x64.ActiveCfg = Release|Any CPU
+		{4467879D-AB06-4A44-B88D-70FD00D3D70D}.Release|x64.Build.0 = Release|Any CPU
+		{4467879D-AB06-4A44-B88D-70FD00D3D70D}.Release|x86.ActiveCfg = Release|Any CPU
+		{4467879D-AB06-4A44-B88D-70FD00D3D70D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

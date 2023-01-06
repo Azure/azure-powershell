@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Maps", "Az.Maps.csproj", "{17B58244-EB00-44C3-B7FF-21FC84A919A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{E5254F48-6FEC-49AA-9CDD-F8AE1EF0AE38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +88,17 @@ Global
 		{17B58244-EB00-44C3-B7FF-21FC84A919A6}.Release|x64.Build.0 = Release|Any CPU
 		{17B58244-EB00-44C3-B7FF-21FC84A919A6}.Release|x86.ActiveCfg = Release|Any CPU
 		{17B58244-EB00-44C3-B7FF-21FC84A919A6}.Release|x86.Build.0 = Release|Any CPU
+		{E5254F48-6FEC-49AA-9CDD-F8AE1EF0AE38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5254F48-6FEC-49AA-9CDD-F8AE1EF0AE38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5254F48-6FEC-49AA-9CDD-F8AE1EF0AE38}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E5254F48-6FEC-49AA-9CDD-F8AE1EF0AE38}.Debug|x64.Build.0 = Debug|Any CPU
+		{E5254F48-6FEC-49AA-9CDD-F8AE1EF0AE38}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E5254F48-6FEC-49AA-9CDD-F8AE1EF0AE38}.Debug|x86.Build.0 = Debug|Any CPU
+		{E5254F48-6FEC-49AA-9CDD-F8AE1EF0AE38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5254F48-6FEC-49AA-9CDD-F8AE1EF0AE38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5254F48-6FEC-49AA-9CDD-F8AE1EF0AE38}.Release|x64.ActiveCfg = Release|Any CPU
+		{E5254F48-6FEC-49AA-9CDD-F8AE1EF0AE38}.Release|x64.Build.0 = Release|Any CPU
+		{E5254F48-6FEC-49AA-9CDD-F8AE1EF0AE38}.Release|x86.ActiveCfg = Release|Any CPU
+		{E5254F48-6FEC-49AA-9CDD-F8AE1EF0AE38}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

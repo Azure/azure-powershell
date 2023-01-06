@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Purview.Data.Autorest", "Pu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Purview", "Purview\Purview.csproj", "{076C5B97-2EE6-4553-91F8-31FF721E4CEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{9B1DF351-F62A-4308-8E49-3B0B2F984632}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,5 +116,17 @@ Global
 		{076C5B97-2EE6-4553-91F8-31FF721E4CEE}.Release|x64.Build.0 = Release|Any CPU
 		{076C5B97-2EE6-4553-91F8-31FF721E4CEE}.Release|x86.ActiveCfg = Release|Any CPU
 		{076C5B97-2EE6-4553-91F8-31FF721E4CEE}.Release|x86.Build.0 = Release|Any CPU
+		{9B1DF351-F62A-4308-8E49-3B0B2F984632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B1DF351-F62A-4308-8E49-3B0B2F984632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B1DF351-F62A-4308-8E49-3B0B2F984632}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9B1DF351-F62A-4308-8E49-3B0B2F984632}.Debug|x64.Build.0 = Debug|Any CPU
+		{9B1DF351-F62A-4308-8E49-3B0B2F984632}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9B1DF351-F62A-4308-8E49-3B0B2F984632}.Debug|x86.Build.0 = Debug|Any CPU
+		{9B1DF351-F62A-4308-8E49-3B0B2F984632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B1DF351-F62A-4308-8E49-3B0B2F984632}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B1DF351-F62A-4308-8E49-3B0B2F984632}.Release|x64.ActiveCfg = Release|Any CPU
+		{9B1DF351-F62A-4308-8E49-3B0B2F984632}.Release|x64.Build.0 = Release|Any CPU
+		{9B1DF351-F62A-4308-8E49-3B0B2F984632}.Release|x86.ActiveCfg = Release|Any CPU
+		{9B1DF351-F62A-4308-8E49-3B0B2F984632}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

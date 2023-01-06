@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Elastic", "Az.Elastic.csproj", "{3C30DC07-1F6F-4993-8BA7-4782097A800F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{659A2440-284B-49FC-B33B-AFB1F9619A0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{3C30DC07-1F6F-4993-8BA7-4782097A800F}.Release|x64.Build.0 = Release|Any CPU
 		{3C30DC07-1F6F-4993-8BA7-4782097A800F}.Release|x86.ActiveCfg = Release|Any CPU
 		{3C30DC07-1F6F-4993-8BA7-4782097A800F}.Release|x86.Build.0 = Release|Any CPU
+		{659A2440-284B-49FC-B33B-AFB1F9619A0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{659A2440-284B-49FC-B33B-AFB1F9619A0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{659A2440-284B-49FC-B33B-AFB1F9619A0E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{659A2440-284B-49FC-B33B-AFB1F9619A0E}.Debug|x64.Build.0 = Debug|Any CPU
+		{659A2440-284B-49FC-B33B-AFB1F9619A0E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{659A2440-284B-49FC-B33B-AFB1F9619A0E}.Debug|x86.Build.0 = Debug|Any CPU
+		{659A2440-284B-49FC-B33B-AFB1F9619A0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{659A2440-284B-49FC-B33B-AFB1F9619A0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{659A2440-284B-49FC-B33B-AFB1F9619A0E}.Release|x64.ActiveCfg = Release|Any CPU
+		{659A2440-284B-49FC-B33B-AFB1F9619A0E}.Release|x64.Build.0 = Release|Any CPU
+		{659A2440-284B-49FC-B33B-AFB1F9619A0E}.Release|x86.ActiveCfg = Release|Any CPU
+		{659A2440-284B-49FC-B33B-AFB1F9619A0E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

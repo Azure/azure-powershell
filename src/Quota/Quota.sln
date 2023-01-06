@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Quota", "Az.Quota.csproj", "{81F95E9E-FAF0-47EB-B267-BA7A1C695AB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{0A152BDB-D3F3-4288-B4E0-D69B71F5A79A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{81F95E9E-FAF0-47EB-B267-BA7A1C695AB6}.Release|x64.Build.0 = Release|Any CPU
 		{81F95E9E-FAF0-47EB-B267-BA7A1C695AB6}.Release|x86.ActiveCfg = Release|Any CPU
 		{81F95E9E-FAF0-47EB-B267-BA7A1C695AB6}.Release|x86.Build.0 = Release|Any CPU
+		{0A152BDB-D3F3-4288-B4E0-D69B71F5A79A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A152BDB-D3F3-4288-B4E0-D69B71F5A79A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A152BDB-D3F3-4288-B4E0-D69B71F5A79A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0A152BDB-D3F3-4288-B4E0-D69B71F5A79A}.Debug|x64.Build.0 = Debug|Any CPU
+		{0A152BDB-D3F3-4288-B4E0-D69B71F5A79A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0A152BDB-D3F3-4288-B4E0-D69B71F5A79A}.Debug|x86.Build.0 = Debug|Any CPU
+		{0A152BDB-D3F3-4288-B4E0-D69B71F5A79A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A152BDB-D3F3-4288-B4E0-D69B71F5A79A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A152BDB-D3F3-4288-B4E0-D69B71F5A79A}.Release|x64.ActiveCfg = Release|Any CPU
+		{0A152BDB-D3F3-4288-B4E0-D69B71F5A79A}.Release|x64.Build.0 = Release|Any CPU
+		{0A152BDB-D3F3-4288-B4E0-D69B71F5A79A}.Release|x86.ActiveCfg = Release|Any CPU
+		{0A152BDB-D3F3-4288-B4E0-D69B71F5A79A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

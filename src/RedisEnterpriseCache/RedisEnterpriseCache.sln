@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.RedisEnterpriseCache", "Az.RedisEnterpriseCache.csproj", "{B8F939C7-7667-4F91-8A74-5704B2C0BBBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{45FA35AA-8899-4E17-9D53-1A4A5F40B6F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{B8F939C7-7667-4F91-8A74-5704B2C0BBBA}.Release|x64.Build.0 = Release|Any CPU
 		{B8F939C7-7667-4F91-8A74-5704B2C0BBBA}.Release|x86.ActiveCfg = Release|Any CPU
 		{B8F939C7-7667-4F91-8A74-5704B2C0BBBA}.Release|x86.Build.0 = Release|Any CPU
+		{45FA35AA-8899-4E17-9D53-1A4A5F40B6F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45FA35AA-8899-4E17-9D53-1A4A5F40B6F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45FA35AA-8899-4E17-9D53-1A4A5F40B6F1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{45FA35AA-8899-4E17-9D53-1A4A5F40B6F1}.Debug|x64.Build.0 = Debug|Any CPU
+		{45FA35AA-8899-4E17-9D53-1A4A5F40B6F1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{45FA35AA-8899-4E17-9D53-1A4A5F40B6F1}.Debug|x86.Build.0 = Debug|Any CPU
+		{45FA35AA-8899-4E17-9D53-1A4A5F40B6F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45FA35AA-8899-4E17-9D53-1A4A5F40B6F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45FA35AA-8899-4E17-9D53-1A4A5F40B6F1}.Release|x64.ActiveCfg = Release|Any CPU
+		{45FA35AA-8899-4E17-9D53-1A4A5F40B6F1}.Release|x64.Build.0 = Release|Any CPU
+		{45FA35AA-8899-4E17-9D53-1A4A5F40B6F1}.Release|x86.ActiveCfg = Release|Any CPU
+		{45FA35AA-8899-4E17-9D53-1A4A5F40B6F1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

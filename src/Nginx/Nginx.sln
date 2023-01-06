@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Nginx", "Az.Nginx.csproj", "{4D0D033C-C763-4B6C-AC98-A738D2CF4C1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{174BD6F0-7796-4EA7-AB45-65DFA3A8DF8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{4D0D033C-C763-4B6C-AC98-A738D2CF4C1A}.Release|x64.Build.0 = Release|Any CPU
 		{4D0D033C-C763-4B6C-AC98-A738D2CF4C1A}.Release|x86.ActiveCfg = Release|Any CPU
 		{4D0D033C-C763-4B6C-AC98-A738D2CF4C1A}.Release|x86.Build.0 = Release|Any CPU
+		{174BD6F0-7796-4EA7-AB45-65DFA3A8DF8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{174BD6F0-7796-4EA7-AB45-65DFA3A8DF8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{174BD6F0-7796-4EA7-AB45-65DFA3A8DF8B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{174BD6F0-7796-4EA7-AB45-65DFA3A8DF8B}.Debug|x64.Build.0 = Debug|Any CPU
+		{174BD6F0-7796-4EA7-AB45-65DFA3A8DF8B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{174BD6F0-7796-4EA7-AB45-65DFA3A8DF8B}.Debug|x86.Build.0 = Debug|Any CPU
+		{174BD6F0-7796-4EA7-AB45-65DFA3A8DF8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{174BD6F0-7796-4EA7-AB45-65DFA3A8DF8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{174BD6F0-7796-4EA7-AB45-65DFA3A8DF8B}.Release|x64.ActiveCfg = Release|Any CPU
+		{174BD6F0-7796-4EA7-AB45-65DFA3A8DF8B}.Release|x64.Build.0 = Release|Any CPU
+		{174BD6F0-7796-4EA7-AB45-65DFA3A8DF8B}.Release|x86.ActiveCfg = Release|Any CPU
+		{174BD6F0-7796-4EA7-AB45-65DFA3A8DF8B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Reservations", "Az.Reservations.csproj", "{80433B76-439B-4BDA-B445-D49DEA88DECB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{FB280E4E-8B62-48CE-AA93-00FF0D879E8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{80433B76-439B-4BDA-B445-D49DEA88DECB}.Release|x64.Build.0 = Release|Any CPU
 		{80433B76-439B-4BDA-B445-D49DEA88DECB}.Release|x86.ActiveCfg = Release|Any CPU
 		{80433B76-439B-4BDA-B445-D49DEA88DECB}.Release|x86.Build.0 = Release|Any CPU
+		{FB280E4E-8B62-48CE-AA93-00FF0D879E8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB280E4E-8B62-48CE-AA93-00FF0D879E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB280E4E-8B62-48CE-AA93-00FF0D879E8F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FB280E4E-8B62-48CE-AA93-00FF0D879E8F}.Debug|x64.Build.0 = Debug|Any CPU
+		{FB280E4E-8B62-48CE-AA93-00FF0D879E8F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FB280E4E-8B62-48CE-AA93-00FF0D879E8F}.Debug|x86.Build.0 = Debug|Any CPU
+		{FB280E4E-8B62-48CE-AA93-00FF0D879E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB280E4E-8B62-48CE-AA93-00FF0D879E8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB280E4E-8B62-48CE-AA93-00FF0D879E8F}.Release|x64.ActiveCfg = Release|Any CPU
+		{FB280E4E-8B62-48CE-AA93-00FF0D879E8F}.Release|x64.Build.0 = Release|Any CPU
+		{FB280E4E-8B62-48CE-AA93-00FF0D879E8F}.Release|x86.ActiveCfg = Release|Any CPU
+		{FB280E4E-8B62-48CE-AA93-00FF0D879E8F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

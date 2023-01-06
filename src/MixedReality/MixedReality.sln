@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MixedReality", "Az.MixedReality.csproj", "{40CE1D23-7B82-4624-814A-5B8866D414CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{CDB28B51-58AA-4A86-B4AC-8F607456CA55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{40CE1D23-7B82-4624-814A-5B8866D414CD}.Release|x64.Build.0 = Release|Any CPU
 		{40CE1D23-7B82-4624-814A-5B8866D414CD}.Release|x86.ActiveCfg = Release|Any CPU
 		{40CE1D23-7B82-4624-814A-5B8866D414CD}.Release|x86.Build.0 = Release|Any CPU
+		{CDB28B51-58AA-4A86-B4AC-8F607456CA55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDB28B51-58AA-4A86-B4AC-8F607456CA55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDB28B51-58AA-4A86-B4AC-8F607456CA55}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CDB28B51-58AA-4A86-B4AC-8F607456CA55}.Debug|x64.Build.0 = Debug|Any CPU
+		{CDB28B51-58AA-4A86-B4AC-8F607456CA55}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CDB28B51-58AA-4A86-B4AC-8F607456CA55}.Debug|x86.Build.0 = Debug|Any CPU
+		{CDB28B51-58AA-4A86-B4AC-8F607456CA55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDB28B51-58AA-4A86-B4AC-8F607456CA55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDB28B51-58AA-4A86-B4AC-8F607456CA55}.Release|x64.ActiveCfg = Release|Any CPU
+		{CDB28B51-58AA-4A86-B4AC-8F607456CA55}.Release|x64.Build.0 = Release|Any CPU
+		{CDB28B51-58AA-4A86-B4AC-8F607456CA55}.Release|x86.ActiveCfg = Release|Any CPU
+		{CDB28B51-58AA-4A86-B4AC-8F607456CA55}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

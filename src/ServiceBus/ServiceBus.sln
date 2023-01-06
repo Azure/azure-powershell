@@ -26,6 +26,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Netwo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ServiceBus", "ServiceBus.Autorest\Az.ServiceBus.csproj", "{7574F7DB-D5C3-42BD-97EE-40AE999BFFE1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{072834B7-F65F-497D-9BF5-10D80D41336A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +78,10 @@ Global
 		{7574F7DB-D5C3-42BD-97EE-40AE999BFFE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7574F7DB-D5C3-42BD-97EE-40AE999BFFE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7574F7DB-D5C3-42BD-97EE-40AE999BFFE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{072834B7-F65F-497D-9BF5-10D80D41336A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{072834B7-F65F-497D-9BF5-10D80D41336A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{072834B7-F65F-497D-9BF5-10D80D41336A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{072834B7-F65F-497D-9BF5-10D80D41336A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

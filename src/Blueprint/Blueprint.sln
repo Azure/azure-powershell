@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32002.222
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -29,6 +29,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.MSGraph", "..\Resources\MSGraph.Autorest\Az.MSGraph.csproj", "{266CBF7F-4C80-4D7A-A415-44C142369101}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Authorization", "..\Resources\Authorization.Autorest\Az.Authorization.csproj", "{E14B71EE-4EDA-4FFC-8BD2-DDB73331B955}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{589C2B9F-D6E1-4353-814C-D46754DC7C77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,6 +86,10 @@ Global
 		{266CBF7F-4C80-4D7A-A415-44C142369101}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{266CBF7F-4C80-4D7A-A415-44C142369101}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{266CBF7F-4C80-4D7A-A415-44C142369101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{589C2B9F-D6E1-4353-814C-D46754DC7C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{589C2B9F-D6E1-4353-814C-D46754DC7C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{589C2B9F-D6E1-4353-814C-D46754DC7C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{589C2B9F-D6E1-4353-814C-D46754DC7C77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

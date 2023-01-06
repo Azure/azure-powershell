@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DesktopVirtualization", "Az.DesktopVirtualization.csproj", "{C69A7B12-F310-4224-B6AD-63334FF8BED2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{DA472906-6BB4-4D17-A00A-A609F30049C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{C69A7B12-F310-4224-B6AD-63334FF8BED2}.Release|x64.Build.0 = Release|Any CPU
 		{C69A7B12-F310-4224-B6AD-63334FF8BED2}.Release|x86.ActiveCfg = Release|Any CPU
 		{C69A7B12-F310-4224-B6AD-63334FF8BED2}.Release|x86.Build.0 = Release|Any CPU
+		{DA472906-6BB4-4D17-A00A-A609F30049C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA472906-6BB4-4D17-A00A-A609F30049C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA472906-6BB4-4D17-A00A-A609F30049C7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DA472906-6BB4-4D17-A00A-A609F30049C7}.Debug|x64.Build.0 = Debug|Any CPU
+		{DA472906-6BB4-4D17-A00A-A609F30049C7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DA472906-6BB4-4D17-A00A-A609F30049C7}.Debug|x86.Build.0 = Debug|Any CPU
+		{DA472906-6BB4-4D17-A00A-A609F30049C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA472906-6BB4-4D17-A00A-A609F30049C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA472906-6BB4-4D17-A00A-A609F30049C7}.Release|x64.ActiveCfg = Release|Any CPU
+		{DA472906-6BB4-4D17-A00A-A609F30049C7}.Release|x64.Build.0 = Release|Any CPU
+		{DA472906-6BB4-4D17-A00A-A609F30049C7}.Release|x86.ActiveCfg = Release|Any CPU
+		{DA472906-6BB4-4D17-A00A-A609F30049C7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

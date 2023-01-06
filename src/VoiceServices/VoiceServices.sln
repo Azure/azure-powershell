@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.VoiceServices", "Az.VoiceServices.csproj", "{C2C8DF49-30AE-4358-8D89-DE70022F757F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{136D5819-974D-473A-B390-F9F63C1A2D38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{C2C8DF49-30AE-4358-8D89-DE70022F757F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2C8DF49-30AE-4358-8D89-DE70022F757F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2C8DF49-30AE-4358-8D89-DE70022F757F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{136D5819-974D-473A-B390-F9F63C1A2D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{136D5819-974D-473A-B390-F9F63C1A2D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{136D5819-974D-473A-B390-F9F63C1A2D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{136D5819-974D-473A-B390-F9F63C1A2D38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

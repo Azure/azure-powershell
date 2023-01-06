@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EdgeOrder", "Az.EdgeOrder.csproj", "{2B244C17-5B88-4768-A29C-13451C1A1E29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{92C9E73E-4715-442E-BC0F-69EC765C2BD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{2B244C17-5B88-4768-A29C-13451C1A1E29}.Release|x64.Build.0 = Release|Any CPU
 		{2B244C17-5B88-4768-A29C-13451C1A1E29}.Release|x86.ActiveCfg = Release|Any CPU
 		{2B244C17-5B88-4768-A29C-13451C1A1E29}.Release|x86.Build.0 = Release|Any CPU
+		{92C9E73E-4715-442E-BC0F-69EC765C2BD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92C9E73E-4715-442E-BC0F-69EC765C2BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92C9E73E-4715-442E-BC0F-69EC765C2BD1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{92C9E73E-4715-442E-BC0F-69EC765C2BD1}.Debug|x64.Build.0 = Debug|Any CPU
+		{92C9E73E-4715-442E-BC0F-69EC765C2BD1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{92C9E73E-4715-442E-BC0F-69EC765C2BD1}.Debug|x86.Build.0 = Debug|Any CPU
+		{92C9E73E-4715-442E-BC0F-69EC765C2BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92C9E73E-4715-442E-BC0F-69EC765C2BD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92C9E73E-4715-442E-BC0F-69EC765C2BD1}.Release|x64.ActiveCfg = Release|Any CPU
+		{92C9E73E-4715-442E-BC0F-69EC765C2BD1}.Release|x64.Build.0 = Release|Any CPU
+		{92C9E73E-4715-442E-BC0F-69EC765C2BD1}.Release|x86.ActiveCfg = Release|Any CPU
+		{92C9E73E-4715-442E-BC0F-69EC765C2BD1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

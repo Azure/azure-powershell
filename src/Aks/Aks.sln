@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Aks", "Aks.Autorest\Az.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aks.Sdk", "Aks.Sdk\Aks.Sdk.csproj", "{6BA29F3A-466F-4053-B600-0EB878E12033}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{07894F59-6A0A-41EC-B202-683B31458C74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{6BA29F3A-466F-4053-B600-0EB878E12033}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BA29F3A-466F-4053-B600-0EB878E12033}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BA29F3A-466F-4053-B600-0EB878E12033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07894F59-6A0A-41EC-B202-683B31458C74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07894F59-6A0A-41EC-B202-683B31458C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07894F59-6A0A-41EC-B202-683B31458C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07894F59-6A0A-41EC-B202-683B31458C74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

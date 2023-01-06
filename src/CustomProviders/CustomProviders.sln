@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -11,6 +11,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{59E8F6B8-8F0E-403F-B88B-9736DBC396D9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.CustomProviders", "Az.CustomProviders.csproj", "{D9A3D0D2-620B-4073-BF1B-AC5CF64247E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{35278979-9282-4616-BA1F-A1FA3B84537D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{D9A3D0D2-620B-4073-BF1B-AC5CF64247E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9A3D0D2-620B-4073-BF1B-AC5CF64247E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9A3D0D2-620B-4073-BF1B-AC5CF64247E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35278979-9282-4616-BA1F-A1FA3B84537D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35278979-9282-4616-BA1F-A1FA3B84537D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35278979-9282-4616-BA1F-A1FA3B84537D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35278979-9282-4616-BA1F-A1FA3B84537D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

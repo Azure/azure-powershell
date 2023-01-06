@@ -10,6 +10,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceMana
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{59E8F6B8-8F0E-403F-B88B-9736DBC396D9}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{A8AC0EB7-C595-4D21-9191-71B78A6E777B}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "{ModuleNamePlaceHolder}", "{ModuleNamePlaceHolder}\{ModuleNamePlaceHolder}.csproj", "{1C203C0C-E0FD-40D2-B79E-C6DA52E4E350}"
 EndProject
 Global
@@ -34,6 +36,10 @@ Global
 		{59E8F6B8-8F0E-403F-B88B-9736DBC396D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59E8F6B8-8F0E-403F-B88B-9736DBC396D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59E8F6B8-8F0E-403F-B88B-9736DBC396D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8AC0EB7-C595-4D21-9191-71B78A6E777B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8AC0EB7-C595-4D21-9191-71B78A6E777B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8AC0EB7-C595-4D21-9191-71B78A6E777B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8AC0EB7-C595-4D21-9191-71B78A6E777B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1C203C0C-E0FD-40D2-B79E-C6DA52E4E350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1C203C0C-E0FD-40D2-B79E-C6DA52E4E350}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C203C0C-E0FD-40D2-B79E-C6DA52E4E350}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.CloudService", "Az.CloudService.csproj", "{99EAF0F0-A89A-4AB0-AF50-E02170D28703}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{80410441-57F7-4330-BD7C-832AA8979FD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{99EAF0F0-A89A-4AB0-AF50-E02170D28703}.Release|x64.Build.0 = Release|Any CPU
 		{99EAF0F0-A89A-4AB0-AF50-E02170D28703}.Release|x86.ActiveCfg = Release|Any CPU
 		{99EAF0F0-A89A-4AB0-AF50-E02170D28703}.Release|x86.Build.0 = Release|Any CPU
+		{80410441-57F7-4330-BD7C-832AA8979FD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80410441-57F7-4330-BD7C-832AA8979FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80410441-57F7-4330-BD7C-832AA8979FD4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{80410441-57F7-4330-BD7C-832AA8979FD4}.Debug|x64.Build.0 = Debug|Any CPU
+		{80410441-57F7-4330-BD7C-832AA8979FD4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{80410441-57F7-4330-BD7C-832AA8979FD4}.Debug|x86.Build.0 = Debug|Any CPU
+		{80410441-57F7-4330-BD7C-832AA8979FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80410441-57F7-4330-BD7C-832AA8979FD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80410441-57F7-4330-BD7C-832AA8979FD4}.Release|x64.ActiveCfg = Release|Any CPU
+		{80410441-57F7-4330-BD7C-832AA8979FD4}.Release|x64.Build.0 = Release|Any CPU
+		{80410441-57F7-4330-BD7C-832AA8979FD4}.Release|x86.ActiveCfg = Release|Any CPU
+		{80410441-57F7-4330-BD7C-832AA8979FD4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

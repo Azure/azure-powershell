@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SecurityInsights", "Az.SecurityInsights.csproj", "{399464BF-7405-45B6-B5BA-896ED67A1F56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{F1C75EDA-37D2-469C-B5CE-D1F03EB5343A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{399464BF-7405-45B6-B5BA-896ED67A1F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{399464BF-7405-45B6-B5BA-896ED67A1F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{399464BF-7405-45B6-B5BA-896ED67A1F56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1C75EDA-37D2-469C-B5CE-D1F03EB5343A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1C75EDA-37D2-469C-B5CE-D1F03EB5343A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1C75EDA-37D2-469C-B5CE-D1F03EB5343A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1C75EDA-37D2-469C-B5CE-D1F03EB5343A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DeviceUpdate", "Az.DeviceUpdate.csproj", "{B22B3F21-ACC9-4696-BCAE-2CC1DC2F89AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{E2F3D4F0-5434-4774-9A58-CF3737032F46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{B22B3F21-ACC9-4696-BCAE-2CC1DC2F89AF}.Release|x64.Build.0 = Release|Any CPU
 		{B22B3F21-ACC9-4696-BCAE-2CC1DC2F89AF}.Release|x86.ActiveCfg = Release|Any CPU
 		{B22B3F21-ACC9-4696-BCAE-2CC1DC2F89AF}.Release|x86.Build.0 = Release|Any CPU
+		{E2F3D4F0-5434-4774-9A58-CF3737032F46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2F3D4F0-5434-4774-9A58-CF3737032F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2F3D4F0-5434-4774-9A58-CF3737032F46}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E2F3D4F0-5434-4774-9A58-CF3737032F46}.Debug|x64.Build.0 = Debug|Any CPU
+		{E2F3D4F0-5434-4774-9A58-CF3737032F46}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E2F3D4F0-5434-4774-9A58-CF3737032F46}.Debug|x86.Build.0 = Debug|Any CPU
+		{E2F3D4F0-5434-4774-9A58-CF3737032F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2F3D4F0-5434-4774-9A58-CF3737032F46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2F3D4F0-5434-4774-9A58-CF3737032F46}.Release|x64.ActiveCfg = Release|Any CPU
+		{E2F3D4F0-5434-4774-9A58-CF3737032F46}.Release|x64.Build.0 = Release|Any CPU
+		{E2F3D4F0-5434-4774-9A58-CF3737032F46}.Release|x86.ActiveCfg = Release|Any CPU
+		{E2F3D4F0-5434-4774-9A58-CF3737032F46}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

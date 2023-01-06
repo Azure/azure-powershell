@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -21,6 +21,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficManager.Management.Sdk", "TrafficManager.Management.Sdk\TrafficManager.Management.Sdk.csproj", "{413CC729-DAAD-4B9B-88C4-AA9F72BFA998}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{51A468B1-627C-4D16-A7DD-95D1FE9ABB03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +66,10 @@ Global
 		{413CC729-DAAD-4B9B-88C4-AA9F72BFA998}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{413CC729-DAAD-4B9B-88C4-AA9F72BFA998}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{413CC729-DAAD-4B9B-88C4-AA9F72BFA998}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51A468B1-627C-4D16-A7DD-95D1FE9ABB03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51A468B1-627C-4D16-A7DD-95D1FE9ABB03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51A468B1-627C-4D16-A7DD-95D1FE9ABB03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51A468B1-627C-4D16-A7DD-95D1FE9ABB03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

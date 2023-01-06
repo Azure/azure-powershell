@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Dashboard", "Az.Dashboard.csproj", "{EB09732A-3C08-4DE2-B4D2-2122DA1087BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{051851FF-B183-48C3-A482-CD6BFF72297E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{EB09732A-3C08-4DE2-B4D2-2122DA1087BC}.Release|x64.Build.0 = Release|Any CPU
 		{EB09732A-3C08-4DE2-B4D2-2122DA1087BC}.Release|x86.ActiveCfg = Release|Any CPU
 		{EB09732A-3C08-4DE2-B4D2-2122DA1087BC}.Release|x86.Build.0 = Release|Any CPU
+		{051851FF-B183-48C3-A482-CD6BFF72297E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{051851FF-B183-48C3-A482-CD6BFF72297E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{051851FF-B183-48C3-A482-CD6BFF72297E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{051851FF-B183-48C3-A482-CD6BFF72297E}.Debug|x64.Build.0 = Debug|Any CPU
+		{051851FF-B183-48C3-A482-CD6BFF72297E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{051851FF-B183-48C3-A482-CD6BFF72297E}.Debug|x86.Build.0 = Debug|Any CPU
+		{051851FF-B183-48C3-A482-CD6BFF72297E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{051851FF-B183-48C3-A482-CD6BFF72297E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{051851FF-B183-48C3-A482-CD6BFF72297E}.Release|x64.ActiveCfg = Release|Any CPU
+		{051851FF-B183-48C3-A482-CD6BFF72297E}.Release|x64.Build.0 = Release|Any CPU
+		{051851FF-B183-48C3-A482-CD6BFF72297E}.Release|x86.ActiveCfg = Release|Any CPU
+		{051851FF-B183-48C3-A482-CD6BFF72297E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

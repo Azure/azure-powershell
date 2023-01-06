@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ApplicationInsights", "Az.ApplicationInsights.csproj", "{2243E46B-2C05-4FA0-AC0B-EFD5DA24E20D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{4326C360-B059-4E1E-89C6-4E0BD18E7676}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{2243E46B-2C05-4FA0-AC0B-EFD5DA24E20D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2243E46B-2C05-4FA0-AC0B-EFD5DA24E20D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2243E46B-2C05-4FA0-AC0B-EFD5DA24E20D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4326C360-B059-4E1E-89C6-4E0BD18E7676}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4326C360-B059-4E1E-89C6-4E0BD18E7676}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4326C360-B059-4E1E-89C6-4E0BD18E7676}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4326C360-B059-4E1E-89C6-4E0BD18E7676}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

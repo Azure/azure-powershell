@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.NetworkFunction", "Az.NetworkFunction.csproj", "{8DA0C0D4-1629-4775-B2E3-782EB5EA7C9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{37B9D4F2-8F3B-46AD-B13B-422DF7D5E396}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +102,17 @@ Global
 		{8DA0C0D4-1629-4775-B2E3-782EB5EA7C9D}.Release|x64.Build.0 = Release|Any CPU
 		{8DA0C0D4-1629-4775-B2E3-782EB5EA7C9D}.Release|x86.ActiveCfg = Release|Any CPU
 		{8DA0C0D4-1629-4775-B2E3-782EB5EA7C9D}.Release|x86.Build.0 = Release|Any CPU
+		{37B9D4F2-8F3B-46AD-B13B-422DF7D5E396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37B9D4F2-8F3B-46AD-B13B-422DF7D5E396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37B9D4F2-8F3B-46AD-B13B-422DF7D5E396}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{37B9D4F2-8F3B-46AD-B13B-422DF7D5E396}.Debug|x64.Build.0 = Debug|Any CPU
+		{37B9D4F2-8F3B-46AD-B13B-422DF7D5E396}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{37B9D4F2-8F3B-46AD-B13B-422DF7D5E396}.Debug|x86.Build.0 = Debug|Any CPU
+		{37B9D4F2-8F3B-46AD-B13B-422DF7D5E396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37B9D4F2-8F3B-46AD-B13B-422DF7D5E396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37B9D4F2-8F3B-46AD-B13B-422DF7D5E396}.Release|x64.ActiveCfg = Release|Any CPU
+		{37B9D4F2-8F3B-46AD-B13B-422DF7D5E396}.Release|x64.Build.0 = Release|Any CPU
+		{37B9D4F2-8F3B-46AD-B13B-422DF7D5E396}.Release|x86.ActiveCfg = Release|Any CPU
+		{37B9D4F2-8F3B-46AD-B13B-422DF7D5E396}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
