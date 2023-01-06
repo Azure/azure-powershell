@@ -15,14 +15,12 @@
 namespace Microsoft.Azure.Commands.Network.Bastion
 {
     using Microsoft.Azure.Commands.Network.Models;
-    using Microsoft.Azure.Commands.Network.Models.Bastion;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Network;
     using System;
     using System.Collections;
-    using System.ComponentModel;
     using System.Management.Automation;
     using MNM = Management.Network.Models;
 
@@ -179,7 +177,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "The Bastion Sku Tier")]
-        [PSArgumentCompleter(PSBastionSku.Basic, PSBastionSku.Standard)]
+        [PSArgumentCompleter("Basic", "Standard")]
         [ValidateSet(
             MNM.BastionHostSkuName.Basic,
             MNM.BastionHostSkuName.Standard,
@@ -190,42 +188,36 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "The Scale Units for BastionHost")]
-        [DefaultValue(2)]
         public int? ScaleUnit { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "Kerberos")]
-        [DefaultValue(false)]
         public bool? EnableKerberos { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "Copy and Paste")]
-        [DefaultValue(false)]
         public bool? DisableCopyPaste { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "Native Client Support")]
-        [DefaultValue(false)]
         public bool? EnableTunneling { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "IP Connect")]
-        [DefaultValue(false)]
         public bool? EnableIpConnect { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
             HelpMessage = "Shareable Link")]
-        [DefaultValue(false)]
         public bool? EnableShareableLink { get; set; }
 
         [Parameter(
@@ -265,13 +257,157 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         {
             var bastion = new PSBastion(this.Name, this.ResourceGroupName, this.VirtualNetwork.Location, this.Sku);
 
-            #region Feature Validations
-            ValidateFeatures(bastion, this.DisableCopyPaste, this.EnableTunneling, this.EnableIpConnect, this.EnableShareableLink);
-            #endregion
+            ValidateBastionFeatures(bastion, this.ScaleUnit, this.EnableKerberos, this.DisableCopyPaste, this.EnableTunneling, this.EnableIpConnect, this.EnableShareableLink);
+            /* Changed to Base cmdlet
+            if (bastion.IsBasic())
+            {
+                // Features allowed for Basic SKU
+                // Add after updating schema
+                //if (this.EnableKerberos.HasValue)
+                //{
+                //    bastion.EnableKerberos = this.EnableKerberos;
+                //}
 
-            #region Scale Unit Validations
-            ValidateScaleUnits(bastion, this.ScaleUnit);
-            #endregion
+                // Features NOT allowed for Basic SKU
+                if (this.ScaleUnit.HasValue)
+                {
+                    throw new ArgumentException("Scale Units cannot be updated with Basic Sku");
+                }
+
+                if (this.DisableCopyPaste.HasValue)
+                {
+                    throw new ArgumentException("Copy/Paste cannot be updated with Basic SKU");
+                }
+
+                if (this.EnableTunneling.HasValue)
+                {
+                    throw new ArgumentException("Native client cannot be updated with Basic SKU");
+                }
+
+                if (this.EnableIpConnect.HasValue)
+                {
+                    throw new ArgumentException("IP connect cannot be updated with Basic SKU");
+                }
+
+                if (this.EnableShareableLink.HasValue)
+                {
+                    throw new ArgumentException("Shareable link cannot be updated with Basic SKU");
+                }
+            }
+            else if (bastion.IsStandard())
+            {
+                if (this.ScaleUnit.HasValue)
+                {
+                    if (this.ScaleUnit >= 2 && this.ScaleUnit <= 50)
+                    {
+                        bastion.ScaleUnit = this.ScaleUnit;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Please select scale units value between 2 and 50");
+                    }
+                }
+
+                // Add after updating schema
+                //if (this.EnableKerberos.HasValue)
+                //{
+                //    bastion.EnableKerberos = this.EnableKerberos;
+                //}
+
+                if (this.DisableCopyPaste.HasValue)
+                {
+                    bastion.DisableCopyPaste = this.DisableCopyPaste;
+                }
+
+                if (this.EnableTunneling.HasValue)
+                {
+                    bastion.EnableTunneling = this.EnableTunneling;
+                }
+
+                if (this.EnableIpConnect.HasValue)
+                {
+                    bastion.EnableIpConnect = this.EnableIpConnect;
+                }
+
+                if (this.EnableShareableLink.HasValue)
+                {
+                    bastion.EnableShareableLink = this.EnableShareableLink;
+                }
+            }
+            */
+
+            /* check to make sure they're the same as above
+            if (this.ScaleUnit.HasValue)
+            {
+                if (bastion.Sku.Name.Equals(MNM.BastionHostSkuName.Standard))
+                {
+                    if (this.ScaleUnit >= 2 && this.ScaleUnit <= 50)
+                    {
+                        bastion.ScaleUnit = this.ScaleUnit;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Please select scale units value between 2 and 50");
+                    }
+                }
+                else if (bastion.Sku.Name.Equals(MNM.BastionHostSkuName.Basic) && this.ScaleUnit != 2)
+                {
+                    throw new ArgumentException("Scale Units cannot be updated with Basic Sku");
+                }
+            }
+
+            // Available for Basic and Standard
+            if (this.EnableKerberos.HasValue)
+            {
+                bastion.EnableKerberos = this.EnableKerberos;
+            }
+
+            // Features
+            if (bastion.Sku.Name.Equals(MNM.BastionHostSkuName.Standard))
+            {
+                if (this.DisableCopyPaste.HasValue)
+                {
+                    bastion.DisableCopyPaste = this.DisableCopyPaste;
+                }
+
+                if (this.EnableTunneling.HasValue)
+                {
+                    bastion.EnableTunneling = this.EnableTunneling;
+                }
+
+                if (this.EnableIpConnect.HasValue)
+                {
+                    bastion.EnableIpConnect = this.EnableIpConnect;
+                }
+
+                if (this.EnableShareableLink.HasValue)
+                {
+                    bastion.EnableShareableLink = this.EnableShareableLink;
+                }
+            }
+            else if(bastion.Sku.Name.Equals(MNM.BastionHostSkuName.Basic))
+            {
+                if (this.DisableCopyPaste.HasValue)
+                {
+                    throw new ArgumentException("Copy/Paste cannot be changed with Basic SKU");
+                }
+
+                if (this.EnableTunneling.HasValue)
+                {
+                    throw new ArgumentException("Native client cannot be changed with Basic SKU");
+                }
+
+                if (this.EnableIpConnect.HasValue)
+                {
+                    throw new ArgumentException("IP connect cannot be changed with Basic SKU");
+                }
+
+                if (this.EnableShareableLink.HasValue)
+                {
+                    throw new ArgumentException("Shareable link cannot be changed with Basic SKU");
+                }
+            }
+            */
 
             if (this.VirtualNetwork != null)
             {
