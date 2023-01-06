@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.2
 * Fixed cannot returning more than 100 artifacts of the `Get-AzBlueprintArtifact`. [#20112]
 
 ## Version 0.4.1

@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 5.3.0
 * Added samples for retrieving Private Link IP Configuration using 'New-AzApplicationGatewayPrivateLinkIpConfiguration' with fix [#20440]
 * Added `DdosProtectionPlan` property in `AzPublicIpAddress`
 * Updated mapping in `AzPublicIpAddress` to always show/create DdosSettings
