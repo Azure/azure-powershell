@@ -15,8 +15,9 @@ Gets resource groups.
 
 ### GetByResourceGroupName (Default)
 ```
-Get-AzResourceGroup [[-Name] <String>] [[-Location] <String>] [-Tag <Hashtable>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzResourceGroup [[-Name] <String>] [[-Location] <String>] [-Tag <Hashtable>]
+ [-FilterOperator <TagOperators>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByResourceGroupId
@@ -101,6 +102,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FilterOperator
+The tag filter operator to filter resource groups by.
+
+```yaml
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.TagOperators
+Parameter Sets: GetByResourceGroupName
+Aliases:
+Accepted values: Any, All
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
