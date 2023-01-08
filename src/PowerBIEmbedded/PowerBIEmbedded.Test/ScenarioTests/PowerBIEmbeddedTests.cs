@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.PowerBI.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
-    public class PowerBITests : PowerBITestRunner
+    public class PowerBIEmbeddedTests : PowerBIEmbeddedTestRunner
     {
-        public PowerBITests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
+        public PowerBIEmbeddedTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
         }
 

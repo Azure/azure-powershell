@@ -13,18 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.PowerBI.Models;
-using Microsoft.Azure.Commands.PowerBI.Properties;
-using Microsoft.Azure.Commands.PowerBI.Utilities;
-using Microsoft.Azure.Management.PowerBIDedicated;
-using Microsoft.Azure.Management.PowerBIDedicated.Models;
+using Microsoft.Azure.Commands.PowerBIEmbedded.Models;
+using Microsoft.Azure.Commands.PowerBIEmbedded.Properties;
+using Microsoft.Azure.Commands.PowerBIEmbedded.Utilities;
 
-namespace Microsoft.Azure.Commands.PowerBI
+namespace Microsoft.Azure.Commands.PowerBIEmbedded
 {
-    [Cmdlet("Resume", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet),OutputType(typeof(PSPowerBIEmbeddedCapacity))]
-    public class ResumeAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
+    [Cmdlet("Suspend", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet),OutputType(typeof(PSPowerBIEmbeddedCapacity))]
+    public class SuspendAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
     {
         protected const string CmdletParametersSet = "ByNameAndResourceGroup";
         protected const string ObjectParameterSet = "ByInputObject";
@@ -71,7 +68,7 @@ namespace Microsoft.Azure.Commands.PowerBI
             string capacityName = Name;
             string resourceGroupName = ResourceGroupName;
 
-            if (!string.IsNullOrEmpty(this.ResourceId))
+            if (!string.IsNullOrEmpty(ResourceId))
             {
                 PowerBIUtils.GetResourceGroupNameAndCapacityName(ResourceId, out resourceGroupName, out capacityName);
             }
@@ -80,12 +77,7 @@ namespace Microsoft.Azure.Commands.PowerBI
                 PowerBIUtils.GetResourceGroupNameAndCapacityName(InputObject.Id, out resourceGroupName, out capacityName);
             }
 
-            if (string.IsNullOrEmpty(capacityName))
-            {
-                WriteExceptionError(new PSArgumentNullException("Name", "Name of capacity not specified"));
-            }
-
-            if (ShouldProcess(capacityName, Resources.ResumingPowerBIEmbeddedCapacity))
+            if (ShouldProcess(capacityName, Resources.SuspendingPowerBIEmbeddedCapacity))
             {
                 PSPowerBIEmbeddedCapacity capacity = null;
                 if (!PowerBIClient.TestCapacity(resourceGroupName, capacityName, out capacity))
@@ -93,7 +85,7 @@ namespace Microsoft.Azure.Commands.PowerBI
                     throw new InvalidOperationException(string.Format(Properties.Resources.CapacityDoesNotExist, capacityName));
                 }
 
-                PowerBIClient.ResumeCapacity(resourceGroupName, capacityName);
+                PowerBIClient.SuspendCapacity(resourceGroupName, capacityName);
 
                 if (PassThru.IsPresent)
                 {

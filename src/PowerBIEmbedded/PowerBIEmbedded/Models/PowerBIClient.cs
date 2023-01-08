@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.PowerBI.Properties;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using Microsoft.Azure.Commands.PowerBIEmbedded.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.PowerBIDedicated;
 using Microsoft.Azure.Management.PowerBIDedicated.Models;
 using Microsoft.Rest.Azure;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 
-namespace Microsoft.Azure.Commands.PowerBI.Models
+namespace Microsoft.Azure.Commands.PowerBIEmbedded.Models
 {
     public class PowerBIClient
     {

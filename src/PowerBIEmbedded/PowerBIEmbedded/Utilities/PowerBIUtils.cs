@@ -14,7 +14,7 @@
 
 using System;
 
-namespace Microsoft.Azure.Commands.PowerBI.Utilities
+namespace Microsoft.Azure.Commands.PowerBIEmbedded.Utilities
 {
     class PowerBIUtils
     {

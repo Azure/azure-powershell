@@ -12,36 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.PowerBIEmbedded.Models;
+using System.Text;
 
-namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models
+namespace Microsoft.Azure.Commands.PowerBIEmbedded.Models
 {
-    public class PSWorkspace
+    /// <summary>
+    /// The object that is passed in and parsed for file contents.
+    /// </summary>
+    public class StringOrByteArrayInstance
     {
-        public string Id { get; set; }
-
-        public string Name { get; set; }
-
-        public string Type { get; set; }
-
-        public static PSWorkspace Create(Workspace workspace)
+        public StringOrByteArrayInstance(byte[] contents)
         {
-            return new PSWorkspace
-            {
-                Id = workspace.Id,
-                Name = workspace.Name,
-                Type = workspace.Type
-            };
+            Contents = contents;
         }
 
-        /// <summary>
-        /// Return a string representation of this storage account
-        /// </summary>
-        /// <returns>null</returns>
-        public override string ToString()
+        public byte[] Contents { get; set; }
+
+        public static StringOrByteArrayInstance Parse(string contents)
         {
-            // Allow listing workspace collection contents through piping
-            return null;
+            return new StringOrByteArrayInstance(Encoding.UTF8.GetBytes(contents));
         }
     }
 }

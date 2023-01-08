@@ -13,65 +13,40 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
-using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.PowerBI.Models;
-using Microsoft.Azure.Commands.PowerBI.Properties;
-using Microsoft.Azure.Commands.PowerBI.Utilities;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.PowerBIDedicated.Models;
+using Microsoft.Azure.Commands.PowerBIEmbedded.Models;
+using Microsoft.Azure.Commands.PowerBIEmbedded.Properties;
+using Microsoft.Azure.Commands.PowerBIEmbedded.Utilities;
 
-namespace Microsoft.Azure.Commands.PowerBI
+namespace Microsoft.Azure.Commands.PowerBIEmbedded
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet), OutputType(typeof(PSPowerBIEmbeddedCapacity))]
-    public class UpdateAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
+    [Cmdlet("Resume", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet),OutputType(typeof(PSPowerBIEmbeddedCapacity))]
+    public class ResumeAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
     {
         protected const string CmdletParametersSet = "ByNameAndResourceGroup";
         protected const string ObjectParameterSet = "ByInputObject";
         protected const string ResourceIdParameterSet = "ByResourceId";
 
-        private const string ParamSetDefault = "Default";
-
         [Parameter(
             ParameterSetName = CmdletParametersSet,
-            Position = 0, 
             Mandatory = true,
-            HelpMessage = "Name of the capacity.")]
+            Position = 0,
+            HelpMessage = "Name of a specific capacity.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = CmdletParametersSet,
             Mandatory = false,
-            HelpMessage = "Name of resource group under which you want to update the capacity.")]
+            HelpMessage = "Name of resource group under which to retrieve the capacity.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "Name of the Sku used to create the capacity")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet("A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", IgnoreCase = true)]
-        public string Sku { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "A string,string dictionary of tags associated with this capacity")]
-        [ValidateNotNull]
-        public Hashtable Tag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "A comma separated capacity names to set as administrators on the capacity")]
-        [ValidateNotNull]
-        public string[] Administrator { get; set; }
-
-        [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             Position = 0,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "PowerBI Embedded Capacity ResourceID.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -93,7 +68,7 @@ namespace Microsoft.Azure.Commands.PowerBI
             string capacityName = Name;
             string resourceGroupName = ResourceGroupName;
 
-            if (!string.IsNullOrEmpty(ResourceId))
+            if (!string.IsNullOrEmpty(this.ResourceId))
             {
                 PowerBIUtils.GetResourceGroupNameAndCapacityName(ResourceId, out resourceGroupName, out capacityName);
             }
@@ -107,31 +82,24 @@ namespace Microsoft.Azure.Commands.PowerBI
                 WriteExceptionError(new PSArgumentNullException("Name", "Name of capacity not specified"));
             }
 
-            if (ShouldProcess(capacityName, Resources.UpdatingPowerBIEmbeddedCapacity))
+            if (ShouldProcess(capacityName, Resources.ResumingPowerBIEmbeddedCapacity))
             {
-                PSPowerBIEmbeddedCapacity currentCapacity = null;
-                if (!PowerBIClient.TestCapacity(resourceGroupName, capacityName, out currentCapacity))
+                PSPowerBIEmbeddedCapacity capacity = null;
+                if (!PowerBIClient.TestCapacity(resourceGroupName, capacityName, out capacity))
                 {
                     throw new InvalidOperationException(string.Format(Properties.Resources.CapacityDoesNotExist, capacityName));
                 }
 
-                var availableSkus = PowerBIClient.ListSkusForExisting(resourceGroupName, capacityName);
-                if (Sku != null && !availableSkus.Value.Any(v => v.Sku.Name == Sku))
-                {
-                    throw new InvalidOperationException(string.Format(Resources.InvalidSku, Sku, String.Join(",", availableSkus.Value.Select(v => v.Sku.Name))));
-                }
+                PowerBIClient.ResumeCapacity(resourceGroupName, capacityName);
 
-                var location = currentCapacity.Location;
-                if (Tag == null && currentCapacity.Tag != null)
+                if (PassThru.IsPresent)
                 {
-                    Tag = TagsConversionHelper.CreateTagHashtable(currentCapacity.Tag);
-                }
-
-                PSPowerBIEmbeddedCapacity updateCapacity = PowerBIClient.CreateOrUpdateCapacity(resourceGroupName, capacityName, location, Sku, Tag, Administrator, currentCapacity);
-
-                if(PassThru.IsPresent)
-                {
-                    WriteObject(updateCapacity);
+                    // Update the capacity current state 
+                    if (!PowerBIClient.TestCapacity(resourceGroupName, capacityName, out capacity))
+                    {
+                        throw new InvalidOperationException(string.Format(Properties.Resources.CapacityDoesNotExist, capacityName));
+                    }
+                    WriteObject(capacity);
                 }
             }
         }

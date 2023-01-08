@@ -1,4 +1,4 @@
-# ----------------------------------------------------------------------------------
+﻿# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,97 +14,79 @@
 
 <#
 .SYNOPSIS
-Creates a unique name for a resource group
+Gets a Data Lake Store account name to use for testing
+#>
+function Get-PowerBIEmbeddedCapacityName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets a resource group name for testing.
 #>
 function Get-ResourceGroupName
 {
-    return getAssetName
+    return getAssetName;
 }
 
 <#
 .SYNOPSIS
-Creates a unique name for a workspace collection
+Gets resource location for testing.
 #>
-function Get-WorkspaceCollectionName 
+function Get-Location
 {
-    return getAssetName
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne `
+        [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$namespace = "Microsoft.PowerBIDedicated"
+		$type = "capacities"
+		$location = Get-AzResourceProvider -ProviderNamespace $namespace `
+        | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+
+		if ($location -eq $null)
+		{
+			return "West Central US"
+		} else
+		{
+			return $location.Locations[0]
+		}
+	}
+	return "West Central US"
 }
 
 <#
 .SYNOPSIS
-Cleans the created resource groups
+Gets a resource group location for testing.
 #>
-function Clean-ResourceGroup($rgname)
+function Get-RG-Location
 {
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzResourceGroup -Name $rgname -Force
-    }
+	return "West US"
 }
 
 <#
 .SYNOPSIS
-Creates a new resource group
+Executes a cmdlet and enables ignoring of errors if desired
+NOTE: this only catches errors that are thrown. If the command calls to Write-Error
+the user must specify the errorAction to be silent or store the record in an error variable.
 #>
-function Create-ResourceGroup
+function Invoke-HandledCmdlet
 {
-	$resourceGroupName = Get-ResourceGroupName
-	return New-AzResourceGroup -Name $resourceGroupName -Location WestUS
-}
-
-######################
-#
-# Retry the given code block until it succeeds or times out.
-#
-#    param [ScriptBlock] $script : The code to test
-#    param [int] $times          : The times of running the code
-#    param [string] $message     : The text of the exception that should be thrown
-#######################
-function Retry-IfException
-{
-    param([ScriptBlock] $script, [int] $times = 30, [string] $message = "*")
-
-    if ($times -le 0)
-    {
-        throw 'Retry time(s) should not be equal to or less than 0.';
-    }
-
-    $oldErrorActionPreferenceValue = $ErrorActionPreference;
-    $ErrorActionPreference = "SilentlyContinue";
-
-    $iter = 0;
-    $succeeded = $false;
-    while (($iter -lt $times) -and (-not $succeeded))
-    {
-        $iter += 1;
-
-        try
-        {
-            &$script;
-        }
-        catch
-        {
-
-        }
-
-        if ($Error.Count -gt 0)
-        {
-            $actualMessage = $Error[0].Exception.Message;
-
-            Write-Output ("Caught exception: '$actualMessage'");
-
-            if (-not ($actualMessage -like $message))
-            {
-                $ErrorActionPreference = $oldErrorActionPreferenceValue;
-                throw "Expected exception not received: '$message' the actual message is '$actualMessage'";
-            }
-
-            $Error.Clear();
-            Wait-Seconds 10;
-            continue;
-        }
-
-        $succeeded = $true;
-    }
-
-    $ErrorActionPreference = $oldErrorActionPreferenceValue;
+	param
+	(
+		[ScriptBlock] $Command,
+		[switch] $IgnoreFailures
+	)
+	
+	try
+	{
+		&$Command
+	}
+	catch
+	{
+		if(!$IgnoreFailures)
+		{
+			throw;
+		}
+	}
 }

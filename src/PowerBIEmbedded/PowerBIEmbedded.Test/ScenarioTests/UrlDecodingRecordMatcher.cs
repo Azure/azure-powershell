@@ -21,7 +21,7 @@ using System.Text;
 using Microsoft.Azure.Commands.TestFx.Recorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
-namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
 {
     public class UrlDecodingRecordMatcher : PermissiveRecordMatcherWithApiExclusion
     {

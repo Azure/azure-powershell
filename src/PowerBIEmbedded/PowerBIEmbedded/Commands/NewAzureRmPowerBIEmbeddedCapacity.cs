@@ -12,16 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections;
-using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.PowerBI.Models;
-using Microsoft.Azure.Commands.PowerBI.Properties;
+using Microsoft.Azure.Commands.PowerBIEmbedded.Models;
+using Microsoft.Azure.Commands.PowerBIEmbedded.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Rest.Azure;
 
-namespace Microsoft.Azure.Commands.PowerBI
+namespace Microsoft.Azure.Commands.PowerBIEmbedded
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIEmbeddedCapacity", SupportsShouldProcess = true), OutputType(typeof(PSPowerBIEmbeddedCapacity))]
     public class NewPowerBIEmbeddedCapacity : PowerBICmdletBase

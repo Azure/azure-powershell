@@ -1759,12 +1759,6 @@
     "Stop-AzPolicyRemediation": "Stop-AzureRmPolicyRemediation"
   },
   "Az.PowerBIEmbedded": {
-    "Remove-AzPowerBIWorkspaceCollection": "Remove-AzureRmPowerBIWorkspaceCollection",
-    "Get-AzPowerBIWorkspaceCollection": "Get-AzureRmPowerBIWorkspaceCollection",
-    "Get-AzPowerBIWorkspaceCollectionAccessKeys": "Get-AzureRmPowerBIWorkspaceCollectionAccessKeys",
-    "Get-AzPowerBIWorkspace": "Get-AzureRmPowerBIWorkspace",
-    "New-AzPowerBIWorkspaceCollection": "New-AzureRmPowerBIWorkspaceCollection",
-    "Reset-AzPowerBIWorkspaceCollectionAccessKeys": "Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys",
     "Resume-AzPowerBIEmbeddedCapacity": "Resume-AzureRmPowerBIEmbeddedCapacity",
     "Suspend-AzPowerBIEmbeddedCapacity": "Suspend-AzureRmPowerBIEmbeddedCapacity",
     "Get-AzPowerBIEmbeddedCapacity": "Get-AzureRmPowerBIEmbeddedCapacity",

@@ -12,13 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
+using System.Management.Automation;
+using Microsoft.Azure.Commands.PowerBIEmbedded.Models;
+
+namespace Microsoft.Azure.Commands.PowerBIEmbedded
 {
-    public static class Nouns
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIEmbeddedCapacity"), OutputType(typeof(bool))]
+    public class TestAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
     {
-        private const string CommandPrefix = "AzureRmPowerBI";
-        public const string WorkspaceCollection = CommandPrefix + "WorkspaceCollection";
-        public const string WorkspaceCollectionAccessKeys = CommandPrefix + "WorkspaceCollectionAccessKeys";
-        public const string Workspace = CommandPrefix + "Workspace";
+        [Parameter(
+            Mandatory = true,
+            Position = 0, 
+            HelpMessage = "Name of a specific capacity.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            PSPowerBIEmbeddedCapacity capacity = null;
+            WriteObject(PowerBIClient.TestCapacity(string.Empty, Name, out capacity));
+        }
     }
 }

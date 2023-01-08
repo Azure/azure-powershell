@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Commands.PowerBI.Utilities;
-using Microsoft.Azure.Management.PowerBIDedicated.Models;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.PowerBIEmbedded.Utilities;
+using Microsoft.Azure.Management.PowerBIDedicated.Models;
 
-namespace Microsoft.Azure.Commands.PowerBI.Models
+namespace Microsoft.Azure.Commands.PowerBIEmbedded.Models
 {
     public class PSPowerBIEmbeddedCapacity
     {

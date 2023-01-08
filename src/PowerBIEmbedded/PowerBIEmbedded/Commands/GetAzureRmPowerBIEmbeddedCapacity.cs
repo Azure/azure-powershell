@@ -12,14 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.PowerBI.Models;
-using Microsoft.Azure.Commands.PowerBI.Utilities;
-using Microsoft.Azure.Management.PowerBIDedicated;
-using Microsoft.Azure.Management.PowerBIDedicated.Models;
+using Microsoft.Azure.Commands.PowerBIEmbedded.Models;
+using Microsoft.Azure.Commands.PowerBIEmbedded.Utilities;
 
-namespace Microsoft.Azure.Commands.PowerBI
+namespace Microsoft.Azure.Commands.PowerBIEmbedded
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIEmbeddedCapacity", DefaultParameterSetName = ParameterSet),OutputType(typeof(PSPowerBIEmbeddedCapacity))]
     public class GetAzurePowerBIEmbeddedCapacity : PowerBICmdletBase

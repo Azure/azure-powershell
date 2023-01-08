@@ -4487,21 +4487,13 @@
       "Update-AzPostgreSqlVirtualNetworkRule": {}
     },
     "Az.PowerBIEmbedded": {
-      "Remove-AzPowerBIWorkspaceCollection": {},
-      "Get-AzPowerBIWorkspaceCollection": {},
-      "Get-AzPowerBIWorkspaceCollectionAccessKey": {},
-      "Get-AzPowerBIWorkspace": {},
-      "New-AzPowerBIWorkspaceCollection": {},
-      "Reset-AzPowerBIWorkspaceCollectionAccessKey": {},
       "Resume-AzPowerBIEmbeddedCapacity": {},
       "Suspend-AzPowerBIEmbeddedCapacity": {},
       "Get-AzPowerBIEmbeddedCapacity": {},
       "Remove-AzPowerBIEmbeddedCapacity": {},
       "Update-AzPowerBIEmbeddedCapacity": {},
       "Test-AzPowerBIEmbeddedCapacity": {},
-      "New-AzPowerBIEmbeddedCapacity": {},
-      "Get-AzPowerBIWorkspaceCollectionAccessKeys": {},
-      "Reset-AzPowerBIWorkspaceCollectionAccessKeys": {}
+      "New-AzPowerBIEmbeddedCapacity": {}
     },
     "Az.PrivateDns": {
       "Get-AzPrivateDnsZone": {},

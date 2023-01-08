@@ -19,18 +19,18 @@ using Xunit;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Microsoft.Azure.Commands.Resources.Test")]
+[assembly: AssemblyTitle("Microsoft.Azure.Commands.PowerBI.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Microsoft.Azure.Commands.Resources.Test")]
+[assembly: AssemblyProduct("Microsoft.Azure.Commands.PowerBI.Test")]
 [assembly: AssemblyCopyright("Copyright © Microsoft")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
 
-[assembly: Guid("28fe3fc0-6fdf-4f01-8a82-d7b4a834ddd2")]
+[assembly: Guid("37af97fd-d603-4d52-a7a6-0885004a57fe")]
 
 [assembly: AssemblyVersion("4.0.0")]
 [assembly: AssemblyFileVersion("4.0.0")]

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.Properties {
+namespace Microsoft.Azure.Commands.PowerBIEmbedded.Properties {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,65 +61,173 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating new workspace colleciton &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified capacity &apos;{0}&apos; does not exist..
         /// </summary>
-        internal static string NewWorkspaceCollectionDescription {
+        internal static string CapacityDoesNotExist {
             get {
-                return ResourceManager.GetString("NewWorkspaceCollectionDescription", resourceCulture);
+                return ResourceManager.GetString("CapacityDoesNotExist", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to create new workspace collection with name &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Create PowerBI Embedded Capacity.
         /// </summary>
-        internal static string NewWorkspaceCollectionWarning {
+        internal static string CreateNewPowerBIEmbeddedCapacity {
             get {
-                return ResourceManager.GetString("NewWorkspaceCollectionWarning", resourceCulture);
+                return ResourceManager.GetString("CreateNewPowerBIEmbeddedCapacity", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing workspace collection &apos;{0}&apos;.
+        ///   Looks up a localized string similar to &quot;default &quot;.
         /// </summary>
-        internal static string RemoveWorkspaceCollectionDescription {
+        internal static string DefaultAclWord {
             get {
-                return ResourceManager.GetString("RemoveWorkspaceCollectionDescription", resourceCulture);
+                return ResourceManager.GetString("DefaultAclWord", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove workspace collection with name &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Could not find capacity: &apos;{0}&apos; in any resource group in the currently selected subscription: {1}. Please ensure this capacity exists and that the current user has access to it..
         /// </summary>
-        internal static string RemoveWorkspaceCollectionWarning {
+        internal static string FailedToDiscoverResourceGroup {
             get {
-                return ResourceManager.GetString("RemoveWorkspaceCollectionWarning", resourceCulture);
+                return ResourceManager.GetString("FailedToDiscoverResourceGroup", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resetting access key &apos;{0}&apos; on workspace collection &apos;{1}&apos;.
+        ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
         /// </summary>
-        internal static string ResetWorkspaceCollectionAccessKeyDescription {
+        internal static string InvalidDefaultSubscription {
             get {
-                return ResourceManager.GetString("ResetWorkspaceCollectionAccessKeyDescription", resourceCulture);
+                return ResourceManager.GetString("InvalidDefaultSubscription", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to reset access key &apos;{0}&apos; on workspace colleciton &apos;{1}&apos;?.
+        ///   Looks up a localized string similar to Invalid Sku: &apos;{0}&apos;. Available Skus are: &apos;{1}&apos;.
         /// </summary>
-        internal static string ResetWorkspaceCollectionAccessKeyWarning {
+        internal static string InvalidSku {
             get {
-                return ResourceManager.GetString("ResetWorkspaceCollectionAccessKeyWarning", resourceCulture);
+                return ResourceManager.GetString("InvalidSku", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm.
+        ///   Looks up a localized string similar to PowerBI Embedded capacity operation failed with the following error code: {0} and message: {1}.
         /// </summary>
-        internal static string ShouldProcessCaption {
+        internal static string LongRunningOperationFailed {
             get {
-                return ResourceManager.GetString("ShouldProcessCaption", resourceCulture);
+                return ResourceManager.GetString("LongRunningOperationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-PowerBIEmbeddedCapacityAzureAccount to login..
+        /// </summary>
+        internal static string NoSubscriptionInContext {
+            get {
+                return ResourceManager.GetString("NoSubscriptionInContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PowerBI Embedded Capacity with name &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string PowerBIEmbeddedCapacityExists {
+            get {
+                return ResourceManager.GetString("PowerBIEmbeddedCapacityExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove PowerBI Embedded Capacity: &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovePowerBIEmbeddedCapacity {
+            get {
+                return ResourceManager.GetString("RemovePowerBIEmbeddedCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove PowerBI Embedded Capacity.
+        /// </summary>
+        internal static string RemovingPowerBIEmbeddedCapacity {
+            get {
+                return ResourceManager.GetString("RemovingPowerBIEmbeddedCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to resume PowerBI Embedded Capacity: &apos;{0}&apos;?.
+        /// </summary>
+        internal static string ResumePowerBIEmbeddedCapacity {
+            get {
+                return ResourceManager.GetString("ResumePowerBIEmbeddedCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resume PowerBI Embedded Capacity.
+        /// </summary>
+        internal static string ResumingPowerBIEmbeddedCapacity {
+            get {
+                return ResourceManager.GetString("ResumingPowerBIEmbeddedCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The script file at path &apos;{0}&apos; does not exist or the current user does not have permission to it. Please ensure the path exists and is accessible..
+        /// </summary>
+        internal static string ScriptFilePathDoesNotExist {
+            get {
+                return ResourceManager.GetString("ScriptFilePathDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suspend PowerBI Embedded Capacity.
+        /// </summary>
+        internal static string SuspendingPowerBIEmbeddedCapacity {
+            get {
+                return ResourceManager.GetString("SuspendingPowerBIEmbeddedCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to suspend PowerBI Embedded Capacity: &apos;{0}&apos;?.
+        /// </summary>
+        internal static string SuspendPowerBIEmbeddedCapacity {
+            get {
+                return ResourceManager.GetString("SuspendPowerBIEmbeddedCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The operation is being cancelled, please wait....
+        /// </summary>
+        internal static string TaskCancelledMessage {
+            get {
+                return ResourceManager.GetString("TaskCancelledMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update PowerBI Embedded Capacity: &apos;{0}&apos;?.
+        /// </summary>
+        internal static string UpdatePowerBIEmbeddedCapacity {
+            get {
+                return ResourceManager.GetString("UpdatePowerBIEmbeddedCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update PowerBI Embedded Capacity.
+        /// </summary>
+        internal static string UpdatingPowerBIEmbeddedCapacity {
+            get {
+                return ResourceManager.GetString("UpdatingPowerBIEmbeddedCapacity", resourceCulture);
             }
         }
     }

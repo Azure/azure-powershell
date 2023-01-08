@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.PowerBI.Properties;
+using System;
+using Microsoft.Azure.Commands.PowerBIEmbedded.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Rest;
-using System;
 
-namespace Microsoft.Azure.Commands.PowerBI.Models
+namespace Microsoft.Azure.Commands.PowerBIEmbedded.Models
 {
     /// <summary>
     /// The base class for all Microsoft Azure PowerBI Embedded Capacities Management cmdlets
