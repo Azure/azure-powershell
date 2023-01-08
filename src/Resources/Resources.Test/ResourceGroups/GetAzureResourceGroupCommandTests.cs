@@ -16,9 +16,11 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
@@ -95,6 +97,38 @@ namespace Microsoft.Azure.Commands.Resources.Test
             Assert.Single(result);
             Assert.Equal(resourceGroupName, result[0].ResourceGroupName);
             Assert.Equal(resourceGroupLocation, result[0].Location);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsResourcesGroupsByTags()
+        {
+            var tags = new Hashtable
+            {
+                { "environment", "dev" }
+            };
+
+            List<PSResourceGroup> result = new List<PSResourceGroup>
+            {
+                new PSResourceGroup {
+                    Location = resourceGroupLocation,
+                    ResourceGroupName = resourceGroupName,
+                    Tags = tags
+                }
+            };
+
+            resourcesClientMock.Setup(f => f.FilterResourceGroups(null, It.IsAny<TagSettings>(), false, null)).Returns(result);
+
+            cmdlet.Tag = tags;
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Single(result);
+            Assert.Equal(resourceGroupName, result[0].ResourceGroupName);
+            Assert.Equal(resourceGroupLocation, result[0].Location);
+            Assert.Equal(tags, result[0].Tags);
+
+            commandRuntimeMock.Verify(f => f.WriteObject(result, true), Times.Once());
         }
     }
 }
