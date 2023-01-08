@@ -34,11 +34,11 @@ This file contains the configuration for generating My API from the OpenAPI spec
 
 ``` yaml
 # it's the same options as command line options, just drop the double-dash!
-branch: c0d5296b483a5fe4de7851fcd45acde14e736574
+branch: f38115ac455af89493b0a0719d9a987404560dda
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2022-05-01/dataprotection.json
+  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2022-12-01/dataprotection.json
 title: DataProtection
 directive:
   - from: swagger-document
@@ -53,6 +53,23 @@ directive:
       parameter-name: VaultCriticalOperationExclusionList
     set:
       parameter-name: CriticalOperationExclusionList
+    clear-alias: true
+  - where:      
+      parameter-name: ImmutabilitySettingState
+    set:
+      parameter-name: ImmutabilityState
+      parameter-description: Immutability state of the vault. Allowed values are Disabled, Unlocked, Locked.
+    clear-alias: true
+  - where:      
+      parameter-name: CrossSubscriptionRestoreSettingState
+    set:
+      parameter-name: CrossSubscriptionRestoreState
+      parameter-description: Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.
+    clear-alias: true
+  - where:      
+      parameter-name: SecuritySettingSoftDeleteSetting
+    set:
+      parameter-name: SoftDeleteSetting
     clear-alias: true
   - where:
       verb: Get
@@ -76,6 +93,9 @@ directive:
   - where:
       verb: Update
       subject: ResourceGuard      
+    remove: true
+  - where:
+      subject: DeletedBackupInstance      
     remove: true
   - where:
       verb: Set
@@ -218,6 +238,18 @@ directive:
     set:
       property-name: CriticalOperationExclusionList
   - where:
+      property-name: ImmutabilitySettingState
+    set:
+      property-name: ImmutabilityState
+  - where:
+      property-name: SecuritySettingSoftDeleteSetting
+    set:
+      property-name: SoftDeleteSetting
+  - where:
+      property-name: CrossSubscriptionRestoreSettingState
+    set:
+      property-name: CrossSubscriptionRestoreState
+  - where:
       model-name: BackupVaultResource
     set:
       format-table:
@@ -227,7 +259,6 @@ directive:
           - Type
           - IdentityType
   - no-inline:
-    - UserFacingError
     - InnerError
     - BackupInstance
     - RestoreTargetInfo
@@ -238,19 +269,21 @@ directive:
     - PolicyParameters
     - SecretStoreBasedAuthCredentials
     - SecretStoreResource
+    - SoftDeleteSettings
     - SystemData
+    - UserFacingError    
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBaseBackupPolicy Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBaseBackupPolicy Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.ITriggerContext Trigger');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ITriggerContext Trigger');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupParameters BackupParameter');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupParameters BackupParameter');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupRecoveryPoint Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRecoveryPoint Property');
 ```
 
 ## Alternate settings

@@ -50,7 +50,8 @@
                'Stop-AzDataProtectionBackupInstanceProtection',
                'Suspend-AzDataProtectionBackupInstanceBackup',
                'Sync-AzDataProtectionBackupInstance',
-               'Update-AzDataProtectionResourceGuard'
+               'Update-AzDataProtectionResourceGuard',
+               'New-AzDataProtectionSoftDeleteSettingObject'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

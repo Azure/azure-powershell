@@ -15,8 +15,10 @@ Creates or updates a BackupVault resource belonging to a resource group.
 ```
 New-AzDataProtectionBackupVault -Location <String> -ResourceGroupName <String>
  -StorageSetting <IStorageSetting[]> -VaultName <String> [-AsJob]
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-DefaultProfile <PSObject>] [-ETag <String>]
- [-IdentityType <String>] [-NoWait] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
+ [-AzureMonitorAlertsForAllJobFailure <AlertsState>]
+ [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <PSObject>]
+ [-ETag <String>] [-IdentityType <String>] [-ImmutabilityState <ImmutabilityState>] [-NoWait]
+ [-SoftDeleteSetting <ISoftDeleteSettings>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -73,6 +75,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CrossSubscriptionRestoreState
+Cross subscription restore state of the vault.
+Allowed values are Disabled, Enabled, PermanentlyDisabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 
 
@@ -108,6 +126,22 @@ The identityType which can be either SystemAssigned or None.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImmutabilityState
+Immutability state of the vault.
+Allowed values are Disabled, Unlocked, Locked.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState
 Parameter Sets: (All)
 Aliases:
 
@@ -163,13 +197,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SoftDeleteSetting
+Soft delete related settings
+To construct, see NOTES section for SOFTDELETESETTING properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ISoftDeleteSettings
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StorageSetting
 Storage Settings of the vault.
 Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
 To construct, see NOTES section for STORAGESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IStorageSetting[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IStorageSetting[]
 Parameter Sets: (All)
 Aliases:
 
@@ -273,6 +323,10 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+
+`SOFTDELETESETTING <ISoftDeleteSettings>`: Soft delete related settings
+  - `[RetentionDurationInDay <Double?>]`: Soft delete retention duration
+  - `[State <SoftDeleteState?>]`: State of soft delete
 
 `STORAGESETTING <IStorageSetting[]>`: Storage Settings of the vault. Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
   - `[DatastoreType <StorageSettingStoreTypes?>]`: Gets or sets the type of the datastore.
