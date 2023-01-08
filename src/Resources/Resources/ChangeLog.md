@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Get-AzResourceGroup - Filter with multiple tags and include Any/All filter operation parameter [#15485]
 
 ## Version 6.5.1
 * Fixed issue introduced in previous fix for `Set-AzPolicySetDefinition` InternalServerError when the initiative is too large [#20238], which will remove space in value.
