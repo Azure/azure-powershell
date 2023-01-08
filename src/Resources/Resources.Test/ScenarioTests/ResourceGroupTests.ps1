@@ -339,6 +339,37 @@ function Test-FindResourceGroup
 		$expected9 = Get-AzResourceGroup -Tag @{ testtagY = "testval" }
         # Assert
         Assert-AreEqual @($expected9).Count 0
+
+        $expected10 = Get-AzResourceGroup -Tag @{ testtag = "testval"; testtag2 = "testval2" }
+        # Assert
+        Assert-AreEqual @($expected10).Count 2
+
+        $expected11 = Get-AzResourceGroup -Tag @{ testtag = "testval"; testtag2 = "testval2" } -FilterOperator 'Any'
+        # Assert
+        Assert-AreEqual @($expected11).Count 2
+
+        $expected12 = Get-AzResourceGroup -Tag @{ testtag = "testval"; testtag2 = "testval2" } -FilterOperator 'All'
+        # Assert
+        Assert-AreEqual @($expected12).Count 0
+
+        $expected13 = Get-AzResourceGroup -Tag @{ testtag = $null; testtag2 = $null }
+        # Assert
+        Assert-AreEqual @($expected13).Count 2
+
+        $expected14 = Get-AzResourceGroup -Tag @{ testtag = $null; testtag2 = $null } -FilterOperator 'All'
+        # Assert
+        Assert-AreEqual @($expected14).Count 1
+
+        $expected15 = Get-AzResourceGroup -Tag @{ testtagX = "testval"; testtag = "testval" }
+        # Assert
+        Assert-AreEqual @($expected15).Count 1
+
+        $expected16 = Get-AzResourceGroup -Tag @{ testtagX = "testval"; testtag = "testval" } -FilterOperator 'All'
+        # Assert
+        Assert-AreEqual @($expected16).Count 0
+
+        # Assert
+        Assert-ThrowsContains { Get-AzResourceGroup -Tag @{ testtagX = $null } -FilterOperator $null } 'The possible enumeration values are "Any,All"'
     }
     finally
     {
