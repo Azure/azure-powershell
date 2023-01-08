@@ -1173,7 +1173,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Single(actual2);
             Assert.Equal(resourceGroup1.Name, actual2[0].ResourceGroupName);
 
-            tagSettings = null;
+            tagSettings.Tags = null;
 
             List<PSResourceGroup> actual3 = resourcesClient.FilterResourceGroups(null, tagSettings, false, null);
 
@@ -1182,6 +1182,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(resourceGroup2.Name, actual3[1].ResourceGroupName);
             Assert.Equal(resourceGroup3.Name, actual3[2].ResourceGroupName);
             Assert.Equal(resourceGroup4.Name, actual3[3].ResourceGroupName);
+
+            tagSettings = null;
+
+            List<PSResourceGroup> actual4 = resourcesClient.FilterResourceGroups(null, tagSettings, false, null);
+
+            Assert.Equal(4, actual4.Count);
+            Assert.Equal(resourceGroup1.Name, actual4[0].ResourceGroupName);
+            Assert.Equal(resourceGroup2.Name, actual4[1].ResourceGroupName);
+            Assert.Equal(resourceGroup3.Name, actual4[2].ResourceGroupName);
+            Assert.Equal(resourceGroup4.Name, actual4[3].ResourceGroupName);
         }
 
         [Fact]
