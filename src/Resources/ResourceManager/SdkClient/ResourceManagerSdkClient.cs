@@ -897,6 +897,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 {
                     WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
                     resourceGroups = resourceGroups.Where(t => pattern.IsMatch(t.Name)).ToList();
+
+                    if (!resourceGroups.Any())
+                    {
+                        WriteError(string.Format(ProjectResources.ResourceGroupWildCardPatternDoesntExists, name));
+                    }
                 }
 
                 resourceGroups = !string.IsNullOrEmpty(location)

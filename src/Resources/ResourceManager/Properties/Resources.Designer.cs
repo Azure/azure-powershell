@@ -1079,6 +1079,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resource groups with wildcard pattern &apos;{0}&apos; do not exist..
+        /// </summary>
+        internal static string ResourceGroupWildCardPatternDoesntExists {
+            get {
+                return ResourceManager.GetString("ResourceGroupWildCardPatternDoesntExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find the resource provider &apos;{0}&apos;..
         /// </summary>
         internal static string ResourceProviderNotFound {
