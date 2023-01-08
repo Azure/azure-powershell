@@ -317,9 +317,7 @@ function Test-FindResourceGroup
 		Assert-AreEqual @($expected3).Count $expectedCount
 
 		# Assert
-		Assert-ThrowsContains `
-            { Get-AzResourceGroup -Name "https://RG1?default" } `
-            "Resource groups with wildcard pattern 'https://RG1?default' do not exist."
+		Assert-ThrowsContains { Get-AzResourceGroup -Name "https://RG1?default" } "Resource groups with wildcard pattern 'https://RG1?default' do not exist."
 
 		$expected4 = Get-AzResourceGroup -Tag @{ testtag = $null}
         # Assert
