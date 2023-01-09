@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 ScheduleRunTimes[0].Minute % 30 != 0 ||
                 ScheduleRunTimes[0].Second != 0 ||
                 ScheduleRunTimes[0].Millisecond != 0)
-                {   
+                {
                     throw new ArgumentException(Resources.InvalidScheduleTimeInScheduleException);
                 }
 
