@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://docs.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendor
+online version: https://learn.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkvendor
 schema: 2.0.0
 ---
 
@@ -31,17 +31,15 @@ Deletes the specified vendor.
 
 ### Example 1: Remove-AzConnectedNetworkVendor via vendor name
 ```powershell
-PS C:\> Remove-AzConnectedNetworkVendor -Name MyVendor
-
+Remove-AzConnectedNetworkVendor -Name MyVendor
 ```
 
 Deleting the vendor with name MyVendor
 
 ### Example 2: Remove-AzConnectedNetworkVendor via InputObject
 ```powershell
-PS C:\> $vendor = Get-AzConnectedNetworkVendor -Name MyVendor1
-PS C:\> Remove-AzConnectedNetworkVendor -InputObject $vendor
-
+$vendor = Get-AzConnectedNetworkVendor -Name MyVendor1
+Remove-AzConnectedNetworkVendor -InputObject $vendor
 ```
 
 Deleting the vendor with name MyVendor1

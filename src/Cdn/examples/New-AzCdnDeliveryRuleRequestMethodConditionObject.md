@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AzureCDN DeliveryRuleRequestMethodCondition
 ```powershell
-{{ Add code here }}
+New-AzCdnDeliveryRuleRequestMethodConditionObject -Name RequestMethod -ParameterMatchValue GET
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+RequestMethod
 ```
 
-{{ Add description here }}
+Create an in-memory object for AzureCDN DeliveryRuleRequestMethodCondition
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

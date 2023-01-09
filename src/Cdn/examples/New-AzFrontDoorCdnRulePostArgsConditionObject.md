@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for DeliveryRulePostArgsCondition
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorCdnRulePostArgsConditionObject -Name PostArgs -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterSelector test -ParameterTransform Lowercase
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+PostArgs
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

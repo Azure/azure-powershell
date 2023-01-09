@@ -1,0 +1,84 @@
+{
+  "Invoke-AzReservationArchiveReservation+[NoContext]+Archive+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-100000000003/reservations/50000000-aaaa-bbbb-cccc-100000000003/archive?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-100000000003/reservations/50000000-aaaa-bbbb-cccc-100000000003/archive?api-version=2022-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "5e43ab92-466c-42a6-8799-6ab4f17110c2" ],
+        "CommandName": [ "Invoke-AzReservationArchiveReservation" ],
+        "FullCommandName": [ "Invoke-AzReservationArchiveReservation_Archive" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Reservations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "westcentralus:d9752e9c-2eb3-48e3-95a9-b1fc6aca2d3c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "2e70a698-af49-4159-b52f-31a72d8448f8" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220920T223509Z:2e70a698-af49-4159-b52f-31a72d8448f8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Tue, 20 Sep 2022 22:35:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzReservationArchiveReservation+[NoContext]+ArchiveViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000005/reservations/30000000-aaaa-bbbb-cccc-100000000005/archive?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000005/reservations/30000000-aaaa-bbbb-cccc-100000000005/archive?api-version=2022-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "63afef2d-ed90-434f-88e4-a71793d3b7e0" ],
+        "CommandName": [ "Invoke-AzReservationArchiveReservation" ],
+        "FullCommandName": [ "Invoke-AzReservationArchiveReservation_ArchiveViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Reservations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "westcentralus:b651b8fc-233a-4fd3-a28d-ac8c1400d251" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "3fde9f2e-0e16-4d05-b377-a2c61ac33669" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220920T223510Z:3fde9f2e-0e16-4d05-b377-a2c61ac33669" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Tue, 20 Sep 2022 22:35:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

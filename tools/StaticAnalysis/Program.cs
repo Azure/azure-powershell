@@ -38,7 +38,9 @@ namespace StaticAnalysis
             "ExtraAssemblies.csv",
             "HelpIssues.csv",
             "MissingAssemblies.csv",
-            "SignatureIssues.csv"
+            "SignatureIssues.csv",
+            "ExampleIssues.csv",
+            "UXMetadataIssues.csv"
         };
 
         private static string ExceptionsDirectory { get; set; }
@@ -141,6 +143,10 @@ namespace StaticAnalysis
                         {
                             Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
                         }
+                        if (analyzerName.ToLower().Equals("ux"))
+                        {
+                            Analyzers.Add(new UXMetadataAnalyzer.UXMetadataAnalyzer());
+                        }
                         if (analyzerName.ToLower().Equals("check-error"))
                         {
                             needToCheckIssue = true;
@@ -153,6 +159,7 @@ namespace StaticAnalysis
                     Analyzers.Add(new DependencyAnalyzer.DependencyAnalyzer());
                     Analyzers.Add(new SignatureVerifier.SignatureVerifier());
                     Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
+                    Analyzers.Add(new UXMetadataAnalyzer.UXMetadataAnalyzer());
                     needToCheckIssue = true;
                 }
 

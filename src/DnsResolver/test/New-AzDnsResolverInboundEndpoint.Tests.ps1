@@ -24,6 +24,8 @@ Describe 'New-AzDnsResolverInboundEndpoint' {
         $dnsResolverName = "psdnsresolvername15";
         $inboundEndpointName =  "psinboundendpointname15";
         $virtualNetworkName = "psvirtualnetworkname15";
+        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
+        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
         
         if ($TestMode -eq "Record")
         {
@@ -31,8 +33,8 @@ Describe 'New-AzDnsResolverInboundEndpoint' {
             $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
         }
 
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetwork.Id -Location $LOCATION
-        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAllocationMethod Dynamic -SubnetId $subnet.id 
+        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
+        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAllocationMethod Dynamic -SubnetId $subnetId 
         
         # ACT
         $inboundEndpoint = New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME -IPConfiguration $ipConfiguration -Location $LOCATION

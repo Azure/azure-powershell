@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupVolumeObject
+online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupVolumeObject
 schema: 2.0.0
 ---
 
@@ -39,7 +39,7 @@ This command creates a Azure File volume.
 
 ### Example 2: Create an empty directory volume
 ```powershell
-New-AzContainerGroupVolumeObject -Name "emptyvolume" -EmptyDir @{} | fl
+New-AzContainerGroupVolumeObject -Name "emptyvolume" -EmptyDir @{} | Format-List
 ```
 
 ```output

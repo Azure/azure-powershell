@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://docs.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendor
+online version: https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendor
 schema: 2.0.0
 ---
 
@@ -24,9 +24,10 @@ Creates or updates a vendor.
 
 ### Example 1: New-AzConnectedNetworkVendor
 ```powershell
-PS C:\> New-AzConnectedNetworkVendor -Name myVendor
+New-AzConnectedNetworkVendor -Name myVendor
+```
 
-
+```output
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/myVendor
 Name                         : myVendor
 ProvisioningState            : Succeeded
@@ -45,9 +46,10 @@ Creating a vendor with name myVendor.
 
 ### Example 2: New-AzConnectedNetworkVendor with SubscriptionId 
 ```powershell
-PS C:\> New-AzConnectedNetworkVendor -Name myVendor2 -SubscriptionId xxxxx-22222-xxxxx-22222
+New-AzConnectedNetworkVendor -Name myVendor2 -SubscriptionId xxxxx-22222-xxxxx-22222
+```
 
-
+```output
 Id                           : /subscriptions/xxxxx-22222-xxxxx-22222/providers/Microsoft.HybridNetwork/vendors/myVendor2
 Name                         : myVendor2
 ProvisioningState            : Succeeded

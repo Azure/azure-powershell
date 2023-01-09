@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloudadmincredential
+online version: https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloudadmincredential
 schema: 2.0.0
 ---
 
@@ -26,6 +26,7 @@ List the admin credentials for the private cloud
 ```powershell
 Get-AzVMwarePrivateCloudAdminCredential -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 ```
+
 ```output
 NsxtUsername VcenterUsername
 ------------ ---------------

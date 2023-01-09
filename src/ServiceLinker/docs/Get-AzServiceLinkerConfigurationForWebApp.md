@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceLinker
-online version: https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforwebapp
+online version: https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforwebapp
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ list source configurations for a linker in webapp.
 
 ### Example 1: Get webapp's linker configuration list
 ```powershell
-Get-AzServiceLinkerConfigurationForWebApp -WebApp servicelinker-webapp -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker |fl
+Get-AzServiceLinkerConfigurationForWebApp -WebApp servicelinker-webapp -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker | Format-List
 ```
 
 ```output

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudservice
+online version: https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudservice
 schema: 2.0.0
 ---
 
@@ -55,14 +55,11 @@ This command gets all cloud services in resource group named ContosOrg
 
 ### Example 2: Get cloud service
 ```powershell
-Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
-
-ResourceGroupName Name              Location    ProvisioningState
------------------ ----              --------    -----------------
-ContosOrg         ContosoCS         eastus2euap Succeeded
-
 $cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 $cloudService | Format-List
+```
+
+```output
 ResourceGroupName : ContosOrg
 Configuration     : xxxxxxxx
 ConfigurationUrl  :
@@ -82,7 +79,6 @@ Tag               : {
 Type              : Microsoft.Compute/cloudServices
 UniqueId          : xxxxxxxx
 UpgradeMode       : Auto
-
 ```
 
 This command gets cloud service named ContosoCS that belongs to the resource group named ContosOrg.

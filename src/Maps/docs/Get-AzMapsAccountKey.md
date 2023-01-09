@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Maps
-online version: https://docs.microsoft.com/powershell/module/az.maps/get-azmapsaccountkey
+online version: https://learn.microsoft.com/powershell/module/az.maps/get-azmapsaccountkey
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 @{
   GUID = '1f09fbda-2563-4cfc-9098-100c27b52fa1'
   RootModule = './Az.ManagedServiceIdentity.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ManagedServiceIdentity.private.dll'
   FormatsToProcess = './Az.ManagedServiceIdentity.format.ps1xml'
-  FunctionsToExport = 'Get-AzSystemAssignedIdentity', 'Get-AzUserAssignedIdentity', 'New-AzUserAssignedIdentity', 'Remove-AzUserAssignedIdentity', 'Update-AzUserAssignedIdentity', '*'
+  FunctionsToExport = 'Get-AzFederatedIdentityCredentials', 'Get-AzSystemAssignedIdentity', 'Get-AzUserAssignedIdentity', 'Get-AzUserAssignedIdentityAssociatedResource', 'New-AzFederatedIdentityCredentials', 'New-AzUserAssignedIdentity', 'Remove-AzFederatedIdentityCredentials', 'Remove-AzUserAssignedIdentity', 'Update-AzFederatedIdentityCredentials', 'Update-AzUserAssignedIdentity', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

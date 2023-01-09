@@ -1,6 +1,6 @@
 ### Example 1: Test Linker
 ```powershell
-Test-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group -Name postgresql_connection  | fl
+Test-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group -Name postgresql_connection  | Format-List
 ```
 
 ```output

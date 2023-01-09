@@ -1,0 +1,1025 @@
+{
+  "AzAppConfigurationStore+[NoContext]+CheckStoreNameAvailability+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/checkNameAvailability?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/checkNameAvailability?api-version=2022-05-01",
+      "Content": "{\r\n  \"name\": \"az976f\",\r\n  \"type\": \"Microsoft.AppConfiguration/configurationStores\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "85" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "5525e86a-bf65-4703-815f-f500a7e01c0a" ],
+        "x-ms-correlation-request-id": [ "c8a9ae96-f661-4934-930d-ee83e034ac6c" ],
+        "Server": [ "nginx/1.17.10" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070252Z:c8a9ae96-f661-4934-930d-ee83e034ac6c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:02:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "81" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true,\"message\":\"The specified name is available.\",\"reason\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+CreateStore+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f?api-version=2022-05-01",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "70" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/operationsStatus/avOZ704lLyOlB0r7uz36tP1CQQx-DPIw46Vf1Lzg-MA?api-version=2022-05-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "88d7afb9-3823-4790-be20-43caa4985b0d" ],
+        "x-ms-correlation-request-id": [ "41e6a479-cd99-4d3e-8ab7-3fe90a2f00c8" ],
+        "Server": [ "nginx/1.17.10" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070259Z:41e6a479-cd99-4d3e-8ab7-3fe90a2f00c8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:02:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "557" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Creating\",\"creationDate\":\"2022-08-24T07:02:57.8832916+00:00\",\"endpoint\":null,\"encryption\":null,\"privateEndpointConnections\":null,\"disableLocalAuth\":null,\"softDeleteRetentionInDays\":null,\"enablePurgeProtection\":null},\"sku\":{\"name\":\"Standard\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f\",\"name\":\"az976f\",\"tags\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+CreateStore+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/operationsStatus/avOZ704lLyOlB0r7uz36tP1CQQx-DPIw46Vf1Lzg-MA?api-version=2022-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/operationsStatus/avOZ704lLyOlB0r7uz36tP1CQQx-DPIw46Vf1Lzg-MA?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "3b6aba85-a00f-47a4-9e02-e4f400efcfd8" ],
+        "CommandName": [ "Az.AppConfiguration.internal\\New-AzAppConfigurationStore" ],
+        "FullCommandName": [ "New-AzAppConfigurationStore_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070309Z:40163566-29fe-4a69-b5d4-3a3ba2b1dc97" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/operationsStatus/avOZ704lLyOlB0r7uz36tP1CQQx-DPIw46Vf1Lzg-MA?api-version=2022-05-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "e8487440-80fc-4c76-bd24-2f96f584f471" ],
+        "x-ms-correlation-request-id": [ "40163566-29fe-4a69-b5d4-3a3ba2b1dc97" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "262" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/operationsStatus/avOZ704lLyOlB0r7uz36tP1CQQx-DPIw46Vf1Lzg-MA\",\"name\":\"avOZ704lLyOlB0r7uz36tP1CQQx-DPIw46Vf1Lzg-MA\",\"status\":\"Succeeded\",\"error\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+CreateStore+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f?api-version=2022-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "3b6aba85-a00f-47a4-9e02-e4f400efcfd8" ],
+        "CommandName": [ "Az.AppConfiguration.internal\\New-AzAppConfigurationStore" ],
+        "FullCommandName": [ "New-AzAppConfigurationStore_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"30001fe5-0000-0100-0000-6305cd220000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070310Z:c4c9c95b-d0f5-4b13-92a5-693e73ea46c9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "b9a16e2c-2c39-482d-96eb-f910a0d977df" ],
+        "x-ms-correlation-request-id": [ "c4c9c95b-d0f5-4b13-92a5-693e73ea46c9" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "808" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2022-08-24T07:02:58+00:00\",\"endpoint\":\"https://az976f.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null,\"disableLocalAuth\":false,\"softDeleteRetentionInDays\":7,\"enablePurgeProtection\":false},\"sku\":{\"name\":\"standard\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-24T07:02:58+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-24T07:02:58+00:00\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f\",\"name\":\"az976f\",\"tags\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+CreateStore+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq?api-version=2022-05-01+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq?api-version=2022-05-01",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "70" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/operationsStatus/80jKcahQpAiR9FhZhseC1nLA7Lo9ZPFpnkLQcjWv78U?api-version=2022-05-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "147b6202-bf99-415a-93e7-33c0a313f276" ],
+        "x-ms-correlation-request-id": [ "893edae3-48da-4cea-ac81-c5d3c94589e5" ],
+        "Server": [ "nginx/1.17.10" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070315Z:893edae3-48da-4cea-ac81-c5d3c94589e5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "557" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Creating\",\"creationDate\":\"2022-08-24T07:03:13.9492725+00:00\",\"endpoint\":null,\"encryption\":null,\"privateEndpointConnections\":null,\"disableLocalAuth\":null,\"softDeleteRetentionInDays\":null,\"enablePurgeProtection\":null},\"sku\":{\"name\":\"Standard\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq\",\"name\":\"azi0gq\",\"tags\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+CreateStore+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/operationsStatus/80jKcahQpAiR9FhZhseC1nLA7Lo9ZPFpnkLQcjWv78U?api-version=2022-05-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/operationsStatus/80jKcahQpAiR9FhZhseC1nLA7Lo9ZPFpnkLQcjWv78U?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "13987ac8-bc2c-442d-bdba-aed86df89cd0" ],
+        "CommandName": [ "Az.AppConfiguration.internal\\New-AzAppConfigurationStore" ],
+        "FullCommandName": [ "New-AzAppConfigurationStore_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070325Z:e4f69fd7-5fb8-4629-9913-0949cf73650d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/operationsStatus/80jKcahQpAiR9FhZhseC1nLA7Lo9ZPFpnkLQcjWv78U?api-version=2022-05-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "86e9aa19-817c-4a6f-81cd-62b25dddb1b1" ],
+        "x-ms-correlation-request-id": [ "e4f69fd7-5fb8-4629-9913-0949cf73650d" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "262" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/operationsStatus/80jKcahQpAiR9FhZhseC1nLA7Lo9ZPFpnkLQcjWv78U\",\"name\":\"80jKcahQpAiR9FhZhseC1nLA7Lo9ZPFpnkLQcjWv78U\",\"status\":\"Succeeded\",\"error\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+CreateStore+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq?api-version=2022-05-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "13987ac8-bc2c-442d-bdba-aed86df89cd0" ],
+        "CommandName": [ "Az.AppConfiguration.internal\\New-AzAppConfigurationStore" ],
+        "FullCommandName": [ "New-AzAppConfigurationStore_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"300050e5-0000-0100-0000-6305cd330000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070326Z:65708b1e-d220-492d-861d-32a00b0b2c19" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "7b71f73d-8a62-48ee-9208-fa9b030f1121" ],
+        "x-ms-correlation-request-id": [ "65708b1e-d220-492d-861d-32a00b0b2c19" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "808" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2022-08-24T07:03:14+00:00\",\"endpoint\":\"https://azi0gq.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null,\"disableLocalAuth\":false,\"softDeleteRetentionInDays\":7,\"enablePurgeProtection\":false},\"sku\":{\"name\":\"standard\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-24T07:03:14+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-24T07:03:15+00:00\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq\",\"name\":\"azi0gq\",\"tags\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+ListStoreKey+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f/listKeys?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f/listKeys?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "e9e69b48-92d2-4702-9309-a65663677ce6" ],
+        "CommandName": [ "Get-AzAppConfigurationStoreKey" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStoreKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070327Z:dc4f67d8-c711-4902-9ee7-9037ed46f4d4" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "add7ad37-535a-4cb4-888d-5c1275ed6863" ],
+        "x-ms-correlation-request-id": [ "dc4f67d8-c711-4902-9ee7-9037ed46f4d4" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1317" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"44K0-l0-s0:x+0mB7ZmjFhDMiHuyqxe\",\"name\":\"Primary\",\"value\":\"2t9YWS/AOe8a53Nba/FMniPdA8eHkwEAlas7WQjkP/4=\",\"connectionString\":\"Endpoint=https://az976f.azconfig.io;Id=44K0-l0-s0:x+0mB7ZmjFhDMiHuyqxe;Secret=2t9YWS/AOe8a53Nba/FMniPdA8eHkwEAlas7WQjkP/4=\",\"lastModified\":\"2022-08-24T07:02:57+00:00\",\"readOnly\":false},{\"id\":\"k8N9-l0-s0:GekO2fhWzDzH3eRahdCE\",\"name\":\"Secondary\",\"value\":\"GoIjzlT4mpFjSDXt5igEX/gew0e181koaCUTG6qCVFI=\",\"connectionString\":\"Endpoint=https://az976f.azconfig.io;Id=k8N9-l0-s0:GekO2fhWzDzH3eRahdCE;Secret=GoIjzlT4mpFjSDXt5igEX/gew0e181koaCUTG6qCVFI=\",\"lastModified\":\"2022-08-24T07:02:57+00:00\",\"readOnly\":false},{\"id\":\"R8nh-l0-s0:ay0gEeWfs1zsPd4BCUDk\",\"name\":\"Primary Read Only\",\"value\":\"QsoN1/1tiXprL3L8NXPkoV1/GfAWje6GHUsxH71tTKQ=\",\"connectionString\":\"Endpoint=https://az976f.azconfig.io;Id=R8nh-l0-s0:ay0gEeWfs1zsPd4BCUDk;Secret=QsoN1/1tiXprL3L8NXPkoV1/GfAWje6GHUsxH71tTKQ=\",\"lastModified\":\"2022-08-24T07:02:57+00:00\",\"readOnly\":true},{\"id\":\"otaa-l0-s0:ySOVqQ1kVXPGgFT6imCb\",\"name\":\"Secondary Read Only\",\"value\":\"2ZhCWSgKwGW52ZEB1F3Qs2DWrwmHRxAnpFCkTPJVT0E=\",\"connectionString\":\"Endpoint=https://az976f.azconfig.io;Id=otaa-l0-s0:ySOVqQ1kVXPGgFT6imCb;Secret=2ZhCWSgKwGW52ZEB1F3Qs2DWrwmHRxAnpFCkTPJVT0E=\",\"lastModified\":\"2022-08-24T07:02:57+00:00\",\"readOnly\":true}],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+CreateStoreKey+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f/listKeys?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f/listKeys?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "ea4a10b0-952c-4f30-ac14-cf42731641a6" ],
+        "CommandName": [ "Get-AzAppConfigurationStoreKey" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStoreKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070328Z:7dd1a374-1145-4435-b2d7-908a7ab567d5" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d2aa6c8a-ab0e-494a-aff9-ec1bf9b8b913" ],
+        "x-ms-correlation-request-id": [ "7dd1a374-1145-4435-b2d7-908a7ab567d5" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1317" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"44K0-l0-s0:x+0mB7ZmjFhDMiHuyqxe\",\"name\":\"Primary\",\"value\":\"2t9YWS/AOe8a53Nba/FMniPdA8eHkwEAlas7WQjkP/4=\",\"connectionString\":\"Endpoint=https://az976f.azconfig.io;Id=44K0-l0-s0:x+0mB7ZmjFhDMiHuyqxe;Secret=2t9YWS/AOe8a53Nba/FMniPdA8eHkwEAlas7WQjkP/4=\",\"lastModified\":\"2022-08-24T07:02:57+00:00\",\"readOnly\":false},{\"id\":\"k8N9-l0-s0:GekO2fhWzDzH3eRahdCE\",\"name\":\"Secondary\",\"value\":\"GoIjzlT4mpFjSDXt5igEX/gew0e181koaCUTG6qCVFI=\",\"connectionString\":\"Endpoint=https://az976f.azconfig.io;Id=k8N9-l0-s0:GekO2fhWzDzH3eRahdCE;Secret=GoIjzlT4mpFjSDXt5igEX/gew0e181koaCUTG6qCVFI=\",\"lastModified\":\"2022-08-24T07:02:57+00:00\",\"readOnly\":false},{\"id\":\"R8nh-l0-s0:ay0gEeWfs1zsPd4BCUDk\",\"name\":\"Primary Read Only\",\"value\":\"QsoN1/1tiXprL3L8NXPkoV1/GfAWje6GHUsxH71tTKQ=\",\"connectionString\":\"Endpoint=https://az976f.azconfig.io;Id=R8nh-l0-s0:ay0gEeWfs1zsPd4BCUDk;Secret=QsoN1/1tiXprL3L8NXPkoV1/GfAWje6GHUsxH71tTKQ=\",\"lastModified\":\"2022-08-24T07:02:57+00:00\",\"readOnly\":true},{\"id\":\"otaa-l0-s0:ySOVqQ1kVXPGgFT6imCb\",\"name\":\"Secondary Read Only\",\"value\":\"2ZhCWSgKwGW52ZEB1F3Qs2DWrwmHRxAnpFCkTPJVT0E=\",\"connectionString\":\"Endpoint=https://az976f.azconfig.io;Id=otaa-l0-s0:ySOVqQ1kVXPGgFT6imCb;Secret=2ZhCWSgKwGW52ZEB1F3Qs2DWrwmHRxAnpFCkTPJVT0E=\",\"lastModified\":\"2022-08-24T07:02:57+00:00\",\"readOnly\":true}],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+CreateStoreKey+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f/regenerateKey?api-version=2022-05-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f/regenerateKey?api-version=2022-05-01",
+      "Content": "{\r\n  \"id\": \"44K0-l0-s0:x+0mB7ZmjFhDMiHuyqxe\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "47" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070330Z:21f0874d-02af-4638-a7fb-0a321f444f40" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c13fd5de-c953-4953-b23d-6d0e835aa1b1" ],
+        "x-ms-correlation-request-id": [ "21f0874d-02af-4638-a7fb-0a321f444f40" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "316" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"iu5g-l0-s0:vY/Xenx1FxpgQ0uEXqY+\",\"name\":\"Primary\",\"value\":\"psGojFNQuDulHZ32B3DsAm2axfaQKsr6lqbPTZi3r0E=\",\"connectionString\":\"Endpoint=https://az976f.azconfig.io;Id=iu5g-l0-s0:vY/Xenx1FxpgQ0uEXqY+;Secret=psGojFNQuDulHZ32B3DsAm2axfaQKsr6lqbPTZi3r0E=\",\"lastModified\":\"2022-08-24T07:03:30+00:00\",\"readOnly\":false}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+GetStore+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "5799c8d8-72b8-453e-a4b9-fd88d9c74988" ],
+        "CommandName": [ "Get-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStore_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"300081e5-0000-0100-0000-6305cd420000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070331Z:66ef4746-ad5b-4452-923f-a184f03b68be" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "5bf9472f-8f98-4f8d-b51b-e4a6596fa2e3" ],
+        "x-ms-correlation-request-id": [ "66ef4746-ad5b-4452-923f-a184f03b68be" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "808" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2022-08-24T07:02:58+00:00\",\"endpoint\":\"https://az976f.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null,\"disableLocalAuth\":false,\"softDeleteRetentionInDays\":7,\"enablePurgeProtection\":false},\"sku\":{\"name\":\"standard\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-24T07:02:58+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-24T07:03:30+00:00\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f\",\"name\":\"az976f\",\"tags\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+ListStoreByResourceGroupName+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "73fcd2fd-85ba-46e2-ab48-a3e6c8b57dad" ],
+        "CommandName": [ "Get-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStore_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070332Z:97c4a7e5-d616-48df-9506-b9e474654099" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "Link": [ "\u003c/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores?api-version=2022-05-01\u0026$skipToken=azi0gq\u003e; rel=\"next\"" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "ef9b804e-663c-4d9e-898c-191c1550f2d1" ],
+        "x-ms-correlation-request-id": [ "97c4a7e5-d616-48df-9506-b9e474654099" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1856" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2022-08-24T07:02:58+00:00\",\"endpoint\":\"https://az976f.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null,\"disableLocalAuth\":false,\"softDeleteRetentionInDays\":7,\"enablePurgeProtection\":false},\"sku\":{\"name\":\"standard\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-24T07:02:58+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-24T07:03:30+00:00\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f\",\"name\":\"az976f\",\"tags\":{}},{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2022-08-24T07:03:14+00:00\",\"endpoint\":\"https://azi0gq.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null,\"disableLocalAuth\":false,\"softDeleteRetentionInDays\":7,\"enablePurgeProtection\":false},\"sku\":{\"name\":\"standard\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-24T07:03:14+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-24T07:03:15+00:00\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq\",\"name\":\"azi0gq\",\"tags\":{}}],\"nextLink\":\"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores?api-version=2022-05-01\u0026$skipToken=azi0gq\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+ListStoreByResourceGroupName+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores?api-version=2022-05-01\u0026$skipToken=azi0gq+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores?api-version=2022-05-01\u0026$skipToken=azi0gq",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "73fcd2fd-85ba-46e2-ab48-a3e6c8b57dad" ],
+        "CommandName": [ "Get-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStore_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "2fb4e178-0b77-4788-ae8d-b38a14dd1aaa" ],
+        "x-ms-correlation-request-id": [ "daa630a8-0cce-4b46-bd64-4d59d0a6c8fe" ],
+        "Server": [ "nginx/1.17.10" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070333Z:daa630a8-0cce-4b46-bd64-4d59d0a6c8fe" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "28" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+ListStore+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/configurationStores?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/configurationStores?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "460dfbaa-28c5-42cf-8c88-a8bd85268016" ],
+        "CommandName": [ "Get-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStore_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070333Z:49a0f504-4a89-41ee-bf11-2cfbac75fc41" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "Link": [ "\u003c/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/configurationStores?api-version=2022-05-01\u0026$skipToken=jinpei-appconfig\u003e; rel=\"next\"" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "171ffdd4-203d-4f1e-913a-9f171439743e" ],
+        "x-ms-correlation-request-id": [ "49a0f504-4a89-41ee-bf11-2cfbac75fc41" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4350" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2022-08-24T07:02:58+00:00\",\"endpoint\":\"https://az976f.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null,\"disableLocalAuth\":false,\"softDeleteRetentionInDays\":7,\"enablePurgeProtection\":false},\"sku\":{\"name\":\"standard\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-24T07:02:58+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-24T07:03:30+00:00\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f\",\"name\":\"az976f\",\"tags\":{}},{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2022-08-24T07:03:14+00:00\",\"endpoint\":\"https://azi0gq.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null,\"disableLocalAuth\":false,\"softDeleteRetentionInDays\":7,\"enablePurgeProtection\":false},\"sku\":{\"name\":\"standard\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-24T07:03:14+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-24T07:03:15+00:00\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq\",\"name\":\"azi0gq\",\"tags\":{}},{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2022-08-24T06:59:37+00:00\",\"endpoint\":\"https://azpby4.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null,\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":true,\"softDeleteRetentionInDays\":7,\"enablePurgeProtection\":true},\"sku\":{\"name\":\"standard\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-24T06:59:37+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-24T06:59:59+00:00\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-fb257h/providers/Microsoft.AppConfiguration/configurationStores/azpby4\",\"name\":\"azpby4\",\"tags\":{}},{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2022-08-24T06:11:52+00:00\",\"endpoint\":\"https://azpstest-appstore.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null,\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":true,\"softDeleteRetentionInDays\":7,\"enablePurgeProtection\":true},\"sku\":{\"name\":\"standard\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-24T06:11:52+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-24T06:27:36+00:00\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.AppConfiguration/configurationStores/azpstest-appstore\",\"name\":\"azpstest-appstore\",\"tags\":{}},{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2022-08-17T05:42:38+00:00\",\"endpoint\":\"https://jinpei-appconfig.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null,\"disableLocalAuth\":false,\"softDeleteRetentionInDays\":7,\"enablePurgeProtection\":true},\"sku\":{\"name\":\"standard\"},\"systemData\":{\"createdBy\":\"dixue@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-17T05:42:38+00:00\",\"lastModifiedBy\":\"dixue@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-17T05:42:38+00:00\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/jinpei/providers/Microsoft.AppConfiguration/configurationStores/jinpei-appconfig\",\"name\":\"jinpei-appconfig\",\"tags\":{}}],\"nextLink\":\"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/configurationStores?api-version=2022-05-01\u0026$skipToken=jinpei-appconfig\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+ListStore+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/configurationStores?api-version=2022-05-01\u0026$skipToken=jinpei-appconfig+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/configurationStores?api-version=2022-05-01\u0026$skipToken=jinpei-appconfig",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "460dfbaa-28c5-42cf-8c88-a8bd85268016" ],
+        "CommandName": [ "Get-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStore_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "19b70fe0-01e6-48a4-8131-115699495306" ],
+        "x-ms-correlation-request-id": [ "4a76dc18-4e1e-481b-8f6e-e2a21b8a2fe1" ],
+        "Server": [ "nginx/1.17.10" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070334Z:4a76dc18-4e1e-481b-8f6e-e2a21b8a2fe1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "28" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+UpdateStore+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f?api-version=2022-05-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"disableLocalAuth\": true,\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "97" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"300095e5-0000-0100-0000-6305cd480000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070336Z:d4b425d3-af9d-439e-b09e-d69ede64d2af" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "3df99029-70eb-4889-adb0-85d1ca9b5ac5" ],
+        "x-ms-correlation-request-id": [ "d4b425d3-af9d-439e-b09e-d69ede64d2af" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "839" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2022-08-24T07:02:58+00:00\",\"endpoint\":\"https://az976f.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null,\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":true,\"softDeleteRetentionInDays\":7,\"enablePurgeProtection\":false},\"sku\":{\"name\":\"standard\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-24T07:02:58+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-24T07:03:36+00:00\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f\",\"name\":\"az976f\",\"tags\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+UpdateStoreByObj+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "9caad543-94b2-4841-9d2c-61b5a2df1c28" ],
+        "CommandName": [ "Get-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStore_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"300050e5-0000-0100-0000-6305cd330000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070337Z:acca2323-a10b-4b7c-b3cd-7daa800292ce" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "fe548e9d-8f0d-46bc-b850-b55975d5ac81" ],
+        "x-ms-correlation-request-id": [ "acca2323-a10b-4b7c-b3cd-7daa800292ce" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "808" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2022-08-24T07:03:14+00:00\",\"endpoint\":\"https://azi0gq.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null,\"disableLocalAuth\":false,\"softDeleteRetentionInDays\":7,\"enablePurgeProtection\":false},\"sku\":{\"name\":\"standard\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-24T07:03:14+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-24T07:03:15+00:00\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq\",\"name\":\"azi0gq\",\"tags\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+UpdateStoreByObj+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq?api-version=2022-05-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq?api-version=2022-05-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"disableLocalAuth\": true,\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "97" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"3000a2e5-0000-0100-0000-6305cd4b0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070339Z:0b68edbe-5bae-4892-83ab-7359e089b6d4" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "cd7244a4-0e73-4489-b3fb-5d94dbdd5548" ],
+        "x-ms-correlation-request-id": [ "0b68edbe-5bae-4892-83ab-7359e089b6d4" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "839" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2022-08-24T07:03:14+00:00\",\"endpoint\":\"https://azi0gq.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null,\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":true,\"softDeleteRetentionInDays\":7,\"enablePurgeProtection\":false},\"sku\":{\"name\":\"standard\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-24T07:03:14+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-24T07:03:39+00:00\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq\",\"name\":\"azi0gq\",\"tags\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+DeleteStore+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "71315b43-6f7a-4052-a83e-2c38136043fe" ],
+        "CommandName": [ "Remove-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Remove-AzAppConfigurationStore_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "5e7a550f-925c-44a7-90b5-2c0e42ce0343" ],
+        "x-ms-correlation-request-id": [ "2b3e61c5-677a-4684-aff9-e8dc2b7e8df6" ],
+        "Server": [ "nginx/1.17.10" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070347Z:2b3e61c5-677a-4684-aff9-e8dc2b7e8df6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+DeleteStoreByObj+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "dae708ca-6549-4d39-97ad-577a88ccea29" ],
+        "CommandName": [ "Get-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationStore_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"3000a2e5-0000-0100-0000-6305cd4b0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070348Z:589f3ad5-5ae0-4c97-ba0b-6b3e41766976" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c9592c3d-5ba1-4ff3-8d74-021148814fea" ],
+        "x-ms-correlation-request-id": [ "589f3ad5-5ae0-4c97-ba0b-6b3e41766976" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "839" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.AppConfiguration/configurationStores\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"creationDate\":\"2022-08-24T07:03:14+00:00\",\"endpoint\":\"https://azi0gq.azconfig.io\",\"encryption\":{\"keyVaultProperties\":null},\"privateEndpointConnections\":null,\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":true,\"softDeleteRetentionInDays\":7,\"enablePurgeProtection\":false},\"sku\":{\"name\":\"standard\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-08-24T07:03:14+00:00\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-08-24T07:03:39+00:00\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq\",\"name\":\"azi0gq\",\"tags\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+DeleteStoreByObj+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq?api-version=2022-05-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "552a9d83-1c2a-4071-8554-b672483cd91f" ],
+        "CommandName": [ "Remove-AzAppConfigurationStore" ],
+        "FullCommandName": [ "Remove-AzAppConfigurationStore_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "2612ea4c-0ff1-40d8-a62e-b3d98240aec3" ],
+        "x-ms-correlation-request-id": [ "dc7d6c03-f500-492a-81c7-1532f7b8b4fb" ],
+        "Server": [ "nginx/1.17.10" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070352Z:dc7d6c03-f500-492a-81c7-1532f7b8b4fb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+ListDeletedStore+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/deletedConfigurationStores?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/deletedConfigurationStores?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "f52085e1-aa0c-4352-bc2b-5f8deeee716a" ],
+        "CommandName": [ "Get-AzAppConfigurationDeletedStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationDeletedStore_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "ce4242e9-a917-43e8-ad78-957143e1b106", "2e80403f-7dbe-4a5f-8390-bd1e530e9ca2", "05e05672-c403-4c45-af48-5797c7cd877d", "8264931f-712f-4bc5-9f3b-efae6fbaae19", "a10c936b-e228-43b6-966f-8a3ea67ee24a", "f05b64b9-d04f-43c4-af86-b0a034b9e777", "2fe267c0-a694-48c2-8ab0-60cd10d8b783", "cbdf444c-e279-4076-b4b6-e26fe4e86aef", "d227768f-ea79-4a02-b500-af9166123dd7", "c5395eb1-a23a-4050-92ec-9f2acdb23acf", "215fb93b-4273-4c58-ab74-42cc65d818a2", "18f3eafb-c782-4c9c-8de1-5c8c765dcf5c", "331cd596-d094-442e-ad72-26620883b61c", "3f703271-3e7a-495b-95de-07df567ae3a8", "19816178-d029-46d6-ae1c-5d1f4ee53a80", "f4555a7e-b52a-4344-b297-468c6794008c", "18b2b09b-2eee-48ee-a55e-9c330824d67d", "f4095bd0-87a0-492c-8b6c-715131b10030", "183f68df-5de5-4318-bd01-428d9d057627", "d8cab135-af67-4492-b1f2-3db0b030fe00", "70af59d9-f4dc-45e7-962c-2c2860c204a5", "d11011b6-5e2c-422c-ad4d-554f63e3a926", "60f4ea7c-c15f-4dd9-8529-f4992d9c039c", "1104b481-9502-4ba5-96b3-ef4c389a12e7", "6cd5dcc1-34c4-4799-bd66-f0f861e3c918", "0b97016a-fecc-48ef-ae34-c81d23c9571e", "15c81d1f-9133-4bca-811d-c3f3a1546a50", "b27c912f-ce1f-46e2-8f6d-4f93afab991b", "d584bf0a-2f85-4a9a-9b8b-e7944a7654d2", "0830fd25-1d44-4a4c-916e-4c8306d02d82", "6ce7f7d1-394b-4ac0-ba9f-ca50ba9a00b8", "5391cbc9-b487-4966-a0c7-c0af4b6002d8", "e3122451-74b2-4d5c-9cdd-73055aaf77d1", "bd18a3f3-1323-456c-94f8-ed6eedb5ef2a", "66c458a2-ab95-4640-8123-e7c58c2c2369" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-request-id": [ "b77d8126-9621-41e9-8108-096da3d642bd" ],
+        "x-ms-correlation-request-id": [ "b77d8126-9621-41e9-8108-096da3d642bd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070354Z:b77d8126-9621-41e9-8108-096da3d642bd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "2205" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/deletedConfigurationStores/az49fn\",\"name\":\"az49fn\",\"type\":\"Microsoft.AppConfiguration/deletedConfigurationStores\",\"properties\":{\"configurationStoreId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-fb257h/providers/Microsoft.AppConfiguration/configurationStores/az49fn\",\"location\":\"eastus\",\"deletionDate\":\"2022-08-24T07:00:01+00:00\",\"scheduledPurgeDate\":\"2022-08-31T07:00:01+00:00\",\"tags\":{},\"purgeProtectionEnabled\":true}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/deletedConfigurationStores/az976f\",\"name\":\"az976f\",\"type\":\"Microsoft.AppConfiguration/deletedConfigurationStores\",\"properties\":{\"configurationStoreId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f\",\"location\":\"eastus\",\"deletionDate\":\"2022-08-24T07:03:41+00:00\",\"scheduledPurgeDate\":\"2022-08-31T07:03:41+00:00\",\"tags\":{},\"purgeProtectionEnabled\":false}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/deletedConfigurationStores/azi0gq\",\"name\":\"azi0gq\",\"type\":\"Microsoft.AppConfiguration/deletedConfigurationStores\",\"properties\":{\"configurationStoreId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/azi0gq\",\"location\":\"eastus\",\"deletionDate\":\"2022-08-24T07:03:49+00:00\",\"scheduledPurgeDate\":\"2022-08-31T07:03:49+00:00\",\"tags\":{},\"purgeProtectionEnabled\":false}}],\"nextLink\":\"https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/deletedConfigurationStores?api-version=2022-05-01\u0026%24skiptoken=VY%2fBTsMwEET%2fxUKccOw6VI0jVSiquNELKR%2bwSTZmFWK7a6dCrfrvBG5cZ%2bY9aW7C43d%2bIz8lUd%2fEa9OePlpRi8%2bcY6qVmsGDwxl9LuC6MBZ9mFVautQzxUzBJ2XRmHLoUJaltfIZN1ZWFXZS29121Ab6ajeqyOFCA3JSR%2bo5pDDmoonxEPxIbmH4VakBvzDj8C9sc2BMLxBJXlZ8ne2NNkbqrdSbx4c0UTyFCf0erqTdWdyfBPDcOMfoYJX9leuh5v0o7j8%3d\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+ListDeletedStore+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/deletedConfigurationStores?api-version=2022-05-01\u0026%24skiptoken=VY%2fBTsMwEET%2fxUKccOw6VI0jVSiquNELKR%2bwSTZmFWK7a6dCrfrvBG5cZ%2bY9aW7C43d%2bIz8lUd%2fEa9OePlpRi8%2bcY6qVmsGDwxl9LuC6MBZ9mFVautQzxUzBJ2XRmHLoUJaltfIZN1ZWFXZS29121Ab6ajeqyOFCA3JSR%2bo5pDDmoonxEPxIbmH4VakBvzDj8C9sc2BMLxBJXlZ8ne2NNkbqrdSbx4c0UTyFCf0erqTdWdyfBPDcOMfoYJX9leuh5v0o7j8%3d+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/deletedConfigurationStores?api-version=2022-05-01\u0026%24skiptoken=VY%2fBTsMwEET%2fxUKccOw6VI0jVSiquNELKR%2bwSTZmFWK7a6dCrfrvBG5cZ%2bY9aW7C43d%2bIz8lUd%2fEa9OePlpRi8%2bcY6qVmsGDwxl9LuC6MBZ9mFVautQzxUzBJ2XRmHLoUJaltfIZN1ZWFXZS29121Ab6ajeqyOFCA3JSR%2bo5pDDmoonxEPxIbmH4VakBvzDj8C9sc2BMLxBJXlZ8ne2NNkbqrdSbx4c0UTyFCf0erqTdWdyfBPDcOMfoYJX9leuh5v0o7j8%3d",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "f52085e1-aa0c-4352-bc2b-5f8deeee716a" ],
+        "CommandName": [ "Get-AzAppConfigurationDeletedStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationDeletedStore_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "244f24e9-930a-4f34-ab93-862977c305b1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-request-id": [ "c49a9897-4a3e-452e-8509-a665d09e7460" ],
+        "x-ms-correlation-request-id": [ "c49a9897-4a3e-452e-8509-a665d09e7460" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070355Z:c49a9897-4a3e-452e-8509-a665d09e7460" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "12" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+GetDeletedStore+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/deletedConfigurationStores/az976f?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/deletedConfigurationStores/az976f?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "c05271cf-84a8-42f8-a57c-b172c027f012" ],
+        "CommandName": [ "Get-AzAppConfigurationDeletedStore" ],
+        "FullCommandName": [ "Get-AzAppConfigurationDeletedStore_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "W/\"3000a6e5-0000-0100-0000-6305cd4d0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070355Z:d326cd10-e0fd-49ef-bdab-487e7bdddd67" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "0937a859-36ce-4627-8871-98ec7e418272" ],
+        "x-ms-correlation-request-id": [ "d326cd10-e0fd-49ef-bdab-487e7bdddd67" ],
+        "Server": [ "nginx/1.17.10" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "572" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/deletedConfigurationStores/az976f\",\"name\":\"az976f\",\"type\":\"Microsoft.AppConfiguration/deletedConfigurationStores\",\"properties\":{\"configurationStoreId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstestgroup-4ntp13/providers/Microsoft.AppConfiguration/configurationStores/az976f\",\"location\":\"eastus\",\"deletionDate\":\"2022-08-24T07:03:41+00:00\",\"scheduledPurgeDate\":\"2022-08-31T07:03:41+00:00\",\"tags\":{},\"purgeProtectionEnabled\":false}}",
+      "isContentBase64": false
+    }
+  },
+  "AzAppConfigurationStore+[NoContext]+ClearDeletedStore+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/deletedConfigurationStores/az976f/purge?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.AppConfiguration/locations/eastus/deletedConfigurationStores/az976f/purge?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "5d2ab0a9-94ba-42cc-81ba-2589eb994496" ],
+        "CommandName": [ "Clear-AzAppConfigurationDeletedStore" ],
+        "FullCommandName": [ "Clear-AzAppConfigurationDeletedStore_Purge" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.AppConfiguration/1.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d4b55400-26da-4771-97f7-6cbb4a79f5e6" ],
+        "x-ms-correlation-request-id": [ "cc1a31b0-8e00-41fc-a3a5-bb0a9504d503" ],
+        "Server": [ "nginx/1.17.10" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T070356Z:cc1a31b0-8e00-41fc-a3a5-bb0a9504d503" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 24 Aug 2022 07:03:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

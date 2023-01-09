@@ -1,9 +1,9 @@
 ### Example 1: Create a Windows Virtual Desktop ApplicationGroup by name
 ```powershell
 New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
-                            -Name ApplicationGroupName `
-                            -FriendlyName 'Friendly Name' `
-                            -Description 'Description' `
+                          -Name ApplicationGroupName `
+                          -FriendlyName 'Friendly Name' `
+                          -Description 'Description'
 ```
 
 ```output

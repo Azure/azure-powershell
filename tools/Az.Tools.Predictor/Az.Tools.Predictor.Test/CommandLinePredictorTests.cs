@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifyParameterValues()
         {
-            var predictionContext = PredictionContext.Create("Get-AzContext");
+            var predictionContext = PredictionContext.Create("Remove-Item");
             var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
             var inputParameterSet = new ParameterSet(commandAst, _azContext);
@@ -129,10 +129,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// Tests in the case there is no prediction for the user input or the user input matches exact what we have in the model.
         /// </summary>
         [Theory]
-        [InlineData("NEW-AZCONTEXT")]
-        [InlineData("get-azaccount ")]
+        [InlineData("GET-CHILDITEM")]
+        [InlineData("copy-item ")]
         [InlineData(AzPredictorConstants.CommandPlaceholder)]
-        [InlineData("Get-ChildItem")]
+        [InlineData("Get-LogProperties -Name 'Windows'")]
         public void GetNoPredictionWithCommandName(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
@@ -152,14 +152,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         }
 
         /// <summary>
-        /// Tests in the case there are no az commands in the history.
+        /// Tests in the case when the user inputs only the command name
         /// </summary>
         [Theory]
-        [InlineData("New-AzKeyVault ")]
-        [InlineData("CONNECT-AZACCOUNT")]
-        [InlineData("set-azstorageaccount ")]
-        [InlineData("Get-AzResourceG")]
-        [InlineData("Get-AzStorageAcco")] // an imcomplete command and there is a record "Get-AzStorageAccount" in the model.
+        [InlineData("Get-LogProperties ")]
+        [InlineData("CLEAR-VARIABLE")]
+        [InlineData("compare-object")]
+        [InlineData("Clear-Con")]
+        [InlineData("set-con")]
         public void GetPredictionWithCommandName(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
@@ -182,10 +182,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// Tests in the case when the user inputs the command name and parameters.
         /// </summary>
         [Theory]
-        [InlineData("Get-AzKeyVault -VaultName")]
-        [InlineData("GET-AZSTORAGEACCOUNTKEY -NAME ")]
-        [InlineData("new-azresourcegroup -name hello")]
-        [InlineData("new-azresourcegroup hello")]
+        [InlineData("Clear-Variable -Name")]
+        [InlineData("CLEAR-CONTENT -PATH ")]
+        [InlineData("set-content -path file")]
+        [InlineData("set-content file")]
         public void GetPredictionWithCommandNameParameters(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
@@ -208,9 +208,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// Tests in the case when the user inputs the command name and parameters.
         /// </summary>
         [Theory]
-        [InlineData("Get-AzResource -Name hello -Pre")]
-        [InlineData("Get-AzADServicePrincipal -ApplicationObject")] // Doesn't exist
-        [InlineData("new-azresourcegroup -NoExistingParam")]
+        [InlineData("Set-Content -Name hello -Pre")]
+        [InlineData("Get-ccontent -path ")] // Doesn't exist
+        [InlineData("get-logproperties -NoExistingParam")]
         [InlineData("Set-StorageAccount -WhatIf")]
         [InlineData("git status")]
         [InlineData("Get-AzContext Name")] // a wrong command
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifyPredictionForCommand()
         {
-            var predictionContext = PredictionContext.Create("Connect-AzAccount");
+            var predictionContext = PredictionContext.Create("Set-Content");
             var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
             var inputParameterSet = new ParameterSet(commandAst, _azContext);
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                     1,
                     CancellationToken.None);
 
-            Assert.Equal("Connect-AzAccount -Identity", result.PredictiveSuggestions.First().SuggestionText);
+            Assert.Equal("Set-Content -Path C:\\Temp\\* -Filter *.txt -Value 'Empty'", result.PredictiveSuggestions.First().SuggestionText);
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifyPredictionForCommandAndNamedParameters()
         {
-            var predictionContext = PredictionContext.Create("GET-AZSTORAGEACCOUNTKEY -NAME");
+            var predictionContext = PredictionContext.Create("set-CONTENT -PATH");
             var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
             var inputParameterSet = new ParameterSet(commandAst, _azContext);
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                     1,
                     CancellationToken.None);
 
-            Assert.Equal("Get-AzStorageAccountKey -Name 'myStorageAccount' -ResourceGroupName 'ContosoGroup02'", result.PredictiveSuggestions.First().SuggestionText);
+            Assert.Equal("Set-Content -Path C:\\Temp\\* -Filter *.txt -Value 'Empty'", result.PredictiveSuggestions.First().SuggestionText);
         }
 
         /// <summary>
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifyPredictionForCommandAndTwoPositionalParameters()
         {
-            var predictionContext = PredictionContext.Create("Get-AzStorageAccount test test"); // Two positional parameters with the same value.
+            var predictionContext = PredictionContext.Create("Compare-Object test test"); // Two positional parameters with the same value.
             var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
             var inputParameterSet = new ParameterSet(commandAst, _azContext);
@@ -300,8 +300,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             var expected = new PredictiveSuggestion[]
             {
-                new PredictiveSuggestion("Get-AzStorageAccount test test -DefaultProfile {IAzureContextContainer}"),
-                new PredictiveSuggestion("Get-AzStorageAccount test test -IncludeGeoReplicationStats"),
+                new PredictiveSuggestion("Compare-Object test test -IncludeEqual -ExcludeDifferent"),
             };
 
             Assert.Equal(expected.Select(e => e.SuggestionText), result.PredictiveSuggestions.Select(r => r.SuggestionText));
@@ -313,7 +312,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifyPredictionForCommandAndPositionalParameters()
         {
-            var predictionContext = PredictionContext.Create("Get-AzStorageAccount resourcegroup");
+            var predictionContext = PredictionContext.Create("clear-content file");
             var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
             var inputParameterSet = new ParameterSet(commandAst, _azContext);
@@ -329,9 +328,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             var expected = new PredictiveSuggestion[]
             {
-                new PredictiveSuggestion("Get-AzStorageAccount resourcegroup -Name 'myStorageAccount'"),
-                new PredictiveSuggestion("Get-AzStorageAccount resourcegroup -Name 'myStorageAccount' -DefaultProfile {IAzureContextContainer}"),
-                new PredictiveSuggestion("Get-AzStorageAccount resourcegroup -Name 'myStorageAccount' -IncludeGeoReplicationStats"),
+                new PredictiveSuggestion("Clear-Content file -Stream Zone.Identifier"),
+                new PredictiveSuggestion("Clear-Content file -Filter '*.log' -Force"),
             };
 
             Assert.Equal(expected.Select(e => e.SuggestionText), result.PredictiveSuggestions.Select(r => r.SuggestionText));

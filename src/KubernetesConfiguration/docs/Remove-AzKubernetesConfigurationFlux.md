@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfigurationflux
+online version: https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesconfigurationflux
 schema: 2.0.0
 ---
 
@@ -32,16 +32,14 @@ This will delete the YAML file used to set up the Flux Configuration, thus stopp
 
 ### Example 1: This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 ```powershell
-PS C:\> Remove-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp
-
+Remove-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp
 ```
 
 This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 
 ### Example 2: This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 ```powershell
-PS C:\> Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp | Remove-AzKubernetesConfigurationFlux
-
+Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp | Remove-AzKubernetesConfigurationFlux
 ```
 
 This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.

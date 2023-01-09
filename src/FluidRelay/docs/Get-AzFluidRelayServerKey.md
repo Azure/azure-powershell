@@ -12,16 +12,9 @@ Get primary and secondary key for this server.
 
 ## SYNTAX
 
-### List (Default)
 ```
 Get-AzFluidRelayServerKey -FluidRelayServerName <String> -ResourceGroup <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzFluidRelayServerKey -InputObject <IFluidRelayIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +57,7 @@ The Fluid Relay server resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -74,28 +67,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroup
 The resource group containing the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -110,7 +87,7 @@ The subscription id (GUID) for this resource.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -156,27 +133,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.IFluidRelayIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220526.IFluidRelayServerKeys
+### Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServerKeys
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
-  - `[FluidRelayContainerName <String>]`: The Fluid Relay container resource name.
-  - `[FluidRelayServerName <String>]`: The Fluid Relay server resource name.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroup <String>]`: The resource group containing the resource.
-  - `[SubscriptionId <String>]`: The subscription id (GUID) for this resource.
 
 ## RELATED LINKS
 

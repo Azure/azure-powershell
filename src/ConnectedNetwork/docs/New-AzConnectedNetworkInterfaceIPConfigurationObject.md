@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceIPConfigurationObject
+online version: https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceIPConfigurationObject
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ Create a in-memory object for NetworkInterfaceIPConfiguration
 
 ### Example 1: Create a in-memory object for NetworkInterfaceIPConfiguration
 ```powershell
-PS C:\> New-AzConnectedNetworkInterfaceIPConfigurationObject -IPAllocationMethod "Dynamic" -IPVersion "IPv4"
+New-AzConnectedNetworkInterfaceIPConfigurationObject -IPAllocationMethod "Dynamic" -IPVersion "IPv4"
+```
 
+```output
 DnsServer Gateway IPAddress IPAllocationMethod IPVersion Subnet
 --------- ------- --------- ------------------ --------- ------
                             Dynamic            IPv4

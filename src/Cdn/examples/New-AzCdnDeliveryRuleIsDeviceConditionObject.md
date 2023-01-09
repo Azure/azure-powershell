@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AzureCDN DeliveryRuleIsDeviceCondition
 ```powershell
-{{ Add code here }}
+New-AzCdnDeliveryRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+IsDevice
 ```
 
-{{ Add description here }}
+Create an in-memory object for AzureCDN DeliveryRuleIsDeviceCondition
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

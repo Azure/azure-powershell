@@ -1,6 +1,6 @@
 ### Example 1: Updates the tags of a Databricks workspace
 ```powershell
-$dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspaceopsc46 -Tag @{'key'=1}
+$dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspaceopsc46
 Update-AzDatabricksWorkspace -InputObject $dbr -Tag @{key="value"}
 ```
 
@@ -39,3 +39,10 @@ Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name works
 ```
 
 To disable encryption, simply set `-EncryptionKeySource` to `'Default'`.
+
+### Example 4: Update NsgRule of the Databricks workspace
+```powershell
+Update-AzDatabricksWorkspace -ResourceGroupName lucas-rg-test -Name databricks-t01 -RequiredNsgRule 'NoAzureDatabricksRules'
+```
+
+This command updates NsgRule of the Databricks workspace.

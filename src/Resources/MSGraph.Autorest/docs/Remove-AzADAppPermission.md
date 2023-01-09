@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azadapppermission
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azadapppermission
 schema: 2.0.0
 ---
 

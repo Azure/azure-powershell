@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnprofile
+online version: https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnprofile
 schema: 2.0.0
 ---
 
@@ -23,27 +23,18 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an AzureFrontDoor profile under the resource group
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -SkuName Standard_AzureFrontDoor -Location Global
 ```
 
 ```output
-{{ Add output here }}
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q6 frontdoor testps-rg-da16jm
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionresourceguard
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionresourceguard
 schema: 2.0.0
 ---
 
@@ -37,8 +37,7 @@ Returns a ResourceGuard belonging to a resource group.
 
 ### Example 1: Fetch a resource guard with a particular Name
 ```powershell
-PS C:\> $resGuard = Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "RGName" -Name "ResourceGuardName"
-PS C:\> $resGuard
+Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "RGName" -Name "ResourceGuardName"
 ```
 
 ```output
@@ -51,8 +50,7 @@ Gets a resource guard under a resource group with name "ResourceGuardName"
 
 ### Example 2: Fetch all the resource guards under a resource group
 ```powershell
-PS C:\> $resGuardList = Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "RGName"
-PS C:\> $resGuardList
+Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "RGName"
 ```
 
 ```output
@@ -153,7 +151,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IResourceGuardResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IResourceGuardResource
 
 ## NOTES
 
@@ -164,7 +162,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
+`INPUTOBJECT <IDataProtectionIdentity>`: Identity Parameter
   - `[BackupInstanceName <String>]`: The name of the backup instance
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path

@@ -1,22 +1,30 @@
-### Example 1: {{ Add title here }}
+### Example 1: list AzureFrontDoor delivery rules within the specified rule set
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 ```
 
 ```output
-{{ Add output here }}
+Name      ResourceGroupName
+----      -----------------
+testrule1 testps-rg-da16jm
+testrule2 testps-rg-da16jm
+rule1     testps-rg-da16jm
 ```
 
-{{ Add description here }}
+list AzureFrontDoor delivery rules within the specified rule set
 
-### Example 2: {{ Add title here }}
+
+### Example 2: Get an AzureFrontDoor delivery rule within the specified rule set
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1
 ```
 
 ```output
-{{ Add output here }}
+Name  ResourceGroupName
+----  -----------------
+rule1 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+Get an AzureFrontDoor delivery rule within the specified rule set
+
 

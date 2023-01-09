@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesextension
+online version: https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/remove-azkubernetesextension
 schema: 2.0.0
 ---
 
@@ -34,8 +34,7 @@ This will cause the Agent to Uninstall the extension from the cluster.
 
 ### Example 1: Delete a Kubernetes Cluster Extension.
 ```powershell
-PS C:\> Remove-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp
-
+Remove-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp
 ```
 
 Delete a Kubernetes Cluster Extension.

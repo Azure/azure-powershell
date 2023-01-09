@@ -92,6 +92,9 @@ directive:
     - DeliveryRuleCookiesCondition
     - DeliveryRuleIsDeviceCondition
     # CDN action
+    - DeliveryRuleCacheExpirationAction
+    - DeliveryRuleCacheKeyQueryStringAction
+    - OriginGroupOverrideAction
     - UrlRedirectAction
     - UrlSigningAction
     - UrlRewriteAction

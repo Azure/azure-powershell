@@ -1,22 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an AzureCDN Endpoint under the AzureCDN profile
 ```powershell
-{{ Add code here }}
+$origin = @{
+    Name = "origin1"
+    HostName = "host1.hello.com"
+};
+New-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 -Location westus -Origin $origin             
 ```
 
 ```output
-{{ Add output here }}
+Location Name        ResourceGroupName
+-------- ----        -----------------
+WestUs   endptest001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an AzureCDN Endpoint under the AzureCDN profile
 

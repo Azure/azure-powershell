@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnFrontDoorSecurityPolicyWebApplicationFirewallParametersObject
+online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnFrontDoorSecurityPolicyWebApplicationFirewallParametersObject
 schema: 2.0.0
 ---
 
@@ -23,27 +23,21 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AzureFrontDoor SecurityPolicyWebApplicationFirewallAssociation
 ```powershell
-{{ Add code here }}
+$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
+$association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
+New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  $association `
+            -WafPolicyId $wafPolicyId
 ```
 
 ```output
-{{ Add output here }}
+Association
+-----------
+{{...
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -96,7 +90,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ASSOCIATION <ISecurityPolicyWebApplicationFirewallAssociation[]>: Waf associations.
+`ASSOCIATION <ISecurityPolicyWebApplicationFirewallAssociation[]>`: Waf associations.
   - `[Domain <IActivatedResourceReference[]>]`: List of domains.
     - `[Id <String>]`: Resource ID.
   - `[PatternsToMatch <String[]>]`: List of paths

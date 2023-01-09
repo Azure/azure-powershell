@@ -106,7 +106,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             // There is only one command.
             IReadOnlyList<string> history = new List<string>()
             {
-                "Get-AzContext",
+                "Get-LogProperties"
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
@@ -149,16 +149,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             // There is only one command with parameter.
             var history = new List<string>()
             {
-                "New-AzVM -Name hello -Location WestUS"
+                "Clear-Variable -Name my* -Scope Global"
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history[0], true);
 
-            var maskedCommand = "New-AzVM -Location *** -Name ***";
+            var maskedCommand = "Clear-Variable -Name *** -Scope ***";
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
-            Assert.Equal("New-AzVM -Location *** -Name ***", telemetryClient.HistoryData.Command);
+            Assert.Equal(maskedCommand, telemetryClient.HistoryData.Command);
             Assert.Equal(MockObjects.PredictionClient, telemetryClient.HistoryData.Client);
 
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
@@ -193,8 +193,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
             IReadOnlyList<string> history = new List<string>()
             {
-                "Get-AzContext",
-                "New-AzVM -Name hello -Location WestUS",
+                "Set-Content -Path C:\\Temp\\* -Filter *.txt -Value 'Empty'",
+                "Get-LogProperties -Name:'Windows PowerShell'"
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
@@ -202,8 +202,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             var maskedCommands = new List<string>()
             {
-                "Get-AzContext",
-                "New-AzVM -Location *** -Name ***",
+                "Set-Content -Filter *** -Path *** -Value ***",
+                "Get-LogProperties -Name:***"
             };
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
@@ -291,14 +291,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             var history = new List<string>()
             {
-                "New-AzResourceGroup -Name:resourceGroup01",
-                "New-AzVM -Name hello -Location WestUS"
+                "Set-Content -Path C:\\Temp\\* -Filter *.txt -Value 'Empty'",
+                "Get-LogProperties -Name:'Windows PowerShell'"
             };
 
             var maskedCommands = new List<string>()
             {
-                "New-AzResourceGroup -Name:***",
-                "New-AzVM -Location *** -Name ***"
+                "Set-Content -Filter *** -Path *** -Value ***",
+                "Get-LogProperties -Name:***"
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
@@ -380,14 +380,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             expectedTelemetryCount = 2;
             telemetryClient.ExceptedTelemetryDispatchCount = expectedTelemetryCount;
 
-            history.Add("Get-AzResourceGroup -Name:ResourceGroup01");
+            history.Add("Clear-Variable -Name my* -Scope Global");
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history.Last(), true);
 
             maskedCommands = new List<string>()
             {
-                "New-AzVM -Location *** -Name ***",
-                "Get-AzResourceGroup -Name:***",
+                "Get-LogProperties -Name:***",
+                "Clear-Variable -Name *** -Scope ***",
             };
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var history = new List<string>()
             {
                 "git status",
-                "New-AzVM -Name:hello -Location:WestUS"
+                "Set-Content -Path C:\\Temp\\* -Filter *.txt -Value 'Empty'",
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var maskedCommands = new List<string>()
             {
                 AzPredictorConstants.CommandPlaceholder,
-                "New-AzVM -Location:*** -Name:***"
+                "Set-Content -Filter *** -Path *** -Value ***",
             };
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
             var history = new List<string>()
             {
-                "New-AzVM -Name hello -Location WestUS",
+                "Get-LogProperties -Name:'Windows PowerShell'",
                 "git status",
             };
 
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var maskedCommands = new List<string>()
             {
                 AzPredictorConstants.CommandPlaceholder,
-                "New-AzVM -Location *** -Name ***",
+                "Get-LogProperties -Name:***",
             };
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
@@ -493,10 +493,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var (azPredictor, telemetryClient) = CreateTestObjects(throwException: true, expectedTelemetryCount);
             var history = new List<string>()
             {
-                "New-AzVM -Name hello -Location WestUS",
+                "Clear-Variable -Name my* -Scope Global",
             };
 
-            var maskedCommand = "New-AzVM -Location *** -Name ***";
+            var maskedCommand = "Clear-Variable -Name *** -Scope ***";
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history.Last(), false);
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var expectedTelemetryCount = 1;
             var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
-            var predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf");
+            var predictionContext = PredictionContext.Create("Clear-Content -Path '*' -Filter '*.log'");
             var suggestionPackage = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
 
             Assert.Equal(MockObjects.PredictionClient, telemetryClient.GetSuggestionData.Client);
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
-            Assert.Equal("New-AzResourceGroup -Location *** -Name *** -WhatIf ***", ((JsonElement)(suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameUserInput])).GetString());
+            Assert.Equal("Clear-Content -Filter *** -Path ***", ((JsonElement)(suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameUserInput])).GetString());
             Assert.Equal(1, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameFound]).GetArrayLength());
 
             var displayCountOrIndex = 3;
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var expectedTelemetryCount = 2;
             var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
-            var predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf");
+            var predictionContext = PredictionContext.Create("Clear-Content -Path '*' -Filter '*.log'");
             var firstSuggestionPackage = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
             var firstGetSuggestionData = telemetryClient.GetSuggestionData;
 
@@ -708,7 +708,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var expectedTelemetryCount = 1;
             var (azPredictor, telemetryClient) = CreateTestObjects(throwException: true, expectedTelemetryCount);
 
-            var predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf");
+            var predictionContext = PredictionContext.Create("Clear-Content -Path '*' -Filter '*.log' -Force");
             var suggestionPackage = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
 
             Assert.IsType<MockTestException>(telemetryClient.GetSuggestionData.Exception);
@@ -718,7 +718,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Exception", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal("New-AzResourceGroup -Location *** -Name *** -WhatIf ***", telemetryClient.RecordedTelemetry[0].Properties["UserInput"]);
+            Assert.Equal("Clear-Content -Filter *** -Force *** -Path ***", telemetryClient.RecordedTelemetry[0].Properties["UserInput"]);
             Assert.StartsWith($"Type: {typeof(MockTestException)}\nStack Trace: ", telemetryClient.RecordedTelemetry[0].Properties["Exception"]);
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[1].EventName);
@@ -737,13 +737,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             var history = new List<string>()
             {
-                "New-AzVM -Name hello -Location WestUS",
+                "Clear-Variable -Name my* -Scope Global",
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
             azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history.Last(), false);
 
-            var predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US'");
+            var predictionContext = PredictionContext.Create("Clear-Content -Path '*' -Filter '*.log'");
             var suggestionPackage = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
 
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             history = new List<string>()
             {
-                "Get-AzSqlServer",
+                "Set-Content -Path C:\\Temp\\* -Filter *.txt -Value 'Empty'",
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
@@ -792,7 +792,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             telemetryClient.ResetWaitingTasks();
             telemetryClient.ExceptedTelemetryDispatchCount = expectedTelemetryCount;
 
-            predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US'");
+            predictionContext = PredictionContext.Create("Clear-Content -Path '*' -Filter '*.log'");
             suggestionPackage = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
 
             history =new List<string>()
@@ -814,7 +814,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             telemetryClient.ResetWaitingTasks();
             telemetryClient.ExceptedTelemetryDispatchCount = expectedTelemetryCount;
 
-            predictionContext = PredictionContext.Create("New-AzVM -Name 'VM01' -Location 'Central US'");
+            predictionContext = PredictionContext.Create("Clear-Content -Path '*' -Filter '*.log'");
             suggestionPackage = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
 
             history =new List<string>()
@@ -857,7 +857,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifyAggregationDataSplitAtGetSuggestion()
         {
-            var expectedTelemetryCount = 42;
+            var expectedTelemetryCount = 59;
             var expectedSuggestionSessionInFirstBatch = expectedTelemetryCount;
             var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount, flushTelemetry: false);
 
@@ -865,7 +865,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             {
                 // Call the methods a few times to make sure the telemetry data is less than 8092 but the next such call will
                 // make it larger than it.
-                var predictionContext = PredictionContext.Create($"New-AzResourceGroup -Name 'ResourceGroup{i}' -Location 'Central US' -WhatIf");
+                var predictionContext = PredictionContext.Create($"Clear-Content -Path '*' -Filter '{i}.log'");
                 var _ = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
             }
 
@@ -881,7 +881,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             for (int i = 0; i < expectedTelemetryCount; ++i)
             {
                 // This time make sure that the size exceeds the max property value size with buffer.
-                var predictionContext = PredictionContext.Create($"New-AzResourceGroup -Name 'NewGroup{i}' -Location 'Central US' -WhatIf");
+                var predictionContext = PredictionContext.Create($"Clear-Content -Path '*' -Filter '{i}.log'");
                 var _ = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
             }
 
@@ -904,7 +904,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifyAggregationDataSplitAtAcceptSuggestion()
         {
-            var expectedTelemetryCount = 43;
+            var expectedTelemetryCount = 64;
             var expectedSuggestionSessionInFirstBatch = expectedTelemetryCount;
             var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount, flushTelemetry: false);
             PredictionContext predictionContext = default;
@@ -914,11 +914,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             {
                 // Call the methods a few times to make sure the telemetry data is less than 8092 but the next such call will
                 // make it larger than it.
-                predictionContext = PredictionContext.Create($"New-AzResourceGroup -Name 'ResourceGroup{i}' -Location 'Central US' -WhatIf");
+                predictionContext = PredictionContext.Create($"Clear-Variable -Name my* -Scop");
                 var _ = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
             }
 
-            predictionContext = PredictionContext.Create("Get-AzDefault");
+            // It's easier to pad the cached telemetry event with the command without parameters. With parameters, it's more likely to exceed the
+            // buffer size.
+            predictionContext = PredictionContext.Create("Get-ChildIte");
             suggestionPackage = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
 
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
@@ -933,7 +935,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             // But the additional data from SuggestionDisplayedTelemetryData is small so we are still less than the maximum application insight property value size.
             azPredictor.OnSuggestionDisplayed(MockObjects.PredictionClient, suggestionPackage.Session.Value, 1);
             // We'll send the first batch contains the found suggestions and displayed info when we process SuggestionAcceptedTelemetryData.
-            azPredictor.OnSuggestionAccepted(MockObjects.PredictionClient, suggestionPackage.Session.Value, "Get-AzDefault");
+            azPredictor.OnSuggestionAccepted(MockObjects.PredictionClient, suggestionPackage.Session.Value, "Get-ChildItem");
 
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
             telemetryClient.FlushTelemetry();
@@ -955,7 +957,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.False(suggestionSessions[0].ContainsKey(GetSuggestionTelemetryData.PropertyNameUserInput));
             Assert.False(suggestionSessions[0].ContainsKey(GetSuggestionTelemetryData.PropertyNameIsCancelled));
             Assert.Equal(suggestionPackage.Session.Value, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]).GetUInt32());
-            Assert.Equal("Get-AzDefault", ((JsonElement)suggestionSessions[0][SuggestionAcceptedTelemetryData.PropertyNameAccepted]).GetString());
+            Assert.Equal("Get-ChildItem", ((JsonElement)suggestionSessions[0][SuggestionAcceptedTelemetryData.PropertyNameAccepted]).GetString());
         }
 
         /// <summary>
@@ -964,7 +966,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Fact]
         public void VerifyAggregationDataSplitAtCommandHistory()
         {
-            var expectedTelemetryCount = 43;
+            var expectedTelemetryCount = 64;
             var expectedSuggestionSessionInFirstBatch = expectedTelemetryCount;
             var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount, flushTelemetry: false);
             PredictionContext predictionContext = default;
@@ -972,13 +974,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             for (int i = 0; i < expectedTelemetryCount - 1; ++i)
             {
-                // Call the methods a few times to make sure the telemetry data is less than 8092 but the next such call will
+                // Call the methods a few times to make sure the telemetry data is less than 8092 but the CommandAccepted and CommandExecuted events
                 // make it larger than it.
-                predictionContext = PredictionContext.Create($"New-AzResourceGroup -Name 'ResourceGroup{i}' -Location 'Central US' -WhatIf");
-                var _ = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
+                predictionContext = PredictionContext.Create($"Clear-Variable -Name my* -Scop");
+                var _ = suggestionPackage = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
             }
 
-            predictionContext = PredictionContext.Create("Get-AzDefault");
+            // It's easier to pad the cached telemetry event with the command without parameters. With parameters, it's more likely to exceed the
+            // buffer size.
+            predictionContext = PredictionContext.Create("Get-ChildIte");
             suggestionPackage = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
 
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
@@ -993,8 +997,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             // But the additional data from SuggestionDisplayedTelemetryData is small so we are still less than the maximum application insight property value size.
             azPredictor.OnSuggestionDisplayed(MockObjects.PredictionClient, suggestionPackage.Session.Value, 1);
             // We'll send the first batch contains the found suggestions and displayed info when we process SuggestionAcceptedTelemetryData.
-            azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, new string[] { "Get-AzDefault" });
-            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, "Get-AzDefault", success: true);
+            azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, new string[] { "Get-ChildItem" });
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, "Get-ChildItem", success: true);
 
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
 
@@ -1015,7 +1019,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.False(suggestionSessions[0].ContainsKey(GetSuggestionTelemetryData.PropertyNameUserInput));
             Assert.False(suggestionSessions[0].ContainsKey(GetSuggestionTelemetryData.PropertyNameIsCancelled));
             Assert.Equal(suggestionPackage.Session.Value, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]).GetUInt32());
-            Assert.Equal("Get-AzDefault", recordedTelemetry.Properties[HistoryTelemetryData.PropertyNameHistory]);
+            Assert.Equal("Get-ChildItem", recordedTelemetry.Properties[HistoryTelemetryData.PropertyNameHistory]);
         }
 
         private (AzPredictor, MockAzPredictorTelemetryClient) CreateTestObjects(bool throwException, int expectedTelemetryEvent, bool flushTelemetry = true)

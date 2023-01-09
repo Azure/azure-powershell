@@ -1,0 +1,60 @@
+import "@cadl-lang/rest";
+import "@azure-tools/cadl-providerhub";
+import "@azure-tools/cadl-autorest";
+import "@azure-tools/cadl-azure-core";
+import "@azure-tools/cadl-azure-resource-manager";
+import "@cadl-lang/versioning";
+
+using Cadl.Http;
+using Cadl.Rest;
+using Cadl.Versioning;
+using Azure.ResourceManager;
+
+@armProviderNamespace("Microsoft.VoiceServices")
+@serviceTitle("Microsoft.VoiceServices")
+@serviceVersion("2022-12-01-preview")
+@versionedDependency(Azure.ResourceManager.Versions.v1_0_Preview_1)
+namespace Microsoft.VoiceServices;
+
+// Various tooling enforces (or at least suggests) that all models should have a provisioning State field, as this means something special to ARM.
+
+@doc("Provisioning state of the resource.")
+enum ProvisioningStateEnum {
+  Succeeded, Failed, Canceled
+}
+
+@knownValues(ProvisioningStateEnum)
+model ProvisioningState  is string;
+
+@doc("General resource properties.")
+model ResourceProperties {
+	@doc("Resource provisioning state.")
+	@visibility("read")
+	provisioningState?: ProvisioningState;
+}
+
+// A helper template for defining empty properties for resource PATCH operations
+// In a future release this won't be necessary.
+// See https://github.com/Azure/azure-rest-api-specs-pr/pull/8707#discussion_r971363996 for context
+@doc("The type used for update operations of the {name}.", TResource)
+@friendlyName("{name}Update", TResource)
+model ResourceUpdateModelNoProperties<TResource>
+  is OptionalProperties<UpdateableProperties<OmitProperties<TResource, "Name" | "name">>>;
+
+#suppress "@azure-tools/cadl-azure-resource-manager/arm-resource-interface-requires-decorator" "Interface template does not require this."
+#suppress "@azure-tools/cadl-azure-resource-manager/arm-resource-interface-uses-templates" "This is an official operations template."
+@doc("Template for resources with no updateable properties")
+@armResourceOperations
+interface ResourceUpdateNoProperties<TResource> {
+  @autoRoute
+  @doc("Update a {name}", TResource)
+  @armResourceUpdate(TResource)
+  @patch
+  update(
+    ...ResourceInstanceParameters<TResource>,
+
+    @doc("The resource properties to be updated.")
+    @body
+    properties: ResourceUpdateModelNoProperties<TResource>
+  ): ArmResponse<TResource> | ErrorResponse;
+}

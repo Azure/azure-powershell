@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HealthcareApis
-online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcaredicomservice
+online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcaredicomservice
 schema: 2.0.0
 ---
 
@@ -26,8 +26,10 @@ Creates or updates a DICOM Service resource with the specified parameters.
 
 ### Example 1: Creates or updates a DICOM Service resource with the specified parameters.
 ```powershell
-PS C:\> New-AzHealthcareDicomService -Name azpsdicom -ResourceGroupName azps_test_group -WorkspaceName azpshcws -Location eastus2
+New-AzHealthcareDicomService -Name azpsdicom -ResourceGroupName azps_test_group -WorkspaceName azpshcws -Location eastus2
+```
 
+```output
 Location Name                 ResourceGroupName
 -------- ----                 -----------------
 eastus2  azpshcws/azpsdicom azps_test_group

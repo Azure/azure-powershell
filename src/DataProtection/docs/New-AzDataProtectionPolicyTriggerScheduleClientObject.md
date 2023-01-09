@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionpolicytriggerscheduleclientobject
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionpolicytriggerscheduleclientobject
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ Creates new Schedule object
 
 ### Example 1: Create a daily schedule object
 ```powershell
-PS C:\> $date = Get-Date
-PS C:\> New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $date -IntervalType Daily -IntervalCount 1
+$date = Get-Date
+New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $date -IntervalType Daily -IntervalCount 1
 ```
 
 ```output
@@ -36,8 +36,8 @@ This command creates a daily schedule for Azure Backup Rule
 
 ### Example 2: Create an hourly schedule object
 ```powershell
-PS C:\> $date = Get-Date
-PS C:\> New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $date -IntervalType Hourly -IntervalCount 4
+$date = Get-Date
+New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $date -IntervalType Hourly -IntervalCount 4
 ```
 
 ```output

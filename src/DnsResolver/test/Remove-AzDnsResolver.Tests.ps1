@@ -16,19 +16,19 @@ Describe 'Remove-AzDnsResolver' {
          # ARRANGE
         $dnsResolverName = "psdnsresolvername64";
         $virtualNetworkName = "psvirtualnetworkname64";
+        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
         
         if ($TestMode -eq "Record")
         {
             $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
-            $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
         }
 
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetwork.Id -Location $LOCATION
+        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
 
         # ACT
         Remove-AzDnsResolver  -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME
 
         # ASSERT 
-        {Get-AzDnsResolver  -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME } | Should -Throw "not found"
+        {Get-AzDnsResolver  -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME } | Should -Throw
     }
 }

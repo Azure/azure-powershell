@@ -20,23 +20,14 @@ API to update certain properties of the connected cluster resource
 .Description
 API to update certain properties of the connected cluster resource
 .Example
-PS C:\> Update-AzConnectedKubernetes -ResourceGroupName connected-aks -ClusterName ps-connaks-t01 -Tag @{'key'='1'}
-
-Location Name           Type
--------- ----           ----
-eastus   ps-connaks-t01 Microsoft.Kubernetes/connectedClusters
+Update-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Tag @{'key'='1'}
 .Example
-PS C:\> $conn = Get-AzConnectedKubernetes -ResourceGroupName connected-aks -ClusterName ps-connaks-t03
-PS C:\> Update-AzConnectedKubernetes -InputObject $conn -Tag @{'key'='2'}
-
-Location Name           Type
--------- ----           ----
-eastus   ps-connaks-t03 Microsoft.Kubernetes/connectedClusters
+Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group | Update-AzConnectedKubernetes -Tag @{'key'='2'}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedKubernetesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,10 +39,10 @@ INPUTOBJECT <IConnectedKubernetesIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedkubernetes/update-azconnectedkubernetes
+https://learn.microsoft.com/powershell/module/az.connectedkubernetes/update-azconnectedkubernetes
 #>
 function Update-AzConnectedKubernetes {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedCluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -83,8 +74,32 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit])]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20211001.IConnectedClusterPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit]
+    # Indicates whether Azure Hybrid Benefit is opted in
+    ${AzureHybridBenefit},
+
+    [Parameter()]
+    [System.Management.Automation.SwitchParameter]
+    # Accept EULA of ConnectedKubernetes, legal term will pop up without this parameter provided
+    ${AcceptEULA},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [System.String]
+    # Represents the distribution of the connected cluster
+    ${Distribution},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [System.String]
+    # Represents the Kubernetes distribution version on this connected cluster.
+    ${DistributionVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedClusterPatchTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -138,6 +153,23 @@ param(
 )
 
     process {
+        if($AzureHybridBenefit){
+            if(!$AcceptEULA){
+                $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
+                try {
+                    $legalTerm = (Get-Content -Path $legalTermPath) -join "`r`n"
+                } catch {
+                    Write-Error "Get legal term failed."
+                    throw
+                }
+                $confirmation = Read-Host $legalTerm"`n[Y] Yes  [N] No  (default is `"N`")"
+                if($confirmation -ine "Y"){
+                    Return
+                }
+            }
+        }
+        $null = $PSBoundParameters.Remove('AcceptEULA')
+
         Az.ConnectedKubernetes.internal\Update-AzConnectedKubernetes @PSBoundParameters
     }
 }

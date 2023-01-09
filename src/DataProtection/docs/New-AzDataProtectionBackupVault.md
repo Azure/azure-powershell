@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
 schema: 2.0.0
 ---
 
@@ -27,9 +27,9 @@ Creates or updates a BackupVault resource belonging to a resource group.
 
 ### Example 1: Create a new backup vault
 ```powershell
-PS C:\> $sub = "xxxx-xxxx-xxxxx"
-PS C:\> $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
-PS C:\> New-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName sarath-rg -VaultName "MyVault" -StorageSetting $storagesetting -Location westus
+$sub = "xxxx-xxxx-xxxxx"
+$storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
+New-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName sarath-rg -VaultName "MyVault" -StorageSetting $storagesetting -Location westus
 ```
 
 ```output
@@ -169,7 +169,7 @@ Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
 To construct, see NOTES section for STORAGESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IStorageSetting[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IStorageSetting[]
 Parameter Sets: (All)
 Aliases:
 
@@ -274,7 +274,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-STORAGESETTING <IStorageSetting[]>: Storage Settings of the vault. Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
+`STORAGESETTING <IStorageSetting[]>`: Storage Settings of the vault. Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
   - `[DatastoreType <StorageSettingStoreTypes?>]`: Gets or sets the type of the datastore.
   - `[Type <StorageSettingTypes?>]`: Gets or sets the type.
 

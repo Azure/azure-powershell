@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnprofileresourceusage
+online version: https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnprofileresourceusage
 schema: 2.0.0
 ---
 
@@ -22,27 +22,18 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get resource usages of an AzureCDN profile
 ```powershell
-{{ Add code here }}
+Get-AzCdnProfileResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
 ```
 
 ```output
-{{ Add output here }}
+CurrentValue Limit ResourceType Unit
+------------ ----- ------------ ----
+0            25    endpoint     count
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get resource usages of an AzureCDN profile
 
 ## PARAMETERS
 

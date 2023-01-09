@@ -1,0 +1,38 @@
+{
+  "Update-AzSentinelAlertRule+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/alertRules/e96e7960-a8a9-47a9-91f1-4207f5f82d88?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/alertRules/e96e7960-a8a9-47a9-91f1-4207f5f82d88?api-version=2021-09-01-preview",
+      "Content": "{\n  \"etag\": \"\\\"0600ef40-0000-0100-0000-62fbba750000\\\"\",\n  \"kind\": \"Scheduled\",\n  \"properties\": {\n    \"eventGroupingSettings\": {\n      \"aggregationKind\": \"SingleAlert\"\n    },\n    \"queryFrequency\": \"P1D\",\n    \"queryPeriod\": \"P1D\",\n    \"triggerOperator\": \"GreaterThan\",\n    \"triggerThreshold\": 0,\n    \"incidentConfiguration\": {\n      \"groupingConfiguration\": {\n        \"enabled\": false,\n        \"reopenClosedIncident\": false,\n        \"lookbackDuration\": \"PT5H\",\n        \"matchingMethod\": \"AllEntities\",\n        \"groupByEntities\": [ ]\n      },\n      \"createIncident\": false\n    },\n    \"description\": \"UpdateAlertRulejkg1z9 e96e7960-a8a9-47a9-91f1-4207f5f82d88\",\n    \"query\": \"SecurityEvent\\n| take 1\",\n    \"displayName\": \"UpdateAlertRulejkg1z9\",\n    \"enabled\": false,\n    \"suppressionDuration\": \"PT5H\",\n    \"suppressionEnabled\": false,\n    \"severity\": \"Informational\",\n    \"tactics\": [ \"Execution\" ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "901" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-request-id": [ "ec8f0280-2d0f-4357-9fe0-336f7a3a71a6" ],
+        "x-ms-correlation-request-id": [ "ec8f0280-2d0f-4357-9fe0-336f7a3a71a6" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160841Z:ec8f0280-2d0f-4357-9fe0-336f7a3a71a6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:08:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1172" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/alertRules/e96e7960-a8a9-47a9-91f1-4207f5f82d88\",\"name\":\"e96e7960-a8a9-47a9-91f1-4207f5f82d88\",\"etag\":\"\\\"06008441-0000-0100-0000-62fbc1090000\\\"\",\"type\":\"Microsoft.SecurityInsights/alertRules\",\"kind\":\"Scheduled\",\"properties\":{\"incidentConfiguration\":{\"createIncident\":false,\"groupingConfiguration\":{\"enabled\":false,\"reopenClosedIncident\":false,\"lookbackDuration\":\"PT5H\",\"matchingMethod\":\"AllEntities\",\"groupByEntities\":[],\"groupByAlertDetails\":null,\"groupByCustomDetails\":null}},\"queryFrequency\":\"P1D\",\"queryPeriod\":\"P1D\",\"triggerOperator\":\"GreaterThan\",\"triggerThreshold\":0,\"eventGroupingSettings\":{\"aggregationKind\":\"SingleAlert\"},\"severity\":\"Informational\",\"query\":\"SecurityEvent\\n| take 1\",\"suppressionDuration\":\"PT5H\",\"suppressionEnabled\":false,\"tactics\":[\"Execution\"],\"displayName\":\"UpdateAlertRulejkg1z9\",\"enabled\":false,\"description\":\"UpdateAlertRulejkg1z9 e96e7960-a8a9-47a9-91f1-4207f5f82d88\",\"alertRuleTemplateName\":null,\"lastModifiedUtc\":\"2022-08-16T16:08:41.1863083Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceLinker
-online version: https://docs.microsoft.com/powershell/module/az.servicelinker/test-azservicelinkerforspringcloud
+online version: https://learn.microsoft.com/powershell/module/az.servicelinker/test-azservicelinkerforspringcloud
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Validate a link in spring cloud.
 
 ### Example 1: Test Linker
 ```powershell
-Test-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group -Name postgresql_connection  | fl
+Test-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group -Name postgresql_connection  | Format-List
 ```
 
 ```output

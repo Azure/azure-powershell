@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionresourceguard
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionresourceguard
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Deletes a ResourceGuard resource from the resource group.
 
 ### Example 1: Delete a resource guard
 ```powershell
-PS C:\> Remove-AzDataProtectionResourceGuard -Name "ResourceGuardName" -ResourceGroupName "ResourceGroupName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" 
+Remove-AzDataProtectionResourceGuard -Name "ResourceGuardName" -ResourceGroupName "ResourceGroupName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" 
 ```
 
 This command is used to delete the resource guard under a resource group.
@@ -180,7 +180,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
+`INPUTOBJECT <IDataProtectionIdentity>`: Identity Parameter
   - `[BackupInstanceName <String>]`: The name of the backup instance
   - `[BackupPolicyName <String>]`: 
   - `[Id <String>]`: Resource identity path

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/test-azcdnprobe
+online version: https://learn.microsoft.com/powershell/module/az.cdn/test-azcdnprobe
 schema: 2.0.0
 ---
 
@@ -26,27 +26,18 @@ This path is relative to the origin path specified in the endpoint configuration
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check if the probe path is a valid path and the file can be accessed
 ```powershell
-{{ Add code here }}
+Test-AzCdnProbe -ProbeUrl "https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt"
 ```
 
 ```output
-{{ Add output here }}
+ErrorCode IsValid Message
+--------- ------- -------
+None      True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Check if the probe path is a valid path and the file can be accessed
 
 ## PARAMETERS
 

@@ -32,7 +32,6 @@ New-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName "Reso
 Name                                                                Type                                                  BackupInstanceName
 ----                                                                ----                                                  ------------------
 xyz-postgresql-wus-empdb10-xxxxxxxx-xxxx-xxxx-a3ba-be75108d8b21 Microsoft.DataProtection/backupVaults/backupInstances xyz-postgresql-wus-empdb10-xxxxxxxx-xxxx-xxxx-a3ba-be75108d8b21
-
 ```
 
 The third command initializes the secretURI for secret store authentication. 

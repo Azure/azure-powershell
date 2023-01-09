@@ -1,0 +1,576 @@
+{
+  "Set-AzDataProtectionMSIPermission+[NoContext]+DiskGrantPermission+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "82a24578-f354-40bb-9769-115d75b4a875" ],
+        "CommandName": [ "Get-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.5", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
+        "x-ms-correlation-request-id": [ "8b0231b9-3d96-4603-bbba-f58e561f0e7a" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220707T073610Z:8b0231b9-3d96-4603-bbba-f58e561f0e7a" ],
+        "Date": [ "Thu, 07 Jul 2022 07:36:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "540" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"westus\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"1ac60704-da7a-4eef-abec-393551807fe1\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"GeoRedundant\"}],\"isVaultProtectedByResourceGuard\":false},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/testBkpVaultRG/providers/Microsoft.DataProtection/BackupVaults/TestBkpVault\",\"name\":\"TestBkpVault\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzDataProtectionMSIPermission+[NoContext]+DiskGrantPermission+$PUT+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/backupPolicies/diskBkpPolicy?api-version=2022-05-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/backupPolicies/diskBkpPolicy?api-version=2022-05-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"datasourceTypes\": [ \"Microsoft.Compute/disks\" ],\r\n    \"objectType\": \"BackupPolicy\",\r\n    \"policyRules\": [\r\n      {\r\n        \"name\": \"BackupHourly\",\r\n        \"objectType\": \"AzureBackupRule\",\r\n        \"backupParameters\": {\r\n          \"objectType\": \"AzureBackupParams\",\r\n          \"backupType\": \"Incremental\"\r\n        },\r\n        \"dataStore\": {\r\n          \"dataStoreType\": \"OperationalStore\",\r\n          \"objectType\": \"DataStoreInfoBase\"\r\n        },\r\n        \"trigger\": {\r\n          \"objectType\": \"ScheduleBasedTriggerContext\",\r\n          \"schedule\": {\r\n            \"repeatingTimeIntervals\": [ \"R/2020-04-05T13:00:00+00:00/PT4H\" ]\r\n          },\r\n          \"taggingCriteria\": [\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Default\"\r\n              },\r\n              \"isDefault\": true,\r\n              \"taggingPriority\": 99\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"Default\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": true,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P7D\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"OperationalStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1397" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "198" ],
+        "x-ms-correlation-request-id": [ "d543ea82-2dbc-47df-ac6d-b52ab6c6e0c7" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220707T073610Z:d543ea82-2dbc-47df-ac6d-b52ab6c6e0c7" ],
+        "Date": [ "Thu, 07 Jul 2022 07:36:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1070" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Incremental\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2020-04-05T13:00:00+00:00/PT4H\"]},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupHourly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P7D\"},\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.Compute/disks\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/backupPolicies/diskBkpPolicy\",\"name\":\"diskBkpPolicy\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzDataProtectionMSIPermission+[NoContext]+DiskGrantPermission+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/backupPolicies/diskBkpPolicy?api-version=2022-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/backupPolicies/diskBkpPolicy?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "4163d006-4d65-41a8-addf-bc9a710bc4f5" ],
+        "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.5", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-correlation-request-id": [ "bf9f48af-7c2e-44f5-9572-0c042c4c8f40" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220707T073611Z:bf9f48af-7c2e-44f5-9572-0c042c4c8f40" ],
+        "Date": [ "Thu, 07 Jul 2022 07:36:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1070" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyRules\":[{\"backupParameters\":{\"backupType\":\"Incremental\",\"objectType\":\"AzureBackupParams\"},\"trigger\":{\"schedule\":{\"repeatingTimeIntervals\":[\"R/2020-04-05T13:00:00+00:00/PT4H\"]},\"taggingCriteria\":[{\"tagInfo\":{\"tagName\":\"Default\",\"id\":\"Default_\"},\"taggingPriority\":99,\"isDefault\":true}],\"objectType\":\"ScheduleBasedTriggerContext\"},\"dataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"},\"name\":\"BackupHourly\",\"objectType\":\"AzureBackupRule\"},{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P7D\"},\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.Compute/disks\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/backupPolicies/diskBkpPolicy\",\"name\":\"diskBkpPolicy\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzDataProtectionMSIPermission+[NoContext]+DiskGrantPermission+$POST+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/validateForBackup?api-version=2022-05-01+4": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/validateForBackup?api-version=2022-05-01",
+      "Content": "{\r\n  \"backupInstance\": {\r\n    \"friendlyName\": \"Mydisk2\",\r\n    \"dataSourceInfo\": {\r\n      \"datasourceType\": \"Microsoft.Compute/disks\",\r\n      \"objectType\": \"Datasource\",\r\n      \"resourceID\": \"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Diskrg/providers/Microsoft.Compute/disks/Mydisk2\",\r\n      \"resourceLocation\": \"westus\",\r\n      \"resourceName\": \"Mydisk2\",\r\n      \"resourceType\": \"Microsoft.Compute/disks\",\r\n      \"resourceUri\": \"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Diskrg/providers/Microsoft.Compute/disks/Mydisk2\"\r\n    },\r\n    \"policyInfo\": {\r\n      \"policyId\": \"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/backupPolicies/diskBkpPolicy\",\r\n      \"policyParameters\": {\r\n        \"dataStoreParametersList\": [\r\n          {\r\n            \"objectType\": \"AzureOperationalStoreParameters\",\r\n            \"dataStoreType\": \"OperationalStore\",\r\n            \"resourceGroupId\": \"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"objectType\": \"BackupInstance\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1185" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/westus/operationResults/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzMxYTc1MTNhLTdmNmEtNDgxNi05ZjYwLWFmNzMyNGM3OGJlOQ==?api-version=2022-05-01" ],
+        "Retry-After": [ "10" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzMxYTc1MTNhLTdmNmEtNDgxNi05ZjYwLWFmNzMyNGM3OGJlOQ==?api-version=2022-05-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "a2e56fa5-6546-4b55-bdd4-2c02b87615b3" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220707T073612Z:a2e56fa5-6546-4b55-bdd4-2c02b87615b3" ],
+        "Date": [ "Thu, 07 Jul 2022 07:36:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Set-AzDataProtectionMSIPermission+[NoContext]+DiskGrantPermission+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzMxYTc1MTNhLTdmNmEtNDgxNi05ZjYwLWFmNzMyNGM3OGJlOQ==?api-version=2022-05-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzMxYTc1MTNhLTdmNmEtNDgxNi05ZjYwLWFmNzMyNGM3OGJlOQ==?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "ace6baef-089c-46e7-a0a2-300a305710cb" ],
+        "CommandName": [ "Test-AzDataProtectionBackupInstanceReadiness" ],
+        "FullCommandName": [ "Test-AzDataProtectionBackupInstanceReadiness_ValidateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.5", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "999" ],
+        "x-ms-correlation-request-id": [ "460afb6b-25c9-4af9-a337-6861b3992bf4" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220707T073624Z:460afb6b-25c9-4af9-a337-6861b3992bf4" ],
+        "Date": [ "Thu, 07 Jul 2022 07:36:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "476" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzMxYTc1MTNhLTdmNmEtNDgxNi05ZjYwLWFmNzMyNGM3OGJlOQ==\",\"name\":\"MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzMxYTc1MTNhLTdmNmEtNDgxNi05ZjYwLWFmNzMyNGM3OGJlOQ==\",\"status\":\"Inprogress\",\"startTime\":\"2022-07-07T07:36:12.3505254Z\",\"endTime\":\"0001-01-01T00:00:00Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzDataProtectionMSIPermission+[NoContext]+DiskGrantPermission+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzMxYTc1MTNhLTdmNmEtNDgxNi05ZjYwLWFmNzMyNGM3OGJlOQ==?api-version=2022-05-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzMxYTc1MTNhLTdmNmEtNDgxNi05ZjYwLWFmNzMyNGM3OGJlOQ==?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "ace6baef-089c-46e7-a0a2-300a305710cb" ],
+        "CommandName": [ "Test-AzDataProtectionBackupInstanceReadiness" ],
+        "FullCommandName": [ "Test-AzDataProtectionBackupInstanceReadiness_ValidateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.5", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "998" ],
+        "x-ms-correlation-request-id": [ "5dcef4d8-816a-4afe-9b56-8ac0024c2ee9" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220707T073655Z:5dcef4d8-816a-4afe-9b56-8ac0024c2ee9" ],
+        "Date": [ "Thu, 07 Jul 2022 07:36:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "475" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzMxYTc1MTNhLTdmNmEtNDgxNi05ZjYwLWFmNzMyNGM3OGJlOQ==\",\"name\":\"MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzMxYTc1MTNhLTdmNmEtNDgxNi05ZjYwLWFmNzMyNGM3OGJlOQ==\",\"status\":\"Succeeded\",\"startTime\":\"2022-07-07T07:36:12.3505254Z\",\"endTime\":\"2022-07-07T07:36:43Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzDataProtectionMSIPermission+[NoContext]+DiskGrantPermission+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/westus/operationResults/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzMxYTc1MTNhLTdmNmEtNDgxNi05ZjYwLWFmNzMyNGM3OGJlOQ==?api-version=2022-05-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/westus/operationResults/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzMxYTc1MTNhLTdmNmEtNDgxNi05ZjYwLWFmNzMyNGM3OGJlOQ==?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "ace6baef-089c-46e7-a0a2-300a305710cb" ],
+        "CommandName": [ "Test-AzDataProtectionBackupInstanceReadiness" ],
+        "FullCommandName": [ "Test-AzDataProtectionBackupInstanceReadiness_ValidateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.5", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/westus/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzMxYTc1MTNhLTdmNmEtNDgxNi05ZjYwLWFmNzMyNGM3OGJlOQ==?api-version=2022-05-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-correlation-request-id": [ "b4bf0238-4f62-407f-9c5e-38f584bc9755" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220707T073655Z:b4bf0238-4f62-407f-9c5e-38f584bc9755" ],
+        "Date": [ "Thu, 07 Jul 2022 07:36:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "41" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"objectType\":\"OperationJobExtendedInfo\"}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzDataProtectionMSIPermission+[NoContext]+BlobGrantPermission+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "4c17a2cb-bfcc-4580-9fe8-096a954149a9" ],
+        "CommandName": [ "Get-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.5", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "496" ],
+        "x-ms-correlation-request-id": [ "78bcf008-4554-41cb-9c0e-605b6adf75d9" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220707T073659Z:78bcf008-4554-41cb-9c0e-605b6adf75d9" ],
+        "Date": [ "Thu, 07 Jul 2022 07:36:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "540" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"westus\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"1ac60704-da7a-4eef-abec-393551807fe1\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"GeoRedundant\"}],\"isVaultProtectedByResourceGuard\":false},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/testBkpVaultRG/providers/Microsoft.DataProtection/BackupVaults/TestBkpVault\",\"name\":\"TestBkpVault\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzDataProtectionMSIPermission+[NoContext]+BlobGrantPermission+$PUT+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/backupPolicies/blobBkpPolicy?api-version=2022-05-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/backupPolicies/blobBkpPolicy?api-version=2022-05-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"datasourceTypes\": [ \"Microsoft.Storage/storageAccounts/blobServices\" ],\r\n    \"objectType\": \"BackupPolicy\",\r\n    \"policyRules\": [\r\n      {\r\n        \"name\": \"Default\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": true,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P30D\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"OperationalStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "634" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "197" ],
+        "x-ms-correlation-request-id": [ "d2cdac43-fa9c-4bd7-aa73-41d769e4088f" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220707T073659Z:d2cdac43-fa9c-4bd7-aa73-41d769e4088f" ],
+        "Date": [ "Thu, 07 Jul 2022 07:36:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "638" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyRules\":[{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P30D\"},\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.Storage/storageAccounts/blobServices\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/backupPolicies/blobBkpPolicy\",\"name\":\"blobBkpPolicy\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzDataProtectionMSIPermission+[NoContext]+BlobGrantPermission+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/backupPolicies/blobBkpPolicy?api-version=2022-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/backupPolicies/blobBkpPolicy?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "9965e26a-ea26-4913-bdd9-09c556fa7a63" ],
+        "CommandName": [ "Get-AzDataProtectionBackupPolicy" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.5", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "198" ],
+        "x-ms-correlation-request-id": [ "28d4a3fe-cc68-4530-8c69-132f834f1cf9" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220707T073700Z:28d4a3fe-cc68-4530-8c69-132f834f1cf9" ],
+        "Date": [ "Thu, 07 Jul 2022 07:37:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "638" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyRules\":[{\"lifecycles\":[{\"deleteAfter\":{\"objectType\":\"AbsoluteDeleteOption\",\"duration\":\"P30D\"},\"sourceDataStore\":{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"DataStoreInfoBase\"}}],\"isDefault\":true,\"name\":\"Default\",\"objectType\":\"AzureRetentionRule\"}],\"datasourceTypes\":[\"Microsoft.Storage/storageAccounts/blobServices\"],\"objectType\":\"BackupPolicy\"},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/backupPolicies/blobBkpPolicy\",\"name\":\"blobBkpPolicy\",\"type\":\"Microsoft.DataProtection/backupVaults/backupPolicies\"}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzDataProtectionMSIPermission+[NoContext]+BlobGrantPermission+$POST+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/validateForBackup?api-version=2022-05-01+4": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/validateForBackup?api-version=2022-05-01",
+      "Content": "{\r\n  \"backupInstance\": {\r\n    \"friendlyName\": \"testblobacc4\",\r\n    \"dataSourceInfo\": {\r\n      \"datasourceType\": \"Microsoft.Storage/storageAccounts/blobServices\",\r\n      \"objectType\": \"Datasource\",\r\n      \"resourceID\": \"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Blobrg/providers/Microsoft.Storage/storageAccounts/testblobacc4\",\r\n      \"resourceLocation\": \"westus\",\r\n      \"resourceName\": \"testblobacc4\",\r\n      \"resourceType\": \"Microsoft.Storage/storageAccounts\",\r\n      \"resourceUri\": \"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Blobrg/providers/Microsoft.Storage/storageAccounts/testblobacc4\"\r\n    },\r\n    \"policyInfo\": {\r\n      \"policyId\": \"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/backupPolicies/blobBkpPolicy\"\r\n    },\r\n    \"objectType\": \"BackupInstance\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "916" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/westus/operationResults/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzM5OTc0ODI2LTYxMWYtNDRhNi1iMGYxLTkwNjM0ZDFlMDE3ZA==?api-version=2022-05-01" ],
+        "Retry-After": [ "10" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzM5OTc0ODI2LTYxMWYtNDRhNi1iMGYxLTkwNjM0ZDFlMDE3ZA==?api-version=2022-05-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "4519f149-b56b-462f-8713-08d684835fa1" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220707T073701Z:4519f149-b56b-462f-8713-08d684835fa1" ],
+        "Date": [ "Thu, 07 Jul 2022 07:37:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Set-AzDataProtectionMSIPermission+[NoContext]+BlobGrantPermission+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzM5OTc0ODI2LTYxMWYtNDRhNi1iMGYxLTkwNjM0ZDFlMDE3ZA==?api-version=2022-05-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzM5OTc0ODI2LTYxMWYtNDRhNi1iMGYxLTkwNjM0ZDFlMDE3ZA==?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "bee413c1-7150-4905-a868-38bd31f2410f" ],
+        "CommandName": [ "Test-AzDataProtectionBackupInstanceReadiness" ],
+        "FullCommandName": [ "Test-AzDataProtectionBackupInstanceReadiness_ValidateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.5", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "997" ],
+        "x-ms-correlation-request-id": [ "3615b531-82af-48d1-8ef8-683d23a13e59" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220707T073711Z:3615b531-82af-48d1-8ef8-683d23a13e59" ],
+        "Date": [ "Thu, 07 Jul 2022 07:37:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "476" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzM5OTc0ODI2LTYxMWYtNDRhNi1iMGYxLTkwNjM0ZDFlMDE3ZA==\",\"name\":\"MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzM5OTc0ODI2LTYxMWYtNDRhNi1iMGYxLTkwNjM0ZDFlMDE3ZA==\",\"status\":\"Inprogress\",\"startTime\":\"2022-07-07T07:37:01.0761403Z\",\"endTime\":\"0001-01-01T00:00:00Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzDataProtectionMSIPermission+[NoContext]+BlobGrantPermission+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzM5OTc0ODI2LTYxMWYtNDRhNi1iMGYxLTkwNjM0ZDFlMDE3ZA==?api-version=2022-05-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzM5OTc0ODI2LTYxMWYtNDRhNi1iMGYxLTkwNjM0ZDFlMDE3ZA==?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "bee413c1-7150-4905-a868-38bd31f2410f" ],
+        "CommandName": [ "Test-AzDataProtectionBackupInstanceReadiness" ],
+        "FullCommandName": [ "Test-AzDataProtectionBackupInstanceReadiness_ValidateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.5", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "996" ],
+        "x-ms-correlation-request-id": [ "5d5f2e7c-dc46-4544-a251-ec604897e70b" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220707T073742Z:5d5f2e7c-dc46-4544-a251-ec604897e70b" ],
+        "Date": [ "Thu, 07 Jul 2022 07:37:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "475" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG/providers/Microsoft.DataProtection/backupVaults/TestBkpVault/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzM5OTc0ODI2LTYxMWYtNDRhNi1iMGYxLTkwNjM0ZDFlMDE3ZA==\",\"name\":\"MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzM5OTc0ODI2LTYxMWYtNDRhNi1iMGYxLTkwNjM0ZDFlMDE3ZA==\",\"status\":\"Succeeded\",\"startTime\":\"2022-07-07T07:37:01.0761403Z\",\"endTime\":\"2022-07-07T07:37:19Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzDataProtectionMSIPermission+[NoContext]+BlobGrantPermission+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/westus/operationResults/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzM5OTc0ODI2LTYxMWYtNDRhNi1iMGYxLTkwNjM0ZDFlMDE3ZA==?api-version=2022-05-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/westus/operationResults/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzM5OTc0ODI2LTYxMWYtNDRhNi1iMGYxLTkwNjM0ZDFlMDE3ZA==?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "bee413c1-7150-4905-a868-38bd31f2410f" ],
+        "CommandName": [ "Test-AzDataProtectionBackupInstanceReadiness" ],
+        "FullCommandName": [ "Test-AzDataProtectionBackupInstanceReadiness_ValidateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.5", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/westus/operationStatus/MGZhNjZjMjAtNDAxNS00N2NkLWFjMTktNjZlZGZkZjYyNzRkOzM5OTc0ODI2LTYxMWYtNDRhNi1iMGYxLTkwNjM0ZDFlMDE3ZA==?api-version=2022-05-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "198" ],
+        "x-ms-correlation-request-id": [ "9146a8af-204f-423f-8126-5b292d80280c" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20220707T073742Z:9146a8af-204f-423f-8126-5b292d80280c" ],
+        "Date": [ "Thu, 07 Jul 2022 07:37:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "41" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"objectType\":\"OperationJobExtendedInfo\"}",
+      "isContentBase64": false
+    }
+  }
+}

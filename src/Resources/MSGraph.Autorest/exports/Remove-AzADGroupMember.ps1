@@ -84,7 +84,7 @@ GROUPOBJECT <MicrosoftGraphGroup>: The target group object, could be used as pip
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadgroupmember
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadgroupmember
 #>
 function Remove-AzADGroupMember {
 [OutputType([System.Boolean])]

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HealthcareApis
-online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcarefhirdestination
+online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcarefhirdestination
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Lists all FHIR destinations for the given IoT Connector
 
 ### Example 1: Lists all FHIR destinations for the given IoT Connector
 ```powershell
-PS C:\> Get-AzHealthcareFhirDestination -IotConnectorName azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
+Get-AzHealthcareFhirDestination -IotConnectorName azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
+```
 
+```output
 Location Name                                          ResourceGroupName
 -------- ----                                          -----------------
 eastus2  azpshcws/azpsiotconnector/azpsfhirdestination azps_test_group

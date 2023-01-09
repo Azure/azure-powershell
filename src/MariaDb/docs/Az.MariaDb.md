@@ -1,7 +1,7 @@
 ---
 Module Name: Az.MariaDb
 Module Guid: 8dbb10e2-0ec3-48c3-9481-1cb1e87e2368
-Download Help Link: https://docs.microsoft.com/powershell/module/az.mariadb
+Download Help Link: https://learn.microsoft.com/powershell/module/az.mariadb
 Help Version: 1.0.0.0
 Locale: en-US
 ---

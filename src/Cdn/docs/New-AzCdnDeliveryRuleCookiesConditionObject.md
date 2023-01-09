@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleCookiesConditionObject
+online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleCookiesConditionObject
 schema: 2.0.0
 ---
 
@@ -23,27 +23,18 @@ Create an in-memory object for DeliveryRuleCookiesCondition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AzureCDN DeliveryRuleCookiesCondition
 ```powershell
-{{ Add code here }}
+New-AzCdnDeliveryRuleCookiesConditionObject -Name Cookies -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+Cookies
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for AzureCDN DeliveryRuleCookiesCondition
 
 ## PARAMETERS
 

@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Test an AzureFrontDoor domain within the specified AzureFrontDoor endpoint
 ```powershell
-{{ Add code here }}
+Test-AzFrontDoorCdnEndpointCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -HostName "pstest001.dev.cdn.azure.cn"
 ```
 
 ```output
-{{ Add output here }}
+CustomDomainValidated Message Reason
+--------------------- ------- ------
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Test an AzureFrontDoor domain within the specified AzureFrontDoor endpoint
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceLinker
-online version: https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerforspringcloud
+online version: https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerforspringcloud
 schema: 2.0.0
 ---
 
@@ -55,7 +55,7 @@ List all linkers in a spring cloud app's deployment
 
 ### Example 2: Get linker by name
 ```powershell
-Get-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group  -Name postgresql_connection | fl
+Get-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group  -Name postgresql_connection | Format-List
 ```
 
 ```output
@@ -91,7 +91,7 @@ $identity = @{
 ResourceUri = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/servicelinker-test-linux-group/providers/Microsoft.AppPlatform/Spring/servicelinker-springcloud/apps/appconfiguration/deployments/default'
 LinkerName = 'postgresql_connection'}
 
-$identity | Get-AzServiceLinkerForSpringCloud  |fl
+$identity | Get-AzServiceLinkerForSpringCloud  | Format-List
 ```
 
 ```output

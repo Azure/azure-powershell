@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceLinker
-online version: https://docs.microsoft.com/powershell/module/az.servicelinker/test-azservicelinkerforwebapp
+online version: https://learn.microsoft.com/powershell/module/az.servicelinker/test-azservicelinkerforwebapp
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Validate a link in webapp.
 
 ### Example 1: Test Linker
 ```powershell
-Test-AzServiceLinkerForWebApp -WebApp servicelinker-webapp -ResourceGroupName servicelinker-test-group -Name postgresql_connection | fl
+Test-AzServiceLinkerForWebApp -WebApp servicelinker-webapp -ResourceGroupName servicelinker-test-group -Name postgresql_connection | Format-List
 ```
 
 ```output

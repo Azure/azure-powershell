@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleUrlPathConditionObject
+online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleUrlPathConditionObject
 schema: 2.0.0
 ---
 
@@ -23,27 +23,18 @@ Create an in-memory object for DeliveryRuleUrlPathCondition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AzureCDN DeliveryRuleUrlPathCondition
 ```powershell
-{{ Add code here }}
+New-AzCdnDeliveryRuleUrlPathConditionObject -Name UrlPath -ParameterOperator Equal -ParameterMatchValue /a
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+UrlPath
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for AzureCDN DeliveryRuleUrlPathCondition
 
 ## PARAMETERS
 

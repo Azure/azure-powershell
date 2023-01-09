@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az.app/new-azcontainerappauthconfig
+online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappauthconfig
 schema: 2.0.0
 ---
 
@@ -444,7 +444,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-IDENTITYPROVIDER <IIdentityProviders>: The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
+`IDENTITYPROVIDER <IIdentityProviders>`: The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
   - `[AllowedPrincipalGroup <String[]>]`: The list of the allowed groups.
   - `[AllowedPrincipalIdentity <String[]>]`: The list of the allowed identities.
   - `[AppleEnabled <Boolean?>]`: <code>false</code> if the Apple provider should not be enabled despite the set registration; otherwise, <code>true</code>.

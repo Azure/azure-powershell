@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfigurationflux
+online version: https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesconfigurationflux
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Gets details of the Flux Configuration.
 
 ### Example 1: List details of the Flux Configuration.
 ```powershell
-PS C:\> Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azpstest_gp
+Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azpstest_gp
+```
 
+```output
 Name             ResourceGroupName
 ----             -----------------
 azpstestflux-k8s azpstest_gp
@@ -48,8 +50,10 @@ List details of the Flux Configuration.
 
 ### Example 2: Gets details of the Flux Configuration.
 ```powershell
-PS C:\> Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp
+Get-AzKubernetesConfigurationFlux -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestflux-k8s -ResourceGroupName azpstest_gp
+```
 
+```output
 Name             ResourceGroupName
 ----             -----------------
 azpstestflux-k8s azpstest_gp

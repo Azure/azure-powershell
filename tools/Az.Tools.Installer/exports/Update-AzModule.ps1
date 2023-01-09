@@ -32,7 +32,7 @@ function Update-AzModule {
         [string[]]
         ${Name},
 
-        [Parameter(HelpMessage = 'The Registered Repostory.')]
+        [Parameter(HelpMessage = 'The Registered Repository to install module from. If only one repository is registered in PowerShell, Update-AzModule will use it. If more than one, please specify the Repository.')]
         [ValidateNotNullOrEmpty()]
         [string]
         ${Repository},
@@ -91,6 +91,7 @@ function Update-AzModule {
             $findModuleParams.Add('Repository', $Repository)
         }
         $modulesToUpdate = Get-AzModuleFromRemote @findModuleParams
+        $Repository = $modulesToUpdate.Repository | Select-Object -First 1
         $moduleUpdateTable = $modulesToUpdate | Foreach-Object { [PSCustomObject]@{
             Name = $_.Name
             VersionBeforeUpdate = [Version] ($groupSet[$_.Name] | Select-Object -First 1)

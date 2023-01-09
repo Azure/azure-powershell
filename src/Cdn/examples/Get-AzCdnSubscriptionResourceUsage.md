@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the quota and actual usage of the CDN profiles under the given subscription
 ```powershell
-{{ Add code here }}
+Get-AzCdnSubscriptionResourceUsage
 ```
 
 ```output
-{{ Add output here }}
+CurrentValue Limit ResourceType Unit
+------------ ----- ------------ ----
+13           25    profile      count
+29           500   afdprofile   count
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get the quota and actual usage of the CDN profiles under the given subscription
 

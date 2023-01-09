@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HealthcareApis
-online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareiotconnector
+online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/remove-azhealthcareiotconnector
 schema: 2.0.0
 ---
 
@@ -32,16 +32,14 @@ Deletes an IoT Connector.
 
 ### Example 1: Deletes an IoT Connector.
 ```powershell
-PS C:\> Remove-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
-
+Remove-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
 ```
 
 Deletes an IoT Connector.
 
 ### Example 2: Deletes an IoT Connector.
 ```powershell
-PS C:\> Get-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws | Remove-AzHealthcareIotConnector
-
+Get-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws | Remove-AzHealthcareIotConnector
 ```
 
 Deletes an IoT Connector.

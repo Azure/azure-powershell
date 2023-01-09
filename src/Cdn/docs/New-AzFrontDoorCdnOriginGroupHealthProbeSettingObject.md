@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
+online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
 schema: 2.0.0
 ---
 
@@ -22,27 +22,18 @@ Create an in-memory object for HealthProbeParameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AzureFrontDoor origin group `HealthProbeSetting` object}}
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
 ```
 
 ```output
-{{ Add output here }}
+ProbeIntervalInSecond ProbePath ProbeProtocol ProbeRequestType
+--------------------- --------- ------------- ----------------
+1                     /         Https         GET
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

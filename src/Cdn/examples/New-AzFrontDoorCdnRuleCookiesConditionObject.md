@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for DeliveryRuleCookiesCondition
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorCdnRuleCookiesConditionObject -Name Cookies -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+Cookies
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

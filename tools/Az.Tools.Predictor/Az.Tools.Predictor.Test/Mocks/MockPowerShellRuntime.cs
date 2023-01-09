@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.PowerShell.Tools.AzPredictor;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
@@ -27,8 +26,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
     /// </summary>
     internal sealed class MockPowerShellRuntime : IPowerShellRuntime, IDisposable
     {
+        private Runspace _defaultRunspace;
+
         /// <inheritdoc />
-        public Runspace DefaultRunspace { get; private set; } = PowerShellRunspaceUtilities.GetMinimalRunspace();
+        public Runspace DefaultRunspace
+        {
+            get
+            {
+                if (_defaultRunspace is null)
+                {
+                    _defaultRunspace = PowerShellRunspaceUtilities.GetTestRunspace();
+                }
+
+                return _defaultRunspace;
+            }
+        }
 
         /// <inheritdoc />
         public PowerShell ConsoleRuntime => throw new NotImplementedException("It's not implemented yet because there is no test case to set up powershell environment.");
@@ -41,10 +53,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 
         public void Dispose()
         {
-            if (DefaultRunspace is not null)
+            if (_defaultRunspace is not null)
             {
-                DefaultRunspace.Dispose();
-                DefaultRunspace = null;
+                _defaultRunspace.Dispose();
+                _defaultRunspace = null;
             }
         }
     }

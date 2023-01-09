@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorev1
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorev1
 schema: 2.0.0
 ---
 

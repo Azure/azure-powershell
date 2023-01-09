@@ -23,7 +23,7 @@ Create an in-memory object for DeliveryRuleHttpVersionCondition.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleHttpVersionCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleHttpVersionConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleHttpVersionConditionObject
 #>
 function New-AzFrontDoorCdnRuleHttpVersionConditionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleHttpVersionCondition')]

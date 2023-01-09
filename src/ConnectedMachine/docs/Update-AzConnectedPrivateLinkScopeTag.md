@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://docs.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedprivatelinkscopetag
+online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedprivatelinkscopetag
 schema: 2.0.0
 ---
 
@@ -47,17 +47,13 @@ To update other fields use the CreateOrUpdate method.
 
 ### Example 1: Update the tags of a private link scope
 ```powershell
-PS C:\> $scope = Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
-```
+$scope = Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
 
-```output
-Name         Location    PublicNetworkAccess ProvisioningState 
-----         --------    ------------------- ----------------- 
-name         eastus2euap Disabled            Succeeded         
-```
+Name         Location    PublicNetworkAccess ProvisioningState
+----         --------    ------------------- -----------------
+name         eastus2euap Disabled            Succeeded
 
-```powershell
-PS C:\\> $scope.Tag
+$scope.Tag
 ```
 
 Update the tags of a private link scope

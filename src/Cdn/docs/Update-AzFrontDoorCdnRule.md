@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnrule
+online version: https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnrule
 schema: 2.0.0
 ---
 
@@ -32,27 +32,18 @@ Updates an existing delivery rule within a rule set.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an AzureFrontDoor delivery rule within the specified rule set
 ```powershell
-{{ Add code here }}
+Update-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 -Order 99
 ```
 
 ```output
-{{ Add output here }}
+Name  ResourceGroupName
+----  -----------------
+rule1 testps-rg-da16jm
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -310,13 +301,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ACTION <IDeliveryRuleAction1[]>: A list of actions that are executed when all the conditions of a rule are satisfied.
+`ACTION <IDeliveryRuleAction1[]>`: A list of actions that are executed when all the conditions of a rule are satisfied.
   - `Name <DeliveryRuleAction>`: The name of the action for the delivery rule.
 
-CONDITION <IDeliveryRuleCondition[]>: A list of conditions that must be matched for the actions to be executed
+`CONDITION <IDeliveryRuleCondition[]>`: A list of conditions that must be matched for the actions to be executed
   - `Name <MatchVariable>`: The name of the condition for the delivery rule.
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

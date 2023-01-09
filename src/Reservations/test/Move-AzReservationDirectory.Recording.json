@@ -1,0 +1,158 @@
+{
+  "Move-AzReservationDirectory+[NoContext]+ChangeExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-100000000001/changeDirectory?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-100000000001/changeDirectory?api-version=2022-03-01",
+      "Content": "{\r\n  \"destinationTenantId\": \"30000000-aaaa-bbbb-cccc-100000000004\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "69" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"9/13/2022 7:08:21 PM\"}" ],
+        "x-ms-request-id": [ "westcentralus:d2cdf686-7902-481e-b16e-63cc53a08c1a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-correlation-request-id": [ "247251ca-fe0f-4de7-b5ed-982c940a6302" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220707T191228Z:247251ca-fe0f-4de7-b5ed-982c940a6302" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 07 Jul 2022 19:12:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "253" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"reservationOrder\":{\"id\":\"40000000-aaaa-bbbb-cccc-100000000001\",\"name\":\"BrowseTest-VM_RI_06-15-2022_12-08\",\"isSucceeded\":true},\"reservations\":[{\"id\":\"30000000-aaaa-bbbb-cccc-200000000000\",\"name\":\"BrowseTest-VM_RI_06-15-2022_12-08\",\"isSucceeded\":true}]}",
+      "isContentBase64": false
+    }
+  },
+  "Move-AzReservationDirectory+[NoContext]+Change+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005/changeDirectory?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-200000000005/changeDirectory?api-version=2022-03-01",
+      "Content": "{\r\n  \"destinationTenantId\": \"30000000-aaaa-bbbb-cccc-100000000004\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "69" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
+        "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"9/13/2022 5:32:37 PM\"}" ],
+        "x-ms-request-id": [ "westcentralus:98a54a93-5b50-4898-b5b0-7de1732807df" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-correlation-request-id": [ "5956621a-82a6-4bc3-9c42-1e266f79a926" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220707T191235Z:5956621a-82a6-4bc3-9c42-1e266f79a926" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 07 Jul 2022 19:12:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "231" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"reservationOrder\":{\"id\":\"50000000-aaaa-bbbb-cccc-200000000005\",\"name\":\"VM_RI_06-15-2022_10-32\",\"isSucceeded\":true},\"reservations\":[{\"id\":\"30000000-aaaa-bbbb-cccc-200000000009\",\"name\":\"VM_RI_06-15-2022_10-32\",\"isSucceeded\":true}]}",
+      "isContentBase64": false
+    }
+  },
+  "Move-AzReservationDirectory+[NoContext]+ChangeViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018/changeDirectory?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-200000000018/changeDirectory?api-version=2022-03-01",
+      "Content": "{\r\n  \"destinationTenantId\": \"30000000-aaaa-bbbb-cccc-100000000004\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "69" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1197" ],
+        "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"9/14/2022 11:59:35 PM\"}" ],
+        "x-ms-request-id": [ "westcentralus:191564d3-88b4-42c0-940f-655fdf223d3d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-correlation-request-id": [ "ed6c97b9-3157-488f-b980-a0132b1ec626" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220707T191249Z:ed6c97b9-3157-488f-b980-a0132b1ec626" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 07 Jul 2022 19:12:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "231" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"reservationOrder\":{\"id\":\"30000000-aaaa-bbbb-cccc-200000000018\",\"name\":\"VM_RI_06-16-2022_16-59\",\"isSucceeded\":true},\"reservations\":[{\"id\":\"30000000-aaaa-bbbb-cccc-200000000017\",\"name\":\"VM_RI_06-16-2022_16-59\",\"isSucceeded\":true}]}",
+      "isContentBase64": false
+    }
+  },
+  "Move-AzReservationDirectory+[NoContext]+ChangeViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000007/changeDirectory?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/40000000-aaaa-bbbb-cccc-200000000007/changeDirectory?api-version=2022-03-01",
+      "Content": "{\r\n  \"destinationTenantId\": \"30000000-aaaa-bbbb-cccc-100000000004\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "69" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1196" ],
+        "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"9/15/2022 7:49:48 PM\"}" ],
+        "x-ms-request-id": [ "westcentralus:2ed4dbde-8214-48fd-8c7b-b00655a92e20" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-correlation-request-id": [ "fb539be5-02c7-47f1-aa77-fd27022703c5" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220707T191256Z:fb539be5-02c7-47f1-aa77-fd27022703c5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 07 Jul 2022 19:12:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "237" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"reservationOrder\":{\"id\":\"40000000-aaaa-bbbb-cccc-200000000007\",\"name\":\"newVM_RI_06-17-2022_12-49\",\"isSucceeded\":true},\"reservations\":[{\"id\":\"40000000-aaaa-bbbb-cccc-200000000003\",\"name\":\"newVM_RI_06-17-2022_12-49\",\"isSucceeded\":true}]}",
+      "isContentBase64": false
+    }
+  }
+}

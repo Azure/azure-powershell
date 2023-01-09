@@ -19,7 +19,7 @@ Create a Continuous Export configuration of an Application Insights component.
 .Description
 Create a Continuous Export configuration of an Application Insights component.
 .Link
-https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport
+https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport
 #>
 function Set-AzApplicationInsightsContinuousExport {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration])]
@@ -76,8 +76,8 @@ function Set-AzApplicationInsightsContinuousExport {
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.String[]]
         # The document types to be exported, as comma separated values.
-        # Allowed values include 'Requests', 'Event', 'Exceptions', 'Metrics', 'PageViews', 'PageViewPerformance', 'Rdd', 'PerformanceCounters', 'Availability', 'Messages'.
-        ${DocumentType },
+        # Allowed values include 'Requests', 'Custom Event', 'Exception', 'Metric', 'Page View', 'Page Load', 'Dependency', 'Performance Counter', 'Availability', 'Trace'.
+        ${DocumentType},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
@@ -155,7 +155,7 @@ function Set-AzApplicationInsightsContinuousExport {
         if ($PSBoundParameters['StorageAccountId']) {
             $PSBoundParameters['DestinationStorageSubscriptionId'] = [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Utilities]::ParseSubscriptionFromId($PSBoundParameters['StorageAccountId'])
         }
-        $PSBoundParameters['RecordType'] = [System.String]::Join(",", $PSBoundParameters['DocumentType'])
+        $PSBoundParameters['RecordType'] = [System.String]::Join(",", [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Utilities]::ConvertToRecordType($PSBoundParameters['DocumentType']))
         $null = $PSBoundParameters.Remove('DocumentType')
         if ($PSBoundParameters.ContainsKey('DisableConfiguration')) {
             if ($PSBoundParameters['DisableConfiguration']) {

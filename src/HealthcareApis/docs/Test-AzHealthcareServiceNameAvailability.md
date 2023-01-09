@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.HealthcareApis
-online version: https://docs.microsoft.com/powershell/module/az.healthcareapis/test-azhealthcareservicenameavailability
+online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/test-azhealthcareservicenameavailability
 schema: 2.0.0
 ---
 
@@ -44,8 +44,10 @@ Check if a service instance name is available.
 
 ### Example 1: Check if a service instance name is available.
 ```powershell
-PS C:\> Test-AzHealthcareServiceNameAvailability -Name azpsdicom -Type Microsoft.HealthcareApis/services
+Test-AzHealthcareServiceNameAvailability -Name azpsdicom -Type Microsoft.HealthcareApis/services
+```
 
+```output
 Message NameAvailable Reason
 ------- ------------- ------
         True

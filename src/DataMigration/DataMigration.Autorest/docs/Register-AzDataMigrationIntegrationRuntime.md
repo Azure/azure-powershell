@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/register-azdatamigrationintegrationruntime
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/register-azdatamigrationintegrationruntime
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Registers Sql Migration Service on Integration Runtime
 
 ### Example 1: Register Sql Migration Service on Self Hosted Integration Runtime
 ```powershell
-$authKeys = Get-AzDataMigrationSqlMigrationServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
+$authKeys = Get-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
 Register-AzDataMigrationIntegrationRuntime -AuthKey $authKeys.AuthKey1
 ```
 
@@ -37,7 +37,7 @@ This command registers Sql Migration Service on Self Hosted Integration Runtime.
 
 ### Example 2: Install Integration Runtime and register a Sql Migration Service on it
 ```powershell
-$authKeys = Get-AzDataMigrationSqlMigrationServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
+$authKeys = Get-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
 Register-AzDataMigrationIntegrationRuntime -AuthKey $authKeys.AuthKey1 -IntegrationRuntimePath "C:\Users\user\Downloads\IntegrationRuntime.msi"
 ```
 

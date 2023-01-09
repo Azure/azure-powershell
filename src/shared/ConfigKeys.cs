@@ -24,9 +24,11 @@ namespace Microsoft.Azure.Commands.Shared.Config
     /// </remarks>
     internal static class ConfigKeys
     {
-        public const string EnableInterceptSurvey = "EnableInterceptSurvey";
+        public const string EnableInterceptSurvey = "DisplaySurveyMessage";
         public const string DisplayBreakingChangeWarning = "DisplayBreakingChangeWarning";
         public const string DefaultSubscriptionForLogin = "DefaultSubscriptionForLogin";
         public const string EnableDataCollection = "EnableDataCollection";
+        public const string EnableTestCoverage = "EnableTestCoverage";
+        public const string TestCoverageLocation = "TestCoverageLocation";
     }
 }

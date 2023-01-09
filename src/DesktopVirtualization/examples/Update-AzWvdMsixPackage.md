@@ -1,11 +1,11 @@
 ### Example 1: Update a MSIX Package 
 ```powershell
 Update-AzWvdMsixPackage -HostPoolName HostPoolName `
-				-ResourceGroupName ResourceGroupName `
-				-SubscriptionId SubscriptionId `
-				-displayName 'Updated-display-Name' `
-        			-IsRegularRegistration:$False `
-				-IsActive:$True
+        -ResourceGroupName ResourceGroupName `
+        -SubscriptionId SubscriptionId `
+        -displayName 'Updated-display-Name' `
+        -IsRegularRegistration:$False `
+        -IsActive:$True
 ```
 
 ```output

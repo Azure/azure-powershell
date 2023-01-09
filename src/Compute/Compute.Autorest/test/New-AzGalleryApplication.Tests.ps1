@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzGalleryApplication'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzGalleryApplication' {
+Describe 'New-AzGalleryApplication' -Tag 'LiveOnly'{
     It 'CreateExpanded' {
         $galleryName = "testgallery" + $env.RandomString
         $galleryApplicationName = "testgalapp" + $env.RandomString

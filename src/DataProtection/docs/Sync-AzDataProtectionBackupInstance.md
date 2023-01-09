@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/sync-azdataprotectionbackupinstance
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/sync-azdataprotectionbackupinstance
 schema: 2.0.0
 ---
 
@@ -25,7 +25,7 @@ Sync backup instance again in case of failure\r\nThis action will retry last fai
 
 ### Example 1: Sync backup instance again in case of failure
 ```powershell
-PS C:\> Sync-AzDataProtectionBackupInstance -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
+Sync-AzDataProtectionBackupInstance -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
 ```
 
 The above command is used to sync backup instance again in case of failure.

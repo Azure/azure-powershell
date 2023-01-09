@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/start-azwebapptriggeredwebjob
+online version: https://learn.microsoft.com/powershell/module/az.websites/start-azwebapptriggeredwebjob
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Run a triggered web job for an app.
 
 ### Example 1: Run a triggered web job for an app
 ```powershell
-PS C:\> Start-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01
+Start-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01
 
 ```
 
@@ -39,7 +39,7 @@ This command runs a triggered web job for an app.
 
 ### Example 2: Run a triggered web job for an app by pipeline
 ```powershell
-PS C:\> Get-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01 | Start-AzWebAppTriggeredWebJob
+Get-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01 | Start-AzWebAppTriggeredWebJob
 
 ```
 

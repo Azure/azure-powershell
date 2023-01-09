@@ -1,7 +1,7 @@
 @{
   GUID = 'c78eb738-b339-4296-8c9f-13ef28817c3c'
   RootModule = './Az.DesktopVirtualization.psm1'
-  ModuleVersion = '2.0.0'
+  ModuleVersion = '2.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

@@ -1,22 +1,28 @@
-### Example 1: {{ Add title here }}
+### Example 1: List AzureFrontDoor secret under the profile
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 ```
 
 ```output
-{{ Add output here }}
+Name      ResourceGroupName
+----      -----------------
+secret001 testps-rg-da16jm
+secret002 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+List AzureFrontDoor secret under the profile
 
-### Example 2: {{ Add title here }}
+
+### Example 2: Get an AzureFrontDoor secret under the profile
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
 ```
 
 ```output
-{{ Add output here }}
+Name      ResourceGroupName
+----      -----------------
+secret001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+Get an AzureFrontDoor secret under the profile
 

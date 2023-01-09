@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesextension
+online version: https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azkubernetesextension
 schema: 2.0.0
 ---
 
@@ -37,8 +37,10 @@ Gets Kubernetes Cluster Extension.
 
 ### Example 1: Gets Kubernetes Cluster Extension.
 ```powershell
-PS C:\> Get-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp
+Get-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp
+```
 
+```output
 Name               ExtensionType           Version ProvisioningState AutoUpgradeMinorVersion ReleaseTrain
 ----               -------------           ------- ----------------- ----------------------- ------------
 azpstest-extension azuremonitor-containers 2.9.2   Succeeded         True                    Stable
@@ -48,8 +50,10 @@ Gets Kubernetes Cluster Extension.
 
 ### Example 2: List Kubernetes Cluster Extension.
 ```powershell
-PS C:\> Get-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azpstest_gp
+Get-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azpstest_gp
+```
 
+```output
 Name               ExtensionType           Version ProvisioningState AutoUpgradeMinorVersion ReleaseTrain
 ----               -------------           ------- ----------------- ----------------------- ------------
 azpstest-extension azuremonitor-containers 2.9.2   Succeeded         True                    Stable

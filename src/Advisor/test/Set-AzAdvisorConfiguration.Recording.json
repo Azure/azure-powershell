@@ -1,0 +1,74 @@
+{
+  "Set-AzAdvisorConfiguration+[NoContext]+CreateByLCT+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/configurations/default?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/configurations/default?api-version=2020-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"exclude\": false,\r\n    \"lowCpuThreshold\": \"15\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "80" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "0fa06b52-aa8e-40ca-ad6d-ad629fa4bbfe" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-correlation-request-id": [ "84209af1-5cba-4aab-a393-e61a7c4adb22" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220927T092600Z:84209af1-5cba-4aab-a393-e61a7c4adb22" ],
+        "Date": [ "Tue, 27 Sep 2022 09:26:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "224" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"exclude\":false,\"lowCpuThreshold\":\"15\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/configurations/default\",\"type\":\"Microsoft.Advisor/Configurations\",\"name\":\"default\"}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzAdvisorConfiguration+[NoContext]+CreateByRG+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automanagehcrprg/providers/Microsoft.Advisor/configurations/default?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automanagehcrprg/providers/Microsoft.Advisor/configurations/default?api-version=2020-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"exclude\": false\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "50" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "0fa6f15e-b6e6-423c-b41c-c0f36fbea523" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "198" ],
+        "x-ms-correlation-request-id": [ "a22981e9-a7d2-4c94-9439-2dd493e11d22" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220927T092601Z:a22981e9-a7d2-4c94-9439-2dd493e11d22" ],
+        "Date": [ "Tue, 27 Sep 2022 09:26:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "233" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"exclude\":false},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automanagehcrprg/providers/Microsoft.Advisor/configurations/default\",\"type\":\"Microsoft.Advisor/Configurations\",\"name\":\"default\"}",
+      "isContentBase64": false
+    }
+  }
+}

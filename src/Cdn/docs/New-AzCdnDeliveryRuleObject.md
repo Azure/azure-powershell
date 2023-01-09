@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleObject
+online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleObject
 schema: 2.0.0
 ---
 
@@ -22,27 +22,25 @@ Create an in-memory object for DeliveryRule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AzureCDN DeliveryRule
 ```powershell
-{{ Add code here }}
+$cond1 = New-AzCdnDeliveryRuleCookiesConditionObject -Name Cookies -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+$action1 = New-AzCdnDeliveryRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+$action2 = New-AzCdnDeliveryRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+
+
+$conditions = @($cond1)
+$actions = @($action1, $action2)
+New-AzCdnDeliveryRuleObject -Name "Rule1" -Condition $conditions -Action $actions -Order 1
 ```
 
 ```output
-{{ Add output here }}
+Name  Order
+----  -----
+Rule1 1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for AzureCDN DeliveryRule
 
 ## PARAMETERS
 
@@ -130,10 +128,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ACTION <IDeliveryRuleAction1[]>: A list of actions that are executed when all the conditions of a rule are satisfied.
+`ACTION <IDeliveryRuleAction1[]>`: A list of actions that are executed when all the conditions of a rule are satisfied.
   - `Name <DeliveryRuleAction>`: The name of the action for the delivery rule.
 
-CONDITION <IDeliveryRuleCondition[]>: A list of conditions that must be matched for the actions to be executed.
+`CONDITION <IDeliveryRuleCondition[]>`: A list of conditions that must be matched for the actions to be executed.
   - `Name <MatchVariable>`: The name of the condition for the delivery rule.
 
 ## RELATED LINKS

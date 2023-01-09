@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/send-azlabservicesuserinvite
+online version: https://learn.microsoft.com/powershell/module/az.labservices/send-azlabservicesuserinvite
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ Operation to invite a user to a lab.
 
 ### Example 1: Send lab invite to the user.
 ```powershell
-Send-AzLabServicesUserInvite -ResourceGroupName "Group Name" -LabName "Lab Name" -Name "User Name" -Text "Welcome to the lab."
+Send-AzLabServicesUserInvite -ResourceGroupName "Group Name" -LabName "Lab Name" -UserName "User Name" -Text "Welcome to the lab."
 ```
 
 This sends an email invitation to the user with the custom text "Welcome to the lab" in the body of the email.

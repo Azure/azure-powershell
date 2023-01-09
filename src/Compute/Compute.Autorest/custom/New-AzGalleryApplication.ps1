@@ -14,7 +14,7 @@ Create or update a gallery Application Definition.
 #>
 
 function New-AzGalleryApplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplication])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnroute
+online version: https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnroute
 schema: 2.0.0
 ---
 
@@ -29,27 +29,26 @@ Creates a new route with the specified route name under the specified subscripti
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an AzureFrontDoor route under the AzureFrontDoor profile
 ```powershell
-{{ Add code here }}
+$originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001
+$ruleSet = Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
+$customdomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
+
+$ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
+$customdomainResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $customdomain.Id
+
+New-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled" -CustomDomain @($customdomainResoure)
+     
 ```
 
 ```output
-{{ Add output here }}
+Name     ResourceGroupName
+----     -----------------
+route001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an AzureFrontDoor route under the AzureFrontDoor profile
 
 ## PARAMETERS
 
@@ -442,10 +441,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CUSTOMDOMAIN <IActivatedResourceReference[]>: Domains referenced by this endpoint.
+`CUSTOMDOMAIN <IActivatedResourceReference[]>`: Domains referenced by this endpoint.
   - `[Id <String>]`: Resource ID.
 
-RULESET <IResourceReference[]>: rule sets referenced by this endpoint.
+`RULESET <IResourceReference[]>`: rule sets referenced by this endpoint.
   - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS

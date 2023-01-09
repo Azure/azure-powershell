@@ -20,7 +20,7 @@ list source configurations for a linker in spring cloud.
 .Description
 list source configurations for a linker in spring cloud.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforspringcloud
+https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforspringcloud
 #>
 function Get-AzServiceLinkerConfigurationForSpringCloud {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISourceConfiguration])]
