@@ -20,14 +20,17 @@
 
 -->
 ## Upcoming Release
+
+## Version 5.3.0
 * Removed the image `Win2008R2SP1` from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.
+* Fixed a bug for creating Linux VM's from SIG/Community Gallery Images
+* Added `ImageReferenceId` string parameter to the `New-AzVmssConfig` cmdlet. This allows gallery image references to be added for the Confidential VM feature.
+* Added `SecurityEncryptionType` and `SecureVMDiskEncryptionSet` string parameters to the `Set-AzVmssStorageProfile` cmdlet for the Confidential VM feature.
 
 ## Version 5.2.0
 * Fixed issue found for `Set-AzVmssVMRunCommand` [#19985]
 * Fixed `Get-AzVm` cmdlet when parameter "-Status" is provided, return property `OsName`, `OsVersion` and `HyperVGeneration`
-* Fixed `New-AzVM` cmdlet when creating VM with bootdiagnostic storage causes exception `Kind` cannot be null.
-* Added `ImageReferenceId` string parameter to the `New-AzVmssConfig` cmdlet. This allows gallery image references to be added for the Confidential VM feature.
-* Added `SecurityEncryptionType` and `SecureVMDiskEncryptionSet` string parameters to the `Set-AzVmssStorageProfile` cmdlet for the Confidential VM feature. 
+* Fixed `New-AzVM` cmdlet when creating VM with bootdiagnostic storage causes exception `Kind` cannot be null. 
 
 ## Version 5.1.1
 * Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]

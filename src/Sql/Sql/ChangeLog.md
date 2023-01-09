@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.2.0
 * Added a parameter named `UseIdentity` for `Set-AzSqlServerAudit`, `Set-AzSqlDatabaseAudit`, `Set-AzSqlServerMSSupportAudit`
 * Added `IsManagedIdentityInUse` property to the output of `Get-AzSqlServerMSSupportAudit`
 * Added `PreferredEnclaveType` parameter to `New-AzSqlDatabase`, `Get-AzSqlDatabase` and `Set-AzSqlDatabase` cmdlet

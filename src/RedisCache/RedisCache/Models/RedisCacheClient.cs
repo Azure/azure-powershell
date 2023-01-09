@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                 parameters.MinimumTlsVersion = MinimumTlsVersion;
             }
 
-            RedisResource response = _client.Redis.Update(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
+            RedisResource response = _client.Redis.BeginUpdate(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
             return response;
         }
 
@@ -280,10 +280,11 @@ namespace Microsoft.Azure.Commands.RedisCache
             );
         }
 
-        public void ImportToCache(string resourceGroupName, string cacheName, string[] blobUrisWithSasTokens, string format)
+        public void ImportToCache(string resourceGroupName, string cacheName, string[] blobUrisWithSasTokens, string format, string preferredDataArchiveAuthMethod)
         {
             ImportRDBParameters parameters = new ImportRDBParameters();
             parameters.Files = blobUrisWithSasTokens;
+            parameters.PreferredDataArchiveAuthMethod = preferredDataArchiveAuthMethod;
             if (!string.IsNullOrWhiteSpace(format))
             {
                 parameters.Format = format;
@@ -291,11 +292,12 @@ namespace Microsoft.Azure.Commands.RedisCache
             _client.Redis.ImportData(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
         }
 
-        public void ExportToCache(string resourceGroupName, string cacheName, string containerUrisWithSasTokens, string prefix, string format)
+        public void ExportToCache(string resourceGroupName, string cacheName, string containerUrisWithSasTokens, string prefix, string format, string preferredDataArchiveAuthMethod)
         {
             ExportRDBParameters parameters = new ExportRDBParameters();
             parameters.Container = containerUrisWithSasTokens;
             parameters.Prefix = prefix;
+            parameters.PreferredDataArchiveAuthMethod = preferredDataArchiveAuthMethod;
             if (!string.IsNullOrWhiteSpace(format))
             {
                 parameters.Format = format;
@@ -388,7 +390,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         internal void RemoveLinkedServer(string resourceGroupName, string cacheName, string linkedCacheName)
         {
-            _client.LinkedServer.Delete(resourceGroupName, cacheName, linkedCacheName);
+            _client.LinkedServer.BeginDelete(resourceGroupName, cacheName, linkedCacheName);
         }
     }
 }
