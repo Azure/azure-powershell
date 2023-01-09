@@ -13,76 +13,82 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzWvdDesktop' {
     It 'Get' {
-        $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
-                            -Name $env.HostPool `
-                            -Location $env.Location `
-                            -HostPoolType 'Shared' `
-                            -LoadBalancerType 'DepthFirst' `
-                            -RegistrationTokenOperation 'Update' `
-                            -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
-                            -Description 'des' `
-                            -FriendlyName 'fri' `
-                            -MaxSessionLimit 5 `
-                            -VMTemplate $null `
-                            -CustomRdpProperty $null `
-                            -Ring $null `
-                            -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'Desktop'
+        try{
+            $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.HostPool `
+                                -Location $env.Location `
+                                -HostPoolType 'Shared' `
+                                -LoadBalancerType 'DepthFirst' `
+                                -RegistrationTokenOperation 'Update' `
+                                -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
+                                -Description 'des' `
+                                -FriendlyName 'fri' `
+                                -MaxSessionLimit 5 `
+                                -VMTemplate $null `
+                                -CustomRdpProperty $null `
+                                -Ring $null `
+                                -ValidationEnvironment:$false `
+                                -PreferredAppGroupType 'Desktop'
 
-        $applicationGroup = New-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
-                            -Name $env.DesktopApplicationGroup `
-                            -Location $env.Location `
-                            -FriendlyName 'fri' `
-                            -Description 'des' `
-                            -HostPoolArmPath  $env.HostPoolArmPath `
-                            -ApplicationGroupType 'Desktop'
-        
-        $desktop = Get-AzWvdDesktop -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
-                            -ApplicationGroupName $env.DesktopApplicationGroup `
-                            -Name 'SessionDesktop'
-            $desktop.Name | Should -Be 'ApplicationGroupPowershell1/SessionDesktop'
-            $desktop.FriendlyName | Should -Be 'SessionDesktop'
-            $desktop.Description | Should -Be 'The default Session Desktop'
+            $applicationGroup = New-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.DesktopApplicationGroup `
+                                -Location $env.Location `
+                                -FriendlyName 'fri' `
+                                -Description 'des' `
+                                -HostPoolArmPath  $env.HostPoolArmPath `
+                                -ApplicationGroupType 'Desktop'
 
-        $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
-                            -Name $env.DesktopApplicationGroup
+            $desktop = Get-AzWvdDesktop -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -ApplicationGroupName $env.DesktopApplicationGroup `
+                                -Name 'SessionDesktop'
+                $desktop.Name | Should -Be 'ApplicationGroupPowershell1/SessionDesktop'
+                $desktop.FriendlyName | Should -Be 'SessionDesktop'
+                $desktop.Description | Should -Be 'The default Session Desktop'
+        }
+        finally{
+            $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.DesktopApplicationGroup
 
-        $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
-                            -Name $env.RemoteApplicationGroup
+            $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.RemoteApplicationGroup
+        }
     }
 
     It 'List' {
-        $applicationGroup = New-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
-                            -Name $env.DesktopApplicationGroup `
-                            -Location $env.Location `
-                            -FriendlyName 'fri' `
-                            -Description 'des' `
-                            -HostPoolArmPath  $env.HostPoolArmPath `
-                            -ApplicationGroupType 'Desktop'
-        
-        $desktops = Get-AzWvdDesktop -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
-                            -ApplicationGroupName $env.DesktopApplicationGroup
-            $desktops[0].Name | Should -Be 'ApplicationGroupPowershell1/SessionDesktop'
-            $desktops[0].FriendlyName | Should -Be 'SessionDesktop'
-            $desktops[0].Description | Should -Be 'The default Session Desktop'
+        try{
+            $applicationGroup = New-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.DesktopApplicationGroup `
+                                -Location $env.Location `
+                                -FriendlyName 'fri' `
+                                -Description 'des' `
+                                -HostPoolArmPath  $env.HostPoolArmPath `
+                                -ApplicationGroupType 'Desktop'
 
-        $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
-                            -Name $env.DesktopApplicationGroup
+            $desktops = Get-AzWvdDesktop -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -ApplicationGroupName $env.DesktopApplicationGroup
+                $desktops[0].Name | Should -Be 'ApplicationGroupPowershell1/SessionDesktop'
+                $desktops[0].FriendlyName | Should -Be 'SessionDesktop'
+                $desktops[0].Description | Should -Be 'The default Session Desktop'
+        }
+        finally{
+            $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.DesktopApplicationGroup
 
-        $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
-                            -Name $env.RemoteApplicationGroup
+            $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.RemoteApplicationGroup
 
-        $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
-                            -Name $env.HostPool
+            $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.HostPool
+        }
     }
 }
