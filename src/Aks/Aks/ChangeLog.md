@@ -32,6 +32,7 @@
 * Added parameter `-GpuInstanceProfile` for `New-AzAksCluster` and `New-AzAksNodePool`
 * Added parameter `-EnableUptimeSLA` for `New-AzAksCluster` and `Set-AzAksCluster`
 * Added parameter `-EdgeZone` for `New-AzAksCluster`
+* Added parameter `-AadProfile` for `New-AzAksCluster` and `Set-AzAksCluster`
 
 ## Version 5.1.0
 * Bumped API version to 2022-09-01

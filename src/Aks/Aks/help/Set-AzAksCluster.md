@@ -29,8 +29,9 @@ Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImag
  [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
  [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -49,8 +50,9 @@ Set-AzAksCluster -InputObject <PSKubernetesCluster> [-NodePoolMode <String>] [-A
  [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
  [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### IdParameterSet
@@ -69,8 +71,9 @@ Set-AzAksCluster [-NodePoolMode <String>] [-AcrNameToDetach <String>] [-NodeImag
  [-FqdnSubdomain <String>] [-EnableManagedIdentity] [-AssignIdentity <String>] [-AutoUpgradeChannel <String>]
  [-DiskEncryptionSetID <String>] [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,6 +102,21 @@ Get-AzAksCluster -ResourceGroupName group -Name myCluster | Set-AzAksCluster -Au
 ```
 
 ## PARAMETERS
+
+### -AadProfile
+The Azure Active Directory configuration.
+
+```yaml
+Type: Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AcrNameToAttach
 Grant the 'acrpull' role of the specified ACR to AKS Service Principal, e.g. myacr

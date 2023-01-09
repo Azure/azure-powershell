@@ -41,8 +41,9 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-AssignIdentity <String>] [-AutoUpgradeChannel <String>] [-DiskEncryptionSetID <String>]
  [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,6 +110,21 @@ New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -AutoScal
 ```
 
 ## PARAMETERS
+
+### -AadProfile
+The Azure Active Directory configuration.
+
+```yaml
+Type: Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AcrNameToAttach
 Grant the 'acrpull' role of the specified ACR to AKS Service Principal, e.g. myacr
