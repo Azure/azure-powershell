@@ -38,7 +38,7 @@ input-file:
 #  - D:\code\azure-rest-api-specs\specification\storage\resource-manager\Microsoft.Storage\stable\2022-09-01\networkSecurityPerimeter.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-  - D:\code\azure-rest-api-specs\specification\storage\resource-manager\Microsoft.Storage\stable\2022-09-01\networkSecurityPerimeter.json
+  - https://github.com/Elvis-Shi/azure-rest-api-specs/blob/main/specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/networkSecurityPerimeter.json
 module-version: 0.1.0
 # Normally, title is the service name
 title: Storage
