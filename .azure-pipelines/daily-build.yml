@@ -29,10 +29,10 @@ jobs:
         git clean -xdf
 
   - task: PowerShell@2
-    displayName: Prepare Powershell $(PSVersion) 
+    displayName: Prepare Powershell $(PSVersion)
     inputs:
       filePath: 'tools/Test/SmokeTest/PrepareRequiredPowershell.ps1'
-      arguments: '-RequiredPsVersion $(PSVersion)'      
+      arguments: '-RequiredPsVersion $(PSVersion)'
 
   - task: PowerShell@2
     displayName: 'Install platyPS'
@@ -49,7 +49,7 @@ jobs:
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:"Build" /p:"Configuration=Release"'
+      arguments: 'build.proj /t:"Build" /p:"Configuration=Release;TurnOnTestCoverage=true"'
 
   - task: PowerShell@2
     displayName: 'Bump Version'
@@ -60,7 +60,7 @@ jobs:
         Get-PSRepository `
         ./tools/RunVersionController.ps1 -Release 'Daily Build $(today)' `
         Exit"
-        dotnet tool run pwsh -c $command  
+        dotnet tool run pwsh -c $command
 
   - task: PowerShell@2
     displayName: 'Clean artifacts folder'
@@ -74,7 +74,7 @@ jobs:
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:Build /p:Configuration=Release'
+      arguments: 'build.proj /t:Build /p:Configuration=Release;TurnOnTestCoverage=true'
 
   - task: EsrpCodeSigning@1
     inputs:
@@ -133,7 +133,7 @@ jobs:
       SessionTimeout: '60'
       MaxConcurrency: '50'
       MaxRetryAttempts: '5'
-  
+
   - task: EsrpCodeSigning@1
     displayName: 'Sign 3rd Party [Strong Name]'
     inputs:

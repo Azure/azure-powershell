@@ -74,9 +74,12 @@
     <DockerRoot>$(RepoRoot)docker</DockerRoot>
     <DockerTools>$(RepoTools)Docker</DockerTools>
     <DockerImageName Condition="'$(DockerImageName)' == ''">azure-powershell</DockerImageName>
- 
-    <!-- XML documentation related -->    
+
+    <!-- XML documentation related -->
     <GenerateDocumentationFile Condition="'$(GenerateDocumentationFile)' != 'false'">true</GenerateDocumentationFile>
+
+    <!-- Test coverage flag -->
+    <TurnOnTestCoverage Condition="'$(TurnOnTestCoverage)' != 'true'">false</TurnOnTestCoverage>
   </PropertyGroup>
 
   <!-- Tasks -->
@@ -194,9 +197,9 @@
       <BuildAction Condition="'$(Configuration)' != 'Release'">build</BuildAction>
       <BuildAction Condition="'$(Configuration)' == 'Release'">publish</BuildAction>
     </PropertyGroup>
-  
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -Build -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) -BuildAction $(BuildAction)&quot;" />
-  
+
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -Build -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) -EnableTestCoverage $(TurnOnTestCoverage) -BuildAction $(BuildAction)&quot;" />
+
     <!-- Build version controller -->
     <Exec Command="dotnet build $(RepoTools)VersionController/VersionController.Netcore.csproj -c $(Configuration)" />
 
