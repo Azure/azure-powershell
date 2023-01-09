@@ -739,6 +739,7 @@ function Test-PublicIpAddressZones
     $zones = "1";
     $rglocation = Get-ProviderLocation ResourceManagement
     $location = Get-ProviderLocation "Microsoft.Network/publicIpAddresses" "Central US"
+    $standardSku = "Standard"
 
     try
      {
@@ -746,8 +747,8 @@ function Test-PublicIpAddressZones
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
       # Create publicIpAddres
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -Zone $zones;
-      $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -Zone $zones -Sku $standardSku;
+      $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname 
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual $expected.Name $actual.Name
       Assert-AreEqual $expected.Location $actual.Location
