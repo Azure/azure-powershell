@@ -747,12 +747,12 @@ function Test-PublicIpAddressZones
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
       # Create publicIpAddres
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -Zone $zones -Sku $standardSku;
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Zone $zones -Sku $standardSku;
       $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname 
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual $expected.Name $actual.Name
       Assert-AreEqual $expected.Location $actual.Location
-      Assert-AreEqual "Dynamic" $expected.PublicIpAllocationMethod
+      Assert-AreEqual "Static" $expected.PublicIpAllocationMethod
       Assert-NotNull $expected.ResourceGuid
       Assert-AreEqual "Succeeded" $expected.ProvisioningState
       Assert-AreEqual $zones $expected.Zones[0]
