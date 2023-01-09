@@ -1610,6 +1610,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"cdw/GfMrL+j8MLVHXA9kJXJiarS2NKP93flqJgEzfV7ztLhwHGUVpmjUsZioSTFa3azyHcA12pNC+ASty/PVRQ==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"U+r08i5E4x+KA7jSJY3pewXRQCvYNe1tZbdN6N0j5L2E3X9CDQrq/EA+JTy9NsQAAF5QSCL0eDQ8+AStFZuOFw==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
