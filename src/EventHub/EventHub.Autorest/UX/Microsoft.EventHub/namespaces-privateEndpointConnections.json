@@ -1,0 +1,95 @@
+{
+  "resourceType": "namespaces/privateEndpointConnections",
+  "apiVersion": "2022-01-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.eventhub"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEventHubPrivateEndpointConnection",
+      "description": "Gets a description for the specified Private Endpoint Connection name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubprivateendpointconnection"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a description for the specified Private Endpoint Connection name.",
+          "parameters": [
+            {
+              "value": "[Path.privateEndpointConnectionName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.namespaceName]",
+              "name": "-NamespaceName"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzEventHubPrivateEndpointConnection",
+      "description": "Deletes a Private Endpoint Connection.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubprivateendpointconnection"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a Private Endpoint Connection.",
+          "parameters": [
+            {
+              "value": "[Path.privateEndpointConnectionName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.namespaceName]",
+              "name": "-NamespaceName"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

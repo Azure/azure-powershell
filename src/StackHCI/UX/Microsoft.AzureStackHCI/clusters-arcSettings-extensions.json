@@ -1,0 +1,105 @@
+{
+  "resourceType": "clusters/arcSettings/extensions",
+  "apiVersion": "2022-05-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.stackhci"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStackHciExtension",
+      "description": "Get particular Arc Extension of HCI Cluster.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciextension"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ArcSettingName <String>",
+              "-ClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get particular Arc Extension of HCI Cluster.",
+          "parameters": [
+            {
+              "value": "[Path.arcSettingName]",
+              "name": "-ArcSettingName"
+            },
+            {
+              "value": "[Path.clusterName]",
+              "name": "-ClusterName"
+            },
+            {
+              "value": "[Path.extensionName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStackHciExtension",
+      "description": "Delete particular Arc Extension of HCI Cluster.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciextension"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ArcSettingName <String>",
+              "-ClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete particular Arc Extension of HCI Cluster.",
+          "parameters": [
+            {
+              "value": "[Path.arcSettingName]",
+              "name": "-ArcSettingName"
+            },
+            {
+              "value": "[Path.clusterName]",
+              "name": "-ClusterName"
+            },
+            {
+              "value": "[Path.extensionName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "resourceType": "privateClouds",
+  "apiVersion": "2021-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.vmware"
+  },
+  "commands": [
+    {
+      "name": "Get-AzVMwarePrivateCloud",
+      "description": "Get a private cloud",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloud"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a private cloud",
+          "parameters": [
+            {
+              "value": "[Path.privateCloudName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

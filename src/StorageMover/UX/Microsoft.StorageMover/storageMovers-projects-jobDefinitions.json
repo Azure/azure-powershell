@@ -1,0 +1,201 @@
+{
+  "resourceType": "storageMovers/projects/jobDefinitions",
+  "apiVersion": "2022-07-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.storagemover"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStorageMoverJobDefinition",
+      "description": "Gets a Job Definition resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverjobdefinition"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "-StorageMoverName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a Job Definition resource.",
+          "parameters": [
+            {
+              "value": "[Path.jobDefinitionName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.projectName]",
+              "name": "-ProjectName"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.storageMoverName]",
+              "name": "-StorageMoverName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStorageMoverJobDefinition",
+      "description": "Deletes a Job Definition resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoverjobdefinition"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "-StorageMoverName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a Job Definition resource.",
+          "parameters": [
+            {
+              "value": "[Path.jobDefinitionName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.projectName]",
+              "name": "-ProjectName"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.storageMoverName]",
+              "name": "-StorageMoverName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Start-AzStorageMoverJobDefinition",
+      "description": "Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/startJob",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagemover/start-azstoragemoverjobdefinition"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-JobDefinitionName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "-StorageMoverName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.",
+          "parameters": [
+            {
+              "value": "[Path.jobDefinitionName]",
+              "name": "-JobDefinitionName"
+            },
+            {
+              "value": "[Path.projectName]",
+              "name": "-ProjectName"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.storageMoverName]",
+              "name": "-StorageMoverName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stop-AzStorageMoverJobDefinition",
+      "description": "Requests the Agent of any active instance of this Job Definition to stop.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/stopJob",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagemover/stop-azstoragemoverjobdefinition"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-JobDefinitionName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "-StorageMoverName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Requests the Agent of any active instance of this Job Definition to stop.",
+          "parameters": [
+            {
+              "value": "[Path.jobDefinitionName]",
+              "name": "-JobDefinitionName"
+            },
+            {
+              "value": "[Path.projectName]",
+              "name": "-ProjectName"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.storageMoverName]",
+              "name": "-StorageMoverName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

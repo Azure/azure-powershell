@@ -1,0 +1,95 @@
+{
+  "resourceType": "azureTrafficCollectors/collectorPolicies",
+  "apiVersion": "2022-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.networkfunction"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkFunctionCollectorPolicy",
+      "description": "Gets the collector policy in a specified Traffic Collector",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctioncollectorpolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AzureTrafficCollectorName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the collector policy in a specified Traffic Collector",
+          "parameters": [
+            {
+              "value": "[Path.azureTrafficCollectorName]",
+              "name": "-AzureTrafficCollectorName"
+            },
+            {
+              "value": "[Path.collectorPolicyName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNetworkFunctionCollectorPolicy",
+      "description": "Deletes a specified Collector Policy resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.networkfunction/remove-aznetworkfunctioncollectorpolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AzureTrafficCollectorName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a specified Collector Policy resource.",
+          "parameters": [
+            {
+              "value": "[Path.azureTrafficCollectorName]",
+              "name": "-AzureTrafficCollectorName"
+            },
+            {
+              "value": "[Path.collectorPolicyName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

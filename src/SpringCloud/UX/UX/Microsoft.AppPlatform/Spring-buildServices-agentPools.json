@@ -1,0 +1,57 @@
+{
+  "resourceType": "Spring/buildServices/agentPools",
+  "apiVersion": "2022-04-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.springcloud"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSpringCloudBuildServiceAgentPool",
+      "description": "Get build service agent pool.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools/{agentPoolName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildserviceagentpool"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "[-BuildServiceName <String>]",
+              "[-Name <String>]",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get build service agent pool.",
+          "parameters": [
+            {
+              "value": "[Path.buildServiceName]",
+              "name": "-BuildServiceName"
+            },
+            {
+              "value": "[Path.agentPoolName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.serviceName]",
+              "name": "-ServiceName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

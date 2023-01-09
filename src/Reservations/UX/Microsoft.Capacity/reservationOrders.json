@@ -1,0 +1,135 @@
+{
+  "resourceType": "reservationOrders",
+  "apiVersion": "2022-03-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.reservations"
+  },
+  "commands": [
+    {
+      "name": "Get-AzReservationOrder",
+      "description": "Get the details of the `ReservationOrder`.",
+      "path": "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationorder"
+        },
+        "parameterSets": [
+          {
+            "parameters": "-Id <String>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the details of the `ReservationOrder`.",
+          "parameters": {
+            "value": "[Path.reservationOrderId]",
+            "name": "-Id"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzReservationCalculateRefund",
+      "description": "Calculate price for returning `Reservations` if there are no policy errors.\\n",
+      "path": "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/calculateRefund",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculaterefund"
+        },
+        "parameterSets": [
+          {
+            "parameters": "-ReservationOrderId <String>"
+          },
+          {
+            "parameters": "-ReservationOrderId <String>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Calculate price for returning `Reservations` if there are no policy errors.\\n",
+          "parameters": {
+            "value": "[Path.reservationOrderId]",
+            "name": "-ReservationOrderId"
+          }
+        },
+        {
+          "description": "Calculate price for returning `Reservations` if there are no policy errors.\\n",
+          "parameters": {
+            "value": "[Path.reservationOrderId]",
+            "name": "-ReservationOrderId"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzReservationReturn",
+      "description": "Return a reservation.",
+      "path": "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/return",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationreturn"
+        },
+        "parameterSets": [
+          {
+            "parameters": "-ReservationOrderId <String>"
+          },
+          {
+            "parameters": "-ReservationOrderId <String>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Return a reservation.",
+          "parameters": {
+            "value": "[Path.reservationOrderId]",
+            "name": "-ReservationOrderId"
+          }
+        },
+        {
+          "description": "Return a reservation.",
+          "parameters": {
+            "value": "[Path.reservationOrderId]",
+            "name": "-ReservationOrderId"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Move-AzReservationDirectory",
+      "description": "Change directory (tenant) of `ReservationOrder` and all `Reservation` under it to specified tenant id",
+      "path": "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/changeDirectory",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.reservations/move-azreservationdirectory"
+        },
+        "parameterSets": [
+          {
+            "parameters": "-ReservationOrderId <String>"
+          },
+          {
+            "parameters": "-ReservationOrderId <String>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Change directory (tenant) of `ReservationOrder` and all `Reservation` under it to specified tenant id",
+          "parameters": {
+            "value": "[Path.reservationOrderId]",
+            "name": "-ReservationOrderId"
+          }
+        },
+        {
+          "description": "Change directory (tenant) of `ReservationOrder` and all `Reservation` under it to specified tenant id",
+          "parameters": {
+            "value": "[Path.reservationOrderId]",
+            "name": "-ReservationOrderId"
+          }
+        }
+      ]
+    }
+  ]
+}

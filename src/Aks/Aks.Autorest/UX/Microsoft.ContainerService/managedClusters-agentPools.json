@@ -1,0 +1,52 @@
+{
+  "resourceType": "managedClusters/agentPools",
+  "apiVersion": "2020-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.aks"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAksNodePoolUpgradeProfile",
+      "description": "Gets the details of the upgrade profile for an agent pool with a specified resource group and managed cluster name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/upgradeProfiles/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.aks/get-azaksnodepoolupgradeprofile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-NodePoolName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the details of the upgrade profile for an agent pool with a specified resource group and managed cluster name.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-NodePoolName",
+              "value": "[Path.agentPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

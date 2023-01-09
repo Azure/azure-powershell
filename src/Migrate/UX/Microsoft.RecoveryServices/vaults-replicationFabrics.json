@@ -1,0 +1,52 @@
+{
+  "resourceType": "vaults/replicationFabrics",
+  "apiVersion": "2022-05-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.migrate"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMigrateReplicationFabric",
+      "description": "Gets the details of an Azure Site Recovery fabric.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationfabric"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FabricName <String>",
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the details of an Azure Site Recovery fabric.",
+          "parameters": [
+            {
+              "name": "-FabricName",
+              "value": "[Path.fabricName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ResourceName",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

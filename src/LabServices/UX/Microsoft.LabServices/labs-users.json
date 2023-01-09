@@ -1,0 +1,138 @@
+{
+  "resourceType": "labs/users",
+  "apiVersion": "2021-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.labservices"
+  },
+  "commands": [
+    {
+      "name": "Get-AzLabServicesUser",
+      "description": "Returns the properties of a lab user.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesuser"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LabName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns the properties of a lab user.",
+          "parameters": [
+            {
+              "value": "[Path.labName]",
+              "name": "-LabName"
+            },
+            {
+              "value": "[Path.userName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzLabServicesUser",
+      "description": "Operation to delete a user resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabservicesuser"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LabName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Operation to delete a user resource.",
+          "parameters": [
+            {
+              "value": "[Path.labName]",
+              "name": "-LabName"
+            },
+            {
+              "value": "[Path.userName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Send-AzLabServicesUserInvite",
+      "description": "Operation to invite a user to a lab.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users/{userName}/invite",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.labservices/send-azlabservicesuserinvite"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LabName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-UserName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Operation to invite a user to a lab.",
+          "parameters": [
+            {
+              "value": "[Path.labName]",
+              "name": "-LabName"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            },
+            {
+              "value": "[Path.userName]",
+              "name": "-UserName"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

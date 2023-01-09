@@ -1,0 +1,224 @@
+{
+  "resourceType": "labs/virtualMachines",
+  "apiVersion": "2021-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.labservices"
+  },
+  "commands": [
+    {
+      "name": "Get-AzLabServicesVM",
+      "description": "Returns the properties for a lab virtual machine.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesvm"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LabName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns the properties for a lab virtual machine.",
+          "parameters": [
+            {
+              "value": "[Path.labName]",
+              "name": "-LabName"
+            },
+            {
+              "value": "[Path.virtualMachineName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Reset-AzLabServicesVMPassword",
+      "description": "Resets a lab virtual machine password.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/resetPassword",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.labservices/reset-azlabservicesvmpassword"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LabName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-VirtualMachineName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Resets a lab virtual machine password.",
+          "parameters": [
+            {
+              "value": "[Path.labName]",
+              "name": "-LabName"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            },
+            {
+              "value": "[Path.virtualMachineName]",
+              "name": "-VirtualMachineName"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Start-AzLabServicesVMRedeployment",
+      "description": "Action to redeploy a lab virtual machine to a different compute node.\nFor troubleshooting connectivity.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/redeploy",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LabName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-VirtualMachineName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Action to redeploy a lab virtual machine to a different compute node. For troubleshooting connectivity.",
+          "parameters": [
+            {
+              "value": "[Path.labName]",
+              "name": "-LabName"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            },
+            {
+              "value": "[Path.virtualMachineName]",
+              "name": "-VirtualMachineName"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Start-AzLabServicesVM",
+      "description": "Action to start a lab virtual machine.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/start",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesvm"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LabName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Action to start a lab virtual machine.",
+          "parameters": [
+            {
+              "value": "[Path.labName]",
+              "name": "-LabName"
+            },
+            {
+              "value": "[Path.virtualMachineName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stop-AzLabServicesVM",
+      "description": "Action to stop a lab virtual machine.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines/{virtualMachineName}/stop",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.labservices/stop-azlabservicesvm"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LabName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Action to stop a lab virtual machine.",
+          "parameters": [
+            {
+              "value": "[Path.labName]",
+              "name": "-LabName"
+            },
+            {
+              "value": "[Path.virtualMachineName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

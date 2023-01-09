@@ -1,0 +1,115 @@
+{
+  "resourceType": "Spring/buildServices/builders/buildpackBindings",
+  "apiVersion": "2022-04-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.springcloud"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSpringCloudBuildpackBinding",
+      "description": "Get a buildpack binding by name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildpackbinding"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "[-BuildServiceName <String>]",
+              "-BuilderName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a buildpack binding by name.",
+          "parameters": [
+            {
+              "value": "[Path.buildServiceName]",
+              "name": "-BuildServiceName"
+            },
+            {
+              "value": "[Path.builderName]",
+              "name": "-BuilderName"
+            },
+            {
+              "value": "[Path.buildpackBindingName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.serviceName]",
+              "name": "-ServiceName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSpringCloudBuildpackBinding",
+      "description": "Operation to delete a Buildpack Binding",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings/{buildpackBindingName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springcloud/remove-azspringcloudbuildpackbinding"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "[-BuildServiceName <String>]",
+              "-BuilderName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Operation to delete a Buildpack Binding",
+          "parameters": [
+            {
+              "value": "[Path.buildServiceName]",
+              "name": "-BuildServiceName"
+            },
+            {
+              "value": "[Path.builderName]",
+              "name": "-BuilderName"
+            },
+            {
+              "value": "[Path.buildpackBindingName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.serviceName]",
+              "name": "-ServiceName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

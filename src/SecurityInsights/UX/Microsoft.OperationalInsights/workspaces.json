@@ -1,0 +1,47 @@
+{
+  "resourceType": "workspaces",
+  "apiVersion": "2021-09-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.securityinsights"
+  },
+  "commands": [
+    {
+      "name": "Invoke-AzSentinelThreatIntelligenceIndicatorQuery",
+      "description": "Query threat intelligence indicators as per filtering criteria.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/queryIndicators",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.securityinsights/invoke-azsentinelthreatintelligenceindicatorquery"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Query threat intelligence indicators as per filtering criteria.",
+          "parameters": [
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            },
+            {
+              "value": "[Path.workspaceName]",
+              "name": "-WorkspaceName"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

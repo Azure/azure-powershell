@@ -1,0 +1,52 @@
+{
+  "resourceType": "Spring/serviceRegistries",
+  "apiVersion": "2022-04-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.springcloud"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSpringCloudRegistry",
+      "description": "Get the Service Registry and its properties.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries/{serviceRegistryName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudregistry"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "[-Name <String>]",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the Service Registry and its properties.",
+          "parameters": [
+            {
+              "value": "[Path.serviceRegistryName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.serviceName]",
+              "name": "-ServiceName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

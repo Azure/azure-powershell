@@ -1,0 +1,138 @@
+{
+  "resourceType": "Spring/configurationServices",
+  "apiVersion": "2022-04-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.springcloud"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSpringCloudConfigurationService",
+      "description": "Get the Application Configuration Service and its properties.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudconfigurationservice"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "[-Name <String>]",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the Application Configuration Service and its properties.",
+          "parameters": [
+            {
+              "value": "[Path.configurationServiceName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.serviceName]",
+              "name": "-ServiceName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSpringCloudConfigurationService",
+      "description": "Disable the default Application Configuration Service.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springcloud/remove-azspringcloudconfigurationservice"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "[-Name <String>]",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Disable the default Application Configuration Service.",
+          "parameters": [
+            {
+              "value": "[Path.configurationServiceName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.serviceName]",
+              "name": "-ServiceName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Test-AzSpringCloudConfigurationService",
+      "description": "Check if the Application Configuration Service settings are valid.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}/validate",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springcloud/test-azspringcloudconfigurationservice"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "[-Name <String>]",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Check if the Application Configuration Service settings are valid.",
+          "parameters": [
+            {
+              "value": "[Path.configurationServiceName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.serviceName]",
+              "name": "-ServiceName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

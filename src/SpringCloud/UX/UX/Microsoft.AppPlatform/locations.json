@@ -1,0 +1,42 @@
+{
+  "resourceType": "locations",
+  "apiVersion": "2022-04-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.springcloud"
+  },
+  "commands": [
+    {
+      "name": "Test-AzSpringCloudNameAvailability",
+      "description": "Checks that the resource name is valid and is not already in use.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/locations/{location}/checkNameAvailability",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springcloud/test-azspringcloudnameavailability"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Location <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Checks that the resource name is valid and is not already in use.",
+          "parameters": [
+            {
+              "value": "[Path.location]",
+              "name": "-Location"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

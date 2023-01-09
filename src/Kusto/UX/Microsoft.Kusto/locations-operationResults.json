@@ -1,0 +1,85 @@
+{
+  "resourceType": "locations/operationResults",
+  "apiVersion": "2022-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.kusto"
+  },
+  "commands": [
+    {
+      "name": "Get-AzKustoOperationsResultLocation",
+      "description": "Returns operation results.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kusto/get-azkustooperationsresultlocation"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Location <String>",
+              "-OperationId <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns operation results.",
+          "parameters": [
+            {
+              "value": "[Path.location]",
+              "name": "-Location"
+            },
+            {
+              "value": "[Path.operationId]",
+              "name": "-OperationId"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzKustoOperationsResult",
+      "description": "Returns operation results.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kusto/get-azkustooperationsresult"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Location <String>",
+              "-OperationId <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns operation results.",
+          "parameters": [
+            {
+              "value": "[Path.location]",
+              "name": "-Location"
+            },
+            {
+              "value": "[Path.operationId]",
+              "name": "-OperationId"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "resourceType": "cloudServices/roleInstances/networkInterfaces/ipconfigurations/publicipaddresses",
+  "apiVersion": "2021-03-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.cloudservice"
+  },
+  "commands": [
+    {
+      "name": "Get-AzCloudServicePublicIPAddress",
+      "description": "Get the specified public IP address in a cloud service.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses/{publicIpAddressName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudservicepublicipaddress"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudServiceName <String>",
+              "-IPConfigurationName <String>",
+              "-Name <String>",
+              "-NetworkInterfaceName <String>",
+              "-ResourceGroupName <String>",
+              "-RoleInstanceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the specified public IP address in a cloud service.",
+          "parameters": [
+            {
+              "name": "-CloudServiceName",
+              "value": "[Path.cloudServiceName]"
+            },
+            {
+              "name": "-IPConfigurationName",
+              "value": "[Path.ipConfigurationName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.publicIpAddressName]"
+            },
+            {
+              "name": "-NetworkInterfaceName",
+              "value": "[Path.networkInterfaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-RoleInstanceName",
+              "value": "[Path.roleInstanceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

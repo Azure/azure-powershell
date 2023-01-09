@@ -1,0 +1,57 @@
+{
+  "resourceType": "cloudServices/roleInstances/networkInterfaces",
+  "apiVersion": "2021-03-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.cloudservice"
+  },
+  "commands": [
+    {
+      "name": "Get-AzCloudServiceNetworkInterface",
+      "description": "Get the specified network interface in a cloud service.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudservicenetworkinterface"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CloudServiceName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-RoleInstanceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the specified network interface in a cloud service.",
+          "parameters": [
+            {
+              "name": "-CloudServiceName",
+              "value": "[Path.cloudServiceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.networkInterfaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-RoleInstanceName",
+              "value": "[Path.roleInstanceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

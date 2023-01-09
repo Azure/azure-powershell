@@ -1,0 +1,105 @@
+{
+  "resourceType": "Clusters/Databases/DataConnections",
+  "apiVersion": "2022-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.kusto"
+  },
+  "commands": [
+    {
+      "name": "Get-AzKustoDataConnection",
+      "description": "Returns a data connection.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/Databases/{databaseName}/DataConnections/{dataConnectionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kusto/get-azkustodataconnection"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-DatabaseName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns a data connection.",
+          "parameters": [
+            {
+              "value": "[Path.clusterName]",
+              "name": "-ClusterName"
+            },
+            {
+              "value": "[Path.databaseName]",
+              "name": "-DatabaseName"
+            },
+            {
+              "value": "[Path.dataConnectionName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzKustoDataConnection",
+      "description": "Deletes the data connection with the given name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/Databases/{databaseName}/DataConnections/{dataConnectionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustodataconnection"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-DatabaseName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the data connection with the given name.",
+          "parameters": [
+            {
+              "value": "[Path.clusterName]",
+              "name": "-ClusterName"
+            },
+            {
+              "value": "[Path.databaseName]",
+              "name": "-DatabaseName"
+            },
+            {
+              "value": "[Path.dataConnectionName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

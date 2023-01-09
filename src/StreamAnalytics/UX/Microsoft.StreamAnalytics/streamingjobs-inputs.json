@@ -1,0 +1,95 @@
+{
+  "resourceType": "streamingjobs/inputs",
+  "apiVersion": "2017-04-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.streamanalytics"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStreamAnalyticsInput",
+      "description": "Gets details about the specified input.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs/{inputName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsinput"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-JobName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets details about the specified input.",
+          "parameters": [
+            {
+              "value": "[Path.jobName]",
+              "name": "-JobName"
+            },
+            {
+              "value": "[Path.inputName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStreamAnalyticsInput",
+      "description": "Deletes an input from the streaming job.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs/{inputName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticsinput"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-JobName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an input from the streaming job.",
+          "parameters": [
+            {
+              "value": "[Path.jobName]",
+              "name": "-JobName"
+            },
+            {
+              "value": "[Path.inputName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

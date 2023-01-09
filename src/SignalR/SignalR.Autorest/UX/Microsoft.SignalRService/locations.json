@@ -1,0 +1,42 @@
+{
+  "resourceType": "locations",
+  "apiVersion": "2021-10-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.signalr"
+  },
+  "commands": [
+    {
+      "name": "Test-AzWebPubSubNameAvailability",
+      "description": "Checks that the resource name is valid and is not already in use.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/locations/{location}/checkNameAvailability",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.signalr/test-azwebpubsubnameavailability"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Location <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Checks that the resource name is valid and is not already in use.",
+          "parameters": [
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

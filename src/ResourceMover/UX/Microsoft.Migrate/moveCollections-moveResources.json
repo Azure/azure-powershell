@@ -1,0 +1,138 @@
+{
+  "resourceType": "moveCollections/moveResources",
+  "apiVersion": "2021-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resourcemover"
+  },
+  "commands": [
+    {
+      "name": "Add-AzResourceMoverMoveResource",
+      "description": "Creates or updates a Move Resource in the move collection.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resourcemover/add-azresourcemovermoveresource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MoveCollectionName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Creates or updates a Move Resource in the move collection.",
+          "parameters": [
+            {
+              "value": "[Path.moveCollectionName]",
+              "name": "-MoveCollectionName"
+            },
+            {
+              "value": "[Path.moveResourceName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzResourceMoverMoveResource",
+      "description": "Gets the Move Resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemovermoveresource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MoveCollectionName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the Move Resource.",
+          "parameters": [
+            {
+              "value": "[Path.moveCollectionName]",
+              "name": "-MoveCollectionName"
+            },
+            {
+              "value": "[Path.moveResourceName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzResourceMoverMoveResource",
+      "description": "Deletes a Move Resource from the move collection.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermoveresource"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MoveCollectionName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a Move Resource from the move collection.",
+          "parameters": [
+            {
+              "value": "[Path.moveCollectionName]",
+              "name": "-MoveCollectionName"
+            },
+            {
+              "value": "[Path.moveResourceName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

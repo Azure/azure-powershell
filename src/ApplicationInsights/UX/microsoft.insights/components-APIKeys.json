@@ -1,0 +1,95 @@
+{
+  "resourceType": "components/APIKeys",
+  "apiVersion": "2015-05-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.applicationinsights"
+  },
+  "commands": [
+    {
+      "name": "Get-AzApplicationInsightsApiKey",
+      "description": "Get the API Key for this key id.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/APIKeys/{keyId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightsapikey"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApiKeyId <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the API Key for this key id.",
+          "parameters": [
+            {
+              "value": "[Path.keyId]",
+              "name": "-ApiKeyId"
+            },
+            {
+              "value": "[Path.resourceName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzApplicationInsightsApiKey",
+      "description": "Delete an API Key of an Application Insights component.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/APIKeys/{keyId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightsapikey"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApiKeyId <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete an API Key of an Application Insights component.",
+          "parameters": [
+            {
+              "value": "[Path.keyId]",
+              "name": "-ApiKeyId"
+            },
+            {
+              "value": "[Path.resourceName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "resourceType": "workspaces/dataConnectors",
+  "apiVersion": "2021-09-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.securityinsights"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSentinelDataConnector",
+      "description": "Gets a data connector.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors/{dataConnectorId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentineldataconnector"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Id <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a data connector.",
+          "parameters": [
+            {
+              "value": "[Path.dataConnectorId]",
+              "name": "-Id"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            },
+            {
+              "value": "[Path.workspaceName]",
+              "name": "-WorkspaceName"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSentinelDataConnector",
+      "description": "Delete the data connector.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors/{dataConnectorId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentineldataconnector"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Id <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete the data connector.",
+          "parameters": [
+            {
+              "value": "[Path.dataConnectorId]",
+              "name": "-Id"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            },
+            {
+              "value": "[Path.workspaceName]",
+              "name": "-WorkspaceName"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

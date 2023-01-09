@@ -1,0 +1,138 @@
+{
+  "resourceType": "sqlVirtualMachines/databaseMigrations",
+  "apiVersion": "2022-03-30-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.datamigration"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDataMigrationToSqlVM",
+      "description": "Retrieve the specified database migration for a given SQL VM.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationtosqlvm"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-SqlVirtualMachineName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-TargetDbName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Retrieve the specified database migration for a given SQL VM.",
+          "parameters": [
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.sqlVirtualMachineName]",
+              "name": "-SqlVirtualMachineName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            },
+            {
+              "value": "[Path.targetDbName]",
+              "name": "-TargetDbName"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzDataMigrationCutoverToSqlVM",
+      "description": "Initiate cutover for in-progress online database migration to SQL VM.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datamigration/invoke-azdatamigrationcutovertosqlvm"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-SqlVirtualMachineName <String>",
+              "[-SubscriptionId <String>]",
+              "-TargetDbName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Initiate cutover for in-progress online database migration to SQL VM.",
+          "parameters": [
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.sqlVirtualMachineName]",
+              "name": "-SqlVirtualMachineName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            },
+            {
+              "value": "[Path.targetDbName]",
+              "name": "-TargetDbName"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stop-AzDataMigrationToSqlVM",
+      "description": "Stop in-progress database migration to SQL VM.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqlvm"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-SqlVirtualMachineName <String>",
+              "[-SubscriptionId <String>]",
+              "-TargetDbName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Stop in-progress database migration to SQL VM.",
+          "parameters": [
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.sqlVirtualMachineName]",
+              "name": "-SqlVirtualMachineName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            },
+            {
+              "value": "[Path.targetDbName]",
+              "name": "-TargetDbName"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

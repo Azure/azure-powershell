@@ -1,0 +1,115 @@
+{
+  "resourceType": "workspaces/kustoPools/Databases/DataConnections",
+  "apiVersion": "2021-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.synapse"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSynapseKustoPoolDataConnection",
+      "description": "Returns a data connection.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}/DataConnections/{dataConnectionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopooldataconnection"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DataConnectionName <String>",
+              "-DatabaseName <String>",
+              "-KustoPoolName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns a data connection.",
+          "parameters": [
+            {
+              "value": "[Path.dataConnectionName]",
+              "name": "-DataConnectionName"
+            },
+            {
+              "value": "[Path.databaseName]",
+              "name": "-DatabaseName"
+            },
+            {
+              "value": "[Path.kustoPoolName]",
+              "name": "-KustoPoolName"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            },
+            {
+              "value": "[Path.workspaceName]",
+              "name": "-WorkspaceName"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSynapseKustoPoolDataConnection",
+      "description": "Deletes the data connection with the given name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}/DataConnections/{dataConnectionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.synapse/remove-azsynapsekustopooldataconnection"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DataConnectionName <String>",
+              "-DatabaseName <String>",
+              "-KustoPoolName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the data connection with the given name.",
+          "parameters": [
+            {
+              "value": "[Path.dataConnectionName]",
+              "name": "-DataConnectionName"
+            },
+            {
+              "value": "[Path.databaseName]",
+              "name": "-DatabaseName"
+            },
+            {
+              "value": "[Path.kustoPoolName]",
+              "name": "-KustoPoolName"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            },
+            {
+              "value": "[Path.workspaceName]",
+              "name": "-WorkspaceName"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

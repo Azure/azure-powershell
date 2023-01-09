@@ -1,0 +1,95 @@
+{
+  "resourceType": "digitalTwinsInstances/endpoints",
+  "apiVersion": "2020-10-31",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.digitaltwins"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDigitalTwinsEndpoint",
+      "description": "Get DigitalTwinsInstances Endpoint.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.digitaltwins/get-azdigitaltwinsendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EndpointName <String>",
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get DigitalTwinsInstances Endpoint.",
+          "parameters": [
+            {
+              "value": "[Path.endpointName]",
+              "name": "-EndpointName"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.resourceName]",
+              "name": "-ResourceName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDigitalTwinsEndpoint",
+      "description": "Delete a DigitalTwinsInstance endpoint.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.digitaltwins/remove-azdigitaltwinsendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EndpointName <String>",
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a DigitalTwinsInstance endpoint.",
+          "parameters": [
+            {
+              "value": "[Path.endpointName]",
+              "name": "-EndpointName"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.resourceName]",
+              "name": "-ResourceName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

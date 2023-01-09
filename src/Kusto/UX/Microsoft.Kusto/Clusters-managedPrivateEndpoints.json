@@ -1,0 +1,95 @@
+{
+  "resourceType": "Clusters/managedPrivateEndpoints",
+  "apiVersion": "2022-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.kusto"
+  },
+  "commands": [
+    {
+      "name": "Get-AzKustoManagedPrivateEndpoint",
+      "description": "Gets a managed private endpoint.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kusto/get-azkustomanagedprivateendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a managed private endpoint.",
+          "parameters": [
+            {
+              "value": "[Path.clusterName]",
+              "name": "-ClusterName"
+            },
+            {
+              "value": "[Path.managedPrivateEndpointName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzKustoManagedPrivateEndpoint",
+      "description": "Deletes a managed private endpoint.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustomanagedprivateendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a managed private endpoint.",
+          "parameters": [
+            {
+              "value": "[Path.clusterName]",
+              "name": "-ClusterName"
+            },
+            {
+              "value": "[Path.managedPrivateEndpointName]",
+              "name": "-Name"
+            },
+            {
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
+            },
+            {
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
