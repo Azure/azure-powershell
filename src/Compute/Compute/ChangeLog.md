@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* new parameter -SkipIdentity for `Set-AzVMAEMExtension`
+* new parameter -PathUserIdentity for `Set-AzVMAEMExtension` 
+* new parameter -IsTest for `Set-AzVMAEMExtension` 
 
 ## Version 5.2.0
 * Fixed issue found for `Set-AzVmssVMRunCommand` [#19985]

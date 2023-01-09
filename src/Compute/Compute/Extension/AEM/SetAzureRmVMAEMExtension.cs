@@ -292,21 +292,27 @@ namespace Microsoft.Azure.Commands.Compute
         private string getClientId(VirtualMachine pVM, string szPathIdentity)
         {
             string szClientId = null;
-            
-            foreach (KeyValuePair<string, UserAssignedIdentitiesValue> kvp in pVM.Identity.UserAssignedIdentities)
+
+            if (   null != pVM.Identity
+                && null != pVM.Identity.UserAssignedIdentities
+                )
             {
-                if (0 == string.Compare(kvp.Key, szPathIdentity, true))
+                foreach (KeyValuePair<string, UserAssignedIdentitiesValue> kvp in pVM.Identity.UserAssignedIdentities)
                 {
-                    UserAssignedIdentitiesValue uav = kvp.Value;
-                    szClientId = uav.ClientId;
-                    break;
+                    if (0 == string.Compare(kvp.Key, szPathIdentity, true))
+                    {
+                        UserAssignedIdentitiesValue uav = kvp.Value;
+                        szClientId = uav.ClientId;
+                        break;
+                    }
                 }
             }
 
             if (string.IsNullOrEmpty(szClientId))
             {
-                throw new Exception(string.Format("cannot resolve clientId, path: {0}"
+                throw new Exception(string.Format("Cannot resolve clientId, path: {0}. Please assign a valid user identity to the VM: {1}."
                     , szPathIdentity
+                    , pVM.Name
                     ));
             }
 
