@@ -856,7 +856,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 snapshotRetentionInDays = 7;
             }
 
-            // timeZone in case of Enhanced Policy should be customizable 
+            // timeZone should be customizable 
             string timeZone = DateTimeKind.Utc.ToString().ToUpper(); 
             if (schedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2))
             {
@@ -866,6 +866,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     timeZone = timeZoneInput;
                 }                
+            }
+            else if(schedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicy))
+            {
+                string timeZoneInput = ((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleRunTimeZone;
+
+                if (timeZoneInput != null)
+                {
+                    timeZone = timeZoneInput;
+                }
             }
             
             // construct Service Client policy request            
@@ -966,7 +975,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             //Validate instant RP retention days
             ValidateInstantRPRetentionDays(((AzureVmPolicy)policy));
 
-            // timeZone in case of Enhanced Policy should be customizable                
+            // timeZone should be customizable
             string timeZone = DateTimeKind.Utc.ToString().ToUpper();
             if (((AzureVmPolicy)policy).SchedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2))
             {
@@ -977,7 +986,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     timeZone = timeZoneInput;
                 }
             }
-                        
+            else if (((AzureVmPolicy)policy).SchedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicy))
+            {
+                string timeZoneInput = ((CmdletModel.SimpleSchedulePolicy)((AzureVmPolicy)policy).SchedulePolicy).ScheduleRunTimeZone;
+
+                if (timeZoneInput != null)
+                {
+                    timeZone = timeZoneInput;
+                }
+            }
+            
             // construct Service Client policy request            
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource()
             {

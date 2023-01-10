@@ -215,7 +215,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TargetLowPriorityComputeNodes = targetLowPriority,
                 CertificateReferences = certReferences,
                 StartTask = psStartTask,
-                InterComputeNodeCommunicationEnabled = true
+                InterComputeNodeCommunicationEnabled = true,
+                TargetCommunicationMode = NodeCommunicationMode.Classic
             };
 
             CreatePoolIfNotExists(runner, parameters);

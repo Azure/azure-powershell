@@ -88,7 +88,7 @@ $RGName = "rgkyvms";
 New-AzResourceGroup -Name $RGName -Location $LOC -Force;
 
 # SRP
-$STOName = "STO" + $RGName;
+$STOName = "sto" + $RGName;
 $STOType = "Standard_GRS";
 New-AzStorageAccount -ResourceGroupName $RGName -Name $STOName -Location $LOC -Type $STOType;
 $STOAccount = Get-AzStorageAccount -ResourceGroupName $RGName -Name $STOName;
@@ -99,8 +99,8 @@ $VNet = New-AzVirtualNetwork -Force -Name ("vnet" + $RGName) -ResourceGroupName 
 $VNet = Get-AzVirtualNetwork -Name ('vnet' + $RGName) -ResourceGroupName $RGName;
 $SubNetId = $VNet.Subnets[0].Id;
 
-$PubIP = New-AzPublicIpAddress -Force -Name ("PubIP" + $RGName) -ResourceGroupName $RGName -Location $LOC -AllocationMethod Dynamic -DomainNameLabel ("PubIP" + $RGName);
-$PubIP = Get-AzPublicIpAddress -Name ("PubIP"  + $RGName) -ResourceGroupName $RGName;
+$PubIP = New-AzPublicIpAddress -Force -Name ("pubip" + $RGName) -ResourceGroupName $RGName -Location $LOC -AllocationMethod Dynamic -DomainNameLabel ("pubip" + $RGName);
+$PubIP = Get-AzPublicIpAddress -Name ("pubip"  + $RGName) -ResourceGroupName $RGName;
 
 # Create LoadBalancer
 $FrontendName = "fe" + $RGName
@@ -114,7 +114,7 @@ $Frontend = New-AzLoadBalancerFrontendIpConfig -Name $FrontendName -PublicIpAddr
 $BackendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $BackendAddressPoolName
 $Probe = New-AzLoadBalancerProbeConfig -Name $ProbeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
 $InboundNatPool = New-AzLoadBalancerInboundNatPoolConfig -Name $InboundNatPoolName  -FrontendIPConfigurationId `
-    $Frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3362 -BackendPort 3370;
+    $Frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3367 -BackendPort 3370;
 $LBRule = New-AzLoadBalancerRuleConfig -Name $LBRuleName `
     -FrontendIPConfiguration $Frontend -BackendAddressPool $BackendAddressPool `
     -Probe $Probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 `
@@ -125,7 +125,7 @@ $ActualLb = New-AzLoadBalancer -Name $LBName -ResourceGroupName $RGName -Locatio
 $ExpectedLb = Get-AzLoadBalancer -Name $LBName -ResourceGroupName $RGName
 
 # New VMSS Parameters
-$VMSSName = "VMSS" + $RGName;
+$VMSSName = "vmss" + $RGName;
 
 $AdminUsername = "Admin01";
 $AdminPassword = "p4ssw0rd@123" + $RGName;
@@ -135,7 +135,7 @@ $Offer         = "WindowsServer"
 $Sku           = "2012-R2-Datacenter"
 $Version       = "latest"
 
-$VHDContainer = "https://" + $STOName + ".blob.core.contoso.net/" + $VMSSName;
+$VHDContainer = "https://" + $STOName + ".blob.core.windows.net/" + $VMSSName;
 
 $ExtName = "CSETest";
 $Publisher = "Microsoft.Compute";

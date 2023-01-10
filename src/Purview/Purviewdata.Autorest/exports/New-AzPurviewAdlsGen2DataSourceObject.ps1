@@ -40,7 +40,7 @@ SubscriptionId           :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2DataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2DataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2DataSourceObject
 #>
 function New-AzPurviewAdlsGen2DataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2DataSource])]

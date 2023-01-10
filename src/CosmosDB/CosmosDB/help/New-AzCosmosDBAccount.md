@@ -15,15 +15,15 @@ Create a new CosmosDB Account.
 ```
 New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations] [-EnableVirtualNetwork]
  [-FromPointInTimeBackup] [-ApiKind <String>] [-DisableKeyBasedMetadataWriteAccess] [-EnableFreeTier <Boolean>]
- [-Location <String[]>] [-LocationObject <PSLocation[]>] -ResourceGroupName <String> -Name <String>
- [-DefaultConsistencyLevel <String>] [-IpRule <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
- [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
- [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-PublicNetworkAccess <String>]
- [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob] [-NetworkAclBypass <String>]
- [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>] [-BackupIntervalInMinutes <Int32>]
- [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>]
- [-AnalyticalStorageSchemaType <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Location <String[]>] [-LocationObject <PSLocation[]>] [-Capabilities <String[]>] -ResourceGroupName <String>
+ -Name <String> [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
+ [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
+ [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
+ [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
+ [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
+ [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-AnalyticalStorageSchemaType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +64,7 @@ A new CosmosDB Account with name databaseAccountName is created in the ResourceG
 
 ### Example 2
 ```powershell
-New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name -Location "West US" -FromPointInTimeBackup -SourceRestorableDatabaseAccountId "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts/{instance-id}" -RestoreTimesampInUtc 2020-07-20T17:19:25+0000
+New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name "restored-account-name" -Location "West US" -FromPointInTimeBackup -SourceRestorableDatabaseAccountId "/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/restorableDatabaseAccounts/instance-id" -RestoreTimesampInUtc "2020-07-20T17:19:25+0000"
 ```
 
 ```output
@@ -106,7 +106,7 @@ A new account with the name restoredDatabaseAccountName is created by restoring 
 
 ### Example 3
 ```powershell
-New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name -Location "West US" -FromPointInTimeBackup -SourceDatabaseAccountName source-database-account-name -RestoreTimesampInUtc 2020-07-20T17:19:25+0000
+New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name "restored-account-name" -Location "West US" -FromPointInTimeBackup -SourceDatabaseAccountName "source-database-account-name" -RestoreTimesampInUtc "2020-07-20T17:19:25+0000"
 ```
 
 ```output
@@ -245,6 +245,21 @@ The redundancy type of the backup Storage account
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Capabilities
+Add a location to the Cosmos DB database account. Array of strings, ordered by failover priority.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

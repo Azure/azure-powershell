@@ -25,7 +25,7 @@ New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappprobeheaderobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappprobeheaderobject
 #>
 function New-AzContainerAppProbeHeaderObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem])]

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DiskPool
-online version: https://docs.microsoft.com/powershell/module/az.diskpool/remove-azdiskpool
+online version: https://learn.microsoft.com/powershell/module/az.diskpool/remove-azdiskpool
 schema: 2.0.0
 ---
 

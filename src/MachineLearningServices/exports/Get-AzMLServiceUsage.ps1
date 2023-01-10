@@ -25,7 +25,7 @@ Get-AzMLServiceUsage -Location eastus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlserviceusage
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlserviceusage
 #>
 function Get-AzMLServiceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IUsage])]

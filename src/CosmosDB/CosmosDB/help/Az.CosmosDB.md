@@ -72,6 +72,12 @@ Gets the list of all the restorable Azure Cosmos DB MongoDB databases available 
 ### [Get-AzCosmosDBMongoDBRestorableResource](Get-AzCosmosDBMongoDBRestorableResource.md)
 Lists all the restorable Azure Cosmos DB MongoDB resources available for a specific database account at a given time and location.
 
+### [Get-AzCosmosDBMongoDBRoleDefinition](Get-AzCosmosDBMongoDBRoleDefinition.md)
+Gets the CosmosDB MongoDB Role Definition for the specified resource group and account.
+
+### [Get-AzCosmosDBMongoDBUserDefinition](Get-AzCosmosDBMongoDBUserDefinition.md)
+Gets the CosmosDB MongoDB User Definition.
+
 ### [Get-AzCosmosDBRestorableDatabaseAccount](Get-AzCosmosDBRestorableDatabaseAccount.md)
 Gets the restorable database account object
 
@@ -125,6 +131,9 @@ Gets a Azure Managed Instances for Apache Cassandra cluster.
 
 ### [Get-AzManagedCassandraDatacenter](Get-AzManagedCassandraDatacenter.md)
 Gets a Azure Managed Instances for Apache Cassandra data center.
+
+### [Get-AzCosmosDBService](Get-AzCosmosDBService.md)
+Gets the Cosmos DB Service
 
 ### [Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration](Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
@@ -222,6 +231,21 @@ Creates a new CosmosDB MongoDB Database.
 ### [New-AzCosmosDBMongoDBIndex](New-AzCosmosDBMongoDBIndex.md)
 Creates a new CosmosDB MongoDB Index.
 
+### [New-AzCosmosDBMongoDBPrivilege](New-AzCosmosDBMongoDBPrivilege.md)
+Creates a new CosmosDB MongoDB Privilege object to be used to create or update  a CosmosDB MongoDB Role Definition.
+
+### [New-AzCosmosDBMongoDBPrivilegeResource](New-AzCosmosDBMongoDBPrivilegeResource.md)
+Creates a new CosmosDB MongoDB PrivilegeResource object to be used to create or update  a CosmosDB MongoDB Role Definition.
+
+### [New-AzCosmosDBMongoDBRole](New-AzCosmosDBMongoDBRole.md)
+Creates a new CosmosDB MongoDB Role object to be used to create or update  a CosmosDB MongoDB Role Definition and User Definition.
+
+### [New-AzCosmosDBMongoDBRoleDefinition](New-AzCosmosDBMongoDBRoleDefinition.md)
+Creates a new CosmosDB MongoDB Role Definition.
+
+### [New-AzCosmosDBMongoDBUserDefinition](New-AzCosmosDBMongoDBUserDefinition.md)
+Creates a new CosmosDB MongoDB User Definition.
+
 ### [New-AzCosmosDBPermission](New-AzCosmosDBPermission.md)
 Creates a new CosmosDB Permission object to be used to create or update a Role Definition.
 
@@ -282,6 +306,9 @@ Creates a new Azure Managed Instances for Apache Cassandra cluster.
 ### [New-AzManagedCassandraDatacenter](New-AzManagedCassandraDatacenter.md)
 Create a new Azure Managed Instances for Apache Cassandra data center.
 
+### [New-AzCosmosDBService](New-AzCosmosDBService.md)
+Creates a new Cosmos DB Service
+
 ### [Remove-AzCosmosDBAccount](Remove-AzCosmosDBAccount.md)
 Remove a CosmosDB Account.
 
@@ -302,6 +329,12 @@ Deletes a CosmosDB MongoDB Collection.
 
 ### [Remove-AzCosmosDBMongoDBDatabase](Remove-AzCosmosDBMongoDBDatabase.md)
 Deletes a CosmosDB MongoDB Database.
+
+### [Remove-AzCosmosDBMongoDBDatabase](Remove-AzCosmosDBMongoDBDatabase.md)
+Deletes a CosmosDB MongoDB Database.
+
+### [Remove-AzCosmosDBMongoDBUserDefinition](Remove-AzCosmosDBMongoDBUserDefinition.md)
+Deletes an existing CosmosDB MongoDB User Definition.
 
 ### [Remove-AzCosmosDBSqlContainer](Remove-AzCosmosDBSqlContainer.md)
 Deletes the CosmosDB Sql Container.
@@ -332,6 +365,9 @@ Deletes a Azure Managed Instances for Apache Cassandra cluster.
 
 ### [Remove-AzManagedCassandraDatacenter](Remove-AzManagedCassandraDatacenter.md)
 Deletes a Azure Managed Instances for Apache Cassandra data center.
+
+### [Remove-AzCosmosDBService](Remove-AzCosmosDBService.md)
+Deletes a Cosmos DB Service
 
 ### [Restore-AzCosmosDBAccount](Restore-AzCosmosDBAccount.md)
 Restores an existing CosmosDB account (live or deleted) to a given timestamp to a new account
@@ -383,6 +419,12 @@ Updates the CosmosDB MongoDB Database. Performs a client side patch operation by
 
 ### [Update-AzCosmosDBMongoDBDatabaseThroughput](Update-AzCosmosDBMongoDBDatabaseThroughput.md)
 Updates the throughput value of a CosmosDB MongoDB Database.
+
+### [New-AzCosmosDBMongoDBRoleDefinition](New-AzCosmosDBMongoDBRoleDefinition.md)
+Update an existing CosmosDB MongoDB Role Definition.
+
+### [New-AzCosmosDBMongoDBUserDefinition](New-AzCosmosDBMongoDBUserDefinition.md)
+Update an existing CosmosDB MongoDB User Definition.
 
 ### [Update-AzCosmosDBSqlContainer](Update-AzCosmosDBSqlContainer.md)
 Updates the CosmosDB Sql Container. Performs a client side patch operation by reading the existing Container.

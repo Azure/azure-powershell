@@ -52,7 +52,7 @@ See [Quickstart: Create a Windows virtual machine in Azure with PowerShell](http
 ### Example 1: Create a virtual machine object
 ```powershell
 $AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03"
-$VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
+$VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id -Zone "1"
 ```
 
 The first command gets the availability set named AvailabilitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
@@ -446,7 +446,8 @@ Accept wildcard characters: False
 ```
 
 ### -Zone
-Specifies the availability zone list for the virtual machine. The allowed values depend on the capabilities of the region. Allowed values will normally be 1,2,3.
+Specifies the availability zone for the virtual machine. Although it takes in an array of zones, virtual machines do not support multiple availability zones.
+The allowed value depends on the capabilities of the region. Allowed value will normally be 1, 2, or 3. More information on [Azure availability zones](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview#availability-zones).
 
 ```yaml
 Type: System.String[]

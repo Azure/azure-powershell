@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IOperationResult
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzoperation
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzoperation
 #>
 function Get-AzLogzOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IOperationResult])]

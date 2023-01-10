@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 54585346-04E2-4FB4-B5FD-833A85C46ACB
-online version: https://docs.microsoft.com/powershell/module/az.storage/start-azstorageblobcopy
+online version: https://learn.microsoft.com/powershell/module/az.storage/start-azstorageblobcopy
 schema: 2.0.0
 ---
 

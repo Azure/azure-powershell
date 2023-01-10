@@ -62,7 +62,7 @@ PARAMETER <IManagedPrivateEndpoint>: Class representing a managed private endpoi
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/update-azkustomanagedprivateendpoint
+https://learn.microsoft.com/powershell/module/az.kusto/update-azkustomanagedprivateendpoint
 #>
 function Update-AzKustoManagedPrivateEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint])]

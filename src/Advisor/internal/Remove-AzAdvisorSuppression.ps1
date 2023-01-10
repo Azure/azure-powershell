@@ -45,7 +45,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
   [ResourceUri <String>]: The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.
   [SubscriptionId <String>]: The Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/remove-azadvisorsuppression
+https://learn.microsoft.com/powershell/module/az.advisor/remove-azadvisorsuppression
 #>
 function Remove-AzAdvisorSuppression {
 [OutputType([System.Boolean])]

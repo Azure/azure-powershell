@@ -943,6 +943,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating node pool labels.
+        /// </summary>
+        internal static string UpdatingNodePoolLabels {
+            get {
+                return ResourceManager.GetString("UpdatingNodePoolLabels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating NodePoolMode..
         /// </summary>
         internal static string UpdatingNodePoolMode {
