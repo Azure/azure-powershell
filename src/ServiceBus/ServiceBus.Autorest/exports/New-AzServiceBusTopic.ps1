@@ -25,7 +25,7 @@ New-AzServiceBusTopic -ResourceGroupName myResourceGroup -NamespaceName myNamesp
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebustopic
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebustopic
 #>
 function New-AzServiceBusTopic {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic])]

@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 {
                     try
                     {
-                        kvc = WebsitesClient.CreateCertificate(ResourceGroupName, ResourceGroupName+'-'+KeyVaultName + '-'+CertName, certificate);
+                        kvc = WebsitesClient.CreateCertificate(ResourceGroupName, KeyVaultName + '-'+ CertName, certificate);
                     }
                     catch (DefaultErrorResponseException e)
                     {

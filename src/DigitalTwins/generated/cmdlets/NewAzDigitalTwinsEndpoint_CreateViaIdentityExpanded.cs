@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Extensions;
+    using System;
 
     /// <summary>Create or update DigitalTwinsInstance endpoint.</summary>
     /// <remarks>
@@ -13,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDigitalTwinsEndpoint_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Description(@"Create or update DigitalTwinsInstance endpoint.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Generated]
     public partial class NewAzDigitalTwinsEndpoint_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
@@ -33,10 +34,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>DigitalTwinsInstance endpoint resource.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource _endpointDescriptionBody = new Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsEndpointResource();
+
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is
+        /// selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select,
+        /// the endpointUri and entityPath properties must be specified.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.",
+        SerializedName = @"authenticationType",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.AuthenticationType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.AuthenticationType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.AuthenticationType AuthenticationType { get => _endpointDescriptionBody.AuthenticationType ?? ((Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.AuthenticationType)""); set => _endpointDescriptionBody.AuthenticationType = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -46,16 +66,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.DigitalTwins Client => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Module.Instance.ClientAPI;
 
-        /// <summary>Dead letter storage secret. Will be obfuscated during read.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Dead letter storage secret. Will be obfuscated during read.")]
+        /// <summary>
+        /// Dead letter storage secret for key-based authentication. Will be obfuscated during read.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Dead letter storage secret for key-based authentication. Will be obfuscated during read.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Dead letter storage secret. Will be obfuscated during read.",
+        Description = @"Dead letter storage secret for key-based authentication. Will be obfuscated during read.",
         SerializedName = @"deadLetterSecret",
         PossibleTypes = new [] { typeof(string) })]
-        public string DeadLetterSecret { get => EndpointDescriptionBody.DeadLetterSecret ?? null; set => EndpointDescriptionBody.DeadLetterSecret = value; }
+        public string DeadLetterSecret { get => _endpointDescriptionBody.DeadLetterSecret ?? null; set => _endpointDescriptionBody.DeadLetterSecret = value; }
+
+        /// <summary>Dead letter storage URL for identity-based authentication.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Dead letter storage URL for identity-based authentication.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Dead letter storage URL for identity-based authentication.",
+        SerializedName = @"deadLetterUri",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DeadLetterUri { get => _endpointDescriptionBody.DeadLetterUri ?? null; set => _endpointDescriptionBody.DeadLetterUri = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -65,12 +98,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
-
-        /// <summary>Backing field for <see cref="EndpointDescriptionBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource _endpointDescriptionBody= new Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.DigitalTwinsEndpointResource();
-
-        /// <summary>DigitalTwinsInstance endpoint resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource EndpointDescriptionBody { get => this._endpointDescriptionBody; set => this._endpointDescriptionBody = value; }
 
         /// <summary>The type of Digital Twins endpoint</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The type of Digital Twins endpoint")]
@@ -82,7 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
         SerializedName = @"endpointType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType EndpointType { get => EndpointDescriptionBody.EndpointType; set => EndpointDescriptionBody.EndpointType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType EndpointType { get => _endpointDescriptionBody.EndpointType; set => _endpointDescriptionBody.EndpointType = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -108,11 +135,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -149,30 +176,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource">Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -198,14 +230,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.EndpointDescriptionBody = this.EndpointDescriptionBody;
+            clone._endpointDescriptionBody = this._endpointDescriptionBody;
             return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -346,7 +378,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -363,7 +394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.DigitalTwinsEndpointCreateOrUpdateViaIdentity(InputObject.Id, EndpointDescriptionBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.DigitalTwinsEndpointCreateOrUpdateViaIdentity(InputObject.Id, _endpointDescriptionBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -384,13 +415,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.EndpointName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.DigitalTwinsEndpointCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ResourceName ?? null, InputObject.EndpointName ?? null, EndpointDescriptionBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.DigitalTwinsEndpointCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ResourceName ?? null, InputObject.EndpointName ?? null, _endpointDescriptionBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=EndpointDescriptionBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_endpointDescriptionBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -413,12 +444,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -435,15 +466,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=EndpointDescriptionBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_endpointDescriptionBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=EndpointDescriptionBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_endpointDescriptionBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -453,12 +484,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource">Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -470,7 +501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
                 WriteObject((await response));
             }
         }

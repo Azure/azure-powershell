@@ -69,7 +69,7 @@ PARAMETER <IServerForCreate>: Represents a server to be created.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlserver
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlserver
 #>
 function New-AzMySqlServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]

@@ -60,7 +60,7 @@ function AssertSubscriptionUpdates{
 }
 
 Describe 'Set-AzServiceBusSubscription' {
-    It 'SetExpanded' {
+    It 'SetExpanded'  {
         $currentSub = Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name 'subscription3$$D'
         $updatedSub = Set-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name 'subscription3$$D' -DeadLetteringOnFilterEvaluationException:$false
         $currentSub.DeadLetteringOnFilterEvaluationException = $false

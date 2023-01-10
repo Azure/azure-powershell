@@ -27,7 +27,10 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Vault
 {
-    [CmdletOutputBreakingChange(typeof(PSNetAppFilesBackupPolicy), ReplacementCmdletOutputTypeName = "PSNetAppFilesVault")]
+    /// <summary>
+    /// This cmdLet is not needed as of api-version 2022-09-01
+    /// </summary>
+    [CmdletDeprecation()]
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVault",

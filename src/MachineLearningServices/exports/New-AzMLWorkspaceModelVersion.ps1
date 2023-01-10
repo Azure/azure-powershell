@@ -25,7 +25,7 @@ New-AzMLWorkspaceModelVersion  -ResourceGroupName ml-rg-test -WorkspaceName mlwo
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IModelVersion
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacemodelversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacemodelversion
 #>
 function New-AzMLWorkspaceModelVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IModelVersion])]

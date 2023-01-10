@@ -25,7 +25,7 @@ Get-AzMLWorkspaceOnlineDeploymentLog -ResourceGroupName ml-rg-test -WorkspaceNam
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlinedeploymentlog
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlinedeploymentlog
 #>
 function Get-AzMLWorkspaceOnlineDeploymentLog {
 [OutputType([System.String])]

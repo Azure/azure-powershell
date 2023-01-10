@@ -55,7 +55,7 @@ INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpooliscsitarget
+https://learn.microsoft.com/powershell/module/az.diskpool/get-azdiskpooliscsitarget
 #>
 function Get-AzDiskPoolIscsiTarget {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget])]
@@ -242,7 +242,7 @@ Microsoft Apt Mirror  {{
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IOutboundEnvironmentEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpooloutboundnetworkdependencyendpoint
+https://learn.microsoft.com/powershell/module/az.diskpool/get-azdiskpooloutboundnetworkdependencyendpoint
 #>
 function Get-AzDiskPoolOutboundNetworkDependencyEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IOutboundEnvironmentEndpoint])]
@@ -374,7 +374,7 @@ ApiVersion Name        ResourceType Tier
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpoolresourcesku
+https://learn.microsoft.com/powershell/module/az.diskpool/get-azdiskpoolresourcesku
 #>
 function Get-AzDiskPoolResourceSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceSkuInfo])]
@@ -499,7 +499,7 @@ Premium  Premium  {3, 1, 2}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolZoneInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpoolzone
+https://learn.microsoft.com/powershell/module/az.diskpool/get-azdiskpoolzone
 #>
 function Get-AzDiskPoolZone {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolZoneInfo])]
@@ -655,7 +655,7 @@ INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpool
+https://learn.microsoft.com/powershell/module/az.diskpool/get-azdiskpool
 #>
 function Get-AzDiskPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool])]
@@ -817,7 +817,7 @@ INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/invoke-azdiskpoolredeployment
+https://learn.microsoft.com/powershell/module/az.diskpool/invoke-azdiskpoolredeployment
 #>
 function Invoke-AzDiskPoolRedeployment {
 [OutputType([System.Boolean])]
@@ -985,7 +985,7 @@ STATICACL <IAcl[]>: Access Control List (ACL) for an iSCSI Target; defines LUN m
   InitiatorIqn <String>: iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
   MappedLun <String[]>: List of LUN names mapped to the ACL.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/new-azdiskpooliscsitarget
+https://learn.microsoft.com/powershell/module/az.diskpool/new-azdiskpooliscsitarget
 #>
 function New-AzDiskPoolIscsiTarget {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget])]
@@ -1191,7 +1191,7 @@ INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/remove-azdiskpooliscsitarget
+https://learn.microsoft.com/powershell/module/az.diskpool/remove-azdiskpooliscsitarget
 #>
 function Remove-AzDiskPoolIscsiTarget {
 [OutputType([System.Boolean])]
@@ -1372,7 +1372,7 @@ INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/remove-azdiskpool
+https://learn.microsoft.com/powershell/module/az.diskpool/remove-azdiskpool
 #>
 function Remove-AzDiskPool {
 [OutputType([System.Boolean])]
@@ -1547,7 +1547,7 @@ INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/start-azdiskpool
+https://learn.microsoft.com/powershell/module/az.diskpool/start-azdiskpool
 #>
 function Start-AzDiskPool {
 [OutputType([System.Boolean])]
@@ -1724,7 +1724,7 @@ INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/stop-azdiskpool
+https://learn.microsoft.com/powershell/module/az.diskpool/stop-azdiskpool
 #>
 function Stop-AzDiskPool {
 [OutputType([System.Boolean])]
@@ -1910,7 +1910,7 @@ STATICACL <IAcl[]>: Access Control List (ACL) for an iSCSI Target; defines LUN m
   InitiatorIqn <String>: iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
   MappedLun <String[]>: List of LUN names mapped to the ACL.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/update-azdiskpooliscsitarget
+https://learn.microsoft.com/powershell/module/az.diskpool/update-azdiskpooliscsitarget
 #>
 function Update-AzDiskPoolIscsiTarget {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget])]
@@ -2101,7 +2101,7 @@ disk-pool-1      eastus2euap Running   Succeeded         {3}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
+https://learn.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
 #>
 function New-AzDiskPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool])]
@@ -2311,7 +2311,7 @@ iqn.2021-05.com.microsoft:target0 {lun0}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Acl
 .Link
-https://docs.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolAclObject
+https://learn.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolAclObject
 #>
 function New-AzDiskPoolAclObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Acl])]
@@ -2380,7 +2380,7 @@ PS C:\> New-AzDiskPoolIscsiLunObject -ManagedDiskAzureResourceId "/subscriptions
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLun
 .Link
-https://docs.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolIscsiLunObject
+https://learn.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolIscsiLunObject
 #>
 function New-AzDiskPoolIscsiLunObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLun])]
@@ -2472,7 +2472,7 @@ INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/update-azdiskpool
+https://learn.microsoft.com/powershell/module/az.diskpool/update-azdiskpool
 #>
 function Update-AzDiskPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool])]

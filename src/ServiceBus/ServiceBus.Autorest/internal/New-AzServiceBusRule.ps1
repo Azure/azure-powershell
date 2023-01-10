@@ -75,7 +75,7 @@ PARAMETER <IRule>: Description of Rule Resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [To <String>]: Address to send to.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusrule
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusrule
 #>
 function New-AzServiceBusRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule])]

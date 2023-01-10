@@ -1,0 +1,52 @@
+{
+  "operationId": "CommunicationsGateways_ListByResourceGroup",
+  "title": "ListCommunicationsGatewayResource",
+  "parameters": {
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "testrg",
+    "api-version": "2022-12-01-preview"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.VoiceService/communicationsGateways/myname",
+            "name": "myname",
+            "location": "useast",
+            "type": "Microsoft.VoiceService/communicationsGateways",
+            "properties": {
+              "status": "ChangePending",
+              "serviceLocations": [
+                {
+                  "name": "useast",
+                  "primaryRegionProperties": {
+                    "operatorAddresses": [
+                      "198.51.100.1"
+                    ]
+                  }
+                },
+                {
+                  "name": "useast2",
+                  "primaryRegionProperties": {
+                    "operatorAddresses": [
+                      "198.51.100.2"
+                    ]
+                  }
+                }
+              ],
+              "connectivity": "PublicAddress",
+              "codecs": [
+                "PCMA"
+              ],
+              "e911Type": "Standard",
+              "platforms": [
+                "OperatorConnect"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

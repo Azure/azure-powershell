@@ -28,7 +28,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestEmptyRouteTable()
         {
             TestRunner.RunTestScript("Test-EmptyRouteTable");
@@ -36,7 +36,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestRouteTableCRUD()
         {
             TestRunner.RunTestScript("Test-RouteTableCRUD");
@@ -44,7 +44,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestRouteTableSubnetRef()
         {
             TestRunner.RunTestScript("Test-RouteTableSubnetRef");
@@ -52,7 +52,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestRouteTableRouteCRUD()
         {
             TestRunner.RunTestScript("Test-RouteTableRouteCRUD");
@@ -60,7 +60,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestRouteHopTypeTest()
         {
             TestRunner.RunTestScript("Test-RouteHopTypeTest");
@@ -68,7 +68,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestRouteWithDisableBgpRoutePropagation()
         {
             TestRunner.RunTestScript("Test-RouteTableWithDisableBgpRoutePropagation");

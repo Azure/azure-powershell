@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.CreateOrUpdate(netAppAccountBody, ResourceGroupName, Name);
-                WriteObject(anfAccount.ToPsNetAppFilesAccount());
+                WriteObject(anfAccount.ConvertToPs());
             }
         }
     }

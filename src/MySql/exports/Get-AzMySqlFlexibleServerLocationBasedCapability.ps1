@@ -25,7 +25,7 @@ Get-AzMySqlFlexibleServerLocationBasedCapability -Location westus2
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ICapabilityProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverlocationbasedcapability
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverlocationbasedcapability
 #>
 function Get-AzMySqlFlexibleServerLocationBasedCapability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ICapabilityProperties])]
