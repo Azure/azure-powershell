@@ -805,3 +805,187 @@ function Test-Spot {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-EnableFIPS {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -EnableFIPS
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 1 $cluster.AgentPoolProfiles.Count
+        Assert-True {$cluster.AgentPoolProfiles[0].EnableFIPS}
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 1 $pools.Count
+        Assert-True {$pools[0].EnableFIPS}
+
+        # create a 2nd nodepool
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -VmSize $nodeVmSize -Count 1 -EnableFIPS
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-True {$cluster.AgentPoolProfiles[0].EnableFIPS}
+        Assert-True {$cluster.AgentPoolProfiles[1].EnableFIPS}
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-True {$pools[0].EnableFIPS}
+        Assert-True {$pools[1].EnableFIPS}
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+function Test-AutoScalerProfile {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        # create aks cluster with default nodepool
+        $aksParameters=@{
+	        ResourceGroupName = $resourceGroupName
+	        Name = $kubeClusterName
+	        NodeVmSize = $nodeVmSize
+	        NodeMinCount = 1
+	        NodeMaxCount = 3
+        }
+        $AutoScalerProfile=@{
+            ScanInterval="30s"
+            Expander="least-waste"
+            MaxTotalUnreadyPercentage="50"
+            NewPodScaleUpDelay="800s"
+        }
+        $AutoScalerProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile]$AutoScalerProfile
+        New-AzAksCluster @aksParameters -EnableNodeAutoScaling -AutoScalerProfile $AutoScalerProfile
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual "30s" $cluster.AutoScalerProfile.ScanInterval
+        Assert-AreEqual "least-waste" $cluster.AutoScalerProfile.Expander
+        Assert-AreEqual "50" $cluster.AutoScalerProfile.MaxTotalUnreadyPercentage
+        Assert-AreEqual "800s" $cluster.AutoScalerProfile.NewPodScaleUpDelay
+
+        # update aks cluster
+        $AutoScalerProfile2=@{
+            ScanInterval="40s"
+            Expander="most-pods"
+            MaxTotalUnreadyPercentage="45"
+            NewPodScaleUpDelay="600s"
+        }
+        $AutoScalerProfile2=[Microsoft.Azure.Management.ContainerService.Models.ManagedClusterPropertiesAutoScalerProfile]$AutoScalerProfile2
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AutoScalerProfile $AutoScalerProfile2
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual "40s" $cluster.AutoScalerProfile.ScanInterval
+        Assert-AreEqual "most-pods" $cluster.AutoScalerProfile.Expander
+        Assert-AreEqual "45" $cluster.AutoScalerProfile.MaxTotalUnreadyPercentage
+        Assert-AreEqual "600s" $cluster.AutoScalerProfile.NewPodScaleUpDelay
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+function Test-GpuInstanceProfile {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "standard_nc24ads_a100_v4"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -GpuInstanceProfile MIG1g
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 1 $cluster.AgentPoolProfiles.Count
+        Assert-AreEqual "MIG1g" $cluster.AgentPoolProfiles[0].GpuInstanceProfile
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 1 $pools.Count
+        Assert-AreEqual "MIG1g" $pools[0].GpuInstanceProfile
+
+        # create a 2nd nodepool
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -VmSize $nodeVmSize -Count 1 -GpuInstanceProfile MIG3g
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-AreEqual "MIG1g" ($cluster.AgentPoolProfiles | where {$_.Name -eq "default"}).GpuInstanceProfile
+        Assert-AreEqual "MIG3g" ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).GpuInstanceProfile
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-AreEqual "MIG1g" ($pools | where {$_.Name -eq "default"}).GpuInstanceProfile
+        Assert-AreEqual "MIG3g" ($pools | where {$_.Name -eq "pool2"}).GpuInstanceProfile
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+function Test-EnableUptimeSLA {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1 -EnableUptimeSLA
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual "Basic" $cluster.Sku.Name
+        Assert-AreEqual "Paid" $cluster.Sku.Tier
+
+        # update the aks cluster
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -EnableUptimeSLA:$false
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual "Basic" $cluster.Sku.Name
+        Assert-AreEqual "Free" $cluster.Sku.Tier
+
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -EnableUptimeSLA
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual "Basic" $cluster.Sku.Name
+        Assert-AreEqual "Paid" $cluster.Sku.Tier
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+function Test-EdgeZone {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus2euap'
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1 -EdgeZone 'microsoftrrdclab1'
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual "microsoftrrdclab1" $cluster.ExtendedLocation.Name
+        Assert-AreEqual "edgezone" $cluster.ExtendedLocation.Type
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+

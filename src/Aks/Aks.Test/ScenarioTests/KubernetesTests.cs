@@ -142,5 +142,40 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-Spot");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableFIPS()
+        {
+            TestRunner.RunTestScript("Test-EnableFIPS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAutoScalerProfile()
+        {
+            TestRunner.RunTestScript("Test-AutoScalerProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGpuInstanceProfile()
+        {
+            TestRunner.RunTestScript("Test-GpuInstanceProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableUptimeSLA()
+        {
+            TestRunner.RunTestScript("Test-EnableUptimeSLA");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-EdgeZone");
+        }
     }
 }

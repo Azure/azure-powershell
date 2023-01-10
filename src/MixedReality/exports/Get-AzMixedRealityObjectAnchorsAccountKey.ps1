@@ -25,7 +25,7 @@ Get-AzMixedRealityObjectAnchorsAccountKey -AccountName azpstestanchorsaccount-ob
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityobjectanchorsaccountkey
+https://learn.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityobjectanchorsaccountkey
 #>
 function Get-AzMixedRealityObjectAnchorsAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys])]

@@ -1,0 +1,527 @@
+{
+  "New-AzVoiceServicesCommunicationsContact+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview",
+      "Content": "{\n  \"location\": \"westcentralus\",\n  \"properties\": {\n    \"contactName\": \"John Smith\",\n    \"phoneNumber\": \"+1-555-1234\",\n    \"email\": \"johnsmith@example.com\",\n    \"role\": \"Network Manager\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "191" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000a336-0000-0600-0000-639182720000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "018cf49d-555c-47b3-ab85-0a1740e3844a" ],
+        "x-ms-correlation-request-id": [ "cffe3430-8111-4b76-aa32-842d3b3c4ef2" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221208T062139Z:cffe3430-8111-4b76-aa32-842d3b3c4ef2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Dec 2022 06:21:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "703" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h\",\"name\":\"contact-674l8h\",\"type\":\"microsoft.voiceservices/communicationsgateways/contacts\",\"location\":\"westcentralus\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-08T06:21:36.5944576Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-08T06:21:36.5944576Z\"},\"properties\":{\"contactName\":\"John Smith\",\"phoneNumber\":\"+1-555-1234\",\"email\":\"johnsmith@example.com\",\"role\":\"Network Manager\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVoiceServicesCommunicationsContact+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "e4714625-cc75-4cc8-a7c3-641dd2db99cc" ],
+        "CommandName": [ "New-AzVoiceServicesCommunicationsContact" ],
+        "FullCommandName": [ "New-AzVoiceServicesCommunicationsContact_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.VoiceServices/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000a336-0000-0600-0000-639182720000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "27304df5-55b1-4d93-97e3-b7e4180f19e7" ],
+        "x-ms-correlation-request-id": [ "2de40c6a-2006-4aa3-8b37-eb4f835813ae" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221208T062209Z:2de40c6a-2006-4aa3-8b37-eb4f835813ae" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Dec 2022 06:22:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "703" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h\",\"name\":\"contact-674l8h\",\"type\":\"microsoft.voiceservices/communicationsgateways/contacts\",\"location\":\"westcentralus\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-08T06:21:36.5944576Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-08T06:21:36.5944576Z\"},\"properties\":{\"contactName\":\"John Smith\",\"phoneNumber\":\"+1-555-1234\",\"email\":\"johnsmith@example.com\",\"role\":\"Network Manager\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVoiceServicesCommunicationsContact+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "e4714625-cc75-4cc8-a7c3-641dd2db99cc" ],
+        "CommandName": [ "New-AzVoiceServicesCommunicationsContact" ],
+        "FullCommandName": [ "New-AzVoiceServicesCommunicationsContact_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.VoiceServices/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000a336-0000-0600-0000-639182720000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "eebca97f-e6da-405d-8530-ceb6f92123ac" ],
+        "x-ms-correlation-request-id": [ "6747724d-2f1a-419c-8ae1-08d5d28baeed" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221208T062210Z:6747724d-2f1a-419c-8ae1-08d5d28baeed" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Dec 2022 06:22:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "703" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h\",\"name\":\"contact-674l8h\",\"type\":\"microsoft.voiceservices/communicationsgateways/contacts\",\"location\":\"westcentralus\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-08T06:21:36.5944576Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-08T06:21:36.5944576Z\"},\"properties\":{\"contactName\":\"John Smith\",\"phoneNumber\":\"+1-555-1234\",\"email\":\"johnsmith@example.com\",\"role\":\"Network Manager\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVoiceServicesCommunicationsContact+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts?api-version=2022-12-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "db27b9f7-a492-4440-84a9-5e9e10f518b6" ],
+        "CommandName": [ "Get-AzVoiceServicesCommunicationsContact" ],
+        "FullCommandName": [ "Get-AzVoiceServicesCommunicationsContact_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.VoiceServices/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "b2c2f6fb-58b5-4fa3-92e7-c1c6de98741f", "4a3070e9-5c8d-41de-b331-713448dd3a3b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "dc950edf-e594-40f0-9591-bf9ae763a492" ],
+        "x-ms-correlation-request-id": [ "dc950edf-e594-40f0-9591-bf9ae763a492" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221208T062213Z:dc950edf-e594-40f0-9591-bf9ae763a492" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Dec 2022 06:22:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "715" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h\",\"name\":\"contact-674l8h\",\"type\":\"microsoft.voiceservices/communicationsgateways/contacts\",\"location\":\"westcentralus\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-08T06:21:36.5944576Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-08T06:21:36.5944576Z\"},\"properties\":{\"contactName\":\"John Smith\",\"phoneNumber\":\"+1-555-1234\",\"email\":\"johnsmith@example.com\",\"role\":\"Network Manager\",\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVoiceServicesCommunicationsContact+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "3fb33614-66b0-4ac7-a20b-70b8b5dd7f0f" ],
+        "CommandName": [ "Get-AzVoiceServicesCommunicationsContact" ],
+        "FullCommandName": [ "Get-AzVoiceServicesCommunicationsContact_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.VoiceServices/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000a336-0000-0600-0000-639182720000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "b0a953e9-d2b2-45c2-ad9d-366be7b4ac38" ],
+        "x-ms-correlation-request-id": [ "61dab130-7761-4921-b679-171994ba3fcd" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221208T062213Z:61dab130-7761-4921-b679-171994ba3fcd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Dec 2022 06:22:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "703" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h\",\"name\":\"contact-674l8h\",\"type\":\"microsoft.voiceservices/communicationsgateways/contacts\",\"location\":\"westcentralus\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-08T06:21:36.5944576Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-08T06:21:36.5944576Z\"},\"properties\":{\"contactName\":\"John Smith\",\"phoneNumber\":\"+1-555-1234\",\"email\":\"johnsmith@example.com\",\"role\":\"Network Manager\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVoiceServicesCommunicationsContact+[NoContext]+CreateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview+6": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview",
+      "Content": "{\n  \"tags\": {\n    \"key1\": \"value1\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "40" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000a436-0000-0600-0000-639182960000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "94ddce03-eadb-481f-be1a-975bfa32edf4" ],
+        "x-ms-correlation-request-id": [ "285cb3ba-269c-4bc9-9ebe-02c8a2985014" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221208T062215Z:285cb3ba-269c-4bc9-9ebe-02c8a2985014" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Dec 2022 06:22:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "728" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h\",\"name\":\"contact-674l8h\",\"type\":\"microsoft.voiceservices/communicationsgateways/contacts\",\"location\":\"westcentralus\",\"tags\":{\"key1\":\"value1\"},\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-08T06:21:36.5944576Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-08T06:22:14.0478849Z\"},\"properties\":{\"contactName\":\"John Smith\",\"phoneNumber\":\"+1-555-1234\",\"email\":\"johnsmith@example.com\",\"role\":\"Network Manager\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVoiceServicesCommunicationsContact+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview+7": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "41618dae-db17-4ea5-84c2-7af1b367e981" ],
+        "CommandName": [ "Remove-AzVoiceServicesCommunicationsContact" ],
+        "FullCommandName": [ "Remove-AzVoiceServicesCommunicationsContact_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.VoiceServices/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "f2d2892e-fa1f-4efc-8b33-f69d0aa66591" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221208T062217Z:f2d2892e-fa1f-4efc-8b33-f69d0aa66591" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Dec 2022 06:22:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzVoiceServicesCommunicationsContact+[NoContext]+CreateExpandedViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview",
+      "Content": "{\n  \"location\": \"westcentralus\",\n  \"properties\": {\n    \"contactName\": \"John Smith\",\n    \"phoneNumber\": \"+1-555-1234\",\n    \"email\": \"johnsmith@example.com\",\n    \"role\": \"Network Manager\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "191" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000a536-0000-0600-0000-6391829a0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "7e259b1b-205a-483b-8adf-7c99532b6aa1" ],
+        "x-ms-correlation-request-id": [ "985235bb-6f92-427d-ad55-f45a10366665" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221208T062219Z:985235bb-6f92-427d-ad55-f45a10366665" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Dec 2022 06:22:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "697" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h\",\"name\":\"contact-674l8h\",\"type\":\"microsoft.voiceservices/communicationsgateways/contacts\",\"location\":\"westcentralus\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-08T06:22:18.6417Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-08T06:22:18.6417Z\"},\"properties\":{\"contactName\":\"John Smith\",\"phoneNumber\":\"+1-555-1234\",\"email\":\"johnsmith@example.com\",\"role\":\"Network Manager\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVoiceServicesCommunicationsContact+[NoContext]+CreateExpandedViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "684197af-4857-43ee-a511-43705c1841dc" ],
+        "CommandName": [ "New-AzVoiceServicesCommunicationsContact" ],
+        "FullCommandName": [ "New-AzVoiceServicesCommunicationsContact_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.VoiceServices/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000a536-0000-0600-0000-6391829a0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a9deca34-313a-45ee-9586-20ee8b7fe88c" ],
+        "x-ms-correlation-request-id": [ "04f55006-18cf-4f5b-af5c-60b35f129366" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221208T062249Z:04f55006-18cf-4f5b-af5c-60b35f129366" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Dec 2022 06:22:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "697" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h\",\"name\":\"contact-674l8h\",\"type\":\"microsoft.voiceservices/communicationsgateways/contacts\",\"location\":\"westcentralus\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-08T06:22:18.6417Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-08T06:22:18.6417Z\"},\"properties\":{\"contactName\":\"John Smith\",\"phoneNumber\":\"+1-555-1234\",\"email\":\"johnsmith@example.com\",\"role\":\"Network Manager\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVoiceServicesCommunicationsContact+[NoContext]+CreateExpandedViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "684197af-4857-43ee-a511-43705c1841dc" ],
+        "CommandName": [ "New-AzVoiceServicesCommunicationsContact" ],
+        "FullCommandName": [ "New-AzVoiceServicesCommunicationsContact_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.VoiceServices/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000a536-0000-0600-0000-6391829a0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "8a91698c-8b7c-43ae-b145-acfceb2eeafa" ],
+        "x-ms-correlation-request-id": [ "1a72dc90-6977-47b1-9f9e-531470d57d80" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221208T062250Z:1a72dc90-6977-47b1-9f9e-531470d57d80" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Dec 2022 06:22:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "697" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h\",\"name\":\"contact-674l8h\",\"type\":\"microsoft.voiceservices/communicationsgateways/contacts\",\"location\":\"westcentralus\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-08T06:22:18.6417Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-08T06:22:18.6417Z\"},\"properties\":{\"contactName\":\"John Smith\",\"phoneNumber\":\"+1-555-1234\",\"email\":\"johnsmith@example.com\",\"role\":\"Network Manager\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVoiceServicesCommunicationsContact+[NoContext]+CreateExpandedViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "09f31c5f-e358-4e52-9be0-9d28bf628607" ],
+        "CommandName": [ "Get-AzVoiceServicesCommunicationsContact" ],
+        "FullCommandName": [ "Get-AzVoiceServicesCommunicationsContact_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.VoiceServices/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000a536-0000-0600-0000-6391829a0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "4e4cdb1b-bf4e-4738-9d00-ff7b476eca73" ],
+        "x-ms-correlation-request-id": [ "3c2f6bc1-3cd8-4400-bedf-f7e1a6fa44c4" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221208T062250Z:3c2f6bc1-3cd8-4400-bedf-f7e1a6fa44c4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Dec 2022 06:22:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "697" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h\",\"name\":\"contact-674l8h\",\"type\":\"microsoft.voiceservices/communicationsgateways/contacts\",\"location\":\"westcentralus\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-08T06:22:18.6417Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-08T06:22:18.6417Z\"},\"properties\":{\"contactName\":\"John Smith\",\"phoneNumber\":\"+1-555-1234\",\"email\":\"johnsmith@example.com\",\"role\":\"Network Manager\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVoiceServicesCommunicationsContact+[NoContext]+CreateExpandedViaIdentity+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview+5": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview",
+      "Content": "{\n  \"tags\": {\n    \"key1\": \"value1\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "40" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000a636-0000-0600-0000-639182bb0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "d8224595-35f7-4437-9cc3-930cd40f6047" ],
+        "x-ms-correlation-request-id": [ "53dae8be-6893-4477-9651-90a9eeb5cd0e" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221208T062252Z:53dae8be-6893-4477-9651-90a9eeb5cd0e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Dec 2022 06:22:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "725" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h\",\"name\":\"contact-674l8h\",\"type\":\"microsoft.voiceservices/communicationsgateways/contacts\",\"location\":\"westcentralus\",\"tags\":{\"key1\":\"value1\"},\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-12-08T06:22:18.6417Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-12-08T06:22:51.2356967Z\"},\"properties\":{\"contactName\":\"John Smith\",\"phoneNumber\":\"+1-555-1234\",\"email\":\"johnsmith@example.com\",\"role\":\"Network Manager\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzVoiceServicesCommunicationsContact+[NoContext]+CreateExpandedViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview+6": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/voiceservices-rgn5lhg7/providers/Microsoft.VoiceServices/communicationsGateways/vsgateway-g3zla6/contacts/contact-674l8h?api-version=2022-12-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "004a5184-2610-4360-991d-e777a99dad12" ],
+        "CommandName": [ "Remove-AzVoiceServicesCommunicationsContact" ],
+        "FullCommandName": [ "Remove-AzVoiceServicesCommunicationsContact_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.0", "Az.VoiceServices/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-correlation-request-id": [ "b0135d09-812a-44e6-a6f4-a4ce2b9e8f12" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20221208T062254Z:b0135d09-812a-44e6-a6f4-a4ce2b9e8f12" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Dec 2022 06:22:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

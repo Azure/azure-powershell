@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/start-azstorageblobincrementalcopy
+online version: https://learn.microsoft.com/powershell/module/az.storage/start-azstorageblobincrementalcopy
 schema: 2.0.0
 ---
 

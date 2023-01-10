@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 8D84F81A-F6B5-413D-B349-50947FCD5CFC
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azpublicipaddress
 schema: 2.0.0
 ---
 
@@ -17,9 +17,9 @@ Creates a public IP address.
 New-AzPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>] [-EdgeZone <String>]
  [-Sku <String>] [-Tier <String>] -AllocationMethod <String> [-IpAddressVersion <String>]
  [-DomainNameLabel <String>] [-IpTag <PSPublicIpTag[]>] [-PublicIpPrefix <PSPublicIpPrefix>]
- [-DdosProtectionMode <String>] [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>] [-Zone <String[]>]
- [-IpAddress <String>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DdosProtectionMode <String>] [-DdosProtectionPlanId <String>] [-ReverseFqdn <String>]
+ [-IdleTimeoutInMinutes <Int32>] [-Zone <String[]>] [-IpAddress <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -136,6 +136,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: VirtualNetworkInherited, Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DdosProtectionPlanId
+The DdosProtectionPlan id to attach to the Public IP address
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

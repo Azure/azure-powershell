@@ -19,8 +19,13 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.11.0
+* Supported Web Account Manager (WAM) as an opt-in interactive login experience. Enable it by `Update-AzConfig -EnableLoginByWam $true`.
+* Optimized the mechanism for assembly loading.
 * Enabled AzKeyStore with keyring in Linux.
-* Fixed a typo in GetAzureRmContextAutosaveSetting.cs changing the cmdlet class name from GetzureRmContextAutosaveSetting to GetAzureRmContextAutosaveSetting
+* Fixed a typo in GetAzureRmContextAutosaveSetting.cs changing the cmdlet class name to GetAzureRmContextAutosaveSetting
+* Removed survey on error message in `Resolve-AzError`. [#20398]
 
 ## Version 2.10.4
 * Enabled caching tokens when logging in with a client assertion. This fixed the incorrectly short lifespan of tokens.

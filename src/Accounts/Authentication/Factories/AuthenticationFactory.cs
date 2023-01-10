@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.Shared.Config;
+using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Identity.Client;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -85,7 +87,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         public ITokenProvider TokenProvider { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="account"></param>
         /// <param name="environment"></param>
@@ -547,18 +549,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
                         if (!string.IsNullOrEmpty(account.Id))
                         {
-                            return new SilentParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
+                            return GetSilentParameters(tokenCacheProvider, account, environment, tenant, tokenCache, resourceId, homeAccountId);
                         }
 
                         if (account.IsPropertySet("UseDeviceAuth"))
                         {
                             return new DeviceCodeParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
                         }
-                        else if(account.IsPropertySet(AzureAccount.Property.UsePasswordAuth))
+                        else if (account.IsPropertySet(AzureAccount.Property.UsePasswordAuth))
                         {
                             return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, homeAccountId);
                         }
-                        return new InteractiveParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction);
+                        return GetInteractiveParameters(tokenCacheProvider, account, environment, tenant, promptAction, tokenCache, resourceId, homeAccountId);
                     }
 
                     return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, null);
@@ -609,6 +611,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 default:
                     return null;
             }
+        }
+
+        private static AuthenticationParameters GetInteractiveParameters(PowerShellTokenCacheProvider tokenCacheProvider, IAzureAccount account, IAzureEnvironment environment, string tenant, Action<string> promptAction, IAzureTokenCache tokenCache, string resourceId, string homeAccountId)
+        {
+            return IsWamEnabled()
+                ? new InteractiveWamParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction) as AuthenticationParameters
+                : new InteractiveParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction);
+        }
+
+        private static AuthenticationParameters GetSilentParameters(PowerShellTokenCacheProvider tokenCacheProvider, IAzureAccount account, IAzureEnvironment environment, string tenant, IAzureTokenCache tokenCache, string resourceId, string homeAccountId)
+        {
+            return new SilentParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
+        }
+
+        private static bool IsWamEnabled()
+        {
+            return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config)
+                && config.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam);
         }
     }
 }
