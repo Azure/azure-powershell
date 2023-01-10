@@ -356,7 +356,7 @@ function Get-AzModuleFromRemote {
         $modulesWithVersion = @()
         $containValidModule = if ($Name) {$Name -Contains 'Az.Accounts'} else {$false}
         $module = $null
-        foreach($module in $modules.Dependencies) {
+        foreach ($module in $modules.Dependencies) {
             if ($module.Name -eq 'Az.Accounts') {
                 if ($UseExactAccountVersion) {
                     $version = $accountVersion
@@ -400,7 +400,7 @@ function Remove-AzureRM {
     process {
         try {
             $azureModuleNames = (Get-InstalledModule -Name Azure* -ErrorAction Stop).Name | Where-Object {$_ -match "Azure(\.[a-zA-Z0-9]+)?" -or $_ -match "AzureRM(\.[a-zA-Z0-9]+)?"}
-            foreach($moduleName in $azureModuleNames) {
+            foreach ($moduleName in $azureModuleNames) {
                 PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction Continue
             }
         }
@@ -427,7 +427,7 @@ $exportedFunctions = @( Get-ChildItem -Path $PSScriptRoot/exports/*.ps1 -Recurse
 $internalFunctions = @( Get-ChildItem -Path $PSScriptRoot/internal/*.ps1 -ErrorAction SilentlyContinue )
 
 $allFunctions = $internalFunctions + $exportedFunctions
-foreach($function in $allFunctions) {
+foreach ($function in $allFunctions) {
     try {
         . $function.Fullname
     }

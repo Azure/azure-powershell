@@ -42,7 +42,8 @@ This command starts a runbook job for the runbook named Runbk01 in the Azure Aut
 
 ### Example 2: Start a Python 2 runbook job with parameters
 ```powershell
-Start-AzAutomationRunbook -AutomationAccountName "Contoso17" -Name "RunbkPy01" -ResourceGroupName "ResourceGroup01" -Parameters @{"Key1"="ValueForPosition1";"Key2"="ValueForPosition2"}
+$params = [ordered]@{"Key1"="ValueForPosition1";"Key2"="ValueForPosition2"}
+Start-AzAutomationRunbook -AutomationAccountName "Contoso17" -Name "RunbkPy01" -ResourceGroupName "ResourceGroup01" -Parameters $params
 ```
 
 This command starts a runbook job for the Python 2 runbook named RunbkPy01 in the Azure Automation account named Contoso17 with "ValueForPosition1" as the first positional parameter and "ValueForPosition2" for the second one.

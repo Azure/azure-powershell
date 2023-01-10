@@ -27,7 +27,7 @@ New-AzServiceBusQueue -ResourceGroupName myResourceGroup -NamespaceName myNamesp
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueue
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueue
 #>
 function New-AzServiceBusQueue {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue])]

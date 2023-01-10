@@ -51,7 +51,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuild
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuild
 #>
 function Get-AzStaticWebAppBuild {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteBuildArmResource])]

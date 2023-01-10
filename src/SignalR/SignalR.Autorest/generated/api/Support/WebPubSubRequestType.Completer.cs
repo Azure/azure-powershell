@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support
 {
 
-    /// <summary>
-    /// Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-    /// </summary>
+    /// <summary>The incoming request type to the service</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestTypeTypeConverter))]
     public partial struct WebPubSubRequestType :
         System.Management.Automation.IArgumentCompleter

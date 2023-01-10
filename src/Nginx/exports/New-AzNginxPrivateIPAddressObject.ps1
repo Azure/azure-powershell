@@ -25,7 +25,7 @@ New-AzNginxPrivateIPAddressObject -PrivateIPAddress 10.0.0.0 -PrivateIPAllocatio
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxPrivateIPAddress
 .Link
-https://docs.microsoft.com/powershell/module/az.Nginx/new-AzNginxPrivateIPAddressObject
+https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxPrivateIPAddressObject
 #>
 function New-AzNginxPrivateIPAddressObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxPrivateIPAddress])]

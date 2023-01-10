@@ -25,7 +25,7 @@ New-AzMixedRealitySpatialAnchorsAccount -Name azpstestanchorsaccount -ResourceGr
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityspatialanchorsaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityspatialanchorsaccount
 #>
 function New-AzMixedRealitySpatialAnchorsAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.ISpatialAnchorsAccount])]

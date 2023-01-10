@@ -27,7 +27,7 @@ Lists all operations available Azure Security Insights Resource Provider.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentineloperation
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentineloperation
 #>
 function Get-AzSentinelOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IOperation])]

@@ -20,7 +20,7 @@ Create Sentinel onboarding state
 .Description
 Create Sentinel onboarding state
 .Example
-AzSentinelOnboardingState -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Name "default"
+New-AzSentinelOnboardingState -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Name "default"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISentinelOnboardingState
@@ -41,7 +41,7 @@ SENTINELONBOARDINGSTATEPARAMETER <ISentinelOnboardingState>: Sentinel onboarding
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [CustomerManagedKey <Boolean?>]: Flag that indicates the status of the CMK setting
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelonboardingstate
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelonboardingstate
 #>
 function New-AzSentinelOnboardingState {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISentinelOnboardingState])]

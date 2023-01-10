@@ -25,7 +25,7 @@ New-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Locat
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlserver
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlserver
 #>
 function New-AzMySqlServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]

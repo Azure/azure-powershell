@@ -22,7 +22,7 @@ Gets an incident relation.
 .Example
  Get-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId"
 .Example
- Get-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Id "myIncidentRelationId"
+ Get-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId" -RelationName "myIncidentRelationId"
 .Example
  $Incidentrelations = Get-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId"
  $Incidentrelations[0] | Get-AzSentinelIncidentRelation
@@ -60,7 +60,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentrelation
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidentrelation
 #>
 function Get-AzSentinelIncidentRelation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation])]

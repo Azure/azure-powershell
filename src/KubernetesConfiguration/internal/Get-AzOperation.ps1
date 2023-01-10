@@ -27,7 +27,7 @@ List all the available operations the KubernetesConfiguration resource provider 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IResourceProviderOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azoperation
+https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azoperation
 #>
 function Get-AzOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IResourceProviderOperation])]

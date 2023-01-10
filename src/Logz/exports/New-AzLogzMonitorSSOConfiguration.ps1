@@ -31,7 +31,7 @@ default Succeeded         Disable           https://app.logz.io/        logz-rg-
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnResource
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/new-azlogzmonitorssoconfiguration
+https://learn.microsoft.com/powershell/module/az.logz/new-azlogzmonitorssoconfiguration
 #>
 function New-AzLogzMonitorSSOConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzSingleSignOnResource])]

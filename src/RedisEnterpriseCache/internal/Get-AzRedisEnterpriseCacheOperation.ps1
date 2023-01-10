@@ -27,7 +27,7 @@ Lists all of the available REST API operations of the Microsoft.Cache provider.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheoperation
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheoperation
 #>
 function Get-AzRedisEnterpriseCacheOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IOperation])]

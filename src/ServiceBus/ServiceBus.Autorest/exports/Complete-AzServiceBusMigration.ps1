@@ -22,7 +22,7 @@ CompleteMigration operation will fail when entity migration is in-progress.
 This operation Completes Migration of entities by pointing the connection strings to Premium namespace and any entities created after the operation will be under Premium Namespace.
 CompleteMigration operation will fail when entity migration is in-progress.
 .Example
-Complete-AzServiceBusMigration -ResourceGroupName myResourceGroup myNamespace
+Complete-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -47,7 +47,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/complete-azservicebusmigration
+https://learn.microsoft.com/powershell/module/az.servicebus/complete-azservicebusmigration
 #>
 function Complete-AzServiceBusMigration {
 [OutputType([System.Boolean])]

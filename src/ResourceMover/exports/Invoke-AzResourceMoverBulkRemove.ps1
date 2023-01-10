@@ -70,7 +70,7 @@ Status         : Succeeded
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverbulkremove
+https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverbulkremove
 #>
 function Invoke-AzResourceMoverBulkRemove {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus])]

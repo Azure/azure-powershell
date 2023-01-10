@@ -61,7 +61,7 @@ PARAMETER <IAuthorizationRule>: Single item in a List or Get AuthorizationRule o
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubauthorizationrule
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubauthorizationrule
 #>
 function New-AzEventHubAuthorizationRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule])]

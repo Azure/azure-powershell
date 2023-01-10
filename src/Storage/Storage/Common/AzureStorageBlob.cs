@@ -254,6 +254,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 return;
             }
 
+            this.ListBlobProperties = listBlobItem;
             this.privateBlobBaseClient = track2BlobClient;
             Name = track2BlobClient.Name;
             this.Context = storageContext;

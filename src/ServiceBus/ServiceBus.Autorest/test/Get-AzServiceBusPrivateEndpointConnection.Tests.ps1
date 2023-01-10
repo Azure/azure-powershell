@@ -17,11 +17,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceBusPrivateEndpoi
 Describe 'Get-AzServiceBusPrivateEndpointConnection' {
     $listOfPrivateEndpoints = Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
 
-    It 'List' {
+    It 'List'  {
         $listOfPrivateEndpoints.Count | Should -Be 2
     }
 
-    It 'Get' {
+    It 'Get'  {
         $privateEndpoint = Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[0].Name
         $privateEndpoint.ConnectionState | Should -Be "Rejected"
         $privateEndpoint.Description | Should -Be ""

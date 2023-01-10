@@ -25,7 +25,7 @@ Test-AzSentinelDataConnectorCheckRequirement -ResourceGroupName "myResourceGroup
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnectorsCheckRequirements
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/test-azsentineldataconnectorcheckrequirement
+https://learn.microsoft.com/powershell/module/az.securityinsights/test-azsentineldataconnectorcheckrequirement
 #>
 function Test-AzSentinelDataConnectorCheckRequirement {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnectorsCheckRequirements])]
