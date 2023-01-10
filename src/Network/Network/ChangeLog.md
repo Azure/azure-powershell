@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed the incorrect type of `-TotalBytesPerSession` in `New-AzNetworkWatcherPacketCapture`
 * Fixed a bug that added Ddos related properties when viewing PublicIpAddress and DdosProtectionPlan objects
 * Fixed a Bug for Set-AzIpGroup cmdlet to support the -whatif parameter
 
