@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.3.0
 * Return ListBlobProperties in blob list result
     - `Get-AzStorageBlob`
 * Output AllowedCopyScope in get account result

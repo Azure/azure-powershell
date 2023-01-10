@@ -170,5 +170,19 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-EnableUptimeSLA");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-EdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAadProfile()
+        {
+            TestRunner.RunTestScript("Test-AadProfile");
+        }
     }
 }

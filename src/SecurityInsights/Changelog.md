@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.0.1
 * Fixed for `Update-AzSentinelAlertRule` fails when using `-TriggerThreshold 0` [#20417]
 
 ## Version 3.0.0

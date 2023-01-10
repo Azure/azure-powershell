@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.ARMProfileFile = autoSave.ContextFile;
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = autoSave.CacheFile;
-            session.KeyStoreFile = "azkeystore.cache";
+            session.KeyStoreFile = "keystore.cache";
             autoSave.Settings.TryGetValue("InstallationId", out string installationId);
             session.ExtendedProperties.Add("InstallationId", installationId);
             InitializeConfigs(session, profilePath, writeWarning);
