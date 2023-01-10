@@ -46,7 +46,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/remove-azlogzsubaccount
+https://learn.microsoft.com/powershell/module/az.logz/remove-azlogzsubaccount
 #>
 function Remove-AzLogzSubAccount {
 [OutputType([System.Boolean])]

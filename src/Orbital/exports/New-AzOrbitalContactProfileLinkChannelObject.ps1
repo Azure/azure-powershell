@@ -25,7 +25,7 @@ New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 0.036 -CenterFrequenc
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLinkChannel
 .Link
-https://docs.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkChannelObject
+https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkChannelObject
 #>
 function New-AzOrbitalContactProfileLinkChannelObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLinkChannel])]

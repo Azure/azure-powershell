@@ -43,7 +43,7 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecache
+https://learn.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecache
 #>
 function Remove-AzRedisEnterpriseCache {
 [OutputType([System.Boolean])]

@@ -16,7 +16,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
@@ -31,10 +30,7 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
-using ResourceIdentityType = Microsoft.Azure.Management.ContainerService.Models.ResourceIdentityType;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -77,6 +73,12 @@ namespace Microsoft.Azure.Commands.Aks
         [ValidateNotNullOrEmpty]
         [Alias("ResourceId")]
         public string Id { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The parameters to be applied to the cluster-autoscaler.")]
+        public ManagedClusterPropertiesAutoScalerProfile AutoScalerProfile { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to use use Uptime SLA.")]
+        public SwitchParameter EnableUptimeSLA { get; set; }
 
         private ManagedCluster BuildNewCluster()
         {
@@ -269,6 +271,23 @@ namespace Microsoft.Azure.Commands.Aks
                                 WriteVerbose(Resources.UpdatingNodePoolMode);
                                 defaultAgentPoolProfile.Mode = NodePoolMode;
                             }
+                            if (this.IsParameterBound(c => c.NodePoolLabel))
+                            {
+                                WriteVerbose(Resources.UpdatingNodePoolLabels);
+                                defaultAgentPoolProfile.NodeLabels = new Dictionary<string, string>();
+                                foreach (var key in NodePoolLabel.Keys)
+                                {
+                                    defaultAgentPoolProfile.NodeLabels.Add(key.ToString(), NodePoolLabel[key].ToString());
+                                }
+                            }
+                            if (this.IsParameterBound(c => c.NodePoolTag))
+                            {
+                                defaultAgentPoolProfile.Tags = new Dictionary<string, string>();
+                                foreach (var key in NodePoolTag.Keys)
+                                {
+                                    defaultAgentPoolProfile.Tags.Add(key.ToString(), NodePoolTag[key].ToString());
+                                }
+                            }
                         }
 
                         if (this.IsParameterBound(c => c.KubernetesVersion) && this.IsParameterBound(c => c.NodeImageOnly))
@@ -382,9 +401,24 @@ namespace Microsoft.Azure.Commands.Aks
                     {
                         cluster.FqdnSubdomain = FqdnSubdomain;
                     }
+                    if (this.IsParameterBound(c => c.AutoScalerProfile))
+                    {
+                        cluster.AutoScalerProfile = AutoScalerProfile;
+                    }
+                    if (this.IsParameterBound(c => c.EnableUptimeSLA))
+                    {
+                        if (EnableUptimeSLA.ToBool())
+                        {
+                            cluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Paid");
+                        }
+                        else
+                        {
+                            cluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Free");
+                        }
+                    }
                     SetIdentity(cluster);
 
-                    var kubeCluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, cluster);
+                    var kubeCluster = this.CreateOrUpdate(ResourceGroupName, Name, cluster);
 
                     if (this.IsParameterBound(c => c.DiskEncryptionSetID))
                     {
@@ -394,7 +428,6 @@ namespace Microsoft.Azure.Commands.Aks
                     {
                         cluster.DisableLocalAccounts = DisableLocalAccount;
                     }
-
                     WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(kubeCluster));
                 });
             }
@@ -441,7 +474,8 @@ namespace Microsoft.Azure.Commands.Aks
             return this.IsParameterBound(c => c.NodeCount) || this.IsParameterBound(c => c.NodeOsDiskSize) ||
                 this.IsParameterBound(c => c.NodeVmSize) || this.IsParameterBound(c => c.EnableNodeAutoScaling) ||
                 this.IsParameterBound(c => c.NodeMinCount) || this.IsParameterBound(c => c.NodeMaxCount) || 
-                this.IsParameterBound(c => c.NodePoolMode);
+                this.IsParameterBound(c => c.NodePoolMode) || this.IsParameterBound(c => c.NodePoolLabel) ||
+                this.IsParameterBound(c => c.NodePoolTag);
         }
     }
 }

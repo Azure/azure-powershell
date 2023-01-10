@@ -24,6 +24,7 @@ New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <Strin
  [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
  [-CloudServiceConfiguration <PSCloudServiceConfiguration>] [-NetworkConfiguration <PSNetworkConfiguration>]
  [-MountConfiguration <PSMountConfiguration[]>] [-UserAccount <PSUserAccount[]>]
+ [-CurrentNodeCommunicationMode <NodeCommunicationMode>] [-TargetNodeCommunicationMode <NodeCommunicationMode>]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -39,7 +40,8 @@ New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <Strin
  [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
  [-VirtualMachineConfiguration <PSVirtualMachineConfiguration>]
  [-NetworkConfiguration <PSNetworkConfiguration>] [-MountConfiguration <PSMountConfiguration[]>]
- [-UserAccount <PSUserAccount[]>] -BatchContext <BatchAccountContext>
+ [-UserAccount <PSUserAccount[]>] [-CurrentNodeCommunicationMode <NodeCommunicationMode>]
+ [-TargetNodeCommunicationMode <NodeCommunicationMode>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -54,6 +56,7 @@ New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <Strin
  [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
  [-CloudServiceConfiguration <PSCloudServiceConfiguration>] [-NetworkConfiguration <PSNetworkConfiguration>]
  [-MountConfiguration <PSMountConfiguration[]>] [-UserAccount <PSUserAccount[]>]
+ [-CurrentNodeCommunicationMode <NodeCommunicationMode>] [-TargetNodeCommunicationMode <NodeCommunicationMode>]
  -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -69,7 +72,8 @@ New-AzBatchPool [-Id] <String> -VirtualMachineSize <String> [-DisplayName <Strin
  [-ApplicationLicenses <System.Collections.Generic.List`1[System.String]>]
  [-VirtualMachineConfiguration <PSVirtualMachineConfiguration>]
  [-NetworkConfiguration <PSNetworkConfiguration>] [-MountConfiguration <PSMountConfiguration[]>]
- [-UserAccount <PSUserAccount[]>] -BatchContext <BatchAccountContext>
+ [-UserAccount <PSUserAccount[]>] [-CurrentNodeCommunicationMode <NodeCommunicationMode>]
+ [-TargetNodeCommunicationMode <NodeCommunicationMode>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -224,6 +228,22 @@ Specifies configuration settings for a pool based on the Azure cloud service pla
 Type: Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration
 Parameter Sets: CloudServiceAndTargetDedicated, CloudServiceAndAutoScale
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CurrentNodeCommunicationMode
+The current pool communication mode.
+
+```yaml
+Type: Microsoft.Azure.Batch.Common.NodeCommunicationMode
+Parameter Sets: (All)
+Aliases:
+Accepted values: Default, Classic, Simplified
 
 Required: False
 Position: Named
@@ -392,6 +412,22 @@ Specifies the target number of low-priority compute nodes to allocate to the poo
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: CloudServiceAndTargetDedicated, VirtualMachineAndTargetDedicated
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetNodeCommunicationMode
+The desired node communication mode for the pool.
+
+```yaml
+Type: Microsoft.Azure.Batch.Common.NodeCommunicationMode
+Parameter Sets: (All)
+Aliases:
+Accepted values: Default, Classic, Simplified
 
 Required: False
 Position: Named

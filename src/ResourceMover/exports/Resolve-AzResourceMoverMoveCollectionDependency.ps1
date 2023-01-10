@@ -40,7 +40,7 @@ Status         : Succeeded
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/resolve-azresourcemovermovecollectiondependency
+https://learn.microsoft.com/powershell/module/az.resourcemover/resolve-azresourcemovermovecollectiondependency
 #>
 function Resolve-AzResourceMoverMoveCollectionDependency {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus])]

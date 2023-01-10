@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzServiceBusGeoDRConfigur
 }
 
 Describe 'New-AzServiceBusGeoDRConfiguration' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded'  {
         $drConfig = New-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
         $drConfig.ResourceGroupName | Should -Be $env.resourceGroup
         $drConfig.Name | Should -Be $env.alias

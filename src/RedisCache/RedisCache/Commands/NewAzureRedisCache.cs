@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "List of Azure regions with Availability zones.")]
         public string[] Zone { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Redis version. Valid values: 4, 6")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'.")]
         public string RedisVersion { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Specifies the type of identity used for the Azure Cache for Redis. Valid values: \"SystemAssigned\" or \"UserAssigned\" or \"SystemAssignedUserAssigned\" or \"None\" ")]

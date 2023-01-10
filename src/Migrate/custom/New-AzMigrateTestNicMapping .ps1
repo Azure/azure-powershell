@@ -19,7 +19,7 @@ Creates an object to update NIC properties of a test migrating server.
 .Description
 The New-AzMigrateTestNicMapping cmdlet creates a mapping of the source NIC attached to the server to be test migrated. This object is provided as an input to the Start-AzMigrateTestMigration cmdlet to update the NIC and its properties for a test migrating server.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratetestnicmapping
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratetestnicmapping
 #>
 function New-AzMigrateTestNicMapping {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput])]

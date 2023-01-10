@@ -25,7 +25,7 @@ Start-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName my
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/start-azservicebusmigration
+https://learn.microsoft.com/powershell/module/az.servicebus/start-azservicebusmigration
 #>
 function Start-AzServiceBusMigration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties])]

@@ -121,7 +121,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 PoolName = NameParts[1];
                 VolumeName = NameParts[2];
             }
-
             var anfSubvolumeMetadata = AzureNetAppFilesManagementClient.Subvolumes.GetMetadata(ResourceGroupName, AccountName, PoolName, VolumeName, Name);
             WriteObject(anfSubvolumeMetadata.ConvertToPs());
         }

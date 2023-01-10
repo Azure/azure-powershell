@@ -115,7 +115,7 @@ REQUEST <IBackupRequest>: Description of a backup which will be performed.
   [Enabled <Boolean?>]: True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
   [StorageAccountUrl <String>]: SAS URL to the container.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/backup-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/backup-azfunctionapp
 #>
 function Backup-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItem])]
@@ -409,7 +409,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azappinsightsapikey
+https://learn.microsoft.com/powershell/module/az.functions/get-azappinsightsapikey
 #>
 function Get-AzAppInsightsApiKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentApiKey])]
@@ -626,7 +626,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azappinsights
+https://learn.microsoft.com/powershell/module/az.functions/get-azappinsights
 #>
 function Get-AzAppInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent])]
@@ -775,7 +775,7 @@ Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionappavailablelocation
+https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappavailablelocation
 #>
 function Get-AzFunctionAppAvailableLocation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion])]
@@ -989,7 +989,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionappplan
+https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappplan
 #>
 function Get-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -1220,7 +1220,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionapp
 #>
 function Get-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -1444,7 +1444,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azfunction
+https://learn.microsoft.com/powershell/module/az.functions/get-azfunction
 #>
 function Get-AzFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelope])]
@@ -1601,7 +1601,7 @@ Lists the access keys or Kerberos keys (if active directory enabled) for the spe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountKey
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azstorageaccountkey
+https://learn.microsoft.com/powershell/module/az.functions/get-azstorageaccountkey
 #>
 function Get-AzStorageAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountKey])]
@@ -1746,7 +1746,7 @@ Note that storage keys are not returned; use the ListKeys operation for this.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azstorageaccount
+https://learn.microsoft.com/powershell/module/az.functions/get-azstorageaccount
 #>
 function Get-AzStorageAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount])]
@@ -1939,7 +1939,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azsystemassignedidentity
+https://learn.microsoft.com/powershell/module/az.functions/get-azsystemassignedidentity
 #>
 function Get-AzSystemAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ISystemAssignedIdentity])]
@@ -2127,7 +2127,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.functions/get-azuserassignedidentity
 #>
 function Get-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
@@ -2273,7 +2273,7 @@ Gets the application settings of an app.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsettingslot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsettingslot
 #>
 function Get-AzWebAppApplicationSettingSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -2413,7 +2413,7 @@ Gets the application settings of an app.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsetting
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsetting
 #>
 function Get-AzWebAppApplicationSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -2610,7 +2610,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappbasicpublishingcredentialspolicy
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappbasicpublishingcredentialspolicy
 #>
 function Get-AzWebAppBasicPublishingCredentialsPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesCollection])]
@@ -2815,7 +2815,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationslot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationslot
 #>
 function Get-AzWebAppConfigurationSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -2970,7 +2970,7 @@ Each element of the list contains a timestamp and the ID of the snapshot.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfoslot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfoslot
 #>
 function Get-AzWebAppConfigurationSnapshotInfoSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo])]
@@ -3112,7 +3112,7 @@ Each element of the list contains a timestamp and the ID of the snapshot.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfo
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfo
 #>
 function Get-AzWebAppConfigurationSnapshotInfo {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo])]
@@ -3309,7 +3309,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotslot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotslot
 #>
 function Get-AzWebAppConfigurationSnapshotSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -3527,7 +3527,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshot
 #>
 function Get-AzWebAppConfigurationSnapshot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -3738,7 +3738,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfiguration
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfiguration
 #>
 function Get-AzWebAppConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -3883,7 +3883,7 @@ Get function keys for a function in a web site, or a deployment slot.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappfunctionkeyslot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappfunctionkeyslot
 #>
 function Get-AzWebAppFunctionKeySlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -4028,7 +4028,7 @@ Get function keys for a function in a web site, or a deployment slot.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappfunctionkey
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappfunctionkey
 #>
 function Get-AzWebAppFunctionKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -4231,7 +4231,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappscmallowed
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappscmallowed
 #>
 function Get-AzWebAppScmAllowed {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity])]
@@ -4438,7 +4438,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappsettingkeyvaultreference
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappsettingkeyvaultreference
 #>
 function Get-AzWebAppSettingKeyVaultReference {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollection], [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceResource])]
@@ -4591,7 +4591,7 @@ This is to allow calling via powershell and ARM template.
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappsyncstatusslot
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappsyncstatusslot
 #>
 function Get-AzWebAppSyncStatusSlot {
 [OutputType([System.Boolean])]
@@ -4736,7 +4736,7 @@ This is to allow calling via powershell and ARM template.
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappsyncstatus
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappsyncstatus
 #>
 function Get-AzWebAppSyncStatus {
 [OutputType([System.Boolean])]
@@ -4945,7 +4945,7 @@ MOVERESOURCEENVELOPE <ICsmMoveResourceEnvelope>: Object with a list of the resou
   [Resource <String[]>]: 
   [TargetResourceGroup <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/move-az
+https://learn.microsoft.com/powershell/module/az.functions/move-az
 #>
 function Move-Az {
 [OutputType([System.Boolean])]
@@ -5193,7 +5193,7 @@ INSIGHTPROPERTY <IApplicationInsightsComponent>: An Application Insights compone
   [RequestSource <RequestSource?>]: Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
   [SamplingPercentage <Double?>]: Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azappinsights
+https://learn.microsoft.com/powershell/module/az.functions/new-azappinsights
 #>
 function New-AzAppInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent])]
@@ -5519,7 +5519,7 @@ SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager
   [Reason <String>]: Reason of the SKU capability.
   [Value <String>]: Value of the SKU capability.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azfunctionappplan
+https://learn.microsoft.com/powershell/module/az.functions/new-azfunctionappplan
 #>
 function New-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -6235,7 +6235,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/new-azfunctionapp
 #>
 function New-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -6738,7 +6738,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azfunction
+https://learn.microsoft.com/powershell/module/az.functions/new-azfunction
 #>
 function New-AzFunction {
 [OutputType([System.Boolean])]
@@ -7082,7 +7082,7 @@ PARAMETER <IIdentityAutoGenerated>: Describes an identity resource.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.functions/new-azuserassignedidentity
 #>
 function New-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
@@ -7498,7 +7498,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azwebappconfigurationslot
+https://learn.microsoft.com/powershell/module/az.functions/new-azwebappconfigurationslot
 #>
 function New-AzWebAppConfigurationSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -8452,7 +8452,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/new-azwebappconfiguration
+https://learn.microsoft.com/powershell/module/az.functions/new-azwebappconfiguration
 #>
 function New-AzWebAppConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -9216,7 +9216,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/remove-azfunctionappplan
+https://learn.microsoft.com/powershell/module/az.functions/remove-azfunctionappplan
 #>
 function Remove-AzFunctionAppPlan {
 [OutputType([System.Boolean])]
@@ -9427,7 +9427,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/remove-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/remove-azfunctionapp
 #>
 function Remove-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -9651,7 +9651,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/remove-azfunction
+https://learn.microsoft.com/powershell/module/az.functions/remove-azfunction
 #>
 function Remove-AzFunction {
 [OutputType([System.Boolean])]
@@ -9868,7 +9868,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/remove-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.functions/remove-azuserassignedidentity
 #>
 function Remove-AzUserAssignedIdentity {
 [OutputType([System.Boolean])]
@@ -10079,7 +10079,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/restart-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/restart-azfunctionapp
 #>
 function Restart-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -10330,7 +10330,7 @@ REQUEST <IRestoreRequest>: Description of a restore request.
   [SiteName <String>]: Name of an app.
   [StorageAccountUrl <String>]: SAS URL to the container.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/restore-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/restore-azfunctionapp
 #>
 function Restore-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -10644,7 +10644,7 @@ SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager
   [Reason <String>]: Reason of the SKU capability.
   [Value <String>]: Value of the SKU capability.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azfunctionappplan
+https://learn.microsoft.com/powershell/module/az.functions/set-azfunctionappplan
 #>
 function Set-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -11246,7 +11246,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/set-azfunctionapp
 #>
 function Set-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -11630,7 +11630,7 @@ PARAMETER <IIdentityAutoGenerated>: Describes an identity resource.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.functions/set-azuserassignedidentity
 #>
 function Set-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
@@ -11795,7 +11795,7 @@ APPSETTING <IStringDictionary>: String dictionary resource.
   [Property <IStringDictionaryProperties>]: Settings.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azwebappapplicationsettingslot
+https://learn.microsoft.com/powershell/module/az.functions/set-azwebappapplicationsettingslot
 #>
 function Set-AzWebAppApplicationSettingSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -11967,7 +11967,7 @@ APPSETTING <IStringDictionary>: String dictionary resource.
   [Property <IStringDictionaryProperties>]: Settings.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azwebappapplicationsetting
+https://learn.microsoft.com/powershell/module/az.functions/set-azwebappapplicationsetting
 #>
 function Set-AzWebAppApplicationSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -12307,7 +12307,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azwebappconfigurationslot
+https://learn.microsoft.com/powershell/module/az.functions/set-azwebappconfigurationslot
 #>
 function Set-AzWebAppConfigurationSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -13112,7 +13112,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azwebappconfiguration
+https://learn.microsoft.com/powershell/module/az.functions/set-azwebappconfiguration
 #>
 function Set-AzWebAppConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -13734,7 +13734,7 @@ CSMPUBLISHINGACCESSPOLICIESENTITY <ICsmPublishingCredentialsPoliciesEntity>: Pub
   [Kind <String>]: Kind of resource.
   [Allow <Boolean?>]: <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/set-azwebappscmallowed
+https://learn.microsoft.com/powershell/module/az.functions/set-azwebappscmallowed
 #>
 function Set-AzWebAppScmAllowed {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity])]
@@ -13951,7 +13951,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/start-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/start-azfunctionapp
 #>
 function Start-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -14162,7 +14162,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/stop-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/stop-azfunctionapp
 #>
 function Stop-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -14373,7 +14373,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/sync-azfunction
+https://learn.microsoft.com/powershell/module/az.functions/sync-azfunction
 #>
 function Sync-AzFunction {
 [OutputType([System.Boolean])]
@@ -14584,7 +14584,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/sync-azwebappfunctionslot
+https://learn.microsoft.com/powershell/module/az.functions/sync-azwebappfunctionslot
 #>
 function Sync-AzWebAppFunctionSlot {
 [OutputType([System.Boolean])]
@@ -14808,7 +14808,7 @@ REQUEST <IResourceNameAvailabilityRequest>: Resource name availability request c
   Type <CheckNameResourceTypes>: Resource type used for verification.
   [IsFqdn <Boolean?>]: Is fully qualified domain name.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/test-aznameavailability
+https://learn.microsoft.com/powershell/module/az.functions/test-aznameavailability
 #>
 function Test-AzNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceNameAvailability])]
@@ -15055,7 +15055,7 @@ VALIDATEREQUEST <IValidateRequest>: Resource validation request content.
   [ServerFarmId <String>]: ARM resource ID of an App Service plan that would host the app.
   [SkuName <String>]: Name of the target SKU for the App Service plan.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/test-az
+https://learn.microsoft.com/powershell/module/az.functions/test-az
 #>
 function Test-Az {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidateResponse])]
@@ -15399,7 +15399,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/update-azfunctionappplan
+https://learn.microsoft.com/powershell/module/az.functions/update-azfunctionappplan
 #>
 function Update-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -15997,7 +15997,7 @@ SITEENVELOPE <ISitePatchResource>: ARM resource for a site.
     [WindowsFxVersion <String>]: Xenon App Framework and version
     [XManagedServiceIdentityId <Int32?>]: Explicit Managed Service Identity Id
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/update-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/update-azfunctionapp
 #>
 function Update-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -16461,7 +16461,7 @@ PARAMETER <IIdentityUpdate>: Describes an identity resource.
   [Tag <IIdentityUpdateTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/update-azuserassignedidentity
+https://learn.microsoft.com/powershell/module/az.functions/update-azuserassignedidentity
 #>
 function Update-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
@@ -16877,7 +16877,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/update-azwebappconfigurationslot
+https://learn.microsoft.com/powershell/module/az.functions/update-azwebappconfigurationslot
 #>
 function Update-AzWebAppConfigurationSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -17831,7 +17831,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/update-azwebappconfiguration
+https://learn.microsoft.com/powershell/module/az.functions/update-azwebappconfiguration
 #>
 function Update-AzWebAppConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
