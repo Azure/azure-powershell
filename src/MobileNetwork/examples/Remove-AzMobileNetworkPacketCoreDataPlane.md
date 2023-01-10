@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes the specified packet core data plane.
 ```powershell
-{{ Add code here }}
+Remove-AzMobileNetworkPacketCoreDataPlane -Name azps-mn-pcdp -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Deletes the specified packet core data plane.

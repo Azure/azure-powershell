@@ -38,7 +38,7 @@ function New-AzMobileNetworkSliceConfigurationObject {
         $DefaultDataNetworkId,
         [Parameter(Mandatory, HelpMessage="Slice resource ID.")]
         [string]
-        $SlouseId
+        $SliceId
     )
 
     process {
@@ -50,8 +50,8 @@ function New-AzMobileNetworkSliceConfigurationObject {
         if ($PSBoundParameters.ContainsKey('DefaultDataNetworkId')) {
             $Object.DefaultDataNetworkId = $DefaultDataNetworkId
         }
-        if ($PSBoundParameters.ContainsKey('SlouseId')) {
-            $Object.SlouseId = $SlouseId
+        if ($PSBoundParameters.ContainsKey('SliceId')) {
+            $Object.SlouseId = $SliceId
         }
         return $Object
     }

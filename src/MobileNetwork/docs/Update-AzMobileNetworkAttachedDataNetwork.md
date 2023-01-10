@@ -31,27 +31,18 @@ Updates an attached data network tags.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Updates an attached data network tags.
 ```powershell
-{{ Add code here }}
+Update-AzMobileNetworkAttachedDataNetwork -AttachedDataNetworkName azps-mn-adn -PacketCoreControlPlaneName azps-mn-pccp -PacketCoreDataPlaneName azps_test_group -ResourceGroupName -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here }}
+Location Name        ResourceGroupName ProvisioningState
+-------- ----        ----------------- -----------------
+eastus   azps-mn-adn azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Updates an attached data network tags.
 
 ## PARAMETERS
 
@@ -228,7 +219,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+`INPUTOBJECT <IMobileNetworkIdentity>`: Identity Parameter
   - `[AttachedDataNetworkName <String>]`: The name of the attached data network.
   - `[DataNetworkName <String>]`: The name of the data network.
   - `[Id <String>]`: Resource identity path

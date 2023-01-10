@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List information about the specified packet core data plane by PacketCoreControlPlaneName.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkPacketCoreDataPlane -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Location Name         ResourceGroupName ProvisioningState
+-------- ----         ----------------- -----------------
+eastus   azps-mn-pcdp azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
+List information about the specified packet core data plane by PacketCoreControlPlaneName.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about the specified packet core data plane by Name.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkPacketCoreDataPlane -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group -Name azps-mn-pcdp
 ```
 
 ```output
-{{ Add output here }}
+Location Name         ResourceGroupName ProvisioningState
+-------- ----         ----------------- -----------------
+eastus   azps-mn-pcdp azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
-
+Get information about the specified packet core data plane by Name.

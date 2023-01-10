@@ -16,11 +16,8 @@ Creates or updates a SIM.
 New-AzMobileNetworkSim -GroupName <String> -Name <String> -ResourceGroupName <String>
  -InternationalMobileSubscriberIdentity <String> [-SubscriptionId <String>] [-AuthenticationKey <String>]
  [-DeviceType <String>] [-IntegratedCircuitCardIdentifier <String>] [-OperatorKeyCode <String>]
- [-SimPolicyId <String>] [-StaticIPConfiguration <ISimStaticIPProperties[]>] [-SystemDataCreatedAt <DateTime>]
- [-SystemDataCreatedBy <String>] [-SystemDataCreatedByType <CreatedByType>]
- [-SystemDataLastModifiedAt <DateTime>] [-SystemDataLastModifiedBy <String>]
- [-SystemDataLastModifiedByType <CreatedByType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SimPolicyId <String>] [-StaticIPConfiguration <ISimStaticIPProperties[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,27 +25,20 @@ Creates or updates a SIM.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Creates or updates a SIM.
 ```powershell
-{{ Add code here }}
+$staticIp = New-AzMobileNetworkSimStaticIPPropertiesObject -StaticIPIpv4Address 10.0.0.20
+
+New-AzMobileNetworkSim -GroupName azps-mn-simgroup -Name azps-mn-sim -ResourceGroupName azps_test_group  -InternationalMobileSubscriberIdentity 000000000000001 -AuthenticationKey 00112233445566778899AABBCCDDEEFF -DeviceType Mobile -IntegratedCircuitCardIdentifier 8900000000000000001 -OperatorKeyCode 00000000000000000000000000000001 -SimPolicyId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/simPolicies/azps-mn-simpolicy" -StaticIPConfiguration $staticIp
 ```
 
 ```output
-{{ Add output here }}
+Name        ResourceGroupName ProvisioningState
+----        ----------------- -----------------
+azps-mn-sim azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates or updates a SIM.
 
 ## PARAMETERS
 
@@ -266,96 +256,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SystemDataCreatedAt
-The timestamp of resource creation (UTC).
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataCreatedBy
-The identity that created the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataCreatedByType
-The type of identity that created the resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CreatedByType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedAt
-The timestamp of resource last modification (UTC)
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedBy
-The identity that last modified the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedByType
-The type of identity that last modified the resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CreatedByType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -405,7 +305,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-STATICIPCONFIGURATION <ISimStaticIPProperties[]>: A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
+`STATICIPCONFIGURATION <ISimStaticIPProperties[]>`: A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
   - `[AttachedDataNetworkId <String>]`: Attached data network resource ID.
   - `[SlouseId <String>]`: Slice resource ID.
   - `[StaticIPIpv4Address <String>]`: The IPv4 address assigned to the SIM at this network scope. This address must be in the userEquipmentStaticAddressPoolPrefix defined in the attached data network.

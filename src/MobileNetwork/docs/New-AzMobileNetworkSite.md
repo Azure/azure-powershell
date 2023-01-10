@@ -15,10 +15,7 @@ Must be created in the same location as its parent mobile network.
 
 ```
 New-AzMobileNetworkSite -MobileNetworkName <String> -Name <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>] [-SystemDataCreatedAt <DateTime>]
- [-SystemDataCreatedBy <String>] [-SystemDataCreatedByType <CreatedByType>]
- [-SystemDataLastModifiedAt <DateTime>] [-SystemDataLastModifiedBy <String>]
- [-SystemDataLastModifiedByType <CreatedByType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ -Location <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -161,96 +158,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataCreatedAt
-The timestamp of resource creation (UTC).
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataCreatedBy
-The identity that created the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataCreatedByType
-The type of identity that created the resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CreatedByType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedAt
-The timestamp of resource last modification (UTC)
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedBy
-The identity that last modified the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedByType
-The type of identity that last modified the resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.CreatedByType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

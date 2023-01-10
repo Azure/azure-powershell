@@ -13,7 +13,7 @@ Create an in-memory object for SimStaticIPProperties.
 ## SYNTAX
 
 ```
-New-AzMobileNetworkSimStaticIPPropertiesObject [-AttachedDataNetworkId <String>] [-SlouseId <String>]
+New-AzMobileNetworkSimStaticIPPropertiesObject [-AttachedDataNetworkId <String>] [-SliceId <String>]
  [-StaticIPIpv4Address <String>] [<CommonParameters>]
 ```
 
@@ -22,27 +22,18 @@ Create an in-memory object for SimStaticIPProperties.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for SimStaticIPProperties.
 ```powershell
-{{ Add code here }}
+New-AzMobileNetworkSimStaticIPPropertiesObject -StaticIPIpv4Address 10.0.0.20
 ```
 
 ```output
-{{ Add output here }}
+AttachedDataNetworkId SlouseId StaticIPIpv4Address
+--------------------- -------- -------------------
+                               10.0.0.20
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for SimStaticIPProperties.
 
 ## PARAMETERS
 
@@ -61,7 +52,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SlouseId
+### -SliceId
 Slice resource ID.
 
 ```yaml

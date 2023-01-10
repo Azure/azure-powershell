@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the MobileNetwork service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -83,6 +83,11 @@ directive:
     remove: true
 
   - where:
+      verb: New
+      subject: SimGroup
+    hide: true
+
+  - where:
       verb: Set
     remove: true
   - where:
@@ -129,47 +134,73 @@ directive:
       subject: ^Slouse$
     set:
       subject: Slice
+  - where:
+      parameter-name: DefaultSlouseId
+    set:
+      parameter-name: DefaultSliceId
 
+  # - where:
+  #     verb: Invoke
+  #     subject: ^BulkSimDelete$
+  #   set:
+  #     verb: Remove
   - where:
       verb: Invoke
       subject: ^BulkSimDelete$
-    set:
-      verb: Remove
+    remove: true
+  # - where:
+  #     verb: Invoke
+  #     subject: ^BulkSimUpload$
+  #   set:
+  #     verb: Update
   - where:
       verb: Invoke
       subject: ^BulkSimUpload$
-    set:
-      verb: Update
+    remove: true
+  # - where:
+  #     verb: Invoke
+  #     subject: ^BulkSimUploadEncrypted$
+  #   set:
+  #     verb: Update
   - where:
       verb: Invoke
       subject: ^BulkSimUploadEncrypted$
-    set:
-      verb: Update
+    remove: true
+  # - where:
+  #     verb: Invoke
+  #     subject: ^CollectPacketCoreControlPlaneDiagnosticPackage$
+  #   set:
+  #     verb: Update
   - where:
       verb: Invoke
       subject: ^CollectPacketCoreControlPlaneDiagnosticPackage$
-    set:
-      verb: Update
+    remove: true
+  # - where:
+  #     verb: Invoke
+  #     subject: ^ReinstallPacketCoreControlPlane$
+  #   set:
+  #     verb: Reset
   - where:
       verb: Invoke
       subject: ^ReinstallPacketCoreControlPlane$
-    set:
-      verb: Reset
+    remove: true
+  # - where:
+  #     verb: Invoke
+  #     subject: ^RollbackPacketCoreControlPlane$
+  #   set:
+  #     verb: Revoke
   - where:
       verb: Invoke
       subject: ^RollbackPacketCoreControlPlane$
-    set:
-      verb: Revoke
+    remove: true
 
   # The following are commented out and their generated cmdlets may be renamed and custom logic
   # - model-cmdlet:
-  #     - SimNameAndEncryptedProperties
-  #     - SimNameAndProperties
-  #     - SliceConfiguration
+  #     - SliceConfiguration  # SlouseId -> SliceId
   #     - DataNetworkConfiguration
   #     - ServiceResourceId
   #     - SiteResourceId
-  #     - SimStaticIPProperties
+  #     - SimStaticIPProperties # SlouseId -> SliceId
   #     - PccRuleConfiguration
   #     - ServiceDataFlowTemplate
 
@@ -247,5 +278,39 @@ directive:
           - Name
           - ResourceGroupName
           - ProvisioningState
-          - IdentityType
+  - where:
+      model-name: PacketCoreControlPlane
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+  - where:
+      model-name: PacketCoreDataPlane
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+  - where:
+      model-name: AttachedDataNetwork
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+  - where:
+      model-name: Sim
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
 ```

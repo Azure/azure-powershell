@@ -4,9 +4,9 @@ Get-AzMobileNetworkSimGroup
 ```
 
 ```output
-Location Name             ResourceGroupName ProvisioningState IdentityType
--------- ----             ----------------- ----------------- ------------
-eastus   azps-mn-simgroup azps_test_group   Succeeded         UserAssigned
+Location Name             ResourceGroupName ProvisioningState
+-------- ----             ----------------- -----------------
+eastus   azps-mn-simgroup azps_test_group   Succeeded
 ```
 
 Get information about the specified SIM group by Sub.
@@ -17,9 +17,9 @@ Get-AzMobileNetworkSimGroup -ResourceGroupName azps_test_group
 ```
 
 ```output
-Location Name             ResourceGroupName ProvisioningState IdentityType
--------- ----             ----------------- ----------------- ------------
-eastus   azps-mn-simgroup azps_test_group   Succeeded         UserAssigned
+Location Name             ResourceGroupName ProvisioningState
+-------- ----             ----------------- -----------------
+eastus   azps-mn-simgroup azps_test_group   Succeeded
 ```
 
 Get information about the specified SIM group by ResourceGroup.
@@ -30,9 +30,9 @@ Get-AzMobileNetworkSimGroup -ResourceGroupName azps_test_group -Name azps-mn-sim
 ```
 
 ```output
-Location Name             ResourceGroupName ProvisioningState IdentityType
--------- ----             ----------------- ----------------- ------------
-eastus   azps-mn-simgroup azps_test_group   Succeeded         UserAssigned
+Location Name             ResourceGroupName ProvisioningState
+-------- ----             ----------------- -----------------
+eastus   azps-mn-simgroup azps_test_group   Succeeded
 ```
 
 Get information about the specified SIM group.
