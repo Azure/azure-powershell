@@ -42,7 +42,7 @@ PARAMETER <IContactParameters>: Parameters that define the contact resource.
   StartTime <DateTime>: Start time of a contact (ISO 8601 UTC standard).
   [ContactProfileId <String>]: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/get-azorbitalavailablespacecraftcontact
+https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalavailablespacecraftcontact
 #>
 function Get-AzOrbitalAvailableSpacecraftContact {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContacts])]

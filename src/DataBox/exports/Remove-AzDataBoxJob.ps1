@@ -25,7 +25,7 @@ PS C:\> Remove-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "resourceGro
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.databox/remove-azdataboxjob
+https://learn.microsoft.com/powershell/module/az.databox/remove-azdataboxjob
 #>
 function Remove-AzDataBoxJob {
 [OutputType([System.Boolean])]

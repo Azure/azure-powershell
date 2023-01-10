@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             ParameterSetName = ParentObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The volume for the new backup object")]
+            HelpMessage = "The volume for the new subvolume object")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesVolume VolumeObject { get; set; }
 

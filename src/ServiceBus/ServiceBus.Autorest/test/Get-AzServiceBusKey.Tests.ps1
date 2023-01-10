@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceBusKey'))
 }
 
 Describe 'Get-AzServiceBusKey' {
-    It 'GetExpandedNamespace' {
+    It 'GetExpandedNamespace'  {
         $namespaceKeys = Get-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule1
         $namespaceKeys.PrimaryKey | Should -Not -Be $null
         $namespaceKeys.SecondaryKey | Should -Not -Be $null

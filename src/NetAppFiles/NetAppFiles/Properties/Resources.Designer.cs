@@ -97,6 +97,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Re-establishing volume replication on {0}.
+        /// </summary>
+        internal static string ReestablishVolumeReplicationMessage {
+            get {
+                return ResourceManager.GetString("ReestablishVolumeReplicationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove the {0}.
         /// </summary>
         internal static string RemoveResourceMessage {

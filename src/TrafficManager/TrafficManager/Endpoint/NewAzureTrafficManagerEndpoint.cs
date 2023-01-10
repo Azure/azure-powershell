@@ -72,6 +72,11 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string EndpointLocation { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.")]
+        [ValidateSet(Constants.StatusEnabled, Constants.StatusDisabled, IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
+        public string AlwaysServe { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The minimum number of endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.")]
         [ValidateNotNullOrEmpty]
         public uint? MinChildEndpoints { get; set; }
@@ -117,6 +122,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                         this.TargetResourceId,
                         this.Target,
                         this.EndpointStatus,
+                        this.AlwaysServe,
                         this.Weight,
                         this.Priority,
                         this.EndpointLocation,

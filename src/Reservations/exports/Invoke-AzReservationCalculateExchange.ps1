@@ -106,7 +106,7 @@ RESERVATIONSTOPURCHASE <IPurchaseRequest[]>: List of reservations that are being
   [Sku <String>]: 
   [Term <ReservationTerm?>]: Represent the term of Reservation.
 .Link
-https://docs.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculateexchange
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculateexchange
 #>
 function Invoke-AzReservationCalculateExchange {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateExchangeOperationResultResponse])]

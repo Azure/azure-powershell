@@ -61,7 +61,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestCortexExpressRouteCRUD()
         {
             TestRunner.RunTestScript("Test-CortexExpressRouteCRUD");
@@ -101,7 +101,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestCortexVirtualHubCRUD()
         {
             TestRunner.RunTestScript("Test-CortexVirtualHubCRUD");

@@ -68,7 +68,7 @@ Describe 'New-AzServiceBusKey' {
         $newKeys.SecondaryKey | Should -Be $env.queueSecondaryKey
     }
 
-    It 'NewExpandedTopic' {
+    It 'NewExpandedTopic'  {
         $currentKeys = Get-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule1
         
         $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule1 -KeyType PrimaryKey

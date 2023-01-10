@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var tokenCacheProvider = upParameters.TokenCacheProvider;
             var resource = upParameters.Environment.GetEndpoint(upParameters.ResourceId) ?? upParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
-            var clientId = AuthenticationHelpers.PowerShellClientId;
+            var clientId = Constants.PowerShellClientId;
             var authority = upParameters.Environment.ActiveDirectoryAuthority;
 
             var requestContext = new TokenRequestContext(scopes);

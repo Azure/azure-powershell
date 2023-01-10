@@ -25,7 +25,7 @@ Get-AzMLWorkspaceOnlineEndpointKey -ResourceGroupName ml-rg-test -WorkspaceName 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEndpointAuthKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlineendpointkey
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceonlineendpointkey
 #>
 function Get-AzMLWorkspaceOnlineEndpointKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEndpointAuthKeys])]

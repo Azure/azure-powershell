@@ -25,7 +25,7 @@ Get-AzStaticWebAppBuildFunction -ResourceGroupName lucas-rg-test -Name staticweb
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteFunctionOverviewArmResource
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuildfunction
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuildfunction
 #>
 function Get-AzStaticWebAppBuildFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteFunctionOverviewArmResource])]

@@ -30,7 +30,7 @@ namespace Common.Authenticators.Test
         private Mock<IStorage> storageMocker = null;
         private List<byte> storageChecker = null;
         private string dummpyPath = "/home/dummy/.Azure";
-        private string keyStoreFileName = "keystore.cache";
+        private string keyStoreFileName = "azkeystore";
 
         public AzKeyStorageTest()
         {

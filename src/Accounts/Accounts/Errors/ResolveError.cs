@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Profile.Errors
                 }
             }
             var informationMessage = new HostInformationMessage();
-            informationMessage.Message = $"{Environment.NewLine}{AzureProfileConstants.AzurePowerShellFeedbackMessage}{Environment.NewLine}";
+            informationMessage.Message = $"{Environment.NewLine}";
             informationMessage.NoNewLine = false;
             WriteInformation(informationMessage, new string[] { "PSHOST" });
         }

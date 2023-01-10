@@ -421,7 +421,7 @@
 ### `Get-AzNetAppFilesVault`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - The output type is changing from the existing type :'Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy' to the new type :'PSNetAppFilesVault'
+  - The cmdlet is being deprecated. There will be no replacement for it.
 
 ### `New-AzNetAppFilesBackupPolicy`
 
@@ -1212,6 +1212,20 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
     - Alias RegisteredServer is invalid and preserved for compatibility. Alias ServerEndpoint should be used instead
+
+## Az.Synapse
+
+### `New-AzSynapseSparkPool`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-SparkConfigFilePath`
+    - The parameter : 'SparkConfigFilePath' is being replaced by parameter : 'SparkConfiguration'.
+
+### `Update-AzSynapseSparkPool`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-SparkConfigFilePath`
+    - The parameter : 'SparkConfigFilePath' is being replaced by parameter : 'SparkConfiguration'.
 
 ## Az.Websites
 

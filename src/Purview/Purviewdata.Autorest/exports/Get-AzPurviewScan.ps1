@@ -75,7 +75,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewscan
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewscan
 #>
 function Get-AzPurviewScan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScan])]

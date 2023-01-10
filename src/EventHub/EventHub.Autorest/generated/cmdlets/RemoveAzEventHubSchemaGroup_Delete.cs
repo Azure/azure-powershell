@@ -8,12 +8,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Extensions;
     using System;
 
+    /// <summary>Deletes an EventHub schema group.</summary>
     /// <remarks>
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzEventHubSchemaGroup_Delete", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Deletes an EventHub schema group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
     public partial class RemoveAzEventHubSchemaGroup_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener

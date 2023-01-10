@@ -100,9 +100,86 @@ directive:
       subject: Migration
 
 # Remove namespace cmdlets
+#  - where:
+#      subject: Namespace
+#    remove: true
+
+# Renaming New-AzServiceBusNamespace
+  - where:
+      verb: New
+      subject: Namespace
+      parameter-name: EncryptionRequireInfrastructureEncryption
+    set:
+      parameter-name: RequireInfrastructureEncryption
+  - where:
+      model-name: SbNamespace
+      property-name: EncryptionRequireInfrastructureEncryption
+    set:
+      property-name: RequireInfrastructureEncryption
+  
+  - where:
+      verb: New
+      subject: Namespace
+      parameter-name: EncryptionKeyVaultProperty
+    set:
+      parameter-name: KeyVaultProperty
+  - where:
+      model-name: SbNamespace
+      property-name: EncryptionKeyVaultProperty
+    set:
+      property-name: KeyVaultProperty
+  
+  - where:
+      verb: New
+      subject: Namespace
+      parameter-name: EncryptionKeySource
+    set:
+      parameter-name: KeySource
+  - where:
+      model-name: SbNamespace
+      property-name: EncryptionKeySource
+    set:
+      property-name: KeySource
+
+  - where:
+      verb: New
+      subject: Namespace
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
+  - where:
+      model-name: SbNamespace
+      property-name: IdentityUserAssignedIdentity
+    set:
+      property-name: UserAssignedIdentity
+  
+  - where:
+      model-name: SbNamespace
+      property-name: IdentityPrincipalId
+    set:
+      property-name: PrincipalId
+
+  - where:
+      model-name: SbNamespace
+      property-name: IdentityTenantId
+    set:
+      property-name: TenantId
+
+  - where:
+      model-name: KeyVaultProperties
+      property-name: IdentityUserAssignedIdentity
+    set:
+      property-name: UserAssignedIdentity
+
   - where:
       subject: Namespace
-    remove: true
+    set:
+      subject: NamespaceV2
+
+  - where:
+      verb: New
+      subject: NamespaceV2
+    hide: true
 
 # Rules
   - where:
@@ -437,3 +514,6 @@ directive:
     set:
       parameter-name: SubscriptionId
     clear-alias: true
+
+  - model-cmdlet:
+    - KeyVaultProperties

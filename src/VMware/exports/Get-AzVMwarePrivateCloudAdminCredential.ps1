@@ -25,7 +25,7 @@ Get-AzVMwarePrivateCloudAdminCredential -PrivateCloudName azps_test_cloud -Resou
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAdminCredentials
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloudadmincredential
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloudadmincredential
 #>
 function Get-AzVMwarePrivateCloudAdminCredential {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAdminCredentials])]

@@ -27,34 +27,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsCheckNameAvailability(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ICheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsCheckNameAvailability(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ICheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/providers/Microsoft.DigitalTwins/locations/"
                         + global::System.Uri.EscapeDataString(location)
                         + "/checkNameAvailability"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsCheckNameAvailability_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -72,15 +73,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ICheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ICheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DigitalTwins/locations/(?<location>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DigitalTwins/locations/(?<location>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DigitalTwins/locations/{location}/checkNameAvailability'");
@@ -90,27 +91,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var location = _match.Groups["location"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/providers/Microsoft.DigitalTwins/locations/"
                         + location
                         + "/checkNameAvailability"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Post, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsCheckNameAvailability_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -126,15 +128,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -143,13 +146,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -176,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsCheckNameAvailability_Validate(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ICheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsCheckNameAvailability_Validate(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ICheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -204,15 +207,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsCreateOrUpdate(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsCreateOrUpdate(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -220,19 +223,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + global::System.Uri.EscapeDataString(resourceName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -252,15 +256,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}'");
@@ -271,8 +275,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var resourceName = _match.Groups["resourceName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
@@ -280,19 +284,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + resourceName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -308,22 +313,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
-                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
 
                         // get the delay before polling. (default to 30 seconds if not present)
@@ -349,33 +355,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
 
                         // check for cancellation
                         if( eventListener.Token.IsCancellationRequested ) { return; }
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // drop the old response
                         _response?.Dispose();
 
                         // make the polling call
                         _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // if we got back an OK, take a peek inside and see if it's done
                         if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
                         {
+                            var error = false;
                             try {
                                 if( Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonObject json)
                                 {
                                     var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("status");
                                     if( state is null )
                                     {
-                                      // the body doesn't contain any information that has the state of the LRO
-                                      // we're going to just get out, and let the consumer have the result
-                                      break;
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
                                     }
-                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                                     switch( state?.ToString()?.ToLower() )
                                     {
-                                      case "succeeded":
                                       case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
                                       case "canceled":
                                         // we're done polling.
                                         break;
@@ -389,6 +397,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                             } catch {
                                 // if we run into a problem peeking into the result,
                                 // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.UndeclaredResponseException(_response);
                             }
                         }
 
@@ -408,6 +419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -418,13 +430,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.DigitalTwinsDescription.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsDescription.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -451,14 +463,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription body, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription body, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,64);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(resourceName),resourceName);
                 await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
                 await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
@@ -481,15 +493,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsDelete(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsDelete(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -497,15 +509,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + global::System.Uri.EscapeDataString(resourceName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
@@ -522,15 +535,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}'");
@@ -541,8 +554,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var resourceName = _match.Groups["resourceName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
@@ -550,15 +563,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + resourceName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
@@ -575,15 +589,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
@@ -591,7 +606,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
-                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
 
                         // get the delay before polling. (default to 30 seconds if not present)
@@ -617,33 +632,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
 
                         // check for cancellation
                         if( eventListener.Token.IsCancellationRequested ) { return; }
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // drop the old response
                         _response?.Dispose();
 
                         // make the polling call
                         _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // if we got back an OK, take a peek inside and see if it's done
                         if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
                         {
+                            var error = false;
                             try {
                                 if( Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonObject json)
                                 {
                                     var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("status");
                                     if( state is null )
                                     {
-                                      // the body doesn't contain any information that has the state of the LRO
-                                      // we're going to just get out, and let the consumer have the result
-                                      break;
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
                                     }
-                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                                     switch( state?.ToString()?.ToLower() )
                                     {
-                                      case "succeeded":
                                       case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
                                       case "canceled":
                                         // we're done polling.
                                         break;
@@ -657,6 +674,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                             } catch {
                                 // if we run into a problem peeking into the result,
                                 // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.UndeclaredResponseException(_response);
                             }
                         }
 
@@ -676,6 +696,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -686,7 +707,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.DigitalTwinsDescription.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsDescription.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.NoContent:
@@ -698,7 +719,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -731,7 +752,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,64);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(resourceName),resourceName);
                 await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
                 await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
@@ -753,15 +774,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointCreateOrUpdate(string subscriptionId, string resourceGroupName, string resourceName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointCreateOrUpdate(string subscriptionId, string resourceGroupName, string resourceName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -771,19 +792,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + global::System.Uri.EscapeDataString(endpointName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsEndpointCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -800,15 +822,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/endpoints/(?<endpointName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/endpoints/(?<endpointName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}'");
@@ -820,8 +842,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 var resourceName = _match.Groups["resourceName"].Value;
                 var endpointName = _match.Groups["endpointName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
@@ -831,19 +853,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + endpointName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Put, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsEndpointCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -859,22 +882,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsEndpointCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsEndpointCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
-                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
 
                         // get the delay before polling. (default to 30 seconds if not present)
@@ -900,33 +924,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
 
                         // check for cancellation
                         if( eventListener.Token.IsCancellationRequested ) { return; }
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // drop the old response
                         _response?.Dispose();
 
                         // make the polling call
                         _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // if we got back an OK, take a peek inside and see if it's done
                         if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
                         {
+                            var error = false;
                             try {
                                 if( Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonObject json)
                                 {
                                     var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("status");
                                     if( state is null )
                                     {
-                                      // the body doesn't contain any information that has the state of the LRO
-                                      // we're going to just get out, and let the consumer have the result
-                                      break;
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
                                     }
-                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                                     switch( state?.ToString()?.ToLower() )
                                     {
-                                      case "succeeded":
                                       case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
                                       case "canceled":
                                         // we're done polling.
                                         break;
@@ -940,6 +966,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                             } catch {
                                 // if we run into a problem peeking into the result,
                                 // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.UndeclaredResponseException(_response);
                             }
                         }
 
@@ -959,6 +988,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -969,13 +999,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.DigitalTwinsEndpointResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsEndpointResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1003,14 +1033,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsEndpointCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string resourceName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource body, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsEndpointCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string resourceName, string endpointName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource body, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,64);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(resourceName),resourceName);
                 await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
                 await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
@@ -1038,15 +1068,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointDelete(string subscriptionId, string resourceGroupName, string resourceName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointDelete(string subscriptionId, string resourceGroupName, string resourceName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -1056,15 +1086,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + global::System.Uri.EscapeDataString(endpointName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsEndpointDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
@@ -1081,15 +1112,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/endpoints/(?<endpointName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/endpoints/(?<endpointName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}'");
@@ -1101,8 +1132,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 var resourceName = _match.Groups["resourceName"].Value;
                 var endpointName = _match.Groups["endpointName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
@@ -1112,15 +1143,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + endpointName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Delete, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsEndpointDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
@@ -1137,15 +1169,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsEndpointDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsEndpointDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
@@ -1153,7 +1186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
-                    while (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
 
                         // get the delay before polling. (default to 30 seconds if not present)
@@ -1179,33 +1212,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
 
                         // check for cancellation
                         if( eventListener.Token.IsCancellationRequested ) { return; }
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, $"Polling {_uri}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // drop the old response
                         _response?.Dispose();
 
                         // make the polling call
                         _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // if we got back an OK, take a peek inside and see if it's done
                         if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
                         {
+                            var error = false;
                             try {
                                 if( Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonObject json)
                                 {
                                     var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("status");
                                     if( state is null )
                                     {
-                                      // the body doesn't contain any information that has the state of the LRO
-                                      // we're going to just get out, and let the consumer have the result
-                                      break;
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
                                     }
-                                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, $"Polled {_uri} provisioning state  {state}.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                                     switch( state?.ToString()?.ToLower() )
                                     {
-                                      case "succeeded":
                                       case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
                                       case "canceled":
                                         // we're done polling.
                                         break;
@@ -1219,6 +1254,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                             } catch {
                                 // if we run into a problem peeking into the result,
                                 // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.UndeclaredResponseException(_response);
                             }
                         }
 
@@ -1238,6 +1276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -1248,7 +1287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.DigitalTwinsEndpointResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsEndpointResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.NoContent:
@@ -1260,7 +1299,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1294,7 +1333,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,64);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(resourceName),resourceName);
                 await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
                 await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
@@ -1319,15 +1358,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointGet(string subscriptionId, string resourceGroupName, string resourceName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointGet(string subscriptionId, string resourceGroupName, string resourceName, string endpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -1337,15 +1376,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + global::System.Uri.EscapeDataString(endpointName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsEndpointGet_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1361,15 +1401,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/endpoints/(?<endpointName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/endpoints/(?<endpointName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints/{endpointName}'");
@@ -1381,8 +1421,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 var resourceName = _match.Groups["resourceName"].Value;
                 var endpointName = _match.Groups["endpointName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
@@ -1392,15 +1432,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + endpointName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsEndpointGet_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1416,15 +1457,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsEndpointGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsEndpointGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -1433,13 +1475,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.DigitalTwinsEndpointResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsEndpointResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1473,7 +1515,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,64);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(resourceName),resourceName);
                 await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
                 await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
@@ -1497,15 +1539,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointList(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointList(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -1514,15 +1556,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + "/endpoints"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsEndpointList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1538,15 +1581,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsEndpointListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/endpoints$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/endpoints$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints'");
@@ -1557,8 +1600,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var resourceName = _match.Groups["resourceName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
@@ -1567,15 +1610,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + "/endpoints"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsEndpointList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1591,15 +1635,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsEndpointList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsEndpointList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -1608,13 +1653,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.DigitalTwinsEndpointResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsEndpointResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1647,7 +1692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,64);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(resourceName),resourceName);
                 await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
                 await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
@@ -1667,15 +1712,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsGet(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsGet(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -1683,15 +1728,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + global::System.Uri.EscapeDataString(resourceName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsGet_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1707,15 +1753,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}'");
@@ -1726,8 +1772,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var resourceName = _match.Groups["resourceName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
@@ -1735,15 +1781,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + resourceName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsGet_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1759,15 +1806,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -1776,13 +1824,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.DigitalTwinsDescription.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsDescription.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1815,7 +1863,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,64);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(resourceName),resourceName);
                 await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
                 await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
@@ -1833,28 +1881,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescriptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescriptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1871,30 +1920,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescriptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescriptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
                         + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsListByResourceGroup_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1910,15 +1960,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescriptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescriptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances'");
@@ -1928,23 +1978,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 var subscriptionId = _match.Groups["subscriptionId"].Value;
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
                         + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsListByResourceGroup_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -1960,15 +2011,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescriptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescriptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -1977,13 +2029,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.DigitalTwinsDescriptionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsDescriptionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2015,7 +2067,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,64);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
             }
         }
 
@@ -2029,15 +2081,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescriptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescriptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.DigitalTwins/digitalTwinsInstances'");
@@ -2046,21 +2098,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 // replace URI parameters with values from identity
                 var subscriptionId = _match.Groups["subscriptionId"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2076,15 +2129,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescriptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescriptionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -2093,13 +2147,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.DigitalTwinsDescriptionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsDescriptionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2144,15 +2198,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsUpdate(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsPatchDescription body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsUpdate(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsPatchDescription body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
@@ -2160,19 +2214,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + global::System.Uri.EscapeDataString(resourceName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Patch, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsUpdate_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2189,15 +2244,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DigitalTwinsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsPatchDescription body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DigitalTwinsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsPatchDescription body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}'");
@@ -2208,8 +2263,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                 var resourceGroupName = _match.Groups["resourceGroupName"].Value;
                 var resourceName = _match.Groups["resourceName"].Value;
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/subscriptions/"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
@@ -2217,19 +2272,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         + resourceName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Patch, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
                 request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.DigitalTwinsUpdate_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2245,16 +2301,116 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsDescription>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2262,13 +2418,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.DigitalTwinsDescription.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsDescription.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2295,14 +2451,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DigitalTwinsUpdate_Validate(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsPatchDescription body, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DigitalTwinsUpdate_Validate(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsPatchDescription body, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
-                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,64);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(resourceName),resourceName);
                 await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
                 await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
@@ -2321,26 +2477,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.DigitalTwins/operations"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.DigitalTwins/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.OperationsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2356,15 +2513,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-10-31";
+            var apiVersion = @"2022-05-31";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.DigitalTwins/operations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.DigitalTwins/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.DigitalTwins/operations'");
@@ -2372,19 +2529,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
 
                 // replace URI parameters with values from identity
                 // construct URL
-                var _url = new global::System.Uri(global::System.Text.RegularExpressions.Regex.Replace(
-                        "https://management.azure.com/providers/Microsoft.DigitalTwins/operations"
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.DigitalTwins/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2"));
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
                 var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded, _url); if( eventListener.Token.IsCancellationRequested ) { return; }
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.OperationsList_Call(request,onOk,onDefault,eventListener,sender);
             }
@@ -2400,15 +2558,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sender.SendAsync(request, eventListener);
+                    _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -2417,13 +2576,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2451,6 +2610,2237 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins
             using( NoSynchronizationContext )
             {
 
+            }
+        }
+
+        /// <summary>Update the status of a private endpoint connection with the given name.</summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection.</param>
+        /// <param name="body">The private endpoint connection with updated properties.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string resourceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + global::System.Uri.EscapeDataString(resourceName)
+                        + "/privateEndpointConnections/"
+                        + global::System.Uri.EscapeDataString(privateEndpointConnectionName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Update the status of a private endpoint connection with the given name.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The private endpoint connection with updated properties.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/privateEndpointConnections/(?<privateEndpointConnectionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var resourceName = _match.Groups["resourceName"].Value;
+                var privateEndpointConnectionName = _match.Groups["privateEndpointConnectionName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + resourceName
+                        + "/privateEndpointConnections/"
+                        + privateEndpointConnectionName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref="PrivateEndpointConnectionsCreateOrUpdate" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.PrivateEndpointConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PrivateEndpointConnectionsCreateOrUpdate" /> method. Call this like the actual call,
+        /// but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection.</param>
+        /// <param name="body">The private endpoint connection with updated properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string resourceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(resourceName),resourceName);
+                await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
+                await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
+                await eventListener.AssertRegEx(nameof(resourceName),resourceName,@"^(?!-)[A-Za-z0-9-]{3,63}(?<!-)$");
+                await eventListener.AssertNotNull(nameof(privateEndpointConnectionName),privateEndpointConnectionName);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Delete private endpoint connection with the specified name.</summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete(string subscriptionId, string resourceGroupName, string resourceName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + global::System.Uri.EscapeDataString(resourceName)
+                        + "/privateEndpointConnections/"
+                        + global::System.Uri.EscapeDataString(privateEndpointConnectionName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Delete private endpoint connection with the specified name.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/privateEndpointConnections/(?<privateEndpointConnectionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var resourceName = _match.Groups["resourceName"].Value;
+                var privateEndpointConnectionName = _match.Groups["privateEndpointConnectionName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + resourceName
+                        + "/privateEndpointConnections/"
+                        + privateEndpointConnectionName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="PrivateEndpointConnectionsDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PrivateEndpointConnectionsDelete" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete_Validate(string subscriptionId, string resourceGroupName, string resourceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(resourceName),resourceName);
+                await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
+                await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
+                await eventListener.AssertRegEx(nameof(resourceName),resourceName,@"^(?!-)[A-Za-z0-9-]{3,63}(?<!-)$");
+                await eventListener.AssertNotNull(nameof(privateEndpointConnectionName),privateEndpointConnectionName);
+            }
+        }
+
+        /// <summary>Get private endpoint connection properties for the given private endpoint.</summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet(string subscriptionId, string resourceGroupName, string resourceName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + global::System.Uri.EscapeDataString(resourceName)
+                        + "/privateEndpointConnections/"
+                        + global::System.Uri.EscapeDataString(privateEndpointConnectionName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get private endpoint connection properties for the given private endpoint.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/privateEndpointConnections/(?<privateEndpointConnectionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var resourceName = _match.Groups["resourceName"].Value;
+                var privateEndpointConnectionName = _match.Groups["privateEndpointConnectionName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + resourceName
+                        + "/privateEndpointConnections/"
+                        + privateEndpointConnectionName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="PrivateEndpointConnectionsGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.PrivateEndpointConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PrivateEndpointConnectionsGet" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="privateEndpointConnectionName">The name of the private endpoint connection.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet_Validate(string subscriptionId, string resourceGroupName, string resourceName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(resourceName),resourceName);
+                await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
+                await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
+                await eventListener.AssertRegEx(nameof(resourceName),resourceName,@"^(?!-)[A-Za-z0-9-]{3,63}(?<!-)$");
+                await eventListener.AssertNotNull(nameof(privateEndpointConnectionName),privateEndpointConnectionName);
+            }
+        }
+
+        /// <summary>List private endpoint connection properties.</summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnectionsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + global::System.Uri.EscapeDataString(resourceName)
+                        + "/privateEndpointConnections"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsList_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List private endpoint connection properties.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnectionsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/privateEndpointConnections$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateEndpointConnections'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var resourceName = _match.Groups["resourceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + resourceName
+                        + "/privateEndpointConnections"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsList_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="PrivateEndpointConnectionsList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnectionsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.PrivateEndpointConnectionsResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PrivateEndpointConnectionsList" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList_Validate(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(resourceName),resourceName);
+                await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
+                await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
+                await eventListener.AssertRegEx(nameof(resourceName),resourceName,@"^(?!-)[A-Za-z0-9-]{3,63}(?<!-)$");
+            }
+        }
+
+        /// <summary>Get the specified private link resource for the given Digital Twin.</summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="resourceId">The name of the private link resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateLinkResourcesGet(string subscriptionId, string resourceGroupName, string resourceName, string resourceId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IGroupIdInformation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + global::System.Uri.EscapeDataString(resourceName)
+                        + "/privateLinkResources/"
+                        + global::System.Uri.EscapeDataString(resourceId)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateLinkResourcesGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get the specified private link resource for the given Digital Twin.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateLinkResourcesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IGroupIdInformation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/privateLinkResources/(?<resourceId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateLinkResources/{resourceId}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var resourceName = _match.Groups["resourceName"].Value;
+                var resourceId = _match.Groups["resourceId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + resourceName
+                        + "/privateLinkResources/"
+                        + resourceId
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateLinkResourcesGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="PrivateLinkResourcesGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateLinkResourcesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IGroupIdInformation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.GroupIdInformation.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PrivateLinkResourcesGet" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="resourceId">The name of the private link resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateLinkResourcesGet_Validate(string subscriptionId, string resourceGroupName, string resourceName, string resourceId, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(resourceName),resourceName);
+                await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
+                await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
+                await eventListener.AssertRegEx(nameof(resourceName),resourceName,@"^(?!-)[A-Za-z0-9-]{3,63}(?<!-)$");
+                await eventListener.AssertNotNull(nameof(resourceId),resourceId);
+            }
+        }
+
+        /// <summary>List private link resources for given Digital Twin.</summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateLinkResourcesList(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IGroupIdInformationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + global::System.Uri.EscapeDataString(resourceName)
+                        + "/privateLinkResources"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateLinkResourcesList_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List private link resources for given Digital Twin.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateLinkResourcesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IGroupIdInformationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/privateLinkResources$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/privateLinkResources'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var resourceName = _match.Groups["resourceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + resourceName
+                        + "/privateLinkResources"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateLinkResourcesList_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="PrivateLinkResourcesList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateLinkResourcesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IGroupIdInformationResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.GroupIdInformationResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PrivateLinkResourcesList" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateLinkResourcesList_Validate(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(resourceName),resourceName);
+                await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
+                await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
+                await eventListener.AssertRegEx(nameof(resourceName),resourceName,@"^(?!-)[A-Za-z0-9-]{3,63}(?<!-)$");
+            }
+        }
+
+        /// <summary>Create or update a time series database connection.</summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="timeSeriesDatabaseConnectionName">Name of time series database connection.</param>
+        /// <param name="body">The time series database connection description.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string resourceName, string timeSeriesDatabaseConnectionName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + global::System.Uri.EscapeDataString(resourceName)
+                        + "/timeSeriesDatabaseConnections/"
+                        + global::System.Uri.EscapeDataString(timeSeriesDatabaseConnectionName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TimeSeriesDatabaseConnectionsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Create or update a time series database connection.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The time series database connection description.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/timeSeriesDatabaseConnections/(?<timeSeriesDatabaseConnectionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections/{timeSeriesDatabaseConnectionName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var resourceName = _match.Groups["resourceName"].Value;
+                var timeSeriesDatabaseConnectionName = _match.Groups["timeSeriesDatabaseConnectionName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + resourceName
+                        + "/timeSeriesDatabaseConnections/"
+                        + timeSeriesDatabaseConnectionName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TimeSeriesDatabaseConnectionsCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref="TimeSeriesDatabaseConnectionsCreateOrUpdate" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.TimeSeriesDatabaseConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="TimeSeriesDatabaseConnectionsCreateOrUpdate" /> method. Call this like the actual call,
+        /// but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="timeSeriesDatabaseConnectionName">Name of time series database connection.</param>
+        /// <param name="body">The time series database connection description.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string resourceName, string timeSeriesDatabaseConnectionName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection body, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(resourceName),resourceName);
+                await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
+                await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
+                await eventListener.AssertRegEx(nameof(resourceName),resourceName,@"^(?!-)[A-Za-z0-9-]{3,63}(?<!-)$");
+                await eventListener.AssertNotNull(nameof(timeSeriesDatabaseConnectionName),timeSeriesDatabaseConnectionName);
+                await eventListener.AssertMinimumLength(nameof(timeSeriesDatabaseConnectionName),timeSeriesDatabaseConnectionName,2);
+                await eventListener.AssertMaximumLength(nameof(timeSeriesDatabaseConnectionName),timeSeriesDatabaseConnectionName,49);
+                await eventListener.AssertRegEx(nameof(timeSeriesDatabaseConnectionName),timeSeriesDatabaseConnectionName,@"^(?![0-9]+$)(?!-)[a-zA-Z0-9-]{2,49}[a-zA-Z0-9]$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Delete a time series database connection.</summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="timeSeriesDatabaseConnectionName">Name of time series database connection.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsDelete(string subscriptionId, string resourceGroupName, string resourceName, string timeSeriesDatabaseConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + global::System.Uri.EscapeDataString(resourceName)
+                        + "/timeSeriesDatabaseConnections/"
+                        + global::System.Uri.EscapeDataString(timeSeriesDatabaseConnectionName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TimeSeriesDatabaseConnectionsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Delete a time series database connection.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/timeSeriesDatabaseConnections/(?<timeSeriesDatabaseConnectionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections/{timeSeriesDatabaseConnectionName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var resourceName = _match.Groups["resourceName"].Value;
+                var timeSeriesDatabaseConnectionName = _match.Groups["timeSeriesDatabaseConnectionName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + resourceName
+                        + "/timeSeriesDatabaseConnections/"
+                        + timeSeriesDatabaseConnectionName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TimeSeriesDatabaseConnectionsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="TimeSeriesDatabaseConnectionsDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.TimeSeriesDatabaseConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="TimeSeriesDatabaseConnectionsDelete" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="timeSeriesDatabaseConnectionName">Name of time series database connection.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsDelete_Validate(string subscriptionId, string resourceGroupName, string resourceName, string timeSeriesDatabaseConnectionName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(resourceName),resourceName);
+                await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
+                await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
+                await eventListener.AssertRegEx(nameof(resourceName),resourceName,@"^(?!-)[A-Za-z0-9-]{3,63}(?<!-)$");
+                await eventListener.AssertNotNull(nameof(timeSeriesDatabaseConnectionName),timeSeriesDatabaseConnectionName);
+                await eventListener.AssertMinimumLength(nameof(timeSeriesDatabaseConnectionName),timeSeriesDatabaseConnectionName,2);
+                await eventListener.AssertMaximumLength(nameof(timeSeriesDatabaseConnectionName),timeSeriesDatabaseConnectionName,49);
+                await eventListener.AssertRegEx(nameof(timeSeriesDatabaseConnectionName),timeSeriesDatabaseConnectionName,@"^(?![0-9]+$)(?!-)[a-zA-Z0-9-]{2,49}[a-zA-Z0-9]$");
+            }
+        }
+
+        /// <summary>Get the description of an existing time series database connection.</summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="timeSeriesDatabaseConnectionName">Name of time series database connection.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsGet(string subscriptionId, string resourceGroupName, string resourceName, string timeSeriesDatabaseConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + global::System.Uri.EscapeDataString(resourceName)
+                        + "/timeSeriesDatabaseConnections/"
+                        + global::System.Uri.EscapeDataString(timeSeriesDatabaseConnectionName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TimeSeriesDatabaseConnectionsGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get the description of an existing time series database connection.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/timeSeriesDatabaseConnections/(?<timeSeriesDatabaseConnectionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections/{timeSeriesDatabaseConnectionName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var resourceName = _match.Groups["resourceName"].Value;
+                var timeSeriesDatabaseConnectionName = _match.Groups["timeSeriesDatabaseConnectionName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + resourceName
+                        + "/timeSeriesDatabaseConnections/"
+                        + timeSeriesDatabaseConnectionName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TimeSeriesDatabaseConnectionsGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="TimeSeriesDatabaseConnectionsGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.TimeSeriesDatabaseConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="TimeSeriesDatabaseConnectionsGet" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="timeSeriesDatabaseConnectionName">Name of time series database connection.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsGet_Validate(string subscriptionId, string resourceGroupName, string resourceName, string timeSeriesDatabaseConnectionName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(resourceName),resourceName);
+                await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
+                await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
+                await eventListener.AssertRegEx(nameof(resourceName),resourceName,@"^(?!-)[A-Za-z0-9-]{3,63}(?<!-)$");
+                await eventListener.AssertNotNull(nameof(timeSeriesDatabaseConnectionName),timeSeriesDatabaseConnectionName);
+                await eventListener.AssertMinimumLength(nameof(timeSeriesDatabaseConnectionName),timeSeriesDatabaseConnectionName,2);
+                await eventListener.AssertMaximumLength(nameof(timeSeriesDatabaseConnectionName),timeSeriesDatabaseConnectionName,49);
+                await eventListener.AssertRegEx(nameof(timeSeriesDatabaseConnectionName),timeSeriesDatabaseConnectionName,@"^(?![0-9]+$)(?!-)[a-zA-Z0-9-]{2,49}[a-zA-Z0-9]$");
+            }
+        }
+
+        /// <summary>
+        /// Get all existing time series database connections for this DigitalTwins instance.
+        /// </summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsList(string subscriptionId, string resourceGroupName, string resourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + global::System.Uri.EscapeDataString(resourceName)
+                        + "/timeSeriesDatabaseConnections"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TimeSeriesDatabaseConnectionsList_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Get all existing time series database connections for this DigitalTwins instance.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-05-31";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DigitalTwins/digitalTwinsInstances/(?<resourceName>[^/]+)/timeSeriesDatabaseConnections$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var resourceName = _match.Groups["resourceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.DigitalTwins/digitalTwinsInstances/"
+                        + resourceName
+                        + "/timeSeriesDatabaseConnections"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TimeSeriesDatabaseConnectionsList_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="TimeSeriesDatabaseConnectionsList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.TimeSeriesDatabaseConnectionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="TimeSeriesDatabaseConnectionsList" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The subscription identifier.</param>
+        /// <param name="resourceGroupName">The name of the resource group that contains the DigitalTwinsInstance.</param>
+        /// <param name="resourceName">The name of the DigitalTwinsInstance.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TimeSeriesDatabaseConnectionsList_Validate(string subscriptionId, string resourceGroupName, string resourceName, Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(resourceName),resourceName);
+                await eventListener.AssertMinimumLength(nameof(resourceName),resourceName,3);
+                await eventListener.AssertMaximumLength(nameof(resourceName),resourceName,63);
+                await eventListener.AssertRegEx(nameof(resourceName),resourceName,@"^(?!-)[A-Za-z0-9-]{3,63}(?<!-)$");
             }
         }
     }

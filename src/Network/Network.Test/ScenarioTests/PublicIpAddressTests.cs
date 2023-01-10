@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpAddressCRUD()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD");
@@ -35,7 +35,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpAddressCRUDPublicIPPrefix()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD-PublicIPPrefix");
@@ -43,7 +43,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpAddressCRUDNoDomainNameLabel()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD-NoDomainNameLabel");
@@ -51,7 +51,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpAddressCRUDStaticAllocation()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD-StaticAllocation");
@@ -59,7 +59,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpAddressCRUDEditDomainNameLavel()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD-EditDomainNameLavel");
@@ -67,7 +67,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpAddressCRUDReverseFqdn()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD-ReverseFqdn");
@@ -75,7 +75,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpAddressCRUDIpTag()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD-IpTag");
@@ -83,7 +83,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpAddressIpVersion()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressIpVersion");
@@ -91,7 +91,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpAddressVmss()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressVmss");
@@ -99,7 +99,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpBasicSku()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD-BasicSku");
@@ -107,7 +107,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpStandardSku()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD-StandardSku");
@@ -123,7 +123,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpStandardSkuGlobalTier()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD-StandardSkuGlobalTier");
@@ -131,7 +131,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpAddressZones()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressZones");
@@ -139,7 +139,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestPublicIpAddressCRUDIdleTimeout()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD-IdleTimeout");

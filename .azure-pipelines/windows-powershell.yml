@@ -9,6 +9,8 @@ variables:
   IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
+  EnableTestCoverage: true
+  TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
   PowerShellPlatform: Windows PowerShell
 
 trigger: none

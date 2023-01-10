@@ -25,7 +25,7 @@ New-AzMLWorkspaceCustomModelJobOutputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CustomModelJobOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceCustomModelJobOutputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceCustomModelJobOutputObject
 #>
 function New-AzMLWorkspaceCustomModelJobOutputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CustomModelJobOutput])]

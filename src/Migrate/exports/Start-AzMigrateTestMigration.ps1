@@ -47,7 +47,7 @@ NICTOUPDATE <IVMwareCbtNicInput[]>: Updates the NIC for the Azure VM to be creat
   [TestStaticIPAddress <String>]: The test static IP address.
   [TestSubnetName <String>]: The test subnet name.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
+https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
 #>
 function Start-AzMigrateTestMigration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
