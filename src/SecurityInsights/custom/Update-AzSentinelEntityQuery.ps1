@@ -20,7 +20,7 @@ Updates the entity query.
 Updates the entity query.
 
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/update-azsentinelentityquery
+https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelentityquery
 #>
 function Update-AzSentinelEntityQuery {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.CustomEntityQuery])]

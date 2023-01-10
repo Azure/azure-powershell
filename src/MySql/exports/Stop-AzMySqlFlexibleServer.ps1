@@ -47,7 +47,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/stop-azmysqlflexibleserver
+https://learn.microsoft.com/powershell/module/az.mysql/stop-azmysqlflexibleserver
 #>
 function Stop-AzMySqlFlexibleServer {
 [OutputType([System.Boolean])]

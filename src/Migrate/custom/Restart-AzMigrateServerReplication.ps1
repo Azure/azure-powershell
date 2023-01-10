@@ -19,7 +19,7 @@ Restarts the replication for specified server.
 .Description
 The Restart-AzMigrateServerReplication cmdlet repairs the replication for the specified server.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/restart-azmigrateserverreplication
+https://learn.microsoft.com/powershell/module/az.migrate/restart-azmigrateserverreplication
 #>
 function Restart-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]

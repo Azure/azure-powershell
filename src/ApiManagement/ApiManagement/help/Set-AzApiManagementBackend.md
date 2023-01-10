@@ -197,8 +197,7 @@ Accept wildcard characters: False
 
 ### -ResourceId
 Management Uri of the Resource in External System.
-This parameter is optional.
-This url can be the Arm Resource Id of Logic Apps, Function Apps or Api Apps.
+The absolute http URL of the Azure Resource. This parameter is optional.
 
 ```yaml
 Type: System.String

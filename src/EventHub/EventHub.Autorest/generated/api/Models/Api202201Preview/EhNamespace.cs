@@ -36,17 +36,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
         public bool? DisableLocalAuth { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).DisableLocalAuth; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).DisableLocalAuth = value ?? default(bool); }
 
-        /// <summary>Enumerates the possible value of keySource for Encryption</summary>
+        /// <summary>Value that indicates whether AutoInflate is enabled for eventhub namespace.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource? EncryptionKeySource { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).EncryptionKeySource; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).EncryptionKeySource = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource)""); }
-
-        /// <summary>Properties of KeyVault</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties[] EncryptionKeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).EncryptionKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).EncryptionKeyVaultProperty = value ?? null /* arrayOf */; }
-
-        /// <summary>Enable Infrastructure Encryption (Double Encryption)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public bool? EncryptionRequireInfrastructureEncryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).EncryptionRequireInfrastructureEncryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).EncryptionRequireInfrastructureEncryption = value ?? default(bool); }
+        public bool? EnableAutoInflate { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).IsAutoInflateEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).IsAutoInflateEnabled = value ?? default(bool); }
 
         /// <summary>
         /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -61,29 +53,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.Identity()); set => this._identity = value; }
 
-        /// <summary>ObjectId from the KeyVault</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).PrincipalId; }
-
-        /// <summary>TenantId from the KeyVault</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).TenantId; }
-
         /// <summary>Type of managed service identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType? IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).Type = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType)""); }
 
-        /// <summary>Properties for User Assigned Identities</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
-
-        /// <summary>Value that indicates whether AutoInflate is enabled for eventhub namespace.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
-        public bool? IsAutoInflateEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).IsAutoInflateEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).IsAutoInflateEnabled = value ?? default(bool); }
-
         /// <summary>Value that indicates whether Kafka is enabled for eventhub namespace.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
         public bool? KafkaEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).KafkaEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).KafkaEnabled = value ?? default(bool); }
+
+        /// <summary>Enumerates the possible value of keySource for Encryption</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource? KeySource { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).EncryptionKeySource; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).EncryptionKeySource = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource)""); }
+
+        /// <summary>Properties of KeyVault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties[] KeyVaultProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).EncryptionKeyVaultProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).EncryptionKeyVaultProperty = value ?? null /* arrayOf */; }
 
         /// <summary>Resource location.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inherited)]
@@ -118,14 +102,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentity Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.Identity()); set { {_identity = value;} } }
 
-        /// <summary>Internal Acessors for IdentityPrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).PrincipalId = value; }
-
-        /// <summary>Internal Acessors for IdentityTenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).TenantId = value; }
-
         /// <summary>Internal Acessors for MetricId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal.MetricId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).MetricId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).MetricId = value; }
+
+        /// <summary>Internal Acessors for PrincipalId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).PrincipalId = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceProperties Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.EhNamespaceProperties()); set { {_property = value;} } }
@@ -145,6 +126,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.ISystemData Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.SystemData()); set { {_systemData = value;} } }
 
+        /// <summary>Internal Acessors for TenantId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).TenantId = value; }
+
         /// <summary>Internal Acessors for UpdatedAt</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespaceInternal.UpdatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).UpdatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).UpdatedAt = value; }
 
@@ -155,6 +139,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inherited)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.IResourceInternal)__trackedResource).Name; }
+
+        /// <summary>ObjectId from the KeyVault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
+        public string PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).PrincipalId; }
 
         /// <summary>List of private endpoint connections.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
@@ -176,6 +164,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess? PublicNetworkAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).PublicNetworkAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).PublicNetworkAccess = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess)""); }
+
+        /// <summary>Enable Infrastructure Encryption (Double Encryption)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
+        public bool? RequireInfrastructureEncryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).EncryptionRequireInfrastructureEncryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).EncryptionRequireInfrastructureEncryption = value ?? default(bool); }
 
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Owned)]
@@ -246,6 +238,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inherited)]
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.ITrackedResourceInternal)__trackedResource).Tag = value ?? null /* model class */; }
 
+        /// <summary>TenantId from the KeyVault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
+        public string TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).TenantId; }
+
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
@@ -255,6 +251,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         /// <summary>The time the Namespace was updated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
         public global::System.DateTime? UpdatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespacePropertiesInternal)Property).UpdatedAt; }
+
+        /// <summary>Properties for User Assigned Identities</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.EventHub.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities UserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
 
         /// <summary>
         /// Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
@@ -317,46 +317,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         SerializedName = @"disableLocalAuth",
         PossibleTypes = new [] { typeof(bool) })]
         bool? DisableLocalAuth { get; set; }
-        /// <summary>Enumerates the possible value of keySource for Encryption</summary>
+        /// <summary>Value that indicates whether AutoInflate is enabled for eventhub namespace.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Enumerates the possible value of keySource for Encryption",
-        SerializedName = @"keySource",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource) })]
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource? EncryptionKeySource { get; set; }
-        /// <summary>Properties of KeyVault</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Properties of KeyVault",
-        SerializedName = @"keyVaultProperties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties) })]
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties[] EncryptionKeyVaultProperty { get; set; }
-        /// <summary>Enable Infrastructure Encryption (Double Encryption)</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Enable Infrastructure Encryption (Double Encryption)",
-        SerializedName = @"requireInfrastructureEncryption",
+        Description = @"Value that indicates whether AutoInflate is enabled for eventhub namespace.",
+        SerializedName = @"isAutoInflateEnabled",
         PossibleTypes = new [] { typeof(bool) })]
-        bool? EncryptionRequireInfrastructureEncryption { get; set; }
-        /// <summary>ObjectId from the KeyVault</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Description = @"ObjectId from the KeyVault",
-        SerializedName = @"principalId",
-        PossibleTypes = new [] { typeof(string) })]
-        string IdentityPrincipalId { get;  }
-        /// <summary>TenantId from the KeyVault</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Description = @"TenantId from the KeyVault",
-        SerializedName = @"tenantId",
-        PossibleTypes = new [] { typeof(string) })]
-        string IdentityTenantId { get;  }
+        bool? EnableAutoInflate { get; set; }
         /// <summary>Type of managed service identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
@@ -365,22 +333,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType) })]
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType? IdentityType { get; set; }
-        /// <summary>Properties for User Assigned Identities</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Properties for User Assigned Identities",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities) })]
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
-        /// <summary>Value that indicates whether AutoInflate is enabled for eventhub namespace.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Value that indicates whether AutoInflate is enabled for eventhub namespace.",
-        SerializedName = @"isAutoInflateEnabled",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? IsAutoInflateEnabled { get; set; }
         /// <summary>Value that indicates whether Kafka is enabled for eventhub namespace.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
@@ -389,6 +341,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         SerializedName = @"kafkaEnabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? KafkaEnabled { get; set; }
+        /// <summary>Enumerates the possible value of keySource for Encryption</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Enumerates the possible value of keySource for Encryption",
+        SerializedName = @"keySource",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource) })]
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource? KeySource { get; set; }
+        /// <summary>Properties of KeyVault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Properties of KeyVault",
+        SerializedName = @"keyVaultProperties",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties) })]
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties[] KeyVaultProperty { get; set; }
         /// <summary>
         /// Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if
         /// AutoInflateEnabled = true)
@@ -416,6 +384,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         SerializedName = @"minimumTlsVersion",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.TlsVersion) })]
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.TlsVersion? MinimumTlsVersion { get; set; }
+        /// <summary>ObjectId from the KeyVault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"ObjectId from the KeyVault",
+        SerializedName = @"principalId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrincipalId { get;  }
         /// <summary>List of private endpoint connections.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
@@ -442,6 +418,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess) })]
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess? PublicNetworkAccess { get; set; }
+        /// <summary>Enable Infrastructure Encryption (Double Encryption)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Enable Infrastructure Encryption (Double Encryption)",
+        SerializedName = @"requireInfrastructureEncryption",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? RequireInfrastructureEncryption { get; set; }
         /// <summary>Endpoint you can use to perform Service Bus operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
@@ -533,6 +517,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         SerializedName = @"lastModifiedByType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CreatedByType) })]
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CreatedByType? SystemDataLastModifiedByType { get; set; }
+        /// <summary>TenantId from the KeyVault</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Description = @"TenantId from the KeyVault",
+        SerializedName = @"tenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        string TenantId { get;  }
         /// <summary>The time the Namespace was updated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
         Required = false,
@@ -541,6 +533,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         SerializedName = @"updatedAt",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? UpdatedAt { get;  }
+        /// <summary>Properties for User Assigned Identities</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Properties for User Assigned Identities",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities UserAssignedIdentity { get; set; }
         /// <summary>
         /// Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
         /// </summary>
@@ -565,28 +565,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         global::System.DateTime? CreatedAt { get; set; }
         /// <summary>This property disables SAS authentication for the Event Hubs namespace.</summary>
         bool? DisableLocalAuth { get; set; }
+        /// <summary>Value that indicates whether AutoInflate is enabled for eventhub namespace.</summary>
+        bool? EnableAutoInflate { get; set; }
         /// <summary>Properties of BYOK Encryption description</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEncryption Encryption { get; set; }
-        /// <summary>Enumerates the possible value of keySource for Encryption</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource? EncryptionKeySource { get; set; }
-        /// <summary>Properties of KeyVault</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties[] EncryptionKeyVaultProperty { get; set; }
-        /// <summary>Enable Infrastructure Encryption (Double Encryption)</summary>
-        bool? EncryptionRequireInfrastructureEncryption { get; set; }
         /// <summary>Properties of BYOK Identity description</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentity Identity { get; set; }
-        /// <summary>ObjectId from the KeyVault</summary>
-        string IdentityPrincipalId { get; set; }
-        /// <summary>TenantId from the KeyVault</summary>
-        string IdentityTenantId { get; set; }
         /// <summary>Type of managed service identity.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType? IdentityType { get; set; }
-        /// <summary>Properties for User Assigned Identities</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
-        /// <summary>Value that indicates whether AutoInflate is enabled for eventhub namespace.</summary>
-        bool? IsAutoInflateEnabled { get; set; }
         /// <summary>Value that indicates whether Kafka is enabled for eventhub namespace.</summary>
         bool? KafkaEnabled { get; set; }
+        /// <summary>Enumerates the possible value of keySource for Encryption</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeySource? KeySource { get; set; }
+        /// <summary>Properties of KeyVault</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties[] KeyVaultProperty { get; set; }
         /// <summary>
         /// Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if
         /// AutoInflateEnabled = true)
@@ -596,6 +588,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         string MetricId { get; set; }
         /// <summary>The minimum TLS version for the cluster to support, e.g. '1.2'</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.TlsVersion? MinimumTlsVersion { get; set; }
+        /// <summary>ObjectId from the KeyVault</summary>
+        string PrincipalId { get; set; }
         /// <summary>List of private endpoint connections.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection[] PrivateEndpointConnection { get; set; }
         /// <summary>Namespace properties supplied for create namespace operation.</summary>
@@ -606,6 +600,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         /// This determines if traffic is allowed over public network. By default it is enabled.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess? PublicNetworkAccess { get; set; }
+        /// <summary>Enable Infrastructure Encryption (Double Encryption)</summary>
+        bool? RequireInfrastructureEncryption { get; set; }
         /// <summary>Endpoint you can use to perform Service Bus operations.</summary>
         string ServiceBusEndpoint { get; set; }
         /// <summary>Properties of sku resource</summary>
@@ -635,8 +631,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview
         string SystemDataLastModifiedBy { get; set; }
         /// <summary>The type of identity that last modified the resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CreatedByType? SystemDataLastModifiedByType { get; set; }
+        /// <summary>TenantId from the KeyVault</summary>
+        string TenantId { get; set; }
         /// <summary>The time the Namespace was updated.</summary>
         global::System.DateTime? UpdatedAt { get; set; }
+        /// <summary>Properties for User Assigned Identities</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IIdentityUserAssignedIdentities UserAssignedIdentity { get; set; }
         /// <summary>
         /// Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
         /// </summary>

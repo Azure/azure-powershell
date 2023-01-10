@@ -1,25 +1,24 @@
 {
   "Entries": [
     {
-      "RequestUri": "/jobschedules?api-version=2022-01-01.15.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDIyLTAxLTAxLjE1LjA=",
+      "RequestUri": "/jobschedules?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDIyLTEwLTAxLjE2LjA=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"schedule\": {},\r\n  \"jobSpecification\": {\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "ca637a8d-09cc-42f8-9dfb-d494f44a6eda"
+          "6f418803-0378-401f-88a3-5aa72a076e42"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 15 Feb 2022 19:25:38 GMT"
+          "Fri, 02 Dec 2022 16:57:09 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Type": [
@@ -29,21 +28,22 @@
           "157"
         ]
       },
+      "RequestBody": "{\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"schedule\": {},\r\n  \"jobSpecification\": {\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
         ],
         "ETag": [
-          "0x8D9F0B8F2DBED59"
+          "0x8DAD4863FE9A8D5"
         ],
         "Location": [
-          "https://mikeportal.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule"
+          "https://mikebatcheast.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "59a5d641-ab34-489e-ae5b-2932e652eac3"
+          "fb94c9f6-1f6f-4fbd-a264-0a4d4bbc3745"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -55,56 +55,56 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://mikeportal.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule"
+          "https://mikebatcheast.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule"
         ],
         "Date": [
-          "Tue, 15 Feb 2022 19:25:38 GMT"
+          "Fri, 02 Dec 2022 16:57:08 GMT"
         ],
         "Last-Modified": [
-          "Tue, 15 Feb 2022 19:25:38 GMT"
+          "Fri, 02 Dec 2022 16:57:08 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/disable?api-version=2022-01-01.15.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL2Rpc2FibGU/YXBpLXZlcnNpb249MjAyMi0wMS0wMS4xNS4w",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/disable?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL2Rpc2FibGU/YXBpLXZlcnNpb249MjAyMi0xMC0wMS4xNi4w",
       "RequestMethod": "POST",
-      "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "baadd831-4b60-4294-995d-2edbb9a98dbf"
+          "47adc0de-6f2b-441b-b595-07ed54655d03"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 15 Feb 2022 19:25:40 GMT"
+          "Fri, 02 Dec 2022 16:57:09 GMT"
         ],
         "x-ms-client-request-id": [
-          "8a476c1c-42b9-4cd1-a72a-f1910bb1c0f2"
+          "2c7d6e52-3649-4be9-ae90-5e7cb3da36e3"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
           "0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "ETag": [
-          "0x8D9F0B8F36A4B33"
+          "0x8DAD486405CEBFD"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "ee00e529-b8d4-4f1d-a5fd-a94900d81306"
+          "73465ccf-6c50-4a0e-b009-a6248d5f7f65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -116,59 +116,59 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://mikeportal.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/disable"
+          "https://mikebatcheast.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/disable"
         ],
         "Date": [
-          "Tue, 15 Feb 2022 19:25:39 GMT"
+          "Fri, 02 Dec 2022 16:57:09 GMT"
         ],
         "Content-Length": [
           "0"
         ],
         "Last-Modified": [
-          "Tue, 15 Feb 2022 19:25:39 GMT"
+          "Fri, 02 Dec 2022 16:57:09 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 204
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2022-01-01.15.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMjItMDEtMDEuMTUuMA==",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMjItMTAtMDEuMTYuMA==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "d2686cb3-b88e-49e6-a519-58ecf74afa48"
+          "10b209be-80f7-4336-8898-d53d5604d7e4"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 15 Feb 2022 19:25:40 GMT"
+          "Fri, 02 Dec 2022 16:57:10 GMT"
         ],
         "x-ms-client-request-id": [
-          "f4dfd16e-55c6-4726-ace3-495f31dcc961"
+          "3b91c3f6-61c2-4410-97b9-1bf753695da0"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
         ],
         "ETag": [
-          "0x8D9F0B8F36A4B33"
+          "0x8DAD486405CEBFD"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "daff887c-a03d-45ba-a126-b67640daa341"
+          "b6564d69-1999-480f-940a-622ea2ee3ce6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -180,56 +180,56 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 15 Feb 2022 19:25:39 GMT"
+          "Fri, 02 Dec 2022 16:57:09 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 15 Feb 2022 19:25:39 GMT"
+          "Fri, 02 Dec 2022 16:57:09 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikeportal.eastus.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://mikeportal.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8D9F0B8F36A4B33\",\r\n  \"lastModified\": \"2022-02-15T19:25:39.8114099Z\",\r\n  \"creationTime\": \"2022-02-15T19:25:38.8783961Z\",\r\n  \"state\": \"disabled\",\r\n  \"stateTransitionTime\": \"2022-02-15T19:25:39.8114099Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2022-02-15T19:25:38.8783961Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"maxParallelTasks\": -1,\r\n    \"allowTaskPreemption\": false,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://mikeportal.eastus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikebatcheast.eastus.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://mikebatcheast.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8DAD486405CEBFD\",\r\n  \"lastModified\": \"2022-12-02T16:57:09.6884221Z\",\r\n  \"creationTime\": \"2022-12-02T16:57:08.9330389Z\",\r\n  \"state\": \"disabled\",\r\n  \"stateTransitionTime\": \"2022-12-02T16:57:09.6884221Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2022-12-02T16:57:08.9330389Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"maxParallelTasks\": -1,\r\n    \"allowTaskPreemption\": false,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://mikebatcheast.eastus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2022-01-01.15.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMjItMDEtMDEuMTUuMA==",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMjItMTAtMDEuMTYuMA==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "be1d5a0c-18e0-4391-84e6-0789f31e8e8a"
+          "da46c84a-6342-4e53-9cc4-d92ee7be8e16"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 15 Feb 2022 19:25:40 GMT"
+          "Fri, 02 Dec 2022 16:57:10 GMT"
         ],
         "x-ms-client-request-id": [
-          "eefe224e-c82a-4f58-a4f6-622b21ba9c8b"
+          "4fc07487-443a-4fae-859c-1c1a747b365e"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
         ],
         "ETag": [
-          "0x8D9F0B8F3A22442"
+          "0x8DAD4864084AD7B"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "148f1bc6-b80b-40ac-8570-c57d759910c0"
+          "359d259a-9ba2-4265-b9bf-b49fa1b35e68"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -241,56 +241,56 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 15 Feb 2022 19:25:39 GMT"
+          "Fri, 02 Dec 2022 16:57:09 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 15 Feb 2022 19:25:40 GMT"
+          "Fri, 02 Dec 2022 16:57:09 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikeportal.eastus.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://mikeportal.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8D9F0B8F3A22442\",\r\n  \"lastModified\": \"2022-02-15T19:25:40.1774146Z\",\r\n  \"creationTime\": \"2022-02-15T19:25:38.8783961Z\",\r\n  \"state\": \"terminating\",\r\n  \"stateTransitionTime\": \"2022-02-15T19:25:40.1774146Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2022-02-15T19:25:40.010414Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"maxParallelTasks\": -1,\r\n    \"allowTaskPreemption\": false,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://mikeportal.eastus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikebatcheast.eastus.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://mikebatcheast.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8DAD4864084AD7B\",\r\n  \"lastModified\": \"2022-12-02T16:57:09.9489659Z\",\r\n  \"creationTime\": \"2022-12-02T16:57:08.9330389Z\",\r\n  \"state\": \"terminating\",\r\n  \"stateTransitionTime\": \"2022-12-02T16:57:09.9489659Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2022-12-02T16:57:09.8224206Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"maxParallelTasks\": -1,\r\n    \"allowTaskPreemption\": false,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://mikebatcheast.eastus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/enable?api-version=2022-01-01.15.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL2VuYWJsZT9hcGktdmVyc2lvbj0yMDIyLTAxLTAxLjE1LjA=",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/enable?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL2VuYWJsZT9hcGktdmVyc2lvbj0yMDIyLTEwLTAxLjE2LjA=",
       "RequestMethod": "POST",
-      "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "abe48559-9da3-4c6f-9003-96b1a97690fc"
+          "96efd232-ce78-4599-80f5-dbc5fec31ea9"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 15 Feb 2022 19:25:40 GMT"
+          "Fri, 02 Dec 2022 16:57:10 GMT"
         ],
         "x-ms-client-request-id": [
-          "646e6489-d244-43f3-bd39-aa5f929aeab1"
+          "686f4275-6be7-499b-93e0-49f58bd41b4a"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
           "0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "ETag": [
-          "0x8D9F0B8F388A8CC"
+          "0x8DAD48640715E4E"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "c41e0f39-e470-4593-8d5c-f22af737be3b"
+          "74b89715-6135-43ac-97ce-f429c23cefdf"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -302,47 +302,47 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://mikeportal.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/enable"
+          "https://mikebatcheast.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/enable"
         ],
         "Date": [
-          "Tue, 15 Feb 2022 19:25:39 GMT"
+          "Fri, 02 Dec 2022 16:57:09 GMT"
         ],
         "Content-Length": [
           "0"
         ],
         "Last-Modified": [
-          "Tue, 15 Feb 2022 19:25:40 GMT"
+          "Fri, 02 Dec 2022 16:57:09 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 204
     },
     {
-      "RequestUri": "/jobschedules?api-version=2022-01-01.15.0&$filter=id%20eq%20%27testDisableEnableTerminateJobSchedule%27",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDIyLTAxLTAxLjE1LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGVzdERpc2FibGVFbmFibGVUZXJtaW5hdGVKb2JTY2hlZHVsZSUyNw==",
+      "RequestUri": "/jobschedules?api-version=2022-10-01.16.0&$filter=id%20eq%20%27testDisableEnableTerminateJobSchedule%27",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDIyLTEwLTAxLjE2LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGVzdERpc2FibGVFbmFibGVUZXJtaW5hdGVKb2JTY2hlZHVsZSUyNw==",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "1ca6c6a2-aafd-441b-8322-cb597b3dbea5"
+          "53c25130-0572-4822-b013-b842adfbb26e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 15 Feb 2022 19:25:40 GMT"
+          "Fri, 02 Dec 2022 16:57:10 GMT"
         ],
         "x-ms-client-request-id": [
-          "2065ff12-e0b6-4cf9-a57b-d0aa0d3404b4"
+          "dc0b3292-23b5-4e1e-a6cd-7a719a30ad9c"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
@@ -351,7 +351,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "f8a3b454-93b8-4e8f-92dd-d8874fcefe4b"
+          "bb78b90a-94c6-4800-bc62-d88e38f3c07b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -363,56 +363,56 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 15 Feb 2022 19:25:39 GMT"
+          "Fri, 02 Dec 2022 16:57:09 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikeportal.eastus.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n      \"url\": \"https://mikeportal.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n      \"eTag\": \"0x8D9F0B8F388A8CC\",\r\n      \"lastModified\": \"2022-02-15T19:25:40.010414Z\",\r\n      \"creationTime\": \"2022-02-15T19:25:38.8783961Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2022-02-15T19:25:40.010414Z\",\r\n      \"previousState\": \"disabled\",\r\n      \"previousStateTransitionTime\": \"2022-02-15T19:25:39.8114099Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"maxParallelTasks\": -1,\r\n        \"allowTaskPreemption\": false,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://mikeportal.eastus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n          \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikebatcheast.eastus.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n      \"url\": \"https://mikebatcheast.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n      \"eTag\": \"0x8DAD48640715E4E\",\r\n      \"lastModified\": \"2022-12-02T16:57:09.8224206Z\",\r\n      \"creationTime\": \"2022-12-02T16:57:08.9330389Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2022-12-02T16:57:09.8224206Z\",\r\n      \"previousState\": \"disabled\",\r\n      \"previousStateTransitionTime\": \"2022-12-02T16:57:09.6884221Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"maxParallelTasks\": -1,\r\n        \"allowTaskPreemption\": false,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://mikebatcheast.eastus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n          \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/terminate?api-version=2022-01-01.15.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL3Rlcm1pbmF0ZT9hcGktdmVyc2lvbj0yMDIyLTAxLTAxLjE1LjA=",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/terminate?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL3Rlcm1pbmF0ZT9hcGktdmVyc2lvbj0yMDIyLTEwLTAxLjE2LjA=",
       "RequestMethod": "POST",
-      "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "8563fb46-2a01-42c5-97cc-27a8b2800947"
+          "58ba3ef0-33fb-4367-ad78-af048397f0c1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 15 Feb 2022 19:25:40 GMT"
+          "Fri, 02 Dec 2022 16:57:10 GMT"
         ],
         "x-ms-client-request-id": [
-          "441c5bfb-4a9e-4c4d-b645-3e48622ae224"
+          "201e7add-1a17-4883-9925-66047b28ab31"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
           "0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
         ],
         "ETag": [
-          "0x8D9F0B8F3A22442"
+          "0x8DAD4864084AD7B"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "05853607-ac54-4432-b53a-989d1cbe5915"
+          "2f86b55f-fa5a-4860-b04e-58cb5e69f64b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -424,44 +424,44 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://mikeportal.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/terminate"
+          "https://mikebatcheast.eastus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/terminate"
         ],
         "Date": [
-          "Tue, 15 Feb 2022 19:25:39 GMT"
+          "Fri, 02 Dec 2022 16:57:09 GMT"
         ],
         "Last-Modified": [
-          "Tue, 15 Feb 2022 19:25:40 GMT"
+          "Fri, 02 Dec 2022 16:57:09 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2022-01-01.15.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMjItMDEtMDEuMTUuMA==",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2022-10-01.16.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMjItMTAtMDEuMTYuMA==",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "cd178cbc-5d95-421b-bfe1-dc5b1f044fa2"
+          "3acaa23d-a61c-44a7-ae7c-c4794162dca2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 15 Feb 2022 19:25:40 GMT"
+          "Fri, 02 Dec 2022 16:57:10 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.30411.01",
+          "FxVersion/4.700.22.51102",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19044.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.400.22.55103",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
           "0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
@@ -470,7 +470,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "65711c7d-1479-4e8a-afdf-954ccb420691"
+          "ef1f7b13-d9c4-48e4-b789-f410f7382336"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -482,7 +482,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 15 Feb 2022 19:25:40 GMT"
+          "Fri, 02 Dec 2022 16:57:10 GMT"
         ]
       },
       "ResponseBody": "",
@@ -491,9 +491,9 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "ba2358c2-42f2-4138-88df-7c68cf608bea",
-    "AZURE_BATCH_ACCOUNT": "mikeportal",
-    "AZURE_BATCH_ENDPOINT": "https://mikeportal.eastus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "batchportal"
+    "SubscriptionId": "67e11b19-95f8-4d96-a472-5f626c5445ec",
+    "AZURE_BATCH_ACCOUNT": "mikebatcheast",
+    "AZURE_BATCH_ENDPOINT": "https://mikebatcheast.eastus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "mikeazure"
   }
 }

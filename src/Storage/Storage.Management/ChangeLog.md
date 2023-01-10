@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.3.0
+* Return ListBlobProperties in blob list result
+    - `Get-AzStorageBlob`
+* Output AllowedCopyScope in get account result
+    - `Get-AzStorageAccount`
+
+## Version 5.2.0
 * Supported MaxPageSize, Include, and Filter parameters for listing encryption scopes 
     - `Get-AzStorageEncryptionScope`
 * Supported excludePrefix, includeDeleted, and many new schema fields in Blob Inventory

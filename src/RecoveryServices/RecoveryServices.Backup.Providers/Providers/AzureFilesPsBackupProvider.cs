@@ -415,9 +415,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 azureFileShareProtectionPolicy.SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                 (CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy);
 
-                // timeZone in case of Hourly should be customizable                
+                // timeZone should be customizable                
                 string timeZone = ((CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy).ScheduleRunTimeZone;
-                if (ScheduleRunFrequency == CmdletModel.ScheduleRunType.Hourly && timeZone != null)
+                if (timeZone != null)
                 {
                     azureFileShareProtectionPolicy.TimeZone = timeZone;
                 }
@@ -462,9 +462,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 azureFileShareProtectionPolicy.SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                                     (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
 
-                // timeZone in case of Hourly should be customizable                
+                // timeZone should be customizable                
                 string timeZone = ((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleRunTimeZone;
-                if (ScheduleRunFrequency == CmdletModel.ScheduleRunType.Hourly && timeZone != null)
+                if (timeZone != null)
                 {
                     azureFileShareProtectionPolicy.TimeZone = timeZone;
                 }

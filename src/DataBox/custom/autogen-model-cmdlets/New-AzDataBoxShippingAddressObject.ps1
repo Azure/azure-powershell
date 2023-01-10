@@ -23,7 +23,7 @@ Create an in-memory object for ShippingAddress.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress
 .Link
-https://docs.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxShippingAddressObject
+https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxShippingAddressObject
 #>
 function New-AzDataBoxShippingAddressObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress')]

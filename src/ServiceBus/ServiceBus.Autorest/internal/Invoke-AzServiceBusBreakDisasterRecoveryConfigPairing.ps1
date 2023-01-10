@@ -47,7 +47,7 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [SubscriptionName <String>]: The subscription name.
   [TopicName <String>]: The topic name.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/invoke-azservicebusbreakdisasterrecoveryconfigpairing
+https://learn.microsoft.com/powershell/module/az.servicebus/invoke-azservicebusbreakdisasterrecoveryconfigpairing
 #>
 function Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing {
 [OutputType([System.Boolean])]

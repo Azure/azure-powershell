@@ -190,7 +190,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 true,
                 AzurePSDataCollectionProfile.EnvironmentVariableName,
                 new[] { AppliesTo.Az }));
-
+#if DEBUG || TESTCOVERAGE
+            configManager.RegisterConfig(new SimpleTypedConfig<bool>(
+                ConfigKeys.EnableTestCoverage,
+                "When enabled, the test framework will generate data during test run as a preliminary for the test coverage calculation",
+                false,
+                ConfigKeys.EnableTestCoverage,
+                new[] { AppliesTo.Az }));
+            configManager.RegisterConfig(new SimpleTypedConfig<string>(
+                ConfigKeys.TestCoverageLocation,
+                "Only takes effect when EnableTestCoverage equals to TRUE. Use this config to redirect the test coverage data location.",
+                string.Empty,
+                ConfigKeys.TestCoverageLocation,
+                new[] { AppliesTo.Az }));
+#endif
+            
+            configManager.RegisterConfig(new EnableLoginByWamConfig());
             configManager.RegisterConfig(new EnableInterceptSurveyConfig());
             configManager.RegisterConfig(new DisplayBreakingChangeWarningsConfig());
         }

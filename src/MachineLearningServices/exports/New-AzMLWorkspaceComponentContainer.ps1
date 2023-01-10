@@ -25,7 +25,7 @@ New-AzMLWorkspaceComponentContainer -ResourceGroupName ml-rg-test -WorkspaceName
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentContainer
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecomponentcontainer
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecomponentcontainer
 #>
 function New-AzMLWorkspaceComponentContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentContainer])]

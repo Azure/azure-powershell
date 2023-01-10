@@ -49,7 +49,7 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   [Userid <String>]: The user id of the user.
   [WebJobName <String>]: Name of Web Job.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/update-azstaticwebappuser
+https://learn.microsoft.com/powershell/module/az.websites/update-azstaticwebappuser
 #>
 function Update-AzStaticWebAppUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserArmResource])]

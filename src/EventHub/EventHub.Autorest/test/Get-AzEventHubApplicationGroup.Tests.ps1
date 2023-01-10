@@ -20,7 +20,7 @@ Describe 'Get-AzEventHubApplicationGroup' {
         $listOfAppGroups.Count | Should -Be 1
     }
 
-    It 'Get' {
+    It 'Get'  {
         $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.appGroup
         $appGroup.Name | Should -Be $env.appGroup
         $appGroup.Policy.Count | Should -Be 1
