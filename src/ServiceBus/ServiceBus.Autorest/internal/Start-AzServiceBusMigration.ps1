@@ -57,7 +57,7 @@ PARAMETER <IMigrationConfigProperties>: Single item in List or Get Migration Con
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [TargetNamespace <String>]: Existing premium Namespace ARM Id name which has no entities, will be used for migration
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/start-azservicebusmigration
+https://learn.microsoft.com/powershell/module/az.servicebus/start-azservicebusmigration
 #>
 function Start-AzServiceBusMigration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties])]

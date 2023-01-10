@@ -47,7 +47,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/restart-azmysqlserver
+https://learn.microsoft.com/powershell/module/az.mysql/restart-azmysqlserver
 #>
 function Restart-AzMySqlServer {
 [OutputType([System.Boolean])]

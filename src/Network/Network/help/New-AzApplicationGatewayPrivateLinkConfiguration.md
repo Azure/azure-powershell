@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayprivatelinkconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayprivatelinkconfiguration
 schema: 2.0.0
 ---
 
@@ -27,6 +27,7 @@ One private link configuration can atmost be associated to only one frontend ip 
 
 ### Example 1: Create an Private Link Configuration with single Ip Configuration
 ```powershell
+$PrivateLinkIpConfiguration1 = New-AzApplicationGatewayPrivateLinkIpConfiguration -Name "ipConfig01" -Subnet $subnet -Primary
 $PrivateLinkConfiguration = New-AzApplicationGatewayPrivateLinkConfiguration -Name "privateLinkConfig01" -IpConfiguration $privateLinkIpConfiguration1
 ```
 
@@ -34,6 +35,8 @@ This command creates an PrivateLink configuration named 'privateLinkConfig01' an
 
 ### Example 2: Create an Private Link Configuration with multiple Ip Configurations
 ```powershell
+$PrivateLinkIpConfiguration1 = New-AzApplicationGatewayPrivateLinkIpConfiguration -Name "ipConfig01" -Subnet $subnet -Primary
+$PrivateLinkIpConfiguration2 = New-AzApplicationGatewayPrivateLinkIpConfiguration -Name "ipConfig02" -Subnet $subnet
 $PrivateLinkConfiguration = New-AzApplicationGatewayPrivateLinkConfiguration -Name "privateLinkConfig01" -IpConfiguration $privateLinkIpConfiguration1, $privateLinkIpConfiguration2
 ```
 

@@ -16,12 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEventHubPrivateEndpo
 
 Describe 'Remove-AzEventHubPrivateEndpointConnection' {
     $listOfPrivateEndpoints = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-    It 'Delete' {
+    It 'Delete'  {
         Remove-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[0].Name
         { Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[0].Name } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity'  {
         $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[1].Name
         Remove-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint
         { Get-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint } | Should -Throw

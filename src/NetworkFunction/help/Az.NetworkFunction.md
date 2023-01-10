@@ -1,7 +1,7 @@
 ---
 Module Name: Az.NetworkFunction
 Module Guid: 1d339b1c-5a86-4fbd-9a2e-d0497c39b397
-Download Help Link: https://docs.microsoft.com/powershell/module/az.networkfunction
+Download Help Link: https://learn.microsoft.com/powershell/module/az.networkfunction
 Help Version: 1.0.0.0
 Locale: en-US
 ---

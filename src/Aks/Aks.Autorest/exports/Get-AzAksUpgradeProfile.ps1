@@ -41,7 +41,7 @@ INPUTOBJECT <IAksIdentity>: Identity Parameter
   [RoleName <String>]: The name of the role for managed cluster accessProfile resource.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/powershell/module/az.aks/get-azaksupgradeprofile
+https://learn.microsoft.com/powershell/module/az.aks/get-azaksupgradeprofile
 #>
 function Get-AzAksUpgradeProfile {
 [Alias('Get-AzAksClusterUpgradeProfile')]

@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.PowerShell.Common.Config;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -27,7 +26,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "Config")]
     [OutputType(typeof(PSConfig))]
-    [CmdletPreview(PreviewMessage)]
     public class GetConfigCommand : ConfigCommandBase, IDynamicParameters
     {
         public GetConfigCommand() : base()

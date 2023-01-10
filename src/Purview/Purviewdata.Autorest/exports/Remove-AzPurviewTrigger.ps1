@@ -47,7 +47,7 @@ ScheduleWeekDay            :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewtrigger
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewtrigger
 #>
 function Remove-AzPurviewTrigger {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger])]

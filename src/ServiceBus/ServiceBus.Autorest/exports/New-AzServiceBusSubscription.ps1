@@ -25,7 +25,7 @@ New-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName m
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebussubscription
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebussubscription
 #>
 function New-AzServiceBusSubscription {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription])]

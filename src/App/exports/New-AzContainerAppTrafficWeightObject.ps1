@@ -20,12 +20,12 @@ Create an in-memory object for TrafficWeight.
 .Description
 Create an in-memory object for TrafficWeight.
 .Example
-New-AzContainerAppTrafficWeightObject -Label production -LatestRevision:$True -Weight 100
+New-AzContainerAppTrafficWeightObject -Label production -LatestRevision $True -Weight 100
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TrafficWeight
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerapptrafficweightobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerapptrafficweightobject
 #>
 function New-AzContainerAppTrafficWeightObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TrafficWeight])]

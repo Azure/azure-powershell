@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubApplicationGrou
 }
 
 Describe 'Set-AzEventHubApplicationGroup' {
-    It 'SetExpanded' {
+    It 'SetExpanded'  {
         $t3 = New-AzEventHubThrottlingPolicyConfig -Name t3 -MetricId OutgoingMessages -RateLimitThreshold 12000
         $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.appGroup2
         $appGroup.Policy += $t3

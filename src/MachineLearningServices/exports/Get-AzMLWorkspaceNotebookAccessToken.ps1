@@ -25,7 +25,7 @@ Get-AzMLWorkspaceNotebookAccessToken -ResourceGroupName ml-rg-test -WorkspaceNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.INotebookAccessTokenResult
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacenotebookaccesstoken
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacenotebookaccesstoken
 #>
 function Get-AzMLWorkspaceNotebookAccessToken {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.INotebookAccessTokenResult])]
