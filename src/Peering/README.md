@@ -49,7 +49,9 @@ subject-prefix: $(service-name)
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
+resourcegroup-append: true
 identity-correction-for-post: true
+nested-object-to-string: true
 
 directive:
   # Following is two common directive which are normally required in all the RPs
@@ -62,5 +64,41 @@ directive:
   - where:
       verb: Set
     remove: true
-
+  # Change cmdlet verb: Invoke-AzPeeringInvokeLookingGlass -> Start-AzPeeringInvokeLookingGlass
+  - where:
+      verb: Invoke
+      subject: ^InvokeLookingGlass$
+    set:
+      verb: Start
+  # Change cmdlet subject: Get/New/Remove-AzPeeringPeerAsn -> Get/New/Remove-AzPeeringAsn
+  - where:
+      subject-prefix: Peering
+      subject: PeerAsn
+    set:
+      subject: Asn
+      subject-prefix: Peer
+  # Some parameter is Array, so we need to change it and custom it
+  - model-cmdlet:
+      - ExchangeConnection
+      - DirectConnection
+      - ContactDetail
+      - CheckServiceProviderAvailabilityInput
+  # Change all parameters named SkuName(SkuName -> Sku) and add the alias SkuName to Sku
+  - where:
+      parameter-name: SkuName
+    set:
+      parameter-name: Sku
+      alias: SkuName
+  # Parameter information to be displayed after the command is returned
+  # module-name source: .\azure-powershell\src\Peering\exports\Get-AzPeerAsn.ps1 Line 51 [IPeerAsn]
+  - where:
+      model-name: PeerAsn
+    set:
+      format-table:
+        properties:
+          - Name
+          - PeerName
+          - PropertiesPeerAsn
+          - ResourceGroupName
+          - ValidationState
 ```
