@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed workspace collection cmdlets
 
 ## Version 1.2.0
 * Updated SKU allowed values to support A7 and A8

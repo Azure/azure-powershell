@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.PowerBI.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,20 +61,18 @@ namespace Microsoft.Azure.Commands.PowerBI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PowerBI Embedded Capacity with name &apos;{0}&apos; already exists..
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified capacity &apos;{0}&apos; does not exist..
         /// </summary>
-        internal static string PowerBIEmbeddedCapacityExists
-        {
+        internal static string CapacityDoesNotExist {
             get {
-                return ResourceManager.GetString("PowerBIEmbeddedCapacityExists", resourceCulture);
+                return ResourceManager.GetString("CapacityDoesNotExist", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Create PowerBI Embedded Capacity.
         /// </summary>
-        internal static string CreateNewPowerBIEmbeddedCapacity
-        {
+        internal static string CreateNewPowerBIEmbeddedCapacity {
             get {
                 return ResourceManager.GetString("CreateNewPowerBIEmbeddedCapacity", resourceCulture);
             }
@@ -115,22 +113,31 @@ namespace Microsoft.Azure.Commands.PowerBI.Properties {
                 return ResourceManager.GetString("InvalidSku", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to PowerBIEmbedded capacity operation failed with the following error code: {0} and message: {1}.
+        ///   Looks up a localized string similar to PowerBI Embedded capacity operation failed with the following error code: {0} and message: {1}.
         /// </summary>
         internal static string LongRunningOperationFailed {
             get {
                 return ResourceManager.GetString("LongRunningOperationFailed", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzPowerBIEmbeddedCapacityAccount to login..
+        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-PowerBIEmbeddedCapacityAzureAccount to login..
         /// </summary>
         internal static string NoSubscriptionInContext {
             get {
                 return ResourceManager.GetString("NoSubscriptionInContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PowerBI Embedded Capacity with name &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string PowerBIEmbeddedCapacityExists {
+            get {
+                return ResourceManager.GetString("PowerBIEmbeddedCapacityExists", resourceCulture);
             }
         }
         
@@ -178,14 +185,13 @@ namespace Microsoft.Azure.Commands.PowerBI.Properties {
                 return ResourceManager.GetString("ScriptFilePathDoesNotExist", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified capacity &apos;{0}&apos; does not exist..
+        ///   Looks up a localized string similar to Suspend PowerBI Embedded Capacity.
         /// </summary>
-        internal static string CapacityDoesNotExist
-        {
+        internal static string SuspendingPowerBIEmbeddedCapacity {
             get {
-                return ResourceManager.GetString("CapacityDoesNotExist", resourceCulture);
+                return ResourceManager.GetString("SuspendingPowerBIEmbeddedCapacity", resourceCulture);
             }
         }
         
@@ -195,15 +201,6 @@ namespace Microsoft.Azure.Commands.PowerBI.Properties {
         internal static string SuspendPowerBIEmbeddedCapacity {
             get {
                 return ResourceManager.GetString("SuspendPowerBIEmbeddedCapacity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Suspend PowerBI Embedded Capacity.
-        /// </summary>
-        internal static string SuspendingPowerBIEmbeddedCapacity {
-            get {
-                return ResourceManager.GetString("SuspendingPowerBIEmbeddedCapacity", resourceCulture);
             }
         }
         
