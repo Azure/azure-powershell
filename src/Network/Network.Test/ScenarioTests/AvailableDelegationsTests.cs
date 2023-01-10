@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.rnmdev)]
         public void TestAvailableDelegationsList()
         {
             TestRunner.RunTestScript( "Test-GetAvailableDelegationsList");

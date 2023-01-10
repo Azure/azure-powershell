@@ -20,7 +20,7 @@ Gets the diagnostic settings category for the specified resource.
 .Description
 Gets the diagnostic settings category for the specified resource.
 .Example
-$subscriptionId = (Get-AzContext).SubscriptionId
+$subscriptionId = (Get-AzContext).Subscription.Id
 Get-AzDiagnosticSettingCategory -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001
 
 .Inputs

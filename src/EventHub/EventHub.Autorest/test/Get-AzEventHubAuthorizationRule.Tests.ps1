@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubAuthorizationRu
 }
 
 Describe 'Get-AzEventHubAuthorizationRule' {
-    It 'GetExpandedNamespace' {
+    It 'GetExpandedNamespace'  {
         $authRule = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.authRule
         $authRule.Name | Should -Be $env.authRule
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup
@@ -35,7 +35,7 @@ Describe 'Get-AzEventHubAuthorizationRule' {
         $authRule.Count | Should -Be 1
     }
 
-    It 'GetViaIdentityExpanded' {
+    It 'GetViaIdentityExpanded'  {
         $authRule = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.authRule
         
         $authRule = Get-AzEventHubAuthorizationRule -InputObject $authRule

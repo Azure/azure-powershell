@@ -47,7 +47,7 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
 PAYLOAD <ICollectionsToSubscriptionsMappingPayload>: The subscriptions list to get the related collections
   [SubscriptionId <String[]>]: Subscriptions ids list
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplacecollectiontosubscriptionmapping
+https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplacecollectiontosubscriptionmapping
 #>
 function Get-AzMarketplaceCollectionToSubscriptionMapping {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsToSubscriptionsMappingResponseProperties])]

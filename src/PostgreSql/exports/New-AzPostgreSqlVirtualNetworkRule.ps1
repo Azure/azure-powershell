@@ -26,7 +26,7 @@ Creates or updates an existing virtual network rule.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IVirtualNetworkRule
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlvirtualnetworkrule
+https://learn.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlvirtualnetworkrule
 #>
 function New-AzPostgreSqlVirtualNetworkRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IVirtualNetworkRule])]

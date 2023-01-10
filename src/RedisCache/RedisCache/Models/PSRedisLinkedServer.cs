@@ -22,6 +22,10 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public string PrimaryServerName { get; set; }
         public string SecondaryServerName { get; set; }
         public string ProvisioningState { get; set; }
+        public string LinkedRedisCacheLocation { get; set; }
+        public string ServerRole { get; set; }
+        public string PrimaryHostName { get; set; }
+        public string GeoReplicatedPrimaryHostName { get; set; }
 
         public PSRedisLinkedServer() { }
 
@@ -48,6 +52,10 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                 PrimaryServerName = ele[8];
                 SecondaryServerName = ele[10];
             }
+            LinkedRedisCacheLocation = redisLinkedServer.LinkedRedisCacheLocation;
+            ServerRole = redisLinkedServer.ServerRole.ToString();
+            PrimaryHostName = redisLinkedServer.PrimaryHostName;
+            GeoReplicatedPrimaryHostName = redisLinkedServer.GeoReplicatedPrimaryHostName;
         }
     }
 }

@@ -20,14 +20,14 @@ Timeline for an entity.
 .Description
 Timeline for an entity.
 .Example
- $startTime = (get-date).AddDays(-7).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
- $endTime = (get-date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
- Get-AzSentinelEntityTime -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId" -EndTime $endTime -StartTime $startTime
+ $startTime = (Get-Date).AddDays(-7).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+ $endTime = (Get-Date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+ Get-AzSentinelEntityTimeline -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId" -EndTime $endTime -StartTime $startTime
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityTimelineResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentitytimeline
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentitytimeline
 #>
 function Get-AzSentinelEntityTimeline {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityTimelineResponse])]

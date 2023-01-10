@@ -29,7 +29,7 @@ New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespac
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebuskey
+https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebuskey
 #>
 function New-AzServiceBusKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys])]

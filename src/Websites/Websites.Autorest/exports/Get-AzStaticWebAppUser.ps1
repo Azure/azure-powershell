@@ -25,7 +25,7 @@ Get-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal04
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserArmResource
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappuser
+https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappuser
 #>
 function Get-AzStaticWebAppUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserArmResource])]

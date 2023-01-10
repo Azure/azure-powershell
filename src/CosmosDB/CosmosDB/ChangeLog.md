@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.9.0
+* Added support for Cosmos DB Service related cmdlets.
+
 ## Version 1.8.2
 * Added support for partition key and id paths to be part of client encryption policy.
 * Fixed bug related to Update-AzCosmosDBSqlContainer command on containers with Client Encryption Policy.

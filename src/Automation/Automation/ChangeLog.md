@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.9.0
+* Updated Example: Start-AzAutomationRunbook should pass ordered dictionary for parameters [#20408]
+
 ## Version 1.8.0
 * Added cmdlets for Hybrid Runbook Worker group management
   * `Remove-AzAutomationHybridRunbookWorker`

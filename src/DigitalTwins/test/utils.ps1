@@ -6,87 +6,40 @@ function RandomString([bool]$allChars, [int32]$len) {
     }
 }
 $env = @{}
+if ($UsePreviousConfigForRecord) {
+    $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
+    $previousEnv.psobject.properties | Foreach-Object { $env[$_.Name] = $_.Value }
+}
+# Add script method called AddWithCache to $env, when useCache is set true, it will try to get the value from the $env first.
+# example: $val = $env.AddWithCache('key', $val, $true)
+$env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
-    # For test DigitalTwinsEndpoint,you need to install model 'EventGrid', 'EventHub' and 'ServiceBus' first
-    Write-host "For test DigitalTwinsEndpoint,you need to install model 'EventGrid', 'EventHub' and 'ServiceBus' first"
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    # For any resources you created for test, you should add it to $env here.
-    $rstr1 = RandomString -allChars $false -len 6
-    $rstr2 = RandomString -allChars $false -len 6
-    $rstr3 = RandomString -allChars $false -len 6
-    $rstr4 = RandomString -allChars $false -len 6
-    $rstr5 = RandomString -allChars $false -len 6
-    $rstr6 = RandomString -allChars $false -len 6
-    $rstr7 = RandomString -allChars $false -len 6
+    
+    $testEvnDT = "test-digitaltwins-instance"
+    $testEvnEG = "test-dt-eg"
+    $testEvnEH = "test-dt-eh"
+    $testEvnSB = "test-dt-servicebus"
+    $env.Add("testEvnDT", $testEvnDT)
+    $env.Add("testEvnEG", $testEvnEG)
+    $env.Add("testEvnEH", $testEvnEH)
+    $env.Add("testEvnSB", $testEvnSB)
 
-    $null = $env.Add("eventHubEndpointType", "EventHub")
-    $null = $env.Add("eventGridEndpointType", "EventGrid")
-    $null = $env.Add("serviceBusEndpointType", "ServiceBus")
-    $resourceGroup = 'youridigitaltwins-rg' + $rstr1
-    $null = $env.Add("resourceGroup", $resourceGroup)
-    $digitalTwins = 'youriDigitalTwins' + $rstr2
-    $null = $env.Add("digitalTwins", $digitalTwins)
-    $digitalTwins1 = 'youriDigitalTwins' + $rstr3
-    $null = $env.Add("digitalTwins1", $digitalTwins1)
-    $testDigitalTwinsName = 'youriDigitalTwins' + $rstr4
-    $null = $env.Add("testDigitalTwinsName", $testDigitalTwinsName)
-    $eventHubEndpointName = 'eventHubEndpointName' + $rstr5
-    $null = $env.Add("eventHubEndpointName", $eventHubEndpointName)
-    $eventGridEndpointName = 'eventGridEndpointName' + $rstr6
-    $null = $env.Add("eventGridEndpointName", $eventGridEndpointName)
-    $ServiceBusEndpointName = 'ServiceBusEndpointName' + $rstr7
-    $null = $env.Add("ServiceBusEndpointName", $ServiceBusEndpointName)
-    $null = $env.Add("location", "eastus")
+    $dtInstanceName = RandomString -allChars $false -len 6
+    $env.Add("dtInstanceName", $dtInstanceName)
+
+    $env.Add("location", "eastus")
     # Create the test group
     write-host "start to create test group"
-    write-host $env.location
-    New-AzResourceGroup -Name $resourceGroup -Location $env.location
+    $resourceGroup = "testgroup-digitaltwins"
+    $env.Add("resourceGroup", $resourceGroup)
 
-    #Deploy eventbus eventgrid servicebus for test
-    Write-Host -ForegroundColor Green "Deloying eventbus..." 
-    $subscriptionId = $env.SubscriptionId
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
-    $eventHubNameSpace = "eventHubNameSpace" + (RandomString -allChars $false -len 6)
-    $eventHubName = "eventHubName" + (RandomString -allChars $false -len 6)
-    $eventHubPolicy = "eventHubPolicy" + (RandomString -allChars $false -len 6)
-    New-AzEventHubNamespace -ResourceGroupName $resourceGroup -NamespaceName $eventHubNameSpace -Location $env.location
-    New-AzEventHub -ResourceGroupName $resourceGroup -Namespace $eventHubNameSpace -Name $eventHubName
-    New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroup -Namespace $eventHubNameSpace -EventHub $eventHubName -Name $eventHubPolicy -Rights @("Send")
-    $getAzEventHubKey = Get-AzEventHubKey -ResourceGroupName $resourceGroup -Namespace $eventHubNameSpace -EventHub $eventHubName -Name $eventHubPolicy
-    $eventHubConnectionStringPrimaryKeyOri = $getAzEventHubKey.PrimaryConnectionString
-    $eventHubConnectionStringPrimaryKey = ConvertTo-SecureString -string $eventHubConnectionStringPrimaryKeyOri -AsPlainText -Force | ConvertFrom-SecureString
-    $null = $env.Add("eventHubConnectionStringPrimaryKey", $eventHubConnectionStringPrimaryKey)
-
-    $eventGridName = "eventGridName" + (RandomString -allChars $false -len 6)
-    $eventgrid = Get-Content .\test\deployment-templates\eventgrid\parameters.json | ConvertFrom-Json
-    $eventgrid.parameters.eventGridName.value = $eventGridName
-    Set-Content -Path .\test\deployment-templates\eventgrid\parameters.json -Value (ConvertTo-Json $eventgrid)
-    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\eventgrid\template.json -TemplateParameterFile .\test\deployment-templates\eventgrid\parameters.json -Name nsg -ResourceGroupName $resourceGroup
-    $getAzEventGridTopic = Get-AzEventGridTopic -ResourceGroupName $resourceGroup -Name $eventGridName
-    $eventGridTopEndPoint = $GetAzEventGridTopic.EndPoint
-    $getAzEventGridTopicKey = Get-AzEventGridTopicKey -ResourceGroupName $resourceGroup -Name $eventGridName
-    $eventGridAccessKey1Ori = $getAzEventGridTopicKey.Key1
-    $null = $env.Add("eventGridTopEndPoint", $eventGridTopEndPoint)
-    $eventGridAccessKey1 =ConvertTo-SecureString -string $eventGridAccessKey1Ori -AsPlainText -Force | ConvertFrom-SecureString
-    $null = $env.Add("eventGridAccessKey1", $eventGridAccessKey1)
-
-    $serviceBusNameSpace = "serviceBusNameSpace" + (RandomString -allChars $false -len 6)
-    $serviceBusTopicName = "serviceBusTopicName" + (RandomString -allChars $false -len 6)
-    $serviceBusPolicy = "serviceBusPolicy" + (RandomString -allChars $false -len 6)
-    New-AzServiceBusNamespace -ResourceGroupName $resourceGroup -Location $env.location -Name $serviceBusNameSpace
-    New-AzServiceBusTopic -ResourceGroupName $resourceGroup -Namespace $serviceBusNameSpace -Name $serviceBusTopicName -EnablePartitioning $False
-    New-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroup -Namespace $serviceBusNameSpace -Topic $serviceBusTopicName -Name $serviceBusPolicy -Rights @("Send")
-    $getAzServiceBusKey = Get-AzServiceBusKey -ResourceGroupName $resourceGroup -Namespace $serviceBusNameSpace -Topic $serviceBusTopicName -Name $serviceBusPolicy
-    $serviceBusPrimaryConnectionStringOri = $getAzServiceBusKey.PrimaryConnectionString
-    $serviceBusPrimaryConnectionString = ConvertTo-SecureString -string $serviceBusPrimaryConnectionStringOri  -AsPlainText -Force | ConvertFrom-SecureString
-    $null = $env.Add("serviceBusPrimaryConnectionString", $serviceBusPrimaryConnectionString)
-
-    Start-Sleep -Seconds 60
-    Write-Host -ForegroundColor Green "eventhub eventgrid servicebus deploy completed."
-
+    # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -95,6 +48,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.resourceGroup
+    # Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

@@ -38,7 +38,7 @@ INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.networkfunction/remove-aznetworkfunctiontrafficcollector
+https://learn.microsoft.com/powershell/module/az.networkfunction/remove-aznetworkfunctiontrafficcollector
 #>
 function Remove-AzNetworkFunctionTrafficCollector {
 [OutputType([System.Boolean])]

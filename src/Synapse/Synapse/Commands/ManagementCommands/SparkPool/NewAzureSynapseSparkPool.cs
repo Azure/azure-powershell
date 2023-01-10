@@ -20,8 +20,8 @@ using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Collections;
 using System.IO;
 using System.Management.Automation;
@@ -126,10 +126,15 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string SparkVersion { get; set; }
 
+        [CmdletParameterBreakingChange("SparkConfigFilePath", ReplaceMentCmdletParameterName = "SparkConfiguration")]
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
             HelpMessage = HelpMessages.SparkConfigPropertiesFilePath)]
         [ValidateNotNullOrEmpty]
         public string SparkConfigFilePath { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+          HelpMessage = HelpMessages.SparkConfigurationResource)]
+        public PSSparkConfigurationResource SparkConfiguration { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -195,6 +200,19 @@ namespace Microsoft.Azure.Commands.Synapse
                     Content = this.ReadFileAsText(this.SparkConfigFilePath),
                     Filename = filename
                 };
+            }
+
+            if (this.IsParameterBound(c => c.SparkConfiguration))
+            {
+                if (this.SparkConfiguration != null)
+                {
+                    sparkConfigProperties = new SparkConfigProperties()
+                    {
+                        Filename = SparkConfiguration.Name,
+                        ConfigurationType = ConfigurationType.Artifact,
+                        Content = Newtonsoft.Json.JsonConvert.SerializeObject(SparkConfiguration)
+                    };                   
+                }
             }
 
             var createParams = new BigDataPoolResourceInfo
