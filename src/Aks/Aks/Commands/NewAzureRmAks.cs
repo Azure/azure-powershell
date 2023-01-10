@@ -347,8 +347,6 @@ namespace Microsoft.Azure.Commands.Aks
                 acsServicePrincipal.SpId,
                 acsServicePrincipal.ClientSecret);
 
-            var aadProfile = GetAadProfile();
-
             var defaultAgentPoolProfile = GetAgentPoolProfile();
 
             var windowsProfile = GetWindowsProfile();
@@ -376,7 +374,7 @@ namespace Microsoft.Azure.Commands.Aks
                 linuxProfile: linuxProfile,
                 windowsProfile: windowsProfile,
                 servicePrincipalProfile: spProfile,
-                aadProfile: aadProfile,
+                aadProfile: AadProfile,
                 addonProfiles: addonProfiles,
                 networkProfile: networkProfile,
                 apiServerAccessProfile: apiServerAccessProfile,
@@ -575,18 +573,6 @@ namespace Microsoft.Azure.Commands.Aks
             defaultAgentPoolProfile.Mode = NodePoolMode;
 
             return defaultAgentPoolProfile;
-        }
-
-        private ManagedClusterAADProfile GetAadProfile()
-        {
-            ManagedClusterAADProfile aadProfile = null;
-            //if (!string.IsNullOrEmpty(AadProfileClientAppId) || !string.IsNullOrEmpty(AadProfileServerAppId) ||
-            //    !string.IsNullOrEmpty(AadProfileServerAppSecret) || !string.IsNullOrEmpty(AadProfileTenantId))
-            //{
-            //    aadProfile = new ManagedClusterAADProfile(clientAppID: AadProfileClientAppId, serverAppID: AadProfileServerAppId,
-            //        serverAppSecret: AadProfileServerAppSecret, tenantID: AadProfileTenantId); 
-            //}
-            return aadProfile;
         }
 
         private IDictionary<string, ManagedClusterAddonProfile> CreateAddonsProfiles()

@@ -41,8 +41,9 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-AssignIdentity <String>] [-AutoUpgradeChannel <String>] [-DiskEncryptionSetID <String>]
  [-DisableLocalAccount] [-HttpProxy <String>] [-HttpsProxy <String>]
  [-HttpProxyConfigNoProxyEndpoint <String[]>] [-HttpProxyConfigTrustedCa <String>]
- [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-AksCustomHeader <Hashtable>] [-AadProfile <ManagedClusterAADProfile>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,7 +109,37 @@ $AutoScalerProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedCl
 New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -AutoScalerProfile $AutoScalerProfile
 ```
 
+### Create an AKS cluster with AadProfile.
+When you create an AKS cluster, you can configure the AAD profile.
+
+```powershell
+$AKSAdminGroup=New-AzADGroup -DisplayName myAKSAdminGroup -MailNickname myAKSAdminGroup
+$AadProfile=@{
+    managed=$true
+    enableAzureRBAC=$false
+    adminGroupObjectIDs=[System.Collections.Generic.List[string]]@($AKSAdminGroup.Id)
+}
+$AadProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile]$AadProfile
+
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -AadProfile $AadProfile
+```
+
 ## PARAMETERS
+
+### -AadProfile
+The Azure Active Directory configuration.
+
+```yaml
+Type: Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AcrNameToAttach
 Grant the 'acrpull' role of the specified ACR to AKS Service Principal, e.g. myacr
