@@ -27,7 +27,7 @@ This is to allow calling via powershell and ARM template.
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappsyncstatus
+https://learn.microsoft.com/powershell/module/az.functions/get-azwebappsyncstatus
 #>
 function Get-AzWebAppSyncStatus {
 [OutputType([System.Boolean])]

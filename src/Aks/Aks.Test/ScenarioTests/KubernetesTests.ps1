@@ -934,7 +934,6 @@ function Test-GpuInstanceProfile {
     }
 }
 
-
 function Test-EnableUptimeSLA {
     # Setup
     $resourceGroupName = Get-RandomResourceGroupName
@@ -950,7 +949,7 @@ function Test-EnableUptimeSLA {
         Assert-AreEqual "Basic" $cluster.Sku.Name
         Assert-AreEqual "Paid" $cluster.Sku.Tier
 
-        # create a 2nd nodepool
+        # update the aks cluster
         Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -EnableUptimeSLA:$false
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-AreEqual "Basic" $cluster.Sku.Name
@@ -967,3 +966,26 @@ function Test-EnableUptimeSLA {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-EdgeZone {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus2euap'
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeCount 1 -EdgeZone 'microsoftrrdclab1'
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual "microsoftrrdclab1" $cluster.ExtendedLocation.Name
+        Assert-AreEqual "edgezone" $cluster.ExtendedLocation.Type
+
+        $cluster | Remove-AzAksCluster -Force
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+

@@ -98,6 +98,39 @@ $pol = New-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID  -Workloa
 
 This command is used to disable archive smart tiering while creating a policy, we set MoveToArchiveTier parameter to $false to disable tiering.
 
+### Example 6: Create a non UTC timezone standard policy for workloadType MSSQL
+```powershell
+$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType MSSQL -BackupManagementType AzureWorkload -PolicySubType Standard
+
+$timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "Tokyo" } 
+$date= Get-Date -Hour 9 -Minute 0 -Second 0 -Year 2022 -Day 26 -Month 12 -Millisecond 0
+$date = [DateTime]::SpecifyKind($date,[DateTimeKind]::Utc)
+$schedulePolicy.FullBackupSchedulePolicy.ScheduleRunFrequency = "Weekly"
+$schedulePolicy.FullBackupSchedulePolicy.ScheduleRunTimes[0] = $date
+$schedulePolicy.FullBackupSchedulePolicy.ScheduleRunTimeZone = $timeZone[0].Id
+
+$schedulePolicy.IsDifferentialBackupEnabled = $true
+$schedulePolicy.DifferentialBackupSchedulePolicy.ScheduleRunDays[0] = "Wednesday"
+$schedulePolicy.DifferentialBackupSchedulePolicy.ScheduleRunTimes[0] = $date.AddHours(1)
+
+$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType MSSQL -BackupManagementType AzureWorkload
+
+$retentionPolicy.DifferentialBackupRetentionPolicy.RetentionCount = 15
+
+$retentionPolicy.FullBackupRetentionPolicy.IsDailyScheduleEnabled = $false
+$retentionPolicy.FullBackupRetentionPolicy.IsMonthlyScheduleEnabled = $false
+$retentionPolicy.FullBackupRetentionPolicy.WeeklySchedule.DurationCountInWeeks = 35
+$retentionPolicy.FullBackupRetentionPolicy.YearlySchedule.DurationCountInYears = 2
+
+New-AzRecoveryServicesBackupProtectionPolicy -Name "Tokyo-mssql-policy" -WorkloadType MSSQL -BackupManagementType AzureWorkload -RetentionPolicy $retentionPolicy -SchedulePolicy $schedulePolicy -VaultId $vault.ID
+```
+
+The first command gets a **SchedulePolicyObject**, and then stores it in the $schedulePolicy variable.
+The second command block fetches the timezone and datetime (localtime marked as UTC) and updates the timezone and time in the $schedulePolicy. Please note that the datetime should always be marked as UTC as the timezone is given separately. Also note, for other workload types timezone should be given in $schedulePolicy.ScheduleRunTimeZone attribute.
+The third command block updates the Differential schedule policy.
+Then, we get the **RetentionPolicyObject** and update differential and full backup retention settings.
+Finally we create a **BackupProtectionPolicy** object based on the schedule and retention policies created by the previous commands.
+
 ## PARAMETERS
 
 ### -BackupManagementType

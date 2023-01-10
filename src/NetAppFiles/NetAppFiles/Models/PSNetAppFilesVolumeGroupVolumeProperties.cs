@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public bool? SmbContinuouslyAvailable { get; set; }
 
         /// <summary>
-        /// Gets or sets maximum throughput in Mibps that can be achieved by
+        /// Gets or sets maximum throughput in MiB/s that can be achieved by
         /// this volume and this will be accepted as input only for manual
         /// qosType volume
         /// </summary>
@@ -344,5 +344,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </summary>
         public string EnableSubvolumes { get; set; }
 
+        /// <summary>
+        /// Gets or sets the resource ID of private endpoint for KeyVault. It
+        /// must reside in the same VNET as the volume. Only applicable if
+        /// encryptionKeySource = 'Microsoft.KeyVault'.
+        /// </summary>
+        public string KeyVaultPrivateEndpointResourceId { get; set; }
     }
 }

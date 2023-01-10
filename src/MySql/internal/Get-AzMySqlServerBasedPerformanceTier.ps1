@@ -27,7 +27,7 @@ List all the performance tiers for a MySQL server.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPerformanceTierProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlserverbasedperformancetier
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlserverbasedperformancetier
 #>
 function Get-AzMySqlServerBasedPerformanceTier {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPerformanceTierProperties])]
