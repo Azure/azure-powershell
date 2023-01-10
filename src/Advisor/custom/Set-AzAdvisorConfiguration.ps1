@@ -19,7 +19,7 @@ Updates or creates the Azure Advisor Configuration.
 .Description
 Updates or creates the Azure Advisor Configuration.
 .Link
-https://docs.microsoft.com/powershell/module/az.advisor/Set-AzAdvisorConfiguration
+https://learn.microsoft.com/powershell/module/az.advisor/Set-AzAdvisorConfiguration
 #>
 function Set-AzAdvisorConfiguration {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData])]

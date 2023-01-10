@@ -33,7 +33,7 @@ CompleteMigration operation will fail when entity migration is in-progress.
 
 ### Example 1: Complete migration from standard to premium servicebus namespace
 ```powershell
-Complete-AzServiceBusMigration -ResourceGroupName myResourceGroup myNamespace
+Complete-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
 Completes migration to premium namespace.

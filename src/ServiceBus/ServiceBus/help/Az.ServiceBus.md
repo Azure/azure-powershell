@@ -42,6 +42,9 @@ Retrieves Migration Config
 ### [Get-AzServiceBusNamespace](Get-AzServiceBusNamespace.md)
 Gets a description for the specified Service Bus namespace within the resource group.
 
+### [Get-AzServiceBusNamespaceV2](Get-AzServiceBusNamespaceV2.md)
+Gets a description for the specified namespace.
+
 ### [Get-AzServiceBusNetworkRuleSet](Get-AzServiceBusNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
 
@@ -84,8 +87,14 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzService
 ### [New-AzServiceBusKey](New-AzServiceBusKey.md)
 Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 
+### [New-AzServiceBusKeyVaultPropertiesObject](New-AzServiceBusKeyVaultPropertiesObject.md)
+Create an in-memory object for KeyVaultProperties.
+
 ### [New-AzServiceBusNamespace](New-AzServiceBusNamespace.md)
 Creates a new Service Bus namespace.
+
+### [New-AzServiceBusNamespaceV2](New-AzServiceBusNamespaceV2.md)
+Creates a new ServiceBus namespace.
 
 ### [New-AzServiceBusQueue](New-AzServiceBusQueue.md)
 Creates or updates a Service Bus queue.
@@ -117,6 +126,10 @@ Deletes a MigrationConfiguration
 
 ### [Remove-AzServiceBusNamespace](Remove-AzServiceBusNamespace.md)
 Removes the namespace from the specified resource group. 
+
+### [Remove-AzServiceBusNamespaceV2](Remove-AzServiceBusNamespaceV2.md)
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzServiceBusNetworkRuleSet](Remove-AzServiceBusNetworkRuleSet.md)
 Removes the NetworkRuleSet for the Given Namespace
@@ -150,6 +163,9 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 
 ### [Set-AzServiceBusNamespace](Set-AzServiceBusNamespace.md)
 Updates the description of an existing Service Bus namespace.
+
+### [Set-AzServiceBusNamespaceV2](Set-AzServiceBusNamespaceV2.md)
+Updates a ServiceBus namespace
 
 ### [Set-AzServiceBusNetworkRuleSet](Set-AzServiceBusNetworkRuleSet.md)
 Updates the NetworkRuleSet of a ServiceBus namespace

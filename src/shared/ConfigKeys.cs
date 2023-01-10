@@ -28,5 +28,8 @@ namespace Microsoft.Azure.Commands.Shared.Config
         public const string DisplayBreakingChangeWarning = "DisplayBreakingChangeWarning";
         public const string DefaultSubscriptionForLogin = "DefaultSubscriptionForLogin";
         public const string EnableDataCollection = "EnableDataCollection";
+        public const string EnableTestCoverage = "EnableTestCoverage";
+        public const string EnableLoginByWam = "EnableLoginByWam";
+        public const string TestCoverageLocation = "TestCoverageLocation";
     }
 }

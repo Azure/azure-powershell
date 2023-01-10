@@ -49,7 +49,7 @@ PARAMETER <IAccessConnector>: Information about azure databricks accessConnector
     [(Any) <String>]: This indicates any property can be added to this object.
   [IdentityType <IdentityType?>]: The identity type.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksaccessconnector
+https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksaccessconnector
 #>
 function New-AzDatabricksAccessConnector {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IAccessConnector])]

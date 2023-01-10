@@ -26,6 +26,63 @@ $oldResourceGroupName = "sambit_rg"
 $oldVaultName = "sambit"
 $oldPolicyName = "iaasvmretentioncheck"
 
+function Test-AzureVMNonUTCPolicy
+{
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiaga-zrs-vault"
+	$newVMPolUTC = "vm-pstest-utc-policy"
+	$newVMPolnonUTC = "vm-pstest-local-policy"
+	
+	try
+	{	
+		# get vault
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		# create VM policies 
+
+		## get schedule/retention policy objects
+		$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -PolicySubType Standard -ScheduleRunFrequency Daily
+		$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency  Daily
+		
+		$date= Get-Date -Hour 9 -Minute 0 -Second 0 -Year 2022 -Day 26 -Month 12 -Millisecond 0
+		$date = [DateTime]::SpecifyKind($date,[DateTimeKind]::Utc)
+		$schPol.ScheduleRunTimes[0] = $date
+
+		$retPol.WeeklySchedule.DurationCountInWeeks = 10
+		$retPol.IsYearlyScheduleEnabled = $false
+
+		
+		$polUTC = New-AzRecoveryServicesBackupProtectionPolicy -Name $newVMPolUTC -WorkloadType AzureVM -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -MoveToArchiveTier $true -TieringMode TierRecommended -VaultId $vault.ID
+		
+		## non-UTC policy timezone
+		$timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "Tokyo" } 
+		$schPol.ScheduleRunTimeZone = $timeZone[0].Id
+
+		$polLocal = New-AzRecoveryServicesBackupProtectionPolicy -Name $newVMPolnonUTC -WorkloadType AzureVM -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -MoveToArchiveTier $true -TieringMode TierAllEligible -VaultId $vault.ID -TierAfterDurationType Months -TierAfterDuration 3
+		
+		# assert 
+		Assert-True { $polUTC.Name -eq $newVMPolUTC }
+		Assert-True { $polLocal.Name -eq $newVMPolnonUTC }
+		
+		#$polUTC.SchedulePolicy.ScheduleRunTimes[0]  -match "9:00:00"
+		#$polLocal.SchedulePolicy.ScheduleRunTimes[0]  -match "9:00:00"
+		Assert-True { $polUTC.SchedulePolicy.ScheduleRunTimes[0].Hour -eq 9 }
+		Assert-True { $polUTC.SchedulePolicy.ScheduleRunTimes[0].Kind -eq "Utc" }
+		
+		Assert-True { $polLocal.SchedulePolicy.ScheduleRunTimes[0].Hour -eq 9 }
+		Assert-True { $polLocal.SchedulePolicy.ScheduleRunTimes[0].Kind -eq "Utc" }
+		
+		Assert-True { $polUTC.SchedulePolicy.ScheduleRunTimeZone -eq "UTC" }
+		Assert-True { $polLocal.SchedulePolicy.ScheduleRunTimeZone -eq "Tokyo Standard Time" }
+	}
+	finally
+	{
+		# delete policies
+		Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newVMPolUTC -Force
+		Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newVMPolnonUTC -Force
+	}
+}
+
 function Test-AzureVMSmartTieringPolicy
 {
 	$location = "centraluseuap"

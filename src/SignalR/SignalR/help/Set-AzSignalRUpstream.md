@@ -47,7 +47,7 @@ Templates
 {Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplate, Microsoft.Azure.Commands.SignalR.Models.PSUpstreamTemplat…
 ```
 
-The following JSON represents the actual templates set. 
+The following JSON represents the actual templates set.
 
  `
 {

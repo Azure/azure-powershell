@@ -60,7 +60,7 @@ INCIDENT <IIncident>: Represents an incident in Azure Security Insights.
 LABEL <IIncidentLabel[]>: List of labels relevant to this incident
   LabelName <String>: The name of the label
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincident
+https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincident
 #>
 function New-AzSentinelIncident {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident])]

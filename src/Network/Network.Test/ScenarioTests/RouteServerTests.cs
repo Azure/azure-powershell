@@ -13,7 +13,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestRouteServerCRUD()
         {
             TestRunner.RunTestScript(string.Format("Test-RouteServerCRUD"));
@@ -21,7 +21,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestRouteServerPeerCRUD()
         {
             TestRunner.RunTestScript(string.Format("Test-RouteServerPeerCRUD"));
@@ -29,7 +29,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestRouteServerPeerRoutes()
         {
             TestRunner.RunTestScript(string.Format("Test-RouteServerPeerRoutes"));

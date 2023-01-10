@@ -67,7 +67,7 @@ PARAMETER <IDataConnection>: Class representing an data connection.
   [AzureAsyncOperation <String>]: 
   [Location <String>]: Resource location.
 .Link
-https://docs.microsoft.com/powershell/module/az.kusto/update-azkustodataconnection
+https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodataconnection
 #>
 function Update-AzKustoDataConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection])]

@@ -19,36 +19,29 @@
 #    param [ScriptBlock] $script : The code to test
 #    param [string] $message     : The text of the exception that should be thrown
 #######################
-function Assert-Throws
-{
-  param([ScriptBlock] $script, [string] $message)
-  try
-  {
-    &$script
+function Assert-Throws {
+  param([scriptblock] $script, [string] $message)
+  try {
+    & $script
   }
-  catch
-  {
-    if ($message -ne "")
-    {
+  catch {
+    if ($message -ne "") {
       $actualMessage = $_.Exception.Message
       Write-Output ("Caught exception: '$actualMessage'")
 
-      if ($actualMessage -eq $message)
-      {
-        return $true;
+      if ($actualMessage -eq $message) {
+        return $true
       }
-      else
-      {
-        throw "Expected exception not received: '$message' the actual message is '$actualMessage'";
+      else {
+        throw "Expected exception '$message' was not received, the actual message is '$actualMessage'"
       }
     }
-    else
-    {
-      return $true;
+    else {
+      return $true
     }
   }
 
-  throw "No exception occurred";
+  throw "No exception occurred"
 }
 
 ######################
@@ -58,35 +51,29 @@ function Assert-Throws
 #    param [ScriptBlock] $script : The code to test
 #    param [ScriptBlock] $compare     : Predicate used to determine if the message meets criteria
 #######################
-function Assert-ThrowsContains
-{
-  param([ScriptBlock] $script, [string] $compare)
-  try
-  {
-    &$script
+function Assert-ThrowsContains {
+  param([scriptblock] $script, [string] $compare)
+  try {
+    & $script
   }
-  catch
-  {
-    if ($compare -ne "")
-    {
+  catch {
+    if ($compare -ne "") {
       $actualMessage = $_.Exception.Message
       Write-Output ("Caught exception: '$actualMessage'")
-      if ($actualMessage.Contains($compare))
-      {
-        return $true;
+
+      if ($actualMessage.Contains($compare)) {
+        return $true
       }
-      else
-      {
-        throw "Expected exception does not contain expected text '$compare', the actual message is '$actualMessage'";
+      else {
+        throw "Expected exception does not contain the expected text '$compare', the actual message is '$actualMessage'"
       }
     }
-    else
-    {
-      return $true;
+    else {
+      return $true
     }
   }
 
-  throw "No exception occurred";
+  throw "No exception occurred"
 }
 
 ######################
@@ -96,48 +83,41 @@ function Assert-ThrowsContains
 #    param [ScriptBlock] $script : The code to test
 #    param [ScriptBlock] $compare: Predicate used to determine if the message meets the criteria (-like)
 #######################
-function Assert-ThrowsLike
-{
-  param([ScriptBlock] $script, [string] $compare)
-  try
-  {
-    &$script
+function Assert-ThrowsLike {
+  param([scriptblock] $script, [string] $compare)
+  try {
+    & $script
   }
-  catch
-  {
-    if ($compare -ne "")
-    {
+  catch {
+    if ($compare -ne "") {
       $actualMessage = $_.Exception.Message
       Write-Output ("Caught exception: '$actualMessage'")
-      if ($actualMessage -like $compare)
-      {
-        return $true;
+
+      if ($actualMessage -like $compare) {
+        return $true
       }
-      else
-      {
-        throw "Expected exception is not like the expected text '$compare', the actual message is '$actualMessage'";
+      else {
+        throw "Expected exception is not like the expected text '$compare', the actual message is '$actualMessage'"
       }
     }
-    else
-    {
-      return $true;
+    else {
+      return $true
     }
   }
 
-  throw "No exception occurred";
+  throw "No exception occurred"
 }
 
 <#
 .SYNOPSIS
 Given a list of variable names, assert that all of them are defined
 #>
-function Assert-Env
-{
-   param([string[]] $vars)
-   $tmp = Get-Item env:
-   $env = @{}
-   $tmp | % { $env.Add($_.Key, $_.Value)}
-   $vars | % { Assert-True {$env.ContainsKey($_)} "Environment Variable $_ Is Required.  Please set the value before running the test"}
+function Assert-Env {
+  param([string[]] $vars)
+  $tmp = Get-Item env:
+  $env = @{}
+  $tmp | ForEach-Object { $env.Add($_.Key, $_.Value) }
+  $vars | ForEach-Object { Assert-True { $env.ContainsKey($_) } "Environment Variable $_ Is Required.  Please set the value before running the test" }
 }
 
 ###################
@@ -147,18 +127,15 @@ function Assert-Env
 #    param [ScriptBlock] $script : The script to execute
 #    param [string] $message     : The message to return if the given script does not return true
 ####################
-function Assert-True
-{
-  param([ScriptBlock] $script, [string] $message)
+function Assert-True {
+  param([scriptblock] $script, [string] $message)
 
-  if (!$message)
-  {
+  if (!$message) {
     $message = "Assertion failed: " + $script
   }
 
   $result = &$script
-  if (-not $result)
-  {
+  if (-not $result) {
     Write-Debug "Failure: $message"
     throw $message
   }
@@ -173,18 +150,15 @@ function Assert-True
 #    param [ScriptBlock] $script : The script to execute
 #    param [string] $message     : The message to return if the given script does not return false
 ####################
-function Assert-False
-{
-  param([ScriptBlock] $script, [string] $message)
+function Assert-False {
+  param([scriptblock] $script, [string] $message)
 
-  if (!$message)
-  {
+  if (!$message) {
     $message = "Assertion failed: " + $script
   }
 
-  $result = &$script
-  if ($result)
-  {
+  $result = & $script
+  if ($result) {
     throw $message
   }
 
@@ -198,17 +172,14 @@ function Assert-False
 #    param [object] $actual  : The actual object
 #    param [string] $message : The message to return if the given script does not return true
 ####################
-function Assert-NotNull
-{
+function Assert-NotNull {
   param([object] $actual, [string] $message)
 
-  if (!$message)
-  {
-    $message = "Assertion failed because the object is null: " + $actual
+  if (!$message) {
+    $message = "Assertion failed because the actual object is null."
   }
 
-  if ($actual -eq $null)
-  {
+  if ($null -eq $actual) {
     throw $message
   }
 
@@ -222,17 +193,14 @@ function Assert-NotNull
 #    param [string] $actual  : The actual string
 #    param [string] $message : The message to return if the given script does not return true
 ####################
-function Assert-NotNullOrEmpty
-{
+function Assert-NotNullOrEmpty {
   param([string] $actual, [string] $message)
 
-  if (!$message)
-  {
-    $message = "Assertion failed because the string is null or empty: " + $actual
+  if (!$message) {
+    $message = "Assertion failed because the actual string is null or empty."
   }
 
-  if ([string]::IsNullOrEmpty($actual))
-  {
+  if ([string]::IsNullOrEmpty($actual)) {
     throw $message
   }
 
@@ -246,10 +214,9 @@ function Assert-NotNullOrEmpty
 #    param [string] $path   : The path to the file to test
 #    param [string] $message: The text of the exception to throw if the file doesn't exist
 ######################
-function Assert-Exists
-{
-    param([string] $path, [string] $message)
-  return Assert-True {Test-Path $path} $message
+function Assert-Exists {
+  param([string] $path, [string] $message)
+  return Assert-True { Test-Path $path } $message
 }
 
 ###################
@@ -260,18 +227,15 @@ function Assert-Exists
 #    param [object] $actual   : The actual object
 #    param [string] $message  : The message to return if the given objects are not equal
 ####################
-function Assert-AreEqual
-{
-    param([object] $expected, [object] $actual, [string] $message)
+function Assert-AreEqual {
+  param([object] $expected, [object] $actual, [string] $message)
 
-  if (!$message)
-  {
-      $message = "Assertion failed because expected '$expected' does not match actual '$actual'"
+  if (!$message) {
+    $message = "Assertion failed because the expected object '$expected' does not match the actual '$actual'."
   }
 
-  if ($expected -ne $actual)
-  {
-      throw $message
+  if ($expected -ne $actual) {
+    throw $message
   }
 
   return $true
@@ -285,18 +249,17 @@ function Assert-AreEqual
 #	 param [long] $interval : The acceptable offset either side of the expected
 #    param [string] $message  : The message to return if the given objects are not equal
 ####################
-function Assert-NumAreInRange
-{
-	param([long] $expected, [long] $actual, [long] $interval, [string] $message)
-	if (!$message)
-	{
-		$message = "Assertion failed because expected '$expected' does not fall in accepted range of 'interval' of actual '$actual'"
-	}
-	if(!($actual -ge ($expected-$interval) -and $actual -le ($expected+$interval)))
-	{
-        throw $message
-    }
-	return $true
+function Assert-NumAreInRange {
+  param([long] $expected, [long] $actual, [long] $interval, [string] $message)
+  if (!$message) {
+    $message = "Assertion failed because the expected number '$expected' does not fall in accepted range of 'interval' of the actual '$actual'."
+  }
+
+  if (!($actual -ge ($expected - $interval) -and $actual -le ($expected + $interval))) {
+    throw $message
+  }
+
+  return $true
 }
 ###################
 #
@@ -306,20 +269,17 @@ function Assert-NumAreInRange
 #    param [array] $actual   : The actual array
 #    param [string] $message : The message to return if the given arrays are not equal.
 ####################
-function Assert-AreEqualArray
-{
-    param([object] $expected, [object] $actual, [string] $message)
+function Assert-AreEqualArray {
+  param([object] $expected, [object] $actual, [string] $message)
 
-  if (!$message)
-  {
-      $message = "Assertion failed because expected '$expected' does not match actual '$actual'"
+  if (!$message) {
+    $message = "Assertion failed because the expected object '$expected' does not match the actual '$actual'."
   }
 
   $diff = Compare-Object $expected $actual -PassThru
 
-  if ($diff -ne $null)
-  {
-      throw $message
+  if ($null -ne $diff) {
+    throw $message
   }
 
   return $true
@@ -333,21 +293,18 @@ function Assert-AreEqualArray
 #    param [object] $actual   : The actual object
 #    param [string] $message : The message to return if the given objects are not equal.
 ####################
-function Assert-AreEqualObjectProperties
-{
+function Assert-AreEqualObjectProperties {
   param([object] $expected, [object] $actual, [string] $message)
 
-  $properties = $expected | Get-Member -MemberType "Property" | Select -ExpandProperty Name
+  $properties = $expected | Get-Member -MemberType "Property" | Select-Object -ExpandProperty Name
   $diff = Compare-Object $expected $actual -Property $properties
 
-  if ($diff -ne $null)
-  {
-      if (!$message)
-      {
-          $message = "Assert failed because the objects don't match. Expected: " + $diff[0] + " Actual: " + $diff[1]
-      }
+  if ($null -ne $diff) {
+    if (!$message) {
+      $message = "Assert failed because the expected objects '$($diff[0])' does not match the actual $($diff[1])."
+    }
 
-      throw $message
+    throw $message
   }
 
   return $true
@@ -360,18 +317,15 @@ function Assert-AreEqualObjectProperties
 #    param [object] $actual  : The actual object
 #    param [string] $message : The message to return if the given object is not null
 ####################
-function Assert-Null
-{
-    param([object] $actual, [string] $message)
+function Assert-Null {
+  param([object] $actual, [string] $message)
 
-  if (!$message)
-  {
-      $message = "Assertion failed because the object is not null: " + $actual
+  if (!$message) {
+    $message = "Assertion failed because the actual object '$actual' is not null."
   }
 
-  if ($actual -ne $null)
-  {
-      throw $message
+  if ($actual -ne $null) {
+    throw $message
   }
 
   return $true
@@ -385,18 +339,15 @@ function Assert-Null
 #    param [object] $actual   : The actual object
 #    param [string] $message  : The message to return if the given objects are equal
 ####################
-function Assert-AreNotEqual
-{
-    param([object] $expected, [object] $actual, [string] $message)
+function Assert-AreNotEqual {
+  param([object] $expected, [object] $actual, [string] $message)
 
-  if (!$message)
-  {
-      $message = "Assertion failed because expected '$expected' does match actual '$actual'"
+  if (!$message) {
+    $message = "Assertion failed because the expected object '$expected' does match the actual '$actual'."
   }
 
-  if ($expected -eq $actual)
-  {
-      throw $message
+  if ($expected -eq $actual) {
+    throw $message
   }
 
   return $true
@@ -410,20 +361,17 @@ function Assert-AreNotEqual
 #    param [string] $actual         : The actual string
 #    param [string] $message        : The message to return if the actual string does not begin with the prefix
 ####################
-function Assert-StartsWith
-{
-    param([string] $expectedPrefix, [string] $actual, [string] $message)
+function Assert-StartsWith {
+  param([string] $expectedPrefix, [string] $actual, [string] $message)
 
   Assert-NotNullOrEmpty $actual
 
-  if (!$message)
-  {
-      $message = "Assertion failed because actual '$actual' does not start with '$expectedPrefix'"
+  if (!$message) {
+    $message = "Assertion failed because the actual string '$actual' does not start with '$expectedPrefix'."
   }
 
-  if (-not $actual.StartsWith($expectedPrefix))
-  {
-      throw $message
+  if (!$actual.StartsWith($expectedPrefix)) {
+    throw $message
   }
 
   return $true
@@ -437,20 +385,17 @@ function Assert-StartsWith
 #    param [string] $actual	 : The actual string
 #    param [string] $message : The message to return if the actual string does not match the regular expression
 ####################
-function Assert-Match
-{
-    param([string] $regex, [string] $actual, [string] $message)
+function Assert-Match {
+  param([string] $regex, [string] $actual, [string] $message)
 
   Assert-NotNullOrEmpty $actual
 
-  if (!$message)
-  {
-      $message = "Assertion failed because actual '$actual' does not match '$regex'"
+  if (!$message) {
+    $message = "Assertion failed because the actual string '$actual' does not match the regular expression '$regex'."
   }
 
-  if (-not $actual -Match $regex >$null)
-  {
-      throw $message
+  if (!($actual -match $regex)) {
+    throw $message
   }
 
   return $true
@@ -464,20 +409,17 @@ function Assert-Match
 #    param [string] $actual	 : The actual string
 #    param [string] $message : The message to return if the actual string matches the regular expression
 ####################
-function Assert-NotMatch
-{
-    param([string] $regex, [string] $actual, [string] $message)
+function Assert-NotMatch {
+  param([string] $regex, [string] $actual, [string] $message)
 
   Assert-NotNullOrEmpty $actual
 
-  if (!$message)
-  {
-      $message = "Assertion failed because actual '$actual' does match '$regex'"
+  if (!$message) {
+    $message = "Assertion failed because the actual string '$actual' does match the regular expression '$regex'."
   }
 
-  if ($actual -Match $regex >$null)
-  {
-      throw $message
+  if ($actual -Match $regex) {
+    throw $message
   }
 
   return $true
@@ -491,23 +433,20 @@ function Assert-NotMatch
 #    param [string] $expected : The expected value.
 #    param [string] $message  : The message to return if the actual string does not contain the expected value.
 ####################
-function Assert-ContainsItem
-{
-    param([string] $actual, [string] $expected, [string] $message)
+function Assert-ContainsItem {
+  param([string] $actual, [string] $expected, [string] $message)
 
   Assert-NotNullOrEmpty $actual
   Assert-NotNullOrEmpty $expected
 
-  if (!$message)
-  {
-      $message = "Assertion failed because actual '$actual' does not contain an item matching '$expected'"
+  if (!$message) {
+    $message = "Assertion failed because the actual string '$actual' does not contain an item matching '$expected'"
   }
 
   $split = $actual -Split ' '
 
-  if (!$split.contains($expected))
-  {
-      throw $message
+  if (!$split.contains($expected)) {
+    throw $message
   }
 
   return $true

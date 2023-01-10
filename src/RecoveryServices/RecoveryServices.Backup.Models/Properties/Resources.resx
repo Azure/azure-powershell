@@ -289,7 +289,7 @@
     <value>Please pass Job or List of Jobs as input. Your input is of type: {0}</value>
   </data>
   <data name="ScheduleTimeNotInUTCTimeZoneException" xml:space="preserve">
-    <value>ScheduleRunTimes in Schedule Policy should be in UTC Timezone</value>
+    <value>ScheduleRunTimes in Schedule Policy should be in UTC Time, however policy can be created in a different time zone by providing the timezone in ScheduleRunTimeZone attribute</value>
   </data>
   <data name="InvalidProtectionItemException" xml:space="preserve">
     <value>Invalid Item - either NULL or NOT of type: {0}</value>
@@ -755,7 +755,7 @@ Please contact Microsoft for further assistance.</value>
     <value>ResourceGuardMapping not found</value>
   </data>
   <data name="DisableWithRetainBackupNotCrititcal" xml:space="preserve">
-    <value>Invalid parameter Token: Stop protection with retain backup data is not MUA protected</value>
+    <value>Invalid parameter Token. Stop protection with retain backup data is not MUA protected</value>
   </data>
   <data name="CRRNotSupportedWIthCSR" xml:space="preserve">
     <value>Cross region restore is not supported along with cross subscription restore, please try passing either RestoreToSecondaryRegion or TargetSubscriptionId parameter but not both</value>

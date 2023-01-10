@@ -24,8 +24,10 @@ List all available skus of the resource.
 
 ### Example 1: List all available SKUs of a Web PubSub resource
 ```powershell
-PS C:\>  Get-AzWebPubSubSku -ResourceGroupName psdemo -ResourceName psdemo-wps | Format-List
+Get-AzWebPubSubSku -ResourceGroupName psdemo -ResourceName psdemo-wps | Format-List
+```
 
+```output
 CapacityAllowedValue : {0, 1}
 CapacityDefault      : 1
 CapacityMaximum      : 1
@@ -125,7 +127,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20211001.ISkuList
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ISkuList
 
 ## NOTES
 

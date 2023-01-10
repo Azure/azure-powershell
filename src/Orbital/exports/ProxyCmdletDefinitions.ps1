@@ -42,7 +42,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [SpacecraftName <String>]: Spacecraft ID.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/get-azorbitalavailablegroundstation
+https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalavailablegroundstation
 #>
 function Get-AzOrbitalAvailableGroundStation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableGroundStation])]
@@ -232,7 +232,7 @@ PARAMETER <IContactParameters>: Parameters that define the contact resource.
   StartTime <DateTime>: Start time of a contact (ISO 8601 UTC standard).
   [ContactProfileId <String>]: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/get-azorbitalavailablespacecraftcontact
+https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalavailablespacecraftcontact
 #>
 function Get-AzOrbitalAvailableSpacecraftContact {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContacts])]
@@ -460,7 +460,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [SpacecraftName <String>]: Spacecraft ID.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/get-azorbitalcontactprofile
+https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalcontactprofile
 #>
 function Get-AzOrbitalContactProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile])]
@@ -662,7 +662,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [SpacecraftName <String>]: Spacecraft ID.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/get-azorbitalspacecraftcontact
+https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalspacecraftcontact
 #>
 function Get-AzOrbitalSpacecraftContact {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact])]
@@ -872,7 +872,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [SpacecraftName <String>]: Spacecraft ID.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/get-azorbitalspacecraft
+https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalspacecraft
 #>
 function Get-AzOrbitalSpacecraft {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft])]
@@ -1084,7 +1084,7 @@ LINK <IContactProfileLink[]>: Links of the Contact Profile. Describes RF links, 
   [EirpdBw <Single?>]: Effective Isotropic Radiated Power (EIRP) in dBW. It is the required EIRP by the customer. Not used yet.
   [GainOverTemperature <Single?>]: Gain To Noise Temperature in db/K. It is the required G/T by the customer. Not used yet.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/new-azorbitalcontactprofile
+https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalcontactprofile
 #>
 function New-AzOrbitalContactProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile])]
@@ -1319,7 +1319,7 @@ New-AzOrbitalSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azp
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraftcontact
+https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraftcontact
 #>
 function New-AzOrbitalSpacecraftContact {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact])]
@@ -1537,7 +1537,7 @@ LINK <ISpacecraftLink[]>: Immutable list of Spacecraft links.
   Name <String>: Link name.
   Polarization <Polarization>: Polarization. e.g. (RHCP, LHCP).
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraft
+https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraft
 #>
 function New-AzOrbitalSpacecraft {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft])]
@@ -1774,7 +1774,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [SpacecraftName <String>]: Spacecraft ID.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/remove-azorbitalcontactprofile
+https://learn.microsoft.com/powershell/module/az.orbital/remove-azorbitalcontactprofile
 #>
 function Remove-AzOrbitalContactProfile {
 [OutputType([System.Boolean])]
@@ -1980,7 +1980,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [SpacecraftName <String>]: Spacecraft ID.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/remove-azorbitalspacecraftcontact
+https://learn.microsoft.com/powershell/module/az.orbital/remove-azorbitalspacecraftcontact
 #>
 function Remove-AzOrbitalSpacecraftContact {
 [OutputType([System.Boolean])]
@@ -2192,7 +2192,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [SpacecraftName <String>]: Spacecraft ID.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/remove-azorbitalspacecraft
+https://learn.microsoft.com/powershell/module/az.orbital/remove-azorbitalspacecraft
 #>
 function Remove-AzOrbitalSpacecraft {
 [OutputType([System.Boolean])]
@@ -2400,7 +2400,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [SpacecraftName <String>]: Spacecraft ID.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/update-azorbitalcontactprofile
+https://learn.microsoft.com/powershell/module/az.orbital/update-azorbitalcontactprofile
 #>
 function Update-AzOrbitalContactProfile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile])]
@@ -2609,7 +2609,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [SpacecraftName <String>]: Spacecraft ID.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/update-azorbitalspacecraft
+https://learn.microsoft.com/powershell/module/az.orbital/update-azorbitalspacecraft
 #>
 function Update-AzOrbitalSpacecraft {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft])]
@@ -2798,7 +2798,7 @@ New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 0.036 -CenterFrequenc
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLinkChannel
 .Link
-https://docs.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkChannelObject
+https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkChannelObject
 #>
 function New-AzOrbitalContactProfileLinkChannelObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLinkChannel])]
@@ -2976,7 +2976,7 @@ CHANNEL <IContactProfileLinkChannel[]>: Contact Profile Link Channel.
   [EncodingConfiguration <String>]: Currently unused.
   [ModulationConfiguration <String>]: Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
 .Link
-https://docs.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkObject
+https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkObject
 #>
 function New-AzOrbitalContactProfileLinkObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink])]
@@ -3108,7 +3108,7 @@ New-AzOrbitalSpacecraftLinkObject -BandwidthMHz 50 -CenterFrequencyMHz 50 -Direc
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftLink
 .Link
-https://docs.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalSpacecraftLinkObject
+https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalSpacecraftLinkObject
 #>
 function New-AzOrbitalSpacecraftLinkObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftLink])]

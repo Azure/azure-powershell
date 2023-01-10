@@ -34,7 +34,7 @@ New-AzWvdApplication -ResourceGroupName ResourceGroupName `
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplication
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdapplication
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdapplication
 #>
 function New-AzWvdApplication {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplication])]

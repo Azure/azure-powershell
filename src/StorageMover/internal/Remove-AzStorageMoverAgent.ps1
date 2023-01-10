@@ -44,7 +44,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoveragent
+https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoveragent
 #>
 function Remove-AzStorageMoverAgent {
 [OutputType([System.Boolean])]

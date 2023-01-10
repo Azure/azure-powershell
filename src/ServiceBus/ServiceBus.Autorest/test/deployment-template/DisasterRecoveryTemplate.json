@@ -26,7 +26,7 @@
       "type": "Microsoft.ServiceBus/namespaces",
       "apiVersion": "2022-01-01-preview",
       "name": "[parameters('primarynamespace_name')]",
-      "location": "East US",
+      "location": "eastus",
       "sku": {
         "name": "Premium",
         "tier": "Premium"
@@ -42,7 +42,7 @@
       "type": "Microsoft.ServiceBus/namespaces",
       "apiVersion": "2022-01-01-preview",
       "name": "[parameters('secondarynamespace_name')]",
-      "location": "West US",
+      "location": "southcentralus",
       "sku": {
         "name": "Premium",
         "tier": "Premium"
@@ -74,7 +74,7 @@
       "type": "Microsoft.ServiceBus/namespaces",
       "apiVersion": "2022-01-01-preview",
       "name": "[parameters('migrationSecondaryNamespace')]",
-      "location": "West US",
+      "location": "southcentralus",
       "sku": {
         "name": "Premium",
         "tier": "Premium"

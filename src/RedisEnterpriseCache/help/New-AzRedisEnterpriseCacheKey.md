@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachekey
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachekey
 schema: 2.0.0
 ---
 

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -309,6 +309,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string HelpMessageOfEnableInterceptSurvey {
             get {
                 return ResourceManager.GetString("HelpMessageOfEnableInterceptSurvey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [Preview] When enabled, Web Account Manager (WAM) will be the default interactive login experience. It will fall back to using the browser if the platform does not support WAM. Note that this feature is under preview. Microsoft Account (MSA) is currently not supported. Feel free to reach out to Azure PowerShell team if you have any feedbacks: https://aka.ms/azpsissue.
+        /// </summary>
+        public static string HelpMessageOfEnableWamLogin {
+            get {
+                return ResourceManager.GetString("HelpMessageOfEnableWamLogin", resourceCulture);
             }
         }
         
@@ -651,6 +660,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string SuccessfullyLaunchedBrowser {
             get {
                 return ResourceManager.GetString("SuccessfullyLaunchedBrowser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You may need to login again after updating &quot;{0}&quot;..
+        /// </summary>
+        public static string SwitchLoginMethodWarning {
+            get {
+                return ResourceManager.GetString("SwitchLoginMethodWarning", resourceCulture);
             }
         }
         

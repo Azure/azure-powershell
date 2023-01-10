@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdhostpool
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdhostpool
 schema: 2.0.0
 ---
 
@@ -53,14 +53,7 @@ New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Description 'Description' `
                             -FriendlyName 'Friendly Name' `
                             -MaxSessionLimit 5 `
-                            -VMTemplate $null `
-                            -SsoClientId $null `
-                            -SsoClientSecretKeyVaultPath $null `
-                            -SsoSecretType $null `
-                            -SsoadfsAuthority $null `
-                            -CustomRdpProperty $null `
-                            -Ring $null `
-                            -ValidationEnvironment:$false
+                            -PreferredAppGroupType 'Desktop' `
 ```
 
 ```output
@@ -83,14 +76,7 @@ New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Description 'Description' `
                             -FriendlyName 'Friendly Name' `
                             -MaxSessionLimit 5 `
-                            -VMTemplate $null `
-                            -SsoClientId $null `
-                            -SsoClientSecretKeyVaultPath $null `
-                            -SsoSecretType $null `
-                            -SsoadfsAuthority $null `
-                            -CustomRdpProperty $null `
-                            -Ring $null `
-                            -ValidationEnvironment:$false
+                            -PreferredAppGroupType 'Desktop' `
 ```
 
 ```output
@@ -443,7 +429,7 @@ Accept wildcard characters: False
 ```
 
 ### -PreferredAppGroupType
-The type of preferred application group type, default to Desktop Application Group
+The type of preferred application group type. Accepted Values: Desktop, RailApplications
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType
@@ -643,7 +629,7 @@ Accept wildcard characters: False
 ```
 
 ### -SsoSecretType
-The type of single sign on Secret Type.
+The type of single sign on Secret Type. Accepted Values: Certificate, CertificateInKeyVault, SharedKey, SharedKeyInKeyVault	
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SsoSecretType
