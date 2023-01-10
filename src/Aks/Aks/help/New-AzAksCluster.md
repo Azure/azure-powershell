@@ -109,6 +109,21 @@ $AutoScalerProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedCl
 New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -AutoScalerProfile $AutoScalerProfile
 ```
 
+### Create an AKS cluster with AadProfile.
+When you create an AKS cluster, you can configure the AAD profile.
+
+```powershell
+$AKSAdminGroup=New-AzADGroup -DisplayName myAKSAdminGroup -MailNickname myAKSAdminGroup
+$AadProfile=@{
+    managed=$true
+    enableAzureRBAC=$false
+    adminGroupObjectIDs=[System.Collections.Generic.List[string]]@($AKSAdminGroup.Id)
+}
+$AadProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedClusterAADProfile]$AadProfile
+
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -AadProfile $AadProfile
+```
+
 ## PARAMETERS
 
 ### -AadProfile
