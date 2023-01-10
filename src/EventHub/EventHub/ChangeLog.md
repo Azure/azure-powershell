@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-Fixing 'New-AzEventHubAuthorizationRuleSASToken' cmdlet which was returning wrong skn value
+Fixed 'New-AzEventHubAuthorizationRuleSASToken' cmdlet which was returning wrong skn value
 
 ## Version 3.2.0
 * Added NamespaceV2 cmdlets for EventHub
