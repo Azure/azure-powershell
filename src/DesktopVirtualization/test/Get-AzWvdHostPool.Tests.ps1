@@ -52,7 +52,7 @@ Describe 'Get-AzWvdHostPool' {
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
                 $hostPool.StartVMOnConnect | Should -Be $false
         }
-        finally{}
+        finally{
             $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
                                 -Name $env.HostPool
