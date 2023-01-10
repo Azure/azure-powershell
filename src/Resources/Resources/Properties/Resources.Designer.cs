@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -655,20 +655,38 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing role definition with id &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveRoleDefinitionWithId {
+            get {
+                return ResourceManager.GetString("RemoveRoleDefinitionWithId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove role definition with id &apos;{0}&apos;..
         /// </summary>
-        internal static string RemoveRoleDefinition {
+        internal static string RemoveRoleDefinitionWithIdConfirmation {
             get {
-                return ResourceManager.GetString("RemoveRoleDefinition", resourceCulture);
+                return ResourceManager.GetString("RemoveRoleDefinitionWithIdConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing role definition with name &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveRoleDefinitionWithName {
+            get {
+                return ResourceManager.GetString("RemoveRoleDefinitionWithName", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove role definition with name &apos;{0}&apos;..
         /// </summary>
-        internal static string RemoveRoleDefinitionWithName {
+        internal static string RemoveRoleDefinitionWithNameConfirmation {
             get {
-                return ResourceManager.GetString("RemoveRoleDefinitionWithName", resourceCulture);
+                return ResourceManager.GetString("RemoveRoleDefinitionWithNameConfirmation", resourceCulture);
             }
         }
         

@@ -60,6 +60,8 @@ namespace Microsoft.Azure.Commands.Resources
         {
             PSRoleDefinition roleDefinition = null;
             string confirmMessage = null;
+            string processMessage = null;
+
             if (this.IsParameterBound(c => c.InputObject))
             {
                 var tempId = Guid.Empty;
@@ -75,11 +77,13 @@ namespace Microsoft.Azure.Commands.Resources
 
             if (Id != Guid.Empty)
             {
-                confirmMessage = string.Format(ProjectResources.RemoveRoleDefinition, Id);
+                confirmMessage = string.Format(ProjectResources.RemoveRoleDefinitionWithIdConfirmation, Id);
+                processMessage = string.Format(ProjectResources.RemoveRoleDefinitionWithId, Id);
             }
             else
             {
-                confirmMessage = string.Format(ProjectResources.RemoveRoleDefinitionWithName, Name);
+                confirmMessage = string.Format(ProjectResources.RemoveRoleDefinitionWithNameConfirmation, Name);
+                processMessage = string.Format(ProjectResources.RemoveRoleDefinitionWithName, Name);
             }
 
             FilterRoleDefinitionOptions options = new FilterRoleDefinitionOptions
@@ -95,10 +99,16 @@ namespace Microsoft.Azure.Commands.Resources
 
             AuthorizationClient.ValidateScope(options.Scope, true);
 
+            if (!string.IsNullOrEmpty(Name))
+            {
+                string roleDefinitionId = PoliciesClient.GetSingleRoleDefinitionByName(Name, options.Scope).Id;
+                Id = new Guid(roleDefinitionId);
+            }
+
             ConfirmAction(
                 Force.IsPresent,
                 confirmMessage,
-                ProjectResources.RemoveRoleDefinition,
+                processMessage,
                 Id.ToString(),
                 () =>
                 {

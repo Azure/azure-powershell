@@ -309,7 +309,7 @@
   <data name="RoleDefinitionWithIdNotFound" xml:space="preserve">
     <value>Cannot find role definition with id '{0}'.</value>
   </data>
-  <data name="RemoveRoleDefinition" xml:space="preserve">
+  <data name="RemoveRoleDefinitionWithIdConfirmation" xml:space="preserve">
     <value>Are you sure you want to remove role definition with id '{0}'.</value>
   </data>
   <data name="InvalidActions" xml:space="preserve">
@@ -354,7 +354,7 @@
   <data name="InvalidRoleDefinitionDescription" xml:space="preserve">
     <value>RoleDefinition Description is invalid.</value>
   </data>
-  <data name="RemoveRoleDefinitionWithName" xml:space="preserve">
+  <data name="RemoveRoleDefinitionWithNameConfirmation" xml:space="preserve">
     <value>Are you sure you want to remove role definition with name '{0}'.</value>
   </data>
   <data name="CreateApplicationNotAllowedGuestUser" xml:space="preserve">
@@ -462,5 +462,11 @@ This means the role assignment was not able to be created. Please assign a role 
   </data>
   <data name="SuccessfullRARemove" xml:space="preserve">
     <value>Succesfully removed role assignment for AD object '{0}' on scope '{1}' with role definition '{2}'</value>
+  </data>
+  <data name="RemoveRoleDefinitionWithId" xml:space="preserve">
+    <value>Removing role definition with id '{0}'.</value>
+  </data>
+  <data name="RemoveRoleDefinitionWithName" xml:space="preserve">
+    <value>Removing role definition with name '{0}'.</value>
   </data>
 </root>
