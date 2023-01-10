@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for non-UTC time zones with standard policy for workloadType IaasVM, MSSql, AzureFiles
 
 ## Version 6.1.2
 * Added support for passing DiskEncryptionSetId for Cross region restore

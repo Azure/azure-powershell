@@ -129,6 +129,9 @@
   <data name="PoolChangeMessage" xml:space="preserve">
     <value>Changing pool of the volume {0}</value>
   </data>
+  <data name="ReestablishVolumeReplicationMessage" xml:space="preserve">
+    <value>Re-establishing volume replication on {0}</value>
+  </data>
   <data name="RemoveResourceMessage" xml:space="preserve">
     <value>Remove the {0}</value>
   </data>

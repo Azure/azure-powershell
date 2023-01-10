@@ -48,7 +48,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacemodelversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspacemodelversion
 #>
 function Remove-AzMLWorkspaceModelVersion {
 [OutputType([System.Boolean])]

@@ -27,7 +27,7 @@ Get private DNS zone suffix in the cloud.
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/invoke-azmysqlexecutegetprivatednszonesuffix
+https://learn.microsoft.com/powershell/module/az.mysql/invoke-azmysqlexecutegetprivatednszonesuffix
 #>
 function Invoke-AzMySqlExecuteGetPrivateDnsZoneSuffix {
 [OutputType([System.String])]

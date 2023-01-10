@@ -170,6 +170,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Whether to use use Uptime SLA.")]
         public SwitchParameter EnableUptimeSLA { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The name of the Edge Zone.")]
+        public string EdgeZone { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -416,6 +419,10 @@ namespace Microsoft.Azure.Commands.Aks
                 {
                     managedCluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Free");
                 }
+            }
+            if (this.IsParameterBound(c => c.EdgeZone))
+            {
+                managedCluster.ExtendedLocation = new ExtendedLocation(name: EdgeZone, type: "EdgeZone");
             }
 
             return managedCluster;
