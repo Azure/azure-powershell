@@ -28,16 +28,16 @@
           "description": "Get an account",
           "parameters": [
             {
-              "value": "[Path.accountName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.accountName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes an account resource",
           "parameters": [
             {
-              "value": "[Path.accountName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.accountName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

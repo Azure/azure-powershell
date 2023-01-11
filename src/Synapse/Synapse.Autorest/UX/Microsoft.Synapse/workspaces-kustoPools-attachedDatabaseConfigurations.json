@@ -30,24 +30,24 @@
           "description": "Returns an attached database configuration.",
           "parameters": [
             {
-              "value": "[Path.attachedDatabaseConfigurationName]",
-              "name": "-AttachedDatabaseConfigurationName"
+              "name": "-AttachedDatabaseConfigurationName",
+              "value": "[Path.attachedDatabaseConfigurationName]"
             },
             {
-              "value": "[Path.kustoPoolName]",
-              "name": "-KustoPoolName"
+              "name": "-KustoPoolName",
+              "value": "[Path.kustoPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.workspaceName]",
-              "name": "-WorkspaceName"
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
             }
           ]
         }
@@ -78,24 +78,24 @@
           "description": "Deletes the attached database configuration with the given name.",
           "parameters": [
             {
-              "value": "[Path.attachedDatabaseConfigurationName]",
-              "name": "-AttachedDatabaseConfigurationName"
+              "name": "-AttachedDatabaseConfigurationName",
+              "value": "[Path.attachedDatabaseConfigurationName]"
             },
             {
-              "value": "[Path.kustoPoolName]",
-              "name": "-KustoPoolName"
+              "name": "-KustoPoolName",
+              "value": "[Path.kustoPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.workspaceName]",
-              "name": "-WorkspaceName"
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
             }
           ]
         }

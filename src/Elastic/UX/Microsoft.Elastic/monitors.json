@@ -28,16 +28,16 @@
           "description": "List the vm ingestion details that will be monitored by the Elastic monitor resource.",
           "parameters": [
             {
-              "value": "[Path.monitorName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.monitorName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Get the properties of a specific monitor resource.",
           "parameters": [
             {
-              "value": "[Path.monitorName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.monitorName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -104,16 +104,16 @@
           "description": "Delete a monitor resource.",
           "parameters": [
             {
-              "value": "[Path.monitorName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.monitorName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

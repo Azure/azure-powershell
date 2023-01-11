@@ -31,28 +31,28 @@
           "description": "Returns a data connection.",
           "parameters": [
             {
-              "value": "[Path.dataConnectionName]",
-              "name": "-DataConnectionName"
+              "name": "-DataConnectionName",
+              "value": "[Path.dataConnectionName]"
             },
             {
-              "value": "[Path.databaseName]",
-              "name": "-DatabaseName"
+              "name": "-DatabaseName",
+              "value": "[Path.databaseName]"
             },
             {
-              "value": "[Path.kustoPoolName]",
-              "name": "-KustoPoolName"
+              "name": "-KustoPoolName",
+              "value": "[Path.kustoPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.workspaceName]",
-              "name": "-WorkspaceName"
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
             }
           ]
         }
@@ -84,28 +84,28 @@
           "description": "Deletes the data connection with the given name.",
           "parameters": [
             {
-              "value": "[Path.dataConnectionName]",
-              "name": "-DataConnectionName"
+              "name": "-DataConnectionName",
+              "value": "[Path.dataConnectionName]"
             },
             {
-              "value": "[Path.databaseName]",
-              "name": "-DatabaseName"
+              "name": "-DatabaseName",
+              "value": "[Path.databaseName]"
             },
             {
-              "value": "[Path.kustoPoolName]",
-              "name": "-KustoPoolName"
+              "name": "-KustoPoolName",
+              "value": "[Path.kustoPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.workspaceName]",
-              "name": "-WorkspaceName"
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
             }
           ]
         }

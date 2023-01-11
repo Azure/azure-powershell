@@ -28,16 +28,16 @@
           "description": "Gets NetworkRuleSet for a Namespace.",
           "parameters": [
             {
-              "value": "[Path.namespaceName]",
-              "name": "-NamespaceName"
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Gets lists of resources that supports Privatelinks.",
           "parameters": [
             {
-              "value": "[Path.namespaceName]",
-              "name": "-NamespaceName"
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

@@ -29,20 +29,20 @@
           "description": "Gets a job with id in a backup vault",
           "parameters": [
             {
-              "value": "[Path.jobId]",
-              "name": "-Id"
+              "name": "-Id",
+              "value": "[Path.jobId]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.vaultName]",
-              "name": "-VaultName"
+              "name": "-VaultName",
+              "value": "[Path.vaultName]"
             }
           ]
         }

@@ -30,24 +30,24 @@
           "description": "Disconnect a userSession.",
           "parameters": [
             {
-              "value": "[Path.hostPoolName]",
-              "name": "-HostPoolName"
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
             },
             {
-              "value": "[Path.userSessionId]",
-              "name": "-Id"
+              "name": "-Id",
+              "value": "[Path.userSessionId]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.sessionHostName]",
-              "name": "-SessionHostName"
+              "name": "-SessionHostName",
+              "value": "[Path.sessionHostName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -78,24 +78,24 @@
           "description": "Get a userSession.",
           "parameters": [
             {
-              "value": "[Path.hostPoolName]",
-              "name": "-HostPoolName"
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
             },
             {
-              "value": "[Path.userSessionId]",
-              "name": "-Id"
+              "name": "-Id",
+              "value": "[Path.userSessionId]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.sessionHostName]",
-              "name": "-SessionHostName"
+              "name": "-SessionHostName",
+              "value": "[Path.sessionHostName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -126,24 +126,24 @@
           "description": "Remove a userSession.",
           "parameters": [
             {
-              "value": "[Path.hostPoolName]",
-              "name": "-HostPoolName"
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
             },
             {
-              "value": "[Path.userSessionId]",
-              "name": "-Id"
+              "name": "-Id",
+              "value": "[Path.userSessionId]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.sessionHostName]",
-              "name": "-SessionHostName"
+              "name": "-SessionHostName",
+              "value": "[Path.sessionHostName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -174,24 +174,24 @@
           "description": "Send a message to a user.",
           "parameters": [
             {
-              "value": "[Path.hostPoolName]",
-              "name": "-HostPoolName"
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.sessionHostName]",
-              "name": "-SessionHostName"
+              "name": "-SessionHostName",
+              "value": "[Path.sessionHostName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.userSessionId]",
-              "name": "-UserSessionId"
+              "name": "-UserSessionId",
+              "value": "[Path.userSessionId]"
             }
           ]
         }

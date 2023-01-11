@@ -28,16 +28,16 @@
           "description": "Gets information about the specified network function resource.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.networkFunctionName]"
+              "value": "[Path.networkFunctionName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes the specified network function resource. This operation can take up to 1 hour to complete. This is expected service behavior.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.networkFunctionName]"
+              "value": "[Path.networkFunctionName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

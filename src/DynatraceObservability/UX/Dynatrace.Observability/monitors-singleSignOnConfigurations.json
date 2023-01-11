@@ -29,20 +29,20 @@
           "description": "Get a DynatraceSingleSignOnResource",
           "parameters": [
             {
-              "name": "-MonitorName",
-              "value": "[Path.monitorName]"
+              "value": "[Path.monitorName]",
+              "name": "-MonitorName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.configurationName]"
+              "value": "[Path.configurationName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

@@ -29,20 +29,20 @@
           "description": "Gets the details of a replication policy.",
           "parameters": [
             {
-              "name": "-PolicyName",
-              "value": "[Path.policyName]"
+              "value": "[Path.policyName]",
+              "name": "-PolicyName"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-ResourceName",
-              "value": "[Path.resourceName]"
+              "value": "[Path.resourceName]",
+              "name": "-ResourceName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

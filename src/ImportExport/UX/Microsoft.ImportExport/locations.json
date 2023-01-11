@@ -15,17 +15,21 @@
         },
         "parameterSets": [
           {
-            "parameters": "-Name <String>"
+            "parameters": [
+              "-Name <String>"
+            ]
           }
         ]
       },
       "examples": [
         {
           "description": "Returns the details about a location to which you can ship the disks associated with an import or export job. A location is an Azure region.",
-          "parameters": {
-            "value": "[Path.locationName]",
-            "name": "-Name"
-          }
+          "parameters": [
+            {
+              "value": "[Path.locationName]",
+              "name": "-Name"
+            }
+          ]
         }
       ]
     }

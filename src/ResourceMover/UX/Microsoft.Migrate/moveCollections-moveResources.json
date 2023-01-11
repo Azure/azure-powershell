@@ -29,20 +29,20 @@
           "description": "Creates or updates a Move Resource in the move collection.",
           "parameters": [
             {
-              "value": "[Path.moveCollectionName]",
-              "name": "-MoveCollectionName"
+              "name": "-MoveCollectionName",
+              "value": "[Path.moveCollectionName]"
             },
             {
-              "value": "[Path.moveResourceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.moveResourceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Gets the Move Resource.",
           "parameters": [
             {
-              "value": "[Path.moveCollectionName]",
-              "name": "-MoveCollectionName"
+              "name": "-MoveCollectionName",
+              "value": "[Path.moveCollectionName]"
             },
             {
-              "value": "[Path.moveResourceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.moveResourceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -115,20 +115,20 @@
           "description": "Deletes a Move Resource from the move collection.",
           "parameters": [
             {
-              "value": "[Path.moveCollectionName]",
-              "name": "-MoveCollectionName"
+              "name": "-MoveCollectionName",
+              "value": "[Path.moveCollectionName]"
             },
             {
-              "value": "[Path.moveResourceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.moveResourceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

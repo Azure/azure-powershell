@@ -27,12 +27,12 @@
           "description": "Gets the specified role assignment schedule instance.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.roleAssignmentScheduleInstanceName]"
+              "value": "[Path.roleAssignmentScheduleInstanceName]",
+              "name": "-Name"
             },
             {
-              "name": "-Scope",
-              "value": "[Path.scope]"
+              "value": "[Path.scope]",
+              "name": "-Scope"
             }
           ]
         }

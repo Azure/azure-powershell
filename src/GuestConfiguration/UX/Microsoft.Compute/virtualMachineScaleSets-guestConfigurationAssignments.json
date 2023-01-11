@@ -29,20 +29,20 @@
           "description": "Get information about a guest configuration assignment for VMSS",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-VmssName",
-              "value": "[Path.vmssName]"
+              "value": "[Path.vmssName]",
+              "name": "-VmssName"
             }
           ]
         }

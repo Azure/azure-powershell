@@ -28,16 +28,16 @@
           "description": "Get a workspace.",
           "parameters": [
             {
-              "value": "[Path.workspaceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.workspaceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Remove a workspace.",
           "parameters": [
             {
-              "value": "[Path.workspaceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.workspaceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

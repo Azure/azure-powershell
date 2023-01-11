@@ -28,16 +28,16 @@
           "description": "Gets the details of the upgrade profile for a managed cluster with a specified resource group and name.",
           "parameters": [
             {
-              "name": "-ClusterName",
-              "value": "[Path.resourceName]"
+              "value": "[Path.resourceName]",
+              "name": "-ClusterName"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Starts a Stopped Managed Cluster",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.resourceName]"
+              "value": "[Path.resourceName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -104,16 +104,16 @@
           "description": "Stops a Running Managed Cluster",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.resourceName]"
+              "value": "[Path.resourceName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

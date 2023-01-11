@@ -27,12 +27,12 @@
           "description": "Gets the specified available ground station.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.groundStationName]"
+              "value": "[Path.groundStationName]",
+              "name": "-Name"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

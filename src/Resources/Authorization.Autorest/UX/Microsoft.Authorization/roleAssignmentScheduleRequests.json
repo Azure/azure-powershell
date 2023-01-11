@@ -27,12 +27,12 @@
           "description": "Get the specified role assignment schedule request.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.roleAssignmentScheduleRequestName]"
+              "value": "[Path.roleAssignmentScheduleRequestName]",
+              "name": "-Name"
             },
             {
-              "name": "-Scope",
-              "value": "[Path.scope]"
+              "value": "[Path.scope]",
+              "name": "-Scope"
             }
           ]
         }
@@ -60,12 +60,12 @@
           "description": "Cancels a pending role assignment schedule request.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.roleAssignmentScheduleRequestName]"
+              "value": "[Path.roleAssignmentScheduleRequestName]",
+              "name": "-Name"
             },
             {
-              "name": "-Scope",
-              "value": "[Path.scope]"
+              "value": "[Path.scope]",
+              "name": "-Scope"
             }
           ]
         }

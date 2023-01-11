@@ -29,20 +29,20 @@
           "description": "Get either a list of all volume groups from an Elastic SAN or get a single volume group from an Elastic SAN.",
           "parameters": [
             {
-              "name": "-ElasticSanName",
-              "value": "[Path.elasticSanName]"
+              "value": "[Path.elasticSanName]",
+              "name": "-ElasticSanName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.volumeGroupName]"
+              "value": "[Path.volumeGroupName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Delete an VolumeGroup.",
           "parameters": [
             {
-              "name": "-ElasticSanName",
-              "value": "[Path.elasticSanName]"
+              "value": "[Path.elasticSanName]",
+              "name": "-ElasticSanName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.volumeGroupName]"
+              "value": "[Path.volumeGroupName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

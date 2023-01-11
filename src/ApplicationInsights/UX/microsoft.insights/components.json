@@ -28,16 +28,16 @@
           "description": "Deletes an Application Insights component.",
           "parameters": [
             {
-              "value": "[Path.resourceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.resourceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

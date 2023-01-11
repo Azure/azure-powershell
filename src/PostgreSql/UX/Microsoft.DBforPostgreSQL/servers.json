@@ -28,16 +28,16 @@
           "description": "Gets information about a server.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.serverName]"
+              "value": "[Path.serverName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes a server.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.serverName]"
+              "value": "[Path.serverName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -104,16 +104,16 @@
           "description": "Restarts a server.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.serverName]"
+              "value": "[Path.serverName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

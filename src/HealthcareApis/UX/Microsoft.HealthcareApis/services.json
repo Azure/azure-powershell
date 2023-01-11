@@ -28,16 +28,16 @@
           "description": "Get the metadata of a service instance.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.resourceName]"
+              "value": "[Path.resourceName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Delete a service instance.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.resourceName]"
+              "value": "[Path.resourceName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

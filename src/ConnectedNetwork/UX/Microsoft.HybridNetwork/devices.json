@@ -28,16 +28,16 @@
           "description": "Gets information about the specified device.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.deviceName]"
+              "value": "[Path.deviceName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes the specified device.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.deviceName]"
+              "value": "[Path.deviceName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

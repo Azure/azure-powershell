@@ -29,20 +29,20 @@
           "description": "Gets the Logz single sign-on resource for the given Monitor.",
           "parameters": [
             {
-              "value": "[Path.configurationName]",
-              "name": "-ConfigurationName"
+              "name": "-ConfigurationName",
+              "value": "[Path.configurationName]"
             },
             {
-              "value": "[Path.monitorName]",
-              "name": "-MonitorName"
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

@@ -28,16 +28,16 @@
           "description": "Get the non-security related metadata of a Windows IoT Device Service.",
           "parameters": [
             {
-              "value": "[Path.deviceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.deviceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Delete a Windows IoT Device Service.",
           "parameters": [
             {
-              "value": "[Path.deviceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.deviceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

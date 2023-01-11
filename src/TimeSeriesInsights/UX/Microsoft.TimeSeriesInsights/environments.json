@@ -28,16 +28,16 @@
           "description": "Gets the environment with the specified name in the specified subscription and resource group.",
           "parameters": [
             {
-              "value": "[Path.environmentName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.environmentName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes the environment with the specified name in the specified subscription and resource group.",
           "parameters": [
             {
-              "value": "[Path.environmentName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.environmentName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

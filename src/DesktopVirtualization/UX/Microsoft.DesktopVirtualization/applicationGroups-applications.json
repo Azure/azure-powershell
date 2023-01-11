@@ -29,20 +29,20 @@
           "description": "Get an application.",
           "parameters": [
             {
-              "value": "[Path.applicationGroupName]",
-              "name": "-GroupName"
+              "name": "-GroupName",
+              "value": "[Path.applicationGroupName]"
             },
             {
-              "value": "[Path.applicationName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.applicationName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Remove an application.",
           "parameters": [
             {
-              "value": "[Path.applicationGroupName]",
-              "name": "-GroupName"
+              "name": "-GroupName",
+              "value": "[Path.applicationGroupName]"
             },
             {
-              "value": "[Path.applicationName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.applicationName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

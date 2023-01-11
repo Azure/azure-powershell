@@ -30,24 +30,24 @@
           "description": "Gets the details of a protection container.",
           "parameters": [
             {
-              "name": "-FabricName",
-              "value": "[Path.fabricName]"
+              "value": "[Path.fabricName]",
+              "name": "-FabricName"
             },
             {
-              "name": "-ProtectionContainerName",
-              "value": "[Path.protectionContainerName]"
+              "value": "[Path.protectionContainerName]",
+              "name": "-ProtectionContainerName"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-ResourceName",
-              "value": "[Path.resourceName]"
+              "value": "[Path.resourceName]",
+              "name": "-ResourceName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

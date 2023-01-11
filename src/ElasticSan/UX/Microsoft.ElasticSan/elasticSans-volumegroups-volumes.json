@@ -30,24 +30,24 @@
           "description": "Get either a list of all volumes from a volume group or get a single volume from a volume group.",
           "parameters": [
             {
-              "name": "-ElasticSanName",
-              "value": "[Path.elasticSanName]"
+              "value": "[Path.elasticSanName]",
+              "name": "-ElasticSanName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.volumeName]"
+              "value": "[Path.volumeName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-VolumeGroupName",
-              "value": "[Path.volumeGroupName]"
+              "value": "[Path.volumeGroupName]",
+              "name": "-VolumeGroupName"
             }
           ]
         }
@@ -78,24 +78,24 @@
           "description": "Delete an Volume.",
           "parameters": [
             {
-              "name": "-ElasticSanName",
-              "value": "[Path.elasticSanName]"
+              "value": "[Path.elasticSanName]",
+              "name": "-ElasticSanName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.volumeName]"
+              "value": "[Path.volumeName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-VolumeGroupName",
-              "value": "[Path.volumeGroupName]"
+              "value": "[Path.volumeGroupName]",
+              "name": "-VolumeGroupName"
             }
           ]
         }

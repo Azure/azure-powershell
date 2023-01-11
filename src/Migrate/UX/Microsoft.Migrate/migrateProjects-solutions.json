@@ -29,20 +29,20 @@
           "description": "Gets a solution in the migrate project.",
           "parameters": [
             {
-              "name": "-MigrateProjectName",
-              "value": "[Path.migrateProjectName]"
+              "value": "[Path.migrateProjectName]",
+              "name": "-MigrateProjectName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.solutionName]"
+              "value": "[Path.solutionName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

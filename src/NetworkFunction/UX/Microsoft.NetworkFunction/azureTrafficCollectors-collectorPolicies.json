@@ -29,20 +29,20 @@
           "description": "Gets the collector policy in a specified Traffic Collector",
           "parameters": [
             {
-              "value": "[Path.azureTrafficCollectorName]",
-              "name": "-AzureTrafficCollectorName"
+              "name": "-AzureTrafficCollectorName",
+              "value": "[Path.azureTrafficCollectorName]"
             },
             {
-              "value": "[Path.collectorPolicyName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.collectorPolicyName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Deletes a specified Collector Policy resource.",
           "parameters": [
             {
-              "value": "[Path.azureTrafficCollectorName]",
-              "name": "-AzureTrafficCollectorName"
+              "name": "-AzureTrafficCollectorName",
+              "value": "[Path.azureTrafficCollectorName]"
             },
             {
-              "value": "[Path.collectorPolicyName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.collectorPolicyName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

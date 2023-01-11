@@ -28,16 +28,16 @@
           "description": "Get a specific Application Insights web test definition.",
           "parameters": [
             {
-              "value": "[Path.webTestName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.webTestName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes an Application Insights web test.",
           "parameters": [
             {
-              "value": "[Path.webTestName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.webTestName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

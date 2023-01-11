@@ -27,12 +27,12 @@
           "description": "Get the current usage of a resource.",
           "parameters": [
             {
-              "value": "[Path.resourceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.resourceName]"
             },
             {
-              "value": "[Path.scope]",
-              "name": "-Scope"
+              "name": "-Scope",
+              "value": "[Path.scope]"
             }
           ]
         }

@@ -29,20 +29,20 @@
           "description": "Gets an Event Hubs description for the specified Event Hub.",
           "parameters": [
             {
-              "value": "[Path.eventHubName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.eventHubName]"
             },
             {
-              "value": "[Path.namespaceName]",
-              "name": "-NamespaceName"
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Deletes an Event Hub from the specified Namespace and resource group.",
           "parameters": [
             {
-              "value": "[Path.eventHubName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.eventHubName]"
             },
             {
-              "value": "[Path.namespaceName]",
-              "name": "-NamespaceName"
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

@@ -30,24 +30,24 @@
           "description": "Get a report for the guest configuration assignment, by reportId.",
           "parameters": [
             {
-              "name": "-GuestConfigurationAssignmentName",
-              "value": "[Path.guestConfigurationAssignmentName]"
+              "value": "[Path.guestConfigurationAssignmentName]",
+              "name": "-GuestConfigurationAssignmentName"
             },
             {
-              "name": "-MachineName",
-              "value": "[Path.machineName]"
+              "value": "[Path.machineName]",
+              "name": "-MachineName"
             },
             {
-              "name": "-ReportId",
-              "value": "[Path.reportId]"
+              "value": "[Path.reportId]",
+              "name": "-ReportId"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

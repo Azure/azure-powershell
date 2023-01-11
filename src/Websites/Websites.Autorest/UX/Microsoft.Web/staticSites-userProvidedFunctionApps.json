@@ -29,20 +29,20 @@
           "description": "Description for Register a user provided function app with a static site",
           "parameters": [
             {
-              "name": "-FunctionAppName",
-              "value": "[Path.functionAppName]"
+              "value": "[Path.functionAppName]",
+              "name": "-FunctionAppName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Description for Detach the user provided function app from the static site",
           "parameters": [
             {
-              "name": "-FunctionAppName",
-              "value": "[Path.functionAppName]"
+              "value": "[Path.functionAppName]",
+              "name": "-FunctionAppName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

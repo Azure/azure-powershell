@@ -29,20 +29,20 @@
           "description": "Get a msixpackage.",
           "parameters": [
             {
-              "value": "[Path.msixPackageFullName]",
-              "name": "-FullName"
+              "name": "-FullName",
+              "value": "[Path.msixPackageFullName]"
             },
             {
-              "value": "[Path.hostPoolName]",
-              "name": "-HostPoolName"
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Remove an MSIX Package.",
           "parameters": [
             {
-              "value": "[Path.msixPackageFullName]",
-              "name": "-FullName"
+              "name": "-FullName",
+              "value": "[Path.msixPackageFullName]"
             },
             {
-              "value": "[Path.hostPoolName]",
-              "name": "-HostPoolName"
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

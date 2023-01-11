@@ -29,20 +29,20 @@
           "description": "Get a session host.",
           "parameters": [
             {
-              "value": "[Path.hostPoolName]",
-              "name": "-HostPoolName"
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
             },
             {
-              "value": "[Path.sessionHostName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.sessionHostName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Remove a SessionHost.",
           "parameters": [
             {
-              "value": "[Path.hostPoolName]",
-              "name": "-HostPoolName"
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
             },
             {
-              "value": "[Path.sessionHostName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.sessionHostName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

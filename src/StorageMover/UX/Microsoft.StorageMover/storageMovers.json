@@ -28,16 +28,16 @@
           "description": "Gets a Storage Mover resource.",
           "parameters": [
             {
-              "value": "[Path.storageMoverName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.storageMoverName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes a Storage Mover resource.",
           "parameters": [
             {
-              "value": "[Path.storageMoverName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.storageMoverName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

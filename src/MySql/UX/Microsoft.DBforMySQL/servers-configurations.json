@@ -29,20 +29,20 @@
           "description": "Gets information about a configuration of server.",
           "parameters": [
             {
-              "value": "[Path.configurationName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.configurationName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.serverName]",
-              "name": "-ServerName"
+              "name": "-ServerName",
+              "value": "[Path.serverName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

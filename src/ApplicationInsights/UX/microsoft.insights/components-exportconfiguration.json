@@ -29,20 +29,20 @@
           "description": "Get the Continuous Export configuration for this export id.",
           "parameters": [
             {
-              "value": "[Path.exportId]",
-              "name": "-ExportId"
+              "name": "-ExportId",
+              "value": "[Path.exportId]"
             },
             {
-              "value": "[Path.resourceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.resourceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Delete a Continuous Export configuration of an Application Insights component.",
           "parameters": [
             {
-              "value": "[Path.exportId]",
-              "name": "-ExportId"
+              "name": "-ExportId",
+              "value": "[Path.exportId]"
             },
             {
-              "value": "[Path.resourceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.resourceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

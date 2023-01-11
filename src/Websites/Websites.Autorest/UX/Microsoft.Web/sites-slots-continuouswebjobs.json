@@ -30,24 +30,24 @@
           "description": "Get or list continuous web for a deployment slot.",
           "parameters": [
             {
-              "name": "-AppName",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-AppName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.webJobName]"
+              "value": "[Path.webJobName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SlotName",
-              "value": "[Path.slot]"
+              "value": "[Path.slot]",
+              "name": "-SlotName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -78,24 +78,24 @@
           "description": "Delete a continuous web job for a deployment slot.",
           "parameters": [
             {
-              "name": "-AppName",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-AppName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.webJobName]"
+              "value": "[Path.webJobName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SlotName",
-              "value": "[Path.slot]"
+              "value": "[Path.slot]",
+              "name": "-SlotName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -126,24 +126,24 @@
           "description": "Start a continuous web job for a deployment slot.",
           "parameters": [
             {
-              "name": "-AppName",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-AppName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.webJobName]"
+              "value": "[Path.webJobName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SlotName",
-              "value": "[Path.slot]"
+              "value": "[Path.slot]",
+              "name": "-SlotName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -174,24 +174,24 @@
           "description": "Stop a continuous web job for a deployment slot.",
           "parameters": [
             {
-              "name": "-AppName",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-AppName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.webJobName]"
+              "value": "[Path.webJobName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SlotName",
-              "value": "[Path.slot]"
+              "value": "[Path.slot]",
+              "name": "-SlotName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

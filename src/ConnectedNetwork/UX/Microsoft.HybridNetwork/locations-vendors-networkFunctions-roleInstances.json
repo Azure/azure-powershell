@@ -30,24 +30,24 @@
           "description": "Gets the information of role instance of vendor network function.",
           "parameters": [
             {
-              "name": "-LocationName",
-              "value": "[Path.locationName]"
+              "value": "[Path.locationName]",
+              "name": "-LocationName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.roleInstanceName]"
+              "value": "[Path.roleInstanceName]",
+              "name": "-Name"
             },
             {
-              "name": "-ServiceKey",
-              "value": "[Path.serviceKey]"
+              "value": "[Path.serviceKey]",
+              "name": "-ServiceKey"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-VendorName",
-              "value": "[Path.vendorName]"
+              "value": "[Path.vendorName]",
+              "name": "-VendorName"
             }
           ]
         }
@@ -78,24 +78,24 @@
           "description": "Restarts a role instance of a vendor network function.",
           "parameters": [
             {
-              "name": "-LocationName",
-              "value": "[Path.locationName]"
+              "value": "[Path.locationName]",
+              "name": "-LocationName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.roleInstanceName]"
+              "value": "[Path.roleInstanceName]",
+              "name": "-Name"
             },
             {
-              "name": "-ServiceKey",
-              "value": "[Path.serviceKey]"
+              "value": "[Path.serviceKey]",
+              "name": "-ServiceKey"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-VendorName",
-              "value": "[Path.vendorName]"
+              "value": "[Path.vendorName]",
+              "name": "-VendorName"
             }
           ]
         }
@@ -126,24 +126,24 @@
           "description": "Starts a role instance of a vendor network function.",
           "parameters": [
             {
-              "name": "-LocationName",
-              "value": "[Path.locationName]"
+              "value": "[Path.locationName]",
+              "name": "-LocationName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.roleInstanceName]"
+              "value": "[Path.roleInstanceName]",
+              "name": "-Name"
             },
             {
-              "name": "-ServiceKey",
-              "value": "[Path.serviceKey]"
+              "value": "[Path.serviceKey]",
+              "name": "-ServiceKey"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-VendorName",
-              "value": "[Path.vendorName]"
+              "value": "[Path.vendorName]",
+              "name": "-VendorName"
             }
           ]
         }
@@ -174,24 +174,24 @@
           "description": "Powers off (stop) a role instance of a vendor network function.",
           "parameters": [
             {
-              "name": "-LocationName",
-              "value": "[Path.locationName]"
+              "value": "[Path.locationName]",
+              "name": "-LocationName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.roleInstanceName]"
+              "value": "[Path.roleInstanceName]",
+              "name": "-Name"
             },
             {
-              "name": "-ServiceKey",
-              "value": "[Path.serviceKey]"
+              "value": "[Path.serviceKey]",
+              "name": "-ServiceKey"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-VendorName",
-              "value": "[Path.vendorName]"
+              "value": "[Path.vendorName]",
+              "name": "-VendorName"
             }
           ]
         }

@@ -27,12 +27,12 @@
           "description": "Get the default provider by location.",
           "parameters": [
             {
-              "value": "[Path.location]",
-              "name": "-Location"
+              "name": "-Location",
+              "value": "[Path.location]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

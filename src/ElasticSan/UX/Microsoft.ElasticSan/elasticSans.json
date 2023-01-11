@@ -28,16 +28,16 @@
           "description": "Get either a list of Elastic SANs from a subscription or a resource group, or get a single Elastic SAN.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.elasticSanName]"
+              "value": "[Path.elasticSanName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Delete a Elastic San.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.elasticSanName]"
+              "value": "[Path.elasticSanName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

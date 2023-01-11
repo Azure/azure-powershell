@@ -29,20 +29,20 @@
           "description": "Returns the properties of a lab user.",
           "parameters": [
             {
-              "value": "[Path.labName]",
-              "name": "-LabName"
+              "name": "-LabName",
+              "value": "[Path.labName]"
             },
             {
-              "value": "[Path.userName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.userName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Operation to delete a user resource.",
           "parameters": [
             {
-              "value": "[Path.labName]",
-              "name": "-LabName"
+              "name": "-LabName",
+              "value": "[Path.labName]"
             },
             {
-              "value": "[Path.userName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.userName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -115,20 +115,20 @@
           "description": "Operation to invite a user to a lab.",
           "parameters": [
             {
-              "value": "[Path.labName]",
-              "name": "-LabName"
+              "name": "-LabName",
+              "value": "[Path.labName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.userName]",
-              "name": "-UserName"
+              "name": "-UserName",
+              "value": "[Path.userName]"
             }
           ]
         }

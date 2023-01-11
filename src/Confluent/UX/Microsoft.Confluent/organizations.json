@@ -28,16 +28,16 @@
           "description": "Get the properties of a specific Organization resource.",
           "parameters": [
             {
-              "value": "[Path.organizationName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.organizationName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

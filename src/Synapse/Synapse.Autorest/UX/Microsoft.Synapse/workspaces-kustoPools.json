@@ -29,20 +29,20 @@
           "description": "Add a list of language extensions that can run within KQL queries.",
           "parameters": [
             {
-              "value": "[Path.kustoPoolName]",
-              "name": "-KustoPoolName"
+              "name": "-KustoPoolName",
+              "value": "[Path.kustoPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.workspaceName]",
-              "name": "-WorkspaceName"
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Gets a Kusto pool.",
           "parameters": [
             {
-              "value": "[Path.kustoPoolName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.kustoPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.workspaceName]",
-              "name": "-WorkspaceName"
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
             }
           ]
         }
@@ -115,20 +115,20 @@
           "description": "Detaches all followers of a database owned by this Kusto Pool.",
           "parameters": [
             {
-              "value": "[Path.kustoPoolName]",
-              "name": "-KustoPoolName"
+              "name": "-KustoPoolName",
+              "value": "[Path.kustoPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.workspaceName]",
-              "name": "-WorkspaceName"
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
             }
           ]
         }
@@ -158,20 +158,20 @@
           "description": "Remove a list of language extensions that can run within KQL queries.",
           "parameters": [
             {
-              "value": "[Path.kustoPoolName]",
-              "name": "-KustoPoolName"
+              "name": "-KustoPoolName",
+              "value": "[Path.kustoPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.workspaceName]",
-              "name": "-WorkspaceName"
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
             }
           ]
         }
@@ -201,20 +201,20 @@
           "description": "Deletes a Kusto pool.",
           "parameters": [
             {
-              "value": "[Path.kustoPoolName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.kustoPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.workspaceName]",
-              "name": "-WorkspaceName"
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
             }
           ]
         }
@@ -244,20 +244,20 @@
           "description": "Starts a Kusto pool.",
           "parameters": [
             {
-              "value": "[Path.kustoPoolName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.kustoPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.workspaceName]",
-              "name": "-WorkspaceName"
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
             }
           ]
         }
@@ -287,20 +287,20 @@
           "description": "Stops a Kusto pool.",
           "parameters": [
             {
-              "value": "[Path.kustoPoolName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.kustoPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.workspaceName]",
-              "name": "-WorkspaceName"
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
             }
           ]
         }

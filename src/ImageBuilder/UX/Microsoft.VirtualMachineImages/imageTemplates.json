@@ -28,16 +28,16 @@
           "description": "Get information about a virtual machine image template",
           "parameters": [
             {
-              "value": "[Path.imageTemplateName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.imageTemplateName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Delete a virtual machine image template",
           "parameters": [
             {
-              "value": "[Path.imageTemplateName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.imageTemplateName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -104,16 +104,16 @@
           "description": "Create artifacts from a existing image template",
           "parameters": [
             {
-              "value": "[Path.imageTemplateName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.imageTemplateName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -142,16 +142,16 @@
           "description": "Cancel the long running image build based on the image template",
           "parameters": [
             {
-              "value": "[Path.imageTemplateName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.imageTemplateName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

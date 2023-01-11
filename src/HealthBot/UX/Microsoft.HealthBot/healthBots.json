@@ -28,16 +28,16 @@
           "description": "Get a HealthBot.",
           "parameters": [
             {
-              "value": "[Path.botName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.botName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Delete a HealthBot.",
           "parameters": [
             {
-              "value": "[Path.botName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.botName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

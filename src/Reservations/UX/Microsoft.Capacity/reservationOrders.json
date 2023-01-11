@@ -15,17 +15,21 @@
         },
         "parameterSets": [
           {
-            "parameters": "-Id <String>"
+            "parameters": [
+              "-Id <String>"
+            ]
           }
         ]
       },
       "examples": [
         {
           "description": "Get the details of the `ReservationOrder`.",
-          "parameters": {
-            "value": "[Path.reservationOrderId]",
-            "name": "-Id"
-          }
+          "parameters": [
+            {
+              "value": "[Path.reservationOrderId]",
+              "name": "-Id"
+            }
+          ]
         }
       ]
     },
@@ -39,27 +43,35 @@
         },
         "parameterSets": [
           {
-            "parameters": "-ReservationOrderId <String>"
+            "parameters": [
+              "-ReservationOrderId <String>"
+            ]
           },
           {
-            "parameters": "-ReservationOrderId <String>"
+            "parameters": [
+              "-ReservationOrderId <String>"
+            ]
           }
         ]
       },
       "examples": [
         {
           "description": "Calculate price for returning `Reservations` if there are no policy errors.\\n",
-          "parameters": {
-            "value": "[Path.reservationOrderId]",
-            "name": "-ReservationOrderId"
-          }
+          "parameters": [
+            {
+              "value": "[Path.reservationOrderId]",
+              "name": "-ReservationOrderId"
+            }
+          ]
         },
         {
           "description": "Calculate price for returning `Reservations` if there are no policy errors.\\n",
-          "parameters": {
-            "value": "[Path.reservationOrderId]",
-            "name": "-ReservationOrderId"
-          }
+          "parameters": [
+            {
+              "value": "[Path.reservationOrderId]",
+              "name": "-ReservationOrderId"
+            }
+          ]
         }
       ]
     },
@@ -73,27 +85,35 @@
         },
         "parameterSets": [
           {
-            "parameters": "-ReservationOrderId <String>"
+            "parameters": [
+              "-ReservationOrderId <String>"
+            ]
           },
           {
-            "parameters": "-ReservationOrderId <String>"
+            "parameters": [
+              "-ReservationOrderId <String>"
+            ]
           }
         ]
       },
       "examples": [
         {
           "description": "Return a reservation.",
-          "parameters": {
-            "value": "[Path.reservationOrderId]",
-            "name": "-ReservationOrderId"
-          }
+          "parameters": [
+            {
+              "value": "[Path.reservationOrderId]",
+              "name": "-ReservationOrderId"
+            }
+          ]
         },
         {
           "description": "Return a reservation.",
-          "parameters": {
-            "value": "[Path.reservationOrderId]",
-            "name": "-ReservationOrderId"
-          }
+          "parameters": [
+            {
+              "value": "[Path.reservationOrderId]",
+              "name": "-ReservationOrderId"
+            }
+          ]
         }
       ]
     },
@@ -107,27 +127,35 @@
         },
         "parameterSets": [
           {
-            "parameters": "-ReservationOrderId <String>"
+            "parameters": [
+              "-ReservationOrderId <String>"
+            ]
           },
           {
-            "parameters": "-ReservationOrderId <String>"
+            "parameters": [
+              "-ReservationOrderId <String>"
+            ]
           }
         ]
       },
       "examples": [
         {
           "description": "Change directory (tenant) of `ReservationOrder` and all `Reservation` under it to specified tenant id",
-          "parameters": {
-            "value": "[Path.reservationOrderId]",
-            "name": "-ReservationOrderId"
-          }
+          "parameters": [
+            {
+              "value": "[Path.reservationOrderId]",
+              "name": "-ReservationOrderId"
+            }
+          ]
         },
         {
           "description": "Change directory (tenant) of `ReservationOrder` and all `Reservation` under it to specified tenant id",
-          "parameters": {
-            "value": "[Path.reservationOrderId]",
-            "name": "-ReservationOrderId"
-          }
+          "parameters": [
+            {
+              "value": "[Path.reservationOrderId]",
+              "name": "-ReservationOrderId"
+            }
+          ]
         }
       ]
     }

@@ -29,20 +29,20 @@
           "description": "Gets the properties of the specified DICOM Service.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.dicomServiceName]"
+              "value": "[Path.dicomServiceName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-WorkspaceName",
-              "value": "[Path.workspaceName]"
+              "value": "[Path.workspaceName]",
+              "name": "-WorkspaceName"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Deletes a DICOM Service.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.dicomServiceName]"
+              "value": "[Path.dicomServiceName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-WorkspaceName",
-              "value": "[Path.workspaceName]"
+              "value": "[Path.workspaceName]",
+              "name": "-WorkspaceName"
             }
           ]
         }

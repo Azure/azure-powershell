@@ -30,24 +30,24 @@
           "description": "Gets a description for the specified consumer group.",
           "parameters": [
             {
-              "value": "[Path.eventHubName]",
-              "name": "-EventHubName"
+              "name": "-EventHubName",
+              "value": "[Path.eventHubName]"
             },
             {
-              "value": "[Path.consumerGroupName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.consumerGroupName]"
             },
             {
-              "value": "[Path.namespaceName]",
-              "name": "-NamespaceName"
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -78,24 +78,24 @@
           "description": "Deletes a consumer group from the specified Event Hub and resource group.",
           "parameters": [
             {
-              "value": "[Path.eventHubName]",
-              "name": "-EventHubName"
+              "name": "-EventHubName",
+              "value": "[Path.eventHubName]"
             },
             {
-              "value": "[Path.consumerGroupName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.consumerGroupName]"
             },
             {
-              "value": "[Path.namespaceName]",
-              "name": "-NamespaceName"
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

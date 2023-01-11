@@ -29,20 +29,20 @@
           "description": "Get information about a guest configuration assignment",
           "parameters": [
             {
-              "name": "-MachineName",
-              "value": "[Path.machineName]"
+              "value": "[Path.machineName]",
+              "name": "-MachineName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.guestConfigurationAssignmentName]"
+              "value": "[Path.guestConfigurationAssignmentName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

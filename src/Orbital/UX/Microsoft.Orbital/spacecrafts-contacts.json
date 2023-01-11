@@ -29,20 +29,20 @@
           "description": "Gets the specified contact in a specified resource group.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.contactName]"
+              "value": "[Path.contactName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SpacecraftName",
-              "value": "[Path.spacecraftName]"
+              "value": "[Path.spacecraftName]",
+              "name": "-SpacecraftName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Deletes a specified contact.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.contactName]"
+              "value": "[Path.contactName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SpacecraftName",
-              "value": "[Path.spacecraftName]"
+              "value": "[Path.spacecraftName]",
+              "name": "-SpacecraftName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

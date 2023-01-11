@@ -29,20 +29,20 @@
           "description": "Gets a description for the specified Private Endpoint Connection name.",
           "parameters": [
             {
-              "value": "[Path.privateEndpointConnectionName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.privateEndpointConnectionName]"
             },
             {
-              "value": "[Path.namespaceName]",
-              "name": "-NamespaceName"
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Deletes a Private Endpoint Connection.",
           "parameters": [
             {
-              "value": "[Path.privateEndpointConnectionName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.privateEndpointConnectionName]"
             },
             {
-              "value": "[Path.namespaceName]",
-              "name": "-NamespaceName"
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

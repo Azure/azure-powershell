@@ -28,16 +28,16 @@
           "description": "Gets an Azure BareMetal instance for the specified subscription, resource group, and instance name.",
           "parameters": [
             {
-              "value": "[Path.azureBareMetalInstanceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.azureBareMetalInstanceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

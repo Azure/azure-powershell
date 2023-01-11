@@ -29,20 +29,20 @@
           "description": "Get a sub account under a given monitor resource.",
           "parameters": [
             {
-              "value": "[Path.monitorName]",
-              "name": "-MonitorName"
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
             },
             {
-              "value": "[Path.subAccountName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.subAccountName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Returns the payload that needs to be passed as a request for installing Logz.io agent on a VM.",
           "parameters": [
             {
-              "value": "[Path.monitorName]",
-              "name": "-MonitorName"
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subAccountName]",
-              "name": "-SubAccountName"
+              "name": "-SubAccountName",
+              "value": "[Path.subAccountName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -115,20 +115,20 @@
           "description": "Delete a sub account resource. This delete operation can take upto 10 minutes to complete.",
           "parameters": [
             {
-              "value": "[Path.monitorName]",
-              "name": "-MonitorName"
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
             },
             {
-              "value": "[Path.subAccountName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.subAccountName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

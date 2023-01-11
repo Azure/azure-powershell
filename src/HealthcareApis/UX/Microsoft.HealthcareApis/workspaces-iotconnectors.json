@@ -29,20 +29,20 @@
           "description": "Gets the properties of the specified IoT Connector.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.iotConnectorName]"
+              "value": "[Path.iotConnectorName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-WorkspaceName",
-              "value": "[Path.workspaceName]"
+              "value": "[Path.workspaceName]",
+              "name": "-WorkspaceName"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Deletes an IoT Connector.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.iotConnectorName]"
+              "value": "[Path.iotConnectorName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-WorkspaceName",
-              "value": "[Path.workspaceName]"
+              "value": "[Path.workspaceName]",
+              "name": "-WorkspaceName"
             }
           ]
         }

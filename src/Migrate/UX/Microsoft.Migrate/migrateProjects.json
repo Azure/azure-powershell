@@ -28,16 +28,16 @@
           "description": "Method to get a migrate project.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.migrateProjectName]"
+              "value": "[Path.migrateProjectName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Registers a tool with the migrate project.",
           "parameters": [
             {
-              "name": "-MigrateProjectName",
-              "value": "[Path.migrateProjectName]"
+              "value": "[Path.migrateProjectName]",
+              "name": "-MigrateProjectName"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -104,16 +104,16 @@
           "description": "Delete the migrate project. Deleting non-existent project is a no-operation.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.migrateProjectName]"
+              "value": "[Path.migrateProjectName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

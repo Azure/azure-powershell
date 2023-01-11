@@ -29,20 +29,20 @@
           "description": "Gets the details of the upgrade profile for an agent pool with a specified resource group and managed cluster name.",
           "parameters": [
             {
-              "name": "-ClusterName",
-              "value": "[Path.resourceName]"
+              "value": "[Path.resourceName]",
+              "name": "-ClusterName"
             },
             {
-              "name": "-NodePoolName",
-              "value": "[Path.agentPoolName]"
+              "value": "[Path.agentPoolName]",
+              "name": "-NodePoolName"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

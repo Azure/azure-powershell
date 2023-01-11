@@ -29,20 +29,20 @@
           "description": "Get the API Key for this key id.",
           "parameters": [
             {
-              "value": "[Path.keyId]",
-              "name": "-ApiKeyId"
+              "name": "-ApiKeyId",
+              "value": "[Path.keyId]"
             },
             {
-              "value": "[Path.resourceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.resourceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Delete an API Key of an Application Insights component.",
           "parameters": [
             {
-              "value": "[Path.keyId]",
-              "name": "-ApiKeyId"
+              "name": "-ApiKeyId",
+              "value": "[Path.keyId]"
             },
             {
-              "value": "[Path.resourceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.resourceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

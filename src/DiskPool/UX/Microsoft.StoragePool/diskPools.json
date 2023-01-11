@@ -28,16 +28,16 @@
           "description": "Get a Disk pool.",
           "parameters": [
             {
-              "value": "[Path.diskPoolName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.diskPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Upgrade replaces the underlying virtual machine hosts one at a time. This operation can take 10-15 minutes to complete. This is expected service behavior.",
           "parameters": [
             {
-              "value": "[Path.diskPoolName]",
-              "name": "-DiskPoolName"
+              "name": "-DiskPoolName",
+              "value": "[Path.diskPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -104,16 +104,16 @@
           "description": "Delete a Disk pool; attached disks are not affected. This delete operation can take 10 minutes to complete. This is expected service behavior.",
           "parameters": [
             {
-              "value": "[Path.diskPoolName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.diskPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -142,16 +142,16 @@
           "description": "The operation to start a Disk Pool. This start operation can take 10 minutes to complete. This is expected service behavior.",
           "parameters": [
             {
-              "value": "[Path.diskPoolName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.diskPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -180,16 +180,16 @@
           "description": "Shuts down the Disk Pool and releases the compute resources. You are not billed for the compute resources that this Disk Pool uses. This operation can take 10 minutes to complete. This is expected service behavior.",
           "parameters": [
             {
-              "value": "[Path.diskPoolName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.diskPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

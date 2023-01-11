@@ -29,20 +29,20 @@
           "description": "Gets a backup policy belonging to a backup vault",
           "parameters": [
             {
-              "value": "[Path.backupPolicyName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.backupPolicyName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.vaultName]",
-              "name": "-VaultName"
+              "name": "-VaultName",
+              "value": "[Path.vaultName]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Deletes a backup policy belonging to a backup vault",
           "parameters": [
             {
-              "value": "[Path.backupPolicyName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.backupPolicyName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.vaultName]",
-              "name": "-VaultName"
+              "name": "-VaultName",
+              "value": "[Path.vaultName]"
             }
           ]
         }

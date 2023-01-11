@@ -27,12 +27,12 @@
           "description": "Gets the diagnostic settings category for the specified resource.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceId",
-              "value": "[Path.resourceUri]"
+              "value": "[Path.resourceUri]",
+              "name": "-ResourceId"
             }
           ]
         }

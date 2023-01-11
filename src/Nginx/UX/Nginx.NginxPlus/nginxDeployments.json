@@ -28,16 +28,16 @@
           "description": "Get the Nginx deployment",
           "parameters": [
             {
-              "value": "[Path.deploymentName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.deploymentName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Delete the Nginx deployment resource",
           "parameters": [
             {
-              "value": "[Path.deploymentName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.deploymentName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

@@ -29,20 +29,20 @@
           "description": "Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace",
           "parameters": [
             {
-              "value": "[Path.alias]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.alias]"
             },
             {
-              "value": "[Path.namespaceName]",
-              "name": "-NamespaceName"
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Deletes an Alias(Disaster Recovery configuration)",
           "parameters": [
             {
-              "value": "[Path.alias]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.alias]"
             },
             {
-              "value": "[Path.namespaceName]",
-              "name": "-NamespaceName"
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

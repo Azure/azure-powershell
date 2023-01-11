@@ -28,16 +28,16 @@
           "description": "Get a scaling plan.",
           "parameters": [
             {
-              "value": "[Path.scalingPlanName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.scalingPlanName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Remove a scaling plan.",
           "parameters": [
             {
-              "value": "[Path.scalingPlanName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.scalingPlanName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

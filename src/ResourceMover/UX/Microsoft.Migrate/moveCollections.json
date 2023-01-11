@@ -28,16 +28,16 @@
           "description": "Gets the move collection.",
           "parameters": [
             {
-              "value": "[Path.moveCollectionName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.moveCollectionName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Gets a list of unresolved dependencies.",
           "parameters": [
             {
-              "value": "[Path.moveCollectionName]",
-              "name": "-MoveCollectionName"
+              "name": "-MoveCollectionName",
+              "value": "[Path.moveCollectionName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -104,16 +104,16 @@
           "description": "Removes the set of move resources included in the request body from move collection. The orchestration is done by service. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.",
           "parameters": [
             {
-              "value": "[Path.moveCollectionName]",
-              "name": "-MoveCollectionName"
+              "name": "-MoveCollectionName",
+              "value": "[Path.moveCollectionName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -142,16 +142,16 @@
           "description": "Commits the set of resources included in the request body. The commit operation is triggered on the moveResources in the moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to Committed. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.",
           "parameters": [
             {
-              "value": "[Path.moveCollectionName]",
-              "name": "-MoveCollectionName"
+              "name": "-MoveCollectionName",
+              "value": "[Path.moveCollectionName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -180,16 +180,16 @@
           "description": "Discards the set of resources included in the request body. The discard operation is triggered on the moveResources in the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition to MovePending. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.",
           "parameters": [
             {
-              "value": "[Path.moveCollectionName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.moveCollectionName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -218,16 +218,16 @@
           "description": "Moves the set of resources included in the request body. The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.",
           "parameters": [
             {
-              "value": "[Path.moveCollectionName]",
-              "name": "-MoveCollectionName"
+              "name": "-MoveCollectionName",
+              "value": "[Path.moveCollectionName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -256,16 +256,16 @@
           "description": "Initiates prepare for the set of resources included in the request body. The prepare operation is on the moveResources that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do a transition to MovePending. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.",
           "parameters": [
             {
-              "value": "[Path.moveCollectionName]",
-              "name": "-MoveCollectionName"
+              "name": "-MoveCollectionName",
+              "value": "[Path.moveCollectionName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -294,16 +294,16 @@
           "description": "Deletes a move collection.",
           "parameters": [
             {
-              "value": "[Path.moveCollectionName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.moveCollectionName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -332,16 +332,16 @@
           "description": "Computes, resolves and validate the dependencies of the moveResources in the move collection.",
           "parameters": [
             {
-              "value": "[Path.moveCollectionName]",
-              "name": "-MoveCollectionName"
+              "name": "-MoveCollectionName",
+              "value": "[Path.moveCollectionName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

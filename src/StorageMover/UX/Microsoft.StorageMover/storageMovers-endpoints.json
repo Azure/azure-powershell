@@ -29,20 +29,20 @@
           "description": "Gets an Endpoint resource.",
           "parameters": [
             {
-              "value": "[Path.endpointName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.endpointName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.storageMoverName]",
-              "name": "-StorageMoverName"
+              "name": "-StorageMoverName",
+              "value": "[Path.storageMoverName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Deletes an Endpoint resource.",
           "parameters": [
             {
-              "value": "[Path.endpointName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.endpointName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.storageMoverName]",
-              "name": "-StorageMoverName"
+              "name": "-StorageMoverName",
+              "value": "[Path.storageMoverName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

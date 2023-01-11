@@ -28,16 +28,16 @@
           "description": "Get an application group.",
           "parameters": [
             {
-              "value": "[Path.applicationGroupName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.applicationGroupName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Remove an applicationGroup.",
           "parameters": [
             {
-              "value": "[Path.applicationGroupName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.applicationGroupName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

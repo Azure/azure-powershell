@@ -29,20 +29,20 @@
           "description": "Gets an image resource.",
           "parameters": [
             {
-              "value": "[Path.labPlanName]",
-              "name": "-LabPlanName"
+              "name": "-LabPlanName",
+              "value": "[Path.labPlanName]"
             },
             {
-              "value": "[Path.imageName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.imageName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

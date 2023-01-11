@@ -28,16 +28,16 @@
           "description": "Gets the specified spacecraft in a specified resource group.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.spacecraftName]"
+              "value": "[Path.spacecraftName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes a specified spacecraft resource.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.spacecraftName]"
+              "value": "[Path.spacecraftName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

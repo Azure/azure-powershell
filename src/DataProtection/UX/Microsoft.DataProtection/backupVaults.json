@@ -28,16 +28,16 @@
           "description": "Returns a resource belonging to a resource group.",
           "parameters": [
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.vaultName]",
-              "name": "-VaultName"
+              "name": "-VaultName",
+              "value": "[Path.vaultName]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes a BackupVault resource from the resource group.",
           "parameters": [
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.vaultName]",
-              "name": "-VaultName"
+              "name": "-VaultName",
+              "value": "[Path.vaultName]"
             }
           ]
         }
@@ -111,16 +111,16 @@
           "description": "Validate whether adhoc backup will be successful or not",
           "parameters": [
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.vaultName]",
-              "name": "-VaultName"
+              "name": "-VaultName",
+              "value": "[Path.vaultName]"
             }
           ]
         },
@@ -128,16 +128,16 @@
           "description": "Validate whether adhoc backup will be successful or not",
           "parameters": [
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.vaultName]",
-              "name": "-VaultName"
+              "name": "-VaultName",
+              "value": "[Path.vaultName]"
             }
           ]
         }

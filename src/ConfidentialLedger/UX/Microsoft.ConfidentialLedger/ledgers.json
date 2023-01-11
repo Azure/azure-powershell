@@ -28,16 +28,16 @@
           "description": "Retrieves the properties of a Confidential Ledger.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.ledgerName]"
+              "value": "[Path.ledgerName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes an existing Confidential Ledger.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.ledgerName]"
+              "value": "[Path.ledgerName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

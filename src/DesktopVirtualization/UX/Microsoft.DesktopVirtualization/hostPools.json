@@ -35,16 +35,16 @@
           "description": "Expands and Lists MSIX packages in an Image, given the Image Path.",
           "parameters": [
             {
-              "value": "[Path.hostPoolName]",
-              "name": "-HostPoolName"
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         },
@@ -52,16 +52,16 @@
           "description": "Expands and Lists MSIX packages in an Image, given the Image Path.",
           "parameters": [
             {
-              "value": "[Path.hostPoolName]",
-              "name": "-HostPoolName"
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -90,16 +90,16 @@
           "description": "Registration token of the host pool.",
           "parameters": [
             {
-              "value": "[Path.hostPoolName]",
-              "name": "-HostPoolName"
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -128,16 +128,16 @@
           "description": "Get a host pool.",
           "parameters": [
             {
-              "value": "[Path.hostPoolName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.hostPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -166,16 +166,16 @@
           "description": "Remove a host pool.",
           "parameters": [
             {
-              "value": "[Path.hostPoolName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.hostPoolName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

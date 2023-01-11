@@ -29,20 +29,20 @@
           "description": "Returns the properties for a lab virtual machine.",
           "parameters": [
             {
-              "value": "[Path.labName]",
-              "name": "-LabName"
+              "name": "-LabName",
+              "value": "[Path.labName]"
             },
             {
-              "value": "[Path.virtualMachineName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.virtualMachineName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Resets a lab virtual machine password.",
           "parameters": [
             {
-              "value": "[Path.labName]",
-              "name": "-LabName"
+              "name": "-LabName",
+              "value": "[Path.labName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.virtualMachineName]",
-              "name": "-VirtualMachineName"
+              "name": "-VirtualMachineName",
+              "value": "[Path.virtualMachineName]"
             }
           ]
         }
@@ -115,20 +115,20 @@
           "description": "Action to redeploy a lab virtual machine to a different compute node. For troubleshooting connectivity.",
           "parameters": [
             {
-              "value": "[Path.labName]",
-              "name": "-LabName"
+              "name": "-LabName",
+              "value": "[Path.labName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.virtualMachineName]",
-              "name": "-VirtualMachineName"
+              "name": "-VirtualMachineName",
+              "value": "[Path.virtualMachineName]"
             }
           ]
         }
@@ -158,20 +158,20 @@
           "description": "Action to start a lab virtual machine.",
           "parameters": [
             {
-              "value": "[Path.labName]",
-              "name": "-LabName"
+              "name": "-LabName",
+              "value": "[Path.labName]"
             },
             {
-              "value": "[Path.virtualMachineName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.virtualMachineName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -201,20 +201,20 @@
           "description": "Action to stop a lab virtual machine.",
           "parameters": [
             {
-              "value": "[Path.labName]",
-              "name": "-LabName"
+              "name": "-LabName",
+              "value": "[Path.labName]"
             },
             {
-              "value": "[Path.virtualMachineName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.virtualMachineName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

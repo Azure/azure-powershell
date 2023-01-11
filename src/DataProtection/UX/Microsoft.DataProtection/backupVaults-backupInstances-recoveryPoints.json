@@ -30,24 +30,24 @@
           "description": "Gets a Recovery Point using recoveryPointId for a Datasource.",
           "parameters": [
             {
-              "value": "[Path.backupInstanceName]",
-              "name": "-BackupInstanceName"
+              "name": "-BackupInstanceName",
+              "value": "[Path.backupInstanceName]"
             },
             {
-              "value": "[Path.recoveryPointId]",
-              "name": "-Id"
+              "name": "-Id",
+              "value": "[Path.recoveryPointId]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             },
             {
-              "value": "[Path.vaultName]",
-              "name": "-VaultName"
+              "name": "-VaultName",
+              "value": "[Path.vaultName]"
             }
           ]
         }

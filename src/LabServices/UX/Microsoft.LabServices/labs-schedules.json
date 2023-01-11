@@ -29,20 +29,20 @@
           "description": "Returns the properties of a lab Schedule.",
           "parameters": [
             {
-              "value": "[Path.labName]",
-              "name": "-LabName"
+              "name": "-LabName",
+              "value": "[Path.labName]"
             },
             {
-              "value": "[Path.scheduleName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.scheduleName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Operation to delete a schedule resource.",
           "parameters": [
             {
-              "value": "[Path.labName]",
-              "name": "-LabName"
+              "name": "-LabName",
+              "value": "[Path.labName]"
             },
             {
-              "value": "[Path.scheduleName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.scheduleName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

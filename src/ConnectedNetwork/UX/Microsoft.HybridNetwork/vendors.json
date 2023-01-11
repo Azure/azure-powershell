@@ -27,12 +27,12 @@
           "description": "Gets information about the specified vendor.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.vendorName]"
+              "value": "[Path.vendorName]",
+              "name": "-Name"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -60,12 +60,12 @@
           "description": "Deletes the specified vendor.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.vendorName]"
+              "value": "[Path.vendorName]",
+              "name": "-Name"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

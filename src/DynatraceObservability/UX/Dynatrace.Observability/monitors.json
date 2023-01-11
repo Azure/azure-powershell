@@ -28,16 +28,16 @@
           "description": "Gets the SSO configuration details from the partner.",
           "parameters": [
             {
-              "name": "-MonitorName",
-              "value": "[Path.monitorName]"
+              "value": "[Path.monitorName]",
+              "name": "-MonitorName"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Returns the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.",
           "parameters": [
             {
-              "name": "-MonitorName",
-              "value": "[Path.monitorName]"
+              "value": "[Path.monitorName]",
+              "name": "-MonitorName"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -104,16 +104,16 @@
           "description": "Get a MonitorResource",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.monitorName]"
+              "value": "[Path.monitorName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -142,16 +142,16 @@
           "description": "Delete a MonitorResource",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.monitorName]"
+              "value": "[Path.monitorName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

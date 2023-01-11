@@ -27,12 +27,12 @@
           "description": "Gets the specified role eligibility schedule instance.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.roleEligibilityScheduleInstanceName]"
+              "value": "[Path.roleEligibilityScheduleInstanceName]",
+              "name": "-Name"
             },
             {
-              "name": "-Scope",
-              "value": "[Path.scope]"
+              "value": "[Path.scope]",
+              "name": "-Scope"
             }
           ]
         }

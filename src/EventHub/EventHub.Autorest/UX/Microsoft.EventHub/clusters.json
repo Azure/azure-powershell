@@ -28,16 +28,16 @@
           "description": "Gets the resource description of the specified Event Hubs Cluster.",
           "parameters": [
             {
-              "value": "[Path.clusterName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.clusterName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes an existing Event Hubs Cluster. This operation is idempotent.",
           "parameters": [
             {
-              "value": "[Path.clusterName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.clusterName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

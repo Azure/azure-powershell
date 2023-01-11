@@ -29,20 +29,20 @@
           "description": "Get an iSCSI Target.",
           "parameters": [
             {
-              "value": "[Path.diskPoolName]",
-              "name": "-DiskPoolName"
+              "name": "-DiskPoolName",
+              "value": "[Path.diskPoolName]"
             },
             {
-              "value": "[Path.iscsiTargetName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.iscsiTargetName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Delete an iSCSI Target.",
           "parameters": [
             {
-              "value": "[Path.diskPoolName]",
-              "name": "-DiskPoolName"
+              "name": "-DiskPoolName",
+              "value": "[Path.diskPoolName]"
             },
             {
-              "value": "[Path.iscsiTargetName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.iscsiTargetName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

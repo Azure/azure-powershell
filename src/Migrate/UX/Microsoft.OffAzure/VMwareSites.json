@@ -28,16 +28,16 @@
           "description": "Method to get a site.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.siteName]"
+              "value": "[Path.siteName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

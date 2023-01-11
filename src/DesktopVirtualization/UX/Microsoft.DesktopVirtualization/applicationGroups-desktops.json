@@ -29,20 +29,20 @@
           "description": "Get a desktop.",
           "parameters": [
             {
-              "value": "[Path.applicationGroupName]",
-              "name": "-ApplicationGroupName"
+              "name": "-ApplicationGroupName",
+              "value": "[Path.applicationGroupName]"
             },
             {
-              "value": "[Path.desktopName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.desktopName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

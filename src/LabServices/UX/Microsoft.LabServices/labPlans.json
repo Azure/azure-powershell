@@ -28,16 +28,16 @@
           "description": "Retrieves the properties of a Lab Plan.",
           "parameters": [
             {
-              "value": "[Path.labPlanName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.labPlanName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Operation to delete a Lab Plan resource. Deleting a lab plan does not delete labs associated with a lab plan, nor does it delete shared images added to a gallery via the lab plan permission container.",
           "parameters": [
             {
-              "value": "[Path.labPlanName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.labPlanName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -104,16 +104,16 @@
           "description": "Saves an image from a lab VM to the attached shared image gallery.",
           "parameters": [
             {
-              "value": "[Path.labPlanName]",
-              "name": "-LabPlanName"
+              "name": "-LabPlanName",
+              "value": "[Path.labPlanName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

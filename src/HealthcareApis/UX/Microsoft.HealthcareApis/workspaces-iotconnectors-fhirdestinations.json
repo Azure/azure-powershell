@@ -30,24 +30,24 @@
           "description": "Gets the properties of the specified Iot Connector FHIR destination.",
           "parameters": [
             {
-              "name": "-FhirDestinationName",
-              "value": "[Path.fhirDestinationName]"
+              "value": "[Path.fhirDestinationName]",
+              "name": "-FhirDestinationName"
             },
             {
-              "name": "-IotConnectorName",
-              "value": "[Path.iotConnectorName]"
+              "value": "[Path.iotConnectorName]",
+              "name": "-IotConnectorName"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-WorkspaceName",
-              "value": "[Path.workspaceName]"
+              "value": "[Path.workspaceName]",
+              "name": "-WorkspaceName"
             }
           ]
         }
@@ -78,24 +78,24 @@
           "description": "Deletes an IoT Connector FHIR destination.",
           "parameters": [
             {
-              "name": "-FhirDestinationName",
-              "value": "[Path.fhirDestinationName]"
+              "value": "[Path.fhirDestinationName]",
+              "name": "-FhirDestinationName"
             },
             {
-              "name": "-IotConnectorName",
-              "value": "[Path.iotConnectorName]"
+              "value": "[Path.iotConnectorName]",
+              "name": "-IotConnectorName"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-WorkspaceName",
-              "value": "[Path.workspaceName]"
+              "value": "[Path.workspaceName]",
+              "name": "-WorkspaceName"
             }
           ]
         }

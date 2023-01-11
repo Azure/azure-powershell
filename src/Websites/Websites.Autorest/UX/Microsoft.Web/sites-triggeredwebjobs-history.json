@@ -30,24 +30,24 @@
           "description": "Get or list triggered web job's history for an app.",
           "parameters": [
             {
-              "name": "-AppName",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-AppName"
             },
             {
-              "name": "-Id",
-              "value": "[Path.id]"
+              "value": "[Path.id]",
+              "name": "-Id"
             },
             {
-              "name": "-Name",
-              "value": "[Path.webJobName]"
+              "value": "[Path.webJobName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

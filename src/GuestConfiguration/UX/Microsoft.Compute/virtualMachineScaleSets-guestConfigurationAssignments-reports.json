@@ -30,24 +30,24 @@
           "description": "Get a report for the VMSS guest configuration assignment, by reportId.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-Name"
             },
             {
-              "name": "-ReportId",
-              "value": "[Path.reportId]"
+              "value": "[Path.reportId]",
+              "name": "-ReportId"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-VmssName",
-              "value": "[Path.vmssName]"
+              "value": "[Path.vmssName]",
+              "name": "-VmssName"
             }
           ]
         }

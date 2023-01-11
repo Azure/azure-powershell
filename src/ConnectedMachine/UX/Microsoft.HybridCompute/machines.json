@@ -28,16 +28,16 @@
           "description": "Retrieves information about the model view or the instance view of a hybrid machine.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.machineName]"
+              "value": "[Path.machineName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "The operation to remove a hybrid machine identity in Azure.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.machineName]"
+              "value": "[Path.machineName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

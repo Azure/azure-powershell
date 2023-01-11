@@ -28,16 +28,16 @@
           "description": "Get the status of Attestation Provider.",
           "parameters": [
             {
-              "value": "[Path.providerName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.providerName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Delete Attestation Service.",
           "parameters": [
             {
-              "value": "[Path.providerName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.providerName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

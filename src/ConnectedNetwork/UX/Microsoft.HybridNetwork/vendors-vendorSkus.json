@@ -28,16 +28,16 @@
           "description": "Gets information about the specified sku.",
           "parameters": [
             {
-              "name": "-SkuName",
-              "value": "[Path.skuName]"
+              "value": "[Path.skuName]",
+              "name": "-SkuName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-VendorName",
-              "value": "[Path.vendorName]"
+              "value": "[Path.vendorName]",
+              "name": "-VendorName"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes the specified sku. This operation can take up to 2 hours to complete. This is expected service behavior.",
           "parameters": [
             {
-              "name": "-SkuName",
-              "value": "[Path.skuName]"
+              "value": "[Path.skuName]",
+              "name": "-SkuName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-VendorName",
-              "value": "[Path.vendorName]"
+              "value": "[Path.vendorName]",
+              "name": "-VendorName"
             }
           ]
         }

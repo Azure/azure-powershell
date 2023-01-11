@@ -27,12 +27,12 @@
           "description": "The operation to get the execution history of an export for the defined scope and export name.",
           "parameters": [
             {
-              "value": "[Path.exportName]",
-              "name": "-ExportName"
+              "name": "-ExportName",
+              "value": "[Path.exportName]"
             },
             {
-              "value": "[Path.scope]",
-              "name": "-Scope"
+              "name": "-Scope",
+              "value": "[Path.scope]"
             }
           ]
         }
@@ -60,12 +60,12 @@
           "description": "The operation to get the export for the defined scope by export name.",
           "parameters": [
             {
-              "value": "[Path.exportName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.exportName]"
             },
             {
-              "value": "[Path.scope]",
-              "name": "-Scope"
+              "name": "-Scope",
+              "value": "[Path.scope]"
             }
           ]
         }
@@ -93,12 +93,12 @@
           "description": "The operation to execute an export.",
           "parameters": [
             {
-              "value": "[Path.exportName]",
-              "name": "-ExportName"
+              "name": "-ExportName",
+              "value": "[Path.exportName]"
             },
             {
-              "value": "[Path.scope]",
-              "name": "-Scope"
+              "name": "-Scope",
+              "value": "[Path.scope]"
             }
           ]
         }
@@ -126,12 +126,12 @@
           "description": "The operation to delete a export.",
           "parameters": [
             {
-              "value": "[Path.exportName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.exportName]"
             },
             {
-              "value": "[Path.scope]",
-              "name": "-Scope"
+              "name": "-Scope",
+              "value": "[Path.scope]"
             }
           ]
         }

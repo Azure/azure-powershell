@@ -30,24 +30,24 @@
           "description": "Description for Deletes the user entry from the static site.",
           "parameters": [
             {
-              "name": "-AuthProvider",
-              "value": "[Path.authprovider]"
+              "value": "[Path.authprovider]",
+              "name": "-AuthProvider"
             },
             {
-              "name": "-Name",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-UserId",
-              "value": "[Path.userid]"
+              "value": "[Path.userid]",
+              "name": "-UserId"
             }
           ]
         }

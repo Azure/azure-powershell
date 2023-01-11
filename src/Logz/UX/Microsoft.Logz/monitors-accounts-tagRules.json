@@ -30,24 +30,24 @@
           "description": "Get a tag rule set for a given monitor resource.",
           "parameters": [
             {
-              "value": "[Path.monitorName]",
-              "name": "-MonitorName"
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.ruleSetName]",
-              "name": "-RuleSetName"
+              "name": "-RuleSetName",
+              "value": "[Path.ruleSetName]"
             },
             {
-              "value": "[Path.subAccountName]",
-              "name": "-SubAccountName"
+              "name": "-SubAccountName",
+              "value": "[Path.subAccountName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -78,24 +78,24 @@
           "description": "Delete a tag rule set for a given monitor resource.",
           "parameters": [
             {
-              "value": "[Path.monitorName]",
-              "name": "-MonitorName"
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.ruleSetName]",
-              "name": "-RuleSetName"
+              "name": "-RuleSetName",
+              "value": "[Path.ruleSetName]"
             },
             {
-              "value": "[Path.subAccountName]",
-              "name": "-SubAccountName"
+              "name": "-SubAccountName",
+              "value": "[Path.subAccountName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

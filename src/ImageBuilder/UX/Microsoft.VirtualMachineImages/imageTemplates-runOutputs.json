@@ -29,20 +29,20 @@
           "description": "Get the specified run output for the specified image template resource",
           "parameters": [
             {
-              "value": "[Path.imageTemplateName]",
-              "name": "-ImageTemplateName"
+              "name": "-ImageTemplateName",
+              "value": "[Path.imageTemplateName]"
             },
             {
-              "value": "[Path.runOutputName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.runOutputName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

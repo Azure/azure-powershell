@@ -28,16 +28,16 @@
           "description": "Returns a Azure Arc PrivateLinkScope.",
           "parameters": [
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-ScopeName",
-              "value": "[Path.scopeName]"
+              "value": "[Path.scopeName]",
+              "name": "-ScopeName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes a Azure Arc PrivateLinkScope.",
           "parameters": [
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-ScopeName",
-              "value": "[Path.scopeName]"
+              "value": "[Path.scopeName]",
+              "name": "-ScopeName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

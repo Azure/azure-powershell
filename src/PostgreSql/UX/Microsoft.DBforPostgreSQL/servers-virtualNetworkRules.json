@@ -29,20 +29,20 @@
           "description": "Gets a virtual network rule.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.virtualNetworkRuleName]"
+              "value": "[Path.virtualNetworkRuleName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-ServerName",
-              "value": "[Path.serverName]"
+              "value": "[Path.serverName]",
+              "name": "-ServerName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Deletes the virtual network rule with the given name.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.virtualNetworkRuleName]"
+              "value": "[Path.virtualNetworkRuleName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-ServerName",
-              "value": "[Path.serverName]"
+              "value": "[Path.serverName]",
+              "name": "-ServerName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

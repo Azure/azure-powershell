@@ -15,17 +15,21 @@
         },
         "parameterSets": [
           {
-            "parameters": "-PrivateStoreId <String>"
+            "parameters": [
+              "-PrivateStoreId <String>"
+            ]
           }
         ]
       },
       "examples": [
         {
           "description": "Tenant billing accounts names",
-          "parameters": {
-            "name": "-PrivateStoreId",
-            "value": "[Path.privateStoreId]"
-          }
+          "parameters": [
+            {
+              "value": "[Path.privateStoreId]",
+              "name": "-PrivateStoreId"
+            }
+          ]
         }
       ]
     },
@@ -39,27 +43,35 @@
         },
         "parameterSets": [
           {
-            "parameters": "-PrivateStoreId <String>"
+            "parameters": [
+              "-PrivateStoreId <String>"
+            ]
           },
           {
-            "parameters": "-PrivateStoreId <String>"
+            "parameters": [
+              "-PrivateStoreId <String>"
+            ]
           }
         ]
       },
       "examples": [
         {
           "description": "For a given subscriptions list, the API will return a map of collections and the related subscriptions from the supplied list.",
-          "parameters": {
-            "name": "-PrivateStoreId",
-            "value": "[Path.privateStoreId]"
-          }
+          "parameters": [
+            {
+              "value": "[Path.privateStoreId]",
+              "name": "-PrivateStoreId"
+            }
+          ]
         },
         {
           "description": "For a given subscriptions list, the API will return a map of collections and the related subscriptions from the supplied list.",
-          "parameters": {
-            "name": "-PrivateStoreId",
-            "value": "[Path.privateStoreId]"
-          }
+          "parameters": [
+            {
+              "value": "[Path.privateStoreId]",
+              "name": "-PrivateStoreId"
+            }
+          ]
         }
       ]
     },
@@ -73,17 +85,21 @@
         },
         "parameterSets": [
           {
-            "parameters": "-Id <String>"
+            "parameters": [
+              "-Id <String>"
+            ]
           }
         ]
       },
       "examples": [
         {
           "description": "Get information about the private store",
-          "parameters": {
-            "name": "-Id",
-            "value": "[Path.privateStoreId]"
-          }
+          "parameters": [
+            {
+              "value": "[Path.privateStoreId]",
+              "name": "-Id"
+            }
+          ]
         }
       ]
     },
@@ -97,17 +113,21 @@
         },
         "parameterSets": [
           {
-            "parameters": "-PrivateStoreId <String>"
+            "parameters": [
+              "-PrivateStoreId <String>"
+            ]
           }
         ]
       },
       "examples": [
         {
           "description": "List of offers, regardless the collections",
-          "parameters": {
-            "name": "-PrivateStoreId",
-            "value": "[Path.privateStoreId]"
-          }
+          "parameters": [
+            {
+              "value": "[Path.privateStoreId]",
+              "name": "-PrivateStoreId"
+            }
+          ]
         }
       ]
     }

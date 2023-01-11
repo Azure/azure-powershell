@@ -30,24 +30,24 @@
           "description": "Gets a Job Definition resource.",
           "parameters": [
             {
-              "value": "[Path.jobDefinitionName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.jobDefinitionName]"
             },
             {
-              "value": "[Path.projectName]",
-              "name": "-ProjectName"
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.storageMoverName]",
-              "name": "-StorageMoverName"
+              "name": "-StorageMoverName",
+              "value": "[Path.storageMoverName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -78,24 +78,24 @@
           "description": "Deletes a Job Definition resource.",
           "parameters": [
             {
-              "value": "[Path.jobDefinitionName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.jobDefinitionName]"
             },
             {
-              "value": "[Path.projectName]",
-              "name": "-ProjectName"
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.storageMoverName]",
-              "name": "-StorageMoverName"
+              "name": "-StorageMoverName",
+              "value": "[Path.storageMoverName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -126,24 +126,24 @@
           "description": "Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.",
           "parameters": [
             {
-              "value": "[Path.jobDefinitionName]",
-              "name": "-JobDefinitionName"
+              "name": "-JobDefinitionName",
+              "value": "[Path.jobDefinitionName]"
             },
             {
-              "value": "[Path.projectName]",
-              "name": "-ProjectName"
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.storageMoverName]",
-              "name": "-StorageMoverName"
+              "name": "-StorageMoverName",
+              "value": "[Path.storageMoverName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -174,24 +174,24 @@
           "description": "Requests the Agent of any active instance of this Job Definition to stop.",
           "parameters": [
             {
-              "value": "[Path.jobDefinitionName]",
-              "name": "-JobDefinitionName"
+              "name": "-JobDefinitionName",
+              "value": "[Path.jobDefinitionName]"
             },
             {
-              "value": "[Path.projectName]",
-              "name": "-ProjectName"
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.storageMoverName]",
-              "name": "-StorageMoverName"
+              "name": "-StorageMoverName",
+              "value": "[Path.storageMoverName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

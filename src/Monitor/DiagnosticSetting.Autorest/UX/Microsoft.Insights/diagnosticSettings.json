@@ -27,12 +27,12 @@
           "description": "Gets the active diagnostic settings for the specified resource.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceId",
-              "value": "[Path.resourceUri]"
+              "value": "[Path.resourceUri]",
+              "name": "-ResourceId"
             }
           ]
         }
@@ -60,12 +60,12 @@
           "description": "Gets the active subscription diagnostic settings for the specified resource.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-Name"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -93,12 +93,12 @@
           "description": "Deletes existing diagnostic settings for the specified resource.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceId",
-              "value": "[Path.resourceUri]"
+              "value": "[Path.resourceUri]",
+              "name": "-ResourceId"
             }
           ]
         }
@@ -126,12 +126,12 @@
           "description": "Deletes existing subscription diagnostic settings for the specified resource.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.name]"
+              "value": "[Path.name]",
+              "name": "-Name"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

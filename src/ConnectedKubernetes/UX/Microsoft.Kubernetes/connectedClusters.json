@@ -28,16 +28,16 @@
           "description": "Returns the properties of the specified connected cluster, including name, identity, properties, and additional cluster details.",
           "parameters": [
             {
-              "name": "-ClusterName",
-              "value": "[Path.clusterName]"
+              "value": "[Path.clusterName]",
+              "name": "-ClusterName"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

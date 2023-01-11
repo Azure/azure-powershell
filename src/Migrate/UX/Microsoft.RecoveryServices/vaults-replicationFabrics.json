@@ -29,20 +29,20 @@
           "description": "Gets the details of an Azure Site Recovery fabric.",
           "parameters": [
             {
-              "name": "-FabricName",
-              "value": "[Path.fabricName]"
+              "value": "[Path.fabricName]",
+              "name": "-FabricName"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-ResourceName",
-              "value": "[Path.resourceName]"
+              "value": "[Path.resourceName]",
+              "name": "-ResourceName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

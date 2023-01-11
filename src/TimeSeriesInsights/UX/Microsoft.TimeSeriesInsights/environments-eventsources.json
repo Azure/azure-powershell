@@ -29,20 +29,20 @@
           "description": "Gets the event source with the specified name in the specified environment.",
           "parameters": [
             {
-              "value": "[Path.environmentName]",
-              "name": "-EnvironmentName"
+              "name": "-EnvironmentName",
+              "value": "[Path.environmentName]"
             },
             {
-              "value": "[Path.eventSourceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.eventSourceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Deletes the event source with the specified name in the specified subscription, resource group, and environment",
           "parameters": [
             {
-              "value": "[Path.environmentName]",
-              "name": "-EnvironmentName"
+              "name": "-EnvironmentName",
+              "value": "[Path.environmentName]"
             },
             {
-              "value": "[Path.eventSourceName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.eventSourceName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

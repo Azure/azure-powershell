@@ -28,16 +28,16 @@
           "description": "Returns a ResourceGuard belonging to a resource group.",
           "parameters": [
             {
-              "value": "[Path.resourceGuardsName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.resourceGuardsName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes a ResourceGuard resource from the resource group.",
           "parameters": [
             {
-              "value": "[Path.resourceGuardsName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.resourceGuardsName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

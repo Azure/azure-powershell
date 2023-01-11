@@ -29,20 +29,20 @@
           "description": "Method to get run as account.",
           "parameters": [
             {
-              "name": "-AccountName",
-              "value": "[Path.accountName]"
+              "value": "[Path.accountName]",
+              "name": "-AccountName"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SiteName",
-              "value": "[Path.siteName]"
+              "value": "[Path.siteName]",
+              "name": "-SiteName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

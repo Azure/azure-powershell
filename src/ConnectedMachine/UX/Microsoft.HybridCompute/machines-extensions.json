@@ -29,20 +29,20 @@
           "description": "The operation to get the extension.",
           "parameters": [
             {
-              "name": "-MachineName",
-              "value": "[Path.machineName]"
+              "value": "[Path.machineName]",
+              "name": "-MachineName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.extensionName]"
+              "value": "[Path.extensionName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "The operation to delete the extension.",
           "parameters": [
             {
-              "name": "-MachineName",
-              "value": "[Path.machineName]"
+              "value": "[Path.machineName]",
+              "name": "-MachineName"
             },
             {
-              "name": "-Name",
-              "value": "[Path.extensionName]"
+              "value": "[Path.extensionName]",
+              "name": "-Name"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "value": "[Path.resourceGroupName]",
+              "name": "-ResourceGroupName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             }
           ]
         }

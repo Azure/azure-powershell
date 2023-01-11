@@ -29,20 +29,20 @@
           "description": "Gets an Agent resource.",
           "parameters": [
             {
-              "value": "[Path.agentName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.agentName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.storageMoverName]",
-              "name": "-StorageMoverName"
+              "name": "-StorageMoverName",
+              "value": "[Path.storageMoverName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

@@ -28,16 +28,16 @@
           "description": "Get the properties of a specific monitor resource.",
           "parameters": [
             {
-              "value": "[Path.monitorName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.monitorName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Returns the payload that needs to be passed in the request body for installing Logz.io agent on a VM.",
           "parameters": [
             {
-              "value": "[Path.monitorName]",
-              "name": "-MonitorName"
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -104,16 +104,16 @@
           "description": "Delete a monitor resource. This delete operation can take upto 10 minutes to complete.",
           "parameters": [
             {
-              "value": "[Path.monitorName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.monitorName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

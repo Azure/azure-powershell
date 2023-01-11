@@ -28,16 +28,16 @@
           "description": "Gets information about a specific offer.",
           "parameters": [
             {
-              "name": "-CollectionId",
-              "value": "[Path.collectionId]"
+              "value": "[Path.collectionId]",
+              "name": "-CollectionId"
             },
             {
-              "name": "-OfferId",
-              "value": "[Path.offerId]"
+              "value": "[Path.offerId]",
+              "name": "-OfferId"
             },
             {
-              "name": "-PrivateStoreId",
-              "value": "[Path.privateStoreId]"
+              "value": "[Path.privateStoreId]",
+              "name": "-PrivateStoreId"
             }
           ]
         }
@@ -66,16 +66,16 @@
           "description": "Deletes an offer from the given collection of private store.",
           "parameters": [
             {
-              "name": "-CollectionId",
-              "value": "[Path.collectionId]"
+              "value": "[Path.collectionId]",
+              "name": "-CollectionId"
             },
             {
-              "name": "-OfferId",
-              "value": "[Path.offerId]"
+              "value": "[Path.offerId]",
+              "name": "-OfferId"
             },
             {
-              "name": "-PrivateStoreId",
-              "value": "[Path.privateStoreId]"
+              "value": "[Path.privateStoreId]",
+              "name": "-PrivateStoreId"
             }
           ]
         }

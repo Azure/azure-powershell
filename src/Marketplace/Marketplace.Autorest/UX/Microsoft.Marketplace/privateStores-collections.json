@@ -33,12 +33,12 @@
           "description": "transferring offers (copy or move) from source collection to target collection(s)",
           "parameters": [
             {
-              "name": "-CollectionId",
-              "value": "[Path.collectionId]"
+              "value": "[Path.collectionId]",
+              "name": "-CollectionId"
             },
             {
-              "name": "-PrivateStoreId",
-              "value": "[Path.privateStoreId]"
+              "value": "[Path.privateStoreId]",
+              "name": "-PrivateStoreId"
             }
           ]
         },
@@ -46,12 +46,12 @@
           "description": "transferring offers (copy or move) from source collection to target collection(s)",
           "parameters": [
             {
-              "name": "-CollectionId",
-              "value": "[Path.collectionId]"
+              "value": "[Path.collectionId]",
+              "name": "-CollectionId"
             },
             {
-              "name": "-PrivateStoreId",
-              "value": "[Path.privateStoreId]"
+              "value": "[Path.privateStoreId]",
+              "name": "-PrivateStoreId"
             }
           ]
         }
@@ -79,12 +79,12 @@
           "description": "Gets private store collection",
           "parameters": [
             {
-              "name": "-CollectionId",
-              "value": "[Path.collectionId]"
+              "value": "[Path.collectionId]",
+              "name": "-CollectionId"
             },
             {
-              "name": "-PrivateStoreId",
-              "value": "[Path.privateStoreId]"
+              "value": "[Path.privateStoreId]",
+              "name": "-PrivateStoreId"
             }
           ]
         }
@@ -112,12 +112,12 @@
           "description": "Delete a collection from the given private store.",
           "parameters": [
             {
-              "name": "-CollectionId",
-              "value": "[Path.collectionId]"
+              "value": "[Path.collectionId]",
+              "name": "-CollectionId"
             },
             {
-              "name": "-PrivateStoreId",
-              "value": "[Path.privateStoreId]"
+              "value": "[Path.privateStoreId]",
+              "name": "-PrivateStoreId"
             }
           ]
         }

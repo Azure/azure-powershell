@@ -29,20 +29,20 @@
           "description": "Get the Nginx configuration of given Nginx deployment",
           "parameters": [
             {
-              "value": "[Path.deploymentName]",
-              "name": "-DeploymentName"
+              "name": "-DeploymentName",
+              "value": "[Path.deploymentName]"
             },
             {
-              "value": "[Path.configurationName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.configurationName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Reset the Nginx configuration of given Nginx deployment to default",
           "parameters": [
             {
-              "value": "[Path.deploymentName]",
-              "name": "-DeploymentName"
+              "name": "-DeploymentName",
+              "value": "[Path.deploymentName]"
             },
             {
-              "value": "[Path.configurationName]",
-              "name": "-Name"
+              "name": "-Name",
+              "value": "[Path.configurationName]"
             },
             {
-              "value": "[Path.resourceGroupName]",
-              "name": "-ResourceGroupName"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
-              "value": "[Path.subscriptionId]",
-              "name": "-SubscriptionId"
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
             }
           ]
         }

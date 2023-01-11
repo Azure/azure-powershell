@@ -29,20 +29,20 @@
           "description": "Gets the preview information of a vendor sku.",
           "parameters": [
             {
-              "name": "-PreviewSubscription",
-              "value": "[Path.previewSubscription]"
+              "value": "[Path.previewSubscription]",
+              "name": "-PreviewSubscription"
             },
             {
-              "name": "-SkuName",
-              "value": "[Path.skuName]"
+              "value": "[Path.skuName]",
+              "name": "-SkuName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-VendorName",
-              "value": "[Path.vendorName]"
+              "value": "[Path.vendorName]",
+              "name": "-VendorName"
             }
           ]
         }
@@ -72,20 +72,20 @@
           "description": "Deletes the preview information of a vendor sku.",
           "parameters": [
             {
-              "name": "-PreviewSubscription",
-              "value": "[Path.previewSubscription]"
+              "value": "[Path.previewSubscription]",
+              "name": "-PreviewSubscription"
             },
             {
-              "name": "-SkuName",
-              "value": "[Path.skuName]"
+              "value": "[Path.skuName]",
+              "name": "-SkuName"
             },
             {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[Path.subscriptionId]",
+              "name": "-SubscriptionId"
             },
             {
-              "name": "-VendorName",
-              "value": "[Path.vendorName]"
+              "value": "[Path.vendorName]",
+              "name": "-VendorName"
             }
           ]
         }
