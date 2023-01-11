@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Made `New-AzConnectedKubernetes` support PowerShell 5.
 
 ## Version 0.7.0
 * Added the logic that prompt legal information when users call the parameter "-AzureHybridBenefit" in `New-AzConnectedKubernetes` or `Update-AzConnectedKubernetes`.
