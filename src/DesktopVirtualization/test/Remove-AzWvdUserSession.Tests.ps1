@@ -15,15 +15,15 @@ Describe 'Remove-AzWvdUserSession' {
     It 'Delete' {
         Remove-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
                                     -ResourceGroupName $env.ResourceGroup `
-                                    -HostPoolName 'HostPoolPowershell1' `
-                                    -SessionHostName 'PwshVM-1' `
+                                    -HostPoolName $env.HostPoolPersistent `
+                                    -SessionHostName $env.SessionHostName `
                                     -Id 4
 
         try {
             $userSession = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                -HostPoolName 'HostPoolPowershell1' `
-                                -SessionHostName 'PwshVM-1' `
+                                -HostPoolName $env.HostPoolPersistent `
+                                -SessionHostName $env.SessionHostName `
                                 -Id 4
             throw "Get should have failed."
         } catch {

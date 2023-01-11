@@ -83,26 +83,19 @@ Describe 'New-AzWvdApplication' {
 
     It 'AppAlias' {  
         try{     
-            $workspace = New-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
-                                            -ResourceGroupName $env.ResourceGroup `
-                                            -Location $env.Location `
-                                            -Name 'WorkspacePowershell1' `
-                                            -FriendlyName 'fri' `
-                                            -ApplicationGroupReference $null `
-                                            -Description 'des'
 
             New-AzWvdApplication -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                -GroupName $env.RemoteApplicationGroup `
+                                -GroupName $env.PersistentRemoteAppGroup `
                                 -Name 'Paint1' `
                                 -AppAlias 'paint' `
                                 -CommandLineSetting 'Allow'
 
             $application = Get-AzWvdApplication -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                -GroupName $env.RemoteApplicationGroup `
+                                -GroupName $env.PersistentRemoteAppGroup `
                                 -Name 'Paint1'
-                $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint1'
+                $application.Name | Should -Be 'HostPoolPowershellPersistent1-RAG/Paint1'
                 $application.FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
                 $application.IconIndex | Should -Be 0
                 $application.IconPath | Should -Be 'C:\windows\system32\mspaint.exe'
@@ -112,11 +105,8 @@ Describe 'New-AzWvdApplication' {
         finally{
             $application = Remove-AzWvdApplication -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                -GroupName $env.RemoteApplicationGroup `
+                                -GroupName $env.PersistentRemoteAppGroup `
                                 -Name 'Paint1'
-            $workspace = Remove-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
-                                -Name 'WorkspacePowershell1'
         }
 
     }

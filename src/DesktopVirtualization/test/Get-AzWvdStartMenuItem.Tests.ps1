@@ -14,56 +14,23 @@ while(-not $mockingPath) {
 Describe 'Get-AzWvdStartMenuItem' {
     It 'List' {
         try{
-            $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
-                                -Name $env.HostPool `
-                                -Location $env.Location `
-                                -HostPoolType 'Shared' `
-                                -LoadBalancerType 'DepthFirst' `
-                                -RegistrationTokenOperation 'Update' `
-                                -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
-                                -Description 'des' `
-                                -FriendlyName 'fri' `
-                                -MaxSessionLimit 5 `
-                                -VMTemplate $null `
-                                -CustomRdpProperty $null `
-                                -Ring $null `
-                                -ValidationEnvironment:$false `
-                                -PreferredAppGroupType 'Desktop'
-
-            $applicationGroup = New-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
-                                        -ResourceGroupName $env.ResourceGroup `
-                                        -Name $env.RemoteApplicationGroup `
-                                        -Location $env.Location `
-                                        -FriendlyName 'fri' `
-                                        -Description 'des' `
-                                        -HostPoolArmPath  $env.HostPoolArmPath `
-                                        -ApplicationGroupType 'RemoteApp'
-
             $startMenuItems = Get-AzWvdStartMenuItem -SubscriptionId $env.SubscriptionId `
                                         -ResourceGroupName $env.ResourceGroup `
-                                        -ApplicationGroupName $env.RemoteApplicationGroup
+                                        -ApplicationGroupName $env.PersistentDesktopAppGroup
 
             $paint = $startMenuItems | Where-Object -Property Name -Match 'Paint'
-                $paint[0].Name | Should -Be 'ApplicationGroupPowershell1/Paint'
+                $paint[0].Name | Should -Be 'HostPoolPowershellPersistent1-DAG/Paint'
                 $paint[0].FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
                 $paint[0].IconPath | Should -Be 'C:\windows\system32\mspaint.exe'
                 $paint[0].IconIndex | Should -Be 0
 
             $paint = $startMenuItems | Where-Object -Property Name -Match 'Snip'
-                $paint[0].Name | Should -Be 'ApplicationGroupPowershell1/Snipping Tool'
+                $paint[0].Name | Should -Be 'HostPoolPowershellPersistent1-DAG/Snipping Tool'
                 $paint[0].FilePath | Should -Be 'C:\windows\system32\SnippingTool.exe'
                 $paint[0].IconPath | Should -Be 'C:\windows\system32\SnippingTool.exe'
                 $paint[0].IconIndex | Should -Be 0
         }
         finally{
-            $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
-                                -Name $env.RemoteApplicationGroup
-
-            $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
-                                -Name $env.HostPool
         }
     }
 }

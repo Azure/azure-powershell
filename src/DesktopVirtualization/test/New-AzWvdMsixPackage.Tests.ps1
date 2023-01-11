@@ -68,27 +68,31 @@ Describe 'New-AzWvdMsixPackage' {
                 -HostPoolName $env.HostPool `
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId 
+
+            $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                -ResourceGroupName $env.ResourceGroup `
+                -Name $env.HostPool
         }
     }
 
     It 'PackageAlias' {
         try{
             $removePackage_IfExists = Remove-AzWvdMsixPackage -FullName 'MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy' `
-                -HostPoolName $env.HostPool `
+                -HostPoolName $env.HostPoolPersistent `
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId 
 
             #image exists on specified hostpool
             $package_created = New-AzWvdMsixPackage -PackageAlias 'msixpackage' `
                 -ImagePath 'C:\msix\singlemsix.vhd' `
-                -HostPoolName $env.HostPool `
+                -HostPoolName $env.HostPoolPersistent `
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId  `
                 -DisplayName 'package-Alias-test' `
                 -IsActive 
 
             $package_created = Get-AzWvdMsixPackage -FullName 'MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy' `
-                -HostPoolName $env.HostPool `
+                -HostPoolName $env.HostPoolPersistent `
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId  
 
@@ -101,13 +105,9 @@ Describe 'New-AzWvdMsixPackage' {
         }
         finally{
             $package_created = Remove-AzWvdMsixPackage -FullName 'MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy' `
-                -HostPoolName $env.HostPool `
+                -HostPoolName $env.HostPoolPersistent `
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId 
-
-            $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $env.ResourceGroup `
-                -Name $env.HostPool
         }
     }
 }

@@ -12,6 +12,9 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+
+    #---------- Self Contained Resources ----------
+    # The following resources are created and removed within each test.
     $envFile = 'env.json'
     $null = $env.Add("ResourceGroup", "roshin-wus2")
     $null = $env.Add("Location", "westus2")
@@ -26,20 +29,19 @@ function setupEnv() {
     $null = $env.Add("HostPoolArmPath2", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPool2)
     $null = $env.Add("DesktopApplicationGroupPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/applicationgroups/" + $env.DesktopApplicationGroup)
     $null = $env.Add("RemoteApplicationGroupPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/applicationgroups/" + $env.RemoteApplicationGroup)
+    
+    #---------- Persistent Resources ----------
+    # The following resources are manually created and removed by the operator.
+
+    $null = $env.Add("HostPoolPersistent", "HostPoolPowershellPersistent1")
+    $null = $env.Add("HostPoolPersistentArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPoolPersistent)
+    $null = $env.Add("SessionHostName", "PwshVM-0")
+    $null = $env.Add("SessionHostNameRemove", "PwshVM-1")
+    $null = $env.Add("PersistentDesktopAppGroup", "HostPoolPowershellPersistent1-DAG")
+    $null = $env.Add("PersistentRemoteAppGroup", "HostPoolPowershellPersistent1-RAG")
     # The context in which the tests are run will change the tenant and subscription ID when -record is run. 
     # Currently the scaling tests need to be run in a context with @microsoft, while the other tests are run with a test account
     # Modify the env.json manually after recording the necessary tests to get around this issue.
-    $null = $env.Add("Scaling_Location", "eastus2")
-    $null = $env.Add("Scaling_SubscriptionId", "9b5711b9-2151-4555-91bf-e0b7f803682f")
-    $null = $env.Add("Scaling_ResourceGroup", "dallintest")
-    $null = $env.Add("Scaling_HostPoolArmPath", "/subscriptions/9b5711b9-2151-4555-91bf-e0b7f803682f/resourceGroups/dallintest/providers/Microsoft.DesktopVirtualization/hostpools/dallintest-hp")
-    $null = $env.Add("Scaling_HostPoolArmPath2", "/subscriptions/9b5711b9-2151-4555-91bf-e0b7f803682f/resourceGroups/dallintest/providers/Microsoft.DesktopVirtualization/hostpools/dallintest-hp-2")
-    $null = $env.Add("Scaling_RemoteApplicationGroup", "dallintest-hp-DAG")
-    $null = $env.Add("Scaling_HostPool", "damagleb-hp")
-    $null = $env.Add("Scaling_HostPool2", "damagleb-hp-2")
-    $null = $env.Add("Scaling_Tenant", "72f988bf-86f1-41af-91ab-2d7cd011db47")
-    $null = $env.Add("Scaling_MSIXImagePath", "C:\\msix\\singlemsix.vhd")
-    $null = $env.Add("Scaling_DesktopApplicationGroup", "damagleb-hp-DAG")
 
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
