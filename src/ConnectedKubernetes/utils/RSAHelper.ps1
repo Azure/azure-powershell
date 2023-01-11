@@ -7,7 +7,7 @@ function ExportRSAPrivateKeyBase64{
     process{
         $RSAParams = $RSA.ExportParameters(1)
         [byte]$Sequence = 0x30 
-        [byte[]]$Version =(0x00)
+        [byte[]]$Version = (0x00)
         $stream = [System.IO.MemoryStream]::new()
         $writer = [System.IO.BinaryWriter]::new($stream)
         $writer.Write($Sequence); # SEQUENCE
