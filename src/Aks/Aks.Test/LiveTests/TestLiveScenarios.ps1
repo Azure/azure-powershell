@@ -1,4 +1,4 @@
-Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description <ScenarioDescription> -ScenarioScript `
+Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRUD and node pool CRU" -ScenarioScript `
 {
     param ($rg)
 
