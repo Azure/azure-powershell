@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed the incorrect type of `-TotalBytesPerSession` in `New-AzNetworkWatcherPacketCapture`
 
 ## Version 5.3.0
 * Added samples for retrieving Private Link IP Configuration using 'New-AzApplicationGatewayPrivateLinkIpConfiguration' with fix [#20440]
