@@ -313,4 +313,10 @@ directive:
           - Name
           - ResourceGroupName
           - ProvisioningState
+  - where:
+      model-name: PacketCoreControlPlaneVersion
+    set:
+      format-table:
+        properties:
+          - Name
 ```
