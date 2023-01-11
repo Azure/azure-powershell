@@ -20,7 +20,7 @@ Creates an EventHub Authorization Rule
 #>
 
 function New-AzEventHubAuthorizationRule{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAuthorizationRule])]
     [CmdletBinding(DefaultParameterSetName = 'NewExpandedNamespace', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'NewExpandedEntity', Mandatory, HelpMessage = "The name of the Authorization Rule")]
@@ -130,7 +130,7 @@ function New-AzEventHubAuthorizationRule{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $authRule = [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule]@{
+            $authRule = [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAuthorizationRule]@{
                 Rights = $Rights
             }
 

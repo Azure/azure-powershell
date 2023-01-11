@@ -16,8 +16,11 @@ Creates or updates a new Event Hub as a nested resource within a Namespace.
 New-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DestinationName <String>]
  [-Encoding <EncodingCaptureDescription>] [-IntervalInSeconds <Int32>] [-MessageRetentionInDays <Int64>]
- [-PartitionCount <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>]
- [-StorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PartitionCount <Int64>] [-RetentionDescriptionCleanupPolicy <CleanupPolicyRetentionDescription>]
+ [-RetentionDescriptionRetentionTimeInHour <Int64>]
+ [-RetentionDescriptionTombstoneRetentionTimeInHour <Int32>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive]
+ [-Status <EntityStatus>] [-StorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +47,7 @@ Id                           : /subscriptions/subscriptionId/resourceGroups/myRe
 IntervalInSeconds            :
 Location                     : centralus
 MessageRetentionInDays       : 6
-Name                         : myFirstEventHub
+Name                         : myEventHub
 PartitionCount               : 5
 PartitionId                  : {0}
 ResourceGroupName            : myResourceGroup
@@ -57,7 +60,7 @@ Creates a new eventhub entity `myEventHub` on namespace `myNamespace`.
 
 ### Example 2: Create EventHub with Capture Enabled
 ```powershell
-New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
+New-AzEventHub -Name myFirstEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
 ```
 
 ```output
@@ -83,7 +86,91 @@ SkipEmptyArchive             : true
 Status                       : Active
 ```
 
-Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with capture enabled.
+Creates a new eventhub entity `myFirstEventHub` on namespace `myNamespace` with capture enabled.
+
+### Example 3: Create EventHub with Compact Cleanup Policy
+```powershell
+New-AzEventHub -Name myFirstEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -PartitionCount 2 -RetentionDescriptionCleanupPolicy Compact
+```
+
+```output
+ArchiveNameFormat                                :
+BlobContainer                                    :
+CaptureEnabled                                   :
+CreatedAt                                        : 1/10/2023 11:38:54 AM
+DataLakeAccountName                              :
+DataLakeFolderPath                               :
+DataLakeSubscriptionId                           :
+DestinationName                                  :
+Encoding                                         :
+Id                                               : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myFirstEventHub
+IntervalInSeconds                                :
+Location                                         : eastus
+MessageRetentionInDays                           : 9223372036854775807
+Name                                             : myFirstEventHub
+PartitionCount                                   : 2
+PartitionId                                      : {0, 1}
+ResourceGroupName                                : myResourceGroup
+RetentionDescriptionCleanupPolicy                : Compact
+RetentionDescriptionRetentionTimeInHour          :
+RetentionDescriptionTombstoneRetentionTimeInHour :
+SizeLimitInBytes                                 :
+SkipEmptyArchive                                 :
+Status                                           : Active
+StorageAccountResourceId                         :
+SystemDataCreatedAt                              :
+SystemDataCreatedBy                              :
+SystemDataCreatedByType                          :
+SystemDataLastModifiedAt                         :
+SystemDataLastModifiedBy                         :
+SystemDataLastModifiedByType                     :
+Type                                             : Microsoft.EventHub/namespaces/eventhubs
+UpdatedAt                                        : 1/10/2023 11:38:56 AM
+```
+
+Creates a new eventhub entity `myFirstEventHub` on namespace `myNamespace` with Compact Cleanup Policy.
+
+### Example 4: Create EventHub with Delete Cleanup Policy
+```powershell
+New-AzEventHub -Name myFirstEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -PartitionCount 2 -RetentionDescriptionCleanupPolicy Delete
+```
+
+```output
+ArchiveNameFormat                                :
+BlobContainer                                    :
+CaptureEnabled                                   :
+CreatedAt                                        : 1/10/2023 11:38:54 AM
+DataLakeAccountName                              :
+DataLakeFolderPath                               :
+DataLakeSubscriptionId                           :
+DestinationName                                  :
+Encoding                                         :
+Id                                               : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myFirstEventHub
+IntervalInSeconds                                :
+Location                                         : eastus
+MessageRetentionInDays                           : 1
+Name                                             : myFirstEventHub
+PartitionCount                                   : 2
+PartitionId                                      : {0, 1}
+ResourceGroupName                                : myResourceGroup
+RetentionDescriptionCleanupPolicy                : Delete
+RetentionDescriptionRetentionTimeInHour          :
+RetentionDescriptionTombstoneRetentionTimeInHour :
+SizeLimitInBytes                                 :
+SkipEmptyArchive                                 :
+Status                                           : Active
+StorageAccountResourceId                         :
+SystemDataCreatedAt                              :
+SystemDataCreatedBy                              :
+SystemDataCreatedByType                          :
+SystemDataLastModifiedAt                         :
+SystemDataLastModifiedBy                         :
+SystemDataLastModifiedByType                     :
+Type                                             : Microsoft.EventHub/namespaces/eventhubs
+UpdatedAt                                        : 1/10/2023 11:38:56 AM
+```
+
+Creates a new eventhub entity `myFirstEventHub` on namespace `myNamespace` with Delete Cleanup Policy.
 
 ## PARAMETERS
 
@@ -271,6 +358,55 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RetentionDescriptionCleanupPolicy
+Enumerates the possible values for cleanup policy
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CleanupPolicyRetentionDescription
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RetentionDescriptionRetentionTimeInHour
+Number of hours to retain the events for this Event Hub.
+This value is only used when cleanupPolicy is Delete.
+If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RetentionDescriptionTombstoneRetentionTimeInHour
+Number of hours to retain the tombstone markers of a compacted Event Hub.
+This value is only used when cleanupPolicy is Compaction.
+Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SizeLimitInBytes
 The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes
 
@@ -385,7 +521,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhub
 
 ## NOTES
 

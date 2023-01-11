@@ -19,7 +19,7 @@ Constructs an INwRuleSetVirtualNetworkRules object that can be fed as input to S
 Constructs an INwRuleSetVirtualNetworkRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
 #>
 function New-AzEventHubVirtualNetworkRuleConfig{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.INwRuleSetVirtualNetworkRules])]
 	[CmdletBinding(PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(Mandatory, HelpMessage = "Resource ID of Virtual Network Subnet")]
@@ -35,7 +35,7 @@ function New-AzEventHubVirtualNetworkRuleConfig{
 
 	process{
 		try{
-			$virtualNetworkRule = [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules]@{
+			$virtualNetworkRule = [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.INwRuleSetVirtualNetworkRules]@{
 				SubnetId = $SubnetId
 			}
 

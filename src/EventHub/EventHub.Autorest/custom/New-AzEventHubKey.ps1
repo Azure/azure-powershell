@@ -20,7 +20,7 @@ Regenerates an EventHub SAS key
 #>
 
 function New-AzEventHubKey{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAccessKeys])]
     [CmdletBinding(DefaultParameterSetName = 'NewExpandedNamespace', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'NewExpandedEntity', Mandatory, HelpMessage = "The name of the Authorization Rule")]
@@ -139,7 +139,7 @@ function New-AzEventHubKey{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $accessKeys = [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IRegenerateAccessKeyParameters]@{
+            $accessKeys = [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IRegenerateAccessKeyParameters]@{
                 KeyType = $KeyType
             }
 
