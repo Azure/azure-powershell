@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringcdnpeeringprefix
+online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringlegacy
 schema: 2.0.0
 ---
 
-# Get-AzPeeringCdnPeeringPrefix
+# Get-AzPeeringLegacy
 
 ## SYNOPSIS
-Lists all of the advertised prefixes for the specified peering location
+Lists all of the legacy peerings under the given subscription matching the specified kind and location.
 
 ## SYNTAX
 
 ```
-Get-AzPeeringCdnPeeringPrefix -PeeringLocation <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPeeringLegacy -Kind <LegacyPeeringsKind> -PeeringLocation <String> [-SubscriptionId <String[]>]
+ [-Asn <Int32>] [-DirectPeeringType <DirectPeeringType>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Lists all of the advertised prefixes for the specified peering location
+Lists all of the legacy peerings under the given subscription matching the specified kind and location.
 
 ## EXAMPLES
 
@@ -46,6 +46,21 @@ Lists all of the advertised prefixes for the specified peering location
 
 ## PARAMETERS
 
+### -Asn
+The ASN number associated with a legacy peering.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -61,8 +76,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DirectPeeringType
+The direct peering type.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.DirectPeeringType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Kind
+The kind of the peering.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.LegacyPeeringsKind
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PeeringLocation
-The peering location.
+The location of the peering.
 
 ```yaml
 Type: System.String
@@ -98,7 +143,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ICdnPeeringPrefix
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering
 
 ## NOTES
 

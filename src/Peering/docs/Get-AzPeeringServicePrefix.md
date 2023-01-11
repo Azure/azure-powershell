@@ -1,33 +1,37 @@
 ---
 external help file:
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/az.peering/invoke-azpeeringinvokelookingglass
+online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringserviceprefix
 schema: 2.0.0
 ---
 
-# Invoke-AzPeeringInvokeLookingGlass
+# Get-AzPeeringServicePrefix
 
 ## SYNOPSIS
-Run looking glass functionality
+Gets an existing prefix with the specified name under the given subscription, resource group and peering service.
 
 ## SYNTAX
 
-### Invoke (Default)
+### List (Default)
 ```
-Invoke-AzPeeringInvokeLookingGlass -Command <LookingGlassCommand> -DestinationIP <String>
- -SourceLocation <String> -SourceType <LookingGlassSourceType> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzPeeringServicePrefix -PeeringServiceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### InvokeViaIdentity
+### Get
 ```
-Invoke-AzPeeringInvokeLookingGlass -InputObject <IPeeringIdentity> -Command <LookingGlassCommand>
- -DestinationIP <String> -SourceLocation <String> -SourceType <LookingGlassSourceType>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzPeeringServicePrefix -Name <String> -PeeringServiceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzPeeringServicePrefix -InputObject <IPeeringIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Run looking glass functionality
+Gets an existing prefix with the specified name under the given subscription, resource group and peering service.
 
 ## EXAMPLES
 
@@ -55,21 +59,6 @@ Run looking glass functionality
 
 ## PARAMETERS
 
-### -Command
-The command to be executed: ping, traceroute, bgpRoute.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.LookingGlassCommand
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -85,15 +74,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DestinationIP
-The IP address of the destination.
+### -Expand
+The properties to be expanded.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -106,7 +95,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
-Parameter Sets: InvokeViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -116,12 +105,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -SourceLocation
-The location of the source.
+### -Name
+The name of the prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
+Aliases: PrefixName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeeringServiceName
+The name of the peering service.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -131,12 +135,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceType
-The type of the source: Edge site or Azure Region.
+### -ResourceGroupName
+The name of the resource group.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.LookingGlassSourceType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -150,44 +154,13 @@ Accept wildcard characters: False
 The Azure subscription ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: Invoke
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -201,7 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ILookingGlassOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringServicePrefix
 
 ## NOTES
 

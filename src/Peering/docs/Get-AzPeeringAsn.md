@@ -1,37 +1,34 @@
 ---
 external help file:
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringprefix
+online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringasn
 schema: 2.0.0
 ---
 
-# Get-AzPeeringPrefix
+# Get-AzPeeringAsn
 
 ## SYNOPSIS
-Gets an existing prefix with the specified name under the given subscription, resource group and peering service.
+Gets the peer ASN with the specified name under the given subscription.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzPeeringPrefix -PeeringServiceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPeeringAsn [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzPeeringPrefix -Name <String> -PeeringServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPeeringAsn -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzPeeringPrefix -InputObject <IPeeringIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPeeringAsn -InputObject <IPeeringIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets an existing prefix with the specified name under the given subscription, resource group and peering service.
+Gets the peer ASN with the specified name under the given subscription.
 
 ## EXAMPLES
 
@@ -74,21 +71,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Expand
-The properties to be expanded.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -106,42 +88,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the prefix.
+The peer ASN name.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: PrefixName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PeeringServiceName
-The name of the peering service.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
+Aliases: PeerAsnName
 
 Required: True
 Position: Named
@@ -174,7 +126,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringServicePrefix
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeerAsn
 
 ## NOTES
 

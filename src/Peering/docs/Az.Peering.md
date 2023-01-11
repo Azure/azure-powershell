@@ -14,23 +14,20 @@ Microsoft Azure PowerShell: Peering cmdlets
 ### [Get-AzPeering](Get-AzPeering.md)
 Gets an existing peering with the specified name under the given subscription and resource group.
 
-### [Get-AzPeeringCdnPeeringPrefix](Get-AzPeeringCdnPeeringPrefix.md)
+### [Get-AzPeeringAsn](Get-AzPeeringAsn.md)
+Gets the peer ASN with the specified name under the given subscription.
+
+### [Get-AzPeeringCdnPrefix](Get-AzPeeringCdnPrefix.md)
 Lists all of the advertised prefixes for the specified peering location
 
 ### [Get-AzPeeringConnectionMonitorTest](Get-AzPeeringConnectionMonitorTest.md)
 Gets an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
 
-### [Get-AzPeeringLegacyPeering](Get-AzPeeringLegacyPeering.md)
+### [Get-AzPeeringLegacy](Get-AzPeeringLegacy.md)
 Lists all of the legacy peerings under the given subscription matching the specified kind and location.
 
 ### [Get-AzPeeringLocation](Get-AzPeeringLocation.md)
 Lists all of the available peering locations for the specified kind of peering.
-
-### [Get-AzPeeringPeerAsn](Get-AzPeeringPeerAsn.md)
-Gets the peer ASN with the specified name under the given subscription.
-
-### [Get-AzPeeringPrefix](Get-AzPeeringPrefix.md)
-Gets an existing prefix with the specified name under the given subscription, resource group and peering service.
 
 ### [Get-AzPeeringReceivedRoute](Get-AzPeeringReceivedRoute.md)
 Lists the prefixes received over the specified peering under the given subscription and resource group.
@@ -53,26 +50,35 @@ Lists all of the available countries for peering service.
 ### [Get-AzPeeringServiceLocation](Get-AzPeeringServiceLocation.md)
 Lists all of the available locations for peering service.
 
+### [Get-AzPeeringServicePrefix](Get-AzPeeringServicePrefix.md)
+Gets an existing prefix with the specified name under the given subscription, resource group and peering service.
+
 ### [Get-AzPeeringServiceProvider](Get-AzPeeringServiceProvider.md)
 Lists all of the available peering service locations for the specified kind of peering.
 
 ### [Initialize-AzPeeringServiceConnectionMonitor](Initialize-AzPeeringServiceConnectionMonitor.md)
 Initialize Peering Service for Connection Monitor functionality
 
-### [Invoke-AzPeeringInvokeLookingGlass](Invoke-AzPeeringInvokeLookingGlass.md)
-Run looking glass functionality
-
 ### [New-AzPeering](New-AzPeering.md)
 Creates a new peering or updates an existing peering with the specified name under the given subscription and resource group.
+
+### [New-AzPeeringAsn](New-AzPeeringAsn.md)
+Creates a new peer ASN or updates an existing peer ASN with the specified name under the given subscription.
+
+### [New-AzPeeringCheckServiceProviderAvailabilityInputObject](New-AzPeeringCheckServiceProviderAvailabilityInputObject.md)
+Create an in-memory object for CheckServiceProviderAvailabilityInput.
 
 ### [New-AzPeeringConnectionMonitorTest](New-AzPeeringConnectionMonitorTest.md)
 Creates or updates a connection monitor test with the specified name under the given subscription, resource group and peering service.
 
-### [New-AzPeeringPeerAsn](New-AzPeeringPeerAsn.md)
-Creates a new peer ASN or updates an existing peer ASN with the specified name under the given subscription.
+### [New-AzPeeringContactDetailObject](New-AzPeeringContactDetailObject.md)
+Create an in-memory object for ContactDetail.
 
-### [New-AzPeeringPrefix](New-AzPeeringPrefix.md)
-Creates a new prefix with the specified name under the given subscription, resource group and peering service.
+### [New-AzPeeringDirectConnectionObject](New-AzPeeringDirectConnectionObject.md)
+Create an in-memory object for DirectConnection.
+
+### [New-AzPeeringExchangeConnectionObject](New-AzPeeringExchangeConnectionObject.md)
+Create an in-memory object for ExchangeConnection.
 
 ### [New-AzPeeringRegisteredAsn](New-AzPeeringRegisteredAsn.md)
 Creates a new registered ASN with the specified name under the given subscription, resource group and peering.
@@ -83,17 +89,17 @@ Creates a new registered prefix with the specified name under the given subscrip
 ### [New-AzPeeringService](New-AzPeeringService.md)
 Creates a new peering service or updates an existing peering with the specified name under the given subscription and resource group.
 
+### [New-AzPeeringServicePrefix](New-AzPeeringServicePrefix.md)
+Creates a new prefix with the specified name under the given subscription, resource group and peering service.
+
 ### [Remove-AzPeering](Remove-AzPeering.md)
 Deletes an existing peering with the specified name under the given subscription and resource group.
 
-### [Remove-AzPeeringConnectionMonitorTest](Remove-AzPeeringConnectionMonitorTest.md)
-Deletes an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
-
-### [Remove-AzPeeringPeerAsn](Remove-AzPeeringPeerAsn.md)
+### [Remove-AzPeeringAsn](Remove-AzPeeringAsn.md)
 Deletes an existing peer ASN with the specified name under the given subscription.
 
-### [Remove-AzPeeringPrefix](Remove-AzPeeringPrefix.md)
-Deletes an existing prefix with the specified name under the given subscription, resource group and peering service.
+### [Remove-AzPeeringConnectionMonitorTest](Remove-AzPeeringConnectionMonitorTest.md)
+Deletes an existing connection monitor test with the specified name under the given subscription, resource group and peering service.
 
 ### [Remove-AzPeeringRegisteredAsn](Remove-AzPeeringRegisteredAsn.md)
 Deletes an existing registered ASN with the specified name under the given subscription, resource group and peering.
@@ -103,6 +109,12 @@ Deletes an existing registered prefix with the specified name under the given su
 
 ### [Remove-AzPeeringService](Remove-AzPeeringService.md)
 Deletes an existing peering service with the specified name under the given subscription and resource group.
+
+### [Remove-AzPeeringServicePrefix](Remove-AzPeeringServicePrefix.md)
+Deletes an existing prefix with the specified name under the given subscription, resource group and peering service.
+
+### [Start-AzPeeringInvokeLookingGlass](Start-AzPeeringInvokeLookingGlass.md)
+Run looking glass functionality
 
 ### [Test-AzPeeringRegisteredPrefix](Test-AzPeeringRegisteredPrefix.md)
 Validates an existing registered prefix with the specified name under the given subscription, resource group and peering.

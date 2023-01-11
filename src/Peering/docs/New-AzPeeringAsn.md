@@ -1,25 +1,25 @@
 ---
 external help file:
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/az.peering/new-azpeeringprefix
+online version: https://learn.microsoft.com/powershell/module/az.peering/new-azpeeringasn
 schema: 2.0.0
 ---
 
-# New-AzPeeringPrefix
+# New-AzPeeringAsn
 
 ## SYNOPSIS
-Creates a new prefix with the specified name under the given subscription, resource group and peering service.
+Creates a new peer ASN or updates an existing peer ASN with the specified name under the given subscription.
 
 ## SYNTAX
 
 ```
-New-AzPeeringPrefix -Name <String> -PeeringServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-PeeringServicePrefixKey <String>] [-Prefix <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPeeringAsn -Name <String> [-SubscriptionId <String>] [-PeerAsn <Int32>]
+ [-PeerContactDetail <IContactDetail[]>] [-PeerName <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new prefix with the specified name under the given subscription, resource group and peering service.
+Creates a new peer ASN or updates an existing peer ASN with the specified name under the given subscription.
 
 ## EXAMPLES
 
@@ -63,12 +63,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the prefix.
+The peer ASN name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: PrefixName
+Aliases: PeerAsnName
 
 Required: True
 Position: Named
@@ -77,26 +77,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PeeringServiceName
-The name of the peering service.
+### -PeerAsn
+The Autonomous System Number (ASN) of the peer.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PeeringServicePrefixKey
-The peering service prefix key
-
-```yaml
-Type: System.String
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -107,11 +92,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Prefix
-The prefix from which your traffic originates.
+### -PeerContactDetail
+The contact details of the peer.
+To construct, see NOTES section for PEERCONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IContactDetail[]
 Parameter Sets: (All)
 Aliases:
 
@@ -122,15 +108,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -PeerName
+The name of the peer.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -190,11 +176,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringServicePrefix
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeerAsn
 
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`PEERCONTACTDETAIL <IContactDetail[]>`: The contact details of the peer.
+  - `[Email <String>]`: The e-mail address of the contact.
+  - `[Phone <String>]`: The phone number of the contact.
+  - `[Role <Role?>]`: The role of the contact.
 
 ## RELATED LINKS
 

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/az.peering/remove-azpeeringpeerasn
+online version: https://learn.microsoft.com/powershell/module/az.peering/remove-azpeeringasn
 schema: 2.0.0
 ---
 
-# Remove-AzPeeringPeerAsn
+# Remove-AzPeeringAsn
 
 ## SYNOPSIS
 Deletes an existing peer ASN with the specified name under the given subscription.
@@ -14,13 +14,13 @@ Deletes an existing peer ASN with the specified name under the given subscriptio
 
 ### Delete (Default)
 ```
-Remove-AzPeeringPeerAsn -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+Remove-AzPeeringAsn -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzPeeringPeerAsn -InputObject <IPeeringIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Remove-AzPeeringAsn -InputObject <IPeeringIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 

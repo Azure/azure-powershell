@@ -1,31 +1,33 @@
 ---
 external help file:
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/az.peering/remove-azpeeringprefix
+online version: https://learn.microsoft.com/powershell/module/az.peering/start-azpeeringinvokelookingglass
 schema: 2.0.0
 ---
 
-# Remove-AzPeeringPrefix
+# Start-AzPeeringInvokeLookingGlass
 
 ## SYNOPSIS
-Deletes an existing prefix with the specified name under the given subscription, resource group and peering service.
+Run looking glass functionality
 
 ## SYNTAX
 
-### Delete (Default)
+### Invoke (Default)
 ```
-Remove-AzPeeringPrefix -Name <String> -PeeringServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzPeeringInvokeLookingGlass -Command <LookingGlassCommand> -DestinationIP <String>
+ -SourceLocation <String> -SourceType <LookingGlassSourceType> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### InvokeViaIdentity
 ```
-Remove-AzPeeringPrefix -InputObject <IPeeringIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Start-AzPeeringInvokeLookingGlass -InputObject <IPeeringIdentity> -Command <LookingGlassCommand>
+ -DestinationIP <String> -SourceLocation <String> -SourceType <LookingGlassSourceType>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes an existing prefix with the specified name under the given subscription, resource group and peering service.
+Run looking glass functionality
 
 ## EXAMPLES
 
@@ -53,6 +55,21 @@ Deletes an existing prefix with the specified name under the given subscription,
 
 ## PARAMETERS
 
+### -Command
+The command to be executed: ping, traceroute, bgpRoute.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.LookingGlassCommand
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -68,13 +85,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DestinationIP
+The IP address of the destination.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: InvokeViaIdentity
 Aliases:
 
 Required: True
@@ -84,44 +116,14 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the prefix.
+### -SourceLocation
+The location of the source.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: PrefixName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PeeringServiceName
-The name of the peering service.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
 Required: True
 Position: Named
 Default value: None
@@ -129,12 +131,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -SourceType
+The type of the source: Edge site or Azure Region.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Support.LookingGlassSourceType
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -149,7 +151,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Invoke
 Aliases:
 
 Required: False
@@ -199,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ILookingGlassOutput
 
 ## NOTES
 

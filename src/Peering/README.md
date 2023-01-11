@@ -60,6 +60,7 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
+
   # Remove the set-* cmdlet
   - where:
       verb: Set
@@ -70,25 +71,53 @@ directive:
       subject: ^InvokeLookingGlass$
     set:
       verb: Start
-  # Change cmdlet subject: Get/New/Remove-AzPeeringPeerAsn -> Get/New/Remove-AzPeeringAsn
+  # Change cmdlet subject: *-AzPeeringPeerAsn -> *-AzPeeringAsn
   - where:
       subject-prefix: Peering
       subject: PeerAsn
     set:
       subject: Asn
-      subject-prefix: Peer
+  # Change cmdlet: *-AzPeeringLegacyPeering -> *-AzPeeringLegacy
+  - where:
+      subject-prefix: Peering
+      subject: LegacyPeering
+    set:
+      subject: Legacy
+  # Change cmdlet: *-AzPeeringCdnPeeringPrefix -> *-AzPeeringCdnPrefix
+  - where:
+      subject-prefix: Peering
+      subject: CdnPeeringPrefix
+    set:
+      subject: CdnPrefix
+  # Change cmdlet: *-AzPeeringPrefix -> *-AzPeeringServicePrefix
+  - where:
+      subject-prefix: Peering
+      subject: Prefix
+    set:
+      subject: ServicePrefix
+
   # Some parameter is Array, so we need to change it and custom it
+  # ExchangeConnection: New-AzPeeringExchangeConnectionObject
+  # DirectConnection: New-AzPeeringDirectConnectionObject
+  # ContactDetail: New-AzPeeringContactDetailObject
+  # CheckServiceProviderAvailabilityInput: New-AzPeeringCheckServiceProviderAvailabilityInputObject
+  # eg: 
+  # New-AzPeering [-DirectConnection <IDirectConnection[]>] 
+  # $directConnection = New-AzPeeringDirectConnectionObject ......
+  # New-AzPeering -DirectConnection $directConnection ......
   - model-cmdlet:
       - ExchangeConnection
       - DirectConnection
       - ContactDetail
       - CheckServiceProviderAvailabilityInput
+
   # Change all parameters named SkuName(SkuName -> Sku) and add the alias SkuName to Sku
   - where:
       parameter-name: SkuName
     set:
       parameter-name: Sku
       alias: SkuName
+
   # Parameter information to be displayed after the command is returned
   # module-name source: .\azure-powershell\src\Peering\exports\Get-AzPeerAsn.ps1 Line 51 [IPeerAsn]
   - where:

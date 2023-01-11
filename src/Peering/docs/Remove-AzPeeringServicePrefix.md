@@ -1,35 +1,31 @@
 ---
 external help file:
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringpeerasn
+online version: https://learn.microsoft.com/powershell/module/az.peering/remove-azpeeringserviceprefix
 schema: 2.0.0
 ---
 
-# Get-AzPeeringPeerAsn
+# Remove-AzPeeringServicePrefix
 
 ## SYNOPSIS
-Gets the peer ASN with the specified name under the given subscription.
+Deletes an existing prefix with the specified name under the given subscription, resource group and peering service.
 
 ## SYNTAX
 
-### List (Default)
+### Delete (Default)
 ```
-Get-AzPeeringPeerAsn [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzPeeringPeerAsn -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Remove-AzPeeringServicePrefix -Name <String> -PeeringServiceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### DeleteViaIdentity
 ```
-Get-AzPeeringPeerAsn -InputObject <IPeeringIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzPeeringServicePrefix -InputObject <IPeeringIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the peer ASN with the specified name under the given subscription.
+Deletes an existing prefix with the specified name under the given subscription, resource group and peering service.
 
 ## EXAMPLES
 
@@ -78,7 +74,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -89,12 +85,57 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The peer ASN name.
+The name of the prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: PeerAsnName
+Parameter Sets: Delete
+Aliases: PrefixName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeeringServiceName
+The name of the peering service.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
 
 Required: True
 Position: Named
@@ -107,13 +148,44 @@ Accept wildcard characters: False
 The Azure subscription ID.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -127,7 +199,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeerAsn
+### System.Boolean
 
 ## NOTES
 

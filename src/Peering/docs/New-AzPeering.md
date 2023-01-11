@@ -16,7 +16,7 @@ Creates a new peering or updates an existing peering with the specified name und
 New-AzPeering -Name <String> -ResourceGroupName <String> -Kind <Kind> -Location <String>
  [-SubscriptionId <String>] [-DirectConnection <IDirectConnection[]>] [-DirectPeerAsnId <String>]
  [-DirectPeeringType <DirectPeeringType>] [-ExchangeConnection <IExchangeConnection[]>]
- [-ExchangePeerAsnId <String>] [-PeeringLocation <String>] [-SkuName <String>] [-Tag <Hashtable>]
+ [-ExchangePeerAsnId <String>] [-PeeringLocation <String>] [-Sku <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -216,13 +216,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuName
+### -Sku
 The name of the peering SKU.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: SkuName
 
 Required: False
 Position: Named

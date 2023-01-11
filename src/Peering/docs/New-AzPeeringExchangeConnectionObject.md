@@ -1,26 +1,28 @@
 ---
 external help file:
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/az.peering/new-azpeeringservice
+online version: https://learn.microsoft.com/powershell/module/az.Peering/new-AzPeeringExchangeConnectionObject
 schema: 2.0.0
 ---
 
-# New-AzPeeringService
+# New-AzPeeringExchangeConnectionObject
 
 ## SYNOPSIS
-Creates a new peering service or updates an existing peering with the specified name under the given subscription and resource group.
+Create an in-memory object for ExchangeConnection.
 
 ## SYNTAX
 
 ```
-New-AzPeeringService -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-PeeringServiceLocation <String>] [-PeeringServiceProvider <String>]
- [-ProviderBackupPeeringLocation <String>] [-ProviderPrimaryPeeringLocation <String>] [-Sku <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPeeringExchangeConnectionObject [-BgpSessionMaxPrefixesAdvertisedV4 <Int32>]
+ [-BgpSessionMaxPrefixesAdvertisedV6 <Int32>] [-BgpSessionMd5AuthenticationKey <String>]
+ [-BgpSessionMicrosoftSessionIPv4Address <String>] [-BgpSessionMicrosoftSessionIPv6Address <String>]
+ [-BgpSessionPeerSessionIPv4Address <String>] [-BgpSessionPeerSessionIPv6Address <String>]
+ [-BgpSessionPrefixV4 <String>] [-BgpSessionPrefixV6 <String>] [-ConnectionIdentifier <String>]
+ [-PeeringDbFacilityId <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new peering service or updates an existing peering with the specified name under the given subscription and resource group.
+Create an in-memory object for ExchangeConnection.
 
 ## EXAMPLES
 
@@ -48,13 +50,13 @@ Creates a new peering service or updates an existing peering with the specified 
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -BgpSessionMaxPrefixesAdvertisedV4
+The maximum number of prefixes advertised over the IPv4 session.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -63,38 +65,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The location of the resource.
+### -BgpSessionMaxPrefixesAdvertisedV6
+The maximum number of prefixes advertised over the IPv6 session.
 
 ```yaml
-Type: System.String
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the peering service.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: PeeringServiceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PeeringServiceLocation
-The location (state/province) of the customer.
+### -BgpSessionMd5AuthenticationKey
+The MD5 authentication key of the session.
 
 ```yaml
 Type: System.String
@@ -108,8 +95,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PeeringServiceProvider
-The name of the service provider.
+### -BgpSessionMicrosoftSessionIPv4Address
+The IPv4 session address on Microsoft's end.
 
 ```yaml
 Type: System.String
@@ -123,8 +110,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProviderBackupPeeringLocation
-The backup peering (Microsoft/service provider) location to be used for customer traffic.
+### -BgpSessionMicrosoftSessionIPv6Address
+The IPv6 session address on Microsoft's end.
 
 ```yaml
 Type: System.String
@@ -138,8 +125,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProviderPrimaryPeeringLocation
-The primary peering (Microsoft/service provider) location to be used for customer traffic.
+### -BgpSessionPeerSessionIPv4Address
+The IPv4 session address on peer's end.
 
 ```yaml
 Type: System.String
@@ -153,38 +140,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Sku
-The name of the peering service SKU.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: SkuName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-The Azure subscription ID.
+### -BgpSessionPeerSessionIPv6Address
+The IPv6 session address on peer's end.
 
 ```yaml
 Type: System.String
@@ -193,16 +150,16 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-The resource tags.
+### -BgpSessionPrefixV4
+The IPv4 prefix that contains both ends' IPv4 addresses.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -213,13 +170,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -BgpSessionPrefixV6
+The IPv6 prefix that contains both ends' IPv6 addresses.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
 Required: False
 Position: Named
@@ -228,14 +185,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -ConnectionIdentifier
+The unique identifier (GUID) for the connection.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
-Aliases: wi
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeeringDbFacilityId
+The PeeringDB.com ID of the facility at which the connection has to be set up.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -251,7 +222,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringService
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ExchangeConnection
 
 ## NOTES
 
