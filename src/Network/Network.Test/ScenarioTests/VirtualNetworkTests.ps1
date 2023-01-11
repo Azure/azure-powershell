@@ -1494,6 +1494,10 @@ function Test-VirtualNetworkInEdgeZone
 		$Vnet = Get-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroup
 		Assert-AreEqual $Vnet.ExtendedLocation.Name $EdgeZone
     }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-NotNull { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
+    }
     finally
     {
         # Cleanup
