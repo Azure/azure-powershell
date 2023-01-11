@@ -117,7 +117,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* First preview release for module Az.BillingBenefits'
 
         # Prerelease string of this module
         # Prerelease = ''
