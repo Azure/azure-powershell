@@ -791,5 +791,9 @@
   {
     "alias": "VoiceServices",
     "module": "VoiceServices"
+  },
+  {
+    "module": "LoadTesting",
+    "alias": "LoadTesting"
   }
 ]
