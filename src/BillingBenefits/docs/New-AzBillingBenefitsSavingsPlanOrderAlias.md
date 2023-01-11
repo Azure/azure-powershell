@@ -56,7 +56,7 @@ Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2
 
 ### Example 1: Create a savings plan
 ```powershell
-New-AzBillingBenefitsSavingsPlanOrderAlias -Name "PSTest1" -AppliedScopeType "Shared" -BillingPlan "P1M" 
+New-AzBillingBenefitsSavingsPlanOrderAlias -Name "PSTest1" -AppliedScopeType "Shared" -BillingPlan "P1M" `
 -BillingScopeId "/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47" -CommitmentAmount 0.001 -CommitmentCurrencyCode "USD" -CommitmentGrain "Hourly" -SkuName "Compute_Savings_Plan" -DisplayName "PSTest199" -Term "P3Y"
 ```
 
@@ -454,15 +454,15 @@ To create the parameters described below, construct a hash table containing the 
   - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
   - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the benefit is applied.
   - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-  - `[AzureAsyncOperation <String>]`: 
+  - `[AzureAsyncOperation <String>]`:
   - `[BillingPlan <BillingPlan?>]`: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
   - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing the benefit
-  - `[CommitmentAmount <Double?>]`: 
+  - `[CommitmentAmount <Double?>]`:
   - `[CommitmentCurrencyCode <String>]`: The ISO 4217 3-letter currency code for the currency used by this purchase record.
   - `[CommitmentGrain <CommitmentGrain?>]`: Commitment grain.
   - `[DisplayName <String>]`: Display name
   - `[Kind <String>]`: Resource provider kind
-  - `[RetryAfter <Int32?>]`: 
+  - `[RetryAfter <Int32?>]`:
   - `[SkuName <String>]`: Name of the SKU to be applied
   - `[Term <Term?>]`: Represent benefit term in ISO 8601 format.
 
