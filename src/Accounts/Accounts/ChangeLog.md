@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.11.1
 * Fixed an issue where Az.Accounts cannot be imported correctly. [#20615]
 
 ## Version 2.11.0
