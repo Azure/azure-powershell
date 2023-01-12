@@ -1,0 +1,123 @@
+{
+  "resourceType": "moveCollections",
+  "apiVersion": "2021-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.resourcemover"
+  },
+  "commands": [
+    {
+      "name": "Get-AzResourceMoverMoveCollection",
+      "description": "Gets the move collection.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemovermovecollection"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the move collection.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.moveCollectionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzResourceMoverMoveCollection",
+      "description": "Deletes a move collection.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermovecollection"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a move collection.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.moveCollectionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Resolve-AzResourceMoverMoveCollectionDependency",
+      "description": "Computes, resolves and validate the dependencies of the moveResources in the move collection.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/resolveDependencies",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.resourcemover/resolve-azresourcemovermovecollectiondependency"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MoveCollectionName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Computes, resolves and validate the dependencies of the moveResources in the move collection.",
+          "parameters": [
+            {
+              "name": "-MoveCollectionName",
+              "value": "[Path.moveCollectionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

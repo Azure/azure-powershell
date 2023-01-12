@@ -1,0 +1,95 @@
+{
+  "resourceType": "nginxDeployments/certificates",
+  "apiVersion": "2022-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.nginx"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNginxCertificate",
+      "description": "Get a certificate of given Nginx deployment",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/certificates/{certificateName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxcertificate"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DeploymentName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a certificate of given Nginx deployment",
+          "parameters": [
+            {
+              "name": "-DeploymentName",
+              "value": "[Path.deploymentName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.certificateName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNginxCertificate",
+      "description": "Deletes a certificate from the nginx deployment",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/certificates/{certificateName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.nginx/remove-aznginxcertificate"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DeploymentName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a certificate from the nginx deployment",
+          "parameters": [
+            {
+              "name": "-DeploymentName",
+              "value": "[Path.deploymentName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.certificateName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

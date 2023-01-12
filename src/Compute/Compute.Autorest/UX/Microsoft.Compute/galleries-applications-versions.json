@@ -1,0 +1,57 @@
+{
+  "resourceType": "galleries/applications/versions",
+  "apiVersion": "2022-01-03",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.compute"
+  },
+  "commands": [
+    {
+      "name": "Remove-AzGalleryApplicationVersion",
+      "description": "Delete a gallery Application Version.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}/versions/{galleryApplicationVersionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryapplicationversion"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-GalleryApplicationName <String>",
+              "-GalleryName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a gallery Application Version.",
+          "parameters": [
+            {
+              "name": "-GalleryApplicationName",
+              "value": "[Path.galleryApplicationName]"
+            },
+            {
+              "name": "-GalleryName",
+              "value": "[Path.galleryName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.galleryApplicationVersionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

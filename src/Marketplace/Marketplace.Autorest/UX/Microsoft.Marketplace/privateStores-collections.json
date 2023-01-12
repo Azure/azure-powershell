@@ -1,0 +1,108 @@
+{
+  "resourceType": "privateStores/collections",
+  "apiVersion": "2021-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.marketplace"
+  },
+  "commands": [
+    {
+      "name": "Copy-AzMarketplacePrivateStoreCollectionOffer",
+      "description": "transferring offers (copy or move) from source collection to target collection(s)",
+      "path": "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/transferOffers",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.marketplace/copy-azmarketplaceprivatestorecollectionoffer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CollectionId <String>",
+              "-PrivateStoreId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "transferring offers (copy or move) from source collection to target collection(s)",
+          "parameters": [
+            {
+              "name": "-CollectionId",
+              "value": "[Path.collectionId]"
+            },
+            {
+              "name": "-PrivateStoreId",
+              "value": "[Path.privateStoreId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzMarketplacePrivateStoreCollection",
+      "description": "Gets private store collection",
+      "path": "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorecollection"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CollectionId <String>",
+              "-PrivateStoreId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets private store collection",
+          "parameters": [
+            {
+              "name": "-CollectionId",
+              "value": "[Path.collectionId]"
+            },
+            {
+              "name": "-PrivateStoreId",
+              "value": "[Path.privateStoreId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMarketplacePrivateStoreCollection",
+      "description": "Delete a collection from the given private store.",
+      "path": "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.marketplace/remove-azmarketplaceprivatestorecollection"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CollectionId <String>",
+              "-PrivateStoreId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a collection from the given private store.",
+          "parameters": [
+            {
+              "name": "-CollectionId",
+              "value": "[Path.collectionId]"
+            },
+            {
+              "name": "-PrivateStoreId",
+              "value": "[Path.privateStoreId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

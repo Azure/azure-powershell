@@ -1,0 +1,95 @@
+{
+  "resourceType": "managedEnvironments/daprComponents",
+  "apiVersion": "2022-03-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.app"
+  },
+  "commands": [
+    {
+      "name": "Get-AzContainerAppManagedEnvDapr",
+      "description": "Get a dapr component.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvdapr"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DaprName <String>",
+              "-EnvName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a dapr component.",
+          "parameters": [
+            {
+              "name": "-DaprName",
+              "value": "[Path.componentName]"
+            },
+            {
+              "name": "-EnvName",
+              "value": "[Path.environmentName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzContainerAppManagedEnvDapr",
+      "description": "Delete a Dapr Component from a Managed Environment.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenvdapr"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DaprName <String>",
+              "-EnvName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Dapr Component from a Managed Environment.",
+          "parameters": [
+            {
+              "name": "-DaprName",
+              "value": "[Path.componentName]"
+            },
+            {
+              "name": "-EnvName",
+              "value": "[Path.environmentName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
