@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
     /// <summary>A class that contains the module-common code and data.</summary>
     public partial class Module
     {
-        /// <summary>The currently selected profile.</summary>
+        /// <summary>The currently selected profile1.</summary>
         public string Profile = global::System.String.Empty;
 
         public global::System.Net.Http.HttpClientHandler _handler = new global::System.Net.Http.HttpClientHandler();
