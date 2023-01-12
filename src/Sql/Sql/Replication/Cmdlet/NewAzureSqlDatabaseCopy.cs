@@ -157,6 +157,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public SwitchParameter ZoneRedundant { get; set; }
 
         [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(Mandatory = false,
             HelpMessage = "The encryption protector key for SQL Database copy.")]
         public string EncryptionProtector { get; set; }
 
@@ -258,7 +262,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 LicenseType = LicenseType, // note: default license type is LicenseIncluded
                 RequestedBackupStorageRedundancy = BackupStorageRedundancy,
                 ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
-                Identity = Common.DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.UserAssignedIdentityId, null),
+                Identity = Common.DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId, null),
                 Keys = Common.DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.Keys),
                 EncryptionProtector = this.EncryptionProtector,
                 FederatedClientId = this.FederatedClientId

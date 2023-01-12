@@ -27,18 +27,24 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Gets the database identity object
         /// </summary>
+        /// <param name="assignIdentityIsPresent">Flag to check if AssignIdentity flag is used in the cmdlet.</param>
         /// <param name="userAssignedIdentities">User assigned identities</param>
         /// <param name="existingIdentity">Existing identity on database</param>
         /// <returns>Database Identity</returns>
-        public static DatabaseIdentity GetDatabaseIdentity(List<string> userAssignedIdentities, Management.Sql.Models.DatabaseIdentity existingIdentity)
+        public static DatabaseIdentity GetDatabaseIdentity(bool assignIdentityIsPresent, List<string> userAssignedIdentities, Management.Sql.Models.DatabaseIdentity existingIdentity)
         {
+            DatabaseIdentity identityResult = null;
+            if (!assignIdentityIsPresent)
+            {
+                return identityResult;
+            }
+
             if (userAssignedIdentities == null)
             {
                 throw new PSArgumentNullException("The list of user assigned identity ids needs to be passed when configuring database level identity.");
             }
 
             Dictionary<string, DatabaseUserIdentity> identityDict = new Dictionary<string, DatabaseUserIdentity>();
-            DatabaseIdentity identityResult = null;
 
             // Update an existing database identity
             //

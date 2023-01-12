@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -66,14 +67,31 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Gets the Azure Sql Database
         /// </summary>
-        public Management.Sql.Models.Database Get(string resourceGroupName, string serverName, string databaseName)
+        public Management.Sql.Models.Database Get(string resourceGroupName, string serverName, string databaseName, ODataQuery<Management.Sql.Models.Database> oDataQuery = null)
         {
-            return GetCurrentSqlClient().Databases.Get(resourceGroupName, serverName, databaseName);
+            return GetCurrentSqlClient().Databases.Get(resourceGroupName, serverName, databaseName, oDataQuery);
         }
 
+        /// <summary>
+        /// Revalidates Azure Sql Database Encryption Protector
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="serverName">Name of the server</param>
+        /// <param name="databaseName">Name of the database</param>
         public void RevalidateDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
         {
+            GetCurrentSqlClient().DatabaseEncryptionProtectors.BeginRevalidate(resourceGroupName, serverName, databaseName);
+        }
 
+        /// <summary>
+        /// Reverts the Azure Sql Database Encryption Protector
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="serverName">Name of the server</param>
+        /// <param name="databaseName">Name of the database</param>
+        public void RevertDatabaseEncryptionProtector(string resourceGroupName, string serverName, string databaseName)
+        {
+            GetCurrentSqlClient().DatabaseEncryptionProtectors.BeginRevert(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>

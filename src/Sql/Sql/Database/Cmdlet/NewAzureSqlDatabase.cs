@@ -240,18 +240,37 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "Creates a ledger database, in which the integrity of all data is protected by the ledger feature. All tables in the ledger database must be ledger tables. Note: the value of this property cannot be changed after the database has been created.")]
         public SwitchParameter EnableLedger { get; set; }
 
+        /// <summary>
+        /// Switch parameter to control if database identity is to be assigned.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        /// <summary>
+        /// Database encryption protector
+        /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The encryption protector key for SQL Database.")]
         public string EncryptionProtector { get; set; }
 
+        /// <summary>
+        /// List of user assigned managed identities
+        /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The list of user assigned identity for the SQL Database.")]
         public List<string> UserAssignedIdentityId { get; set; }
 
+        /// <summary>
+        /// List of Azure Key vault keys
+        /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The list of AKV keys for the SQL Database.")]
         public List<string> Keys { get; set; }
 
+        /// <summary>
+        /// Federated client id
+        /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]
         public Guid? FederatedClientId { get; set; }
@@ -341,7 +360,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 SecondaryType = SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationId,
                 EnableLedger = this.IsParameterBound(p => p.EnableLedger) ? EnableLedger.ToBool() : (bool?)null,
-                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.UserAssignedIdentityId, null),
+                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId, null),
                 Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.Keys),
                 EncryptionProtector = this.EncryptionProtector,
                 FederatedClientId = this.FederatedClientId

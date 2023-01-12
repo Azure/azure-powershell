@@ -303,6 +303,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(Mandatory = false,
             HelpMessage = "The encryption protector key for SQL Database.")]
         public string EncryptionProtector { get; set; }
 
@@ -398,7 +402,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 RequestedBackupStorageRedundancy = BackupStorageRedundancy,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
-                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.UserAssignedIdentityId, null),
+                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId, null),
                 Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.Keys),
                 EncryptionProtector = this.EncryptionProtector,
                 FederatedClientId = this.FederatedClientId,

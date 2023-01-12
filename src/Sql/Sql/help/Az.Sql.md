@@ -353,7 +353,7 @@ Gets or lists Azure SQL Server DNS Alias.
 ### [Get-AzSqlServerFirewallRule](Get-AzSqlServerFirewallRule.md)
 Gets firewall rules for a SQL Database server.
 
-### [Get-AzSqlServerIpv6FirewallRule ](Get-AzSqlServerIpv6FirewallRule .md)
+### [Get-AzSqlServerIpv6FirewallRule](Get-AzSqlServerIpv6FirewallRule.md)
 Gets IPv6 firewall rules for a SQL Database server.
 
 ### [Get-AzSqlServerKeyVaultKey](Get-AzSqlServerKeyVaultKey.md)
@@ -649,6 +649,18 @@ Restores an Azure SQL Managed Instance database.
 
 ### [Resume-AzSqlDatabase](Resume-AzSqlDatabase.md)
 Resumes a SQL Data Warehouse database.
+
+### [Revalidate-AzSqlDatabaseTransparentDataEncryptionProtector](Revalidate-AzSqlDatabaseTransparentDataEncryptionProtector.md)
+Revalidates the Azure Key Vault Key used for TDE for a database.
+
+### [Revalidate-AzSqlInstanceTransparentDataEncryptionProtector](Revalidate-AzSqlInstanceTransparentDataEncryptionProtector.md)
+Revalidates the Azure Key Vault Key used for TDE for a managed instance.
+
+### [Revalidate-AzSqlServerTransparentDataEncryptionProtector](Revalidate-AzSqlServerTransparentDataEncryptionProtector.md)
+Revalidates the Azure Key Vault Key used for TDE for a server.
+
+### [Revert-AzSqlDatabaseTransparentDataEncryptionProtector](Revert-AzSqlDatabaseTransparentDataEncryptionProtector.md)
+Reverts an existing encryption protector for a particular database.
 
 ### [Set-AzSqlDatabase](Set-AzSqlDatabase.md)
 Sets properties for a database, or moves an existing database into an elastic pool.

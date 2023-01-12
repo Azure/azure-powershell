@@ -483,5 +483,20 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         IManagedServerDnsAliasesOperations ManagedServerDnsAliases { get; }
 
+        /// <summary>
+        /// Gets the IDatabaseEncryptionProtectorsOperations.
+        /// </summary>
+        IDatabaseEncryptionProtectorsOperations DatabaseEncryptionProtectors { get; }
+
+        /// <summary>
+        /// Gets the IRecoverableDatabasesOperations.
+        /// </summary>
+        IRecoverableDatabasesOperations RecoverableDatabases { get; }
+
+        /// <summary>
+        /// Gets the IRestorableDroppedDatabasesOperations.
+        /// </summary>
+        IRestorableDroppedDatabasesOperations RestorableDroppedDatabases { get; }
+
     }
 }

@@ -487,6 +487,21 @@ namespace Microsoft.Azure.Management.Sql
         public virtual IManagedServerDnsAliasesOperations ManagedServerDnsAliases { get; private set; }
 
         /// <summary>
+        /// Gets the IDatabaseEncryptionProtectorsOperations.
+        /// </summary>
+        public virtual IDatabaseEncryptionProtectorsOperations DatabaseEncryptionProtectors { get; private set; }
+
+        /// <summary>
+        /// Gets the IRecoverableDatabasesOperations.
+        /// </summary>
+        public virtual IRecoverableDatabasesOperations RecoverableDatabases { get; private set; }
+
+        /// <summary>
+        /// Gets the IRestorableDroppedDatabasesOperations.
+        /// </summary>
+        public virtual IRestorableDroppedDatabasesOperations RestorableDroppedDatabases { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -811,6 +826,9 @@ namespace Microsoft.Azure.Management.Sql
             DatabaseAdvancedThreatProtectionSettings = new DatabaseAdvancedThreatProtectionSettingsOperations(this);
             ServerAdvancedThreatProtectionSettings = new ServerAdvancedThreatProtectionSettingsOperations(this);
             ManagedServerDnsAliases = new ManagedServerDnsAliasesOperations(this);
+            DatabaseEncryptionProtectors = new DatabaseEncryptionProtectorsOperations(this);
+            RecoverableDatabases = new RecoverableDatabasesOperations(this);
+            RestorableDroppedDatabases = new RestorableDroppedDatabasesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

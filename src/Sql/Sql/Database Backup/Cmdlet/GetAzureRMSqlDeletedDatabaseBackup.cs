@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Backup.Model;
+using Microsoft.Rest.Azure.OData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -23,6 +25,20 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     [OutputType(typeof(AzureSqlDeletedDatabaseBackupModel))]
     public class GetAzureRMSqlDeletedDatabaseBackup : AzureSqlDeletedDatabaseBackupCmdletBase
     {
+        [Parameter(Mandatory = false,
+            HelpMessage = "Flag to be used to view all the AKV keys in a database.")]
+        public SwitchParameter ExpandKeys { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Timestamp filter to get AKV keys")]
+        public string KeysFilter { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Id of the database")]
+        public string DatabaseId { get; set; }
+
         /// <summary>
         /// Get the entities from the service
         /// </summary>
@@ -31,13 +47,34 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         {
             ICollection<AzureSqlDeletedDatabaseBackupModel> results;
 
+            ODataQuery<Management.Sql.Models.RestorableDroppedDatabase> oDataQuery = new ODataQuery<Management.Sql.Models.RestorableDroppedDatabase>();
+
+            if (ExpandKeys.IsPresent && !String.IsNullOrEmpty(KeysFilter))
+            {
+                oDataQuery.Expand = String.Format("keys($filter=pointInTime('{0}'))", KeysFilter);
+            }
+
+            if (ExpandKeys.IsPresent)
+            {
+                oDataQuery.Expand = "keys";
+            }
+
             if (MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
             {
                 if (MyInvocation.BoundParameters.ContainsKey("DeletionDate"))
                 {
                     results = new List<AzureSqlDeletedDatabaseBackupModel>();
-                    // The server expects a deleted database entity ID that consists of the database name and deletion time as a windows file time separated by a comma.
-                    results.Add(ModelAdapter.GetDeletedDatabaseBackup(this.ResourceGroupName, this.ServerName, this.DatabaseName + "," + this.DeletionDate.Value.ToFileTimeUtc().ToString()));
+
+                    if (ExpandKeys.IsPresent)
+                    {
+                        results.Add(ModelAdapter.GetRestorableDroppedDatabase(ResourceGroupName, ServerName, DatabaseId, oDataQuery));
+                    }
+                    else
+                    {
+                        // The server expects a deleted database entity ID that consists of the database name and deletion time as a windows file time separated by a comma.
+                        results.Add(ModelAdapter.GetDeletedDatabaseBackup(this.ResourceGroupName, this.ServerName, this.DatabaseName + "," + this.DeletionDate.Value.ToFileTimeUtc().ToString()));
+                    }
+                    
                 }
                 else
                 {

@@ -1,19 +1,22 @@
 ﻿using Microsoft.Azure.Commands.Sql.Database.Model;
 using System.Management.Automation;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
     /// <summary>
-    /// Cmdlet for Revalidate Azure Sql Database encryption protector
+    /// Cmdlet for Revert Azure Sql Database encryption protector
     /// </summary>
-    [Cmdlet("Revalidate", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseTransparentDataEncryptionProtector", SupportsShouldProcess = true)]
-    public class RevalidateAzureSqlDatabaseTransparentDataEncryptionProtector : AzureSqlDatabaseCmdletBase<AzureSqlDatabaseModel>
+    [Cmdlet("Revert", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseTransparentDataEncryptionProtector", SupportsShouldProcess = true)]
+    public class RevertAzureSqlDatabaseTransparentDataEncryptionProtector : AzureSqlDatabaseCmdletBase<AzureSqlDatabaseModel>
     {
         /// <summary>
-        /// Gets or sets the name of the database to revalidate.
+        /// Gets or sets the name of the database.
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "The name of the Azure SQL Database to revalidate.")]
+            HelpMessage = "The name of the Azure SQL Database to revert.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
@@ -46,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>Database model</returns>
         protected override AzureSqlDatabaseModel PersistChanges(AzureSqlDatabaseModel entity)
         {
-            ModelAdapter.RevalidateDatabaseEncryptionProtector(entity.ResourceGroupName, entity.ServerName, entity.DatabaseName);
+            ModelAdapter.RevertDatabaseEncryptionProtector(entity.ResourceGroupName, entity.ServerName, entity.DatabaseName);
             return entity;
         }
     }

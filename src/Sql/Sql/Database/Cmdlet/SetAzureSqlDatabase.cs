@@ -25,7 +25,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Globalization;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -260,6 +259,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string MaintenanceConfigurationId { get; set; }
 
         [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(Mandatory = false,
             HelpMessage = "The encryption protector key for SQL Database.")]
         public string EncryptionProtector { get; set; }
 
@@ -333,7 +336,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 RequestedBackupStorageRedundancy = BackupStorageRedundancy,
                 SecondaryType = SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationId,
-                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.UserAssignedIdentityId, model.FirstOrDefault().Identity),
+                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId, model.FirstOrDefault().Identity),
                 EncryptionProtector = this.EncryptionProtector ?? model.FirstOrDefault().EncryptionProtector,
                 FederatedClientId = this.FederatedClientId ?? model.FirstOrDefault().FederatedClientId,
             };
@@ -357,7 +360,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     {
                         if (!model.FirstOrDefault().Keys.ContainsKey(akvKey))
                         {
-                            model.FirstOrDefault().Keys.Add(akvKey, new DatabaseKey());
+                            model.FirstOrDefault().Keys.Add(akvKey, new Management.Sql.Models.DatabaseKey());
                         }
                     }
                 }
