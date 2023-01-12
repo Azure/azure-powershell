@@ -22,27 +22,16 @@ Lists all of the legacy peerings under the given subscription matching the speci
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets legacy peering object
 ```powershell
-{{ Add code here }}
+Get-AzPeeringLegacy -Kind Direct -PeeringLocation Seattle
 ```
 
 ```output
 {{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Gets legacy peering object
 
 ## PARAMETERS
 

@@ -21,27 +21,19 @@ Create an in-memory object for ContactDetail.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a Contact Detail object
 ```powershell
-{{ Add code here }}
+$contactDetail = New-AzPeeringContactDetailObject -Email "abc@xyz.com" -Phone 1234567890 -Role "Noc"
+$contactDetail
 ```
 
 ```output
-{{ Add output here }}
+Email       Phone      Role
+-----       -----      ----
+abc@xyz.com 1234567890 Noc
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates a ContactDetail object with the specified email phone and role stores it in memory
 
 ## PARAMETERS
 

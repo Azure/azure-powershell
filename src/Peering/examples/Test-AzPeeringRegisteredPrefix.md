@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Test registered prefix
 ```powershell
-{{ Add code here }}
+Test-AzPeeringRegisteredPrefix -Name accessibilityTesting2 -PeeringName DemoPeering -ResourceGroupName DemoRG
 ```
 
 ```output
-{{ Add output here }}
+Name                  Prefix       PeeringServicePrefixKey              PrefixValidationState ProvisioningState
+----                  ------       -----------------------              --------------------- -----------------
+accessibilityTesting2 240.0.1.0/24 249aa0dd-6177-4105-94fe-dfefcbf5ab48 Pending               Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Tests the validity of the given registered prefix (shown in prefix validation state)
 

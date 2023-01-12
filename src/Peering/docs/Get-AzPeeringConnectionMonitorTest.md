@@ -35,27 +35,27 @@ Gets an existing connection monitor test with the specified name under the given
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Lists all connection monitor tests
 ```powershell
-{{ Add code here }}
+ Get-AzPeeringConnectionMonitorTest -ResourceGroupName DemoRG -PeeringServiceName DRTest
 ```
 
 ```output
-{{ Add output here }}
+List of Connection Monitor Tests
 ```
 
-{{ Add description here }}
+Lists all connection monitor test objects
 
-### Example 2: {{ Add title here }}
+### Example 2: Get single connection monitor test
 ```powershell
-{{ Add code here }}
+ Get-AzPeeringConnectionMonitorTest -ResourceGroupName DemoRG -PeeringServiceName DRTest -Name TestName
 ```
 
 ```output
-{{ Add output here }}
+Connection Monitor Test Object
 ```
 
-{{ Add description here }}
+Gets a single connection monitor test
 
 ## PARAMETERS
 

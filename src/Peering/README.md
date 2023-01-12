@@ -128,6 +128,112 @@ directive:
           - Name
           - PeerName
           - PropertiesPeerAsn
-          - ResourceGroupName
           - ValidationState
+          - PeerContactDetail
+        resource:
+          - Id
+  - where:
+      model-name: CdnPeeringPrefix
+    set:
+      format-table:
+        properties:
+          - Prefix
+          - AzureRegion
+          - AzureService
+          - IsPrimaryRegion
+          - BgpCommunity
+  - where:
+      model-name: Peering
+    set:
+      format-table:
+        properties:
+          - Name
+          - SkuName
+          - Kind
+          - PeeringLocation
+          - ProvisioningState
+          - Location
+  - where:
+      model-name: PeeringLocation
+    set:
+      format-table:
+        properties:
+          - Name
+          - Country
+          - AzureRegion
+          - Kind
+  - where:
+      model-name: PeeringRegisteredAsn
+    set:
+      format-table:
+        properties:
+          - Name
+          - Asn
+          - PeeringServicePrefixKey
+          - ProvisioningState
+  - where:
+      model-name: PeeringRegisteredPrefix
+    set:
+      format-table:
+        properties:
+          - Name
+          - Prefix
+          - PeeringServicePrefixKey
+          - PrefixValidationState
+          - ProvisioningState
+  - where:
+      model-name: PeeringService
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - PeeringServiceLocation
+          - Provider
+          - ProvisioningState
+          - Location
+  - where:
+      model-name: PeeringServiceLocation
+    set:
+      format-table:
+        properties:
+          - Name
+          - State
+          - Country
+          - AzureRegion
+  - where:
+      model-name: PeeringServicePrefix
+    set:
+      format-table:
+        properties:
+          - Name
+          - Prefix
+          - Key
+          - PrefixValidationState
+          - LearnedType
+          - ProvisioningState
+  - where:
+      model-name: PeeringServiceProvider
+    set:
+      format-table:
+        properties:
+          - Name
+          - PeeringLocation
+          - ServiceProviderName
+  - where:
+      model-name: PeeringExchangeConnectionObject
+    set:
+      format-table:
+        properties:
+          - Name
+          - PeeringLocation
+          - ServiceProviderName
+  - where:
+      model-name: RpUnbilledPrefix
+    set:
+      format-table:
+        properties:
+          - Prefix
+          - AzureRegion
+          - PeerAsn
 ```

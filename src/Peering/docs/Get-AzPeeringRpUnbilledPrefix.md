@@ -22,27 +22,20 @@ Lists all of the RP unbilled prefixes for the specified peering
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all unbilled prefixes for a peering
 ```powershell
-{{ Add code here }}
+Get-AzPeeringRpUnbilledPrefix -PeeringName DemoPeering -ResourceGroupName DemoRG
 ```
 
 ```output
-{{ Add output here }}
+Prefix      AzureRegion PeerASN
+------      ----------- -------
+2.16.0.0/13 West US 2   65010
+23.0.0.0/12 West US 2   65010
+...
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Lists all the unbilled prefixes for a peering
 
 ## PARAMETERS
 

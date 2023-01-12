@@ -29,27 +29,16 @@ Deletes an existing registered ASN with the specified name under the given subsc
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a registered asn from the peering
 ```powershell
-{{ Add code here }}
+Remove-AzPeeringRegisteredAsn -Name TestAsn -PeeringName MapsIxRs -ResourceGroupName MAPSDemo
 ```
 
 ```output
-{{ Add output here }}
+// no output
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Remove a registered asn from the peering object
 
 ## PARAMETERS
 

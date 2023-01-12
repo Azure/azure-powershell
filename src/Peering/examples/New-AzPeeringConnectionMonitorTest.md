@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new connection monitor test
 ```powershell
-{{ Add code here }}
+New-AzPeeringConnectionMonitorTest -Name TestName -PeeringServiceName DRTest -ResourceGroupName DemoRG
 ```
 
 ```output
-{{ Add output here }}
+//Connection Monitor Test Object
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates a connection monitor test for the peering service
 

@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove connection monitor test
 ```powershell
-{{ Add code here }}
+Remove-AzPeeringConnectionMonitorTest -Name TestName -PeeringServiceName TestDRInterCloudZurich -ResourceGroupName DemoRG
 ```
 
 ```output
-{{ Add output here }}
+// no output
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Removes the given connection monitor test from the peering service
 

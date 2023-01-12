@@ -27,27 +27,19 @@ Create an in-memory object for DirectConnection.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a direct connection object
 ```powershell
-{{ Add code here }}
+$DirectConnection = New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixesAdvertisedV4 20000 -BgpSessionMaxPrefixesAdvertisedV6 0 -BgpSessionMd5AuthenticationKey $md5Key -BgpSessionMicrosoftSessionIPv4Address 1.1.1.1 -BgpSessionPeerSessionIPv4Address 1.1.1.0 -BgpSessionPrefixV4 1.1.1.1/31 -PeeringDbFacilityId 82 -SessionAddressProvider Peer -ConnectionIdentifier c111111111111
 ```
 
 ```output
-{{ Add output here }}
+BandwidthInMbps ConnectionIdentifier ConnectionState ErrorMessage MicrosoftTrackingId PeeringDbFacilityId ProvisionedBandwidthInMbps ... [more fields]
+--------------- -------------------- --------------- ------------ ------------------- ------------------- -------------------------- ... -------------
+10000           c111111111111        PendingApproval                                  82
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates an in-memory direct connection object
 
 ## PARAMETERS
 

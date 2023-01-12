@@ -29,27 +29,16 @@ Deletes an existing peering service with the specified name under the given subs
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove peering service
 ```powershell
-{{ Add code here }}
+Remove-AzPeeringService -Name TestPeeringService -ResourceGroupName DemoRG
 ```
 
 ```output
-{{ Add output here }}
+// no output
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Removes a peering service from the given resource group
 
 ## PARAMETERS
 

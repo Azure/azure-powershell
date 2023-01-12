@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a check service provider availability object
 ```powershell
-{{ Add code here }}
+$providerAvailability = New-AzPeeringCheckServiceProviderAvailabilityInputObject -PeeringServiceLocation Osaka -PeeringServiceProvider IIJ
+$providerAvailability
 ```
 
 ```output
-{{ Add output here }}
+PeeringServiceLocation PeeringServiceProvider
+---------------------- ----------------------
+Osaka                  IIJ
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates a CheckServiceProviderAvailabilityInputObject with the specified location and provider and stores it in memory

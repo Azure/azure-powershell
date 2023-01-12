@@ -21,27 +21,33 @@ Lists all of the available countries for peering service.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Lists all the peering service countries
 ```powershell
-{{ Add code here }}
+Get-AzPeeringServiceCountry
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+Australia
+Belgium
+Brazil
+Canada
+Denmark
+Finland
+France
+Germany
+Hong Kong
+Japan
+Kenya
+Korea, South
+Malaysia
+Netherlands
+New Zealand
+...
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Lists the countries available for peering service.
 
 ## PARAMETERS
 

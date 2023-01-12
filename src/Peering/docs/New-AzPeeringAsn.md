@@ -23,27 +23,18 @@ Creates a new peer ASN or updates an existing peer ASN with the specified name u
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new peering asn
 ```powershell
-{{ Add code here }}
+New-AzPeeringAsn -Name PsTestAsn -PeerAsn 65001 -PeerContactDetail $PeerContactList -PeerName DemoPeering
 ```
 
 ```output
-{{ Add output here }}
+Name      PeerName    PropertiesPeerAsn ValidationState PeerContactDetail
+----      --------    ----------------- --------------- -----------------
+PsTestAsn DemoPeering 65001             Pending         {{…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a new peering asn with the specified properties
 
 ## PARAMETERS
 

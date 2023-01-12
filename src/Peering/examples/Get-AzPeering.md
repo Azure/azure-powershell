@@ -1,22 +1,33 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all peerings
 ```powershell
-{{ Add code here }}
+ Get-AzPeering
 ```
 
 ```output
-{{ Add output here }}
+Name           SkuName             Kind     PeeringLocation ProvisioningState Location
+----           -------             ----     --------------- ----------------- --------
+DemoComp1      Premium_Direct_Free Direct   Dallas          Succeeded         South Central US
+DemoPeering    Premium_Direct_Free Direct   Dallas          Succeeded         South Central US
+TestEdgeZone   Premium_Direct_Free Direct   Atlanta         Succeeded         East US 2
+MapsIxRs       Premium_Direct_Free Direct   Ashburn         Succeeded         East US
+DemoMapsConfig Premium_Direct_Free Direct   Seattle         Succeeded         West US 2
+testexchange   Basic_Exchange_Free Exchange Amsterdam       Succeeded         West Europe
+TestPeer1      Basic_Direct_Free   Direct   Amsterdam       Succeeded         West Europe
+test1          Basic_Direct_Free   Direct   Athens          Succeeded         France Central
 ```
 
-{{ Add description here }}
+List all peerings in subscription
 
-### Example 2: {{ Add title here }}
+### Example 2: Get specific peering by name and resource group
 ```powershell
-{{ Add code here }}
+Get-AzPeering -Name DemoPeering -ResourceGroupName DemoRG
 ```
 
 ```output
-{{ Add output here }}
+Name        SkuName             Kind   PeeringLocation ProvisioningState Location
+----        -------             ----   --------------- ----------------- --------
+DemoPeering Premium_Direct_Free Direct Dallas          Succeeded         South Central US
 ```
 
-{{ Add description here }}
+Get a specific peering by resource group and name
 

@@ -26,27 +26,18 @@ Create an in-memory object for ExchangeConnection.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an exchange connection object
 ```powershell
-{{ Add code here }}
+New-AzPeeringExchangeConnectionObject -BgpSessionMaxPrefixesAdvertisedV4 20000 -BgpSessionMaxPrefixesAdvertisedV6 0 -BgpSessionMd5AuthenticationKey $md5Key -BgpSessionMicrosoftSessionIPv4Address 1.1.1.1 -BgpSessionPeerSessionIPv4Address 1.1.1.0 -BgpSessionPrefixV4 1.1.1.1/31 -PeeringDbFacilityId 82 -ConnectionIdentifier c111111111111
 ```
 
 ```output
-{{ Add output here }}
+ConnectionIdentifier ConnectionState ErrorMessage PeeringDbFacilityId ... [more fields]
+-------------------- --------------- ------------ ------------------- ... -------------
+c11111                                            82
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a exchange connection object in memory
 
 ## PARAMETERS
 

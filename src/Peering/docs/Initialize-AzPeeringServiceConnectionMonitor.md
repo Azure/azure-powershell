@@ -29,27 +29,16 @@ Initialize Peering Service for Connection Monitor functionality
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Initialize connection monitor functionality
 ```powershell
-{{ Add code here }}
+Initialize-AzPeeringServiceConnectionMonitor 
 ```
 
 ```output
-{{ Add output here }}
+// no output
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Initialize connection monitor functionality
 
 ## PARAMETERS
 

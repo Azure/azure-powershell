@@ -24,27 +24,18 @@ Creates a new peering service or updates an existing peering with the specified 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new peering service
 ```powershell
-{{ Add code here }}
+New-AzPeeringService -Name TestPeeringService -ResourceGroupName DemoRG -Location "East US 2" -PeeringServiceLocation Georgia -PeeringServiceProvider MicrosoftEdge
 ```
 
 ```output
-{{ Add output here }}
+Name               ResourceGroupName PeeringServiceLocation Provider      ProvisioningState   Location
+----               ----------------- ---------------------- --------      -----------------   --------
+TestPeeringService DemoRG            Georgia                MicrosoftEdge ProvisioningStarted East US 2
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a new peering service in the resource group
 
 ## PARAMETERS
 

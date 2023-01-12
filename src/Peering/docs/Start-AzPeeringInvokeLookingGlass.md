@@ -31,27 +31,20 @@ Run looking glass functionality
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Invoke looking glass command
 ```powershell
-{{ Add code here }}
+ Start-AzPeeringInvokeLookingGlass -Command Ping -DestinationIp 1.1.1.1 -SourceLocation Seattle -SourceType EdgeSite
+ ```
+
 ```
 
 ```output
-{{ Add output here }}
+Command Output
+------- ------
+Ping    PING 1.1.1.1 (1.1.1.1): 56 data bytes…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Invoke the given looking glass command
 
 ## PARAMETERS
 

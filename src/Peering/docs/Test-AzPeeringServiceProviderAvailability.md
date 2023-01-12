@@ -43,27 +43,17 @@ Checks if the peering service provider is present within 1000 miles of customer'
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check if provider is available at a location
 ```powershell
-{{ Add code here }}
+$providerAvailability = New-AzPeeringCheckServiceProviderAvailabilityInputObject -PeeringServiceLocation Osaka -PeeringServiceProvider IIJ
+Test-AzPeeringServiceProviderAvailability -CheckServiceProviderAvailabilityInput $providerAvailability
 ```
 
 ```output
-{{ Add output here }}
+"Available"
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Check whether the given provider is available at the given location
 
 ## PARAMETERS
 

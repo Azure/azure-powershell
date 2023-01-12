@@ -23,27 +23,18 @@ Creates a new registered ASN with the specified name under the given subscriptio
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create registered asn
 ```powershell
-{{ Add code here }}
+New-AzPeeringRegisteredAsn -Name TestAsn -PeeringName MapsIxRs -ResourceGroupName MAPSDemo -Asn 65001
 ```
 
 ```output
-{{ Add output here }}
+Name    Asn   PeeringServicePrefixKey              ProvisioningState
+----    ---   -----------------------              -----------------
+TestAsn 65001 45a8db73-4b7c-4800-bb0f-d304a747d6f1 Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a new registered asn for a peering
 
 ## PARAMETERS
 

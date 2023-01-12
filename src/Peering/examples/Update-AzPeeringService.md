@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update peering service tags
 ```powershell
-{{ Add code here }}
+$tags=@{hello='world'}
+Update-AzPeeringService -Name DRTestInterCloud -ResourceGroupName DemoRG -Tag $tags
 ```
 
 ```output
-{{ Add output here }}
+Name             ResourceGroupName PeeringServiceLocation Provider   ProvisioningState Location
+----             ----------------- ---------------------- --------   ----------------- --------
+DRTestInterCloud DemoRG            Ile-de-France          InterCloud Succeeded         UK South
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Updates the peering service tags

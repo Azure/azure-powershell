@@ -32,27 +32,32 @@ Gets the peer ASN with the specified name under the given subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List PeerAsns
 ```powershell
-{{ Add code here }}
+Get-AzPeeringAsn
 ```
 
 ```output
-{{ Add output here }}
+Name            PeerName PropertiesPeerAsn ValidationState PeerContactDetail
+----            -------- ----------------- --------------- -----------------
+ContosoEdgeTest Contoso  65000             Approved        {{…}}
+
 ```
 
-{{ Add description here }}
+List all the peer asns under subscription
 
-### Example 2: {{ Add title here }}
+### Example 2: Get Specific PeerAsn
 ```powershell
-{{ Add code here }}
+Get-AzPeeringAsn -Name ContosoEdgeTest
 ```
 
 ```output
-{{ Add output here }}
+Name            PeerName PropertiesPeerAsn ValidationState PeerContactDetail
+----            -------- ----------------- --------------- -----------------
+ContosoEdgeTest Contoso  65000             Approved        {{…}}
 ```
 
-{{ Add description here }}
+Get peer asn by name
 
 ## PARAMETERS
 

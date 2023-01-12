@@ -23,27 +23,18 @@ Creates a new prefix with the specified name under the given subscription, resou
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create Peering service prefix
 ```powershell
-{{ Add code here }}
+New-AzPeeringServicePrefix -Name TestPrefix -PeeringServiceName TestDRInterCloudZurich -ResourceGroupName DemoRG -PeeringServicePrefixKey 6a7f0d42-e49c-4eea-a930-280610671c3f -Prefix 91.194.255.0/24
 ```
 
 ```output
-{{ Add output here }}
+Name        Prefix          Key                                  PrefixValidationState LearnedType ProvisioningState
+----        ------          ---                                  --------------------- ----------- -----------------
+TestPrefix  91.194.255.0/24 6a7f0d42-e49c-4eea-a930-280610671c3f Failed                None        Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a peering service prefix
 
 ## PARAMETERS
 

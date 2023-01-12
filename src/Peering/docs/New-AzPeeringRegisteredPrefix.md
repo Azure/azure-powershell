@@ -23,27 +23,18 @@ Creates a new registered prefix with the specified name under the given subscrip
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new registered prefix
 ```powershell
-{{ Add code here }}
+New-AzPeeringRegisteredPrefix -Name accessibilityTesting6 -PeeringName DemoPeering -ResourceGroupName DemoRG -Prefix 240.0.5.0/24
 ```
 
 ```output
-{{ Add output here }}
+Name                  Prefix       PeeringServicePrefixKey              PrefixValidationState ProvisioningState
+----                  ------       -----------------------              --------------------- -----------------
+accessibilityTesting6 240.0.5.0/24 f5947454-80e3-4ce5-bcb3-2501537b6952 Pending                Updating
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a new registered prefix object
 
 ## PARAMETERS
 
