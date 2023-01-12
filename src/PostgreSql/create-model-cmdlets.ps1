@@ -115,7 +115,9 @@ function CreateModelCmdlet {
                 # check whether completer is needed
                 $completer = '';
                 if($Type.Split('.').Split('.')[-2] -eq 'Support') {
-                    $completer += "`n        [ArgumentCompleter([${Type}])]"
+                    # If Type is an array, need to strip []
+                    $strippedType = $Type.Replace('[]', '')
+                    $completer += "`n        [ArgumentCompleter([${strippedType}])]"
                 }
                 $ParameterDefineScript = "
         [Parameter($ParameterDefineProperty)]${completer}

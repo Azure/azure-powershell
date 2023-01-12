@@ -33,7 +33,6 @@ Deletes a server firewall rule.
 ### Example 1: Remove PostgreSql Firewall Rule by name
 ```powershell
 Remove-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
 ```
 
 This cmdlet removes PostgreSql Firewall Rule by name.
@@ -42,7 +41,6 @@ This cmdlet removes PostgreSql Firewall Rule by name.
 ```powershell
 $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
 Remove-AzPostgreSqlFirewallRule -InputObject $ID
-
 ```
 
 These cmdlets remove PostgreSql Firewall Rule by identity.
@@ -237,7 +235,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<IPostgreSqlIdentity>`: Identity Parameter
+`INPUTOBJECT <IPostgreSqlIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.
