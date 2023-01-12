@@ -38,7 +38,7 @@ Stop the server by name
 
 ### Example 2: Stop the server by identity
 ```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test/stop"
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/stop"
 Stop-AzPostgreSqlFlexibleServer -InputObject $ID
 ```
 

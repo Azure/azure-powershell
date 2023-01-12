@@ -33,7 +33,6 @@ Deletes the virtual network rule with the given name.
 ### Example 1: Remove PostgreSql server Virtual Network Rule by name
 ```powershell
 Remove-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
 ```
 
 This cmdlet removes PostgreSql server Virtual Network Rule by name.

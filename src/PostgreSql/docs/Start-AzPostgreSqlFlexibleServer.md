@@ -38,7 +38,7 @@ Start the server by name
 
 ### Example 2: Start the server by identity
 ```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test/start"
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/start"
 Start-AzPostgreSqlFlexibleServer -InputObject $ID
 ```
 

@@ -38,7 +38,7 @@ This cmdlet creates a new PostgreSql server replica.
 
 ### Example 2: Create a new PostgreSql server replica
 ```powershell
-$pgDb = Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer 
+$pgDb = Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 New-AzPostgreSqlReplica -Master $pgDb -ReplicaName PostgreSqlTestServerReplica -ResourceGroupName PostgreSqlTestRG
 ```
 

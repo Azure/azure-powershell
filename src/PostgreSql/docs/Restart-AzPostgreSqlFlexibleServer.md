@@ -12,16 +12,31 @@ Restarts a server.
 
 ## SYNTAX
 
-### Restart (Default)
+### RestartExpanded (Default)
 ```
 Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-FailoverMode <String>] [-RestartWithFailover] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Restart
+```
+Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -Parameter <IRestartParameter>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### RestartViaIdentity
 ```
-Restart-AzPostgreSqlFlexibleServer -InputObject <IPostgreSqlIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restart-AzPostgreSqlFlexibleServer -InputObject <IPostgreSqlIdentity> -Parameter <IRestartParameter>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestartViaIdentityExpanded
+```
+Restart-AzPostgreSqlFlexibleServer -InputObject <IPostgreSqlIdentity> [-FailoverMode <String>]
+ [-RestartWithFailover] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +58,20 @@ Restart-AzPostgreSqlFlexibleServer -InputObject $ID
 ```
 
 Restart the server by identity
+
+### Example 3: Restart the server with planned failover
+```powershell
+Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -RestartWithFailover -FailoverMode PlannedFailover
+```
+
+Restart the server by name with planned failover
+
+### Example 4: Restart the server with forced failover
+```powershell
+Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -RestartWithFailover -FailoverMode ForcedFailover
+```
+
+Restart the server by name with forced failover
 
 ## PARAMETERS
 
@@ -76,13 +105,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FailoverMode
+Failover mode.
+
+```yaml
+Type: System.String
+Parameter Sets: RestartExpanded, RestartViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
-Parameter Sets: RestartViaIdentity
+Parameter Sets: RestartViaIdentity, RestartViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -97,7 +141,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Restart, RestartExpanded
 Aliases: ServerName
 
 Required: True
@@ -122,6 +166,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+Represents server restart parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameter
+Parameter Sets: Restart, RestartViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -143,10 +203,25 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Restart, RestartExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestartWithFailover
+Indicates whether to restart the server with failover.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: RestartExpanded, RestartViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -158,7 +233,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Restart, RestartExpanded
 Aliases:
 
 Required: False
@@ -204,6 +279,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.IRestartParameter
+
 ### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
 
 ## OUTPUTS
@@ -230,6 +307,10 @@ INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
   - `[ServerName <String>]`: The name of the server.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
+
+PARAMETER <IRestartParameter>: Represents server restart parameters.
+  - `[FailoverMode <String>]`: Failover mode.
+  - `[RestartWithFailover <Boolean?>]`: Indicates whether to restart the server with failover.
 
 ## RELATED LINKS
 

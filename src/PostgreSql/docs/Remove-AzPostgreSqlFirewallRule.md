@@ -33,7 +33,6 @@ Deletes a server firewall rule.
 ### Example 1: Remove PostgreSql Firewall Rule by name
 ```powershell
 Remove-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
 ```
 
 This cmdlet removes PostgreSql Firewall Rule by name.

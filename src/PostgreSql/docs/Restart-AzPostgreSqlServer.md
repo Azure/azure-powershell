@@ -32,7 +32,6 @@ Restarts a server.
 ### Example 1: Restart PostgreSql server by resource group and server name
 ```powershell
 Restart-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
-
 ```
 
 This cmdlet restarts PostgreSql server by resource group and server name.

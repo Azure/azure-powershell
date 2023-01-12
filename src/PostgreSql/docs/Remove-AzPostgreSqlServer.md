@@ -32,7 +32,6 @@ Deletes a server.
 ### Example 1: Remove PostgreSql server by resourceGroup and server name
 ```powershell
 Remove-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
-
 ```
 
 This cmdlet removes PostgreSql server by resourceGroup and server name.
