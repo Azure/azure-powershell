@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.KeyVault.Models;
+using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -69,6 +70,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
 
+        /// <summary>
+        /// Location
+        /// </summary>
+        [Parameter(Mandatory = false,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the Azure region in which to create the key vault. Use the command Get-AzResourceProvider with the ProviderNamespace parameter to see your choices.")]
+        [LocationCompleter("Microsoft.KeyVault/vaults")]
+        [ValidateNotNullOrEmpty()]
+        public string TemplateFile = "E:/Azure/kv1.json";
+
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
@@ -118,16 +130,43 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVaultNetworkRuleSet NetworkRuleSet { get; set; }
 
         #endregion
+        protected PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
+            deploymentName: this.Name,
+            resourceGroupName: this.ResourceGroupName,
+            templateUri: this.TemplateFile
+            );
+        protected PSWhatIfOperationResult ExecuteWhatIf()
+        {
+            const string statusMessage = "Getting the latest status of all resources...";
+            var clearMessage = new string(' ', statusMessage.Length);
+            var information = new HostInformationMessage { Message = statusMessage, NoNewLine = true };
+            var clearInformation = new HostInformationMessage { Message = $"\r{clearMessage}\r", NoNewLine = true };
+            var tags = new[] { "PSHOST" };
+
+            try
+            {
+                // Write status message.
+                this.WriteInformation(information, tags);
+                // this.WhatIfParameters
+                PSWhatIfOperationResult whatIfResult = KeyVaultCreationClient.ExecuteDeploymentWhatIf(this.WhatIfParameters);
+                // Clear status before returning result.
+                this.WriteInformation(clearInformation, tags);
+
+                return whatIfResult;
+            }
+            catch (Exception)
+            {
+                // Clear status before on exception.
+                this.WriteInformation(clearInformation, tags);
+                throw;
+            }
+        }
+
 
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, Properties.Resources.CreateKeyVault))
             {
-                if (VaultExistsInCurrentSubscription(Name))
-                {
-                    throw new ArgumentException(Resources.VaultAlreadyExists);
-                }
-
                 var userObjectId = string.Empty;
                 AccessPolicyEntry accessPolicy = null;
 
@@ -158,17 +197,19 @@ namespace Microsoft.Azure.Commands.KeyVault
                     };
                 }
 
-                var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationOrUpdateParameters()
+                var VaultCreationParameter = new VaultCreationOrUpdateParameters()
                 {
                     Name = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
+                    
                     EnabledForDeployment = this.EnabledForDeployment.IsPresent ? true : null as bool?,
                     EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent ? true : null as bool?,
                     EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent ? true : null as bool?,
                     EnableSoftDelete = null,
                     EnablePurgeProtection = EnablePurgeProtection.IsPresent ? true : (bool?)null, // false is not accepted
                     EnableRbacAuthorization = EnableRbacAuthorization.IsPresent ? true : null as bool?,
+                    
                     /*
                      * If retention days is not specified, use the default value,
                      * else use the vault user provides
@@ -183,8 +224,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                     // New key-vault takes in default network rule set
                     NetworkAcls = new NetworkRuleSet(),
                     PublicNetworkAccess = this.PublicNetworkAccess,
-                    Tags = this.Tag
-                },
+                    Tags = this.Tag,
+                    TemplateFile = "E:/Azure/kv1.json"
+
+                };
+
+                var newVault = KeyVaultCreationClient.CreateNewVault(VaultCreationParameter,
                     GraphClient,
                     NetworkRuleSet);
 
@@ -194,6 +239,22 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     WriteWarning(Resources.VaultNoAccessPolicyWarning);
                 }
+            }
+            else
+            {
+                string whatIfMessage = null;
+                string warningMessage = null;
+                string captionMessage = null;
+                PSWhatIfOperationResult whatIfResult = this.ExecuteWhatIf();
+                string whatIfFormattedOutput = WhatIfOperationResultFormatter.Format(whatIfResult);
+                string cursorUp = $"{(char)27}[1A";
+
+                // Use \r to override the built-in "What if:" in output.
+                whatIfMessage = $"\r        \r{Environment.NewLine}{whatIfFormattedOutput}{Environment.NewLine}";
+                warningMessage = $"{Environment.NewLine}{"ConfirmDeploymentMessage"}";
+                captionMessage = $"{cursorUp}{Color.Reset}{whatIfMessage}";
+                // this.WriteObject(whatIfResult);
+                this.ShouldProcess(whatIfMessage, warningMessage, captionMessage);
             }
         }
     }

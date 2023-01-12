@@ -15,6 +15,7 @@
     <PackageReference Include="Azure.Security.KeyVault.Administration" Version="4.0.0" />
     <PackageReference Include="Azure.Security.KeyVault.Keys" Version="4.3.0" />
     <PackageReference Include="Azure.Security.KeyVault.Certificates" Version="4.3.0" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
     <PackageReference Include="Portable.BouncyCastle" Version="1.8.8" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
@@ -23,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KeyVault.Sdk\KeyVault.Sdk.csproj" />
+    <ProjectReference Include="..\KeyVault.Helpers\KeyVault.Helpers.csproj" />
   </ItemGroup>
 
   <ItemGroup>
