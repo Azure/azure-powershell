@@ -20,7 +20,7 @@ Describe 'Remove-AzWvdMsixPackage' {
 
         $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20220401Preview.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
         $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20220401Preview.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
-        
+
         $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
             -ResourceGroupName $env.ResourceGroup `
             -Name $env.HostPool `
