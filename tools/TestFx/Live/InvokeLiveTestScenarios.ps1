@@ -107,6 +107,11 @@ process {
         $OSVersion = "LocalDebug"
         $PSVersion = "LocalDebug"
     }
+    else {
+        $BuildId = $PSBoundParameters["BuildId"]
+        $OSVersion = $PSBoundParameters["OSVersion"]
+        $PSVersion = $PSBoundParameters["PSVersion"]
+    }
 
     $srcDir = Join-Path -Path $RepoLocation -ChildPath "src"
     $liveScenarios = Get-ChildItem -LiteralPath $srcDir -Recurse -Directory -Filter "LiveTests" | Get-ChildItem -Filter "TestLiveScenarios.ps1" -File

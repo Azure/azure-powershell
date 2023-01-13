@@ -37,24 +37,23 @@ jobs:
     condition: and(succeeded(), eq(variables['GalleryName'], 'DailyBuild'), eq(variables['BuildPipelineBuildId'], ''))
     displayName: Download latest artifacts from daily build pipeline main branch
     inputs:
-      buildType: specific
+      buildType: 'specific'
       project: $(ProjectToDownloadArtifacts)
       definition: $(BuildPipelineDefinitionId)
-      buildVersionToDownload: latestFromBranch
-      branchName: refs/heads/master
-      artifactName: $(ArtifactName)
+      buildVersionToDownload: 'latest'
+      artifactName: 'artifacts'
       targetPath: $(Pipeline.Workspace)
 
   - task: DownloadPipelineArtifact@2
     condition: and(succeeded(), eq(variables['GalleryName'], 'DailyBuild'), ne(variables['BuildPipelineBuildId'], ''))
     displayName: Download specific artifacts from daily build pipeline
     inputs:
-      buildType: specific
+      buildType: 'specific'
       project: $(ProjectToDownloadArtifacts)
       definition: $(BuildPipelineDefinitionId)
-      buildVersionToDownload: specific
+      buildVersionToDownload: 'specific'
       pipelineId: $(BuildPipelineBuildId)
-      artifactName: $(ArtifactName)
+      artifactName: 'artifacts'
       targetPath: $(Pipeline.Workspace)
 
   - task: PowerShell@2
@@ -75,7 +74,7 @@ jobs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
-      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InstallLiveTestAzModules.ps1 -Source $(GalleryName) -AzPackagesLocation (Convert-Path -LiteralPath $(DataLocation) | Join-Path -ChildPath AzPackages)'
+      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InstallLiveTestAzModules.ps1 -Source $(GalleryName) -AzPackagesLocation (Join-Path -Path $(DataLocation) -ChildPath AzPackages)'
 
   - task: PowerShell@2
     displayName: Connect Azure with live test service principal

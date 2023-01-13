@@ -21,7 +21,7 @@ else {
 
 switch ($PSCmdlet.ParameterSetName) {
     "ByScriptFile" {
-        Invoke-Expression "$process -NoLogo -NoProfile -NonInteractive -File '$ScriptFile'"
+        Invoke-Expression "$process -NoLogo -NoProfile -NonInteractive -File $ScriptFile"
     }
     "ByScriptBlock" {
         Invoke-Expression "$process -NoLogo -NoProfile -NonInteractive -Command $ScriptBlock"
