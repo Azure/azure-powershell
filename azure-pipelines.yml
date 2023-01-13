@@ -1,0 +1,87 @@
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: main
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - .azure-pipelines
+      - .github
+
+jobs:
+- job: UpdateJson
+  displayName: Update Json
+  steps:
+  - task: PowerShell@2
+    displayName: Update json file
+    inputs:
+      targetType: inline
+      script: |
+        Write-Host "at the ps1 file begin!!!"
+        New-Item -ItemType File -Path ".github/fabricbot22.txt"
+        Add-Content -Path ".github/fabricbot22.txt" -Value "Hello, World! from pipeline."
+        # $username=""
+        # $password='xlk73ici5g2gb72pnz4vbmpiflygnnhiddrk3zpv4necfcumqveq'
+        # $pair="{0}:{1}" -f ($username,$password)
+        # $bytes = [System.Text.Encoding]::ASCII.GetBytes($pair)
+        # $token = [System.Convert]::ToBase64String($bytes)
+        # $headers = @{
+        #   Authorization = "Basic {0}" -f ($token)
+        # }
+        # $response = Invoke-RestMethod 'https://dev.azure.com/azure-sdk/internal/_apis/wiki/wikis/internal.wiki/pages?api-version=7.1-preview.1&path=/Engineering%20System/GitHub%20Repos/Issue%20Management/Service%20Team%20Label%20and%20Contact%20List&includeContent=True' -Headers $headers
+
+        # $rows = ($response.content -split "\n") | Select-Object -Skip 6
+        # $aliases = [System.Collections.SortedList]::new()
+
+        # foreach ($item in $rows)
+        # {
+        #     $list = $item -split "\|"
+        #     if ($list.Count -eq 1) { continue }
+        #     if ($list[1].Trim().Length -gt 0)
+        #     {
+        #         if ($list.Count -gt 3)
+        #         {
+        #             $aliases.Add($list[1].Trim(), $list[3].Trim())
+        #         }
+        #         else
+        #         {
+        #             $aliases.Add($list[1].Trim(), "")
+        #         }
+        #     }
+        # }
+        # $whole_json = Get-Content -Raw -Path .github/fabricbot.json | ConvertFrom-Json
+
+        # $whole_json.tasks | ForEach-Object {
+        #     if($_.taskType -eq 'scheduledAndTrigger') {
+        #         $labelsAndMentionsArrayList = New-Object System.Collections.ArrayList
+        #         foreach ($entry in $aliases.GetEnumerator()) {
+        #             if ($entry.Value -eq "") {
+        #                 continue
+        #             }
+        #             $labels = @("Service Attention", $entry.Key)
+        #             $mentionees = @($entry.Value -split "," | ForEach-Object { $_.Trim() })
+        #             $item = [PSCustomObject]@{
+        #                 labels = $labels
+        #                 mentionees = $mentionees
+        #             }
+        #             [void]$labelsAndMentionsArrayList.Add($item)
+        #         }
+        #         $_.config.labelsAndMentions = $labelsAndMentionsArrayList.ToArray()
+                
+        #     }
+        # }
+        # ($whole_json | ConvertTo-Json -Depth 32) | Out-File  -FilePath .github/fabricbot22.json
+        Write-Host "at the ps1 file end!!!"
+      
+      pwsh: true
+      
+  - task: PowerShell@2
+    displayName: Commit and Push
+    inputs:
+      targetType: inline
+      script: Write-Host "at the end!!!"
