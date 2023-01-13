@@ -6,7 +6,7 @@ New-AzPeeringExchangeConnectionObject -BgpSessionMaxPrefixesAdvertisedV4 20000 -
 ```output
 ConnectionIdentifier ConnectionState ErrorMessage PeeringDbFacilityId ... [more fields]
 -------------------- --------------- ------------ ------------------- ... -------------
-c11111                                            82
+c111111111111                                     82
 ```
 
 Create a exchange connection object in memory
