@@ -54,6 +54,7 @@ schedules:
     - shared/livetest
 
 pr: none
+trigger: none
 
 jobs:
 - template: util/live-test-steps.yml

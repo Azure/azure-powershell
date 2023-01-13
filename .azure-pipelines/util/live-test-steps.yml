@@ -42,7 +42,7 @@ jobs:
       definition: $(BuildPipelineDefinitionId)
       buildVersionToDownload: latestFromBranch
       branchName: refs/heads/master
-      artifactName: $(ArtifactName)
+      artifactName: artifacts
       targetPath: $(Pipeline.Workspace)
 
   - task: DownloadPipelineArtifact@2
@@ -54,7 +54,7 @@ jobs:
       definition: $(BuildPipelineDefinitionId)
       buildVersionToDownload: specific
       pipelineId: $(BuildPipelineBuildId)
-      artifactName: $(ArtifactName)
+      artifactName: artifacts
       targetPath: $(Pipeline.Workspace)
 
   - task: PowerShell@2
