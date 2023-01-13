@@ -13,8 +13,6 @@ trigger:
       - .azure-pipelines
       - .github
 
-variables:
-  NugetSecurityAnalysisWarningLevel: $(NugetSecurityAnalysisWarningLevel)
 jobs:
 - job: UpdateJson
   displayName: Update Json
