@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ResourceGraph
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resourcegraph/get-azresourcegraphquery
+online version: https://learn.microsoft.com/powershell/module/az.resourcegraph/get-azresourcegraphquery
 schema: 2.0.0
 ---
 
@@ -37,34 +37,40 @@ Get a single graph query by its resourceName.
 
 ### Example 1: Get all resource graph query under a resource group
 ```powershell
-PS C:\> Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test
+Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test
+```
 
+```output
 Location Name            Type
 -------- ----            ----
-     global   SharedQuery-t01 microsoft.resourcegraph/queries
+global   SharedQuery-t01 microsoft.resourcegraph/queries
 ```
 
 This command gets all resource graph query under a resource group.
 
 ### Example 2: Get a resource graph query by name
 ```powershell
-PS C:\> Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name SharedQuery-t01
+Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name SharedQuery-t01
+```
 
+```output
 Location Name            Type
 -------- ----            ----
-     global   SharedQuery-t01 microsoft.resourcegraph/queries
+global   SharedQuery-t01 microsoft.resourcegraph/queries
 ```
 
 This command gets a resource graph query by name.
 
-### Example 2: Get a resource graph query by objecy
+### Example 3: Get a resource graph query by objecy
 ```powershell
-PS C:\> $query = New-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t03 -Location 'global' -Query 'project id, name, type, location' -Description 'test'
-PS C:\> Get-AzResourceGraphQuery -InputObject $query
+$query = New-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t03 -Location 'global' -Query 'project id, name, type, location' -Description 'test'
+Get-AzResourceGraphQuery -InputObject $query
+```
 
+```output
 Location Name            Type
 -------- ----            ----
-     global   SharedQuery-t01 microsoft.resourcegraph/queries
+global   SharedQuery-t01 microsoft.resourcegraph/queries
 ```
 
 This command gets a resource graph query by object.
@@ -167,7 +173,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
+`INPUTOBJECT <IResourceGraphIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[ResourceName <String>]`: The name of the Graph Query resource.

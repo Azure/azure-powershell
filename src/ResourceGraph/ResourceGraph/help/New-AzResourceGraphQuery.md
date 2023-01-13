@@ -25,7 +25,7 @@ Create a new graph query.
 
 ### Example 1: Create a resource graph query by the query parameter
 ```powershell
-New-AzResourceGraphQuery -Name query-t03 -ResourceGroupName azure-rg-test -Location "global" -Description "requesting a subset of resource fields." -Query "project id, name, type, location, tags" 
+New-AzResourceGraphQuery -Name query-t03 -ResourceGroupName azure-rg-test -Location "global" -Description "requesting a subset of resource fields." -Query "project id, name, type, location, tags"
 ```
 
 ```output
