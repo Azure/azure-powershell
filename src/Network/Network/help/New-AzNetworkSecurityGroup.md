@@ -150,7 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -FlushConnection
-When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates.
+When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updated.
 Initial enablement will trigger re-evaluation
 
 ```yaml
