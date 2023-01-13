@@ -33,6 +33,8 @@ param (
     [string] $DataLocation
 )
 
+$ErrorActionPreference = "Stop"
+
 New-Variable -Name ResourceGroupPrefix -Value "azpsliverg" -Scope Script -Option Constant
 New-Variable -Name ResourcePrefix -Value "azpslive" -Scope Script -Option Constant
 New-Variable -Name StorageAccountPrefix -Value "azpslivesa" -Scope Script -Option Constant
@@ -146,7 +148,7 @@ function Invoke-LiveTestCommand {
             Write-Host "##[section]Start to execute the command '$Command'" -ForegroundColor Green
             Write-Host "##[command]The command '$Command' is running" -ForegroundColor Cyan
 
-            $cmdResult = Invoke-Expression -Command $Command -ErrorAction Stop
+            $cmdResult = Invoke-Expression -Command $Command
 
             Write-Host "##[section]Successfully executed the command '$Command'" -ForegroundColor Green
             $cmdResult
@@ -231,7 +233,7 @@ function Invoke-LiveTestScenario {
 
         do {
             try {
-                Invoke-Command -ScriptBlock $ScenarioScript -ArgumentList $snrResourceGroup -ErrorAction Stop
+                Invoke-Command -ScriptBlock $ScenarioScript -ArgumentList $snrResourceGroup
                 Write-Host "##[section]Successfully executed the live scenario '$Name'." -ForegroundColor Green
                 break
             }
