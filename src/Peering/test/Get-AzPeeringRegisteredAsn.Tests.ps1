@@ -15,15 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPeeringRegisteredAsn'))
 }
 
 Describe 'Get-AzPeeringRegisteredAsn' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $asns = Get-AzPeeringRegisteredAsn -PeeringName MapsIxRs -ResourceGroupName MAPSDemo
+            $asns.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $fgfgAsn = Get-AzPeeringRegisteredAsn -PeeringName MapsIxRs -ResourceGroupName MAPSDemo -Name fgfg
+            $fgfgAsn.Name | Should -Be "fgfg"
+        } | Should -Not -Throw
     }
 }

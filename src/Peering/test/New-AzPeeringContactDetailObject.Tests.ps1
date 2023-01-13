@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzPeeringContactDetailObj
 }
 
 Describe 'New-AzPeeringContactDetailObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        {
+            $contactDetail = New-AzPeeringContactDetailObject -Email "abc@xyz.com" -Phone 1234567890 -Role "Noc"
+            $contactDetail.Email | Should -Be "abc@xyz.com"
+        } | Should -Not -Throw
     }
 }

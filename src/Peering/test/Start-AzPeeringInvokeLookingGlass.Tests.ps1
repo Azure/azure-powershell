@@ -15,11 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzPeeringInvokeLookingG
 }
 
 Describe 'Start-AzPeeringInvokeLookingGlass' {
-    It 'Invoke' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'InvokeViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Invoke' {
+        {
+             $command = Start-AzPeeringInvokeLookingGlass -Command Ping -DestinationIp 1.1.1.1 -SourceLocation Seattle -SourceType EdgeSite
+             $command.Command | Should -Be "Ping"
+        } | Should -Not -Throw
+    } 
 }

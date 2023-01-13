@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzPeeringService'))
 }
 
 Describe 'Update-AzPeeringService' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        {
+            $tags=@{hello='world'}
+            $peeringService = Update-AzPeeringService -Name DRTestInterCloud -ResourceGroupName DemoRG -Tag $tags
+            $peeringService.Name | Should -Be "DRTestInterCloud"
+        } | Should -Not -Throw
     }
 }

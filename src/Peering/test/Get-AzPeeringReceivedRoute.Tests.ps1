@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPeeringReceivedRoute'))
 }
 
 Describe 'Get-AzPeeringReceivedRoute' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $routes = Get-AzPeeringReceivedRoute -PeeringName DemoPeering -ResourceGroupName DemoRG
+            $routes.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 }

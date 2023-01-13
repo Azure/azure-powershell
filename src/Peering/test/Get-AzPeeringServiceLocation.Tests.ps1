@@ -15,7 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPeeringServiceLocation'
 }
 
 Describe 'Get-AzPeeringServiceLocation' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $locations = Get-AzPeeringServiceLocation
+            $locations.Count | Should -BeGreaterThan 0
+
+            $jpLocations = Get-AzPeeringServiceLocation -Country Japan
+            $jpLocations.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 }

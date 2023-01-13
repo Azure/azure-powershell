@@ -15,11 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzPeeringRegisteredPrefi
 }
 
 Describe 'Test-AzPeeringRegisteredPrefix' {
-    It 'Validate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ValidateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Validate' {
+        {
+            $test = Test-AzPeeringRegisteredPrefix -Name accessibilityTesting2 -PeeringName DemoPeering -ResourceGroupName DemoRG
+            $test.Name | Should -Be "accessibilityTesting2"
+        } | Should -Not -Throw
     }
 }

@@ -15,19 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPeeringService'))
 }
 
 Describe 'Get-AzPeeringService' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        {
+            $allPeeringServices = Get-AzPeeringService
+            $allPeeringServices.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $peeringService = Get-AzPeeringService -ResourceGroupName DemoRG -Name TestExtension
+            $peeringService.Name | Should -Be "TestExtension"
+        } | Should -Not -Throw
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $rgPeeringServices = Get-AzPeeringService -ResourceGroupName DemoRG
+            $rgPeeringServices.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzPeeringDirectConnection
 }
 
 Describe 'New-AzPeeringDirectConnectionObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        {
+            $connection = New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixesAdvertisedV4 20000 -BgpSessionMaxPrefixesAdvertisedV6 0 -BgpSessionMd5AuthenticationKey $md5Key -BgpSessionMicrosoftSessionIPv4Address 12.90.152.62 -BgpSessionPeerSessionIPv4Address 12.90.152.61 -BgpSessionPrefixV4 12.90.152.60/30 -PeeringDbFacilityId 86 -SessionAddressProvider Peer -ConnectionIdentifier d1111111111111111111111111111111
+            $connection.ConnectionIdentifier | Should -Be "d1111111111111111111111111111111"
+        } | Should -Not -Throw
     }
 }

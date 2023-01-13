@@ -15,11 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzPeeringRegisteredAsn
 }
 
 Describe 'Remove-AzPeeringRegisteredAsn' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            Remove-AzPeeringRegisteredAsn -Name TestAsn -PeeringName MapsIxRs -ResourceGroupName MAPSDemo
+        } | Should -Not -Throw
     }
 }

@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPeeringCdnPrefix'))
 }
 
 Describe 'Get-AzPeeringCdnPrefix' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $cdnPrefixes = Get-AzPeeringCdnPrefix -PeeringLocation Seattle
+            $cdnPrefixes.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 }

@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPeeringServiceProvider'
 }
 
 Describe 'Get-AzPeeringServiceProvider' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $providers = Get-AzPeeringServiceProvider
+            $providers.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 }

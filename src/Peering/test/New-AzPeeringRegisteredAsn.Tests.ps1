@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzPeeringRegisteredAsn'))
 }
 
 Describe 'New-AzPeeringRegisteredAsn' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        {
+            $newAsn = New-AzPeeringRegisteredAsn -Name TestAsn -PeeringName MapsIxRs -ResourceGroupName MAPSDemo -Asn 65001
+            $newAsn.Name | Should -Be "TestAsn"
+        } | Should -Not -Throw
     }
 }

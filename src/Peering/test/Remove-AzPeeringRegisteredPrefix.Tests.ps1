@@ -15,11 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzPeeringRegisteredPre
 }
 
 Describe 'Remove-AzPeeringRegisteredPrefix' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            Remove-AzPeeringRegisteredPrefix -Name accessibilityTesting6 -PeeringName DemoPeering -ResourceGroupName DemoRG
+        } | Should -Not -Throw
     }
 }

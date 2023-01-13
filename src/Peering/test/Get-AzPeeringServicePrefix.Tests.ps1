@@ -15,15 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPeeringServicePrefix'))
 }
 
 Describe 'Get-AzPeeringServicePrefix' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $prefixes = Get-AzPeeringServicePrefix -PeeringServiceName TestDRInterCloudZurich -ResourceGroupName DemoRG
+            $prefixes.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $prefix = Get-AzPeeringServicePrefix -PeeringServiceName TestDRInterCloudZurich -ResourceGroupName DemoRG -Name TestPrefix
+            $prefix.Name | Should -Be "TestPrefix"
+        } | Should -Not -Throw
     }
 }

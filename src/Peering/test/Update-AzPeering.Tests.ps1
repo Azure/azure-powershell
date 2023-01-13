@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzPeering'))
 }
 
 Describe 'Update-AzPeering' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        {
+            $tags=@{hello='world'}
+            $peering = Update-AzPeering -Name DemoPeering -ResourceGroupName DemoRG -Tag $tags
+            $peering.Name | Should -Be "DemoPeering"
+        } | Should -Not -Throw
     }
 }

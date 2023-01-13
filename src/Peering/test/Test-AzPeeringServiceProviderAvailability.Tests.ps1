@@ -15,19 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzPeeringServiceProvider
 }
 
 Describe 'Test-AzPeeringServiceProviderAvailability' {
-    It 'CheckExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Check' {
+        {
+            $providerAvailability = New-AzPeeringCheckServiceProviderAvailabilityInputObject -PeeringServiceLocation Osaka -PeeringServiceProvider IIJ
+            $available = Test-AzPeeringServiceProviderAvailability -CheckServiceProviderAvailabilityInput $providerAvailability
+            $available | Should -Be '"Available"'
+        } | Should -Not -Throw
     }
 
-    It 'Check' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CheckViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CheckViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

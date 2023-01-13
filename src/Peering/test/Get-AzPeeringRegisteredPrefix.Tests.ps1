@@ -15,15 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPeeringRegisteredPrefix
 }
 
 Describe 'Get-AzPeeringRegisteredPrefix' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $prefixes = Get-AzPeeringRegisteredPrefix -PeeringName DemoPeering -ResourceGroupName DemoRG
+            $prefixes.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $prefix = Get-AzPeeringRegisteredPrefix -PeeringName DemoPeering -ResourceGroupName DemoRG -Name accessibilityTesting1
+            $prefix.Name | Should -Be "accessibilityTesting1"
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

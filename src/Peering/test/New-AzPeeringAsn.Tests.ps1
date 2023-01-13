@@ -15,7 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzPeeringAsn'))
 }
 
 Describe 'New-AzPeeringAsn' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        {
+            $contactDetail = New-AzPeeringContactDetailObject -Email "abc@xyz.com" -Phone 1234567890 -Role "Noc"
+            $PeerContactList = ,$contactDetail
+            $newAsn = New-AzPeeringAsn -Name PsTestAsn -PeerAsn 65001 -PeerContactDetail $PeerContactList -PeerName DemoPeering
+            $newAsn.Name | Should -Be "PsTestAsn"
+        } | Should -Not -Throw
     }
 }

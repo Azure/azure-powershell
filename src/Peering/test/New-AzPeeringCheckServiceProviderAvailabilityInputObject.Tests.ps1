@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzPeeringCheckServiceProv
 }
 
 Describe 'New-AzPeeringCheckServiceProviderAvailabilityInputObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        {
+            $providerAvailability = New-AzPeeringCheckServiceProviderAvailabilityInputObject -PeeringServiceLocation Osaka -PeeringServiceProvider IIJ
+            $providerAvailability.PeeringServiceLocation | Should -Be "Osaka"
+        } | Should -Not -Throw
     }
 }
