@@ -1,6 +1,6 @@
 if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPeeringRpUnbilledPrefix'))
 {
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnvDogfood.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
@@ -17,6 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPeeringRpUnbilledPrefix
 Describe 'Get-AzPeeringRpUnbilledPrefix' {
     It 'List' {
         {
+            $env.SubscriptionId = "f686d426-8d16-42db-81b7-ab578e110ccd"
+            $env.Tenant = "4445bf11-61c4-436f-a940-60194f8aca57"
             $prefixes =  Get-AzPeeringRpUnbilledPrefix -PeeringName CdnPeering -ResourceGroupName Seattle
             $prefixes.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
