@@ -260,6 +260,7 @@
         "tools/BatchModelGenerator/*",
         "tools/BreakingChanges/*",
         "tools/Docker/*",
+        "tools/FormatPs1XmlGenerator/*",
         "tools/Gen2Master/*",
         "tools/InstallationTests/*",
         "tools/Installer/*",
